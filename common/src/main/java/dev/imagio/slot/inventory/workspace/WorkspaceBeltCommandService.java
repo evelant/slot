@@ -8,6 +8,7 @@ import dev.imagio.slot.inventory.action.InventoryActionQuantity;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
+import dev.imagio.slot.inventory.core.InventoryBindingRoute;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
@@ -28,6 +29,7 @@ import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
@@ -39,6 +41,8 @@ import java.util.function.IntFunction;
  * identity lookup, occupant staging, and transfer request shape.
  */
 public final class WorkspaceBeltCommandService {
+    public static final String CARRIED_IDENTITY_NOT_FOUND = "identity not found in any carried source";
+
     private WorkspaceBeltCommandService() {
     }
 
@@ -159,6 +163,31 @@ public final class WorkspaceBeltCommandService {
         return hotbarAssigner.apply(targetHotbarIndex);
     }
 
+    public static WorkspaceCommandOutcome assignIdentityToAutoHotbar(
+            SlotWorkspaceViewModel viewModel,
+            ItemIdentity identity,
+            Map<Integer, Long> hotbarPlacementSequence,
+            IntFunction<WorkspaceCommandOutcome> hotbarAssigner
+    ) {
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        if (hotbarAssigner == null) {
+            return WorkspaceCommandOutcome.rejected("hotbar_assigner_unavailable");
+        }
+        int targetHotbarIndex = firstPartialFreeOrOldestHotbarSlot(
+                viewModel,
+                identity,
+                hotbarPlacementSequence);
+        if (targetHotbarIndex < 0) {
+            return new WorkspaceCommandOutcome(
+                    false,
+                    "hotbar_not_projected",
+                    "hotbar slots are unavailable");
+        }
+        return hotbarAssigner.apply(targetHotbarIndex);
+    }
+
     public static boolean isHotbarFallbackDepositMiss(WorkspaceCommandOutcome outcome) {
         if (outcome == null || outcome.success()) {
             return false;
@@ -267,6 +296,52 @@ public final class WorkspaceBeltCommandService {
         return -1;
     }
 
+    public static int firstPartialFreeOrOldestHotbarSlot(
+            SlotWorkspaceViewModel viewModel,
+            ItemIdentity identity,
+            Map<Integer, Long> hotbarPlacementSequence
+    ) {
+        int partialOrFree = firstPartialOrFreeHotbarSlot(viewModel, identity);
+        if (partialOrFree >= 0) {
+            return partialOrFree;
+        }
+        if (viewModel == null || identity == null) {
+            return -1;
+        }
+        int selectedAnyIndex = -1;
+        long selectedAnySequence = Long.MAX_VALUE;
+        int selectedEvictionIndex = -1;
+        long selectedEvictionSequence = Long.MAX_VALUE;
+        for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
+            if (slot == null || !slot.occupied()) {
+                continue;
+            }
+            ItemStack stack = slot.displayStack();
+            long sequence = hotbarPlacementSequence == null
+                    ? Long.MIN_VALUE
+                    : hotbarPlacementSequence.getOrDefault(slot.hotbarIndex(), Long.MIN_VALUE);
+            if (selectedAnyIndex < 0
+                    || sequence < selectedAnySequence
+                    || (sequence == selectedAnySequence && slot.hotbarIndex() < selectedAnyIndex)) {
+                selectedAnyIndex = slot.hotbarIndex();
+                selectedAnySequence = sequence;
+            }
+            if (stack != null && !stack.isEmpty() && ItemIdentityMatcher.matchesMovable(stack, identity)) {
+                continue;
+            }
+            if (selectedEvictionIndex < 0
+                    || sequence < selectedEvictionSequence
+                    || (sequence == selectedEvictionSequence && slot.hotbarIndex() < selectedEvictionIndex)) {
+                selectedEvictionIndex = slot.hotbarIndex();
+                selectedEvictionSequence = sequence;
+            }
+        }
+        if (selectedEvictionIndex >= 0) {
+            return selectedEvictionIndex;
+        }
+        return selectedAnyIndex;
+    }
+
     public static WorkspaceCommandOutcome assignIdentityToHotbarByTransfer(
             ServerPlayer player,
             InventoryHostDescriptor host,
@@ -293,12 +368,15 @@ public final class WorkspaceBeltCommandService {
             return WorkspaceCommandOutcome.rejected("invalid_hotbar_slot");
         }
 
-        Optional<CarriedSourceAccess.CarriedLocation> located = carried.findIdentity(player, identity);
-        if (located.isEmpty()) {
-            return WorkspaceCommandOutcome.rejected("identity not found in any carried source");
+        LocatedCarriedEntry located = findIdentityInAuthority(authority, identity)
+                .orElseGet(() -> carried.findIdentity(player, identity)
+                        .map(location -> new LocatedCarriedEntry(location.sourceId(), location.slotIndex(), null))
+                        .orElse(null));
+        if (located == null) {
+            return WorkspaceCommandOutcome.rejected(CARRIED_IDENTITY_NOT_FOUND);
         }
-        String sourceId = located.get().sourceId();
-        int slotIndex = located.get().slotIndex();
+        String sourceId = located.sourceId();
+        int slotIndex = located.slotIndex();
         if (BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId) && slotIndex == hotbarIndex) {
             return WorkspaceCommandOutcome.accepted(
                     "assigned_to_hotbar_" + (hotbarIndex + 1),
@@ -309,24 +387,46 @@ public final class WorkspaceBeltCommandService {
         InventoryActionTarget hotbarTarget = new InventoryActionTarget.QuickAccessTarget(
                 BuiltinInventoryIds.QUICK_ACCESS_LANE_0,
                 hotbarIndex);
-        InventoryEntrySnapshot sourceEntry = sourceEntry(authority, carried, player, sourceId, slotIndex, sourceTarget);
+        InventoryEntrySnapshot sourceEntry = located.entry();
+        if (sourceEntry == null || !sourceEntry.present()) {
+            sourceEntry = sourceEntry(authority, carried, player, sourceId, slotIndex, sourceTarget);
+        }
         if (sourceEntry == null || !sourceEntry.present()) {
             return WorkspaceCommandOutcome.rejected("source_stack_missing");
         }
         ItemStack sourceStack = sourceEntry.stack().copy();
         sourceStack.setCount(sourceEntry.count());
+        ItemIdentity sourceIdentity = ItemIdentityMatcher.create(sourceStack);
 
         Integer stagingSlot = null;
         InventoryEntrySnapshot targetEntry = InventoryAuthorityReadService.entrySnapshot(authority, hotbarTarget);
         if (targetEntry != null && targetEntry.present()) {
             ItemIdentity targetIdentity = ItemIdentityMatcher.create(targetEntry.stack());
-            boolean sameIdentity = ItemIdentityMatcher.matchesMovable(targetIdentity, identity);
+            boolean sameIdentity = ItemIdentityMatcher.matchesMovable(targetIdentity, sourceIdentity);
             boolean canMergeMore = sameIdentity && targetEntry.count() < targetEntry.stack().getMaxStackSize();
             if (!canMergeMore) {
                 if (sameIdentity) {
                     return WorkspaceCommandOutcome.accepted(
                             "assigned_to_hotbar_" + (hotbarIndex + 1),
                             "already in hotbar " + (hotbarIndex + 1));
+                }
+                if (canAssignDirectly(host, sourceId)) {
+                    WorkspaceTransferExecution directAssign = executeAssignRequest(
+                            host,
+                            actionExecutor,
+                            sourceTarget,
+                            hotbarTarget,
+                            origin(originPrefix, "assign_identity_to_hotbar_swap"),
+                            sourceIdentity,
+                            sourceStack,
+                            sourceEntry.count());
+                    if (directAssign.appliedCompletely()) {
+                        return new WorkspaceCommandOutcome(
+                                true,
+                                "assigned_to_hotbar_" + (hotbarIndex + 1),
+                                "moved to hotbar " + (hotbarIndex + 1));
+                    }
+                    return WorkspaceCommandOutcome.rejected(directAssign.feedback().diagnostics());
                 }
                 stagingSlot = firstEmptyMainSlot(authority);
                 if (stagingSlot == null) {
@@ -355,7 +455,7 @@ public final class WorkspaceBeltCommandService {
                 sourceTarget,
                 hotbarTarget,
                 origin(originPrefix, "assign_identity_to_hotbar"),
-                identity,
+                sourceIdentity,
                 sourceStack,
                 sourceEntry.count());
         if (execution.appliedCompletely()) {
@@ -376,6 +476,73 @@ public final class WorkspaceBeltCommandService {
                     targetEntry == null ? 0 : targetEntry.count());
         }
         return WorkspaceCommandOutcome.rejected(execution.feedback().diagnostics());
+    }
+
+    static Optional<LocatedCarriedEntry> findIdentityInAuthority(
+            InventoryAuthoritySnapshot authority,
+            ItemIdentity identity
+    ) {
+        if (authority == null || identity == null) {
+            return Optional.empty();
+        }
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            if (source == null) {
+                continue;
+            }
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry == null || !entry.present() || !entry.slotBacked()) {
+                    continue;
+                }
+                if (ItemIdentityMatcher.matchesMovable(entry.stack(), identity)) {
+                    return Optional.of(new LocatedCarriedEntry(source.id(), entry.slotIndex(), entry));
+                }
+            }
+        }
+        return findUniqueStackableItemIdInAuthority(authority, identity);
+    }
+
+    private static Optional<LocatedCarriedEntry> findUniqueStackableItemIdInAuthority(
+            InventoryAuthoritySnapshot authority,
+            ItemIdentity identity
+    ) {
+        if (authority == null || identity == null) {
+            return Optional.empty();
+        }
+        LocatedCarriedEntry selected = null;
+        ItemIdentity liveVariant = null;
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            if (source == null) {
+                continue;
+            }
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry == null || !entry.present() || !entry.slotBacked()) {
+                    continue;
+                }
+                ItemStack stack = entry.stack();
+                if (stack == null || stack.isEmpty() || stack.getMaxStackSize() <= 1) {
+                    continue;
+                }
+                ItemIdentity candidate = ItemIdentityMatcher.create(stack);
+                if (!candidate.itemId().equals(identity.itemId())) {
+                    continue;
+                }
+                if (liveVariant == null) {
+                    liveVariant = candidate;
+                    selected = new LocatedCarriedEntry(source.id(), entry.slotIndex(), entry);
+                    continue;
+                }
+                if (!liveVariant.equals(candidate)) {
+                    return Optional.empty();
+                }
+            }
+        }
+        return Optional.ofNullable(selected);
+    }
+
+    record LocatedCarriedEntry(String sourceId, int slotIndex, InventoryEntrySnapshot entry) {
+        LocatedCarriedEntry {
+            sourceId = sourceId == null ? "" : sourceId;
+        }
     }
 
     private static InventoryEntrySnapshot sourceEntry(
@@ -441,6 +608,54 @@ public final class WorkspaceBeltCommandService {
         return new WorkspaceTransferExecution(host, request, outcome, feedback);
     }
 
+    private static WorkspaceTransferExecution executeAssignRequest(
+            InventoryHostDescriptor host,
+            Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor,
+            InventoryActionTarget source,
+            InventoryActionTarget destination,
+            String origin,
+            ItemIdentity identity,
+            ItemStack stack,
+            int requestedCount
+    ) {
+        String requestId = UUID.randomUUID().toString();
+        ItemStack requestStack = stack == null ? ItemStack.EMPTY : stack.copy();
+        if (!requestStack.isEmpty() && requestedCount > 0) {
+            requestStack.setCount(requestedCount);
+        }
+        InventoryActionRequest request = new InventoryActionRequest(
+                host.hostId(),
+                host.serverMenuRef(),
+                requestId,
+                InventoryActionKind.ASSIGN,
+                InventoryActionMode.EXECUTE,
+                InventoryActionQuantity.STACK,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.ASSIGN_WITH_DISPLACE,
+                origin,
+                source,
+                destination,
+                Math.max(0, requestedCount),
+                identity,
+                requestStack,
+                InventoryToolActionId.PROVIDER_DEFINED,
+                InventoryToolToggleId.PROVIDER_DEFINED,
+                false,
+                ""
+        );
+        InventoryActionOutcome outcome = actionExecutor.apply(request);
+        WorkspaceTransferFeedback feedback = WorkspaceTransferFeedback.interpret(request, outcome);
+        return new WorkspaceTransferExecution(host, request, outcome, feedback);
+    }
+
+    private static boolean canAssignDirectly(InventoryHostDescriptor host, String sourceId) {
+        if (host == null || sourceId == null || sourceId.isBlank()) {
+            return false;
+        }
+        InventorySourceDescriptor source = host.source(sourceId);
+        return source != null && source.bindingRoute() == InventoryBindingRoute.PLAYER;
+    }
+
     private static Integer firstEmptyMainSlot(InventoryAuthoritySnapshot authority) {
         if (authority == null) {
             return null;
@@ -482,7 +697,7 @@ public final class WorkspaceBeltCommandService {
         return viewModel.hotbarSlots().get(hotbarIndex);
     }
 
-    private static void recordHotbarSlotUndo(
+    public static void recordHotbarSlotUndo(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
             int hotbarIndex,

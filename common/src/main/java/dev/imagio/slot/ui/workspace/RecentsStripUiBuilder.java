@@ -9,13 +9,13 @@ import dev.imagio.slot.ui.spi.SlotUiTextStyle;
 import java.util.List;
 
 import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.MUTED;
-import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.ROW_DIM;
 
 public final class RecentsStripUiBuilder {
-    public static final int ICON_SIZE_PX = 16;
+    public static final int CARD_SIZE_PX = WallCardUiBuilder.CARD_CELL_PX;
     public static final int GAP_PX = 2;
     public static final int PADDING_PX = 3;
-    public static final int MAX_ICONS = 12;
+    public static final int MAX_CARDS = 9;
+    public static final int MAX_ICONS = MAX_CARDS;
 
     private static final int STRIP_BACKGROUND = 0xB810171D;
 
@@ -35,7 +35,7 @@ public final class RecentsStripUiBuilder {
                 .attach(WorkspaceUiAttachments.RECENTS_STRIP, Boolean.TRUE)
                 .layout(layout -> layout
                         .widthPercent(100)
-                        .height(ICON_SIZE_PX + PADDING_PX * 2)
+                        .height(CARD_SIZE_PX + PADDING_PX * 2)
                         .paddingHorizontal(PADDING_PX)
                         .paddingVertical(PADDING_PX)
                         .gapAll(GAP_PX)
@@ -44,7 +44,7 @@ public final class RecentsStripUiBuilder {
         strip.on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation());
 
         strip.addChild(SlotUiElement.label("Recent", MUTED)
-                .layout(layout -> layout.height(ICON_SIZE_PX).paddingRight(2))
+                .layout(layout -> layout.height(CARD_SIZE_PX).paddingRight(2))
                 .textStyle(style -> style
                         .color(MUTED)
                         .shadow(false)
@@ -56,19 +56,19 @@ public final class RecentsStripUiBuilder {
         List<SlotWorkspaceViewModel.IdentityRef> identities = safeList(recentIdentities);
         int rendered = 0;
         for (SlotWorkspaceViewModel.IdentityRef identity : identities) {
-            if (rendered >= MAX_ICONS) {
+            if (rendered >= MAX_CARDS) {
                 break;
             }
             SlotWorkspaceViewModel.AtlasItem item = context.atlasItem(identity);
             if (item == null) {
                 continue;
             }
-            strip.addChild(iconButton(item));
+            strip.addChild(recentCard(item));
             rendered++;
         }
         if (rendered == 0) {
             strip.addChild(SlotUiElement.label(identities.isEmpty() ? "nothing yet" : "not visible", MUTED)
-                    .layout(layout -> layout.flex(1).height(ICON_SIZE_PX))
+                    .layout(layout -> layout.flex(1).height(CARD_SIZE_PX))
                     .textStyle(style -> style
                             .color(MUTED)
                             .shadow(false)
@@ -79,31 +79,14 @@ public final class RecentsStripUiBuilder {
         return strip;
     }
 
-    private SlotUiElement iconButton(SlotWorkspaceViewModel.AtlasItem item) {
-        SlotUiElement button = SlotUiElement.button("", true, ROW_DIM)
-                .noText()
-                .zIndex(2)
-                .tooltipStack(item.displayStack())
-                .tooltipLines(WorkspaceItemTooltipBuilder.slotLines(item))
+    private SlotUiElement recentCard(SlotWorkspaceViewModel.AtlasItem item) {
+        SlotUiElement card = new WallCardUiBuilder(new RecentsCardContext()).card(item)
+                .attach(WorkspaceUiAttachments.RECENTS_CARD, Boolean.TRUE)
                 .attach(WorkspaceUiAttachments.RECENTS_ICON, Boolean.TRUE)
-                .attach(WorkspaceUiAttachments.ATLAS_ITEM, item)
-                .layout(layout -> layout
-                        .width(ICON_SIZE_PX)
-                        .height(ICON_SIZE_PX)
-                        .paddingAll(0));
-        button.on(SlotUiEventKind.MOUSE_DOWN, event -> {
-            if (event.button() != 0) {
-                return;
-            }
-            event.stopPropagation();
-            context.focusRecent(item);
-        });
-        button.on(SlotUiEventKind.MOUSE_ENTER, event -> context.hoverRecent(item), true);
-        button.on(SlotUiEventKind.MOUSE_LEAVE, event -> context.clearHoveredRecent(item), true);
-        button.addChild(SlotUiElement.itemIcon(item.displayStack(), ICON_SIZE_PX, item.carried())
-                .renderVanillaCount(false)
-                .layout(layout -> layout.widthPercent(100).heightPercent(100)));
-        return button;
+                .layout(layout -> layout.width(CARD_SIZE_PX).height(CARD_SIZE_PX));
+        card.on(SlotUiEventKind.MOUSE_ENTER, event -> context.hoverRecent(item), true);
+        card.on(SlotUiEventKind.MOUSE_LEAVE, event -> context.clearHoveredRecent(item), true);
+        return card;
     }
 
     private static List<SlotWorkspaceViewModel.IdentityRef> safeList(
@@ -112,13 +95,74 @@ public final class RecentsStripUiBuilder {
         return recentIdentities == null ? List.of() : List.copyOf(recentIdentities);
     }
 
+    private final class RecentsCardContext implements WallCardUiBuilder.Context {
+        @Override
+        public SlotWorkspaceViewModel.IdentityRef activeIdentity() {
+            return context.activeIdentity();
+        }
+
+        @Override
+        public String normalizedSearchQuery() {
+            return "";
+        }
+
+        @Override
+        public boolean matchesItem(SlotWorkspaceViewModel.AtlasItem item) {
+            return true;
+        }
+
+        @Override
+        public boolean isMapFocusItem(SlotWorkspaceViewModel.AtlasItem item) {
+            return context.isMapFocusItem(item);
+        }
+
+        @Override
+        public void hoverAtlasIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
+            context.hoverRecent(context.atlasItem(identity));
+        }
+
+        @Override
+        public void clearHoveredAtlasIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
+            context.clearHoveredRecent(context.atlasItem(identity));
+        }
+
+        @Override
+        public boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
+            return context.choiceInvolved(item);
+        }
+
+        @Override
+        public boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+            return context.choiceCard(item);
+        }
+
+        @Override
+        public boolean showWayfindingStrip(SlotWorkspaceViewModel.AtlasItem item) {
+            return false;
+        }
+    }
+
     public interface Context {
         SlotWorkspaceViewModel.AtlasItem atlasItem(SlotWorkspaceViewModel.IdentityRef identity);
 
-        void focusRecent(SlotWorkspaceViewModel.AtlasItem item);
+        default SlotWorkspaceViewModel.IdentityRef activeIdentity() {
+            return null;
+        }
+
+        default boolean isMapFocusItem(SlotWorkspaceViewModel.AtlasItem item) {
+            return false;
+        }
 
         void hoverRecent(SlotWorkspaceViewModel.AtlasItem item);
 
         void clearHoveredRecent(SlotWorkspaceViewModel.AtlasItem item);
+
+        default boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
+            return false;
+        }
+
+        default boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+            return false;
+        }
     }
 }

@@ -63,7 +63,24 @@ class WallSectionItemSorterTest {
                 SlotWorkspaceViewModel.AtlasIsland.class));
     }
 
+    @Test
+    void ghostsWithDesiredCountsSortBeforeOtherGhosts() {
+        SlotWorkspaceViewModel.AtlasItem ordinaryGhost = item("minecraft:apple", false, 0);
+        SlotWorkspaceViewModel.AtlasItem desiredGhost = item("minecraft:zinc_ingot", false, 12);
+
+        WallSectionItemSorter.Groups groups = WallSectionItemSorter.groupAndSort(List.of(
+                ordinaryGhost,
+                desiredGhost
+        ));
+
+        assertEquals(List.of(desiredGhost, ordinaryGhost), groups.ghosts());
+    }
+
     private static SlotWorkspaceViewModel.AtlasItem item(String itemId, boolean carried) {
+        return item(itemId, carried, 0);
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem item(String itemId, boolean carried, int desiredCount) {
         SlotWorkspaceViewModel.IdentityRef identity = new SlotWorkspaceViewModel.IdentityRef(
                 itemId,
                 ItemComparisonMode.ITEM_ID.name(),
@@ -87,8 +104,9 @@ class WallSectionItemSorterTest {
                 0,
                 0,
                 false,
-                0,
+                desiredCount,
                 false,
+                0,
                 "",
                 -1,
                 0);

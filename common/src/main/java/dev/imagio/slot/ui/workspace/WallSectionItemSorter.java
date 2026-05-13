@@ -61,7 +61,7 @@ public final class WallSectionItemSorter {
             }
         }
         carried.sort(ENTRY_COMPARATOR);
-        ghosts.sort(ENTRY_COMPARATOR);
+        ghosts.sort(GHOST_COMPARATOR);
         return new Groups(itemsOf(carried), itemsOf(ghosts));
     }
 
@@ -82,6 +82,10 @@ public final class WallSectionItemSorter {
             .thenComparing(SortEntry::itemId)
             .thenComparingInt(entry -> entry.item().firstSlotIndex())
             .thenComparingInt(SortEntry::ordinal);
+
+    private static final Comparator<SortEntry> GHOST_COMPARATOR = Comparator
+            .comparingInt((SortEntry entry) -> entry.item().desiredCount() > 0 ? 0 : 1)
+            .thenComparing(ENTRY_COMPARATOR);
 
     private static IslandSignalDescriptor descriptor(
             FacetIndex index,

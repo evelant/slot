@@ -156,7 +156,11 @@ final class BeltPanelBuilder {
         button.setOnClick(event -> {
             event.stopPropagation();
             if (Screen.hasShiftDown() && slot.occupied()) {
-                host.rpc.sendReturnHotbarToHome(slot.hotbarIndex());
+                if (event.button == 0) {
+                    host.rpc.sendCrossSurfaceQuickMoveHotbar(slot.hotbarIndex());
+                } else if (event.button == 1) {
+                    host.rpc.sendReturnHotbarToHome(slot.hotbarIndex());
+                }
                 return;
             }
             if (!slot.occupied()) {
@@ -206,6 +210,10 @@ final class BeltPanelBuilder {
             if (event.button == 1 && slot.occupied()) {
                 // Right-click while carrying = universal cancel; let it bubble.
                 if (WorkspaceCursorState.isCarrying()) {
+                    return;
+                }
+                if (Screen.hasShiftDown()) {
+                    event.stopPropagation();
                     return;
                 }
                 event.stopPropagation();

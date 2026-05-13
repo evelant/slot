@@ -72,6 +72,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -85,9 +86,11 @@ final class SlotWorkspaceUiSession {
 
     private final Player player;
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
+    private final Map<Integer, Long> hotbarPlacementSequence = new HashMap<>();
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private CompoundTag lastContentTag = new CompoundTag();
     private CompoundTag lastViewTag;
+    private long nextHotbarPlacementSequence = 1L;
     private long nextRevision = 1L;
     private String status = "ready";
     private String diagnostics = "";
@@ -235,12 +238,10 @@ final class SlotWorkspaceUiSession {
     }
 
     /**
-     * Cross-surface: shift+click or shift+wheel-up on a wall card
-     * routed to the host menu. Synthesizes vanilla shift-click on a
-     * player-inventory slot containing the identity, repeated up to
-     * {@code count} times so the host menu's {@code quickMoveStack}
-     * fans the stacks across whatever slots it considers "outside"
-     * (crafting matrix, machine inputs, chest slots, etc.).
+     * Cross-surface host quick-move for atlas cards. Moves carried
+     * stacks matching the identity into non-player slots exposed by the
+     * current host menu (crafting matrix, machine inputs, chest slots,
+     * etc.), repeated up to {@code count} stacks.
      *
      * <p>Bails when no further player slot carries the identity, or
      * when a quickMove call results in no change — the latter prevents
@@ -260,6 +261,15 @@ final class SlotWorkspaceUiSession {
                 serverPlayer,
                 resolveIdentity(itemId, comparisonMode, componentFingerprint),
                 count));
+    }
+
+    void crossSurfaceQuickMoveHotbar(Integer hotbarIndex) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        applyOutcome(serverPlayer, WorkspaceCursorCommandService.crossSurfaceQuickMoveHotbar(
+                serverPlayer,
+                hotbarIndex));
     }
 
     void transfer(Integer sourceKind, Integer sourceIndex, Integer destinationKind, Integer destinationIndex, String origin) {
@@ -1351,15 +1361,35 @@ final class SlotWorkspaceUiSession {
     }
 
     private WorkspaceCommandOutcome assignIdentityToHotbarIndex(ServerPlayer serverPlayer, ItemIdentity identity, int hotbarIndex) {
+        ItemStack hotbarBefore = WorkspaceHotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
         CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
         Optional<CarriedSourceAccess.CarriedLocation> located = carried.findIdentity(serverPlayer, identity);
         if (located.isEmpty()) {
-            return new WorkspaceCommandOutcome(
-                    false,
-                    "nothing_to_assign",
-                    "identity not found in any carried source");
+            WorkspaceCommandOutcome takeOutcome = WorkspaceChestCommandService.takeByIdentity(
+                    serverPlayer,
+                    workflowRuntime(serverPlayer),
+                    identity,
+                    Integer.MAX_VALUE,
+                    false);
+            if (!tookStackForHotbar(takeOutcome)) {
+                return takeOutcome.success()
+                        ? WorkspaceCommandOutcome.rejected(WorkspaceBeltCommandService.CARRIED_IDENTITY_NOT_FOUND)
+                        : takeOutcome;
+            }
+            WorkspaceCommandOutcome outcome = assignIdentityToHotbarByTransfer(serverPlayer, hotbarIndex, identity);
+            if (outcome.success()) {
+                ItemStack hotbarAfter = WorkspaceHotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
+                WorkspaceBeltCommandService.recordHotbarSlotUndo(
+                        serverPlayer,
+                        workflowRuntime(serverPlayer),
+                        hotbarIndex,
+                        hotbarBefore,
+                        hotbarAfter,
+                        "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
+                recordHotbarPlacementOnSuccess(hotbarIndex, outcome);
+            }
+            return outcome;
         }
-        ItemStack hotbarBefore = WorkspaceHotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
         String sourceId = located.get().sourceId();
         int slotIndex = located.get().slotIndex();
         if (BuiltinInventoryIds.PLAYER_MAIN.equals(sourceId)
@@ -1372,8 +1402,14 @@ final class SlotWorkspaceUiSession {
             );
             if (execution.appliedCompletely()) {
                 ItemStack hotbarAfter = WorkspaceHotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
-                recordHotbarSlotUndo(serverPlayer, hotbarIndex, hotbarBefore, hotbarAfter,
+                WorkspaceBeltCommandService.recordHotbarSlotUndo(
+                        serverPlayer,
+                        workflowRuntime(serverPlayer),
+                        hotbarIndex,
+                        hotbarBefore,
+                        hotbarAfter,
                         "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
+                recordHotbarPlacementOnSuccess(hotbarIndex, WorkspaceCommandOutcome.accepted("assigned", ""));
                 return WorkspaceCommandOutcome.accepted(
                         "assigned_to_hotbar_" + (hotbarIndex + 1),
                         "moved to hotbar " + (hotbarIndex + 1));
@@ -1381,8 +1417,14 @@ final class SlotWorkspaceUiSession {
                 WorkspaceCommandOutcome outcome = assignIdentityToHotbarByTransfer(serverPlayer, hotbarIndex, identity);
                 if (outcome.success()) {
                     ItemStack hotbarAfter = WorkspaceHotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
-                    recordHotbarSlotUndo(serverPlayer, hotbarIndex, hotbarBefore, hotbarAfter,
+                    WorkspaceBeltCommandService.recordHotbarSlotUndo(
+                            serverPlayer,
+                            workflowRuntime(serverPlayer),
+                            hotbarIndex,
+                            hotbarBefore,
+                            hotbarAfter,
                             "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
+                    recordHotbarPlacementOnSuccess(hotbarIndex, outcome);
                 }
                 return outcome;
             }
@@ -1394,8 +1436,14 @@ final class SlotWorkspaceUiSession {
         WorkspaceCommandOutcome outcome = assignIdentityToHotbarByTransfer(serverPlayer, hotbarIndex, identity);
         if (outcome.success()) {
             ItemStack hotbarAfter = WorkspaceHotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
-            recordHotbarSlotUndo(serverPlayer, hotbarIndex, hotbarBefore, hotbarAfter,
+            WorkspaceBeltCommandService.recordHotbarSlotUndo(
+                    serverPlayer,
+                    workflowRuntime(serverPlayer),
+                    hotbarIndex,
+                    hotbarBefore,
+                    hotbarAfter,
                     "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
+            recordHotbarPlacementOnSuccess(hotbarIndex, outcome);
         }
         return outcome;
     }
@@ -1431,6 +1479,43 @@ final class SlotWorkspaceUiSession {
         // or any other non-player carried source, assignIdentityToHotbarIndex routes through
         // WorkspaceBeltCommandService's transfer/staging flow.
         applyOutcome(serverPlayer, assignIdentityToHotbarIndex(serverPlayer, identity, hotbarIndex));
+    }
+
+    void assignIdentityToAutoHotbar(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, WorkspaceBeltCommandService.assignIdentityToAutoHotbar(
+                viewModel,
+                identity,
+                hotbarPlacementSequence,
+                targetHotbarIndex -> assignIdentityToHotbarIndex(serverPlayer, identity, targetHotbarIndex)));
+    }
+
+    private void recordHotbarPlacementOnSuccess(int hotbarIndex, WorkspaceCommandOutcome outcome) {
+        if (outcome == null || !outcome.success() || hotbarIndex < 0 || hotbarIndex >= 9) {
+            return;
+        }
+        hotbarPlacementSequence.put(hotbarIndex, nextHotbarPlacementSequence++);
+    }
+
+    private static boolean tookStackForHotbar(WorkspaceCommandOutcome outcome) {
+        if (outcome == null || !outcome.success()) {
+            return false;
+        }
+        return "took_one".equals(outcome.status())
+                || "took_stack".equals(outcome.status())
+                || "took_partial".equals(outcome.status());
     }
 
     private WorkspaceCommandOutcome assignIdentityToHotbarByTransfer(
@@ -1674,39 +1759,6 @@ final class SlotWorkspaceUiSession {
                 storageIdRaw,
                 chestSlotIndex,
                 WorkspaceChestCommandService.TakeQuantity.STACK));
-    }
-
-    /**
-     * Push a single undo entry for a hotbar-slot mutation. {@code before} /
-     * {@code after} are the slot's stack snapshots taken around the
-     * action; the closures route through {@link WorkspaceHotbarSlotReverser} which
-     * pushes the displaced occupant back into carry and pulls matching
-     * identity from elsewhere in carry to seed the target.
-     *
-     * <p>Best-effort: if the player has consumed the item between the
-     * action and the undo, the slot ends up with whatever is still in
-     * carry — same shape as the chest-transfer undo.
-     */
-    private void recordHotbarSlotUndo(
-            ServerPlayer serverPlayer,
-            int hotbarIndex,
-            ItemStack before,
-            ItemStack after,
-            String label
-    ) {
-        if (serverPlayer == null || hotbarIndex < 0 || hotbarIndex >= 9) {
-            return;
-        }
-        ItemStack beforeCopy = before == null ? ItemStack.EMPTY : before.copy();
-        ItemStack afterCopy = after == null ? ItemStack.EMPTY : after.copy();
-        if (ItemStack.matches(beforeCopy, afterCopy)) {
-            return; // No-op action — nothing to undo.
-        }
-        workflowRuntime(serverPlayer).undoStack().record(
-                label,
-                ctx -> WorkspaceHotbarSlotReverser.restoreSlot(serverPlayer, hotbarIndex, beforeCopy),
-                ctx -> WorkspaceHotbarSlotReverser.restoreSlot(serverPlayer, hotbarIndex, afterCopy)
-        );
     }
 
     private static ItemIdentity resolveIdentity(String itemId, String comparisonMode, String componentFingerprint) {

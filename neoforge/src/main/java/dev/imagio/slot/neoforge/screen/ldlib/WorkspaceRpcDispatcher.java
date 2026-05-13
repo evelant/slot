@@ -67,6 +67,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter toggleWantedItemEmitter;
     RPCEmitter adjustWantedCountEmitter;
     RPCEmitter assignHomeToHotbarOnlyEmitter;
+    RPCEmitter assignIdentityToAutoHotbarEmitter;
     RPCEmitter assignIdentityToHotbarSlotEmitter;
     RPCEmitter depositHomeToLinkedChestEmitter;
     RPCEmitter depositOneHomeToLinkedChestEmitter;
@@ -74,6 +75,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter adjustPlayerDesiredCountEmitter;
     RPCEmitter crossSurfaceDropOnHostSlotEmitter;
     RPCEmitter crossSurfaceQuickMoveAtlasEmitter;
+    RPCEmitter crossSurfaceQuickMoveHotbarEmitter;
     RPCEmitter pickupToCursorEmitter;
     RPCEmitter cursorCancelEmitter;
     RPCEmitter cursorSmartDepositEmitter;
@@ -416,6 +418,12 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 host.session::assignHomeToHotbarOnly
         ));
+        assignIdentityToAutoHotbarEmitter = add(WorkspaceActionId.ASSIGN_IDENTITY_TO_AUTO_HOTBAR, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                host.session::assignIdentityToAutoHotbar
+        ));
         assignIdentityToHotbarSlotEmitter = add(WorkspaceActionId.ASSIGN_IDENTITY_TO_HOTBAR_SLOT, RPCEventBuilder.simple(
                 String.class,
                 String.class,
@@ -462,6 +470,10 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,    // componentFingerprint
                 Integer.class,   // count of stacks to quick-move
                 host.session::crossSurfaceQuickMoveAtlas
+        ));
+        crossSurfaceQuickMoveHotbarEmitter = add(WorkspaceActionId.CROSS_SURFACE_QUICK_MOVE_HOTBAR, RPCEventBuilder.simple(
+                Integer.class,   // hotbarIndex
+                host.session::crossSurfaceQuickMoveHotbar
         ));
         pickupToCursorEmitter = add(WorkspaceActionId.PICKUP_TO_CURSOR, RPCEventBuilder.simple(
                 String.class,    // itemId
@@ -889,7 +901,16 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 identity.componentFingerprint(),
                 count
         );
-        host.localStatus.set(sent ? "shift-clicking to host..." : "shift-click unavailable");
+        host.localStatus.set(sent ? "quick-moving to host..." : "host quick-move unavailable");
+        host.rebuild();
+    }
+
+    void sendCrossSurfaceQuickMoveHotbar(int hotbarIndex) {
+        if (crossSurfaceQuickMoveHotbarEmitter == null) {
+            return;
+        }
+        boolean sent = send(WorkspaceActionId.CROSS_SURFACE_QUICK_MOVE_HOTBAR, hotbarIndex);
+        host.localStatus.set(sent ? "quick-moving to host..." : "host quick-move unavailable");
         host.rebuild();
     }
 
@@ -975,6 +996,21 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
         );
         if (!sent) {
             host.localStatus.set("assign-to-hotbar unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendAssignToAutoHotbar(SlotWorkspaceViewModel.AtlasItem item) {
+        if (assignIdentityToAutoHotbarEmitter == null || item == null) {
+            return;
+        }
+        boolean sent = send(WorkspaceActionId.ASSIGN_IDENTITY_TO_AUTO_HOTBAR,
+                item.identity().itemId(),
+                item.identity().comparisonMode(),
+                item.identity().componentFingerprint()
+        );
+        host.localStatus.set(sent ? "moving to hotbar" : "assign-to-hotbar unavailable");
+        if (!sent) {
             host.rebuild();
         }
     }

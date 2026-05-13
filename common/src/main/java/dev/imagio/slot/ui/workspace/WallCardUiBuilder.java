@@ -36,7 +36,9 @@ public final class WallCardUiBuilder {
         boolean searchMatch = context.matchesItem(item);
         boolean filtering = !context.normalizedSearchQuery().isBlank();
         boolean activeSearchMatch = filtering && searchMatch;
-        SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntry = wayfindingEntryFor(item, activeSearchMatch);
+        SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntry = context.showWayfindingStrip(item)
+                ? wayfindingEntryFor(item, activeSearchMatch)
+                : null;
         boolean expanded = wayfindingEntry != null;
         int cardWidth = expanded ? CARD_CELL_PX + WAYFINDING_STRIP_WIDTH_PX : CARD_CELL_PX;
 
@@ -369,7 +371,7 @@ public final class WallCardUiBuilder {
             return (carried <= 0 ? "0" : WorkspaceCountFormat.compact(carried))
                     + "/" + WorkspaceCountFormat.compact(target);
         }
-        return WorkspaceCountFormat.compact(Math.max(0, item.totalCount()));
+        return carried <= 0 ? "" : WorkspaceCountFormat.compact(carried);
     }
 
     private static int carriedCount(SlotWorkspaceViewModel.AtlasItem item) {
@@ -425,6 +427,10 @@ public final class WallCardUiBuilder {
 
         default boolean suppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
             return false;
+        }
+
+        default boolean showWayfindingStrip(SlotWorkspaceViewModel.AtlasItem item) {
+            return true;
         }
     }
 }

@@ -363,6 +363,49 @@ public final class WorkspaceCursorCommandService {
                 : WorkspaceCommandOutcome.rejected("host_rejected_stack");
     }
 
+    public static WorkspaceCommandOutcome crossSurfaceQuickMoveHotbar(
+            ServerPlayer player,
+            Integer hotbarIndex
+    ) {
+        if (player == null) {
+            return WorkspaceCommandOutcome.rejected("missing_player");
+        }
+        AbstractContainerMenu menu = player.containerMenu;
+        int index = hotbarIndex == null ? -1 : hotbarIndex;
+        if (menu == null || index < 0 || index >= 9) {
+            return WorkspaceCommandOutcome.rejected("invalid_quick_move");
+        }
+        ItemStack source = player.getInventory().getItem(index);
+        if (source == null || source.isEmpty()) {
+            return WorkspaceCommandOutcome.rejected("hotbar_slot_empty");
+        }
+
+        ItemStack extracted = source.copy();
+        int extractedCount = extracted.getCount();
+        player.getInventory().setItem(index, ItemStack.EMPTY);
+        ItemStack remainingStack = extracted;
+        for (Slot hostSlot : menu.slots) {
+            if (remainingStack.isEmpty()) {
+                break;
+            }
+            if (hostSlot.container == player.getInventory() || !hostSlot.mayPlace(remainingStack)) {
+                continue;
+            }
+            remainingStack = hostSlot.safeInsert(remainingStack);
+        }
+        int placed = extractedCount - (remainingStack.isEmpty() ? 0 : remainingStack.getCount());
+        if (!remainingStack.isEmpty()) {
+            player.getInventory().setItem(index, remainingStack);
+        }
+        if (placed <= 0) {
+            player.getInventory().setItem(index, source.copy());
+            return WorkspaceCommandOutcome.rejected("host_rejected_stack");
+        }
+        SlotDebugLog.log("[xsurface][server] hotbar quick-move idx={} moved={} remaining={}",
+                index, placed, remainingStack.isEmpty() ? 0 : remainingStack.getCount());
+        return WorkspaceCommandOutcome.accepted("cross_surface_quick_moved", "moved=" + placed);
+    }
+
     private static Extraction extractFromCarry(ServerPlayer player, ItemIdentity identity, int amount) {
         CarriedSourceAccess carriedAccess = StorageAccessRegistry.carriedSourceAccess();
         Optional<CarriedSourceAccess.CarriedLocation> carriedLoc = carriedAccess.findIdentity(player, identity);

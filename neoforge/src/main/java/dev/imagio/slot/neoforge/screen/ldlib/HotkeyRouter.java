@@ -24,6 +24,8 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.MUI_CHANGED, event -> host.root.focus());
         host.root.addEventListener(UIEvents.KEY_DOWN, host.searchController::handleKeyDown, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCursorCancelKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleFocusHoveredItemKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleAutoHotbarKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMarkWantedKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGoalRecipeKey, true);
@@ -84,6 +86,42 @@ final class HotkeyRouter {
         host.rpc.sendAssignToHotbarSlot(target, digit - 1);
     }
 
+    void handleAutoHotbarKey(UIEvent event) {
+        if (event.keyCode != GLFW.GLFW_KEY_TAB || Screen.hasShiftDown()
+                || isTextInputFocused() || Screen.hasControlDown()) {
+            return;
+        }
+        event.stopPropagation();
+        if (host.goalTabActive()) {
+            host.localStatus.set("goal tab is browse only");
+            host.rebuild();
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
+        if (target == null) {
+            host.localStatus.set("hover an atlas item to move it to hotbar");
+            host.rebuild();
+            return;
+        }
+        host.searchController.confirmForHotbar();
+        host.rpc.sendAssignToAutoHotbar(target);
+    }
+
+    void handleFocusHoveredItemKey(UIEvent event) {
+        if (event.keyCode != GLFW.GLFW_KEY_TAB || !Screen.hasShiftDown()
+                || isTextInputFocused() || Screen.hasControlDown()) {
+            return;
+        }
+        event.stopPropagation();
+        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
+        if (target == null) {
+            host.localStatus.set("hover an item to scroll to it");
+            host.rebuild();
+            return;
+        }
+        host.focusWallItem(target);
+    }
+
     boolean isTextInputFocused() {
         var mui = host.root.getModularUI();
         if (mui == null) {
@@ -124,6 +162,9 @@ final class HotkeyRouter {
             return;
         }
         event.stopPropagation();
+        if (isAltKey(event.keyCode)) {
+            return;
+        }
         if (markWantedKeyConsumed) {
             return;
         }
@@ -266,4 +307,7 @@ final class HotkeyRouter {
         return 0;
     }
 
+    private static boolean isAltKey(int keyCode) {
+        return keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT;
+    }
 }

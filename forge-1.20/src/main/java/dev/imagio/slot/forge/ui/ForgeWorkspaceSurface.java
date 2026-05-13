@@ -122,6 +122,8 @@ public final class ForgeWorkspaceSurface {
     private SlotWorkspaceViewModel.IdentityRef pendingHomeDragIdentity;
     private String pendingHomeDragOriginIslandId;
     private boolean markWantedKeyConsumed;
+    private float pendingWallScrollRestore = Float.NaN;
+    private boolean pendingWallScrollRestoreActive;
 
     public ForgeWorkspaceSurface(Mode mode) {
         this.mode = mode == null ? Mode.STANDALONE : mode;
@@ -187,10 +189,17 @@ public final class ForgeWorkspaceSurface {
 
     public void rebuild(int width, int height) {
         rebuildRequested = false;
-        float scrollY = tree == null ? WorkspaceUiSessionMemory.wallScroll(surfaceMemoryKey()) : tree.scrollY();
+        float scrollY = tree == null ? 0f : tree.scrollY();
+        if (tree == null) {
+            requestWallScrollRestore(WorkspaceUiSessionMemory.wallScroll(surfaceMemoryKey()));
+        }
         tree = ForgeSlotUiTree.build(Minecraft.getInstance(), buildRoot());
         tree.compute(width, height);
-        tree.setScrollY(scrollY);
+        if (pendingWallScrollRestoreActive) {
+            applyPendingWallScrollRestore();
+        } else {
+            tree.setScrollY(scrollY);
+        }
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
@@ -250,12 +259,20 @@ public final class ForgeWorkspaceSurface {
                 controlKey))) {
             return true;
         }
-        if (Screen.hasControlDown() && keyCode == GLFW.GLFW_KEY_Z) {
-            sendAction(WorkspaceActionId.UNDO, "undo requested");
+        if (!wantsKeyboardInput()) {
+            if (ForgeWorkspaceClient.matchesUndo(keyCode, scanCode)) {
+                sendAction(WorkspaceActionId.UNDO, "undo requested");
+                return true;
+            }
+            if (ForgeWorkspaceClient.matchesRedo(keyCode, scanCode)) {
+                sendAction(WorkspaceActionId.REDO, "redo requested");
+                return true;
+            }
+        }
+        if (handleFocusHoveredItemKey(keyCode)) {
             return true;
         }
-        if (Screen.hasControlDown() && keyCode == GLFW.GLFW_KEY_Y) {
-            sendAction(WorkspaceActionId.REDO, "redo requested");
+        if (handleAutoHotbarKey(keyCode)) {
             return true;
         }
         if (handleMarkWantedKey(keyCode, scanCode)) {
@@ -330,6 +347,9 @@ public final class ForgeWorkspaceSurface {
         if (!ForgeWorkspaceClient.matchesMarkWanted(keyCode, scanCode)) {
             return false;
         }
+        if (isAltKey(keyCode)) {
+            return true;
+        }
         if (markWantedKeyConsumed) {
             return true;
         }
@@ -345,6 +365,48 @@ public final class ForgeWorkspaceSurface {
         }
         sendIdentityRefAction(WorkspaceActionId.TOGGLE_WANTED_ITEM, identity, "wanted item updated");
         return true;
+    }
+
+    private boolean handleAutoHotbarKey(int keyCode) {
+        if (keyCode != GLFW.GLFW_KEY_TAB || Screen.hasShiftDown() || editorOpen() || Screen.hasControlDown()) {
+            return false;
+        }
+        if (goalTabActive()) {
+            setStatus("goal tab is browse only");
+            return true;
+        }
+        SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
+        if (identity == null || !byIdentity.containsKey(identity)) {
+            setStatus("hover an atlas item to move it to hotbar");
+            return true;
+        }
+        applySearchDecision(WorkspaceSearchInputPolicy.confirmForHotbar(searchActive, searchQuery));
+        sendIdentityToAutoHotbar(identity);
+        return true;
+    }
+
+    private boolean handleFocusHoveredItemKey(int keyCode) {
+        if (keyCode != GLFW.GLFW_KEY_TAB || !Screen.hasShiftDown() || editorOpen() || Screen.hasControlDown()) {
+            return false;
+        }
+        SlotWorkspaceViewModel.AtlasItem item = hoveredIdentity == null ? null : byIdentity.get(hoveredIdentity);
+        if (item == null) {
+            setStatus("hover an item to scroll to it");
+            return true;
+        }
+        focusWallItem(item);
+        return true;
+    }
+
+    private static boolean isAltKey(int keyCode) {
+        return keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT;
+    }
+
+    private boolean editorOpen() {
+        return editingIslandId != null
+                || editingDesiredCountIdentity != null
+                || renamingKitId != null
+                || renamingChestStorageId != null;
     }
 
     private boolean switchKitPageFromKey(int direction) {
@@ -508,7 +570,25 @@ public final class ForgeWorkspaceSurface {
 
     private void rememberWallScroll() {
         if (tree != null) {
+            if (pendingWallScrollRestoreActive && tree.maxScrollY() <= 0f) {
+                return;
+            }
             WorkspaceUiSessionMemory.setWallScroll(surfaceMemoryKey(), tree.scrollY());
+        }
+    }
+
+    private void requestWallScrollRestore(float scrollY) {
+        pendingWallScrollRestore = Float.isFinite(scrollY) ? Math.max(0f, scrollY) : 0f;
+        pendingWallScrollRestoreActive = pendingWallScrollRestore > 0f;
+    }
+
+    private void applyPendingWallScrollRestore() {
+        if (!pendingWallScrollRestoreActive || tree == null) {
+            return;
+        }
+        tree.setScrollY(pendingWallScrollRestore);
+        if (tree.maxScrollY() > 0f || appliedRevision >= 0L) {
+            pendingWallScrollRestoreActive = false;
         }
     }
 
@@ -783,6 +863,7 @@ public final class ForgeWorkspaceSurface {
 
     private SlotUiElement recents(boolean sidebarMode) {
         SlotUiElement strip = new RecentsStripUiBuilder(new RecentsContext()).overlay(recents);
+        enrichRecentCards(strip);
         if (sidebarMode) {
             return strip;
         }
@@ -948,6 +1029,23 @@ public final class ForgeWorkspaceSurface {
         }
         viewport.addChild(content);
         return viewport;
+    }
+
+    private void enrichRecentCards(SlotUiElement root) {
+        if (root == null) {
+            return;
+        }
+        if (root.hasAttachment(WorkspaceUiAttachments.RECENTS_CARD)) {
+            SlotWorkspaceViewModel.AtlasItem item = root.attachment(
+                    WorkspaceUiAttachments.ATLAS_ITEM,
+                    SlotWorkspaceViewModel.AtlasItem.class);
+            if (item != null) {
+                enrichCard(root, item);
+            }
+        }
+        for (SlotUiElement child : root.children()) {
+            enrichRecentCards(child);
+        }
     }
 
     private SlotUiElement hotbar(boolean sidebarMode) {
@@ -1447,7 +1545,9 @@ public final class ForgeWorkspaceSurface {
             if (goalTabActive()) {
                 event.stopPropagation();
                 SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
-                if (event.button() == 1 && !isCursorCarrying()) {
+                if (event.button() == 1 && event.shiftDown()) {
+                    setStatus("goal tab is browse only");
+                } else if (event.button() == 1 && !isCursorCarrying()) {
                     openItemContextMenu(target, event.x(), event.y());
                 } else if (isCursorCarrying()) {
                     setStatus("goal tab is browse only");
@@ -1459,16 +1559,16 @@ public final class ForgeWorkspaceSurface {
                 event.stopPropagation();
                 return;
             }
-            if (event.button() == 1 && !isCursorCarrying()) {
-                event.stopPropagation();
-                openItemContextMenu(freshItem(item), event.x(), event.y());
-                return;
-            }
             SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.pointerDown(
                     cardGestureContext(target, event.button(), event.shiftDown()));
             if (dispatchCardGestureDecision(target, decision)) {
                 event.stopPropagation();
+                return;
+            }
+            if (event.button() == 1 && !isCursorCarrying()) {
+                event.stopPropagation();
+                openItemContextMenu(target, event.x(), event.y());
             }
         });
         card.on(SlotUiEventKind.CLICK, event -> {
@@ -2067,6 +2167,28 @@ public final class ForgeWorkspaceSurface {
                 hotbarIndex);
     }
 
+    private void sendIdentityToAutoHotbar(SlotWorkspaceViewModel.IdentityRef identity) {
+        if (identity == null) {
+            setStatus("hotbar assign unavailable");
+            return;
+        }
+        sendAction(
+                WorkspaceActionId.ASSIGN_IDENTITY_TO_AUTO_HOTBAR,
+                "moving to hotbar",
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint());
+    }
+
+    private void focusWallItem(SlotWorkspaceViewModel.AtlasItem item) {
+        hoveredIdentity = item == null ? null : item.identity();
+        if (item != null && tree != null) {
+            tree.scrollToElementId(item.islandId());
+            rememberWallScroll();
+        }
+        setStatus(item == null ? "ready" : item.name());
+    }
+
     private void setStatus(String nextStatus) {
         status = nextStatus == null || nextStatus.isBlank() ? "ready" : nextStatus;
         rebuildRequested = true;
@@ -2331,7 +2453,7 @@ public final class ForgeWorkspaceSurface {
             case CROSS_SURFACE_QUICK_MOVE -> sendIdentityAction(
                     WorkspaceActionId.CROSS_SURFACE_QUICK_MOVE_ATLAS,
                     item,
-                    "shift-clicking to host",
+                    "quick-moving to host",
                     count);
             case ADJUST_PLAYER_DESIRED_COUNT -> sendIdentityAction(
                     WorkspaceActionId.ADJUST_PLAYER_DESIRED_COUNT,
@@ -2667,16 +2789,6 @@ public final class ForgeWorkspaceSurface {
         }
 
         @Override
-        public void focusRecent(SlotWorkspaceViewModel.AtlasItem item) {
-            hoveredIdentity = item == null ? null : item.identity();
-            if (item != null && tree != null) {
-                tree.scrollToElementId(item.islandId());
-                rememberWallScroll();
-            }
-            setStatus(item == null ? "ready" : item.name());
-        }
-
-        @Override
         public void hoverRecent(SlotWorkspaceViewModel.AtlasItem item) {
             hoveredIdentity = item == null ? null : item.identity();
         }
@@ -2776,6 +2888,14 @@ public final class ForgeWorkspaceSurface {
         @Override
         public void returnHotbarToHome(int hotbarIndex) {
             sendAction(WorkspaceActionId.RETURN_HOTBAR_TO_HOME, "returning belt " + (hotbarIndex + 1), hotbarIndex);
+        }
+
+        @Override
+        public void quickMoveHotbarToHost(int hotbarIndex) {
+            sendAction(
+                    WorkspaceActionId.CROSS_SURFACE_QUICK_MOVE_HOTBAR,
+                    "quick-moving belt " + (hotbarIndex + 1) + " to host",
+                    hotbarIndex);
         }
 
         @Override

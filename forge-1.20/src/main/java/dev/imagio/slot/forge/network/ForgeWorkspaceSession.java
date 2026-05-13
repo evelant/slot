@@ -36,6 +36,7 @@ import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
+import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
@@ -59,6 +60,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -77,10 +79,12 @@ final class ForgeWorkspaceSession {
     private final WorkflowDomainRuntime runtime;
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
     private final Set<ItemIdentity> autoHomeAttempted = new HashSet<>();
+    private final Map<Integer, Long> hotbarPlacementSequence = new HashMap<>();
     private WorkspaceActionSessionContext context;
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private WorkspaceCursorCommandService.CursorOrigin cursorOrigin;
     private long nextRevision = 1L;
+    private long nextHotbarPlacementSequence = 1L;
     private String status = "ready";
     private String diagnostics = "";
     private String searchQuery = "";
@@ -295,6 +299,9 @@ final class ForgeWorkspaceSession {
                     player,
                     identityArg(args, 0),
                     integerArg(args, 3));
+            case CROSS_SURFACE_QUICK_MOVE_HOTBAR -> WorkspaceCursorCommandService.crossSurfaceQuickMoveHotbar(
+                    player,
+                    integerArg(args, 0));
             case ASSIGN_HOME -> {
                 refreshViewBeforeCommand(player);
                 yield SlotWorkspaceCommandService.assignHome(
@@ -495,6 +502,12 @@ final class ForgeWorkspaceSession {
                         player,
                         identityArg(args, 0),
                         true);
+            }
+            case ASSIGN_IDENTITY_TO_AUTO_HOTBAR -> {
+                refreshViewBeforeCommand(player);
+                yield assignIdentityToAutoHotbar(
+                        player,
+                        identityArg(args, 0));
             }
             case ASSIGN_IDENTITY_TO_HOTBAR_SLOT -> {
                 refreshViewBeforeCommand(player);
@@ -798,6 +811,17 @@ final class ForgeWorkspaceSession {
         return assignIdentityToHotbarIndex(player, identity, index);
     }
 
+    private WorkspaceCommandOutcome assignIdentityToAutoHotbar(
+            ServerPlayer player,
+            ItemIdentity identity
+    ) {
+        return WorkspaceBeltCommandService.assignIdentityToAutoHotbar(
+                viewModel,
+                identity,
+                hotbarPlacementSequence,
+                targetHotbarIndex -> assignIdentityToHotbarIndex(player, identity, targetHotbarIndex));
+    }
+
     private WorkspaceCommandOutcome assignIdentityToHotbarIndex(
             ServerPlayer player,
             ItemIdentity identity,
@@ -806,29 +830,87 @@ final class ForgeWorkspaceSession {
         if (player == null) {
             return WorkspaceCommandOutcome.rejected("missing_player");
         }
+        ItemStack hotbarBefore = WorkspaceHotbarSlotReverser.peekSlot(player, hotbarIndex);
+        WorkspaceCommandOutcome outcome = assignIdentityToHotbarFromCarry(player, identity, hotbarIndex);
+        if (missingFromCarry(outcome)) {
+            WorkspaceCommandOutcome missingOutcome = outcome;
+            WorkspaceCommandOutcome takeOutcome = WorkspaceChestCommandService.takeByIdentity(
+                    player,
+                    runtime,
+                    identity,
+                    Integer.MAX_VALUE,
+                    false);
+            if (tookStackForHotbar(takeOutcome)) {
+                outcome = assignIdentityToHotbarFromCarry(player, identity, hotbarIndex);
+            } else {
+                outcome = takeOutcome.success() ? missingOutcome : takeOutcome;
+            }
+        }
+        if (outcome.success()) {
+            ItemStack hotbarAfter = WorkspaceHotbarSlotReverser.peekSlot(player, hotbarIndex);
+            WorkspaceBeltCommandService.recordHotbarSlotUndo(
+                    player,
+                    runtime,
+                    hotbarIndex,
+                    hotbarBefore,
+                    hotbarAfter,
+                    "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
+            recordHotbarPlacementOnSuccess(hotbarIndex, outcome);
+        }
+        return outcome;
+    }
+
+    private WorkspaceCommandOutcome assignIdentityToHotbarFromCarry(
+            ServerPlayer player,
+            ItemIdentity identity,
+            int hotbarIndex
+    ) {
         InventoryHostDescriptor host = resolveHost(player);
         if (host == null) {
             return WorkspaceCommandOutcome.rejected("host_resolution_failed");
         }
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
-        return WorkspaceBeltCommandService.assignIdentityToHotbarByTransfer(
+        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.assignIdentityToHotbarByTransfer(
                 player,
                 host,
                 authority,
                 StorageAccessRegistry.carriedSourceAccess(),
                 request -> {
-                    InventoryActionOutcome outcome = InventoryActionExecutor.execute(
+                    InventoryActionOutcome actionOutcome = InventoryActionExecutor.execute(
                             host,
                             player,
                             request,
                             ProtectionPolicy.allowAll()
                     );
-                    recordOutcome(player, outcome);
-                    return outcome;
+                    recordOutcome(player, actionOutcome);
+                    return actionOutcome;
                 },
                 identity,
                 hotbarIndex,
                 "slot_workspace.forge");
+        return outcome;
+    }
+
+    private static boolean missingFromCarry(WorkspaceCommandOutcome outcome) {
+        return outcome != null
+                && !outcome.success()
+                && WorkspaceBeltCommandService.CARRIED_IDENTITY_NOT_FOUND.equals(outcome.diagnostics());
+    }
+
+    private static boolean tookStackForHotbar(WorkspaceCommandOutcome outcome) {
+        if (outcome == null || !outcome.success()) {
+            return false;
+        }
+        return "took_one".equals(outcome.status())
+                || "took_stack".equals(outcome.status())
+                || "took_partial".equals(outcome.status());
+    }
+
+    private void recordHotbarPlacementOnSuccess(int hotbarIndex, WorkspaceCommandOutcome outcome) {
+        if (outcome == null || !outcome.success() || hotbarIndex < 0 || hotbarIndex >= 9) {
+            return;
+        }
+        hotbarPlacementSequence.put(hotbarIndex, nextHotbarPlacementSequence++);
     }
 
     private WorkspaceCommandOutcome moveHotbarToAtlas(

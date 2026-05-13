@@ -94,14 +94,21 @@ public final class ForgeSlotUiTree {
         return node == null ? 0f : node.scrollY;
     }
 
+    public float maxScrollY() {
+        Node node = firstScrollableNode();
+        if (node == null) {
+            return 0f;
+        }
+        Layout layout = taffy.getLayout(node.id);
+        return Math.max(0f, node.contentHeight - layout.size().height);
+    }
+
     public void setScrollY(float scrollY) {
         Node node = firstScrollableNode();
         if (node == null) {
             return;
         }
-        Layout layout = taffy.getLayout(node.id);
-        float max = Math.max(0f, node.contentHeight - layout.size().height);
-        node.scrollY = clamp(scrollY, 0f, max);
+        node.scrollY = clamp(scrollY, 0f, maxScrollY());
     }
 
     public void scrollToFraction(float fraction) {
@@ -491,12 +498,33 @@ public final class ForgeSlotUiTree {
         }
         graphics.pose().popPose();
         if (!node.model.itemCarried()) {
-            graphics.fill(drawX, drawY, drawX + size, drawY + size, 0xAA0A1016);
-            graphics.fill(drawX, drawY, drawX + size, drawY + 1, 0x88A0AAB3);
-            graphics.fill(drawX, drawY + size - 1, drawX + size, drawY + size, 0x88A0AAB3);
-            graphics.fill(drawX, drawY, drawX + 1, drawY + size, 0x88A0AAB3);
-            graphics.fill(drawX + size - 1, drawY, drawX + size, drawY + size, 0x88A0AAB3);
+            renderGhostItemOverlay(graphics, drawX, drawY, size);
         }
+    }
+
+    private void renderGhostItemOverlay(GuiGraphics graphics, int x, int y, int size) {
+        int right = x + size;
+        int bottom = y + size;
+        int edge = size >= 24 ? 2 : 1;
+        int dash = Math.max(3, size / 4);
+        graphics.fill(x, y, right, bottom, 0xC40A1016);
+        graphics.fill(x, y, right, y + edge, 0xE0809ACB);
+        graphics.fill(x, bottom - edge, right, bottom, 0xE0809ACB);
+        graphics.fill(x, y, x + edge, bottom, 0xE0809ACB);
+        graphics.fill(right - edge, y, right, bottom, 0xE0809ACB);
+        for (int offset = -size; offset < size; offset += dash) {
+            int startX = x + Math.max(0, offset);
+            int startY = y + Math.max(0, -offset);
+            int length = Math.min(size - Math.max(0, offset), size - Math.max(0, -offset));
+            if (length <= 0) {
+                continue;
+            }
+            int hatch = Math.min(Math.max(2, size / 5), length);
+            graphics.fill(startX, startY, startX + hatch, startY + edge, 0xAA809ACB);
+        }
+        int tab = Math.max(5, size / 3);
+        graphics.fill(right - tab, y, right, y + edge, 0xF07AC7A7);
+        graphics.fill(right - edge, y, right, y + tab, 0xF07AC7A7);
     }
 
     private void renderIcon(GuiGraphics graphics, Node node, float x, float y, float width, float height) {

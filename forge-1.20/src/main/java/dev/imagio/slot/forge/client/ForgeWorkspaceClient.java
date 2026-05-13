@@ -47,6 +47,22 @@ public final class ForgeWorkspaceClient {
             CATEGORY
     );
 
+    public static final KeyMapping UNDO = new KeyMapping(
+            "key.slot.undo",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_Z,
+            CATEGORY
+    );
+
+    public static final KeyMapping REDO = new KeyMapping(
+            "key.slot.redo",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_Y,
+            CATEGORY
+    );
+
     public static final KeyMapping GATHER_ACTIVE_KIT = new KeyMapping(
             "key.slot.gather_active_kit",
             KeyConflictContext.UNIVERSAL,
@@ -88,12 +104,37 @@ public final class ForgeWorkspaceClient {
         return GATHER_ACTIVE_KIT.matches(keyCode, scanCode);
     }
 
+    public static boolean matchesUndo(int keyCode, int scanCode) {
+        return UNDO.matches(keyCode, scanCode);
+    }
+
+    public static boolean matchesRedo(int keyCode, int scanCode) {
+        return REDO.matches(keyCode, scanCode);
+    }
+
     public static boolean matchesMarkWanted(int keyCode, int scanCode) {
         return MARK_WANTED.matches(keyCode, scanCode);
     }
 
     public static boolean markWantedDown() {
-        return MARK_WANTED.isDown();
+        if (MARK_WANTED.isDown()) {
+            return true;
+        }
+        InputConstants.Key bound = MARK_WANTED.getKey();
+        if (bound.getType() != InputConstants.Type.KEYSYM || !isAltKey(bound.getValue())) {
+            return false;
+        }
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.getWindow() == null) {
+            return false;
+        }
+        long window = minecraft.getWindow().getWindow();
+        return InputConstants.isKeyDown(window, GLFW.GLFW_KEY_LEFT_ALT)
+                || InputConstants.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_ALT);
+    }
+
+    private static boolean isAltKey(int keyCode) {
+        return keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT;
     }
 
     public static boolean wayfindingHudEnabled() {
@@ -128,6 +169,8 @@ public final class ForgeWorkspaceClient {
             event.register(OPEN_WORKSPACE_SCREEN);
             event.register(OPEN_VANILLA_INVENTORY);
             event.register(CYCLE_KIT_PAGE);
+            event.register(UNDO);
+            event.register(REDO);
             event.register(GATHER_ACTIVE_KIT);
             event.register(TOGGLE_WAYFINDING_HUD);
             event.register(MARK_WANTED);

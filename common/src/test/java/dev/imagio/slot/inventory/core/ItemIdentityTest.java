@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ItemIdentityTest {
 
@@ -35,6 +36,16 @@ class ItemIdentityTest {
         ItemIdentity exact = ItemIdentity.exact("minecraft:diamond_sword", "{Damage:42}");
         assertEquals(ItemComparisonMode.ITEM_ID_AND_COMPONENTS, exact.comparisonMode());
         assertNotEquals(ItemIdentity.of("minecraft:diamond_sword"), exact);
+    }
+
+    @Test
+    void mutableUtilityItemsMatchMovableByItemId() {
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("mod:water_flask", "{Water:100}"),
+                ItemIdentity.exact("mod:water_flask", "{Water:20}")));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("mod:building_gadget", "{Mode:\"wall\"}"),
+                ItemIdentity.exact("mod:building_gadget", "{Mode:\"surface\"}")));
     }
 
     @Test

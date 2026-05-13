@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -236,7 +237,7 @@ class WallSectionHeaderUiBuilderTest {
     }
 
     @Test
-    void recentsStripRendersIconsAndSkipsMissingIdentities() {
+    void recentsStripRendersCardsAndSkipsMissingIdentities() {
         RecordingRecentsContext context = new RecordingRecentsContext();
         java.util.ArrayList<SlotWorkspaceViewModel.IdentityRef> recents = new java.util.ArrayList<>();
         recents.add(new SlotWorkspaceViewModel.IdentityRef(
@@ -260,29 +261,29 @@ class WallSectionHeaderUiBuilderTest {
         }
 
         SlotUiElement strip = new RecentsStripUiBuilder(context).overlay(recents);
-        SlotUiElement firstIcon = strip.children().get(1);
+        SlotUiElement firstCard = strip.children().get(1);
 
         assertEquals(RecentsStripUiBuilder.MAX_ICONS + 1, strip.children().size());
-        assertTrue(firstIcon.hasAttachment(WorkspaceUiAttachments.RECENTS_ICON));
-        assertSame(first, firstIcon.attachment(
+        assertTrue(firstCard.hasAttachment(WorkspaceUiAttachments.RECENTS_CARD));
+        assertTrue(firstCard.hasAttachment(WorkspaceUiAttachments.WALL_CARD));
+        assertSame(first, firstCard.attachment(
                 WorkspaceUiAttachments.ATLAS_ITEM,
                 SlotWorkspaceViewModel.AtlasItem.class));
-        assertEquals(SlotUiElement.Kind.ITEM_ICON, firstIcon.children().get(0).kind());
+        assertTrue(firstCard.children().get(0).hasAttachment(WorkspaceUiAttachments.WALL_CARD_BODY));
     }
 
     @Test
-    void recentsIconMouseDownFocusesItem() {
+    void recentsCardMouseDownDoesNotConsumeNormalCardActions() {
         RecordingRecentsContext context = new RecordingRecentsContext();
         SlotWorkspaceViewModel.AtlasItem item = atlasItem("minecraft:stone", "Stone", true, true);
         context.items.put(item.identity(), item);
         SlotUiElement strip = new RecentsStripUiBuilder(context).overlay(java.util.List.of(item.identity()));
-        SlotUiElement icon = strip.children().get(1);
+        SlotUiElement card = strip.children().get(1);
 
         SlotUiEvent event = new SlotUiEvent(SlotUiEventKind.MOUSE_DOWN, 0, 0, 0, false);
-        icon.dispatch(event);
+        card.dispatch(event);
 
-        assertTrue(event.propagationStopped());
-        assertSame(item, context.focused);
+        assertFalse(event.propagationStopped());
     }
 
     @Test
@@ -439,18 +440,12 @@ class WallSectionHeaderUiBuilderTest {
     private static final class RecordingRecentsContext implements RecentsStripUiBuilder.Context {
         final java.util.Map<SlotWorkspaceViewModel.IdentityRef, SlotWorkspaceViewModel.AtlasItem> items =
                 new java.util.LinkedHashMap<>();
-        SlotWorkspaceViewModel.AtlasItem focused;
         SlotWorkspaceViewModel.AtlasItem hovered;
         SlotWorkspaceViewModel.AtlasItem cleared;
 
         @Override
         public SlotWorkspaceViewModel.AtlasItem atlasItem(SlotWorkspaceViewModel.IdentityRef identity) {
             return items.get(identity);
-        }
-
-        @Override
-        public void focusRecent(SlotWorkspaceViewModel.AtlasItem item) {
-            focused = item;
         }
 
         @Override

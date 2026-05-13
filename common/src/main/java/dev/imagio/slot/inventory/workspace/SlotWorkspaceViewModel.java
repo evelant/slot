@@ -2096,9 +2096,9 @@ public record SlotWorkspaceViewModel(
      * Per-identity atlas projection.
      *
      * <p>{@code ghost} = the player isn't carrying this; the card represents
-     * stock present in some proximate chest. Renders faded with
-     * {@code proximateCount} as the count badge. Hover/zoom reveals
-     * per-chest breakdown via {@code presence}.
+     * stock present in some proximate chest. Renders faded with storage
+     * presence shown separately from the carried-count badge. Hover/zoom
+     * reveals per-chest breakdown via {@code presence}.
      */
     public record AtlasItem(
             IdentityRef identity,

@@ -370,6 +370,12 @@ public final class KitWorkflowDomainService {
                 ));
             }
         }
+        if (kit.offhand() != null) {
+            entries.add(new QuickAccessLoadoutEntry(
+                    new LoadoutTarget.EquipmentSlotTarget(BuiltinInventoryIds.EQUIPMENT_GROUP_OFFHAND, 0),
+                    kit.offhand()
+            ));
+        }
         String loadoutId = kit.id() + "#p" + pageIndex;
         String loadoutName = kit.name() + " (page " + (pageIndex + 1) + ")";
         return new QuickAccessLoadoutDefinition(loadoutId, loadoutName, entries);

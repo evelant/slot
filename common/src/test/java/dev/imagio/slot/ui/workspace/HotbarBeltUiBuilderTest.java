@@ -18,13 +18,25 @@ class HotbarBeltUiBuilderTest {
     private static final int HOTBAR_CHILD_OFFSET = 2;
 
     @Test
-    void shiftClickOccupiedSlotReturnsBeforeAssigningSelection() {
+    void shiftLeftClickOccupiedSlotQuickMovesToHost() {
         RecordingContext context = new RecordingContext();
         SlotUiElement slot = hotbarChild(belt(context, hotbar(occupied(1))), 1);
 
         slot.dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, true));
 
+        assertEquals(1, context.quickMovedHotbarIndex);
+        assertEquals(-99, context.returnedHotbarIndex);
+    }
+
+    @Test
+    void shiftRightClickOccupiedSlotReturnsToStorage() {
+        RecordingContext context = new RecordingContext();
+        SlotUiElement slot = hotbarChild(belt(context, hotbar(occupied(1))), 1);
+
+        slot.dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 1, 0, 0, true));
+
         assertEquals(1, context.returnedHotbarIndex);
+        assertEquals(-99, context.quickMovedHotbarIndex);
     }
 
     @Test
@@ -108,11 +120,17 @@ class HotbarBeltUiBuilderTest {
         boolean cursorCarrying;
         int cursorDropHotbarIndex = -99;
         int cursorDropButton = -99;
+        int quickMovedHotbarIndex = -99;
         String status;
 
         @Override
         public void returnHotbarToHome(int hotbarIndex) {
             returnedHotbarIndex = hotbarIndex;
+        }
+
+        @Override
+        public void quickMoveHotbarToHost(int hotbarIndex) {
+            quickMovedHotbarIndex = hotbarIndex;
         }
 
         @Override

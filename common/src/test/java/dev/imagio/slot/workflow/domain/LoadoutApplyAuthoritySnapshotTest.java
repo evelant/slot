@@ -16,6 +16,7 @@ import dev.imagio.slot.inventory.core.InventorySourceRole;
 import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.PlayerRuntimeStateDescriptor;
 import dev.imagio.slot.inventory.integration.InventoryHostSession;
 import dev.imagio.slot.inventory.query.CursorStateSnapshot;
@@ -284,6 +285,113 @@ class LoadoutApplyAuthoritySnapshotTest {
                         "second op should not stage from slot 1 after slot 1 was emptied by op 1");
             }
         }
+    }
+
+    @Test
+    void planUsesLiveStackIdentityWhenStackableKitIdentityFingerprintDrifts() {
+        InventoryTopologyDescriptor topology = InventoryTopologyDescriptor.empty();
+        InventorySourceDescriptor quickAccess = BuiltinInventoryDescriptors.quickAccessLane0Source(topology);
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(topology);
+        InventoryHostDescriptor host = host(List.of(quickAccess, main));
+        ItemStack liveSteel = new ItemStack("mekanism:steel_ingot", "{server:1}", 16, 64);
+
+        InventoryAuthoritySnapshot authority = new InventoryAuthoritySnapshot(
+                host,
+                Map.of(
+                        quickAccess.id(), new InventorySourceSnapshot(quickAccess.id(), 9, List.of(), ""),
+                        main.id(), new InventorySourceSnapshot(
+                                main.id(),
+                                27,
+                                List.of(new InventoryEntrySnapshot(
+                                        InventoryEntryKey.slot(main.id(), 0), liveSteel, 16, "")),
+                                "")
+                ),
+                CursorStateSnapshot.empty()
+        );
+
+        QuickAccessLoadoutDefinition loadout = new QuickAccessLoadoutDefinition(
+                "steel",
+                "Steel",
+                Set.of(new QuickAccessLoadoutEntry(
+                        new LoadoutTarget.QuickAccessLaneTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 4),
+                        ItemIdentity.exact("mekanism:steel_ingot", "{client:1}")
+                ))
+        );
+
+        LoadoutApplyService.LoadoutApplyPlan plan = LoadoutApplyService.plan(
+                loadout,
+                authority,
+                ProtectionPolicy.allowAll(),
+                dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE,
+                entry -> ItemIdentityMatcher.create(entry.stack())
+        );
+
+        assertEquals(1, plan.operations().size());
+        org.junit.jupiter.api.Assertions.assertTrue(plan.missingTargets().isEmpty(), plan.diagnostics().toString());
+        InventoryActionRequest request = plan.operations().getFirst().requests().getFirst();
+        assertEquals(ItemIdentity.exact("mekanism:steel_ingot", "{server:1}"), request.identity());
+        InventoryActionTarget.SourceSlotTarget source =
+                assertInstanceOf(InventoryActionTarget.SourceSlotTarget.class, request.primaryTarget());
+        assertEquals(main.id(), source.sourceId());
+        assertEquals(0, source.slotIndex());
+        InventoryActionTarget.QuickAccessTarget target =
+                assertInstanceOf(InventoryActionTarget.QuickAccessTarget.class, request.secondaryTarget());
+        assertEquals(4, target.slotIndex());
+    }
+
+    @Test
+    void planDoesNotRelaxAmbiguousStackableKitIdentityVariants() {
+        InventoryTopologyDescriptor topology = InventoryTopologyDescriptor.empty();
+        InventorySourceDescriptor quickAccess = BuiltinInventoryDescriptors.quickAccessLane0Source(topology);
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(topology);
+        InventoryHostDescriptor host = host(List.of(quickAccess, main));
+
+        InventoryAuthoritySnapshot authority = new InventoryAuthoritySnapshot(
+                host,
+                Map.of(
+                        quickAccess.id(), new InventorySourceSnapshot(quickAccess.id(), 9, List.of(), ""),
+                        main.id(), new InventorySourceSnapshot(
+                                main.id(),
+                                27,
+                                List.of(
+                                        new InventoryEntrySnapshot(
+                                                InventoryEntryKey.slot(main.id(), 0),
+                                                new ItemStack("minecraft:firework_rocket", "{Flight:1}", 16, 64),
+                                                16,
+                                                ""),
+                                        new InventoryEntrySnapshot(
+                                                InventoryEntryKey.slot(main.id(), 1),
+                                                new ItemStack("minecraft:firework_rocket", "{Flight:3}", 16, 64),
+                                                16,
+                                                "")
+                                ),
+                                "")
+                ),
+                CursorStateSnapshot.empty()
+        );
+
+        LoadoutTarget target = new LoadoutTarget.QuickAccessLaneTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 4);
+        QuickAccessLoadoutDefinition loadout = new QuickAccessLoadoutDefinition(
+                "rocket",
+                "Rocket",
+                Set.of(new QuickAccessLoadoutEntry(
+                        target,
+                        ItemIdentity.exact("minecraft:firework_rocket", "{client:1}")
+                ))
+        );
+
+        LoadoutApplyService.LoadoutApplyPlan plan = LoadoutApplyService.plan(
+                loadout,
+                authority,
+                ProtectionPolicy.allowAll(),
+                dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE,
+                entry -> ItemIdentityMatcher.create(entry.stack())
+        );
+
+        org.junit.jupiter.api.Assertions.assertTrue(plan.operations().isEmpty());
+        assertEquals(Set.of(target), Set.copyOf(plan.missingTargets()));
+        org.junit.jupiter.api.Assertions.assertTrue(plan.diagnostics().stream()
+                .anyMatch(diagnostic -> diagnostic.startsWith("no_candidate_source_for_target")));
     }
 
     private static ItemIdentity identity(ItemStack stack) {

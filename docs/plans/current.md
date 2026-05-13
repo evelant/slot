@@ -135,8 +135,9 @@ track lands.
    Active-scope desired counts, player wanted counts, unified gap chrome,
    gather for wanted/desired gaps, and the basic right-click desired-count
    editor are live. These are the remaining items from the original
-   2026-05-01 batch; likely best taken as one batch since #1 + #3 share
-   root causes and #4 unblocks the rest.
+   2026-05-01 batch; likely best taken as one batch because the chest
+   projection issues share diagnosis paths and the logging item unblocks
+   faster validation.
 
    1. **Duplicate chest in proximate panel + chest-locator panel.**
       A nearby chest holding a kit-needed item appears in both
@@ -144,16 +145,7 @@ track lands.
       (chest locator already shows kit-needed identities under
       search; proximate panel shouldn't double up) or render a single
       visual hint that the chest covers both intents.
-   2. **Ghost vs carried not differentiated enough on the hotbar
-      (2D items only).** 3D-block path fixed 2026-05-05 (`GhostItemTexture`
-      routes blocks through the alpha-blended sheet so the 20 % tint
-      blends — applies on every surface that uses `WorkspaceUi.itemIcon`,
-      hotbar included). 2D sprites already used the alpha-blended
-      path; if playtest still reads them as too similar to a real
-      hotbar item, the next pass needs a *visual* intervention
-      (dashed outline, inset corner glyph, stronger transparency on
-      the hotbar specifically) rather than a rendering-pipeline fix.
-   3. **Multi-chest / non-stackable identity bug.** Specific repro:
+   2. **Multi-chest / non-stackable identity bug.** Specific repro:
       kit needs `bucket_of_water`, a proximate chest contains one,
       and the atlas ends up with **two** `bucket_of_water` cards —
       one with the desired-count star but no chest-stock pip, one
@@ -168,11 +160,11 @@ track lands.
       Wayfinding's `WayfindingTarget` projection sidesteps this with
       `ItemIdentityMatcher.matchesMovable` end-to-end; the older atlas
       paths still don't.
-   4. **More debug logging.** The deposit pipeline got end-to-end
+   3. **More debug logging.** The deposit pipeline got end-to-end
       structured logging on 2026-05-02. The kit-need / chest-presence /
-      identity-resolution paths are still sparse, making bugs like
-      #3 hard to triage from screenshots alone. Add structured
-      INFO/DEBUG at: identity creation per chest enumeration,
+      identity-resolution paths are still sparse, making bugs like the
+      multi-chest identity split hard to triage from screenshots alone.
+      Add structured INFO/DEBUG at: identity creation per chest enumeration,
       chest-locator query (which identities matched and via which
       equality path), kit-needed projection (input identities +
       carried set + final needed set), proximate vs elsewhere

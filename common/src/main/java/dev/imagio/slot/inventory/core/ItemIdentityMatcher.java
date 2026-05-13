@@ -9,14 +9,14 @@ import java.util.Set;
 public final class ItemIdentityMatcher {
     private static final Set<String> STABLE_IDENTITY_TOKENS = Set.of(
             "amulet", "armor", "artifact", "axe", "backpack", "bauble", "battleaxe", "blade",
-            "boots", "bow", "bracelet", "bundle", "cannon", "case", "charm", "chestplate", "claymore",
+            "boots", "bow", "bracelet", "bundle", "cannon", "canteen", "case", "charm", "chestplate", "claymore",
             "clock", "compass", "crossbow", "dagger", "drill", "elytra", "excavator",
-            "fishing_rod", "flint_and_steel", "gauntlet", "glaive", "greatsword", "hammer",
+            "fishing_rod", "flask", "flint_and_steel", "gadget", "gauntlet", "glaive", "greatsword", "hammer",
             "hatchet", "helmet", "hoe", "knife", "lance", "leggings", "mace", "machete",
             "mattock", "necklace", "offhand", "paxel", "pickaxe", "pouch", "quiver", "relic",
-            "ring", "rod", "satchel", "saw", "scanner", "scope", "shears", "shield", "shovel",
+            "ring", "rod", "satchel", "saw", "scanner", "scepter", "sceptre", "scope", "shears", "shield", "shovel",
             "shulker", "sickle", "spade", "spear", "staff", "sword", "talisman", "tool",
-            "totem", "trident", "wand", "weapon", "wrench", "zweihander"
+            "totem", "trident", "wand", "water_skin", "waterskin", "weapon", "wrench", "zweihander"
     );
 
     private ItemIdentityMatcher() {

@@ -102,14 +102,20 @@ public final class HotbarBeltUiBuilder {
                 context.dropCursorAtHotbar(slot.hotbarIndex(), event.button());
                 return;
             }
+            if (event.shiftDown() && slot.occupied()) {
+                if (event.button() == 0) {
+                    event.stopPropagation();
+                    context.quickMoveHotbarToHost(slot.hotbarIndex());
+                } else if (event.button() == 1) {
+                    event.stopPropagation();
+                    context.returnHotbarToHome(slot.hotbarIndex());
+                }
+                return;
+            }
             if (event.button() != 0) {
                 return;
             }
             event.stopPropagation();
-            if (event.shiftDown() && slot.occupied()) {
-                context.returnHotbarToHome(slot.hotbarIndex());
-                return;
-            }
             if (!slot.occupied()) {
                 context.setStatus("belt " + (slot.hotbarIndex() + 1) + " is empty");
                 return;
@@ -172,6 +178,8 @@ public final class HotbarBeltUiBuilder {
 
     public interface Context {
         void returnHotbarToHome(int hotbarIndex);
+
+        void quickMoveHotbarToHost(int hotbarIndex);
 
         boolean isCursorCarrying();
 

@@ -10,6 +10,7 @@ import java.util.List;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.CURSOR_CANCEL;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.CURSOR_CANCEL_THEN_PICKUP_TO_CURSOR;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.ADJUST_PLAYER_DESIRED_COUNT;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.CROSS_SURFACE_QUICK_MOVE;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.DEPOSIT_HOME_TO_LINKED_CHEST;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.DEPOSIT_ONE_HOME_TO_LINKED_CHEST;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.PICKUP_TO_CURSOR;
@@ -68,23 +69,50 @@ class WallCardTransferGesturePolicyTest {
     }
 
     @Test
-    void shiftClickGhostWithNearbyChestTakesDesiredGapOrStack() {
-        var decision = WallCardTransferGesturePolicy.click(context(ghostItem(), 0, true, false, null, false));
+    void shiftLeftClickCarriedItemInSidebarQuickMovesOneStackToHost() {
+        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
+                carriedItem(), 0, true, false, null, false, true, 9, true));
+
+        assertEquals(CROSS_SURFACE_QUICK_MOVE, decision.action());
+        assertEquals(1, decision.count());
+    }
+
+    @Test
+    void shiftLeftClickOutsideSidebarReportsHostRequired() {
+        var decision = WallCardTransferGesturePolicy.click(context(
+                carriedItem(), 0, true, false, null, false));
+
+        assertEquals(STATUS, decision.action());
+        assertEquals("open a machine or crafting interface first", decision.status());
+    }
+
+    @Test
+    void shiftLeftClickGhostInSidebarReportsNotCarried() {
+        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
+                ghostItem(), 0, true, false, null, false, true, 9, true));
+
+        assertEquals(STATUS, decision.action());
+        assertEquals("Stone not carried", decision.status());
+    }
+
+    @Test
+    void shiftRightClickGhostWithNearbyChestTakesDesiredGapOrStack() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(context(ghostItem(), 1, true, false, null, false));
 
         assertEquals(TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY, decision.action());
     }
 
     @Test
-    void shiftClickCarriedContinuesTakingDuringSameShiftHold() {
-        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
-                item(true, true), 0, true, false, null, false, false, 0, true, true));
+    void shiftRightClickCarriedContinuesTakingDuringSameShiftHold() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(new WallCardTransferGesturePolicy.Context(
+                item(true, true), 1, true, false, null, false, false, 0, true, true));
 
         assertEquals(TAKE_STACK_BY_IDENTITY, decision.action());
     }
 
     @Test
-    void shiftClickCarriedDepositsStackToLinkedChest() {
-        var decision = WallCardTransferGesturePolicy.click(context(carriedItem(), 0, true, false, null, false));
+    void shiftRightClickCarriedDepositsStackToLinkedChest() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(context(carriedItem(), 1, true, false, null, false));
 
         assertEquals(DEPOSIT_HOME_TO_LINKED_CHEST, decision.action());
     }
@@ -106,26 +134,26 @@ class WallCardTransferGesturePolicyTest {
     }
 
     @Test
-    void shiftClickCarriedWithoutNearbyChestReportsStatus() {
-        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
-                carriedItem(), 0, true, false, null, false, false, 9, false));
+    void shiftRightClickCarriedWithoutNearbyChestReportsStatus() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(new WallCardTransferGesturePolicy.Context(
+                carriedItem(), 1, true, false, null, false, false, 9, false));
 
         assertEquals(STATUS, decision.action());
         assertEquals("no nearby chest to push Stone", decision.status());
     }
 
     @Test
-    void shiftClickGhostWithoutNearbyChestReportsStatus() {
-        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
-                item(false, false), 0, true, false, null, false, false, 9, true));
+    void shiftRightClickGhostWithoutNearbyChestReportsStatus() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(new WallCardTransferGesturePolicy.Context(
+                item(false, false), 1, true, false, null, false, false, 9, true));
 
         assertEquals(STATUS, decision.action());
         assertEquals("no nearby chest has Stone", decision.status());
     }
 
     @Test
-    void shiftClickGhostFailsClosedWhenProximateCountHasNoPresenceBreakdown() {
-        var decision = WallCardTransferGesturePolicy.click(context(item(false, true, false), 0, true, false, null, false));
+    void shiftRightClickGhostFailsClosedWhenProximateCountHasNoPresenceBreakdown() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(context(item(false, true, false), 1, true, false, null, false));
 
         assertEquals(STATUS, decision.action());
         assertEquals("nearby chest data missing", decision.status());
@@ -142,26 +170,26 @@ class WallCardTransferGesturePolicyTest {
     }
 
     @Test
-    void shiftClickGhostWithFullCarryReportsStatus() {
-        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
-                ghostItem(), 0, true, false, null, false, false, 0, true));
+    void shiftRightClickGhostWithFullCarryReportsStatus() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(new WallCardTransferGesturePolicy.Context(
+                ghostItem(), 1, true, false, null, false, false, 0, true));
 
         assertEquals(STATUS, decision.action());
         assertEquals("carry full - drop something first", decision.status());
     }
 
     @Test
-    void shiftClickCarriedInSidebarStillDepositsToLinkedChest() {
-        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
-                carriedItem(), 0, true, false, null, false, true, 9, true));
+    void shiftRightClickCarriedInSidebarStillDepositsToLinkedChest() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(new WallCardTransferGesturePolicy.Context(
+                carriedItem(), 1, true, false, null, false, true, 9, true));
 
         assertEquals(DEPOSIT_HOME_TO_LINKED_CHEST, decision.action());
     }
 
     @Test
-    void shiftClickCarriedWithOpenChestButNoProximateChestDeposits() {
-        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
-                carriedItem(), 0, true, false, null, false, true, 9, false, true, false, false));
+    void shiftRightClickCarriedWithOpenChestButNoProximateChestDeposits() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(new WallCardTransferGesturePolicy.Context(
+                carriedItem(), 1, true, false, null, false, true, 9, false, true, false, false));
 
         assertEquals(DEPOSIT_HOME_TO_LINKED_CHEST, decision.action());
     }
@@ -184,6 +212,28 @@ class WallCardTransferGesturePolicyTest {
 
         assertEquals(DEPOSIT_ONE_HOME_TO_LINKED_CHEST, decision.action());
         assertEquals(2, decision.count());
+    }
+
+    @Test
+    void shiftWheelInSidebarKeepsOneAtATimeStorageSemantics() {
+        var decision = WallCardTransferGesturePolicy.wheel(
+                new WallCardTransferGesturePolicy.Context(
+                        carriedItem(), 0, true, false, null, false, true, 9, true),
+                -1);
+
+        assertEquals(DEPOSIT_ONE_HOME_TO_LINKED_CHEST, decision.action());
+        assertEquals(1, decision.count());
+    }
+
+    @Test
+    void shiftWheelUpInSidebarDoesNotQuickMoveIntoOpenMenu() {
+        var decision = WallCardTransferGesturePolicy.wheel(
+                new WallCardTransferGesturePolicy.Context(
+                        carriedItem(), 0, true, false, null, false, true, 9, true),
+                1);
+
+        assertEquals(STATUS, decision.action());
+        assertEquals("no nearby chest has Stone", decision.status());
     }
 
     @Test

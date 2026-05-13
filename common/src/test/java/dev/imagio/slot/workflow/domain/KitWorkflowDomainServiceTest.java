@@ -334,6 +334,31 @@ class KitWorkflowDomainServiceTest {
     }
 
     @Test
+    void pageAsLoadoutIncludesOffhandPin() {
+        KitWorkflowDomainService kits = kits();
+        ItemIdentity pickaxe = ItemIdentity.of("minecraft:iron_pickaxe");
+        ItemIdentity shield = ItemIdentity.of("minecraft:shield");
+        KitPage page = KitPage.empty().withSlot(0, pickaxe);
+        KitDefinition kit = kits.create("Mining")
+                .withPages(List.of(page))
+                .withOffhand(shield);
+        kits.update(kit);
+
+        QuickAccessLoadoutDefinition loadout = kits.pageAsLoadout(kits.kit(kit.id()), 0);
+
+        assertNotNull(loadout);
+        assertEquals(2, loadout.entries().size());
+        assertTrue(loadout.entries().contains(new QuickAccessLoadoutEntry(
+                new LoadoutTarget.QuickAccessLaneTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 0),
+                pickaxe
+        )));
+        assertTrue(loadout.entries().contains(new QuickAccessLoadoutEntry(
+                new LoadoutTarget.EquipmentSlotTarget(BuiltinInventoryIds.EQUIPMENT_GROUP_OFFHAND, 0),
+                shield
+        )));
+    }
+
+    @Test
     void planActivateReturnsEmptyPlanForUnknownKit() {
         KitWorkflowDomainService kits = kits();
         LoadoutApplyService.LoadoutApplyPlan plan = kits.planActivate(

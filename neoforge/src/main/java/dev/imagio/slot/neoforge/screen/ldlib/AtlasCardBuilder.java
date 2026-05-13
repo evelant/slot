@@ -75,7 +75,7 @@ final class AtlasCardBuilder {
         throw new IllegalStateException("wall card renderer returned " + element.getClass().getName());
     }
 
-    private void installCardInteractions(SlotUiElement model, UIElement element) {
+    void installCardInteractions(SlotUiElement model, UIElement element) {
         if (model.hasAttachment(WorkspaceUiAttachments.WALL_CARD_BODY)) {
             SlotWorkspaceViewModel.AtlasItem item = model.attachment(
                     WorkspaceUiAttachments.ATLAS_ITEM,
@@ -727,7 +727,10 @@ final class AtlasCardBuilder {
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             if (host.goalTabActive()) {
                 event.stopPropagation();
-                if (event.button == 1 && !WorkspaceCursorState.isCarrying()) {
+                if (event.button == 1 && Screen.hasShiftDown()) {
+                    host.localStatus.set("goal tab is browse only");
+                    host.rebuild();
+                } else if (event.button == 1 && !WorkspaceCursorState.isCarrying()) {
                     host.menu.openContextMenuForAtlas(item, event.x, event.y);
                 } else if (WorkspaceCursorState.isCarrying()) {
                     host.localStatus.set("goal tab is browse only");

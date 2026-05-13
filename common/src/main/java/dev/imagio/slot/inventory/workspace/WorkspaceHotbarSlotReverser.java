@@ -32,6 +32,16 @@ public final class WorkspaceHotbarSlotReverser {
         }
         Inventory inventory = player.getInventory();
         CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
+        ItemStack requested = target == null ? ItemStack.EMPTY : target.copy();
+        if (!requested.isEmpty() && !canRestoreTarget(player, carried, hotbarIndex, requested)) {
+            ItemIdentity targetIdentity = ItemIdentityMatcher.create(requested);
+            SlotCommon.LOGGER.warn(
+                    "[SLOT] hotbar-undo: skipped restore for missing target identity={} count={} idx={}",
+                    targetIdentity == null ? "unknown" : targetIdentity.itemId(),
+                    requested.getCount(),
+                    hotbarIndex);
+            return;
+        }
 
         ItemStack current = inventory.getItem(hotbarIndex);
         if (current != null && !current.isEmpty()) {
@@ -42,15 +52,15 @@ public final class WorkspaceHotbarSlotReverser {
                 player.drop(remainder, false);
             }
         }
-        if (target == null || target.isEmpty()) {
+        if (requested.isEmpty()) {
             return;
         }
 
-        ItemIdentity targetIdentity = ItemIdentityMatcher.create(target);
+        ItemIdentity targetIdentity = ItemIdentityMatcher.create(requested);
         if (targetIdentity == null) {
             return;
         }
-        int remaining = target.getCount();
+        int remaining = requested.getCount();
         for (CarriedSourceAccess.CarriedLocation loc : carried.findAllMatching(player, targetIdentity)) {
             if (remaining <= 0) {
                 break;
@@ -92,5 +102,37 @@ public final class WorkspaceHotbarSlotReverser {
                 }
             }
         }
+    }
+
+    private static boolean canRestoreTarget(
+            ServerPlayer player,
+            CarriedSourceAccess carried,
+            int hotbarIndex,
+            ItemStack target
+    ) {
+        ItemIdentity targetIdentity = ItemIdentityMatcher.create(target);
+        if (targetIdentity == null) {
+            return false;
+        }
+        int available = 0;
+        ItemStack current = player.getInventory().getItem(hotbarIndex);
+        if (current != null && !current.isEmpty() && ItemIdentityMatcher.matchesMovable(current, targetIdentity)) {
+            available += current.getCount();
+        }
+        for (CarriedSourceAccess.CarriedLocation loc : carried.findAllMatching(player, targetIdentity)) {
+            if (BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(loc.sourceId())
+                    && loc.slotIndex() == hotbarIndex) {
+                continue;
+            }
+            ItemStack peeked = carried.peek(player, loc.sourceId(), loc.slotIndex());
+            if (peeked == null || peeked.isEmpty()) {
+                continue;
+            }
+            available += peeked.getCount();
+            if (available >= target.getCount()) {
+                return true;
+            }
+        }
+        return available >= target.getCount();
     }
 }

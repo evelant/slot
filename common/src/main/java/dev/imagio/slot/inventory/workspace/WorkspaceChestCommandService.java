@@ -336,6 +336,16 @@ public final class WorkspaceChestCommandService {
             ItemIdentity identity,
             int maxCount
     ) {
+        return takeByIdentity(player, runtime, identity, maxCount, true);
+    }
+
+    public static WorkspaceCommandOutcome takeByIdentity(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity,
+            int maxCount,
+            boolean recordUndo
+    ) {
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
@@ -360,7 +370,15 @@ public final class WorkspaceChestCommandService {
                     maxCount,
                     one ? "take-one-by-identity" : "take-stack-by-identity");
             if (outcome.tookAnything()) {
-                recordTakeRecord(player, runtime, outcome.record(), "take_by_identity");
+                if (recordUndo) {
+                    recordTakeRecord(player, runtime, outcome.record(), "take_by_identity");
+                } else if (outcome.record() != null) {
+                    recordAcquisition(
+                            runtime,
+                            outcome.record().identity(),
+                            outcome.record().count(),
+                            "take_by_identity");
+                }
                 return WorkspaceCommandOutcome.accepted(
                         one ? "took_one" : "took_stack",
                         "moved=" + outcome.moved());

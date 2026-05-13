@@ -2,6 +2,7 @@ package dev.imagio.slot.neoforge.client.input;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.settings.KeyConflictContext;
 import org.lwjgl.glfw.GLFW;
@@ -169,7 +170,24 @@ public final class SlotAtlasKeyMappings {
     }
 
     public static boolean markWantedDown() {
-        return MARK_WANTED.isDown();
+        if (MARK_WANTED.isDown()) {
+            return true;
+        }
+        InputConstants.Key bound = MARK_WANTED.getKey();
+        if (bound.getType() != InputConstants.Type.KEYSYM || !isAltKey(bound.getValue())) {
+            return false;
+        }
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.getWindow() == null) {
+            return false;
+        }
+        long window = minecraft.getWindow().getWindow();
+        return InputConstants.isKeyDown(window, GLFW.GLFW_KEY_LEFT_ALT)
+                || InputConstants.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_ALT);
+    }
+
+    private static boolean isAltKey(int keyCode) {
+        return keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT;
     }
 
     public static KeyMapping toggleWayfindingHudMapping() {

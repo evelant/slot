@@ -107,7 +107,7 @@ public final class LoadoutApplyService {
             String targetKey = InventoryTargetCanonicalizer.canonicalKey(entry.target());
             TargetOccupant currentOccupant = currentTargets.get(targetKey);
 
-            if (ItemIdentityMatcher.matchesMovable(currentOccupant == null ? null : currentOccupant.identity(), entry.identity())) {
+            if (targetAlreadySatisfied(authority, identityResolver, currentOccupant, entry.identity())) {
                 satisfiedTargets.add(entry.target());
                 continue;
             }
@@ -290,14 +290,14 @@ public final class LoadoutApplyService {
                     candidate.actionTarget(),
                     target,
                     0,
-                    entry.identity(),
+                    candidate.identity(),
                     candidate.stack(),
                     InventoryToolActionId.PROVIDER_DEFINED,
                     InventoryToolToggleId.PROVIDER_DEFINED,
                     false,
                     ""
             ));
-            currentTargets.put(targetKey, new TargetOccupant(entry.identity(), candidate.stack()));
+            currentTargets.put(targetKey, new TargetOccupant(candidate.identity(), candidate.stack()));
             // The candidate slot is now empty. If it's a tracked quick-access / equipment
             // lane, drop its stale currentTargets entry so a later entry doesn't try to
             // stage from it. Without this, page swaps that reorder two belt items produce
@@ -425,7 +425,7 @@ public final class LoadoutApplyService {
             if (placed == null
                     || placed.stack() == null
                     || placed.stack().isEmpty()
-                    || !ItemIdentityMatcher.matchesMovable(placed.identity(), entry.identity())) {
+                    || !targetAlreadySatisfied(authority, identityResolver, placed, entry.identity())) {
                 continue;
             }
             int max = placed.stack().getMaxStackSize();
@@ -480,7 +480,7 @@ public final class LoadoutApplyService {
                         fillSource.actionTarget(),
                         fillTarget,
                         moveCount,
-                        entry.identity(),
+                        fillSource.identity(),
                         fillStack,
                         InventoryToolActionId.PROVIDER_DEFINED,
                         InventoryToolToggleId.PROVIDER_DEFINED,
@@ -679,7 +679,136 @@ public final class LoadoutApplyService {
                 }
             }
         }
+        return findRelaxedStackableCandidateSource(
+                authority,
+                identityResolver,
+                identity,
+                targetKind,
+                protectionPolicy,
+                reservedSourceSlots);
+    }
+
+    private static CandidateSource findRelaxedStackableCandidateSource(
+            InventoryAuthoritySnapshot authority,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            ItemIdentity identity,
+            InventoryActionKind targetKind,
+            ProtectionPolicy protectionPolicy,
+            Set<String> reservedSourceSlots
+    ) {
+        ItemIdentity uniqueVariant = uniqueStackableLiveVariant(authority, identityResolver, identity);
+        if (uniqueVariant == null) {
+            return null;
+        }
+        for (InventorySourceDescriptor source : authority.carriedSources().stream()
+                .filter(candidate -> candidate != null && candidate.supports(InventoryCapability.EXTRACT))
+                .sorted(Comparator.comparingInt(InventorySourceDescriptor::stableOrder))
+                .toList()) {
+            InventorySourceSnapshot sourceSnapshot = authority.sourceSnapshot(source.id());
+            if (sourceSnapshot == null) {
+                continue;
+            }
+            for (InventoryEntrySnapshot snapshot : sourceSnapshot.entries()) {
+                if (snapshot == null || snapshot.stack() == null || snapshot.stack().isEmpty()
+                        || snapshot.stack().getMaxStackSize() <= 1) {
+                    continue;
+                }
+                ItemIdentity candidateIdentity = identityResolver.apply(snapshot);
+                if (!uniqueVariant.equals(candidateIdentity)) {
+                    continue;
+                }
+                InventoryActionTarget protectionTarget = protectionTargetForEntry(authority.host(), source.id(), snapshot);
+                if (InventoryActionPolicy.blockedByProtection(
+                        targetKind,
+                        protectionTarget,
+                        candidateIdentity,
+                        snapshot.stack(),
+                        protectionPolicy
+                )) {
+                    continue;
+                }
+                CandidateSource candidate = new CandidateSource(
+                        source.id(),
+                        snapshot.slotBacked() ? snapshot.slotIndex() : -1,
+                        snapshot.slotBacked() ? "" : snapshot.entryId(),
+                        snapshot.stack(),
+                        candidateIdentity
+                );
+                if (!reservedSourceSlots.contains(candidate.stableKey())) {
+                    return candidate;
+                }
+            }
+        }
         return null;
+    }
+
+    private static boolean targetAlreadySatisfied(
+            InventoryAuthoritySnapshot authority,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            TargetOccupant occupant,
+            ItemIdentity requested
+    ) {
+        if (occupant == null) {
+            return false;
+        }
+        if (ItemIdentityMatcher.matchesMovable(occupant.identity(), requested)) {
+            return true;
+        }
+        return stackableLiveVariantMatches(authority, identityResolver, occupant.identity(), occupant.stack(), requested);
+    }
+
+    private static boolean stackableLiveVariantMatches(
+            InventoryAuthoritySnapshot authority,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            ItemIdentity candidateIdentity,
+            ItemStack candidateStack,
+            ItemIdentity requested
+    ) {
+        if (candidateIdentity == null || requested == null || candidateStack == null
+                || candidateStack.isEmpty() || candidateStack.getMaxStackSize() <= 1
+                || !candidateIdentity.itemId().equals(requested.itemId())) {
+            return false;
+        }
+        ItemIdentity uniqueVariant = uniqueStackableLiveVariant(authority, identityResolver, requested);
+        return uniqueVariant != null && uniqueVariant.equals(candidateIdentity);
+    }
+
+    private static ItemIdentity uniqueStackableLiveVariant(
+            InventoryAuthoritySnapshot authority,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            ItemIdentity requested
+    ) {
+        if (authority == null || identityResolver == null || requested == null) {
+            return null;
+        }
+        ItemIdentity unique = null;
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            if (source == null) {
+                continue;
+            }
+            InventorySourceSnapshot sourceSnapshot = authority.sourceSnapshot(source.id());
+            if (sourceSnapshot == null) {
+                continue;
+            }
+            for (InventoryEntrySnapshot snapshot : sourceSnapshot.entries()) {
+                if (snapshot == null || snapshot.stack() == null || snapshot.stack().isEmpty()
+                        || snapshot.stack().getMaxStackSize() <= 1) {
+                    continue;
+                }
+                ItemIdentity candidate = identityResolver.apply(snapshot);
+                if (candidate == null || !candidate.itemId().equals(requested.itemId())) {
+                    continue;
+                }
+                if (unique == null) {
+                    unique = candidate;
+                    continue;
+                }
+                if (!unique.equals(candidate)) {
+                    return null;
+                }
+            }
+        }
+        return unique;
     }
 
     /**
@@ -916,11 +1045,9 @@ public final class LoadoutApplyService {
             if (group == null || !sourceId.equals(group.sourceId())) {
                 continue;
             }
-            // Offhand is allowed as a staging fallback. Current kits never target
-            // the offhand slot (kit pages are hotbar-only), so it's safe to park
-            // a displaced item there when MAIN is full — common when the player
-            // has multiple backpacks on the belt being kicked off by a kit
-            // activation. Armor and other equipment groups stay excluded.
+            // Offhand is allowed as a staging fallback unless it has already been
+            // reserved by an offhand kit operation. Armor and other equipment
+            // groups stay excluded.
             if (BuiltinInventoryIds.PLAYER_OFFHAND.equals(group.sourceId())) {
                 continue;
             }

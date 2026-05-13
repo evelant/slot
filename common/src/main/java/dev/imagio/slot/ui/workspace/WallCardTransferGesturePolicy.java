@@ -31,6 +31,9 @@ public final class WallCardTransferGesturePolicy {
         if (context.cursorCarrying()) {
             return Decision.action(Action.CURSOR_CANCEL);
         }
+        if (context.shiftDown()) {
+            return storageStackTransferDecision(context);
+        }
         return Decision.none();
     }
 
@@ -50,31 +53,13 @@ public final class WallCardTransferGesturePolicy {
             return Decision.action(Action.CURSOR_CANCEL_THEN_PICKUP_TO_CURSOR, PICKUP_MAX);
         }
         if (context.shiftDown()) {
-            if (context.continuingShiftTake()) {
-                if (missingProximatePresence(item)) {
-                    return Decision.status("nearby chest data missing");
-                }
-                if (proximateChestCount(item) > 0) {
-                    return Decision.action(Action.TAKE_STACK_BY_IDENTITY);
-                }
-                return Decision.status("no nearby chest has " + item.name());
+            if (!context.sidebarActive()) {
+                return Decision.status("open a machine or crafting interface first");
             }
-            if (missingProximatePresence(item)) {
-                return Decision.status("nearby chest data missing");
+            if (!item.carried()) {
+                return Decision.status(item.name() + " not carried");
             }
-            if (item.carried()) {
-                if (!hasDepositTarget(context)) {
-                    return Decision.status("no nearby chest to push " + item.name());
-                }
-                return Decision.action(Action.DEPOSIT_HOME_TO_LINKED_CHEST);
-            }
-            if (proximateChestCount(item) > 0) {
-                if (context.carriedFreeSlotCount() == 0) {
-                    return Decision.status("carry full - drop something first");
-                }
-                return Decision.action(Action.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY);
-            }
-            return Decision.status("no nearby chest has " + item.name());
+            return Decision.action(Action.CROSS_SURFACE_QUICK_MOVE, 1);
         }
         return Decision.action(Action.PICKUP_TO_CURSOR, PICKUP_MAX);
     }
@@ -93,9 +78,6 @@ public final class WallCardTransferGesturePolicy {
         }
         if (!context.shiftDown()) {
             return Decision.none();
-        }
-        if (wheelSteps > 0 && context.sidebarActive() && item.carried()) {
-            return Decision.action(Action.CROSS_SURFACE_QUICK_MOVE, magnitude);
         }
         if (wheelSteps > 0) {
             if (missingProximatePresence(item)) {
@@ -135,6 +117,35 @@ public final class WallCardTransferGesturePolicy {
 
     private static boolean hasDepositTarget(Context context) {
         return context != null && (context.anyChestProximate() || context.activeChestOpen());
+    }
+
+    private static Decision storageStackTransferDecision(Context context) {
+        SlotWorkspaceViewModel.AtlasItem item = context.item();
+        if (context.continuingShiftTake()) {
+            if (missingProximatePresence(item)) {
+                return Decision.status("nearby chest data missing");
+            }
+            if (proximateChestCount(item) > 0) {
+                return Decision.action(Action.TAKE_STACK_BY_IDENTITY);
+            }
+            return Decision.status("no nearby chest has " + item.name());
+        }
+        if (missingProximatePresence(item)) {
+            return Decision.status("nearby chest data missing");
+        }
+        if (item.carried()) {
+            if (!hasDepositTarget(context)) {
+                return Decision.status("no nearby chest to push " + item.name());
+            }
+            return Decision.action(Action.DEPOSIT_HOME_TO_LINKED_CHEST);
+        }
+        if (proximateChestCount(item) > 0) {
+            if (context.carriedFreeSlotCount() == 0) {
+                return Decision.status("carry full - drop something first");
+            }
+            return Decision.action(Action.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY);
+        }
+        return Decision.status("no nearby chest has " + item.name());
     }
 
     public enum Action {
