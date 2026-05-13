@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-12
+Last updated: 2026-05-13
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -79,7 +79,7 @@ hold the rest.
   drag/drop goal creation/delegation now exist on NeoForge and Forge.
 - **2026-05-11** — classification pack-layer work landed installed
   `mods/` scanning, jar extraction, OpenRouter live runs, runtime export,
-  datapack generation, dynamic organization/subsystem auto-home cohorts,
+  datapack generation, dynamic organization-group auto-home cohorts,
   inspect/rehome commands, vocabulary-backed evidence/proposals,
   accepted-vocabulary Stage 3 prompting, and explicit chest-signal
   deposit routing (learned affinity or existing matching contents).
@@ -216,11 +216,13 @@ track lands.
    folded `mod_subsystem` into the normal vocabulary artifact, repaired
    `organization_group` candidate/prompt leakage, added Stage 3
    `vocabulary_proposals`, and patched deterministic ore/log gaps found by
-   canaries. The policy5 vocabulary validates and the mixed 101-item Stage 3
-   canary validates. Next classification step is an operator decision: do a
-   final vocabulary refresh so new generic defaults such as `slot:open` are in
-   the artifact, then run full `classify-runtime-pack`, or run full
-   classification against policy5 and let missing values stay omitted/reviewed.
+   canaries. The first full TFG server rehome exposed over-fragmented main
+   wall sections from mod-name, material-state, rock-taxonomy, and
+   high-specificity form buckets. The current policy keeps those as
+   search/filter/within-section signals instead of main homes. The next
+   classification step is a fresh vocabulary refresh, an `organization_group`
+   home-impact audit, and a canary before another full `classify-runtime-pack`
+   run.
 5. **Runtime-crawl deterministic fallback**
    ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery)).
    Walks the live registry to derive deterministic facets

@@ -247,27 +247,26 @@ class IslandSuggestionServiceTest {
     }
 
     @Test
-    void qualifiedSubsystemChipSurfacesWithoutExistingIsland() {
-        IslandSignalDescriptor castingMold = subsystemDescriptor(
-                "tfc:ceramic/ingot_mold",
-                "utility",
-                "tfc:casting"
+    void qualifiedSubsystemDoesNotSurfaceWithoutExistingIsland() {
+        IslandSignalDescriptor cogwheel = subsystemDescriptor(
+                "create:cogwheel",
+                "mechanism",
+                "create:mechanical_power"
         );
 
         List<ChipSuggestion> chips = IslandSuggestionService.suggest(
-                castingMold,
+                cogwheel,
                 new LearnedIslandRuleStore(),
                 List.of(),
                 Set.of(),
-                id -> "tfc:casting".equals(id)
+                id -> "create:mechanical_power".equals(id)
         );
 
         assertEquals(1, chips.size());
         ChipSuggestion chip = chips.get(0);
-        assertEquals(ChipSuggestion.ChipKind.LEARNED, chip.kind());
-        assertEquals("subsystem:tfc:casting", chip.islandId());
-        assertEquals("Tfc — Casting", chip.label());
-        assertEquals(IslandSuggestionTemplate.UTILITY.defaultColor(), chip.color());
+        assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chip.kind());
+        assertEquals(IslandSuggestionTemplate.MECHANISMS, chip.template());
+        assertEquals(IslandSuggestionTemplate.MECHANISMS.defaultIslandId(), chip.islandId());
     }
 
     @Test

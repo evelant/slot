@@ -14,8 +14,10 @@ import java.util.function.Predicate;
 /**
  * Cohort-sized gate for dynamic classification islands. Counts come from the
  * loaded classification dataset, not the player's current carried items, so a
- * large modpack workflow can earn a stable island before the player has picked
- * up every item in that workflow.
+ * large modpack storage group can earn a stable island before the player has
+ * picked up every item in that group. {@code mod_subsystem} currently stays
+ * semantic/query evidence because templates do not opt into subsystem wall
+ * sections.
  */
 public final class DynamicHomeCohortPolicy {
     public static final int DEFAULT_MIN_SUBSYSTEM_ITEMS = 10;

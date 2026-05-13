@@ -1,7 +1,7 @@
 import { validateMultiValue } from "../../schema/facets.ts";
 import type { FacetEvidenceRecord } from "../../evidence/facet_evidence.ts";
 import type { CandidateAccumulator, SemanticEvidenceIndex, VocabularyFacetId } from "../types.ts";
-import { GENERIC_TOKENS, ORGANIZATION_GROUP_PREFIX_STOP_TOKENS, ORGANIZATION_GROUP_STOP_TOKENS, ORGANIZATION_GROUP_SUFFIX_STOP_TOKENS, VOLTAGE_COMPONENT_TOKENS, VOLTAGE_TIERS } from "../constants.ts";
+import { GENERIC_TOKENS, ORGANIZATION_GROUP_PREFIX_STOP_TOKENS, ORGANIZATION_GROUP_STOP_TOKENS, ORGANIZATION_GROUP_SUFFIX_STOP_TOKENS } from "../constants.ts";
 import { addCandidate } from "../candidate_store.ts";
 import { labelFromId, splitResourceLocation, token, tokenPath, tokenSet } from "../helpers.ts";
 import { runtimeItemRefs, semanticEvidenceForCandidate } from "../semantic_index.ts";
@@ -99,40 +99,9 @@ function organizationGroupSeedsForRecord(
       reason,
     });
   };
-  const addScoped = (
-    namespace: string,
-    value: string,
-    label: string,
-    description: string,
-    reason: string,
-    confidence = 0.55,
-    aliases?: readonly string[],
-  ) => {
-    addOrganizationGroupSeed(out, {
-      id: `${namespace}:${token(value)}`,
-      label,
-      description,
-      confidence,
-      aliases,
-      reason,
-    });
-  };
-
   const broad = broadOrganizationGroupSeed(record, packId);
   if (broad) addOrganizationGroupSeed(out, broad);
 
-  const modGroup = modMetadataOrganizationGroupSeed(record, packId);
-  if (modGroup) addOrganizationGroupSeed(out, modGroup);
-
-  if (
-    hasAnyToken(tokens, ["ore", "ores", "raw_ore"]) &&
-    !hasAnyToken(tokens, ["crushed", "purified", "dust", "dusts", "ingot", "ingots", "nugget", "nuggets", "plate", "plates", "rod", "rods", "wire", "wires"])
-  ) {
-    addPack("unprocessed_ores", "Unprocessed Ores", "Ore blocks, raw ores, and mine output awaiting processing.", "ore/raw ore evidence suggests a player storage group", 0.62, ["raw ores"]);
-  }
-  if (hasAnyToken(tokens, ["crushed", "crushed_ore", "purified", "purified_ore", "dust", "dusts", "ingot", "ingots", "nugget", "nuggets", "plate", "plates", "rod", "rods", "bolt", "bolts", "wire", "wires"])) {
-    addPack("refined_ores", "Refined Ores", "Processed mineral outputs such as crushed ores, dusts, ingots, plates, rods, and wires.", "processed ore/material evidence suggests a player storage group", 0.6, ["processed ores", "refined metals"]);
-  }
   if (hasAnyToken(tokens, ["seed", "seeds"])) {
     addPack("seeds", "Seeds", "Seeds and seed-like planting starts.", "seed evidence suggests a player storage group", 0.62);
   }
@@ -160,61 +129,22 @@ function organizationGroupSeedsForRecord(
   if (record.kind === "runtime_item" && hasAnyToken(identityTokens, ["pot", "pan", "skillet", "bowl", "bowls", "oven", "grill", "kitchen", "cooking", "cookware"]) && !hasAnyToken(identityTokens, ["food", "foods", "crop", "crops", "seed", "seeds"])) {
     addPack("cooking_tools", "Cooking Tools", "Reusable utensils, cookware, bowls, pots, knives, and food-prep tools.", "runtime item names a cooking tool or utensil", 0.57, ["cookware"]);
   }
-  if (record.kind === "item_tag" || record.kind === "block_tag" || record.kind === "runtime_item") {
-    for (const tier of VOLTAGE_TIERS) {
-      if (!tokens.has(tier)) continue;
-      if (!hasAnyToken(tokens, VOLTAGE_COMPONENT_TOKENS)) continue;
-      const namespace = splitResourceLocation(record.id)?.namespace ?? record.namespace;
-      if (!namespace || namespace === "minecraft" || namespace === "c") continue;
-      const label = `${tier.toUpperCase()} Components`;
-      addScoped(namespace, `${tier}_components`, label, `${tier.toUpperCase()} voltage-tier components and machine parts.`, "voltage-tier component evidence suggests a player storage group", 0.6);
-    }
-  }
-
   return [...out.values()]
     .filter((seed) => !organizationGroupIdLooksLikeStation(seed.id))
     .sort((a, b) => a.id.localeCompare(b.id));
-}
-
-function modMetadataOrganizationGroupSeed(
-  record: FacetEvidenceRecord,
-  packId: string,
-): OrganizationGroupSeed | null {
-  if (record.kind !== "mod_metadata") return null;
-  if (!record.namespace || record.namespace === "minecraft") return null;
-  const count = record.count ?? 0;
-  if (count <= 0) return null;
-  const label = record.label ?? labelFromId(record.namespace);
-  if (modMetadataLooksTechnical(record, label)) return null;
-  const namespaceToken = token(record.namespace);
-  if (!namespaceToken) return null;
-  return {
-    id: packOrganizationGroupId(packId, `${namespaceToken}_items`),
-    label: `${label} Items`,
-    confidence: Math.max(0.42, Math.min(0.6, record.confidence)),
-    reason: "mod metadata may name a player organization group",
-    description: `Candidate storage section for ${label} items; accept only if players would naturally keep this mod's items together rather than by narrower workflow, role, or material groups.`,
-  };
-}
-
-function modMetadataLooksTechnical(record: FacetEvidenceRecord, label: string): boolean {
-  const haystack = tokenPath([
-    record.id,
-    record.namespace,
-    label,
-    record.description,
-    ...(record.semantic_text ?? []).slice(0, 4).map((entry) => entry.text),
-  ].filter((value): value is string => typeof value === "string" && value.length > 0).join(" ")) ?? "";
-  if (!haystack) return true;
-  return /(^|[\/_])(api|library|core|config|configuration|performance|optimization|tweaks?|patch|fix|fixes|bugfix|dependency|connector|compat|integration|tooltip|menu|ui|debug|developer|resource|datagen|server|client)([\/_]|$)/.test(haystack);
 }
 
 function broadOrganizationGroupSeed(
   record: FacetEvidenceRecord,
   packId: string,
 ): OrganizationGroupSeed | null {
+  // Raw item/block tags are excellent query evidence, but they are too often
+  // technical, taxonomic, or form-specific to become main wall sections directly.
+  // Keep tag-derived home groups to the explicit broad rules above.
+  if (record.kind === "item_tag" || record.kind === "block_tag") {
+    return null;
+  }
   if (
-    record.kind !== "item_tag" &&
     record.kind !== "guide_page" &&
     record.kind !== "quest_node" &&
     record.kind !== "stack_group"

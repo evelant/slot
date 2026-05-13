@@ -23,25 +23,25 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class SlotWorkspaceCommandServiceRehomeTest {
 
     @Test
-    void reclassifyHomesMaterializesQualifiedSubsystemAndReassignsIdentity() {
+    void reclassifyHomesIgnoresSubsystemSectionsAndReassignsToParentTemplate() {
         FacetIndexHolder.install(FacetIndex.load(new StringReader(layerWithCastingCohort())));
         try {
             WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
                     new InMemoryWorkflowDomainStateRepository(),
                     null
             );
-            ItemIdentity stick = ItemIdentity.of("minecraft:stick");
+            ItemIdentity cogwheel = ItemIdentity.of("create:cogwheel");
             runtime.visualAtlasWorkflow().createIslandWithId(
                     "old.materials",
                     "Materials",
                     0,
                     0,
                     0x777777,
-                    stick,
+                    cogwheel,
                     DomainEventMetadata.origin("test.old_island")
             );
             runtime.visualAtlasWorkflow().assignHome(
-                    stick,
+                    cogwheel,
                     "old.materials",
                     0,
                     VisualHomeOrigin.PLAYER_PLACED,
@@ -52,8 +52,8 @@ class SlotWorkspaceCommandServiceRehomeTest {
             SlotWorkspaceCommandService.ClassificationRehomeResult result =
                     SlotWorkspaceCommandService.reclassifyHomes(
                             runtime,
-                            List.of(new ItemStack("minecraft:stick", 1, 64)),
-                            stack -> castingDescriptor(stick)
+                            List.of(new ItemStack("create:cogwheel", 1, 64)),
+                            stack -> castingDescriptor(cogwheel)
                     );
 
             assertEquals(1, result.inputStacks());
@@ -62,9 +62,9 @@ class SlotWorkspaceCommandServiceRehomeTest {
             assertEquals(1, result.changed());
             assertEquals(0, result.unchanged());
             assertEquals(1, result.islandsCreated());
-            VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().visualHomeMap().assignment(stick);
+            VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().visualHomeMap().assignment(cogwheel);
             assertNotNull(assignment);
-            assertEquals(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX + "test:casting", assignment.islandId());
+            assertEquals("mechanisms", assignment.islandId());
             assertEquals(VisualHomeOrigin.AUTO_HOMED, assignment.origin());
         } finally {
             FacetIndexHolder.reset();
@@ -130,8 +130,8 @@ class SlotWorkspaceCommandServiceRehomeTest {
                 Set.of(),
                 "minecraft",
                 "",
-                "utility",
-                List.of("utility"),
+                "mechanism",
+                List.of("mechanism"),
                 null,
                 List.of("test:casting"),
                 List.of(),
@@ -176,7 +176,7 @@ class SlotWorkspaceCommandServiceRehomeTest {
                   "schema_version": 1,
                   "layer": "modpack",
                   "entries": {
-                    "minecraft:stick": {"facets": {"role": {"value": "utility"}, "mod_subsystem": {"values": ["test:casting"]}}},
+                    "create:cogwheel": {"facets": {"role": {"value": "mechanism"}, "mod_subsystem": {"values": ["test:casting"]}}},
                 """
                 + cohortEntries()
                 + """
@@ -221,7 +221,7 @@ class SlotWorkspaceCommandServiceRehomeTest {
         for (int i = 0; i < 9; i++) {
             builder.append("    \"test:casting_tool_")
                     .append(i)
-                    .append("\": {\"facets\": {\"role\": {\"value\": \"utility\"}, \"mod_subsystem\": {\"values\": [\"test:casting\"]}}}");
+                    .append("\": {\"facets\": {\"role\": {\"value\": \"mechanism\"}, \"mod_subsystem\": {\"values\": [\"test:casting\"]}}}");
             if (i < 8) {
                 builder.append(',');
             }

@@ -10,10 +10,10 @@ import java.util.Optional;
  * cluster placement from a parent template.
  *
  * <p>Organization-group matches let modded items group under player storage
- * workflows such as "TFC — Casting" rather than collapsing into broad
- * MATERIALS / UTILITY piles. Mod-subsystem matches remain a fallback for
- * true subsystem identities such as "Create — Mechanical Power". Both only
- * fire when a histogram-based qualifier deems the cohort "big enough".
+ * buckets such as "Casting Molds" or "Masonry Supplies" rather than
+ * collapsing into broad MATERIALS / UTILITY piles. Mod-subsystem matches are
+ * still represented for existing/manual subsystem islands and diagnostics, but
+ * templates do not currently auto-create subsystem main-wall sections.
  */
 public final class IslandTemplateMatch {
 
@@ -124,8 +124,15 @@ public final class IslandTemplateMatch {
         int colon = subsystemId.indexOf(':');
         String namespace = colon > 0 ? subsystemId.substring(0, colon) : "";
         String tail = colon >= 0 ? subsystemId.substring(colon + 1) : subsystemId;
+        if ("pack".equals(namespace)) {
+            int slash = tail.indexOf('/');
+            if (slash >= 0 && slash < tail.length() - 1) {
+                tail = tail.substring(slash + 1);
+            }
+            namespace = "";
+        }
         String namespacePart = capitalizeWords(namespace.replace('_', ' '));
-        String tailPart = capitalizeWords(tail.replace('_', ' '));
+        String tailPart = capitalizeWords(tail.replace('_', ' ').replace('/', ' '));
         if (namespacePart.isEmpty()) {
             return tailPart;
         }

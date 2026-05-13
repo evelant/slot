@@ -528,15 +528,15 @@ export const FACETS: Record<string, FacetDef> = {
   organization_group: {
     kind: "multi_free_text",
     pattern: VOCABULARY_VALUE_ID_PATTERN,
-    description: "Vocabulary-backed human storage or wall-home group such as ores, crops, woodworking, or mod component families.",
+    description: "Vocabulary-backed broad human storage or wall-home group, primarily item type/role with use or state as secondary, such as casting molds, crops, woodworking, or animal husbandry.",
     llm_authored: true,
     vocabulary_backed: true,
-    examples: ["pack:tfg2/unprocessed_ores", "pack:tfg2/crops", "create:logistics"],
+    examples: ["pack:tfg2/casting_molds", "pack:tfg2/crops", "pack:tfg2/woodworking"],
   },
   mod_subsystem: {
     kind: "multi_free_text",
     pattern: VOCABULARY_VALUE_ID_PATTERN,
-    description: "Vocabulary-backed identity-oriented subsystem within a mod (`create:trains`, `ae2:autocrafting`).",
+    description: "Vocabulary-backed identity-oriented subsystem within a mod (`create:trains`, `ae2:autocrafting`). Semantic/query evidence; not a wall-home source.",
     llm_authored: true,
     vocabulary_backed: true,
     examples: ["create:trains", "ae2:autocrafting", "mekanism:fission"],

@@ -1,6 +1,6 @@
 # Item Classification Tool Guide
 
-Last updated: 2026-05-11
+Last updated: 2026-05-13
 
 Concise operator/developer guide for the SLOT item classification tool:
 what it does, how it works, how to use it today, and where the tool is
@@ -23,8 +23,9 @@ Examples:
 - `create:cogwheel` can get facets like `role=mechanism`,
   `activity=slot:automation`, and `mod_subsystem=create:kinetics`.
 - `tfc:ceramic/ingot_mold` can get `role=utility` plus
-  `organization_group=tfc:casting`, which tells SLOT it belongs in the
-  player's casting/metalworking area instead of a broad Utility pile.
+  `workflow=tfc:casting` and `organization_group=pack:tfg/casting_molds`,
+  which tells SLOT it belongs with casting molds instead of a broad Utility
+  pile.
 
 SLOT uses these facets to make item organization feel semantic instead
 of substring-driven. The immediate runtime use is better default homes
@@ -130,11 +131,17 @@ is part of the same `facet-vocabulary.json` artifact; there is no separate
 runtime subsystem vocabulary pre-pass.
 
 `organization_group` is the stronger auto-home signal for large packs.
-It answers "where would a skilled player put this item?" and can split
-broad roles into workflow sections such as `tfc:casting`, `tfc:masonry`,
-or `tfc:leatherworking` once the loaded layer has enough sibling items
-for that group. Generic sections like Ingots or Tools remain the home
-only when the generated data does not assert a better workflow group.
+It answers "where would a skilled player put this item if the whole wall only
+had roughly 15-20 broad sections?" and can split broad roles into storage
+sections such as `pack:tfg/casting_molds`, `pack:tfg/masonry_supplies`, or
+`pack:tfg/leatherworking` once the loaded layer has enough sibling items for
+that group. Generic sections like Ingots, Stairs, Slabs, Food, Tools, and
+Storage remain the home even when the generated data has a tempting query-style
+group. Do not use `organization_group` for "Mod Name Items", mod subsystem
+labels, rock taxonomy, stackable/pileable material properties, material
+form/state, workstation-specific processes, or other slices that belong in
+search, filters, task views, or within-section ordering. `mod_subsystem` stays
+semantic/query evidence; it does not auto-create main-wall sections.
 
 ## Layer Outputs
 
@@ -224,7 +231,7 @@ Inspect the classifier view of an item in a running instance:
 
 Without an item id the command inspects the held main-hand item, then the
 offhand item. The output includes loaded-layer diagnostics, raw facets,
-template/group/subsystem target, and the dynamic auto-home target.
+template/group target, raw subsystem evidence, and the dynamic auto-home target.
 
 Recompute classifier-driven homes in a running instance:
 
@@ -238,7 +245,7 @@ offhand, backpacks/providers) plus every currently accessible claimed
 chest, including claimed chests outside the proximity panel. It does
 not move physical items. It rebuilds auto-home assignments for the
 unique item identities it scanned, materializes qualified dynamic
-organization-group or subsystem sections, and reports skipped claimed
+organization-group sections, and reports skipped claimed
 chests when the storage is unloaded or otherwise inaccessible.
 
 Run vanilla stages 1 and 2:

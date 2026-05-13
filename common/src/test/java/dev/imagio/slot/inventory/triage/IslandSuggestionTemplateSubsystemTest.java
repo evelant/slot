@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class IslandSuggestionTemplateSubsystemTest {
 
     @Test
-    void qualifiedSubsystemReturnsSubsystemMatchInheritingParentColor() {
+    void qualifiedSubsystemFallsBackToParentTemplate() {
         IslandSignalDescriptor descriptor = subsystemDescriptor(
                 "create:cogwheel",
                 "mechanism",
@@ -23,14 +23,9 @@ class IslandSuggestionTemplateSubsystemTest {
         );
         IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 descriptor, id -> "create:mechanical_power".equals(id));
-        assertTrue(match.isSubsystem());
-        assertEquals("subsystem:create:mechanical_power", match.islandId());
-        assertEquals("Create — Mechanical Power", match.label());
-        // Subsystem inherits color and cluster placement from the parent
-        // role-resolved template (MECHANISMS for "mechanism").
+        assertFalse(match.isSubsystem());
+        assertEquals(IslandSuggestionTemplate.MECHANISMS.defaultIslandId(), match.islandId());
         assertEquals(IslandSuggestionTemplate.MECHANISMS, match.parentTemplate());
-        assertEquals(IslandSuggestionTemplate.MECHANISMS.defaultColor(), match.color());
-        assertEquals(IslandSuggestionTemplate.MECHANISMS.clusterRow(), match.clusterRow());
     }
 
     @Test
@@ -49,17 +44,17 @@ class IslandSuggestionTemplateSubsystemTest {
     }
 
     @Test
-    void broadUtilityAndMaterialParentsCanHonorQualifiedSubsystems() {
+    void broadUtilityAndMaterialParentsIgnoreSubsystems() {
         IslandTemplateMatch casting = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 subsystemDescriptor("tfc:ceramic/ingot_mold", "utility", List.of("tfc:casting"), List.of()),
                 id -> "tfc:casting".equals(id));
-        assertTrue(casting.isSubsystem());
+        assertFalse(casting.isSubsystem());
         assertEquals(IslandSuggestionTemplate.UTILITY, casting.parentTemplate());
 
         IslandTemplateMatch weaving = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 subsystemDescriptor("tfc:fiber/linen_thread", "material", List.of("tfc:weaving"), List.of()),
                 id -> "tfc:weaving".equals(id));
-        assertTrue(weaving.isSubsystem());
+        assertFalse(weaving.isSubsystem());
         assertEquals(IslandSuggestionTemplate.MATERIALS, weaving.parentTemplate());
     }
 
@@ -69,16 +64,16 @@ class IslandSuggestionTemplateSubsystemTest {
                 "tfc:ceramic/ingot_mold",
                 "utility",
                 List.of("tfc:metalworking"),
-                List.of("tfc:casting")
+                List.of("tfc:molds")
         );
         IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 descriptor,
                 id -> "tfc:metalworking".equals(id),
-                id -> "tfc:casting".equals(id));
+                id -> "tfc:molds".equals(id));
         assertTrue(match.isOrganizationGroup());
         assertFalse(match.isSubsystem());
-        assertEquals("group:tfc:casting", match.islandId());
-        assertEquals("Tfc — Casting", match.label());
+        assertEquals("group:tfc:molds", match.islandId());
+        assertEquals("Tfc — Molds", match.label());
         assertEquals(IslandSuggestionTemplate.UTILITY, match.parentTemplate());
     }
 
@@ -100,7 +95,7 @@ class IslandSuggestionTemplateSubsystemTest {
     }
 
     @Test
-    void organizationGroupOverridesNarrowSpecificTemplates() {
+    void organizationGroupDoesNotOverrideNarrowSpecificTemplates() {
         IslandSignalDescriptor descriptor = organizationDescriptor(
                 "minecraft:iron_ingot",
                 "material",
@@ -111,8 +106,8 @@ class IslandSuggestionTemplateSubsystemTest {
                 descriptor,
                 id -> false,
                 id -> true);
-        assertTrue(match.isOrganizationGroup());
-        assertEquals("group:tfc:metalworking", match.islandId());
+        assertFalse(match.isOrganizationGroup());
+        assertEquals(IslandSuggestionTemplate.INGOTS.defaultIslandId(), match.islandId());
         assertEquals(IslandSuggestionTemplate.INGOTS, match.parentTemplate());
     }
 
@@ -234,6 +229,8 @@ class IslandSuggestionTemplateSubsystemTest {
                 IslandTemplateMatch.formatSubsystemLabel("create:mechanical_power"));
         assertEquals("Sophisticatedstorage — Storage",
                 IslandTemplateMatch.formatSubsystemLabel("sophisticatedstorage:storage"));
+        assertEquals("Masonry Supplies",
+                IslandTemplateMatch.formatSubsystemLabel("pack:tfg/masonry_supplies"));
         // No-namespace fallback.
         assertEquals("Loose Bucket",
                 IslandTemplateMatch.formatSubsystemLabel("loose_bucket"));

@@ -30,7 +30,7 @@ describe("pack facet vocabulary generation", () => {
     expect(candidates.find((candidate) => candidate.facet === "workflow" && candidate.id === "example:casting/ingot")).toBeUndefined();
     expect(candidates.find((candidate) => candidate.facet === "workflow_role" && candidate.id === "example:casting#input")?.parent).toBe("example:casting");
     expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "example:casting")).toBeUndefined();
-    expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "pack:fixture/refined_ores")?.suggested_state).toBe("review");
+    expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "pack:fixture/casting_molds")?.suggested_state).toBe("review");
     expect(candidates.find((candidate) => candidate.facet === "food_category" && candidate.id === "slot:fruit")?.evidence[0]?.kind).toBe("item_tag");
   });
 
@@ -152,6 +152,26 @@ describe("pack facet vocabulary generation", () => {
         semantic_text: [{ source: "mod-description", text: "Aesthetic technology that empowers the player with mechanical automation." }],
       },
       {
+        kind: "item_tag",
+        id: "tfc:pileable_ingots",
+        label: "Pileable Ingots",
+        namespace: "tfc",
+        source: "runtime-summary",
+        confidence: 0.75,
+        count: 40,
+        item_refs: ["example:copper_ingot"],
+      },
+      {
+        kind: "item_tag",
+        id: "tfc:metamorphic_items",
+        label: "Metamorphic Items",
+        namespace: "tfc",
+        source: "runtime-summary",
+        confidence: 0.75,
+        count: 80,
+        item_refs: ["example:gneiss_bricks"],
+      },
+      {
         kind: "runtime_item",
         id: "create:shaft",
         label: "Shaft",
@@ -198,12 +218,14 @@ describe("pack facet vocabulary generation", () => {
     });
     const ids = candidates.filter((candidate) => candidate.facet === "organization_group").map((candidate) => candidate.id);
 
-    expect(ids).toContain("pack:fixture/unprocessed_ores");
-    expect(ids).toContain("pack:fixture/refined_ores");
     expect(ids).toContain("pack:fixture/seeds");
-    expect(ids).toContain("pack:fixture/create_items");
-    expect(ids).toContain("gtceu:ulv_components");
     expect(ids).not.toContain("example:casting");
+    expect(ids).not.toContain("pack:fixture/unprocessed_ores");
+    expect(ids).not.toContain("pack:fixture/refined_ores");
+    expect(ids).not.toContain("gtceu:ulv_components");
+    expect(ids).not.toContain("pack:fixture/create_items");
+    expect(ids).not.toContain("pack:fixture/pileable_ingots");
+    expect(ids).not.toContain("pack:fixture/metamorphic_items");
     expect(ids).not.toContain("pack:fixture/pickaxe");
     expect(ids).not.toContain("pack:fixture/usable_on_tool_rack");
   });
@@ -238,9 +260,51 @@ describe("pack facet vocabulary generation", () => {
     });
 
     expect(prompt.system).toContain("namespace-scoped identity system inside a mod");
+    expect(prompt.system).toContain("accepting a value does not create a wall home");
     expect(prompt.system).toContain("use workflow/used_at");
     expect(prompt.system).toContain("what mod system is this item itself part of");
     expect(JSON.stringify(JSON.parse(prompt.user))).toContain("create:kinetics");
+  });
+
+  test("organization_group curation prompt leads with human storage intent", () => {
+    const candidate: PackVocabularyCandidate = {
+      facet: "organization_group",
+      id: "pack:fixture/casting_molds",
+      label: "Casting Molds",
+      origin: "pack_generated",
+      suggested_state: "review",
+      confidence: 0.7,
+      support: 4,
+      evidence: [{ kind: "guide_page", id: "example:guide/casting/molds", confidence: 0.7 }],
+      semantic_evidence: [{
+        kind: "guide_page",
+        id: "example:guide/casting/molds",
+        source: "guide-page",
+        text: "Use molds to cast molten metal into ingots.",
+      }],
+      seed_items: ["example:ingot_mold"],
+      aliases: ["molds"],
+      reasons: ["guide page label may name a player organization group"],
+    };
+
+    const prompt = buildVocabularyCurationPrompt({
+      facet: "organization_group",
+      packId: "fixture",
+      candidates: [candidate],
+      previousAccepted: [],
+      minEvidence: 2,
+    });
+    const user = JSON.parse(prompt.user) as { policy?: string };
+
+    expect(prompt.system).toContain(
+      "the #1 rule is: would a human player spend one of a small number of main-wall sections on this broad item type, so these items and their obvious siblings stay together?",
+    );
+    expect(prompt.system).toContain("only about 15-20 human-named organization sections total");
+    expect(prompt.system).toContain("group primarily by broad item type/role");
+    expect(prompt.system).toContain("not a hard required list");
+    expect(prompt.system).toContain("one mod's mechanical power line, stackable plates, or anvil smithing");
+    expect(prompt.system).toContain("stable main-wall storage section a player would actually maintain");
+    expect(user.policy).toContain("scarce, broad sections a human player would maintain primarily by item type/role");
   });
 
   test("curation prompt keeps semantic prose but omits boilerplate and opaque ref lists", () => {
@@ -632,7 +696,7 @@ describe("pack facet vocabulary generation", () => {
     expect(result.vocabulary.facets.used_at?.values["greate:processing/items/in/the/millstone"]).toBeUndefined();
   });
 
-  test("downgrades atomic organization groups from material tags", async () => {
+  test("downgrades unsupported model-invented organization groups from material tags", async () => {
     const evidence = fixtureEvidence();
     evidence.records.push({
       kind: "item_tag",
@@ -669,12 +733,12 @@ describe("pack facet vocabulary generation", () => {
     const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/copper");
     expect(decision?.state).toBe("review");
     expect(decision?.policy_notes).toContain(
-      "organization_group is too atomic; prefer broader player storage/workflow buckets over material, form, or tool-class labels",
+      "model proposed id without deterministic candidate evidence",
     );
     expect(result.vocabulary.facets.organization_group?.values["pack:fixture/copper"]).toBeUndefined();
   });
 
-  test("downgrades atomic organization groups from tool and form tags", async () => {
+  test("downgrades model-invented organization groups from tool and form tags", async () => {
     const evidence = fixtureEvidence();
     evidence.records.push({
       kind: "item_tag",
@@ -711,6 +775,88 @@ describe("pack facet vocabulary generation", () => {
     const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/axes");
     expect(decision?.state).toBe("review");
     expect(result.vocabulary.facets.organization_group?.values["pack:fixture/axes"]).toBeUndefined();
+  });
+
+  test("downgrades query-only organization groups that were not deterministic candidates", async () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push(
+      {
+        kind: "mod_metadata",
+        id: "grapplemod",
+        label: "Grappling Hook Mod",
+        namespace: "grapplemod",
+        source: "mods.toml",
+        confidence: 0.6,
+        count: 33,
+        description: "Grappling hooks and movement tools.",
+      },
+      {
+        kind: "item_tag",
+        id: "tfc:pileable_ingots",
+        label: "Pileable Ingots",
+        namespace: "tfc",
+        source: "runtime-summary",
+        confidence: 0.75,
+        count: 40,
+        item_refs: ["example:copper_ingot"],
+      },
+      {
+        kind: "item_tag",
+        id: "tfc:metamorphic_items",
+        label: "Metamorphic Items",
+        namespace: "tfc",
+        source: "runtime-summary",
+        confidence: 0.75,
+        count: 80,
+        item_refs: ["example:gneiss_bricks"],
+      },
+    );
+    const client = new StaticSplitClient({
+      values: [
+        {
+          id: "pack:fixture/grapplemod_items",
+          label: "Grappling Hook Mod Items",
+          state: "accepted",
+          confidence: 0.8,
+          evidence: [{ kind: "mod_metadata", id: "grapplemod", confidence: 0.6 }],
+        },
+        {
+          id: "pack:fixture/pileable_ingots",
+          label: "Pileable Ingots",
+          state: "accepted",
+          confidence: 0.8,
+          evidence: [{ kind: "item_tag", id: "tfc:pileable_ingots", confidence: 0.75 }],
+        },
+        {
+          id: "pack:fixture/metamorphic_items",
+          label: "Metamorphic Items",
+          state: "accepted",
+          confidence: 0.8,
+          evidence: [{ kind: "item_tag", id: "tfc:metamorphic_items", confidence: 0.75 }],
+        },
+      ],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["organization_group"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    for (const id of ["pack:fixture/grapplemod_items", "pack:fixture/pileable_ingots", "pack:fixture/metamorphic_items"]) {
+      const decision = result.review.decisions.organization_group?.find((value) => value.id === id);
+      expect(decision?.state).toBe("review");
+      expect(decision?.policy_notes).toContain(
+        "model proposed id without deterministic candidate evidence",
+      );
+      expect(result.vocabulary.facets.organization_group?.values[id]).toBeUndefined();
+    }
   });
 
   test("does not propose equipment slot tags as organization groups", () => {

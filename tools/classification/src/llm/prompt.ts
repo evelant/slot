@@ -356,7 +356,7 @@ function renderFinalUserChecklist(input: LlmPromptInput): string {
     lines.push(
       "- Vocabulary-backed facets may use only ids listed for that exact facet in `Pack facet vocabulary`. If that facet has no section, or no listed id fits, omit the facet and add `vocabulary_proposals` when a useful missing value is clear. Copy accepted ids exactly as printed; do not rewrite slashes, underscores, namespace, or pack prefix.",
       "- Do not move ids across vocabulary-backed facets. A good `mod_subsystem` id such as `modid:kinetics` is not an `organization_group` unless that exact id is listed under `organization_group`; use the subsystem facet, omit the organization group, or add a vocabulary proposal for the missing storage bucket.",
-      "- For `organization_group`, use an accepted storage-bucket id when one clearly matches the item's manual storage family. Do not omit an obvious bucket such as molds, unprocessed ores, seeds, logs, cloth, or voltage components just because `role`, `form`, or `material_family` is already present.",
+      "- For `organization_group`, use an accepted storage-bucket id only when it is a scarce, broad item-type section clearly better than the built-in section. Do not use organization groups as mod filters, rock/material taxonomy, material form/state splits, workstation-specific processes, or other query-only views.",
     );
   }
   if (!hasSubsystemVocabulary) {
@@ -710,20 +710,37 @@ when that relationship is useful to the player.
 The \`organization_group\` facet is the direct SLOT auto-home signal for
 large modpacks. It answers:
 
-> "If a skilled player organized this pack manually, which named
-> workflow/storage section would this item belong in?"
+> "If a skilled player had only a small number of broad main-wall
+> sections for this pack, which named storage section would this item
+> belong in?"
 
-Use it for coherent groups that cut across broad roles when the group
-is how players actually store the items: casting molds and molten-metal
-helpers → \`pack:example/casting_molds\`; bricks, mortar, and masonry
-inputs → \`pack:example/masonry_supplies\`; hides, prepared hides, and
-leatherworking tools → \`pack:example/leatherworking\`; looms, cloth,
-thread, and textile inputs → \`pack:example/textiles\`.
+Use it for broad, stable storage sections a player would actually
+maintain. Think primarily in terms of item type or role: equipment,
+raw ore, refined ore, ingots and metal, tools, cooked food, uncooked
+food, cooking supplies, plants, natural materials, workbenches,
+decorations, bricks and clay, molds, wood, seeds. Those examples are
+illustrative, not a hard list. Use case, material state, or workflow
+context can refine a broad type, but must not become the main reason to
+split related items.
+
+Be stingy. A real manual wall only supports about 15-20 human-named
+sections before it becomes worse than unsorted storage. Emit
+\`organization_group\` only when the item belongs in a section that
+would deserve one of those scarce slots across the pack.
+
+The main wall is not a faceted search result. Do NOT emit
+\`organization_group\` for categories that merely answer a query such
+as "which mod did this come from?", "which rock type is this?", "which
+material property or form/state is this?", "which narrow recipe
+mechanic/tag is this in?", or "which workstation-specific process is
+this for?". Those can be useful for search, filters, task views, or
+within-section sorting, but they actively fragment the primary
+inventory list.
 
 This facet is intentionally different from \`mod_subsystem\`.
 \`organization_group\` is allowed on materials, utility items,
 building blocks, natural resources, and intermediate crafting items
-when those items form a player-recognizable workflow pile. Do NOT emit
+when those items form a broad player-recognizable storage bucket. Do NOT emit
 it for singleton quirks, decorative style families, color/material
 families, or generic catch-alls like \`<ns>:materials\`,
 \`<ns>:crafting\`, \`<ns>:blocks\`, \`<ns>:misc\`.
@@ -732,17 +749,17 @@ Prefer namespaced, stable, player-facing tokens. Use the item's own
 namespace unless the group is clearly pack-owned. Do not omit the facet
 just because the item also has a narrow form like \`ingot\`, \`gem\`,
 \`raw ore\`, \`stairs\`, \`slab\`, \`tool\`, or \`armor\`; emit the group
-when the workflow pile is the more useful manual-storage destination.
+when the broad storage bucket is the more useful manual-storage destination.
 Omit it when the universal section really is where a player would put
 the item, or when no useful group has enough sibling items.
 
-Role, form, and material_family do not replace organization_group. If
-the accepted vocabulary contains a bucket a player would actually use
-for this item family — molds, unprocessed ores, refined ores, seeds,
-logs, cloth, cooking tools, voltage components, backpack items — emit
-that accepted organization_group id. If the useful bucket is missing,
-omit the facet and add a top-level vocabulary proposal instead of
-copying a workflow or subsystem id.
+Role, form, and material_family often should be enough. If the accepted
+vocabulary contains a bucket a player would actually use for this broad
+item family — molds, bricks and clay, natural materials, animal
+husbandry, cloth, cooking supplies — emit that accepted
+organization_group id. If the listed bucket would split obvious
+siblings across two main wall sections, omit it and let the built-in
+section win.
 
 Concrete anchors:
 - A fired ingot mold item → organization_group=\`pack:example/casting_molds\`.
@@ -751,6 +768,16 @@ Concrete anchors:
 - Prepared hides and leatherworking tools → organization_group=\`pack:example/leatherworking\`.
 - A plain metal ingot with no workflow-specific storage expectation → no
   organization_group; the general ingots/materials section wins.
+- A material state, block-form variant, or individual rock-type subgroup →
+  no organization_group; the existing Ingots / Materials / Raw Materials /
+  Stairs / Building section wins.
+- A bucket named after one mod or one mod's mechanical-power subsystem →
+  no organization_group; use role, activity, mod_namespace, mod_subsystem,
+  or search/query views instead of a main wall section.
+- Stackable plates → no organization_group; that is a material property and
+  it would split related metal items.
+- Anvil smithing → no organization_group; that is a workstation/process view,
+  not the broad metalworking or materials section a player would maintain.
 
 ## mod_subsystem — what part of the mod IS this item
 
@@ -780,14 +807,14 @@ material, food, decorative_block, building_block, natural_resource,
 upgrade, tool, weapon, or armor that some processing recipe happens to
 consume or produce, OMIT mod_subsystem and let the role decide.
 
-Cross-check: the runtime only honors mod_subsystem for parent
-templates the player *wants* mod-segregated — \`mechanism\`,
-\`functional_block\`, \`transport\`, and \`redstone_component\` items.
-Items with role \`material\`, \`building_block\`, \`decorative_block\`,
-\`consumable\`, \`natural_resource\`, \`upgrade\`, \`tool\`, \`weapon\`,
-\`armor\`, \`storage_block\`, \`utility\`, \`curiosity\` should generally
-NOT carry mod_subsystem. Exceptions are rare; if you're not certain,
-omit.
+Cross-check: \`mod_subsystem\` is semantic/query identity evidence, not a
+main-wall home. The runtime does not auto-create wall sections from
+\`mod_subsystem\`; use \`organization_group\` only when a broad storage
+section passes that facet's stricter wall-home rule. Items with role
+\`material\`, \`building_block\`, \`decorative_block\`, \`consumable\`,
+\`natural_resource\`, \`upgrade\`, \`tool\`, \`weapon\`, \`armor\`,
+\`storage_block\`, \`utility\`, \`curiosity\` should generally NOT carry
+mod_subsystem. Exceptions are rare; if you're not certain, omit.
 
 If no "Suggested mod_subsystem vocabulary" section is present, be even
 more conservative: emit \`mod_subsystem\` only for a broad, unmistakable

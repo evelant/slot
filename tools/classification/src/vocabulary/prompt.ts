@@ -61,13 +61,19 @@ Rules:
 - For progression_stage, reject advancement-title prose as accepted ids when the candidate id is the phrase itself, such as "one/small/step", "quite/the/sun/tan", or "back/in/black". Accept only canonical gate/tier/dimension/material ids backed by evidence.
 - For progression_stage, a dimension word in a namespace/path is not enough. The label or semantic evidence must describe the dimension/unlock/gate itself.
 - For progression_stage, material names are accepted only when they gate broad progression; reject isolated material variants or product lines.
-- For organization_group, "accepted" means a human player storage section or mental bucket for items, not a workstation, recipe type, or process.
-- For organization_group, good accepted examples include unprocessed ores, refined ores, cooking tools, Create items, ULV components, woodworking, decorative, animal husbandry, weaving/cloth, dirt and rocks, seeds, inedible plants, and crops. These examples are illustrative, not a closed list.
-- For organization_group, accept any candidate that names a plausible player storage section with evidence, even if it is not listed in the examples.
-- For organization_group, reject workstation/process labels such as anvil, quern, pot, barrel, smelting, blasting, milling, pressing, cutting, and mixing unless the candidate itself names a broader storage group like cooking_tools or woodworking.
+- For organization_group, the #1 rule is: would a human player spend one of a small number of main-wall sections on this broad item type, so these items and their obvious siblings stay together?
+- For organization_group, imagine the whole pack can sustain only about 15-20 human-named organization sections total, including built-in sections. Be stingy; accept a custom value only if it would deserve one of those scarce slots.
+- For organization_group, group primarily by broad item type/role. Use case, material state, or workflow context can refine a broad type, but must not become the main reason to split related items.
+- For organization_group, "accepted" means a stable main-wall storage section a player would actually maintain, not a workstation, recipe type, process, provenance label, or query/view.
+- For organization_group, broad examples include equipment, raw ore, refined ore, ingots and metal, tools, cooked food, uncooked food, cooking supplies, plants, natural materials, workbenches, decorations, bricks and clay, molds, wood, and seeds. These are illustrative examples, not a hard required list.
+- For organization_group, reject candidates that would split items a player expects to scan together in an existing built-in section such as Ingots, Materials, Raw Materials, Stairs, Slabs, Walls, Food, Tools, Weapons, Armor, or Storage.
+- For organization_group, reject values that merely slice by mod name, tag taxonomy, material property such as stackable/pileable, material form/state, individual rock/geology type, recipe mechanic, workstation-specific process, color/style family, or other filters players may search for but would not keep as a primary storage section.
+- For organization_group, reject groups too narrow for a main wall section, such as one mod's mechanical power line, stackable plates, or anvil smithing; keep those as mod_subsystem/workflow/used_at/search evidence instead.
+- For organization_group, accept any candidate that passes the #1 rule with evidence, even if it is not listed in the examples.
 - For organization_group, do not accept a value solely because the same id is a good workflow or used_at value. Wall-home groups must be item groupings a player would plausibly keep together.
 - For mod_subsystem, "accepted" means ONLY a namespace-scoped identity system inside a mod: network, transport, automation, storage, multiblock, power, train, rocket, oxygen, or another broad functional family whose own items belong to that system.
 - For mod_subsystem, reject pack-scoped ids, universal ids, process/task labels, one-off station labels, equipment/tool/armor sets, material families, decorative families, tiers, machine hulls/casings, and labels based only on recipe participation.
+- For mod_subsystem, accepting a value does not create a wall home. It is semantic/query identity evidence.
 - For mod_subsystem, use workflow/used_at for "where/how is this processed?" and organization_group for wall-home concepts. Subsystem values should answer "what mod system is this item itself part of?"
 - Prefer preserving previous accepted ids.
 - For workflow_role, every id must be <workflow>#<role> and parent must equal the workflow id.

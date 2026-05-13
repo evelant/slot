@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-12. Operational handoff. Read after
+Last updated: 2026-05-13. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -38,10 +38,12 @@ Classification has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar extraction, OpenRouter-backed stage 3, runtime export,
 datapack output, facet-vocabulary evidence/proposals with `document_context`,
 accepted-vocabulary prompting, and dynamic `organization_group` /
-`mod_subsystem` auto-home cohorts. Semantic text remains the highest-value
-input; preserve tooltip/lore prose, guidebook/quest text, lang descriptions,
-KubeJS/datapack overlays, Ponder/category labels, stack groups, resource-pack
-overrides, and mod descriptions instead of reducing prompts to item ids.
+auto-home cohorts guarded by main-wall section policy. `mod_subsystem`
+remains semantic/query evidence and does not create main-wall sections.
+Semantic text remains the highest-value input; preserve tooltip/lore prose,
+guidebook/quest text, lang descriptions, KubeJS/datapack overlays,
+Ponder/category labels, stack groups, resource-pack overrides, and mod
+descriptions instead of reducing prompts to item ids.
 
 EMI goal projections now create server-persisted SLOT goal tabs from explicit
 EMI recipe-screen and drag/drop goal targets on both loaders. The current

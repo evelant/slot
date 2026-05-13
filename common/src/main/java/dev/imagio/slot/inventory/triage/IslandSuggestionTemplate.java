@@ -401,32 +401,31 @@ public enum IslandSuggestionTemplate {
     }
 
     /**
-     * Whether this template can split into a count-qualified subsystem
-     * island. Broad use-case parents like MATERIALS and UTILITY need
-     * this for large modpack mechanics ("TFC — Casting") while narrow,
-     * universal parents like FOOD / TOOLS / STORAGE should stay shared.
-     * The dynamic cohort policy still gates the actual split by count,
-     * so this whitelist only says "subsystem grouping can make sense".
+     * Whether this template can split into a count-qualified subsystem island.
+     * Disabled by default: {@code mod_subsystem} is useful semantic/query
+     * evidence, but mod-internal subsystem names are not player main-wall
+     * sections. If a subsystem-like concept deserves a wall section, model it
+     * as a broad {@code organization_group} instead.
      */
     public boolean allowsSubsystemGrouping() {
-        return switch (this) {
-            case MATERIALS, MECHANISMS, WORKBENCHES, TRANSPORT, UTILITY -> true;
-            default -> false;
-        };
+        return false;
     }
 
     /**
      * Whether this template can split into player-facing organization
      * groups. These are not mod-internal subsystems; they represent where a
-     * player would manually put the item in a large modpack ("TFC — Casting",
-     * "TFC — Masonry", "TFC — Leatherworking"). Because this facet is the
-     * direct storage/workflow signal, it can override both broad and narrow
-     * built-in templates when the cohort is large enough. The dataset should
-     * simply omit {@code organization_group} when a generic universal section
-     * is the better home.
+     * player would manually put the item in a large modpack ("Casting Molds",
+     * "Masonry Supplies", "Leatherworking"). Because this facet creates main
+     * wall homes, only broad parents allow it to split; high-specificity
+     * sections like Ingots, Food, Tools, and Storage keep ownership even when
+     * the layer carries a tempting query-style group.
      */
     public boolean allowsOrganizationGrouping() {
-        return true;
+        return switch (this) {
+            case MATERIALS, BUILDING, DECORATION, NATURAL,
+                    MECHANISMS, WORKBENCHES, REDSTONE, TRANSPORT, UTILITY -> true;
+            default -> false;
+        };
     }
 
     /**
@@ -720,10 +719,10 @@ public enum IslandSuggestionTemplate {
 
     /**
      * Organization-aware extension of {@link #firstMatchOrMisc}. A
-     * count-qualified {@code organization_group} wins over a subsystem
-     * because it is the direct "where would the player put this" signal.
-     * Subsystems remain the fallback for mod-internal mechanics when no
-     * organization group is present or large enough.
+     * count-qualified {@code organization_group} can override broad built-in
+     * parents because it is the direct "where would the player put this"
+     * signal. {@code mod_subsystem} stays semantic/query evidence unless a
+     * future template explicitly opts into subsystem wall sections.
      */
     public static IslandTemplateMatch firstMatchExtendedOrMisc(
             IslandSignalDescriptor descriptor,

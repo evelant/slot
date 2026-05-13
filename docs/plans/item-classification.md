@@ -12,11 +12,12 @@ loaded at runtime by
 SLOT now also loads bundled per-mod layers and datapack
 `data/slot/classification/layers/*.json` layers, exposes layer/load
 diagnostics, and uses facet data for template chips plus dynamic
-organization/subsystem auto-home sections. The tool can scan installed `mods/`
+organization-group auto-home sections. `mod_subsystem` remains semantic/query
+evidence rather than a main-wall section source. The tool can scan installed `mods/`
 folders, classify jar resources, run OpenRouter-backed stage 3, derive
 pack facet vocabularies including `mod_subsystem`, ingest Forge/NeoForge
 running-instance exports, and emit a drop-in datapack layer. Last updated:
-2026-05-12.
+2026-05-13.
 
 ## Reading order for a fresh session
 
@@ -30,7 +31,7 @@ This document is ~1400 lines. If you're picking it up without prior context:
 6. **[Pipeline](#pipeline)** and **[Runtime discovery](#runtime-discovery)** — what the offline pipeline does vs what the runtime crawl does.
 7. **[Milestones](#milestones)** — historical execution order. The V1
    runtime, installed-pack scan, jar-backed extraction, runtime export,
-   datapack pack-layer, and dynamic organization/subsystem auto-home slices have
+   datapack pack-layer, and dynamic organization-group auto-home slices have
    landed; remaining items are public database distribution, review/diff
    tooling, runtime-crawl, and persistent server/player facet layers.
 8. **Facet list (1–28, plus 14a)** — skim the headings; read the specific facets you need.
@@ -408,10 +409,10 @@ Examples:
 
 This is deliberately different from `mod_subsystem`. `mod_subsystem`
 describes what part of a mod the item itself belongs to; `organization_group`
-describes the storage/workflow pile that removes player sorting tedium. The
-runtime tries count-qualified `organization_group` sections before
-`mod_subsystem` sections. Narrow universal sections like Ingots, Raw Materials,
-Stairs, Tools, Food, and Armor win by omission: the classifier should leave
+describes the broad storage bucket that removes player sorting tedium.
+`mod_subsystem` remains semantic/query evidence and does not create main-wall
+sections. Narrow universal sections like Ingots, Raw Materials, Stairs, Tools,
+Food, and Armor win by omission: the classifier should leave
 `organization_group` empty when that generic section is the better manual home,
 not rely on runtime code to veto a stronger workflow signal.
 

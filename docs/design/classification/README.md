@@ -1,6 +1,6 @@
 # Classification System
 
-Last updated: 2026-05-11
+Last updated: 2026-05-13
 
 Classification is the data layer SLOT uses to understand items by meaning:
 role, material, recipe participation, player activity, workflow context, and
@@ -83,14 +83,20 @@ claimed chests without moving physical stacks.
 Auto-home uses:
 
 1. count-qualified `organization_group` when the layer gives a strong
-   player-facing wall-home signal
-2. count-qualified `mod_subsystem` for identity-owned mod systems
-3. built-in fallback templates from role/material/form/tag signals
-4. Triage for unsupported or ambiguous cases
+   player-facing wall-home signal and the built-in parent is broad enough to
+   split
+2. built-in fallback templates from role/material/form/tag signals
+3. Triage for unsupported or ambiguous cases
 
 `workflow` is not a wall section by itself. It describes process/task context
-for search, task views, and future projections. `organization_group` remains
-the direct auto-home signal.
+for search, task views, and future projections. Section-outcome review applies
+to home-producing facets, currently `organization_group`; other
+vocabulary-backed facets, including `mod_subsystem`, are judged by semantic
+usefulness. `organization_group` remains the direct auto-home signal, but it
+must stay scarce and broad: mostly item type/role, with use case or material
+state only as secondary refinement. Query-only slices like mod name, rock
+taxonomy, material form/state, per-tag variants, and mod subsystem names are
+search/filter/within-section signals, not main wall homes.
 
 ## Tool Layout
 
@@ -316,7 +322,7 @@ good enough to ship.
 Current consumers include:
 
 - signal extraction for `IslandSignalDescriptor`
-- dynamic organization/subsystem cohorts
+- dynamic organization-group cohorts
 - wall-home assignment and `/slot classification rehome`
 - `/slot classification inspect` diagnostics
 - search/index helpers where already wired

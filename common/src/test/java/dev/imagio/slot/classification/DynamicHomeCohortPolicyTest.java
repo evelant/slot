@@ -13,11 +13,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DynamicHomeCohortPolicyTest {
 
     @Test
-    void qualifiesOnlyBroadAllowedSubsystemCohortsAtThreshold() {
+    void qualifiesOnlyOrganizationGroupCohortsAtThreshold() {
         ArrayList<String> entries = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             entries.add(entry("tfc:ceramic/casting_mold_" + i, "utility", "tfc:casting"));
             entries.add(entry("tfc:fiber/thread_" + i, "material", "tfc:weaving"));
+            entries.add(entry("create:cogwheel_" + i, "mechanism", "create:mechanical_power"));
+            entries.add(entry("modded:redstone_link_" + i, "redstone_component", "modded:redstone_network"));
             entries.add(entry("create:decorative_panel_" + i, "decorative_block", "create:decoration"));
             entries.add(groupEntry("tfc:brick/masonry_" + i, "material", "tfc:masonry"));
             entries.add(groupEntry("tfc:decorative/masonry_" + i, "decorative_block", "tfc:masonry_decor"));
@@ -30,10 +32,14 @@ class DynamicHomeCohortPolicyTest {
         DynamicHomeCohortPolicy policy = DynamicHomeCohortPolicy.from(
                 FacetIndex.load(new StringReader(layer(entries))));
 
-        assertTrue(policy.qualifies("tfc:casting"));
-        assertTrue(policy.qualifies("tfc:weaving"));
-        assertEquals(10, policy.count("tfc:casting"));
-        assertEquals(10, policy.count("tfc:weaving"));
+        assertFalse(policy.qualifies("tfc:casting"));
+        assertFalse(policy.qualifies("tfc:weaving"));
+        assertEquals(0, policy.count("tfc:casting"));
+        assertEquals(0, policy.count("tfc:weaving"));
+        assertFalse(policy.qualifies("create:mechanical_power"));
+        assertFalse(policy.qualifies("modded:redstone_network"));
+        assertEquals(0, policy.count("create:mechanical_power"));
+        assertEquals(0, policy.count("modded:redstone_network"));
         assertFalse(policy.qualifies("tfc:tiny_mechanic"));
         assertFalse(policy.qualifies("create:decoration"));
         assertEquals(0, policy.count("create:decoration"));

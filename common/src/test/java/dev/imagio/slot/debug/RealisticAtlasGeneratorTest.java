@@ -243,11 +243,11 @@ class RealisticAtlasGeneratorTest {
     }
 
     @Test
-    void qualifiedSubsystemSpawnsItsOwnIsland() {
+    void qualifiedSubsystemsStayInParentTemplateIsland() {
         // 12 Create-mechanical-power items + 10 Create-logistics items
-        // + a small hand of generic mechanism items. Both subsystems clear
-        // the threshold (=10), so each gets its own island. The generic
-        // mechanism items fall back to MECHANISMS.
+        // + a small hand of generic mechanism items. Subsystem ids remain
+        // semantic/query evidence; they no longer create main-wall sections,
+        // so every mechanism item stays in MECHANISMS.
         DescriptorPool pool = new DescriptorPool();
         for (int i = 0; i < 12; i++) {
             pool.addModded("create:cog_" + i, "mechanism", "create:mechanical_power");
@@ -270,18 +270,20 @@ class RealisticAtlasGeneratorTest {
         for (VisualAtlasIsland island : plan.islands()) {
             ids.add(island.id());
         }
-        assertTrue(ids.contains(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX + "create:mechanical_power"),
-                "create:mechanical_power should qualify as its own island");
-        assertTrue(ids.contains(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX + "create:logistics"),
-                "create:logistics should qualify as its own island");
+        assertEquals(1, plan.islands().size(),
+                "qualified subsystem ids should still collapse into one MECHANISMS island");
         assertTrue(ids.contains(IslandSuggestionTemplate.MECHANISMS.defaultIslandId()),
-                "non-subsystem mechanism items should still land on MECHANISMS");
+                "mechanism items should land on MECHANISMS");
+        for (String id : ids) {
+            assertTrue(!id.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX),
+                    "subsystem ids should not create main-wall islands");
+        }
     }
 
     @Test
     void belowThresholdSubsystemFallsBackToParentTemplate() {
-        // 5 items in a subsystem — below the 10-item threshold, so no
-        // dedicated island; everything folds into MECHANISMS.
+        // Subsystem ids are not wall sections; everything folds into
+        // MECHANISMS regardless of cohort size.
         DescriptorPool pool = new DescriptorPool();
         for (int i = 0; i < 5; i++) {
             pool.addModded("create:tiny_" + i, "mechanism", "create:mechanical_power");
@@ -299,7 +301,7 @@ class RealisticAtlasGeneratorTest {
             ids.add(island.id());
         }
         assertEquals(1, plan.islands().size(),
-                "subsystem below threshold → exactly one MECHANISMS island");
+                "subsystem evidence should produce exactly one MECHANISMS island");
         assertTrue(ids.contains(IslandSuggestionTemplate.MECHANISMS.defaultIslandId()));
         for (String id : ids) {
             assertTrue(!id.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX),
@@ -309,10 +311,8 @@ class RealisticAtlasGeneratorTest {
 
     @Test
     void decorationSubsystemNeverFiresEvenWhenQualified() {
-        // 30 decorative_block items all sharing create:decoration. Even at
-        // 30 items (well above threshold), the parent template (DECORATION)
-        // is not in the subsystem-grouping whitelist, so they all collapse
-        // into the single DECORATION island.
+        // 30 decorative_block items all sharing create:decoration. Subsystem
+        // ids stay query evidence, so they all collapse into DECORATION.
         DescriptorPool pool = new DescriptorPool();
         for (int i = 0; i < 30; i++) {
             pool.addModded("create:fancy_block_" + i, "decorative_block", "create:decoration");

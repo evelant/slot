@@ -76,6 +76,7 @@ const DEFAULT_STAGE3_BATCH_SIZE = 20;
 const DEFAULT_STAGE3_CONCURRENCY = 4;
 const DEFAULT_RUNTIME_PACK_BATCH_SIZE = 25;
 const DEFAULT_RUNTIME_PACK_CONCURRENCY = 8;
+const ORGANIZATION_GROUP_HOME_REVIEW_THRESHOLD = 20;
 const REPO_ROOT = resolve(import.meta.dir, "..", "..", "..");
 const CLI_ABORT_CONTROLLER = new AbortController();
 
@@ -1831,10 +1832,49 @@ async function runProposePackFacetVocabulary(
   for (const [facet, count] of acceptedCounts) {
     console.log(`  ${facet.padEnd(24)} ${String(count).padStart(4)} accepted`);
   }
+  printVocabularyHomeImpactAudit(result.vocabulary);
   const reviewCount = Object.values(result.review.decisions).flat()
     .filter((decision) => decision.state !== "accepted").length;
   console.log(`[facet-vocabulary] review/rejected decision(s): ${reviewCount}`);
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+function printVocabularyHomeImpactAudit(vocabulary: PackFacetVocabulary): void {
+  const organizationGroups = acceptedVocabularyEntries(vocabulary, "organization_group");
+  if (organizationGroups.length === 0) return;
+
+  console.log("[facet-vocabulary] home-impact audit (section-producing facets only)");
+  if (organizationGroups.length > 0) {
+    const suffix = organizationGroups.length > ORGANIZATION_GROUP_HOME_REVIEW_THRESHOLD
+      ? " REVIEW BEFORE FULL CLASSIFICATION"
+      : "";
+    console.log(`  organization_group       ${String(organizationGroups.length).padStart(4)} accepted${suffix}`);
+    if (organizationGroups.length > ORGANIZATION_GROUP_HOME_REVIEW_THRESHOLD) {
+      console.log(
+        "    accepted organization_group values can become main wall sections; " +
+          "semantic/query-only facets are not part of this count",
+      );
+      console.log(`    sample: ${formatVocabularyEntrySample(organizationGroups)}`);
+    }
+  }
+}
+
+function acceptedVocabularyEntries(
+  vocabulary: PackFacetVocabulary,
+  facet: string,
+): Array<[string, { label?: string; state?: string }]> {
+  return Object.entries(vocabulary.facets[facet]?.values ?? {})
+    .filter(([, value]) => value.state === "accepted")
+    .sort(([a], [b]) => a.localeCompare(b));
+}
+
+function formatVocabularyEntrySample(
+  entries: readonly [string, { label?: string }][],
+  limit = 12,
+): string {
+  return entries.slice(0, limit)
+    .map(([id, value]) => value.label && value.label !== id ? `${id} (${value.label})` : id)
+    .join(", ");
 }
 
 function countCandidatesWithoutSemanticEvidence(candidates: readonly unknown[]): number {
@@ -3280,7 +3320,9 @@ Commands:
       optionally asks the configured LLM to curate them, and writes
       <out>/<pack>.facet-vocabulary.json plus
       <out>/<pack>.facet-vocabulary.review.json. Use --dry-run to write prompt
-      pairs without spending tokens.
+      pairs without spending tokens. Completed runs print a home-impact audit
+      for section-producing facets only; broad semantic facets such as
+      workflow/used_at/mod_subsystem are not judged as wall sections.
 
       Facet-vocabulary flags:
         --facet <id>            Regenerate one facet vocabulary. Repeatable.

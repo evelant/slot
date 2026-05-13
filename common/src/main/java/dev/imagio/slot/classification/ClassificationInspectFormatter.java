@@ -28,8 +28,6 @@ public final class ClassificationInspectFormatter {
         DynamicHomeCohortPolicy cohortPolicy = DynamicHomeCohortPolicy.current();
         IslandTemplateMatch dynamicMatch = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 descriptor, cohortPolicy.qualifier(), cohortPolicy.organizationGroupQualifier());
-        IslandTemplateMatch possibleSubsystemMatch = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
-                descriptor, id -> true);
         IslandTemplateMatch possibleOrganizationMatch = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 descriptor, id -> false, id -> true);
         List<String> matchingTemplates = matchingTemplates(descriptor);
@@ -39,15 +37,10 @@ public final class ClassificationInspectFormatter {
                 + (possibleOrganizationMatch.isOrganizationGroup()
                 ? " possible_group=" + possibleOrganizationMatch.organizationGroupId().orElse("")
                 + " label=" + possibleOrganizationMatch.label()
-                : "")
-                + (possibleSubsystemMatch.isSubsystem()
-                ? " possible_subsystem=" + possibleSubsystemMatch.subsystemId().orElse("")
-                + " label=" + possibleSubsystemMatch.label()
                 : ""));
         lines.add("  auto_home_target=" + dynamicMatch.islandId()
                 + " label=" + dynamicMatch.label()
-                + " group_counts=" + summarizeGroupCounts(descriptor.organizationGroups(), cohortPolicy)
-                + " subsystem_counts=" + summarizeSubsystemCounts(descriptor.subsystems(), cohortPolicy));
+                + " group_counts=" + summarizeGroupCounts(descriptor.organizationGroups(), cohortPolicy));
         lines.add("  matching_templates=" + summarize(matchingTemplates));
         lines.add("  role=" + noneIfBlank(descriptor.role())
                 + " alternatives=" + summarize(descriptor.roleAlternatives())
@@ -112,20 +105,6 @@ public final class ClassificationInspectFormatter {
 
     private static String noneIfBlank(String value) {
         return value == null || value.isBlank() ? "none" : value;
-    }
-
-    private static String summarizeSubsystemCounts(List<String> subsystemIds, DynamicHomeCohortPolicy policy) {
-        if (subsystemIds == null || subsystemIds.isEmpty() || policy == null) {
-            return "none";
-        }
-        ArrayList<String> values = new ArrayList<>();
-        for (String subsystemId : subsystemIds) {
-            if (subsystemId == null || subsystemId.isBlank()) {
-                continue;
-            }
-            values.add(subsystemId + "=" + policy.count(subsystemId) + "/" + policy.minSubsystemItems());
-        }
-        return values.isEmpty() ? "none" : String.join(",", values);
     }
 
     private static String summarizeGroupCounts(List<String> groupIds, DynamicHomeCohortPolicy policy) {

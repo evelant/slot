@@ -160,27 +160,6 @@ export const ORGANIZATION_GROUP_STOP_TOKENS = new Set([
   "stonecutting",
 ]);
 
-export const VOLTAGE_COMPONENT_TOKENS = new Set([
-  "battery",
-  "cable",
-  "circuit",
-  "component",
-  "components",
-  "conveyor",
-  "cover",
-  "electric",
-  "emitter",
-  "field",
-  "generator",
-  "hatch",
-  "hull",
-  "motor",
-  "piston",
-  "pump",
-  "robot",
-  "sensor",
-]);
-
 export const VOLTAGE_TIERS = ["ulv", "lv", "mv", "hv", "ev", "iv", "luv", "zpm", "uv", "uhv"] as const;
 
 export const UNIVERSAL_DEFAULTS: Record<string, Array<{ id: string; label: string; description?: string; aliases?: string[] }>> = {
@@ -345,7 +324,7 @@ export const FACET_POLICIES: Partial<Record<VocabularyFacetId, string>> = {
   workflow_role: "Scoped role values only, formatted as <workflow>#<role>. Parent must be an accepted workflow candidate.",
   used_at: "Player-facing station, machine, tool, or surface. Preserve raw recipe type evidence separately.",
   progression_stage: "Pack/mod progression gates, tiers, ages, voltages, dimensions. Conservative; reject item/product topics and one-off advancements.",
-  organization_group: "Direct wall-home candidate: human storage/section groupings, not stations or recipe workflows.",
+  organization_group: "Direct wall-home candidate. Accept only scarce, broad sections a human player would maintain primarily by item type/role, with use or state as secondary; not stations, recipe workflows, mod names, narrow material properties, or query filters.",
   mod_subsystem: "Identity-oriented mod subsystem. Do not assign from recipe participation alone.",
 };
 

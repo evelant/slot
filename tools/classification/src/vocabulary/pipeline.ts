@@ -45,7 +45,6 @@ import {
   ROLE_TOKENS,
   SEMANTIC_EVIDENCE_LIMIT,
   UNIVERSAL_DEFAULTS,
-  VOLTAGE_COMPONENT_TOKENS,
   VOLTAGE_TIERS,
 } from "./constants.ts";
 import {
@@ -84,7 +83,6 @@ import {
 } from "./records.ts";
 import {
   addOrganizationGroupEvidenceCandidates,
-  organizationGroupIdLooksLikeStation,
 } from "./candidates/organization_group.ts";
 import {
   addModSubsystemDocumentCandidate,
@@ -701,14 +699,6 @@ function applyFacetPolicy(args: {
       state = "review";
       notes.push("progression value is too phrase-like; prefer a canonical gate/tier/dimension id");
     }
-    if (state === "accepted" && args.facet === "organization_group" && organizationGroupIdLooksLikeStation(id)) {
-      state = "review";
-      notes.push("organization_group must be a human storage group, not a workstation/process label");
-    }
-    if (state === "accepted" && args.facet === "organization_group" && organizationGroupCandidateLooksTooAtomic(id, candidate)) {
-      state = "review";
-      notes.push("organization_group is too atomic; prefer broader player storage/workflow buckets over material, form, or tool-class labels");
-    }
     if (state === "accepted" && evidence.length === 0 && origin !== "universal_default" && origin !== "previous") {
       state = "review";
       notes.push("accepted non-default values require evidence");
@@ -817,106 +807,6 @@ function progressionTokenRank(value: string): number {
   if (value.includes("steel") || value.includes("bronze") || value === "wrought_iron") return 3;
   return 4;
 }
-
-const ORGANIZATION_GROUP_ATOMIC_VALUE_TOKENS = new Set([
-  "armor",
-  "armors",
-  "axes",
-  "bolts",
-  "brick",
-  "buttons",
-  "doors",
-  "double_wires",
-  "dusts",
-  "fence_gates",
-  "fences",
-  "foils",
-  "glass",
-  "glass_panes",
-  "hammers",
-  "hanging_signs",
-  "hex_wires",
-  "hoes",
-  "ingots",
-  "knives",
-  "octal_wires",
-  "pickaxes",
-  "plates",
-  "powders",
-  "quadruple_wires",
-  "raw_materials",
-  "rods",
-  "saws",
-  "screws",
-  "scythes",
-  "sharp_tools",
-  "shovels",
-  "single_wires",
-  "springs",
-  "stone_bricks",
-  "swords",
-  "tools",
-  "tracks",
-  "trapdoors",
-  "trim_materials",
-  "trimmable_armor",
-  "windows",
-]);
-
-const MATERIAL_VARIANT_TAG_FAMILIES = new Set([
-  "bolts",
-  "bud_indicators",
-  "chipped_gems",
-  "crushed_ores",
-  "dense_plates",
-  "double_cables",
-  "double_plates",
-  "double_sheets",
-  "double_wires",
-  "dusts",
-  "dusty_raw_materials",
-  "exquisite_gems",
-  "fine_wires",
-  "flawed_gems",
-  "flawless_gems",
-  "foils",
-  "frames",
-  "gems",
-  "gears",
-  "hex_cables",
-  "hex_wires",
-  "hot_ingots",
-  "impure_dusts",
-  "ingots",
-  "lenses",
-  "nuggets",
-  "octal_cables",
-  "octal_wires",
-  "ores",
-  "plates",
-  "poor_raw_materials",
-  "powders",
-  "pure_dusts",
-  "purified_ores",
-  "quadruple_cables",
-  "quadruple_wires",
-  "raw_materials",
-  "raw_ore_blocks",
-  "refined_ores",
-  "rich_raw_materials",
-  "rods",
-  "rods_long",
-  "screws",
-  "sheets",
-  "single_cables",
-  "single_wires",
-  "small_dusts",
-  "springs",
-  "storage_blocks",
-  "surface_rocks",
-  "tiny_dusts",
-  "wires",
-]);
 
 const WORKFLOW_PROCESS_TOKENS = [
   "alloy",
@@ -1095,44 +985,6 @@ function usedAtCandidateLooksTooGranular(
     "using",
   ]);
   return flatParts.some((part) => phraseTokens.has(part));
-}
-
-function organizationGroupCandidateLooksTooAtomic(
-  id: string,
-  candidate: PackVocabularyCandidate | undefined,
-): boolean {
-  const path = valueIdPath(id).replace(/\//g, "_");
-  if (ORGANIZATION_GROUP_ATOMIC_VALUE_TOKENS.has(path)) return true;
-  if (!candidate) return false;
-  return organizationGroupLooksLikeMaterialVariant(path, candidate);
-}
-
-function organizationGroupLooksLikeMaterialVariant(
-  path: string,
-  candidate: PackVocabularyCandidate,
-): boolean {
-  const tagEvidence = candidate.evidence.filter((evidence) =>
-    evidence.kind === "item_tag" || evidence.kind === "block_tag"
-  );
-  if (tagEvidence.length === 0) return false;
-  let materialVariantEvidence = 0;
-  for (const evidence of tagEvidence) {
-    const split = splitResourceLocation(evidence.id);
-    const evidencePath = split?.path ?? evidence.id;
-    const parts = evidencePath.split(/[\/.-]+/).map((part) => tokenPath(part)?.replace(/\//g, "_")).filter((part): part is string => !!part);
-    if (parts.length < 2) continue;
-    const tail = parts.at(-1);
-    const family = parts.slice(0, -1).join("_");
-    if (tail === path && materialVariantTagFamily(family)) {
-      materialVariantEvidence++;
-    }
-  }
-  return materialVariantEvidence > 0 && materialVariantEvidence >= Math.ceil(tagEvidence.length / 2);
-}
-
-function materialVariantTagFamily(family: string): boolean {
-  if (MATERIAL_VARIANT_TAG_FAMILIES.has(family)) return true;
-  return /(^|_)(blocks?|cables?|dusts?|gears?|gems?|heads?|hooks?|ingots?|materials?|ores?|pipes?|plates?|rings?|rods?|rotors?|sheets?|springs?|tips?|wires?)$/.test(family);
 }
 
 function documentWorkflowPathHasProcessSignal(

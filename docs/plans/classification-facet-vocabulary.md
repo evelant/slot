@@ -1,28 +1,37 @@
 # Classification Facet Vocabulary Plan
 
-Last updated: 2026-05-11
+Last updated: 2026-05-13
 
 Status: active. Slices 0 through 3 are implemented for the TypeScript
 toolchain: vocabulary-backed semantic facets, rich evidence collection,
 accepted/review/rejected vocabulary proposal, stage-3 `document_context`,
 accepted vocabulary prompting via `--facet-vocabulary`, and vocabulary-backed
 layer validation are all wired. The first full TFG prompt review showed that
-thin `seed_items`-heavy prompts were inadequate; the current direction is to
-preserve tooltip/lore text, guidebook page bodies, quest text, resolved lang
-strings, KubeJS/datapack overlays, Ponder/category labels, stack groups,
-resource-pack lang overrides, and mod descriptions before asking the LLM to
-derive vocabulary or classify items.
+thin `seed_items`-heavy prompts were inadequate, and the first full TFG server
+`rehome` pass showed the next failure mode: evidence/query categories leaked
+into main wall sections (`*_items`, rock taxonomy, material form/state, and
+high-specificity block-form buckets). The current direction is to preserve rich
+semantic evidence for vocabulary/search/task views while keeping the main wall
+home policy conservative and human-sized.
 
-Partial Stage 3 canaries against the first clean TFG vocabulary are promising
-but not full-run ready yet. The classifier now completes vocabulary-grounded
-batches without retrying whole responses for invented closed-set values, and it
-drops invalid vocabulary/fill-in values with audit warnings. The canaries also
-showed two concrete gates before a full pack run: regenerate the vocabulary
-with sticky accepted universal defaults (`slot:fill`, `slot:cast`,
-`slot:preserve`, etc.) and run another canary to check role quality before
-spending a full `classify-runtime-pack` pass. A 17-item v9 canary with the
-final user-message checklist restored the GTCEu pump/hull role anchors and
-validated cleanly; a broader canary is still needed before the full run.
+The classifier now completes vocabulary-grounded batches without retrying whole
+responses for invented closed-set values, drops invalid vocabulary/fill-in
+values with audit warnings, and gates `organization_group` before runtime
+auto-home can materialize sections. The section-outcome audit
+applies to home-producing facets, currently `organization_group`;
+`mod_subsystem` remains semantic/search/task evidence and does not create
+main-wall sections. The next validation pass should regenerate the TFG
+vocabulary under the tightened policy, run a canary, then run a fresh full
+`classify-runtime-pack` only after the `organization_group` count and sampled
+rehome output look human-organized rather than query-generated.
+
+`organization_group` should not rely on post-LLM keyword deny lists to clean up
+bad homes. Query-only groups are blocked by candidate-source policy (raw mod
+metadata and raw item/block tags do not directly mint org-group candidates),
+prompt guidance, review/canary output, and runtime parent ownership. Keyword
+helpers that remain in vocabulary generation should either produce review-only
+candidates from broad human storage concepts or filter technical evidence before
+the prompt, not silently override the curator after it answers.
 
 This plan owns the generic modpack-classification workflow: pack vocabulary,
 evidence extraction, vocabulary-backed semantic facets, and pack-layer
@@ -108,11 +117,13 @@ cross-mod material chains. TerraFirmaGreg is only the current test case.
    workflow.
 4. **Workflow is not home assignment.** `workflow` answers "which task/process
    context can show this item?" `organization_group` answers "where should the
-   wall auto-home this item?" A workflow may imply a home only through an
-   explicit, reviewable rule.
+   wall auto-home this item?" A wall-home group should feel like one of roughly
+   15-20 broad player sections, primarily by item type/role with use case or
+   state only as secondary refinement. A workflow may imply a home only through
+   an explicit, reviewable rule.
 5. **`mod_subsystem` stays identity-oriented.** It labels the mod-internal
    system an item itself belongs to. Recipe participation alone must not assign
-   `mod_subsystem`.
+   `mod_subsystem`, and subsystem ids do not create main-wall sections.
 6. **Raw recipe facts are not player-facing station context.** `processing_in`
    remains deterministic evidence about recipe participation. `used_at` /
    station-context facets should capture the player concept: the station,
@@ -420,10 +431,15 @@ questions:
 
 - `organization_group`: player-facing wall-home candidate. It can be derived
   from workflow vocabulary only when the vocabulary marks a default home and
-  item evidence supports membership.
+  item evidence supports membership. It is a scarce, broad main-wall home
+  signal, not a general query facet; reject mod-name buckets, mod subsystem
+  labels, rock taxonomy, stackable/pileable material properties, material
+  form/state splits, workstation-specific processes, and tag variants that
+  would fragment obvious siblings.
 - `mod_subsystem`: identity-oriented mod subsystem. It should stay conservative
   and should not be assigned merely because an item is consumed by, produced by,
-  or compatible with a process.
+  or compatible with a process. It is semantic/query evidence, not a wall-home
+  source.
 
 Rules:
 
@@ -431,6 +447,10 @@ Rules:
   artifact, not hardcoded for any particular pack
 - `organization_group` values may match workflow ids, but they are not
   synonymous with workflow membership
+- built-in high-specificity sections such as Ingots, Stairs, Slabs, Food,
+  Tools, and Storage keep ownership of the main home; vocabulary values for
+  those distinctions should power search/filter/task views or within-section
+  ordering unless playtest proves a broad wall-home bucket is better
 - `mod_subsystem` vocabulary should be generated by the same artifact pipeline
   so task-like concepts can move to `workflow` / `used_at` instead of
   overloading subsystem identity
@@ -810,7 +830,7 @@ different things for each facet.
 | `progression_stage` | quest/guide chapters, tiers, voltage/age systems, dimension gates | conservative; always vocabulary-backed, never universalized |
 | `loadout_context` | activity vocabulary, guide/quest text, common trip/task phrases, prior uses | medium; useful for kits/search even before dedicated UI |
 | `use_affordance` | item action semantics, components, names, tags, station roles | conservative; direct interaction verbs only |
-| `organization_group` | accepted workflow values with default-home policy, manual/previous values | conservative; direct auto-home impact |
+| `organization_group` | broad human storage candidates from semantic item/document evidence, stack groups, and curated/manual values | conservative; direct auto-home impact |
 | `mod_subsystem` | mod metadata and identity-owned functional systems | conservative; not recipe participation |
 
 ### Evidence Ranking
@@ -935,14 +955,16 @@ Prompt rules:
 - instruct the LLM to choose from known vocabulary values; proposed new values go
   to review unless deterministic evidence is strong and the facet allows
   generator additions
-- keep `mod_subsystem` conservative and identity-oriented
+- keep `mod_subsystem` conservative and identity-oriented; do not auto-home by
+  subsystem id
 - allow `workflow`, `workflow_role`, and `used_at` from recipe/guide/quest
   evidence when the item has a real process role
 - ask the LLM to turn rich `primary_uses`-style judgments into structured
   facets in the same pass instead of leaving all semantics as free text
 - emit `organization_group` only when it is the better wall home than the
   universal template, or when the vocabulary explicitly marks a default home
-  group and item evidence supports membership
+  group and item evidence supports membership; reject groups too narrow to
+  deserve one of the pack's scarce main-wall sections
 - keep `processing_in` visible as evidence, but do not treat it as a substitute
   for `used_at`
 
