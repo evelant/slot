@@ -120,7 +120,7 @@ public final class HotbarBeltUiBuilder {
                 context.setStatus("belt " + (slot.hotbarIndex() + 1) + " is empty");
                 return;
             }
-            context.setStatus("ready");
+            context.dropCursorAtHotbar(slot.hotbarIndex(), event.button());
         });
         button.addChild(slot.occupied()
                 ? SlotUiElement.itemIcon(slot.displayStack(), iconSize, true).renderVanillaCount(true)

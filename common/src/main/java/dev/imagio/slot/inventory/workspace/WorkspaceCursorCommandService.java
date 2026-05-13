@@ -1,12 +1,14 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.SlotDebugLog;
+import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
+import dev.imagio.slot.platform.SlotStackAccess;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -183,9 +185,6 @@ public final class WorkspaceCursorCommandService {
         if (idx < 0 || idx >= 9) {
             return rejected("invalid_hotbar_slot", origin);
         }
-        if (menu.getCarried().isEmpty()) {
-            return accepted("ready", "", null);
-        }
         int menuSlotId = -1;
         for (int i = 0; i < menu.slots.size(); i++) {
             Slot slot = menu.slots.get(i);
@@ -201,12 +200,30 @@ public final class WorkspaceCursorCommandService {
         if (btn != 0 && btn != 1) {
             return rejected("invalid_mouse_button", origin);
         }
+        Slot hotbarSlot = menu.slots.get(menuSlotId);
+        ItemStack carriedBefore = menu.getCarried().copy();
+        ItemStack slotBefore = hotbarSlot.getItem().copy();
+        if (carriedBefore.isEmpty() && slotBefore.isEmpty()) {
+            return rejected("hotbar_slot_empty", null);
+        }
         menu.clicked(menuSlotId, btn, ClickType.PICKUP, player);
-        ItemStack remaining = menu.getCarried();
+        ItemStack carriedAfter = menu.getCarried();
+        CursorOrigin nextOrigin = hotbarCursorOrigin(origin, idx, carriedBefore, carriedAfter);
+        if (carriedBefore.isEmpty()) {
+            return accepted(
+                    carriedAfter.isEmpty() ? "ready" : "picked_up",
+                    carriedAfter.isEmpty()
+                            ? ""
+                            : "moved=" + carriedAfter.getCount() + " from=hotbar:" + (idx + 1),
+                    nextOrigin);
+        }
+        boolean swapped = !carriedAfter.isEmpty() && !sameStackIdentity(carriedBefore, carriedAfter);
         return accepted(
-                remaining.isEmpty() ? "cursor_deposited" : "cursor_partial_deposit",
-                "remaining=" + remaining.getCount(),
-                remaining.isEmpty() ? null : origin);
+                carriedAfter.isEmpty()
+                        ? "cursor_deposited"
+                        : swapped ? "cursor_swapped" : "cursor_partial_deposit",
+                "remaining=" + carriedAfter.getCount(),
+                nextOrigin);
     }
 
     public static CursorCommandOutcome dropCursorIntoChest(
@@ -591,6 +608,31 @@ public final class WorkspaceCursorCommandService {
             return "empty";
         }
         return stack.getCount() + "x" + ItemIdentityMatcher.create(stack).itemId();
+    }
+
+    private static CursorOrigin hotbarCursorOrigin(
+            CursorOrigin previous,
+            int hotbarIndex,
+            ItemStack carriedBefore,
+            ItemStack carriedAfter
+    ) {
+        if (carriedAfter == null || carriedAfter.isEmpty()) {
+            return null;
+        }
+        if (carriedBefore == null || carriedBefore.isEmpty() || !sameStackIdentity(carriedBefore, carriedAfter)) {
+            return new CursorOrigin(
+                    CursorSourceKind.CARRY,
+                    BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                    hotbarIndex);
+        }
+        return previous;
+    }
+
+    private static boolean sameStackIdentity(ItemStack first, ItemStack second) {
+        if (first == null || first.isEmpty() || second == null || second.isEmpty()) {
+            return false;
+        }
+        return SlotStackAccess.current().sameItemAndData(first, second);
     }
 
     private record Extraction(ItemStack stack, CursorOrigin origin, String sourceLabel) {

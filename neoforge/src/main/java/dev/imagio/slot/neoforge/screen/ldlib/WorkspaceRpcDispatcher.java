@@ -822,15 +822,19 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     }
 
     /**
-     * Drop the cursor stack onto a player-hotbar slot via vanilla
-     * {@code menu.clicked} so left = drop-all/merge/swap and right =
-     * drop-one. Bound to belt-panel left/right click while carrying.
+     * Click a player-hotbar slot via vanilla {@code menu.clicked}. With a
+     * non-empty cursor, left = drop-all/merge/swap and right = drop-one; with
+     * an empty cursor, left picks the slot up onto the real menu cursor.
      */
     void sendDropCursorAtHotbar(int hotbarIndex, int button) {
         if (dropCursorAtHotbarEmitter == null || hotbarIndex < 0 || hotbarIndex >= 9) {
             return;
         }
-        stashLastDropped();
+        if (WorkspaceCursorState.carriedIdentity() == null) {
+            host.lastDroppedIdentity = null;
+        } else {
+            stashLastDropped();
+        }
         boolean sent = send(WorkspaceActionId.DROP_CURSOR_AT_HOTBAR, hotbarIndex, button);
         if (!sent) {
             host.localStatus.set("drop unavailable");

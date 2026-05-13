@@ -5,6 +5,7 @@ import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
 import dev.imagio.slot.forge.config.SlotForgeClientConfig;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.components.MultiLineEditBox;
 import net.minecraft.client.gui.components.events.ContainerEventHandler;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
@@ -178,17 +179,20 @@ public final class ForgeContainerSidebar {
         return isTextInputFocused(screen.getFocused());
     }
 
-    private static boolean isTextInputFocused(GuiEventListener listener) {
+    static boolean isTextInputFocused(GuiEventListener listener) {
         if (listener == null) {
             return false;
         }
         if (listener instanceof EditBox editBox) {
             return editBox.isFocused();
         }
+        if (listener instanceof MultiLineEditBox editBox) {
+            return editBox.isFocused();
+        }
         if (listener instanceof ContainerEventHandler container) {
             return isTextInputFocused(container.getFocused());
         }
-        return listener.isFocused();
+        return false;
     }
 
     private static boolean insideSidebar(double mouseX, double mouseY) {

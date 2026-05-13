@@ -50,13 +50,14 @@ class HotbarBeltUiBuilderTest {
     }
 
     @Test
-    void occupiedPlainClickDoesNotEnterSelectionMode() {
+    void occupiedPlainLeftClickPicksUpHotbarSlot() {
         RecordingContext context = new RecordingContext();
         SlotUiElement slot = hotbarChild(belt(context, hotbar(occupied(2))), 2);
 
         slot.dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
 
-        assertEquals("ready", context.status);
+        assertEquals(2, context.cursorDropHotbarIndex);
+        assertEquals(0, context.cursorDropButton);
         assertEquals(-99, context.returnedHotbarIndex);
     }
 

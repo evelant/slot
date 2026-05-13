@@ -167,6 +167,10 @@ final class BeltPanelBuilder {
                 host.localStatus.set("belt " + (slot.hotbarIndex() + 1) + " is empty");
                 return;
             }
+            if (event.button == 0) {
+                host.rpc.sendDropCursorAtHotbar(slot.hotbarIndex(), event.button);
+                return;
+            }
             host.localStatus.set("");
         });
         // Capture-phase real cursor handler: while carrying the menu cursor,

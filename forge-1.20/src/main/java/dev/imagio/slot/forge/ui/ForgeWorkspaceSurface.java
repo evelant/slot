@@ -2905,9 +2905,12 @@ public final class ForgeWorkspaceSurface {
 
         @Override
         public void dropCursorAtHotbar(int hotbarIndex, int button) {
+            boolean carrying = isCursorCarrying();
             sendAction(
                     WorkspaceActionId.DROP_CURSOR_AT_HOTBAR,
-                    "dropping cursor on belt " + (hotbarIndex + 1),
+                    carrying
+                            ? "dropping cursor on belt " + (hotbarIndex + 1)
+                            : "picking up belt " + (hotbarIndex + 1),
                     hotbarIndex,
                     button);
         }
