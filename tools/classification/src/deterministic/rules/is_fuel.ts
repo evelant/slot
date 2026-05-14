@@ -115,6 +115,7 @@ export const isFuelRule: Rule = {
       record.minecraft_tags.some(isFuelTag) ||
       EXPLICIT_NON_WOOD_FUELS.has(record.id) ||
       EXPLICIT_FUEL_SUFFIXES.some((s) => path.endsWith(s)) ||
+      path.startsWith("wood/twig/") ||
       // wood_prefix + wood_shape_suffix (covers oak_stairs, mangrove_fence, etc.)
       WOOD_PREFIXES.some((p) =>
         path.startsWith(p) && WOOD_SHAPE_SUFFIXES.some((s) => path.endsWith(s)),

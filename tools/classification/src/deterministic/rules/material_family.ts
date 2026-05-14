@@ -158,6 +158,7 @@ const COMMON_MATERIAL_TAG_ROOTS = new Set([
   "pure_dusts",
   "raw_ore_blocks",
   "raw_materials",
+  "dusty_raw_materials",
   "rich_raw_materials",
   "rings",
   "rods",
@@ -182,15 +183,18 @@ const DISPLAY_MATERIAL_SUFFIXES = [
   " Greenhouse Trapdoor",
   " Greenhouse Wall",
   " Gearbox",
+  " Harvest Basket",
   " Knife Blade",
   " Mechanical Mixer",
   " Mechanical Saw",
   " Millstone",
   " Mortar",
   " Plate",
+  " Pipe Casing",
   " Sheet",
   " Toe Hiking Boots",
   " Train Hull",
+  " Whisk",
 ];
 
 const DISPLAY_STONE_FORM_PREFIXES = [
@@ -315,6 +319,8 @@ const EXACT_ID_TO_FAMILY: Record<string, string> = {
   "minecraft:waxed_oxidized_cut_copper": "copper",
   "minecraft:waxed_weathered_copper": "copper",
   "minecraft:waxed_weathered_cut_copper": "copper",
+  "domum_ornamentum:paper_extra": "paper",
+  "domum_ornamentum:white_paper_extra": "paper",
   "minecraft:weathered_copper": "copper",
   "minecraft:weathered_cut_copper": "copper",
   "minecraft:netherite_ingot": "netherite",
@@ -422,17 +428,51 @@ function materialFamilyFromStructuredMetalPath(path: string): string | null {
 
 function materialFamilyFromStructuredWoodPath(path: string): string | null {
   const parts = path.split("/");
+  const sectionMaterial = materialFamilyFromWoodSectionPath(parts);
+  if (sectionMaterial) return sectionMaterial;
+
   if (parts[0] !== "wood") return null;
 
+  const leaf = parts.at(-1) ?? "";
   const material = parts.length >= 3
-    ? parts.at(-1)
+    ? materialPrefixFromWoodLeaf(leaf) ?? leaf
     : materialPrefixFromWoodLeaf(parts[1] ?? "");
   if (!material || !/^[a-z0-9_]+$/.test(material)) return null;
   return `wood_${material}`;
 }
 
+function materialFamilyFromWoodSectionPath(parts: readonly string[]): string | null {
+  const section = parts[0] ?? "";
+  const family = parts[1] ?? "";
+  const leaf = parts.at(-1) ?? "";
+  if (section === "furniture" && family.endsWith("_furniture")) {
+    const material = family.slice(0, -"_furniture".length);
+    return material ? `wood_${material}` : null;
+  }
+  if (section === "bridges" && family.endsWith("_bridges") && leaf.includes("_log_bridge")) {
+    const material = family.slice(0, -"_bridges".length);
+    return material ? `wood_${material}` : null;
+  }
+  if (section === "roofs" && family.endsWith("_roofs") && leaf.includes("_planks_")) {
+    const material = family.slice(0, -"_roofs".length);
+    return material ? `wood_${material}` : null;
+  }
+  return null;
+}
+
 const STRUCTURED_WOOD_LEAF_SUFFIXES = [
+  "_pressure_plate",
+  "_hanging_sign",
+  "_fence_gate",
+  "_bookshelf",
   "_roofing",
+  "_trapdoor",
+  "_button",
+  "_stairs",
+  "_fence",
+  "_door",
+  "_slab",
+  "_sign",
 ];
 
 function materialPrefixFromWoodLeaf(leaf: string): string | null {
@@ -518,7 +558,7 @@ function materialFamilyFromStoneTypeTags(tags: readonly string[]): string | null
 }
 
 function materialFamilyFromMaterialPrefix(path: string): string | null {
-  const match = /^([a-z0-9_]+)_(?:gearbox|indicator|sheet)$/.exec(path);
+  const match = /^([a-z0-9_]+)_(?:gearbox|harvest_basket|indicator|pipe_casing|sheet|support|support_wedge|(?:tiny|small|normal|large|huge)_(?:fluid|item)_pipe)$/.exec(path);
   if (!match) return null;
   const material = match[1] ?? "";
   return material.length > 0 ? material : null;
@@ -527,22 +567,39 @@ function materialFamilyFromMaterialPrefix(path: string): string | null {
 function materialFamilyFromToolPath(path: string, namespace: string): string | null {
   const suffixes = [
     "_buzz_saw_blade",
+    "_mining_hammer",
+    "_digger_helmet",
+    "_sword_head",
+    "_knife_head",
+    "_chestplate",
+    "_leggings",
     "_pickaxe",
+    "_helmet",
+    "_boots",
     "_sword",
     "_scythe",
+    "_knife",
+    "_file",
     "_axe",
     "_shovel",
     "_hoe",
   ];
   for (const suffix of suffixes) {
     if (!path.endsWith(suffix) || path.length <= suffix.length) continue;
-    const raw = path.slice(0, -suffix.length);
+    const raw = stripEquipmentStatePrefix(path.slice(0, -suffix.length));
     const mapped = TOOL_ARMOR_MATERIAL_PREFIX[raw];
     if (mapped) return mapped;
     if (namespace === "minecraft") return null;
     return /^[a-z0-9_]+$/.test(raw) ? raw : null;
   }
   return null;
+}
+
+function stripEquipmentStatePrefix(raw: string): string {
+  for (const prefix of ["broken_"]) {
+    if (raw.startsWith(prefix) && raw.length > prefix.length) return raw.slice(prefix.length);
+  }
+  return raw;
 }
 
 function stripOreGradePrefix(value: string): string | null {

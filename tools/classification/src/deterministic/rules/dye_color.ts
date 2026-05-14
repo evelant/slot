@@ -59,6 +59,7 @@ const DYED_SUFFIXES = new Set([
   "_sleeping_bag",
   "_postbox",
   "_seat",
+  "_shipping_container",
   "_awning",
   "_roof",
   "_poured_glass",
@@ -78,7 +79,10 @@ export const dyeColorRule: Rule = {
     );
     const anySuffix = [...DYED_SUFFIXES].some((s) => record.path.endsWith(s));
     const anyDyeingRecipe = record.recipe_role.output_of.some(isDyeingRecipeId);
-    if (!anyTag && !anyTagFragment && !anySuffix && !anyDyeingRecipe) return [];
+    const structuredTfcColor =
+      record.namespace === "tfc" &&
+      (record.path.startsWith("alabaster/") || record.path.startsWith("ceramic/unfired_large_vessel/"));
+    if (!anyTag && !anyTagFragment && !anySuffix && !anyDyeingRecipe && !structuredTfcColor) return [];
 
     return [
       {

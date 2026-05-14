@@ -1,9 +1,10 @@
 import type { ItemExtractRecord } from "../extract/record.ts";
 import { FACETS, type FacetDef } from "../schema/facets.ts";
 import type { PackFacetVocabulary } from "../schema/vocabulary.ts";
+import { UNIVERSAL_DEFAULTS } from "../vocabulary/constants.ts";
 import type { LlmDocumentContext } from "./document_context.ts";
 
-export const PROMPT_VERSION = "stage3-prompt-v28";
+export const PROMPT_VERSION = "stage3-prompt-v33";
 
 const RECIPE_EXAMPLE_LIMIT = 24;
 const LOOT_SOURCE_LIMIT = 16;
@@ -161,10 +162,11 @@ use it with, how they interact with it, and which pack concepts it
 belongs to — by emitting a concise facet record per the schema below.
 
 This is a semantic classification task, not just a storage-section task.
-\`organization_group\` is one high-impact facet with special caution
-because it can move an item on the main wall. Most other facets are
-lower-risk semantic/query metadata, so useful inferred values are
-preferred over silence.
+\`organization_group\` is the high-impact primary home facet, so it should
+be filled when targeted; new organization-group proposals need special
+caution because they can create or split main-wall sections. Most other
+facets are lower-risk semantic/query metadata, so useful inferred values
+are preferred over silence.
 
 # Cardinal rule (overrides everything else in this prompt)
 
@@ -210,10 +212,14 @@ reconsider.
   display names, component data, neighboring items, and pack vocabulary labels
   to make judgment calls. Do not wait for an exact string match when the
   accepted vocabulary value clearly fits the item.
-- The main exception is \`organization_group\`: that facet changes the
-  player's storage layout, so it stays precision-first. Emit it only when the
-  item belongs in a broad human storage section that should exist on the main
-  wall. For other semantic/query facets, prefer higher recall.
+- \`organization_group\` is the high-impact primary home facet. When it is
+  targeted, assign exactly one best accepted organization id for every item:
+  either a universal default section such as \`slot:metal_stock\` or a reviewed
+  pack-specific split such as \`pack:<pack>/beekeeping\`. Be conservative about
+  proposing new organization groups, but do not leave the facet empty merely
+  because a default section fits. If a missing broad human storage bucket would
+  improve the pack, still assign the best existing home and add an
+  \`organization_group\` \`vocabulary_proposals\` entry for human review.
 - Vocabulary-backed facets use stable ids such as \`slot:cooking\`,
   \`modid:mechanical_power\`, \`pack:example/steelmaking\`, or scoped
   \`pack:example/steelmaking#input\`; never emit display labels like
@@ -224,7 +230,9 @@ reconsider.
   applicable vocabulary-backed facet merely because the evidence is an
   inference rather than an exact name match. If no accepted id fits, leave that
   facet out of \`facets\` and add a top-level \`vocabulary_proposals\` entry
-  whenever a useful missing value would improve the classification. If a
+  whenever a useful missing value would improve the classification. Exception:
+  when \`organization_group\` is targeted, choose the best accepted home for
+  every item and propose missing custom groups separately. If a
   vocabulary-backed target facet has no listed values in the Pack facet
   vocabulary section, use \`vocabulary_proposals\` for meaningful missing
   values instead of inventing accepted ids in \`facets\`. Copy accepted ids
@@ -236,10 +244,10 @@ reconsider.
   add \`vocabulary_proposals\` for useful missing vocabulary rather than going
   silent. The schema pattern is an id grammar, not permission to invent
   accepted ids.
-- Only emit facets that actually apply to the item. The test: would a player consider this facet meaningful for this item? \`combat_bonus\` on bread, \`biome\` on a crafted-only item — players wouldn't expect a value, so omit. Do not emit \`null\`, empty arrays, or placeholder values to satisfy a target-facet list.
+- Only emit facets that actually apply to the item. The test: would a player consider this facet meaningful for this item? \`combat_bonus\` on bread, \`biome\` on a crafted-only item — players wouldn't expect a value, so omit. Exception: when \`organization_group\` is targeted, every item needs one primary home, so choose the best accepted group rather than omitting it. Do not emit \`null\`, empty arrays, or placeholder values to satisfy other target-facet lists.
 - Multi-value facets must use \`values: [...]\` even when there is only one
   value. This includes \`organization_group\` and \`mod_subsystem\`; never emit it as a scalar \`value\` facet.
-- For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both. Never set \`ambiguous\` on multi-value facets; for multi-value facets emit the applicable \`values\` without \`ambiguous\`. For \`organization_group\`, omit when evidence is weak; for other semantic/query facets, use your best reasonable judgment.
+- For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both. Never set \`ambiguous\` on multi-value facets; for multi-value facets emit the applicable \`values\` without \`ambiguous\`. For \`organization_group\`, emit exactly one best primary home in \`values\`.
 - Keep facet entries small. The required payload is just \`value\` for a
   single-value facet or \`values\` for a multi-value facet. Optional review
   fields are allowed but should not become the task:
@@ -443,10 +451,12 @@ function renderFinalUserChecklist(input: LlmPromptInput): string {
   if (hasFacetVocabulary) {
     lines.push(
       "- Vocabulary-backed facets may use only ids listed for that exact facet in `Pack facet vocabulary`. Use accepted ids when they fit, and add `vocabulary_proposals` for useful missing ids instead of inventing them inside `facets`. Copy accepted ids exactly as printed; do not rewrite slashes, underscores, namespace, or pack prefix. The prefix is part of the value: use `slot:place`, `slot:equip`, `slot:burn`, etc., never bare `place`, `equip`, or `burn`.",
+      "- Vocabulary aliases are matching hints, not output ids. If a listed id has aliases, you may use the alias to recognize the item, but the facet value must still be the listed accepted id.",
       "- For semantic/query vocabulary-backed facets such as `activity`, `workflow`, `workflow_role`, `used_at`, `progression_stage`, `material_process_stage`, food facets, container facets, and use affordances, prefer high recall: emit plausible accepted ids from recipes, quests, advancements, guide text, tags, names, and neighboring context. A good inferred value is better than an empty facet.",
       "- Keep vocabulary-backed ids in the right facet. `used_at` is a physical station, machine, tool, or surface; workflow ids such as `tfc:casting` or `tfc:panning` belong under `workflow`, not `used_at`, unless that exact id is listed under `used_at`. `activity` uses the listed broad player activities; ordinary crafting can live in `primary_uses` or a workflow rather than an invented near-miss id such as `slot:crafting`.",
-      "- Do not move ids across vocabulary-backed facets. A good `mod_subsystem` id such as `modid:kinetics` is not an `organization_group` unless that exact id is listed under `organization_group`; use the subsystem facet, leave the organization group unset, or add a vocabulary proposal for the missing storage bucket.",
-      "- For `organization_group`, use an accepted storage-bucket id only when it is a scarce, broad item-type section clearly better than the built-in section. Protected built-ins are good player homes, not bad categories: item containers belong to Storage, lamps/light sources to Lighting, crops to Crops, pottery/molds to Ceramics & Molds, and redstone components to Redstone unless a broad overloaded-parent split is clearly better. Treat Ores & Raw Stock, Metal Stock, Gems & Crystals, Dusts & Powders, Wood, Seeds, Crops, Plants, Ceramics & Molds, and Organic Materials as stock built-ins, and Materials as an overloaded fallback that should split into a few useful broad groups. Do not use organization groups as mod filters, rock/material taxonomy, material form/state splits, workstation-specific processes, or other query-only views.",
+      "- Do not move ids across vocabulary-backed facets. A good `mod_subsystem` id such as `modid:kinetics` is not an `organization_group` unless that exact id is listed under `organization_group`; use the subsystem facet and choose the best accepted organization home separately.",
+      "- For `organization_group`, emit exactly one accepted id for every item when the facet is targeted. Use universal defaults such as `slot:storage`, `slot:lighting`, `slot:crops`, `slot:ceramics_molds`, `slot:redstone`, `slot:metal_stock`, `slot:ores_raw_stock`, and `slot:materials` when they are the right home; use reviewed pack-specific groups when they are a better broad home. Do not use organization groups as mod filters, rock/material taxonomy, material form/state splits, workstation-specific processes, or other query-only views.",
+      "- If no accepted `organization_group` id is ideal but the item points to a missing broad player-maintained storage bucket, still assign the best existing home and add a top-level `vocabulary_proposals` entry for `organization_group`. Use `pack:<pack_id>/...` for cross-mod pack buckets, include a concise human label, and cite sibling/evidence in the rationale. Do not propose singleton quirks, mod filters, rock taxonomy, material-state splits, or one-machine workflow views.",
     );
   } else {
     lines.push(
@@ -463,7 +473,7 @@ function renderFinalUserChecklist(input: LlmPromptInput): string {
     );
   }
   lines.push(
-    "- Organization group is the precision-first exception. For other semantic/query facets, use reasonable judgment; low-evidence but plausible metadata is better than leaving useful accepted vocabulary unused.",
+    "- Organization group is required when targeted, but new organization-group proposals are precision-first. For other semantic/query facets, use reasonable judgment; low-evidence but plausible metadata is better than leaving useful accepted vocabulary unused.",
     "- For top-level `fill_ins`, never use generic `form` values such as `block` or `item`; choose a real allowed form like `whole_block`, `storage_block`, `stairs`, `slab`, or omit the fill-in.",
   );
   return lines.join("\n");
@@ -859,76 +869,52 @@ of the item as belonging to that stage.
 
 ## organization_group — where would a player put this item?
 
-This section is deliberately more cautious than the other semantic
-facets because \`organization_group\` changes the player's main wall.
-Do not apply this storage-layout caution to \`activity\`, \`workflow\`,
-\`used_at\`, \`progression_stage\`, \`mod_subsystem\`, food/container
-facets, or other search/query metadata.
-
-The \`organization_group\` facet is the direct SLOT auto-home signal for
+The \`organization_group\` facet is SLOT's direct primary-home signal for
 large modpacks. It answers:
 
 > "If a skilled player had only a small number of broad main-wall
 > sections for this pack, which named storage section would this item
 > belong in?"
 
-Use it for broad, stable storage sections a player would actually
-maintain. Think primarily in terms of item type or role: large food
-subfamilies when Food is overloaded, cooking supplies, beekeeping,
-glass products, papermaking, weaving/cloth supplies, masonry supplies,
-reagents. Those examples are illustrative, not a hard list. Use case,
-material state, or workflow context can refine a broad type, but must
-not become the main reason to split related items.
+When this facet is targeted, every item must get exactly one accepted
+\`organization_group\` value. The accepted list includes universal default
+homes such as \`slot:storage\`, \`slot:metal_stock\`, \`slot:tools\`,
+\`slot:lighting\`, and \`slot:miscellaneous\`, plus reviewed pack-specific
+splits such as beekeeping, glass products, papermaking, or weaving/cloth.
+Use the exact ids printed in Pack facet vocabulary.
 
-Be stingy. A real manual wall only supports about 15-20 human-named
-sections before it becomes worse than unsorted storage. Emit
-\`organization_group\` only when the item belongs in a section that
-would deserve one of those scarce slots across the pack.
+Built-in default groups are good player homes, not failures. If a portable
+container belongs in Storage, emit the accepted Storage id. If a lamp belongs
+in Lighting, emit the accepted Lighting id. If a crop belongs in Crops, emit
+the accepted Crops id. Do not leave \`organization_group\` empty just because
+the right answer is a universal default section.
 
-Protected built-in wall sections are Food, Tools, Weapons, Armor,
-Lighting, Ores & Raw Stock, Metal Stock, Gems & Crystals,
-Dusts & Powders, Wood, Seeds, Crops, Plants, Ceramics & Molds,
-Organic Materials, Storage, Stairs, Slabs, Walls, Doors,
-Fences, Windows, Building Blocks, Decoration, Natural, Workbenches,
-Mechanisms, Redstone, Upgrades, Transport, Utility, Curiosities, and
-Miscellaneous. Do not emit an accepted
-\`organization_group\` that closely duplicates one of these protected
-sections, or that splits items a player expects to scan together within
-one of these.
+Use reviewed pack-specific groups when they are a better broad home than a
+default. Think primarily in terms of item type or role; use case, material
+state, or workflow context can refine a broad type, but must not become the
+main reason to split related items. Beekeeping, glass products, papermaking,
+weaving/cloth supplies, masonry supplies, cooking supplies, and reagents can
+be good pack-specific homes when the accepted vocabulary lists them and the
+item is a core member.
 
-Protected built-ins are good player homes, not bad categories. Rejecting
-a custom group like \`crops\`, \`pottery\`, \`redstone\`,
-\`item_containers\`, or \`lamps\` means "already handled by the default
-wall section", not "players would not organize this way". Item containers
-belong to Storage, lamps and light sources belong to Lighting, crops
-belong to Crops, pottery/molds belong to Ceramics & Molds, and redstone
-components belong to Redstone unless the accepted vocabulary names a
-broader overloaded-parent split that is clearly better.
+\`slot:materials\` and \`slot:miscellaneous\` are last-resort homes. Prefer a
+narrower accepted default or reviewed pack-specific group when one fits. If
+many items would land in Materials and evidence supports a broad human
+storage split, still assign the best existing home for this item and add a
+top-level \`vocabulary_proposals\` entry for the missing group. Do not put the
+unapproved id in \`facets\`.
 
-\`Wood\` is the built-in home for sticks, logs, planks, boards, lumber,
-and close stock-wood siblings. Do not emit a custom wood
-\`organization_group\` unless the proposal is a distinct broad
-non-stock woodcraft bucket that would not split those obvious siblings.
+The vocabulary review step spends the scarce custom section slots. A real
+manual wall only supports about 15-20 human-named sections before it becomes
+worse than unsorted storage, so do not propose new custom groups casually.
+When proposing a missing custom organization group, use
+\`pack:<pack_id>/...\`, include a concise human label, and explain the broad
+sibling family it would keep together.
 
-\`Seeds\`, \`Crops\`, \`Plants\`, \`Ceramics & Molds\`, and \`Organic Materials\` are
-built-in homes for seed stock, field produce, non-crop botanical stock,
-clay/brick/terracotta/pottery/mold stock, and organic stock such as string,
-fiber, leather, wool, bone, slime, and hides. Do not
-emit custom groups that merely rename or split those stock sections.
-
-\`Materials\` still exists as a runtime fallback, but it is intentionally
-not protected here because it becomes too large in real packs. Prefer
-splitting would-be Materials items into roughly 3-6 broad, useful
-storage sections when evidence supports them: fiber/cloth materials,
-chemicals/reagents, glass products, papermaking supplies, masonry supplies,
-or other broad item-type groups that are not already protected built-ins.
-
-Use a custom group near a built-in parent only when the parent would be
-too overloaded and the custom group is a broad player-obvious subset:
-for example cooking supplies out of Food/Utility.
-Beekeeping and glass products can be valid custom groups in packs where
-they cover broad families with enough siblings and do not merely rename
-a built-in section.
+Do not propose custom groups that merely duplicate universal defaults:
+\`crops\`, \`pottery\`, \`redstone\`, \`item_containers\`, \`lamps\`,
+\`wood\`, \`seeds\`, or \`tools\` are already covered by default homes unless
+the proposal is a distinct broad overloaded-parent split.
 
 The main wall is not a faceted search result. Do NOT emit
 \`organization_group\` for categories that merely answer a query such
@@ -942,33 +928,23 @@ inventory list.
 This facet is intentionally different from \`mod_subsystem\`.
 \`organization_group\` is allowed on materials, utility items,
 building blocks, natural resources, and intermediate crafting items
-when those items form a broad player-recognizable storage bucket. Do NOT emit
-it for singleton quirks, decorative style families, color/material
-families, or generic catch-alls like \`<ns>:materials\`,
+when those items form a broad player-recognizable storage bucket. Do NOT
+create custom groups for singleton quirks, decorative style families,
+color/material families, or generic catch-alls like \`<ns>:materials\`,
 \`<ns>:crafting\`, \`<ns>:blocks\`, \`<ns>:misc\`.
 
-Do not omit the facet just because the item also has a narrow form like
+Do not withhold the facet just because the item has a narrow form like
 \`ingot\`, \`gem\`, \`raw ore\`, \`stairs\`, \`slab\`, \`tool\`, or
-\`armor\`; emit the group only when it would not split a protected stock
-section and the broad storage bucket is the more useful manual-storage
-destination. For missing broad pack-owned storage buckets, add a
-\`vocabulary_proposals\` entry rather than inventing an id in \`facets\`;
-cross-mod organization proposals should usually use \`pack:<pack_id>/...\`,
-not the namespace of whichever item happened to trigger the proposal.
-Omit it when the universal section really is where a player would put
-the item, or when no useful group has enough sibling items.
-
-Role, form, and material_family often should be enough. If the accepted
-vocabulary contains a bucket a player would actually use for this broad
-item family — beekeeping, glass products, papermaking, cloth, cooking
-supplies, reagents — emit that accepted organization_group id. If the
-listed bucket would split obvious
-siblings across two main wall sections, omit it and let the built-in
-section win.
+\`armor\`; choose the accepted group a player would use for that item.
+If a reviewed custom bucket would split obvious siblings across two main
+wall sections, choose the built-in default home instead.
 
 Concrete anchors use accepted vocabulary labels, not literal ids:
 - Bee, hive, honey, wax, or apiary supplies in a beekeeping-heavy pack →
-  use the accepted Beekeeping organization id if it is listed.
+  use the accepted Beekeeping organization id if it is listed. Honey or
+  wax still count when packaged as bottles, buckets, combs, or blocks;
+  the Storage exception is for actual storage containers, not product
+  packaging.
 - Glass blocks, panes, bottles, vials, and glassware in a glass-heavy pack →
   use the accepted Glass Products organization id if it is listed.
 - Reusable cookware, utensils, bowls, pots, knives, and food-prep tools →
@@ -977,22 +953,23 @@ Concrete anchors use accepted vocabulary labels, not literal ids:
   use the accepted Weaving/Cloth organization id if listed.
 - Paper, books, maps, papyrus, and bookmaking supplies →
   use the accepted Papermaking organization id if listed.
-- Portable or placeable item containers → no organization_group; Storage wins.
-- Lamps, lanterns, and light-source blocks → no organization_group; Lighting wins.
-- Crop produce, pottery/mold stock, or redstone components → no organization_group;
-  Crops / Ceramics & Molds / Redstone are already good homes.
-- A plain metal ingot with no workflow-specific storage expectation → no
-  organization_group; the general Metal Stock/Materials section wins.
+- Portable or placeable item containers → use the accepted Storage id.
+- Lamps, lanterns, and light-source blocks → use the accepted Lighting id.
+- Crop produce, pottery/mold stock, or redstone components → use the accepted
+  Crops / Ceramics & Molds / Redstone ids.
+- A plain metal ingot with no workflow-specific storage expectation → use the
+  accepted Metal Stock id.
 - A material state, block-form variant, or individual rock-type subgroup →
-  no organization_group; the existing Metal Stock / Ores & Raw Stock / Stairs /
-  Building section or a broad custom materials group wins.
+  use the existing Metal Stock / Ores & Raw Stock / Stairs / Building id or a
+  broad reviewed custom materials group.
 - A bucket named after one mod or one mod's mechanical-power subsystem →
-  no organization_group; use role, activity, mod_namespace, mod_subsystem,
-  or search/query views instead of a main wall section.
-- Stackable plates → no organization_group; that is a material property and
-  it would split related metal items.
-- Anvil smithing → no organization_group; that is a workstation/process view,
-  not the broad metalworking or materials section a player would maintain.
+  use the accepted home for the item type; keep the mod/system detail in role,
+  activity, mod_namespace, mod_subsystem, or search/query facets.
+- Stackable plates → use the accepted Metal Stock id; "stackable plates" is a
+  material property, not a custom organization group.
+- Anvil smithing → use the accepted Metal Stock, Materials, or reviewed
+  metalworking-supplies home; "anvil smithing" is a process view, not a custom
+  main-wall group.
 
 ## mod_subsystem — what part of the mod IS this item
 
@@ -1327,16 +1304,31 @@ export function buildPromptFacetVocabulary(
   vocabulary: PackFacetVocabulary | undefined,
   targetFacets: readonly string[],
 ): PromptFacetVocabulary | undefined {
-  if (!vocabulary) return undefined;
   const target = new Set(targetFacets);
   const out: PromptFacetVocabulary = {};
+  for (const facetId of [...target].sort((a, b) => a.localeCompare(b))) {
+    const def = FACETS[facetId];
+    if (!def?.vocabulary_backed) continue;
+    const defaults = UNIVERSAL_DEFAULTS[facetId] ?? [];
+    if (defaults.length === 0) continue;
+    out[facetId] = defaults.map((value) => ({
+      id: value.id,
+      label: value.label,
+      ...(value.description ? { description: value.description } : {}),
+      ...(value.aliases?.length ? { aliases: value.aliases } : {}),
+    }));
+  }
+  if (!vocabulary) return Object.keys(out).length > 0 ? out : undefined;
   for (const [facetId, facet] of Object.entries(vocabulary.facets ?? {}).sort(([a], [b]) => a.localeCompare(b))) {
     if (!target.has(facetId)) continue;
     const def = FACETS[facetId];
     if (!def?.vocabulary_backed) continue;
-    const values: PromptFacetVocabularyValue[] = [];
+    const existing = new Set((out[facetId] ?? []).map((value) => value.id));
+    const values: PromptFacetVocabularyValue[] = [...(out[facetId] ?? [])];
     for (const [id, value] of Object.entries(facet.values ?? {}).sort(([a], [b]) => a.localeCompare(b))) {
       if (value.state !== "accepted") continue;
+      if (existing.has(id)) continue;
+      existing.add(id);
       values.push({
         id,
         label: value.label,
@@ -1358,7 +1350,7 @@ function renderPackFacetVocabulary(
   if (!vocabulary || Object.keys(vocabulary).length === 0) return "";
   const lines: string[] = ["# Pack facet vocabulary"];
   lines.push(
-    "For each facet listed below, these are the accepted ids supplied to this classification batch. Use these accepted ids for the matching facet whenever they fit the item. If a target vocabulary-backed facet has no section here, or if no listed id fits an item, leave that unaccepted value out of `facets` and add a top-level vocabulary_proposals entry when useful missing vocabulary would improve the classification. Labels/descriptions are guidance; output accepted ids exactly as printed, including namespace/prefix such as `slot:` or `pack:<pack>/`.",
+    "For each facet listed below, these are the accepted ids supplied to this classification batch. Use these accepted ids for the matching facet whenever they fit the item. If a target vocabulary-backed facet has no section here, or if no listed id fits an item, leave that unaccepted value out of `facets` and add a top-level vocabulary_proposals entry when useful missing vocabulary would improve the classification. Exception: when `organization_group` is targeted, universal default homes are listed here and every item should still receive the best accepted organization_group id while any missing custom group is proposed separately. Labels/descriptions are guidance. Aliases are matching hints only, not accepted output values. Output accepted ids exactly as printed, including namespace/prefix such as `slot:` or `pack:<pack>/`.",
   );
   if (packId) {
     lines.push(

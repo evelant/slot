@@ -4,6 +4,7 @@ import {
   validateMultiValue,
   type FacetDef,
 } from "./facets.ts";
+import { UNIVERSAL_DEFAULTS } from "../vocabulary/constants.ts";
 
 export type VocabularyState = "accepted" | "review" | "rejected";
 export type VocabularyOrigin =
@@ -249,8 +250,16 @@ function acceptedValuesByFacet(
   vocabulary: PackFacetVocabulary,
 ): Map<string, Set<string>> {
   const out = new Map<string, Set<string>>();
-  for (const [facetId, facet] of Object.entries(vocabulary.facets ?? {})) {
+  for (const [facetId, defaults] of Object.entries(UNIVERSAL_DEFAULTS)) {
+    if (!FACETS[facetId]?.vocabulary_backed) continue;
     const accepted = new Set<string>();
+    for (const value of defaults) {
+      accepted.add(value.id);
+    }
+    if (accepted.size > 0) out.set(facetId, accepted);
+  }
+  for (const [facetId, facet] of Object.entries(vocabulary.facets ?? {})) {
+    const accepted = out.get(facetId) ?? new Set<string>();
     for (const [valueId, value] of Object.entries(facet.values ?? {})) {
       if (value.state === "accepted") {
         accepted.add(valueId);

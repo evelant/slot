@@ -106,6 +106,9 @@ const ID_EXACT_TO_FORM: Record<string, string> = {
 
 /** Ordered id-suffix fallbacks; order matters (longer suffixes first). */
 const ID_SUFFIX_TO_FORM: Array<[suffix: string, form: string]> = [
+  ["_restrictive_item_pipe", "pipe"],
+  ["_fluid_pipe", "pipe"],
+  ["_item_pipe", "pipe"],
   ["_pressure_plate", "pressure_plate"],
   ["_hanging_sign", "hanging_sign"],
   ["_fence_gate", "fence_gate"],
@@ -126,12 +129,18 @@ const ID_SUFFIX_TO_FORM: Array<[suffix: string, form: string]> = [
   ["_plate", "plate"],
   ["_nugget", "nugget"],
   ["_ingot", "ingot"],
+  ["_knife", "tool"],
+  ["_scythe", "tool"],
+  ["_foil", "sheet"],
   ["_shard", "shard"],
   ["_seeds", "seed"],
   ["_dust", "dust"],
+  ["_rod", "rod"],
+  ["_file", "tool"],
   ["_hoe", "tool"],
   ["_axe", "tool"],
   ["_saddle", "special"],
+  ["_pipe", "pipe"],
   ["_door", "door"],
   ["_wall", "wall"],
   ["_slab", "slab"],
@@ -156,6 +165,7 @@ const ID_SUFFIX_TO_FORM: Array<[suffix: string, form: string]> = [
   ["_minecart", "vehicle"],
   ["_ore", "ore"],
   ["_crystal", "crystal"],
+  ["_gem", "gem"],
 ];
 
 /**
@@ -192,6 +202,10 @@ export const formRule: Rule = {
 
     const structuredTool = formFromStructuredToolPath(record.path);
     if (structuredTool) return emit(structuredTool, "rule:form_from_id", "tool path segment");
+
+    if (/^prospector\.[a-z0-9_]+$/.test(record.path)) {
+      return emit("tool", "rule:form_from_id", "prospector tier id");
+    }
 
     for (const tag of record.minecraft_tags) {
       const form = TAG_TO_FORM[tag];

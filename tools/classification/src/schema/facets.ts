@@ -173,7 +173,7 @@ export const FORM_VALUES = [
   "log", "stripped_log", "wood",
   "carpet", "bed", "banner", "sign", "hanging_sign", "head", "pot",
   "candle", "torch", "lantern",
-  "tool", "weapon", "armor_piece",
+  "tool", "weapon", "armor_piece", "pipe",
   "food_raw", "food_cooked", "potion", "bottle",
   "bucket", "projectile", "vehicle",
   "seed", "sapling", "bulb",
@@ -525,10 +525,10 @@ export const FACETS: Record<string, FacetDef> = {
   organization_group: {
     kind: "multi_free_text",
     pattern: VOCABULARY_VALUE_ID_PATTERN,
-    description: "Vocabulary-backed broad human storage section beyond protected built-in sections; primarily item type/role with use or state as secondary.",
+    description: "Vocabulary-backed primary broad human storage home. Values include universal default sections plus reviewed pack-specific splits; every classified item should receive one best home when this facet is targeted.",
     llm_authored: true,
     vocabulary_backed: true,
-    examples: ["pack:tfg2/beekeeping", "pack:tfg2/glass_products", "pack:tfg2/papermaking"],
+    examples: ["slot:metal_stock", "slot:storage", "pack:tfg2/beekeeping"],
   },
   mod_subsystem: {
     kind: "multi_free_text",

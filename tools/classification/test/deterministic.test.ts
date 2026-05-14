@@ -228,6 +228,14 @@ describe("materialFamilyRule", () => {
     })));
     expect(richRaw[0]!).toMatchObject({ value: "monazite" });
 
+    const dustyRaw = materialFamilyRule.run(ctx(record({
+      id: "gtceu:dusty_raw_bauxite",
+      namespace: "gtceu",
+      path: "dusty_raw_bauxite",
+      minecraft_tags: ["forge:dusty_raw_materials/bauxite"],
+    })));
+    expect(dustyRaw[0]!).toMatchObject({ value: "bauxite" });
+
     const smallDust = materialFamilyRule.run(ctx(record({
       id: "gtceu:small_black_steel_dust",
       namespace: "gtceu",
@@ -267,6 +275,14 @@ describe("materialFamilyRule", () => {
       display_name: "Cypress Barrel",
     })));
     expect(woodBarrel[0]!).toMatchObject({ value: "wood_cypress" });
+
+    const woodButton = materialFamilyRule.run(ctx(record({
+      id: "tfc:wood/planks/aspen_button",
+      namespace: "tfc",
+      path: "wood/planks/aspen_button",
+      display_name: "Aspen Button",
+    })));
+    expect(woodButton[0]!).toMatchObject({ value: "wood_aspen" });
 
     const knifeBlade = materialFamilyRule.run(ctx(record({
       id: "tfc:metal/knife_blade/copper",
@@ -383,6 +399,131 @@ describe("materialFamilyRule", () => {
       display_name: "Fluix Sword",
     })));
     expect(fluixSword[0]!).toMatchObject({ value: "fluix" });
+
+    const diggerHelmet = materialFamilyRule.run(ctx(record({
+      id: "diggerhelmet:broken_red_steel_digger_helmet",
+      namespace: "diggerhelmet",
+      path: "broken_red_steel_digger_helmet",
+      display_name: "Broken Red Steel Digger Helmet",
+    })));
+    expect(diggerHelmet[0]!).toMatchObject({ value: "red_steel" });
+
+    const harvestBasket = materialFamilyRule.run(ctx(record({
+      id: "tfg:aluminium_harvest_basket",
+      namespace: "tfg",
+      path: "aluminium_harvest_basket",
+      display_name: "Aluminium Harvest Basket",
+    })));
+    expect(harvestBasket[0]!).toMatchObject({ value: "aluminium" });
+
+    const stoneSupport = materialFamilyRule.run(ctx(record({
+      id: "tfg:gabbro_support",
+      namespace: "tfg",
+      path: "gabbro_support",
+      display_name: "Gabbro Support",
+    })));
+    expect(stoneSupport[0]!).toMatchObject({ value: "gabbro" });
+
+    const whisk = materialFamilyRule.run(ctx(record({
+      id: "gtceu:steel_whisk",
+      namespace: "gtceu",
+      path: "steel_whisk",
+      display_name: "Steel Whisk",
+    })));
+    expect(whisk[0]!).toMatchObject({ value: "steel" });
+
+    const pipe = materialFamilyRule.run(ctx(record({
+      id: "gtceu:duranium_normal_fluid_pipe",
+      namespace: "gtceu",
+      path: "duranium_normal_fluid_pipe",
+      display_name: "Normal Duranium Fluid Pipe",
+    })));
+    expect(pipe[0]!).toMatchObject({ value: "duranium" });
+
+    const pipeCasing = materialFamilyRule.run(ctx(record({
+      id: "gtceu:steel_pipe_casing",
+      namespace: "gtceu",
+      path: "steel_pipe_casing",
+      display_name: "Steel Pipe Casing",
+    })));
+    expect(pipeCasing[0]!).toMatchObject({ value: "steel" });
+
+    const paperExtra = materialFamilyRule.run(ctx(record({
+      id: "domum_ornamentum:white_paper_extra",
+      namespace: "domum_ornamentum",
+      path: "white_paper_extra",
+      display_name: "White Paper Extra",
+    })));
+    expect(paperExtra[0]!).toMatchObject({ value: "paper" });
+
+    const file = materialFamilyRule.run(ctx(record({
+      id: "gtceu:steel_file",
+      namespace: "gtceu",
+      path: "steel_file",
+      display_name: "Steel File",
+    })));
+    expect(file[0]!).toMatchObject({ value: "steel" });
+
+    const swordHead = materialFamilyRule.run(ctx(record({
+      id: "gtceu:steel_sword_head",
+      namespace: "gtceu",
+      path: "steel_sword_head",
+      display_name: "Steel Sword Head",
+    })));
+    expect(swordHead[0]!).toMatchObject({ value: "steel" });
+
+    const knifeHead = materialFamilyRule.run(ctx(record({
+      id: "gtceu:stone_knife_head",
+      namespace: "gtceu",
+      path: "stone_knife_head",
+      display_name: "Stone Knife Head",
+    })));
+    expect(knifeHead[0]!).toMatchObject({ value: "stone" });
+
+    const miningHammer = materialFamilyRule.run(ctx(record({
+      id: "tfg:arsenic_bronze_mining_hammer",
+      namespace: "tfg",
+      path: "arsenic_bronze_mining_hammer",
+      display_name: "Arsenic Bronze Mining Hammer",
+    })));
+    expect(miningHammer[0]!).toMatchObject({ value: "arsenic_bronze" });
+  });
+
+  test("structured wood sections derive wood species family", () => {
+    const furniture = materialFamilyRule.run(ctx(record({
+      id: "mcw_tfc_aio:furniture/spruce_furniture/stripped_spruce_bookshelf_cupboard",
+      namespace: "mcw_tfc_aio",
+      path: "furniture/spruce_furniture/stripped_spruce_bookshelf_cupboard",
+    })));
+    expect(furniture[0]!).toMatchObject({ value: "wood_spruce" });
+
+    const bridge = materialFamilyRule.run(ctx(record({
+      id: "mcw_tfc_aio:bridges/maple_bridges/maple_log_bridge_middle",
+      namespace: "mcw_tfc_aio",
+      path: "bridges/maple_bridges/maple_log_bridge_middle",
+    })));
+    expect(bridge[0]!).toMatchObject({ value: "wood_maple" });
+
+    const brickBridge = materialFamilyRule.run(ctx(record({
+      id: "mcw_tfc_aio:bridges/brick_bridges/brick_bridge_pier",
+      namespace: "mcw_tfc_aio",
+      path: "bridges/brick_bridges/brick_bridge_pier",
+    })));
+    expect(brickBridge).toEqual([]);
+
+    const roof = materialFamilyRule.run(ctx(record({
+      id: "mcw_tfc_aio:roofs/oak_roofs/oak_planks_attic_roof",
+      namespace: "mcw_tfc_aio",
+      path: "roofs/oak_roofs/oak_planks_attic_roof",
+    })));
+    expect(roof[0]!).toMatchObject({ value: "wood_oak" });
+
+    const concreteRoof = materialFamilyRule.run(ctx(record({
+      id: "mcw_tfc_aio:roofs/red_concrete_roofs/red_concrete_attic_roof",
+      namespace: "mcw_tfc_aio",
+      path: "roofs/red_concrete_roofs/red_concrete_attic_roof",
+    })));
+    expect(concreteRoof).toEqual([]);
   });
 
   test("exact copper and glass blocks derive family", () => {
@@ -449,6 +590,75 @@ describe("formRule", () => {
       path: "carbon_fiber_plate",
     })));
     expect(out[0]!).toMatchObject({ value: "plate" });
+  });
+
+  test("rod and foil suffixes", () => {
+    const rod = formRule.run(ctx(record({
+      id: "tfg:pure_graphite_rod",
+      namespace: "tfg",
+      path: "pure_graphite_rod",
+    })));
+    expect(rod[0]!).toMatchObject({ value: "rod" });
+
+    const foil = formRule.run(ctx(record({
+      id: "gtceu:lead_foil",
+      namespace: "gtceu",
+      path: "lead_foil",
+    })));
+    expect(foil[0]!).toMatchObject({ value: "sheet" });
+  });
+
+  test("modded material tools and process forms", () => {
+    const pipe = formRule.run(ctx(record({
+      id: "gtceu:polyethylene_tiny_fluid_pipe",
+      namespace: "gtceu",
+      path: "polyethylene_tiny_fluid_pipe",
+      extractor_meta: { is_block_item: true },
+    })));
+    expect(pipe[0]!).toMatchObject({ value: "pipe" });
+
+    const restrictivePipe = formRule.run(ctx(record({
+      id: "gtceu:polyvinyl_chloride_huge_restrictive_item_pipe",
+      namespace: "gtceu",
+      path: "polyvinyl_chloride_huge_restrictive_item_pipe",
+      extractor_meta: { is_block_item: true },
+    })));
+    expect(restrictivePipe[0]!).toMatchObject({ value: "pipe" });
+
+    const knife = formRule.run(ctx(record({
+      id: "gtceu:naquadah_alloy_knife",
+      namespace: "gtceu",
+      path: "naquadah_alloy_knife",
+    })));
+    expect(knife[0]!).toMatchObject({ value: "tool" });
+
+    const scythe = formRule.run(ctx(record({
+      id: "gtceu:naquadah_alloy_scythe",
+      namespace: "gtceu",
+      path: "naquadah_alloy_scythe",
+    })));
+    expect(scythe[0]!).toMatchObject({ value: "tool" });
+
+    const file = formRule.run(ctx(record({
+      id: "gtceu:steel_file",
+      namespace: "gtceu",
+      path: "steel_file",
+    })));
+    expect(file[0]!).toMatchObject({ value: "tool" });
+
+    const prospector = formRule.run(ctx(record({
+      id: "gtceu:prospector.hv",
+      namespace: "gtceu",
+      path: "prospector.hv",
+    })));
+    expect(prospector[0]!).toMatchObject({ value: "tool" });
+
+    const gem = formRule.run(ctx(record({
+      id: "gtceu:flawless_emerald_gem",
+      namespace: "gtceu",
+      path: "flawless_emerald_gem",
+    })));
+    expect(gem[0]!).toMatchObject({ value: "gem" });
   });
 
   test("common tag roots normalize loader tag conventions", () => {
@@ -798,6 +1008,27 @@ describe("dyeColorRule", () => {
       path: "red_poured_glass",
     })));
     expect(pouredGlass[0]!).toMatchObject({ value: "red" });
+
+    const shippingContainer = dyeColorRule.run(ctx(record({
+      id: "createdeco:yellow_shipping_container",
+      namespace: "createdeco",
+      path: "yellow_shipping_container",
+    })));
+    expect(shippingContainer[0]!).toMatchObject({ value: "yellow" });
+
+    const alabaster = dyeColorRule.run(ctx(record({
+      id: "tfc:alabaster/polished/black_slab",
+      namespace: "tfc",
+      path: "alabaster/polished/black_slab",
+    })));
+    expect(alabaster[0]!).toMatchObject({ value: "black" });
+
+    const ceramicVessel = dyeColorRule.run(ctx(record({
+      id: "tfc:ceramic/unfired_large_vessel/pink",
+      namespace: "tfc",
+      path: "ceramic/unfired_large_vessel/pink",
+    })));
+    expect(ceramicVessel[0]!).toMatchObject({ value: "pink" });
   });
 });
 
@@ -887,6 +1118,19 @@ describe("isFuelRule", () => {
       namespace: "afc",
       path: "wood/twig/cypress",
       minecraft_tags: ["tfc:firepit_fuel"],
+    })));
+    expect(out).toContainEqual(expect.objectContaining({
+      facet: "is_fuel",
+      value: true,
+      source: "rule:is_fuel_from_id_or_tag",
+    }));
+  });
+
+  test("TFC-style wood twigs are fuel even without exported fuel tags", () => {
+    const out = isFuelRule.run(ctx(record({
+      id: "tfc:wood/twig/aspen",
+      namespace: "tfc",
+      path: "wood/twig/aspen",
     })));
     expect(out).toContainEqual(expect.objectContaining({
       facet: "is_fuel",

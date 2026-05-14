@@ -122,6 +122,12 @@ describe("layer facet validation", () => {
     const layer = tinyLayer();
     expect(validateLayer(layer, { vocabulary }).ok).toBe(true);
 
+    const universalDefault = tinyLayer();
+    universalDefault.entries["gtceu:steel_ingot"].facets.organization_group = {
+      values: ["slot:metal_stock"],
+    };
+    expect(validateLayer(universalDefault, { vocabulary }).ok).toBe(true);
+
     const rejected = tinyLayer();
     rejected.entries["gtceu:steel_ingot"].facets.workflow = {
       values: ["pack:fixture_pack/review_only"],

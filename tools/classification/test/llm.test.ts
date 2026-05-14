@@ -250,6 +250,7 @@ describe("prompt building", () => {
     expect(prompt.system).toContain("# Pack facet vocabulary");
     expect(prompt.system).toContain("accepted ids supplied to this classification batch");
     expect(prompt.system).toContain("Use these accepted ids for the matching facet whenever they fit");
+    expect(prompt.system).toContain("Aliases are matching hints only, not accepted output values");
     expect(prompt.system).toContain("Pack id for pack-scoped vocabulary proposals: `fixture`");
     expect(prompt.system).toContain("`pack:fixture/<token_path>`");
     expect(prompt.system).toContain("`tfc:casting`");
@@ -261,8 +262,14 @@ describe("prompt building", () => {
     expect(prompt.user).toContain("add `vocabulary_proposals` for useful missing ids");
     expect(prompt.user).toContain("Do not move ids across vocabulary-backed facets");
     expect(prompt.user).toContain("use `slot:place`, `slot:equip`, `slot:burn`");
+    expect(prompt.user).toContain("Vocabulary aliases are matching hints, not output ids");
     expect(prompt.user).toContain("`used_at` is a physical station, machine, tool, or surface");
     expect(prompt.user).toContain("rather than an invented near-miss id such as `slot:crafting`");
+    expect(prompt.user).toContain("emit exactly one accepted id for every item");
+    expect(prompt.user).toContain("Use universal defaults such as `slot:storage`");
+    expect(prompt.user).toContain("still assign the best existing home");
+    expect(prompt.user).toContain("missing broad player-maintained storage bucket");
+    expect(prompt.user).toContain("Use `pack:<pack_id>/...` for cross-mod pack buckets");
   });
 
   test("classification prompt leaves judgment room for free-text while closing vocabulary-backed facets", () => {
@@ -283,7 +290,8 @@ describe("prompt building", () => {
     expect(prompt.system).toContain("Optional per-facet review fields");
     expect(prompt.system).toContain("Default to useful judgment, not silence");
     expect(prompt.system).toContain("a reasonable inferred value is usually better than leaving the facet empty");
-    expect(prompt.system).toContain("The main exception is `organization_group`");
+    expect(prompt.system).toContain("`organization_group` is the high-impact primary home facet");
+    expect(prompt.system).toContain("assign exactly one best accepted organization id for every item");
     expect(prompt.system).toContain("judgment is allowed");
     expect(prompt.system).toContain("normal staple rather than rare progression stock");
     expect(prompt.system).toContain("`palette` is not the vanilla dye-color facet");
@@ -312,6 +320,11 @@ describe("prompt building", () => {
     expect(prompt.system).not.toContain("Use the item's own namespace unless");
     expect(prompt.system).toContain("Concrete anchors use accepted vocabulary labels, not literal ids");
     expect(prompt.system).toContain("use the accepted Beekeeping organization id if it is listed");
+    expect(prompt.system).toContain("the Storage exception is for actual storage containers");
+    expect(prompt.system).toContain("every item must get exactly one accepted");
+    expect(prompt.system).toContain("Built-in default groups are good player homes");
+    expect(prompt.system).toContain("explain the broad");
+    expect(prompt.system).toContain("top-level `vocabulary_proposals` entry");
     expect(prompt.system).toContain("Role is a cross-check,");
     expect(prompt.system).toContain("not a hard ban");
     expect(prompt.system).toContain("role=functional_block or storage_block");
@@ -330,6 +343,10 @@ describe("prompt building", () => {
     });
     expect(noVocabulary.system).toContain('"facets": {}');
     expect(noVocabulary.system).not.toContain("<accepted_id_from_pack_facet_vocabulary>");
+
+    const defaultVocabulary = buildPromptFacetVocabulary(undefined, ["organization_group"]);
+    expect(defaultVocabulary?.organization_group?.some((value) => value.id === "slot:metal_stock")).toBe(true);
+    expect(defaultVocabulary?.organization_group?.some((value) => value.id === "slot:storage")).toBe(true);
 
     const vocabulary: PackFacetVocabulary = {
       schema_version: 1,
@@ -353,7 +370,9 @@ describe("prompt building", () => {
       target_facets: ["organization_group"],
       facet_vocabulary: buildPromptFacetVocabulary(vocabulary, ["organization_group"]),
     });
-    expect(withVocabulary.system).toContain('"pack:fixture/beekeeping"');
+    expect(withVocabulary.system).toContain('"slot:food"');
+    expect(withVocabulary.system).toContain("`pack:fixture/beekeeping`");
+    expect(withVocabulary.system).toContain("`slot:metal_stock`");
     expect(withVocabulary.system).not.toContain("<accepted_id_from_pack_facet_vocabulary>");
   });
 
@@ -374,7 +393,7 @@ describe("prompt building", () => {
     expect(prompt.user).toContain("No accepted Pack facet vocabulary is supplied");
     expect(prompt.user).toContain("No accepted subsystem vocabulary is supplied for this batch");
     expect(prompt.user).toContain("add a `vocabulary_proposals` entry when the item clearly belongs to a meaningful subsystem");
-    expect(prompt.user).toContain("low-evidence but plausible metadata is better than leaving useful accepted vocabulary unused");
+    expect(prompt.user).toContain("Organization group is required when targeted");
     expect(prompt.user).not.toContain("Optional low-evidence facets are better omitted than guessed.");
     expect(prompt.user).not.toContain("Omit `mod_subsystem`; no accepted subsystem vocabulary is supplied");
   });
@@ -914,9 +933,11 @@ describe("runStage3", () => {
     // runStage3 prefers querySplit when the client implements it (which
     // ReplayLlmClient does). The fixture must be hashed under the split-mode
     // key, not the combined-prompt key.
+    const targetFacets = defaultTargetFacets();
     const { system, user } = buildSplitPrompt({
       items: [buildItemPayload(record, stage2Layer.entries["minecraft:iron_ingot"]!.facets)],
-      target_facets: defaultTargetFacets(),
+      target_facets: targetFacets,
+      facet_vocabulary: buildPromptFacetVocabulary(undefined, targetFacets),
     });
     const hash = fixtureHash(`${system}\n\n---\n\n${user}`);
 
@@ -974,9 +995,11 @@ describe("runStage3", () => {
     const stage2Layer = ironIngotStage2Layer();
     delete stage2Layer.entries["minecraft:iron_ingot"]!.facets.material_family;
 
+    const targetFacets = defaultTargetFacets();
     const { system, user } = buildSplitPrompt({
       items: [buildItemPayload(record, stage2Layer.entries["minecraft:iron_ingot"]!.facets)],
-      target_facets: defaultTargetFacets(),
+      target_facets: targetFacets,
+      facet_vocabulary: buildPromptFacetVocabulary(undefined, targetFacets),
     });
     const hash = fixtureHash(`${system}\n\n---\n\n${user}`);
     const fixtureDir = mkdtempSync(join(tmpdir(), "slot-stage3-fillin-"));
