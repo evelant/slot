@@ -97,10 +97,7 @@ public final class SlotWorkspaceCommandService {
         if (requestedIdentity == null || islandId == null || islandId.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_home_assignment");
         }
-        ItemIdentity identity = visibleAssignmentIdentity(viewModel, authority, requestedIdentity);
-        if (identity == null) {
-            return WorkspaceCommandOutcome.rejected("selected_item_not_visible");
-        }
+        ItemIdentity identity = assignmentIdentity(authority, requestedIdentity);
         final ItemIdentity targetIdentity = identity;
         VisualHomeAssignment before = runtime.visualAtlasWorkflow().visualHomeMap().assignment(targetIdentity);
         WorkspaceCommandOutcome outcome = applyHomeDrop(
@@ -2113,15 +2110,9 @@ public final class SlotWorkspaceCommandService {
         return false;
     }
 
-    private static ItemIdentity visibleAssignmentIdentity(
-            SlotWorkspaceViewModel viewModel,
-            InventoryAuthoritySnapshot authority,
-            ItemIdentity identity
-    ) {
-        if (visibleInAtlas(viewModel, identity)) {
-            return identity;
-        }
-        return cursorAssignmentIdentity(authority, identity);
+    private static ItemIdentity assignmentIdentity(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
+        ItemIdentity cursorIdentity = cursorAssignmentIdentity(authority, identity);
+        return cursorIdentity == null ? identity : cursorIdentity;
     }
 
     private static ItemIdentity cursorAssignmentIdentity(InventoryAuthoritySnapshot authority, ItemIdentity identity) {

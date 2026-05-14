@@ -142,6 +142,51 @@ class SlotWorkspaceCommandServiceRehomeTest {
     }
 
     @Test
+    void assignHomeAllowsIdentityAbsentFromProjectionAndCursor() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null
+        );
+        ItemIdentity compass = ItemIdentity.of("minecraft:compass");
+        runtime.visualAtlasWorkflow().createIslandWithId(
+                "tools",
+                "Tools",
+                0,
+                0,
+                0x5577AA,
+                null,
+                DomainEventMetadata.origin("test.tools"));
+
+        InventoryAuthoritySnapshot authority = InventoryAuthoritySnapshot.empty();
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority,
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1);
+        assertNull(viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(compass)));
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.assignHome(
+                runtime,
+                viewModel,
+                new LearnedIslandRuleStore(),
+                stack -> null,
+                authority,
+                compass.itemId(),
+                compass.comparisonMode().name(),
+                compass.componentFingerprint(),
+                "tools",
+                null);
+
+        assertTrue(outcome.success());
+        VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().visualHomeMap().assignment(compass);
+        assertNotNull(assignment);
+        assertEquals("tools", assignment.islandId());
+    }
+
+    @Test
     void reclassifyHomesIgnoresSubsystemSectionsAndReassignsToParentTemplate() {
         FacetIndexHolder.install(FacetIndex.load(new StringReader(layerWithCastingCohort())));
         try {
