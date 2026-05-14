@@ -278,16 +278,35 @@ public final class SlotForgeNetworking {
         }
 
         WorkspaceCommandOutcome outcome = workspaceSession.handleAction(player, packet);
-        sendViewToPlayer(player, workspaceSession, true);
-        SlotCommon.LOGGER.info(
-                "{} Forge workspace action: player={} action={} session={} menu={} status={} diagnostics={}",
-                outcome.success() ? "Accepted" : "Rejected",
-                playerName(player),
-                packet.action(),
-                packet.envelope().sessionId(),
-                packet.envelope().menuContainerId(),
-                outcome.status(),
-                outcome.diagnostics());
+        sendViewToPlayer(player, workspaceSession, false);
+        if (logWorkspaceActionAtInfo(outcome)) {
+            SlotCommon.LOGGER.info(
+                    "{} Forge workspace action: player={} action={} session={} menu={} status={} diagnostics={}",
+                    outcome.success() ? "Accepted" : "Rejected",
+                    playerName(player),
+                    packet.action(),
+                    packet.envelope().sessionId(),
+                    packet.envelope().menuContainerId(),
+                    outcome.status(),
+                    outcome.diagnostics());
+        } else {
+            SlotCommon.LOGGER.debug(
+                    "{} Forge workspace action: player={} action={} session={} menu={} status={} diagnostics={}",
+                    outcome.success() ? "Accepted" : "Rejected",
+                    playerName(player),
+                    packet.action(),
+                    packet.envelope().sessionId(),
+                    packet.envelope().menuContainerId(),
+                    outcome.status(),
+                    outcome.diagnostics());
+        }
+    }
+
+    private static boolean logWorkspaceActionAtInfo(WorkspaceCommandOutcome outcome) {
+        if (outcome == null || !outcome.success()) {
+            return true;
+        }
+        return !("nothing_to_take".equals(outcome.status()) || "nothing_to_deposit".equals(outcome.status()));
     }
 
     private static void handleGatherActiveKit(

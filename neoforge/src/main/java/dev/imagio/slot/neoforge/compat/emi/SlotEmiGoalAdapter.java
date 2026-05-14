@@ -47,6 +47,7 @@ final class SlotEmiGoalAdapter {
     private static final int MAX_ALTERNATIVES = 32;
     private static final int MAX_PRODUCER_ALTERNATIVE_LOOKUPS = 32;
     private static final int MAX_INGREDIENT_ALTERNATIVE_SCANS = 128;
+    private static final int MAX_VISIBLE_ALTERNATIVE_SCANS = 512;
     private static final int MAX_VISIBLE_ALTERNATIVE_ENRICHMENTS = 32;
     private static final String EMI_RECIPE_SCREEN = "dev.emi.emi.screen.RecipeScreen";
     private static final int GOAL_BUTTON_WIDTH = 50;
@@ -493,7 +494,13 @@ final class SlotEmiGoalAdapter {
         }
         int visibleAdded = 0;
         boolean truncated = false;
+        boolean scanTruncated = false;
+        int scanned = 0;
         for (VisibleGoalStack visibleStack : visible) {
+            if (scanned++ >= MAX_VISIBLE_ALTERNATIVE_SCANS) {
+                scanTruncated = true;
+                break;
+            }
             if (visibleStack == null || visibleStack.identity() == null || visibleStack.stack().isEmpty()) {
                 continue;
             }
@@ -516,6 +523,9 @@ final class SlotEmiGoalAdapter {
             return ingredient;
         }
         ArrayList<String> diagnostics = new ArrayList<>(ingredient.diagnostics());
+        if (scanTruncated) {
+            diagnostics.add("visible_alternative_scan_truncated");
+        }
         if (truncated) {
             diagnostics.add("visible_alternatives_truncated");
         }

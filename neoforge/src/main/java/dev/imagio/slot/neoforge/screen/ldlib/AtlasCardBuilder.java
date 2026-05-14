@@ -13,6 +13,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache;
+import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
@@ -897,22 +898,23 @@ final class AtlasCardBuilder {
             }
             case TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY -> host.rpc.sendTakeDesiredGapOrStackByIdentity(item.identity());
             case TAKE_STACK_BY_IDENTITY -> host.rpc.sendTakeStackByIdentity(item.identity());
-            case TAKE_ONE_BY_IDENTITY -> repeat(count, () -> host.rpc.sendTakeOneByIdentity(item.identity()));
+            case TAKE_ITEMS_BY_IDENTITY -> host.enqueueWheelTransfer(
+                    WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY,
+                    item.identity(),
+                    count,
+                    "taking " + item.name());
             case DEPOSIT_HOME_TO_LINKED_CHEST -> host.rpc.sendDepositHomeToLinkedChest(item);
-            case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> repeat(count, () -> host.rpc.sendDepositOneHomeToLinkedChest(item));
+            case DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST -> host.enqueueWheelTransfer(
+                    WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST,
+                    item.identity(),
+                    count,
+                    "depositing " + item.name());
             case CROSS_SURFACE_QUICK_MOVE -> host.rpc.sendCrossSurfaceQuickMove(item.identity(), count);
             case ADJUST_PLAYER_DESIRED_COUNT -> host.rpc.sendAdjustPlayerDesiredCount(item.identity(), count);
             case ADJUST_WANTED_COUNT -> host.rpc.sendAdjustWantedCount(item.identity(), count);
         }
         host.shiftClickTransferState.record(decision, item == null ? null : item.identity(), Screen.hasShiftDown());
         return true;
-    }
-
-    private void repeat(int count, Runnable action) {
-        int safeCount = Math.max(0, count);
-        for (int i = 0; i < safeCount; i++) {
-            action.run();
-        }
     }
 
     private final class WallCardContext implements WallCardUiBuilder.Context {

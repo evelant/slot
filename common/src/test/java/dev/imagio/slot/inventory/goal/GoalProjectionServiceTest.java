@@ -121,6 +121,33 @@ class GoalProjectionServiceTest {
     }
 
     @Test
+    void recipeBudgetBlocksExpansionAndReportsDiagnostic() {
+        GoalProjection projection = service.project(
+                chainGoal(),
+                GoalVisibleAuthority.empty(),
+                new GoalProjectionOptions(4, 1, 256)
+        );
+
+        assertEquals(GoalProjectionStatus.BLOCKED, projection.status());
+        assertTrue(projection.diagnostics().stream()
+                .anyMatch(diagnostic -> diagnostic.startsWith("goal_recipe_budget_exceeded:")));
+    }
+
+    @Test
+    void entryBudgetBlocksProjectionAndReportsDiagnostic() {
+        GoalProjection projection = service.project(
+                cokeOvenGoal(),
+                GoalVisibleAuthority.empty(),
+                new GoalProjectionOptions(4, 128, 2)
+        );
+
+        assertEquals(GoalProjectionStatus.BLOCKED, projection.status());
+        assertTrue(projection.entries().size() <= 2);
+        assertTrue(projection.diagnostics().stream()
+                .anyMatch(diagnostic -> diagnostic.startsWith("goal_entry_budget_exceeded:")));
+    }
+
+    @Test
     void recipeLoopsBlockExpansionAndReportDiagnostic() {
         GoalProjection projection = service.project(
                 loopGoal(),

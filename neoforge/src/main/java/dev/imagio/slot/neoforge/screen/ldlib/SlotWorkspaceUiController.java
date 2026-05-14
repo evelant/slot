@@ -28,7 +28,9 @@ import dev.imagio.slot.ui.workspace.GoalWorkspaceProjection;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceProjectionCache;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
+import dev.imagio.slot.ui.workspace.WheelTransferBatcher;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
+import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
@@ -139,6 +141,7 @@ final class SlotWorkspaceUiController {
     StorageGhostRevealMode storageGhostRevealMode = StorageGhostRevealMode.COLLAPSED;
     final SearchController searchController = new SearchController(this);
     final ShiftClickTransferState shiftClickTransferState = new ShiftClickTransferState();
+    final WheelTransferBatcher wheelTransferBatcher = new WheelTransferBatcher();
     final WorkspaceRpcDispatcher rpc = new WorkspaceRpcDispatcher(this);
     final DragDropWiring drag = new DragDropWiring(this);
     final HotkeyRouter hotkeys = new HotkeyRouter(this);
@@ -347,7 +350,6 @@ final class SlotWorkspaceUiController {
                     if (GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(viewModel.goalPlans())) {
                         appliedGoalStateRevision = GoalWorkspaceClientState.revision();
                     }
-                    goalProjectionCache.invalidate();
                     dev.imagio.slot.neoforge.client.SlotClientWorkspaceCache.update(viewModel);
                     localStatus.set("");
                     rebuild();
@@ -426,6 +428,36 @@ final class SlotWorkspaceUiController {
         }
         pendingWallScrollRestoreActive = false;
         wallScroller.verticalScroller.setValue(pendingWallScrollRestore);
+    }
+
+    void enqueueWheelTransfer(
+            WorkspaceActionId action,
+            SlotWorkspaceViewModel.IdentityRef identity,
+            int count,
+            String status
+    ) {
+        flushWheelTransfer(wheelTransferBatcher.enqueue(action, identity, count, status));
+        localStatus.set(status == null ? "" : status);
+    }
+
+    void flushWheelTransferBatch() {
+        flushWheelTransfer(wheelTransferBatcher.flush());
+    }
+
+    private void flushWheelTransfer(WheelTransferBatcher.Pending pending) {
+        if (pending == null || pending.identity() == null || pending.count() <= 0) {
+            return;
+        }
+        boolean sent = rpc.send(
+                pending.action(),
+                pending.identity().itemId(),
+                pending.identity().comparisonMode(),
+                pending.identity().componentFingerprint(),
+                pending.count());
+        localStatus.set(sent ? pending.status() : "transfer unavailable");
+        if (!sent) {
+            rebuild();
+        }
     }
 
     void flushRebuildIfPending() {

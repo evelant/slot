@@ -89,7 +89,7 @@ public final class WallCardTransferGesturePolicy {
             if (!item.carried() && context.carriedFreeSlotCount() == 0) {
                 return Decision.status("carry full - drop something first");
             }
-            return Decision.action(Action.TAKE_ONE_BY_IDENTITY, magnitude);
+            return Decision.action(Action.TAKE_ITEMS_BY_IDENTITY, magnitude);
         }
         if (!hasDepositTarget(context)) {
             return Decision.status("no nearby chest to push " + item.name());
@@ -97,7 +97,7 @@ public final class WallCardTransferGesturePolicy {
         if (!item.carried()) {
             return Decision.status(item.name() + " not carried");
         }
-        return Decision.action(Action.DEPOSIT_ONE_HOME_TO_LINKED_CHEST, magnitude);
+        return Decision.action(Action.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, magnitude);
     }
 
     public static int proximateChestCount(SlotWorkspaceViewModel.AtlasItem item) {
@@ -157,9 +157,9 @@ public final class WallCardTransferGesturePolicy {
         CURSOR_CANCEL_THEN_PICKUP_TO_CURSOR,
         TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY,
         TAKE_STACK_BY_IDENTITY,
-        TAKE_ONE_BY_IDENTITY,
+        TAKE_ITEMS_BY_IDENTITY,
         DEPOSIT_HOME_TO_LINKED_CHEST,
-        DEPOSIT_ONE_HOME_TO_LINKED_CHEST,
+        DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST,
         CROSS_SURFACE_QUICK_MOVE,
         ADJUST_PLAYER_DESIRED_COUNT,
         ADJUST_WANTED_COUNT

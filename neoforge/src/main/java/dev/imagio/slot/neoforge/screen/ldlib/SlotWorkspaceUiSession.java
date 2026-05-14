@@ -1638,6 +1638,30 @@ final class SlotWorkspaceUiSession {
                 () -> activeDepositFallbackChest(serverPlayer)));
     }
 
+    void depositItemsHomeToLinkedChest(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            Integer count
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, WorkspaceChestCommandService.depositIdentityCountToLinkedChest(
+                serverPlayer,
+                workflowRuntime(serverPlayer),
+                identity,
+                count == null ? 0 : count,
+                WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
+                () -> activeDepositFallbackChest(serverPlayer)));
+    }
+
     /**
      * Set the active-scope desired count "I want N of this carried at all
      * times." Resolves scope server-side: kit-scoped if a kit is active,
@@ -1724,6 +1748,10 @@ final class SlotWorkspaceUiSession {
      */
     void takeOneByIdentity(String itemId, String comparisonMode, String componentFingerprint) {
         takeByIdentity(itemId, comparisonMode, componentFingerprint, 1);
+    }
+
+    void takeItemsByIdentity(String itemId, String comparisonMode, String componentFingerprint, Integer count) {
+        takeByIdentity(itemId, comparisonMode, componentFingerprint, count == null ? 0 : count);
     }
 
     void takeDesiredGapOrStackByIdentity(String itemId, String comparisonMode, String componentFingerprint) {

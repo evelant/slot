@@ -21,6 +21,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GoalWorkspaceProjectionTest {
@@ -42,6 +43,7 @@ class GoalWorkspaceProjectionTest {
     @AfterEach
     void resetDisplayStackResolver() {
         SlotWorkspaceViewModel.setGhostStackResolver(null);
+        GoalWorkspaceClientState.clear();
     }
 
     @Test
@@ -227,6 +229,17 @@ class GoalWorkspaceProjectionTest {
         assertTrue(projection.hasRecipeDefaultChoice(glue));
         assertNotNull(projection.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(LIMEWATER)));
         assertNotNull(projection.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(BONEMEAL)));
+    }
+
+    @Test
+    void cacheSurvivesTransportRevisionChurnWhenGoalInputsAreUnchanged() {
+        GoalWorkspaceClientState.addOrActivate(duplicateGoal());
+        GoalWorkspaceProjectionCache cache = new GoalWorkspaceProjectionCache();
+
+        GoalWorkspaceProjection first = cache.get(sourceView());
+        GoalWorkspaceProjection second = cache.get(sourceView().withRevision(42));
+
+        assertSame(first, second);
     }
 
     @Test

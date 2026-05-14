@@ -236,6 +236,15 @@ final class ForgeWorkspaceSession {
                 reapplyActiveKitAfterCarryAcquisition(player, chestOutcome);
                 yield chestOutcome;
             }
+            case TAKE_ITEMS_BY_IDENTITY -> {
+                WorkspaceCommandOutcome chestOutcome = WorkspaceChestCommandService.takeByIdentity(
+                        player,
+                        runtime,
+                        identityArg(args, 0),
+                        integerArg(args, 3) == null ? 0 : integerArg(args, 3));
+                reapplyActiveKitAfterCarryAcquisition(player, chestOutcome);
+                yield chestOutcome;
+            }
             case TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY -> {
                 WorkspaceCommandOutcome chestOutcome = WorkspaceChestCommandService.takeDesiredGapOrStackByIdentity(
                         player,
@@ -270,6 +279,13 @@ final class ForgeWorkspaceSession {
                     runtime,
                     identityArg(args, 0),
                     WorkspaceChestCommandService.DepositQuantity.ITEM,
+                    WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
+                    () -> activeDepositFallbackChest(player));
+            case DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST -> WorkspaceChestCommandService.depositIdentityCountToLinkedChest(
+                    player,
+                    runtime,
+                    identityArg(args, 0),
+                    integerArg(args, 3) == null ? 0 : integerArg(args, 3),
                     WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
                     () -> activeDepositFallbackChest(player));
             case PICKUP_TO_CURSOR -> applyCursorOutcome(player, WorkspaceCursorCommandService.pickupToCursor(

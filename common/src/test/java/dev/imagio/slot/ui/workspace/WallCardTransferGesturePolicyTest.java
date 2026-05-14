@@ -12,11 +12,11 @@ import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.ADJUST_PLAYER_DESIRED_COUNT;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.CROSS_SURFACE_QUICK_MOVE;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.DEPOSIT_HOME_TO_LINKED_CHEST;
-import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.DEPOSIT_ONE_HOME_TO_LINKED_CHEST;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.PICKUP_TO_CURSOR;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.STATUS;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY;
-import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_ONE_BY_IDENTITY;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_ITEMS_BY_IDENTITY;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_STACK_BY_IDENTITY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -200,7 +200,7 @@ class WallCardTransferGesturePolicyTest {
                 context(ghostItem(), 0, true, false, null, false),
                 3);
 
-        assertEquals(TAKE_ONE_BY_IDENTITY, decision.action());
+        assertEquals(TAKE_ITEMS_BY_IDENTITY, decision.action());
         assertEquals(3, decision.count());
     }
 
@@ -210,7 +210,7 @@ class WallCardTransferGesturePolicyTest {
                 context(carriedItem(), 0, true, false, null, false),
                 -2);
 
-        assertEquals(DEPOSIT_ONE_HOME_TO_LINKED_CHEST, decision.action());
+        assertEquals(DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, decision.action());
         assertEquals(2, decision.count());
     }
 
@@ -221,7 +221,7 @@ class WallCardTransferGesturePolicyTest {
                         carriedItem(), 0, true, false, null, false, true, 9, true),
                 -1);
 
-        assertEquals(DEPOSIT_ONE_HOME_TO_LINKED_CHEST, decision.action());
+        assertEquals(DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, decision.action());
         assertEquals(1, decision.count());
     }
 

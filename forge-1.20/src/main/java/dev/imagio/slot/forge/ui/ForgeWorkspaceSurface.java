@@ -37,6 +37,7 @@ import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionVisibility;
 import dev.imagio.slot.ui.workspace.WayfindingDisplay;
+import dev.imagio.slot.ui.workspace.WheelTransferBatcher;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.imagio.slot.ui.workspace.WorkspaceCountFormat;
 import dev.imagio.slot.ui.workspace.WorkspaceSearchInputPolicy;
@@ -87,6 +88,7 @@ public final class ForgeWorkspaceSurface {
     private final Map<SlotWorkspaceViewModel.IdentityRef, SlotWorkspaceViewModel.AtlasItem> byIdentity =
             new LinkedHashMap<>();
     private final ShiftClickTransferState shiftClickTransferState = new ShiftClickTransferState();
+    private final WheelTransferBatcher wheelTransferBatcher = new WheelTransferBatcher();
     private final GoalWorkspaceProjectionCache goalProjectionCache = new GoalWorkspaceProjectionCache();
     private final ArrayDeque<String> recentRehomeIslandIds = new ArrayDeque<>();
     private final Map<SlotWorkspaceViewModel.IdentityRef, Float> wheelAccumulatorByIdentity = new LinkedHashMap<>();
@@ -106,6 +108,7 @@ public final class ForgeWorkspaceSurface {
     private int appliedGoalStateRevision = GoalWorkspaceClientState.revision();
     private boolean kitRackOpen;
     private SlotWorkspaceViewModel.IdentityRef contextMenuIdentity;
+    private String contextMenuIslandId;
     private String contextMenuKitId;
     private String contextMenuChestStorageId;
     private String renamingKitId;
@@ -169,6 +172,7 @@ public final class ForgeWorkspaceSurface {
             storageXrayKeyConsumed = false;
         }
         openSessionIfNeeded();
+        flushWheelTransferBatch();
         applyGoalStateIfChanged();
         boolean pointerActive = tree != null && tree.hasActivePointerGesture();
         if (!pointerActive) {
@@ -533,7 +537,6 @@ public final class ForgeWorkspaceSurface {
         if (GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(viewModel.goalPlans())) {
             appliedGoalStateRevision = GoalWorkspaceClientState.revision();
         }
-        goalProjectionCache.invalidate();
         recents.clear();
         recents.addAll(viewModel.recentIdentities());
         hotbarSlots.clear();
@@ -1038,6 +1041,13 @@ public final class ForgeWorkspaceSurface {
                             .width(6)
                             .height(6)));
             dot.on(SlotUiEventKind.TICK, event -> dotAttention(dot, island));
+            dot.on(SlotUiEventKind.MOUSE_DOWN, event -> {
+                if (event.button() != 1) {
+                    return;
+                }
+                event.stopPropagation();
+                openSectionOrderMenu(island, event.x(), event.y());
+            });
             dot.on(SlotUiEventKind.CLICK, event -> {
                 if (event.button() != 0) {
                     return;
@@ -1231,6 +1241,9 @@ public final class ForgeWorkspaceSurface {
         if (contextMenuChestStorageId != null) {
             return chestContextOverlay();
         }
+        if (contextMenuIslandId != null) {
+            return islandOrderOverlay();
+        }
         if (contextMenuIdentity != null) {
             return itemContextOverlay();
         }
@@ -1350,6 +1363,60 @@ public final class ForgeWorkspaceSurface {
         if (targetCount == 0) {
             panel.addChild(menuLabel("No other sections", WorkspaceUiPalette.MUTED));
         }
+        overlay.addChild(panel);
+        return overlay;
+    }
+
+    private SlotUiElement islandOrderOverlay() {
+        SlotWorkspaceViewModel.AtlasIsland island = island(contextMenuIslandId);
+        if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER || goalTabActive()) {
+            closeOverlayState();
+            return null;
+        }
+        List<SlotWorkspaceViewModel.AtlasIsland> allSections = playerIslandsInOrder();
+        int sourceIndex = islandIndex(allSections, island.islandId());
+        if (sourceIndex < 0) {
+            closeOverlayState();
+            return null;
+        }
+        List<SlotWorkspaceViewModel.AtlasIsland> visibleSections = tocEntries();
+        int visibleIndex = islandIndex(visibleSections, island.islandId());
+        SlotWorkspaceViewModel.AtlasIsland previousVisible =
+                visibleIndex > 0 ? visibleSections.get(visibleIndex - 1) : null;
+        SlotWorkspaceViewModel.AtlasIsland nextVisible =
+                visibleIndex >= 0 && visibleIndex + 1 < visibleSections.size()
+                        ? visibleSections.get(visibleIndex + 1)
+                        : null;
+        int lastIndex = Math.max(0, allSections.size() - 1);
+
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178);
+        panel.addChild(menuLabel(shorten(island.label(), 30), WorkspaceUiPalette.ACCENT));
+        panel.addChild(menuButton(
+                previousVisible == null
+                        ? "Move above"
+                        : "Move above " + shorten(previousVisible.label(), 17),
+                previousVisible != null,
+                "No visible section above",
+                closeThen(() -> sendSectionReorderAround(island, previousVisible, true))));
+        panel.addChild(menuButton(
+                nextVisible == null
+                        ? "Move below"
+                        : "Move below " + shorten(nextVisible.label(), 17),
+                nextVisible != null,
+                "No visible section below",
+                closeThen(() -> sendSectionReorderAround(island, nextVisible, false))));
+        panel.addChild(menuButton(
+                "Move to top",
+                sourceIndex > 0,
+                "Already at the top",
+                closeThen(() -> sendSectionReorderToIndex(island, 0))));
+        panel.addChild(menuButton(
+                "Move to bottom",
+                sourceIndex < lastIndex,
+                "Already at the bottom",
+                closeThen(() -> sendSectionReorderToIndex(island, lastIndex))));
+        panel.addChild(menuButton("Close", true, "Close", this::closeOverlays));
         overlay.addChild(panel);
         return overlay;
     }
@@ -1510,6 +1577,29 @@ public final class ForgeWorkspaceSurface {
         }
         overlay.addChild(panel);
         return overlay;
+    }
+
+    private List<SlotWorkspaceViewModel.AtlasIsland> playerIslandsInOrder() {
+        ArrayList<SlotWorkspaceViewModel.AtlasIsland> result = new ArrayList<>();
+        for (SlotWorkspaceViewModel.AtlasIsland island : islands) {
+            if (island != null && island.kind() == VisualAtlasIslandKind.PLAYER) {
+                result.add(island);
+            }
+        }
+        return List.copyOf(result);
+    }
+
+    private static int islandIndex(List<SlotWorkspaceViewModel.AtlasIsland> sections, String islandId) {
+        if (sections == null || islandId == null || islandId.isBlank()) {
+            return -1;
+        }
+        for (int index = 0; index < sections.size(); index++) {
+            SlotWorkspaceViewModel.AtlasIsland candidate = sections.get(index);
+            if (candidate != null && islandId.equals(candidate.islandId())) {
+                return index;
+            }
+        }
+        return -1;
     }
 
     private SlotUiElement desiredCountOverlay() {
@@ -1889,6 +1979,7 @@ public final class ForgeWorkspaceSurface {
             return;
         }
         contextMenuIdentity = item.identity();
+        contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuChestStorageId = null;
         contextMenuX = screenX;
@@ -1911,6 +2002,7 @@ public final class ForgeWorkspaceSurface {
         }
         contextMenuKitId = kitId;
         contextMenuIdentity = null;
+        contextMenuIslandId = null;
         contextMenuChestStorageId = null;
         contextMenuX = screenX;
         contextMenuY = screenY;
@@ -1932,6 +2024,7 @@ public final class ForgeWorkspaceSurface {
         }
         contextMenuChestStorageId = storageId;
         contextMenuIdentity = null;
+        contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuX = screenX;
         contextMenuY = screenY;
@@ -1946,6 +2039,27 @@ public final class ForgeWorkspaceSurface {
         rebuildRequested = true;
     }
 
+    private void openSectionOrderMenu(
+            SlotWorkspaceViewModel.AtlasIsland island,
+            float screenX,
+            float screenY
+    ) {
+        if (goalTabActive()) {
+            setStatus("goal tab is browse only");
+            return;
+        }
+        if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
+            setStatus("section cannot be reordered");
+            return;
+        }
+        closeOverlayState();
+        contextMenuIslandId = island.islandId();
+        contextMenuX = screenX;
+        contextMenuY = screenY;
+        status = "section order";
+        rebuildRequested = true;
+    }
+
     private void beginDesiredCountEdit(SlotWorkspaceViewModel.AtlasItem item) {
         if (item == null || item.identity() == null) {
             setStatus("missing item identity");
@@ -1956,6 +2070,7 @@ public final class ForgeWorkspaceSurface {
                 ? Integer.toString(item.desiredCount())
                 : "";
         contextMenuIdentity = null;
+        contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuChestStorageId = null;
         editingIslandId = null;
@@ -1973,6 +2088,7 @@ public final class ForgeWorkspaceSurface {
         islandEditX = screenX;
         islandEditY = screenY;
         contextMenuIdentity = null;
+        contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuChestStorageId = null;
         editingDesiredCountIdentity = null;
@@ -2156,6 +2272,7 @@ public final class ForgeWorkspaceSurface {
 
     private void closeOverlayState() {
         contextMenuIdentity = null;
+        contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuChestStorageId = null;
         editingIslandId = null;
@@ -2280,6 +2397,46 @@ public final class ForgeWorkspaceSurface {
         boolean sent = actionChannel.send(action, args);
         status = sent ? sentStatus : "failed to send " + action.name().toLowerCase();
         rebuildRequested = true;
+    }
+
+    private void sendSectionReorderAround(
+            SlotWorkspaceViewModel.AtlasIsland source,
+            SlotWorkspaceViewModel.AtlasIsland anchor,
+            boolean above
+    ) {
+        if (source == null || anchor == null) {
+            setStatus("section reorder unavailable");
+            return;
+        }
+        int targetIndex = reorderTargetIndex(source.islandId(), anchor.islandId(), above);
+        if (targetIndex < 0) {
+            setStatus("section reorder unavailable");
+            return;
+        }
+        sendSectionReorderToIndex(source, targetIndex);
+    }
+
+    private int reorderTargetIndex(String sourceIslandId, String anchorIslandId, boolean above) {
+        List<SlotWorkspaceViewModel.AtlasIsland> allSections = playerIslandsInOrder();
+        int sourceIndex = islandIndex(allSections, sourceIslandId);
+        int anchorIndex = islandIndex(allSections, anchorIslandId);
+        if (sourceIndex < 0 || anchorIndex < 0 || sourceIndex == anchorIndex) {
+            return -1;
+        }
+        int insertPosition = above ? anchorIndex : anchorIndex + 1;
+        return Math.max(0, sourceIndex < insertPosition ? insertPosition - 1 : insertPosition);
+    }
+
+    private void sendSectionReorderToIndex(SlotWorkspaceViewModel.AtlasIsland island, int targetIndex) {
+        if (island == null || island.islandId().isBlank()) {
+            setStatus("section reorder unavailable");
+            return;
+        }
+        sendAction(
+                WorkspaceActionId.REORDER_ISLAND,
+                "moving " + island.label(),
+                island.islandId(),
+                Math.max(0, targetIndex));
     }
 
     private boolean sendAssignHome(
@@ -2489,13 +2646,6 @@ public final class ForgeWorkspaceSurface {
         return goal == null ? null : goal.entry(item);
     }
 
-    private void repeat(int count, Runnable action) {
-        int safeCount = Math.max(0, count);
-        for (int index = 0; index < safeCount; index++) {
-            action.run();
-        }
-    }
-
     private WallCardTransferGesturePolicy.Context cardGestureContext(
             SlotWorkspaceViewModel.AtlasItem item,
             int button,
@@ -2622,18 +2772,20 @@ public final class ForgeWorkspaceSurface {
                     WorkspaceActionId.TAKE_STACK_BY_IDENTITY,
                     item,
                     "taking " + item.name());
-            case TAKE_ONE_BY_IDENTITY -> repeat(count, () -> sendIdentityAction(
-                    WorkspaceActionId.TAKE_ONE_BY_IDENTITY,
+            case TAKE_ITEMS_BY_IDENTITY -> enqueueWheelTransfer(
+                    WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY,
                     item,
-                    "taking one " + item.name()));
+                    "taking " + item.name(),
+                    count);
             case DEPOSIT_HOME_TO_LINKED_CHEST -> sendIdentityAction(
                     WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST,
                     item,
                     "depositing " + item.name());
-            case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> repeat(count, () -> sendIdentityAction(
-                    WorkspaceActionId.DEPOSIT_ONE_HOME_TO_LINKED_CHEST,
+            case DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST -> enqueueWheelTransfer(
+                    WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST,
                     item,
-                    "depositing one " + item.name()));
+                    "depositing " + item.name(),
+                    count);
             case CROSS_SURFACE_QUICK_MOVE -> sendIdentityAction(
                     WorkspaceActionId.CROSS_SURFACE_QUICK_MOVE_ATLAS,
                     item,
@@ -2665,6 +2817,32 @@ public final class ForgeWorkspaceSurface {
             return;
         }
         sendIdentityRefAction(action, item.identity(), sentStatus, tail);
+    }
+
+    private void enqueueWheelTransfer(
+            WorkspaceActionId action,
+            SlotWorkspaceViewModel.AtlasItem item,
+            String sentStatus,
+            int count
+    ) {
+        if (item == null || item.identity() == null) {
+            setStatus("missing item identity");
+            return;
+        }
+        flushWheelTransfer(wheelTransferBatcher.enqueue(action, item.identity(), count, sentStatus));
+        status = sentStatus == null ? "" : sentStatus;
+        rebuildRequested = true;
+    }
+
+    private void flushWheelTransferBatch() {
+        flushWheelTransfer(wheelTransferBatcher.flush());
+    }
+
+    private void flushWheelTransfer(WheelTransferBatcher.Pending pending) {
+        if (pending == null || pending.identity() == null || pending.count() <= 0) {
+            return;
+        }
+        sendIdentityRefAction(pending.action(), pending.identity(), pending.status(), pending.count());
     }
 
     private void sendIdentityRefAction(

@@ -28,6 +28,18 @@ class WorkspaceChestCommandServiceTest {
     }
 
     @Test
+    void countedShiftScrollDepositCapsAtRequestedCount() {
+        assertEquals(
+                3,
+                WorkspaceChestCommandService.requestedExplicitDepositCount(
+                        5,
+                        0,
+                        WorkspaceChestCommandService.DepositQuantity.ITEM,
+                        WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
+                        3));
+    }
+
+    @Test
     void shiftClickDepositStopsWhenDesiredCountConsumesCarry() {
         assertEquals(
                 0,

@@ -44,6 +44,7 @@ final class HotkeyRouter {
         }, true);
         host.root.addEventListener(UIEvents.CHAR_TYPED, host.searchController::handleCharTyped, true);
         host.root.addEventListener(UIEvents.TICK, event -> {
+            host.flushWheelTransferBatch();
             host.flushRebuildIfPending();
             host.applyPendingWallScrollRestore();
         });

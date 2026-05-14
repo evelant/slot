@@ -65,7 +65,10 @@ public final class GoalProjectionService {
         private final LinkedHashMap<ItemIdentity, Integer> wantedCounts = new LinkedHashMap<>();
         private final LinkedHashSet<String> diagnostics = new LinkedHashSet<>();
         private boolean blocked;
+        private boolean recipeBudgetReported;
+        private boolean entryBudgetReported;
         private int sequence;
+        private int recipeExpansions;
 
         private ProjectionRun(
                 GoalDescriptor goal,
@@ -361,6 +364,14 @@ public final class GoalProjectionService {
                 blocked = true;
                 return false;
             }
+            if (++recipeExpansions > options.maxRecipeExpansions()) {
+                if (!recipeBudgetReported) {
+                    recipeBudgetReported = true;
+                    diagnostic("goal_recipe_budget_exceeded", outputToken(requestedOutput, recipe));
+                }
+                blocked = true;
+                return false;
+            }
             if (depth > options.maxDepth()) {
                 diagnostic("goal_depth_limit_exceeded", outputToken(requestedOutput, recipe));
                 blocked = true;
@@ -606,6 +617,9 @@ public final class GoalProjectionService {
             String resolvedChoiceGroupId = choiceInvolved && !choiceGroupId.isBlank()
                     ? choiceGroupId
                     : (producerChoiceRequired || manualProducerChoice || defaultProducerChoice) ? producerChoiceGroupId : "";
+            if (!entryBudgetAvailable(recipe.recipeId() + ":" + ingredient.ingredientId())) {
+                return;
+            }
             GoalRequirement requirement = new GoalRequirement(
                     "goal_requirement_" + (++sequence),
                     recipe.recipeId(),
@@ -650,6 +664,9 @@ public final class GoalProjectionService {
                     parentRecipe.recipeId(),
                     ingredient.ingredientId(),
                     stack.identity());
+            if (!entryBudgetAvailable(parentRecipe.recipeId() + ":" + ingredient.ingredientId() + ":producer")) {
+                return;
+            }
             ArrayList<String> localDiagnostics = new ArrayList<>();
             localDiagnostics.add("producer_choice_required");
             localDiagnostics.add("producer_candidates=" + String.join(",", recipeIds(producerRecipes)));
@@ -686,6 +703,9 @@ public final class GoalProjectionService {
                 List<String> localDiagnostics
         ) {
             String choiceGroupId = GoalChoiceKeys.ingredientChoiceGroupId(recipe.recipeId(), ingredient.ingredientId());
+            if (!entryBudgetAvailable(recipe.recipeId() + ":" + ingredient.ingredientId() + ":choice")) {
+                return;
+            }
             List<String> choiceBreadcrumbs = appendBreadcrumb(breadcrumbs, ingredient.label());
             GoalChoiceRequirement choice = new GoalChoiceRequirement(
                     choiceGroupId,
@@ -703,6 +723,18 @@ public final class GoalProjectionService {
             );
             choices.add(choice);
             entries.add(GoalProjectionEntry.fromChoice(choice));
+        }
+
+        private boolean entryBudgetAvailable(String detail) {
+            if (requirements.size() + choices.size() < options.maxEntries()) {
+                return true;
+            }
+            if (!entryBudgetReported) {
+                entryBudgetReported = true;
+                diagnostic("goal_entry_budget_exceeded", detail);
+            }
+            blocked = true;
+            return false;
         }
 
         private GoalStackDescriptor findAlternative(List<GoalStackDescriptor> alternatives, ItemIdentity identity) {

@@ -213,6 +213,43 @@ public final class WorkspaceChestCommandService {
             DesiredCountPolicy desiredCountPolicy,
             Supplier<ClaimedChest> activeChestFallback
     ) {
+        return depositIdentityToLinkedChest(
+                player,
+                runtime,
+                identity,
+                quantity,
+                desiredCountPolicy,
+                activeChestFallback,
+                null);
+    }
+
+    public static WorkspaceCommandOutcome depositIdentityCountToLinkedChest(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity,
+            int requestedCount,
+            DesiredCountPolicy desiredCountPolicy,
+            Supplier<ClaimedChest> activeChestFallback
+    ) {
+        return depositIdentityToLinkedChest(
+                player,
+                runtime,
+                identity,
+                DepositQuantity.ITEM,
+                desiredCountPolicy,
+                activeChestFallback,
+                Math.max(0, requestedCount));
+    }
+
+    private static WorkspaceCommandOutcome depositIdentityToLinkedChest(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity,
+            DepositQuantity quantity,
+            DesiredCountPolicy desiredCountPolicy,
+            Supplier<ClaimedChest> activeChestFallback,
+            Integer requestedCountOverride
+    ) {
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
@@ -245,7 +282,12 @@ public final class WorkspaceChestCommandService {
                 ? DesiredCountPolicy.RESPECT
                 : desiredCountPolicy;
         int reserved = Math.max(0, reservedCountResolver(runtime).applyAsInt(identity));
-        int requested = requestedExplicitDepositCount(carriedTotal, reserved, quantity, desiredPolicy);
+        int requested = requestedExplicitDepositCount(
+                carriedTotal,
+                reserved,
+                quantity,
+                desiredPolicy,
+                requestedCountOverride);
         if (requested <= 0) {
             return WorkspaceCommandOutcome.rejected("desired_count_reserved");
         }
@@ -394,61 +436,82 @@ public final class WorkspaceChestCommandService {
                 identity, claimedChestMap, affinityMap, proximate);
         boolean foundMatchButCouldNotInsert = false;
         boolean one = maxCount == 1;
-        for (ClaimedChest chest : ranked) {
-            TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
-                    player,
-                    chest,
-                    identity,
-                    maxCount,
-                    one ? "take-one-by-identity" : "take-stack-by-identity");
-            if (outcome.tookAnything()) {
-                if (recordUndo) {
-                    recordTakeRecord(player, runtime, outcome.record(), "take_by_identity");
-                } else if (outcome.record() != null) {
-                    recordAcquisition(
-                            runtime,
-                            outcome.record().identity(),
-                            outcome.record().count(),
-                            "take_by_identity");
+        boolean singleSlotOnly = one || maxCount == Integer.MAX_VALUE;
+        int requested = singleSlotOnly ? maxCount : Math.max(1, maxCount);
+        int moved = 0;
+        boolean stoppedByPartial = false;
+        List<TakeAllExecutor.TakeRecord> records = new ArrayList<>();
+        while (moved < requested) {
+            boolean progressed = false;
+            int request = singleSlotOnly ? maxCount : requested - moved;
+            for (ClaimedChest chest : ranked) {
+                TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
+                        player,
+                        chest,
+                        identity,
+                        request,
+                        one ? "take-one-by-identity"
+                                : singleSlotOnly ? "take-stack-by-identity" : "take-items-by-identity");
+                if (outcome.tookAnything()) {
+                    moved += outcome.moved();
+                    if (outcome.record() != null) {
+                        records.add(outcome.record());
+                    }
+                    stoppedByPartial = outcome.partial();
+                    progressed = true;
+                    break;
                 }
-                observeTakeRecord(player, claimedChestMap, outcome.record(), "slot.take_by_identity");
-                return WorkspaceCommandOutcome.accepted(
-                        one ? "took_one" : "took_stack",
-                        "moved=" + outcome.moved());
+                if (outcome.partial()) {
+                    foundMatchButCouldNotInsert = true;
+                }
             }
-            if (outcome.partial()) {
-                foundMatchButCouldNotInsert = true;
+            if (!progressed) {
+                for (WorldDisplayStorageSource source : displaySources) {
+                    if (source == null || source.contents().isEmpty()) {
+                        continue;
+                    }
+                    TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
+                            player,
+                            source.target(),
+                            source.storageId(),
+                            identity,
+                            request,
+                            one ? "take-one-by-display"
+                                    : singleSlotOnly ? "take-stack-by-display" : "take-items-by-display");
+                    if (outcome.tookAnything()) {
+                        moved += outcome.moved();
+                        if (outcome.record() != null) {
+                            records.add(outcome.record());
+                        }
+                        stoppedByPartial = outcome.partial();
+                        progressed = true;
+                        break;
+                    }
+                    if (outcome.partial()) {
+                        foundMatchButCouldNotInsert = true;
+                    }
+                }
+            }
+            if (!progressed || singleSlotOnly || stoppedByPartial) {
+                break;
             }
         }
-        for (WorldDisplayStorageSource source : displaySources) {
-            if (source == null || source.contents().isEmpty()) {
-                continue;
-            }
-            TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
-                    player,
-                    source.target(),
-                    source.storageId(),
-                    identity,
-                    maxCount,
-                    one ? "take-one-by-display" : "take-stack-by-display");
-            if (outcome.tookAnything()) {
-                if (recordUndo) {
-                    recordTakeRecord(player, runtime, outcome.record(), "take_by_identity");
-                } else if (outcome.record() != null) {
-                    recordAcquisition(
-                            runtime,
-                            outcome.record().identity(),
-                            outcome.record().count(),
-                            "take_by_identity");
+        if (moved > 0) {
+            if (recordUndo) {
+                recordTakeRecords(player, runtime, records, "take_by_identity");
+            } else {
+                for (TakeAllExecutor.TakeRecord record : records) {
+                    recordAcquisition(runtime, record.identity(), record.count(), "take_by_identity");
                 }
-                observeTakeRecord(player, claimedChestMap, outcome.record(), "slot.take_by_display");
-                return WorkspaceCommandOutcome.accepted(
-                        one ? "took_one" : "took_stack",
-                        "moved=" + outcome.moved());
             }
-            if (outcome.partial()) {
-                foundMatchButCouldNotInsert = true;
-            }
+            observeTakeRecords(player, claimedChestMap, records, "slot.take_by_identity");
+            String status = one
+                    ? "took_one"
+                    : singleSlotOnly ? "took_stack" : moved < requested ? "took_partial" : "took_items";
+            String diagnostics = "moved=" + moved
+                    + (singleSlotOnly ? "" : " requested=" + requested)
+                    + (stoppedByPartial ? " carry_full=true" : "");
+            return WorkspaceCommandOutcome.accepted(status, diagnostics);
         }
         return foundMatchButCouldNotInsert
                 ? WorkspaceCommandOutcome.rejected("carry_full")
@@ -843,9 +906,22 @@ public final class WorkspaceChestCommandService {
             DepositQuantity quantity,
             DesiredCountPolicy desiredCountPolicy
     ) {
+        return requestedExplicitDepositCount(carriedTotal, reservedCount, quantity, desiredCountPolicy, null);
+    }
+
+    static int requestedExplicitDepositCount(
+            int carriedTotal,
+            int reservedCount,
+            DepositQuantity quantity,
+            DesiredCountPolicy desiredCountPolicy,
+            Integer requestedCountOverride
+    ) {
         int carried = Math.max(0, carriedTotal);
         int reserved = desiredCountPolicy == DesiredCountPolicy.IGNORE ? 0 : Math.max(0, reservedCount);
         int depositable = Math.max(0, carried - reserved);
+        if (requestedCountOverride != null) {
+            return Math.min(Math.max(0, requestedCountOverride), depositable);
+        }
         return switch (quantity == null ? DepositQuantity.STACK : quantity) {
             case STACK -> depositable;
             case ITEM -> Math.min(1, depositable);

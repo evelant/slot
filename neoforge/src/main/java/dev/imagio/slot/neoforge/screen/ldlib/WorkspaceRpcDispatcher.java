@@ -62,6 +62,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter takeFromChestEmitter;
     RPCEmitter takeOneFromChestEmitter;
     RPCEmitter takeOneByIdentityEmitter;
+    RPCEmitter takeItemsByIdentityEmitter;
     RPCEmitter takeDesiredGapOrStackByIdentityEmitter;
     RPCEmitter takeStackByIdentityEmitter;
     RPCEmitter toggleWantedItemEmitter;
@@ -71,6 +72,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter assignIdentityToHotbarSlotEmitter;
     RPCEmitter depositHomeToLinkedChestEmitter;
     RPCEmitter depositOneHomeToLinkedChestEmitter;
+    RPCEmitter depositItemsHomeToLinkedChestEmitter;
     RPCEmitter setPlayerDesiredCountEmitter;
     RPCEmitter adjustPlayerDesiredCountEmitter;
     RPCEmitter crossSurfaceDropOnHostSlotEmitter;
@@ -387,6 +389,13 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 host.session::takeOneByIdentity
         ));
+        takeItemsByIdentityEmitter = add(WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                Integer.class,
+                host.session::takeItemsByIdentity
+        ));
         takeDesiredGapOrStackByIdentityEmitter = add(WorkspaceActionId.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY, RPCEventBuilder.simple(
                 String.class,
                 String.class,
@@ -442,6 +451,13 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 String.class,
                 host.session::depositOneHomeToLinkedChest
+        ));
+        depositItemsHomeToLinkedChestEmitter = add(WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                Integer.class,
+                host.session::depositItemsHomeToLinkedChest
         ));
         setPlayerDesiredCountEmitter = add(WorkspaceActionId.SET_PLAYER_DESIRED_COUNT, RPCEventBuilder.simple(
                 String.class,    // itemId

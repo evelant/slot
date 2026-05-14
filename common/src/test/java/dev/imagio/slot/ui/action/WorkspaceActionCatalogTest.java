@@ -41,6 +41,14 @@ class WorkspaceActionCatalogTest {
                 java.util.List.of(
                         WorkspaceActionArgumentType.STRING,
                         WorkspaceActionArgumentType.STRING,
+                        WorkspaceActionArgumentType.STRING
+                ),
+                WorkspaceActionCatalog.require(WorkspaceActionId.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY).argumentTypes()
+        );
+        assertEquals(
+                java.util.List.of(
+                        WorkspaceActionArgumentType.STRING,
+                        WorkspaceActionArgumentType.STRING,
                         WorkspaceActionArgumentType.STRING,
                         WorkspaceActionArgumentType.INTEGER
                 ),
@@ -50,9 +58,19 @@ class WorkspaceActionCatalogTest {
                 java.util.List.of(
                         WorkspaceActionArgumentType.STRING,
                         WorkspaceActionArgumentType.STRING,
-                        WorkspaceActionArgumentType.STRING
+                        WorkspaceActionArgumentType.STRING,
+                        WorkspaceActionArgumentType.INTEGER
                 ),
-                WorkspaceActionCatalog.require(WorkspaceActionId.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY).argumentTypes()
+                WorkspaceActionCatalog.require(WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY).argumentTypes()
+        );
+        assertEquals(
+                java.util.List.of(
+                        WorkspaceActionArgumentType.STRING,
+                        WorkspaceActionArgumentType.STRING,
+                        WorkspaceActionArgumentType.STRING,
+                        WorkspaceActionArgumentType.INTEGER
+                ),
+                WorkspaceActionCatalog.require(WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST).argumentTypes()
         );
         assertEquals(
                 java.util.List.of(),
