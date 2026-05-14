@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Live snapshot of a nearby item-display block that acts like storage for
- * browsing/taking, but is not part of the claimed-chest model.
+ * Live snapshot of a nearby item-display block that acts like first-class
+ * display storage for browsing/taking. Tool racks may also accept normal
+ * deposits; ground placed items remain take/rollback only.
  */
 public record WorldDisplayStorageSource(
         String storageId,

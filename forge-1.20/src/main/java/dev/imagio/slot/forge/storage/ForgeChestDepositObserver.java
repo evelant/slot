@@ -6,6 +6,8 @@ import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
 import dev.imagio.slot.inventory.workspace.ChestDepositObservationSupport;
+import dev.imagio.slot.inventory.workspace.StorageTargetRef;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
@@ -25,6 +27,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.WeakHashMap;
@@ -111,6 +114,7 @@ public final class ForgeChestDepositObserver {
 
         ServerLevel level = player.serverLevel();
         ChestAnchor anchor = ForgeChestStorageAnchors.toAnchor(level, session.pos);
+        UUID stampedStorageId = ForgeChestStorageIds.read(level, session.pos).orElse(null);
         WorkflowDomainRuntime runtime = ForgePlayerWorkflowRuntimeService.runtime(player);
         ChestClaimWorkflowDomainService chestService = runtime.chestClaimWorkflow();
 
@@ -136,17 +140,64 @@ public final class ForgeChestDepositObserver {
             for (Map.Entry<ItemIdentity, Integer> entry : deposits.entrySet()) {
                 chestService.recordDeposit(storageId, entry.getKey(), entry.getValue(), tick);
             }
+            observeRememberedContents(
+                    level, chestService, storageId, anchor, session.pos, menu, session.storageSlots, "container_close_deposit");
             SlotCommon.LOGGER.info(
                     "[SLOT] forge auto-claim observed deposits player={} pos={} storage={} identities={} seeded={}",
                     player.getScoreboardName(), session.pos, storageId, deposits.size(), seeded);
             return;
         }
 
-        if (!takes.isEmpty() && chestService.chestByAnchor(anchor) != null) {
+        ClaimedChest trackedChest = chestService.chestByAnchor(anchor);
+        UUID memoryStorageId = stampedStorageId != null
+                ? stampedStorageId
+                : trackedChest == null ? null : trackedChest.storageId();
+        observeRememberedContents(
+                level, chestService, memoryStorageId, anchor, session.pos, menu, session.storageSlots, "container_close");
+
+        if (!takes.isEmpty() && trackedChest != null) {
             for (ItemIdentity identity : takes.keySet()) {
                 runtime.dismissRecent(identity);
             }
         }
+    }
+
+    private static void observeRememberedContents(
+            ServerLevel level,
+            ChestClaimWorkflowDomainService chestService,
+            UUID storageId,
+            ChestAnchor anchor,
+            BlockPos pos,
+            AbstractContainerMenu menu,
+            List<Integer> storageSlots,
+            String source
+    ) {
+        if (level == null || storageId == null || menu == null || storageSlots == null || storageSlots.isEmpty()) {
+            return;
+        }
+        WorkspaceStorageMemoryStore store = WorkspaceStorageMemoryStore.forServer(level.getServer());
+        if (store == null) {
+            return;
+        }
+        ClaimedChest claimed = chestService == null ? null : chestService.chest(storageId);
+        StorageTargetRef ref = claimed == null
+                ? StorageTargetRef.claimed(
+                        storageId,
+                        anchor == null ? level.dimension().location().toString() : anchor.dimensionId(),
+                        anchor == null ? pos.getX() : anchor.x(),
+                        anchor == null ? pos.getY() : anchor.y(),
+                        anchor == null ? pos.getZ() : anchor.z(),
+                        "",
+                        true,
+                        false,
+                        true)
+                : StorageTargetRef.claimed(claimed, true, false, true);
+        store.observe(
+                ref,
+                storageSlots.size(),
+                ChestDepositObservationSupport.currentContents(menu, storageSlots),
+                level.getGameTime(),
+                source);
     }
 
     public static UUID resolveOrCreateClaim(
@@ -165,6 +216,16 @@ public final class ForgeChestDepositObserver {
         Set<ChestAnchor> anchors = ForgeChestStorageAnchors.resolveAnchors(level, pos);
         if (anchors.isEmpty()) {
             return null;
+        }
+        Optional<UUID> stampedStorageId = ForgeChestStorageIds.read(level, pos);
+        if (stampedStorageId.isPresent()) {
+            UUID storageId = stampedStorageId.get();
+            ClaimedChest byId = chestService.chest(storageId);
+            if (byId != null) {
+                return byId.storageId();
+            }
+            ClaimedChest claimed = chestService.claimWithId(storageId, anchors, pos.getX() * 100, pos.getZ() * 100, "");
+            return claimed == null ? storageId : claimed.storageId();
         }
         for (ChestAnchor candidate : anchors) {
             ClaimedChest covering = chestService.chestByAnchor(candidate);

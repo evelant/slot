@@ -42,6 +42,8 @@ import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
@@ -1877,11 +1879,20 @@ final class SlotWorkspaceUiSession {
         WorldStorageAccess worldStorage = StorageAccessRegistry.isInstalled()
                 ? StorageAccessRegistry.worldStorageAccess()
                 : null;
-        Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver =
-                WorkspaceChestProjectionSupport.contentsResolver(server, claimedChestMap, worldStorage);
         Set<String> proximateIds = WorkspaceChestProjectionSupport.proximateStorageIds(serverPlayer, claimedChestMap);
         List<WorldDisplayStorageSource> displaySources =
                 WorkspaceChestProjectionSupport.proximateDisplaySources(serverPlayer, worldStorage);
+        WorkspaceStorageIndex storageIndex = WorkspaceStorageIndex.build(
+                server,
+                authority,
+                runtime.snapshot(),
+                worldStorage,
+                proximateIds,
+                displaySources,
+                serverPlayer.serverLevel().getGameTime());
+        Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver =
+                storageIndex.contentsResolver();
+        displaySources = storageIndex.displaySources();
         Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerInfo =
                 SophisticatedBackpackInventoryIntegrationProvider.carriedContainerInfoByIdentity(serverPlayer);
         Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver =
@@ -2006,6 +2017,13 @@ final class SlotWorkspaceUiSession {
                 serverPlayer.getServer(),
                 claim,
                 worldStorage);
+        WorkspaceStorageMemoryStore.observeStorageIds(
+                serverPlayer.getServer(),
+                worldStorage,
+                runtime.chestClaimWorkflow().claimedChestMap(),
+                java.util.List.of(storageId.toString()),
+                serverPlayer.serverLevel().getGameTime(),
+                "claim_seed");
         return ChestContentAffinitySeeder.seedInitialContents(
                 runtime.chestClaimWorkflow(),
                 storageId,

@@ -76,27 +76,27 @@ public record GoalVisibleAuthority(
         if (exact != null) {
             return exact;
         }
-        for (Map.Entry<ItemIdentity, GoalAuthorityCount> entry : countsByIdentity.entrySet()) {
-            if (ItemIdentityMatcher.matchesMovable(entry.getKey(), identity)) {
-                return entry.getValue();
-            }
-        }
-        return new GoalAuthorityCount(0, 0, 0);
+        return countsByIdentity.getOrDefault(movableKey(identity), new GoalAuthorityCount(0, 0, 0));
     }
 
     public List<GoalStackDescriptor> visibleAlternativesInAuthorityOrder(List<GoalStackDescriptor> alternatives) {
         if (alternatives == null || alternatives.isEmpty() || countsByIdentity.isEmpty()) {
             return List.of();
         }
+        LinkedHashMap<ItemIdentity, GoalStackDescriptor> alternativesByMovableIdentity = new LinkedHashMap<>();
+        for (GoalStackDescriptor alternative : alternatives) {
+            if (alternative != null && alternative.identity() != null) {
+                alternativesByMovableIdentity.putIfAbsent(movableKey(alternative.identity()), alternative);
+            }
+        }
+        if (alternativesByMovableIdentity.isEmpty()) {
+            return List.of();
+        }
         ArrayList<GoalStackDescriptor> ordered = new ArrayList<>();
         for (ItemIdentity visible : countsByIdentity.keySet()) {
-            for (GoalStackDescriptor alternative : alternatives) {
-                if (alternative != null
-                        && !ordered.contains(alternative)
-                        && count(alternative.identity()).totalCount() > 0
-                        && ItemIdentityMatcher.matchesMovable(visible, alternative.identity())) {
-                    ordered.add(alternative);
-                }
+            GoalStackDescriptor alternative = alternativesByMovableIdentity.get(movableKey(visible));
+            if (alternative != null && count(alternative.identity()).totalCount() > 0) {
+                ordered.add(alternative);
             }
         }
         return List.copyOf(ordered);
@@ -126,9 +126,14 @@ public record GoalVisibleAuthority(
             if (entry.getKey() == null || entry.getValue() == null || entry.getValue() <= 0) {
                 continue;
             }
-            MutableCount count = counts.computeIfAbsent(entry.getKey(), ignored -> new MutableCount());
+            MutableCount count = counts.computeIfAbsent(movableKey(entry.getKey()), ignored -> new MutableCount());
             mutator.apply(count, entry.getValue());
         }
+    }
+
+    private static ItemIdentity movableKey(ItemIdentity identity) {
+        ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(identity);
+        return normalized == null ? identity : normalized;
     }
 
     private interface CountMutator {

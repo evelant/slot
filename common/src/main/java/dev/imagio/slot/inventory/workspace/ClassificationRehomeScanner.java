@@ -128,6 +128,20 @@ public final class ClassificationRehomeScanner {
                 diagnostics.add("claimed_chest_enumerate_failed:" + chest.storageId() + ":" + safeMessage(exception));
                 continue;
             }
+            WorkspaceStorageMemoryStore store = WorkspaceStorageMemoryStore.forServer(server);
+            if (store != null) {
+                try {
+                    int slots = Math.max(0, world.slotCount(server, target));
+                    store.observe(
+                            StorageTargetRef.claimed(chest, true, false, false),
+                            slots,
+                            contents,
+                            0L,
+                            "classification_rehome_scan");
+                } catch (RuntimeException exception) {
+                    diagnostics.add("claimed_chest_memory_observe_failed:" + chest.storageId() + ":" + safeMessage(exception));
+                }
+            }
             for (WorldStorageAccess.SlotContent content : contents) {
                 if (content == null || content.stack().isEmpty()) {
                     continue;

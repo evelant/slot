@@ -41,6 +41,8 @@ import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
@@ -552,6 +554,16 @@ final class ForgeWorkspaceSession {
                 resolveActiveChestPanel(player, claimedChestMap);
         List<WorldDisplayStorageSource> displaySources =
                 WorkspaceChestProjectionSupport.proximateDisplaySources(player, worldStorage);
+        Set<String> proximateIds = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
+        WorkspaceStorageIndex storageIndex = WorkspaceStorageIndex.build(
+                server,
+                authority,
+                snapshot,
+                worldStorage,
+                proximateIds,
+                displaySources,
+                gameTime);
+        displaySources = storageIndex.displaySources();
         clearSatisfiedWantedCounts(authority);
         return SlotWorkspaceViewModel.project(
                 authority,
@@ -563,8 +575,8 @@ final class ForgeWorkspaceSession {
                 0,
                 learnedRules,
                 Forge120IslandSignalExtractor::extract,
-                WorkspaceChestProjectionSupport.contentsResolver(server, claimedChestMap, worldStorage),
-                WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap),
+                storageIndex.contentsResolver(),
+                proximateIds,
                 ignored -> null,
                 lootChestSource,
                 searchQuery,
@@ -734,6 +746,13 @@ final class ForgeWorkspaceSession {
                 player.getServer(),
                 claim,
                 worldStorage);
+        WorkspaceStorageMemoryStore.observeStorageIds(
+                player.getServer(),
+                worldStorage,
+                runtime.chestClaimWorkflow().claimedChestMap(),
+                List.of(storageId.toString()),
+                player.serverLevel().getGameTime(),
+                "claim_seed");
         return ChestContentAffinitySeeder.seedInitialContents(
                 runtime.chestClaimWorkflow(),
                 storageId,

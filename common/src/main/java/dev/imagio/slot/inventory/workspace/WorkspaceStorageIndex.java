@@ -1,0 +1,398 @@
+package dev.imagio.slot.inventory.workspace;
+
+import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
+import dev.imagio.slot.inventory.storage.WorldStorageAccess;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
+
+/**
+ * Shared read model for storage lookups used by the workspace, goals,
+ * search/x-ray, wayfinding, and planner previews.
+ *
+ * <p>Live entries are read once per index build. Remembered entries are a
+ * read-only fallback for tracked storage that is unloaded, far away, or in
+ * another dimension. Mutation planners must use {@link #liveChestContentPresence()}
+ * so remembered-only data never authorizes a transfer.
+ */
+public final class WorkspaceStorageIndex {
+    private final Map<String, StorageEntry> entriesByStorageId;
+    private final Map<ItemIdentity, Integer> carriedCountsByIdentity;
+    private final List<WorldDisplayStorageSource> displaySources;
+    private final long memoryRevision;
+
+    private WorkspaceStorageIndex(
+            Map<String, StorageEntry> entriesByStorageId,
+            Map<ItemIdentity, Integer> carriedCountsByIdentity,
+            List<WorldDisplayStorageSource> displaySources,
+            long memoryRevision
+    ) {
+        this.entriesByStorageId = entriesByStorageId == null ? Map.of() : Map.copyOf(entriesByStorageId);
+        this.carriedCountsByIdentity = carriedCountsByIdentity == null
+                ? Map.of()
+                : Map.copyOf(carriedCountsByIdentity);
+        this.displaySources = displaySources == null ? List.of() : List.copyOf(displaySources);
+        this.memoryRevision = Math.max(0L, memoryRevision);
+    }
+
+    public static WorkspaceStorageIndex empty() {
+        return new WorkspaceStorageIndex(Map.of(), Map.of(), List.of(), 0L);
+    }
+
+    public static WorkspaceStorageIndex build(
+            MinecraftServer server,
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            WorldStorageAccess worldStorage,
+            Set<String> proximateStorageIds,
+            List<WorldDisplayStorageSource> displaySources,
+            long tick
+    ) {
+        WorkspaceStorageMemoryStore memory = WorkspaceStorageMemoryStore.forServer(server);
+        Map<String, RememberedStorageContents> remembered = memory == null
+                ? Map.of()
+                : memory.rememberedContents();
+        long revision = memory == null ? 0L : memory.revision();
+        return buildInternal(
+                server,
+                authority,
+                workflow == null ? ClaimedChestMap.empty() : workflow.claimedChestMap(),
+                worldStorage,
+                proximateStorageIds,
+                displaySources,
+                memory,
+                remembered,
+                tick,
+                revision);
+    }
+
+    public static WorkspaceStorageIndex forTesting(
+            MinecraftServer server,
+            InventoryAuthoritySnapshot authority,
+            ClaimedChestMap claimedChestMap,
+            WorldStorageAccess worldStorage,
+            Set<String> proximateStorageIds,
+            List<WorldDisplayStorageSource> displaySources,
+            Map<String, RememberedStorageContents> remembered
+    ) {
+        return buildInternal(
+                server,
+                authority,
+                claimedChestMap,
+                worldStorage,
+                proximateStorageIds,
+                displaySources,
+                null,
+                remembered,
+                0L,
+                0L);
+    }
+
+    private static WorkspaceStorageIndex buildInternal(
+            MinecraftServer server,
+            InventoryAuthoritySnapshot authority,
+            ClaimedChestMap claimedChestMap,
+            WorldStorageAccess worldStorage,
+            Set<String> proximateStorageIds,
+            List<WorldDisplayStorageSource> displaySources,
+            WorkspaceStorageMemoryStore memory,
+            Map<String, RememberedStorageContents> remembered,
+            long tick,
+            long memoryRevision
+    ) {
+        ClaimedChestMap resolvedMap = claimedChestMap == null ? ClaimedChestMap.empty() : claimedChestMap;
+        Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
+        Map<String, RememberedStorageContents> rememberedById = remembered == null ? Map.of() : remembered;
+        LinkedHashMap<String, StorageEntry> entries = new LinkedHashMap<>();
+
+        for (ClaimedChest chest : resolvedMap.chests()) {
+            if (chest == null) {
+                continue;
+            }
+            String storageId = chest.storageId().toString();
+            boolean proximateTarget = proximate.contains(storageId);
+            StorageEntry live = liveClaimedEntry(server, worldStorage, chest, proximateTarget, memory, tick);
+            if (live != null) {
+                entries.put(storageId, live);
+                continue;
+            }
+            RememberedStorageContents rememberedContents = rememberedById.get(storageId);
+            if (rememberedContents != null) {
+                entries.put(storageId, rememberedEntry(rememberedContents, proximateTarget));
+            } else {
+                StorageTargetRef ref = StorageTargetRef.claimed(chest, false, false, proximateTarget);
+                entries.put(storageId, new StorageEntry(
+                        ref,
+                        SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                        Map.of(),
+                        false,
+                        false));
+            }
+        }
+
+        List<WorldDisplayStorageSource> liveDisplays = displaySources == null ? List.of() : List.copyOf(displaySources);
+        for (WorldDisplayStorageSource source : liveDisplays) {
+            if (source == null || source.storageId().isBlank()) {
+                continue;
+            }
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = snapshotFromDisplay(source);
+            entries.put(source.storageId(), new StorageEntry(
+                    StorageTargetRef.display(source, false, true),
+                    snapshot,
+                    countsFromSnapshot(snapshot),
+                    true,
+                    false));
+        }
+
+        return new WorkspaceStorageIndex(entries, carriedCounts(authority), liveDisplays, memoryRevision);
+    }
+
+    private static StorageEntry liveClaimedEntry(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            ClaimedChest chest,
+            boolean proximate,
+            WorkspaceStorageMemoryStore memory,
+            long tick
+    ) {
+        if (worldStorage == null || chest == null) {
+            return null;
+        }
+        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+        boolean accessible;
+        try {
+            accessible = worldStorage.isAccessible(server, target);
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn(
+                    "[SLOT] storage index accessibility failed for {}: {}",
+                    chest.storageId(), safeMessage(exception));
+            return null;
+        }
+        if (!accessible) {
+            return null;
+        }
+        SlotWorkspaceViewModel.ChestContentsSnapshot snapshot;
+        try {
+            snapshot = readSnapshot(server, worldStorage, target);
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn(
+                    "[SLOT] storage index read failed for {}: {}",
+                    chest.storageId(), safeMessage(exception));
+            return null;
+        }
+        StorageTargetRef ref = StorageTargetRef.claimed(chest, true, false, proximate);
+        if (memory != null) {
+            memory.observeSnapshot(ref, snapshot, tick, "workspace_index_live_read");
+        }
+        return new StorageEntry(ref, snapshot, countsFromSnapshot(snapshot), true, false);
+    }
+
+    private static SlotWorkspaceViewModel.ChestContentsSnapshot readSnapshot(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            WorldStorageAccess.Target target
+    ) {
+        int slots = Math.max(0, worldStorage.slotCount(server, target));
+        List<WorldStorageAccess.SlotContent> contents = worldStorage.enumerate(server, target);
+        ArrayList<ItemStack> stacks = new ArrayList<>();
+        ArrayList<Integer> slotIndices = new ArrayList<>();
+        if (contents != null) {
+            for (WorldStorageAccess.SlotContent content : contents) {
+                if (content == null || content.stack() == null || content.stack().isEmpty()) {
+                    continue;
+                }
+                stacks.add(content.stack().copy());
+                slotIndices.add(content.slotIndex());
+            }
+        }
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(slots, stacks, slotIndices);
+    }
+
+    private static StorageEntry rememberedEntry(RememberedStorageContents remembered, boolean proximate) {
+        SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = remembered.toSnapshot();
+        return new StorageEntry(
+                remembered.targetRef(false, proximate),
+                snapshot,
+                remembered.countsByIdentity(),
+                false,
+                true);
+    }
+
+    private static SlotWorkspaceViewModel.ChestContentsSnapshot snapshotFromDisplay(WorldDisplayStorageSource source) {
+        ArrayList<ItemStack> stacks = new ArrayList<>();
+        ArrayList<Integer> indices = new ArrayList<>();
+        for (WorldStorageAccess.SlotContent content : source.contents()) {
+            if (content == null || content.stack() == null || content.stack().isEmpty()) {
+                continue;
+            }
+            stacks.add(content.stack().copy());
+            indices.add(content.slotIndex());
+        }
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(source.slotCount(), stacks, indices);
+    }
+
+    public Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver() {
+        return this::contents;
+    }
+
+    public SlotWorkspaceViewModel.ChestContentsSnapshot contents(String storageId) {
+        if (storageId == null || storageId.isBlank()) {
+            return SlotWorkspaceViewModel.ChestContentsSnapshot.empty();
+        }
+        StorageEntry entry = entriesByStorageId.get(storageId);
+        return entry == null ? SlotWorkspaceViewModel.ChestContentsSnapshot.empty() : entry.snapshot();
+    }
+
+    public StorageTargetRef target(String storageId) {
+        StorageEntry entry = storageId == null ? null : entriesByStorageId.get(storageId);
+        return entry == null ? null : entry.target();
+    }
+
+    public Collection<StorageEntry> entries() {
+        return entriesByStorageId.values();
+    }
+
+    public List<WorldDisplayStorageSource> displaySources() {
+        return displaySources;
+    }
+
+    public Map<ItemIdentity, Integer> carriedCountsByIdentity() {
+        return carriedCountsByIdentity;
+    }
+
+    public long memoryRevision() {
+        return memoryRevision;
+    }
+
+    public Map<ItemIdentity, Integer> liveWorldCountsByIdentity() {
+        LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry.live()) {
+                mergeCounts(counts, entry.countsByIdentity());
+            }
+        }
+        return Map.copyOf(counts);
+    }
+
+    public Map<ItemIdentity, Integer> rememberedWorldCountsByIdentity() {
+        LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry.remembered()) {
+                mergeCounts(counts, entry.countsByIdentity());
+            }
+        }
+        return Map.copyOf(counts);
+    }
+
+    public DepositPlanner.ChestContentPresence liveChestContentPresence() {
+        LinkedHashMap<UUID, Set<ItemIdentity>> identitiesByChest = new LinkedHashMap<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry == null || !entry.live() || entry.target() == null || entry.target().displayTarget()) {
+                continue;
+            }
+            try {
+                UUID storageId = UUID.fromString(entry.target().storageId());
+                identitiesByChest.put(storageId, Set.copyOf(entry.countsByIdentity().keySet()));
+            } catch (IllegalArgumentException ignored) {
+                // Non-UUID ids are display storage and are intentionally not
+                // used as claimed-chest deposit authorization.
+            }
+        }
+        return (chest, identity) -> {
+            if (chest == null || identity == null) {
+                return false;
+            }
+            Set<ItemIdentity> identities = identitiesByChest.getOrDefault(chest.storageId(), Set.of());
+            return identities.contains(ItemIdentityMatcher.normalizeMovable(identity));
+        };
+    }
+
+    private static Map<ItemIdentity, Integer> carriedCounts(InventoryAuthoritySnapshot authority) {
+        if (authority == null) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
+        var carriedSources = authority.carriedSources();
+        Collection<String> sourceIds = carriedSources.isEmpty()
+                ? authority.sourcesById().keySet()
+                : carriedSources.stream().map(source -> source.id()).toList();
+        for (String sourceId : sourceIds) {
+            for (InventoryEntrySnapshot entry : authority.entries(sourceId)) {
+                if (entry == null || !entry.present()) {
+                    continue;
+                }
+                ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(entry.stack()));
+                if (identity != null) {
+                    counts.merge(identity, entry.count(), Integer::sum);
+                }
+            }
+        }
+        return Map.copyOf(counts);
+    }
+
+    private static Map<ItemIdentity, Integer> countsFromSnapshot(
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot
+    ) {
+        if (snapshot == null || snapshot.contents().isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
+        for (ItemStack stack : snapshot.contents()) {
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
+            if (identity != null) {
+                counts.merge(identity, stack.getCount(), Integer::sum);
+            }
+        }
+        return Map.copyOf(counts);
+    }
+
+    private static void mergeCounts(Map<ItemIdentity, Integer> target, Map<ItemIdentity, Integer> source) {
+        if (target == null || source == null || source.isEmpty()) {
+            return;
+        }
+        for (Map.Entry<ItemIdentity, Integer> entry : source.entrySet()) {
+            if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0) {
+                target.merge(entry.getKey(), entry.getValue(), Integer::sum);
+            }
+        }
+    }
+
+    private static String safeMessage(RuntimeException exception) {
+        if (exception == null || exception.getMessage() == null || exception.getMessage().isBlank()) {
+            return "runtime_exception";
+        }
+        return exception.getMessage().replace('\n', ' ').replace('\r', ' ');
+    }
+
+    public record StorageEntry(
+            StorageTargetRef target,
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot,
+            Map<ItemIdentity, Integer> countsByIdentity,
+            boolean live,
+            boolean remembered
+    ) {
+        public StorageEntry {
+            snapshot = snapshot == null ? SlotWorkspaceViewModel.ChestContentsSnapshot.empty() : snapshot;
+            countsByIdentity = countsByIdentity == null ? Map.of() : Map.copyOf(countsByIdentity);
+        }
+    }
+}

@@ -154,11 +154,10 @@ public final class GoalProjectionService {
         private void seedAuthority() {
             for (Map.Entry<ItemIdentity, GoalAuthorityCount> entry : authority.countsByIdentity().entrySet()) {
                 GoalAuthorityCount count = entry.getValue();
-                remainingCounts.put(entry.getKey(), new MutableAuthorityCount(
-                        count.carriedCount(),
-                        count.proximateStorageCount(),
-                        count.elsewhereStorageCount()
-                ));
+                ItemIdentity key = movableKey(entry.getKey());
+                remainingCounts
+                        .computeIfAbsent(key, ignored -> new MutableAuthorityCount(0, 0, 0))
+                        .add(count);
             }
             trace("seeded authority identities={} counts={}", remainingCounts.size(), authorityToken());
         }
@@ -188,9 +187,10 @@ public final class GoalProjectionService {
                         ingredientTokens(recipe.catalysts()),
                         recipe.diagnostics());
                 for (GoalStackDescriptor output : recipe.outputs()) {
-                    GoalRecipeDescriptor previous = recipesByOutput.putIfAbsent(output.identity(), recipe);
+                    ItemIdentity outputKey = movableKey(output.identity());
+                    GoalRecipeDescriptor previous = recipesByOutput.putIfAbsent(outputKey, recipe);
                     producerIdsByOutput
-                            .computeIfAbsent(output.identity(), ignored -> new ArrayList<>())
+                            .computeIfAbsent(outputKey, ignored -> new ArrayList<>())
                             .add(recipe.recipeId());
                     if (previous != null && !previous.recipeId().equals(recipe.recipeId())) {
                         trace(
@@ -224,14 +224,9 @@ public final class GoalProjectionService {
                 return List.of();
             }
             LinkedHashSet<String> producerIds = new LinkedHashSet<>();
-            List<String> exactIds = producerIdsByOutput.get(outputIdentity);
+            List<String> exactIds = producerIdsByOutput.get(movableKey(outputIdentity));
             if (exactIds != null) {
                 producerIds.addAll(exactIds);
-            }
-            for (Map.Entry<ItemIdentity, List<String>> entry : producerIdsByOutput.entrySet()) {
-                if (ItemIdentityMatcher.matchesMovable(entry.getKey(), outputIdentity)) {
-                    producerIds.addAll(entry.getValue());
-                }
             }
             LinkedHashMap<String, GoalRecipeDescriptor> result = new LinkedHashMap<>();
             for (String producerId : producerIds) {
@@ -339,14 +334,9 @@ public final class GoalProjectionService {
             if (identity == null) {
                 return 0;
             }
-            MutableAuthorityCount exact = remainingCounts.get(identity);
+            MutableAuthorityCount exact = remainingCounts.get(movableKey(identity));
             if (exact != null) {
                 return exact.total();
-            }
-            for (Map.Entry<ItemIdentity, MutableAuthorityCount> entry : remainingCounts.entrySet()) {
-                if (ItemIdentityMatcher.matchesMovable(entry.getKey(), identity)) {
-                    return entry.getValue().total();
-                }
             }
             return 0;
         }
@@ -402,7 +392,7 @@ public final class GoalProjectionService {
                     breadcrumbs);
             LinkedHashSet<ItemIdentity> nextPath = new LinkedHashSet<>(outputPath);
             if (requestedOutput != null) {
-                nextPath.add(requestedOutput);
+                nextPath.add(movableKey(requestedOutput));
             }
             for (GoalIngredientDescriptor ingredient : recipe.inputs()) {
                 int required = ingredient.consumed()
@@ -743,17 +733,13 @@ public final class GoalProjectionService {
         }
 
         private MutableAuthorityCount remainingCount(ItemIdentity identity) {
-            MutableAuthorityCount exact = remainingCounts.get(identity);
+            ItemIdentity key = movableKey(identity);
+            MutableAuthorityCount exact = remainingCounts.get(key);
             if (exact != null) {
                 return exact;
             }
-            for (Map.Entry<ItemIdentity, MutableAuthorityCount> entry : remainingCounts.entrySet()) {
-                if (ItemIdentityMatcher.matchesMovable(entry.getKey(), identity)) {
-                    return entry.getValue();
-                }
-            }
             MutableAuthorityCount created = new MutableAuthorityCount(0, 0, 0);
-            remainingCounts.put(identity, created);
+            remainingCounts.put(key, created);
             return created;
         }
 
@@ -761,12 +747,12 @@ public final class GoalProjectionService {
             if (identities == null || identities.isEmpty() || identity == null) {
                 return false;
             }
-            for (ItemIdentity existing : identities) {
-                if (ItemIdentityMatcher.matchesMovable(existing, identity)) {
-                    return true;
-                }
-            }
-            return false;
+            return identities.contains(movableKey(identity));
+        }
+
+        private ItemIdentity movableKey(ItemIdentity identity) {
+            ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(identity);
+            return normalized == null ? identity : normalized;
         }
 
         private List<String> recipeIds(List<GoalRecipeDescriptor> recipes) {
@@ -902,8 +888,17 @@ public final class GoalProjectionService {
             this.elsewhere = Math.max(0, elsewhere);
         }
 
+        private void add(GoalAuthorityCount count) {
+            if (count == null) {
+                return;
+            }
+            carried = addSaturated(carried, count.carriedCount());
+            proximate = addSaturated(proximate, count.proximateStorageCount());
+            elsewhere = addSaturated(elsewhere, count.elsewhereStorageCount());
+        }
+
         private int total() {
-            return carried + proximate + elsewhere;
+            return addSaturated(addSaturated(carried, proximate), elsewhere);
         }
 
         private GoalAuthorityCount consume(int requested) {
@@ -927,6 +922,11 @@ public final class GoalProjectionService {
             remaining -= fromProximate;
             int fromElsewhere = Math.min(elsewhere, remaining);
             return new GoalAuthorityCount(fromCarried, fromProximate, fromElsewhere);
+        }
+
+        private int addSaturated(int left, int right) {
+            long value = (long) Math.max(0, left) + (long) Math.max(0, right);
+            return value > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) value;
         }
     }
 }

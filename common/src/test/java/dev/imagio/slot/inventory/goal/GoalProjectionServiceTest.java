@@ -386,6 +386,38 @@ class GoalProjectionServiceTest {
                 .noneMatch(entry -> entry.kind() == GoalProjectionEntryKind.CHOICE_CARD));
     }
 
+    @Test
+    void movableExactAuthorityCountsAggregateBeforeProjection() {
+        ItemIdentity planks = ItemIdentity.of("tfc:wood/planks/blackwood");
+        ItemIdentity steelSaw = ItemIdentity.of("tfc:metal/saw/steel");
+        ItemIdentity exactStoredSteelSaw = ItemIdentity.exact("tfc:metal/saw/steel", "damage=12");
+        ItemIdentity exactCarriedSteelSaw = ItemIdentity.exact("tfc:metal/saw/steel", "damage=37");
+
+        GoalProjection projection = service.project(
+                new GoalDescriptor(
+                        "goal:planks",
+                        "Blackwood Planks",
+                        List.of(stack(planks, "Blackwood Planks", 1)),
+                        1,
+                        "slot:recipe/planks",
+                        "slot:test",
+                        List.of(recipe(
+                                "slot:recipe/planks",
+                                stack(planks, "Blackwood Planks", 1),
+                                GoalIngredientDescriptor.concrete("saw", stack(steelSaw, "Steel Saw", 1), 2)
+                        ))
+                ),
+                GoalVisibleAuthority.fromCounts(Map.of(exactCarriedSteelSaw, 1), Map.of(exactStoredSteelSaw, 1), Map.of())
+        );
+
+        GoalProjectionEntry sawEntry = entryFor(projection, steelSaw);
+        assertEquals(GoalProjectionEntryKind.REAL_CARD, sawEntry.kind());
+        assertEquals(1, sawEntry.carriedCount());
+        assertEquals(1, sawEntry.storageCount());
+        assertEquals(0, sawEntry.missingCount());
+        assertEquals(0, sawEntry.wantedCount());
+    }
+
     private static GoalProjectionEntry entryFor(GoalProjection projection, ItemIdentity identity) {
         return projection.entries().stream()
                 .filter(entry -> identity.equals(entry.identity()))

@@ -4,8 +4,8 @@ import java.util.Locale;
 
 /**
  * Small set of non-container world displays that SLOT can browse as storage.
- * These are discovered live from nearby blocks and are never persisted as
- * claimed storage.
+ * Live discovery is proximate; remembered display data is only meaningful
+ * when a higher-level tracked-storage surface explicitly joins that target.
  */
 public enum WorldDisplayStorageKind {
     TOOL_RACK("tool_rack", true),

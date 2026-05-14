@@ -4,6 +4,8 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
 import dev.imagio.slot.inventory.workspace.ChestDepositObservationSupport;
+import dev.imagio.slot.inventory.workspace.StorageTargetRef;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
@@ -29,6 +31,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.WeakHashMap;
@@ -148,6 +151,7 @@ public final class ChestDepositObserver {
         }
         ServerLevel level = player.serverLevel();
         ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, session.pos);
+        UUID stampedStorageId = ChestStorageIds.read(level, session.pos).orElse(null);
         WorkflowDomainRuntime runtime = SlotPlayerWorkflowRuntimeService.runtime(player);
         ChestClaimWorkflowDomainService chestService = runtime.chestClaimWorkflow();
 
@@ -173,12 +177,21 @@ public final class ChestDepositObserver {
             for (Map.Entry<ItemIdentity, Integer> entry : deposits.entrySet()) {
                 chestService.recordDeposit(storageId, entry.getKey(), entry.getValue(), tick);
             }
+            observeRememberedContents(
+                    level, chestService, storageId, anchor, session.pos, menu, session.storageSlots, "container_close_deposit");
             SlotCommon.LOGGER.info(
                     "[SLOT] auto-claim observed deposits player={} pos={} storage={} identities={} seeded={}",
                     player.getScoreboardName(), session.pos, storageId, deposits.size(), seeded
             );
             return;
         }
+
+        ClaimedChest trackedChest = chestService.chestByAnchor(anchor);
+        UUID memoryStorageId = stampedStorageId != null
+                ? stampedStorageId
+                : trackedChest == null ? null : trackedChest.storageId();
+        observeRememberedContents(
+                level, chestService, memoryStorageId, anchor, session.pos, menu, session.storageSlots, "container_close");
 
         // Recents filter: takes from a CLAIMED (tracked) chest don't
         // belong in the player's "where did the thing I just grabbed
@@ -187,7 +200,7 @@ public final class ChestDepositObserver {
         // ACQUIRED events from the authority diff don't surface them.
         // Loot/world pickups + crafting outputs aren't routed through
         // here, so they keep populating recents normally.
-        if (!takes.isEmpty() && chestService.chestByAnchor(anchor) != null) {
+        if (!takes.isEmpty() && trackedChest != null) {
             for (ItemIdentity identity : takes.keySet()) {
                 runtime.dismissRecent(identity);
             }
@@ -198,9 +211,47 @@ public final class ChestDepositObserver {
         // identities have visual homes — useful as the player walks back
         // to base. No overlay rendering yet; the chat line is the v0
         // surface for "Triage-style loot panel" per docs/plans/learned-storage.md.
-        if (!takes.isEmpty() && chestService.chestByAnchor(anchor) == null) {
+        if (!takes.isEmpty() && trackedChest == null) {
             sendLootChestSummary(player, runtime, takes);
         }
+    }
+
+    private static void observeRememberedContents(
+            ServerLevel level,
+            ChestClaimWorkflowDomainService chestService,
+            UUID storageId,
+            ChestAnchor anchor,
+            BlockPos pos,
+            AbstractContainerMenu menu,
+            List<Integer> storageSlots,
+            String source
+    ) {
+        if (level == null || storageId == null || menu == null || storageSlots == null || storageSlots.isEmpty()) {
+            return;
+        }
+        WorkspaceStorageMemoryStore store = WorkspaceStorageMemoryStore.forServer(level.getServer());
+        if (store == null) {
+            return;
+        }
+        ClaimedChest claimed = chestService == null ? null : chestService.chest(storageId);
+        StorageTargetRef ref = claimed == null
+                ? StorageTargetRef.claimed(
+                        storageId,
+                        anchor == null ? level.dimension().location().toString() : anchor.dimensionId(),
+                        anchor == null ? pos.getX() : anchor.x(),
+                        anchor == null ? pos.getY() : anchor.y(),
+                        anchor == null ? pos.getZ() : anchor.z(),
+                        "",
+                        true,
+                        false,
+                        true)
+                : StorageTargetRef.claimed(claimed, true, false, true);
+        store.observe(
+                ref,
+                storageSlots.size(),
+                ChestDepositObservationSupport.currentContents(menu, storageSlots),
+                level.getGameTime(),
+                source);
     }
 
     private static void sendLootChestSummary(
@@ -285,6 +336,16 @@ public final class ChestDepositObserver {
         Set<ChestAnchor> anchors = ChestStorageAnchors.resolveAnchors(level, pos);
         if (anchors.isEmpty()) {
             return null;
+        }
+        Optional<UUID> stampedStorageId = ChestStorageIds.read(level, pos);
+        if (stampedStorageId.isPresent()) {
+            UUID storageId = stampedStorageId.get();
+            ClaimedChest byId = chestService.chest(storageId);
+            if (byId != null) {
+                return byId.storageId();
+            }
+            ClaimedChest claimed = chestService.claimWithId(storageId, anchors, pos.getX() * 100, pos.getZ() * 100, "");
+            return claimed == null ? storageId : claimed.storageId();
         }
         // Detect a partial claim covering the paired half — fold this anchor into it.
         for (ChestAnchor candidate : anchors) {

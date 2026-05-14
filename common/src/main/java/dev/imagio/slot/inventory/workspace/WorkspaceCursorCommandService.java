@@ -264,6 +264,11 @@ public final class WorkspaceCursorCommandService {
             runtime.chestClaimWorkflow().recordDeposit(
                     resolved.chest().storageId(), identity, deposited,
                     player.serverLevel().getGameTime());
+            WorkspaceChestCommandService.observeStorageIds(
+                    player,
+                    runtime.chestClaimWorkflow().claimedChestMap(),
+                    List.of(resolved.chest().storageId().toString()),
+                    "slot.cursor_drop_chest");
         }
         menu.setCarried(remaining);
         SlotDebugLog.log("[cursor][drop-chest] chest={} deposited={} remaining={}",
@@ -476,6 +481,11 @@ public final class WorkspaceCursorCommandService {
                 if (pulled == null || pulled.isEmpty()) {
                     continue;
                 }
+                WorkspaceChestCommandService.observeStorageIds(
+                        player,
+                        claimedChestMap,
+                        List.of(chest.storageId().toString()),
+                        "slot.cursor_pickup");
                 String label = chest.label();
                 return new Extraction(
                         pulled,
@@ -522,12 +532,20 @@ public final class WorkspaceCursorCommandService {
             if (!proximate.isEmpty()) {
                 long tick = player.serverLevel().getGameTime();
                 ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
+                WorkspaceStorageIndex storageIndex = WorkspaceStorageIndex.build(
+                        server,
+                        dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot.empty(),
+                        runtime.snapshot(),
+                        StorageAccessRegistry.worldStorageAccess(),
+                        proximate,
+                        List.of(),
+                        tick);
                 List<UUID> ranked = DepositPlanner.rankChestsForIdentity(
                         identity,
                         claimedChestMap,
                         affinityMap,
                         proximate,
-                        WorkspaceChestCommandService.liveChestContentPresence(player));
+                        storageIndex.liveChestContentPresence());
                 WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
                 for (UUID storageUuid : ranked) {
                     ClaimedChest chest = claimedChestMap.chest(storageUuid);
@@ -541,6 +559,11 @@ public final class WorkspaceCursorCommandService {
                     int depositedHere = beforeCount - remaining.getCount();
                     if (depositedHere > 0) {
                         runtime.chestClaimWorkflow().recordDeposit(storageUuid, identity, depositedHere, tick);
+                        WorkspaceChestCommandService.observeStorageIds(
+                                player,
+                                claimedChestMap,
+                                List.of(storageUuid.toString()),
+                                "slot.cursor_smart_deposit");
                     }
                     if (remaining.isEmpty()) {
                         return ItemStack.EMPTY;
@@ -569,7 +592,16 @@ public final class WorkspaceCursorCommandService {
         }
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
         WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+        int beforeCount = stack == null ? 0 : stack.getCount();
         ItemStack leftover = world.insert(server, target, stack, false);
+        int afterCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
+        if (beforeCount > afterCount) {
+            WorkspaceChestCommandService.observeStorageIds(
+                    player,
+                    runtime.chestClaimWorkflow().claimedChestMap(),
+                    List.of(chest.storageId().toString()),
+                    "slot.cursor_origin_return");
+        }
         return leftover == null ? ItemStack.EMPTY : leftover;
     }
 

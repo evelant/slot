@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -45,6 +46,25 @@ public final class ChestDepositObservationSupport {
             snapshot[i] = stack == null ? ItemStack.EMPTY : stack.copy();
         }
         return snapshot;
+    }
+
+    public static List<WorldStorageAccess.SlotContent> currentContents(
+            AbstractContainerMenu menu,
+            List<Integer> menuSlots
+    ) {
+        if (menu == null || menuSlots == null || menuSlots.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<WorldStorageAccess.SlotContent> contents = new ArrayList<>();
+        for (int i = 0; i < menuSlots.size(); i++) {
+            Slot slot = safeSlot(menu, menuSlots.get(i));
+            ItemStack stack = slot == null ? ItemStack.EMPTY : slot.getItem();
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            contents.add(new WorldStorageAccess.SlotContent(i, stack.copy()));
+        }
+        return List.copyOf(contents);
     }
 
     public static Observation observe(ItemStack[] initial, Container current, int slotCount) {

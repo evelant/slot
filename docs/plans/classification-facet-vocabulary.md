@@ -74,8 +74,9 @@ cross-mod material chains. TerraFirmaGreg is only the current test case.
 ## Goals
 
 - generate stable pack-specific facet vocabulary before item classification
-- keep universal defaults small and reusable across packs, then let the
-  vocabulary pass discover pack-specific values
+- keep built-in organization homes explicit in the vocabulary artifact, then let
+  the vocabulary pass discover pack-specific values for every other
+  vocabulary-backed facet
 - distinguish workflow/task context from mod-internal identity
 - add structured domain facets where they generalize beyond one pack
 - improve `organization_group`, `mod_subsystem`, `primary_uses`, and
@@ -162,7 +163,7 @@ Current pipeline:
 1. Stage 1 extracts item records from source trees, jars, or runtime exports.
 2. Stage 2 derives deterministic facets.
 3. Pack facet vocabulary generation proposes vocabulary-backed semantic values,
-   including namespace-scoped `mod_subsystem` values.
+   including facet-scoped `mod_subsystem` values.
 4. Stage 3 fills LLM-authored facets and writes a complete layer.
 5. `classify-runtime-pack` can package the layer as a datapack.
 
@@ -216,7 +217,7 @@ Each vocabulary-backed facet needs:
 - short descriptions that tell stage 3 when to use the value
 - short rationales and examples that let a human reviewer approve, reject, or
   rename the value
-- whether values are universal defaults, pack-proposed, or manually curated
+- whether values are built-in seeds, pack-proposed, or manually curated
 - whether the value can influence auto-home, task views, search only, or review
   only
 
@@ -228,18 +229,19 @@ pack-specific values into code. Code-closed enums remain appropriate for
 structural facets that runtime code interprets directly: `role`, `equip_slot`,
 `required_tool`, booleans, and possibly a small base `form` vocabulary.
 
-### Value ID Grammar
+### Value Grammar
 
-Vocabulary-backed facets should use stable scoped ids, not display labels.
-Labels and natural-language variants live in `label` / `aliases`.
+Vocabulary-backed facets should use stable facet-scoped values, not display
+labels or provenance prefixes. Labels and natural-language variants live in
+`label` / `aliases`; provenance lives in evidence metadata.
 
-Canonical value-id forms:
+Canonical value forms:
 
 ```text
-slot:<token>
-<mod_namespace>:<token_path>
-pack:<pack_id>/<token_path>
-<workflow_value_id>#<role_token>
+<token>
+<token_path>
+<workflow_value>#<role_token>
+<resource_namespace>:<token_path>
 ```
 
 Where:
@@ -247,68 +249,55 @@ Where:
 ```text
 token       = [a-z][a-z0-9_]*
 token_path  = token(/token)*
-pack_id     = sanitized pack id, [a-z0-9_.-]+
 role_token  = token
 ```
 
 Examples:
 
 ```text
-slot:cooking
-slot:mining
-create:mechanical_power
-ae2:autocrafting
-pack:tfg2/steelmaking
-pack:tfg2/food_prep
-tfc:casting#input
-pack:tfg2/steelmaking#catalyst
+cooking
+mining
+mechanical_power
+autocrafting
+steelmaking
+food_prep
+casting#input
+steelmaking#catalyst
+minecraft:furnace
 ```
 
 Rules:
 
-- use `slot:` for universal defaults shipped by SLOT
-- use `<mod_namespace>:` when the concept is owned by one mod and would remain
-  meaningful in another pack using that mod
-- use `pack:<pack_id>/` when a pack stitches multiple mods into one
-  player-facing process, progression stage, loadout context, or organization
-  group
+- values are scoped by the facet that contains them
+- use simple lower_snake values for synthesized semantic concepts
+- use namespace-qualified values only when the value is a real registry/resource
+  id, such as a station, status effect, multiblock, or biome id
 - use `#<role_token>` only for scoped relationship facets such as
   `workflow_role`
 - do not encode display names, spaces, hyphens, capitalization, or item ids into
-  value ids; keep those as labels, aliases, or review examples
+  vocabulary values; keep those as labels, aliases, or review examples
 - start strict; loosen the grammar only when an accepted value cannot be
   represented cleanly with aliases or evidence metadata
 
-### Scoping Policy
+### Provenance Policy
 
-Scope by concept owner, not by whichever namespace produced the strongest
-evidence.
-
-- **Universal scope (`slot:`):** broad concepts useful across packs, such as
-  `slot:cooking`, `slot:bulk`, or `slot:eat`.
-- **Namespace scope (`<mod>:`):** mod-owned systems that are stable outside this
-  pack, such as a mod's native logistics network, power system, magic school,
-  machine family, or equipment effect.
-- **Pack scope (`pack:<pack_id>/`):** concepts created by pack integration:
-  quest chapters, cross-mod production chains, compatibility recipes,
-  pack-defined progression stages, and wall-home groups that intentionally span
-  namespaces.
-
-When the owner is ambiguous, prefer pack scope and record the namespace conflict
-in review. `mod_subsystem` is the exception: because it is identity-oriented,
-it should remain namespace-scoped unless manually curated otherwise.
+Do not encode ownership or source provenance into vocabulary values. The facet
+already scopes the value, and review/evidence metadata records where it came
+from. `mod_subsystem=kinetics` is clearer than a value that repeats the mod
+namespace; the classifier can still inspect `mod_namespace`, source records, and
+evidence to understand where the subsystem was observed.
 
 ### Pattern Validation Strategy
 
-The value grammar and scoping policy above are the V1 starting point. During the
+The value grammar and provenance policy above are the V1 starting point. During the
 first implementation, run the context-record extractor against the current
 deep-pack fixture and lint every proposed value:
 
 1. Generate raw context records with labels, source evidence, suggested facet,
    and stable source handles. Do not treat those handles as proposed output
-   value ids.
-2. Apply the proposed grammar and report rejected ids, collisions, aliases,
-   scope conflicts, and generic catch-alls.
+   vocabulary values.
+2. Apply the proposed grammar and report rejected values, collisions, aliases,
+   provenance conflicts, and generic catch-alls.
 3. Manually inspect top accepted values and top rejected/colliding values.
 4. Add fixture tests for the grammar and normalization rules.
 5. Tune thresholds and stop-word lists from the review report, not by hardcoding
@@ -316,36 +305,34 @@ deep-pack fixture and lint every proposed value:
 
 ### `activity`
 
-`activity` should become vocabulary-backed. The tool should ship sensible
-universal defaults, then let the pack vocabulary pass add or suppress values
-for the current modpack. Stage 3 should classify against the activity values
-rendered from the vocabulary artifact, not a hardcoded prompt list.
+`activity` should be vocabulary-backed and generated for the current pack.
+Stage 3 should classify against the activity values rendered from the
+vocabulary artifact, not a hardcoded prompt list.
 
-Starter defaults:
+Example activity values:
 
 ```text
-slot:mining
-slot:exploration
-slot:cooking
-slot:building
-slot:decorating
-slot:combat
-slot:farming
-slot:redstone
-slot:automation
-slot:logistics
-slot:storage_management
-slot:brewing
-slot:enchanting
-slot:magic
-slot:power_generation
-slot:transportation
+mining
+exploration
+cooking
+building
+decorating
+combat
+farming
+redstone
+automation
+logistics
+storage_management
+brewing
+enchanting
+magic
+power_generation
+transportation
 ```
 
 Rules:
 
-- universal defaults should be broad activities useful across many packs
-- pack-specific activities are allowed when they are player-facing activities,
+- generated activities should be broad player-facing activities,
   not just internal recipe type names
 - recipe verbs can inform activities, but technical recipe IDs should stay in
   `processing_in` and player-facing stations/processes should go in `used_at`
@@ -356,29 +343,27 @@ Rules:
 ### `workflow`
 
 `workflow` is a pack/mod-specific multi-value facet for player-facing process
-areas. Values are stable ids, usually `<namespace>:<token>`, and are generated
-from a pack vocabulary artifact. It answers "which process/task context can
-show this item?"
+areas. Values are stable facet-scoped strings generated from a pack vocabulary
+artifact. It answers "which process/task context can show this item?"
 
 Examples from possible packs:
 
 ```text
-some_mod:casting
-some_mod:anvil_work
-some_mod:food_prep
-some_mod:greenhouse
-tech_mod:ore_processing
-tech_mod:steelmaking
-magic_mod:ritual_setup
-space_mod:oxygen_production
+casting
+anvil_work
+food_prep
+greenhouse
+ore_processing
+steelmaking
+ritual_setup
+oxygen_production
 ```
 
 Rules:
 
-- use stable ids as facet values; labels and aliases are search/display data
+- use stable values; labels and aliases are search/display data
 - prefer process names players learn from the pack, not internal class names
-- do not create catch-alls such as `<ns>:materials`, `<ns>:misc`, or
-  `<ns>:crafting`
+- do not create catch-alls such as `materials`, `misc`, or `crafting`
 - a workflow can be broad enough to span roles: ingredients, tools, stations,
   containers, outputs, and byproducts can all participate
 - recipe, station, guide, quest, advancement, tag, and sibling evidence are all
@@ -547,46 +532,42 @@ Rules:
 
 ### Material And Process Domain Facets
 
-Material/process chains need structured stages, but the schema must separate
-generic material identity from pack-specific processing context.
+Material/process chains need structured stages, but their vocabularies are
+pack-varying. The tool must not carry a universal list of stages such as
+`double_ingot`, `bloom`, `billet`, or `molten`; those are real in some packs and
+noise in others. The vocabulary loop synthesizes these values from item samples,
+tags, recipes, tooltips, quests, guides, and lang text.
 
-Candidate facets:
+Vocabulary-backed material/process facets:
 
 ```text
-material_process_stage:
-  ore
-  crushed_ore
-  purified_ore
-  dust
-  tiny_dust
-  nugget
-  ingot
-  double_ingot
-  sheet
-  double_sheet
-  rod
-  plate
-  bloom
-  billet
-  molten
-  alloy
-  mold
-
-process_material:
+material_family:
   iron
-  copper
-  tin
+  wood_oak
+  modid:black_steel
+
+material_secondary:
+  wood_oak
+  leather
+
+tier:
   bronze
   steel
-  wrought_iron
-  nickel
-  chromium
+  modid:high_voltage
+
+required_tool_tier:
+  iron
+  modid:steel
+
+material_process_stage:
+  [synthesize broad process forms/stages from the pack]
 ```
 
-Decision: keep `process_material`. It overlaps `material_family`, but the
-separate facet is useful when the workflow material differs from the item's
-literal construction material: molds, catalysts, fuels, containers, machines,
-and alloy contexts.
+Decision: do not add a separate `process_material` facet for V1. Use
+`material_family` / `material_secondary` for the item substance, and combine
+`material_process_stage`, `workflow`, `workflow_role`, and `used_at` for process
+context when a mold, catalyst, fuel, container, machine, or alloy relationship
+matters.
 
 ### Station And Interaction Facets
 
@@ -792,23 +773,27 @@ The command should be implemented as a pipeline, not one monolithic prompt:
    existing vocabulary, previous generated layers, and prior `primary_uses`
    phrases when available. These deterministic records are source handles and
    evidence bundles, not proposed vocabulary values.
-2. **Build pack-overview summaries.** For `organization_group`, include
-   pack-wide context that lets the model see the item universe: default-section
-   pressure, runtime item family clusters, tag membership summaries, recipe-use
-   neighborhoods, and human-visible text pools. These summaries are also
-   context only; they must not be converted one-for-one into values.
+2. **Build pack-overview summaries and rotating item samples.** Include
+   compact raw runtime item observations so the model sees the shape of the
+   item universe: item ids/names, raw tags, creative tabs, components, model
+   parents, recipe-role facts, and tooltip/lore snippets. For
+   `organization_group`, also include pack-wide context such as default-section
+   pressure, runtime item family clusters, tag membership summaries,
+   recipe-use neighborhoods, and human-visible text pools. These summaries and
+   item samples are context only; they must not be converted one-for-one into
+   values or treated as deterministic semantic classifications.
 3. **Normalize and cluster context records.** Lowercase/snake-case labels,
-   attach namespace or pack scope only for stable source handles, merge obvious
+   keep namespace/pack details in source handles and metadata, merge obvious
    aliases, reject generic catch-alls, and group context records by target facet
    before any LLM call.
 4. **Ask the LLM to synthesize values from context.** The prompt receives
    compact context records, pack-overview summaries, semantic snippets,
    examples, and facet policy. These records are not an allowed-value list.
-   `context_id` values are source handles; the model should output an id only
-   after deciding it is the best stable vocabulary id, and should synthesize
+   `context_id` values are source handles; the model should output a value only
+   after deciding it is the best stable vocabulary value, and should synthesize
    clearer values when the evidence points at a broader or more human concept.
-   Pack-specific storage families should be scoped as `pack:<pack-id>/...`,
-   not as a mod namespace, unless the value is genuinely owned by one mod.
+   Pack-specific storage families should use concise facet-scoped values such
+   as `beekeeping`, not provenance-prefixed ids.
    For `organization_group`, the desired output is a small review shortlist
    when broad pack-specific storage families are evident; an empty result is
    correct only when protected built-ins already cover every useful family.
@@ -822,10 +807,16 @@ The command should be implemented as a pipeline, not one monolithic prompt:
    should be rejected. Do not bulk-render every ordinary noisy context record as
    a rejected value, and do not include full candidate dumps or raw LLM
    responses in the primary review JSON.
-7. **Apply human decisions explicitly.** Maintainers edit `human_review` fields
-   in the review JSON to approve, reject, or rename proposed values, or run the
-   interactive `review-pack-facet-vocabulary` helper to make y/n decisions from
-   the terminal. The result is an approved vocabulary artifact used by stage 3.
+7. **Iterate automatically before human review.** Run several refinement rounds
+   with the previous round's unapproved working vocabulary plus a fresh item
+   sample. The working vocabulary carries `accepted`, `review`, and `rejected`
+   generator decisions forward as context for the next round; it is not
+   classifier input.
+8. **Apply human decisions explicitly once the loop stabilizes.** Maintainers
+   edit `human_review` fields in the final review JSON to approve, reject, or
+   rename proposed values, or run the interactive
+   `review-pack-facet-vocabulary` helper to make y/n decisions from the
+   terminal. The result is an approved vocabulary artifact used by stage 3.
 
 ### Value State
 
@@ -846,7 +837,7 @@ noisy context records are omitted from the review output.
 Every generated value should also carry an origin:
 
 ```text
-universal_default
+built_in
 pack_generated
 namespace_generated
 manual
@@ -861,7 +852,7 @@ different things for each facet.
 
 | Facet | Value source | Acceptance bias |
 | --- | --- | --- |
-| `activity` | universal defaults + pack activity concepts from guide/quest/process evidence | conservative; prefer broad player activities, reject recipe-internal verbs |
+| `activity` | generated pack activity concepts from guide/quest/process/item evidence | conservative; prefer broad player activities, reject recipe-internal verbs |
 | `workflow` | recipe families, station groups, guide/quest chapters, repeated process language | medium; process values are useful even before auto-home consumes them |
 | `workflow_role` | derived from accepted workflows plus observed recipe roles | conservative; scoped values only, no free-floating roles |
 | `used_at` | station items, recipe category labels, EMI/JEI labels, guide text | medium; must describe a player-facing station/surface, not raw recipe ownership |
@@ -893,14 +884,14 @@ Lower-ranked evidence can propose a value, but should usually leave it in
 
 ### Stability Rules
 
-- Prefer preserving a previous accepted value id over renaming it for style.
+- Prefer preserving a previous accepted value over renaming it for style.
 - If two proposed values are synonyms, accept one value and record aliases on it.
-- For every facet with universal defaults, render those defaults into the
-  vocabulary-generation prompt as protected accepted values. The LLM should not
-  propose pack/mod/slot synonyms or narrow splits of those defaults; add a new
-  value only when it is a genuinely distinct reusable concept.
-- If a value's scope is unclear, prefer pack scope over guessing a namespace
-  owner; review values whose namespace differs from most seed items.
+- Render built-in organization homes into the vocabulary-generation prompt as
+  protected accepted values. The LLM should not propose synonyms or narrow
+  splits of those homes; add a new value only when it is a genuinely distinct
+  reusable concept.
+- Do not encode provenance in the value. Keep pack/mod/source ownership in
+  metadata, evidence, and review notes.
 - Reject generic values such as `misc`, `general`, `materials`, `components`,
   `crafting`, `items`, and `blocks` unless a facet policy explicitly allows the
   value and a consumer needs it.
@@ -931,9 +922,9 @@ Proposed shape:
   "facets": {
     "activity": {
       "values": {
-        "slot:cooking": {
+        "cooking": {
           "label": "Cooking",
-          "origin": "universal_default",
+          "origin": "pack_generated",
           "aliases": ["food prep"],
           "state": "accepted",
           "confidence": 0.9
@@ -952,8 +943,8 @@ Proposed shape:
             {"kind": "item_tag", "id": "example:ingot_molds", "confidence": 0.8}
           ],
           "seed_items": ["example:ingot_mold"],
-          "related_activity": ["slot:automation"],
-          "default_organization_group": "example:casting",
+          "related_activity": ["automation"],
+          "default_organization_group": "ceramics_molds",
           "confidence": 0.9
         }
       }
@@ -991,17 +982,21 @@ The item classifier consumes the vocabulary artifact and assigns:
 - new vocabulary-backed facets selected in Slice 0: `workflow`,
   `workflow_role`, `used_at`, `food_use`, `stock_profile`, `container_state`,
   `equipment_effect`, `protection_context`, `progression_stage`,
-  `loadout_context`, `use_affordance`, and any deterministic domain facets that
-  are accepted
-- deterministic food/material/process facets when evidence is direct enough
+  `loadout_context`, `use_affordance`, `material_family`,
+  `material_secondary`, `tier`, `required_tool_tier`,
+  `material_process_stage`, `produces_effect`, `multiblock_component_of`, and
+  `biome`
+- exact raw/reference facts that truly do not require semantic judgement, such
+  as namespace, stackability, block-item status, recipe participation, and
+  stable enum facts
 
 Prompt rules:
 
-- render only relevant facet vocabulary for namespaces and concepts present in
-  the batch, plus universal defaults and pack-owned values
+- render only relevant accepted facet vocabulary for concepts present in the
+  batch; built-in organization homes are included only because they are present
+  in the accepted vocabulary artifact
 - instruct the LLM to choose from known vocabulary values; proposed new values go
-  to review unless deterministic evidence is strong and the facet allows
-  generator additions
+  to review rather than being silently invented into the final layer
 - keep `mod_subsystem` conservative and identity-oriented; do not auto-home by
   subsystem id
 - allow `workflow`, `workflow_role`, and `used_at` from recipe/guide/quest
@@ -1079,11 +1074,13 @@ UI/runtime consumer needs the new semantic facets.
 - choose the cleanest schema-version path; backward compatibility is not a
   constraint for the current experimental/test consumers
 - add new facet definitions to `tools/classification/src/schema/facets.ts`
-- add the accepted facet set: `workflow`, `workflow_role`, `used_at`,
+- add the accepted facet set: `material_family`, `material_secondary`, `tier`,
+  `required_tool_tier`, `workflow`, `workflow_role`, `used_at`,
   `food_category`, `food_use`, `preparation_state`,
   `material_process_stage`, `stock_profile`, `container_state`,
   `equipment_effect`, `protection_context`, `progression_stage`,
-  `loadout_context`, `use_affordance`
+  `loadout_context`, `use_affordance`, `produces_effect`,
+  `multiblock_component_of`, `biome`
 - update prompt target facets and expected output examples
 - update parser tests so unknown facets are rejected and new facets are
   accepted
@@ -1097,7 +1094,8 @@ Exit criteria:
 - a tiny hand-authored layer containing the new facets validates and parses
 - a tiny hand-authored vocabulary artifact validates and rejects malformed facet
   values
-- grammar tests cover `slot:`, namespace, pack, and scoped `#role` value ids
+- grammar tests cover facet-scoped values, real namespace/resource values, and
+  scoped `#role` values while rejecting artificial provenance prefixes
 - stage 3 can emit the new facets without parser warnings
 - Java runtime either exposes or intentionally ignores each new facet
 - no command emits a facet that current tooling drops
@@ -1171,14 +1169,14 @@ Exit criteria:
 
 - dry run writes prompt pairs and a prompt summary
 - replay can regenerate from fixtures without live LLM calls
-- accepted vocabulary ids are stable, correctly scoped, and evidence-backed
+- accepted vocabulary values are stable, facet-scoped, and evidence-backed
 - initial evidence thresholds are conservative guesses and are surfaced in the
   review report for tuning
 - uncertain values are not included in accepted vocabulary
 - duplicate/synonym values are visible in review output
-- universal defaults and pack-generated values are distinguishable in output
+- built-in seeds and pack-generated values are distinguishable in output
 - replay fixtures prove the same evidence + previous vocabulary produces stable
-  accepted ids
+  accepted values
 - stage-3-proposed values from a prior run can be fed back as review evidence
   without becoming accepted automatically
 
@@ -1213,21 +1211,22 @@ Exit criteria:
 - `mod_subsystem` uses accepted pack vocabulary values instead of a separate
   runtime proposer/cache
 
-### Slice 4: Deterministic Domain Facets
+### Slice 4: Reference-Derived Domain Facts
 
 - implement generic food-tag mapping rules
-- implement generic material-stage mapping rules from ids/tags/recipe families
+- do not implement material-family, tier, or process-stage mapping rules from
+  ids/tags/recipe families; those are vocabulary-backed semantic facets
 - implement deterministic `processing_in` retention plus semantic `used_at`
   evidence generation; do not collapse one into the other
 - keep pack-specific mappings data-driven where possible
-- write fill-in review files when the LLM finds deterministic gaps
 - avoid over-broad rules that turn helper tags into player-facing facets
 
 Exit criteria:
 
 - deterministic rules have focused unit tests
 - food facets are populated only from explicit food evidence
-- material-stage facets avoid catch-all "material" guesses
+- material/process/tier facets are grounded by accepted vocabulary and LLM
+  judgement, not hardcoded defaults or pack-specific rule tables
 - `used_at` assignments are produced only from station/category evidence or
   LLM-reviewed vocabulary evidence, not from arbitrary recipe ownership
 - broad animal-feed, helper, blacklist/whitelist, and recipe-viewer tags do not

@@ -1683,6 +1683,16 @@ public record SlotWorkspaceViewModel(
         return ItemStack.EMPTY;
     }
 
+    static ItemStack resolveGhostStack(ItemIdentity identity, int count) {
+        ItemStack stack = resolveGhostStack(identity);
+        if (stack == null || stack.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        ItemStack copy = stack.copy();
+        copy.setCount(Math.max(1, count));
+        return copy;
+    }
+
     private static ItemStack resolveGhostStackItem(String itemId) {
         try {
             ItemStack stack = ghostStackResolver.apply(itemId);

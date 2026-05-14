@@ -31,7 +31,7 @@ The wall needs a trustworthy signal for questions like:
   container?
 - which material, form, tier, color, or environment does it belong to?
 - should a large pack split this item into a player-facing section such as
-  `pack:tfg/casting_molds` or `pack:tfg/masonry_supplies`?
+  `beekeeping` or `glass_products`?
 - is this a broad role-only item that belongs in the generic Ores & Raw Stock,
   Metal Stock, Gems & Crystals, Dusts & Powders, Wood, Seeds, Crops, Plants,
   Ceramics & Molds, Organic Materials, Materials, Building, Food,
@@ -109,7 +109,7 @@ not main wall homes.
 Stock wood such as sticks, logs, planks, boards, and lumber is a protected
 built-in Wood section rather than an LLM-proposed organization group. The
 same protection applies to Seeds, Crops, Plants, Ceramics & Molds, and Organic Materials:
-they are default homes for common stock families, not pack-scoped vocabulary
+they are default homes for common stock families, not custom vocabulary
 values unless a future design deliberately changes that. These protected
 sections are good player homes, not bad categories: item containers belong in
 Storage, lamps/light sources in Lighting, crops in Crops, pottery/molds in
@@ -123,9 +123,10 @@ candidate-picker. `context_records` carry source handles and semantic snippets;
 clusters, tag memberships, recipe-use neighborhoods, and human-visible text
 pools. Neither shape is an allowed-value list. The model is expected to judge
 what broad player-facing sections the pack actually needs, synthesize stable
-ids for those values, and omit ordinary noisy context. Pack-specific storage
-families use `pack:<pack-id>/...` ids unless a value is genuinely owned by one
-mod. It should still emit a small review shortlist when the pack clearly has
+facet-scoped values, and omit ordinary noisy context. Pack-specific storage
+families use concise values such as `beekeeping` or `glass_products`; provenance
+belongs in metadata and review evidence, not in the value string. It should
+still emit a small review shortlist when the pack clearly has
 broad custom storage families; empty `organization_group` output is only
 correct when protected built-ins already cover every useful family.
 Vocabulary proposal is budget-driven rather than fixed-size chunked: send one
@@ -139,7 +140,7 @@ tools/classification/
 ├── layer.schema.json
 ├── src/
 │   ├── extract/          # stage 1 records from mcmeta, sources, jars, runtime exports
-│   ├── deterministic/    # stage 2 rule facets
+│   ├── deterministic/    # stage 2 exact/raw reference facts
 │   ├── evidence/         # pack-level facet-vocabulary evidence
 │   ├── llm/              # stage 3 completion, replay, retry, subsystem proposer
 │   └── schema/           # facet registry, layer validation, vocabulary validation
@@ -158,17 +159,21 @@ The authoritative catalog is
 The registry marks each facet as deterministic, LLM-authored, and/or
 vocabulary-backed.
 
-Structural facets remain code-closed where runtime code interprets them
-directly:
+Structural/static facets remain code-closed where runtime code interprets them
+directly or the schema already has a stable enum:
 
 - identity/scope: `mod_namespace`, `is_block_item`, `is_creative_only`
-- core kind: `role`, `material_family`, `material_secondary`, `form`, `tier`
-- origin/equipment/environment/storage facts such as `origin`,
-  `required_tool`, `equip_slot`, `environmental_property`, `storage_categories`,
-  `transport_medium`, booleans, and related deterministic signals
+- core shape/kind: `role`, `form`, `origin`, `required_tool`, `equip_slot`,
+  `dye_color`, `rarity`, `carry_frequency`, `palette`, and `flavor`
+- exact raw facts and stable enums such as `processing_in`, environmental /
+  storage / transport fields, booleans, and world-height buckets
 
 Semantic facets that vary by pack are modeled behind generated vocabulary:
 
+- `material_family`
+- `material_secondary`
+- `tier`
+- `required_tool_tier`
 - `activity`
 - `workflow`
 - `workflow_role`
@@ -186,15 +191,29 @@ Semantic facets that vary by pack are modeled behind generated vocabulary:
 - `use_affordance`
 - `organization_group`
 - `mod_subsystem`
+- `produces_effect`
+- `multiblock_component_of`
+- `biome`
 
-Vocabulary-backed values use stable ids, not display labels:
+Most vocabulary-backed values use stable facet-scoped strings, not display labels:
 
 ```text
-slot:cooking
-slot:mining
-create:mechanical_power
-pack:tfg2/steelmaking
-pack:tfg2/steelmaking#input
+cooking
+mining
+mechanical_power
+steelmaking
+steelmaking#input
+minecraft:furnace
+```
+
+Some vocabulary-backed facets deliberately use domain-specific grammar:
+
+```text
+iron
+wood_oak
+modid:black_steel
+minecraft:regeneration
+minecraft:plains
 ```
 
 Labels, aliases, evidence, lifecycle state, and review notes live in the pack
@@ -221,12 +240,12 @@ Layer files are JSON objects keyed by item id:
         },
         "material_family": {
           "value": "iron",
-          "confidence": 1,
-          "source": "rule:material_family_from_tag",
-          "rationale": "tag minecraft:iron_tool_materials"
+          "confidence": 0.9,
+          "source": "llm:stage3",
+          "rationale": "accepted material vocabulary and item id/name"
         },
         "activity": {
-          "values": ["slot:mining", "slot:combat"],
+          "values": ["mining", "combat"],
           "mode": "add",
           "confidence": 0.8,
           "source": "llm:stage3",

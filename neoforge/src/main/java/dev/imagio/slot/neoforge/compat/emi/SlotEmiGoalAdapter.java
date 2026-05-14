@@ -45,6 +45,9 @@ final class SlotEmiGoalAdapter {
     private static final int MAX_RECIPE_DEPTH = 4;
     private static final int MAX_RECIPES = 96;
     private static final int MAX_ALTERNATIVES = 32;
+    private static final int MAX_PRODUCER_ALTERNATIVE_LOOKUPS = 32;
+    private static final int MAX_INGREDIENT_ALTERNATIVE_SCANS = 128;
+    private static final int MAX_VISIBLE_ALTERNATIVE_ENRICHMENTS = 32;
     private static final String EMI_RECIPE_SCREEN = "dev.emi.emi.screen.RecipeScreen";
     private static final int GOAL_BUTTON_WIDTH = 50;
     private static final int GOAL_BUTTON_HEIGHT = 14;
@@ -477,6 +480,9 @@ final class SlotEmiGoalAdapter {
         if (ingredient == null || ingredient.serializedIngredient().isBlank()) {
             return ingredient;
         }
+        if (!ingredient.choiceRequired() && ingredient.alternatives().size() <= 1) {
+            return ingredient;
+        }
         EmiIngredient emiIngredient = ingredientFromDescriptor(ingredient);
         if (emiIngredient == null) {
             return ingredient;
@@ -485,6 +491,8 @@ final class SlotEmiGoalAdapter {
         for (GoalStackDescriptor alternative : ingredient.alternatives()) {
             alternatives.putIfAbsent(alternative.identity(), alternative);
         }
+        int visibleAdded = 0;
+        boolean truncated = false;
         for (VisibleGoalStack visibleStack : visible) {
             if (visibleStack == null || visibleStack.identity() == null || visibleStack.stack().isEmpty()) {
                 continue;
@@ -495,12 +503,21 @@ final class SlotEmiGoalAdapter {
             if (!visibleSatisfiesIngredient(emiIngredient, ingredient, visibleStack)) {
                 continue;
             }
+            if (visibleAdded >= MAX_VISIBLE_ALTERNATIVE_ENRICHMENTS) {
+                truncated = true;
+                break;
+            }
             alternatives.put(
                     visibleStack.identity(),
                     new GoalStackDescriptor(visibleStack.identity(), visibleStack.label(), 1));
+            visibleAdded++;
         }
         if (alternatives.size() == ingredient.alternatives().size()) {
             return ingredient;
+        }
+        ArrayList<String> diagnostics = new ArrayList<>(ingredient.diagnostics());
+        if (truncated) {
+            diagnostics.add("visible_alternatives_truncated");
         }
         return new GoalIngredientDescriptor(
                 ingredient.ingredientId(),
@@ -512,7 +529,7 @@ final class SlotEmiGoalAdapter {
                 ingredient.choiceRequired(),
                 ingredient.consumed(),
                 ingredient.tagOrListLabel(),
-                ingredient.diagnostics()
+                diagnostics
         );
     }
 
@@ -521,13 +538,16 @@ final class SlotEmiGoalAdapter {
             GoalIngredientDescriptor ingredient,
             VisibleGoalStack visibleStack
     ) {
+        if (stackMatchesItemTagLabel(visibleStack.stack(), ingredient.tagOrListLabel())) {
+            return true;
+        }
         try {
             if (ingredientContainsOutput(emiIngredient, EmiStack.of(visibleStack.stack()), visibleStack.identity())) {
                 return true;
             }
         } catch (RuntimeException | LinkageError ignored) {
         }
-        return stackMatchesItemTagLabel(visibleStack.stack(), ingredient.tagOrListLabel());
+        return false;
     }
 
     private static boolean containsAlternative(
@@ -751,7 +771,11 @@ final class SlotEmiGoalAdapter {
         if (ingredient == null || outputIdentity == null) {
             return false;
         }
+        int inspected = 0;
         for (EmiStack alternative : ingredient.getEmiStacks()) {
+            if (inspected++ >= MAX_INGREDIENT_ALTERNATIVE_SCANS) {
+                return false;
+            }
             if (alternative == null || alternative.isEmpty()) {
                 continue;
             }
@@ -778,7 +802,14 @@ final class SlotEmiGoalAdapter {
         if (contextual != null) {
             return contextual;
         }
+        int inspected = 0;
         for (EmiStack stack : ingredient.getEmiStacks()) {
+            if (inspected++ >= MAX_PRODUCER_ALTERNATIVE_LOOKUPS) {
+                SlotDebugLog.verboseLog(
+                        "[emi][goal] recipe context alternative lookup truncated at {}",
+                        MAX_PRODUCER_ALTERNATIVE_LOOKUPS);
+                break;
+            }
             if (stackDescriptor(stack) == null) {
                 continue;
             }
@@ -845,13 +876,23 @@ final class SlotEmiGoalAdapter {
             LinkedHashMap<String, PendingRecipe> queue
     ) {
         for (EmiIngredient ingredient : recipe.getInputs()) {
-            SlotDebugLog.verboseLog(
-                    "[emi][goal] traverse input recipe={} amount={} stacks={} serialized={}",
-                    parentId,
-                    ingredient.getAmount(),
-                    ingredient.getEmiStacks().size(),
-                    serializedIngredient(ingredient));
+            if (SlotDebugLog.verbose()) {
+                SlotDebugLog.verboseLog(
+                        "[emi][goal] traverse input recipe={} amount={} stacks={} serialized={}",
+                        parentId,
+                        ingredient.getAmount(),
+                        ingredient.getEmiStacks().size(),
+                        serializedIngredient(ingredient));
+            }
+            int inspected = 0;
             for (EmiStack alternative : ingredient.getEmiStacks()) {
+                if (inspected++ >= MAX_PRODUCER_ALTERNATIVE_LOOKUPS) {
+                    SlotDebugLog.verboseLog(
+                            "[emi][goal] producer alternative lookup truncated parent={} limit={}",
+                            parentId,
+                            MAX_PRODUCER_ALTERNATIVE_LOOKUPS);
+                    break;
+                }
                 GoalStackDescriptor requested = stackDescriptor(alternative);
                 if (requested == null) {
                     SlotDebugLog.verboseLog(
@@ -861,12 +902,14 @@ final class SlotEmiGoalAdapter {
                     continue;
                 }
                 List<EmiRecipe> childRecipes = EmiApi.getRecipeManager().getRecipesByOutput(alternative);
-                SlotDebugLog.verboseLog(
-                        "[emi][goal] producer candidates parent={} alternative={} count={} recipes={}",
-                        parentId,
-                        requested.identity().itemId(),
-                        childRecipes.size(),
-                        recipeIds(childRecipes));
+                if (SlotDebugLog.verbose()) {
+                    SlotDebugLog.verboseLog(
+                            "[emi][goal] producer candidates parent={} alternative={} count={} recipes={}",
+                            parentId,
+                            requested.identity().itemId(),
+                            childRecipes.size(),
+                            recipeIds(childRecipes));
+                }
                 for (EmiRecipe child : childRecipes) {
                     if (!shouldCollectProducerRecipe(child, alternative, parentId)) {
                         continue;
@@ -1002,7 +1045,12 @@ final class SlotEmiGoalAdapter {
         String firstNonItemLabel = "";
         boolean allItemAlternativesReturnSelf = true;
         boolean hasItemAlternative = false;
+        int inspected = 0;
         for (EmiStack stack : ingredient.getEmiStacks()) {
+            if (inspected++ >= MAX_INGREDIENT_ALTERNATIVE_SCANS) {
+                diagnostics.add("ingredient_alternative_scan_truncated");
+                break;
+            }
             if (alternatives.size() >= MAX_ALTERNATIVES) {
                 diagnostics.add("ingredient_alternatives_truncated");
                 break;
@@ -1039,18 +1087,20 @@ final class SlotEmiGoalAdapter {
                 : alternatives.isEmpty()
                 ? (!firstNonItemLabel.isBlank() ? firstNonItemLabel : prefix + " " + (index + 1))
                 : alternatives.values().iterator().next().displayName();
-        SlotDebugLog.verboseLog(
-                "[emi][goal] ingredient descriptor recipe={} id={} label={} amount={} tagOrList={} alternatives={} choiceRequired={} consumed={} diagnostics={} serialized={}",
-                recipeId,
-                prefix + "_" + index,
-                label,
-                safeCount(ingredient.getAmount()),
-                tagOrList,
-                stackTokens(List.copyOf(alternatives.values())),
-                choiceRequired,
-                consumed,
-                diagnostics,
-                serialized);
+        if (SlotDebugLog.verbose()) {
+            SlotDebugLog.verboseLog(
+                    "[emi][goal] ingredient descriptor recipe={} id={} label={} amount={} tagOrList={} alternatives={} choiceRequired={} consumed={} diagnostics={} serialized={}",
+                    recipeId,
+                    prefix + "_" + index,
+                    label,
+                    safeCount(ingredient.getAmount()),
+                    tagOrList,
+                    stackTokens(List.copyOf(alternatives.values())),
+                    choiceRequired,
+                    consumed,
+                    diagnostics,
+                    serialized);
+        }
         return new GoalIngredientDescriptor(
                 prefix + "_" + index,
                 label,

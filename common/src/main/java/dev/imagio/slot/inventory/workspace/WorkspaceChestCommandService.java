@@ -23,6 +23,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -53,6 +54,16 @@ public final class WorkspaceChestCommandService {
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
         Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
         List<WorldDisplayStorageSource> displaySources = proximateDisplaySources(player);
+        InventoryAuthoritySnapshot resolvedAuthority = authority == null
+                ? InventoryAuthoritySnapshot.empty()
+                : authority;
+        WorkspaceStorageIndex storageIndex = storageIndex(
+                player,
+                runtime,
+                resolvedAuthority,
+                proximate,
+                displaySources);
+        displaySources = storageIndex.displaySources();
         SlotCommon.LOGGER.info(
                 "[SLOT] deposit command received: player={} claimedChests={} proximate={} displays={}",
                 player.getName().getString(), claimedChestMap.chests().size(), proximate.size(), displaySources.size());
@@ -63,16 +74,16 @@ public final class WorkspaceChestCommandService {
         long tick = player.serverLevel().getGameTime();
         ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
         DepositPlan plan = DepositPlanner.plan(
-                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                resolvedAuthority,
                 affinityMap,
                 claimedChestMap,
                 proximate,
                 reservedCountResolver(runtime),
-                liveChestContentPresence(player)
+                storageIndex.liveChestContentPresence()
         );
         plan = withDisplayDepositAssignments(
                 player,
-                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                resolvedAuthority,
                 plan,
                 displaySources,
                 reservedCountResolver(runtime));
@@ -80,6 +91,7 @@ public final class WorkspaceChestCommandService {
                 "[SLOT] deposit plan: assignments={} (one per stack with learned affinity or matching contents)",
                 plan.assignments().size());
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(player, plan, claimedChestMap);
+        observeStorageIds(player, claimedChestMap, outcome.destinations(), "slot.deposit");
         for (DepositExecutor.DepositRecord record : outcome.records()) {
             UUID storageUuid = record.storageUuid();
             if (storageUuid != null) {
@@ -117,6 +129,7 @@ public final class WorkspaceChestCommandService {
         }
         TakeAllExecutor.TakeAllOutcome outcome = TakeAllExecutor.execute(player, resolved.chest());
         recordTakeRecords(player, runtime, outcome.records(), "take_all_from_chest");
+        observeTakeRecords(player, runtime.chestClaimWorkflow().claimedChestMap(), outcome.records(), "slot.take_all");
         if (outcome.movedStacks() == 0 && outcome.leftoverSlots() == 0) {
             return WorkspaceCommandOutcome.accepted("nothing_to_take", "");
         }
@@ -288,6 +301,7 @@ public final class WorkspaceChestCommandService {
                 player,
                 new DepositPlan(assignments),
                 claimedChestMap);
+        observeStorageIds(player, claimedChestMap, outcome.destinations(), "slot.deposit.identity");
         long tick = player.serverLevel().getGameTime();
         int depositedCount = 0;
         for (DepositExecutor.DepositRecord record : outcome.records()) {
@@ -335,6 +349,7 @@ public final class WorkspaceChestCommandService {
             return WorkspaceCommandOutcome.accepted("nothing_to_take", "");
         }
         recordTakeRecord(player, runtime, outcome.record(), "take_from_chest");
+        observeTakeRecord(player, runtime.chestClaimWorkflow().claimedChestMap(), outcome.record(), "slot.take");
         if (one) {
             return WorkspaceCommandOutcome.accepted("took_one", "moved=" + outcome.moved());
         }
@@ -396,6 +411,7 @@ public final class WorkspaceChestCommandService {
                             outcome.record().count(),
                             "take_by_identity");
                 }
+                observeTakeRecord(player, claimedChestMap, outcome.record(), "slot.take_by_identity");
                 return WorkspaceCommandOutcome.accepted(
                         one ? "took_one" : "took_stack",
                         "moved=" + outcome.moved());
@@ -425,6 +441,7 @@ public final class WorkspaceChestCommandService {
                             outcome.record().count(),
                             "take_by_identity");
                 }
+                observeTakeRecord(player, claimedChestMap, outcome.record(), "slot.take_by_display");
                 return WorkspaceCommandOutcome.accepted(
                         one ? "took_one" : "took_stack",
                         "moved=" + outcome.moved());
@@ -481,12 +498,18 @@ public final class WorkspaceChestCommandService {
         }
         long tick = player.serverLevel().getGameTime();
         ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
+        WorkspaceStorageIndex storageIndex = storageIndex(
+                player,
+                runtime,
+                InventoryAuthoritySnapshot.empty(),
+                proximate,
+                List.of());
         List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
                 identity,
                 claimedChestMap,
                 affinityMap,
                 proximate,
-                liveChestContentPresence(player));
+                storageIndex.liveChestContentPresence());
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
         for (UUID storageId : ranked) {
             ClaimedChest chest = claimedChestMap.chest(storageId);
@@ -524,12 +547,19 @@ public final class WorkspaceChestCommandService {
         Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
         long tick = player.serverLevel().getGameTime();
         ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
+        List<WorldDisplayStorageSource> displaySources = proximateDisplaySources(player);
+        WorkspaceStorageIndex storageIndex = storageIndex(
+                player,
+                runtime,
+                InventoryAuthoritySnapshot.empty(),
+                proximate,
+                displaySources);
         List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
                 identity,
                 claimedChestMap,
                 affinityMap,
                 proximate,
-                liveChestContentPresence(player));
+                storageIndex.liveChestContentPresence());
 
         int probeCount = Math.max(1, Math.min(sourceStack.getMaxStackSize(),
                 Math.min(requestedCount, sourceStack.getCount())));
@@ -552,7 +582,7 @@ public final class WorkspaceChestCommandService {
                 candidates.add(storageId.toString());
             }
         }
-        for (WorldDisplayStorageSource source : proximateDisplaySources(player)) {
+        for (WorldDisplayStorageSource source : storageIndex.displaySources()) {
             if (source == null || !source.depositTarget()) {
                 continue;
             }
@@ -701,6 +731,75 @@ public final class WorkspaceChestCommandService {
         return false;
     }
 
+    private static WorkspaceStorageIndex storageIndex(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            Set<String> proximate,
+            List<WorldDisplayStorageSource> displaySources
+    ) {
+        if (player == null || runtime == null || player.getServer() == null || !StorageAccessRegistry.isInstalled()) {
+            return WorkspaceStorageIndex.empty();
+        }
+        return WorkspaceStorageIndex.build(
+                player.getServer(),
+                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                runtime.snapshot(),
+                StorageAccessRegistry.worldStorageAccess(),
+                proximate,
+                displaySources,
+                player.serverLevel().getGameTime());
+    }
+
+    private static void observeTakeRecords(
+            ServerPlayer player,
+            ClaimedChestMap claimedChestMap,
+            List<TakeAllExecutor.TakeRecord> records,
+            String source
+    ) {
+        if (records == null || records.isEmpty()) {
+            return;
+        }
+        LinkedHashSet<String> storageIds = new LinkedHashSet<>();
+        for (TakeAllExecutor.TakeRecord record : records) {
+            if (record != null && record.count() > 0 && !record.storageId().isBlank()) {
+                storageIds.add(record.storageId());
+            }
+        }
+        observeStorageIds(player, claimedChestMap, storageIds, source);
+    }
+
+    private static void observeTakeRecord(
+            ServerPlayer player,
+            ClaimedChestMap claimedChestMap,
+            TakeAllExecutor.TakeRecord record,
+            String source
+    ) {
+        if (record == null || record.count() <= 0 || record.storageId().isBlank()) {
+            return;
+        }
+        observeStorageIds(player, claimedChestMap, List.of(record.storageId()), source);
+    }
+
+    static void observeStorageIds(
+            ServerPlayer player,
+            ClaimedChestMap claimedChestMap,
+            Collection<String> storageIds,
+            String source
+    ) {
+        if (player == null || player.getServer() == null || !StorageAccessRegistry.isInstalled()
+                || storageIds == null || storageIds.isEmpty()) {
+            return;
+        }
+        WorkspaceStorageMemoryStore.observeStorageIds(
+                player.getServer(),
+                StorageAccessRegistry.worldStorageAccess(),
+                claimedChestMap,
+                storageIds,
+                player.serverLevel().getGameTime(),
+                source);
+    }
+
     private static String slotKey(String sourceId, int slotIndex) {
         return (sourceId == null ? "" : sourceId) + "\u0000" + slotIndex;
     }
@@ -753,44 +852,6 @@ public final class WorkspaceChestCommandService {
         };
     }
 
-    static DepositPlanner.ChestContentPresence liveChestContentPresence(ServerPlayer player) {
-        if (player == null || player.getServer() == null || !StorageAccessRegistry.isInstalled()) {
-            return (chest, identity) -> false;
-        }
-        MinecraftServer server = player.getServer();
-        WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
-        LinkedHashMap<UUID, Set<ItemIdentity>> identitiesByChest = new LinkedHashMap<>();
-        return (chest, identity) -> {
-            if (chest == null || identity == null) {
-                return false;
-            }
-            Set<ItemIdentity> identities = identitiesByChest.computeIfAbsent(
-                    chest.storageId(),
-                    ignored -> liveChestIdentities(server, world, chest));
-            return identities.contains(ItemIdentityMatcher.normalizeMovable(identity));
-        };
-    }
-
-    private static Set<ItemIdentity> liveChestIdentities(
-            MinecraftServer server,
-            WorldStorageAccess world,
-            ClaimedChest chest
-    ) {
-        if (server == null || world == null || chest == null) {
-            return Set.of();
-        }
-        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
-        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-        for (WorldStorageAccess.SlotContent entry : world.enumerate(server, target)) {
-            ItemStack stack = entry.stack();
-            if (stack == null || stack.isEmpty()) {
-                continue;
-            }
-            identities.add(ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack)));
-        }
-        return Set.copyOf(identities);
-    }
-
     public static ChestProximityResult resolveProximateChest(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
@@ -833,6 +894,11 @@ public final class WorkspaceChestCommandService {
                         outcome.record().identity(),
                         outcome.record().count(),
                         player.serverLevel().getGameTime());
+                observeStorageIds(
+                        player,
+                        runtime.chestClaimWorkflow().claimedChestMap(),
+                        List.of(storageUuid.toString()),
+                        "slot.deposit.single");
             }
             if (recordUndo) {
                 recordChestTransferUndo(
