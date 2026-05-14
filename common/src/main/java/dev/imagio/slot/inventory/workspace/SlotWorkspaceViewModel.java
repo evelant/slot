@@ -10,6 +10,7 @@ import dev.imagio.slot.inventory.goal.GoalPlanState;
 import dev.imagio.slot.inventory.goal.GoalRecipeDefaults;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionService;
@@ -505,6 +506,45 @@ public record SlotWorkspaceViewModel(
             long currentTick,
             ActiveChestPanel activeChestPanel
     ) {
+        return project(
+                authority,
+                workflow,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                revision,
+                learnedRules,
+                signalExtractor,
+                chestContentsResolver,
+                proximateStorageIds,
+                carriedContainerInfoResolver,
+                lootChestSource,
+                searchQuery,
+                currentTick,
+                activeChestPanel,
+                List.of());
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            LootChestSource lootChestSource,
+            String searchQuery,
+            long currentTick,
+            ActiveChestPanel activeChestPanel,
+            List<WorldDisplayStorageSource> worldDisplaySources
+    ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
         Map<ItemIdentity, Integer> wantedCounts = activeWantedCounts(resolvedAuthority, resolvedWorkflow.playerWantedCounts());
@@ -519,6 +559,9 @@ public record SlotWorkspaceViewModel(
         // the planner refuses to deposit (its decayed score is 0).
         ChestAffinityMap affinityMap = resolvedWorkflow.chestAffinityMap().decayed(currentTick);
         Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
+        List<WorldDisplayStorageSource> displaySources = worldDisplaySources == null
+                ? List.of()
+                : List.copyOf(worldDisplaySources);
         int[] carriedCounts = countCarriedFreeSlotsAndCapacity(resolvedAuthority);
         int carriedFreeSlotCount = carriedCounts[0];
         int carriedSlotCapacity = carriedCounts[1];
@@ -535,7 +578,7 @@ public record SlotWorkspaceViewModel(
         // some proximate chest are surfaced as faded ghost cards on their
         // homed island. See docs/plans/learned-storage.md.
         ProximateGhostProjection ghosts = ProximateGhostProjection.build(
-                claimedChestMap, chestContentsResolver, proximate, visualHomeMap);
+                claimedChestMap, chestContentsResolver, proximate, visualHomeMap, displaySources);
         // Search-as-find: collect non-proximate chest stocks too, with the
         // dimension noted in the label. Hover/zoom on a search hit reveals
         // "Storage Area 2 — nether". See docs/plans/learned-storage.md.
@@ -2820,54 +2863,71 @@ public record SlotWorkspaceViewModel(
                 ClaimedChestMap map,
                 Function<String, ChestContentsSnapshot> chestContentsResolver,
                 Set<String> proximate,
-                VisualHomeMap visualHomeMap
+                VisualHomeMap visualHomeMap,
+                List<WorldDisplayStorageSource> worldDisplaySources
         ) {
-            if (map == null || map.chests().isEmpty() || chestContentsResolver == null
-                    || proximate == null || proximate.isEmpty()) {
+            boolean hasClaimedChests = map != null && !map.chests().isEmpty()
+                    && chestContentsResolver != null && proximate != null && !proximate.isEmpty();
+            boolean hasDisplaySources = worldDisplaySources != null && !worldDisplaySources.isEmpty();
+            if (!hasClaimedChests && !hasDisplaySources) {
                 return new ProximateGhostProjection(Map.of(), Map.of(), Map.of());
             }
             LinkedHashMap<ItemIdentity, Integer> totals = new LinkedHashMap<>();
-            LinkedHashMap<ItemIdentity, LinkedHashMap<UUID, int[]>> perChest = new LinkedHashMap<>();
+            LinkedHashMap<ItemIdentity, LinkedHashMap<String, int[]>> perStorage = new LinkedHashMap<>();
             LinkedHashMap<ItemIdentity, ItemStack> displayByIdentity = new LinkedHashMap<>();
-            LinkedHashMap<UUID, String> labelByStorage = new LinkedHashMap<>();
-            for (ClaimedChest chest : map.chests()) {
-                if (chest == null) {
-                    continue;
-                }
-                String storageId = chest.storageId().toString();
-                if (!proximate.contains(storageId)) {
-                    continue;
-                }
-                String label = chest.label() == null || chest.label().isBlank()
-                        ? autoLabelFor(chest)
-                        : chest.label();
-                labelByStorage.put(chest.storageId(), label);
-                ChestContentsSnapshot snapshot = chestContentsResolver.apply(storageId);
-                if (snapshot == null) {
-                    continue;
-                }
-                for (ItemStack stack : snapshot.contents()) {
-                    if (stack == null || stack.isEmpty()) {
+            LinkedHashMap<String, String> labelByStorage = new LinkedHashMap<>();
+            if (hasClaimedChests) {
+                for (ClaimedChest chest : map.chests()) {
+                    if (chest == null) {
                         continue;
                     }
-                    ItemIdentity identity = ItemIdentityMatcher.create(stack);
-                    totals.merge(identity, stack.getCount(), Integer::sum);
-                    perChest
-                            .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
-                            .computeIfAbsent(chest.storageId(), ignored -> new int[]{0})[0] += stack.getCount();
-                    displayByIdentity.putIfAbsent(identity, stack.copy());
+                    String storageId = chest.storageId().toString();
+                    if (!proximate.contains(storageId)) {
+                        continue;
+                    }
+                    String label = chest.label() == null || chest.label().isBlank()
+                            ? autoLabelFor(chest)
+                            : chest.label();
+                    labelByStorage.put(storageId, label);
+                    ChestContentsSnapshot snapshot = chestContentsResolver.apply(storageId);
+                    if (snapshot == null) {
+                        continue;
+                    }
+                    for (ItemStack stack : snapshot.contents()) {
+                        addPresenceStack(totals, perStorage, displayByIdentity, storageId, stack);
+                    }
+                }
+            }
+            if (hasDisplaySources) {
+                for (WorldDisplayStorageSource source : worldDisplaySources) {
+                    if (source == null || source.storageId().isBlank() || source.contents().isEmpty()) {
+                        continue;
+                    }
+                    labelByStorage.put(source.storageId(), source.label());
+                    for (dev.imagio.slot.inventory.storage.WorldStorageAccess.SlotContent content : source.contents()) {
+                        if (content == null) {
+                            continue;
+                        }
+                        addPresenceStack(
+                                totals,
+                                perStorage,
+                                displayByIdentity,
+                                source.storageId(),
+                                content.stack());
+                    }
                 }
             }
             LinkedHashMap<ItemIdentity, List<ChestPresenceEntry>> presence = new LinkedHashMap<>();
-            for (Map.Entry<ItemIdentity, LinkedHashMap<UUID, int[]>> entry : perChest.entrySet()) {
+            for (Map.Entry<ItemIdentity, LinkedHashMap<String, int[]>> entry : perStorage.entrySet()) {
                 ArrayList<ChestPresenceEntry> entries = new ArrayList<>(entry.getValue().size());
-                for (Map.Entry<UUID, int[]> chestEntry : entry.getValue().entrySet()) {
-                    int count = chestEntry.getValue()[0];
+                for (Map.Entry<String, int[]> storageEntry : entry.getValue().entrySet()) {
+                    int count = storageEntry.getValue()[0];
                     if (count <= 0) {
                         continue;
                     }
-                    String label = labelByStorage.getOrDefault(chestEntry.getKey(), chestEntry.getKey().toString());
-                    entries.add(new ChestPresenceEntry(chestEntry.getKey().toString(), label, count));
+                    String storageId = storageEntry.getKey();
+                    String label = labelByStorage.getOrDefault(storageId, storageId);
+                    entries.add(new ChestPresenceEntry(storageId, label, count));
                 }
                 entries.sort(Comparator.<ChestPresenceEntry>comparingInt(ChestPresenceEntry::count).reversed()
                         .thenComparing(ChestPresenceEntry::label, String.CASE_INSENSITIVE_ORDER));
@@ -2878,6 +2938,24 @@ public record SlotWorkspaceViewModel(
                     Map.copyOf(presence),
                     Map.copyOf(displayByIdentity)
             );
+        }
+
+        private static void addPresenceStack(
+                LinkedHashMap<ItemIdentity, Integer> totals,
+                LinkedHashMap<ItemIdentity, LinkedHashMap<String, int[]>> perStorage,
+                LinkedHashMap<ItemIdentity, ItemStack> displayByIdentity,
+                String storageId,
+                ItemStack stack
+        ) {
+            if (storageId == null || storageId.isBlank() || stack == null || stack.isEmpty()) {
+                return;
+            }
+            ItemIdentity identity = ItemIdentityMatcher.create(stack);
+            totals.merge(identity, stack.getCount(), Integer::sum);
+            perStorage
+                    .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
+                    .computeIfAbsent(storageId, ignored -> new int[]{0})[0] += stack.getCount();
+            displayByIdentity.putIfAbsent(identity, stack.copy());
         }
 
         private static String autoLabelFor(ClaimedChest chest) {

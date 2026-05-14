@@ -22,6 +22,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
 import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyTracker;
@@ -549,6 +550,8 @@ final class ForgeWorkspaceSession {
         SlotWorkspaceViewModel.LootChestSource lootChestSource = resolveLootChestSource(player, claimedChestMap);
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel =
                 resolveActiveChestPanel(player, claimedChestMap);
+        List<WorldDisplayStorageSource> displaySources =
+                WorkspaceChestProjectionSupport.proximateDisplaySources(player, worldStorage);
         clearSatisfiedWantedCounts(authority);
         return SlotWorkspaceViewModel.project(
                 authority,
@@ -566,7 +569,8 @@ final class ForgeWorkspaceSession {
                 lootChestSource,
                 searchQuery,
                 gameTime,
-                activeChestPanel
+                activeChestPanel,
+                displaySources
         );
     }
 

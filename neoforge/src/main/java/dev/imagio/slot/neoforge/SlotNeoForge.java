@@ -5,6 +5,7 @@ import dev.imagio.slot.neoforge.client.SlotNeoForgeConfigScreens;
 import dev.imagio.slot.neoforge.client.SlotNeoForgeClient;
 import dev.imagio.slot.neoforge.classification.NeoForgeClassificationLayerReloadListener;
 import dev.imagio.slot.neoforge.command.SlotTestCommands;
+import dev.imagio.slot.neoforge.compat.tfc.TfcWorldDisplayStorageDelegate;
 import dev.imagio.slot.compat.sophisticated.SophisticatedBackpacksCarriedProvider;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.network.SlotNetworking;
@@ -41,7 +42,9 @@ public final class SlotNeoForge {
         SlotWorkspaceViewModel.setGhostStackResolver(GhostAtlasStackFactory::resolve);
         CarriedProviderRegistry.register(new SophisticatedBackpacksCarriedProvider());
         StorageAccessRegistry.installCarriedSourceAccess(new NeoForgeCarriedSourceAccess());
-        StorageAccessRegistry.installWorldStorageAccess(new NeoForgeWorldStorageAccess());
+        NeoForgeWorldStorageAccess worldStorageAccess = new NeoForgeWorldStorageAccess();
+        worldStorageAccess.registerDelegate(new TfcWorldDisplayStorageDelegate());
+        StorageAccessRegistry.installWorldStorageAccess(worldStorageAccess);
         SlotWorkspaceLdlibMenus.init();
         SlotSidebarUiHandles.init();
         NeoForgeClassificationLayerReloadListener.init();

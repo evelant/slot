@@ -64,7 +64,9 @@ hold the rest.
   hidden storage cards on demand. Follow-up fixes generalized observed
   storage menus beyond vanilla chests for TFC vessels, kept search
   keystrokes inside sidebar search, matched localized hover names in
-  search, and disabled affinity decay behind the existing kill switch.
+  search, disabled affinity decay behind the existing kill switch, and
+  added live TFC display storage ghosts for nearby tool racks and placed
+  items, with deposit limited to tool racks.
 - **2026-05-12** — Forge + NeoForge sidebar polish landed: Kits moved
   from the bottom strip into a right-side vertical rack opened from the
   `All` row, the Belt now mirrors vanilla with offhand-left layout,

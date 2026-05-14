@@ -18,7 +18,23 @@ const DYED_TAGS = new Set([
   "minecraft:banners",
   "minecraft:candles",
   "minecraft:shulker_boxes",
+  "ae2:paint_balls",
+  "balm:dyes",
+  "c:dyes",
+  "chalk:chalks",
+  "comforts:hammocks",
+  "comforts:sleeping_bags",
+  "create:postboxes",
+  "create:seats",
+  "forge:dyes",
+  "gtceu:lamps",
 ]);
+
+const DYED_TAG_PATH_FRAGMENTS = [
+  "decorative_vases",
+  "palettes/cycle_groups",
+  "palettes/dye_groups",
+];
 
 /** Items that are explicitly dyed but don't have a clean tag membership. */
 const DYED_SUFFIXES = new Set([
@@ -35,19 +51,34 @@ const DYED_SUFFIXES = new Set([
   "_candle",
   "_shulker_box",
   "_dye",
+  "_lamp",
+  "_paint_ball",
+  "_cable",
+  "_chalk",
+  "_hammock",
+  "_sleeping_bag",
+  "_postbox",
+  "_seat",
+  "_awning",
+  "_roof",
+  "_poured_glass",
 ]);
 
 export const dyeColorRule: Rule = {
   id: "dye_color",
   facets: ["dye_color"],
   run({ record }) {
-    const color = extractColorPrefix(record.path);
+    const color = extractColor(record.path);
     if (!color) return [];
 
     // Tag membership is the strongest signal; suffix is the fallback.
     const anyTag = record.minecraft_tags.some((t) => DYED_TAGS.has(t));
+    const anyTagFragment = record.minecraft_tags.some((tag) =>
+      DYED_TAG_PATH_FRAGMENTS.some((fragment) => tag.includes(fragment)),
+    );
     const anySuffix = [...DYED_SUFFIXES].some((s) => record.path.endsWith(s));
-    if (!anyTag && !anySuffix) return [];
+    const anyDyeingRecipe = record.recipe_role.output_of.some(isDyeingRecipeId);
+    if (!anyTag && !anyTagFragment && !anySuffix && !anyDyeingRecipe) return [];
 
     return [
       {
@@ -61,6 +92,17 @@ export const dyeColorRule: Rule = {
     ];
   },
 };
+
+function extractColor(path: string): string | undefined {
+  const prefix = extractColorPrefix(path);
+  if (prefix) return prefix;
+  const leaf = path.split("/").at(-1) ?? path;
+  const leafPrefix = extractColorPrefix(leaf);
+  if (leafPrefix) return leafPrefix;
+  const suffix = extractColorSuffix(leaf);
+  if (suffix) return suffix;
+  return COLOR_SET.has(leaf) ? leaf : undefined;
+}
 
 function extractColorPrefix(path: string): string | undefined {
   // light_gray and light_blue have underscores; check the longest prefixes first.
@@ -87,4 +129,34 @@ function extractColorPrefix(path: string): string | undefined {
     }
   }
   return undefined;
+}
+
+function extractColorSuffix(path: string): string | undefined {
+  for (const color of [
+    "light_gray",
+    "light_blue",
+    "white",
+    "orange",
+    "magenta",
+    "yellow",
+    "lime",
+    "pink",
+    "gray",
+    "cyan",
+    "purple",
+    "blue",
+    "brown",
+    "green",
+    "red",
+    "black",
+  ]) {
+    if (path === color || path.endsWith(`_${color}`)) {
+      if (COLOR_SET.has(color)) return color;
+    }
+  }
+  return undefined;
+}
+
+function isDyeingRecipeId(id: string): boolean {
+  return id.split(":").at(-1)?.split("/").includes("dyeing") ?? false;
 }

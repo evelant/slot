@@ -205,10 +205,6 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
         continue;
       }
       const confidence = typeof c.confidence === "number" ? c.confidence : undefined;
-      if (confidence !== undefined && confidence < 0.7) {
-        warnings.push(`correction for ${c.item} ${c.facet} below confidence threshold (${confidence}); dropped`);
-        continue;
-      }
       corrections.push({
         item: c.item,
         facet: c.facet,
@@ -225,8 +221,7 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
     for (const raw of rootFillIns) {
       if (!raw || typeof raw !== "object") continue;
       const f = raw as Record<string, unknown>;
-      if (typeof f.item !== "string" || typeof f.facet !== "string"
-          || typeof f.rationale !== "string") {
+      if (typeof f.item !== "string" || typeof f.facet !== "string") {
         warnings.push(`fill_in missing required field(s): ${JSON.stringify(raw).slice(0, 120)}`);
         continue;
       }
@@ -255,7 +250,9 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
         item: f.item,
         facet: f.facet,
         value: value as StageFillIn["value"],
-        rationale: f.rationale,
+        rationale: typeof f.rationale === "string" && f.rationale.trim().length > 0
+          ? f.rationale
+          : "LLM did not provide rationale.",
       });
     }
   }

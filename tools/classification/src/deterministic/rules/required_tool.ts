@@ -9,12 +9,12 @@ import type { Rule, RuleOutput } from "../types.ts";
  * Default tier (not tagged) is `wood` for anything under the pickaxe/etc.
  */
 
-const TOOL_TAG_TO_KIND: Record<string, string> = {
-  "minecraft:mineable/pickaxe": "pickaxe",
-  "minecraft:mineable/axe": "axe",
-  "minecraft:mineable/shovel": "shovel",
-  "minecraft:mineable/hoe": "hoe",
-};
+const TOOL_TAG_PRIORITY: readonly { tag: string; kind: string }[] = [
+  { tag: "minecraft:mineable/pickaxe", kind: "pickaxe" },
+  { tag: "minecraft:mineable/axe", kind: "axe" },
+  { tag: "minecraft:mineable/shovel", kind: "shovel" },
+  { tag: "minecraft:mineable/hoe", kind: "hoe" },
+];
 
 const TIER_TAG_TO_VALUE: Record<string, string> = {
   "minecraft:needs_stone_tool": "stone",
@@ -36,7 +36,7 @@ export const requiredToolRule: Rule = {
   facets: ["required_tool", "required_tool_tier"],
   run({ record, blockTagClosure }) {
     const out: RuleOutput[] = [];
-    const blockTags = blockTagClosure.get(record.id);
+    const blockTags = blockTagsForRecord(record, blockTagClosure);
 
     const override = REQUIRED_TOOL_OVERRIDES[record.id];
     if (override) {
@@ -50,12 +50,24 @@ export const requiredToolRule: Rule = {
       });
       // continue so we still emit tier from block-tag inspection
     }
-    if (!blockTags || blockTags.length === 0) return out;
+    if (!blockTags || blockTags.length === 0) {
+      if (!override && record.path.startsWith("ore/") && isBlockItem(record)) {
+        out.push({
+          facet: "required_tool",
+          kind: "single",
+          value: "pickaxe",
+          source: "rule:required_tool_from_ore_path",
+          confidence: 0.95,
+          rationale: "ore path block",
+        });
+      }
+      return out;
+    }
 
     if (!override) {
-      for (const tag of blockTags) {
-        const kind = TOOL_TAG_TO_KIND[tag];
-        if (kind) {
+      const blockTagSet = new Set(blockTags);
+      for (const { tag, kind } of TOOL_TAG_PRIORITY) {
+        if (blockTagSet.has(tag)) {
           out.push({
             facet: "required_tool",
             kind: "single",
@@ -87,3 +99,22 @@ export const requiredToolRule: Rule = {
     return out;
   },
 };
+
+function isBlockItem(record: { extractor_meta?: Record<string, unknown> | null }): boolean {
+  const meta = record.extractor_meta ?? {};
+  return meta["is_block_item"] === true || typeof meta["block_id"] === "string";
+}
+
+function blockTagsForRecord(
+  record: { id: string; extractor_meta?: Record<string, unknown> | null },
+  blockTagClosure: ReadonlyMap<string, readonly string[]>,
+): readonly string[] | undefined {
+  const fromClosure = blockTagClosure.get(record.id);
+  if (fromClosure && fromClosure.length > 0) return fromClosure;
+
+  const meta = record.extractor_meta ?? {};
+  const blockTags = meta["block_tags"];
+  if (!Array.isArray(blockTags)) return undefined;
+  const normalized = blockTags.filter((tag): tag is string => typeof tag === "string");
+  return normalized.length > 0 ? normalized : undefined;
+}

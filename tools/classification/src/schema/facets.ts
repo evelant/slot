@@ -71,7 +71,7 @@ export const CARRY_FREQUENCY_VALUES = [
 
 export const FLAVOR_VALUES = [
   "plain", "variant", "fancy", "ominous", "ancient", "mystical",
-  "mechanical", "natural", "colored",
+  "mechanical", "natural", "colored", "metallic",
 ] as const;
 
 export const PALETTE_VALUES = [
@@ -275,7 +275,6 @@ export const FACETS: Record<string, FacetDef> = {
     pattern: NAMESPACED_TOKEN,
     description: "Primary material the item is made of (e.g. `iron`, `wood_oak`, `wool`).",
     deterministic: true,
-    llm_authored: true,
   },
   material_secondary: {
     kind: "multi_free_text",
@@ -318,7 +317,6 @@ export const FACETS: Record<string, FacetDef> = {
     values: DYE_COLOR_VALUES,
     description: "One of the 16 vanilla dye colors, only when the item is explicitly dyed (wool, beds, candles, banners, stained_glass, terracotta, concrete, shulker_box, paint balls, colored cables, etc.).",
     deterministic: true,
-    llm_authored: true,
   },
   rarity: {
     kind: "enum",
@@ -329,9 +327,8 @@ export const FACETS: Record<string, FacetDef> = {
   },
   emits_light: {
     kind: "boolean",
-    description: "True if the item emits light when placed (or while held in some cases). Drives the dedicated 'Lighting' island so players group their cave/base lighting separately from generic decor or utility. Examples: torch, soul_torch, lantern, soul_lantern, glowstone, sea_lantern, shroomlight, end_rod, jack_o_lantern, redstone_lamp, candles (lit), beacon, sea_pickle, crying_obsidian, magma_block. Stage-2 derives this from a known-id list + minecraft:light_emission component when present; the LLM should fill it in for items the rule missed (modded glowing blocks).",
+    description: "True if the item emits light when placed (or while held in some cases). Drives the dedicated 'Lighting' section so players group their cave/base lighting separately from generic decor or utility. Examples: torch, soul_torch, lantern, soul_lantern, glowstone, sea_lantern, shroomlight, end_rod, jack_o_lantern, redstone_lamp, candles (lit), beacon, sea_pickle, crying_obsidian, magma_block. Stage-2 derives this from a known-id list + minecraft:light_emission component when present; the LLM should fill it in for items the rule missed (modded glowing blocks).",
     deterministic: true,
-    llm_authored: true,
   },
   carry_frequency: {
     kind: "enum",
@@ -358,7 +355,7 @@ export const FACETS: Record<string, FacetDef> = {
   palette: {
     kind: "multi_enum",
     values: PALETTE_VALUES,
-    description: "Broader visual descriptors for items that *read as* a color/finish beyond the 16 dyes.",
+    description: "Broader visual descriptors for items that *read as* a color/finish beyond the 16 dyes. Do not use vanilla dye names here; dyed/stained/painted items belong in deterministic `dye_color` fill-ins when stage 2 missed them.",
     llm_authored: true,
     examples: ["teal", "copper_oxidized", "wood_dark", "warm", "glowing"],
   },
@@ -372,7 +369,7 @@ export const FACETS: Record<string, FacetDef> = {
   storage_categories: {
     kind: "multi_enum",
     values: STORAGE_CATEGORY_VALUES,
-    description: "Container slot kinds that can legitimately hold this item.",
+    description: "Special container slot kinds that matter to a player. Omit ordinary `standard` unless a non-standard storage behavior is relevant.",
     llm_authored: true,
   },
   spawn_interaction: {
@@ -521,22 +518,22 @@ export const FACETS: Record<string, FacetDef> = {
   primary_uses: {
     kind: "multi_free_text",
     pattern: /^.{1,80}$/,
-    description: "Top 3–5 short phrases summarizing what a player picks this item up for. Human-readable, ≤40 chars each.",
+    description: "Top 1–3 short phrases summarizing what a player picks this item up for. Human-readable, usually ≤40 chars each.",
     llm_authored: true,
     examples: ["crafting tools and armor", "building with iron blocks", "anvil repairs"],
   },
   organization_group: {
     kind: "multi_free_text",
     pattern: VOCABULARY_VALUE_ID_PATTERN,
-    description: "Vocabulary-backed broad human storage or wall-home group, primarily item type/role with use or state as secondary, such as casting molds, crops, woodworking, or animal husbandry.",
+    description: "Vocabulary-backed broad human storage section beyond protected built-in sections; primarily item type/role with use or state as secondary.",
     llm_authored: true,
     vocabulary_backed: true,
-    examples: ["pack:tfg2/casting_molds", "pack:tfg2/crops", "pack:tfg2/woodworking"],
+    examples: ["pack:tfg2/beekeeping", "pack:tfg2/glass_products", "pack:tfg2/papermaking"],
   },
   mod_subsystem: {
     kind: "multi_free_text",
     pattern: VOCABULARY_VALUE_ID_PATTERN,
-    description: "Vocabulary-backed identity-oriented subsystem within a mod (`create:trains`, `ae2:autocrafting`). Semantic/query evidence; not a wall-home source.",
+    description: "Vocabulary-backed identity-oriented subsystem within a mod (`create:trains`, `ae2:autocrafting`). Semantic/query evidence; not a main storage-section source.",
     llm_authored: true,
     vocabulary_backed: true,
     examples: ["create:trains", "ae2:autocrafting", "mekanism:fission"],

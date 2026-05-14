@@ -19,6 +19,7 @@ import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
@@ -44,7 +45,6 @@ import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
-import dev.imagio.slot.neoforge.storage.ChestContentsReader;
 import dev.imagio.slot.neoforge.storage.ChestDepositObserver;
 import dev.imagio.slot.neoforge.storage.ChestStorageAnchors;
 import dev.imagio.slot.neoforge.storage.ChestStorageIds;
@@ -75,6 +75,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -1873,23 +1874,14 @@ final class SlotWorkspaceUiSession {
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
         MinecraftServer server = serverPlayer.getServer();
-        Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver = storageId -> {
-            if (server == null) {
-                return SlotWorkspaceViewModel.ChestContentsSnapshot.empty();
-            }
-            UUID uuid;
-            try {
-                uuid = UUID.fromString(storageId);
-            } catch (IllegalArgumentException ignored) {
-                return SlotWorkspaceViewModel.ChestContentsSnapshot.empty();
-            }
-            ClaimedChest chest = claimedChestMap.chest(uuid);
-            if (chest == null) {
-                return SlotWorkspaceViewModel.ChestContentsSnapshot.empty();
-            }
-            return ChestContentsReader.read(server, chest);
-        };
+        WorldStorageAccess worldStorage = StorageAccessRegistry.isInstalled()
+                ? StorageAccessRegistry.worldStorageAccess()
+                : null;
+        Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver =
+                WorkspaceChestProjectionSupport.contentsResolver(server, claimedChestMap, worldStorage);
         Set<String> proximateIds = WorkspaceChestProjectionSupport.proximateStorageIds(serverPlayer, claimedChestMap);
+        List<WorldDisplayStorageSource> displaySources =
+                WorkspaceChestProjectionSupport.proximateDisplaySources(serverPlayer, worldStorage);
         Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerInfo =
                 SophisticatedBackpackInventoryIntegrationProvider.carriedContainerInfoByIdentity(serverPlayer);
         Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver =
@@ -1914,7 +1906,8 @@ final class SlotWorkspaceUiSession {
                 lootChestSource,
                 searchQuery,
                 serverPlayer.serverLevel().getGameTime(),
-                activeChestPanel
+                activeChestPanel,
+                displaySources
         );
         // Pickup-time auto-home: at most one carried-but-unassigned
         // identity per refresh gets routed via its top chip suggestion
@@ -1944,7 +1937,8 @@ final class SlotWorkspaceUiSession {
                     lootChestSource,
                     searchQuery,
                     serverPlayer.serverLevel().getGameTime(),
-                    activeChestPanel
+                    activeChestPanel,
+                    displaySources
             );
         }
         hotbarRecency.observe(projected);

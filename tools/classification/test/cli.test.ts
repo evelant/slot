@@ -104,6 +104,61 @@ describe("cli option validation", () => {
     });
   });
 
+  test("review-stage3-vocabulary-proposals accepts approved values into vocabulary", () => {
+    withTempDir((dir) => {
+      const vocabularyPath = join(dir, "fixture.facet-vocabulary.approved.json");
+      const proposalsPath = join(dir, "fixture.pack.facets.vocabulary-proposals.json");
+      const outPath = join(dir, "fixture.facet-vocabulary.updated.json");
+      const reviewOutPath = join(dir, "fixture.stage3-vocabulary.reviewed.json");
+      writeFileSync(vocabularyPath, JSON.stringify({
+        schema_version: 1,
+        kind: "slot-pack-facet-vocabulary",
+        pack_id: "fixture",
+        facets: {
+          material_process_stage: { values: {} },
+        },
+      }));
+      writeFileSync(proposalsPath, JSON.stringify([
+        {
+          item: "createaddition:copper_wire",
+          facet: "material_process_stage",
+          label: "Wire",
+          proposed_id: "slot:wire",
+          rationale: "Common material form missing from the vocabulary.",
+        },
+      ]));
+
+      const result = runCli([
+        "review-stage3-vocabulary-proposals",
+        "--vocabulary",
+        vocabularyPath,
+        "--proposals",
+        proposalsPath,
+        "--out",
+        outPath,
+        "--review-out",
+        reviewOutPath,
+      ], "y\n");
+
+      expect(result.exitCode).toBe(0);
+      const updated = JSON.parse(readFileSync(outPath, "utf8")) as {
+        facets?: Record<string, { values?: Record<string, { state?: string; origin?: string; seed_items?: string[] }> }>;
+      };
+      expect(updated.facets?.material_process_stage?.values?.["slot:wire"]).toMatchObject({
+        state: "accepted",
+        origin: "manual",
+        seed_items: ["createaddition:copper_wire"],
+      });
+      const reviewed = JSON.parse(readFileSync(reviewOutPath, "utf8")) as {
+        decisions?: Array<{ decision?: string; approved_id?: string }>;
+      };
+      expect(reviewed.decisions?.[0]).toMatchObject({
+        decision: "approve",
+        approved_id: "slot:wire",
+      });
+    });
+  });
+
   test("classify-folder runs stage 1 and 2 directly from a mods folder", () => {
     withTempDir((dir) => {
       const mods = join(dir, "mods");

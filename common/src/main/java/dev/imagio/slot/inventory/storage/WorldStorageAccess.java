@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.storage;
 
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -36,6 +37,19 @@ public interface WorldStorageAccess {
      */
     sealed interface Target {
         record Chest(ClaimedChest chest) implements Target {}
+
+        record Display(WorldDisplayStorageKind kind, String dimensionId, int x, int y, int z) implements Target {
+            public Display {
+                if (kind == null) {
+                    throw new IllegalArgumentException("kind must not be null");
+                }
+                dimensionId = dimensionId == null ? "" : dimensionId;
+            }
+
+            public String storageId() {
+                return WorldDisplayStorageSource.storageId(kind, dimensionId, x, y, z);
+            }
+        }
     }
 
     /** Represents a filled slot in a world storage, used by {@link #enumerate}. */
@@ -72,6 +86,14 @@ public interface WorldStorageAccess {
     boolean isAccessible(MinecraftServer server, Target target);
 
     /**
+     * Returns live nearby item-display blocks that should appear as browseable
+     * storage ghosts. Default is empty so loaders opt in explicitly.
+     */
+    default List<WorldDisplayStorageSource> proximateDisplaySources(ServerPlayer player, int radiusBlocks) {
+        return List.of();
+    }
+
+    /**
      * Adapter that extends {@link WorldStorageAccess} to support storage kinds
      * without a direct block-inventory capability (virtual / aggregated).
      * The platform impl walks registered delegates before falling back to
@@ -83,6 +105,10 @@ public interface WorldStorageAccess {
         Optional<ItemStack> extract(MinecraftServer server, Target target, int slotIndex, int amount, boolean simulate);
         Optional<List<SlotContent>> enumerate(MinecraftServer server, Target target);
         Optional<Integer> slotCount(MinecraftServer server, Target target);
+
+        default List<WorldDisplayStorageSource> proximateDisplaySources(ServerPlayer player, int radiusBlocks) {
+            return List.of();
+        }
     }
 
     void registerDelegate(Delegate delegate);

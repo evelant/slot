@@ -23,6 +23,16 @@ import {
   type VocabularyProposal,
 } from "./parse.ts";
 
+const STAGE2_FILL_IN_ONLY_FACETS = new Set([
+  "form",
+  "material_family",
+  "dye_color",
+  "required_tool",
+  "required_tool_tier",
+  "is_fuel",
+  "emits_light",
+]);
+
 export interface Stage3Options {
   /** Stage-1 records — the extractor output. */
   records: readonly ItemExtractRecord[];
@@ -196,6 +206,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     };
     let responseText: string;
     const promptInput = {
+      pack_id: options.facetVocabulary?.pack_id,
       items: payloads,
       target_facets: targetFacets,
       facet_vocabulary: facetVocabulary,
@@ -252,13 +263,26 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       });
       return;
     }
+    const repairedVocabulary = repairAcceptedVocabularyProposals(
+      parsed.items,
+      parsed.vocabularyProposals,
+      facetVocabulary,
+    );
+    if (repairedVocabulary.repairs.length > 0) {
+      parsed.warnings.push(
+        `batch ${i + 1}: accepted vocabulary proposal(s) repaired into facets: ` +
+          repairedVocabulary.repairs.slice(0, 5).join("; ") +
+          (repairedVocabulary.repairs.length > 5 ? `; +${repairedVocabulary.repairs.length - 5} more` : ""),
+      );
+    }
+
     const vocabularyIssues = dropInvalidVocabularyValues(parsed.items, facetVocabulary);
     if (vocabularyIssues.length > 0) {
       parsed.warnings.push(`batch ${i + 1}: ${vocabularyMismatchReason(vocabularyIssues)}; dropped invalid value(s)`);
     }
     warnings.push(...parsed.warnings);
     proposals.push(...parsed.proposals);
-    vocabularyProposals.push(...parsed.vocabularyProposals);
+    vocabularyProposals.push(...repairedVocabulary.pending);
     corrections.push(...parsed.corrections);
     fillIns.push(...parsed.fillIns);
 
@@ -285,8 +309,27 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       for (const [facetId, entry] of Object.entries(itemFacets.facets)) {
         if (existing[facetId]) {
           if (valuesDisagree(existing[facetId], entry)) {
-            warnings.push(`${itemId} ${facetId}: stage 2 asserted ${describeEntry(existing[facetId])}; LLM value ${describeEntry(toLayerEntry(entry))} dropped — add to corrections if clearly wrong`);
+            warnings.push(`${itemId} ${facetId}: stage 2 asserted ${describeEntry(existing[facetId])}; LLM value ${describeEntry(toLayerEntry(entry))} dropped — put confident stage-2 disagreements in corrections`);
           }
+          continue;
+        }
+        if (STAGE2_FILL_IN_ONLY_FACETS.has(facetId)) {
+          const value = singleFillInValue(entry);
+          if (value === undefined) {
+            warnings.push(`${itemId} ${facetId}: deterministic scalar emitted in facets without a single value; dropped`);
+            continue;
+          }
+          const rationale = entry.rationale || "LLM emitted deterministic scalar in facets";
+          fillIns.push({ item: itemId, facet: facetId, value, rationale });
+          next[facetId] = {
+            value,
+            confidence: entry.confidence ?? 0.85,
+            source: "llm:stage3-fill-in",
+            rationale,
+          } as unknown as LayerFile["entries"][string]["facets"][string];
+          warnings.push(`${itemId} ${facetId}: deterministic scalar emitted in facets; treated as fill_in`);
+          coverageAdded[facetId] = (coverageAdded[facetId] ?? 0) + 1;
+          itemAdded = true;
           continue;
         }
         next[facetId] = toLayerEntry(entry);
@@ -431,6 +474,64 @@ function valuesDisagree(
   return llm.values.some((v) => !existingSet.has(JSON.stringify(v)));
 }
 
+function repairAcceptedVocabularyProposals(
+  items: Map<string, ParsedItemFacets>,
+  proposalEntries: readonly VocabularyProposal[],
+  vocabulary: PromptFacetVocabulary | undefined,
+): { pending: VocabularyProposal[]; repairs: string[] } {
+  if (!vocabulary || proposalEntries.length === 0) {
+    return { pending: [...proposalEntries], repairs: [] };
+  }
+
+  const acceptedByFacet = new Map(
+    Object.entries(vocabulary).map(([facetId, values]) => [
+      facetId,
+      new Set(values.map((value) => value.id)),
+    ]),
+  );
+  const pending: VocabularyProposal[] = [];
+  const repairs: string[] = [];
+
+  for (const proposal of proposalEntries) {
+    const proposedId = proposal.proposed_id;
+    const item = items.get(proposal.item);
+    const accepted = proposedId ? acceptedByFacet.get(proposal.facet) : undefined;
+    if (!proposedId || !item || !accepted?.has(proposedId)) {
+      pending.push(proposal);
+      continue;
+    }
+
+    mergeAcceptedVocabularyValue(item, proposal.facet, proposedId, proposal.rationale);
+    repairs.push(`${proposal.item} ${proposal.facet}=${proposedId}`);
+  }
+
+  return { pending, repairs };
+}
+
+function mergeAcceptedVocabularyValue(
+  item: ParsedItemFacets,
+  facet: string,
+  value: string,
+  rationale: string,
+): void {
+  const existing = item.facets[facet];
+  if (!existing) {
+    item.facets[facet] = {
+      kind: "multi",
+      values: [value],
+      confidence: 0.8,
+      rationale,
+      signal: "inferred",
+    };
+    return;
+  }
+
+  if (existing.kind === "multi") {
+    if (!existing.values.includes(value)) existing.values.push(value);
+    if (!existing.rationale) existing.rationale = rationale;
+  }
+}
+
 function dropInvalidVocabularyValues(
   items: Map<string, ParsedItemFacets>,
   vocabulary: PromptFacetVocabulary | undefined,
@@ -507,6 +608,10 @@ function chunk<T>(arr: readonly T[], size: number): T[][] {
   const out: T[][] = [];
   for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
   return out;
+}
+
+function singleFillInValue(entry: ParsedFacetEntry): StageFillIn["value"] | undefined {
+  return entry.kind === "single" ? entry.value : undefined;
 }
 
 function toLayerEntry(

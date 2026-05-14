@@ -202,6 +202,12 @@ claimed-storage ghosts. X-ray does not persist and does not grant remote
 mutation authority: non-proximate tracked ghosts are for quick inspection and
 wayfinding only.
 
+Supported placed item displays are live proximate storage ghosts, not claimed
+storage. TFC tool racks and TFC placed-item blocks may surface their contents
+when nearby. Tool racks may be chosen by deposit routing; placed-item blocks are
+browse/take/rollback only. Ordinary dropped `ItemEntity` stacks are never
+tracked.
+
 ## Search, Sorting, Categories, Kits, And Counts
 
 Search, sort, category, Kit, desired-count, and wanted-count surfaces must mean

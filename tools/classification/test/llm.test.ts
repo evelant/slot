@@ -131,6 +131,9 @@ describe("prompt building", () => {
     // facets that are deterministic-only should NOT appear
     expect(targets).not.toContain("mod_namespace");
     expect(targets).not.toContain("is_stackable");
+    expect(targets).not.toContain("material_family");
+    expect(targets).not.toContain("dye_color");
+    expect(targets).not.toContain("emits_light");
   });
 
   test("payload keeps recipe-role and loot lists bounded", () => {
@@ -145,11 +148,11 @@ describe("prompt building", () => {
     };
     r.loot_table_sources = Array.from({ length: 90 }, (_, i) => `minecraft:t${i}`);
     const p = buildItemPayload(r, {});
-    expect(p.recipe_ingredient_examples.length).toBeGreaterThan(10);
-    expect(p.recipe_ingredient_examples.length).toBeLessThanOrEqual(96);
-    expect(p.recipe_output_examples.length).toBeLessThanOrEqual(96);
-    expect(p.loot_source_examples.length).toBeGreaterThan(10);
-    expect(p.loot_source_examples.length).toBeLessThanOrEqual(64);
+    expect(p.recipe_ingredient_examples!.length).toBeGreaterThan(10);
+    expect(p.recipe_ingredient_examples!.length).toBeLessThanOrEqual(24);
+    expect(p.recipe_output_examples!.length).toBeLessThanOrEqual(24);
+    expect(p.loot_source_examples!.length).toBeGreaterThan(10);
+    expect(p.loot_source_examples!.length).toBeLessThanOrEqual(16);
     expect(p.recipe_ingredient_count).toBe(200);
     expect(p.recipe_output_count).toBe(110);
     expect(p.loot_source_count).toBe(90);
@@ -167,9 +170,8 @@ describe("prompt building", () => {
     };
 
     const p = buildItemPayload(r, {});
-    expect(p.minecraft_tag_membership).toBe("resolved_runtime");
-    expect(p.minecraft_tags_direct).toEqual([]);
-    expect(p.minecraft_tags_inherited).toEqual([]);
+    expect(p.minecraft_tags_direct).toBeUndefined();
+    expect(p.minecraft_tags_inherited).toBeUndefined();
     expect(p.minecraft_tags_resolved).toEqual(["forge:ingots", "forge:ingots/iron"]);
   });
 
@@ -195,7 +197,7 @@ describe("prompt building", () => {
     });
     expect(runtimePrompt.system).toContain("# Runtime export input notes");
     expect(runtimePrompt.system).toContain("KubeJS and datapack");
-    expect(runtimePrompt.system).toContain("not collected here");
+    expect(runtimePrompt.system).toContain("no useful collected evidence");
     expect(runtimePrompt.system).toContain("Recipe absences are weaker");
     expect(runtimePrompt.system).toContain("Emit `primary_uses` for every item");
     expect(runtimePrompt.system).toContain("do not use empty loot/source fields as evidence");
@@ -239,18 +241,120 @@ describe("prompt building", () => {
       },
     };
     const prompt = buildSplitPrompt({
+      pack_id: "fixture",
       items: [buildItemPayload(ironIngotRecord(), {})],
       target_facets: ["workflow", "progression_stage", "role"],
       facet_vocabulary: buildPromptFacetVocabulary(vocabulary, ["workflow", "progression_stage", "role"]),
     });
 
     expect(prompt.system).toContain("# Pack facet vocabulary");
-    expect(prompt.system).toContain("use only these accepted ids");
+    expect(prompt.system).toContain("accepted ids supplied to this classification batch");
+    expect(prompt.system).toContain("Use these accepted ids for the matching facet whenever they fit");
+    expect(prompt.system).toContain("Pack id for pack-scoped vocabulary proposals: `fixture`");
+    expect(prompt.system).toContain("`pack:fixture/<token_path>`");
     expect(prompt.system).toContain("`tfc:casting`");
     expect(prompt.system).toContain("`pack:fixture/lv_low_voltage`");
     expect(prompt.system).not.toContain("tfc:maybe");
-    expect(prompt.system).toContain("Do not invent a syntactically valid id");
+    expect(prompt.system).toContain("add a top-level vocabulary_proposals entry");
+    expect(prompt.system).toContain("output `slot:place`, not");
+    expect(prompt.user).toContain("Use accepted ids when they fit");
+    expect(prompt.user).toContain("add `vocabulary_proposals` for useful missing ids");
     expect(prompt.user).toContain("Do not move ids across vocabulary-backed facets");
+    expect(prompt.user).toContain("use `slot:place`, `slot:equip`, `slot:burn`");
+    expect(prompt.user).toContain("`used_at` is a physical station, machine, tool, or surface");
+    expect(prompt.user).toContain("rather than an invented near-miss id such as `slot:crafting`");
+  });
+
+  test("classification prompt leaves judgment room for free-text while closing vocabulary-backed facets", () => {
+    const prompt = buildSplitPrompt({
+      items: [buildItemPayload(ironIngotRecord(), {})],
+      target_facets: ["primary_uses", "material_secondary", "workflow", "role"],
+    });
+
+    expect(prompt.system).toContain("ordinary non-vocabulary free_text / multi_free_text facets are judgment outputs");
+    expect(prompt.system).toContain("synthesize concise values matching the pattern");
+    expect(prompt.system).toContain("vocabulary-backed facets are closed by the accepted Pack facet vocabulary");
+    expect(prompt.system).toContain("This is a semantic classification task, not just a storage-section task");
+    expect(prompt.system).toContain("lower-risk semantic/query metadata");
+    expect(prompt.system).toContain("The schema pattern is an id grammar, not permission to invent");
+    expect(prompt.system).toContain("This does not apply to ordinary");
+    expect(prompt.system).toContain("Do not use this for ordinary free_text values");
+    expect(prompt.system).toContain("Keep facet entries small");
+    expect(prompt.system).toContain("Optional per-facet review fields");
+    expect(prompt.system).toContain("Default to useful judgment, not silence");
+    expect(prompt.system).toContain("a reasonable inferred value is usually better than leaving the facet empty");
+    expect(prompt.system).toContain("The main exception is `organization_group`");
+    expect(prompt.system).toContain("judgment is allowed");
+    expect(prompt.system).toContain("normal staple rather than rare progression stock");
+    expect(prompt.system).toContain("`palette` is not the vanilla dye-color facet");
+    expect(prompt.system).toContain("put that deterministic fact in top-level");
+    expect(prompt.system).toContain("`metallic` is a `flavor` value, not a `palette` value");
+    expect(prompt.system).toContain("`flavor` is not a catch-all visual palette");
+    expect(prompt.system).toContain("such as `translucent`, `crystal`, `glowing`, `earthy`, `gray`, or `yellow`");
+    expect(prompt.system).toContain("`document_context` is input evidence, not an output facet");
+    expect(prompt.system).toContain("where this sits in pack progression");
+    expect(prompt.system).toContain("favor useful judgment");
+    expect(prompt.system).toContain("deterministic scalar facts inside an item's `facets` block");
+    expect(prompt.system).toContain("Guide snippets often describe several related items");
+    expect(prompt.system).toContain("what the current item is for");
+    expect(prompt.system).toContain("not every use of the bowl");
+    expect(prompt.system).not.toContain("MUST include a `signal` field");
+    expect(prompt.system).not.toContain("<accepted_id_from_pack_facet_vocabulary>");
+  });
+
+  test("organization and subsystem guidance does not teach stale generated ids or role bans", () => {
+    const prompt = buildSplitPrompt({
+      items: [buildItemPayload(ironIngotRecord(), {})],
+      target_facets: ["organization_group", "mod_subsystem", "role"],
+    });
+
+    expect(prompt.system).not.toContain("pack:example/casting_molds");
+    expect(prompt.system).not.toContain("Use the item's own namespace unless");
+    expect(prompt.system).toContain("Concrete anchors use accepted vocabulary labels, not literal ids");
+    expect(prompt.system).toContain("use the accepted Beekeeping organization id if it is listed");
+    expect(prompt.system).toContain("Role is a cross-check,");
+    expect(prompt.system).toContain("not a hard ban");
+    expect(prompt.system).toContain("role=functional_block or storage_block");
+    expect(prompt.system).toContain("identity, not namespace or recipe participation");
+    expect(prompt.system).not.toContain("pack:tfg2/casting_molds");
+    expect(prompt.system).not.toContain("pack:tfg2/crops");
+    expect(prompt.system).not.toContain("such as casting molds, crops, woodworking");
+    expect(prompt.system).toContain("examples omitted: vocabulary ids are pack-specific");
+  });
+
+  test("expected output example uses accepted vocabulary ids only when supplied", () => {
+    const record = buildItemPayload(ironIngotRecord(), {});
+    const noVocabulary = buildSplitPrompt({
+      items: [record],
+      target_facets: ["organization_group"],
+    });
+    expect(noVocabulary.system).toContain('"facets": {}');
+    expect(noVocabulary.system).not.toContain("<accepted_id_from_pack_facet_vocabulary>");
+
+    const vocabulary: PackFacetVocabulary = {
+      schema_version: 1,
+      kind: "slot-pack-facet-vocabulary",
+      pack_id: "fixture",
+      facets: {
+        organization_group: {
+          values: {
+            "pack:fixture/beekeeping": {
+              label: "Beekeeping",
+              origin: "pack_generated",
+              state: "accepted",
+            },
+          },
+        },
+      },
+    };
+    const withVocabulary = buildSplitPrompt({
+      pack_id: "fixture",
+      items: [record],
+      target_facets: ["organization_group"],
+      facet_vocabulary: buildPromptFacetVocabulary(vocabulary, ["organization_group"]),
+    });
+    expect(withVocabulary.system).toContain('"pack:fixture/beekeeping"');
+    expect(withVocabulary.system).not.toContain("<accepted_id_from_pack_facet_vocabulary>");
   });
 
   test("split prompt repeats hard output constraints at the end of the user message", () => {
@@ -265,8 +369,14 @@ describe("prompt building", () => {
     expect(prompt.user).toContain("Never put them inside `<item_id>.facets`");
     expect(prompt.user).toContain("Use `ambiguous: true` only for single-value enum/free_text facets");
     expect(prompt.user).toContain("Machine parts, machine components, hulls, casings, pumps");
-    expect(prompt.user).toContain("Omit `mod_subsystem`; no accepted subsystem vocabulary is supplied");
-    expect(prompt.user.trim().endsWith("Optional low-evidence facets are better omitted than guessed.")).toBe(true);
+    expect(prompt.user).toContain("Then use judgment to fill useful semantic/query facets");
+    expect(prompt.user).toContain("Put missing deterministic scalar facts");
+    expect(prompt.user).toContain("No accepted Pack facet vocabulary is supplied");
+    expect(prompt.user).toContain("No accepted subsystem vocabulary is supplied for this batch");
+    expect(prompt.user).toContain("add a `vocabulary_proposals` entry when the item clearly belongs to a meaningful subsystem");
+    expect(prompt.user).toContain("low-evidence but plausible metadata is better than leaving useful accepted vocabulary unused");
+    expect(prompt.user).not.toContain("Optional low-evidence facets are better omitted than guessed.");
+    expect(prompt.user).not.toContain("Omit `mod_subsystem`; no accepted subsystem vocabulary is supplied");
   });
 
   test("payload carries block context and semantic runtime components", () => {
@@ -303,20 +413,13 @@ describe("prompt building", () => {
       block_tags: ["minecraft:mineable/pickaxe", "minecraft:needs_stone_tool"],
       requires_correct_tool: false,
     });
-    expect(p.component_highlights["minecraft:max_damage"]).toBe(250);
-    expect(p.component_highlights["minecraft:equippable"]).toEqual({ slot: "head" });
-    expect(p.component_highlights["minecraft:light_emission"]).toBe(14);
-    expect(p.semantic_text).toEqual([
-      {
-        source: "runtime-tooltip",
-        text: "Stores heat and can be worked on an anvil.",
-      },
-      {
-        source: "lang",
-        key: "item.minecraft.iron_ingot.tooltip",
-        text: "Stores heat and can be worked on an anvil.",
-      },
-    ]);
+    expect(p.component_highlights!["minecraft:max_damage"]).toBe(250);
+    expect(p.component_highlights!["minecraft:equippable"]).toEqual({ slot: "head" });
+    expect(p.component_highlights!["minecraft:light_emission"]).toBe(14);
+    expect(p.semantic_text).toEqual([{
+      source: "runtime-tooltip",
+      text: "Stores heat and can be worked on an anvil.",
+    }]);
   });
 
   test("payload carries gated document context separately from item semantic text", () => {
@@ -383,17 +486,41 @@ describe("prompt building", () => {
     expect(payload.document_context).toEqual([
       {
         kind: "advancement",
-        id: "example:automation/start",
         label: "Start Automation",
-        item_ref_count: 1,
-        snippets: [{
-          source: "advancement-description",
-          text: "Build a gear to begin mechanical automation.",
-        }],
+        snippets: ["Build a gear to begin mechanical automation."],
       },
     ]);
     expect(JSON.stringify(payload.document_context)).not.toContain("quest");
     expect(JSON.stringify(payload.document_context)).not.toContain("broad page");
+  });
+
+  test("document context focuses snippets when the page label is about another item", () => {
+    const text = "Bowls are a versatile tool which can be used to make Salads, to make Soups, to Salt meat, or to apply Powder to Glass in order to change the resulting glass's color.";
+    const salt = buildItemPayload(runtimeRecord({
+      id: "tfc:powder/salt",
+      displayName: "Table Salt",
+    }), {}, [{
+      kind: "guide_page",
+      id: "tfc:field_guide/food/bowls",
+      label: "Bowls",
+      item_ref_count: 2,
+      related_item_refs: ["tfc:ceramic/bowl"],
+      snippets: [{ source: "guide-page", text }],
+    }]);
+    expect(salt.document_context?.[0]?.snippets).toEqual(["to Salt meat"]);
+
+    const bowl = buildItemPayload(runtimeRecord({
+      id: "tfc:ceramic/bowl",
+      displayName: "Ceramic Bowl",
+    }), {}, [{
+      kind: "guide_page",
+      id: "tfc:field_guide/food/bowls",
+      label: "Bowls",
+      item_ref_count: 2,
+      related_item_refs: ["tfc:powder/salt"],
+      snippets: [{ source: "guide-page", text }],
+    }]);
+    expect(bowl.document_context?.[0]?.snippets).toEqual([text]);
   });
 });
 
@@ -658,7 +785,7 @@ describe("response parsing", () => {
     ]);
   });
 
-  test("corrections at >= 0.7 confidence are retained", () => {
+  test("corrections flow through with model confidence", () => {
     const response = JSON.stringify({
       items: {},
       corrections: [
@@ -681,9 +808,14 @@ describe("response parsing", () => {
       ],
     });
     const parsed = parseLlmResponse(response);
-    expect(parsed.corrections.length).toBe(1);
+    expect(parsed.corrections.length).toBe(2);
     expect(parsed.corrections[0]!.item).toBe("minecraft:iron_ingot");
-    expect(parsed.warnings.some((w) => w.includes("below confidence"))).toBe(true);
+    expect(parsed.corrections[1]).toMatchObject({
+      item: "minecraft:foo",
+      facet: "form",
+      confidence: 0.3,
+    });
+    expect(parsed.warnings.some((w) => w.includes("below confidence"))).toBe(false);
   });
 
   test("corrections with missing fields are dropped with a warning", () => {
@@ -714,13 +846,19 @@ describe("response parsing", () => {
           value: "brass",
           rationale: "id prefix brass_ implies family",
         },
+        {
+          item: "gtceu:brass_double_ingot",
+          facet: "material_family",
+          value: "brass",
+        },
       ],
     });
     const parsed = parseLlmResponse(response);
-    expect(parsed.fillIns.length).toBe(2);
+    expect(parsed.fillIns.length).toBe(3);
     expect(parsed.fillIns[0]!.item).toBe("create:dark_oak_window");
     expect(parsed.fillIns[0]!.facet).toBe("form");
     expect(parsed.fillIns[0]!.value).toBe("pane");
+    expect(parsed.fillIns[2]!.rationale).toBe("LLM did not provide rationale.");
   });
 
   test("fill_ins for llm-authored facets are dropped with a warning", () => {
@@ -829,6 +967,123 @@ describe("runStage3", () => {
     expect(result.filledItems).toBe(1);
     expect(result.coverageAdded.role).toBe(1);
     expect(result.coverageAdded.activity).toBe(1);
+  });
+
+  test("deterministic scalar facets emitted in facets are treated as fill_ins", async () => {
+    const record = ironIngotRecord();
+    const stage2Layer = ironIngotStage2Layer();
+    delete stage2Layer.entries["minecraft:iron_ingot"]!.facets.material_family;
+
+    const { system, user } = buildSplitPrompt({
+      items: [buildItemPayload(record, stage2Layer.entries["minecraft:iron_ingot"]!.facets)],
+      target_facets: defaultTargetFacets(),
+    });
+    const hash = fixtureHash(`${system}\n\n---\n\n${user}`);
+    const fixtureDir = mkdtempSync(join(tmpdir(), "slot-stage3-fillin-"));
+    const response = JSON.stringify({
+      items: {
+        "minecraft:iron_ingot": {
+          facets: {
+            material_family: { value: "iron", confidence: 0.9, rationale: "id names iron" },
+          },
+        },
+      },
+    });
+    writeFileSync(join(fixtureDir, `${hash}.response.txt`), response);
+
+    const result = await runStage3({
+      records: [record],
+      stage2Layer,
+      client: new ReplayLlmClient(fixtureDir),
+    });
+
+    const facets = result.layer.entries["minecraft:iron_ingot"]!.facets;
+    expect(facets.material_family).toMatchObject({
+      value: "iron",
+      source: "llm:stage3-fill-in",
+    });
+    expect(result.fillIns).toEqual([
+      {
+        item: "minecraft:iron_ingot",
+        facet: "material_family",
+        value: "iron",
+        rationale: "id names iron",
+      },
+    ]);
+    expect(result.warnings.some((w) =>
+      w.includes("material_family") && w.includes("treated as fill_in")
+    )).toBe(true);
+  });
+
+  test("accepted vocabulary proposals are repaired into facet values", async () => {
+    const record = runtimeRecord({
+      id: "gtmutils:uhv_auto_charger_4x",
+      displayName: "4x UHV Auto Charger",
+    });
+    const stage2Layer: LayerFile = {
+      schema_version: 1,
+      layer: "modpack",
+      source: "fixture",
+      entries: {
+        "gtmutils:uhv_auto_charger_4x": {
+          facets: {},
+        },
+      },
+    };
+    const vocabulary: PackFacetVocabulary = {
+      schema_version: 1,
+      kind: "slot-pack-facet-vocabulary",
+      pack_id: "fixture",
+      facets: {
+        progression_stage: {
+          values: {
+            "gtceu:uhv": {
+              label: "UHV",
+              origin: "manual",
+              state: "accepted",
+            },
+          },
+        },
+      },
+    };
+
+    const targetFacets = defaultTargetFacets();
+    const { system, user } = buildSplitPrompt({
+      pack_id: "fixture",
+      items: [buildItemPayload(record, {})],
+      target_facets: targetFacets,
+      facet_vocabulary: buildPromptFacetVocabulary(vocabulary, targetFacets),
+    });
+    const hash = fixtureHash(`${system}\n\n---\n\n${user}`);
+    const fixtureDir = mkdtempSync(join(tmpdir(), "slot-stage3-vocab-proposal-repair-"));
+    writeFileSync(join(fixtureDir, `${hash}.response.txt`), JSON.stringify({
+      items: {
+        "gtmutils:uhv_auto_charger_4x": {
+          facets: {},
+        },
+      },
+      vocabulary_proposals: [
+        {
+          item: "gtmutils:uhv_auto_charger_4x",
+          facet: "progression_stage",
+          label: "UHV",
+          proposed_id: "gtceu:uhv",
+          rationale: "The item is explicitly UHV tier.",
+        },
+      ],
+    }));
+
+    const result = await runStage3({
+      records: [record],
+      stage2Layer,
+      client: new ReplayLlmClient(fixtureDir),
+      facetVocabulary: vocabulary,
+    });
+
+    expect(result.layer.entries["gtmutils:uhv_auto_charger_4x"]!.facets.progression_stage)
+      .toMatchObject({ values: ["gtceu:uhv"], source: "llm:stage3" });
+    expect(result.vocabularyProposals).toEqual([]);
+    expect(result.warnings.some((w) => w.includes("accepted vocabulary proposal"))).toBe(true);
   });
 
   test("concurrency runs batches in parallel and merges in any order", async () => {

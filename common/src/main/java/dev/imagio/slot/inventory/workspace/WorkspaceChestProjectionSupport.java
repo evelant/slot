@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.workspace;
 
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
@@ -58,6 +60,25 @@ public final class WorkspaceChestProjectionSupport {
             }
             return readContents(server, resolvedMap.chest(uuid), worldStorage);
         };
+    }
+
+    public static List<WorldDisplayStorageSource> proximateDisplaySources(
+            ServerPlayer player,
+            WorldStorageAccess worldStorage
+    ) {
+        return proximateDisplaySources(player, worldStorage, DEFAULT_RADIUS_BLOCKS);
+    }
+
+    public static List<WorldDisplayStorageSource> proximateDisplaySources(
+            ServerPlayer player,
+            WorldStorageAccess worldStorage,
+            int radiusBlocks
+    ) {
+        if (player == null || worldStorage == null) {
+            return List.of();
+        }
+        List<WorldDisplayStorageSource> sources = worldStorage.proximateDisplaySources(player, radiusBlocks);
+        return sources == null ? List.of() : List.copyOf(sources);
     }
 
     public static SlotWorkspaceViewModel.ChestContentsSnapshot readContents(

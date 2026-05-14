@@ -2,6 +2,7 @@ package dev.imagio.slot.forge;
 
 import dev.imagio.slot.platform.SlotResourceAccess;
 import dev.imagio.slot.platform.SlotStackAccess;
+import dev.imagio.slot.forge.compat.tfc.TfcWorldDisplayStorageDelegate;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.forge.storage.ForgeCarriedSourceAccess;
@@ -16,6 +17,8 @@ final class Forge120Platform {
         SlotStackAccess.install(new Forge120StackAccess());
         SlotWorkspaceViewModel.setGhostStackResolver(Forge120GhostStackFactory::resolve);
         StorageAccessRegistry.installCarriedSourceAccess(new ForgeCarriedSourceAccess());
-        StorageAccessRegistry.installWorldStorageAccess(new ForgeWorldStorageAccess());
+        ForgeWorldStorageAccess worldStorageAccess = new ForgeWorldStorageAccess();
+        worldStorageAccess.registerDelegate(new TfcWorldDisplayStorageDelegate());
+        StorageAccessRegistry.installWorldStorageAccess(worldStorageAccess);
     }
 }

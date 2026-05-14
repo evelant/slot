@@ -5,6 +5,7 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -47,7 +48,7 @@ public final class DepositExecutor {
         WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
         int deposited = 0;
         int failed = 0;
-        LinkedHashSet<UUID> destinations = new LinkedHashSet<>();
+        LinkedHashSet<String> destinations = new LinkedHashSet<>();
         ArrayList<DepositRecord> records = new ArrayList<>();
 
         for (DepositPlan.Assignment assignment : plan.assignments()) {
@@ -84,17 +85,10 @@ public final class DepositExecutor {
                 if (remaining.isEmpty()) {
                     break;
                 }
-                UUID candidateUuid;
-                try {
-                    candidateUuid = UUID.fromString(candidateId);
-                } catch (IllegalArgumentException ignored) {
+                WorldStorageAccess.Target target = depositTarget(candidateId, claimedChestMap);
+                if (target == null) {
                     continue;
                 }
-                ClaimedChest chest = claimedChestMap.chest(candidateUuid);
-                if (chest == null) {
-                    continue;
-                }
-                WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
                 int beforeCount = remaining.getCount();
                 ItemStack leftover = worldStorage.insert(server, target, remaining, false);
                 int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
@@ -102,8 +96,8 @@ public final class DepositExecutor {
                 if (insertedHere <= 0) {
                     continue;
                 }
-                destinations.add(candidateUuid);
-                records.add(new DepositRecord(candidateUuid, identity, insertedHere));
+                destinations.add(candidateId);
+                records.add(new DepositRecord(candidateId, identity, insertedHere));
                 insertedTotal += insertedHere;
                 remaining = leftover == null ? ItemStack.EMPTY : leftover;
             }
@@ -132,6 +126,22 @@ public final class DepositExecutor {
                 "[SLOT] deposit deposited={} failed={} destinations={}",
                 deposited, failed, destinations);
         return new DepositOutcome(deposited, failed, destinations, records);
+    }
+
+    private static WorldStorageAccess.Target depositTarget(String storageId, ClaimedChestMap claimedChestMap) {
+        if (storageId == null || storageId.isBlank()) {
+            return null;
+        }
+        try {
+            UUID candidateUuid = UUID.fromString(storageId);
+            ClaimedChest chest = claimedChestMap == null ? null : claimedChestMap.chest(candidateUuid);
+            return chest == null ? null : new WorldStorageAccess.Target.Chest(chest);
+        } catch (IllegalArgumentException ignored) {
+            return WorldDisplayStorageSource.targetFromStorageId(storageId)
+                    .filter(target -> target.kind().depositTarget())
+                    .map(target -> (WorldStorageAccess.Target) target)
+                    .orElse(null);
+        }
     }
 
     public static SingleStackOutcome depositSingleItem(
@@ -218,13 +228,29 @@ public final class DepositExecutor {
     }
 
     /** One observed deposit: identity, count, target chest. Drives affinity bumps. */
-    public record DepositRecord(UUID storageId, ItemIdentity identity, int count) {
+    public record DepositRecord(String storageId, ItemIdentity identity, int count) {
         public DepositRecord {
+            storageId = storageId == null ? "" : storageId;
             count = Math.max(1, count);
+        }
+
+        public DepositRecord(UUID storageId, ItemIdentity identity, int count) {
+            this(storageId == null ? "" : storageId.toString(), identity, count);
+        }
+
+        public UUID storageUuid() {
+            if (storageId == null || storageId.isBlank()) {
+                return null;
+            }
+            try {
+                return UUID.fromString(storageId);
+            } catch (IllegalArgumentException ignored) {
+                return null;
+            }
         }
     }
 
-    public record DepositOutcome(int deposited, int failed, Set<UUID> destinations, List<DepositRecord> records) {
+    public record DepositOutcome(int deposited, int failed, Set<String> destinations, List<DepositRecord> records) {
         public DepositOutcome {
             deposited = Math.max(0, deposited);
             failed = Math.max(0, failed);

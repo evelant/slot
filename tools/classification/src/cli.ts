@@ -19,8 +19,15 @@ import { loadJarModBundle } from "./extract/jar/source.ts";
 import { runDeterministic, type LayerFile } from "./deterministic/run.ts";
 import { validateLayer, validateLayerFile } from "./schema/validate.ts";
 import {
+  FACETS,
+  validateMultiValue,
+} from "./schema/facets.ts";
+import {
+  validateVocabularyArtifact,
   validateVocabularyArtifactFile,
   type PackFacetVocabulary,
+  type VocabularyEvidenceRef,
+  type VocabularyValue,
 } from "./schema/vocabulary.ts";
 import {
   RecordingLlmClient,
@@ -42,6 +49,7 @@ import {
   defaultTargetFacets,
   PROMPT_VERSION,
 } from "./llm/prompt.ts";
+import type { VocabularyProposal } from "./llm/parse.ts";
 import { VANILLA_CANARY_ITEMS } from "./llm/canary.ts";
 import {
   defaultRuntimeSummaryPath,
@@ -798,6 +806,39 @@ async function main() {
         reviewOutPath: args.values["review-out"],
         facets: (args.values.facet as string[] | undefined) ?? [],
         includeAccepted: args.values.all ?? false,
+        force: args.values.force ?? false,
+      });
+      return;
+    }
+
+    case "review-stage3-vocabulary-proposals": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          vocabulary: { type: "string" },
+          proposals: { type: "string" },
+          out: { type: "string" },
+          "review-out": { type: "string" },
+          facet: { type: "string", multiple: true },
+          force: { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const vocabularyPath = args.values.vocabulary;
+      const proposalsPath = args.values.proposals;
+      const outPath = args.values.out;
+      if (!vocabularyPath || !proposalsPath || !outPath) {
+        console.error("usage: review-stage3-vocabulary-proposals --vocabulary <approved.facet-vocabulary.json> --proposals <pack.facets.vocabulary-proposals.json> --out <updated.facet-vocabulary.json> [--review-out <reviewed.json>]");
+        process.exit(2);
+        return;
+      }
+      await runInteractiveStage3VocabularyProposalReview({
+        vocabularyPath,
+        proposalsPath,
+        outPath,
+        reviewOutPath: args.values["review-out"],
+        facets: (args.values.facet as string[] | undefined) ?? [],
         force: args.values.force ?? false,
       });
       return;
@@ -2099,6 +2140,326 @@ async function runInteractivePackFacetVocabularyReview(options: {
   } finally {
     rl?.close();
   }
+}
+
+interface Stage3VocabularyProposalDecision {
+  item: string;
+  facet: string;
+  label: string;
+  proposed_id?: string;
+  rationale: string;
+  evidence?: string[];
+  decision: "approve" | "reject" | "skip" | "already_accepted" | "invalid";
+  approved_id?: string;
+  approved_label?: string;
+  notes?: string;
+}
+
+async function runInteractiveStage3VocabularyProposalReview(options: {
+  vocabularyPath: string;
+  proposalsPath: string;
+  outPath: string;
+  reviewOutPath?: string;
+  facets: string[];
+  force: boolean;
+}): Promise<void> {
+  const vocabularyPath = resolve(options.vocabularyPath);
+  const proposalsPath = resolve(options.proposalsPath);
+  const outPath = resolve(options.outPath);
+  const reviewOutPath = options.reviewOutPath ? resolve(options.reviewOutPath) : undefined;
+  for (const path of [outPath, reviewOutPath].filter((path): path is string => !!path)) {
+    if (existsSync(path) && !options.force) {
+      console.error(`[stage3-vocabulary-review] output already exists: ${path}`);
+      console.error("[stage3-vocabulary-review] pass --force to overwrite it");
+      process.exit(1);
+      return;
+    }
+  }
+
+  const loaded = validateVocabularyArtifactFile(vocabularyPath);
+  if (!loaded.ok || !loaded.vocabulary) {
+    console.error(`[stage3-vocabulary-review] invalid vocabulary: ${vocabularyPath}`);
+    for (const error of loaded.errors) console.error(`  ${error}`);
+    process.exit(1);
+    return;
+  }
+
+  let proposals: VocabularyProposal[];
+  try {
+    proposals = readStage3VocabularyProposalFile(proposalsPath);
+  } catch (err) {
+    console.error(`[stage3-vocabulary-review] invalid proposals: ${(err as Error).message}`);
+    process.exit(1);
+    return;
+  }
+
+  const vocabulary = cloneJson(loaded.vocabulary);
+  const selectedFacets = new Set(options.facets.filter(Boolean));
+  const reviewable = proposals
+    .filter((proposal) => selectedFacets.size === 0 || selectedFacets.has(proposal.facet))
+    .sort((a, b) => a.facet.localeCompare(b.facet) || (a.proposed_id ?? "").localeCompare(b.proposed_id ?? "") || a.item.localeCompare(b.item));
+
+  console.log(`[stage3-vocabulary-review] pack=${vocabulary.pack_id}`);
+  console.log(
+    `[stage3-vocabulary-review] reviewing ${reviewable.length} proposal(s) ` +
+      `${selectedFacets.size > 0 ? `for ${[...selectedFacets].join(",")}` : "across all facets"}`,
+  );
+
+  const scriptedAnswers = process.stdin.isTTY ? undefined : readFileSync(0, "utf8").split(/\r?\n/);
+  const rl = scriptedAnswers ? undefined : createInterface({ input: process.stdin });
+  const decisions: Stage3VocabularyProposalDecision[] = [];
+  const counts = {
+    approve: 0,
+    reject: 0,
+    skip: 0,
+    alreadyAccepted: 0,
+    invalid: 0,
+  };
+  let quit = false;
+
+  try {
+    for (let index = 0; index < reviewable.length; index++) {
+      const proposal = reviewable[index]!;
+      const preflight = preflightVocabularyProposal(vocabulary, proposal);
+      if (preflight.decision === "invalid" || preflight.decision === "already_accepted") {
+        decisions.push({
+          item: proposal.item,
+          facet: proposal.facet,
+          label: proposal.label,
+          proposed_id: proposal.proposed_id,
+          rationale: proposal.rationale,
+          evidence: proposal.evidence,
+          ...preflight,
+        });
+        if (preflight.decision === "invalid") counts.invalid += 1;
+        else counts.alreadyAccepted += 1;
+        printStage3VocabularyProposal(proposal, index + 1, reviewable.length, preflight.notes);
+        continue;
+      }
+
+      printStage3VocabularyProposal(proposal, index + 1, reviewable.length);
+      process.stdout.write("Accept this vocabulary value? [y/n, Enter skip, q quit] ");
+      const answer = (scriptedAnswers
+        ? scriptedAnswers.shift() ?? ""
+        : await rl!.question("")
+      ).trim().toLowerCase();
+      if (scriptedAnswers) process.stdout.write("\n");
+      if (answer === "q" || answer === "quit") {
+        quit = true;
+        break;
+      }
+      if (answer === "y" || answer === "yes") {
+        const approved = approveStage3VocabularyProposal(vocabulary, proposal);
+        decisions.push({
+          item: proposal.item,
+          facet: proposal.facet,
+          label: proposal.label,
+          proposed_id: proposal.proposed_id,
+          rationale: proposal.rationale,
+          evidence: proposal.evidence,
+          decision: "approve",
+          approved_id: approved.id,
+          approved_label: approved.label,
+        });
+        counts.approve += 1;
+        continue;
+      }
+      if (answer === "n" || answer === "no") {
+        decisions.push({
+          item: proposal.item,
+          facet: proposal.facet,
+          label: proposal.label,
+          proposed_id: proposal.proposed_id,
+          rationale: proposal.rationale,
+          evidence: proposal.evidence,
+          decision: "reject",
+        });
+        counts.reject += 1;
+        continue;
+      }
+      decisions.push({
+        item: proposal.item,
+        facet: proposal.facet,
+        label: proposal.label,
+        proposed_id: proposal.proposed_id,
+        rationale: proposal.rationale,
+        evidence: proposal.evidence,
+        decision: "skip",
+      });
+      counts.skip += 1;
+    }
+
+    vocabulary.generated_by = TOOL_VERSION;
+    vocabulary.generated_at = new Date().toISOString();
+    vocabulary.source = {
+      ...(vocabulary.source ?? {}),
+      stage3_vocabulary_review: {
+        vocabulary: vocabularyPath,
+        proposals: proposalsPath,
+        review: reviewOutPath,
+      },
+    };
+
+    const validation = validateVocabularyArtifact(vocabulary);
+    if (!validation.ok) {
+      console.error("[stage3-vocabulary-review] updated vocabulary failed validation");
+      for (const error of validation.errors.slice(0, 20)) console.error(`  ${error}`);
+      process.exit(1);
+      return;
+    }
+
+    mkdirSync(dirname(outPath), { recursive: true });
+    writeFileSync(outPath, JSON.stringify(vocabulary, null, 2) + "\n");
+    if (reviewOutPath) {
+      mkdirSync(dirname(reviewOutPath), { recursive: true });
+      writeFileSync(reviewOutPath, JSON.stringify({
+        schema_version: 1,
+        kind: "slot-stage3-vocabulary-proposal-review",
+        pack_id: vocabulary.pack_id,
+        generated_by: TOOL_VERSION,
+        generated_at: vocabulary.generated_at,
+        source: {
+          vocabulary: vocabularyPath,
+          proposals: proposalsPath,
+        },
+        decisions,
+      }, null, 2) + "\n");
+    }
+
+    console.log(`[stage3-vocabulary-review] wrote updated vocabulary ${outPath}`);
+    if (reviewOutPath) console.log(`[stage3-vocabulary-review] wrote proposal decisions ${reviewOutPath}`);
+    console.log(
+      `[stage3-vocabulary-review] decisions: ` +
+        `approved=${counts.approve}, rejected=${counts.reject}, skipped=${counts.skip}, ` +
+        `already_accepted=${counts.alreadyAccepted}, invalid=${counts.invalid}` +
+        `${quit ? " (quit early)" : ""}`,
+    );
+  } finally {
+    rl?.close();
+  }
+}
+
+function readStage3VocabularyProposalFile(path: string): VocabularyProposal[] {
+  const parsed = JSON.parse(readFileSync(path, "utf8")) as unknown;
+  if (!Array.isArray(parsed)) {
+    throw new Error("proposal file must be a JSON array");
+  }
+  const proposals: VocabularyProposal[] = [];
+  for (const raw of parsed) {
+    if (!raw || typeof raw !== "object") {
+      throw new Error("each proposal must be an object");
+    }
+    const proposal = raw as Record<string, unknown>;
+    if (
+      typeof proposal.item !== "string" ||
+      typeof proposal.facet !== "string" ||
+      typeof proposal.label !== "string" ||
+      typeof proposal.rationale !== "string"
+    ) {
+      throw new Error(`proposal missing item/facet/label/rationale: ${JSON.stringify(raw).slice(0, 160)}`);
+    }
+    proposals.push({
+      item: proposal.item,
+      facet: proposal.facet,
+      label: proposal.label,
+      ...(typeof proposal.proposed_id === "string" ? { proposed_id: proposal.proposed_id } : {}),
+      rationale: proposal.rationale,
+      ...(Array.isArray(proposal.evidence)
+        ? { evidence: proposal.evidence.filter((value): value is string => typeof value === "string") }
+        : {}),
+    });
+  }
+  return proposals;
+}
+
+function preflightVocabularyProposal(
+  vocabulary: PackFacetVocabulary,
+  proposal: VocabularyProposal,
+): Pick<Stage3VocabularyProposalDecision, "decision" | "notes"> {
+  const def = FACETS[proposal.facet];
+  if (!def) {
+    return { decision: "invalid", notes: `unknown facet '${proposal.facet}'` };
+  }
+  if (!def.vocabulary_backed) {
+    return { decision: "invalid", notes: `facet '${proposal.facet}' is not vocabulary-backed` };
+  }
+  if (!proposal.proposed_id) {
+    return { decision: "invalid", notes: "proposal is missing proposed_id" };
+  }
+  const issue = validateMultiValue(proposal.facet, [proposal.proposed_id]);
+  if (issue) {
+    return { decision: "invalid", notes: issue.reason };
+  }
+  const existing = vocabulary.facets[proposal.facet]?.values?.[proposal.proposed_id];
+  if (existing?.state === "accepted") {
+    return { decision: "already_accepted", notes: `already accepted as '${existing.label}'` };
+  }
+  return { decision: "skip" };
+}
+
+function approveStage3VocabularyProposal(
+  vocabulary: PackFacetVocabulary,
+  proposal: VocabularyProposal,
+): { id: string; label: string } {
+  const id = proposal.proposed_id!;
+  const facet = vocabulary.facets[proposal.facet] ?? { values: {} };
+  vocabulary.facets[proposal.facet] = facet;
+  const existing = facet.values[id];
+  const existingEvidence = existing?.evidence ?? [];
+  const evidence: VocabularyEvidenceRef[] = uniqueVocabularyEvidence([
+    ...existingEvidence,
+    { kind: "stage3_vocabulary_proposal", id: proposal.item, confidence: 0.8 },
+  ]);
+  const seedItems = sortedUnique([...(existing?.seed_items ?? []), proposal.item]);
+  const entry: VocabularyValue = {
+    ...(existing ?? {}),
+    label: proposal.label || existing?.label || id,
+    origin: "manual",
+    state: "accepted",
+    description: existing?.description ?? proposal.rationale,
+    evidence,
+    seed_items: seedItems,
+  };
+  if (proposal.facet === "workflow_role") {
+    entry.parent = id.split("#", 1)[0] ?? "";
+  }
+  facet.values[id] = entry;
+  return { id, label: entry.label };
+}
+
+function printStage3VocabularyProposal(
+  proposal: VocabularyProposal,
+  index: number,
+  total: number,
+  note?: string,
+): void {
+  console.log("");
+  console.log(`[${index}/${total}] ${proposal.facet}: ${proposal.label}`);
+  console.log(`item: ${proposal.item}`);
+  if (proposal.proposed_id) console.log(`proposed_id: ${proposal.proposed_id}`);
+  console.log(`rationale: ${proposal.rationale}`);
+  if (proposal.evidence?.length) console.log(`evidence: ${proposal.evidence.slice(0, 8).join(" | ")}`);
+  if (note) console.log(`note: ${note}`);
+}
+
+function uniqueVocabularyEvidence(evidence: VocabularyEvidenceRef[]): VocabularyEvidenceRef[] {
+  const seen = new Set<string>();
+  const out: VocabularyEvidenceRef[] = [];
+  for (const ref of evidence) {
+    const key = `${ref.kind}\u0000${ref.id}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(ref);
+  }
+  return out;
+}
+
+function sortedUnique(values: string[]): string[] {
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b));
+}
+
+function cloneJson<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value)) as T;
 }
 
 function reviewableVocabularyDecisions(
@@ -3652,6 +4013,14 @@ Commands:
       approved vocabulary artifact for stage 3 --facet-vocabulary. Use
       --review-out <path> to also save the recorded human decisions, --facet to
       limit facets, and --all to force y/n review of accepted values too.
+
+  review-stage3-vocabulary-proposals --vocabulary <approved.facet-vocabulary.json> --proposals <pack.facets.vocabulary-proposals.json> --out <updated.facet-vocabulary.json>
+      Interactively review useful vocabulary values suggested during a stage-3
+      classification run. Shows each proposal with its item, facet, proposed id,
+      and rationale; press y to accept it into the vocabulary, n to decline,
+      Enter to skip, or q to stop. Accepted values are written as manual
+      accepted vocabulary for the next stage-3 run. Use --review-out <path> to
+      save the y/n decisions and --facet to limit review to selected facets.
 
   classify-runtime-pack --runtime-export <pack.runtime-items.ndjson> [options]
       Recommended one-command workflow for a real modpack runtime export.

@@ -12,6 +12,8 @@ import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -65,7 +67,8 @@ public final class KitGatherService {
         KitActivation activation = kitMap.activation();
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
         Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
-        if (proximate.isEmpty()) {
+        java.util.List<WorldDisplayStorageSource> displaySources = proximateDisplaySources(player);
+        if (proximate.isEmpty() && displaySources.stream().allMatch(source -> source.contents().isEmpty())) {
             return Outcome.empty("no_proximate_chest");
         }
         InventoryHostDescriptor host = resolveHost(player);
@@ -116,6 +119,27 @@ public final class KitGatherService {
                     pulledForIdentity += outcome.moved();
                 }
             }
+            for (WorldDisplayStorageSource source : displaySources) {
+                if (remaining <= 0) {
+                    break;
+                }
+                if (source == null || source.contents().isEmpty()) {
+                    continue;
+                }
+                TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
+                        player,
+                        source.target(),
+                        source.storageId(),
+                        identity,
+                        remaining,
+                        "gather-display");
+                if (outcome.tookAnything()) {
+                    WorkspaceChestCommandService.recordTakeRecord(
+                            player, runtime, outcome.record(), "gather");
+                    remaining -= outcome.moved();
+                    pulledForIdentity += outcome.moved();
+                }
+            }
             if (pulledForIdentity > 0) {
                 identitiesPulled++;
                 totalItemsPulled += pulledForIdentity;
@@ -139,6 +163,15 @@ public final class KitGatherService {
                 InventoryAuthorityReadService.serverAuthority(player, host)
         );
         return new Outcome(identitiesPulled, totalItemsPulled, unreachable, reason);
+    }
+
+    private static java.util.List<WorldDisplayStorageSource> proximateDisplaySources(ServerPlayer player) {
+        if (player == null || !StorageAccessRegistry.isInstalled()) {
+            return java.util.List.of();
+        }
+        return WorkspaceChestProjectionSupport.proximateDisplaySources(
+                player,
+                StorageAccessRegistry.worldStorageAccess());
     }
 
     private static Map<ItemIdentity, Integer> gatherTargets(

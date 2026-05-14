@@ -1,12 +1,14 @@
 package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -160,6 +162,21 @@ public final class NeoForgeWorldStorageAccess implements WorldStorageAccess {
             }
         }
         return resolveHandler(server, target) != null;
+    }
+
+    @Override
+    public List<WorldDisplayStorageSource> proximateDisplaySources(ServerPlayer player, int radiusBlocks) {
+        if (player == null || delegates.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<WorldDisplayStorageSource> sources = new ArrayList<>();
+        for (Delegate delegate : delegates) {
+            List<WorldDisplayStorageSource> delegated = delegate.proximateDisplaySources(player, radiusBlocks);
+            if (delegated != null && !delegated.isEmpty()) {
+                sources.addAll(delegated);
+            }
+        }
+        return sources.isEmpty() ? List.of() : List.copyOf(sources);
     }
 
     private static IItemHandler resolveHandler(MinecraftServer server, Target target) {

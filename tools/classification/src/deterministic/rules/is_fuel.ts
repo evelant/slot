@@ -13,6 +13,7 @@ import type { Rule } from "../types.ts";
  *      trapdoor, button, pressure_plate, sign, hanging_sign}, it's fuel.
  *   4. Specific non-wood fuels (coal, charcoal, blaze rod, dried kelp,
  *      bamboo, lava bucket, scaffolding, bookshelf, …).
+ *   5. Semantically named mod/datapack fuel tags (`tfc:firepit_fuel`, etc.).
  *
  * We rely only on the NDJSON record fields (tags + id), no recipe analysis.
  */
@@ -111,6 +112,7 @@ export const isFuelRule: Rule = {
     const isFuel =
       tags.has(PLANKS_TAG) ||
       tags.has(LOGS_TAG) ||
+      record.minecraft_tags.some(isFuelTag) ||
       EXPLICIT_NON_WOOD_FUELS.has(record.id) ||
       EXPLICIT_FUEL_SUFFIXES.some((s) => path.endsWith(s)) ||
       // wood_prefix + wood_shape_suffix (covers oak_stairs, mangrove_fence, etc.)
@@ -130,3 +132,9 @@ export const isFuelRule: Rule = {
     ];
   },
 };
+
+function isFuelTag(tag: string): boolean {
+  const path = tag.split(":", 2)[1] ?? tag;
+  const leaf = path.split("/").at(-1) ?? path;
+  return leaf === "fuel" || leaf === "fuels" || leaf.endsWith("_fuel") || leaf.endsWith("_fuels");
+}

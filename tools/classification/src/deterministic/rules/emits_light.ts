@@ -29,6 +29,7 @@ const VANILLA_LIGHT_IDS = new Set<string>([
   "minecraft:end_rod",
   "minecraft:jack_o_lantern",
   "minecraft:redstone_lamp",
+  "minecraft:candle",
   "minecraft:ochre_froglight",
   "minecraft:verdant_froglight",
   "minecraft:pearlescent_froglight",
@@ -47,6 +48,7 @@ const LIGHT_EMITTING_SUFFIXES = [
   "_torch",
   "_lantern",
   "_lamp",
+  "_candle",
   "_glowstone",
   "_froglight",
 ];
@@ -70,6 +72,10 @@ export const emitsLightRule: Rule = {
       return emit("rule:emits_light_from_id_list");
     }
 
+    if (record.minecraft_tags.some(isLightEmitterTag)) {
+      return emit("rule:emits_light_from_tag", "light-emitting tag");
+    }
+
     for (const suffix of LIGHT_EMITTING_SUFFIXES) {
       if (record.path.endsWith(suffix)) {
         return emit("rule:emits_light_from_id_suffix", `suffix ${suffix}`);
@@ -79,6 +85,12 @@ export const emitsLightRule: Rule = {
     return [];
   },
 };
+
+function isLightEmitterTag(tag: string): boolean {
+  const path = tag.split(":", 2)[1] ?? tag;
+  const leaf = path.split("/").at(-1) ?? path;
+  return leaf === "lamps" || leaf === "lamp" || leaf.includes("lamp_") || leaf.includes("_lamp");
+}
 
 function emit(source: string, rationale?: string): RuleOutput[] {
   return [

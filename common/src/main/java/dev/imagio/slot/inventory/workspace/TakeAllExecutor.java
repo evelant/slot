@@ -30,6 +30,7 @@ public final class TakeAllExecutor {
         WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
         CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
         WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+        String storageId = chest.storageId().toString();
         List<WorldStorageAccess.SlotContent> contents = worldStorage.enumerate(server, target);
         if (contents.isEmpty()) {
             return TakeAllOutcome.empty();
@@ -55,7 +56,7 @@ public final class TakeAllExecutor {
             if (movedFromThisSlot > 0) {
                 movedStacks++;
                 movedItems += movedFromThisSlot;
-                records.add(new TakeRecord(chest.storageId(), identity, movedFromThisSlot));
+                records.add(new TakeRecord(storageId, identity, movedFromThisSlot));
             }
             if (remainingCount > 0) {
                 leftoverSlots++;
@@ -70,7 +71,7 @@ public final class TakeAllExecutor {
         if (movedStacks > 0 || leftoverSlots > 0) {
             SlotCommon.LOGGER.info(
                     "[SLOT] take-all chest={} moved_stacks={} moved_items={} leftover_slots={}",
-                    chest.storageId(), movedStacks, movedItems, leftoverSlots
+                    storageId, movedStacks, movedItems, leftoverSlots
             );
         }
         return new TakeAllOutcome(movedStacks, movedItems, leftoverSlots, records);
@@ -122,7 +123,43 @@ public final class TakeAllExecutor {
             if (!identity.equals(dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack))) {
                 continue;
             }
-            return takeFromChestSlot(player, chest, entry.slotIndex(), maxCount, logLabel);
+            return takeFromTargetSlot(
+                    player,
+                    target,
+                    chest.storageId().toString(),
+                    entry.slotIndex(),
+                    maxCount,
+                    logLabel);
+        }
+        return TakeSingleOutcome.empty();
+    }
+
+    public static TakeSingleOutcome takeByIdentity(
+            ServerPlayer player,
+            WorldStorageAccess.Target target,
+            String storageId,
+            dev.imagio.slot.inventory.core.ItemIdentity identity,
+            int maxCount,
+            String logLabel
+    ) {
+        if (player == null || target == null || storageId == null || storageId.isBlank()
+                || identity == null || maxCount <= 0) {
+            return TakeSingleOutcome.empty();
+        }
+        MinecraftServer server = player.getServer();
+        if (server == null) {
+            return TakeSingleOutcome.empty();
+        }
+        WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
+        for (WorldStorageAccess.SlotContent entry : worldStorage.enumerate(server, target)) {
+            ItemStack stack = entry.stack();
+            if (stack.isEmpty()) {
+                continue;
+            }
+            if (!identity.equals(dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack))) {
+                continue;
+            }
+            return takeFromTargetSlot(player, target, storageId, entry.slotIndex(), maxCount, logLabel);
         }
         return TakeSingleOutcome.empty();
     }
@@ -134,7 +171,27 @@ public final class TakeAllExecutor {
             int amount,
             String logLabel
     ) {
-        if (player == null || chest == null || amount <= 0) {
+        if (player == null || chest == null) {
+            return TakeSingleOutcome.empty();
+        }
+        return takeFromTargetSlot(
+                player,
+                new WorldStorageAccess.Target.Chest(chest),
+                chest.storageId().toString(),
+                chestSlotIndex,
+                amount,
+                logLabel);
+    }
+
+    private static TakeSingleOutcome takeFromTargetSlot(
+            ServerPlayer player,
+            WorldStorageAccess.Target target,
+            String storageId,
+            int slotIndex,
+            int amount,
+            String logLabel
+    ) {
+        if (player == null || target == null || storageId == null || storageId.isBlank() || amount <= 0) {
             return TakeSingleOutcome.empty();
         }
         MinecraftServer server = player.getServer();
@@ -143,19 +200,18 @@ public final class TakeAllExecutor {
         }
         WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
         CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
-        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-        if (chestSlotIndex < 0 || chestSlotIndex >= worldStorage.slotCount(server, target)) {
+        if (slotIndex < 0 || slotIndex >= worldStorage.slotCount(server, target)) {
             return TakeSingleOutcome.empty();
         }
         // For "take a stack" the caller passes Integer.MAX_VALUE so the
         // delegate caps at its own stack-size. For "take one" it's literally
         // 1. Simulate first to read what we'd actually get; commit at the
         // end so we know how many to ask back for on leftover.
-        ItemStack preview = worldStorage.extract(server, target, chestSlotIndex, amount, true);
+        ItemStack preview = worldStorage.extract(server, target, slotIndex, amount, true);
         if (preview == null || preview.isEmpty()) {
             return TakeSingleOutcome.empty();
         }
-        ItemStack extracted = worldStorage.extract(server, target, chestSlotIndex, preview.getCount(), false);
+        ItemStack extracted = worldStorage.extract(server, target, slotIndex, preview.getCount(), false);
         if (extracted == null || extracted.isEmpty()) {
             return TakeSingleOutcome.empty();
         }
@@ -170,11 +226,11 @@ public final class TakeAllExecutor {
             }
         }
         SlotCommon.LOGGER.info(
-                "[SLOT] {} chest={} slot={} moved={} leftover={}",
-                logLabel, chest.storageId(), chestSlotIndex, moved, remainingCount
+                "[SLOT] {} storage={} slot={} moved={} leftover={}",
+                logLabel, storageId, slotIndex, moved, remainingCount
         );
         ItemIdentity identity = ItemIdentityMatcher.create(preview);
-        TakeRecord record = moved > 0 ? new TakeRecord(chest.storageId(), identity, moved) : null;
+        TakeRecord record = moved > 0 ? new TakeRecord(storageId, identity, moved) : null;
         return new TakeSingleOutcome(moved, remainingCount, record);
     }
 
@@ -218,9 +274,25 @@ public final class TakeAllExecutor {
         }
     }
 
-    public record TakeRecord(UUID storageId, ItemIdentity identity, int count) {
+    public record TakeRecord(String storageId, ItemIdentity identity, int count) {
         public TakeRecord {
+            storageId = storageId == null ? "" : storageId;
             count = Math.max(0, count);
+        }
+
+        public TakeRecord(UUID storageId, ItemIdentity identity, int count) {
+            this(storageId == null ? "" : storageId.toString(), identity, count);
+        }
+
+        public UUID storageUuid() {
+            if (storageId == null || storageId.isBlank()) {
+                return null;
+            }
+            try {
+                return UUID.fromString(storageId);
+            } catch (IllegalArgumentException ignored) {
+                return null;
+            }
         }
     }
 }

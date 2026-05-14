@@ -129,7 +129,87 @@ const ORE_HOST_PREFIXES = [
 ] as const;
 
 const ORE_GRADE_PREFIXES = ["small_native_", "small_", "poor_", "normal_", "rich_", "native_"] as const;
-const ORE_PROCESS_PREFIXES = ["dusty_raw_", "crushed_", "purified_", "impure_", "pure_", "raw_"] as const;
+const ORE_PROCESS_PREFIXES = [
+  "dusty_raw_",
+  "poor_raw_",
+  "rich_raw_",
+  "crushed_",
+  "purified_",
+  "impure_",
+  "pure_",
+  "raw_",
+] as const;
+
+const COMMON_MATERIAL_TAG_ROOTS = new Set([
+  "dense_plates",
+  "double_ingots",
+  "dusts",
+  "gems",
+  "glass",
+  "hot_ingots",
+  "impure_dusts",
+  "ingots",
+  "metal_item",
+  "metal_items",
+  "nuggets",
+  "ores",
+  "plates",
+  "poor_raw_materials",
+  "pure_dusts",
+  "raw_ore_blocks",
+  "raw_materials",
+  "rich_raw_materials",
+  "rings",
+  "rods",
+  "sheets",
+  "small_dusts",
+  "small_springs",
+  "springs",
+  "storage_blocks",
+  "tiny_dusts",
+  "wires",
+]);
+
+const DISPLAY_MATERIAL_SUFFIXES = [
+  " Crushing Wheel",
+  " Double Ingot",
+  " Greenhouse Door",
+  " Greenhouse Panel Roof",
+  " Greenhouse Panel Wall",
+  " Greenhouse Port",
+  " Greenhouse Roof",
+  " Greenhouse Roof Top",
+  " Greenhouse Trapdoor",
+  " Greenhouse Wall",
+  " Gearbox",
+  " Knife Blade",
+  " Mechanical Mixer",
+  " Mechanical Saw",
+  " Millstone",
+  " Mortar",
+  " Plate",
+  " Sheet",
+  " Toe Hiking Boots",
+  " Train Hull",
+];
+
+const DISPLAY_STONE_FORM_PREFIXES = [
+  "Polished Cut ",
+  "Cut ",
+  "Small ",
+];
+
+const DISPLAY_STONE_FORM_SUFFIXES = [
+  " Brick Stairs",
+  " Brick Slab",
+  " Brick Wall",
+  " Bricks",
+  " Brick",
+  " Stairs",
+  " Slab",
+  " Wall",
+  " Pillar",
+];
 
 /**
  * Per-namespace prefix overrides. Checked BEFORE the generic
@@ -222,6 +302,21 @@ const EXACT_ID_TO_FAMILY: Record<string, string> = {
   "minecraft:gold_block": "gold",
   "minecraft:copper_ingot": "copper",
   "minecraft:copper_block": "copper",
+  "minecraft:cut_copper": "copper",
+  "minecraft:exposed_copper": "copper",
+  "minecraft:exposed_cut_copper": "copper",
+  "minecraft:oxidized_copper": "copper",
+  "minecraft:oxidized_cut_copper": "copper",
+  "minecraft:waxed_copper_block": "copper",
+  "minecraft:waxed_cut_copper": "copper",
+  "minecraft:waxed_exposed_copper": "copper",
+  "minecraft:waxed_exposed_cut_copper": "copper",
+  "minecraft:waxed_oxidized_copper": "copper",
+  "minecraft:waxed_oxidized_cut_copper": "copper",
+  "minecraft:waxed_weathered_copper": "copper",
+  "minecraft:waxed_weathered_cut_copper": "copper",
+  "minecraft:weathered_copper": "copper",
+  "minecraft:weathered_cut_copper": "copper",
   "minecraft:netherite_ingot": "netherite",
   "minecraft:netherite_scrap": "netherite",
   "minecraft:netherite_block": "netherite",
@@ -257,6 +352,8 @@ const EXACT_ID_TO_FAMILY: Record<string, string> = {
   "minecraft:honeycomb_block": "honeycomb",
   "minecraft:turtle_scute": "scute",
   "minecraft:armadillo_scute": "scute",
+  "minecraft:glass": "glass",
+  "minecraft:tinted_glass": "glass",
   "minecraft:stone": "stone",
   "minecraft:cobblestone": "cobblestone",
   "minecraft:deepslate": "deepslate",
@@ -286,10 +383,11 @@ const EXACT_ID_TO_FAMILY: Record<string, string> = {
 };
 
 function materialFamilyFromOrePath(path: string): string | null {
-  const leaf = path.split("/").at(-1) ?? path;
+  const pathParts = path.split("/");
+  const leaf = pathParts.at(-1) ?? path;
 
   if (path.startsWith("ore/")) {
-    return stripOreGradePrefix(leaf);
+    return stripOreGradePrefix(pathParts[1] ?? leaf);
   }
 
   if (!leaf.endsWith("_ore")) return null;
@@ -311,6 +409,140 @@ function materialFamilyFromBloomPath(path: string): string | null {
   const leaf = path.split("/").at(-1) ?? path;
   const match = /^(?:raw_|refined_)?([a-z0-9_]+)_bloom$/.exec(leaf);
   return match?.[1] ?? null;
+}
+
+function materialFamilyFromStructuredMetalPath(path: string): string | null {
+  const parts = path.split("/");
+  if (parts.length >= 3 && parts[0] === "metal") {
+    const material = parts.at(-1) ?? "";
+    return /^[a-z0-9_]+$/.test(material) ? material : null;
+  }
+  return null;
+}
+
+function materialFamilyFromStructuredWoodPath(path: string): string | null {
+  const parts = path.split("/");
+  if (parts[0] !== "wood") return null;
+
+  const material = parts.length >= 3
+    ? parts.at(-1)
+    : materialPrefixFromWoodLeaf(parts[1] ?? "");
+  if (!material || !/^[a-z0-9_]+$/.test(material)) return null;
+  return `wood_${material}`;
+}
+
+const STRUCTURED_WOOD_LEAF_SUFFIXES = [
+  "_roofing",
+];
+
+function materialPrefixFromWoodLeaf(leaf: string): string | null {
+  for (const suffix of STRUCTURED_WOOD_LEAF_SUFFIXES) {
+    if (!leaf.endsWith(suffix) || leaf.length <= suffix.length) continue;
+    const material = leaf.slice(0, -suffix.length);
+    return material || null;
+  }
+  return null;
+}
+
+function materialFamilyFromCommonMaterialTag(tag: string): string | null {
+  const path = tag.split(":", 2)[1] ?? tag;
+  const parts = path.split("/");
+  const root = parts[0] ?? "";
+  if (root === "glass") {
+    return "glass";
+  }
+  if (!COMMON_MATERIAL_TAG_ROOTS.has(root) || parts.length !== 2) {
+    return null;
+  }
+
+  const rawMaterial = parts[1] ?? "";
+  if (!/^[a-z0-9_]+$/.test(rawMaterial)) {
+    return null;
+  }
+  return stripOreProcessPrefix(stripOreGradePrefix(rawMaterial) ?? rawMaterial);
+}
+
+function materialFamilyFromDisplayName(name: string | null): string | null {
+  if (!name) return null;
+  for (const suffix of DISPLAY_MATERIAL_SUFFIXES) {
+    if (!name.endsWith(suffix) || name.length <= suffix.length) continue;
+    const raw = name.slice(0, -suffix.length).trim();
+    const normalized = normalizeMaterialName(raw);
+    if (/^[a-z0-9_]+$/.test(normalized)) return normalized;
+  }
+  const decorativeStone = materialFamilyFromDecorativeStoneDisplayName(name);
+  if (decorativeStone) return decorativeStone;
+  return null;
+}
+
+function materialFamilyFromDecorativeStoneDisplayName(name: string): string | null {
+  let raw = name.trim();
+  let changed = false;
+  for (const suffix of DISPLAY_STONE_FORM_SUFFIXES) {
+    if (!raw.endsWith(suffix) || raw.length <= suffix.length) continue;
+    raw = raw.slice(0, -suffix.length).trim();
+    changed = true;
+    break;
+  }
+  for (const prefix of DISPLAY_STONE_FORM_PREFIXES) {
+    if (!raw.startsWith(prefix) || raw.length <= prefix.length) continue;
+    raw = raw.slice(prefix.length).trim();
+    changed = true;
+    break;
+  }
+  if (!changed) return null;
+  const normalized = normalizeMaterialName(raw);
+  return /^[a-z0-9_]+$/.test(normalized) ? normalized : null;
+}
+
+function normalizeMaterialName(raw: string): string {
+  return raw.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+}
+
+function materialFamilyFromStoneTypeTags(tags: readonly string[]): string | null {
+  const candidates: Array<{ material: string; priority: number }> = [];
+  for (const tag of tags) {
+    const [namespace, path] = tag.split(":", 2);
+    if (!path?.startsWith("stone_types/")) continue;
+    const raw = path.split("/").at(-1) ?? "";
+    const material = raw.endsWith("_half") ? raw.slice(0, -"_half".length) : raw;
+    if (!/^[a-z0-9_]+$/.test(material)) continue;
+    candidates.push({
+      material,
+      // Pack/datapack stone remaps should win over base-mod placeholder names.
+      priority: namespace === "tfg" ? 0 : namespace === "tfc" ? 1 : 2,
+    });
+  }
+  candidates.sort((a, b) => a.priority - b.priority || a.material.localeCompare(b.material));
+  return candidates[0]?.material ?? null;
+}
+
+function materialFamilyFromMaterialPrefix(path: string): string | null {
+  const match = /^([a-z0-9_]+)_(?:gearbox|indicator|sheet)$/.exec(path);
+  if (!match) return null;
+  const material = match[1] ?? "";
+  return material.length > 0 ? material : null;
+}
+
+function materialFamilyFromToolPath(path: string, namespace: string): string | null {
+  const suffixes = [
+    "_buzz_saw_blade",
+    "_pickaxe",
+    "_sword",
+    "_scythe",
+    "_axe",
+    "_shovel",
+    "_hoe",
+  ];
+  for (const suffix of suffixes) {
+    if (!path.endsWith(suffix) || path.length <= suffix.length) continue;
+    const raw = path.slice(0, -suffix.length);
+    const mapped = TOOL_ARMOR_MATERIAL_PREFIX[raw];
+    if (mapped) return mapped;
+    if (namespace === "minecraft") return null;
+    return /^[a-z0-9_]+$/.test(raw) ? raw : null;
+  }
+  return null;
 }
 
 function stripOreGradePrefix(value: string): string | null {
@@ -366,6 +598,92 @@ export const materialFamilyRule: Rule = {
       }
     }
 
+    for (const tag of tags) {
+      const mat = materialFamilyFromCommonMaterialTag(tag);
+      if (mat) {
+        return [
+          {
+            facet: "material_family",
+            kind: "single",
+            value: mat,
+            source: "rule:material_family_from_common_tag",
+            confidence: 1,
+            rationale: `material tag ${tag}`,
+          },
+        ];
+      }
+    }
+
+    const structuredWoodPath = materialFamilyFromStructuredWoodPath(record.path);
+    if (structuredWoodPath) {
+      return [
+        {
+          facet: "material_family",
+          kind: "single",
+          value: structuredWoodPath,
+          source: "rule:material_family_from_structured_wood_path",
+          confidence: 1,
+          rationale: `wood path ${record.path}`,
+        },
+      ];
+    }
+
+    const structuredMetalPath = materialFamilyFromStructuredMetalPath(record.path);
+    if (structuredMetalPath) {
+      return [
+        {
+          facet: "material_family",
+          kind: "single",
+          value: structuredMetalPath,
+          source: "rule:material_family_from_structured_metal_path",
+          confidence: 1,
+          rationale: `metal path ${record.path}`,
+        },
+      ];
+    }
+
+    const displayMaterial = materialFamilyFromDisplayName(record.display_name);
+    if (displayMaterial) {
+      return [
+        {
+          facet: "material_family",
+          kind: "single",
+          value: displayMaterial,
+          source: "rule:material_family_from_display_name",
+          confidence: 0.95,
+          rationale: `display name ${record.display_name}`,
+        },
+      ];
+    }
+
+    const stoneTypeMaterial = materialFamilyFromStoneTypeTags(tags);
+    if (stoneTypeMaterial) {
+      return [
+        {
+          facet: "material_family",
+          kind: "single",
+          value: stoneTypeMaterial,
+          source: "rule:material_family_from_stone_type_tag",
+          confidence: 0.95,
+          rationale: "stone type tag",
+        },
+      ];
+    }
+
+    const prefixMaterial = materialFamilyFromMaterialPrefix(record.path);
+    if (prefixMaterial) {
+      return [
+        {
+          facet: "material_family",
+          kind: "single",
+          value: prefixMaterial,
+          source: "rule:material_family_from_id",
+          confidence: 0.95,
+          rationale: "material prefix",
+        },
+      ];
+    }
+
     const exact = EXACT_ID_TO_FAMILY[record.id];
     if (exact) {
       return [
@@ -399,6 +717,20 @@ export const materialFamilyRule: Rule = {
           },
         ];
       }
+    }
+
+    const toolMaterial = materialFamilyFromToolPath(record.path, record.namespace);
+    if (toolMaterial) {
+      return [
+        {
+          facet: "material_family",
+          kind: "single",
+          value: toolMaterial,
+          source: "rule:material_family_from_tool_prefix",
+          confidence: 0.95,
+          rationale: `tool material prefix ${record.path}`,
+        },
+      ];
     }
 
     const oreFamily = materialFamilyFromOrePath(record.path);
