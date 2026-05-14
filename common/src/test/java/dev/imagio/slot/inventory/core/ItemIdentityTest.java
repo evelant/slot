@@ -49,6 +49,16 @@ class ItemIdentityTest {
     }
 
     @Test
+    void gluedToolNamesMatchMovableByItemId() {
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("grapplemod:grapplinghook", "{Damage:7,hookState:\"attached\"}"),
+                ItemIdentity.exact("grapplemod:grapplinghook", "{Damage:1,hookState:\"idle\"}")));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("grapplemod:longfallboots", "{Damage:12}"),
+                ItemIdentity.exact("grapplemod:longfallboots", "{Damage:44}")));
+    }
+
+    @Test
     void blanksOnlyComparisonModeDowngradesByDirectConstruction() {
         ItemIdentity raw = new ItemIdentity(
                 "minecraft:water_bucket",

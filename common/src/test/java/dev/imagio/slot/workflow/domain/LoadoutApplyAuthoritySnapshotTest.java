@@ -394,6 +394,63 @@ class LoadoutApplyAuthoritySnapshotTest {
                 .anyMatch(diagnostic -> diagnostic.startsWith("no_candidate_source_for_target")));
     }
 
+    @Test
+    void planUsesLiveGrapplingHookIdentityWhenComponentFingerprintDrifts() {
+        InventoryTopologyDescriptor topology = InventoryTopologyDescriptor.empty();
+        InventorySourceDescriptor quickAccess = BuiltinInventoryDescriptors.quickAccessLane0Source(topology);
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(topology);
+        InventoryHostDescriptor host = host(List.of(quickAccess, main));
+        ItemStack liveHook = new ItemStack(
+                "grapplemod:grapplinghook",
+                "{Damage:7,hookState:\"attached\"}",
+                1,
+                1
+        );
+
+        InventoryAuthoritySnapshot authority = new InventoryAuthoritySnapshot(
+                host,
+                Map.of(
+                        quickAccess.id(), new InventorySourceSnapshot(quickAccess.id(), 9, List.of(), ""),
+                        main.id(), new InventorySourceSnapshot(
+                                main.id(),
+                                27,
+                                List.of(new InventoryEntrySnapshot(
+                                        InventoryEntryKey.slot(main.id(), 0), liveHook, 1, "")),
+                                "")
+                ),
+                CursorStateSnapshot.empty()
+        );
+
+        QuickAccessLoadoutDefinition loadout = new QuickAccessLoadoutDefinition(
+                "grapple",
+                "Grapple",
+                Set.of(new QuickAccessLoadoutEntry(
+                        new LoadoutTarget.QuickAccessLaneTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 2),
+                        ItemIdentity.exact("grapplemod:grapplinghook", "{Damage:1,hookState:\"idle\"}")
+                ))
+        );
+
+        LoadoutApplyService.LoadoutApplyPlan plan = LoadoutApplyService.plan(
+                loadout,
+                authority,
+                ProtectionPolicy.allowAll(),
+                dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE,
+                entry -> ItemIdentityMatcher.create(entry.stack())
+        );
+
+        assertEquals(1, plan.operations().size());
+        org.junit.jupiter.api.Assertions.assertTrue(plan.missingTargets().isEmpty(), plan.diagnostics().toString());
+        InventoryActionRequest request = plan.operations().getFirst().requests().getFirst();
+        assertEquals(ItemIdentity.exact("grapplemod:grapplinghook", "{Damage:7,hookState:\"attached\"}"), request.identity());
+        InventoryActionTarget.SourceSlotTarget source =
+                assertInstanceOf(InventoryActionTarget.SourceSlotTarget.class, request.primaryTarget());
+        assertEquals(main.id(), source.sourceId());
+        assertEquals(0, source.slotIndex());
+        InventoryActionTarget.QuickAccessTarget target =
+                assertInstanceOf(InventoryActionTarget.QuickAccessTarget.class, request.secondaryTarget());
+        assertEquals(2, target.slotIndex());
+    }
+
     private static ItemIdentity identity(ItemStack stack) {
         return new ItemIdentity(stack.itemId(), ItemComparisonMode.ITEM_ID, stack.componentFingerprint());
     }

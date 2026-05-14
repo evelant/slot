@@ -12,12 +12,13 @@ public final class ItemIdentityMatcher {
             "boots", "bow", "bracelet", "bundle", "cannon", "canteen", "case", "charm", "chestplate", "claymore",
             "clock", "compass", "crossbow", "dagger", "drill", "elytra", "excavator",
             "fishing_rod", "flask", "flint_and_steel", "gadget", "gauntlet", "glaive", "greatsword", "hammer",
-            "hatchet", "helmet", "hoe", "knife", "lance", "leggings", "mace", "machete",
+            "hatchet", "helmet", "hoe", "hook", "knife", "lance", "leggings", "mace", "machete",
             "mattock", "necklace", "offhand", "paxel", "pickaxe", "pouch", "quiver", "relic",
             "ring", "rod", "satchel", "saw", "scanner", "scepter", "sceptre", "scope", "shears", "shield", "shovel",
             "shulker", "sickle", "spade", "spear", "staff", "sword", "talisman", "tool",
             "totem", "trident", "wand", "water_skin", "waterskin", "weapon", "wrench", "zweihander"
     );
+    private static final Set<String> STABLE_IDENTITY_SUFFIX_EXCLUSIONS = Set.of("case", "shulker");
 
     private ItemIdentityMatcher() {
     }
@@ -76,6 +77,16 @@ public final class ItemIdentityMatcher {
         String normalizedPath = "_" + path.toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]+", "_") + "_";
         for (String token : STABLE_IDENTITY_TOKENS) {
             if (normalizedPath.contains("_" + token + "_")) {
+                return true;
+            }
+        }
+        String compactPath = path.toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]+", "");
+        for (String token : STABLE_IDENTITY_TOKENS) {
+            if (STABLE_IDENTITY_SUFFIX_EXCLUSIONS.contains(token)) {
+                continue;
+            }
+            String compactToken = token.replaceAll("[^a-z0-9]+", "");
+            if (!compactToken.isBlank() && compactPath.endsWith(compactToken)) {
                 return true;
             }
         }
