@@ -398,6 +398,23 @@ final class SlotWorkspaceUiController {
         rebuild();
     }
 
+    void toggleStorageGhostRevealMode(StorageGhostRevealMode requestedMode) {
+        StorageGhostRevealMode requested = requestedMode == null
+                ? StorageGhostRevealMode.PROXIMATE
+                : requestedMode;
+        StorageGhostRevealMode next = switch (requested) {
+            case TRACKED -> storageGhostRevealMode.toggleTracked();
+            case PROXIMATE -> storageGhostRevealMode.toggleProximate();
+            case COLLAPSED -> StorageGhostRevealMode.COLLAPSED;
+        };
+        localStatus.set(switch (next) {
+            case TRACKED -> "showing all tracked storage";
+            case PROXIMATE -> "showing nearby storage";
+            case COLLAPSED -> "hiding storage ghosts";
+        });
+        updateStorageGhostRevealMode(next);
+    }
+
     void requestWallScrollRestore(float scroll) {
         pendingWallScrollRestore = Float.isFinite(scroll) ? Math.max(0f, scroll) : 0f;
         pendingWallScrollRestoreActive = true;

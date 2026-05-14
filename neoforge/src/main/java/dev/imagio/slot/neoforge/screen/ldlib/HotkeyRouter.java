@@ -14,6 +14,7 @@ import org.lwjgl.glfw.GLFW;
 final class HotkeyRouter {
     private final SlotWorkspaceUiController host;
     private boolean markWantedKeyConsumed;
+    private boolean storageXrayKeyConsumed;
 
     HotkeyRouter(SlotWorkspaceUiController host) {
         this.host = host;
@@ -32,6 +33,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGoalRecipeKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGatherActiveKitKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleStorageXrayKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleUndoRedoKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleOpenVanillaKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleRelevanceDebugOverlayKey, true);
@@ -47,10 +49,12 @@ final class HotkeyRouter {
         });
         host.root.addEventListener(UIEvents.TICK, event -> host.searchController.tickIdleTimer());
         host.root.addEventListener(UIEvents.TICK, event -> host.shiftClickTransferState.observeShiftDown(Screen.hasShiftDown()));
-        host.root.addEventListener(UIEvents.TICK, event -> host.updateStorageGhostRevealMode(currentStorageGhostRevealMode()));
         host.root.addEventListener(UIEvents.TICK, event -> {
             if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.markWantedDown()) {
                 markWantedKeyConsumed = false;
+            }
+            if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.storageXrayDown()) {
+                storageXrayKeyConsumed = false;
             }
         });
     }
@@ -231,6 +235,24 @@ final class HotkeyRouter {
         host.rebuild();
     }
 
+    void handleStorageXrayKey(UIEvent event) {
+        if (isTextInputFocused() || host.searchController.modalActive()) {
+            return;
+        }
+        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesStorageXray(event.keyCode, event.scanCode)) {
+            return;
+        }
+        event.stopPropagation();
+        if (storageXrayKeyConsumed) {
+            return;
+        }
+        storageXrayKeyConsumed = true;
+        host.toggleStorageGhostRevealMode(Screen.hasShiftDown()
+                ? StorageGhostRevealMode.TRACKED
+                : StorageGhostRevealMode.PROXIMATE);
+    }
+
     private boolean anyGatherableIdentity() {
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
             if (WorkspaceGatherUiSupport.isGatherableItem(item)) {
@@ -312,13 +334,4 @@ final class HotkeyRouter {
         return keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT;
     }
 
-    private StorageGhostRevealMode currentStorageGhostRevealMode() {
-        if (isTextInputFocused() || host.searchController.modalActive()) {
-            return StorageGhostRevealMode.COLLAPSED;
-        }
-        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.storageXrayDown()) {
-            return StorageGhostRevealMode.COLLAPSED;
-        }
-        return Screen.hasShiftDown() ? StorageGhostRevealMode.TRACKED : StorageGhostRevealMode.PROXIMATE;
-    }
 }

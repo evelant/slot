@@ -14,6 +14,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.atlas.AtlasSearchIndex;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
+import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -154,6 +155,9 @@ final class WorkspaceOverlays {
                         .gatherActiveKitMapping().getTranslatedKeyMessage().getString()
         );
 
+        Button nearbyXrayButton = storageXrayToggleButton("N", StorageGhostRevealMode.PROXIMATE);
+        Button trackedXrayButton = storageXrayToggleButton("T", StorageGhostRevealMode.TRACKED);
+
         // HISTORY is a counter-clockwise curved arrow (classic undo);
         // ROTATION is a clockwise curved arrow (matches redo convention).
         // LEFT/RIGHT would read as paging, not undo/redo, so avoid those.
@@ -212,8 +216,65 @@ final class WorkspaceOverlays {
                 Component.literal(
                         "Disable SLOT — vanilla inventory opens until re-enabled from the vanilla screen."));
 
-        overlay.addChildren(gatherButton, depositButton, undoButton, redoButton, vanillaButton, disableButton);
+        overlay.addChildren(
+                nearbyXrayButton,
+                trackedXrayButton,
+                gatherButton,
+                depositButton,
+                undoButton,
+                redoButton,
+                vanillaButton,
+                disableButton);
         return overlay;
+    }
+
+    private Button storageXrayToggleButton(String label, StorageGhostRevealMode mode) {
+        Button button = button(label, true, storageXrayButtonColor(mode));
+        button.layout(layout -> layout.width(12).height(16));
+        applyStorageXrayButtonStyle(button, mode);
+        button.setOnClick(event -> {
+            event.stopPropagation();
+            host.toggleStorageGhostRevealMode(mode);
+        });
+        StorageGhostRevealMode[] lastMode = {host.storageGhostRevealMode};
+        button.addEventListener(UIEvents.TICK, event -> {
+            if (lastMode[0] == host.storageGhostRevealMode) {
+                return;
+            }
+            lastMode[0] = host.storageGhostRevealMode;
+            applyStorageXrayButtonStyle(button, mode);
+        });
+        host.installTextTooltip(button, Component.literal(storageXrayTooltip(mode)));
+        return button;
+    }
+
+    private void applyStorageXrayButtonStyle(Button button, StorageGhostRevealMode mode) {
+        applyButtonColors(button, true, storageXrayButtonColor(mode));
+        button.textStyle(style -> style
+                .font(FONT_UI)
+                .textColor(storageXrayTextColor(mode))
+                .fontSize(7)
+                .textShadow(false)
+                .textAlignHorizontal(Horizontal.CENTER)
+                .textAlignVertical(Vertical.CENTER));
+    }
+
+    private int storageXrayButtonColor(StorageGhostRevealMode mode) {
+        return host.storageGhostRevealMode == mode ? SELECTED : GLASS;
+    }
+
+    private int storageXrayTextColor(StorageGhostRevealMode mode) {
+        return host.storageGhostRevealMode == mode ? TEXT : MUTED;
+    }
+
+    private String storageXrayTooltip(StorageGhostRevealMode mode) {
+        String key = dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.storageXrayKeyLabel();
+        if (mode == StorageGhostRevealMode.TRACKED) {
+            return "Toggle all tracked storage ghosts (Shift+" + key + "). "
+                    + "Tracked ghosts are browse-only unless the storage is nearby.";
+        }
+        return "Toggle nearby storage ghosts (" + key + "). "
+                + "Shows proximate storage ghosts until toggled off.";
     }
 
     /**

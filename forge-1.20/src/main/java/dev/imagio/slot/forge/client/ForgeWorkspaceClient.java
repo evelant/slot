@@ -125,6 +125,10 @@ public final class ForgeWorkspaceClient {
         return MARK_WANTED.matches(keyCode, scanCode);
     }
 
+    public static boolean matchesStorageXray(int keyCode, int scanCode) {
+        return STORAGE_XRAY.matches(keyCode, scanCode);
+    }
+
     public static boolean markWantedDown() {
         if (MARK_WANTED.isDown()) {
             return true;
@@ -148,6 +152,10 @@ public final class ForgeWorkspaceClient {
 
     public static boolean storageXrayDown() {
         return STORAGE_XRAY.isDown() || keyPhysicallyDown(STORAGE_XRAY);
+    }
+
+    public static String storageXrayKeyLabel() {
+        return STORAGE_XRAY.getTranslatedKeyMessage().getString();
     }
 
     public static boolean wayfindingHudEnabled() {

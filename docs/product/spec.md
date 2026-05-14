@@ -186,21 +186,24 @@ proximate claimed storage stay collapsed behind a compact per-section nearby
 chip unless the player asks to see them.
 
 Sections with no carried cards, visible intent ghosts, or nearby chip stay
-hidden from the wall and section index by default. Holding storage x-ray may
-show those empty sections as browse landmarks.
+hidden from the wall and section index by default. Storage x-ray reveal toggles
+may show those empty sections as browse landmarks.
 
 Ghost cards must reveal when there is active intent:
 
 - the section's nearby chip is expanded for the current client session
 - search matches the ghost
 - a Kit, desired count, wanted count, or goal tab needs the item
-- the player holds storage x-ray
+- the player enables storage x-ray reveal
 
-Storage x-ray is a hold-only browse posture. Holding the x-ray key reveals all
-proximate storage ghosts; holding Shift with the same key reveals all tracked
-claimed-storage ghosts. X-ray does not persist and does not grant remote
-mutation authority: non-proximate tracked ghosts are for quick inspection and
-wayfinding only.
+Storage x-ray is a session-local browse toggle, not a persisted organization
+state. Pressing the x-ray key toggles all proximate storage ghosts; pressing
+Shift with the same key toggles all tracked claimed-storage ghosts. Enabling
+one x-ray mode replaces the other, and pressing the active mode again returns
+to the default carried-first view. Tiny UI indicators mirror the two toggles
+so the mode is discoverable without requiring key memory. X-ray does not grant
+remote mutation authority: non-proximate tracked ghosts are for quick
+inspection and wayfinding only.
 
 Supported placed item displays are live proximate storage ghosts, not claimed
 storage. TFC tool racks and TFC placed-item blocks may surface their contents

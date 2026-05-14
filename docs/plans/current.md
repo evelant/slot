@@ -60,7 +60,7 @@ hold the rest.
 - **2026-05-14** — Quiet nearby ghosts landed for playtesting: default
   wall sections show carried cards first and collapse ordinary proximate
   storage ghosts behind a per-section nearby chip, while search,
-  desired/wanted/Kit/goal intent and hold-only storage x-ray reveal the
+  desired/wanted/Kit/goal intent and storage x-ray toggles reveal the
   hidden storage cards on demand. Follow-up fixes generalized observed
   storage menus beyond vanilla chests for TFC vessels, kept search
   keystrokes inside sidebar search, matched localized hover names in

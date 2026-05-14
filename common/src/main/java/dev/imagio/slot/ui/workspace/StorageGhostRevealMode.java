@@ -12,4 +12,12 @@ public enum StorageGhostRevealMode {
     public boolean revealsTracked() {
         return this == TRACKED;
     }
+
+    public StorageGhostRevealMode toggleProximate() {
+        return this == PROXIMATE ? COLLAPSED : PROXIMATE;
+    }
+
+    public StorageGhostRevealMode toggleTracked() {
+        return this == TRACKED ? COLLAPSED : TRACKED;
+    }
 }

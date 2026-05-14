@@ -203,6 +203,14 @@ public final class SlotAtlasKeyMappings {
         return STORAGE_XRAY.isDown() || keyPhysicallyDown(STORAGE_XRAY);
     }
 
+    public static boolean matchesStorageXray(int keyCode, int scanCode) {
+        return keyMatches(STORAGE_XRAY, keyCode, scanCode);
+    }
+
+    public static String storageXrayKeyLabel() {
+        return STORAGE_XRAY.getTranslatedKeyMessage().getString();
+    }
+
     public static KeyMapping toggleWayfindingHudMapping() {
         return TOGGLE_WAYFINDING_HUD;
     }

@@ -124,6 +124,7 @@ public final class ForgeWorkspaceSurface {
     private SlotWorkspaceViewModel.IdentityRef pendingHomeDragIdentity;
     private String pendingHomeDragOriginIslandId;
     private boolean markWantedKeyConsumed;
+    private boolean storageXrayKeyConsumed;
     private StorageGhostRevealMode storageGhostRevealMode = StorageGhostRevealMode.COLLAPSED;
     private float pendingWallScrollRestore = Float.NaN;
     private boolean pendingWallScrollRestoreActive;
@@ -164,7 +165,9 @@ public final class ForgeWorkspaceSurface {
         if (!ForgeWorkspaceClient.markWantedDown()) {
             markWantedKeyConsumed = false;
         }
-        updateStorageGhostRevealMode(currentStorageGhostRevealMode());
+        if (!ForgeWorkspaceClient.storageXrayDown()) {
+            storageXrayKeyConsumed = false;
+        }
         openSessionIfNeeded();
         applyGoalStateIfChanged();
         boolean pointerActive = tree != null && tree.hasActivePointerGesture();
@@ -285,6 +288,9 @@ public final class ForgeWorkspaceSurface {
         if (handleMarkWantedKey(keyCode, scanCode)) {
             return true;
         }
+        if (handleStorageXrayKey(keyCode, scanCode)) {
+            return true;
+        }
         if (handleGoalRecipeKey(keyCode)) {
             return true;
         }
@@ -371,6 +377,23 @@ public final class ForgeWorkspaceSurface {
             return true;
         }
         sendIdentityRefAction(WorkspaceActionId.TOGGLE_WANTED_ITEM, identity, "wanted item updated");
+        return true;
+    }
+
+    private boolean handleStorageXrayKey(int keyCode, int scanCode) {
+        if (searchActive || wantsKeyboardInput() || Screen.hasControlDown()) {
+            return false;
+        }
+        if (!ForgeWorkspaceClient.matchesStorageXray(keyCode, scanCode)) {
+            return false;
+        }
+        if (storageXrayKeyConsumed) {
+            return true;
+        }
+        storageXrayKeyConsumed = true;
+        toggleStorageGhostRevealMode(Screen.hasShiftDown()
+                ? StorageGhostRevealMode.TRACKED
+                : StorageGhostRevealMode.PROXIMATE);
         return true;
     }
 
@@ -593,14 +616,21 @@ public final class ForgeWorkspaceSurface {
         rebuildRequested = true;
     }
 
-    private StorageGhostRevealMode currentStorageGhostRevealMode() {
-        if (searchActive || wantsKeyboardInput()) {
-            return StorageGhostRevealMode.COLLAPSED;
-        }
-        if (!ForgeWorkspaceClient.storageXrayDown()) {
-            return StorageGhostRevealMode.COLLAPSED;
-        }
-        return Screen.hasShiftDown() ? StorageGhostRevealMode.TRACKED : StorageGhostRevealMode.PROXIMATE;
+    private void toggleStorageGhostRevealMode(StorageGhostRevealMode requestedMode) {
+        StorageGhostRevealMode requested = requestedMode == null
+                ? StorageGhostRevealMode.PROXIMATE
+                : requestedMode;
+        StorageGhostRevealMode next = switch (requested) {
+            case TRACKED -> storageGhostRevealMode.toggleTracked();
+            case PROXIMATE -> storageGhostRevealMode.toggleProximate();
+            case COLLAPSED -> StorageGhostRevealMode.COLLAPSED;
+        };
+        setStatus(switch (next) {
+            case TRACKED -> "showing all tracked storage";
+            case PROXIMATE -> "showing nearby storage";
+            case COLLAPSED -> "hiding storage ghosts";
+        });
+        updateStorageGhostRevealMode(next);
     }
 
     private void rememberWallScroll() {
@@ -820,9 +850,40 @@ public final class ForgeWorkspaceSurface {
                         .fontSize(7)
                         .horizontal(SlotUiTextStyle.Horizontal.CENTER)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        row.addChild(storageXrayToggleButton("N", StorageGhostRevealMode.PROXIMATE));
+        row.addChild(storageXrayToggleButton("T", StorageGhostRevealMode.TRACKED));
         row.addChild(gatherButton());
         row.addChild(depositButton());
         return row;
+    }
+
+    private SlotUiElement storageXrayToggleButton(String label, StorageGhostRevealMode mode) {
+        boolean active = storageGhostRevealMode == mode;
+        return SlotUiElement.button(label, true, active ? WorkspaceUiPalette.SELECTED : WorkspaceUiPalette.ROW_DIM)
+                .tooltip(Component.literal(storageXrayTooltip(mode)))
+                .layout(layout -> layout.width(12).height(16))
+                .textStyle(style -> style
+                        .color(active ? WorkspaceUiPalette.TEXT : WorkspaceUiPalette.MUTED)
+                        .fontSize(7)
+                        .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER))
+                .on(SlotUiEventKind.CLICK, event -> {
+                    if (event.button() != 0) {
+                        return;
+                    }
+                    event.stopPropagation();
+                    toggleStorageGhostRevealMode(mode);
+                });
+    }
+
+    private String storageXrayTooltip(StorageGhostRevealMode mode) {
+        String key = ForgeWorkspaceClient.storageXrayKeyLabel();
+        if (mode == StorageGhostRevealMode.TRACKED) {
+            return "Toggle all tracked storage ghosts (Shift+" + key + "). "
+                    + "Tracked ghosts are browse-only unless the storage is nearby.";
+        }
+        return "Toggle nearby storage ghosts (" + key + "). "
+                + "Shows proximate storage ghosts until toggled off.";
     }
 
     private SlotUiElement gatherButton() {
