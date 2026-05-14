@@ -19,11 +19,14 @@ import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.workspace.ActiveChestPanelProjectionSupport;
+import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
 import dev.imagio.slot.inventory.workspace.DepositPlanner;
+import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyTracker;
 import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
@@ -72,7 +75,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -86,11 +88,10 @@ final class SlotWorkspaceUiSession {
 
     private final Player player;
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
-    private final Map<Integer, Long> hotbarPlacementSequence = new HashMap<>();
+    private final HotbarSlotRecencyTracker hotbarRecency = new HotbarSlotRecencyTracker();
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private CompoundTag lastContentTag = new CompoundTag();
     private CompoundTag lastViewTag;
-    private long nextHotbarPlacementSequence = 1L;
     private long nextRevision = 1L;
     private String status = "ready";
     private String diagnostics = "";
@@ -489,6 +490,7 @@ final class SlotWorkspaceUiSession {
             reject("claim_failed");
             return;
         }
+        seedClaimedChestContents(serverPlayer, storageId);
         status = "chest_claimed";
         diagnostics = "";
         broadcast(serverPlayer);
@@ -671,6 +673,7 @@ final class SlotWorkspaceUiSession {
             reject("loot_chest_claim_failed");
             return;
         }
+        seedClaimedChestContents(serverPlayer, storageId);
         ClaimedChest claim = chestService.claimedChestMap().chest(storageId);
         if (claim == null) {
             reject("loot_chest_claim_missing");
@@ -933,10 +936,14 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.deleteIsland(
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.deleteIsland(
                 workflowRuntime(serverPlayer),
                 islandId
-        ));
+        );
+        if (outcome.success()) {
+            autoHomeAttempted.clear();
+        }
+        applyOutcome(serverPlayer, outcome);
     }
 
     void saveBeltAsKit(String name) {
@@ -1503,15 +1510,12 @@ final class SlotWorkspaceUiSession {
         applyOutcome(serverPlayer, WorkspaceBeltCommandService.assignIdentityToAutoHotbar(
                 viewModel,
                 identity,
-                hotbarPlacementSequence,
+                hotbarRecency.placementSequence(),
                 targetHotbarIndex -> assignIdentityToHotbarIndex(serverPlayer, identity, targetHotbarIndex)));
     }
 
     private void recordHotbarPlacementOnSuccess(int hotbarIndex, WorkspaceCommandOutcome outcome) {
-        if (outcome == null || !outcome.success() || hotbarIndex < 0 || hotbarIndex >= 9) {
-            return;
-        }
-        hotbarPlacementSequence.put(hotbarIndex, nextHotbarPlacementSequence++);
+        hotbarRecency.recordPlacementOnSuccess(hotbarIndex, outcome);
     }
 
     private static boolean tookStackForHotbar(WorkspaceCommandOutcome outcome) {
@@ -1943,6 +1947,7 @@ final class SlotWorkspaceUiSession {
                     activeChestPanel
             );
         }
+        hotbarRecency.observe(projected);
         CompoundTag nextContent = SlotWorkspaceViewModelCodec.encode(projected, serverPlayer.registryAccess(), false);
         if (!nextContent.equals(lastContentTag)) {
             lastContentTag = nextContent.copy();
@@ -1992,7 +1997,26 @@ final class SlotWorkspaceUiSession {
                 level,
                 pos,
                 anchor);
+        seedClaimedChestContents(serverPlayer, storageId);
         return storageId == null ? null : runtime.chestClaimWorkflow().claimedChestMap().chest(storageId);
+    }
+
+    private int seedClaimedChestContents(ServerPlayer serverPlayer, UUID storageId) {
+        if (serverPlayer == null || storageId == null || !StorageAccessRegistry.isInstalled()) {
+            return 0;
+        }
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        ClaimedChest claim = runtime.chestClaimWorkflow().claimedChestMap().chest(storageId);
+        WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
+        SlotWorkspaceViewModel.ChestContentsSnapshot contents = WorkspaceChestProjectionSupport.readContents(
+                serverPlayer.getServer(),
+                claim,
+                worldStorage);
+        return ChestContentAffinitySeeder.seedInitialContents(
+                runtime.chestClaimWorkflow(),
+                storageId,
+                contents,
+                serverPlayer.serverLevel().getGameTime());
     }
 
     private static SlotWorkspaceViewModel.LootChestSource resolveLootChestSource(

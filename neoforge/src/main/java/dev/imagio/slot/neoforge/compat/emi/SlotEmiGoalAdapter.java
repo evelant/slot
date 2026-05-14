@@ -182,6 +182,10 @@ final class SlotEmiGoalAdapter {
         return openRecipe(goal);
     }
 
+    static boolean openRecipe(ItemIdentity identity) {
+        return displayRecipesForIdentity(identity);
+    }
+
     private static boolean displayRecipe(String recipeId) {
         ResourceLocation id = ResourceLocation.tryParse(recipeId);
         if (id == null) {

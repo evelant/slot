@@ -30,10 +30,12 @@ import dev.imagio.slot.ui.workspace.HotbarBeltUiBuilder;
 import dev.imagio.slot.ui.workspace.KitRackUiBuilder;
 import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
+import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
 import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
+import dev.imagio.slot.ui.workspace.WallSectionVisibility;
 import dev.imagio.slot.ui.workspace.WayfindingDisplay;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.imagio.slot.ui.workspace.WorkspaceCountFormat;
@@ -122,6 +124,7 @@ public final class ForgeWorkspaceSurface {
     private SlotWorkspaceViewModel.IdentityRef pendingHomeDragIdentity;
     private String pendingHomeDragOriginIslandId;
     private boolean markWantedKeyConsumed;
+    private StorageGhostRevealMode storageGhostRevealMode = StorageGhostRevealMode.COLLAPSED;
     private float pendingWallScrollRestore = Float.NaN;
     private boolean pendingWallScrollRestoreActive;
 
@@ -161,6 +164,7 @@ public final class ForgeWorkspaceSurface {
         if (!ForgeWorkspaceClient.markWantedDown()) {
             markWantedKeyConsumed = false;
         }
+        updateStorageGhostRevealMode(currentStorageGhostRevealMode());
         openSessionIfNeeded();
         applyGoalStateIfChanged();
         boolean pointerActive = tree != null && tree.hasActivePointerGesture();
@@ -259,6 +263,9 @@ public final class ForgeWorkspaceSurface {
                 controlKey))) {
             return true;
         }
+        if (searchActive && isSearchTypingKey(keyCode)) {
+            return true;
+        }
         if (!wantsKeyboardInput()) {
             if (ForgeWorkspaceClient.matchesUndo(keyCode, scanCode)) {
                 sendAction(WorkspaceActionId.UNDO, "undo requested");
@@ -321,21 +328,21 @@ public final class ForgeWorkspaceSurface {
     }
 
     private boolean handleGoalRecipeKey(int keyCode) {
-        if (!goalTabActive() || searchActive || wantsKeyboardInput() || Screen.hasControlDown()) {
+        if (searchActive || wantsKeyboardInput() || Screen.hasControlDown()) {
             return false;
         }
         if (keyCode != GLFW.GLFW_KEY_R && keyCode != GLFW.GLFW_KEY_U) {
             return false;
         }
         if (hoveredIdentity == null || !byIdentity.containsKey(hoveredIdentity)) {
-            setStatus("hover a goal card for recipe or usage details");
+            setStatus("hover an item for recipe or usage details");
             return true;
         }
         SlotWorkspaceViewModel.AtlasItem target = byIdentity.get(hoveredIdentity);
         if (keyCode == GLFW.GLFW_KEY_R) {
-            openGoalRecipe(target);
+            openRecipe(target);
         } else {
-            openGoalUses(target);
+            openUses(target);
         }
         return true;
     }
@@ -566,6 +573,34 @@ public final class ForgeWorkspaceSurface {
 
     private String surfaceMemoryKey() {
         return mode == Mode.SIDEBAR ? "forge.sidebar" : "forge.standalone";
+    }
+
+    private boolean storageGhostSectionExpanded(String islandId) {
+        return WorkspaceUiSessionMemory.storageGhostSectionExpanded(surfaceMemoryKey(), islandId);
+    }
+
+    private void toggleStorageGhostSection(String islandId) {
+        boolean expanded = WorkspaceUiSessionMemory.toggleStorageGhostSection(surfaceMemoryKey(), islandId);
+        setStatus(expanded ? "showing nearby storage" : "hiding nearby storage");
+    }
+
+    private void updateStorageGhostRevealMode(StorageGhostRevealMode nextMode) {
+        StorageGhostRevealMode mode = nextMode == null ? StorageGhostRevealMode.COLLAPSED : nextMode;
+        if (mode == storageGhostRevealMode) {
+            return;
+        }
+        storageGhostRevealMode = mode;
+        rebuildRequested = true;
+    }
+
+    private StorageGhostRevealMode currentStorageGhostRevealMode() {
+        if (searchActive || wantsKeyboardInput()) {
+            return StorageGhostRevealMode.COLLAPSED;
+        }
+        if (!ForgeWorkspaceClient.storageXrayDown()) {
+            return StorageGhostRevealMode.COLLAPSED;
+        }
+        return Screen.hasShiftDown() ? StorageGhostRevealMode.TRACKED : StorageGhostRevealMode.PROXIMATE;
     }
 
     private void rememberWallScroll() {
@@ -909,10 +944,10 @@ public final class ForgeWorkspaceSurface {
         SlotUiElement strip = SlotUiElement.panel(0x7010171D)
                 .tooltip(Component.literal("Section index"))
                 .layout(layout -> layout
-                        .width(7)
+                        .width(12)
                         .heightPercent(100)
-                        .paddingVertical(3)
-                        .gapAll(2)
+                        .paddingVertical(2)
+                        .gapAll(1)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
         if (entries.isEmpty()) {
@@ -924,10 +959,23 @@ public final class ForgeWorkspaceSurface {
             SlotWorkspaceViewModel.AtlasIsland island = entries.get(index);
             float fraction = count <= 1 ? 0f : (float) index / (float) (count - 1);
             int color = island.color() == 0 ? WorkspaceUiPalette.MUTED : island.color();
-            SlotUiElement dot = SlotUiElement.button("", true, color)
+            SlotUiElement dot = SlotUiElement.button("", true, 0x00000000)
                     .noText()
                     .tooltip(Component.literal(island.label()))
-                    .layout(layout -> layout.width(5).height(5));
+                    .layout(layout -> layout
+                            .widthPercent(100)
+                            .flex(1)
+                            .paddingAll(0)
+                            .alignItems(SlotUiLayout.AlignItems.CENTER)
+                            .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
+            dot.addChild(SlotUiElement.panel(color)
+                    .allowHitTest(false)
+                    .layout(layout -> layout
+                            .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                            .left(3)
+                            .top(3)
+                            .width(6)
+                            .height(6)));
             dot.on(SlotUiEventKind.TICK, event -> dotAttention(dot, island));
             dot.on(SlotUiEventKind.CLICK, event -> {
                 if (event.button() != 0) {
@@ -954,21 +1002,27 @@ public final class ForgeWorkspaceSurface {
             if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
                 continue;
             }
-            boolean hasVisibleItems = false;
-            for (SlotWorkspaceViewModel.AtlasItem item : items) {
-                if (item == null || !island.islandId().equals(item.islandId())) {
-                    continue;
-                }
-                if (!filtering || matchesSearch(item)) {
-                    hasVisibleItems = true;
-                    break;
-                }
-            }
-            if (hasVisibleItems) {
+            if (storageGhostRevealMode.revealsProximate()
+                    || WallSectionVisibility.classify(
+                            visibleItemsFor(island, filtering),
+                            filtering,
+                            storageGhostSectionExpanded(island.islandId()),
+                            storageGhostRevealMode,
+                            goalTabActive()).hasVisibleContent()) {
                 entries.add(island);
             }
         }
         return entries;
+    }
+
+    private List<SlotWorkspaceViewModel.AtlasItem> visibleItemsFor(
+            SlotWorkspaceViewModel.AtlasIsland island,
+            boolean filtering
+    ) {
+        return items.stream()
+                .filter(item -> item != null && island.islandId().equals(item.islandId()))
+                .filter(item -> !filtering || matchesSearch(item))
+                .toList();
     }
 
     private void dotAttention(SlotUiElement dot, SlotWorkspaceViewModel.AtlasIsland island) {
@@ -1024,11 +1078,36 @@ public final class ForgeWorkspaceSurface {
             List<SlotWorkspaceViewModel.AtlasItem> visibleItems = islandItems.stream()
                     .filter(item -> !filtering || matchesSearch(item))
                     .toList();
-            content.addChild(enrichSection(
-                    sectionBuilder.section(island, visibleItems, islandItems.size(), filtering)));
+            if (shouldShowSection(island, visibleItems, filtering)) {
+                content.addChild(enrichSection(
+                        sectionBuilder.section(
+                                island,
+                                visibleItems,
+                                islandItems.size(),
+                                filtering,
+                                storageGhostRevealMode,
+                                storageGhostSectionExpanded(island.islandId()),
+                                goalTabActive())));
+            }
         }
         viewport.addChild(content);
         return viewport;
+    }
+
+    private boolean shouldShowSection(
+            SlotWorkspaceViewModel.AtlasIsland island,
+            List<SlotWorkspaceViewModel.AtlasItem> visibleItems,
+            boolean filtering
+    ) {
+        if (storageGhostRevealMode.revealsProximate()) {
+            return true;
+        }
+        return WallSectionVisibility.classify(
+                visibleItems,
+                filtering,
+                storageGhostSectionExpanded(island.islandId()),
+                storageGhostRevealMode,
+                goalTabActive()).hasVisibleContent();
     }
 
     private void enrichRecentCards(SlotUiElement root) {
@@ -1528,16 +1607,33 @@ public final class ForgeWorkspaceSurface {
                     SlotWorkspaceViewModel.AtlasIsland.class);
             installSectionHomeTarget(grid, gridIsland == null ? island : gridIsland);
             List<?> gridItems = grid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
-            if (gridItems == null || gridItems.isEmpty()) {
-                continue;
-            }
-            for (Object gridItem : gridItems) {
-                if (gridItem instanceof SlotWorkspaceViewModel.AtlasItem item) {
-                    grid.addChild(enrichCard(cardBuilder.card(item), item));
+            if (gridItems != null) {
+                for (Object gridItem : gridItems) {
+                    if (gridItem instanceof SlotWorkspaceViewModel.AtlasItem item) {
+                        grid.addChild(enrichCard(cardBuilder.card(item), item));
+                    }
                 }
             }
+            addNearbyChip(grid, gridIsland == null ? island : gridIsland);
         }
         return section;
+    }
+
+    private void addNearbyChip(SlotUiElement grid, SlotWorkspaceViewModel.AtlasIsland island) {
+        if (grid == null || island == null) {
+            return;
+        }
+        Integer count = grid.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT, Integer.class);
+        if (count == null || count <= 0) {
+            return;
+        }
+        Boolean expanded = grid.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_EXPANDED, Boolean.class);
+        SlotUiElement chip = WallSectionUiBuilder.nearbyChip(island, count, Boolean.TRUE.equals(expanded));
+        chip.on(SlotUiEventKind.CLICK, event -> {
+            event.stopPropagation();
+            toggleStorageGhostSection(island.islandId());
+        });
+        grid.addChild(chip);
     }
 
     private SlotUiElement enrichCard(SlotUiElement card, SlotWorkspaceViewModel.AtlasItem item) {
@@ -1635,7 +1731,7 @@ public final class ForgeWorkspaceSurface {
         if (goalTabActive()) {
             return;
         }
-        target.on(SlotUiEventKind.CLICK, event -> {
+        target.on(SlotUiEventKind.MOUSE_DOWN, event -> {
             if (event.propagationStopped() || event.button() != 0 || !isCursorCarrying()) {
                 return;
             }
@@ -2086,6 +2182,14 @@ public final class ForgeWorkspaceSurface {
         };
     }
 
+    private static boolean isSearchTypingKey(int keyCode) {
+        if ((keyCode >= GLFW.GLFW_KEY_0 && keyCode <= GLFW.GLFW_KEY_9)
+                || (keyCode >= GLFW.GLFW_KEY_KP_0 && keyCode <= GLFW.GLFW_KEY_KP_9)) {
+            return false;
+        }
+        return keyCode >= GLFW.GLFW_KEY_SPACE && keyCode <= GLFW.GLFW_KEY_WORLD_2;
+    }
+
     private static int hotbarIndexFromKeyCode(int keyCode) {
         if (keyCode >= GLFW.GLFW_KEY_1 && keyCode <= GLFW.GLFW_KEY_9) {
             return keyCode - GLFW.GLFW_KEY_1;
@@ -2242,16 +2346,35 @@ public final class ForgeWorkspaceSurface {
         }
     }
 
+    private void openRecipe(SlotWorkspaceViewModel.AtlasItem item) {
+        if (goalTabActive()) {
+            openGoalRecipe(item);
+            return;
+        }
+        ItemIdentity identity = item == null ? null : item.identity().toIdentity();
+        if (identity == null) {
+            setStatus("item unavailable");
+        } else if (GoalWorkspaceIntegration.openRecipe(identity)) {
+            setStatus("opened recipe in EMI");
+        } else {
+            setStatus("EMI recipe display unavailable");
+        }
+    }
+
     private void openGoalUses(SlotWorkspaceViewModel.AtlasItem item) {
         GoalWorkspaceProjection goal = goalProjection();
         ItemIdentity identity = goal == null ? (item == null ? null : item.identity().toIdentity()) : goal.delegationIdentity(item);
         if (identity == null) {
-            setStatus("goal item unavailable");
+            setStatus("item unavailable");
         } else if (GoalWorkspaceIntegration.openUses(identity)) {
             setStatus("opened uses in EMI");
         } else {
             setStatus("EMI usage display unavailable");
         }
+    }
+
+    private void openUses(SlotWorkspaceViewModel.AtlasItem item) {
+        openGoalUses(item);
     }
 
     private void openGoalChoiceEditor(SlotWorkspaceViewModel.AtlasItem item) {
@@ -2881,6 +3004,11 @@ public final class ForgeWorkspaceSurface {
         public boolean suppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
             GoalWorkspaceProjection goal = goalProjection();
             return goal != null && goal.suppressVanillaTooltip(item);
+        }
+
+        @Override
+        public StorageGhostRevealMode storageGhostRevealMode() {
+            return storageGhostRevealMode;
         }
     }
 

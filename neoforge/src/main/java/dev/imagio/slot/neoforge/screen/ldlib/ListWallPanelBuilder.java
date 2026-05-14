@@ -7,6 +7,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
+import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
@@ -16,6 +17,7 @@ import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
 import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
+import dev.imagio.slot.ui.workspace.WallSectionVisibility;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
@@ -306,14 +308,34 @@ final class ListWallPanelBuilder {
             }
         }
 
-        // Empty sections stay in the wall as bare headers — they're
-        // valid drop targets for re-homing carried items, and hiding
-        // them strands the player without a way to send something to
-        // a curated-but-empty section. The TOC's own zero-item filter
-        // can hide them from the navigation strip; the wall keeps
-        // them so drops have somewhere to land.
+        if (!shouldShowSection(island, visibleCards, filtering)) {
+            return null;
+        }
 
-        return sectionRenderer.render(sectionBuilder.section(island, visibleCards, totalCards, filtering));
+        return sectionRenderer.render(sectionBuilder.section(
+                island,
+                visibleCards,
+                totalCards,
+                filtering,
+                host.storageGhostRevealMode,
+                host.storageGhostSectionExpanded(island.islandId()),
+                host.goalTabActive()));
+    }
+
+    private boolean shouldShowSection(
+            SlotWorkspaceViewModel.AtlasIsland island,
+            List<SlotWorkspaceViewModel.AtlasItem> visibleCards,
+            boolean filtering
+    ) {
+        if (host.storageGhostRevealMode.revealsProximate()) {
+            return true;
+        }
+        return WallSectionVisibility.classify(
+                visibleCards,
+                filtering,
+                host.storageGhostSectionExpanded(island.islandId()),
+                host.storageGhostRevealMode,
+                host.goalTabActive()).hasVisibleContent();
     }
 
     private void installSectionInteractions(SlotUiElement model, UIElement element) {
@@ -329,15 +351,15 @@ final class ListWallPanelBuilder {
                 host.drag.installSectionDropTarget(element, island);
             }
             List<?> cards = model.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
-            if (cards == null || cards.isEmpty()) {
-                return;
-            }
-            for (Object cardObject : cards) {
-                if (cardObject instanceof SlotWorkspaceViewModel.AtlasItem item) {
-                    Button card = host.atlasCard.atlasCardButton(item);
-                    element.addChild(card);
+            if (cards != null) {
+                for (Object cardObject : cards) {
+                    if (cardObject instanceof SlotWorkspaceViewModel.AtlasItem item) {
+                        Button card = host.atlasCard.atlasCardButton(item);
+                        element.addChild(card);
+                    }
                 }
             }
+            addNearbyChip(model, element);
             return;
         }
         if (!model.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_HEADER)) {
@@ -356,6 +378,27 @@ final class ListWallPanelBuilder {
         if (!host.goalTabActive()) {
             host.drag.installSectionHeaderDropTarget(header, island);
         }
+    }
+
+    private void addNearbyChip(SlotUiElement model, UIElement element) {
+        Integer count = model.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT, Integer.class);
+        if (count == null || count <= 0) {
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasIsland island = model.attachment(
+                WorkspaceUiAttachments.ATLAS_ISLAND,
+                SlotWorkspaceViewModel.AtlasIsland.class
+        );
+        if (island == null) {
+            return;
+        }
+        Boolean expanded = model.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_EXPANDED, Boolean.class);
+        UIElement chip = sectionRenderer.render(WallSectionUiBuilder.nearbyChip(island, count, Boolean.TRUE.equals(expanded)));
+        chip.addEventListener(UIEvents.CLICK, event -> {
+            event.stopPropagation();
+            host.toggleStorageGhostSection(island.islandId());
+        });
+        element.addChild(chip);
     }
 
     private final class WallSectionHeaderContext implements WallSectionHeaderUiBuilder.Context {

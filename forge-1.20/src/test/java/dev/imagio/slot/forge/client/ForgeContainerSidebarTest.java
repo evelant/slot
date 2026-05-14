@@ -4,11 +4,17 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.events.ContainerEventHandler;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.network.chat.Component;
+import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ForgeContainerSidebarTest {
@@ -33,6 +39,20 @@ class ForgeContainerSidebarTest {
         FocusContainer container = new FocusContainer(widget);
 
         assertFalse(ForgeContainerSidebar.isTextInputFocused(container));
+    }
+
+    @Test
+    void keyPressListenerRunsBeforeHostScreenHandlersAndCanceledSubscribers() throws Exception {
+        Method method = ForgeWorkspaceClient.GameBus.class.getDeclaredMethod(
+                "onKeyPressed",
+                ScreenEvent.KeyPressed.Pre.class
+        );
+
+        SubscribeEvent annotation = method.getAnnotation(SubscribeEvent.class);
+
+        assertNotNull(annotation);
+        assertEquals(EventPriority.HIGHEST, annotation.priority());
+        assertTrue(annotation.receiveCanceled());
     }
 
     private static final class FocusableWidget implements GuiEventListener {

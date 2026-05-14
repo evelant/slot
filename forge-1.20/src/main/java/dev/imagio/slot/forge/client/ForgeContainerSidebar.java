@@ -12,6 +12,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraftforge.client.event.ScreenEvent;
+import org.lwjgl.glfw.GLFW;
 
 public final class ForgeContainerSidebar {
     private static Screen activeHostScreen;
@@ -148,6 +149,9 @@ public final class ForgeContainerSidebar {
 
     public static void onKeyPressed(ScreenEvent.KeyPressed.Pre event) {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
+            return;
+        }
+        if (event.isCanceled() && event.getKeyCode() != GLFW.GLFW_KEY_TAB) {
             return;
         }
         boolean hostTextInputFocused = hostTextInputFocused(event.getScreen());

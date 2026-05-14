@@ -71,6 +71,11 @@ public final class SlotEmiPlugin implements EmiPlugin {
             }
 
             @Override
+            public boolean openRecipe(ItemIdentity identity) {
+                return SlotEmiGoalAdapter.openRecipe(identity);
+            }
+
+            @Override
             public boolean openUses(ItemIdentity identity) {
                 return SlotEmiGoalAdapter.openUses(identity);
             }

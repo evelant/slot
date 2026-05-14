@@ -135,7 +135,7 @@ class WorkspaceBeltCommandServiceTest {
     }
 
     @Test
-    void firstPartialFreeOrOldestHotbarSlotTreatsUntrackedFullSlotsAsOldest() {
+    void firstPartialFreeOrOldestHotbarSlotProtectsUntrackedFullSlotsWhenTrackedSlotsExist() {
         List<SlotWorkspaceViewModel.HotbarSlot> slots = new ArrayList<>();
         for (int index = 0; index < 9; index++) {
             slots.add(occupied(index, "minecraft:item_" + index, 64, 64));
@@ -145,6 +145,33 @@ class WorkspaceBeltCommandServiceTest {
                 viewModel(slots),
                 ItemIdentity.of("minecraft:stone"),
                 Map.of(1, 10L, 2, 20L));
+
+        assertEquals(1, selected);
+    }
+
+    @Test
+    void hotbarSlotRecencyTrackerLearnsManualSlotChangesFromProjection() {
+        HotbarSlotRecencyTracker tracker = new HotbarSlotRecencyTracker();
+        tracker.observe(viewModel(
+                occupied(0, "minecraft:old_pick", 1, 1),
+                occupied(1, "minecraft:old_shovel", 1, 1),
+                selected(2, "minecraft:new_axe", 1, 1)
+        ));
+
+        int selected = WorkspaceBeltCommandService.firstPartialFreeOrOldestHotbarSlot(
+                viewModel(
+                        occupied(0, "minecraft:old_pick", 1, 1),
+                        occupied(1, "minecraft:old_shovel", 1, 1),
+                        selected(2, "minecraft:new_axe", 1, 1),
+                        occupied(3, "minecraft:item_3", 64, 64),
+                        occupied(4, "minecraft:item_4", 64, 64),
+                        occupied(5, "minecraft:item_5", 64, 64),
+                        occupied(6, "minecraft:item_6", 64, 64),
+                        occupied(7, "minecraft:item_7", 64, 64),
+                        occupied(8, "minecraft:item_8", 64, 64)
+                ),
+                ItemIdentity.of("minecraft:stone"),
+                tracker.placementSequence());
 
         assertEquals(0, selected);
     }
@@ -419,6 +446,20 @@ class WorkspaceBeltCommandServiceTest {
         return new SlotWorkspaceViewModel.HotbarSlot(
                 index,
                 false,
+                true,
+                new ItemStack(itemId, count, maxStackSize),
+                count);
+    }
+
+    private static SlotWorkspaceViewModel.HotbarSlot selected(
+            int index,
+            String itemId,
+            int count,
+            int maxStackSize
+    ) {
+        return new SlotWorkspaceViewModel.HotbarSlot(
+                index,
+                true,
                 true,
                 new ItemStack(itemId, count, maxStackSize),
                 count);

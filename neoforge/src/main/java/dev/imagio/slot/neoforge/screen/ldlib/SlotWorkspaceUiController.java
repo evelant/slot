@@ -27,6 +27,7 @@ import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceProjection;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceProjectionCache;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
+import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -135,6 +136,7 @@ final class SlotWorkspaceUiController {
      * by MOUSE_ENTER/MOUSE_LEAVE on the button itself.
      */
     boolean gatherPreviewActive;
+    StorageGhostRevealMode storageGhostRevealMode = StorageGhostRevealMode.COLLAPSED;
     final SearchController searchController = new SearchController(this);
     final ShiftClickTransferState shiftClickTransferState = new ShiftClickTransferState();
     final WorkspaceRpcDispatcher rpc = new WorkspaceRpcDispatcher(this);
@@ -375,6 +377,25 @@ final class SlotWorkspaceUiController {
 
     void rememberWallScroll(float scroll) {
         WorkspaceUiSessionMemory.setWallScroll(surfaceMemoryKey(), scroll);
+    }
+
+    boolean storageGhostSectionExpanded(String islandId) {
+        return WorkspaceUiSessionMemory.storageGhostSectionExpanded(surfaceMemoryKey(), islandId);
+    }
+
+    void toggleStorageGhostSection(String islandId) {
+        boolean expanded = WorkspaceUiSessionMemory.toggleStorageGhostSection(surfaceMemoryKey(), islandId);
+        localStatus.set(expanded ? "showing nearby storage" : "hiding nearby storage");
+        rebuild();
+    }
+
+    void updateStorageGhostRevealMode(StorageGhostRevealMode nextMode) {
+        StorageGhostRevealMode mode = nextMode == null ? StorageGhostRevealMode.COLLAPSED : nextMode;
+        if (mode == storageGhostRevealMode) {
+            return;
+        }
+        storageGhostRevealMode = mode;
+        rebuild();
     }
 
     void requestWallScrollRestore(float scroll) {
@@ -870,17 +891,37 @@ final class SlotWorkspaceUiController {
         rebuild();
     }
 
+    void openRecipe(SlotWorkspaceViewModel.AtlasItem item) {
+        if (goalTabActive()) {
+            openGoalRecipe(item);
+            return;
+        }
+        ItemIdentity identity = item == null ? null : item.identity().toIdentity();
+        if (identity == null) {
+            localStatus.set("item unavailable");
+        } else if (GoalWorkspaceIntegration.openRecipe(identity)) {
+            localStatus.set("opened recipe in EMI");
+        } else {
+            localStatus.set("EMI recipe display unavailable");
+        }
+        rebuild();
+    }
+
     void openGoalUses(SlotWorkspaceViewModel.AtlasItem item) {
         GoalWorkspaceProjection goal = goalProjection();
         ItemIdentity identity = goal == null ? (item == null ? null : item.identity().toIdentity()) : goal.delegationIdentity(item);
         if (identity == null) {
-            localStatus.set("goal item unavailable");
+            localStatus.set("item unavailable");
         } else if (GoalWorkspaceIntegration.openUses(identity)) {
             localStatus.set("opened uses in EMI");
         } else {
             localStatus.set("EMI usage display unavailable");
         }
         rebuild();
+    }
+
+    void openUses(SlotWorkspaceViewModel.AtlasItem item) {
+        openGoalUses(item);
     }
 
     void openGoalChoiceEditor(SlotWorkspaceViewModel.AtlasItem item) {

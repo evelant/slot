@@ -2,6 +2,7 @@ package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
 import dev.imagio.slot.inventory.workspace.ChestDepositObservationSupport;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
@@ -18,7 +19,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.NeoForge;
@@ -27,15 +27,16 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.WeakHashMap;
 
 /**
- * Observes vanilla chest GUI sessions: when the player closes a chest with a
- * net positive item delta, auto-claims the chest (if not already claimed) and
- * bumps {@code ChestAffinityMap} for each deposited identity.
+ * Observes claimable storage GUI sessions: when the player closes storage with
+ * a net positive item delta, auto-claims it (if not already claimed) and bumps
+ * {@code ChestAffinityMap} for each deposited identity.
  *
  * <p>Pairs PlayerInteractEvent.RightClickBlock (to capture the chest BlockPos
  * before the GUI opens) with PlayerContainerEvent.Open / Close (to snapshot
@@ -99,10 +100,10 @@ public final class ChestDepositObserver {
     }
 
     /**
-     * The block position of the chest backing the player's currently-open
+     * The block position of the storage backing the player's currently-open
      * container menu, or {@code null} when the player isn't viewing a
-     * tracked chest session. Surfaced for the workspace's active-chest
-     * panel — it needs the BlockPos to resolve the chest's claim state
+     * tracked storage session. Surfaced for the workspace's active-chest
+     * panel — it needs the BlockPos to resolve the storage claim state
      * (or offer a "Claim" affordance when unclaimed) without re-walking
      * the world.
      */
@@ -111,9 +112,6 @@ public final class ChestDepositObserver {
             return null;
         }
         AbstractContainerMenu menu = player.containerMenu;
-        if (!(menu instanceof ChestMenu)) {
-            return null;
-        }
         OpenSession session = SESSIONS.get(menu);
         return session == null ? null : session.pos;
     }
@@ -123,9 +121,6 @@ public final class ChestDepositObserver {
             return;
         }
         AbstractContainerMenu menu = event.getContainer();
-        if (!(menu instanceof ChestMenu chestMenu)) {
-            return;
-        }
         PendingInteraction pending = PENDING.remove(player.getUUID());
         if (pending == null) {
             return;
@@ -134,8 +129,12 @@ public final class ChestDepositObserver {
         if (now - pending.tick > PENDING_TICK_BUDGET) {
             return;
         }
-        ItemStack[] snapshot = snapshot(chestMenu);
-        SESSIONS.put(menu, new OpenSession(pending.pos, snapshot));
+        List<Integer> storageSlots = ChestDepositObservationSupport.storageMenuSlots(menu, player.getInventory());
+        if (storageSlots.isEmpty()) {
+            return;
+        }
+        ItemStack[] snapshot = ChestDepositObservationSupport.snapshot(menu, storageSlots);
+        SESSIONS.put(menu, new OpenSession(pending.pos, snapshot, storageSlots));
     }
 
     private static void onContainerClose(PlayerContainerEvent.Close event) {
@@ -147,9 +146,6 @@ public final class ChestDepositObserver {
         if (session == null) {
             return;
         }
-        if (!(menu instanceof ChestMenu chestMenu)) {
-            return;
-        }
         ServerLevel level = player.serverLevel();
         ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, session.pos);
         WorkflowDomainRuntime runtime = SlotPlayerWorkflowRuntimeService.runtime(player);
@@ -158,8 +154,8 @@ public final class ChestDepositObserver {
         ChestDepositObservationSupport.Observation observation =
                 ChestDepositObservationSupport.observe(
                         session.snapshot,
-                        chestMenu.getContainer(),
-                        chestMenu.getRowCount() * 9);
+                        menu,
+                        session.storageSlots);
         Map<ItemIdentity, Integer> deposits = observation.deposits();
         Map<ItemIdentity, Integer> takes = observation.takes();
 
@@ -169,12 +165,17 @@ public final class ChestDepositObserver {
                 return;
             }
             long tick = level.getGameTime();
+            int seeded = ChestContentAffinitySeeder.seedInitialContents(
+                    chestService,
+                    storageId,
+                    session.snapshot,
+                    tick);
             for (Map.Entry<ItemIdentity, Integer> entry : deposits.entrySet()) {
                 chestService.recordDeposit(storageId, entry.getKey(), entry.getValue(), tick);
             }
             SlotCommon.LOGGER.info(
-                    "[SLOT] auto-claim observed deposits player={} pos={} chest={} identities={}",
-                    player.getScoreboardName(), session.pos, storageId, deposits.size()
+                    "[SLOT] auto-claim observed deposits player={} pos={} storage={} identities={} seeded={}",
+                    player.getScoreboardName(), session.pos, storageId, deposits.size(), seeded
             );
             return;
         }
@@ -264,12 +265,6 @@ public final class ChestDepositObserver {
         return islandId;
     }
 
-    private static ItemStack[] snapshot(ChestMenu chestMenu) {
-        return ChestDepositObservationSupport.snapshot(
-                chestMenu.getContainer(),
-                chestMenu.getRowCount() * 9);
-    }
-
     /**
      * Resolve the existing claim for {@code pos} or create a fresh one
      * (folding in any partial paired-chest claim along the way) and
@@ -326,6 +321,6 @@ public final class ChestDepositObserver {
     private record PendingInteraction(BlockPos pos, long tick) {
     }
 
-    private record OpenSession(BlockPos pos, ItemStack[] snapshot) {
+    private record OpenSession(BlockPos pos, ItemStack[] snapshot, List<Integer> storageSlots) {
     }
 }

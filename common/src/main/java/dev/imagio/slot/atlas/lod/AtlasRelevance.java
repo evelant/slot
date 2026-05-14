@@ -1,6 +1,5 @@
 package dev.imagio.slot.atlas.lod;
 
-import dev.imagio.slot.atlas.AtlasSearchIndex;
 import dev.imagio.slot.atlas.lod.contributors.AreaProximityContributor;
 import dev.imagio.slot.atlas.lod.contributors.CarriedContributor;
 import dev.imagio.slot.atlas.lod.contributors.ChestHoldsRelevantContributor;
@@ -10,6 +9,7 @@ import dev.imagio.slot.atlas.lod.contributors.RecentlyTouchedContributor;
 import dev.imagio.slot.atlas.lod.contributors.SearchMatchContributor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
 
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -247,7 +247,7 @@ public final class AtlasRelevance {
             if (item == null) {
                 continue;
             }
-            if (AtlasSearchIndex.matches(item.name(), query)) {
+            if (WorkspaceSearchQuery.matchesItem(query, item, null)) {
                 ItemIdentity id = item.identity().toIdentity();
                 if (id != null) {
                     sink.add(id);

@@ -41,6 +41,7 @@ public final class WorkspaceSearchQuery {
         }
         StringBuilder searchable = new StringBuilder();
         searchable.append(lower(item.name())).append(' ')
+                .append(lower(displayName(item.displayStack()))).append(' ')
                 .append(item.identity() == null ? "" : lower(item.identity().itemId())).append(' ');
         if (island != null) {
             searchable.append(lower(island.label())).append(' ');
@@ -75,6 +76,13 @@ public final class WorkspaceSearchQuery {
             searchable.append(lower(stack.getHoverName().getString()));
         }
         return searchable.toString().contains(query);
+    }
+
+    private static String displayName(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            return "";
+        }
+        return stack.getHoverName().getString();
     }
 
     private static String lower(String value) {

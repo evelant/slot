@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-13
+Last updated: 2026-05-14
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -57,6 +57,14 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-14** — Quiet nearby ghosts landed for playtesting: default
+  wall sections show carried cards first and collapse ordinary proximate
+  storage ghosts behind a per-section nearby chip, while search,
+  desired/wanted/Kit/goal intent and hold-only storage x-ray reveal the
+  hidden storage cards on demand. Follow-up fixes generalized observed
+  storage menus beyond vanilla chests for TFC vessels, kept search
+  keystrokes inside sidebar search, matched localized hover names in
+  search, and disabled affinity decay behind the existing kill switch.
 - **2026-05-12** — Forge + NeoForge sidebar polish landed: Kits moved
   from the bottom strip into a right-side vertical rack opened from the
   `All` row, the Belt now mirrors vanilla with offhand-left layout,
@@ -89,14 +97,6 @@ hold the rest.
   on both loaders, added Forge vanilla-inventory / kit-cycle / gather /
   wayfinding-HUD keys, removed the Forge debug/SPI product labels, and
   fixed the NeoForge HUD toggle ordering bug.
-- **2026-05-06** — cross-loader direction accepted via
-  [`cross-loader-refactor.md`](cross-loader-refactor.md) / ADR
-  [`0006`](../decisions/0006-cross-loader-legacy-forge.md): Forge
-  1.20 now has the shared compile gate, action catalog transport,
-  workflow persistence, session-backed projection, common wall/card/
-  Recents/belt/kit/active-chest builders, sidebar host, tooltips,
-  parked storage-chip builder, and HUD/world wayfinding.
-
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the

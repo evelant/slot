@@ -93,11 +93,12 @@ public final class SlotWorkspaceCommandService {
             String islandId,
             Integer ordinal
     ) {
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        if (identity == null || islandId == null || islandId.isBlank()) {
+        ItemIdentity requestedIdentity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (requestedIdentity == null || islandId == null || islandId.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_home_assignment");
         }
-        if (!visibleInAtlasOrCursor(viewModel, authority, identity)) {
+        ItemIdentity identity = visibleAssignmentIdentity(viewModel, authority, requestedIdentity);
+        if (identity == null) {
             return WorkspaceCommandOutcome.rejected("selected_item_not_visible");
         }
         final ItemIdentity targetIdentity = identity;
@@ -1342,11 +1343,28 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("unknown_player_island");
         }
         IslandSuggestionTemplate materializedTemplate = matchingTemplate(existing);
+        ArrayList<VisualHomeAssignment> preDeleteAssignments = new ArrayList<>();
+        ArrayList<ItemIdentity> identitiesToClear = new ArrayList<>();
+        for (VisualHomeAssignment assignment : runtime.visualAtlasWorkflow().visualHomeMap().assignments().values()) {
+            if (assignment == null || !islandId.equals(assignment.islandId())) {
+                continue;
+            }
+            preDeleteAssignments.add(assignment);
+            identitiesToClear.add(assignment.identity());
+        }
+        runtime.visualAtlasWorkflow().clearHomes(
+                identitiesToClear,
+                DomainEventMetadata.origin("slot_workspace.ldlib.island_delete.clear_homes")
+        );
         boolean deleted = runtime.visualAtlasWorkflow().deleteIsland(
                 islandId,
                 DomainEventMetadata.origin("slot_workspace.ldlib.island_delete")
         );
         if (!deleted) {
+            runtime.visualAtlasWorkflow().assignHomes(
+                    preDeleteAssignments,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.island_delete.restore_homes")
+            );
             return WorkspaceCommandOutcome.rejected("island_not_empty");
         }
         if (materializedTemplate != null) {
@@ -1357,20 +1375,40 @@ public final class SlotWorkspaceCommandService {
         }
         SlotDebugLog.log("LDLib atlas island deleted {}{}", islandId,
                 materializedTemplate == null ? "" : " (template " + materializedTemplate.defaultIslandId() + " dismissed)");
-        // Delete only succeeds when the island has no assignments — so undo just
-        // recreates the exact pre-delete island snapshot. Template dismissal is not
-        // separately reversible; we accept that minor wrinkle.
         final VisualAtlasIsland preDeleteSnapshot = existing;
         final String targetId = islandId;
+        final List<VisualHomeAssignment> assignmentsBeforeDelete = List.copyOf(preDeleteAssignments);
         runtime.undoStack().record(
                 "delete island",
-                ctx -> recreateIslandFromSnapshot(ctx.runtime(), preDeleteSnapshot),
-                ctx -> ctx.runtime().visualAtlasWorkflow().deleteIsland(
-                        targetId,
-                        DomainEventMetadata.origin("workflow.undo.island_delete.replay")
-                )
+                ctx -> {
+                    recreateIslandFromSnapshot(ctx.runtime(), preDeleteSnapshot);
+                    ctx.runtime().visualAtlasWorkflow().clearHomes(
+                            assignmentsBeforeDelete.stream()
+                                    .map(VisualHomeAssignment::identity)
+                                    .toList(),
+                            DomainEventMetadata.origin("workflow.undo.island_delete.clear_rehomes")
+                    );
+                    ctx.runtime().visualAtlasWorkflow().assignHomes(
+                            assignmentsBeforeDelete,
+                            DomainEventMetadata.origin("workflow.undo.island_delete.restore_homes")
+                    );
+                },
+                ctx -> {
+                    ctx.runtime().visualAtlasWorkflow().clearHomes(
+                            assignmentsBeforeDelete.stream()
+                                    .map(VisualHomeAssignment::identity)
+                                    .toList(),
+                            DomainEventMetadata.origin("workflow.undo.island_delete.reclear_homes")
+                    );
+                    ctx.runtime().visualAtlasWorkflow().deleteIsland(
+                            targetId,
+                            DomainEventMetadata.origin("workflow.undo.island_delete.replay")
+                    );
+                }
         );
-        return WorkspaceCommandOutcome.accepted("island deleted", existing.label());
+        return WorkspaceCommandOutcome.accepted(
+                identitiesToClear.isEmpty() ? "island deleted" : "island deleted, items will re-home",
+                existing.label());
     }
 
     /**
@@ -2075,22 +2113,34 @@ public final class SlotWorkspaceCommandService {
         return false;
     }
 
-    private static boolean visibleInAtlasOrCursor(
+    private static ItemIdentity visibleAssignmentIdentity(
             SlotWorkspaceViewModel viewModel,
             InventoryAuthoritySnapshot authority,
             ItemIdentity identity
     ) {
-        return visibleInAtlas(viewModel, identity) || cursorCarries(authority, identity);
+        if (visibleInAtlas(viewModel, identity)) {
+            return identity;
+        }
+        return cursorAssignmentIdentity(authority, identity);
     }
 
-    private static boolean cursorCarries(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
+    private static ItemIdentity cursorAssignmentIdentity(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
         if (authority == null
                 || authority.cursorState() == null
                 || !authority.cursorState().present()
                 || identity == null) {
-            return false;
+            return null;
         }
-        return ItemIdentityMatcher.matchesMovable(authority.cursorState().stack(), identity);
+        ItemIdentity cursorIdentity;
+        try {
+            cursorIdentity = ItemIdentityMatcher.create(authority.cursorState().stack());
+        } catch (RuntimeException exception) {
+            return null;
+        }
+        if (ItemIdentityMatcher.matchesMovable(cursorIdentity, identity)) {
+            return identity;
+        }
+        return cursorIdentity.itemId().equals(identity.itemId()) ? cursorIdentity : null;
     }
 
     private static String namespaceOf(String itemId) {

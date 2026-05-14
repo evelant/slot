@@ -19,7 +19,7 @@ public final class WallCardUiBuilder {
     public static final int CARD_CELL_PX = 22;
     public static final int WAYFINDING_STRIP_WIDTH_PX = 36;
     private static final int FOCUS_OVERLAY = 0x44365743;
-    private static final int STOCK_PIP_HEIGHT_PX = 5;
+    private static final int STOCK_PIP_HEIGHT_PX = 6;
     private static final float STOCK_PIP_FONT_SIZE = 4.5f;
 
     private final Context context;
@@ -102,7 +102,7 @@ public final class WallCardUiBuilder {
                         .height(16)));
         addCountBadge(body, item);
         addProximatePip(body, item);
-        addSearchStoredPip(body, item, activeSearchMatch);
+        addSearchStoredPip(body, item, activeSearchMatch, context.storageGhostRevealMode());
         addChoiceIndicator(body, item);
         addDesiredMarker(body, item);
         addWayfindingStrip(body);
@@ -234,12 +234,16 @@ public final class WallCardUiBuilder {
     private static void addSearchStoredPip(
             SlotUiElement body,
             SlotWorkspaceViewModel.AtlasItem item,
-            boolean activeSearchMatch
+            boolean activeSearchMatch,
+            StorageGhostRevealMode revealMode
     ) {
-        if (!activeSearchMatch) {
+        boolean trackedXray = revealMode == StorageGhostRevealMode.TRACKED;
+        if (!activeSearchMatch && (!trackedXray || item.elsewhere().isEmpty())) {
             return;
         }
-        int count = presenceCount(item.presence()) + presenceCount(item.elsewhere());
+        int count = activeSearchMatch
+                ? presenceCount(item.presence()) + presenceCount(item.elsewhere())
+                : presenceCount(item.elsewhere());
         if (count <= 0) {
             return;
         }
@@ -431,6 +435,10 @@ public final class WallCardUiBuilder {
 
         default boolean showWayfindingStrip(SlotWorkspaceViewModel.AtlasItem item) {
             return true;
+        }
+
+        default StorageGhostRevealMode storageGhostRevealMode() {
+            return StorageGhostRevealMode.COLLAPSED;
         }
     }
 }

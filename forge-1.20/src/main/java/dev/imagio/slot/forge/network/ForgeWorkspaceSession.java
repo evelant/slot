@@ -23,6 +23,8 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
+import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
+import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyTracker;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.workspace.ActiveChestPanelProjectionSupport;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
@@ -60,7 +62,6 @@ import net.minecraft.world.Container;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -79,12 +80,11 @@ final class ForgeWorkspaceSession {
     private final WorkflowDomainRuntime runtime;
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
     private final Set<ItemIdentity> autoHomeAttempted = new HashSet<>();
-    private final Map<Integer, Long> hotbarPlacementSequence = new HashMap<>();
+    private final HotbarSlotRecencyTracker hotbarRecency = new HotbarSlotRecencyTracker();
     private WorkspaceActionSessionContext context;
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private WorkspaceCursorCommandService.CursorOrigin cursorOrigin;
     private long nextRevision = 1L;
-    private long nextHotbarPlacementSequence = 1L;
     private String status = "ready";
     private String diagnostics = "";
     private String searchQuery = "";
@@ -123,6 +123,7 @@ final class ForgeWorkspaceSession {
             combinedDiagnostics = combineDiagnostics(combinedDiagnostics, "auto_home_deferred");
             projected = project(authority, selected, combinedDiagnostics, gameTime, player);
         }
+        hotbarRecency.observe(projected);
 
         if (!forceRevision && sameViewIgnoringRevision(viewModel, projected)) {
             return viewModel;
@@ -417,7 +418,13 @@ final class ForgeWorkspaceSession {
                     stringArg(args, 2),
                     stringArg(args, 3)
             );
-            case DELETE_ISLAND -> SlotWorkspaceCommandService.deleteIsland(runtime, stringArg(args, 0));
+            case DELETE_ISLAND -> {
+                WorkspaceCommandOutcome deleteOutcome = SlotWorkspaceCommandService.deleteIsland(runtime, stringArg(args, 0));
+                if (deleteOutcome.success()) {
+                    autoHomeAttempted.clear();
+                }
+                yield deleteOutcome;
+            }
             case MOVE_HOTBAR_TO_ATLAS -> {
                 refreshViewBeforeCommand(player);
                 yield moveHotbarToAtlas(
@@ -636,6 +643,7 @@ final class ForgeWorkspaceSession {
         if (storageId == null) {
             return WorkspaceCommandOutcome.rejected("claim_failed");
         }
+        seedClaimedChestContents(player, storageId);
         return WorkspaceCommandOutcome.accepted("chest_claimed", storageId.toString());
     }
 
@@ -708,7 +716,25 @@ final class ForgeWorkspaceSession {
                 level,
                 pos,
                 anchor);
+        seedClaimedChestContents(player, storageId);
         return storageId == null ? null : runtime.chestClaimWorkflow().claimedChestMap().chest(storageId);
+    }
+
+    private int seedClaimedChestContents(ServerPlayer player, UUID storageId) {
+        if (player == null || storageId == null || runtime == null || !StorageAccessRegistry.isInstalled()) {
+            return 0;
+        }
+        ClaimedChest claim = runtime.chestClaimWorkflow().claimedChestMap().chest(storageId);
+        WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
+        SlotWorkspaceViewModel.ChestContentsSnapshot contents = WorkspaceChestProjectionSupport.readContents(
+                player.getServer(),
+                claim,
+                worldStorage);
+        return ChestContentAffinitySeeder.seedInitialContents(
+                runtime.chestClaimWorkflow(),
+                storageId,
+                contents,
+                player.serverLevel().getGameTime());
     }
 
     private SlotWorkspaceViewModel.LootChestSource resolveLootChestSource(
@@ -819,7 +845,7 @@ final class ForgeWorkspaceSession {
         return WorkspaceBeltCommandService.assignIdentityToAutoHotbar(
                 viewModel,
                 identity,
-                hotbarPlacementSequence,
+                hotbarRecency.placementSequence(),
                 targetHotbarIndex -> assignIdentityToHotbarIndex(player, identity, targetHotbarIndex));
     }
 
@@ -908,10 +934,7 @@ final class ForgeWorkspaceSession {
     }
 
     private void recordHotbarPlacementOnSuccess(int hotbarIndex, WorkspaceCommandOutcome outcome) {
-        if (outcome == null || !outcome.success() || hotbarIndex < 0 || hotbarIndex >= 9) {
-            return;
-        }
-        hotbarPlacementSequence.put(hotbarIndex, nextHotbarPlacementSequence++);
+        hotbarRecency.recordPlacementOnSuccess(hotbarIndex, outcome);
     }
 
     private WorkspaceCommandOutcome moveHotbarToAtlas(

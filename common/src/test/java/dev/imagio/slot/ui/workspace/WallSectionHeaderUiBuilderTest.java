@@ -162,6 +162,23 @@ class WallSectionHeaderUiBuilderTest {
     }
 
     @Test
+    void wallCardRendersElsewhereBadgeDuringTrackedXray() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.storageGhostRevealMode = StorageGhostRevealMode.TRACKED;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:torch",
+                "Torch",
+                false,
+                false,
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("remote", "Warehouse", 32))
+        );
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+
+        assertTrue(descendantText(card).contains("+32"));
+    }
+
+    @Test
     void wallCardExpandsForBestElsewhereSearchHit() {
         RecordingCardContext context = new RecordingCardContext();
         context.searchQuery = "stone";
@@ -405,6 +422,7 @@ class WallSectionHeaderUiBuilderTest {
         String searchQuery = "";
         boolean searchMatches;
         boolean focused;
+        StorageGhostRevealMode storageGhostRevealMode = StorageGhostRevealMode.COLLAPSED;
 
         @Override
         public SlotWorkspaceViewModel.IdentityRef activeIdentity() {
@@ -434,6 +452,11 @@ class WallSectionHeaderUiBuilderTest {
         @Override
         public void clearHoveredAtlasIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
             cleared = identity;
+        }
+
+        @Override
+        public StorageGhostRevealMode storageGhostRevealMode() {
+            return storageGhostRevealMode;
         }
     }
 

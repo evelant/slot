@@ -3,8 +3,12 @@ package dev.imagio.slot.inventory.workspace;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +34,19 @@ public final class ChestDepositObservationSupport {
         return snapshot;
     }
 
+    public static ItemStack[] snapshot(AbstractContainerMenu menu, List<Integer> menuSlots) {
+        if (menu == null || menuSlots == null || menuSlots.isEmpty()) {
+            return new ItemStack[0];
+        }
+        ItemStack[] snapshot = new ItemStack[menuSlots.size()];
+        for (int i = 0; i < menuSlots.size(); i++) {
+            Slot slot = safeSlot(menu, menuSlots.get(i));
+            ItemStack stack = slot == null ? ItemStack.EMPTY : slot.getItem();
+            snapshot[i] = stack == null ? ItemStack.EMPTY : stack.copy();
+        }
+        return snapshot;
+    }
+
     public static Observation observe(ItemStack[] initial, Container current, int slotCount) {
         if (initial == null || current == null) {
             return Observation.empty();
@@ -44,6 +61,32 @@ public final class ChestDepositObservationSupport {
         }
         int slots = Math.min(initial.length, current.size());
         return observe(initial, slots, current::get);
+    }
+
+    public static Observation observe(ItemStack[] initial, AbstractContainerMenu current, List<Integer> menuSlots) {
+        if (initial == null || current == null || menuSlots == null) {
+            return Observation.empty();
+        }
+        int slots = Math.min(initial.length, menuSlots.size());
+        return observe(initial, slots, index -> {
+            Slot slot = safeSlot(current, menuSlots.get(index));
+            return slot == null ? ItemStack.EMPTY : slot.getItem();
+        });
+    }
+
+    public static List<Integer> storageMenuSlots(AbstractContainerMenu menu, Inventory playerInventory) {
+        if (menu == null || playerInventory == null || menu.slots == null || menu.slots.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<Integer> slots = new ArrayList<>();
+        for (int menuSlot = 0; menuSlot < menu.slots.size(); menuSlot++) {
+            Slot slot = safeSlot(menu, menuSlot);
+            if (slot == null || slot.container == null || slot.container == playerInventory) {
+                continue;
+            }
+            slots.add(menuSlot);
+        }
+        return List.copyOf(slots);
     }
 
     private static Observation observe(
@@ -65,6 +108,13 @@ public final class ChestDepositObservationSupport {
             }
         }
         return new Observation(positiveOnly(netDeltas), negativeOnly(netDeltas));
+    }
+
+    private static Slot safeSlot(AbstractContainerMenu menu, int menuSlot) {
+        if (menu == null || menuSlot < 0 || menuSlot >= menu.slots.size()) {
+            return null;
+        }
+        return menu.slots.get(menuSlot);
     }
 
     private static int boundedSlotCount(Container container, int slotCount) {

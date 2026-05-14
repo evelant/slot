@@ -4,6 +4,7 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.forge.SlotForge;
 import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
 import dev.imagio.slot.inventory.workspace.ChestDepositObservationSupport;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
@@ -14,7 +15,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -23,15 +23,16 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.WeakHashMap;
 
 /**
- * Forge twin of the NeoForge chest deposit observer. It watches vanilla chest
- * GUI close deltas and records {@code ChestDepositObserved} events so
- * affinity routing learns from manual chest organization.
+ * Forge twin of the NeoForge storage deposit observer. It watches claimable
+ * storage menu close deltas and records {@code ChestDepositObserved} events so
+ * affinity routing learns from manual organization.
  */
 @Mod.EventBusSubscriber(modid = SlotForge.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public final class ForgeChestDepositObserver {
@@ -81,9 +82,6 @@ public final class ForgeChestDepositObserver {
             return;
         }
         AbstractContainerMenu menu = event.getContainer();
-        if (!(menu instanceof ChestMenu chestMenu)) {
-            return;
-        }
         PendingInteraction pending = PENDING.remove(player.getUUID());
         if (pending == null) {
             return;
@@ -92,10 +90,12 @@ public final class ForgeChestDepositObserver {
         if (now - pending.tick > PENDING_TICK_BUDGET) {
             return;
         }
-        ItemStack[] snapshot = ChestDepositObservationSupport.snapshot(
-                chestMenu.getContainer(),
-                chestMenu.getRowCount() * 9);
-        SESSIONS.put(menu, new OpenSession(pending.pos, snapshot));
+        List<Integer> storageSlots = ChestDepositObservationSupport.storageMenuSlots(menu, player.getInventory());
+        if (storageSlots.isEmpty()) {
+            return;
+        }
+        ItemStack[] snapshot = ChestDepositObservationSupport.snapshot(menu, storageSlots);
+        SESSIONS.put(menu, new OpenSession(pending.pos, snapshot, storageSlots));
     }
 
     @SubscribeEvent
@@ -105,7 +105,7 @@ public final class ForgeChestDepositObserver {
         }
         AbstractContainerMenu menu = event.getContainer();
         OpenSession session = SESSIONS.remove(menu);
-        if (session == null || !(menu instanceof ChestMenu chestMenu)) {
+        if (session == null) {
             return;
         }
 
@@ -117,8 +117,8 @@ public final class ForgeChestDepositObserver {
         ChestDepositObservationSupport.Observation observation =
                 ChestDepositObservationSupport.observe(
                         session.snapshot,
-                        chestMenu.getContainer(),
-                        chestMenu.getRowCount() * 9);
+                        menu,
+                        session.storageSlots);
         Map<ItemIdentity, Integer> deposits = observation.deposits();
         Map<ItemIdentity, Integer> takes = observation.takes();
 
@@ -128,12 +128,17 @@ public final class ForgeChestDepositObserver {
                 return;
             }
             long tick = level.getGameTime();
+            int seeded = ChestContentAffinitySeeder.seedInitialContents(
+                    chestService,
+                    storageId,
+                    session.snapshot,
+                    tick);
             for (Map.Entry<ItemIdentity, Integer> entry : deposits.entrySet()) {
                 chestService.recordDeposit(storageId, entry.getKey(), entry.getValue(), tick);
             }
             SlotCommon.LOGGER.info(
-                    "[SLOT] forge auto-claim observed deposits player={} pos={} chest={} identities={}",
-                    player.getScoreboardName(), session.pos, storageId, deposits.size());
+                    "[SLOT] forge auto-claim observed deposits player={} pos={} storage={} identities={} seeded={}",
+                    player.getScoreboardName(), session.pos, storageId, deposits.size(), seeded);
             return;
         }
 
@@ -195,6 +200,6 @@ public final class ForgeChestDepositObserver {
     private record PendingInteraction(BlockPos pos, long tick) {
     }
 
-    private record OpenSession(BlockPos pos, ItemStack[] snapshot) {
+    private record OpenSession(BlockPos pos, ItemStack[] snapshot, List<Integer> storageSlots) {
     }
 }

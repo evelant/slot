@@ -137,6 +137,14 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    private static final KeyMapping STORAGE_XRAY = new KeyMapping(
+            "key.slot.storage_xray",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_X,
+            CATEGORY
+    );
+
     private static boolean wayfindingHudEnabled = true;
 
     private SlotAtlasKeyMappings() {
@@ -155,6 +163,7 @@ public final class SlotAtlasKeyMappings {
         event.register(TOGGLE_WAYFINDING_HUD);
         event.register(GATHER_ACTIVE_KIT);
         event.register(MARK_WANTED);
+        event.register(STORAGE_XRAY);
     }
 
     public static KeyMapping gatherActiveKitMapping() {
@@ -188,6 +197,10 @@ public final class SlotAtlasKeyMappings {
 
     private static boolean isAltKey(int keyCode) {
         return keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT;
+    }
+
+    public static boolean storageXrayDown() {
+        return STORAGE_XRAY.isDown() || keyPhysicallyDown(STORAGE_XRAY);
     }
 
     public static KeyMapping toggleWayfindingHudMapping() {
@@ -264,6 +277,19 @@ public final class SlotAtlasKeyMappings {
             return false;
         }
         return bound.getValue() == keyCode;
+    }
+
+    private static boolean keyPhysicallyDown(KeyMapping mapping) {
+        InputConstants.Key bound = mapping.getKey();
+        if (bound.getType() != InputConstants.Type.KEYSYM
+                || bound.getValue() == InputConstants.UNKNOWN.getValue()) {
+            return false;
+        }
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.getWindow() == null) {
+            return false;
+        }
+        return InputConstants.isKeyDown(minecraft.getWindow().getWindow(), bound.getValue());
     }
 
     private static boolean mouseMatches(KeyMapping mapping, int button) {

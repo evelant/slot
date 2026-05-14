@@ -9,7 +9,7 @@ import java.util.Objects;
  *
  * <p>{@code score} is the persisted bump count (each observed deposit adds
  * one point). {@code lastTouchedTick} timestamps the most recent bump; it
- * drives decay — affinity decreases by 1 per
+ * can drive decay — affinity decreases by 1 per
  * {@link #DEFAULT_DECAY_TICKS_PER_POINT} game ticks of inactivity.
  *
  * <p>Decay is "lazy": readers call {@link #effectiveScore(long)} to get the
@@ -26,6 +26,13 @@ public record ChestAffinity(
     /** One point of affinity decays after this many game ticks of inactivity. ~1 in-game day. */
     public static final long DEFAULT_DECAY_TICKS_PER_POINT = 24000L;
 
+    /**
+     * Playtest kill switch. The decay code stays in place, but the default
+     * routing/UI path treats learned affinity as stable until we have tuning
+     * data for a player-visible decay rate.
+     */
+    public static final boolean DECAY_ENABLED = false;
+
     public ChestAffinity {
         Objects.requireNonNull(identity, "identity");
         score = Math.max(0, score);
@@ -37,6 +44,9 @@ public record ChestAffinity(
      * Persisted state is unchanged.
      */
     public int effectiveScore(long currentTick) {
+        if (!DECAY_ENABLED) {
+            return score;
+        }
         return effectiveScore(currentTick, DEFAULT_DECAY_TICKS_PER_POINT);
     }
 
@@ -61,6 +71,10 @@ public record ChestAffinity(
      * starts from now.
      */
     public ChestAffinity bump(int delta, long currentTick) {
+        if (!DECAY_ENABLED) {
+            long touchedAt = Math.max(lastTouchedTick, currentTick);
+            return new ChestAffinity(identity, score + Math.max(1, delta), touchedAt);
+        }
         return bump(delta, currentTick, DEFAULT_DECAY_TICKS_PER_POINT);
     }
 

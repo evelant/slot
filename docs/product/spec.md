@@ -1,6 +1,6 @@
 # SLOT Product And Behavior Spec
 
-Last updated: 2026-05-12
+Last updated: 2026-05-14
 
 This is the normative behavior specification for SLOT. It describes what the
 mod should do from the player's point of view, while using the minimum core
@@ -178,6 +178,29 @@ Planning placeholders must:
 - show absence clearly
 - support planning/workflow actions only
 - never allow real stack transfer actions
+
+### Storage Ghost Visibility
+
+Carried cards are the default wall content. Ordinary non-carried cards from
+proximate claimed storage stay collapsed behind a compact per-section nearby
+chip unless the player asks to see them.
+
+Sections with no carried cards, visible intent ghosts, or nearby chip stay
+hidden from the wall and section index by default. Holding storage x-ray may
+show those empty sections as browse landmarks.
+
+Ghost cards must reveal when there is active intent:
+
+- the section's nearby chip is expanded for the current client session
+- search matches the ghost
+- a Kit, desired count, wanted count, or goal tab needs the item
+- the player holds storage x-ray
+
+Storage x-ray is a hold-only browse posture. Holding the x-ray key reveals all
+proximate storage ghosts; holding Shift with the same key reveals all tracked
+claimed-storage ghosts. X-ray does not persist and does not grant remote
+mutation authority: non-proximate tracked ghosts are for quick inspection and
+wayfinding only.
 
 ## Search, Sorting, Categories, Kits, And Counts
 

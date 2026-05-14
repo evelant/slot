@@ -14,6 +14,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache;
 import dev.imagio.slot.ui.spi.SlotUiElement;
+import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
 import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
@@ -960,6 +961,11 @@ final class AtlasCardBuilder {
         @Override
         public boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
             return host.goalChoiceCard(item);
+        }
+
+        @Override
+        public StorageGhostRevealMode storageGhostRevealMode() {
+            return host.storageGhostRevealMode;
         }
     }
 

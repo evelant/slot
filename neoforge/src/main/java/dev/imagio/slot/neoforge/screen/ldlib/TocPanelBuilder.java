@@ -8,6 +8,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.ui.workspace.WallSectionVisibility;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
@@ -55,21 +56,39 @@ final class TocPanelBuilder {
     }
 
     private java.util.List<SlotWorkspaceViewModel.AtlasIsland> visibleEntries() {
-        java.util.Map<String, Integer> counts = new java.util.HashMap<>();
-        for (SlotWorkspaceViewModel.AtlasItem item : host.currentAtlasItems()) {
-            counts.merge(item.islandId(), 1, Integer::sum);
-        }
         java.util.List<SlotWorkspaceViewModel.AtlasIsland> entries = new java.util.ArrayList<>();
+        boolean filtering = !host.searchController.normalizedQuery().isBlank();
         for (SlotWorkspaceViewModel.AtlasIsland island : host.currentIslands()) {
             if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
                 continue;
             }
-            if (counts.getOrDefault(island.islandId(), 0) <= 0) {
-                continue;
+            if (host.storageGhostRevealMode.revealsProximate()
+                    || visibilityFor(island, filtering).hasVisibleContent()) {
+                entries.add(island);
             }
-            entries.add(island);
         }
         return entries;
+    }
+
+    private WallSectionVisibility.Result visibilityFor(
+            SlotWorkspaceViewModel.AtlasIsland island,
+            boolean filtering
+    ) {
+        java.util.ArrayList<SlotWorkspaceViewModel.AtlasItem> visibleCards = new java.util.ArrayList<>();
+        for (SlotWorkspaceViewModel.AtlasItem item : host.currentAtlasItems()) {
+            if (item == null || !island.islandId().equals(item.islandId())) {
+                continue;
+            }
+            if (!filtering || host.searchController.matchesItem(item)) {
+                visibleCards.add(item);
+            }
+        }
+        return WallSectionVisibility.classify(
+                visibleCards,
+                filtering,
+                host.storageGhostSectionExpanded(island.islandId()),
+                host.storageGhostRevealMode,
+                host.goalTabActive());
     }
 
     private UIElement dot(
@@ -113,9 +132,11 @@ final class TocPanelBuilder {
     }
 
     private int countItemsInIsland(String islandId) {
+        boolean filtering = !host.searchController.normalizedQuery().isBlank();
         int count = 0;
         for (SlotWorkspaceViewModel.AtlasItem item : host.currentAtlasItems()) {
-            if (islandId.equals(item.islandId())) {
+            if (islandId.equals(item.islandId())
+                    && (!filtering || host.searchController.matchesItem(item))) {
                 count++;
             }
         }

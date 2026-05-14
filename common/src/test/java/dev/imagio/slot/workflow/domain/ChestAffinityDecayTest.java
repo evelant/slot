@@ -9,7 +9,6 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ChestAffinityDecayTest {
     private static final ItemIdentity REDSTONE = ItemIdentity.of("minecraft:redstone");
@@ -19,22 +18,22 @@ class ChestAffinityDecayTest {
     @Test
     void noDecayBeforeOneIntervalElapsed() {
         ChestAffinity bond = new ChestAffinity(REDSTONE, 5, 0L);
-        assertEquals(5, bond.effectiveScore(DAY - 1));
+        assertEquals(5, bond.effectiveScore(DAY - 1, DAY));
     }
 
     @Test
     void linearDecayPerInterval() {
         ChestAffinity bond = new ChestAffinity(REDSTONE, 5, 0L);
-        assertEquals(4, bond.effectiveScore(DAY));
-        assertEquals(3, bond.effectiveScore(2 * DAY));
-        assertEquals(0, bond.effectiveScore(5 * DAY));
-        assertEquals(0, bond.effectiveScore(100 * DAY));
+        assertEquals(4, bond.effectiveScore(DAY, DAY));
+        assertEquals(3, bond.effectiveScore(2 * DAY, DAY));
+        assertEquals(0, bond.effectiveScore(5 * DAY, DAY));
+        assertEquals(0, bond.effectiveScore(100 * DAY, DAY));
     }
 
     @Test
     void bumpAfterDecayStartsFromDecayedScore() {
         ChestAffinity bond = new ChestAffinity(REDSTONE, 10, 0L);
-        ChestAffinity bumped = bond.bump(1, 4 * DAY);
+        ChestAffinity bumped = bond.bump(1, 4 * DAY, DAY);
         // 10 - 4 (decay) + 1 (bump) = 7
         assertEquals(7, bumped.score());
         assertEquals(4 * DAY, bumped.lastTouchedTick());
@@ -48,7 +47,21 @@ class ChestAffinityDecayTest {
     }
 
     @Test
-    void mapDecayedDropsFullyDecayedBonds() {
+    void defaultEffectiveScoreDoesNotDecayDuringPlaytest() {
+        ChestAffinity bond = new ChestAffinity(REDSTONE, 5, 0L);
+        assertEquals(5, bond.effectiveScore(100 * DAY));
+    }
+
+    @Test
+    void defaultBumpAddsToRawScoreDuringPlaytest() {
+        ChestAffinity bond = new ChestAffinity(REDSTONE, 10, 0L);
+        ChestAffinity bumped = bond.bump(1, 4 * DAY);
+        assertEquals(11, bumped.score());
+        assertEquals(4 * DAY, bumped.lastTouchedTick());
+    }
+
+    @Test
+    void mapDecayedKeepsBondsWhileDefaultDecayDisabled() {
         LinkedHashMap<ItemIdentity, ChestAffinity> bonds = new LinkedHashMap<>();
         ItemIdentity stone = ItemIdentity.of("minecraft:stone");
         bonds.put(REDSTONE, new ChestAffinity(REDSTONE, 1, 0L));
@@ -56,18 +69,18 @@ class ChestAffinityDecayTest {
         ChestAffinityMap map = new ChestAffinityMap(Map.of(CHEST, bonds));
 
         ChestAffinityMap decayed = map.decayed(2 * DAY);
-        // redstone (1) decays to 0 → dropped; stone (5) decays to 3.
-        assertEquals(3, decayed.score(CHEST, stone));
-        assertEquals(0, decayed.score(CHEST, REDSTONE));
-        assertEquals(1, decayed.forChest(CHEST).size());
+        assertSame(map, decayed);
+        assertEquals(5, decayed.score(CHEST, stone));
+        assertEquals(1, decayed.score(CHEST, REDSTONE));
+        assertEquals(2, decayed.forChest(CHEST).size());
     }
 
     @Test
-    void mapDecayedDropsChestsWhoseBondsAllExpired() {
+    void mapDecayedKeepsChestsWhileDefaultDecayDisabled() {
         ChestAffinityMap map = new ChestAffinityMap(Map.of(CHEST,
                 Map.of(REDSTONE, new ChestAffinity(REDSTONE, 1, 0L))));
         ChestAffinityMap decayed = map.decayed(5 * DAY);
-        assertTrue(decayed.entries().isEmpty());
+        assertEquals(1, decayed.score(CHEST, REDSTONE));
     }
 
     @Test

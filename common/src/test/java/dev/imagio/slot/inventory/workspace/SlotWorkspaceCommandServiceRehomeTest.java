@@ -92,6 +92,56 @@ class SlotWorkspaceCommandServiceRehomeTest {
     }
 
     @Test
+    void assignHomeUsesServerCursorIdentityWhenClientFingerprintDrifts() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null
+        );
+        ItemIdentity requestedPotion = ItemIdentity.exact("minecraft:potion", "client-components");
+        ItemIdentity serverPotion = ItemIdentity.exact("minecraft:potion", "server-components");
+        runtime.visualAtlasWorkflow().createIslandWithId(
+                "brewing",
+                "Brewing",
+                0,
+                0,
+                0x8855AA,
+                null,
+                DomainEventMetadata.origin("test.brewing"));
+
+        InventoryAuthoritySnapshot authority = new InventoryAuthoritySnapshot(
+                null,
+                Map.of(),
+                new CursorStateSnapshot(new ItemStack("minecraft:potion", "server-components", 1, 64), ""));
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority,
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1);
+        assertNull(viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(serverPotion)));
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.assignHome(
+                runtime,
+                viewModel,
+                new LearnedIslandRuleStore(),
+                stack -> null,
+                authority,
+                requestedPotion.itemId(),
+                requestedPotion.comparisonMode().name(),
+                requestedPotion.componentFingerprint(),
+                "brewing",
+                null);
+
+        assertTrue(outcome.success());
+        assertNull(runtime.visualAtlasWorkflow().visualHomeMap().assignment(requestedPotion));
+        VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().visualHomeMap().assignment(serverPotion);
+        assertNotNull(assignment);
+        assertEquals("brewing", assignment.islandId());
+    }
+
+    @Test
     void reclassifyHomesIgnoresSubsystemSectionsAndReassignsToParentTemplate() {
         FacetIndexHolder.install(FacetIndex.load(new StringReader(layerWithCastingCohort())));
         try {

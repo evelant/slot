@@ -140,6 +140,9 @@ final class SearchController {
                 cycleMatch();
             }
             default -> {
+                if (isSearchTypingKey(event.keyCode)) {
+                    event.stopPropagation();
+                }
             }
         }
     }
@@ -243,7 +246,7 @@ final class SearchController {
         ArrayList<AtlasSearchIndex.SearchRow> rows = new ArrayList<>();
         for (SlotWorkspaceViewModel.AtlasItem item : host.currentAtlasItems()) {
             rows.add(new AtlasSearchIndex.SearchRow(
-                    item.name(),
+                    searchLabel(item),
                     item.identity().itemId(),
                     AtlasSearchIndex.Pool.PRIMARY,
                     item.carried(),
@@ -260,6 +263,14 @@ final class SearchController {
             ));
         }
         return rows;
+    }
+
+    private static String searchLabel(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null) {
+            return "";
+        }
+        String displayName = item.displayStack().isEmpty() ? "" : item.displayStack().getHoverName().getString();
+        return displayName == null || displayName.isBlank() ? item.name() : displayName;
     }
 
     private void syncQuery() {
@@ -280,6 +291,14 @@ final class SearchController {
         searchQuery = next;
         WorkspaceUiSessionMemory.setSearchQuery(host.surfaceMemoryKey(), searchQuery);
         host.rpc.sendSearchQuery(searchQuery);
+    }
+
+    private static boolean isSearchTypingKey(int keyCode) {
+        if ((keyCode >= GLFW.GLFW_KEY_0 && keyCode <= GLFW.GLFW_KEY_9)
+                || (keyCode >= GLFW.GLFW_KEY_KP_0 && keyCode <= GLFW.GLFW_KEY_KP_9)) {
+            return false;
+        }
+        return keyCode >= GLFW.GLFW_KEY_SPACE && keyCode <= GLFW.GLFW_KEY_WORLD_2;
     }
 
     /**

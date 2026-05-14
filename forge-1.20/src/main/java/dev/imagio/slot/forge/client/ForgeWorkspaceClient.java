@@ -17,6 +17,7 @@ import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
@@ -87,6 +88,14 @@ public final class ForgeWorkspaceClient {
             CATEGORY
     );
 
+    public static final KeyMapping STORAGE_XRAY = new KeyMapping(
+            "key.slot.storage_xray",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_X,
+            CATEGORY
+    );
+
     private static boolean wayfindingHudEnabled = true;
 
     private ForgeWorkspaceClient() {
@@ -137,8 +146,25 @@ public final class ForgeWorkspaceClient {
         return keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT;
     }
 
+    public static boolean storageXrayDown() {
+        return STORAGE_XRAY.isDown() || keyPhysicallyDown(STORAGE_XRAY);
+    }
+
     public static boolean wayfindingHudEnabled() {
         return wayfindingHudEnabled;
+    }
+
+    private static boolean keyPhysicallyDown(KeyMapping mapping) {
+        InputConstants.Key bound = mapping.getKey();
+        if (bound.getType() != InputConstants.Type.KEYSYM
+                || bound.getValue() == InputConstants.UNKNOWN.getValue()) {
+            return false;
+        }
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.getWindow() == null) {
+            return false;
+        }
+        return InputConstants.isKeyDown(minecraft.getWindow().getWindow(), bound.getValue());
     }
 
     public static void openWorkspaceScreen() {
@@ -174,6 +200,7 @@ public final class ForgeWorkspaceClient {
             event.register(GATHER_ACTIVE_KIT);
             event.register(TOGGLE_WAYFINDING_HUD);
             event.register(MARK_WANTED);
+            event.register(STORAGE_XRAY);
         }
     }
 
@@ -250,7 +277,7 @@ public final class ForgeWorkspaceClient {
             ForgeContainerSidebar.onMouseScrolled(event);
         }
 
-        @SubscribeEvent
+        @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
         public static void onKeyPressed(ScreenEvent.KeyPressed.Pre event) {
             ForgeContainerSidebar.onKeyPressed(event);
         }

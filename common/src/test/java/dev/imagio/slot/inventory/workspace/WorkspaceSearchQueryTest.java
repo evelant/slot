@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
 
@@ -41,6 +42,20 @@ class WorkspaceSearchQueryTest {
     }
 
     @Test
+    void itemMatchUsesDisplayStackHoverName() {
+        ItemStack stack = new ItemStack("beneath:cursecoal", 1, 64)
+                .setHoverName(Component.literal("Anthracite"));
+        SlotWorkspaceViewModel.AtlasItem item = item(
+                ItemIdentity.of("beneath:cursecoal"),
+                stack,
+                "Cursecoal",
+                "fuel");
+
+        assertTrue(WorkspaceSearchQuery.matchesItem("anth", item, null));
+        assertTrue(WorkspaceSearchQuery.matchesItem("coal", item, null));
+    }
+
+    @Test
     void identityStackMatchUsesSameNormalization() {
         assertTrue(WorkspaceSearchQuery.matchesIdentityStack(
                 "/stone",
@@ -53,9 +68,18 @@ class WorkspaceSearchQueryTest {
     }
 
     private static SlotWorkspaceViewModel.AtlasItem item(String itemId, String name, String islandId) {
+        return item(ItemIdentity.of(itemId), new ItemStack(itemId, 1, 64), name, islandId);
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem item(
+            ItemIdentity identity,
+            ItemStack displayStack,
+            String name,
+            String islandId
+    ) {
         return new SlotWorkspaceViewModel.AtlasItem(
-                SlotWorkspaceViewModel.IdentityRef.from(ItemIdentity.of(itemId)),
-                new ItemStack(itemId, 1, 64),
+                SlotWorkspaceViewModel.IdentityRef.from(identity),
+                displayStack,
                 name,
                 1,
                 0,

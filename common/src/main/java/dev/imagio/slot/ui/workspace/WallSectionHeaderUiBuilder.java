@@ -12,7 +12,7 @@ import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.MUTED;
 import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.TEXT;
 
 public final class WallSectionHeaderUiBuilder {
-    public static final int HEADER_HEIGHT_PX = 11;
+    public static final int HEADER_HEIGHT_PX = 9;
 
     private final Context context;
 
@@ -37,8 +37,8 @@ public final class WallSectionHeaderUiBuilder {
                 .layout(layout -> layout
                         .widthPercent(100)
                         .height(HEADER_HEIGHT_PX)
-                        .paddingHorizontal(6)
-                        .gapAll(4)
+                        .paddingHorizontal(4)
+                        .gapAll(3)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
 
@@ -47,7 +47,7 @@ public final class WallSectionHeaderUiBuilder {
                 .textStyle(style -> style
                         .color(TEXT)
                         .shadow(true)
-                        .fontSize(8)
+                        .fontSize(7)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER))
                 .allowHitTest(false));
@@ -59,7 +59,7 @@ public final class WallSectionHeaderUiBuilder {
                 .textStyle(style -> style
                         .color(countColor)
                         .shadow(false)
-                        .fontSize(7)
+                        .fontSize(6)
                         .horizontal(SlotUiTextStyle.Horizontal.RIGHT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER))
                 .allowHitTest(false));

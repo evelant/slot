@@ -70,11 +70,11 @@ Last updated: 2026-04-30
 >   returns the closest. The chat-line summary on close stays as a
 >   complementary post-interaction confirmation. The chest still
 >   doesn't auto-claim until the player actually deposits.
-> - **Affinity decay (lazy):** `ChestAffinity#effectiveScore(tick)` and
->   `ChestAffinityMap#decayed(tick)` apply 1-point-per-in-game-day decay
->   on read. `bump` decays first then adds, so a long gap correctly
->   resets old affinity before a new deposit accrues. Routing
->   (`SlotWorkspaceUiSession.deposit`) consumes the decayed map.
+> - **Affinity decay (lazy, currently disabled):**
+>   `ChestAffinity#effectiveScore(tick)` and
+>   `ChestAffinityMap#decayed(tick)` keep the 1-point-per-in-game-day
+>   decay implementation, but the default path has `DECAY_ENABLED=false`
+>   for playtesting until the rate is tunable.
 > - **Cluster derivation:** `ChestClusterMap.derive(chests)` runs
 >   union-find with a 16-block threshold (same dimension only). Chest
 >   chips carry a `clusterId`; the panel renders a cluster header above
@@ -158,8 +158,8 @@ gestures.
 
 - Every player-initiated deposit of item X into chest C raises
   `affinity[C, X]` by one increment.
-- Affinity decays slowly over time so chests that haven't seen an
-  item in weeks stop claiming it.
+- Affinity decay exists in code but is disabled for current playtests;
+  re-enable only after the decay rate is tunable and validated.
 - Affinity is *not* recorded if the player takes the item back out
   within a short window (default 30 s), or if they undo the deposit.
   This is the accidental-placement guard.

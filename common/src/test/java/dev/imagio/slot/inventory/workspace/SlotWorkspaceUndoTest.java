@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.workspace;
 
+import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
@@ -57,6 +58,30 @@ class SlotWorkspaceUndoTest {
 
         SlotWorkspaceCommandService.performRedo(runtime);
         assertNull(runtime.visualAtlasWorkflow().visualHomeMap().island(islandId));
+    }
+
+    @Test
+    void deleteIslandClearsAssignedHomesAndUndoRestoresThem() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity apple = ItemIdentity.of("minecraft:apple");
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Bad Section", 42, 42, 0xFFDDCC00, apple);
+        runtime.visualAtlasWorkflow().assignHome(apple, island.id(), 0);
+
+        WorkspaceCommandOutcome delete = SlotWorkspaceCommandService.deleteIsland(runtime, island.id());
+
+        assertTrue(delete.success());
+        assertNull(runtime.visualAtlasWorkflow().visualHomeMap().island(island.id()));
+        assertNull(runtime.visualAtlasWorkflow().visualHomeMap().assignment(apple));
+
+        SlotWorkspaceCommandService.performUndo(runtime);
+        assertNotNull(runtime.visualAtlasWorkflow().visualHomeMap().island(island.id()));
+        assertNotNull(runtime.visualAtlasWorkflow().visualHomeMap().assignment(apple));
+        assertEquals(island.id(), runtime.visualAtlasWorkflow().visualHomeMap().assignment(apple).islandId());
+
+        SlotWorkspaceCommandService.performRedo(runtime);
+        assertNull(runtime.visualAtlasWorkflow().visualHomeMap().island(island.id()));
+        assertNull(runtime.visualAtlasWorkflow().visualHomeMap().assignment(apple));
     }
 
     @Test

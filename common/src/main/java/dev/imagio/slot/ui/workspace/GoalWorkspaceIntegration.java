@@ -25,6 +25,10 @@ public final class GoalWorkspaceIntegration {
         return delegate.openRecipe(goal, entry);
     }
 
+    public static boolean openRecipe(ItemIdentity identity) {
+        return delegate.openRecipe(identity);
+    }
+
     public static boolean openUses(ItemIdentity identity) {
         return delegate.openUses(identity);
     }
@@ -61,6 +65,10 @@ public final class GoalWorkspaceIntegration {
 
         default boolean openRecipe(GoalDescriptor goal, GoalProjectionEntry entry) {
             return openRecipe(goal);
+        }
+
+        default boolean openRecipe(ItemIdentity identity) {
+            return false;
         }
 
         default boolean openUses(ItemIdentity identity) {

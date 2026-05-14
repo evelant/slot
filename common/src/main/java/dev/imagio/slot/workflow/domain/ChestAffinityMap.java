@@ -61,7 +61,7 @@ public record ChestAffinityMap(Map<UUID, Map<ItemIdentity, ChestAffinity>> entri
      * keep using {@link #score(UUID, ItemIdentity)} unchanged.
      */
     public ChestAffinityMap decayed(long currentTick) {
-        if (entries.isEmpty()) {
+        if (entries.isEmpty() || !ChestAffinity.DECAY_ENABLED) {
             return this;
         }
         LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> result = new LinkedHashMap<>();

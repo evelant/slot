@@ -6,6 +6,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
+import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import net.minecraft.client.gui.screens.Screen;
 import org.lwjgl.glfw.GLFW;
@@ -46,6 +47,7 @@ final class HotkeyRouter {
         });
         host.root.addEventListener(UIEvents.TICK, event -> host.searchController.tickIdleTimer());
         host.root.addEventListener(UIEvents.TICK, event -> host.shiftClickTransferState.observeShiftDown(Screen.hasShiftDown()));
+        host.root.addEventListener(UIEvents.TICK, event -> host.updateStorageGhostRevealMode(currentStorageGhostRevealMode()));
         host.root.addEventListener(UIEvents.TICK, event -> {
             if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.markWantedDown()) {
                 markWantedKeyConsumed = false;
@@ -132,8 +134,7 @@ final class HotkeyRouter {
     }
 
     void handleGoalRecipeKey(UIEvent event) {
-        if (!host.goalTabActive() || isTextInputFocused() || host.searchController.modalActive()
-                || Screen.hasControlDown()) {
+        if (isTextInputFocused() || host.searchController.modalActive() || Screen.hasControlDown()) {
             return;
         }
         if (event.keyCode != GLFW.GLFW_KEY_R && event.keyCode != GLFW.GLFW_KEY_U) {
@@ -142,14 +143,14 @@ final class HotkeyRouter {
         event.stopPropagation();
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
-            host.localStatus.set("hover a goal card for recipe or usage details");
+            host.localStatus.set("hover an item for recipe or usage details");
             host.rebuild();
             return;
         }
         if (event.keyCode == GLFW.GLFW_KEY_R) {
-            host.openGoalRecipe(target);
+            host.openRecipe(target);
         } else {
-            host.openGoalUses(target);
+            host.openUses(target);
         }
     }
 
@@ -309,5 +310,15 @@ final class HotkeyRouter {
 
     private static boolean isAltKey(int keyCode) {
         return keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT;
+    }
+
+    private StorageGhostRevealMode currentStorageGhostRevealMode() {
+        if (isTextInputFocused() || host.searchController.modalActive()) {
+            return StorageGhostRevealMode.COLLAPSED;
+        }
+        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.storageXrayDown()) {
+            return StorageGhostRevealMode.COLLAPSED;
+        }
+        return Screen.hasShiftDown() ? StorageGhostRevealMode.TRACKED : StorageGhostRevealMode.PROXIMATE;
     }
 }

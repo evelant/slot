@@ -621,36 +621,22 @@ public record SlotWorkspaceViewModel(
             accumulators.add(AtlasItemAccumulator.ghost(identity, stack, total));
             ghostIdentities.add(identity);
         }
-        // Search-as-find: synthesize ghost accumulators for identities
-        // that live ONLY in non-proximate claimed chests (no carry, no
-        // proximate ghost, no kit-needed entry) — but ONLY while the
-        // player is searching, and ONLY for identities matching the
-        // query. Without the gate these ghosts pollute the atlas
-        // full-time with cards for items the player isn't trying to
-        // find; without the synthesis searching for "oak" when an oak
-        // chest in the next room over is the only place oak exists
-        // returns zero atlas hits, leaving the player no visual
-        // confirmation. Kit-needed remote items still surface via the
-        // earlier kit-ghost loop (kitNeededIdentities seeds an
-        // accumulator regardless of search state).
-        String normalizedQuery = WorkspaceSearchQuery.normalized(searchQuery);
-        if (!normalizedQuery.isBlank()) {
-            for (Map.Entry<ItemIdentity, ItemStack> entry : elsewhereGhosts.displayStackByIdentity().entrySet()) {
-                ItemIdentity identity = entry.getKey();
-                if (ghostIdentities.contains(identity)) {
-                    continue;
-                }
-                ItemStack stack = entry.getValue();
-                if (stack == null || stack.isEmpty()) {
-                    continue;
-                }
-                if (!matchesQuery(identity, stack, normalizedQuery)) {
-                    continue;
-                }
-                int total = elsewhereGhosts.totalsByIdentity().getOrDefault(identity, 0);
-                accumulators.add(AtlasItemAccumulator.ghost(identity, stack, total));
-                ghostIdentities.add(identity);
+        // Tracked-storage x-ray and search both need remote-only claimed
+        // storage identities in the view model. The wall hides ordinary
+        // remote ghosts until search / x-ray / active intent asks for them,
+        // so carrying them here no longer pollutes the default wall.
+        for (Map.Entry<ItemIdentity, ItemStack> entry : elsewhereGhosts.displayStackByIdentity().entrySet()) {
+            ItemIdentity identity = entry.getKey();
+            if (ghostIdentities.contains(identity)) {
+                continue;
             }
+            ItemStack stack = entry.getValue();
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            int total = elsewhereGhosts.totalsByIdentity().getOrDefault(identity, 0);
+            accumulators.add(AtlasItemAccumulator.ghost(identity, stack, total));
+            ghostIdentities.add(identity);
         }
 
         accumulators.sort(Comparator
@@ -1685,16 +1671,6 @@ public record SlotWorkspaceViewModel(
 
     public static ItemStack displayStackForIdentity(ItemIdentity identity) {
         return resolveGhostStack(identity);
-    }
-
-    /**
-     * Substring match for the search-as-find ghost-synthesis filter:
-     * lowercase {@code itemId} or display name contains the query.
-     * Mirrors {@link WorkspaceSearchQuery}'s shape so the server-side
-     * gate matches what the client would highlight as a hit.
-     */
-    private static boolean matchesQuery(ItemIdentity identity, ItemStack stack, String normalizedQuery) {
-        return WorkspaceSearchQuery.matchesIdentityStack(normalizedQuery, identity, stack);
     }
 
     private static List<AtlasIsland> withCarriedCounts(List<AtlasIsland> islands, List<AtlasItem> atlasItems) {

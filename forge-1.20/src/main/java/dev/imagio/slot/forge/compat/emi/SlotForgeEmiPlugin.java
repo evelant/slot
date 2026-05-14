@@ -51,6 +51,11 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
             }
 
             @Override
+            public boolean openRecipe(ItemIdentity identity) {
+                return SlotForgeEmiGoalAdapter.openRecipe(identity);
+            }
+
+            @Override
             public boolean openUses(ItemIdentity identity) {
                 return SlotForgeEmiGoalAdapter.openUses(identity);
             }

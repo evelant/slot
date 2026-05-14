@@ -318,8 +318,8 @@ public final class WorkspaceBeltCommandService {
             }
             ItemStack stack = slot.displayStack();
             long sequence = hotbarPlacementSequence == null
-                    ? Long.MIN_VALUE
-                    : hotbarPlacementSequence.getOrDefault(slot.hotbarIndex(), Long.MIN_VALUE);
+                    ? Long.MAX_VALUE
+                    : hotbarPlacementSequence.getOrDefault(slot.hotbarIndex(), Long.MAX_VALUE);
             if (selectedAnyIndex < 0
                     || sequence < selectedAnySequence
                     || (sequence == selectedAnySequence && slot.hotbarIndex() < selectedAnyIndex)) {

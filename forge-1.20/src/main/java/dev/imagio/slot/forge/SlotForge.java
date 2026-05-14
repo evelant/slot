@@ -6,6 +6,8 @@ import dev.imagio.slot.compat.sophisticated.SophisticatedBackpacksCarriedProvide
 import dev.imagio.slot.forge.client.SlotForgeConfigScreens;
 import dev.imagio.slot.forge.compat.sacks.SacksNSuchCarriedProvider;
 import dev.imagio.slot.forge.compat.sacks.SacksNSuchInventoryIntegrationProvider;
+import dev.imagio.slot.forge.compat.toolbelt.ToolBeltCarriedProvider;
+import dev.imagio.slot.forge.compat.toolbelt.ToolBeltInventoryIntegrationProvider;
 import dev.imagio.slot.forge.classification.Forge120ClassificationLayerReloadListener;
 import dev.imagio.slot.forge.config.SlotForgeClientConfig;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
@@ -31,9 +33,11 @@ public final class SlotForge {
         Forge120Platform.bootstrap();
         CarriedProviderRegistry.register(new SophisticatedBackpacksCarriedProvider());
         CarriedProviderRegistry.register(new SacksNSuchCarriedProvider());
+        CarriedProviderRegistry.register(new ToolBeltCarriedProvider());
         SlotForgeNetworking.register();
         SlotCommon.init();
         InventoryIntegrationRegistry.register(new SacksNSuchInventoryIntegrationProvider());
+        InventoryIntegrationRegistry.register(new ToolBeltInventoryIntegrationProvider());
         Forge120ClassificationLayerReloadListener.init();
         ForgeSlotPickupRouter.init();
         SlotCommon.LOGGER.info("SLOT (forge-1.20) loaded");
