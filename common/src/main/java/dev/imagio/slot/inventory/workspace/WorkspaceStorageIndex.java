@@ -26,10 +26,11 @@ import java.util.function.Function;
  * Shared read model for storage lookups used by the workspace, goals,
  * search/x-ray, wayfinding, and planner previews.
  *
- * <p>Live entries are read once per index build. Remembered entries are a
- * read-only fallback for tracked storage that is unloaded, far away, or in
- * another dimension. Mutation planners must use {@link #liveChestContentPresence()}
- * so remembered-only data never authorizes a transfer.
+ * <p>Proximate entries are read live once per index build. Non-proximate
+ * tracked storage uses the remembered read model so ordinary workspace
+ * refreshes do not enumerate every loaded chest in the world. Mutation
+ * planners must use {@link #liveChestContentPresence()} so remembered-only
+ * data never authorizes a transfer.
  */
 public final class WorkspaceStorageIndex {
     private final Map<String, StorageEntry> entriesByStorageId;
@@ -127,10 +128,12 @@ public final class WorkspaceStorageIndex {
             }
             String storageId = chest.storageId().toString();
             boolean proximateTarget = proximate.contains(storageId);
-            StorageEntry live = liveClaimedEntry(server, worldStorage, chest, proximateTarget, memory, tick);
-            if (live != null) {
-                entries.put(storageId, live);
-                continue;
+            if (proximateTarget) {
+                StorageEntry live = liveClaimedEntry(server, worldStorage, chest, true, memory, tick);
+                if (live != null) {
+                    entries.put(storageId, live);
+                    continue;
+                }
             }
             RememberedStorageContents rememberedContents = rememberedById.get(storageId);
             if (rememberedContents != null) {

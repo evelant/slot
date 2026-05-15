@@ -82,13 +82,40 @@ class WorkspaceStorageIndexTest {
                 null,
                 claimedMap(CHEST_A),
                 world,
-                Set.of(),
+                Set.of(CHEST_A.toString()),
                 List.of(),
                 Map.of(CHEST_A.toString(), remembered));
 
         assertEquals("minecraft:stone", index.contents(CHEST_A.toString()).contents().get(0).itemId());
         assertFalse(index.contents(CHEST_A.toString()).contents().stream()
                 .anyMatch(stack -> "minecraft:dirt".equals(stack.itemId())));
+    }
+
+    @Test
+    void nonProximateTrackedStorageUsesRememberedContentsWithoutLiveEnumeration() {
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 27, List.of(content(0, stack("minecraft:stone", 3))));
+        RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
+                StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                27,
+                Map.of(ItemIdentity.of("minecraft:dirt"), 99),
+                10L,
+                "test");
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                world,
+                Set.of(),
+                List.of(),
+                Map.of(CHEST_A.toString(), remembered));
+
+        assertEquals(0, world.enumerateCalls(CHEST_A));
+        assertEquals("minecraft:dirt", index.contents(CHEST_A.toString()).contents().get(0).itemId());
+        assertFalse(index.liveChestContentPresence().contains(
+                claimed(CHEST_A),
+                ItemIdentity.of("minecraft:dirt")));
     }
 
     @Test

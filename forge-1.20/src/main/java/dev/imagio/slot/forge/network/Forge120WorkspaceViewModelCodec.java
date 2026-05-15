@@ -30,9 +30,15 @@ public final class Forge120WorkspaceViewModelCodec {
     }
 
     public static CompoundTag encode(SlotWorkspaceViewModel viewModel) {
+        return encode(viewModel, true);
+    }
+
+    public static CompoundTag encode(SlotWorkspaceViewModel viewModel, boolean includeRevision) {
         SlotWorkspaceViewModel resolved = viewModel == null ? SlotWorkspaceViewModel.empty() : viewModel;
         CompoundTag tag = new CompoundTag();
-        tag.putLong("revision", resolved.revision());
+        if (includeRevision) {
+            tag.putLong("revision", resolved.revision());
+        }
         tag.putString("status", resolved.status());
         tag.putString("diagnostics", resolved.diagnostics());
         tag.putInt("pendingCount", resolved.pendingCount());

@@ -1,15 +1,5 @@
 {
   "schema_version": 1,
-  "description": "List of per-mod classification layer files bundled with SLOT. FacetIndexBootstrap loads each one and merges its entries into the runtime FacetIndex on top of vanilla-base. Mods whose items aren't actually present at runtime simply won't be queried — no harm in shipping their data eagerly.",
-  "mods": [
-    "create",
-    "createaddition",
-    "createoreexcavation",
-    "create_new_age",
-    "dndesires",
-    "sophisticatedbackpacks",
-    "sophisticatedcore",
-    "sophisticatedstorage",
-    "toms_storage"
-  ]
+  "description": "Bundled per-mod classification layers. Empty by default: modpack-specific data belongs in data/slot/classification/layers/*.json datapack/resource layers so SLOT does not ship stale non-vanilla classifications to every player.",
+  "mods": []
 }

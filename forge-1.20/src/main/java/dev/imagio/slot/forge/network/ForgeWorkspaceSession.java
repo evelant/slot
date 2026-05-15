@@ -55,11 +55,13 @@ import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerListener;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.Container;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -91,6 +93,10 @@ final class ForgeWorkspaceSession {
     private String status = "ready";
     private String diagnostics = "";
     private String searchQuery = "";
+    private CompoundTag lastContentTag = new CompoundTag();
+    private AbstractContainerMenu observedMenu;
+    private ContainerListener observedMenuListener;
+    private boolean dirty;
 
     ForgeWorkspaceSession(WorkspaceActionEnvelope envelope, int menuContainerId, WorkflowDomainRuntime runtime) {
         this.context = new WorkspaceActionSessionContext(envelope.sessionId(), menuContainerId, envelope.viewRevision());
@@ -99,6 +105,56 @@ final class ForgeWorkspaceSession {
 
     WorkspaceActionSessionContext context() {
         return context;
+    }
+
+    void attachMenuListener(ServerPlayer player) {
+        detachMenuListener();
+        AbstractContainerMenu menu = player == null ? null : player.containerMenu;
+        if (menu == null) {
+            return;
+        }
+        observedMenu = menu;
+        observedMenuListener = new ContainerListener() {
+            @Override
+            public void slotChanged(AbstractContainerMenu changedMenu, int slotIndex, ItemStack stack) {
+                if (changedMenu == observedMenu) {
+                    markDirty();
+                }
+            }
+
+            @Override
+            public void dataChanged(AbstractContainerMenu changedMenu, int dataIndex, int value) {
+                // The workspace projection reads item slots, not menu progress/data
+                // values. Marking dirty here would reproject every tick for many
+                // furnace/machine menus that update progress through ContainerData.
+            }
+        };
+        menu.addSlotListener(observedMenuListener);
+    }
+
+    void detachMenuListener() {
+        if (observedMenu != null && observedMenuListener != null) {
+            observedMenu.removeSlotListener(observedMenuListener);
+        }
+        observedMenu = null;
+        observedMenuListener = null;
+        dirty = false;
+    }
+
+    boolean observes(AbstractContainerMenu menu) {
+        return observedMenu != null && observedMenu == menu;
+    }
+
+    void markDirty() {
+        dirty = true;
+    }
+
+    boolean dirty() {
+        return dirty;
+    }
+
+    void clearDirty() {
+        dirty = false;
     }
 
     SlotWorkspaceViewModel project(ServerPlayer player) {
@@ -128,24 +184,16 @@ final class ForgeWorkspaceSession {
         }
         hotbarRecency.observe(projected);
 
-        if (!forceRevision && sameViewIgnoringRevision(viewModel, projected)) {
+        CompoundTag contentTag = Forge120WorkspaceViewModelCodec.encode(projected, false);
+        if (!forceRevision && contentTag.equals(lastContentTag)) {
             return viewModel;
         }
 
+        lastContentTag = contentTag.copy();
         long revision = nextRevision++;
         viewModel = projected.withRevision(revision);
         context = new WorkspaceActionSessionContext(context.sessionId(), context.menuContainerId(), revision);
         return viewModel;
-    }
-
-    private static boolean sameViewIgnoringRevision(
-            SlotWorkspaceViewModel current,
-            SlotWorkspaceViewModel projected
-    ) {
-        if (current == null || projected == null) {
-            return current == projected;
-        }
-        return current.withRevision(projected.revision()).equals(projected);
     }
 
     WorkspaceCommandOutcome handleAction(ServerPlayer player, WorkspaceActionPacket packet) {

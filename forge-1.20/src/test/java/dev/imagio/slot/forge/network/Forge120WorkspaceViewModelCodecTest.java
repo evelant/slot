@@ -18,6 +18,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Forge120WorkspaceViewModelCodecTest {
@@ -189,8 +190,58 @@ class Forge120WorkspaceViewModelCodecTest {
         assertEquals("storage-1", restored.activeChestPanel().storageId());
     }
 
+    @Test
+    void contentEncodingIgnoresRevisionAndCopiedItemStackIdentity() {
+        SlotWorkspaceViewModel.IdentityRef stone = identity("minecraft:stone");
+        ItemIdentity stoneIdentity = ItemIdentity.of("minecraft:stone");
+        SlotWorkspaceViewModel first = minimalView(1, stone, stoneIdentity);
+        SlotWorkspaceViewModel sameRevisionCopiedStacks = minimalView(1, stone, stoneIdentity);
+        SlotWorkspaceViewModel second = minimalView(2, stone, stoneIdentity);
+
+        assertNotEquals(first, sameRevisionCopiedStacks);
+        assertEquals(
+                Forge120WorkspaceViewModelCodec.encode(first),
+                Forge120WorkspaceViewModelCodec.encode(sameRevisionCopiedStacks));
+        assertEquals(
+                Forge120WorkspaceViewModelCodec.encode(first, false),
+                Forge120WorkspaceViewModelCodec.encode(second, false));
+        assertNotEquals(
+                Forge120WorkspaceViewModelCodec.encode(first),
+                Forge120WorkspaceViewModelCodec.encode(second));
+    }
+
     private static SlotWorkspaceViewModel.IdentityRef identity(String itemId) {
         return new SlotWorkspaceViewModel.IdentityRef(itemId, ItemComparisonMode.ITEM_ID.name(), "");
+    }
+
+    private static SlotWorkspaceViewModel minimalView(
+            long revision,
+            SlotWorkspaceViewModel.IdentityRef stone,
+            ItemIdentity stoneIdentity
+    ) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                "ready",
+                "",
+                0,
+                0,
+                1,
+                1,
+                7,
+                36,
+                List.of(),
+                List.of(atlasItem(stone, stoneIdentity)),
+                List.of(),
+                List.of(),
+                List.of(),
+                SlotWorkspaceViewModel.emptyHotbar(),
+                SlotWorkspaceViewModel.OffhandSlot.empty(),
+                List.of(),
+                SlotWorkspaceViewModel.LootChestPanel.empty(),
+                List.of(),
+                Set.of(stone),
+                List.of(),
+                SlotWorkspaceViewModel.ActiveChestPanel.empty());
     }
 
     private static SlotWorkspaceViewModel.AtlasItem atlasItem(

@@ -52,7 +52,7 @@ public enum IslandSuggestionTemplate {
             0, 2,
             Set.of(IslandSignal.FOOD),
             Set.of(),
-            Set.of("consumable"),
+            Set.of("consumable", "food", "drink"),
             Set.of("slot:eating"),
             Set.of()
     ),
@@ -208,7 +208,7 @@ public enum IslandSuggestionTemplate {
             2, 0,
             Set.of(),
             Set.of(),
-            Set.of("material"),
+            Set.of("material", "ingredient"),
             Set.of(),
             Set.of()
     ),
@@ -219,7 +219,7 @@ public enum IslandSuggestionTemplate {
             3, 1,
             Set.of(),
             Set.of("c:chests", "c:shulker_boxes", "c:barrels"),
-            Set.of("storage_block", "container_portable"),
+            Set.of("storage_block", "container_portable", "storage"),
             Set.of("slot:storage_management"),
             Set.of()
     ),
@@ -308,7 +308,7 @@ public enum IslandSuggestionTemplate {
             1, 0,
             Set.of(),
             Set.of(),
-            Set.of("building_block"),
+            Set.of("building_block", "block"),
             Set.of("slot:building", "slot:construction"),
             Set.of()
     ),
@@ -407,7 +407,7 @@ public enum IslandSuggestionTemplate {
             4, 0,
             Set.of(),
             Set.of(),
-            Set.of("curiosity", "trophy"),
+            Set.of("curiosity", "trophy", "spawn_egg", "music_disc"),
             Set.of("slot:display"),
             Set.of()
     ),
@@ -553,6 +553,9 @@ public enum IslandSuggestionTemplate {
         if (this == LIGHTING) {
             return descriptor.emitsLight();
         }
+        if ((this == METAL_STOCK || this == GEMS_CRYSTALS) && isOreStockBlock(descriptor)) {
+            return false;
+        }
         // Form-keyed templates (STAIRS, SLABS, DOORS, …) are
         // form-sufficient: a stair is a stair regardless of role. The
         // form facet is rule-derived from id suffix + tag, but coverage
@@ -583,9 +586,17 @@ public enum IslandSuggestionTemplate {
         // checks when no role is available (datapack items, KubeJS
         // additions, unknown mods, or FacetIndex.ENABLED == false).
         for (String candidate : descriptor.roleAlternatives()) {
+            if (this == BUILDING
+                    && "block".equals(candidate)
+                    && blockRoleShouldYieldToLaterOrganizationGroup(descriptor.organizationGroups())) {
+                continue;
+            }
             if (candidate != null && roleTriggers.contains(candidate)) {
                 return true;
             }
+        }
+        if (hasMatchingOrganizationGroup(descriptor.organizationGroups(), organizationGroupTriggersFor(this))) {
+            return true;
         }
         for (IslandSignal signal : classSignals) {
             if (descriptor.classSignals().contains(signal)) {
@@ -635,6 +646,12 @@ public enum IslandSuggestionTemplate {
             }
         }
         return false;
+    }
+
+    private static boolean isOreStockBlock(IslandSignalDescriptor descriptor) {
+        String path = identityPath(descriptor);
+        return ORE_STOCK_BLOCK_IDS.contains(path)
+                || path.startsWith("raw_") && path.endsWith("_block");
     }
 
     private boolean matchesCommodityFormOrPath(IslandSignalDescriptor descriptor) {
@@ -732,7 +749,7 @@ public enum IslandSuggestionTemplate {
             return true;
         }
         for (String role : roles) {
-            if ("material".equals(role) || "natural_resource".equals(role)) {
+            if ("material".equals(role) || "natural_resource".equals(role) || "ingredient".equals(role)) {
                 return true;
             }
         }
@@ -783,12 +800,12 @@ public enum IslandSuggestionTemplate {
         if (!rolesWithin(descriptor, ORGANIC_ALLOWED_ROLES)) {
             return false;
         }
+        if (path.isBlank() || hasAnyPathToken(path, ORGANIC_BLOCKED_PATH_TOKENS)) {
+            return false;
+        }
         String materialFamily = descriptor.materialFamily();
         if (materialFamily != null && ORGANIC_MATERIAL_FAMILIES.contains(materialFamily)) {
             return true;
-        }
-        if (path.isBlank() || hasAnyPathToken(path, ORGANIC_BLOCKED_PATH_TOKENS)) {
-            return false;
         }
         return hasAnyPathToken(path, ORGANIC_PATH_TOKENS);
     }
@@ -1153,7 +1170,9 @@ public enum IslandSuggestionTemplate {
     private static final Set<String> SEED_ALLOWED_ROLES = Set.of(
             "material",
             "natural_resource",
-            "consumable"
+            "consumable",
+            "ingredient",
+            "food"
     );
 
     private static final Set<String> SEED_EXACT_PATHS = Set.of(
@@ -1169,7 +1188,9 @@ public enum IslandSuggestionTemplate {
     private static final Set<String> CROP_ALLOWED_ROLES = Set.of(
             "material",
             "natural_resource",
-            "consumable"
+            "consumable",
+            "ingredient",
+            "food"
     );
 
     private static final Set<String> CROP_EXACT_PATHS = Set.of(
@@ -1227,7 +1248,10 @@ public enum IslandSuggestionTemplate {
             "natural_resource",
             "building_block",
             "decorative_block",
-            "consumable"
+            "consumable",
+            "ingredient",
+            "block",
+            "food"
     );
 
     private static final Set<String> ORGANIC_EXACT_PATHS = Set.of(
@@ -1303,7 +1327,8 @@ public enum IslandSuggestionTemplate {
     private static final Set<String> WOOD_ALLOWED_ROLES = Set.of(
             "material",
             "natural_resource",
-            "building_block"
+            "building_block",
+            "block"
     );
 
     private static final Set<String> WOOD_STOCK_FORMS = Set.of(
@@ -1431,7 +1456,8 @@ public enum IslandSuggestionTemplate {
             "material",
             "natural_resource",
             "building_block",
-            "decorative_block"
+            "decorative_block",
+            "block"
     );
 
     private static final Set<String> PLANT_STOCK_FORMS = Set.of(
@@ -1549,7 +1575,9 @@ public enum IslandSuggestionTemplate {
             "natural_resource",
             "building_block",
             "decorative_block",
-            "utility"
+            "utility",
+            "ingredient",
+            "block"
     );
 
     private static final Set<String> CERAMICS_MOLDS_EXACT_PATHS = Set.of(
@@ -1657,6 +1685,82 @@ public enum IslandSuggestionTemplate {
             default -> Set.of();
         };
     }
+
+    private static Set<String> organizationGroupTriggersFor(IslandSuggestionTemplate template) {
+        return switch (template) {
+            case SEEDS -> Set.of("seeds");
+            case CROPS -> Set.of("crops");
+            case ORGANIC_MATERIALS -> Set.of("organic_materials");
+            case FOOD -> Set.of("food");
+            case TOOLS -> Set.of("tools");
+            case WEAPONS -> Set.of("weapons");
+            case ARMOR -> Set.of("armor");
+            case LIGHTING -> Set.of("lighting");
+            case METAL_STOCK -> Set.of("metal_stock");
+            case GEMS_CRYSTALS -> Set.of("gems_crystals");
+            case ORES_RAW_STOCK -> Set.of("ores_raw_stock");
+            case DUSTS_POWDERS -> Set.of("dusts_powders");
+            case WOOD -> Set.of("wood");
+            case PLANTS -> Set.of("plants");
+            case CERAMICS_MOLDS -> Set.of("ceramics_molds");
+            case MATERIALS -> Set.of("materials");
+            case STORAGE -> Set.of("storage");
+            case STAIRS -> Set.of("stairs");
+            case SLABS -> Set.of("slabs");
+            case WALLS -> Set.of("walls");
+            case DOORS -> Set.of("doors");
+            case FENCES -> Set.of("fences");
+            case WINDOWS -> Set.of("windows");
+            case BUILDING -> Set.of("building_blocks");
+            case DECORATION -> Set.of("decoration");
+            case NATURAL -> Set.of("natural");
+            case WORKBENCHES -> Set.of("workbenches");
+            case MECHANISMS -> Set.of("mechanisms");
+            case REDSTONE -> Set.of("redstone");
+            case UPGRADES -> Set.of("upgrades");
+            case TRANSPORT -> Set.of("transport");
+            case UTILITY -> Set.of("utility");
+            case CURIOSITY -> Set.of("curiosities");
+            case MISC -> Set.of("miscellaneous");
+        };
+    }
+
+    private static boolean hasMatchingOrganizationGroup(List<String> actualGroups, Set<String> triggerGroups) {
+        if (actualGroups == null || actualGroups.isEmpty() || triggerGroups == null || triggerGroups.isEmpty()) {
+            return false;
+        }
+        for (String group : actualGroups) {
+            if (group != null && triggerGroups.contains(group)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean blockRoleShouldYieldToLaterOrganizationGroup(List<String> actualGroups) {
+        if (actualGroups == null || actualGroups.isEmpty()) {
+            return false;
+        }
+        for (String group : actualGroups) {
+            if (POST_BUILDING_ORGANIZATION_GROUPS.contains(group)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static final Set<String> POST_BUILDING_ORGANIZATION_GROUPS = Set.of(
+            "decoration",
+            "natural",
+            "workbenches",
+            "mechanisms",
+            "redstone",
+            "upgrades",
+            "transport",
+            "utility",
+            "curiosities",
+            "miscellaneous"
+    );
 
     /**
      * First template that matches the descriptor in declaration order, or

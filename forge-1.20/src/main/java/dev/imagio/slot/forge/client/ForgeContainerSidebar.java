@@ -211,6 +211,9 @@ public final class ForgeContainerSidebar {
     }
 
     private static void release() {
+        if (activeSurface != null) {
+            activeSurface.closeSession();
+        }
         activeHostScreen = null;
         activeSurface = null;
     }

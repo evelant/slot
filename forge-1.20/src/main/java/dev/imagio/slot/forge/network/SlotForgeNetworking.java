@@ -53,10 +53,10 @@ public final class SlotForgeNetworking {
                 .decoder(ForgeWorkspaceViewModelMessage::decode)
                 .consumerMainThread(SlotForgeNetworking::handleWorkspaceView)
                 .add();
-        channel.messageBuilder(ForgeWorkspaceRefreshMessage.class, 3, NetworkDirection.PLAY_TO_SERVER)
-                .encoder(ForgeWorkspaceRefreshMessage::encode)
-                .decoder(ForgeWorkspaceRefreshMessage::decode)
-                .consumerMainThread(SlotForgeNetworking::handleWorkspaceRefresh)
+        channel.messageBuilder(ForgeWorkspaceCloseMessage.class, 3, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ForgeWorkspaceCloseMessage::encode)
+                .decoder(ForgeWorkspaceCloseMessage::decode)
+                .consumerMainThread(SlotForgeNetworking::handleWorkspaceClose)
                 .add();
         channel.messageBuilder(ForgeGatherActiveKitMessage.class, 4, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(ForgeGatherActiveKitMessage::encode)
@@ -108,16 +108,16 @@ public final class SlotForgeNetworking {
         }
     }
 
-    public static boolean refreshWorkspaceSession(ForgeWorkspaceRefreshMessage message) {
+    public static boolean closeWorkspaceSession(ForgeWorkspaceCloseMessage message) {
         if (channel == null) {
-            SlotCommon.LOGGER.warn("Cannot refresh Forge workspace session before network channel registration");
+            SlotCommon.LOGGER.warn("Cannot close Forge workspace session before network channel registration");
             return false;
         }
         try {
             channel.sendToServer(message);
             return true;
         } catch (RuntimeException exception) {
-            SlotCommon.LOGGER.warn("Failed to send Forge workspace refresh packet", exception);
+            SlotCommon.LOGGER.warn("Failed to send Forge workspace close packet", exception);
             return false;
         }
     }
@@ -219,19 +219,15 @@ public final class SlotForgeNetworking {
         ForgeWorkspaceViewModelClientCache.update(message.envelope(), message.viewModel());
     }
 
-    private static void handleWorkspaceRefresh(
-            ForgeWorkspaceRefreshMessage message,
+    private static void handleWorkspaceClose(
+            ForgeWorkspaceCloseMessage message,
             Supplier<NetworkEvent.Context> contextSupplier
     ) {
         ServerPlayer player = contextSupplier.get().getSender();
         WorkspaceActionSessionContext current = ForgeWorkspaceSessionRegistry.current(player);
         WorkspaceActionValidation session = WorkspaceActionSessionValidator.validate(message.envelope(), current);
-        if (!session.valid()) {
-            return;
-        }
-        ForgeWorkspaceSession workspaceSession = ForgeWorkspaceSessionRegistry.session(player);
-        if (workspaceSession != null) {
-            sendViewToPlayer(player, workspaceSession, false);
+        if (session.valid()) {
+            ForgeWorkspaceSessionRegistry.close(player);
         }
     }
 
@@ -423,13 +419,14 @@ public final class SlotForgeNetworking {
                 changed);
     }
 
-    private static void sendViewToPlayer(ServerPlayer player, ForgeWorkspaceSession session, boolean logViewSend) {
+    static void sendViewToPlayer(ServerPlayer player, ForgeWorkspaceSession session, boolean logViewSend) {
         if (player == null || channel == null || session == null) {
             return;
         }
         try {
             long previousRevision = session.context().latestViewRevision();
             SlotWorkspaceViewModel viewModel = session.project(player, logViewSend);
+            session.clearDirty();
             if (!logViewSend && viewModel.revision() == previousRevision) {
                 return;
             }

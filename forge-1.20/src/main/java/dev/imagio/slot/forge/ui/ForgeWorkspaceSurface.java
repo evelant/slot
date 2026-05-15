@@ -4,8 +4,8 @@ import dev.imagio.slot.forge.client.ForgeWorkspaceClient;
 import dev.imagio.slot.forge.client.ForgeContainerSidebar;
 import dev.imagio.slot.forge.config.SlotForgeClientConfig;
 import dev.imagio.slot.forge.network.ForgeWorkspaceActionChannel;
+import dev.imagio.slot.forge.network.ForgeWorkspaceCloseMessage;
 import dev.imagio.slot.forge.network.ForgeWorkspaceOpenMessage;
-import dev.imagio.slot.forge.network.ForgeWorkspaceRefreshMessage;
 import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
 import dev.imagio.slot.inventory.core.ItemIdentity;
@@ -72,7 +72,6 @@ public final class ForgeWorkspaceSurface {
     private static final int STANDALONE_BACKGROUND = 0x96060A0E;
     private static final int SIDEBAR_BACKGROUND = 0xD0060A0E;
     private static final int PANEL = 0xC8162029;
-    private static final long REFRESH_INTERVAL_TICKS = 10L;
     private static final int RECENT_REHOME_CAPACITY = 6;
     private static final int RECENT_REHOME_MAX_DISPLAYED = 3;
     private static final int REHOME_MENU_MAX_DISPLAYED = 8;
@@ -101,7 +100,6 @@ public final class ForgeWorkspaceSurface {
     private String lastSentSearchQuery = "";
     private boolean searchActive;
     private long appliedRevision = -1L;
-    private long lastRefreshGameTime = Long.MIN_VALUE;
     private String status;
     private boolean openSessionRequested;
     private boolean rebuildRequested = true;
@@ -157,10 +155,17 @@ public final class ForgeWorkspaceSurface {
         boolean sent = SlotForgeNetworking.openWorkspaceSession(new ForgeWorkspaceOpenMessage(envelope));
         status = sent ? openedStatus() : "failed to open SLOT workspace";
         if (sent) {
-            lastRefreshGameTime = clientGameTime();
             syncSearchQuery();
         }
         rebuildRequested = true;
+    }
+
+    public void closeSession() {
+        if (!openSessionRequested) {
+            return;
+        }
+        openSessionRequested = false;
+        SlotForgeNetworking.closeWorkspaceSession(new ForgeWorkspaceCloseMessage(envelope));
     }
 
     public void tick(int width, int height) {
@@ -176,7 +181,6 @@ public final class ForgeWorkspaceSurface {
         applyGoalStateIfChanged();
         boolean pointerActive = tree != null && tree.hasActivePointerGesture();
         if (!pointerActive) {
-            requestViewRefreshIfDue();
             applySyncedViewIfAvailable();
         }
         if (tree == null || (rebuildRequested && !pointerActive)) {
@@ -497,20 +501,6 @@ public final class ForgeWorkspaceSurface {
             return "opened chest sidebar";
         }
         return "opened SLOT workspace";
-    }
-
-    private void requestViewRefreshIfDue() {
-        if (!openSessionRequested) {
-            return;
-        }
-        long gameTime = clientGameTime();
-        if (lastRefreshGameTime != Long.MIN_VALUE
-                && gameTime >= lastRefreshGameTime
-                && gameTime - lastRefreshGameTime < REFRESH_INTERVAL_TICKS) {
-            return;
-        }
-        lastRefreshGameTime = gameTime;
-        SlotForgeNetworking.refreshWorkspaceSession(new ForgeWorkspaceRefreshMessage(envelope));
     }
 
     private void applySyncedViewIfAvailable() {
@@ -2945,14 +2935,6 @@ public final class ForgeWorkspaceSurface {
             return WorkspaceActionEnvelope.NO_MENU_CONTAINER;
         }
         return minecraft.player.containerMenu.containerId;
-    }
-
-    private static long clientGameTime() {
-        Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.level != null) {
-            return minecraft.level.getGameTime();
-        }
-        return System.currentTimeMillis() / 50L;
     }
 
     public enum Mode {

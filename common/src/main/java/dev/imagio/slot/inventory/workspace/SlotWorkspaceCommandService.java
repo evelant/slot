@@ -1037,7 +1037,10 @@ public final class SlotWorkspaceCommandService {
     /**
      * Set the active-scope desired count. If a kit is active the write lands
      * in that kit's desired-count scope; otherwise it lands in the player
-     * global scope. The platform adapter must not choose the scope.
+     * global scope. Clearing follows the scope behind the visible desired
+     * count so clearing a global fallback while a kit is active removes the
+     * fallback instead of writing a no-op kit clear. The platform adapter
+     * must not choose the scope.
      */
     public static WorkspaceCommandOutcome setPlayerDesiredCount(
             WorkflowDomainRuntime runtime,
@@ -1055,22 +1058,26 @@ public final class SlotWorkspaceCommandService {
         }
         DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
         String activeKit = desired.activeScope(runtime.snapshot().kitMap());
-        boolean changed = activeKit != null
-                ? desired.setForKit(activeKit, identity, count)
+        String writeKit = count <= 0
+                ? desiredVisibleScopeKit(desired, runtime, identity)
+                : activeKit;
+        boolean changed = writeKit != null
+                ? desired.setForKit(writeKit, identity, count)
                 : desired.setPlayer(identity, count);
         if (!changed) {
             return WorkspaceCommandOutcome.accepted("noop", "");
         }
-        String scopeTag = activeKit != null ? "kit" : "global";
+        String scopeTag = writeKit != null ? "kit" : "global";
         return WorkspaceCommandOutcome.accepted(
                 count > 0 ? "desired_count_" + scopeTag + "_" + count : "desired_count_cleared",
                 "");
     }
 
     /**
-     * Adjust the active-scope desired count. Mirrors
-     * {@link #setPlayerDesiredCount}: kit scope wins while a kit is active,
-     * otherwise the player-global standing order is changed.
+     * Adjust the visible desired count. Active kit scope wins when it has a
+     * non-zero override; otherwise global fallback remains editable while it
+     * is the value surfaced on the card. A new count still starts in the
+     * active kit scope when a kit is active.
      */
     public static WorkspaceCommandOutcome adjustPlayerDesiredCount(
             WorkflowDomainRuntime runtime,
@@ -1090,7 +1097,7 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.accepted("noop", "");
         }
         DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
-        String activeKit = desired.activeScope(runtime.snapshot().kitMap());
+        String activeKit = desiredVisibleScopeKit(desired, runtime, identity);
         boolean changed = activeKit != null
                 ? desired.adjustForKit(activeKit, identity, delta)
                 : desired.adjustPlayer(identity, delta);
@@ -1100,8 +1107,29 @@ public final class SlotWorkspaceCommandService {
         int now = activeKit != null
                 ? desired.getForKit(activeKit, identity)
                 : desired.getPlayer(identity);
+        if (now <= 0) {
+            return WorkspaceCommandOutcome.accepted("desired_count_cleared", "");
+        }
         String scopeTag = activeKit != null ? "kit" : "global";
         return WorkspaceCommandOutcome.accepted("desired_count_" + scopeTag + "_" + now, "");
+    }
+
+    private static String desiredVisibleScopeKit(
+            DesiredCountWorkflowDomainService desired,
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity
+    ) {
+        String activeKit = desired.activeScope(runtime.snapshot().kitMap());
+        if (activeKit == null || identity == null) {
+            return null;
+        }
+        if (desired.getForKit(activeKit, identity) > 0) {
+            return activeKit;
+        }
+        if (desired.getPlayer(identity) > 0) {
+            return null;
+        }
+        return activeKit;
     }
 
     /**
@@ -1133,9 +1161,9 @@ public final class SlotWorkspaceCommandService {
     }
 
     /**
-     * Adjust a wanted target. Scroll cannot clear the target; it
-     * clamps to carried count + 1 so an explicit keypress remains the only
-     * way to remove the marker.
+     * Adjust a wanted target. Wanted targets represent a desired carried
+     * total, so scrolling down to the currently carried count clears the
+     * marker instead of preserving a permanently-one-away target.
      */
     public static WorkspaceCommandOutcome adjustWantedCount(
             WorkflowDomainRuntime runtime,
@@ -1155,9 +1183,17 @@ public final class SlotWorkspaceCommandService {
         if (delta == 0) {
             return WorkspaceCommandOutcome.accepted("wanted unchanged", identity.itemId());
         }
-        int minimum = SlotWorkspaceViewModel.carriedMovableCount(authority, identity) + 1;
-        int current = Math.max(minimum, runtime.wantedCountWorkflow().getPlayer(identity));
-        int target = Math.max(minimum, current + delta);
+        int carried = SlotWorkspaceViewModel.carriedMovableCount(authority, identity);
+        int current = runtime.wantedCountWorkflow().getPlayer(identity);
+        int target = current > carried
+                ? current + delta
+                : carried + Math.max(0, delta);
+        if (target <= carried) {
+            boolean changed = runtime.wantedCountWorkflow().clearPlayer(identity);
+            return WorkspaceCommandOutcome.accepted(
+                    changed ? "wanted cleared" : "wanted unchanged",
+                    identity.itemId());
+        }
         runtime.wantedCountWorkflow().setPlayer(identity, target);
         return WorkspaceCommandOutcome.accepted("wanted count updated", identity.itemId() + " target=" + target);
     }

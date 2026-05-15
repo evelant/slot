@@ -235,15 +235,14 @@ class FacetIndexTest {
         assertEquals(Optional.of("tool"), index.role("minecraft:diamond_pickaxe"));
         assertEquals(Optional.of("weapon"), index.role("minecraft:diamond_sword"));
         assertEquals(Optional.of("armor"), index.role("minecraft:diamond_helmet"));
-        assertEquals(Optional.of("consumable"), index.role("minecraft:cooked_beef"));
-        assertEquals(Optional.of("material"), index.role("minecraft:iron_ingot"));
-        assertEquals(Optional.of("building_block"), index.role("minecraft:oak_planks"));
-        assertEquals(Optional.of("storage_block"), index.role("minecraft:chest"));
+        assertEquals(Optional.of("food"), index.role("minecraft:cooked_beef"));
+        assertEquals(Optional.of("ingredient"), index.role("minecraft:iron_ingot"));
+        assertEquals(Optional.of("block"), index.role("minecraft:oak_planks"));
+        assertEquals(Optional.of("block"), index.role("minecraft:chest"));
 
-        // material_family unifies wood blocks across role inconsistencies
-        // — e.g. birch_wood is currently labelled natural_resource while
-        // birch_planks is building_block, but both share wood_birch and
-        // that shared family is what learned-rule adjacency keys on.
+        // material_family unifies wood blocks even when the broad role is
+        // just "block"; that shared family is what learned-rule adjacency
+        // keys on.
         assertEquals(Optional.of("wood_birch"), index.materialFamily("minecraft:birch_wood"));
         assertEquals(Optional.of("wood_birch"), index.materialFamily("minecraft:birch_planks"));
         assertEquals(Optional.of("wood_oak"), index.materialFamily("minecraft:oak_planks"));
@@ -322,18 +321,12 @@ class FacetIndexTest {
     }
 
     @Test
-    void bundledLoadAllIncludesPerModEntries() {
+    void bundledLoadAllIsVanillaOnlyByDefault() {
         FacetIndex index = FacetIndexBootstrap.loadAll();
-        // Vanilla items remain accessible.
         assertEquals(Optional.of("tool"), index.role("minecraft:diamond_pickaxe"));
-        // A handful of mod items from each per-mod layer should resolve.
-        // These IDs come from the bundled per-mod files; if any are
-        // renamed upstream, update the assertion alongside the bump.
-        assertEquals(Optional.of("mechanism"), index.role("create:cogwheel"));
-        assertEquals(Optional.of("upgrade"),
-                index.role("sophisticatedstorage:advanced_alchemy_upgrade"));
-        assertTrue(index.size() > 1500,
-                "bundled per-mod entries should push total size above vanilla-base alone");
+        assertEquals(Optional.empty(), index.role("create:cogwheel"));
+        assertEquals(FacetIndexBootstrap.loadVanillaBase().size(), index.size(),
+                "bundled loadAll should contain vanilla only unless datapack/resource layers are supplied");
     }
 
     @Test

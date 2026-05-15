@@ -74,6 +74,12 @@ public final class ForgeWorkspaceScreen extends Screen {
     }
 
     @Override
+    public void removed() {
+        surface.closeSession();
+        super.removed();
+    }
+
+    @Override
     public boolean isPauseScreen() {
         return false;
     }

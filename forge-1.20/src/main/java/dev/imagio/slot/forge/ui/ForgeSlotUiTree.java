@@ -56,9 +56,12 @@ public final class ForgeSlotUiTree {
     private final TaffyTree taffy = new TaffyTree();
     private final Map<NodeId, Node> nodes = new HashMap<>();
     private final Map<NodeId, NodeId> parents = new HashMap<>();
+    private final List<Node> tickNodes = new ArrayList<>();
     private NodeId rootId;
     private Node lastMouseDown;
     private Node hovered;
+    private float computedWidth = Float.NaN;
+    private float computedHeight = Float.NaN;
 
     public enum Icon {
         GATHER,
@@ -81,12 +84,17 @@ public final class ForgeSlotUiTree {
         if (rootId == null) {
             return;
         }
+        if (Float.compare(computedWidth, width) == 0 && Float.compare(computedHeight, height) == 0) {
+            return;
+        }
         taffy.computeLayout(rootId, TaffySize.of(
                 AvailableSpace.definite(width),
                 AvailableSpace.definite(height)));
         for (Node node : nodes.values()) {
             node.refreshContentHeight();
         }
+        computedWidth = width;
+        computedHeight = height;
     }
 
     public float scrollY() {
@@ -272,8 +280,12 @@ public final class ForgeSlotUiTree {
     }
 
     public void tick() {
-        for (Node node : nodes.values()) {
-            node.model.dispatch(new SlotUiEvent(SlotUiEventKind.TICK, 0, 0, 0, false));
+        if (tickNodes.isEmpty()) {
+            return;
+        }
+        SlotUiEvent event = new SlotUiEvent(SlotUiEventKind.TICK, 0, 0, 0, false);
+        for (Node node : tickNodes) {
+            node.model.dispatch(event);
         }
     }
 
@@ -297,6 +309,9 @@ public final class ForgeSlotUiTree {
         }
         Node node = new Node(id, model);
         nodes.put(id, node);
+        if (model.hasEventBindings(SlotUiEventKind.TICK)) {
+            tickNodes.add(node);
+        }
         for (Node child : childNodes) {
             parents.put(child.id, id);
         }
@@ -477,7 +492,7 @@ public final class ForgeSlotUiTree {
         if (node.model.kind() != SlotUiElement.Kind.ITEM_ICON) {
             return;
         }
-        ItemStack stack = node.model.itemStack();
+        ItemStack stack = node.model.itemStackView();
         if (stack.isEmpty()) {
             return;
         }
@@ -485,16 +500,12 @@ public final class ForgeSlotUiTree {
         float scale = size / 16f;
         int drawX = Math.round(x + (width - size) / 2f);
         int drawY = Math.round(y + (height - size) / 2f);
-        ItemStack iconStack = stack.copy();
-        if (!node.model.renderVanillaCount()) {
-            iconStack.setCount(1);
-        }
         graphics.pose().pushPose();
         graphics.pose().translate(drawX, drawY, 0);
         graphics.pose().scale(scale, scale, 1f);
-        graphics.renderItem(iconStack, 0, 0);
+        graphics.renderItem(stack, 0, 0);
         if (node.model.renderVanillaCount()) {
-            graphics.renderItemDecorations(font, iconStack, 0, 0);
+            graphics.renderItemDecorations(font, stack, 0, 0);
         }
         graphics.pose().popPose();
         if (!node.model.itemCarried()) {
@@ -664,7 +675,7 @@ public final class ForgeSlotUiTree {
     private TooltipContent tooltipFor(Node node) {
         Node current = node;
         while (current != null) {
-            ItemStack stack = current.model.tooltipStack();
+            ItemStack stack = current.model.tooltipStackView();
             List<Component> lines = current.model.tooltipLines();
             if (!stack.isEmpty()) {
                 return new TooltipContent(stack, lines);

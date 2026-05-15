@@ -197,6 +197,28 @@ class SlotWorkspaceKitCommandServiceTest {
     }
 
     @Test
+    void clearPlayerDesiredCountClearsVisibleGlobalFallbackWhenKitActive() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity identity = ItemIdentity.of("minecraft:coal");
+        runtime.desiredCountWorkflow().setPlayer(identity, 1);
+        KitDefinition kit = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().activate(kit.id());
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setPlayerDesiredCount(
+                runtime,
+                "minecraft:coal",
+                "",
+                "",
+                0
+        );
+
+        assertTrue(outcome.success());
+        assertEquals("desired_count_cleared", outcome.status());
+        assertEquals(0, runtime.desiredCountWorkflow().getPlayer(identity));
+        assertEquals(0, runtime.desiredCountWorkflow().getForKit(kit.id(), identity));
+    }
+
+    @Test
     void adjustPlayerDesiredCountUsesGlobalScopeWhenNoKitActive() {
         WorkflowDomainRuntime runtime = runtime();
         SlotWorkspaceCommandService.setPlayerDesiredCount(runtime, "minecraft:arrow", "", "", 4);
@@ -212,6 +234,48 @@ class SlotWorkspaceKitCommandServiceTest {
         assertTrue(outcome.success());
         assertEquals("desired_count_global_7", outcome.status());
         assertEquals(7, runtime.desiredCountWorkflow().getPlayer(ItemIdentity.of("minecraft:arrow")));
+    }
+
+    @Test
+    void adjustPlayerDesiredCountClearsGlobalScopeAtZero() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity identity = ItemIdentity.of("minecraft:arrow");
+        SlotWorkspaceCommandService.setPlayerDesiredCount(runtime, "minecraft:arrow", "", "", 1);
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.adjustPlayerDesiredCount(
+                runtime,
+                "minecraft:arrow",
+                "",
+                "",
+                -1
+        );
+
+        assertTrue(outcome.success());
+        assertEquals("desired_count_cleared", outcome.status());
+        assertEquals(0, runtime.desiredCountWorkflow().getPlayer(identity));
+        assertFalse(runtime.desiredCountWorkflow().allPlayer().containsKey(identity));
+    }
+
+    @Test
+    void adjustPlayerDesiredCountClearsVisibleGlobalFallbackWhenKitActive() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity identity = ItemIdentity.of("minecraft:arrow");
+        runtime.desiredCountWorkflow().setPlayer(identity, 1);
+        KitDefinition kit = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().activate(kit.id());
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.adjustPlayerDesiredCount(
+                runtime,
+                "minecraft:arrow",
+                "",
+                "",
+                -1
+        );
+
+        assertTrue(outcome.success());
+        assertEquals("desired_count_cleared", outcome.status());
+        assertEquals(0, runtime.desiredCountWorkflow().getPlayer(identity));
+        assertEquals(0, runtime.desiredCountWorkflow().getForKit(kit.id(), identity));
     }
 
     @Test
@@ -233,22 +297,38 @@ class SlotWorkspaceKitCommandServiceTest {
     }
 
     @Test
-    void wantedCountAdjustClampsAboveCarriedAndClearsWhenSatisfied() {
+    void wantedCountAdjustClearsWhenScrolledToCarriedTarget() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity identity = ItemIdentity.of("minecraft:torch");
+        InventoryAuthoritySnapshot carriedThree = carriedAuthority("minecraft:torch", 3);
+        runtime.wantedCountWorkflow().setPlayer(identity, 4);
+
+        WorkspaceCommandOutcome adjusted = SlotWorkspaceCommandService.adjustWantedCount(
+                runtime, carriedThree, "minecraft:torch", "", "", -1);
+
+        assertTrue(adjusted.success());
+        assertEquals("wanted cleared", adjusted.status());
+        assertEquals(0, runtime.wantedCountWorkflow().getPlayer(identity));
+        assertFalse(runtime.wantedCountWorkflow().allPlayer().containsKey(identity));
+    }
+
+    @Test
+    void wantedCountAdjustKeepsUnsatisfiedTargetAndClearsWhenSatisfied() {
         WorkflowDomainRuntime runtime = runtime();
         ItemIdentity identity = ItemIdentity.of("minecraft:torch");
         InventoryAuthoritySnapshot carriedThree = carriedAuthority("minecraft:torch", 3);
         runtime.wantedCountWorkflow().setPlayer(identity, 8);
 
         WorkspaceCommandOutcome adjusted = SlotWorkspaceCommandService.adjustWantedCount(
-                runtime, carriedThree, "minecraft:torch", "", "", -99);
+                runtime, carriedThree, "minecraft:torch", "", "", -3);
 
         assertTrue(adjusted.success());
-        assertEquals(4, runtime.wantedCountWorkflow().getPlayer(identity));
+        assertEquals(5, runtime.wantedCountWorkflow().getPlayer(identity));
 
         SlotWorkspaceCommandService.clearSatisfiedWantedCounts(runtime, carriedThree);
-        assertEquals(4, runtime.wantedCountWorkflow().getPlayer(identity));
+        assertEquals(5, runtime.wantedCountWorkflow().getPlayer(identity));
 
-        SlotWorkspaceCommandService.clearSatisfiedWantedCounts(runtime, carriedAuthority("minecraft:torch", 4));
+        SlotWorkspaceCommandService.clearSatisfiedWantedCounts(runtime, carriedAuthority("minecraft:torch", 5));
         assertEquals(0, runtime.wantedCountWorkflow().getPlayer(identity));
     }
 

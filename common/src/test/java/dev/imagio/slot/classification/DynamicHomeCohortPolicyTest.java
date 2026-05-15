@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DynamicHomeCohortPolicyTest {
 
     @Test
-    void countsOrganizationGroupCohortsButDoesNotQualifyWhileHomingDisabled() {
+    void countsAndQualifiesOrganizationGroupCohorts() {
         ArrayList<String> entries = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             entries.add(entry("tfc:ceramic/casting_mold_" + i, "utility", "tfc:casting"));
@@ -45,9 +45,17 @@ class DynamicHomeCohortPolicyTest {
         assertEquals(0, policy.count("create:decoration"));
         assertEquals(10, policy.organizationGroupCount("tfc:masonry"));
         assertEquals(10, policy.organizationGroupCount("tfc:masonry_decor"));
-        assertFalse(policy.organizationGroupQualifies("tfc:masonry"));
-        assertFalse(policy.organizationGroupQualifies("tfc:masonry_decor"));
+        assertTrue(policy.organizationGroupQualifies("tfc:masonry"));
+        assertTrue(policy.organizationGroupQualifies("tfc:masonry_decor"));
         assertFalse(policy.organizationGroupQualifies("tfc:tiny_group"));
+    }
+
+    @Test
+    void bundledVanillaGroupsCanQualifyForDynamicHomes() {
+        DynamicHomeCohortPolicy policy = DynamicHomeCohortPolicy.from(FacetIndexBootstrap.loadVanillaBase());
+
+        assertTrue(policy.organizationGroupCount("building_blocks") >= DynamicHomeCohortPolicy.DEFAULT_MIN_SUBSYSTEM_ITEMS);
+        assertTrue(policy.organizationGroupQualifies("building_blocks"));
     }
 
     private static String layer(List<String> entries) {

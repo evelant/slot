@@ -236,7 +236,7 @@ class SlotWorkspaceCommandServiceRehomeTest {
     }
 
     @Test
-    void reclassifyHomesIgnoresOrganizationGroupWhileGroupHomingDisabled() {
+    void reclassifyHomesMaterializesQualifiedOrganizationGroup() {
         FacetIndexHolder.install(FacetIndex.load(new StringReader(layerWithMasonryGroupCohort())));
         try {
             WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
@@ -256,8 +256,9 @@ class SlotWorkspaceCommandServiceRehomeTest {
             assertEquals(1, result.islandsCreated());
             VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().visualHomeMap().assignment(mortar);
             assertNotNull(assignment);
-            assertEquals("materials", assignment.islandId());
+            assertEquals("group:tfc:masonry", assignment.islandId());
             assertEquals(VisualHomeOrigin.AUTO_HOMED, assignment.origin());
+            assertNotNull(runtime.visualAtlasWorkflow().visualHomeMap().island("group:tfc:masonry"));
         } finally {
             FacetIndexHolder.reset();
         }

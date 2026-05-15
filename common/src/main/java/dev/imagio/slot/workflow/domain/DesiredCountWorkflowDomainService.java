@@ -136,9 +136,10 @@ public final class DesiredCountWorkflowDomainService {
     /**
      * Active write scope for the player. Returns the active kit's id when
      * a kit is active (writes go to that kit's scope), or null when no
-     * kit is active (writes go to the player-global scope). Mirrors the
-     * read-side resolution rule so a ctrl+scroll on an atlas card lands
-     * in the same scope the player would see surfaced on the card.
+     * kit is active (writes go to the player-global scope). Callers that
+     * edit an already-visible value must still account for global fallback
+     * themselves; {@link #resolved(KitMap, ItemIdentity)} remains the
+     * read-side rule.
      */
     public String activeScope(KitMap kitMap) {
         if (kitMap == null) {

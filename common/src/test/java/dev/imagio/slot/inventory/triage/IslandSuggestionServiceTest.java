@@ -285,6 +285,25 @@ class IslandSuggestionServiceTest {
     }
 
     @Test
+    void qualifiedOrganizationGroupSurfacesMaterializableChip() {
+        List<ChipSuggestion> chips = IslandSuggestionService.suggest(
+                organizationDescriptor("tfc:mortar", "material", "tfc:masonry"),
+                new LearnedIslandRuleStore(),
+                List.of(),
+                Set.of(),
+                id -> false,
+                id -> "tfc:masonry".equals(id)
+        );
+
+        assertEquals(1, chips.size());
+        ChipSuggestion chip = chips.get(0);
+        assertEquals(ChipSuggestion.ChipKind.LEARNED, chip.kind());
+        assertEquals("group:tfc:masonry", chip.islandId());
+        assertEquals("Tfc — Masonry", chip.label());
+        assertEquals(ItemIdentity.of("tfc:mortar"), chip.iconIdentity());
+    }
+
+    @Test
     void dyeColorAdjacencyDrivesLearnedChipEndToEnd() {
         LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
         rules.recordAssignment(dyedDescriptor("modded:white_wool", "white"),
@@ -404,6 +423,30 @@ class IslandSuggestionServiceTest {
                 null,
                 null,
                 subsystemId == null ? List.of() : List.of(subsystemId),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                List.of(),
+                null,
+                false
+        );
+    }
+
+    private static IslandSignalDescriptor organizationDescriptor(String itemId, String role, String groupId) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of(),
+                itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
+                "",
+                role,
+                null,
+                null,
+                List.of(),
+                groupId == null ? List.of() : List.of(groupId),
                 List.of(),
                 null,
                 null,

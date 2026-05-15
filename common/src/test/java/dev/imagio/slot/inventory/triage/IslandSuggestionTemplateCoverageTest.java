@@ -1,6 +1,5 @@
 package dev.imagio.slot.inventory.triage;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dev.imagio.slot.classification.FacetIndex;
@@ -12,12 +11,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -34,26 +32,20 @@ class IslandSuggestionTemplateCoverageTest {
 
     @Test
     void everyVanillaRoleResolvesToATemplate() throws Exception {
-        Map<String, String> rolesByItemId = loadVanillaRoles();
-        assertTrue(rolesByItemId.size() >= 1000,
+        FacetIndex index = FacetIndexBootstrap.loadVanillaBase();
+        assertTrue(index.itemIds().size() >= 1000,
                 "bundled vanilla dataset should expose at least 1000 role-bearing entries; got "
-                        + rolesByItemId.size());
+                        + index.itemIds().size());
 
         java.util.Set<String> unmatchedRoles = new java.util.LinkedHashSet<>();
-        java.util.LinkedHashMap<String, Integer> coverageByTemplate = new java.util.LinkedHashMap<>();
+        LinkedHashMap<String, Integer> coverageByTemplate = new LinkedHashMap<>();
 
-        for (Map.Entry<String, String> entry : rolesByItemId.entrySet()) {
-            String itemId = entry.getKey();
-            String role = entry.getValue();
-            IslandSignalDescriptor descriptor = new IslandSignalDescriptor(
-                    ItemIdentity.of(itemId),
-                    Set.of(),
-                    Set.of(),
-                    namespaceOf(itemId),
-                    "",
-                    role,
-                    null
-            );
+        for (String itemId : index.itemIds()) {
+            String role = index.role(itemId).orElse(null);
+            if (role == null) {
+                continue;
+            }
+            IslandSignalDescriptor descriptor = descriptorFrom(index, itemId);
             IslandSuggestionTemplate match = IslandSuggestionTemplate.firstMatch(descriptor);
             if (match == null) {
                 unmatchedRoles.add(role);
@@ -69,17 +61,9 @@ class IslandSuggestionTemplateCoverageTest {
 
     @Test
     void firstMatchOrMiscNeverReturnsNullForVanillaItems() throws Exception {
-        Map<String, String> rolesByItemId = loadVanillaRoles();
-        for (Map.Entry<String, String> entry : rolesByItemId.entrySet()) {
-            IslandSignalDescriptor descriptor = new IslandSignalDescriptor(
-                    ItemIdentity.of(entry.getKey()),
-                    Set.of(),
-                    Set.of(),
-                    namespaceOf(entry.getKey()),
-                    "",
-                    entry.getValue(),
-                    null
-            );
+        FacetIndex index = FacetIndexBootstrap.loadVanillaBase();
+        for (String itemId : index.itemIds()) {
+            IslandSignalDescriptor descriptor = descriptorFrom(index, itemId);
             IslandSuggestionTemplate match = IslandSuggestionTemplate.firstMatchOrMisc(descriptor);
             assertNotNull(match, "firstMatchOrMisc must always return a template");
         }
@@ -90,14 +74,12 @@ class IslandSuggestionTemplateCoverageTest {
         // Locks in fixes for the specific items playtest surfaced as
         // misclassified. If a future regeneration regresses any of
         // these, the test points exactly at what flipped.
-        Map<String, IslandSuggestionTemplate> expected = new java.util.LinkedHashMap<>();
+        Map<String, IslandSuggestionTemplate> expected = new LinkedHashMap<>();
         // Doors / trapdoors / fence_gates → DOORS (split out of
         // BUILDING by form-keyed template; players think of doors as
         // their own category).
         expected.put("minecraft:jungle_door", IslandSuggestionTemplate.DOORS);
         expected.put("minecraft:iron_door", IslandSuggestionTemplate.DOORS);
-        expected.put("minecraft:oxidized_copper_door", IslandSuggestionTemplate.DOORS);
-        expected.put("minecraft:exposed_copper_door", IslandSuggestionTemplate.DOORS);
         expected.put("minecraft:oak_trapdoor", IslandSuggestionTemplate.DOORS);
         expected.put("minecraft:iron_trapdoor", IslandSuggestionTemplate.DOORS);
         expected.put("minecraft:oak_fence_gate", IslandSuggestionTemplate.DOORS);
@@ -139,16 +121,13 @@ class IslandSuggestionTemplateCoverageTest {
         // Raw ores → ORES_RAW_STOCK, not the broad MATERIALS pile.
         expected.put("minecraft:raw_iron", IslandSuggestionTemplate.ORES_RAW_STOCK);
 
-        Map<String, String> rolesByItemId = loadVanillaRoles();
+        FacetIndex index = FacetIndexBootstrap.loadVanillaBase();
         for (Map.Entry<String, IslandSuggestionTemplate> e : expected.entrySet()) {
-            String role = rolesByItemId.get(e.getKey());
-            assertNotNull(role, "expected role facet for " + e.getKey());
-            IslandSignalDescriptor descriptor = new IslandSignalDescriptor(
-                    ItemIdentity.of(e.getKey()), Set.of(), Set.of(),
-                    namespaceOf(e.getKey()), "", role, null);
+            assertTrue(index.itemIds().contains(e.getKey()), "expected bundled vanilla entry for " + e.getKey());
+            IslandSignalDescriptor descriptor = descriptorFrom(index, e.getKey());
             IslandSuggestionTemplate match = IslandSuggestionTemplate.firstMatch(descriptor);
             org.junit.jupiter.api.Assertions.assertEquals(e.getValue(), match,
-                    e.getKey() + " (role=" + role + ") should resolve to " + e.getValue());
+                    e.getKey() + " (" + describe(descriptor) + ") should resolve to " + e.getValue());
         }
     }
 
@@ -171,90 +150,52 @@ class IslandSuggestionTemplateCoverageTest {
     }
 
     @Test
-    void bundledPerModDataExposesQualifiedSubsystems() {
-        // Phase 2 acceptance: when the bundled per-mod data is loaded,
-        // a histogram across the dataset should show the major Create
-        // subsystems clearing the threshold (=4). This locks the dataset
-        // shape: subsystem-aware islands are realistic for the modpacks
-        // we ship with — not aspirational.
+    void bundledPerModDataIsEmptyByDefault() {
+        // Pack-specific classifications are now supplied by datapack/resource
+        // layers under data/slot/classification/layers/*.json, not bundled into
+        // the base mod jar for every player.
         FacetIndex index = FacetIndexBootstrap.loadAll();
-        assertTrue(index.size() > 1500, "bundled per-mod data must be loaded");
-
-        // The dataset itself; exercising index.subsystems() across every
-        // item builds the same histogram the generator does at runtime.
-        HashMap<String, Integer> hist = new HashMap<>();
         try (InputStream stream = FacetIndexBootstrap.class.getResourceAsStream(
                 FacetIndexBootstrap.PER_MOD_INDEX_RESOURCE);
              Reader manifestReader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
             JsonObject manifest = JsonParser.parseReader(manifestReader).getAsJsonObject();
-            for (JsonElement m : manifest.getAsJsonArray("mods")) {
-                String modId = m.getAsString();
-                try (InputStream perMod = FacetIndexBootstrap.class.getResourceAsStream(
-                        FacetIndexBootstrap.PER_MOD_RESOURCE_PREFIX + modId + ".json");
-                     Reader perModReader = new InputStreamReader(perMod, StandardCharsets.UTF_8)) {
-                    JsonObject root = JsonParser.parseReader(perModReader).getAsJsonObject();
-                    JsonObject entries = root.getAsJsonObject("entries");
-                    for (Map.Entry<String, JsonElement> entry : entries.entrySet()) {
-                        List<String> subs = index.subsystems(entry.getKey());
-                        for (String s : subs) {
-                            hist.merge(s, 1, Integer::sum);
-                        }
-                    }
-                }
-            }
+            assertEquals(0, manifest.getAsJsonArray("mods").size());
         } catch (Exception e) {
-            org.junit.jupiter.api.Assertions.fail("failed to read bundled per-mod data", e);
+            org.junit.jupiter.api.Assertions.fail("failed to read bundled per-mod manifest", e);
         }
-
-        // The Create subsystems whose parent template (MECHANISMS /
-        // WORKBENCHES / TRANSPORT) honors subsystem grouping must clear
-        // the 10-item threshold. If a regeneration drops one of these
-        // below 10, the populate atlas silently loses its dedicated
-        // island — fail loudly here so we notice.
-        Set<String> expectedQualified = Set.of(
-                "create:mechanical_power",
-                "create:logistics",
-                "create:contraptions"
-        );
-        for (String subsystemId : expectedQualified) {
-            Integer count = hist.get(subsystemId);
-            assertNotNull(count,
-                    "expected subsystem " + subsystemId + " to be present in bundled data");
-            assertTrue(count >= 10,
-                    "expected subsystem " + subsystemId + " to have ≥10 items; got " + count);
-        }
+        assertEquals(FacetIndexBootstrap.loadVanillaBase().size(), index.size());
     }
 
-    private static Map<String, String> loadVanillaRoles() throws Exception {
-        try (InputStream in = FacetIndexBootstrap.class.getResourceAsStream(
-                FacetIndexBootstrap.VANILLA_BASE_RESOURCE)) {
-            assertNotNull(in, "bundled vanilla-base.json must exist on classpath");
-            try (Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8)) {
-                JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();
-                JsonObject entries = root.getAsJsonObject("entries");
-                LinkedHashMap<String, String> out = new LinkedHashMap<>();
-                for (Map.Entry<String, JsonElement> entry : entries.entrySet()) {
-                    JsonObject entryObj = entry.getValue().getAsJsonObject();
-                    if (!entryObj.has("facets")) {
-                        continue;
-                    }
-                    JsonObject facets = entryObj.getAsJsonObject("facets");
-                    if (!facets.has("role")) {
-                        continue;
-                    }
-                    JsonObject roleFacet = facets.getAsJsonObject("role");
-                    if (!roleFacet.has("value")) {
-                        continue;
-                    }
-                    JsonElement value = roleFacet.get("value");
-                    if (value.isJsonNull() || !value.isJsonPrimitive()) {
-                        continue;
-                    }
-                    out.put(entry.getKey(), value.getAsString());
-                }
-                return out;
-            }
-        }
+    private static IslandSignalDescriptor descriptorFrom(FacetIndex index, String itemId) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of(),
+                namespaceOf(itemId),
+                "",
+                index.role(itemId).orElse(null),
+                index.roleAlternatives(itemId),
+                index.materialFamily(itemId).orElse(null),
+                index.subsystems(itemId),
+                index.organizationGroups(itemId),
+                index.activities(itemId),
+                index.flavor(itemId).orElse(null),
+                index.carryFrequency(itemId).orElse(null),
+                index.rarity(itemId).orElse(null),
+                index.origin(itemId).orElse(null),
+                index.dyeColor(itemId).orElse(null),
+                index.palette(itemId),
+                index.form(itemId).orElse(null),
+                index.emitsLight(itemId)
+        );
+    }
+
+    private static String describe(IslandSignalDescriptor descriptor) {
+        return "role=" + descriptor.role()
+                + ", form=" + descriptor.form()
+                + ", material_family=" + descriptor.materialFamily()
+                + ", organization_groups=" + descriptor.organizationGroups()
+                + ", activities=" + descriptor.activities();
     }
 
     private static String namespaceOf(String itemId) {

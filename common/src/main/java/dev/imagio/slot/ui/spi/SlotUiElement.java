@@ -159,6 +159,11 @@ public final class SlotUiElement {
         return List.copyOf(bindings);
     }
 
+    public boolean hasEventBindings(SlotUiEventKind kind) {
+        List<SlotUiEventBinding> bindings = kind == null ? null : eventBindings.get(kind);
+        return bindings != null && !bindings.isEmpty();
+    }
+
     public void dispatch(SlotUiEvent event) {
         if (event == null) {
             return;
@@ -167,7 +172,7 @@ public final class SlotUiElement {
         if (bindings == null || bindings.isEmpty()) {
             return;
         }
-        for (SlotUiEventBinding binding : List.copyOf(bindings)) {
+        for (SlotUiEventBinding binding : bindings) {
             binding.handler().handle(event);
         }
     }
@@ -253,6 +258,10 @@ public final class SlotUiElement {
         return itemStack == null ? ItemStack.EMPTY : itemStack.copy();
     }
 
+    public ItemStack itemStackView() {
+        return itemStack == null ? ItemStack.EMPTY : itemStack;
+    }
+
     public SlotUiElement itemIconSize(float value) {
         itemIconSize = value;
         return this;
@@ -287,6 +296,10 @@ public final class SlotUiElement {
 
     public ItemStack tooltipStack() {
         return tooltipStack == null ? ItemStack.EMPTY : tooltipStack.copy();
+    }
+
+    public ItemStack tooltipStackView() {
+        return tooltipStack == null ? ItemStack.EMPTY : tooltipStack;
     }
 
     public SlotUiElement tooltip(Component... lines) {

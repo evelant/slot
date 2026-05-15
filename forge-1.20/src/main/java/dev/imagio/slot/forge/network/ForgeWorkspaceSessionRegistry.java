@@ -5,9 +5,11 @@ import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
 import dev.imagio.slot.ui.action.WorkspaceActionValidation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
+import java.util.Map.Entry;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -33,10 +35,15 @@ public final class ForgeWorkspaceSessionRegistry {
             return WorkspaceActionValidation.rejected(
                     "wrong_menu:expected=" + menu.containerId + ":actual=" + envelope.menuContainerId());
         }
+        ForgeWorkspaceSession previous = SESSIONS.remove(player.getUUID());
+        if (previous != null) {
+            previous.detachMenuListener();
+        }
         ForgeWorkspaceSession session = new ForgeWorkspaceSession(
                 envelope,
                 menu.containerId,
                 ForgePlayerWorkflowRuntimeService.runtime(player));
+        session.attachMenuListener(player);
         SESSIONS.put(player.getUUID(), session);
         SlotCommon.LOGGER.info(
                 "Opened Forge workspace session: player={} session={} menu={} revision={}",
@@ -64,6 +71,7 @@ public final class ForgeWorkspaceSessionRegistry {
         AbstractContainerMenu menu = player.containerMenu;
         if (menu == null || menu.containerId != context.menuContainerId()) {
             SESSIONS.remove(player.getUUID(), session);
+            session.detachMenuListener();
             SlotCommon.LOGGER.info(
                     "Closed stale Forge workspace session after menu drift: player={} session={} expectedMenu={} actualMenu={}",
                     player.getGameProfile().getName(),
@@ -77,11 +85,49 @@ public final class ForgeWorkspaceSessionRegistry {
 
     public static void close(ServerPlayer player) {
         if (player != null) {
-            SESSIONS.remove(player.getUUID());
+            ForgeWorkspaceSession session = SESSIONS.remove(player.getUUID());
+            if (session != null) {
+                session.detachMenuListener();
+            }
+        }
+    }
+
+    public static void closeIfMenu(ServerPlayer player, AbstractContainerMenu menu) {
+        if (player == null || menu == null) {
+            return;
+        }
+        ForgeWorkspaceSession session = SESSIONS.get(player.getUUID());
+        if (session != null && (session.observes(menu) || session.context().menuContainerId() == menu.containerId)) {
+            close(player);
+        }
+    }
+
+    public static void flushDirty(MinecraftServer server) {
+        if (server == null || SESSIONS.isEmpty()) {
+            return;
+        }
+        for (Entry<UUID, ForgeWorkspaceSession> entry : SESSIONS.entrySet()) {
+            ServerPlayer player = server.getPlayerList().getPlayer(entry.getKey());
+            if (player == null) {
+                ForgeWorkspaceSession removed = SESSIONS.remove(entry.getKey());
+                if (removed != null) {
+                    removed.detachMenuListener();
+                }
+                continue;
+            }
+            ForgeWorkspaceSession session = session(player);
+            if (session == null || !session.dirty()) {
+                continue;
+            }
+            SlotForgeNetworking.sendViewToPlayer(player, session, false);
+            session.clearDirty();
         }
     }
 
     public static void clear() {
+        for (ForgeWorkspaceSession session : SESSIONS.values()) {
+            session.detachMenuListener();
+        }
         SESSIONS.clear();
     }
 }
