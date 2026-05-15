@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-14
+Last updated: 2026-05-15
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -91,7 +91,7 @@ hold the rest.
   `mods/` scanning, jar extraction, OpenRouter live runs, runtime export,
   datapack generation, dynamic organization-group auto-home cohorts,
   inspect/rehome commands, vocabulary-backed evidence/proposals,
-  accepted-vocabulary Stage 3 prompting, and explicit chest-signal
+  vocabulary-grounded Stage 3 prompting, and explicit chest-signal
   deposit routing (learned affinity or existing matching contents).
 - **2026-05-07** — Forge parity pass moved active-kit gather and
   in-world kit-page cycle into shared common services, registered
@@ -210,34 +210,27 @@ track lands.
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; atlas-deposit take-back guard (only revisit if playtest
    shows stuck affinity).
-4. **Classification dry-run/canary after pipeline refactor**
-   ([classification-pipeline-refactor.md](classification-pipeline-refactor.md),
-   with design history in
-   [classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
-   The refactor split `pack_vocabulary.ts` into focused vocabulary modules,
-   folded `mod_subsystem` into the normal vocabulary artifact, repaired
-   `organization_group` candidate/prompt leakage, added Stage 3
-   `vocabulary_proposals`, and patched deterministic ore/log gaps found by
-   canaries. The first full TFG server rehome exposed over-fragmented main
-   wall sections from mod-name, material-state, rock-taxonomy, and
-   high-specificity form buckets. Runtime `organization_group` homing is
-   temporarily disabled so server rehome falls back to default sections while
-   the vocabulary/prompt fixes are validated. The next classification step is a
-   fresh vocabulary refresh, an `organization_group` home-impact audit, and a
-   canary before another full `classify-runtime-pack` run.
-5. **Runtime-crawl deterministic fallback**
-   ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery)).
-   Walks the live registry to derive deterministic facets
-   (`material_family`, `form`, `processing_in`) for mods we don't
-   have LLM data for. Defer until the full vocabulary-backed pack run shows
-   which deterministic gaps remain after richer pack semantics are in play.
-6. **Item-classification stage-4 NN priming + confidence-band
-   ranking + acceptance-rate logging**
-   ([item-classification.md § Integration sequence](item-classification.md#integration-sequence-next-concrete-work)
-   step 6). Now that the FacetIndex-driven populate path playtests
-   clean, this is the next layer of suggestion-quality work that
-   sits above facet-driven-suggestions.
-7. **Kit-holdout deposit + explicit withdraw verb.** Two pieces of
+4. **Classification LLM-authoring validation**
+   ([classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
+   The current contract is: gather/format evidence, let the LLM decide
+   vocabulary, feed that vocabulary back into later vocabulary rounds, let the
+   LLM decide item facets, accept valid output, and treat review flags as
+   advisory playtest/debugging signals rather than rejection gates. Runtime
+   `organization_group` homing is temporarily disabled so server rehome falls
+   back to default sections until the fresh LLM-classified pack layer is
+   validated. Before the next full run, clean up the facet registry and
+   generation paths against
+   [`../design/classification/schema-authoring-rules.md`](../design/classification/schema-authoring-rules.md):
+   migrate the audited pack-shaped semantic facets to vocabulary-backed values,
+   remove `flavor` and `palette`, keep code-derived semantic inputs advisory
+   only, remove stale `confidence` / `signal` support instead of preserving it
+   as compatibility metadata, and define a consistent output root/naming
+   convention so vanilla baselines, pack vocabulary loops, review artifacts,
+   classification layers, datapacks, reports, and replay fixtures have one
+   obvious latest location instead of scattered stale directories. Then
+   regenerate vanilla/pack vocabulary and run `classify-runtime-pack` with the
+   usable vocabulary.
+5. **Kit-holdout deposit + explicit withdraw verb.** Two pieces of
    open work that the retired storage-prototype plan tracked under
    Slices 4b / 5; they need re-planning against the current chip /
    affinity model.
@@ -250,12 +243,12 @@ track lands.
      reachable Kit-needed identities from proximate chests in one
      click. A general-purpose withdraw verb (independent of an active
      Kit) hasn't been planned. Defer until playtest signals demand.
-8. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
-9. **Single-column workspace width pass**
+6. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
+7. **Single-column workspace width pass**
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
-10. **Workspace projection caching.** `SlotWorkspaceViewModel`
+8. **Workspace projection caching.** `SlotWorkspaceViewModel`
    re-projects carried / proximate / elsewhere / kit-needed identities
    every server tick while open. Add cache invalidators for inventory
    deltas, chest content, kit changes, and chest-proximity movement;

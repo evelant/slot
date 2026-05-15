@@ -1,15 +1,14 @@
 import type { Rule } from "../types.ts";
-import { EQUIP_SLOT_VALUES } from "../../schema/facets.ts";
 
 /**
  * Emit `equip_slot` from the `minecraft:equippable` component's `slot` field.
  * Vanilla uses `head` / `chest` / `legs` / `feet` / `body` (e.g. for llama
  * carpets and horse armor — we map `body` to `llama_carpet` when the allowed
- * entity list looks llama-ish, else skip it since the plan's `equip_slot`
- * enum doesn't include a generic `body`).
+ * entity list looks llama-ish, else skip it until exact slot semantics are
+ * better represented by runtime evidence.
  */
 
-type EquipSlotValue = typeof EQUIP_SLOT_VALUES[number];
+type EquipSlotValue = string;
 
 const MAP: Record<string, EquipSlotValue> = {
   head: "head",

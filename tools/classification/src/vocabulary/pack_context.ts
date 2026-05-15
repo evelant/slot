@@ -3,8 +3,10 @@ import type {
   VocabularyDefaultSectionPressure,
   VocabularyHumanVisibleTextPool,
   VocabularyItemFamilyCluster,
+  VocabularyItemSampleMode,
   VocabularyPromptOverview,
   VocabularyRecipeUseNeighborhood,
+  VocabularyRuntimeItemSample,
   VocabularyTagMembershipSummary,
   VocabularyFacetId,
 } from "./types.ts";
@@ -17,6 +19,8 @@ const FAMILY_CLUSTER_LIMIT = 64;
 const TAG_SUMMARY_LIMIT = 96;
 const RECIPE_NEIGHBORHOOD_LIMIT = 80;
 const TEXT_POOL_SNIPPET_LIMIT = 28;
+const RUNTIME_ITEM_SAMPLE_FIELD_LIMIT = 12;
+const RUNTIME_ITEM_SAMPLE_SEMANTIC_LIMIT = 3;
 
 interface RuntimeItemSummary {
   id: string;
@@ -182,22 +186,260 @@ const FAMILY_TOKEN_STOPWORDS = new Set([
 export function buildVocabularyPromptOverview(args: {
   facet: VocabularyFacetId;
   records: readonly FacetEvidenceRecord[];
+  itemSampleSize?: number;
+  itemSampleSeed?: string;
+  itemSampleMode?: VocabularyItemSampleMode;
+  vocabularyIteration?: number;
 }): VocabularyPromptOverview | undefined {
-  if (args.facet !== "organization_group") return undefined;
   const runtimeItems = args.records
     .filter((record) => record.kind === "runtime_item")
     .map(runtimeItemSummary);
+  const itemSample = buildRuntimeItemSample(args.records, runtimeItems, {
+    size: args.itemSampleSize ?? 0,
+    seed: args.itemSampleSeed ?? "slot-vocabulary-sample",
+    mode: args.itemSampleMode ?? "coverage",
+  });
+  if (args.facet !== "organization_group") {
+    if (itemSample.length === 0) return undefined;
+    return {
+      purpose: "Rotating sample of the pack item universe for vocabulary refinement. These are raw item observations, not proposed vocabulary values.",
+      item_sample_purpose: "Show the model concrete item shapes so it can refine vocabulary around actual pack items without relying on deterministic semantic classifications.",
+      ...(args.itemSampleSeed ? { item_sample_seed: args.itemSampleSeed } : {}),
+      item_sample_mode: args.itemSampleMode ?? "coverage",
+      ...(args.vocabularyIteration !== undefined ? { item_sample_iteration: args.vocabularyIteration } : {}),
+      runtime_item_count: runtimeItems.length,
+      runtime_item_sample: itemSample,
+    };
+  }
   const itemById = new Map(runtimeItems.map((item) => [item.id, item]));
   const recipeNeighborhoods = buildRecipeUseNeighborhoods(args.records, runtimeItems, itemById);
   return {
-    purpose: "Pack-wide context for judging broad human storage sections. These summaries are not proposed vocabulary ids; use them to understand what kinds of items exist, what built-in sections already cover, and where overloaded broad stock might need a small number of custom splits.",
+    purpose: "Pack-wide context for judging broad human storage sections. These summaries and item samples are not proposed vocabulary values; use them to understand what kinds of items exist, what built-in sections already cover, and where overloaded broad stock might need a small number of custom splits.",
+    ...(itemSample.length
+      ? {
+          item_sample_purpose: "Rotating raw item observations for vocabulary refinement. Do not treat sampled tags, ids, or recipe facts as deterministic section assignments.",
+          ...(args.itemSampleSeed ? { item_sample_seed: args.itemSampleSeed } : {}),
+          item_sample_mode: args.itemSampleMode ?? "coverage",
+        }
+      : {}),
+    ...(itemSample.length && args.vocabularyIteration !== undefined ? { item_sample_iteration: args.vocabularyIteration } : {}),
     runtime_item_count: runtimeItems.length,
+    ...(itemSample.length ? { runtime_item_sample: itemSample } : {}),
     default_section_pressure: buildDefaultSectionPressure(runtimeItems),
     runtime_item_family_clusters: buildRuntimeItemFamilyClusters(runtimeItems),
     tag_membership_summaries: buildTagMembershipSummaries(args.records, itemById),
     recipe_use_neighborhoods: recipeNeighborhoods,
     human_visible_text_pools: buildHumanVisibleTextPools(args.records),
   };
+}
+
+function buildRuntimeItemSample(
+  records: readonly FacetEvidenceRecord[],
+  items: readonly RuntimeItemSummary[],
+  options: {
+    size: number;
+    seed: string;
+    mode: VocabularyItemSampleMode;
+  },
+): VocabularyRuntimeItemSample[] {
+  const size = Math.max(0, Math.min(options.size, items.length));
+  if (size === 0) return [];
+  if (items.length <= size) {
+    return items
+      .slice()
+      .sort((a, b) => a.id.localeCompare(b.id))
+      .map(promptRuntimeItemSample);
+  }
+
+  const rng = seededRandom(options.seed);
+  const selected = new Map<string, RuntimeItemSummary>();
+  const addItems = (candidates: readonly RuntimeItemSummary[], limit: number) => {
+    for (const item of shuffled(candidates, rng)) {
+      if (selected.size >= size || limit <= 0) break;
+      if (selected.has(item.id)) continue;
+      selected.set(item.id, item);
+      limit--;
+    }
+  };
+  const addRoundRobin = (groups: ReadonlyMap<string, readonly RuntimeItemSummary[]>, limit: number) => {
+    const queues = shuffled([...groups.values()].filter((group) => group.length > 0), rng)
+      .map((group) => shuffled(group, rng));
+    let remaining = limit;
+    while (remaining > 0 && selected.size < size && queues.length > 0) {
+      let touched = false;
+      for (const queue of queues) {
+        while (queue.length > 0) {
+          const item = queue.shift()!;
+          if (selected.has(item.id)) continue;
+          selected.set(item.id, item);
+          remaining--;
+          touched = true;
+          break;
+        }
+        if (remaining <= 0 || selected.size >= size) break;
+      }
+      if (!touched) break;
+    }
+  };
+
+  if (options.mode === "random") {
+    addItems(items, size);
+  } else {
+    const wholePackQuota = Math.ceil(size * 0.40);
+    const namespaceQuota = Math.ceil(size * 0.20);
+    const linkedQuota = Math.ceil(size * 0.15);
+    const recipeQuota = Math.ceil(size * 0.10);
+    const creativeTabQuota = Math.ceil(size * 0.075);
+    const tagQuota = Math.ceil(size * 0.075);
+
+    addItems(items, wholePackQuota);
+    addRoundRobin(groupBy(items, (item) => item.namespace ?? "unknown"), namespaceQuota);
+    addItems(guideLinkedItems(records, items), linkedQuota);
+    addItems(highRecipeDegreeItems(items, Math.max(recipeQuota * 4, Math.ceil(items.length * 0.20))), recipeQuota);
+    addRoundRobin(groupByCreativeTab(items), creativeTabQuota);
+    addRoundRobin(groupByTag(items), tagQuota);
+    addItems(items, size - selected.size);
+  }
+
+  return [...selected.values()]
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .map(promptRuntimeItemSample);
+}
+
+function promptRuntimeItemSample(item: RuntimeItemSummary): VocabularyRuntimeItemSample {
+  const recipeRoles = item.record.recipe_roles;
+  return {
+    id: item.id,
+    label: item.label,
+    ...(item.namespace ? { namespace: item.namespace } : {}),
+    ...(item.record.tags?.length ? { tags: sortedLimited(item.record.tags, RUNTIME_ITEM_SAMPLE_FIELD_LIMIT) } : {}),
+    ...(item.record.direct_tags?.length ? { direct_tags: sortedLimited(item.record.direct_tags, RUNTIME_ITEM_SAMPLE_FIELD_LIMIT) } : {}),
+    ...(item.record.creative_tabs?.length ? { creative_tabs: sortedLimited(item.record.creative_tabs, 6) } : {}),
+    ...(item.record.components?.length ? { components: sortedLimited(item.record.components, 8) } : {}),
+    ...(item.record.model_parents?.length ? { model_parents: sortedLimited(item.record.model_parents, 6) } : {}),
+    ...(recipeRoles ? {
+      recipe_roles: {
+        in_degree: recipeRoles.in_degree,
+        out_degree: recipeRoles.out_degree,
+        ...nonEmptyRecord("ingredient_types", topObjectEntries(recipeRoles.ingredient_types, 6)),
+        ...nonEmptyRecord("output_types", topObjectEntries(recipeRoles.output_types, 6)),
+        ...(recipeRoles.ingredient_examples.length
+          ? { ingredient_examples: sortedLimited(recipeRoles.ingredient_examples, 8) }
+          : {}),
+        ...(recipeRoles.output_examples.length
+          ? { output_examples: sortedLimited(recipeRoles.output_examples, 8) }
+          : {}),
+      },
+    } : {}),
+    ...(item.semantic.length ? { semantic_context: item.semantic.slice(0, RUNTIME_ITEM_SAMPLE_SEMANTIC_LIMIT) } : {}),
+  };
+}
+
+function guideLinkedItems(
+  records: readonly FacetEvidenceRecord[],
+  items: readonly RuntimeItemSummary[],
+): RuntimeItemSummary[] {
+  const linked = new Set<string>();
+  for (const record of records) {
+    if (record.kind === "runtime_item") continue;
+    if (!record.semantic_text?.length && record.kind !== "recipe_role_summary") continue;
+    for (const id of record.item_refs ?? []) linked.add(id);
+    for (const id of record.examples ?? []) linked.add(id);
+  }
+  return items.filter((item) => linked.has(item.id));
+}
+
+function highRecipeDegreeItems(
+  items: readonly RuntimeItemSummary[],
+  limit: number,
+): RuntimeItemSummary[] {
+  return items
+    .filter((item) => recipeDegree(item) > 0)
+    .sort((a, b) => recipeDegree(b) - recipeDegree(a) || a.id.localeCompare(b.id))
+    .slice(0, limit);
+}
+
+function recipeDegree(item: RuntimeItemSummary): number {
+  return (item.record.recipe_roles?.in_degree ?? 0) + (item.record.recipe_roles?.out_degree ?? 0);
+}
+
+function groupBy(
+  items: readonly RuntimeItemSummary[],
+  keyFor: (item: RuntimeItemSummary) => string,
+): Map<string, RuntimeItemSummary[]> {
+  const groups = new Map<string, RuntimeItemSummary[]>();
+  for (const item of items) {
+    const key = keyFor(item);
+    const group = groups.get(key) ?? [];
+    group.push(item);
+    groups.set(key, group);
+  }
+  return groups;
+}
+
+function groupByCreativeTab(items: readonly RuntimeItemSummary[]): Map<string, RuntimeItemSummary[]> {
+  const groups = new Map<string, RuntimeItemSummary[]>();
+  for (const item of items) {
+    for (const tab of item.record.creative_tabs ?? []) {
+      const group = groups.get(tab) ?? [];
+      group.push(item);
+      groups.set(tab, group);
+    }
+  }
+  return groups;
+}
+
+function groupByTag(items: readonly RuntimeItemSummary[]): Map<string, RuntimeItemSummary[]> {
+  const groups = new Map<string, RuntimeItemSummary[]>();
+  for (const item of items) {
+    const tags = [...(item.record.direct_tags ?? []), ...(item.record.tags ?? [])].slice(0, 12);
+    for (const tag of tags) {
+      if (tagLooksTechnical(tag)) continue;
+      const group = groups.get(tag) ?? [];
+      group.push(item);
+      groups.set(tag, group);
+    }
+  }
+  return groups;
+}
+
+function shuffled<T>(values: readonly T[], rng: () => number): T[] {
+  const out = values.slice();
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [out[i], out[j]] = [out[j]!, out[i]!];
+  }
+  return out;
+}
+
+function seededRandom(seed: string): () => number {
+  let state = 0x811c9dc5;
+  for (let i = 0; i < seed.length; i++) {
+    state ^= seed.charCodeAt(i);
+    state = Math.imul(state, 0x01000193) >>> 0;
+  }
+  return () => {
+    state += 0x6d2b79f5;
+    let t = state;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function topObjectEntries(values: Record<string, number>, limit: number): Record<string, number> {
+  return Object.fromEntries(
+    Object.entries(values)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, limit),
+  );
+}
+
+function nonEmptyRecord<K extends string>(
+  key: K,
+  value: Record<string, number>,
+): Partial<Record<K, Record<string, number>>> {
+  return Object.keys(value).length ? { [key]: value } as Partial<Record<K, Record<string, number>>> : {};
 }
 
 function runtimeItemSummary(record: FacetEvidenceRecord): RuntimeItemSummary {

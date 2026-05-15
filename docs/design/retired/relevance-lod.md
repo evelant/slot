@@ -300,7 +300,7 @@ The seam is small: `IslandSuggestionService` already takes signals +
 learned rules + islands and returns chips. Swap the signal source from
 class / tag / component checks to facet lookups via `FacetIndex`.
 Depends on classification milestone 6
-([item-classification.md](../plans/item-classification.md)) being
+([item-classification-v1.md](../../plans/outdated/item-classification-v1.md)) being
 landed.
 
 ## What this replaces or generalizes
@@ -358,7 +358,7 @@ evaluate.
 - Storage areas land as part of this prototype (see Phase 3) — they are
   not a prerequisite from elsewhere.
 - Classification `FacetIndex` (milestone 6 of
-  [item-classification.md](../plans/item-classification.md)) is required
+  [item-classification-v1.md](../../plans/outdated/item-classification-v1.md)) is required
   for the classification-driven Triage suggestions in Phase 4. The LOD
   core does not depend on it.
 
@@ -532,4 +532,4 @@ Several contributors lean on the
 These are forward-looking integrations. The model doesn't depend on any
 of them; they're examples of how rich classification data composes with
 the relevance score once `FacetIndex` is wired into the runtime
-(see [classification milestone 6+](../plans/item-classification.md)).
+(see [classification milestone 6+](../../plans/outdated/item-classification-v1.md)).

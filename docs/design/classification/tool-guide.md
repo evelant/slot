@@ -1,11 +1,11 @@
 # Item Classification Tool Guide
 
-Last updated: 2026-05-13
+Last updated: 2026-05-14
 
 Concise operator/developer guide for the SLOT item classification tool:
 what it does, how it works, how to use it today, and where the tool is
 headed. For the full facet schema, read
-[README.md](README.md) and [../../plans/item-classification.md](../../plans/item-classification.md).
+[README.md](README.md) and [facet-kinds.md](facet-kinds.md).
 For the public database and pack UX plan, read
 [../../plans/classification-database.md](../../plans/classification-database.md).
 
@@ -21,9 +21,9 @@ Examples:
   `material_family=iron`, `form=ingot`, `processing_in=crafting`,
   and `primary_uses=[...]`.
 - `create:cogwheel` can get facets like `role=mechanism`,
-  `activity=slot:automation`, and `mod_subsystem=create:kinetics`.
+  `activity=automation`, and `mod_subsystem=kinetics`.
 - `tfc:ceramic/ingot_mold` can get `role=utility` plus
-  `workflow=tfc:casting` and `organization_group=pack:tfg/casting_molds`,
+  `workflow=casting` and `organization_group=ceramics_molds`,
   which tells SLOT it belongs with casting molds instead of a broad Utility
   pile.
 
@@ -54,9 +54,9 @@ item means to the player.
 
 ## How It Works
 
-The pipeline has three practical stages today.
+The modpack pipeline has four practical steps today.
 
-### Stage 1: Extract
+### 1. Extract Evidence
 
 Reads item facts from a source and writes one NDJSON record per item:
 
@@ -82,60 +82,65 @@ Planned inputs:
 - `.mrpack` files
 - CurseForge manifests with locally available jars
 
-### Stage 2: Deterministic Facets
+### 2. Refine Vocabulary
 
-Pure rules derive facts that should not require judgment:
-
-- namespace
-- material family
-- form
-- dye color
-- processing recipe types
-- origin hints
-- tool requirement
-- stackability/durability/fuel/light booleans
-
-These rules should be auditable and deterministic. If a rule is wrong,
-fix the rule or add a targeted correction; do not hide it behind a vague
-fallback.
-
-### Stage 3: Semantic Completion
-
-An LLM fills judgment-call facets:
+The vocabulary pass is an LLM loop, not a deterministic candidate picker. Each
+round receives broad semantic evidence, the previous round's working
+vocabulary, and a rotating sample of raw item records. The model synthesizes
+stable values for vocabulary-backed facets such as:
 
 - `role`
+- `form`
 - `activity`
+- `required_tool`
+- `equip_slot`
+- `origin`
+- `storage_categories`
+- `spawn_interaction`
+- `combat_bonus`
+- `environmental_property`
+- `transport_medium`
 - `workflow`
 - `workflow_role`
 - `used_at`
-- `primary_uses`
-- `palette`
-- `flavor`
-- `carry_frequency`
 - `mod_subsystem`
 - `organization_group`
+- `multiblock_role`
 - `food_category`, `food_use`, `preparation_state`,
   `material_process_stage`, `stock_profile`, `container_state`,
   `equipment_effect`, `protection_context`, `progression_stage`,
   `loadout_context`, `use_affordance`
 
-The output is validated, cached, and reviewed. The model can propose
-schema changes or flag deterministic-rule mistakes, but those are review
-queues, not automatic truth.
+Vocabulary-backed facets use stable facet-scoped values (`cooking`,
+`mechanical_power`, `steelmaking`, and scoped `steelmaking#input`) rather than
+display labels or artificial provenance prefixes. `mod_subsystem` is part of
+the same `facet-vocabulary.json` artifact; there is no separate runtime
+subsystem vocabulary pre-pass. Values marked `review` are usable by default and
+kept as watchlist/debugging signal; they are not automatically rejected.
 
-Before stage 3, the tool can validate a pack facet vocabulary artifact.
-Vocabulary-backed facets use stable ids (`slot:cooking`,
-`create:mechanical_power`, `pack:tfg2/steelmaking`, and scoped
-`pack:tfg2/steelmaking#input`) rather than display labels. `mod_subsystem`
-is part of the same `facet-vocabulary.json` artifact; there is no separate
-runtime subsystem vocabulary pre-pass.
+### 3. Classify Items
+
+Stage 3 is an LLM judgement pass over item data and the usable vocabulary. The
+vocabulary grounds naming consistency, but the model still decides each item's
+facets. The runtime-pack path does not merge a precomputed semantic layer and
+does not ask the model merely to fill gaps.
+
+Valid model output is accepted into the layer. If a judgement looks wrong, flag
+it for possible review or feed it into another vocabulary/classification
+iteration; do not silently replace it with a hardcoded rule.
+
+### 4. Assemble Runtime Artifacts
+
+The final layer is validated for shape/loadability, cached with prompt
+fixtures, and packaged as bundled base/per-mod resources or a modpack datapack.
+Validation is not a second classifier and should not override LLM decisions.
 
 `organization_group` is the stronger auto-home signal for large packs.
 It answers "where would a skilled player put this item if the whole wall only
 had roughly 15-20 broad sections?" and can split broad roles into storage
-sections such as `pack:tfg/casting_molds`, `pack:tfg/masonry_supplies`, or
-`pack:tfg/textiles` once the loaded layer has enough sibling items for
-that group. Runtime `organization_group` homing is temporarily disabled while
+sections such as `ceramics_molds`, `beekeeping`, `glass_products`, or
+`textiles` when the pack has enough sibling items for that group.
+Runtime `organization_group` homing is temporarily disabled while
 the next vocabulary refresh is validated, so `rehome` currently falls through to
 the built-in templates instead of materializing `group:*` sections. Generic
 sections like Ores & Raw Stock, Metal Stock, Gems & Crystals, Dusts & Powders,
@@ -160,12 +165,14 @@ evidence; it does not auto-create main-wall sections.
 Important files:
 
 - `out/<source>.items.ndjson` — extracted item records
-- `out/<source>.facets.partial.json` — stage-2 deterministic layer
-- `out/<source>.facets.complete.json` — stage-2 + stage-3 layer
-- `out/<source>.facets.corrections.json` — possible rule mistakes
+- `out/<source>.facets.partial.json` — exact/reference diagnostic layer when
+  explicitly requested
+- `out/<source>.facets.complete.json` — generated classification layer
+- `out/<source>.facets.corrections.json` — compatibility correction channel,
+  when present
 - `out/<source>.facets.schema-proposals.json` — schema/value gaps
-- `out/<source>.facets.fill-ins.json` — deterministic facts stage 2
-  missed but the LLM noticed
+- `out/<source>.facets.fill-ins.json` — compatibility fill-in channel, when
+  present
 
 Curated runtime resources live under:
 
@@ -197,7 +204,7 @@ Modrinth ids when `.index/*.pw.toml` files are present, and prints
 coverage/status counts. It also flags KubeJS script/data/asset counts so
 pack-specific runtime-export work is visible early.
 
-Classify missing layers from installed jars without source checkouts:
+Run the legacy exact/reference diagnostic pass from installed jars:
 
 ```sh
 bun run src/cli.ts classify-folder \
@@ -206,10 +213,11 @@ bun run src/cli.ts classify-folder \
   --stages 1,2
 ```
 
-This command scans the folder, skips bundled/covered mods and libraries,
-then runs stage 1 and 2 directly from jar resources. Add `--mod <id>` to
-target a specific mod, `--include-covered` to regenerate a bundled mod,
-or `--stages 1,2,3` to opt into the LLM semantic pass.
+This command scans the folder, skips bundled/covered mods and libraries, then
+runs stage 1 and 2 directly from jar resources. It is useful for diagnostics and
+legacy bundled-data work. It is not the modpack semantic classification path.
+For real packs, use runtime export, vocabulary refinement, and
+`classify-runtime-pack`.
 
 Export live runtime facts from a running Forge 1.20.1 or NeoForge 1.21.1
 game:
@@ -260,7 +268,7 @@ unique item identities it scanned, materializes qualified dynamic
 organization-group sections, and reports skipped claimed
 chests when the storage is unloaded or otherwise inaccessible.
 
-Run vanilla stages 1 and 2:
+Run vanilla extraction plus the legacy exact/reference diagnostic pass:
 
 ```sh
 bun run src/cli.ts classify \
@@ -275,7 +283,7 @@ Run a full semantic pass for vanilla or a mod source tree:
 bun run src/cli.ts classify \
   --mod createaddition \
   --source ../../reference/classification/createaddition \
-  --stages 1,2,3 \
+  --stages 1,3 \
   --record-replay \
   --fixture-dir test/fixtures/createaddition
 ```
@@ -286,7 +294,7 @@ Classify every entry in a hand-authored modpack manifest:
 bun run src/cli.ts classify-modpack \
   modpacks/test-modset.json \
   --out out \
-  --stages 1,2,3
+  --stages 1,3
 ```
 
 Generate a pack-specific layer from both loaded runtime facts and static
@@ -299,7 +307,7 @@ bun run src/cli.ts generate-pack-layer \
   --mods /path/to/prism/instance-or-minecraft/mods \
   --facet-vocabulary out/pack/pack.facet-vocabulary.json \
   --out out \
-  --stages 1,2,3 \
+  --stages 1,3 \
   --datapack
 ```
 
@@ -309,6 +317,31 @@ signals that the live export does not yet capture, such as model parents
 and loot-table sources. The datapack output is a folder containing
 `data/slot/classification/layers/<pack>.json`; drop it into a world or
 pack datapacks folder so SLOT can load it without rebuilding the mod jar.
+
+For a vanilla baseline vocabulary, use the same runtime-first shape. Export a
+clean vanilla instance for the target Minecraft version and enrich it with
+exact-version mcmeta records:
+
+```sh
+bun run src/cli.ts classify \
+  --mod minecraft \
+  --source tools/mcmeta \
+  --mcmeta-ref 1.20.1-summary \
+  --out out/vanilla-mcmeta-1.20.1 \
+  --stages 1
+
+bun run src/cli.ts collect-pack-facet-evidence \
+  --runtime-export datasets/minecraft_runtime/vanilla-1-20-1.runtime-items.ndjson \
+  --summary datasets/minecraft_runtime/vanilla-1-20-1.runtime-summary.json \
+  --static-items out/vanilla-mcmeta-1.20.1/minecraft.items.ndjson \
+  --out out/vanilla-1.20.1 \
+  --pack-id vanilla-1-20-1 \
+  --force
+```
+
+Use the generated vanilla vocabulary as the starting vocabulary for modpack
+vocabulary loops so packs inherit common Minecraft concepts instead of
+rediscovering or conflicting with them.
 
 Collect pack-level evidence before proposing vocabulary-backed semantic
 facets:
@@ -327,25 +360,30 @@ families, item/block tags, optional mod metadata, guide pages, quest nodes,
 advancements, and adapter diagnostics. Missing guide or quest data is an
 informational diagnostic, not a failed run.
 
-Propose a pack vocabulary from that evidence:
+Refine a pack vocabulary from that evidence:
 
 ```sh
-bun run src/cli.ts propose-pack-facet-vocabulary \
+bun run src/cli.ts refine-pack-facet-vocabulary \
   --evidence out/pack/pack.facet-evidence.json \
+  --base-vocabulary out/vanilla-1.20.1/vanilla-1-20-1.facet-vocabulary.json \
   --out out/pack \
+  --rounds 3 \
+  --item-sample-size 1536 \
   --record-replay \
   --fixture-dir test/fixtures/pack-facet-vocabulary
 ```
 
-Use `--dry-run` to inspect the per-facet curation prompts, `--facet <id>` to
-iterate on one vocabulary-backed facet, `--namespace <id>` to limit evidence,
-and `--previous-vocabulary <path>` to preserve earlier accepted ids.
+Use `--dry-run` to inspect the prompts, `--facet <id>` to iterate on one
+vocabulary-backed facet, `--namespace <id>` to limit evidence,
+`--base-vocabulary <path>` for reusable vanilla/version baselines, and
+`--previous-vocabulary <path>` only when deliberately continuing a nearly
+satisfactory pack vocabulary.
 The command writes `facet-vocabulary.json` plus
-`facet-vocabulary.review.json`; stage 3 consumes the accepted values through
+`facet-vocabulary.review.json`; stage 3 consumes usable values through
 `--facet-vocabulary`.
 
-Review the generator output before using a new pack vocabulary for a full
-classification run:
+Optionally review the generator output before using a new pack vocabulary for a
+full classification run:
 
 ```sh
 bun run src/cli.ts review-pack-facet-vocabulary \
@@ -358,20 +396,24 @@ bun run src/cli.ts review-pack-facet-vocabulary \
 The reviewer iterates over vocabulary decisions, not input provenance or
 context records. It prints the label, description, rationale, examples, aliases,
 parent links, and policy notes; press `y` to accept, `n` to decline, Enter to
-skip, or `q` to stop. The approved artifact is the file to pass as
-`--facet-vocabulary`.
+skip, or `q` to stop. Skipped `review` values remain usable by default. The
+reviewed artifact can be passed as `--facet-vocabulary`, but the strategy is not
+"reject unless manually approved"; it is "use LLM output unless a human or later
+playtest explicitly rejects it."
 
 For vocabulary generation, `context_records` and `pack_item_overview` are
-evidence context, not candidate ids. In particular, the `organization_group`
+evidence context, not allowed output ids. In particular, the `organization_group`
 prompt includes pack-wide summaries for default-section pressure, runtime item
 families, tag memberships, recipe-use neighborhoods, and human-visible text so
 the model can synthesize the few broad storage sections a player would actually
-maintain. Pack-specific storage families should remain `pack:<pack-id>/...`
-values rather than looking like mod-owned ids.
+maintain. Pack-specific storage families should use concise facet-scoped values
+such as `beekeeping` or `glass_products`; provenance belongs in vocabulary
+metadata, not the output value.
 
-Vocabulary prompts are budget-driven: the proposer tries to send one prompt per
-facet and splits only when that prompt would exceed the configured budget. Use
-`--max-candidates-per-prompt` only to force smaller chunks deliberately.
+Vocabulary prompts are budget-driven: the loop uses one all-facet prompt when
+it fits, or one prompt per facet for focused runs, and splits only when a prompt
+would exceed the configured budget. Use `--max-candidates-per-prompt` only to
+force smaller chunks deliberately.
 
 For a real pack run, prefer the one-command wrapper:
 
@@ -446,15 +488,15 @@ The desired workflow is:
 ```sh
 slot-classify scan --mods /path/to/instance/mods
 slot-classify fetch-public --mods /path/to/instance/mods
-slot-classify classify-folder --mods /path/to/instance/mods --stages 1,2
-slot-classify generate-missing --mods /path/to/instance/mods --stages 1,2,3
 slot-classify collect-pack-facet-evidence --runtime-export exports/pack.runtime-items.ndjson --mods /path/to/instance
-slot-classify propose-pack-facet-vocabulary --evidence out/pack/pack.facet-evidence.json
-slot-classify classify-runtime-pack --runtime-export exports/pack.runtime-items.ndjson --mods /path/to/instance
+slot-classify refine-pack-facet-vocabulary --evidence out/pack/pack.facet-evidence.json --base-vocabulary out/vanilla/vanilla.facet-vocabulary.json --rounds 3
+slot-classify classify-runtime-pack --runtime-export exports/pack.runtime-items.ndjson --mods /path/to/instance --facet-vocabulary out/pack/pack.facet-vocabulary.json
 ```
 
 For normal players, the ideal outcome is no command at all: SLOT ships
-or fetches known public data, then runtime crawl fills deterministic gaps.
+or fetches known public data. Unknown items can fall back to generic runtime
+homes, but semantic pack classification should come from the offline LLM
+authoring path rather than in-game deterministic curation.
 
 For pack authors, the tool should report coverage first, then only
 generate missing or pack-specific semantic data on explicit request.
@@ -477,8 +519,8 @@ targets are datapack/KubeJS provenance hashes and stronger cache identity.
   set signature before mod-id/version fallback.
 - Treat public semantic layers as reusable reviewed data, not something
   every user regenerates.
-- Treat runtime registry/tag/recipe facts as authoritative for
-  deterministic facets in a loaded pack.
+- Treat runtime registry/tag/recipe facts as authoritative evidence for the LLM
+  in a loaded pack, not as a semantic facet layer that overrides model output.
 - Keep KubeJS source snippets tightly scoped per item when feeding LLM
   prompts; never dump whole scripts by default.
 - Surface uncertainty in reports and review queues.

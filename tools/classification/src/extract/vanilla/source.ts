@@ -13,12 +13,14 @@ export interface VanillaSource {
 }
 
 /**
- * Ensure a worktree for `origin/summary` exists and return its path. Created
- * once under `<mcmeta>/.worktrees/summary` and reused on subsequent runs.
- * The maintainer must `git fetch` and remove the worktree to pick up a newer
- * Minecraft version.
+ * Ensure a worktree for a mcmeta summary ref exists and return its path.
+ * Defaults to the moving `origin/summary` branch, but callers may pass an
+ * exact version tag such as `1.20.1-summary` for reproducible extraction.
  */
-export function ensureVanillaSource(mcmetaRepoPath: string): VanillaSource {
+export function ensureVanillaSource(
+  mcmetaRepoPath: string,
+  options: { ref?: string } = {},
+): VanillaSource {
   const repo = resolve(mcmetaRepoPath);
   if (!existsSync(join(repo, ".git"))) {
     throw new Error(
@@ -28,18 +30,27 @@ export function ensureVanillaSource(mcmetaRepoPath: string): VanillaSource {
   }
   const worktreeRoot = join(repo, ".worktrees");
   mkdirSync(worktreeRoot, { recursive: true });
-  return { summaryRoot: ensureBranchWorktree(repo, worktreeRoot, "summary") };
+  const requestedRef = options.ref?.trim() || "summary";
+  const gitRef = requestedRef === "summary" ? "origin/summary" : requestedRef;
+  return {
+    summaryRoot: ensureRefWorktree(
+      repo,
+      worktreeRoot,
+      safeWorktreeName(requestedRef),
+      gitRef,
+    ),
+  };
 }
 
-function ensureBranchWorktree(
+function ensureRefWorktree(
   repo: string,
   worktreeRoot: string,
-  branch: string,
+  worktreeName: string,
+  ref: string,
 ): string {
-  const path = join(worktreeRoot, branch);
+  const path = join(worktreeRoot, worktreeName);
   if (existsSync(path) && statSync(path).isDirectory()) return path;
 
-  const ref = `origin/${branch}`;
   const result = spawnSync(
     "git",
     ["worktree", "add", "--detach", path, ref],
@@ -53,8 +64,23 @@ function ensureBranchWorktree(
   return path;
 }
 
+function safeWorktreeName(ref: string): string {
+  const safe = ref
+    .replace(/^refs\//, "")
+    .replace(/^origin\//, "")
+    .replace(/[^A-Za-z0-9._-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return safe || "summary";
+}
+
 function readJson<T>(source: VanillaSource, subpath: string): T {
   const full = join(source.summaryRoot, subpath);
+  return JSON.parse(readFileSync(full, "utf8")) as T;
+}
+
+function readJsonOrDefault<T>(source: VanillaSource, subpath: string, fallback: T): T {
+  const full = join(source.summaryRoot, subpath);
+  if (!existsSync(full)) return fallback;
   return JSON.parse(readFileSync(full, "utf8")) as T;
 }
 
@@ -163,9 +189,10 @@ export function loadSummaryBundle(source: VanillaSource): SummaryBundle {
     source,
     "registries/data.min.json",
   );
-  const itemComponents = readJson<Record<string, Record<string, unknown>>>(
+  const itemComponents = readJsonOrDefault<Record<string, Record<string, unknown>>>(
     source,
     "item_components/data.min.json",
+    {},
   );
   const recipes = readJson<Record<string, RecipeJson>>(
     source,
@@ -183,17 +210,19 @@ export function loadSummaryBundle(source: VanillaSource): SummaryBundle {
     source,
     "data/tag/block/data.min.json",
   );
-  const itemDefinitions = readJson<Record<string, ItemDefinitionJson>>(
+  const itemDefinitions = readJsonOrDefault<Record<string, ItemDefinitionJson>>(
     source,
     "assets/item_definition/data.min.json",
+    {},
   );
   const models = readJson<Record<string, ModelJson>>(
     source,
     "assets/model/data.min.json",
   );
-  const lang = readJson<Record<string, Record<string, string>>>(
+  const lang = readJsonOrDefault<Record<string, Record<string, string>>>(
     source,
     "assets/lang/data.min.json",
+    {},
   );
   const blocks = readJson<Record<string, unknown>>(
     source,

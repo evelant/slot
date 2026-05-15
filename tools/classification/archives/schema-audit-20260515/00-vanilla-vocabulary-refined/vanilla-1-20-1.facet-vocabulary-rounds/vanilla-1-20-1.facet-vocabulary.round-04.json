@@ -1,0 +1,3705 @@
+{
+  "schema_version": 1,
+  "kind": "slot-pack-facet-vocabulary",
+  "pack_id": "vanilla-1-20-1",
+  "generated_by": "slot-classify v0.1.0",
+  "generated_at": "2026-05-15T04:01:50.652Z",
+  "source": {
+    "facet_evidence": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary/vanilla-1-20-1.facet-evidence.json",
+    "runtime_items": "/Users/imagio/dev/mc/slot/tools/classification/datasets/minecraft_runtime/vanilla-1-20-1.runtime-items.ndjson",
+    "runtime_summary": "/Users/imagio/dev/mc/slot/tools/classification/datasets/minecraft_runtime/vanilla-1-20-1.runtime-summary.json",
+    "loader": "forge",
+    "minecraft_version": "1.20.1",
+    "item_count": 1254,
+    "previous_vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-03.working.json"
+  },
+  "facets": {
+    "activity": {
+      "values": {
+        "brewing": {
+          "label": "Brewing",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Creating potions with a brewing stand."
+        },
+        "building": {
+          "label": "Building",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Placing blocks and constructing structures."
+        },
+        "combat": {
+          "label": "Combat",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Fighting mobs and players with weapons and armor."
+        },
+        "cooking": {
+          "label": "Cooking",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Preparing food using furnaces, campfires, or smokers."
+        },
+        "enchanting": {
+          "label": "Enchanting",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Applying enchantments at an enchanting table."
+        },
+        "exploration": {
+          "label": "Exploration",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Traversing the world to find structures, biomes, and resources."
+        },
+        "farming": {
+          "label": "Farming",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Growing crops and breeding animals."
+        },
+        "mining": {
+          "label": "Mining",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Breaking stone, ores, and underground blocks."
+        },
+        "redstone": {
+          "label": "Redstone",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Building contraptions with redstone components."
+        },
+        "smelting": {
+          "label": "Smelting",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Processing ores and other materials in a furnace."
+        },
+        "storage": {
+          "label": "Storage",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Managing and organizing items in chests and containers."
+        },
+        "transport": {
+          "label": "Transport",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Moving players and items via rails, boats, or minecarts."
+        }
+      }
+    },
+    "environmental_property": {
+      "values": {
+        "light_emitting": {
+          "label": "Light Emitting",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Item emits light when placed."
+        },
+        "vibration_dampening": {
+          "label": "Vibration Dampening",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Item dampens vibrations, preventing sculk sensors from triggering."
+        }
+      }
+    },
+    "equip_slot": {
+      "values": {
+        "chest": {
+          "label": "Chest",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Worn on the chest slot."
+        },
+        "feet": {
+          "label": "Feet",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Worn on the feet slot."
+        },
+        "hand": {
+          "label": "Hand",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Held in main or off hand."
+        },
+        "head": {
+          "label": "Head",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Worn on the head slot."
+        },
+        "horse": {
+          "label": "Horse",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Placed on a horse mount."
+        },
+        "legs": {
+          "label": "Legs",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Worn on the leg slot."
+        }
+      }
+    },
+    "equipment_effect": {
+      "values": {
+        "armor_toughness": {
+          "label": "Armor Toughness",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Reduces damage from attacks with high attack strength."
+        },
+        "flight": {
+          "label": "Flight",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Enables gliding when equipped."
+        },
+        "freeze_protection": {
+          "label": "Freeze Protection",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Immunity to freezing from powdered snow."
+        },
+        "knockback_resistance": {
+          "label": "Knockback Resistance",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Reduces pushback from attacks."
+        }
+      }
+    },
+    "food_category": {
+      "values": {
+        "baked_good": {
+          "label": "Baked Good",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Bread, cakes, cookies, and pies."
+        },
+        "fish": {
+          "label": "Fish",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Raw and cooked fish, including pufferfish."
+        },
+        "fruit": {
+          "label": "Fruit",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Eat-in-hand fruits like apples and berries."
+        },
+        "meat": {
+          "label": "Meat",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Raw and cooked animal meats."
+        },
+        "mushroom": {
+          "label": "Mushroom",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Edible mushrooms, raw and in stews."
+        },
+        "stew": {
+          "label": "Stew",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Bowl-based foods like mushroom stew and rabbit stew."
+        },
+        "vegetable": {
+          "label": "Vegetable",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Edible plant-based items like carrots and potatoes."
+        }
+      }
+    },
+    "food_use": {
+      "values": {
+        "breeding": {
+          "label": "Breeding",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used to breed animals."
+        },
+        "effect": {
+          "label": "Effect Delivery",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Grants a status effect when consumed."
+        },
+        "healing": {
+          "label": "Healing",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Restores health directly."
+        },
+        "hunger": {
+          "label": "Hunger Restoration",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Restores hunger and saturation."
+        },
+        "taming": {
+          "label": "Taming",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used to tame or breed animals."
+        },
+        "trade": {
+          "label": "Trading",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used as currency or trade item with villagers."
+        }
+      }
+    },
+    "form": {
+      "values": {
+        "armor_piece": {
+          "label": "Armor Piece",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Wearable armor for a specific slot."
+        },
+        "block": {
+          "label": "Block",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Places a block in the world."
+        },
+        "boat": {
+          "label": "Boat",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Watercraft for player transport."
+        },
+        "food": {
+          "label": "Food",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Edible item that restores hunger."
+        },
+        "head": {
+          "label": "Head",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Placeable mob or player head."
+        },
+        "item": {
+          "label": "Item",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Non-block item, stackable or not."
+        },
+        "minecart": {
+          "label": "Minecart",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Rideable rail vehicle."
+        },
+        "music_disc": {
+          "label": "Music Disc",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Disc that plays music in a jukebox."
+        },
+        "potion": {
+          "label": "Potion",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Drinkable liquid with effects."
+        },
+        "spawn_egg": {
+          "label": "Spawn Egg",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Spawns a mob when used."
+        },
+        "tool": {
+          "label": "Tool",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Handheld tool with durability and specific uses."
+        },
+        "weapon": {
+          "label": "Weapon",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Combat item for dealing damage."
+        }
+      }
+    },
+    "loadout_context": {
+      "values": {
+        "brewing_setup": {
+          "label": "Brewing Setup",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Items for brewing potions."
+        },
+        "building_project": {
+          "label": "Building Project",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Items for construction and decoration."
+        },
+        "combat_raid": {
+          "label": "Combat Raid",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Equipment for fighting."
+        },
+        "exploration": {
+          "label": "Exploration",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Travel and navigation gear."
+        },
+        "farming_session": {
+          "label": "Farming Session",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Items for tending crops and animals."
+        },
+        "mining_trip": {
+          "label": "Mining Trip",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Items needed for underground mining."
+        },
+        "redstone_building": {
+          "label": "Redstone Building",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Components for redstone contraptions."
+        }
+      }
+    },
+    "material_family": {
+      "values": {
+        "amethyst": {
+          "label": "Amethyst",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Amethyst material family."
+        },
+        "andesite": {
+          "label": "Andesite",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Andesite material family."
+        },
+        "basalt": {
+          "label": "Basalt",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Basalt material family."
+        },
+        "blackstone": {
+          "label": "Blackstone",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Blackstone material family."
+        },
+        "bone": {
+          "label": "Bone",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Bone material family."
+        },
+        "brick": {
+          "label": "Brick",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Brick material family."
+        },
+        "clay": {
+          "label": "Clay",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Clay material family."
+        },
+        "concrete": {
+          "label": "Concrete",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Concrete material family."
+        },
+        "copper": {
+          "label": "Copper",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Copper material family."
+        },
+        "deepslate": {
+          "label": "Deepslate",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Deepslate material family."
+        },
+        "diamond": {
+          "label": "Diamond",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Diamond material family."
+        },
+        "diorite": {
+          "label": "Diorite",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Diorite material family."
+        },
+        "emerald": {
+          "label": "Emerald",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Emerald material family."
+        },
+        "end_stone": {
+          "label": "End Stone",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "End stone material family."
+        },
+        "glass": {
+          "label": "Glass",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Glass material family."
+        },
+        "gold": {
+          "label": "Gold",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Gold material family."
+        },
+        "granite": {
+          "label": "Granite",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Granite material family."
+        },
+        "honey": {
+          "label": "Honey",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Honey material family."
+        },
+        "iron": {
+          "label": "Iron",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Iron material family."
+        },
+        "lapis_lazuli": {
+          "label": "Lapis Lazuli",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Lapis lazuli material family."
+        },
+        "leather": {
+          "label": "Leather",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Leather material family."
+        },
+        "mud": {
+          "label": "Mud",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Mud material family."
+        },
+        "mud_brick": {
+          "label": "Mud Brick",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Mud brick material family."
+        },
+        "nether_brick": {
+          "label": "Nether Brick",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Nether brick material family."
+        },
+        "netherite": {
+          "label": "Netherite",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Netherite material family."
+        },
+        "netherrack": {
+          "label": "Netherrack",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Netherrack material family."
+        },
+        "obsidian": {
+          "label": "Obsidian",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Obsidian material family."
+        },
+        "prismarine": {
+          "label": "Prismarine",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Prismarine material family."
+        },
+        "quartz": {
+          "label": "Quartz",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Quartz material family."
+        },
+        "red_nether_brick": {
+          "label": "Red Nether Brick",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Red nether brick material family."
+        },
+        "sandstone": {
+          "label": "Sandstone",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Sandstone material family."
+        },
+        "slime": {
+          "label": "Slime",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Slime material family."
+        },
+        "stone": {
+          "label": "Stone",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Stone material family."
+        },
+        "string": {
+          "label": "String",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "String material family."
+        },
+        "tuff": {
+          "label": "Tuff",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Tuff material family."
+        },
+        "wood_acacia": {
+          "label": "Acacia Wood",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Acacia wood family."
+        },
+        "wood_bamboo": {
+          "label": "Bamboo",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Bamboo material family."
+        },
+        "wood_birch": {
+          "label": "Birch Wood",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Birch wood family."
+        },
+        "wood_cherry": {
+          "label": "Cherry Wood",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Cherry wood family."
+        },
+        "wood_crimson": {
+          "label": "Crimson Stem",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Crimson hyphae family."
+        },
+        "wood_dark_oak": {
+          "label": "Dark Oak Wood",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Dark oak wood family."
+        },
+        "wood_jungle": {
+          "label": "Jungle Wood",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Jungle wood family."
+        },
+        "wood_mangrove": {
+          "label": "Mangrove Wood",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Mangrove wood family."
+        },
+        "wood_oak": {
+          "label": "Oak Wood",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Oak wood family."
+        },
+        "wood_spruce": {
+          "label": "Spruce Wood",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Spruce wood family."
+        },
+        "wood_warped": {
+          "label": "Warped Stem",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Warped hyphae family."
+        },
+        "wool": {
+          "label": "Wool",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Wool material family."
+        }
+      }
+    },
+    "material_process_stage": {
+      "values": {
+        "block": {
+          "label": "Block",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Storage block of a material (9 ingots or 9 nuggets)."
+        },
+        "brick": {
+          "label": "Brick",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Fired clay or stone brick form."
+        },
+        "crystal": {
+          "label": "Crystal",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Crystalline form of a material."
+        },
+        "dust": {
+          "label": "Dust",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Fine powder form."
+        },
+        "gem": {
+          "label": "Gem",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Cut or natural gemstone."
+        },
+        "ingot": {
+          "label": "Ingot",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Smelted metal ingot."
+        },
+        "meal": {
+          "label": "Meal",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Powdered organic material used as fertilizer."
+        },
+        "nugget": {
+          "label": "Nugget",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Small piece of metal."
+        },
+        "ore": {
+          "label": "Ore",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Raw ore block in the ground."
+        },
+        "powder": {
+          "label": "Powder",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Loose powder, often from sand and gravel."
+        },
+        "raw": {
+          "label": "Raw",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Unprocessed raw material directly from mining."
+        },
+        "rod": {
+          "label": "Rod",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Long thin shape."
+        },
+        "scrap": {
+          "label": "Scrap",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Salvaged piece of material."
+        },
+        "shard": {
+          "label": "Shard",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Small fragment."
+        }
+      }
+    },
+    "organization_group": {
+      "values": {
+        "armor": {
+          "label": "Armor",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Wearable protection and armor pieces.",
+          "evidence": [
+            {
+              "kind": "item_tag",
+              "id": "forge:armors",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:armors/boots",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:armors/chestplates",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:armors/helmets",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:armors/leggings",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:trimmable_armor",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:chainmail_boots",
+            "minecraft:chainmail_chestplate",
+            "minecraft:chainmail_helmet",
+            "minecraft:chainmail_leggings",
+            "minecraft:diamond_boots",
+            "minecraft:diamond_chestplate",
+            "minecraft:diamond_helmet",
+            "minecraft:diamond_leggings",
+            "minecraft:golden_boots",
+            "minecraft:golden_chestplate",
+            "minecraft:golden_helmet",
+            "minecraft:golden_leggings",
+            "minecraft:iron_boots",
+            "minecraft:iron_chestplate",
+            "minecraft:iron_helmet",
+            "minecraft:iron_leggings",
+            "minecraft:leather_boots",
+            "minecraft:leather_chestplate",
+            "minecraft:leather_helmet",
+            "minecraft:leather_leggings",
+            "minecraft:netherite_boots",
+            "minecraft:netherite_chestplate",
+            "minecraft:netherite_helmet",
+            "minecraft:netherite_leggings",
+            "minecraft:turtle_helmet"
+          ]
+        },
+        "building_blocks": {
+          "label": "Building Blocks",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "General structural blocks and ordinary building materials."
+        },
+        "ceramics_molds": {
+          "label": "Ceramics & Molds",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "aliases": [
+            "molds",
+            "pottery"
+          ],
+          "description": "Clay, ceramic, brick, pottery, and mold stock."
+        },
+        "crops": {
+          "label": "Crops",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Harvested crop produce, grains, vegetables, and fruit.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "minecraft:crops",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:crops",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:crops/beetroot",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:crops/carrot",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:crops/nether_wart",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:crops/potato",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:crops/wheat",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:beetroot",
+            "minecraft:carrot",
+            "minecraft:nether_wart",
+            "minecraft:potato",
+            "minecraft:wheat"
+          ]
+        },
+        "curiosities": {
+          "label": "Curiosities",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Trophies, relics, discs, spawn eggs, curios, and display oddities."
+        },
+        "decoration": {
+          "label": "Decoration",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Decorative blocks, ornaments, signs, banners, carpets, and visual flourish."
+        },
+        "doors": {
+          "label": "Doors",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Doors, trapdoors, and gates.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "minecraft:doors",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "minecraft:wooden_doors",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:doors",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:wooden_doors",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:acacia_door",
+            "minecraft:bamboo_door",
+            "minecraft:birch_door",
+            "minecraft:cherry_door",
+            "minecraft:crimson_door",
+            "minecraft:dark_oak_door",
+            "minecraft:iron_door",
+            "minecraft:jungle_door",
+            "minecraft:mangrove_door",
+            "minecraft:oak_door",
+            "minecraft:spruce_door",
+            "minecraft:warped_door"
+          ]
+        },
+        "dusts_powders": {
+          "label": "Dusts & Powders",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "aliases": [
+            "dusts"
+          ],
+          "description": "Dusts, powders, piles, and powdered processing outputs."
+        },
+        "fences": {
+          "label": "Fences",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Fences and fence-like boundary pieces.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "forge:fences",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:fences/nether_brick",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:fences/wooden",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "minecraft:fences",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "minecraft:wooden_fences",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:fences",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:fences/nether_brick",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:fences/wooden",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:fences",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:wooden_fences",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:acacia_fence",
+            "minecraft:bamboo_fence",
+            "minecraft:birch_fence",
+            "minecraft:cherry_fence",
+            "minecraft:crimson_fence",
+            "minecraft:dark_oak_fence",
+            "minecraft:jungle_fence",
+            "minecraft:mangrove_fence",
+            "minecraft:nether_brick_fence",
+            "minecraft:oak_fence",
+            "minecraft:spruce_fence",
+            "minecraft:warped_fence"
+          ]
+        },
+        "food": {
+          "label": "Food",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Food, meals, edible ingredients, and drink items.",
+          "evidence": [
+            {
+              "kind": "item_tag",
+              "id": "minecraft:fox_food",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:piglin_food",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:sniffer_food",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:cooked_porkchop",
+            "minecraft:glow_berries",
+            "minecraft:porkchop",
+            "minecraft:sweet_berries",
+            "minecraft:torchflower_seeds"
+          ]
+        },
+        "gems_crystals": {
+          "label": "Gems & Crystals",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "aliases": [
+            "gems"
+          ],
+          "description": "Gems, crystals, mineral gemstones, and similar cut or crystalline stock."
+        },
+        "lighting": {
+          "label": "Lighting",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Torches, lanterns, lamps, candles, and light-emitting blocks."
+        },
+        "materials": {
+          "label": "Materials",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Last-resort generic crafting stock when no narrower stock group fits; avoid when a better default or custom group applies.",
+          "evidence": [
+            {
+              "kind": "item_tag",
+              "id": "forge:raw_materials",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:raw_materials/copper",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:raw_materials/gold",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:raw_materials/iron",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:stone_crafting_materials",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:stone_tool_materials",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:trim_materials",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:amethyst_shard",
+            "minecraft:blackstone",
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobblestone",
+            "minecraft:copper_ingot",
+            "minecraft:diamond",
+            "minecraft:emerald",
+            "minecraft:gold_ingot",
+            "minecraft:iron_ingot",
+            "minecraft:lapis_lazuli",
+            "minecraft:netherite_ingot",
+            "minecraft:quartz",
+            "minecraft:raw_copper",
+            "minecraft:raw_gold",
+            "minecraft:raw_iron",
+            "minecraft:redstone"
+          ]
+        },
+        "mechanisms": {
+          "label": "Mechanisms",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Machines, mechanisms, motors, gears, shafts, belts, pipes, and automation parts."
+        },
+        "metal_stock": {
+          "label": "Metal Stock",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "aliases": [
+            "ingots",
+            "plates"
+          ],
+          "description": "Ingots, nuggets, plates, rods, wires, bolts, screws, foils, and similar metal stock."
+        },
+        "miscellaneous": {
+          "label": "Miscellaneous",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "aliases": [
+            "misc"
+          ],
+          "description": "Last-resort home for items that do not fit any other broad player storage section."
+        },
+        "natural": {
+          "label": "Natural",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Dirt, sand, gravel, stone, rocks, soil, mud, and other natural terrain stock.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "minecraft:overworld_natural_logs",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:acacia_log",
+            "minecraft:birch_log",
+            "minecraft:cherry_log",
+            "minecraft:dark_oak_log",
+            "minecraft:jungle_log",
+            "minecraft:mangrove_log",
+            "minecraft:oak_log",
+            "minecraft:spruce_log"
+          ]
+        },
+        "ores_raw_stock": {
+          "label": "Ores & Raw Stock",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "aliases": [
+            "raw ore"
+          ],
+          "description": "Ore blocks, raw ores, crushed ores, and mine-run resource stock."
+        },
+        "organic_materials": {
+          "label": "Organic Materials",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Leather, hide, wool, string, fiber, straw, bone, slime, wax, and animal/plant organic stock."
+        },
+        "plants": {
+          "label": "Plants",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Saplings, flowers, leaves, grass, mushrooms, and non-crop botanical stock.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "minecraft:coral_plants",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:brain_coral",
+            "minecraft:bubble_coral",
+            "minecraft:fire_coral",
+            "minecraft:horn_coral",
+            "minecraft:tube_coral"
+          ]
+        },
+        "redstone": {
+          "label": "Redstone",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Redstone, signal components, levers, repeaters, comparators, buttons, and pressure plates.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "forge:ores/redstone",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/redstone",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "minecraft:redstone_ores",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:dusts/redstone",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:ores/redstone",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/redstone",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:redstone_ores",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:deepslate_redstone_ore",
+            "minecraft:redstone",
+            "minecraft:redstone_block",
+            "minecraft:redstone_ore"
+          ]
+        },
+        "seeds": {
+          "label": "Seeds",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Seed stock and plantable crop starts.",
+          "evidence": [
+            {
+              "kind": "item_tag",
+              "id": "forge:seeds",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:seeds/beetroot",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:seeds/melon",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:seeds/pumpkin",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:seeds/wheat",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:villager_plantable_seeds",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:beetroot_seeds",
+            "minecraft:carrot",
+            "minecraft:melon_seeds",
+            "minecraft:pitcher_pod",
+            "minecraft:potato",
+            "minecraft:pumpkin_seeds",
+            "minecraft:torchflower_seeds",
+            "minecraft:wheat_seeds"
+          ]
+        },
+        "slabs": {
+          "label": "Slabs",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Slab-shaped building variants.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "minecraft:slabs",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "minecraft:wooden_slabs",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:slabs",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:wooden_slabs",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:acacia_slab",
+            "minecraft:andesite_slab",
+            "minecraft:bamboo_mosaic_slab",
+            "minecraft:bamboo_slab",
+            "minecraft:birch_slab",
+            "minecraft:blackstone_slab",
+            "minecraft:brick_slab",
+            "minecraft:cherry_slab",
+            "minecraft:cobbled_deepslate_slab",
+            "minecraft:cobblestone_slab",
+            "minecraft:crimson_slab",
+            "minecraft:cut_copper_slab",
+            "minecraft:cut_red_sandstone_slab",
+            "minecraft:cut_sandstone_slab",
+            "minecraft:dark_oak_slab",
+            "minecraft:dark_prismarine_slab",
+            "minecraft:deepslate_brick_slab",
+            "minecraft:deepslate_tile_slab",
+            "minecraft:diorite_slab",
+            "minecraft:end_stone_brick_slab",
+            "minecraft:exposed_cut_copper_slab",
+            "minecraft:granite_slab",
+            "minecraft:jungle_slab",
+            "minecraft:mangrove_slab",
+            "minecraft:mossy_cobblestone_slab",
+            "minecraft:mossy_stone_brick_slab",
+            "minecraft:mud_brick_slab",
+            "minecraft:nether_brick_slab",
+            "minecraft:oak_slab",
+            "minecraft:oxidized_cut_copper_slab",
+            "minecraft:petrified_oak_slab",
+            "minecraft:polished_andesite_slab",
+            "minecraft:spruce_slab",
+            "minecraft:warped_slab"
+          ]
+        },
+        "stairs": {
+          "label": "Stairs",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Stair-shaped building variants.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "minecraft:stairs",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "minecraft:wooden_stairs",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:stairs",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:wooden_stairs",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:acacia_stairs",
+            "minecraft:andesite_stairs",
+            "minecraft:bamboo_mosaic_stairs",
+            "minecraft:bamboo_stairs",
+            "minecraft:birch_stairs",
+            "minecraft:blackstone_stairs",
+            "minecraft:brick_stairs",
+            "minecraft:cherry_stairs",
+            "minecraft:cobbled_deepslate_stairs",
+            "minecraft:cobblestone_stairs",
+            "minecraft:crimson_stairs",
+            "minecraft:cut_copper_stairs",
+            "minecraft:dark_oak_stairs",
+            "minecraft:dark_prismarine_stairs",
+            "minecraft:deepslate_brick_stairs",
+            "minecraft:deepslate_tile_stairs",
+            "minecraft:diorite_stairs",
+            "minecraft:end_stone_brick_stairs",
+            "minecraft:exposed_cut_copper_stairs",
+            "minecraft:granite_stairs",
+            "minecraft:jungle_stairs",
+            "minecraft:mangrove_stairs",
+            "minecraft:mossy_cobblestone_stairs",
+            "minecraft:mossy_stone_brick_stairs",
+            "minecraft:mud_brick_stairs",
+            "minecraft:nether_brick_stairs",
+            "minecraft:oak_stairs",
+            "minecraft:oxidized_cut_copper_stairs",
+            "minecraft:polished_andesite_stairs",
+            "minecraft:polished_blackstone_brick_stairs",
+            "minecraft:polished_blackstone_stairs",
+            "minecraft:polished_deepslate_stairs",
+            "minecraft:spruce_stairs",
+            "minecraft:warped_stairs"
+          ]
+        },
+        "storage": {
+          "label": "Storage",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "aliases": [
+            "item containers"
+          ],
+          "description": "Chests, barrels, crates, sacks, bags, backpacks, drawers, tanks, and other containers.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/amethyst",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/coal",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/copper",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/diamond",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/emerald",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/gold",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/iron",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/lapis",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/netherite",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/quartz",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/raw_copper",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/raw_gold",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/raw_iron",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:storage_blocks/redstone",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/amethyst",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/coal",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/copper",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/diamond",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/emerald",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/gold",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/iron",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/lapis",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/netherite",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/quartz",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/raw_copper",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/raw_gold",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/raw_iron",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:storage_blocks/redstone",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:amethyst_block",
+            "minecraft:coal_block",
+            "minecraft:copper_block",
+            "minecraft:diamond_block",
+            "minecraft:emerald_block",
+            "minecraft:gold_block",
+            "minecraft:iron_block",
+            "minecraft:lapis_block",
+            "minecraft:netherite_block",
+            "minecraft:quartz_block",
+            "minecraft:raw_copper_block",
+            "minecraft:raw_gold_block",
+            "minecraft:raw_iron_block",
+            "minecraft:redstone_block"
+          ]
+        },
+        "tools": {
+          "label": "Tools",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Reusable handheld tools and utility implements.",
+          "evidence": [
+            {
+              "kind": "item_tag",
+              "id": "forge:tools",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:tools/bows",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:tools/crossbows",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:tools/fishing_rods",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:tools/shields",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:tools/tridents",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:tools",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:bow",
+            "minecraft:crossbow",
+            "minecraft:diamond_axe",
+            "minecraft:diamond_hoe",
+            "minecraft:diamond_pickaxe",
+            "minecraft:diamond_shovel",
+            "minecraft:diamond_sword",
+            "minecraft:fishing_rod",
+            "minecraft:golden_axe",
+            "minecraft:golden_hoe",
+            "minecraft:golden_pickaxe",
+            "minecraft:golden_shovel",
+            "minecraft:golden_sword",
+            "minecraft:iron_axe",
+            "minecraft:iron_hoe",
+            "minecraft:iron_pickaxe",
+            "minecraft:iron_shovel",
+            "minecraft:iron_sword",
+            "minecraft:netherite_axe",
+            "minecraft:netherite_hoe",
+            "minecraft:netherite_pickaxe",
+            "minecraft:netherite_shovel",
+            "minecraft:netherite_sword",
+            "minecraft:shield",
+            "minecraft:stone_axe",
+            "minecraft:stone_hoe",
+            "minecraft:stone_pickaxe",
+            "minecraft:stone_shovel",
+            "minecraft:stone_sword",
+            "minecraft:trident",
+            "minecraft:wooden_axe",
+            "minecraft:wooden_hoe",
+            "minecraft:wooden_pickaxe",
+            "minecraft:wooden_shovel",
+            "minecraft:wooden_sword"
+          ]
+        },
+        "transport": {
+          "label": "Transport",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Rails, tracks, carts, boats, rockets, trains, and movement infrastructure."
+        },
+        "upgrades": {
+          "label": "Upgrades",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Upgrades, modules, augments, and installable improvement items."
+        },
+        "utility": {
+          "label": "Utility",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Buckets, bottles, maps, ropes, ladders, and other general utility items."
+        },
+        "walls": {
+          "label": "Walls",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Wall-shaped building variants.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "minecraft:walls",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "minecraft:walls",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:andesite_wall",
+            "minecraft:blackstone_wall",
+            "minecraft:brick_wall",
+            "minecraft:cobbled_deepslate_wall",
+            "minecraft:cobblestone_wall",
+            "minecraft:deepslate_brick_wall",
+            "minecraft:deepslate_tile_wall",
+            "minecraft:diorite_wall",
+            "minecraft:end_stone_brick_wall",
+            "minecraft:granite_wall",
+            "minecraft:mossy_cobblestone_wall",
+            "minecraft:mossy_stone_brick_wall",
+            "minecraft:mud_brick_wall",
+            "minecraft:nether_brick_wall",
+            "minecraft:polished_blackstone_brick_wall",
+            "minecraft:polished_blackstone_wall",
+            "minecraft:polished_deepslate_wall",
+            "minecraft:prismarine_wall",
+            "minecraft:red_nether_brick_wall",
+            "minecraft:red_sandstone_wall",
+            "minecraft:sandstone_wall",
+            "minecraft:stone_brick_wall"
+          ]
+        },
+        "weapons": {
+          "label": "Weapons",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Weapons, ammunition, and combat attack items."
+        },
+        "windows": {
+          "label": "Windows",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Panes, bars, windows, and window-like blocks."
+        },
+        "wood": {
+          "label": "Wood",
+          "origin": "built_in",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Logs, planks, boards, lumber, sticks, beams, and close stock-wood siblings.",
+          "evidence": [
+            {
+              "kind": "item_tag",
+              "id": "minecraft:non_flammable_wood",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:crimson_button",
+            "minecraft:crimson_door",
+            "minecraft:crimson_fence",
+            "minecraft:crimson_fence_gate",
+            "minecraft:crimson_hanging_sign",
+            "minecraft:crimson_hyphae",
+            "minecraft:crimson_planks",
+            "minecraft:crimson_pressure_plate",
+            "minecraft:crimson_sign",
+            "minecraft:crimson_slab",
+            "minecraft:crimson_stairs",
+            "minecraft:crimson_stem",
+            "minecraft:crimson_trapdoor",
+            "minecraft:stripped_crimson_hyphae",
+            "minecraft:stripped_crimson_stem",
+            "minecraft:stripped_warped_hyphae",
+            "minecraft:stripped_warped_stem",
+            "minecraft:warped_button",
+            "minecraft:warped_door",
+            "minecraft:warped_fence",
+            "minecraft:warped_fence_gate",
+            "minecraft:warped_hanging_sign",
+            "minecraft:warped_hyphae",
+            "minecraft:warped_planks",
+            "minecraft:warped_pressure_plate",
+            "minecraft:warped_sign",
+            "minecraft:warped_slab",
+            "minecraft:warped_stairs",
+            "minecraft:warped_stem",
+            "minecraft:warped_trapdoor"
+          ]
+        },
+        "workbenches": {
+          "label": "Workbenches",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.95,
+          "description": "Crafting stations, tables, benches, and placed work surfaces."
+        },
+        "beekeeping": {
+          "label": "Beekeeping",
+          "origin": "previous",
+          "state": "review",
+          "confidence": 0.78,
+          "aliases": [
+            "bees"
+          ],
+          "description": "Bees, hives, honey, wax, and apiary supplies.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "minecraft:bee_growables",
+              "confidence": 0.75
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:bee_nest",
+              "confidence": 1
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:bee_spawn_egg",
+              "confidence": 1
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:honey_block",
+              "confidence": 1
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:honey_bottle",
+              "confidence": 1
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:honeycomb",
+              "confidence": 1
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:honeycomb_block",
+              "confidence": 1
+            }
+          ],
+          "seed_items": [
+            "minecraft:bee_nest",
+            "minecraft:bee_spawn_egg",
+            "minecraft:honey_block",
+            "minecraft:honey_bottle",
+            "minecraft:honeycomb",
+            "minecraft:honeycomb_block",
+            "minecraft:wheat"
+          ]
+        },
+        "cooking_tools": {
+          "label": "Cooking Tools",
+          "origin": "previous",
+          "state": "review",
+          "confidence": 0.78,
+          "aliases": [
+            "cookware"
+          ],
+          "description": "Bowl, cauldron, pot, and cookware.",
+          "evidence": [
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:bowl",
+              "confidence": 1
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:decorated_pot",
+              "confidence": 1
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:flower_pot",
+              "confidence": 1
+            }
+          ],
+          "seed_items": [
+            "minecraft:bowl",
+            "minecraft:decorated_pot",
+            "minecraft:flower_pot"
+          ]
+        },
+        "glass_products": {
+          "label": "Glass Products",
+          "origin": "previous",
+          "state": "review",
+          "confidence": 0.78,
+          "aliases": [
+            "glassware"
+          ],
+          "description": "Glass blocks, panes, bottles, and stained glass.",
+          "evidence": [
+            {
+              "kind": "block_tag",
+              "id": "forge:glass",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/black",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/blue",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/brown",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/colorless",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/cyan",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/gray",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/green",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/light_blue",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/light_gray",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/lime",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/magenta",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/orange",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/pink",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/purple",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/red",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/white",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass_panes/yellow",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/black",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/blue",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/brown",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/colorless",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/cyan",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/gray",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/green",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/light_blue",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/light_gray",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/lime",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/magenta",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/orange",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/pink",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/purple",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/red",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/silica",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/tinted",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/white",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:glass/yellow",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:stained_glass",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "forge:stained_glass_panes",
+              "confidence": 0.75
+            },
+            {
+              "kind": "block_tag",
+              "id": "minecraft:smelts_to_glass",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/black",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/blue",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/brown",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/colorless",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/cyan",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/gray",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/green",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/light_blue",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/light_gray",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/lime",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/magenta",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/orange",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/pink",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/purple",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/red",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/white",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass_panes/yellow",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass/black",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass/blue",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass/brown",
+              "confidence": 0.75
+            },
+            {
+              "kind": "item_tag",
+              "id": "forge:glass/colorless",
+              "confidence": 0.75
+            }
+          ],
+          "seed_items": [
+            "minecraft:black_stained_glass",
+            "minecraft:black_stained_glass_pane",
+            "minecraft:blue_stained_glass",
+            "minecraft:blue_stained_glass_pane",
+            "minecraft:brown_stained_glass",
+            "minecraft:brown_stained_glass_pane",
+            "minecraft:cyan_stained_glass",
+            "minecraft:cyan_stained_glass_pane",
+            "minecraft:experience_bottle",
+            "minecraft:glass",
+            "minecraft:glass_bottle",
+            "minecraft:glass_pane",
+            "minecraft:gray_stained_glass",
+            "minecraft:gray_stained_glass_pane",
+            "minecraft:green_stained_glass",
+            "minecraft:green_stained_glass_pane",
+            "minecraft:honey_bottle",
+            "minecraft:light_blue_stained_glass",
+            "minecraft:light_blue_stained_glass_pane",
+            "minecraft:light_gray_stained_glass",
+            "minecraft:light_gray_stained_glass_pane",
+            "minecraft:lime_stained_glass",
+            "minecraft:lime_stained_glass_pane",
+            "minecraft:lingering_potion",
+            "minecraft:magenta_stained_glass",
+            "minecraft:magenta_stained_glass_pane",
+            "minecraft:orange_stained_glass",
+            "minecraft:orange_stained_glass_pane",
+            "minecraft:pink_stained_glass",
+            "minecraft:pink_stained_glass_pane",
+            "minecraft:potion",
+            "minecraft:purple_stained_glass",
+            "minecraft:purple_stained_glass_pane",
+            "minecraft:red_sand",
+            "minecraft:red_stained_glass",
+            "minecraft:red_stained_glass_pane",
+            "minecraft:sand",
+            "minecraft:splash_potion",
+            "minecraft:tinted_glass",
+            "minecraft:white_stained_glass",
+            "minecraft:white_stained_glass_pane",
+            "minecraft:yellow_stained_glass",
+            "minecraft:yellow_stained_glass_pane"
+          ]
+        },
+        "weaving_cloth": {
+          "label": "Weaving & Cloth",
+          "origin": "previous",
+          "state": "review",
+          "confidence": 0.78,
+          "aliases": [
+            "cloth",
+            "textiles"
+          ],
+          "description": "String, wool, carpet, loom, and textiles.",
+          "evidence": [
+            {
+              "kind": "item_tag",
+              "id": "forge:string",
+              "confidence": 0.75
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:loom",
+              "confidence": 1
+            },
+            {
+              "kind": "runtime_item",
+              "id": "minecraft:string",
+              "confidence": 1
+            }
+          ],
+          "seed_items": [
+            "minecraft:loom",
+            "minecraft:string"
+          ]
+        }
+      }
+    },
+    "preparation_state": {
+      "values": {
+        "cooked": {
+          "label": "Cooked",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Cooked in a furnace, campfire, or smoker."
+        },
+        "dried": {
+          "label": "Dried",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Dried in a furnace or naturally."
+        },
+        "popped": {
+          "label": "Popped",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Popped in a furnace."
+        },
+        "raw": {
+          "label": "Raw",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Uncooked or unprocessed state."
+        },
+        "smoked": {
+          "label": "Smoked",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Smoked in a smoker."
+        }
+      }
+    },
+    "produces_effect": {
+      "values": {
+        "minecraft:poison": {
+          "label": "Poison",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Applies the Poison status effect."
+        }
+      }
+    },
+    "protection_context": {
+      "values": {
+        "freeze": {
+          "label": "Freeze",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Protects against freezing damage from powdered snow."
+        }
+      }
+    },
+    "required_tool": {
+      "values": {
+        "axe": {
+          "label": "Axe",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Required to mine wood-based blocks."
+        },
+        "hoe": {
+          "label": "Hoe",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used to till soil and break some blocks."
+        },
+        "pickaxe": {
+          "label": "Pickaxe",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Required to mine stone ores and blocks."
+        },
+        "shears": {
+          "label": "Shears",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Required to shear sheep and harvest some blocks."
+        },
+        "shovel": {
+          "label": "Shovel",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Required to mine dirt, sand, gravel, snow."
+        }
+      }
+    },
+    "required_tool_tier": {
+      "values": {
+        "diamond": {
+          "label": "Diamond",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "High tier, can mine obsidian and ancient debris."
+        },
+        "gold": {
+          "label": "Gold",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Fast but low durability tier."
+        },
+        "iron": {
+          "label": "Iron",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Mid-tier, can mine many ores."
+        },
+        "netherite": {
+          "label": "Netherite",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Highest vanilla tier, knockback resistance."
+        },
+        "stone": {
+          "label": "Stone",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Second tier, can mine iron ore."
+        },
+        "wood": {
+          "label": "Wood",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Lowest harvest tier."
+        }
+      }
+    },
+    "role": {
+      "values": {
+        "armor": {
+          "label": "Armor",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Wearable protection."
+        },
+        "block": {
+          "label": "Block",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Placeable block item."
+        },
+        "drink": {
+          "label": "Drink",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Drinkable item like potions and milk."
+        },
+        "food": {
+          "label": "Food",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Edible item that restores hunger."
+        },
+        "ingredient": {
+          "label": "Ingredient",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Crafting or processing ingredient."
+        },
+        "music_disc": {
+          "label": "Music Disc",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Playable music disc."
+        },
+        "spawn_egg": {
+          "label": "Spawn Egg",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Item that spawns a mob."
+        },
+        "storage": {
+          "label": "Storage",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Container items for item storage."
+        },
+        "tool": {
+          "label": "Tool",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Handheld tool with durability."
+        },
+        "transport": {
+          "label": "Transport",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Minecarts, boats, and related items."
+        },
+        "weapon": {
+          "label": "Weapon",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Combat item for attack damage."
+        }
+      }
+    },
+    "spawn_interaction": {
+      "values": {
+        "repel_piglin": {
+          "label": "Repel Piglin",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Soul fire items repel piglins."
+        }
+      }
+    },
+    "stock_profile": {
+      "values": {
+        "durable": {
+          "label": "Durable",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Has durability that decreases with use."
+        },
+        "stack16": {
+          "label": "Stack 16",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Items that stack up to 16."
+        },
+        "stack64": {
+          "label": "Stack 64",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Items that stack up to 64."
+        },
+        "unstackable": {
+          "label": "Unstackable",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Items that do not stack (max 1)."
+        }
+      }
+    },
+    "tier": {
+      "values": {
+        "chainmail": {
+          "label": "Chainmail",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Chainmail armor tier."
+        },
+        "diamond": {
+          "label": "Diamond",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Diamond armor/tool tier."
+        },
+        "golden": {
+          "label": "Golden",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Golden armor/tool tier."
+        },
+        "iron": {
+          "label": "Iron",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Iron armor/tool tier."
+        },
+        "leather": {
+          "label": "Leather",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Leather armor tier."
+        },
+        "netherite": {
+          "label": "Netherite",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Netherite armor/tool tier."
+        }
+      }
+    },
+    "transport_medium": {
+      "values": {
+        "fluid": {
+          "label": "Fluid",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Transports fluids (water, lava)."
+        },
+        "item": {
+          "label": "Item",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Transports items."
+        },
+        "player": {
+          "label": "Player",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Transports the player."
+        }
+      }
+    },
+    "use_affordance": {
+      "values": {
+        "attack": {
+          "label": "Attack",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Attack with weapon or tool in hand."
+        },
+        "drink": {
+          "label": "Drink",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Drink potions or milk."
+        },
+        "eat": {
+          "label": "Eat",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Consume food items."
+        },
+        "open": {
+          "label": "Open",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Open container inventory."
+        },
+        "place": {
+          "label": "Place",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Place block in the world."
+        },
+        "shear": {
+          "label": "Shear",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Use shears to harvest."
+        },
+        "strip": {
+          "label": "Strip",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Strip bark from logs with an axe."
+        },
+        "till": {
+          "label": "Till",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Till soil with a hoe."
+        },
+        "use": {
+          "label": "Use",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Right-click interaction (activate, shoot, etc.)."
+        }
+      }
+    },
+    "used_at": {
+      "values": {
+        "anvil": {
+          "label": "Anvil",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used at an anvil."
+        },
+        "blast_furnace": {
+          "label": "Blast Furnace",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used in a blast furnace."
+        },
+        "brewing_stand": {
+          "label": "Brewing Stand",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used in a brewing stand."
+        },
+        "campfire": {
+          "label": "Campfire",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used on a campfire for cooking."
+        },
+        "cartography_table": {
+          "label": "Cartography Table",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used at a cartography table."
+        },
+        "enchanting_table": {
+          "label": "Enchanting Table",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used at an enchanting table."
+        },
+        "fletching_table": {
+          "label": "Fletching Table",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used at a fletching table."
+        },
+        "furnace": {
+          "label": "Furnace",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used in a furnace for smelting or cooking."
+        },
+        "grindstone": {
+          "label": "Grindstone",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used at a grindstone."
+        },
+        "loom": {
+          "label": "Loom",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used with a loom."
+        },
+        "smithing_table": {
+          "label": "Smithing Table",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used at a smithing table."
+        },
+        "smoker": {
+          "label": "Smoker",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used in a smoker."
+        },
+        "stonecutter": {
+          "label": "Stonecutter",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Used with a stonecutter."
+        }
+      }
+    },
+    "workflow": {
+      "values": {
+        "blasting": {
+          "label": "Blasting",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Smelting ore in a blast furnace.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "blasting",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:ancient_debris",
+            "minecraft:chainmail_boots",
+            "minecraft:chainmail_chestplate",
+            "minecraft:chainmail_helmet",
+            "minecraft:chainmail_leggings",
+            "minecraft:coal",
+            "minecraft:coal_ore",
+            "minecraft:copper_ingot",
+            "minecraft:copper_ore",
+            "minecraft:deepslate_coal_ore",
+            "minecraft:deepslate_copper_ore",
+            "minecraft:deepslate_diamond_ore",
+            "minecraft:deepslate_emerald_ore",
+            "minecraft:deepslate_gold_ore",
+            "minecraft:deepslate_iron_ore",
+            "minecraft:deepslate_lapis_ore",
+            "minecraft:deepslate_redstone_ore",
+            "minecraft:diamond",
+            "minecraft:diamond_ore",
+            "minecraft:emerald",
+            "minecraft:emerald_ore",
+            "minecraft:gold_ingot",
+            "minecraft:gold_nugget",
+            "minecraft:gold_ore",
+            "minecraft:golden_axe",
+            "minecraft:golden_boots",
+            "minecraft:golden_chestplate",
+            "minecraft:golden_helmet",
+            "minecraft:golden_hoe",
+            "minecraft:golden_horse_armor",
+            "minecraft:golden_leggings",
+            "minecraft:golden_pickaxe"
+          ]
+        },
+        "brewing": {
+          "label": "Brewing",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Brewing potions in a brewing stand."
+        },
+        "campfire_cooking": {
+          "label": "Campfire Cooking",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Cooking food on a campfire.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "campfire_cooking",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:baked_potato",
+            "minecraft:beef",
+            "minecraft:chicken",
+            "minecraft:cod",
+            "minecraft:cooked_beef",
+            "minecraft:cooked_chicken",
+            "minecraft:cooked_cod",
+            "minecraft:cooked_mutton",
+            "minecraft:cooked_porkchop",
+            "minecraft:cooked_rabbit",
+            "minecraft:cooked_salmon",
+            "minecraft:dried_kelp",
+            "minecraft:kelp",
+            "minecraft:mutton",
+            "minecraft:porkchop",
+            "minecraft:potato",
+            "minecraft:rabbit",
+            "minecraft:salmon"
+          ]
+        },
+        "enchanting": {
+          "label": "Enchanting",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Enchanting items at an enchanting table."
+        },
+        "grinding": {
+          "label": "Grinding",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Disenchanting at grindstone."
+        },
+        "smelting": {
+          "label": "Smelting",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Cooking or smelting in a furnace.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "smelting",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:acacia_log",
+            "minecraft:acacia_wood",
+            "minecraft:ancient_debris",
+            "minecraft:baked_potato",
+            "minecraft:basalt",
+            "minecraft:beef",
+            "minecraft:birch_log",
+            "minecraft:birch_wood",
+            "minecraft:black_glazed_terracotta",
+            "minecraft:black_terracotta",
+            "minecraft:blue_glazed_terracotta",
+            "minecraft:blue_terracotta",
+            "minecraft:brick",
+            "minecraft:brown_glazed_terracotta",
+            "minecraft:brown_terracotta",
+            "minecraft:cactus",
+            "minecraft:chainmail_boots",
+            "minecraft:chainmail_chestplate",
+            "minecraft:chainmail_helmet",
+            "minecraft:chainmail_leggings",
+            "minecraft:charcoal",
+            "minecraft:cherry_log",
+            "minecraft:cherry_wood",
+            "minecraft:chicken",
+            "minecraft:chorus_fruit",
+            "minecraft:clay",
+            "minecraft:clay_ball",
+            "minecraft:coal",
+            "minecraft:coal_ore",
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobblestone",
+            "minecraft:cod"
+          ]
+        },
+        "smithing": {
+          "label": "Smithing",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Using a smithing table for upgrades or trim."
+        },
+        "smoking": {
+          "label": "Smoking",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Cooking food in a smoker.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "smoking",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:baked_potato",
+            "minecraft:beef",
+            "minecraft:chicken",
+            "minecraft:cod",
+            "minecraft:cooked_beef",
+            "minecraft:cooked_chicken",
+            "minecraft:cooked_cod",
+            "minecraft:cooked_mutton",
+            "minecraft:cooked_porkchop",
+            "minecraft:cooked_rabbit",
+            "minecraft:cooked_salmon",
+            "minecraft:dried_kelp",
+            "minecraft:kelp",
+            "minecraft:mutton",
+            "minecraft:porkchop",
+            "minecraft:potato",
+            "minecraft:rabbit",
+            "minecraft:salmon"
+          ]
+        },
+        "stonecutting": {
+          "label": "Stonecutting",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Cutting stone into variants.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "stonecutting",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:andesite",
+            "minecraft:andesite_slab",
+            "minecraft:andesite_stairs",
+            "minecraft:andesite_wall",
+            "minecraft:basalt",
+            "minecraft:blackstone",
+            "minecraft:blackstone_slab",
+            "minecraft:blackstone_stairs",
+            "minecraft:blackstone_wall",
+            "minecraft:brick_slab",
+            "minecraft:brick_stairs",
+            "minecraft:brick_wall",
+            "minecraft:bricks",
+            "minecraft:chiseled_deepslate",
+            "minecraft:chiseled_nether_bricks",
+            "minecraft:chiseled_polished_blackstone",
+            "minecraft:chiseled_quartz_block",
+            "minecraft:chiseled_red_sandstone",
+            "minecraft:chiseled_sandstone",
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobbled_deepslate_slab",
+            "minecraft:cobbled_deepslate_stairs",
+            "minecraft:cobbled_deepslate_wall",
+            "minecraft:cobblestone",
+            "minecraft:cobblestone_slab",
+            "minecraft:cobblestone_stairs",
+            "minecraft:cobblestone_wall",
+            "minecraft:copper_block",
+            "minecraft:cut_copper",
+            "minecraft:cut_copper_slab",
+            "minecraft:cut_copper_stairs"
+          ]
+        }
+      }
+    },
+    "workflow_role": {
+      "values": {
+        "blasting#input": {
+          "label": "Blasting Input",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item used as input in blasting.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "blasting",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:ancient_debris",
+            "minecraft:chainmail_boots",
+            "minecraft:chainmail_chestplate",
+            "minecraft:chainmail_helmet",
+            "minecraft:chainmail_leggings",
+            "minecraft:coal",
+            "minecraft:coal_ore",
+            "minecraft:copper_ingot",
+            "minecraft:copper_ore",
+            "minecraft:deepslate_coal_ore",
+            "minecraft:deepslate_copper_ore",
+            "minecraft:deepslate_diamond_ore",
+            "minecraft:deepslate_emerald_ore",
+            "minecraft:deepslate_gold_ore",
+            "minecraft:deepslate_iron_ore",
+            "minecraft:deepslate_lapis_ore",
+            "minecraft:deepslate_redstone_ore",
+            "minecraft:diamond",
+            "minecraft:diamond_ore",
+            "minecraft:emerald",
+            "minecraft:emerald_ore",
+            "minecraft:gold_ingot",
+            "minecraft:gold_nugget",
+            "minecraft:gold_ore",
+            "minecraft:golden_axe",
+            "minecraft:golden_boots",
+            "minecraft:golden_chestplate",
+            "minecraft:golden_helmet",
+            "minecraft:golden_hoe",
+            "minecraft:golden_horse_armor",
+            "minecraft:golden_leggings",
+            "minecraft:golden_pickaxe"
+          ],
+          "parent": "blasting"
+        },
+        "blasting#output": {
+          "label": "Blasting Output",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item produced by blasting.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "blasting",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:ancient_debris",
+            "minecraft:chainmail_boots",
+            "minecraft:chainmail_chestplate",
+            "minecraft:chainmail_helmet",
+            "minecraft:chainmail_leggings",
+            "minecraft:coal",
+            "minecraft:coal_ore",
+            "minecraft:copper_ingot",
+            "minecraft:copper_ore",
+            "minecraft:deepslate_coal_ore",
+            "minecraft:deepslate_copper_ore",
+            "minecraft:deepslate_diamond_ore",
+            "minecraft:deepslate_emerald_ore",
+            "minecraft:deepslate_gold_ore",
+            "minecraft:deepslate_iron_ore",
+            "minecraft:deepslate_lapis_ore",
+            "minecraft:deepslate_redstone_ore",
+            "minecraft:diamond",
+            "minecraft:diamond_ore",
+            "minecraft:emerald",
+            "minecraft:emerald_ore",
+            "minecraft:gold_ingot",
+            "minecraft:gold_nugget",
+            "minecraft:gold_ore",
+            "minecraft:golden_axe",
+            "minecraft:golden_boots",
+            "minecraft:golden_chestplate",
+            "minecraft:golden_helmet",
+            "minecraft:golden_hoe",
+            "minecraft:golden_horse_armor",
+            "minecraft:golden_leggings",
+            "minecraft:golden_pickaxe"
+          ],
+          "parent": "blasting"
+        },
+        "brewing#input": {
+          "label": "Brewing Input",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Item used as ingredient in brewing.",
+          "parent": "brewing"
+        },
+        "brewing#output": {
+          "label": "Brewing Output",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Item produced by brewing.",
+          "parent": "brewing"
+        },
+        "campfire_cooking#input": {
+          "label": "Campfire Cooking Input",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item cooked on a campfire.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "campfire_cooking",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:baked_potato",
+            "minecraft:beef",
+            "minecraft:chicken",
+            "minecraft:cod",
+            "minecraft:cooked_beef",
+            "minecraft:cooked_chicken",
+            "minecraft:cooked_cod",
+            "minecraft:cooked_mutton",
+            "minecraft:cooked_porkchop",
+            "minecraft:cooked_rabbit",
+            "minecraft:cooked_salmon",
+            "minecraft:dried_kelp",
+            "minecraft:kelp",
+            "minecraft:mutton",
+            "minecraft:porkchop",
+            "minecraft:potato",
+            "minecraft:rabbit",
+            "minecraft:salmon"
+          ],
+          "parent": "campfire_cooking"
+        },
+        "campfire_cooking#output": {
+          "label": "Campfire Cooking Output",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item produced by campfire cooking.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "campfire_cooking",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:baked_potato",
+            "minecraft:beef",
+            "minecraft:chicken",
+            "minecraft:cod",
+            "minecraft:cooked_beef",
+            "minecraft:cooked_chicken",
+            "minecraft:cooked_cod",
+            "minecraft:cooked_mutton",
+            "minecraft:cooked_porkchop",
+            "minecraft:cooked_rabbit",
+            "minecraft:cooked_salmon",
+            "minecraft:dried_kelp",
+            "minecraft:kelp",
+            "minecraft:mutton",
+            "minecraft:porkchop",
+            "minecraft:potato",
+            "minecraft:rabbit",
+            "minecraft:salmon"
+          ],
+          "parent": "campfire_cooking"
+        },
+        "enchanting#input": {
+          "label": "Enchanting Input",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Item that can be enchanted.",
+          "parent": "enchanting"
+        },
+        "enchanting#output": {
+          "label": "Enchanting Output",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Item produced by enchanting.",
+          "parent": "enchanting"
+        },
+        "smelting#input": {
+          "label": "Smelting Input",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item that can be smelted.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "smelting",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:acacia_log",
+            "minecraft:acacia_wood",
+            "minecraft:ancient_debris",
+            "minecraft:baked_potato",
+            "minecraft:basalt",
+            "minecraft:beef",
+            "minecraft:birch_log",
+            "minecraft:birch_wood",
+            "minecraft:black_glazed_terracotta",
+            "minecraft:black_terracotta",
+            "minecraft:blue_glazed_terracotta",
+            "minecraft:blue_terracotta",
+            "minecraft:brick",
+            "minecraft:brown_glazed_terracotta",
+            "minecraft:brown_terracotta",
+            "minecraft:cactus",
+            "minecraft:chainmail_boots",
+            "minecraft:chainmail_chestplate",
+            "minecraft:chainmail_helmet",
+            "minecraft:chainmail_leggings",
+            "minecraft:charcoal",
+            "minecraft:cherry_log",
+            "minecraft:cherry_wood",
+            "minecraft:chicken",
+            "minecraft:chorus_fruit",
+            "minecraft:clay",
+            "minecraft:clay_ball",
+            "minecraft:coal",
+            "minecraft:coal_ore",
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobblestone",
+            "minecraft:cod"
+          ],
+          "parent": "smelting"
+        },
+        "smelting#output": {
+          "label": "Smelting Output",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item produced by smelting.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "smelting",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:acacia_log",
+            "minecraft:acacia_wood",
+            "minecraft:ancient_debris",
+            "minecraft:baked_potato",
+            "minecraft:basalt",
+            "minecraft:beef",
+            "minecraft:birch_log",
+            "minecraft:birch_wood",
+            "minecraft:black_glazed_terracotta",
+            "minecraft:black_terracotta",
+            "minecraft:blue_glazed_terracotta",
+            "minecraft:blue_terracotta",
+            "minecraft:brick",
+            "minecraft:brown_glazed_terracotta",
+            "minecraft:brown_terracotta",
+            "minecraft:cactus",
+            "minecraft:chainmail_boots",
+            "minecraft:chainmail_chestplate",
+            "minecraft:chainmail_helmet",
+            "minecraft:chainmail_leggings",
+            "minecraft:charcoal",
+            "minecraft:cherry_log",
+            "minecraft:cherry_wood",
+            "minecraft:chicken",
+            "minecraft:chorus_fruit",
+            "minecraft:clay",
+            "minecraft:clay_ball",
+            "minecraft:coal",
+            "minecraft:coal_ore",
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobblestone",
+            "minecraft:cod"
+          ],
+          "parent": "smelting"
+        },
+        "smithing#input": {
+          "label": "Smithing Input",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Item used as base in smithing.",
+          "parent": "smithing"
+        },
+        "smithing#output": {
+          "label": "Smithing Output",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.5,
+          "description": "Item produced by smithing.",
+          "parent": "smithing"
+        },
+        "smoking#input": {
+          "label": "Smoking Input",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item smoked in a smoker.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "smoking",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:baked_potato",
+            "minecraft:beef",
+            "minecraft:chicken",
+            "minecraft:cod",
+            "minecraft:cooked_beef",
+            "minecraft:cooked_chicken",
+            "minecraft:cooked_cod",
+            "minecraft:cooked_mutton",
+            "minecraft:cooked_porkchop",
+            "minecraft:cooked_rabbit",
+            "minecraft:cooked_salmon",
+            "minecraft:dried_kelp",
+            "minecraft:kelp",
+            "minecraft:mutton",
+            "minecraft:porkchop",
+            "minecraft:potato",
+            "minecraft:rabbit",
+            "minecraft:salmon"
+          ],
+          "parent": "smoking"
+        },
+        "smoking#output": {
+          "label": "Smoking Output",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item produced by smoking.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "smoking",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:baked_potato",
+            "minecraft:beef",
+            "minecraft:chicken",
+            "minecraft:cod",
+            "minecraft:cooked_beef",
+            "minecraft:cooked_chicken",
+            "minecraft:cooked_cod",
+            "minecraft:cooked_mutton",
+            "minecraft:cooked_porkchop",
+            "minecraft:cooked_rabbit",
+            "minecraft:cooked_salmon",
+            "minecraft:dried_kelp",
+            "minecraft:kelp",
+            "minecraft:mutton",
+            "minecraft:porkchop",
+            "minecraft:potato",
+            "minecraft:rabbit",
+            "minecraft:salmon"
+          ],
+          "parent": "smoking"
+        },
+        "stonecutting#input": {
+          "label": "Stonecutting Input",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item used as input in stonecutting.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "stonecutting",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:andesite",
+            "minecraft:andesite_slab",
+            "minecraft:andesite_stairs",
+            "minecraft:andesite_wall",
+            "minecraft:basalt",
+            "minecraft:blackstone",
+            "minecraft:blackstone_slab",
+            "minecraft:blackstone_stairs",
+            "minecraft:blackstone_wall",
+            "minecraft:brick_slab",
+            "minecraft:brick_stairs",
+            "minecraft:brick_wall",
+            "minecraft:bricks",
+            "minecraft:chiseled_deepslate",
+            "minecraft:chiseled_nether_bricks",
+            "minecraft:chiseled_polished_blackstone",
+            "minecraft:chiseled_quartz_block",
+            "minecraft:chiseled_red_sandstone",
+            "minecraft:chiseled_sandstone",
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobbled_deepslate_slab",
+            "minecraft:cobbled_deepslate_stairs",
+            "minecraft:cobbled_deepslate_wall",
+            "minecraft:cobblestone",
+            "minecraft:cobblestone_slab",
+            "minecraft:cobblestone_stairs",
+            "minecraft:cobblestone_wall",
+            "minecraft:copper_block",
+            "minecraft:cut_copper",
+            "minecraft:cut_copper_slab",
+            "minecraft:cut_copper_stairs"
+          ],
+          "parent": "stonecutting"
+        },
+        "stonecutting#output": {
+          "label": "Stonecutting Output",
+          "origin": "previous",
+          "state": "accepted",
+          "confidence": 0.85,
+          "description": "Item produced by stonecutting.",
+          "evidence": [
+            {
+              "kind": "recipe_type",
+              "id": "stonecutting",
+              "confidence": 0.85
+            }
+          ],
+          "seed_items": [
+            "minecraft:andesite",
+            "minecraft:andesite_slab",
+            "minecraft:andesite_stairs",
+            "minecraft:andesite_wall",
+            "minecraft:basalt",
+            "minecraft:blackstone",
+            "minecraft:blackstone_slab",
+            "minecraft:blackstone_stairs",
+            "minecraft:blackstone_wall",
+            "minecraft:brick_slab",
+            "minecraft:brick_stairs",
+            "minecraft:brick_wall",
+            "minecraft:bricks",
+            "minecraft:chiseled_deepslate",
+            "minecraft:chiseled_nether_bricks",
+            "minecraft:chiseled_polished_blackstone",
+            "minecraft:chiseled_quartz_block",
+            "minecraft:chiseled_red_sandstone",
+            "minecraft:chiseled_sandstone",
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobbled_deepslate_slab",
+            "minecraft:cobbled_deepslate_stairs",
+            "minecraft:cobbled_deepslate_wall",
+            "minecraft:cobblestone",
+            "minecraft:cobblestone_slab",
+            "minecraft:cobblestone_stairs",
+            "minecraft:cobblestone_wall",
+            "minecraft:copper_block",
+            "minecraft:cut_copper",
+            "minecraft:cut_copper_slab",
+            "minecraft:cut_copper_stairs"
+          ],
+          "parent": "stonecutting"
+        }
+      }
+    }
+  }
+}

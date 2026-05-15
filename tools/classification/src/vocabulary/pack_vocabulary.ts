@@ -20,6 +20,7 @@ export type {
   VocabularyDecision,
   VocabularyDiagnostic,
   VocabularyFacetId,
+  VocabularyItemSampleMode,
   VocabularyReviewDecision,
   VocabularySemanticEvidence,
 } from "./pipeline.ts";

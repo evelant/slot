@@ -6,22 +6,19 @@ import {
 
 /**
  * Parsed output from a single LLM batch. Callers merge `items` into the layer
- * file and aggregate `proposals` and `corrections` for curator review.
+ * file and aggregate proposals / legacy review channels for curator review.
  */
 export interface ParsedLlmResponse {
   items: Map<string, ParsedItemFacets>;
   proposals: SchemaProposal[];
-  /** Missing accepted-vocabulary values the model wanted for a
-   * vocabulary-backed facet. These are review-only and never merged into the
-   * final layer automatically. */
+  /** Missing usable-vocabulary values the model used or wanted for a
+   * vocabulary-backed facet. The classification layer keeps those facet values
+   * and marks them with `vocab_review`; this side channel is only an aggregate
+   * report/review aid. */
   vocabularyProposals: VocabularyProposal[];
-  /** Flags from the LLM that a stage-2 facet looks wrong. These are never
-   *  merged into the layer automatically — they surface for human review. */
+  /** Legacy correction channel. The current prompt does not ask for these. */
   corrections: StageCorrection[];
-  /** Flags from the LLM that a stage-2 deterministic facet was missing
-   *  for an item where the value is obvious. Surfaced for review so we
-   *  can patch the stage-2 rule rather than relying on the LLM to fill
-   *  the gap on every regen. */
+  /** Legacy fill-in channel. The current prompt does not ask for these. */
   fillIns: StageFillIn[];
   /** Non-fatal issues (unknown facet, value out of enum, etc.) — the
    *  affected entries are dropped but the rest of the response is kept. */
@@ -34,15 +31,11 @@ export interface StageCorrection {
   current?: string | number | boolean | null;
   suggested?: string | number | boolean | null;
   rationale: string;
-  confidence?: number;
 }
 
 /**
- * "Stage-2 should have caught this." The LLM noticed a deterministic
- * facet (form, material_family, dye_color, …) wasn't derived for an
- * item where it's obvious — e.g., `dark_oak_window` clearly has
- * `form=window` even though `form_from_id` only matches `_pane`. Each
- * fill-in is a hint that the stage-2 rule has a gap worth patching.
+ * Legacy channel for exact/reference facets noticed outside the main `facets`
+ * object. Kept so old fixtures remain parseable.
  */
 export interface StageFillIn {
   item: string;
@@ -55,49 +48,29 @@ export interface ParsedItemFacets {
   facets: Record<string, ParsedFacetEntry>;
 }
 
-/**
- * Strength tag the LLM emits for each facet value. Drives the final confidence
- * via SIGNAL_TO_CONFIDENCE so we don't have to trust the model's self-reported
- * calibration.
- */
-export type Signal = "named" | "pattern" | "inferred" | "guess";
-
-/** Map signal strength → confidence floor. The LLM may emit a `confidence`
- *  to nudge DOWN within the band, but values above the signal's mapped
- *  confidence are silently capped — overconfidence on a guess is demoted. */
-export const SIGNAL_TO_CONFIDENCE: Record<Signal, number> = {
-  named: 0.95,
-  pattern: 0.80,
-  inferred: 0.60,
-  guess: 0.30,
-};
-
 export type ParsedFacetEntry =
   | {
       kind: "single";
       value: string | number | boolean | null;
-      confidence?: number;
       rationale?: string;
       ambiguous?: false;
-      signal?: Signal;
       evidence?: string;
+      vocabReview?: true;
     }
   | {
       kind: "ambiguous";
       values: [string | number, string | number];
-      confidence?: number;
       rationale?: string;
       ambiguous: true;
-      signal?: Signal;
       evidence?: string;
+      vocabReview?: true;
     }
   | {
       kind: "multi";
       values: (string | number)[];
-      confidence?: number;
       rationale?: string;
-      signal?: Signal;
       evidence?: string;
+      vocabReview?: true;
     };
 
 export interface SchemaProposal {
@@ -204,14 +177,12 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
         warnings.push(`correction missing required field(s): ${JSON.stringify(raw).slice(0, 120)}`);
         continue;
       }
-      const confidence = typeof c.confidence === "number" ? c.confidence : undefined;
       corrections.push({
         item: c.item,
         facet: c.facet,
         current: c.current as StageCorrection["current"],
         suggested: c.suggested as StageCorrection["suggested"],
         rationale: c.rationale,
-        confidence,
       });
     }
   }
@@ -230,11 +201,16 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
         warnings.push(`fill_in for ${f.item} ${f.facet} missing 'value'`);
         continue;
       }
-      // Only deterministic facets — llm-authored facets should be in
-      // `facets`, not `fill_ins`.
+      // Only non-vocabulary reference-style facets — llm-authored vocabulary
+      // facets must be grounded by usable vocabulary, not smuggled through the
+      // compatibility fill-in channel.
       const def = FACETS[f.facet];
       if (!def) {
         warnings.push(`fill_in for ${f.item} ${f.facet}: unknown facet`);
+        continue;
+      }
+      if (def.vocabulary_backed) {
+        warnings.push(`fill_in for ${f.item} ${f.facet}: facet is vocabulary-backed, emit in facets block with usable vocabulary or add vocabulary_proposals instead`);
         continue;
       }
       if (def.llm_authored && !def.deterministic) {
@@ -318,17 +294,8 @@ function parseFacetEntry(
   const e = raw as Record<string, unknown>;
   const rationale = typeof e.rationale === "string" ? e.rationale : undefined;
 
-  // Signal drives the final confidence. Evidence is optional context. The
-  // model's self-reported confidence is treated as a CAP — if the model says
-  // 0.9 but signal=guess, the actual confidence is min(0.9, signal_floor).
-  // Overconfidence on a weak signal is silently demoted; underconfidence is
-  // preserved.
-  const signal = parseSignal(e.signal);
   const evidence = typeof e.evidence === "string" ? e.evidence.trim() : "";
-  const modelConf = typeof e.confidence === "number" ? e.confidence : undefined;
-  const confidence = computeConfidence(signal, modelConf);
-  const richRationale = formatRationale(rationale, evidence, signal);
-  const effectiveSignal = signal; // kept for downstream type compatibility
+  const richRationale = formatRationale(rationale, evidence);
 
   // Ambiguous two-value shape.
   if (e.ambiguous === true) {
@@ -356,9 +323,7 @@ function parseFacetEntry(
       kind: "ambiguous",
       values: values as [string | number, string | number],
       ambiguous: true,
-      confidence,
       rationale: richRationale,
-      signal: effectiveSignal,
       evidence: evidence || undefined,
     };
   }
@@ -388,9 +353,7 @@ function parseFacetEntry(
     return {
       kind: "multi",
       values: values as (string | number)[],
-      confidence,
       rationale: richRationale,
-      signal: effectiveSignal,
       evidence: evidence || undefined,
     };
   }
@@ -409,48 +372,22 @@ function parseFacetEntry(
   return {
     kind: "single",
     value: value as string | number | boolean | null,
-    confidence,
     rationale: richRationale,
-    signal: effectiveSignal,
     evidence: evidence || undefined,
   };
 }
 
-/** Apply the signal floor as a confidence cap. Returns undefined if neither
- *  signal nor model confidence was provided. */
-function computeConfidence(
-  signal: Signal | undefined,
-  modelConf: number | undefined,
-): number | undefined {
-  if (signal !== undefined) {
-    const ceiling = SIGNAL_TO_CONFIDENCE[signal];
-    if (modelConf !== undefined) return Math.min(modelConf, ceiling);
-    return ceiling;
-  }
-  return modelConf;
-}
-
-/** Fold the LLM-emitted rationale + evidence + signal into a single readable
- *  string for the layer file. Wire format stays unchanged. */
+/** Fold the LLM-emitted rationale + evidence into a single readable string for
+ * the layer file. */
 function formatRationale(
   rationale: string | undefined,
   evidence: string,
-  signal: Signal | undefined,
 ): string | undefined {
   const parts: string[] = [];
-  if (signal) parts.push(`[${signal}]`);
   if (evidence) parts.push(evidence);
   if (rationale && rationale !== evidence) parts.push(rationale);
   if (parts.length === 0) return undefined;
   return parts.join(" — ");
-}
-
-function parseSignal(raw: unknown): Signal | undefined {
-  if (typeof raw !== "string") return undefined;
-  if (raw === "named" || raw === "pattern" || raw === "inferred" || raw === "guess") {
-    return raw;
-  }
-  return undefined;
 }
 
 function unwrapEnvelope(raw: string, warnings: string[]): string {

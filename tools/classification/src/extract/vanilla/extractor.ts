@@ -7,6 +7,7 @@ import { itemSemanticTextFromLang } from "../semantic_text.ts";
 import {
   ensureVanillaSource,
   loadSummaryBundle,
+  type ItemDefinitionJson,
   type SummaryBundle,
   type VanillaSource,
 } from "./source.ts";
@@ -53,7 +54,7 @@ export function extractFromBundle(
   for (const shortId of itemIds) {
     const id = `${VANILLA_NAMESPACE}:${shortId}`;
     const components = bundle.itemComponents[shortId] ?? null;
-    const definition = bundle.itemDefinitions[shortId];
+    const definition = bundle.itemDefinitions[shortId] ?? legacyItemDefinition(shortId, bundle);
     const displayName = enUs[`item.${VANILLA_NAMESPACE}.${shortId}`]
       ?? enUs[`block.${VANILLA_NAMESPACE}.${shortId}`]
       ?? null;
@@ -97,6 +98,16 @@ export function extractFromBundle(
     generated_by: generatedBy,
   };
   return { meta, records };
+}
+
+function legacyItemDefinition(
+  shortId: string,
+  bundle: SummaryBundle,
+): ItemDefinitionJson | undefined {
+  const modelId = `item/${shortId}`;
+  return bundle.models[modelId]
+    ? { model: { type: "minecraft:model", model: `${VANILLA_NAMESPACE}:${modelId}` } }
+    : undefined;
 }
 
 /**

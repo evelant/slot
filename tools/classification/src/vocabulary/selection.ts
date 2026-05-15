@@ -1,4 +1,4 @@
-import type { PackFacetVocabulary } from "../schema/vocabulary.ts";
+import { isUsableVocabularyState, type PackFacetVocabulary } from "../schema/vocabulary.ts";
 import type { PackVocabularyCandidate, VocabularyFacetId } from "./types.ts";
 import { compareCandidates } from "./candidate_store.ts";
 import { splitResourceLocation } from "./helpers.ts";
@@ -46,7 +46,7 @@ export function selectPromptCandidates(
   };
 
   for (const candidate of candidates) {
-    if (candidate.origin === "previous" || candidate.origin === "universal_default") add(candidate);
+    if (candidate.origin === "previous" || candidate.origin === "built_in") add(candidate);
   }
 
   const priorityTarget = Math.min(max, Math.max(selected.size, Math.floor(max * 0.45)));
@@ -125,7 +125,7 @@ export function previousAcceptedByFacet(
   for (const [facet, values] of Object.entries(previous.facets ?? {})) {
     if (!isVocabularyFacet(facet)) continue;
     out.set(facet, Object.entries(values.values ?? {})
-      .filter(([, value]) => value.state === "accepted")
+      .filter(([, value]) => isUsableVocabularyState(value.state))
       .map(([id]) => id)
       .sort());
   }

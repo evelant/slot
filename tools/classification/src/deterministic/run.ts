@@ -7,7 +7,6 @@ import type { Rule, RuleContext, RuleOutput } from "./types.ts";
 import { modNamespaceRule } from "./rules/mod_namespace.ts";
 import { booleansRule } from "./rules/booleans.ts";
 import { equipSlotRule } from "./rules/equip_slot.ts";
-import { materialFamilyRule } from "./rules/material_family.ts";
 import { formRule } from "./rules/form.ts";
 import { dyeColorRule } from "./rules/dye_color.ts";
 import { requiredToolRule } from "./rules/required_tool.ts";
@@ -17,7 +16,6 @@ import { rarityRule } from "./rules/rarity.ts";
 import { yLevelRangeRule } from "./rules/y_level_range.ts";
 import { isCreativeOnlyRule } from "./rules/is_creative_only.ts";
 import { isFuelRule } from "./rules/is_fuel.ts";
-import { tierRule } from "./rules/tier.ts";
 import { emitsLightRule } from "./rules/emits_light.ts";
 
 /** The ordered rule set. Order matters only for the (rare) case where two rules
@@ -28,7 +26,6 @@ export const DEFAULT_RULES: Rule[] = [
   booleansRule,
   equipSlotRule,
   rarityRule,
-  materialFamilyRule,
   formRule,
   dyeColorRule,
   requiredToolRule,
@@ -37,7 +34,6 @@ export const DEFAULT_RULES: Rule[] = [
   yLevelRangeRule,
   isCreativeOnlyRule,
   isFuelRule,
-  tierRule,
   emitsLightRule,
 ];
 
@@ -90,17 +86,17 @@ export type LayerFacetEntry =
 export interface SingleEntry {
   value: string | number | boolean | null;
   mode?: "replace" | "override-if-null";
-  confidence?: number;
   source?: string;
   rationale?: string;
+  vocab_review?: true;
 }
 
 export interface MultiEntry {
   values: (string | number)[];
   mode?: "replace" | "add" | "remove";
-  confidence?: number;
   source?: string;
   rationale?: string;
+  vocab_review?: true;
 }
 
 /** Stage 3 emits this when two enum/free_text values could both apply. */
@@ -108,9 +104,9 @@ export interface AmbiguousEntry {
   values: [string | number, string | number];
   ambiguous: true;
   mode?: "replace" | "override-if-null";
-  confidence?: number;
   source?: string;
   rationale?: string;
+  vocab_review?: true;
 }
 
 /**
@@ -191,7 +187,6 @@ function mergeInto(
     facets[output.facet] = {
       value: output.value,
       ...(output.mode ? { mode: output.mode } : {}),
-      ...(output.confidence !== undefined ? { confidence: output.confidence } : {}),
       source: output.source,
       ...(output.rationale ? { rationale: output.rationale } : {}),
     };
@@ -203,7 +198,6 @@ function mergeInto(
     facets[output.facet] = {
       values: [...output.values].sort(),
       ...(output.mode ? { mode: output.mode } : { mode: "add" }),
-      ...(output.confidence !== undefined ? { confidence: output.confidence } : {}),
       source: output.source,
       ...(output.rationale ? { rationale: output.rationale } : {}),
     };

@@ -72,7 +72,18 @@ export function applyVocabularyReviewDecisions(
   for (const [facet, decisions] of Object.entries(options.review.decisions)) {
     for (const decision of decisions) {
       const human = decision.human_review;
-      if (!human || human.decision === "pending") continue;
+      if (!human || human.decision === "pending") {
+        if (decision.state === "review") {
+          next.facets[facet] ??= { values: {} };
+          next.facets[facet]!.values[decision.id] ??= vocabularyValueFromReviewDecision(
+            decision,
+            decision.id,
+            decision.label,
+            "review",
+          );
+        }
+        continue;
+      }
       if (human.decision === "reject") {
         delete next.facets[facet]?.values[decision.id];
         removeEmptyFacet(next, facet);
@@ -93,6 +104,7 @@ export function applyVocabularyReviewDecisions(
         decision,
         approvedId,
         approvedLabel,
+        "accepted",
       );
       changes.push({
         facet,
@@ -113,17 +125,28 @@ function vocabularyValueFromReviewDecision(
   decision: VocabularyReviewDecision,
   approvedId: string,
   approvedLabel: string,
+  state: "accepted" | "review",
 ): VocabularyValue {
+  const relatedActivity = sanitizeRelatedActivityIds(decision.related_activity ?? []);
+  const humanNotes = decision.human_review?.notes?.trim();
+  const description = decision.description ?? (state === "accepted" ? humanNotes : undefined);
   return {
     label: approvedLabel,
-    origin: "manual",
-    state: "accepted",
+    origin: state === "accepted" ? "manual" : "pack_generated",
+    state,
     ...(decision.aliases?.length ? { aliases: decision.aliases } : {}),
-    ...(decision.description ? { description: decision.description } : {}),
-    ...(decision.related_activity?.length ? { related_activity: decision.related_activity } : {}),
+    ...(description ? { description } : {}),
+    ...(relatedActivity.length ? { related_activity: relatedActivity } : {}),
     ...(decision.default_organization_group ? { default_organization_group: decision.default_organization_group } : {}),
     ...(decision.facet === "workflow_role" ? { parent: decision.parent ?? approvedId.split("#")[0] ?? "" } : {}),
   };
+}
+
+function sanitizeRelatedActivityIds(values: readonly string[]): string[] {
+  return [...new Set(values.map((value) => value.trim()).filter((value) => {
+    if (!value) return false;
+    return !validateMultiValue("activity", [value]);
+  }))].sort();
 }
 
 function normalizedApprovedId(

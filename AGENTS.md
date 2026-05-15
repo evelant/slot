@@ -26,6 +26,8 @@ This is a fast-moving experimental repo. Docs describe intent as of their
 - This mod is unreleased and experimental. Any code may be deleted or
   restructured without regard for backwards compatibility or API stability.
   Prefer clean rewrites over compatibility facades.
+- Never keep outdated information in documentation. Delete it or move it to a
+  file in an explicit outdated subfolder.
 - Do not keep old interfaces or facades in place to avoid refactoring.
   Implement the current plan/direction cleanly.
 - There are no users, no published releases, no save files in the wild,
@@ -35,7 +37,7 @@ This is a fast-moving experimental repo. Docs describe intent as of their
   release," soft-deprecation, dual-write windows, or save-format
   upgraders. Save format may change shape freely; existing local saves
   may break and that is acceptable.
-- Absolutely no quick fixes. Investigate root causes and wider impacts
+- Absolutely no quick fixes, local edits, or hacks. Investigate root causes and wider impacts
   before changing code. Focused patches without understanding the
   surrounding system create more bugs.
 - UI and LDLib code may own rendering, local focus, and transport; SLOT

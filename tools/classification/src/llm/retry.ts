@@ -15,31 +15,27 @@ import type { SchemaProposal, StageCorrection } from "./parse.ts";
 
 /**
  * Select items from a first-pass stage-3 layer that warrant a second look.
- * "Warrant" means: at least one facet with `ambiguous: true` OR with
- * confidence below `threshold`.
+ * "Warrant" means: at least one LLM facet with `ambiguous: true`.
  *
- * Only considers facets whose source is `llm:*` — deterministic stage-2
- * facets (source: `rule:*`) aren't flagged for LLM retry because they're
- * already rule-derived.
+ * Only considers facets whose source is `llm:*` — non-LLM base facets are not
+ * retry candidates because retry is meant to revisit model judgement.
  */
 export function selectRetryCandidates(
   layer: LayerFile,
-  threshold: number,
 ): string[] {
   const out: string[] = [];
   for (const [itemId, entry] of Object.entries(layer.entries)) {
-    if (itemNeedsRetry(entry, threshold)) out.push(itemId);
+    if (itemNeedsRetry(entry)) out.push(itemId);
   }
   return out.sort();
 }
 
-function itemNeedsRetry(entry: LayerEntry, threshold: number): boolean {
+function itemNeedsRetry(entry: LayerEntry): boolean {
   for (const [, raw] of Object.entries(entry.facets)) {
-    const facet = raw as LayerFacetEntry & { source?: string; confidence?: number; ambiguous?: true };
+    const facet = raw as LayerFacetEntry & { source?: string; ambiguous?: true };
     const source = facet.source ?? "";
     if (!source.startsWith("llm:")) continue;
     if (facet.ambiguous === true) return true;
-    if (typeof facet.confidence === "number" && facet.confidence < threshold) return true;
   }
   return false;
 }
@@ -51,8 +47,6 @@ export interface RetryOptions {
   firstPassLayer: LayerFile;
   /** LLM client configured for the retry pass. */
   client: LlmClient;
-  /** Confidence threshold below which an item is flagged for retry. */
-  threshold?: number;
   /** Passed through to runStage3. */
   model?: string;
   /** Same as Stage3Options.documentContextByItem. */
@@ -80,29 +74,27 @@ export interface RetryResult extends Stage3Result {
   retriedItems: readonly string[];
   /** Facets the retry changed (new value disagreed with first-pass). */
   facetsChanged: Record<string, number>;
-  /** Facets the retry confirmed (same value, higher confidence). */
+  /** Facets the retry confirmed with the same value. */
   facetsConfirmed: Record<string, number>;
 }
 
 /**
  * Run stage 3 a second time with a stronger model on items the first pass
- * was unsure about. The retry merge policy:
+ * left ambiguous. The retry merge policy:
  *   1. For each candidate item's LLM-authored facets, the retry can confirm
- *      (same value, possibly bumped confidence), change (different value,
- *      retry wins only if its confidence ≥ first pass), or add net-new
+ *      (same value), change (different value; retry wins), or add net-new
  *      facets the first pass skipped.
- *   2. Stage-2 facets (source: rule:*) are never overwritten.
+ *   2. Non-LLM base facets are never overwritten.
  *   3. Corrections / schema_proposals from the retry are returned alongside.
  *
- * The retry feeds an empty stage-2 layer so the LLM re-emits every facet
- * freely — we then compare against the first pass per-facet rather than
- * treating first-pass as locked input.
+ * The retry feeds an empty base layer so the LLM re-emits every facet freely —
+ * we then compare against the first pass per-facet rather than treating
+ * first-pass as locked input.
  */
 export async function runStage3Retry(
   options: RetryOptions,
 ): Promise<RetryResult> {
-  const threshold = options.threshold ?? 0.5;
-  const candidates = selectRetryCandidates(options.firstPassLayer, threshold);
+  const candidates = selectRetryCandidates(options.firstPassLayer);
 
   const facetsChanged: Record<string, number> = {};
   const facetsConfirmed: Record<string, number> = {};
@@ -134,7 +126,7 @@ export async function runStage3Retry(
 
   const retry = await runStage3({
     records: options.records,
-    stage2Layer: emptyLayer,
+    baseLayer: emptyLayer,
     client: options.client,
     model: options.model,
     batchSize: options.batchSize ?? 8,
@@ -169,9 +161,6 @@ export async function runStage3Retry(
         continue;
       }
 
-      const retryConf = (retryFacet as { confidence?: number }).confidence ?? 0;
-      const currentConf = (current as { confidence?: number })?.confidence ?? 0;
-
       if (!current) {
         // net-new facet from retry
         nextFacets[facetId] = retagSource(retryFacet, "llm:stage3-retry");
@@ -181,23 +170,13 @@ export async function runStage3Retry(
 
       const sameValue = facetValuesEqual(current, retryFacet);
       if (sameValue) {
-        // retry confirms — bump confidence if higher
-        if (retryConf > currentConf) {
-          nextFacets[facetId] = retagSource(retryFacet, "llm:stage3-retry");
-        }
+        nextFacets[facetId] = retagSource(retryFacet, "llm:stage3-retry");
         facetsConfirmed[facetId] = (facetsConfirmed[facetId] ?? 0) + 1;
         continue;
       }
 
-      // different value — accept only if retry has higher confidence
-      if (retryConf >= currentConf) {
-        nextFacets[facetId] = retagSource(retryFacet, "llm:stage3-retry");
-        facetsChanged[facetId] = (facetsChanged[facetId] ?? 0) + 1;
-      } else {
-        warnings.push(
-          `${itemId} ${facetId}: retry disagreed but lower confidence (${retryConf} vs ${currentConf}); keeping first-pass`,
-        );
-      }
+      nextFacets[facetId] = retagSource(retryFacet, "llm:stage3-retry");
+      facetsChanged[facetId] = (facetsChanged[facetId] ?? 0) + 1;
     }
     merged[itemId] = { facets: nextFacets };
   }

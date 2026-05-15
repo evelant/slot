@@ -23,6 +23,7 @@ import {
   validateMultiValue,
 } from "./schema/facets.ts";
 import {
+  isUsableVocabularyState,
   validateVocabularyArtifact,
   validateVocabularyArtifactFile,
   type PackFacetVocabulary,
@@ -43,9 +44,9 @@ import {
   type DocumentContextByItem,
 } from "./llm/document_context.ts";
 import {
-  buildBatchPrompt,
   buildItemPayload,
   buildPromptFacetVocabulary,
+  buildSplitPrompt,
   defaultTargetFacets,
   PROMPT_VERSION,
 } from "./llm/prompt.ts";
@@ -70,6 +71,7 @@ import {
   readPackFacetVocabularyReviewFile,
   type PackFacetVocabularyReview,
   type VocabularyReviewDecision,
+  type VocabularyItemSampleMode,
 } from "./vocabulary/pack_vocabulary.ts";
 import {
   loadModpackManifest,
@@ -85,10 +87,18 @@ import type { InputManifestMod } from "./input/manifest.ts";
 
 const TOOL_VERSION = "slot-classify v0.1.0";
 const DEFAULT_STAGE3_MODEL = "deepseek/deepseek-v4-flash";
-const DEFAULT_STAGE3_BATCH_SIZE = 20;
-const DEFAULT_STAGE3_CONCURRENCY = 4;
-const DEFAULT_RUNTIME_PACK_BATCH_SIZE = 25;
-const DEFAULT_RUNTIME_PACK_CONCURRENCY = 8;
+const DEFAULT_STAGE3_BATCH_SIZE = 1000;
+const DEFAULT_STAGE3_CONCURRENCY = 1;
+// Runtime-pack classification is bounded by both the 1M input window and the
+// 131k output cap. OpenRouter logs from the TFG canary topped out around 17k
+// completion tokens, while a 1000-item prompt is still comfortably below the
+// input cap; keep concurrency low so huge cached prompts do not stampede.
+const DEFAULT_RUNTIME_PACK_BATCH_SIZE = 1000;
+const DEFAULT_RUNTIME_PACK_CONCURRENCY = 1;
+const DEFAULT_RUNTIME_PACK_REPAIR_BATCH_SIZE = 500;
+const DEFAULT_RUNTIME_PACK_REPAIR_CONCURRENCY = 1;
+const DEFAULT_VOCABULARY_ITEM_SAMPLE_SIZE = 1536;
+const DEFAULT_VOCABULARY_REFINEMENT_ROUNDS = 3;
 const ORGANIZATION_GROUP_HOME_REVIEW_THRESHOLD = 20;
 const REPO_ROOT = resolve(import.meta.dir, "..", "..", "..");
 const CLI_ABORT_CONTROLLER = new AbortController();
@@ -125,17 +135,29 @@ function parsePositiveInteger(input: string | undefined, optionName: string): nu
   return value;
 }
 
-function parseConfidenceThreshold(input: string | undefined, optionName: string): number | undefined {
+function parseNonNegativeInteger(input: string | undefined, optionName: string): number | undefined {
   if (input === undefined) return undefined;
+  if (!/^(0|[1-9]\d*)$/.test(input)) {
+    throw new Error(`${optionName} must be a non-negative integer, got '${input}'`);
+  }
   const value = Number(input);
-  if (!Number.isFinite(value) || value < 0 || value > 1) {
-    throw new Error(`${optionName} must be a number between 0 and 1, got '${input}'`);
+  if (!Number.isSafeInteger(value)) {
+    throw new Error(`${optionName} is too large: '${input}'`);
   }
   return value;
 }
 
+function parseVocabularyItemSampleMode(
+  input: string | undefined,
+  optionName: string,
+): VocabularyItemSampleMode | undefined {
+  if (input === undefined) return undefined;
+  if (input === "random" || input === "coverage") return input;
+  throw new Error(`${optionName} must be 'random' or 'coverage', got '${input}'`);
+}
+
 function parseStages(input: string | undefined): StageSelection {
-  if (!input) return { stage1: true, stage2: true, stage3: false };
+  if (!input) return { stage1: true, stage2: false, stage3: true };
   const set = new Set(input.split(",").map((s) => s.trim()));
   const known = new Set(["1", "2", "3"]);
   for (const s of set) {
@@ -214,6 +236,7 @@ async function main() {
           source: { type: "string" },
           out: { type: "string" },
           stages: { type: "string" },
+          "mcmeta-ref": { type: "string" },
           // stage 3 knobs
           model: { type: "string" },
           "ignore-provider": { type: "string", multiple: true },
@@ -225,10 +248,9 @@ async function main() {
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
           "dry-run": { type: "boolean" },
-          // stage 3 retry knobs — applied after the first pass on any item
-          // whose LLM facets have confidence < retry-threshold or ambiguous:true.
+          // stage 3 retry knobs — applied after the first pass on items whose
+          // LLM facets are explicitly ambiguous.
           "retry-model": { type: "string" },
-          "retry-threshold": { type: "string" },
           "retry-batch-size": { type: "string" },
           "retry-fixture-dir": { type: "string" },
           "retry-use-replay": { type: "boolean" },
@@ -250,13 +272,13 @@ async function main() {
       const mod = args.values.mod;
       const sourcePath = args.values.source;
       if (!mod || !sourcePath) {
-        console.error("usage: classify --mod <id> --source <path> [--out <dir>] [--stages 1,2,3]");
+        console.error("usage: classify --mod <id> --source <path> [--out <dir>] [--stages 1,3]");
         process.exit(2);
       }
       const outDir = resolve(args.values.out ?? "out");
       mkdirSync(outDir, { recursive: true });
 
-      const stages = parseStages(args.values.stages);
+      const stages = parseStages(args.values.stages ?? (cmd === "extract" ? "1,2" : "1,3"));
 
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model,
@@ -270,9 +292,6 @@ async function main() {
         recordReplay: args.values["record-replay"] ?? false,
         dryRun: args.values["dry-run"] ?? false,
         retryModel: args.values["retry-model"],
-        retryThreshold: args.values["retry-threshold"]
-          ? parseConfidenceThreshold(args.values["retry-threshold"], "--retry-threshold")
-          : undefined,
         retryBatchSize: args.values["retry-batch-size"]
           ? parsePositiveInteger(args.values["retry-batch-size"], "--retry-batch-size")
           : undefined,
@@ -290,7 +309,7 @@ async function main() {
       };
 
       if (mod === "minecraft") {
-        await runVanilla(sourcePath!, outDir, stages, stage3CliOpts);
+        await runVanilla(sourcePath!, outDir, stages, stage3CliOpts, args.values["mcmeta-ref"]);
         return;
       }
       // Any other mod id → mod-source extractor (createaddition, mekanism, …).
@@ -335,7 +354,7 @@ async function main() {
       const outDir = resolve(args.values.out ?? "out");
       mkdirSync(outDir, { recursive: true });
 
-      const stages = parseStages(args.values.stages);
+      const stages = parseStages(args.values.stages ?? "1,3");
 
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model,
@@ -396,7 +415,7 @@ async function main() {
       console.log(formatScanReport(report));
       console.log("");
       console.log(`[scan] JSON report: ${jsonPath}`);
-      console.log("[scan] use classify-folder --mods <path> to generate jar-backed stage-1/2 outputs.");
+      console.log("[scan] use classify-folder --mods <path> --stages 1,3 to generate jar-backed LLM classification outputs.");
       return;
     }
 
@@ -423,7 +442,6 @@ async function main() {
           "record-replay": { type: "boolean" },
           "dry-run": { type: "boolean" },
           "retry-model": { type: "string" },
-          "retry-threshold": { type: "string" },
           "retry-batch-size": { type: "string" },
           "retry-fixture-dir": { type: "string" },
           "retry-use-replay": { type: "boolean" },
@@ -438,14 +456,14 @@ async function main() {
       });
       const modsPath = args.values.mods;
       if (!modsPath) {
-        console.error("usage: classify-folder --mods <mods-folder-or-instance-root> [--out <dir>] [--stages 1,2,3]");
+        console.error("usage: classify-folder --mods <mods-folder-or-instance-root> [--out <dir>] [--stages 1,3]");
         process.exit(2);
         return;
       }
       const outDir = resolve(args.values.out ?? "out");
       mkdirSync(outDir, { recursive: true });
 
-      const stages = parseStages(args.values.stages);
+      const stages = parseStages(args.values.stages ?? "1,3");
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model,
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
@@ -458,9 +476,6 @@ async function main() {
         recordReplay: args.values["record-replay"] ?? false,
         dryRun: args.values["dry-run"] ?? false,
         retryModel: args.values["retry-model"],
-        retryThreshold: args.values["retry-threshold"]
-          ? parseConfidenceThreshold(args.values["retry-threshold"], "--retry-threshold")
-          : undefined,
         retryBatchSize: args.values["retry-batch-size"]
           ? parsePositiveInteger(args.values["retry-batch-size"], "--retry-batch-size")
           : undefined,
@@ -491,6 +506,7 @@ async function main() {
           "runtime-export": { type: "string" },
           summary: { type: "string" },
           mods: { type: "string" },
+          "static-items": { type: "string", multiple: true },
           evidence: { type: "string" },
           out: { type: "string" },
           "pack-id": { type: "string" },
@@ -510,6 +526,7 @@ async function main() {
           "only-provider": { type: "string", multiple: true },
           "batch-size": { type: "string" },
           concurrency: { type: "string" },
+          sample: { type: "string" },
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
@@ -531,7 +548,7 @@ async function main() {
       const packId = safeFileComponent(args.values["pack-id"] ?? inferRuntimePackId(runtimeExportPath, args.values.summary));
       const outDir = resolve(args.values.out ?? join("out", packId));
       mkdirSync(outDir, { recursive: true });
-      const stages = parseStages(args.values.stages ?? "1,2,3");
+      const stages = parseStages(args.values.stages ?? "1,3");
       const useReplay = args.values["use-replay"] ?? false;
       const stage3FixtureDir = args.values["fixture-dir"] ?? join(outDir, "fixtures", "stage3");
       const stage3CliOpts: Stage3CliOptions = {
@@ -540,6 +557,7 @@ async function main() {
         onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
         batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size") ?? DEFAULT_RUNTIME_PACK_BATCH_SIZE,
         concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency") ?? DEFAULT_RUNTIME_PACK_CONCURRENCY,
+        sample: args.values.sample,
         fixtureDir: stage3FixtureDir,
         useReplay,
         recordReplay: useReplay ? false : (args.values["record-replay"] ?? true),
@@ -555,6 +573,7 @@ async function main() {
         runtimeExportPath,
         summaryPath: args.values.summary,
         modsPath: args.values.mods,
+        staticItemsPaths: (args.values["static-items"] as string[] | undefined) ?? [],
         outDir,
         packId,
         stages,
@@ -565,8 +584,8 @@ async function main() {
         zipDatapack: !(args.values["no-zip"] ?? false) && (args.values.zip ?? true),
         force: args.values.force ?? false,
         repairMissing: !(args.values["no-repair"] ?? false),
-        repairBatchSize: parsePositiveInteger(args.values["repair-batch-size"], "--repair-batch-size") ?? 25,
-        repairConcurrency: parsePositiveInteger(args.values["repair-concurrency"], "--repair-concurrency") ?? 8,
+        repairBatchSize: parsePositiveInteger(args.values["repair-batch-size"], "--repair-batch-size") ?? DEFAULT_RUNTIME_PACK_REPAIR_BATCH_SIZE,
+        repairConcurrency: parsePositiveInteger(args.values["repair-concurrency"], "--repair-concurrency") ?? DEFAULT_RUNTIME_PACK_REPAIR_CONCURRENCY,
       });
       return;
     }
@@ -578,6 +597,7 @@ async function main() {
           "runtime-export": { type: "string" },
           summary: { type: "string" },
           mods: { type: "string" },
+          "static-items": { type: "string", multiple: true },
           evidence: { type: "string" },
           out: { type: "string" },
           "pack-id": { type: "string" },
@@ -597,7 +617,6 @@ async function main() {
           "record-replay": { type: "boolean" },
           "dry-run": { type: "boolean" },
           "retry-model": { type: "string" },
-          "retry-threshold": { type: "string" },
           "retry-batch-size": { type: "string" },
           "retry-fixture-dir": { type: "string" },
           "retry-use-replay": { type: "boolean" },
@@ -618,7 +637,7 @@ async function main() {
       }
       const outDir = resolve(args.values.out ?? "out");
       mkdirSync(outDir, { recursive: true });
-      const stages = parseStages(args.values.stages);
+      const stages = parseStages(args.values.stages ?? "1,3");
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model,
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
@@ -631,9 +650,6 @@ async function main() {
         recordReplay: args.values["record-replay"] ?? false,
         dryRun: args.values["dry-run"] ?? false,
         retryModel: args.values["retry-model"],
-        retryThreshold: args.values["retry-threshold"]
-          ? parseConfidenceThreshold(args.values["retry-threshold"], "--retry-threshold")
-          : undefined,
         retryBatchSize: args.values["retry-batch-size"]
           ? parsePositiveInteger(args.values["retry-batch-size"], "--retry-batch-size")
           : undefined,
@@ -650,6 +666,7 @@ async function main() {
       await runGeneratePackLayer(runtimeExportPath, outDir, stages, stage3CliOpts, {
         summaryPath: args.values.summary,
         modsPath: args.values.mods,
+        staticItemsPaths: (args.values["static-items"] as string[] | undefined) ?? [],
         packId: args.values["pack-id"],
         writeDatapack: args.values.datapack ?? false,
         datapackOut: args.values["datapack-out"],
@@ -666,6 +683,7 @@ async function main() {
           "runtime-export": { type: "string" },
           summary: { type: "string" },
           mods: { type: "string" },
+          "static-items": { type: "string", multiple: true },
           out: { type: "string" },
           "pack-id": { type: "string" },
           force: { type: "boolean" },
@@ -684,6 +702,7 @@ async function main() {
       runCollectPackFacetEvidence(runtimeExportPath, outDir, {
         summaryPath: args.values.summary,
         modsPath: args.values.mods,
+        staticItemsPaths: (args.values["static-items"] as string[] | undefined) ?? [],
         packId: args.values["pack-id"],
         force: args.values.force ?? false,
       });
@@ -697,12 +716,16 @@ async function main() {
           evidence: { type: "string" },
           out: { type: "string" },
           "pack-id": { type: "string" },
+          "base-vocabulary": { type: "string", multiple: true },
           "previous-vocabulary": { type: "string" },
           facet: { type: "string", multiple: true },
           namespace: { type: "string", multiple: true },
           "min-evidence": { type: "string" },
           "max-candidates-per-facet": { type: "string" },
           "max-candidates-per-prompt": { type: "string" },
+          "item-sample-size": { type: "string" },
+          "item-sample-mode": { type: "string" },
+          "item-sample-seed": { type: "string" },
           force: { type: "boolean" },
           model: { type: "string" },
           "ignore-provider": { type: "string", multiple: true },
@@ -727,12 +750,83 @@ async function main() {
         evidencePath,
         outDir,
         packId: args.values["pack-id"],
+        baseVocabularyPaths: (args.values["base-vocabulary"] as string[] | undefined) ?? [],
         previousVocabularyPath: args.values["previous-vocabulary"],
         facets: (args.values.facet as string[] | undefined) ?? [],
         namespaces: (args.values.namespace as string[] | undefined) ?? [],
         minEvidence: parsePositiveInteger(args.values["min-evidence"], "--min-evidence") ?? 2,
         maxCandidatesPerFacet: parsePositiveInteger(args.values["max-candidates-per-facet"], "--max-candidates-per-facet"),
         maxCandidatesPerPrompt: parsePositiveInteger(args.values["max-candidates-per-prompt"], "--max-candidates-per-prompt"),
+        itemSampleSize: parseNonNegativeInteger(args.values["item-sample-size"], "--item-sample-size") ?? DEFAULT_VOCABULARY_ITEM_SAMPLE_SIZE,
+        itemSampleMode: parseVocabularyItemSampleMode(args.values["item-sample-mode"], "--item-sample-mode") ?? "coverage",
+        itemSampleSeed: args.values["item-sample-seed"],
+        force: args.values.force ?? false,
+        opts: {
+          model: args.values.model,
+          ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
+          onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
+          fixtureDir: args.values["fixture-dir"],
+          useReplay: args.values["use-replay"] ?? false,
+          recordReplay: args.values["record-replay"] ?? false,
+          dryRun: args.values["dry-run"] ?? false,
+        },
+      });
+      return;
+    }
+
+    case "refine-pack-facet-vocabulary": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          evidence: { type: "string" },
+          out: { type: "string" },
+          "pack-id": { type: "string" },
+          "base-vocabulary": { type: "string", multiple: true },
+          "previous-vocabulary": { type: "string" },
+          facet: { type: "string", multiple: true },
+          namespace: { type: "string", multiple: true },
+          rounds: { type: "string" },
+          "min-evidence": { type: "string" },
+          "max-candidates-per-facet": { type: "string" },
+          "max-candidates-per-prompt": { type: "string" },
+          "item-sample-size": { type: "string" },
+          "item-sample-mode": { type: "string" },
+          "item-sample-seed": { type: "string" },
+          force: { type: "boolean" },
+          model: { type: "string" },
+          "ignore-provider": { type: "string", multiple: true },
+          "only-provider": { type: "string", multiple: true },
+          "fixture-dir": { type: "string" },
+          "use-replay": { type: "boolean" },
+          "record-replay": { type: "boolean" },
+          "dry-run": { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const evidencePath = args.values.evidence;
+      if (!evidencePath) {
+        console.error("usage: refine-pack-facet-vocabulary --evidence <pack.facet-evidence.json> [options]");
+        process.exit(2);
+        return;
+      }
+      const outDir = resolve(args.values.out ?? "out");
+      mkdirSync(outDir, { recursive: true });
+      await runRefinePackFacetVocabulary({
+        evidencePath,
+        outDir,
+        packId: args.values["pack-id"],
+        baseVocabularyPaths: (args.values["base-vocabulary"] as string[] | undefined) ?? [],
+        previousVocabularyPath: args.values["previous-vocabulary"],
+        facets: (args.values.facet as string[] | undefined) ?? [],
+        namespaces: (args.values.namespace as string[] | undefined) ?? [],
+        rounds: parsePositiveInteger(args.values.rounds, "--rounds") ?? DEFAULT_VOCABULARY_REFINEMENT_ROUNDS,
+        minEvidence: parsePositiveInteger(args.values["min-evidence"], "--min-evidence") ?? 2,
+        maxCandidatesPerFacet: parsePositiveInteger(args.values["max-candidates-per-facet"], "--max-candidates-per-facet"),
+        maxCandidatesPerPrompt: parsePositiveInteger(args.values["max-candidates-per-prompt"], "--max-candidates-per-prompt"),
+        itemSampleSize: parseNonNegativeInteger(args.values["item-sample-size"], "--item-sample-size") ?? DEFAULT_VOCABULARY_ITEM_SAMPLE_SIZE,
+        itemSampleMode: parseVocabularyItemSampleMode(args.values["item-sample-mode"], "--item-sample-mode") ?? "coverage",
+        itemSampleSeed: args.values["item-sample-seed"],
         force: args.values.force ?? false,
         opts: {
           model: args.values.model,
@@ -932,7 +1026,6 @@ interface Stage3CliOptions {
   dryRun: boolean;
   /** If set, run a retry pass with this OpenRouter model after the first pass. */
   retryModel?: string;
-  retryThreshold?: number;
   retryBatchSize?: number;
   retryFixtureDir?: string;
   /** Override the retry pass's record/replay mode. Defaults to recording
@@ -940,7 +1033,7 @@ interface Stage3CliOptions {
    *  fixtures pre-populated. */
   retryUseReplay?: boolean;
   retryRecordReplay?: boolean;
-  /** Accepted pack facet vocabulary for vocabulary-backed semantic facets. */
+  /** Usable pack facet vocabulary for vocabulary-backed semantic facets. */
   facetVocabularyFile?: string;
   facetVocabulary?: PackFacetVocabulary;
   /** Optional facet-evidence artifact to convert into per-item document_context. */
@@ -1018,7 +1111,6 @@ function buildPromptMetadata(opts: Stage3CliOptions): Record<string, unknown> {
     retry: opts.retryModel
       ? {
           model: opts.retryModel,
-          threshold: opts.retryThreshold ?? 0.5,
           batch_size: opts.retryBatchSize ?? 8,
           fixture_dir: opts.retryFixtureDir ?? null,
         }
@@ -1052,10 +1144,11 @@ async function runVanilla(
   outDir: string,
   stages: StageSelection,
   stage3Opts: Stage3CliOptions,
+  mcmetaRef?: string,
 ) {
   const start = Date.now();
   // The mcmeta summary bundle is only needed for stage 1 (extract) and
-  // stage 2 (deterministic rules over the live tag closure). When the
+  // stage 2 (exact/reference facts over the live tag closure). When the
   // caller is running stage 3 alone — typical for prompt experimentation
   // against an already-extracted dataset — there's no point cloning a
   // ~1GB worktree just to read a version string. Skip the bundle load
@@ -1063,8 +1156,8 @@ async function runVanilla(
   const needsBundle = stages.stage1 || stages.stage2;
   let bundle: ReturnType<typeof loadSummaryBundle> | null = null;
   if (needsBundle) {
-    console.log(`[vanilla] loading summary bundle from ${sourcePath}`);
-    const source = ensureVanillaSource(sourcePath);
+    console.log(`[vanilla] loading summary bundle from ${sourcePath}${mcmetaRef ? ` ref=${mcmetaRef}` : ""}`);
+    const source = ensureVanillaSource(sourcePath, { ref: mcmetaRef });
     bundle = loadSummaryBundle(source);
     console.log(`[vanilla] MC version ${bundle.version}`);
   } else {
@@ -1126,17 +1219,21 @@ async function runVanilla(
       if (warnings.length > 20) console.log(`  … and ${warnings.length - 20} more`);
     }
     stage2Layer = layer;
-  } else if (stages.stage3) {
-    if (!existsSync(partialPath)) {
-      console.error(`[stage3] need stage 2 output at ${partialPath}; run with --stages 2,3`);
-      process.exit(1);
-    }
-    stage2Layer = JSON.parse(readFileSync(partialPath, "utf8")) as LayerFile;
-    console.log(`[stage2] (skipped; loaded ${Object.keys(stage2Layer.entries).length} entries)`);
   }
 
-  if (stages.stage3 && stage2Layer) {
-    await executeStage3(records, stage2Layer, completePath, stage3Opts);
+  if (stages.stage3) {
+    const stage3BaseLayer = createLlmStage3BaseLayer({
+      layerKind: "vanilla-base",
+      source: VANILLA_NAMESPACE,
+      sourceKind: "mcmeta-summary",
+      sourcePath,
+      sourceVersion: bundle?.version,
+      namespace: VANILLA_NAMESPACE,
+    });
+    if (stage2Layer) {
+      console.log(`[stage3] using LLM-only base layer; stage 2 facets are diagnostic output only`);
+    }
+    await executeStage3(records, stage3BaseLayer, completePath, stage3Opts, ["stage1", "stage3"]);
   }
 
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
@@ -1148,10 +1245,9 @@ async function runVanilla(
  * outputs under `<modid>.*` filenames so multiple mods can coexist in
  * the same `out/` directory.
  *
- * Stage-2 still runs against the mod's bundle; some rules will fire and
- * some won't (we have no item_components data from source). That's
- * expected — the goal of this pass is to measure how well stage 3 handles
- * modded items, not to perfect stage 2 for them.
+ * When requested explicitly, stage 2 still writes a diagnostic/reference layer.
+ * Stage 3 does not use that layer as authority; it starts from an empty base so
+ * the LLM owns semantic facet decisions.
  */
 async function runMod(
   modNamespace: string,
@@ -1231,17 +1327,21 @@ async function runMod(
       if (warnings.length > 20) console.log(`  … and ${warnings.length - 20} more`);
     }
     stage2Layer = layer;
-  } else if (stages.stage3) {
-    if (!existsSync(partialPath)) {
-      console.error(`[stage3] need stage 2 output at ${partialPath}; run with --stages 2,3`);
-      process.exit(1);
-    }
-    stage2Layer = JSON.parse(readFileSync(partialPath, "utf8")) as LayerFile;
-    console.log(`[stage2] (skipped; loaded ${Object.keys(stage2Layer.entries).length} entries)`);
   }
 
-  if (stages.stage3 && stage2Layer) {
-    await executeStage3(records, stage2Layer, completePath, stage3Opts);
+  if (stages.stage3) {
+    const stage3BaseLayer = createLlmStage3BaseLayer({
+      layerKind: "per-mod",
+      source: modNamespace,
+      sourceKind: "source-tree",
+      sourcePath: modPath,
+      sourceVersion: bundle?.version,
+      namespace: modNamespace,
+    });
+    if (stage2Layer) {
+      console.log(`[stage3] using LLM-only base layer; stage 2 facets are diagnostic output only`);
+    }
+    await executeStage3(records, stage3BaseLayer, completePath, stage3Opts, ["stage1", "stage3"]);
   }
 
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
@@ -1290,7 +1390,7 @@ async function runModpack(
     console.log(`[modpack] ${resolved.pack.description}`);
   }
   const modConcurrency = Math.max(1, modpackOpts.modConcurrency ?? 1);
-  const batchConcurrency = stage3Opts.concurrency ?? 4;
+  const batchConcurrency = stage3Opts.concurrency ?? DEFAULT_STAGE3_CONCURRENCY;
   console.log(
     `[modpack] settings: mod-concurrency=${modConcurrency} batch-concurrency=${batchConcurrency}` +
       (modpackOpts.force ? ` force=true` : ``),
@@ -1536,6 +1636,7 @@ interface ClassifyRuntimePackOptions {
   runtimeExportPath: string;
   summaryPath?: string;
   modsPath?: string;
+  staticItemsPaths: readonly string[];
   outDir: string;
   packId: string;
   stages: StageSelection;
@@ -1569,6 +1670,7 @@ async function runClassifyRuntimePack(options: ClassifyRuntimePackOptions): Prom
     {
       summaryPath: options.summaryPath,
       modsPath: options.modsPath,
+      staticItemsPaths: options.staticItemsPaths,
       packId: options.packId,
       writeDatapack: options.writeDatapack,
       datapackOut: options.datapackOut,
@@ -1583,7 +1685,8 @@ async function runClassifyRuntimePack(options: ClassifyRuntimePackOptions): Prom
   let repairedFacets = 0;
 
   if (stage3Enabled && !stage3Opts.dryRun && existsSync(run.completePath)) {
-    noLlmBeforeRepair = collectItemsWithoutLlmFacets(readLayerFile(run.completePath));
+    const expectedItemIds = run.records.map((record) => record.id);
+    noLlmBeforeRepair = collectItemsWithoutLlmFacets(readLayerFile(run.completePath), expectedItemIds);
     const noLlmPath = join(options.outDir, `${options.packId}.pack.no-llm-items.json`);
     writeFileSync(noLlmPath, JSON.stringify(noLlmBeforeRepair, null, 2) + "\n");
     console.log(`[runtime-pack] LLM coverage gap after main pass: ${noLlmBeforeRepair.length} item(s)`);
@@ -1604,8 +1707,10 @@ async function runClassifyRuntimePack(options: ClassifyRuntimePackOptions): Prom
         `[runtime-pack] repairing ${noLlmBeforeRepair.length} item(s) with ` +
           `batch-size=${options.repairBatchSize} concurrency=${options.repairConcurrency}`,
       );
-      const stage2Layer = readLayerFile(run.partialPath);
-      await executeStage3(run.records, stage2Layer, repairPath, repairOpts);
+      if (!run.stage3BaseLayer) {
+        throw new Error("stage 3 repair requested without a stage 3 base layer");
+      }
+      await executeStage3(run.records, run.stage3BaseLayer, repairPath, repairOpts, ["stage1", "stage3"]);
       const merged = mergeLlmFacetsFromRepair({
         fullPath: run.completePath,
         repairPath,
@@ -1619,7 +1724,7 @@ async function runClassifyRuntimePack(options: ClassifyRuntimePackOptions): Prom
       }
     }
 
-    noLlmAfterRepair = collectItemsWithoutLlmFacets(readLayerFile(run.completePath));
+    noLlmAfterRepair = collectItemsWithoutLlmFacets(readLayerFile(run.completePath), expectedItemIds);
     writeFileSync(
       join(options.outDir, `${options.packId}.pack.no-llm-items.after-repair.json`),
       JSON.stringify(noLlmAfterRepair, null, 2) + "\n",
@@ -1666,6 +1771,7 @@ async function runClassifyRuntimePack(options: ClassifyRuntimePackOptions): Prom
 interface GeneratePackLayerOptions {
   summaryPath?: string;
   modsPath?: string;
+  staticItemsPaths: readonly string[];
   packId?: string;
   writeDatapack: boolean;
   datapackOut?: string;
@@ -1678,6 +1784,7 @@ interface GeneratePackLayerRunResult {
   runtimeItemsPath: string;
   summaryPath: string;
   staticModsPath?: string;
+  staticItemsPaths?: string[];
   staticMatchingRecords: number;
   staticEnrichedRecords: number;
   recordsPath: string;
@@ -1687,11 +1794,13 @@ interface GeneratePackLayerRunResult {
   datapackDir?: string;
   records: ItemExtractRecord[];
   summary: RuntimeExportSummary | null;
+  stage3BaseLayer: LayerFile | null;
 }
 
 interface CollectPackFacetEvidenceOptions {
   summaryPath?: string;
   modsPath?: string;
+  staticItemsPaths: readonly string[];
   packId?: string;
   force: boolean;
 }
@@ -1710,14 +1819,22 @@ interface ProposePackFacetVocabularyCliOptions {
   evidencePath: string;
   outDir: string;
   packId?: string;
+  baseVocabularyPaths: readonly string[];
   previousVocabularyPath?: string;
   facets: readonly string[];
   namespaces: readonly string[];
   minEvidence: number;
   maxCandidatesPerFacet?: number;
   maxCandidatesPerPrompt?: number;
+  itemSampleSize: number;
+  itemSampleMode: VocabularyItemSampleMode;
+  itemSampleSeed?: string;
   force: boolean;
   opts: Stage3CliOptions;
+}
+
+interface RefinePackFacetVocabularyCliOptions extends ProposePackFacetVocabularyCliOptions {
+  rounds: number;
 }
 
 function runCollectPackFacetEvidence(
@@ -1756,9 +1873,20 @@ function runCollectPackFacetEvidence(
   const diagnostics: FacetEvidenceDiagnostic[] = [];
   console.log(`[facet-evidence] runtime records: ${records.length} item(s), pack=${packId}`);
 
+  const staticItemsPaths = options.staticItemsPaths.map((path) => resolve(path));
+  if (staticItemsPaths.length > 0) {
+    const staticRecords = loadStaticItemEnrichmentRecords(staticItemsPaths, records);
+    const merged = mergeRuntimeWithStaticRecords(records, staticRecords, "static-items");
+    records = merged.records;
+    console.log(
+      `[facet-evidence] static item enrichment: ${staticRecords.size} matching item record(s), ` +
+        `${merged.enriched} runtime record(s) enriched`,
+    );
+  }
+
   if (options.modsPath) {
     const staticRecords = loadStaticEnrichmentRecords(options.modsPath, records);
-    const merged = mergeRuntimeWithStaticRecords(records, staticRecords);
+    const merged = mergeRuntimeWithStaticRecords(records, staticRecords, "jar");
     records = merged.records;
     console.log(
       `[facet-evidence] static jar enrichment: ${staticRecords.size} matching static record(s), ` +
@@ -1791,6 +1919,7 @@ function runCollectPackFacetEvidence(
     generatedBy: TOOL_VERSION,
     runtimeItemsPath,
     runtimeSummaryPath: existsSync(summaryPath) ? summaryPath : undefined,
+    staticItemsPaths,
     modsPath: options.modsPath ? resolve(options.modsPath) : undefined,
     records,
     summary,
@@ -1828,19 +1957,14 @@ async function runProposePackFacetVocabulary(
   const vocabularyPath = join(options.outDir, `${packId}.facet-vocabulary.json`);
   const reviewPath = join(options.outDir, `${packId}.facet-vocabulary.review.json`);
 
-  let previousVocabulary: PackFacetVocabulary | undefined;
-  let previousVocabularyPath: string | undefined;
-  if (options.previousVocabularyPath) {
-    previousVocabularyPath = resolve(options.previousVocabularyPath);
-    const previous = validateVocabularyArtifactFile(previousVocabularyPath);
-    if (!previous.ok || !previous.vocabulary) {
-      console.error(`[facet-vocabulary] invalid previous vocabulary: ${previousVocabularyPath}`);
-      for (const error of previous.errors) console.error(`  ${error}`);
-      process.exit(1);
-      return;
-    }
-    previousVocabulary = previous.vocabulary;
-  }
+  const vocabularyInput = loadVocabularyInputArtifacts({
+    packId,
+    baseVocabularyPaths: options.baseVocabularyPaths,
+    previousVocabularyPath: options.previousVocabularyPath,
+    context: "facet-vocabulary",
+  });
+  const previousVocabulary = vocabularyInput.vocabulary;
+  const previousVocabularyPath = vocabularyInput.sourceLabel;
 
   if (!options.opts.dryRun && !options.force && (existsSync(vocabularyPath) || existsSync(reviewPath))) {
     console.error(`[facet-vocabulary] output already exists for pack ${packId}`);
@@ -1873,6 +1997,9 @@ async function runProposePackFacetVocabulary(
     minEvidence: options.minEvidence,
     maxCandidatesPerFacet: options.maxCandidatesPerFacet,
     maxCandidatesPerPrompt: options.maxCandidatesPerPrompt,
+    itemSampleSize: options.itemSampleSize,
+    itemSampleMode: options.itemSampleMode,
+    itemSampleSeed: options.itemSampleSeed ?? `${packId}:vocabulary:single-pass`,
     model,
     client,
     clientOptions: { signal: cliAbortSignal() },
@@ -1897,6 +2024,7 @@ async function runProposePackFacetVocabulary(
       context_records: number;
       context_records_without_semantic_context: number;
       semantic_context_entries: number;
+      runtime_item_sample: number;
       chars: number;
       approxTokens: number;
     }> = [];
@@ -1905,12 +2033,19 @@ async function runProposePackFacetVocabulary(
       const userPath = join(dryRunDir, `${facet}.user.json`);
       writeFileSync(systemPath, prompt.system);
       writeFileSync(userPath, prompt.user);
-      const parsedUser = JSON.parse(prompt.user) as { context_records?: unknown[]; candidates?: unknown[] };
+      const parsedUser = JSON.parse(prompt.user) as {
+        context_records?: unknown[];
+        candidates?: unknown[];
+        pack_item_overview?: unknown;
+      };
       const promptContextRecords = Array.isArray(parsedUser.context_records)
         ? parsedUser.context_records
         : Array.isArray(parsedUser.candidates)
           ? parsedUser.candidates
           : [];
+      const runtimeItemSample = isRecord(parsedUser.pack_item_overview) && Array.isArray(parsedUser.pack_item_overview.runtime_item_sample)
+        ? parsedUser.pack_item_overview.runtime_item_sample.length
+        : 0;
       const chars = prompt.system.length + prompt.user.length;
       summary.push({
         facet,
@@ -1919,6 +2054,7 @@ async function runProposePackFacetVocabulary(
         context_records: promptContextRecords.length,
         context_records_without_semantic_context: countContextRecordsWithoutSemanticContext(promptContextRecords),
         semantic_context_entries: countSemanticContextEntries(promptContextRecords),
+        runtime_item_sample: runtimeItemSample,
         chars,
         approxTokens: Math.round(chars / 4),
       });
@@ -1943,18 +2079,399 @@ async function runProposePackFacetVocabulary(
   console.log(`[facet-vocabulary] wrote ${vocabularyPath}`);
   console.log(`[facet-vocabulary] wrote ${reviewPath}`);
 
-  const acceptedCounts: Array<[string, number]> =
+  const usableCounts: Array<[string, number]> =
     Object.entries(result.vocabulary.facets)
       .map(([facet, value]): [string, number] => [facet, Object.keys(value.values).length])
       .sort(([a], [b]) => a.localeCompare(b));
-  for (const [facet, count] of acceptedCounts) {
-    console.log(`  ${facet.padEnd(24)} ${String(count).padStart(4)} accepted`);
+  for (const [facet, count] of usableCounts) {
+    console.log(`  ${facet.padEnd(24)} ${String(count).padStart(4)} usable`);
   }
   printVocabularyHomeImpactAudit(result.vocabulary);
   const reviewCount = Object.values(result.review.decisions).flat()
     .filter((decision) => decision.state !== "accepted").length;
   console.log(`[facet-vocabulary] review/rejected decision(s): ${reviewCount}`);
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+function loadVocabularyInputArtifacts(args: {
+  packId: string;
+  baseVocabularyPaths: readonly string[];
+  previousVocabularyPath?: string;
+  context: string;
+}): { vocabulary?: PackFacetVocabulary; sourceLabel?: string } {
+  const inputs: Array<{ role: "base" | "previous"; path: string; vocabulary: PackFacetVocabulary }> = [];
+  for (const rawPath of args.baseVocabularyPaths) {
+    const path = resolve(rawPath);
+    const result = validateVocabularyArtifactFile(path);
+    if (!result.ok || !result.vocabulary) {
+      console.error(`[${args.context}] invalid base vocabulary: ${path}`);
+      for (const error of result.errors) console.error(`  ${error}`);
+      process.exit(1);
+      throw new Error(`invalid base vocabulary: ${path}`);
+    }
+    inputs.push({ role: "base", path, vocabulary: result.vocabulary });
+  }
+  if (args.previousVocabularyPath) {
+    const path = resolve(args.previousVocabularyPath);
+    const result = validateVocabularyArtifactFile(path);
+    if (!result.ok || !result.vocabulary) {
+      console.error(`[${args.context}] invalid previous vocabulary: ${path}`);
+      for (const error of result.errors) console.error(`  ${error}`);
+      process.exit(1);
+      throw new Error(`invalid previous vocabulary: ${path}`);
+    }
+    inputs.push({ role: "previous", path, vocabulary: result.vocabulary });
+  }
+  if (inputs.length === 0) return {};
+  const vocabulary = mergeVocabularyInputs(args.packId, inputs);
+  const sourceLabel = inputs.map((input) => `${input.role}:${input.path}`).join(",");
+  return { vocabulary, sourceLabel };
+}
+
+function mergeVocabularyInputs(
+  packId: string,
+  inputs: ReadonlyArray<{ role: "base" | "previous"; path: string; vocabulary: PackFacetVocabulary }>,
+): PackFacetVocabulary {
+  const merged: PackFacetVocabulary = {
+    schema_version: 1,
+    kind: "slot-pack-facet-vocabulary",
+    pack_id: packId,
+    generated_by: TOOL_VERSION,
+    generated_at: new Date().toISOString(),
+    source: {
+      vocabulary_inputs: inputs.map((input) => ({
+        role: input.role,
+        path: input.path,
+        pack_id: input.vocabulary.pack_id,
+      })),
+    },
+    facets: {},
+  };
+  for (const input of inputs) {
+    for (const [facet, facetValues] of Object.entries(input.vocabulary.facets ?? {})) {
+      merged.facets[facet] ??= { values: {} };
+      for (const [id, value] of Object.entries(facetValues.values ?? {})) {
+        merged.facets[facet]!.values[id] = cloneJson(value);
+      }
+    }
+  }
+  const validation = validateVocabularyArtifact(merged);
+  if (!validation.ok) {
+    throw new Error(`merged vocabulary input failed validation: ${validation.errors.slice(0, 5).join("; ")}`);
+  }
+  return merged;
+}
+
+async function runRefinePackFacetVocabulary(
+  options: RefinePackFacetVocabularyCliOptions,
+): Promise<void> {
+  const start = Date.now();
+  const evidencePath = resolve(options.evidencePath);
+  const evidence = readFacetEvidenceArtifactFile(evidencePath);
+  const packId = safeFileComponent(options.packId ?? evidence.pack_id);
+  const vocabularyPath = join(options.outDir, `${packId}.facet-vocabulary.json`);
+  const reviewPath = join(options.outDir, `${packId}.facet-vocabulary.review.json`);
+  const workingPath = join(options.outDir, `${packId}.facet-vocabulary.working.json`);
+  const loopPath = join(options.outDir, `${packId}.facet-vocabulary.loop.json`);
+  const roundsDir = join(options.outDir, `${packId}.facet-vocabulary-rounds`);
+  const dryRunDir = join(options.outDir, `${packId}.facet-vocabulary-loop-dry-run`);
+
+  const vocabularyInput = loadVocabularyInputArtifacts({
+    packId,
+    baseVocabularyPaths: options.baseVocabularyPaths,
+    previousVocabularyPath: options.previousVocabularyPath,
+    context: "facet-vocabulary-loop",
+  });
+  let previousVocabulary = vocabularyInput.vocabulary;
+  let previousVocabularyPath = vocabularyInput.sourceLabel;
+
+  const outputPaths = options.opts.dryRun
+    ? [dryRunDir]
+    : [vocabularyPath, reviewPath, workingPath, loopPath, roundsDir];
+  if (!options.force && outputPaths.some((path) => existsSync(path))) {
+    console.error(`[facet-vocabulary-loop] output already exists for pack ${packId}`);
+    console.error(`[facet-vocabulary-loop] pass --force to regenerate loop outputs in ${options.outDir}`);
+    process.exit(1);
+    return;
+  }
+  if (options.force) {
+    for (const path of outputPaths) {
+      if (existsSync(path)) rmSync(path, { recursive: true, force: true });
+    }
+  }
+
+  const model = options.opts.model ?? DEFAULT_STAGE3_MODEL;
+  const client = options.opts.dryRun ? undefined : buildVocabularyClient(options.opts);
+  const roundSummaries: Array<Record<string, unknown>> = [];
+  let workingVocabulary = previousVocabulary;
+  let finalVocabulary: PackFacetVocabulary | undefined;
+  let finalReview: PackFacetVocabularyReview | undefined;
+
+  console.log(
+    `[facet-vocabulary-loop] evidence=${evidence.records.length} record(s), pack=${packId}, ` +
+      `rounds=${options.rounds}, item-sample-size=${options.itemSampleSize}, ` +
+      `item-sample-mode=${options.itemSampleMode}, facets=${options.facets.length > 0 ? options.facets.join(",") : "all"}`,
+  );
+
+  if (options.opts.dryRun) {
+    mkdirSync(dryRunDir, { recursive: true });
+  } else {
+    mkdirSync(roundsDir, { recursive: true });
+  }
+
+  for (let round = 1; round <= options.rounds; round++) {
+    const roundName = `round-${String(round).padStart(2, "0")}`;
+    const roundSeed = `${options.itemSampleSeed ?? `${packId}:vocabulary-loop`}:${roundName}`;
+    console.log(`[facet-vocabulary-loop] ${roundName}: sample-seed=${roundSeed}`);
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath,
+      packId,
+      generatedBy: TOOL_VERSION,
+      previousVocabulary: workingVocabulary,
+      previousVocabularyPath,
+      facets: options.facets,
+      namespaces: options.namespaces,
+      minEvidence: options.minEvidence,
+      maxCandidatesPerFacet: options.maxCandidatesPerFacet,
+      maxCandidatesPerPrompt: options.maxCandidatesPerPrompt,
+      itemSampleSize: options.itemSampleSize,
+      itemSampleMode: options.itemSampleMode,
+      itemSampleSeed: roundSeed,
+      vocabularyIteration: round,
+      model,
+      client,
+      clientOptions: { signal: cliAbortSignal() },
+    });
+    finalVocabulary = result.vocabulary;
+    finalReview = result.review;
+    const working = buildWorkingVocabularyFromReview(result.vocabulary, result.review, {
+      generatedAt: result.vocabulary.generated_at,
+      round,
+      roundSeed,
+    });
+    workingVocabulary = working;
+
+    const summary = summarizeVocabularyLoopRound(round, roundSeed, result.vocabulary, result.review, working);
+    roundSummaries.push(summary);
+    console.log(
+      `[facet-vocabulary-loop] ${roundName}: usable=${summary.usable_total} ` +
+        `review=${summary.review_total} rejected=${summary.rejected_total}`,
+    );
+
+    if (options.opts.dryRun) {
+      const promptDir = join(dryRunDir, roundName);
+      const promptSummary = writeVocabularyPromptFiles(promptDir, result.prompts);
+      roundSummaries[roundSummaries.length - 1] = {
+        ...summary,
+        prompts: promptSummary,
+      };
+    } else {
+      const roundVocabularyPath = join(roundsDir, `${packId}.facet-vocabulary.${roundName}.json`);
+      const roundReviewPath = join(roundsDir, `${packId}.facet-vocabulary.${roundName}.review.json`);
+      const roundWorkingPath = join(roundsDir, `${packId}.facet-vocabulary.${roundName}.working.json`);
+      writeFileSync(roundVocabularyPath, JSON.stringify(result.vocabulary, null, 2) + "\n");
+      writeFileSync(roundReviewPath, JSON.stringify(result.review, null, 2) + "\n");
+      writeFileSync(roundWorkingPath, JSON.stringify(working, null, 2) + "\n");
+      previousVocabularyPath = roundWorkingPath;
+      roundSummaries[roundSummaries.length - 1] = {
+        ...summary,
+        vocabulary: roundVocabularyPath,
+        review: roundReviewPath,
+        working_vocabulary: roundWorkingPath,
+      };
+    }
+  }
+
+  const loopSummary = {
+    schema_version: 1,
+    kind: "slot-pack-facet-vocabulary-loop",
+    pack_id: packId,
+    generated_by: TOOL_VERSION,
+    generated_at: new Date().toISOString(),
+    evidence: evidencePath,
+    base_vocabulary: options.baseVocabularyPaths.length > 0
+      ? options.baseVocabularyPaths.map((path) => resolve(path))
+      : undefined,
+    previous_vocabulary: options.previousVocabularyPath ? resolve(options.previousVocabularyPath) : undefined,
+    model,
+    rounds: options.rounds,
+    item_sample_size: options.itemSampleSize,
+    item_sample_mode: options.itemSampleMode,
+    item_sample_seed: options.itemSampleSeed ?? null,
+    facets: options.facets.length > 0 ? options.facets : "all",
+    namespaces: options.namespaces.length > 0 ? options.namespaces : "all",
+    round_summaries: roundSummaries,
+  };
+
+  if (options.opts.dryRun) {
+    const summaryPath = join(dryRunDir, "summary.json");
+    writeFileSync(summaryPath, JSON.stringify(loopSummary, null, 2) + "\n");
+    console.log(`[facet-vocabulary-loop] dry run: wrote ${options.rounds} round prompt set(s) to ${dryRunDir}`);
+    console.log(`[facet-vocabulary-loop] summary -> ${summaryPath}`);
+    return;
+  }
+
+  if (!finalVocabulary || !finalReview || !workingVocabulary) {
+    throw new Error("facet vocabulary loop produced no rounds");
+  }
+  writeFileSync(vocabularyPath, JSON.stringify(finalVocabulary, null, 2) + "\n");
+  writeFileSync(reviewPath, JSON.stringify(finalReview, null, 2) + "\n");
+  writeFileSync(workingPath, JSON.stringify(workingVocabulary, null, 2) + "\n");
+  writeFileSync(loopPath, JSON.stringify(loopSummary, null, 2) + "\n");
+  console.log(`[facet-vocabulary-loop] wrote final usable vocabulary ${vocabularyPath}`);
+  console.log(`[facet-vocabulary-loop] wrote final review decisions ${reviewPath}`);
+  console.log(`[facet-vocabulary-loop] wrote loop working vocabulary ${workingPath}`);
+  console.log(`[facet-vocabulary-loop] wrote loop summary ${loopPath}`);
+  printVocabularyHomeImpactAudit(finalVocabulary);
+  console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+function buildWorkingVocabularyFromReview(
+  vocabulary: PackFacetVocabulary,
+  review: PackFacetVocabularyReview,
+  metadata: {
+    generatedAt?: string;
+    round: number;
+    roundSeed: string;
+  },
+): PackFacetVocabulary {
+  const working = cloneJson(vocabulary);
+  working.generated_by = TOOL_VERSION;
+  if (metadata.generatedAt) working.generated_at = metadata.generatedAt;
+  working.source = {
+    ...(working.source ?? {}),
+    vocabulary_loop_working_copy: {
+      round: metadata.round,
+      item_sample_seed: metadata.roundSeed,
+      note: "Carries usable and rejected generator decisions into the next automated vocabulary refinement round. Review values are usable by default but remain watch-listed; rejected values are retained only as negative context.",
+    },
+  };
+
+  for (const [facet, decisions] of Object.entries(review.decisions)) {
+    for (const decision of decisions) {
+      if (isUsableVocabularyState(decision.state)) continue;
+      working.facets[facet] ??= { values: {} };
+      working.facets[facet]!.values[decision.id] = vocabularyValueFromLoopDecision(decision);
+    }
+  }
+
+  const validation = validateVocabularyArtifact(working);
+  if (!validation.ok) {
+    throw new Error(`working vocabulary failed validation: ${validation.errors.slice(0, 5).join("; ")}`);
+  }
+  return working;
+}
+
+function vocabularyValueFromLoopDecision(decision: VocabularyReviewDecision): VocabularyValue {
+  const relatedActivity = sanitizeRelatedActivityIds(decision.related_activity ?? []);
+  return {
+    label: decision.label,
+    origin: "stage3_proposed",
+    state: decision.state,
+    ...(decision.aliases?.length ? { aliases: decision.aliases } : {}),
+    ...(decision.description ? { description: decision.description } : {}),
+    ...(decision.examples?.length ? { seed_items: decision.examples } : {}),
+    ...(relatedActivity.length ? { related_activity: relatedActivity } : {}),
+    ...(decision.default_organization_group ? { default_organization_group: decision.default_organization_group } : {}),
+    ...(decision.facet === "workflow_role" ? { parent: workflowRoleParentFromId(decision.id) } : {}),
+  };
+}
+
+function workflowRoleParentFromId(id: string): string {
+  return id.includes("#") ? id.slice(0, id.indexOf("#")) : "";
+}
+
+function sanitizeRelatedActivityIds(values: readonly string[]): string[] {
+  return [...new Set(values.map((value) => value.trim()).filter((value) => {
+    if (!value) return false;
+    return !validateMultiValue("activity", [value]);
+  }))].sort();
+}
+
+function summarizeVocabularyLoopRound(
+  round: number,
+  itemSampleSeed: string,
+  vocabulary: PackFacetVocabulary,
+  review: PackFacetVocabularyReview,
+  workingVocabulary: PackFacetVocabulary,
+): Record<string, unknown> {
+  const usableEntries: Array<[string, number]> = Object.entries(vocabulary.facets)
+    .map(([facet, value]): [string, number] => [facet, Object.keys(value.values).length])
+    .sort(([a], [b]) => a.localeCompare(b));
+  const usableByFacet: Record<string, number> = Object.fromEntries(
+    usableEntries,
+  );
+  const reviewByFacet = Object.fromEntries(
+    Object.entries(review.summary)
+      .sort(([a], [b]) => a.localeCompare(b)),
+  );
+  const workingEntries: Array<[string, number]> = Object.entries(workingVocabulary.facets)
+    .map(([facet, value]): [string, number] => [facet, Object.keys(value.values).length])
+    .sort(([a], [b]) => a.localeCompare(b));
+  const workingByFacet: Record<string, number> = Object.fromEntries(
+    workingEntries,
+  );
+  const decisions = Object.values(review.decisions).flat();
+  return {
+    round,
+    item_sample_seed: itemSampleSeed,
+    usable_total: Object.values(usableByFacet).reduce((sum, count) => sum + count, 0),
+    accepted_total: Object.values(usableByFacet).reduce((sum, count) => sum + count, 0),
+    review_total: decisions.filter((decision) => decision.state === "review").length,
+    rejected_total: decisions.filter((decision) => decision.state === "rejected").length,
+    usable_by_facet: usableByFacet,
+    accepted_by_facet: usableByFacet,
+    review_by_facet: reviewByFacet,
+    working_values_by_facet: workingByFacet,
+  };
+}
+
+function writeVocabularyPromptFiles(
+  outDir: string,
+  prompts: Record<string, { system: string; user: string }>,
+): Array<Record<string, unknown>> {
+  mkdirSync(outDir, { recursive: true });
+  const summary: Array<Record<string, unknown>> = [];
+  for (const [facet, prompt] of Object.entries(prompts).sort(([a], [b]) => a.localeCompare(b))) {
+    const fileStem = safeFileComponent(facet);
+    const systemPath = join(outDir, `${fileStem}.system.md`);
+    const userPath = join(outDir, `${fileStem}.user.json`);
+    writeFileSync(systemPath, prompt.system);
+    writeFileSync(userPath, prompt.user);
+    const parsedUser = JSON.parse(prompt.user) as {
+      context_records?: unknown[];
+      candidates?: unknown[];
+      facets?: Record<string, { context_records?: unknown[] }>;
+      pack_item_overview?: unknown;
+    };
+    const promptContextRecords = Array.isArray(parsedUser.context_records)
+      ? parsedUser.context_records
+      : Array.isArray(parsedUser.candidates)
+        ? parsedUser.candidates
+        : isRecord(parsedUser.facets)
+          ? Object.values(parsedUser.facets).flatMap((facet) => Array.isArray(facet?.context_records) ? facet.context_records : [])
+          : [];
+    const facetCount = isRecord(parsedUser.facets) ? Object.keys(parsedUser.facets).length : undefined;
+    const runtimeItemSample = isRecord(parsedUser.pack_item_overview) && Array.isArray(parsedUser.pack_item_overview.runtime_item_sample)
+      ? parsedUser.pack_item_overview.runtime_item_sample.length
+      : 0;
+    const chars = prompt.system.length + prompt.user.length;
+    summary.push({
+      facet,
+      system: systemPath,
+      user: userPath,
+      context_records: promptContextRecords.length,
+      context_records_without_semantic_context: countContextRecordsWithoutSemanticContext(promptContextRecords),
+      semantic_context_entries: countSemanticContextEntries(promptContextRecords),
+      ...(facetCount !== undefined ? { facet_count: facetCount } : {}),
+      runtime_item_sample: runtimeItemSample,
+      chars,
+      approxTokens: Math.round(chars / 4),
+    });
+  }
+  writeFileSync(join(outDir, "summary.json"), JSON.stringify(summary, null, 2) + "\n");
+  return summary;
 }
 
 function runApplyPackFacetVocabularyReview(options: {
@@ -2066,7 +2583,7 @@ async function runInteractivePackFacetVocabularyReview(options: {
       `${selectedFacets.size > 0 ? `for ${[...selectedFacets].join(",")}` : "across all facets"}`,
   );
   if (!options.includeAccepted) {
-    console.log("[facet-vocabulary-review] default mode reviews pending/review values only; pass --all to force y/n on accepted values too.");
+    console.log("[facet-vocabulary-review] default mode reviews pending/review values only; review values are already usable by default. Pass --all to force y/n on accepted values too.");
   }
 
   const scriptedAnswers = process.stdin.isTTY ? undefined : readFileSync(0, "utf8").split(/\r?\n/);
@@ -2129,7 +2646,7 @@ async function runInteractivePackFacetVocabularyReview(options: {
       writeFileSync(reviewOutPath, JSON.stringify(review, null, 2) + "\n");
     }
 
-    console.log(`[facet-vocabulary-review] wrote approved vocabulary ${outPath}`);
+    console.log(`[facet-vocabulary-review] wrote usable vocabulary ${outPath}`);
     if (reviewOutPath) console.log(`[facet-vocabulary-review] wrote reviewed decisions ${reviewOutPath}`);
     console.log(
       `[facet-vocabulary-review] decisions: ` +
@@ -2149,7 +2666,7 @@ interface Stage3VocabularyProposalDecision {
   proposed_id?: string;
   rationale: string;
   evidence?: string[];
-  decision: "approve" | "reject" | "skip" | "already_accepted" | "invalid";
+  decision: "approve" | "reject" | "skip" | "already_usable" | "invalid";
   approved_id?: string;
   approved_label?: string;
   notes?: string;
@@ -2212,7 +2729,7 @@ async function runInteractiveStage3VocabularyProposalReview(options: {
     approve: 0,
     reject: 0,
     skip: 0,
-    alreadyAccepted: 0,
+    alreadyUsable: 0,
     invalid: 0,
   };
   let quit = false;
@@ -2221,7 +2738,7 @@ async function runInteractiveStage3VocabularyProposalReview(options: {
     for (let index = 0; index < reviewable.length; index++) {
       const proposal = reviewable[index]!;
       const preflight = preflightVocabularyProposal(vocabulary, proposal);
-      if (preflight.decision === "invalid" || preflight.decision === "already_accepted") {
+      if (preflight.decision === "invalid" || preflight.decision === "already_usable") {
         decisions.push({
           item: proposal.item,
           facet: proposal.facet,
@@ -2232,7 +2749,7 @@ async function runInteractiveStage3VocabularyProposalReview(options: {
           ...preflight,
         });
         if (preflight.decision === "invalid") counts.invalid += 1;
-        else counts.alreadyAccepted += 1;
+        else counts.alreadyUsable += 1;
         printStage3VocabularyProposal(proposal, index + 1, reviewable.length, preflight.notes);
         continue;
       }
@@ -2331,7 +2848,7 @@ async function runInteractiveStage3VocabularyProposalReview(options: {
     console.log(
       `[stage3-vocabulary-review] decisions: ` +
         `approved=${counts.approve}, rejected=${counts.reject}, skipped=${counts.skip}, ` +
-        `already_accepted=${counts.alreadyAccepted}, invalid=${counts.invalid}` +
+        `already_usable=${counts.alreadyUsable}, invalid=${counts.invalid}` +
         `${quit ? " (quit early)" : ""}`,
     );
   } finally {
@@ -2391,8 +2908,8 @@ function preflightVocabularyProposal(
     return { decision: "invalid", notes: issue.reason };
   }
   const existing = vocabulary.facets[proposal.facet]?.values?.[proposal.proposed_id];
-  if (existing?.state === "accepted") {
-    return { decision: "already_accepted", notes: `already accepted as '${existing.label}'` };
+  if (isUsableVocabularyState(existing?.state)) {
+    return { decision: "already_usable", notes: `already usable as '${existing.label}' (${existing.state})` };
   }
   return { decision: "skip" };
 }
@@ -2504,7 +3021,7 @@ function printVocabularyReviewDecision(
 }
 
 function printVocabularyHomeImpactAudit(vocabulary: PackFacetVocabulary): void {
-  const organizationGroups = acceptedVocabularyEntries(vocabulary, "organization_group");
+  const organizationGroups = usableVocabularyEntries(vocabulary, "organization_group");
   if (organizationGroups.length === 0) return;
 
   console.log("[facet-vocabulary] home-impact audit (section-producing facets only)");
@@ -2512,10 +3029,10 @@ function printVocabularyHomeImpactAudit(vocabulary: PackFacetVocabulary): void {
     const suffix = organizationGroups.length > ORGANIZATION_GROUP_HOME_REVIEW_THRESHOLD
       ? " REVIEW BEFORE FULL CLASSIFICATION"
       : "";
-    console.log(`  organization_group       ${String(organizationGroups.length).padStart(4)} accepted${suffix}`);
+    console.log(`  organization_group       ${String(organizationGroups.length).padStart(4)} usable${suffix}`);
     if (organizationGroups.length > ORGANIZATION_GROUP_HOME_REVIEW_THRESHOLD) {
       console.log(
-        "    accepted organization_group values can become main wall sections; " +
+        "    usable organization_group values can become main wall sections; " +
           "semantic/query-only facets are not part of this count",
       );
       console.log(`    sample: ${formatVocabularyEntrySample(organizationGroups)}`);
@@ -2523,12 +3040,12 @@ function printVocabularyHomeImpactAudit(vocabulary: PackFacetVocabulary): void {
   }
 }
 
-function acceptedVocabularyEntries(
+function usableVocabularyEntries(
   vocabulary: PackFacetVocabulary,
   facet: string,
 ): Array<[string, { label?: string; state?: string }]> {
   return Object.entries(vocabulary.facets[facet]?.values ?? {})
-    .filter(([, value]) => value.state === "accepted")
+    .filter(([, value]) => isUsableVocabularyState(value.state))
     .sort(([a], [b]) => a.localeCompare(b));
 }
 
@@ -2592,23 +3109,38 @@ async function runGeneratePackLayer(
   for (const path of [recordsPath, partialPath, completePath]) {
     if (existsSync(path) && options.force) rmSync(path);
   }
-  if (!options.force && (existsSync(partialPath) || existsSync(completePath)) && (stages.stage2 || stages.stage3)) {
+  const guardedOutputs = [
+    ...(stages.stage2 ? [partialPath] : []),
+    ...(stages.stage3 ? [completePath] : []),
+  ];
+  if (!options.force && guardedOutputs.some((path) => existsSync(path))) {
     console.error(`[pack-layer] output already exists for pack ${packId}`);
-    console.error(`[pack-layer] pass --force to regenerate ${partialPath} / ${completePath}`);
+    console.error(`[pack-layer] pass --force to regenerate ${guardedOutputs.join(" / ")}`);
     process.exit(1);
     throw new Error(`output already exists for pack ${packId}`);
   }
 
   let records = readRuntimeExportRecords(runtimeItemsPath);
+  const staticItemsPaths = options.staticItemsPaths.map((path) => resolve(path));
   let staticMatchingRecords = 0;
   let staticEnrichedRecords = 0;
   console.log(`[pack-layer] runtime records: ${records.length} item(s), pack=${packId}`);
+  if (staticItemsPaths.length > 0) {
+    const staticRecords = loadStaticItemEnrichmentRecords(staticItemsPaths, records);
+    const merged = mergeRuntimeWithStaticRecords(records, staticRecords, "static-items");
+    records = merged.records;
+    staticEnrichedRecords += merged.enriched;
+    console.log(
+      `[pack-layer] static item enrichment: ${staticRecords.size} matching item record(s), ` +
+        `${merged.enriched} runtime record(s) enriched`,
+    );
+  }
   if (options.modsPath) {
     const staticRecords = loadStaticEnrichmentRecords(options.modsPath, records);
-    const merged = mergeRuntimeWithStaticRecords(records, staticRecords);
+    const merged = mergeRuntimeWithStaticRecords(records, staticRecords, "jar");
     records = merged.records;
     staticMatchingRecords = staticRecords.size;
-    staticEnrichedRecords = merged.enriched;
+    staticEnrichedRecords += merged.enriched;
     console.log(
       `[pack-layer] static jar enrichment: ${staticRecords.size} matching static record(s), ` +
         `${merged.enriched} runtime record(s) enriched`,
@@ -2640,6 +3172,7 @@ async function runGeneratePackLayer(
       stages: ["stage1", "stage2"],
       inputMetadata: {
         runtime_summary: existsSync(summaryPath) ? summaryPath : null,
+        static_items: staticItemsPaths,
         static_mods_path: options.modsPath ? resolve(options.modsPath) : null,
         loader: summary?.loader ?? null,
         minecraft_version: summary?.minecraft_version ?? null,
@@ -2667,20 +3200,25 @@ async function runGeneratePackLayer(
       if (warnings.length > 20) console.log(`  … and ${warnings.length - 20} more`);
     }
     stage2Layer = layer;
-  } else if (stages.stage3) {
-    if (!existsSync(partialPath)) {
-      console.error(`[stage3] need stage 2 output at ${partialPath}; run with --stages 1,2,3 first`);
-      process.exit(1);
-      throw new Error(`missing stage 2 output at ${partialPath}`);
-    }
-    stage2Layer = JSON.parse(readFileSync(partialPath, "utf8")) as LayerFile;
-    console.log(`[stage2] (skipped; loaded ${Object.keys(stage2Layer.entries).length} entries)`);
   }
 
-  let layerForDatapack = stage2Layer ? partialPath : null;
-  if (stages.stage3 && stage2Layer) {
+  const stage3BaseLayer = stages.stage3
+    ? createRuntimeStage3BaseLayer({
+        packId,
+        runtimeItemsPath,
+        summaryPath,
+        summary,
+        modsPath: options.modsPath,
+        staticItemsPaths,
+        records,
+      })
+    : null;
+
+  let layerForDatapack = stage2Layer && !stages.stage3 ? partialPath : null;
+  if (stages.stage3 && stage3BaseLayer) {
+    console.log(`[stage3] using LLM-only base layer; deterministic stage 2 facets are not merged`);
     ensureLiveBackendConfigured(stage3Opts, "generate-pack-layer stage 3");
-    await executeStage3(records, stage2Layer, completePath, stage3Opts);
+    await executeStage3(records, stage3BaseLayer, completePath, stage3Opts, ["stage1", "stage3"]);
     if (!stage3Opts.dryRun && existsSync(completePath)) {
       layerForDatapack = completePath;
     }
@@ -2711,6 +3249,7 @@ async function runGeneratePackLayer(
     runtimeItemsPath,
     summaryPath,
     staticModsPath: options.modsPath ? resolve(options.modsPath) : undefined,
+    staticItemsPaths: staticItemsPaths.length ? staticItemsPaths : undefined,
     staticMatchingRecords,
     staticEnrichedRecords,
     recordsPath,
@@ -2720,7 +3259,71 @@ async function runGeneratePackLayer(
     datapackDir,
     records,
     summary,
+    stage3BaseLayer,
   };
+}
+
+function createRuntimeStage3BaseLayer(args: {
+  packId: string;
+  runtimeItemsPath: string;
+  summaryPath: string;
+  summary: RuntimeExportSummary | null;
+  modsPath?: string;
+  staticItemsPaths?: readonly string[];
+  records: readonly ItemExtractRecord[];
+}): LayerFile {
+  const layer: LayerFile = {
+    schema_version: 1,
+    layer: "modpack",
+    source: args.packId,
+    generated_by: TOOL_VERSION,
+    generated_at: new Date().toISOString(),
+    entries: {},
+  };
+  attachGenerationMetadata(layer, {
+    sourceKind: "runtime-export",
+    sourcePath: args.runtimeItemsPath,
+    sourceVersion: args.summary?.minecraft_version,
+    namespace: args.packId,
+    stages: ["stage1"],
+    inputMetadata: {
+      runtime_summary: existsSync(args.summaryPath) ? args.summaryPath : null,
+      static_items: args.staticItemsPaths ?? [],
+      static_mods_path: args.modsPath ? resolve(args.modsPath) : null,
+      loader: args.summary?.loader ?? null,
+      minecraft_version: args.summary?.minecraft_version ?? null,
+      runtime_item_count: args.summary?.item_count ?? args.records.length,
+    },
+  });
+  return layer;
+}
+
+function createLlmStage3BaseLayer(args: {
+  layerKind: LayerFile["layer"];
+  source: string;
+  sourceKind?: string;
+  sourcePath?: string;
+  sourceVersion?: string;
+  namespace?: string;
+  inputMetadata?: Record<string, unknown>;
+}): LayerFile {
+  const layer: LayerFile = {
+    schema_version: 1,
+    layer: args.layerKind,
+    source: args.source,
+    generated_by: TOOL_VERSION,
+    generated_at: new Date().toISOString(),
+    entries: {},
+  };
+  attachGenerationMetadata(layer, {
+    sourceKind: args.sourceKind,
+    sourcePath: args.sourcePath,
+    sourceVersion: args.sourceVersion,
+    namespace: args.namespace,
+    stages: ["stage1"],
+    inputMetadata: args.inputMetadata,
+  });
+  return layer;
 }
 
 function loadStaticEnrichmentRecords(
@@ -2772,9 +3375,30 @@ function loadStaticEnrichmentRecords(
   return out;
 }
 
+function loadStaticItemEnrichmentRecords(
+  staticItemsPaths: readonly string[],
+  runtimeRecords: readonly ItemExtractRecord[],
+): Map<string, ItemExtractRecord> {
+  const runtimeIds = new Set(runtimeRecords.map((record) => record.id));
+  const out = new Map<string, ItemExtractRecord>();
+  for (const path of staticItemsPaths) {
+    const resolved = resolve(path);
+    const records = readRuntimeExportRecords(resolved);
+    let matched = 0;
+    for (const record of records) {
+      if (!runtimeIds.has(record.id) || out.has(record.id)) continue;
+      out.set(record.id, record);
+      matched++;
+    }
+    console.log(`[pack-layer] static item file ${resolved}: records=${records.length}, matches=${matched}`);
+  }
+  return out;
+}
+
 function mergeRuntimeWithStaticRecords(
   records: readonly ItemExtractRecord[],
   staticRecords: ReadonlyMap<string, ItemExtractRecord>,
+  sourceLabel: string,
 ): { records: ItemExtractRecord[]; enriched: number } {
   let enriched = 0;
   const merged = records.map((runtime) => {
@@ -2785,13 +3409,16 @@ function mergeRuntimeWithStaticRecords(
     return {
       ...runtime,
       display_name: nonBlank(runtime.display_name) ? runtime.display_name : stat.display_name,
+      minecraft_tags: runtime.minecraft_tags.length > 0 ? runtime.minecraft_tags : stat.minecraft_tags,
+      minecraft_tags_direct: runtime.minecraft_tags_direct.length > 0 ? runtime.minecraft_tags_direct : stat.minecraft_tags_direct,
       model_parents: runtime.model_parents.length > 0 ? runtime.model_parents : stat.model_parents,
       loot_table_sources: runtime.loot_table_sources.length > 0 ? runtime.loot_table_sources : stat.loot_table_sources,
       creative_tabs: runtime.creative_tabs.length > 0 ? runtime.creative_tabs : stat.creative_tabs,
+      component_data: hasComponentData(runtime.component_data) ? runtime.component_data : stat.component_data,
       ...(semanticText ? { semantic_text: semanticText } : {}),
       extractor_meta: {
         ...(runtime.extractor_meta ?? {}),
-        static_enrichment: "jar",
+        static_enrichment: sourceLabel,
         static_model_parents: stat.model_parents.length,
         static_loot_sources: stat.loot_table_sources.length,
         static_minecraft_tags_direct: stat.minecraft_tags_direct,
@@ -2799,6 +3426,10 @@ function mergeRuntimeWithStaticRecords(
     };
   });
   return { records: merged, enriched };
+}
+
+function hasComponentData(value: ItemExtractRecord["component_data"]): boolean {
+  return !!value && Object.keys(value).length > 0;
 }
 
 function mergeSemanticText(
@@ -2920,10 +3551,12 @@ function readLayerFile(path: string): LayerFile {
   return JSON.parse(readFileSync(path, "utf8")) as LayerFile;
 }
 
-function collectItemsWithoutLlmFacets(layer: LayerFile): string[] {
+function collectItemsWithoutLlmFacets(layer: LayerFile, expectedItemIds?: readonly string[]): string[] {
   const out: string[] = [];
-  for (const [itemId, entry] of Object.entries(layer.entries)) {
-    const hasLlm = Object.values(entry.facets ?? {}).some((facet) => {
+  const itemIds = expectedItemIds ?? Object.keys(layer.entries);
+  for (const itemId of itemIds) {
+    const entry = layer.entries[itemId];
+    const hasLlm = Object.values(entry?.facets ?? {}).some((facet) => {
       const source = (facet as { source?: unknown }).source;
       return typeof source === "string" && source.startsWith("llm:");
     });
@@ -3033,7 +3666,7 @@ function writeRuntimePackReports(args: {
     },
     output: {
       records: args.run.recordsPath,
-      partial_layer: args.run.partialPath,
+      partial_layer: existsSync(args.run.partialPath) ? args.run.partialPath : null,
       complete_layer: finalLayerPath,
       datapack: args.run.datapackDir ?? null,
       datapack_zip: args.datapackZipPath ?? null,
@@ -3346,17 +3979,22 @@ async function runJarMod(
       if (warnings.length > 20) console.log(`  … and ${warnings.length - 20} more`);
     }
     stage2Layer = layer;
-  } else if (stages.stage3) {
-    if (!existsSync(partialPath)) {
-      console.error(`[stage3] need stage 2 output at ${partialPath}; run with --stages 2,3`);
-      process.exit(1);
-    }
-    stage2Layer = JSON.parse(readFileSync(partialPath, "utf8")) as LayerFile;
-    console.log(`[stage2] (skipped; loaded ${Object.keys(stage2Layer.entries).length} entries)`);
   }
 
-  if (stages.stage3 && stage2Layer) {
-    await executeStage3(records, stage2Layer, completePath, stage3Opts);
+  if (stages.stage3) {
+    const stage3BaseLayer = createLlmStage3BaseLayer({
+      layerKind: "per-mod",
+      source: mod.id,
+      sourceKind: "jar",
+      sourcePath: mod.path,
+      sourceVersion: bundle?.version ?? mod.version,
+      namespace: mod.id,
+      inputMetadata: jarInputMetadata(mod),
+    });
+    if (stage2Layer) {
+      console.log(`[stage3] using LLM-only base layer; stage 2 facets are diagnostic output only`);
+    }
+    await executeStage3(records, stage3BaseLayer, completePath, stage3Opts, ["stage1", "stage3"]);
   }
 
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
@@ -3416,12 +4054,12 @@ function resolveStage3FacetVocabulary(opts: Stage3CliOptions): Stage3CliOptions 
     process.exit(1);
     throw new Error(`invalid facet vocabulary: ${resolvedPath}`);
   }
-  const accepted = Object.values(result.vocabulary.facets ?? {})
+  const usable = Object.values(result.vocabulary.facets ?? {})
     .reduce((count, facet) =>
-      count + Object.values(facet.values ?? {}).filter((value) => value.state === "accepted").length,
+      count + Object.values(facet.values ?? {}).filter((value) => isUsableVocabularyState(value.state)).length,
       0,
     );
-  console.log(`[facet-vocabulary] loaded ${accepted} accepted value(s) for stage 3: ${resolvedPath}`);
+  console.log(`[facet-vocabulary] loaded ${usable} usable value(s) for stage 3: ${resolvedPath}`);
   return {
     ...opts,
     facetVocabularyFile: resolvedPath,
@@ -3431,9 +4069,10 @@ function resolveStage3FacetVocabulary(opts: Stage3CliOptions): Stage3CliOptions 
 
 async function executeStage3(
   records: readonly ItemExtractRecord[],
-  stage2Layer: LayerFile,
+  baseLayer: LayerFile,
   completePath: string,
   opts: Stage3CliOptions,
+  pipelineStages: readonly string[] = ["stage1", "stage2", "stage3"],
 ) {
   opts = resolveStage3FacetVocabulary(opts);
   opts = resolveStage3DocumentContext(opts, records);
@@ -3446,7 +4085,7 @@ async function executeStage3(
   console.log(`[stage3] running against ${n} items${only ? " (sampled)" : ""}`);
 
   if (opts.dryRun) {
-    await dryRunStage3(records, stage2Layer, only, opts, dirname(completePath));
+    await dryRunStage3(records, baseLayer, only, opts, dirname(completePath));
     return;
   }
 
@@ -3455,7 +4094,7 @@ async function executeStage3(
 
   const result = await runStage3({
     records,
-    stage2Layer,
+    baseLayer,
     client,
     model: opts.model,
     batchSize: opts.batchSize,
@@ -3479,14 +4118,11 @@ async function executeStage3(
   });
 
   // Optional retry pass: re-ask a stronger model about items whose LLM
-  // facets were low-confidence or ambiguous.
+  // facets were explicitly ambiguous.
   if (opts.retryModel) {
-    const candidates = selectRetryCandidates(
-      result.layer,
-      opts.retryThreshold ?? 0.5,
-    );
+    const candidates = selectRetryCandidates(result.layer);
     console.log(
-      `[stage3-retry] ${candidates.length} candidate item(s) below confidence ${opts.retryThreshold ?? 0.5} or flagged ambiguous`,
+      `[stage3-retry] ${candidates.length} candidate item(s) flagged ambiguous`,
     );
     if (candidates.length > 0) {
       // Resolve retry record/replay mode independently of the first pass:
@@ -3510,7 +4146,6 @@ async function executeStage3(
         firstPassLayer: result.layer,
         client: retryClient,
         model: opts.retryModel,
-        threshold: opts.retryThreshold,
         batchSize: opts.retryBatchSize,
         documentContextByItem: opts.documentContextByItem,
         facetVocabulary: opts.facetVocabulary,
@@ -3549,7 +4184,7 @@ async function executeStage3(
   }
 
   attachGenerationMetadata(result.layer, {
-    stages: ["stage1", "stage2", "stage3"],
+    stages: pipelineStages,
     stage3Opts: opts,
   });
   const validation = validateLayer(result.layer, { vocabulary: opts.facetVocabulary });
@@ -3573,7 +4208,7 @@ async function executeStage3(
     rmSync(completePath.replace(/\.complete\.json$/, suffix), { force: true });
   }
   const writtenFiles: { path: string; description: string }[] = [];
-  writtenFiles.push({ path: completePath, description: "merged layer (stage 2 + stage 3)" });
+  writtenFiles.push({ path: completePath, description: "merged layer (LLM classification facets)" });
 
   if (result.proposals.length) {
     const proposalsPath = completePath.replace(/\.complete\.json$/, ".schema-proposals.json");
@@ -3588,7 +4223,7 @@ async function executeStage3(
     writeFileSync(vocabularyProposalsPath, JSON.stringify(result.vocabularyProposals, null, 2) + "\n");
     writtenFiles.push({
       path: vocabularyProposalsPath,
-      description: `${result.vocabularyProposals.length} vocabulary proposal(s) — accepted pack vocabulary was missing a useful value`,
+      description: `${result.vocabularyProposals.length} vocabulary proposal(s) — usable pack vocabulary was missing a useful value`,
     });
   }
   if (result.corrections.length) {
@@ -3596,7 +4231,7 @@ async function executeStage3(
     writeFileSync(correctionsPath, JSON.stringify(result.corrections, null, 2) + "\n");
     writtenFiles.push({
       path: correctionsPath,
-      description: `${result.corrections.length} stage-2 correction(s) flagged by the LLM — review and patch the rule files if valid`,
+      description: `${result.corrections.length} compatibility correction(s) flagged by the LLM`,
     });
   }
   if (result.fillIns.length) {
@@ -3604,7 +4239,7 @@ async function executeStage3(
     writeFileSync(fillInsPath, JSON.stringify(result.fillIns, null, 2) + "\n");
     writtenFiles.push({
       path: fillInsPath,
-      description: `${result.fillIns.length} stage-2 fill-in(s) — deterministic facets the rule layer missed; expand stage-2 rules to cover these patterns`,
+      description: `${result.fillIns.length} compatibility fill-in(s) emitted by the LLM`,
     });
   }
   if (result.responseMismatches.length) {
@@ -3652,10 +4287,10 @@ async function executeStage3(
   const reviewItems: { kind: string; summary: string; detail?: string[]; path?: string }[] = [];
   if (result.corrections.length) {
     reviewItems.push({
-      kind: "STAGE-2 CORRECTIONS",
-      summary: `${result.corrections.length} item(s) where the LLM thinks a deterministic stage-2 facet is wrong`,
+      kind: "COMPATIBILITY CORRECTIONS",
+      summary: `${result.corrections.length} compatibility correction(s) emitted by the LLM`,
       detail: result.corrections.slice(0, 10).map((c) =>
-        `${c.item} ${c.facet}: '${c.current}' → '${c.suggested}'  (${(c.confidence ?? 0).toFixed(2)}) — ${c.rationale}`,
+        `${c.item} ${c.facet}: '${c.current}' -> '${c.suggested}' — ${c.rationale}`,
       ),
       path: completePath.replace(/\.complete\.json$/, ".corrections.json"),
     });
@@ -3679,7 +4314,7 @@ async function executeStage3(
   if (result.vocabularyProposals.length) {
     reviewItems.push({
       kind: "VOCABULARY PROPOSALS",
-      summary: `${result.vocabularyProposals.length} proposal(s) — accepted pack vocabulary was missing a useful value`,
+      summary: `${result.vocabularyProposals.length} proposal(s) — usable pack vocabulary was missing a useful value`,
       detail: result.vocabularyProposals.slice(0, 10).map((p) =>
         `${p.item} ${p.facet}: '${p.label}'${p.proposed_id ? ` (${p.proposed_id})` : ""} — ${p.rationale}`,
       ),
@@ -3688,8 +4323,8 @@ async function executeStage3(
   }
   if (result.fillIns.length) {
     reviewItems.push({
-      kind: "STAGE-2 FILL-INS",
-      summary: `${result.fillIns.length} item(s) where the LLM filled a deterministic facet that the stage-2 rules missed`,
+      kind: "COMPATIBILITY FILL-INS",
+      summary: `${result.fillIns.length} compatibility fill-in(s) emitted by the LLM`,
       detail: result.fillIns.slice(0, 10).map((f) =>
         `${f.item} ${f.facet} = '${f.value}' — ${f.rationale}`,
       ),
@@ -3699,7 +4334,7 @@ async function executeStage3(
   if (result.warnings.length) {
     reviewItems.push({
       kind: "WARNINGS",
-      summary: `${result.warnings.length} warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)`,
+      summary: `${result.warnings.length} warning(s) from parser/merge validation`,
       detail: result.warnings.slice(0, 5),
       path: completePath.replace(/\.complete\.json$/, ".warnings.json"),
     });
@@ -3743,12 +4378,12 @@ async function executeStage3(
  */
 async function dryRunStage3(
   records: readonly ItemExtractRecord[],
-  stage2Layer: LayerFile,
+  baseLayer: LayerFile,
   only: readonly string[] | undefined,
   opts: Stage3CliOptions,
   outDir: string,
 ) {
-  const batchSize = opts.batchSize ?? 20;
+  const batchSize = opts.batchSize ?? DEFAULT_STAGE3_BATCH_SIZE;
   const targetFacets = defaultTargetFacets();
   const recordIndex = new Map(records.map((r) => [r.id, r]));
 
@@ -3764,14 +4399,23 @@ async function dryRunStage3(
   const dryRunDir = join(outDir, "stage3-dry-run");
   mkdirSync(dryRunDir, { recursive: true });
 
-  const summary: Array<{ batch: number; items: string[]; file: string; chars: number; approxTokens: number }> = [];
+  const summary: Array<{
+    batch: number;
+    items: string[];
+    system: string;
+    user: string;
+    systemChars: number;
+    userChars: number;
+    chars: number;
+    approxTokens: number;
+  }> = [];
   for (let i = 0; i < batches.length; i++) {
     const batch = batches[i]!;
-    const payloads = batch.map((record) => {
-      const stage2 = stage2Layer.entries[record.id]?.facets ?? {};
-      return buildItemPayload(record, stage2, opts.documentContextByItem?.[record.id]);
-    });
-    const prompt = buildBatchPrompt({
+    const payloads = batch.map((record) =>
+      buildItemPayload(record, {}, opts.documentContextByItem?.[record.id])
+    );
+    const promptInput = {
+      pack_id: opts.facetVocabulary?.pack_id,
       items: payloads,
       target_facets: targetFacets,
       facet_vocabulary: opts.facetVocabulary
@@ -3781,15 +4425,22 @@ async function dryRunStage3(
         verbose_facet_disambiguation: opts.verboseFacetDisambiguation,
         verbose_common_misconceptions: opts.verboseCommonMisconceptions,
       },
-    });
-    const file = join(dryRunDir, `batch-${String(i + 1).padStart(2, "0")}.prompt.txt`);
-    writeFileSync(file, prompt);
+    };
+    const { system, user } = buildSplitPrompt(promptInput);
+    const stem = `batch-${String(i + 1).padStart(2, "0")}`;
+    const systemFile = join(dryRunDir, `${stem}.system.md`);
+    const userFile = join(dryRunDir, `${stem}.user.json`);
+    writeFileSync(systemFile, system);
+    writeFileSync(userFile, user);
     summary.push({
       batch: i + 1,
       items: batch.map((r) => r.id),
-      file,
-      chars: prompt.length,
-      approxTokens: Math.round(prompt.length / 4),
+      system: systemFile,
+      user: userFile,
+      systemChars: system.length,
+      userChars: user.length,
+      chars: system.length + user.length,
+      approxTokens: Math.round((system.length + user.length) / 4),
     });
   }
 
@@ -3799,7 +4450,9 @@ async function dryRunStage3(
   console.log(`[stage3] dry run: wrote ${batches.length} prompt(s) to ${dryRunDir}`);
   for (const s of summary) {
     console.log(
-      `  batch ${s.batch}: ${s.items.length} items, ${s.chars} chars (~${s.approxTokens} tokens) → ${s.file.split("/").slice(-2).join("/")}`,
+      `  batch ${s.batch}: ${s.items.length} items, ` +
+        `system=${s.systemChars} chars user=${s.userChars} chars ` +
+        `total=${s.chars} chars (~${s.approxTokens} tokens)`,
     );
   }
   console.log(`  summary → ${summaryFile}`);
@@ -3891,16 +4544,23 @@ Commands:
       Run stages against a source. Use --mod minecraft with a misode/mcmeta
       checkout (the tools/mcmeta submodule path is fine), or use any other
       mod id with a source repository containing standard Forge/NeoForge
-      resource roots. For installed jars, use classify-folder instead.
+      resource roots. Defaults to stages 1,3 so the LLM owns semantic
+      classification. For exact vanilla extraction, pass --mcmeta-ref with a
+      versioned summary tag such as 1.20.1-summary. For installed jars, use
+      classify-folder instead.
+
+  extract --mod <id> --source <path> [options]
+      Compatibility alias for source extraction/reference diagnostics. Defaults
+      to stages 1,2 and does not call the LLM unless --stages includes 3.
 
   classify-folder --mods <mods-folder-or-instance-root> [options]
       Scan an installed mods folder or Prism-style instance root, then run
-      stage 1/2 extraction directly from the local jars for missing semantic
+      local jar extraction and optional LLM semantic classification for missing
       layers. By default it skips bundled/covered mods, libraries, blocked
       jars, and entries whose <modid>.facets.complete.json already exists.
       Pass --mod <id> to target one or more mods, --include-covered to
       regenerate bundled/covered mods, --force to reprocess existing outputs,
-      and --stages 1,2,3 to opt into the offline LLM semantic pass.
+      and --stages 1,3 to run LLM-owned semantic classification.
 
       Folder-only flags:
         --mod <id>             Target one mod id. Repeatable.
@@ -3926,8 +4586,8 @@ Commands:
                                Each mod runs its own batch worker
                                pool, so total in-flight LLM calls
                                ≈ mod-concurrency × concurrency.
-                               OpenRouter handles dozens comfortably;
-                               recommend 3-4 for fast wall-time.
+                               Large-prompt classification defaults to 1×1
+                               for cache stability; raise deliberately.
 
   generate-pack-layer --runtime-export <pack.runtime-items.ndjson> [options]
       Generate a pack-specific classification layer from a live runtime export.
@@ -3938,13 +4598,16 @@ Commands:
 
       Pack-layer flags:
         --summary <path>        Explicit runtime-summary.json path.
+        --static-items <path>   Merge matching item records from a static
+                                extractor NDJSON before prompts. Repeatable;
+                                useful for exact-version vanilla mcmeta data.
         --mods <path>           Prism instance root or mods/ folder for static
                                 jar enrichment.
         --evidence <path>       Optional <pack>.facet-evidence.json. Stage 3
                                 converts low-breadth guide/advancement records
                                 into per-item document_context.
         --facet-vocabulary <path>
-                                Accepted pack facet vocabulary to ground
+                                Usable pack facet vocabulary to ground
                                 vocabulary-backed Stage 3 values.
         --pack-id <id>          Override output/layer/datapack id.
         --datapack              Package the layer as a datapack folder.
@@ -3964,6 +4627,9 @@ Commands:
 
       Facet-evidence flags:
         --summary <path>        Explicit runtime-summary.json path.
+        --static-items <path>   Merge matching item records from a static
+                                extractor NDJSON before building evidence.
+                                Repeatable.
         --mods <path>           Prism instance root or mods/ folder for static
                                 jar, guide, quest, advancement, and mod metadata
                                 evidence.
@@ -3984,42 +4650,85 @@ Commands:
       Facet-vocabulary flags:
         --facet <id>            Regenerate one facet vocabulary. Repeatable.
         --namespace <id>        Limit evidence to one namespace. Repeatable.
+        --base-vocabulary <path>
+                                Reusable baseline vocabulary to include before
+                                pack-specific values. Repeatable; use this for
+                                the vanilla baseline for the target MC version.
         --previous-vocabulary <path>
                                 Refinement-only carry-forward for an already
                                 nearly satisfactory vocabulary. Previous values
                                 are sticky context records; omit this for clean
                                 baseline validation.
-        --min-evidence <n>      Minimum deterministic support for acceptance
-                                (default 2; previous/universal values bypass).
+        --min-evidence <n>      Minimum context-record support for accepting a
+                                value that the model did not synthesize
+                                directly (default 2; base/previous/built-in
+                                values bypass).
         --max-candidates-per-facet <n>
                                 Bound prompt context records per facet (default 5000).
         --max-candidates-per-prompt <n>
                                 Optional hard cap per prompt chunk. By default
                                 each facet uses one prompt when it fits the
                                 prompt budget, and splits only when needed.
+        --item-sample-size <n> Include N rotating raw runtime item records in
+                                the prompt (default ${DEFAULT_VOCABULARY_ITEM_SAMPLE_SIZE}; 0 disables).
+        --item-sample-mode <m> random or coverage (default coverage). Coverage
+                                uses only mechanical strata such as namespace,
+                                guide linkage, recipe degree, creative tabs,
+                                and raw tags.
+        --item-sample-seed <s> Stable base seed for reproducible samples.
         --dry-run               Write prompt pairs only.
         --force                 Overwrite vocabulary/review outputs.
+
+  refine-pack-facet-vocabulary --evidence <pack.facet-evidence.json> [options]
+      Run several automated vocabulary refinement rounds before human review.
+      Each round receives the stable semantic corpus, the previous round's
+      working vocabulary, and a fresh rotating item sample. The
+      final <pack>.facet-vocabulary.review.json is the human-review artifact;
+      <pack>.facet-vocabulary.working.json is for continuing automated
+      refinement only, not for classifier input.
+      By default an unfiltered round uses one combined all-facet prompt.
+      Passing --facet switches to focused per-facet prompt generation. Combined
+      rounds cap each facet at 256 context records by default unless
+      --max-candidates-per-facet is supplied.
+
+      Refinement flags:
+        --rounds <n>            Automated refinement rounds (default 3).
+        --facet <id>            Regenerate one facet vocabulary. Repeatable.
+        --namespace <id>        Limit evidence to one namespace. Repeatable.
+        --base-vocabulary <path>
+                                Reusable baseline vocabulary to include before
+                                pack-specific values. Repeatable; use this for
+                                the vanilla baseline for the target MC version.
+        --previous-vocabulary <path>
+                                Optional starting vocabulary.
+        --item-sample-size <n>  Runtime item sample per round
+                                (default ${DEFAULT_VOCABULARY_ITEM_SAMPLE_SIZE}; 0 disables).
+        --item-sample-mode <m>  random or coverage (default coverage).
+        --item-sample-seed <s>  Stable base seed for reproducible rounds.
+        --dry-run               Write prompt pair(s) for each round only.
+        --force                 Overwrite loop outputs.
 
   apply-pack-facet-vocabulary-review --vocabulary <pack.facet-vocabulary.json> --review <pack.facet-vocabulary.review.json> --out <approved.facet-vocabulary.json>
       Apply manual human_review decisions from a concise review JSON. Set
       human_review.decision to approve, reject, or rename; for rename, edit
       approved_id and/or approved_label. Pending decisions are ignored.
-      Approved/renamed values are written as manual accepted vocabulary.
+      Approved/renamed values are written as manual accepted vocabulary; skipped
+      review-state values from the generator remain usable by default.
 
   review-pack-facet-vocabulary --vocabulary <pack.facet-vocabulary.json> --review <pack.facet-vocabulary.review.json> --out <approved.facet-vocabulary.json>
       Interactively review vocabulary generator output. Shows each pending
       review value with description, rationale, examples, and policy notes;
       press y to accept, n to decline, Enter to skip, or q to stop. Writes the
-      approved vocabulary artifact for stage 3 --facet-vocabulary. Use
+      usable vocabulary artifact for stage 3 --facet-vocabulary. Use
       --review-out <path> to also save the recorded human decisions, --facet to
-      limit facets, and --all to force y/n review of accepted values too.
+      limit facets, and --all to force y/n review of accepted/usable values too.
 
   review-stage3-vocabulary-proposals --vocabulary <approved.facet-vocabulary.json> --proposals <pack.facets.vocabulary-proposals.json> --out <updated.facet-vocabulary.json>
       Interactively review useful vocabulary values suggested during a stage-3
       classification run. Shows each proposal with its item, facet, proposed id,
       and rationale; press y to accept it into the vocabulary, n to decline,
-      Enter to skip, or q to stop. Accepted values are written as manual
-      accepted vocabulary for the next stage-3 run. Use --review-out <path> to
+      Enter to skip, or q to stop. Approved values are written as manual
+      usable vocabulary for the next stage-3 run. Use --review-out <path> to
       save the y/n decisions and --facet to limit review to selected facets.
 
   classify-runtime-pack --runtime-export <pack.runtime-items.ndjson> [options]
@@ -4032,31 +4741,41 @@ Commands:
 
       Runtime-pack flags:
         --summary <path>        Explicit runtime-summary.json path.
+        --static-items <path>   Merge matching item records from a static
+                                extractor NDJSON before classification.
+                                Repeatable.
         --mods <path>           Prism instance root or mods/ folder for static
                                 jar enrichment.
         --evidence <path>       Optional <pack>.facet-evidence.json. Stage 3
                                 converts low-breadth guide/advancement records
                                 into per-item document_context.
         --facet-vocabulary <path>
-                                Accepted pack facet vocabulary to ground
+                                Usable pack facet vocabulary to ground
                                 vocabulary-backed Stage 3 values.
         --pack-id <id>          Override output/layer/datapack id.
         --out <dir>             Output directory (default out/<pack-id>).
-        --stages <list>         Default 1,2,3.
+        --stages <list>         Default 1,3. Stage 3 runtime-pack output is
+                                LLM-only and does not merge stage 2 facets.
+        --batch-size <n>        Items per Stage 3 LLM call for runtime-pack
+                                runs (default ${DEFAULT_RUNTIME_PACK_BATCH_SIZE}).
+        --concurrency <n>       Parallel Stage 3 calls for runtime-pack runs
+                                (default ${DEFAULT_RUNTIME_PACK_CONCURRENCY}).
+        --sample canary|N|ids   Restrict stage 3 to a subset; useful for dry
+                                prompt review and canary classification.
         --no-datapack           Skip datapack folder output.
         --datapack-out <path>   Explicit datapack output folder.
         --pack-format <n>       Datapack pack_format.
         --no-zip                Skip datapack zip output.
         --force                 Overwrite existing generated outputs.
         --no-repair             Skip the missing-LLM repair pass.
-        --repair-batch-size <n> Items per repair batch (default 25).
+        --repair-batch-size <n> Items per repair batch (default ${DEFAULT_RUNTIME_PACK_REPAIR_BATCH_SIZE}).
         --repair-concurrency <n>
-                                Parallel repair batches (default 8).
+                                Parallel repair batches (default ${DEFAULT_RUNTIME_PACK_REPAIR_CONCURRENCY}).
 
   validate <layer.json> [--vocabulary <facet-vocabulary.json>]
       Validate a layer file against layer.schema.json plus the live facet
       registry. With --vocabulary, vocabulary-backed facet values must be
-      accepted by that pack vocabulary artifact.
+      usable by that pack vocabulary artifact.
 
   validate-vocabulary <facet-vocabulary.json>
       Validate a pack facet vocabulary artifact: schema marker, pack id,
@@ -4071,7 +4790,10 @@ Scan options:
   --json <path>             Explicit JSON report path.
 
 Stage selection:
-  --stages 1,2[,3]          Which stages to run. Default: 1,2 (stage 3 opt-in).
+  --stages 1,3              Which stages to run. Classification commands
+                            default to 1,3; extract defaults to 1,2.
+                            Stage 2 is an explicit diagnostic/reference pass
+                            and is not merged into LLM classification output.
 
 Stage 3 (LLM) knobs — only used when 3 is in --stages:
   --only-provider <slug>    Pin routing to a single OpenRouter upstream
@@ -4090,12 +4812,13 @@ Stage 3 (LLM) knobs — only used when 3 is in --stages:
                             OpenRouter model slug (e.g.
                             'deepseek/deepseek-v4-flash',
                             'deepseek/deepseek-v4-pro', 'openai/gpt-4o-mini').
-  --batch-size <n>          Items per LLM call (default 20).
-  --concurrency <n>         Run up to N batches in parallel (default 4).
+  --batch-size <n>          Items per LLM call (default ${DEFAULT_STAGE3_BATCH_SIZE};
+                            runtime-pack default ${DEFAULT_RUNTIME_PACK_BATCH_SIZE}).
+  --concurrency <n>         Run up to N batches in parallel (default ${DEFAULT_STAGE3_CONCURRENCY};
+                            runtime-pack default ${DEFAULT_RUNTIME_PACK_CONCURRENCY}).
                             Each parallel batch is an independent LLM call.
-                            OpenRouter handles 4-8 comfortably; bump higher
-                            (--concurrency 8) for the fastest wall-time.
-                            Set to 1 for serial / debugging.
+                            Set to 1 for serial/debugging or higher only when
+                            intentionally trading request rate for wall-clock.
   --sample canary|N|id,...  Restrict to a subset:
                               canary   – the hand-picked 102-item set.
                               N        – first N records from the extract.
@@ -4106,13 +4829,12 @@ Stage 3 (LLM) knobs — only used when 3 is in --stages:
   --use-replay              Read responses from --fixture-dir; never call a live
                             backend.
   --dry-run                 Build prompts and stop before any LLM call.
-  --facet-vocabulary <path> Accepted pack facet vocabulary. Vocabulary-backed
-                            facets in Stage 3 are prompted to use only accepted
+  --facet-vocabulary <path> Usable pack facet vocabulary. Vocabulary-backed
+                            facets in Stage 3 are prompted to use only usable
                             ids from this file and final validation enforces it.
 
-Retry pass (opt-in; runs after the first pass on low-confidence items):
+Retry pass (opt-in; runs after the first pass on ambiguous items):
   --retry-model <id>        OpenRouter retry model. Enabling this turns on retry.
-  --retry-threshold <n>     Retry items with any LLM facet confidence < n or ambiguous:true. Default 0.5.
   --retry-batch-size <n>    Items per retry LLM call. Default 8.
   --retry-fixture-dir <p>   Separate fixture directory for the retry pass.
 
@@ -4140,18 +4862,20 @@ Examples:
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary \\
       --model deepseek/deepseek-v4-flash --record-replay \\
       --fixture-dir test/fixtures/stage3-canary-deepseek \\
-      --retry-model openai/gpt-4.1-mini --retry-threshold 0.6 \\
+      --retry-model openai/gpt-4.1-mini \\
       --retry-fixture-dir test/fixtures/stage3-canary-retry
 
   # Classify every mod in a modpack manifest (idempotent — re-run to resume):
   OPENROUTER_API_KEY=sk-or-... \\
     bun run src/cli.ts classify-modpack modpacks/test-modset.json --out out
 
-  # Classify missing mods from an installed Prism instance or mods folder:
+  # Collect jar extraction/reference diagnostics from an installed Prism instance:
   bun run src/cli.ts classify-folder --mods /path/to/prism/instance --out out --stages 1,2
+
+  # Classify missing mods from an installed Prism instance or mods folder:
   OPENROUTER_API_KEY=sk-or-... \\
     bun run src/cli.ts classify-folder --mods /path/to/prism/instance --mod createaddition \\
-      --out out --stages 1,2,3 --record-replay --fixture-dir test/fixtures/createaddition-jar
+      --out out --stages 1,3 --record-replay --fixture-dir test/fixtures/createaddition-jar
 
   # Generate a static+runtime pack layer and package it as a datapack:
   bun run src/cli.ts generate-pack-layer \\
@@ -4159,7 +4883,7 @@ Examples:
       --summary modpacks/exports/tfg2.runtime-summary.json \\
       --mods /path/to/TerraFirmaGreg-Modern \\
       --facet-vocabulary out/tfg2/tfg2.facet-vocabulary.json \\
-      --stages 1,2,3 --datapack
+      --stages 1,3 --datapack
 
   # Collect pack-level facet evidence before proposing a vocabulary:
   bun run src/cli.ts collect-pack-facet-evidence \\
@@ -4184,20 +4908,18 @@ Examples:
       --out out/tfg2 \\
       --force
 
-  # FAST: reclassify the whole pack with high parallelism (after a prompt
-  # change). --force clears the per-mod completion markers; --concurrency
-  # 8 puts 8 batches in flight per mod; --mod-concurrency 4 runs 4 mods
-  # at once. Total in-flight LLM calls ≈ 32, well within OpenRouter's
-  # comfort zone for the deepseek family.
+  # Reclassify the whole manifest with large cached prompts. --force clears the
+  # per-mod completion markers; keep concurrency low unless deliberately
+  # trading cache stability and request rate for wall-clock.
   OPENROUTER_API_KEY=sk-or-... \\
     bun run src/cli.ts classify-modpack modpacks/test-modset.json --out out \\
-      --stages 1,2,3 --force --concurrency 8 --mod-concurrency 4
+      --stages 1,3 --force --batch-size 1000 --concurrency 1 --mod-concurrency 1
 
-  # Convenience aliases (same as the FAST recipe above):
+  # Convenience aliases (same as the large-prompt recipe above):
   bun run reclassify:test-modset       # reclassify only what changed
   bun run reclassify:test-modset:full  # force full stage outputs
 
-Prompt-evaluation presets (60-item playtest sample; reads stage-1/2 from out/):
+Prompt-evaluation presets (60-item playtest sample; reads extracted records from out/):
   OPENROUTER_API_KEY=... bun run eval:deepseek
                                        # OpenRouter + deepseek/deepseek-v4-flash
   scripts/eval-prompt.sh --model openai/gpt-4o-mini

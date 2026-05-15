@@ -76,15 +76,12 @@ Plans:
   items listed in `current.md`).
 - [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit
   prototype slices.
-- [docs/plans/item-classification.md](docs/plans/item-classification.md)
-  — classification pipeline + runtime planning doc (long-form). Read
-  [the design overview](docs/design/classification/README.md) first.
 - [docs/plans/classification-database.md](docs/plans/classification-database.md)
   — proposed public classification database, installed-pack scanning, and
   contribution workflow plan.
 - [docs/plans/classification-facet-vocabulary.md](docs/plans/classification-facet-vocabulary.md)
-  — active pack semantic-vocabulary, evidence, and stage-3 integration plan
-  for better classification data.
+  — active LLM-first classification authoring plan: evidence, iterative
+  vocabulary, item classification, and datapack/resource assembly.
 - [docs/plans/emi-goal-projections.md](docs/plans/emi-goal-projections.md)
   — EMI recipe goal tabs with normal wall cards, ghosts, pips, and
   goal-scoped desired counts.
@@ -105,6 +102,8 @@ Plans:
   (storage-areas: the explicit-named-areas direction; storage-prototype:
   the chest-link / chest-tile / storage-zone prototype that was
   wholesale replaced by learned-storage).
+- [docs/plans/outdated/](docs/plans/outdated/) — old planning narratives that
+  no longer describe current work.
 
 Decisions (ADR-style):
 
@@ -153,11 +152,13 @@ is not part of the current project.
 - Reflection belongs behind narrow compat bridges.
 - UI refresh must preserve valid interaction state unless the logical session
   changed.
-- Classification LLM stages should receive as much semantic evidence as
-  practical: tooltip/lore prose, guidebook and quest text, lang-resolved
-  descriptions, KubeJS/datapack overlays, and mod descriptions. Do not reduce
-  pack vocabulary work to a handful of seed item ids; the cheap large-context
-  model should see enough text to infer the actual pack concepts.
+- Classification authoring is LLM-judgement first. Pre-LLM code gathers and
+  formats evidence; it must not pre-decide semantic facet values, constrain the
+  model to deterministic guesses, or overwrite valid model output. Vocabulary is
+  refined in LLM loops with rich semantic evidence and rotating item samples;
+  item classification then uses that vocabulary as grounding input while still
+  letting the model make the facet decisions. Review flags are advisory
+  debugging/playtest signals, not automatic rejection gates.
 
 ## Development
 

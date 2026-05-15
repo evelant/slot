@@ -140,6 +140,10 @@ export interface ProposePackFacetVocabularyOptions extends ExtractVocabularyCand
   clientOptions?: Partial<QueryOptions>;
   maxCandidatesPerFacet?: number;
   maxCandidatesPerPrompt?: number;
+  itemSampleSize?: number;
+  itemSampleSeed?: string;
+  itemSampleMode?: VocabularyItemSampleMode;
+  vocabularyIteration?: number;
 }
 
 export interface ProposePackFacetVocabularyResult {
@@ -150,12 +154,39 @@ export interface ProposePackFacetVocabularyResult {
 
 export interface VocabularyPromptOverview {
   purpose: string;
+  item_sample_purpose?: string;
+  item_sample_seed?: string;
+  item_sample_mode?: VocabularyItemSampleMode;
+  item_sample_iteration?: number;
   runtime_item_count?: number;
+  runtime_item_sample?: VocabularyRuntimeItemSample[];
   default_section_pressure?: VocabularyDefaultSectionPressure[];
   runtime_item_family_clusters?: VocabularyItemFamilyCluster[];
   tag_membership_summaries?: VocabularyTagMembershipSummary[];
   recipe_use_neighborhoods?: VocabularyRecipeUseNeighborhood[];
   human_visible_text_pools?: VocabularyHumanVisibleTextPool[];
+}
+
+export type VocabularyItemSampleMode = "random" | "coverage";
+
+export interface VocabularyRuntimeItemSample {
+  id: string;
+  label: string;
+  namespace?: string;
+  tags?: string[];
+  direct_tags?: string[];
+  creative_tabs?: string[];
+  components?: string[];
+  model_parents?: string[];
+  recipe_roles?: {
+    in_degree: number;
+    out_degree: number;
+    ingredient_types?: Record<string, number>;
+    output_types?: Record<string, number>;
+    ingredient_examples?: string[];
+    output_examples?: string[];
+  };
+  semantic_context?: string[];
 }
 
 export interface VocabularyDefaultSectionPressure {

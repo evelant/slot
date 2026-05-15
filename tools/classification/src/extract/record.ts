@@ -1,6 +1,6 @@
 /**
- * Stage 1 output — one record per item, written as NDJSON. Everything downstream
- * (stage 2 deterministic rules, stage 3 LLM prompts) is authored against this shape.
+ * Stage 1 output — one record per item, written as NDJSON. Downstream reference
+ * diagnostics and LLM prompts are authored against this shape.
  *
  * The shape is mod-agnostic: vanilla and modded extractors produce the same record.
  * Extractor-specific signals go into `extractor_meta` rather than new top-level fields,

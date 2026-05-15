@@ -8,12 +8,9 @@ classification, runtime export, pack facet vocabulary generation including
 diagnostics are now implemented. Public database distribution,
 review/diff/publish tooling, runtime-crawl, and persistent server/player facet
 layers remain planned.
-This plan turns item classification from a local one-off generation tool
-into shared mod metadata that normal SLOT users consume automatically.
-It does not replace
-[item-classification.md](item-classification.md); that document remains
-the facet/schema/pipeline reference. This plan covers distribution,
-pack scanning, cache identity, and contribution workflows.
+This plan turns item classification from a local one-off generation tool into
+shared mod metadata that normal SLOT users consume automatically. It covers
+distribution, pack scanning, cache identity, and contribution workflows.
 
 For the system overview, see
 [../design/classification/README.md](../design/classification/README.md).

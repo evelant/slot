@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://imagio.dev/slot/classification/layer.schema.json",
   "title": "Slot Classification Layer",
-  "description": "A classification layer file — one source of facet entries for items, to be merged by the FacetIndex with other layers. See docs/plans/item-classification.md.",
+  "description": "A classification layer file — one source of facet entries for items, to be merged by the FacetIndex.",
   "type": "object",
   "required": ["schema_version", "layer", "entries"],
   "additionalProperties": false,
@@ -86,14 +86,14 @@
           "enum": ["replace", "override-if-null"],
           "default": "replace"
         },
-        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
         "source": { "type": "string" },
-        "rationale": { "type": "string" }
+        "rationale": { "type": "string" },
+        "vocab_review": { "const": true }
       }
     },
     "AmbiguousSingleValueEntry": {
       "type": "object",
-      "description": "For enum / free_text facets where stage 3 flagged a tie. 'values' carries 2 candidates; homing picks the highest-confidence; reviewers see both.",
+      "description": "For enum / free_text facets where classification intentionally preserved two possible values. 'values' carries 2 candidates; downstream review/debug tooling sees both.",
       "required": ["values", "ambiguous"],
       "additionalProperties": false,
       "properties": {
@@ -109,9 +109,9 @@
           "enum": ["replace", "override-if-null"],
           "default": "replace"
         },
-        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
         "source": { "type": "string" },
-        "rationale": { "type": "string" }
+        "rationale": { "type": "string" },
+        "vocab_review": { "const": true }
       }
     },
     "MultiValueEntry": {
@@ -130,9 +130,9 @@
           "enum": ["replace", "add", "remove"],
           "default": "add"
         },
-        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
         "source": { "type": "string" },
-        "rationale": { "type": "string" }
+        "rationale": { "type": "string" },
+        "vocab_review": { "const": true }
       }
     },
     "SchemaProposal": {

@@ -11,12 +11,12 @@ import { isGenericValueId, resourcePathTail } from "../value_ids.ts";
 export function addOrganizationGroupEvidenceCandidates(
   acc: Map<string, CandidateAccumulator>,
   record: FacetEvidenceRecord,
-  packId: string,
+  _packId: string,
   facets: ReadonlySet<VocabularyFacetId>,
   semanticIndex: SemanticEvidenceIndex,
 ): void {
   if (!facets.has("organization_group")) return;
-  const seeds = organizationGroupSeedsForRecord(record, packId);
+  const seeds = organizationGroupSeedsForRecord(record);
   if (seeds.length === 0) return;
   const support = Math.max(1, record.count ?? record.item_refs?.length ?? record.examples?.length ?? 1);
   for (const seed of seeds) {
@@ -25,7 +25,7 @@ export function addOrganizationGroupEvidenceCandidates(
       id: seed.id,
       label: seed.label,
       description: seed.description,
-      origin: seed.id.startsWith("pack:") ? "pack_generated" : "namespace_generated",
+      origin: "pack_generated",
       suggestedState: "review",
       confidence: Math.max(seed.confidence, Math.min(0.78, record.confidence)),
       support,
@@ -113,7 +113,6 @@ const DEFAULT_OWNED_ORGANIZATION_GROUP_TOKENS = new Set([
 
 function organizationGroupSeedsForRecord(
   record: FacetEvidenceRecord,
-  packId: string,
 ): OrganizationGroupSeed[] {
   const fields = organizationGroupSignalFields(record);
   if (fields.length === 0) return [];
@@ -129,7 +128,7 @@ function organizationGroupSeedsForRecord(
     aliases?: readonly string[],
   ) => {
     addOrganizationGroupSeed(out, {
-      id: packOrganizationGroupId(packId, value),
+      id: organizationGroupId(value),
       label,
       description,
       confidence,
@@ -137,10 +136,10 @@ function organizationGroupSeedsForRecord(
       reason,
     });
   };
-  const broad = broadOrganizationGroupSeed(record, packId);
+  const broad = broadOrganizationGroupSeed(record);
   if (broad) addOrganizationGroupSeed(out, broad);
 
-  // Default-owned sections are good homes, but not pack-scoped vocabulary.
+  // Built-in sections are good homes, but not custom vocabulary proposals.
   // Generate only broad pack-specific buckets that can live beside them.
   if (hasAnyToken(tokens, ["bee", "bees", "beekeeping", "hive", "hives", "honey", "honeycomb", "wax", "beeswax", "apiary"])) {
     addPack("beekeeping", "Beekeeping", "Bee, hive, honey, wax, and apiary supplies.", "beekeeping evidence suggests a broad pack storage group", 0.62, ["bees"]);
@@ -170,7 +169,6 @@ function organizationGroupSeedsForRecord(
 
 function broadOrganizationGroupSeed(
   record: FacetEvidenceRecord,
-  packId: string,
 ): OrganizationGroupSeed | null {
   // Raw item/block tags are excellent query evidence, but they are too often
   // technical, taxonomic, or form-specific to become main wall sections directly.
@@ -188,7 +186,7 @@ function broadOrganizationGroupSeed(
   const label = record.label ?? record.title ?? labelFromId(record.id);
   const candidateToken = organizationGroupBroadToken(record, label);
   if (!candidateToken) return null;
-  const id = packOrganizationGroupId(packId, candidateToken);
+  const id = organizationGroupId(candidateToken);
   if (isGenericValueId(id) || organizationGroupIdLooksLikeStation(id)) return null;
   return {
     id,
@@ -338,8 +336,8 @@ function organizationGroupIdentityFields(record: FacetEvidenceRecord): string[] 
   ].filter((value): value is string => typeof value === "string" && value.trim().length > 0);
 }
 
-function packOrganizationGroupId(packId: string, value: string): string {
-  return `pack:${packId}/${token(value)}`;
+function organizationGroupId(value: string): string {
+  return token(value);
 }
 
 function hasAnyToken(tokens: ReadonlySet<string>, values: Iterable<string>): boolean {

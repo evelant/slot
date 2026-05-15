@@ -51,7 +51,6 @@ function ironIngotStage2Layer(): LayerFile {
       "minecraft:iron_ingot": {
         facets: {
           mod_namespace: { value: "minecraft", source: "rule:mod_namespace" },
-          material_family: { value: "iron", source: "rule:material_family_from_tag" },
           form: { value: "ingot", source: "rule:form_from_id" },
         },
       },
@@ -120,20 +119,24 @@ describe("prompt building", () => {
     expect(prompt).toContain("ambiguous");
   });
 
-  test("defaultTargetFacets matches llm_authored registry entries", () => {
+  test("defaultTargetFacets includes semantic classifier targets and excludes raw-only facts", () => {
     const targets = defaultTargetFacets();
     expect(targets).toContain("role");
+    expect(targets).toContain("material_family");
+    expect(targets).toContain("form");
+    expect(targets).toContain("dye_color");
+    expect(targets).toContain("emits_light");
     expect(targets).toContain("activity");
     expect(targets).toContain("workflow");
     expect(targets).toContain("workflow_role");
     expect(targets).toContain("used_at");
     expect(targets).toContain("primary_uses");
-    // facets that are deterministic-only should NOT appear
+    expect(targets).toContain("biome");
+    expect(targets).toContain("y_level_range");
+    // Exact/raw facts stay out of the default LLM pass.
     expect(targets).not.toContain("mod_namespace");
     expect(targets).not.toContain("is_stackable");
-    expect(targets).not.toContain("material_family");
-    expect(targets).not.toContain("dye_color");
-    expect(targets).not.toContain("emits_light");
+    expect(targets).not.toContain("processing_in");
   });
 
   test("payload keeps recipe-role and loot lists bounded", () => {
@@ -175,13 +178,13 @@ describe("prompt building", () => {
     expect(p.minecraft_tags_resolved).toEqual(["forge:ingots", "forge:ingots/iron"]);
   });
 
-  test("runtime-resolved prompt includes runtime export interpretation notes", () => {
+  test("split prompt includes stable input evidence interpretation notes", () => {
     const staticPayload = buildItemPayload(ironIngotRecord(), {});
     const staticPrompt = buildSplitPrompt({
       items: [staticPayload],
       target_facets: ["role"],
     });
-    expect(staticPrompt.system).not.toContain("# Runtime export input notes");
+    expect(staticPrompt.system).toContain("# Input evidence notes");
 
     const r = ironIngotRecord();
     r.display_name = "§bTungstensteel Space Helmet";
@@ -195,12 +198,13 @@ describe("prompt building", () => {
       items: [buildItemPayload(r, {})],
       target_facets: ["role"],
     });
-    expect(runtimePrompt.system).toContain("# Runtime export input notes");
+    expect(runtimePrompt.system).toContain("# Input evidence notes");
+    expect(runtimePrompt.system).toBe(staticPrompt.system);
     expect(runtimePrompt.system).toContain("KubeJS and datapack");
     expect(runtimePrompt.system).toContain("no useful collected evidence");
     expect(runtimePrompt.system).toContain("Recipe absences are weaker");
     expect(runtimePrompt.system).toContain("Emit `primary_uses` for every item");
-    expect(runtimePrompt.system).toContain("do not use empty loot/source fields as evidence");
+    expect(runtimePrompt.system).toContain("Empty loot/source");
     expect(runtimePrompt.system).toContain("Rationales like \"no loot source\"");
     expect(runtimePrompt.system).toContain("c:hidden_from_recipe_viewers");
     expect(runtimePrompt.system).toContain("§b");
@@ -230,7 +234,7 @@ describe("prompt building", () => {
         },
         progression_stage: {
           values: {
-            "pack:fixture/lv_low_voltage": {
+            "lv_low_voltage": {
               label: "Low Voltage",
               description: "Low Voltage machine age.",
               origin: "pack_generated",
@@ -248,31 +252,29 @@ describe("prompt building", () => {
     });
 
     expect(prompt.system).toContain("# Pack facet vocabulary");
-    expect(prompt.system).toContain("accepted ids supplied to this classification batch");
-    expect(prompt.system).toContain("Use these accepted ids for the matching facet whenever they fit");
-    expect(prompt.system).toContain("Aliases are matching hints only, not accepted output values");
-    expect(prompt.system).toContain("Pack id for pack-scoped vocabulary proposals: `fixture`");
-    expect(prompt.system).toContain("`pack:fixture/<token_path>`");
+    expect(prompt.system).toContain("grounding values supplied to this classification batch");
+    expect(prompt.system).toContain("Use listed values for the matching facet whenever they fit");
+    expect(prompt.system).toContain("state: review");
+    expect(prompt.system).toContain("usable by default");
+    expect(prompt.system).toContain("Aliases are matching hints only, not output values");
+    expect(prompt.system).toContain("Pack id for review context: `fixture`");
     expect(prompt.system).toContain("`tfc:casting`");
-    expect(prompt.system).toContain("`pack:fixture/lv_low_voltage`");
-    expect(prompt.system).not.toContain("tfc:maybe");
+    expect(prompt.system).toContain("`tfc:maybe`");
+    expect(prompt.system).toContain("`lv_low_voltage`");
     expect(prompt.system).toContain("add a top-level vocabulary_proposals entry");
-    expect(prompt.system).toContain("output `slot:place`, not");
-    expect(prompt.user).toContain("Use accepted ids when they fit");
-    expect(prompt.user).toContain("add `vocabulary_proposals` for useful missing ids");
-    expect(prompt.user).toContain("Do not move ids across vocabulary-backed facets");
-    expect(prompt.user).toContain("use `slot:place`, `slot:equip`, `slot:burn`");
-    expect(prompt.user).toContain("Vocabulary aliases are matching hints, not output ids");
+    expect(prompt.user).toContain("use values listed for that exact facet");
+    expect(prompt.user).toContain("emit it inside `facets` with `vocab_review: true`");
+    expect(prompt.user).toContain("Do not move values across vocabulary-backed facets");
+    expect(prompt.user).toContain("Vocabulary aliases are matching hints, not output values");
     expect(prompt.user).toContain("`used_at` is a physical station, machine, tool, or surface");
-    expect(prompt.user).toContain("rather than an invented near-miss id such as `slot:crafting`");
-    expect(prompt.user).toContain("emit exactly one accepted id for every item");
-    expect(prompt.user).toContain("Use universal defaults such as `slot:storage`");
-    expect(prompt.user).toContain("still assign the best existing home");
+    expect(prompt.user).toContain("rather than an invented near-miss value such as `crafting`");
+    expect(prompt.user).toContain("emit exactly one value for every item");
+    expect(prompt.user).toContain("Use listed built-in homes such as `storage`");
+    expect(prompt.user).toContain("unlisted organization group only when the listed homes would be genuinely misleading");
     expect(prompt.user).toContain("missing broad player-maintained storage bucket");
-    expect(prompt.user).toContain("Use `pack:<pack_id>/...` for cross-mod pack buckets");
   });
 
-  test("classification prompt leaves judgment room for free-text while closing vocabulary-backed facets", () => {
+  test("classification prompt leaves judgment room for free-text and vocabulary-backed facets", () => {
     const prompt = buildSplitPrompt({
       items: [buildItemPayload(ironIngotRecord(), {})],
       target_facets: ["primary_uses", "material_secondary", "workflow", "role"],
@@ -280,10 +282,11 @@ describe("prompt building", () => {
 
     expect(prompt.system).toContain("ordinary non-vocabulary free_text / multi_free_text facets are judgment outputs");
     expect(prompt.system).toContain("synthesize concise values matching the pattern");
-    expect(prompt.system).toContain("vocabulary-backed facets are closed by the accepted Pack facet vocabulary");
+    expect(prompt.system).toContain("vocabulary-backed facets are grounded by the usable Pack facet vocabulary");
     expect(prompt.system).toContain("This is a semantic classification task, not just a storage-section task");
     expect(prompt.system).toContain("lower-risk semantic/query metadata");
-    expect(prompt.system).toContain("The schema pattern is an id grammar, not permission to invent");
+    expect(prompt.system).toContain("Do not go silent merely because the");
+    expect(prompt.system).toContain("grounding vocabulary is incomplete");
     expect(prompt.system).toContain("This does not apply to ordinary");
     expect(prompt.system).toContain("Do not use this for ordinary free_text values");
     expect(prompt.system).toContain("Keep facet entries small");
@@ -291,21 +294,23 @@ describe("prompt building", () => {
     expect(prompt.system).toContain("Default to useful judgment, not silence");
     expect(prompt.system).toContain("a reasonable inferred value is usually better than leaving the facet empty");
     expect(prompt.system).toContain("`organization_group` is the high-impact primary home facet");
-    expect(prompt.system).toContain("assign exactly one best accepted organization id for every item");
+    expect(prompt.system).toContain("assign exactly one best organization value for every item");
     expect(prompt.system).toContain("judgment is allowed");
     expect(prompt.system).toContain("normal staple rather than rare progression stock");
-    expect(prompt.system).toContain("`palette` is not the vanilla dye-color facet");
-    expect(prompt.system).toContain("put that deterministic fact in top-level");
-    expect(prompt.system).toContain("`metallic` is a `flavor` value, not a `palette` value");
-    expect(prompt.system).toContain("`flavor` is not a catch-all visual palette");
-    expect(prompt.system).toContain("such as `translucent`, `crystal`, `glowing`, `earthy`, `gray`, or `yellow`");
+    expect(prompt.system).not.toContain("`palette` is not the vanilla dye-color facet");
+    expect(prompt.system).not.toContain("`metallic` is a `flavor` value");
+    expect(prompt.system).not.toContain("`flavor` is not a catch-all visual palette");
     expect(prompt.system).toContain("`document_context` is input evidence, not an output facet");
     expect(prompt.system).toContain("where this sits in pack progression");
     expect(prompt.system).toContain("favor useful judgment");
-    expect(prompt.system).toContain("deterministic scalar facts inside an item's `facets` block");
+    expect(prompt.system).not.toContain("stage2_facets");
+    expect(prompt.system).not.toContain("deterministic scalar facts inside an item's `facets` block");
+    expect(prompt.system).not.toContain("fill_ins");
+    expect(prompt.system).not.toContain("corrections");
     expect(prompt.system).toContain("Guide snippets often describe several related items");
     expect(prompt.system).toContain("what the current item is for");
     expect(prompt.system).toContain("not every use of the bowl");
+    expect(prompt.system).not.toContain("Optional per-facet review fields: `rationale`, `evidence`, `signal`, and `confidence`");
     expect(prompt.system).not.toContain("MUST include a `signal` field");
     expect(prompt.system).not.toContain("<accepted_id_from_pack_facet_vocabulary>");
   });
@@ -318,24 +323,24 @@ describe("prompt building", () => {
 
     expect(prompt.system).not.toContain("pack:example/casting_molds");
     expect(prompt.system).not.toContain("Use the item's own namespace unless");
-    expect(prompt.system).toContain("Concrete anchors use accepted vocabulary labels, not literal ids");
-    expect(prompt.system).toContain("use the accepted Beekeeping organization id if it is listed");
+    expect(prompt.system).toContain("Concrete anchors use usable vocabulary labels, not literal ids");
+    expect(prompt.system).toContain("use the listed Beekeeping organization value if it is listed");
     expect(prompt.system).toContain("the Storage exception is for actual storage containers");
-    expect(prompt.system).toContain("every item must get exactly one accepted");
-    expect(prompt.system).toContain("Built-in default groups are good player homes");
+    expect(prompt.system).toContain("every item must get exactly one");
+    expect(prompt.system).toContain("Built-in groups are good player homes");
     expect(prompt.system).toContain("explain the broad");
     expect(prompt.system).toContain("top-level `vocabulary_proposals` entry");
     expect(prompt.system).toContain("Role is a cross-check,");
     expect(prompt.system).toContain("not a hard ban");
     expect(prompt.system).toContain("role=functional_block or storage_block");
     expect(prompt.system).toContain("identity, not namespace or recipe participation");
-    expect(prompt.system).not.toContain("pack:tfg2/casting_molds");
+    expect(prompt.system).not.toContain("casting_molds");
     expect(prompt.system).not.toContain("pack:tfg2/crops");
     expect(prompt.system).not.toContain("such as casting molds, crops, woodworking");
-    expect(prompt.system).toContain("examples omitted: vocabulary ids are pack-specific");
+    expect(prompt.system).toContain("examples omitted: vocabulary values are pack-specific");
   });
 
-  test("expected output example uses accepted vocabulary ids only when supplied", () => {
+  test("expected output example uses usable vocabulary values only when supplied", () => {
     const record = buildItemPayload(ironIngotRecord(), {});
     const noVocabulary = buildSplitPrompt({
       items: [record],
@@ -345,8 +350,7 @@ describe("prompt building", () => {
     expect(noVocabulary.system).not.toContain("<accepted_id_from_pack_facet_vocabulary>");
 
     const defaultVocabulary = buildPromptFacetVocabulary(undefined, ["organization_group"]);
-    expect(defaultVocabulary?.organization_group?.some((value) => value.id === "slot:metal_stock")).toBe(true);
-    expect(defaultVocabulary?.organization_group?.some((value) => value.id === "slot:storage")).toBe(true);
+    expect(defaultVocabulary).toBeUndefined();
 
     const vocabulary: PackFacetVocabulary = {
       schema_version: 1,
@@ -355,7 +359,17 @@ describe("prompt building", () => {
       facets: {
         organization_group: {
           values: {
-            "pack:fixture/beekeeping": {
+            "food": {
+              label: "Food",
+              origin: "built_in",
+              state: "accepted",
+            },
+            "metal_stock": {
+              label: "Metal Stock",
+              origin: "built_in",
+              state: "accepted",
+            },
+            "beekeeping": {
               label: "Beekeeping",
               origin: "pack_generated",
               state: "accepted",
@@ -370,9 +384,9 @@ describe("prompt building", () => {
       target_facets: ["organization_group"],
       facet_vocabulary: buildPromptFacetVocabulary(vocabulary, ["organization_group"]),
     });
-    expect(withVocabulary.system).toContain('"slot:food"');
-    expect(withVocabulary.system).toContain("`pack:fixture/beekeeping`");
-    expect(withVocabulary.system).toContain("`slot:metal_stock`");
+    expect(withVocabulary.system).toContain("`food`");
+    expect(withVocabulary.system).toContain("`beekeeping`");
+    expect(withVocabulary.system).toContain("`metal_stock`");
     expect(withVocabulary.system).not.toContain("<accepted_id_from_pack_facet_vocabulary>");
   });
 
@@ -389,10 +403,13 @@ describe("prompt building", () => {
     expect(prompt.user).toContain("Use `ambiguous: true` only for single-value enum/free_text facets");
     expect(prompt.user).toContain("Machine parts, machine components, hulls, casings, pumps");
     expect(prompt.user).toContain("Then use judgment to fill useful semantic/query facets");
-    expect(prompt.user).toContain("Put missing deterministic scalar facts");
-    expect(prompt.user).toContain("No accepted Pack facet vocabulary is supplied");
-    expect(prompt.user).toContain("No accepted subsystem vocabulary is supplied for this batch");
-    expect(prompt.user).toContain("add a `vocabulary_proposals` entry when the item clearly belongs to a meaningful subsystem");
+    expect(prompt.user).not.toContain("stage2_facets");
+    expect(prompt.user).not.toContain("deterministic scalar facts");
+    expect(prompt.user).not.toContain("fill_ins");
+    expect(prompt.user).not.toContain("corrections");
+    expect(prompt.user).toContain("No usable Pack facet vocabulary is supplied");
+    expect(prompt.user).toContain("No usable subsystem vocabulary is supplied for this batch");
+    expect(prompt.user).toContain("emit the `mod_subsystem` value with `vocab_review: true`");
     expect(prompt.user).toContain("Organization group is required when targeted");
     expect(prompt.user).not.toContain("Optional low-evidence facets are better omitted than guessed.");
     expect(prompt.user).not.toContain("Omit `mod_subsystem`; no accepted subsystem vocabulary is supplied");
@@ -549,8 +566,8 @@ describe("response parsing", () => {
       items: {
         "minecraft:iron_ingot": {
           facets: {
-            role: { value: "material", confidence: 0.98, rationale: "ingot" },
-            activity: { values: ["slot:building", "slot:combat"], confidence: 0.8 },
+            role: { value: "material", rationale: "ingot" },
+            activity: { values: ["building", "combat"] },
           },
         },
       },
@@ -563,22 +580,22 @@ describe("response parsing", () => {
     expect(parsed.warnings).toEqual([]);
     const item = parsed.items.get("minecraft:iron_ingot")!;
     expect(item.facets.role).toMatchObject({ kind: "single", value: "material" });
-    expect(item.facets.activity).toMatchObject({ kind: "multi", values: ["slot:building", "slot:combat"] });
+    expect(item.facets.activity).toMatchObject({ kind: "multi", values: ["building", "combat"] });
   });
 
-  test("drops entries with out-of-enum values, keeps others", () => {
+  test("drops entries with out-of-enum values for true closed facets, keeps others", () => {
     const response = JSON.stringify({
       items: {
         "minecraft:iron_ingot": {
           facets: {
-            role: { value: "nonsense-role", confidence: 0.5 }, // out of enum
-            activity: { values: ["slot:building"], confidence: 0.9 }, // ok
+            rarity: { value: "legendary" }, // out of enum
+            activity: { values: ["building"] }, // ok
           },
         },
       },
     });
     const parsed = parseLlmResponse(response);
-    expect(parsed.items.get("minecraft:iron_ingot")!.facets.role).toBeUndefined();
+    expect(parsed.items.get("minecraft:iron_ingot")!.facets.rarity).toBeUndefined();
     expect(parsed.items.get("minecraft:iron_ingot")!.facets.activity).toMatchObject({
       kind: "multi",
     });
@@ -591,16 +608,16 @@ describe("response parsing", () => {
       items: {
         "minecraft:iron_ingot": {
           facets: {
-            flavor: { value: "plain", confidence: 0.8 },
+            primary_uses: { value: "crafting stock" },
           },
         },
       },
     });
     const parsed = parseLlmResponse(response);
-    const flavor = parsed.items.get("minecraft:iron_ingot")!.facets.flavor!;
-    expect(flavor.kind).toBe("multi");
-    if (flavor.kind === "multi") {
-      expect(flavor.values).toEqual(["plain"]);
+    const primaryUses = parsed.items.get("minecraft:iron_ingot")!.facets.primary_uses!;
+    expect(primaryUses.kind).toBe("multi");
+    if (primaryUses.kind === "multi") {
+      expect(primaryUses.values).toEqual(["crafting stock"]);
     }
     // the wrap is informational — it still pushes a warning for observability
     expect(parsed.warnings.some((w) => w.includes("wrapped as [value]"))).toBe(true);
@@ -633,7 +650,6 @@ describe("response parsing", () => {
             role: {
               values: ["building_block", "decorative_block"],
               ambiguous: true,
-              confidence: 0.3,
             },
           },
         },
@@ -647,7 +663,7 @@ describe("response parsing", () => {
     });
   });
 
-  test("signal=named caps at 0.95 even if model claims higher", () => {
+  test("evidence is folded into rationale and stale confidence/signal fields are ignored", () => {
     const response = JSON.stringify({
       items: {
         "minecraft:iron_ingot": {
@@ -659,27 +675,25 @@ describe("response parsing", () => {
     });
     const parsed = parseLlmResponse(response);
     const role = parsed.items.get("minecraft:iron_ingot")!.facets.role!;
-    expect(role.confidence).toBe(0.95);
-    expect(role.rationale).toContain("[named]");
     expect(role.rationale).toContain("tag minecraft:iron_tool_materials");
   });
 
-  test("signal=guess caps overconfident model claim at 0.30", () => {
+  test("stale signal without evidence does not manufacture rationale", () => {
     const response = JSON.stringify({
       items: {
         "minecraft:mystery": {
           facets: {
-            role: { value: "curiosity", signal: "guess", evidence: "", confidence: 0.95 },
+            role: { value: "curiosity", signal: "guess", evidence: "" },
           },
         },
       },
     });
     const parsed = parseLlmResponse(response);
     const role = parsed.items.get("minecraft:mystery")!.facets.role!;
-    expect(role.confidence).toBe(0.30);
+    expect(role.rationale).toBeUndefined();
   });
 
-  test("signal=pattern without evidence is accepted (evidence is optional)", () => {
+  test("stale signal=pattern without evidence is accepted but ignored", () => {
     const response = JSON.stringify({
       items: {
         "minecraft:x": {
@@ -691,12 +705,11 @@ describe("response parsing", () => {
     });
     const parsed = parseLlmResponse(response);
     const role = parsed.items.get("minecraft:x")!.facets.role!;
-    // pattern caps at 0.80; model's 0.85 is silently capped
-    expect(role.confidence).toBe(0.80);
+    expect(role.rationale).toBeUndefined();
     expect(parsed.warnings.length).toBe(0);
   });
 
-  test("model confidence below signal floor is preserved (not raised)", () => {
+  test("stale signal does not alter parsed value", () => {
     const response = JSON.stringify({
       items: {
         "minecraft:x": {
@@ -707,16 +720,19 @@ describe("response parsing", () => {
       },
     });
     const parsed = parseLlmResponse(response);
-    expect(parsed.items.get("minecraft:x")!.facets.role!.confidence).toBe(0.6);
+    expect(parsed.items.get("minecraft:x")!.facets.role).toMatchObject({
+      kind: "single",
+      value: "tool",
+    });
   });
 
-  test("multi facet preserves signal+evidence; rationale folds them in", () => {
+  test("multi facet preserves evidence; rationale folds evidence and rationale", () => {
     const response = JSON.stringify({
       items: {
         "minecraft:iron_ingot": {
           facets: {
             activity: {
-              values: ["slot:building", "slot:combat"],
+              values: ["building", "combat"],
               signal: "inferred",
               evidence: "ingredient_of: anvil, sword",
               rationale: "common combat + structural usage",
@@ -728,8 +744,6 @@ describe("response parsing", () => {
     const parsed = parseLlmResponse(response);
     const a = parsed.items.get("minecraft:iron_ingot")!.facets.activity!;
     expect(a.kind).toBe("multi");
-    expect(a.confidence).toBe(0.6); // inferred floor
-    expect(a.rationale).toContain("[inferred]");
     expect(a.rationale).toContain("ingredient_of");
     expect(a.rationale).toContain("structural usage");
   });
@@ -739,9 +753,9 @@ describe("response parsing", () => {
       items: {
         "gtceu:steel_ingot": {
           facets: {
-            activity: { values: ["slot:automation"], signal: "inferred" },
-            workflow: { values: ["pack:tfg2/steelmaking"], signal: "named" },
-            workflow_role: { values: ["pack:tfg2/steelmaking#input"], signal: "pattern" },
+            activity: { values: ["automation"], signal: "inferred" },
+            workflow: { values: ["steelmaking"], signal: "named" },
+            workflow_role: { values: ["steelmaking#input"], signal: "pattern" },
             used_at: { values: ["gtceu:electric_blast_furnace"], signal: "inferred" },
           },
         },
@@ -751,11 +765,11 @@ describe("response parsing", () => {
     const facets = parsed.items.get("gtceu:steel_ingot")!.facets;
     expect(facets.workflow).toMatchObject({
       kind: "multi",
-      values: ["pack:tfg2/steelmaking"],
+      values: ["steelmaking"],
     });
     expect(facets.workflow_role).toMatchObject({
       kind: "multi",
-      values: ["pack:tfg2/steelmaking#input"],
+      values: ["steelmaking#input"],
     });
     expect(parsed.warnings).toEqual([]);
   });
@@ -785,8 +799,8 @@ describe("response parsing", () => {
           item: "minecraft:iron_ingot",
           facet: "organization_group",
           label: "Metal Stock",
-          proposed_id: "pack:test/metal_stock",
-          rationale: "No accepted organization group covers ingots and plates.",
+          proposed_id: "metal_stock",
+          rationale: "No usable organization group covers ingots and plates.",
           evidence: ["display name: Iron Ingot"],
         },
       ],
@@ -797,14 +811,14 @@ describe("response parsing", () => {
         item: "minecraft:iron_ingot",
         facet: "organization_group",
         label: "Metal Stock",
-        proposed_id: "pack:test/metal_stock",
-        rationale: "No accepted organization group covers ingots and plates.",
+        proposed_id: "metal_stock",
+        rationale: "No usable organization group covers ingots and plates.",
         evidence: ["display name: Iron Ingot"],
       },
     ]);
   });
 
-  test("corrections flow through with model confidence", () => {
+  test("corrections flow through without confidence metadata", () => {
     const response = JSON.stringify({
       items: {},
       corrections: [
@@ -814,7 +828,6 @@ describe("response parsing", () => {
           current: "wood_oak",
           suggested: "iron",
           rationale: "Item is clearly iron; stage 2 misread the tag.",
-          confidence: 0.95,
         },
         {
           item: "minecraft:foo",
@@ -822,7 +835,6 @@ describe("response parsing", () => {
           current: "ingot",
           suggested: "nugget",
           rationale: "uncertain",
-          confidence: 0.3,
         },
       ],
     });
@@ -832,7 +844,6 @@ describe("response parsing", () => {
     expect(parsed.corrections[1]).toMatchObject({
       item: "minecraft:foo",
       facet: "form",
-      confidence: 0.3,
     });
     expect(parsed.warnings.some((w) => w.includes("below confidence"))).toBe(false);
   });
@@ -849,34 +860,34 @@ describe("response parsing", () => {
     expect(parsed.warnings.length).toBe(1);
   });
 
-  test("fill_ins surface stage-2 gaps and route to fillIns array", () => {
+  test("fill_ins compatibility channel routes reference-style facts to fillIns array", () => {
     const response = JSON.stringify({
       items: {},
       fill_ins: [
         {
           item: "create:dark_oak_window",
-          facet: "form",
-          value: "pane",
-          rationale: "stage-2 form rule didn't catch _window suffix",
+          facet: "mod_namespace",
+          value: "create",
+          rationale: "runtime id namespace",
         },
         {
           item: "create:brass_pipe",
-          facet: "material_family",
-          value: "brass",
-          rationale: "id prefix brass_ implies family",
+          facet: "is_fuel",
+          value: true,
+          rationale: "runtime fuel evidence",
         },
         {
           item: "gtceu:brass_double_ingot",
-          facet: "material_family",
-          value: "brass",
+          facet: "emits_light",
+          value: true,
         },
       ],
     });
     const parsed = parseLlmResponse(response);
     expect(parsed.fillIns.length).toBe(3);
     expect(parsed.fillIns[0]!.item).toBe("create:dark_oak_window");
-    expect(parsed.fillIns[0]!.facet).toBe("form");
-    expect(parsed.fillIns[0]!.value).toBe("pane");
+    expect(parsed.fillIns[0]!.facet).toBe("mod_namespace");
+    expect(parsed.fillIns[0]!.value).toBe("create");
     expect(parsed.fillIns[2]!.rationale).toBe("LLM did not provide rationale.");
   });
 
@@ -889,8 +900,8 @@ describe("response parsing", () => {
       fill_ins: [
         {
           item: "minecraft:iron_ingot",
-          facet: "role",
-          value: "material",
+          facet: "carry_frequency",
+          value: "frequent",
           rationale: "obvious",
         },
       ],
@@ -900,28 +911,45 @@ describe("response parsing", () => {
     expect(parsed.warnings.some((w) => w.includes("llm-authored"))).toBe(true);
   });
 
+  test("fill_ins for vocabulary-backed facets are dropped with a warning", () => {
+    const response = JSON.stringify({
+      items: {},
+      fill_ins: [
+        {
+          item: "minecraft:iron_ingot",
+          facet: "material_family",
+          value: "iron",
+          rationale: "material values must be vocabulary-grounded",
+        },
+      ],
+    });
+    const parsed = parseLlmResponse(response);
+    expect(parsed.fillIns.length).toBe(0);
+    expect(parsed.warnings.some((w) => w.includes("vocabulary-backed"))).toBe(true);
+  });
+
   test("fill_ins with values outside deterministic facet enums are dropped", () => {
     const response = JSON.stringify({
       items: {},
       fill_ins: [
         {
           item: "create:mechanical_press",
-          facet: "form",
-          value: "block",
+          facet: "rarity",
+          value: "legendary",
           rationale: "placed in world",
         },
         {
           item: "gtceu:lv_machine_hull",
-          facet: "required_tool",
-          value: "wrench",
-          rationale: "mineable with wrench",
+          facet: "dye_color",
+          value: "teal",
+          rationale: "colored texture",
         },
       ],
     });
     const parsed = parseLlmResponse(response);
     expect(parsed.fillIns.length).toBe(0);
-    expect(parsed.warnings.some((w) => w.includes("value 'block' not in enum"))).toBe(true);
-    expect(parsed.warnings.some((w) => w.includes("value 'wrench' not in enum"))).toBe(true);
+    expect(parsed.warnings.some((w) => w.includes("value 'legendary' not in enum"))).toBe(true);
+    expect(parsed.warnings.some((w) => w.includes("value 'teal' not in enum"))).toBe(true);
   });
 });
 
@@ -934,10 +962,25 @@ describe("runStage3", () => {
     // ReplayLlmClient does). The fixture must be hashed under the split-mode
     // key, not the combined-prompt key.
     const targetFacets = defaultTargetFacets();
+    const facetVocabulary: PackFacetVocabulary = {
+      schema_version: 1,
+      kind: "slot-pack-facet-vocabulary",
+      pack_id: "fixture",
+      facets: {
+        activity: {
+          values: {
+            building: { label: "Building", origin: "pack_generated", state: "accepted" },
+            combat: { label: "Combat", origin: "pack_generated", state: "accepted" },
+            mining: { label: "Mining", origin: "pack_generated", state: "accepted" },
+          },
+        },
+      },
+    };
     const { system, user } = buildSplitPrompt({
+      pack_id: "fixture",
       items: [buildItemPayload(record, stage2Layer.entries["minecraft:iron_ingot"]!.facets)],
       target_facets: targetFacets,
-      facet_vocabulary: buildPromptFacetVocabulary(undefined, targetFacets),
+      facet_vocabulary: buildPromptFacetVocabulary(facetVocabulary, targetFacets),
     });
     const hash = fixtureHash(`${system}\n\n---\n\n${user}`);
 
@@ -946,15 +989,15 @@ describe("runStage3", () => {
       items: {
         "minecraft:iron_ingot": {
           facets: {
-            role: { value: "material", confidence: 0.98, rationale: "canonical ingot" },
-            activity: { values: ["slot:building", "slot:combat", "slot:mining"], confidence: 0.9 },
+            role: { value: "material", rationale: "canonical ingot" },
+            activity: { values: ["building", "combat", "mining"] },
             primary_uses: {
               values: ["crafting tools and armor", "anvil repairs"],
-              confidence: 0.95,
             },
-            carry_frequency: { value: "frequent", confidence: 0.8 },
-            // stage 2 already set material_family — this should be dropped by the merger
-            material_family: { value: "gold", confidence: 0.1 },
+            carry_frequency: { value: "frequent" },
+            // material_family is vocabulary-backed; without a usable material
+            // vocabulary value this should be kept but marked for review.
+            material_family: { value: "gold" },
           },
         },
       },
@@ -964,36 +1007,81 @@ describe("runStage3", () => {
     const client = new ReplayLlmClient(fixtureDir);
     const result = await runStage3({
       records: [record],
-      stage2Layer,
+      baseLayer: stage2Layer,
       client,
+      facetVocabulary,
     });
 
     const facets = result.layer.entries["minecraft:iron_ingot"]!.facets;
     // stage-2 facets preserved
     expect(facets.mod_namespace).toMatchObject({ value: "minecraft" });
-    expect(facets.material_family).toMatchObject({ value: "iron" }); // NOT gold
+    expect(facets.material_family).toMatchObject({
+      value: "gold",
+      source: "llm:stage3",
+      vocab_review: true,
+    });
     // stage-3 facets merged
     expect(facets.role).toMatchObject({ value: "material", source: "llm:stage3" });
-    expect(facets.activity).toMatchObject({ values: ["slot:building", "slot:combat", "slot:mining"] });
+    expect(facets.activity).toMatchObject({ values: ["building", "combat", "mining"] });
     expect(facets.primary_uses).toMatchObject({
       values: ["anvil repairs", "crafting tools and armor"],
     });
 
-    // merger should warn about the stage-2 clobber attempt (only when values disagree)
-    const clobberWarn = result.warnings.find((w) =>
-      w.includes("material_family") && w.includes("stage 2 asserted"),
+    const vocabularyWarn = result.warnings.find((w) =>
+      w.includes("material_family") && w.includes("not listed in prompt vocabulary"),
     );
-    expect(clobberWarn).toBeTruthy();
+    expect(vocabularyWarn).toBeTruthy();
+    expect(result.vocabularyProposals).toContainEqual(expect.objectContaining({
+      item: "minecraft:iron_ingot",
+      facet: "material_family",
+      proposed_id: "gold",
+    }));
 
     expect(result.filledItems).toBe(1);
     expect(result.coverageAdded.role).toBe(1);
     expect(result.coverageAdded.activity).toBe(1);
   });
 
-  test("deterministic scalar facets emitted in facets are treated as fill_ins", async () => {
+  test("LLM facets replace same-id base facets instead of being suppressed", async () => {
+    const record = ironIngotRecord();
+    const baseLayer = ironIngotStage2Layer();
+
+    const targetFacets = ["form"];
+    const { system, user } = buildSplitPrompt({
+      items: [buildItemPayload(record, {})],
+      target_facets: targetFacets,
+    });
+    const hash = fixtureHash(`${system}\n\n---\n\n${user}`);
+    const fixtureDir = mkdtempSync(join(tmpdir(), "slot-stage3-overwrite-"));
+    writeFileSync(join(fixtureDir, `${hash}.response.txt`), JSON.stringify({
+      items: {
+        "minecraft:iron_ingot": {
+          facets: {
+            form: { value: "nugget", rationale: "fixture disagreement" },
+          },
+        },
+      },
+    }));
+
+    const result = await runStage3({
+      records: [record],
+      baseLayer,
+      client: new ReplayLlmClient(fixtureDir),
+      targetFacets,
+    });
+
+    expect(result.layer.entries["minecraft:iron_ingot"]!.facets.form).toMatchObject({
+      value: "nugget",
+      source: "llm:stage3",
+    });
+    expect(result.warnings.some((warning) =>
+      warning.includes("form") && warning.includes("replaced base value")
+    )).toBe(true);
+  });
+
+  test("reference-style scalar facets emitted in facets merge as ordinary LLM facets", async () => {
     const record = ironIngotRecord();
     const stage2Layer = ironIngotStage2Layer();
-    delete stage2Layer.entries["minecraft:iron_ingot"]!.facets.material_family;
 
     const targetFacets = defaultTargetFacets();
     const { system, user } = buildSplitPrompt({
@@ -1007,7 +1095,7 @@ describe("runStage3", () => {
       items: {
         "minecraft:iron_ingot": {
           facets: {
-            material_family: { value: "iron", confidence: 0.9, rationale: "id names iron" },
+            emits_light: { value: true, rationale: "component says light" },
           },
         },
       },
@@ -1016,29 +1104,22 @@ describe("runStage3", () => {
 
     const result = await runStage3({
       records: [record],
-      stage2Layer,
+      baseLayer: stage2Layer,
       client: new ReplayLlmClient(fixtureDir),
     });
 
     const facets = result.layer.entries["minecraft:iron_ingot"]!.facets;
-    expect(facets.material_family).toMatchObject({
-      value: "iron",
-      source: "llm:stage3-fill-in",
+    expect(facets.emits_light).toMatchObject({
+      value: true,
+      source: "llm:stage3",
     });
-    expect(result.fillIns).toEqual([
-      {
-        item: "minecraft:iron_ingot",
-        facet: "material_family",
-        value: "iron",
-        rationale: "id names iron",
-      },
-    ]);
+    expect(result.fillIns).toEqual([]);
     expect(result.warnings.some((w) =>
-      w.includes("material_family") && w.includes("treated as fill_in")
-    )).toBe(true);
+      w.includes("emits_light") && w.includes("treated as fill_in")
+    )).toBe(false);
   });
 
-  test("accepted vocabulary proposals are repaired into facet values", async () => {
+  test("listed vocabulary proposals are repaired into facet values", async () => {
     const record = runtimeRecord({
       id: "gtmutils:uhv_auto_charger_4x",
       displayName: "4x UHV Auto Charger",
@@ -1098,7 +1179,7 @@ describe("runStage3", () => {
 
     const result = await runStage3({
       records: [record],
-      stage2Layer,
+      baseLayer: stage2Layer,
       client: new ReplayLlmClient(fixtureDir),
       facetVocabulary: vocabulary,
     });
@@ -1106,7 +1187,7 @@ describe("runStage3", () => {
     expect(result.layer.entries["gtmutils:uhv_auto_charger_4x"]!.facets.progression_stage)
       .toMatchObject({ values: ["gtceu:uhv"], source: "llm:stage3" });
     expect(result.vocabularyProposals).toEqual([]);
-    expect(result.warnings.some((w) => w.includes("accepted vocabulary proposal"))).toBe(true);
+    expect(result.warnings.some((w) => w.includes("listed vocabulary proposal"))).toBe(true);
   });
 
   test("concurrency runs batches in parallel and merges in any order", async () => {
@@ -1151,7 +1232,7 @@ describe("runStage3", () => {
 
     const result = await runStage3({
       records,
-      stage2Layer: stage2,
+      baseLayer: stage2,
       client,
       batchSize: 1,
       concurrency: 4,
@@ -1207,7 +1288,7 @@ describe("runStage3", () => {
 
     const result = await runStage3({
       records,
-      stage2Layer: stage2,
+      baseLayer: stage2,
       client,
       batchSize: 2,
     });
@@ -1247,7 +1328,7 @@ describe("runStage3", () => {
 
     const result = await runStage3({
       records,
-      stage2Layer: stage2,
+      baseLayer: stage2,
       client,
       batchSize: 2,
       concurrency: 1,
@@ -1261,7 +1342,7 @@ describe("runStage3", () => {
     expect(result.layer.entries["minecraft:c"]?.facets.role).toBeDefined();
   });
 
-  test("response validator accepts out-of-vocabulary values so the parser can drop and report them", async () => {
+  test("response validator accepts out-of-vocabulary values so runner keeps and flags them", async () => {
     const record = ironIngotRecord();
     const stage2: LayerFile = {
       schema_version: 1,
@@ -1315,20 +1396,24 @@ describe("runStage3", () => {
 
     const result = await runStage3({
       records: [record],
-      stage2Layer: stage2,
+      baseLayer: stage2,
       client,
       targetFacets: ["workflow"],
       facetVocabulary: vocabulary,
     });
 
     expect(calls).toBe(1);
-    expect(result.layer.entries[record.id]?.facets.workflow).toBeUndefined();
+    expect(result.layer.entries[record.id]?.facets.workflow).toMatchObject({
+      values: ["tfc:invented"],
+      source: "llm:stage3",
+      vocab_review: true,
+    });
     expect(result.vocabularyProposals).toHaveLength(1);
     expect(result.vocabularyProposals[0]!.proposed_id).toBe("tfc:invented");
     expect(result.warnings.some((warning) => warning.includes("tfc:invented"))).toBe(true);
   });
 
-  test("drops invalid vocabulary-backed values from clients that do not honor validators", async () => {
+  test("marks mixed listed and unlisted vocabulary-backed values for review", async () => {
     const record = ironIngotRecord();
     const stage2: LayerFile = {
       schema_version: 1,
@@ -1372,15 +1457,16 @@ describe("runStage3", () => {
 
     const result = await runStage3({
       records: [record],
-      stage2Layer: stage2,
+      baseLayer: stage2,
       client,
       targetFacets: ["workflow"],
       facetVocabulary: vocabulary,
     });
 
     expect(result.layer.entries[record.id]?.facets.workflow).toMatchObject({
-      values: ["tfc:casting"],
+      values: ["tfc:casting", "tfc:invented"],
       source: "llm:stage3",
+      vocab_review: true,
     });
     expect(result.warnings.some((warning) => warning.includes("tfc:invented"))).toBe(true);
   });
@@ -1413,7 +1499,7 @@ describe("runStage3", () => {
     };
     await runStage3({
       records: [recA, recB],
-      stage2Layer: stage2,
+      baseLayer: stage2,
       client,
       only: ["minecraft:a"],
     });
@@ -1491,45 +1577,30 @@ describe("retry candidate selection", () => {
     return { schema_version: 1, layer: "vanilla-base", source: "minecraft", entries: layerEntries };
   }
 
-  test("flags items with confidence below threshold on any llm facet", () => {
-    const l = layer({
-      "minecraft:a": {
-        role: { value: "material", confidence: 0.95, source: "llm:stage3" },
-        primary_uses: { values: ["x"], confidence: 0.3, source: "llm:stage3" },
-      },
-      "minecraft:b": {
-        role: { value: "tool", confidence: 0.9, source: "llm:stage3" },
-      },
-    });
-    expect(selectRetryCandidates(l, 0.5)).toEqual(["minecraft:a"]);
-  });
-
   test("flags items with ambiguous: true", () => {
     const l = layer({
       "minecraft:a": {
         role: {
           values: ["material", "natural_resource"],
           ambiguous: true,
-          confidence: 0.9,
           source: "llm:stage3",
         },
       },
       "minecraft:b": {
-        role: { value: "tool", confidence: 0.9, source: "llm:stage3" },
+        role: { value: "tool", source: "llm:stage3" },
       },
     });
-    expect(selectRetryCandidates(l, 0.5)).toEqual(["minecraft:a"]);
+    expect(selectRetryCandidates(l)).toEqual(["minecraft:a"]);
   });
 
-  test("ignores stage-2 rule-derived facets below threshold", () => {
+  test("ignores non-LLM ambiguous base facets", () => {
     const l = layer({
       "minecraft:a": {
-        material_family: { value: "iron", confidence: 0.2, source: "rule:foo" },
-        role: { value: "material", confidence: 0.95, source: "llm:stage3" },
+        form: { values: ["ingot", "nugget"], ambiguous: true, source: "rule:foo" },
+        role: { value: "material", source: "llm:stage3" },
       },
     });
-    // rule facet with low confidence shouldn't flag retry
-    expect(selectRetryCandidates(l, 0.5)).toEqual([]);
+    expect(selectRetryCandidates(l)).toEqual([]);
   });
 });
 
@@ -1550,7 +1621,7 @@ describe("runStage3Retry", () => {
     };
   }
 
-  test("retry replaces low-confidence facet with higher-confidence result", async () => {
+  test("retry replaces ambiguous first-pass facet with retry result", async () => {
     const firstPassLayer: LayerFile = {
       schema_version: 1,
       layer: "vanilla-base",
@@ -1558,7 +1629,7 @@ describe("runStage3Retry", () => {
       entries: {
         "minecraft:mystery": {
           facets: {
-            role: { value: "curiosity", confidence: 0.35, source: "llm:stage3" },
+            role: { values: ["curiosity", "utility"], ambiguous: true, source: "llm:stage3" },
           },
         },
       },
@@ -1567,7 +1638,7 @@ describe("runStage3Retry", () => {
       items: {
         "minecraft:mystery": {
           facets: {
-            role: { value: "utility", confidence: 0.88, rationale: "specific behaviour" },
+            role: { value: "utility", rationale: "specific behaviour" },
           },
         },
       },
@@ -1582,19 +1653,18 @@ describe("runStage3Retry", () => {
       records: [baseRecord()],
       firstPassLayer,
       client: retryClient,
-      threshold: 0.5,
       model: "openai/gpt-4.1-mini",
     });
 
     expect(result.retriedItems).toEqual(["minecraft:mystery"]);
-    const role = result.layer.entries["minecraft:mystery"]!.facets.role as { value: string; source: string; confidence: number };
+    const role = result.layer.entries["minecraft:mystery"]!.facets.role as { value: string; source: string };
     expect(role.value).toBe("utility");
     expect(role.source).toBe("llm:stage3-retry");
     expect(result.facetsChanged.role).toBe(1);
     expect(result.facetsConfirmed.role ?? 0).toBe(0);
   });
 
-  test("retry keeps first-pass value when retry has lower confidence", async () => {
+  test("retry accepts different retry value for an ambiguous candidate", async () => {
     const firstPassLayer: LayerFile = {
       schema_version: 1,
       layer: "vanilla-base",
@@ -1602,7 +1672,7 @@ describe("runStage3Retry", () => {
       entries: {
         "minecraft:mystery": {
           facets: {
-            role: { value: "curiosity", confidence: 0.45, source: "llm:stage3" },
+            role: { values: ["curiosity", "utility"], ambiguous: true, source: "llm:stage3" },
           },
         },
       },
@@ -1611,7 +1681,7 @@ describe("runStage3Retry", () => {
       items: {
         "minecraft:mystery": {
           facets: {
-            role: { value: "utility", confidence: 0.3 },
+            role: { value: "utility" },
           },
         },
       },
@@ -1622,12 +1692,11 @@ describe("runStage3Retry", () => {
       records: [baseRecord()],
       firstPassLayer,
       client: retryClient,
-      threshold: 0.5,
     });
 
     const role = result.layer.entries["minecraft:mystery"]!.facets.role as { value: string };
-    expect(role.value).toBe("curiosity");
-    expect(result.warnings.some((w) => w.includes("retry disagreed but lower confidence"))).toBe(true);
+    expect(role.value).toBe("utility");
+    expect(result.facetsChanged.role).toBe(1);
   });
 
   test("retry confirms same value and counts as confirmed, not changed", async () => {
@@ -1638,7 +1707,7 @@ describe("runStage3Retry", () => {
       entries: {
         "minecraft:mystery": {
           facets: {
-            role: { value: "material", confidence: 0.4, source: "llm:stage3" },
+            role: { values: ["material", "natural_resource"], ambiguous: true, source: "llm:stage3" },
           },
         },
       },
@@ -1647,7 +1716,7 @@ describe("runStage3Retry", () => {
       items: {
         "minecraft:mystery": {
           facets: {
-            role: { value: "material", confidence: 0.9 },
+            role: { values: ["material", "natural_resource"], ambiguous: true },
           },
         },
       },
@@ -1658,13 +1727,12 @@ describe("runStage3Retry", () => {
       records: [baseRecord()],
       firstPassLayer,
       client: retryClient,
-      threshold: 0.5,
     });
 
     expect(result.facetsConfirmed.role).toBe(1);
     expect(result.facetsChanged.role ?? 0).toBe(0);
-    const role = result.layer.entries["minecraft:mystery"]!.facets.role as { confidence: number };
-    expect(role.confidence).toBe(0.9); // confidence bumped
+    const role = result.layer.entries["minecraft:mystery"]!.facets.role as { source: string };
+    expect(role.source).toBe("llm:stage3-retry");
   });
 
   test("no candidates → noop retry", async () => {
@@ -1675,7 +1743,7 @@ describe("runStage3Retry", () => {
       entries: {
         "minecraft:x": {
           facets: {
-            role: { value: "material", confidence: 0.95, source: "llm:stage3" },
+            role: { value: "material", source: "llm:stage3" },
           },
         },
       },
@@ -1686,7 +1754,6 @@ describe("runStage3Retry", () => {
       records: [baseRecord()],
       firstPassLayer,
       client,
-      threshold: 0.5,
     });
     expect(queried).toBe(false);
     expect(result.retriedItems).toEqual([]);

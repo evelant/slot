@@ -2,7 +2,6 @@ import { describe, test, expect } from "bun:test";
 import type { ItemExtractRecord } from "../src/extract/record.ts";
 import type { SummaryBundle } from "../src/extract/vanilla/source.ts";
 import { runDeterministic } from "../src/deterministic/run.ts";
-import { materialFamilyRule } from "../src/deterministic/rules/material_family.ts";
 import { formRule } from "../src/deterministic/rules/form.ts";
 import { equipSlotRule } from "../src/deterministic/rules/equip_slot.ts";
 import { processingInRule } from "../src/deterministic/rules/processing_in.ts";
@@ -52,502 +51,6 @@ function ctx(rec: ItemExtractRecord, overrides: Partial<RuleContext> = {}): Rule
     ...overrides,
   };
 }
-
-describe("materialFamilyRule", () => {
-  test("log tag pins the wood type", () => {
-    const out = materialFamilyRule.run(ctx(record({
-      id: "minecraft:oak_log",
-      path: "oak_log",
-      minecraft_tags: ["minecraft:oak_logs", "minecraft:logs"],
-    })));
-    expect(out).toHaveLength(1);
-    expect(out[0]!).toMatchObject({ facet: "material_family", value: "wood_oak" });
-  });
-
-  test("iron tool materials tag", () => {
-    const out = materialFamilyRule.run(ctx(record({
-      id: "minecraft:iron_ingot",
-      path: "iron_ingot",
-      minecraft_tags: ["minecraft:iron_tool_materials"],
-    })));
-    expect(out[0]!).toMatchObject({ value: "iron" });
-  });
-
-  test("exact id mapping for raw_iron", () => {
-    const out = materialFamilyRule.run(ctx(record({
-      id: "minecraft:raw_iron",
-      path: "raw_iron",
-    })));
-    expect(out[0]!).toMatchObject({ value: "iron" });
-  });
-
-  test("id prefix fallback for deepslate", () => {
-    const out = materialFamilyRule.run(ctx(record({
-      id: "minecraft:deepslate_tiles",
-      path: "deepslate_tiles",
-    })));
-    expect(out[0]!).toMatchObject({ value: "deepslate" });
-  });
-
-  test("ore ids use the resource material instead of the host stone", () => {
-    const hosted = materialFamilyRule.run(ctx(record({
-      id: "gtceu:andesite_copper_ore",
-      namespace: "gtceu",
-      path: "andesite_copper_ore",
-    })));
-    expect(hosted[0]!).toMatchObject({ value: "copper", source: "rule:material_family_from_ore_id" });
-
-    const deepslate = materialFamilyRule.run(ctx(record({
-      id: "minecraft:deepslate_iron_ore",
-      path: "deepslate_iron_ore",
-    })));
-    expect(deepslate[0]!).toMatchObject({ value: "iron" });
-  });
-
-  test("processed ore ids strip process stage prefixes", () => {
-    const crushed = materialFamilyRule.run(ctx(record({
-      id: "gtceu:crushed_iron_ore",
-      namespace: "gtceu",
-      path: "crushed_iron_ore",
-    })));
-    expect(crushed[0]!).toMatchObject({ value: "iron" });
-
-    const purified = materialFamilyRule.run(ctx(record({
-      id: "gtceu:purified_iron_ore",
-      namespace: "gtceu",
-      path: "purified_iron_ore",
-    })));
-    expect(purified[0]!).toMatchObject({ value: "iron" });
-  });
-
-  test("TFC ore paths strip grade prefixes", () => {
-    const poor = materialFamilyRule.run(ctx(record({
-      id: "tfc:ore/poor_hematite",
-      namespace: "tfc",
-      path: "ore/poor_hematite",
-    })));
-    expect(poor[0]!).toMatchObject({ value: "hematite" });
-
-    const native = materialFamilyRule.run(ctx(record({
-      id: "tfc:ore/small_native_copper",
-      namespace: "tfc",
-      path: "ore/small_native_copper",
-    })));
-    expect(native[0]!).toMatchObject({ value: "copper" });
-
-    const hosted = materialFamilyRule.run(ctx(record({
-      id: "tfc:ore/normal_limonite/diorite",
-      namespace: "tfc",
-      path: "ore/normal_limonite/diorite",
-    })));
-    expect(hosted[0]!).toMatchObject({ value: "limonite" });
-  });
-
-  test("bloom ids use the bloom metal family", () => {
-    const out = materialFamilyRule.run(ctx(record({
-      id: "tfc:raw_iron_bloom",
-      namespace: "tfc",
-      path: "raw_iron_bloom",
-    })));
-    expect(out[0]!).toMatchObject({ value: "iron", source: "rule:material_family_from_bloom_id" });
-  });
-
-  test("common material tags derive modded material families", () => {
-    const metalPart = materialFamilyRule.run(ctx(record({
-      id: "tfchotornot:tong_part/rose_gold",
-      namespace: "tfchotornot",
-      path: "tong_part/rose_gold",
-      minecraft_tags: ["tfc:metal_item/rose_gold"],
-    })));
-    expect(metalPart[0]!).toMatchObject({
-      value: "rose_gold",
-      source: "rule:material_family_from_common_tag",
-    });
-
-    const wire = materialFamilyRule.run(ctx(record({
-      id: "createaddition:copper_wire",
-      namespace: "createaddition",
-      path: "copper_wire",
-      minecraft_tags: ["forge:wires/copper"],
-    })));
-    expect(wire[0]!).toMatchObject({ value: "copper" });
-
-    const spring = materialFamilyRule.run(ctx(record({
-      id: "vintageimprovements:small_ironwood_spring",
-      namespace: "vintageimprovements",
-      path: "small_ironwood_spring",
-      minecraft_tags: ["vintageimprovements:small_springs/ironwood"],
-    })));
-    expect(spring[0]!).toMatchObject({ value: "ironwood" });
-
-    const storageBlock = materialFamilyRule.run(ctx(record({
-      id: "tfg:boron_carbide_block",
-      namespace: "tfg",
-      path: "boron_carbide_block",
-      minecraft_tags: ["forge:storage_blocks/boron_carbide"],
-    })));
-    expect(storageBlock[0]!).toMatchObject({ value: "boron_carbide" });
-
-    const hotIngot = materialFamilyRule.run(ctx(record({
-      id: "gtceu:hot_titanium_ingot",
-      namespace: "gtceu",
-      path: "hot_titanium_ingot",
-      minecraft_tags: ["forge:hot_ingots/titanium"],
-    })));
-    expect(hotIngot[0]!).toMatchObject({ value: "titanium" });
-
-    const ring = materialFamilyRule.run(ctx(record({
-      id: "gtceu:hsss_ring",
-      namespace: "gtceu",
-      path: "hsss_ring",
-      minecraft_tags: ["forge:rings/hsss"],
-    })));
-    expect(ring[0]!).toMatchObject({ value: "hsss" });
-
-    const doubleIngot = materialFamilyRule.run(ctx(record({
-      id: "gtceu:brass_double_ingot",
-      namespace: "gtceu",
-      path: "brass_double_ingot",
-      minecraft_tags: ["forge:double_ingots/brass"],
-    })));
-    expect(doubleIngot[0]!).toMatchObject({ value: "brass" });
-
-    const densePlate = materialFamilyRule.run(ctx(record({
-      id: "gtceu:dense_rocket_alloy_t1_plate",
-      namespace: "gtceu",
-      path: "dense_rocket_alloy_t1_plate",
-      minecraft_tags: ["forge:dense_plates/rocket_alloy_t1"],
-    })));
-    expect(densePlate[0]!).toMatchObject({ value: "rocket_alloy_t1" });
-
-    const richRaw = materialFamilyRule.run(ctx(record({
-      id: "gtceu:rich_raw_monazite",
-      namespace: "gtceu",
-      path: "rich_raw_monazite",
-      minecraft_tags: ["forge:rich_raw_materials/monazite"],
-    })));
-    expect(richRaw[0]!).toMatchObject({ value: "monazite" });
-
-    const dustyRaw = materialFamilyRule.run(ctx(record({
-      id: "gtceu:dusty_raw_bauxite",
-      namespace: "gtceu",
-      path: "dusty_raw_bauxite",
-      minecraft_tags: ["forge:dusty_raw_materials/bauxite"],
-    })));
-    expect(dustyRaw[0]!).toMatchObject({ value: "bauxite" });
-
-    const smallDust = materialFamilyRule.run(ctx(record({
-      id: "gtceu:small_black_steel_dust",
-      namespace: "gtceu",
-      path: "small_black_steel_dust",
-      display_name: "Small Pile of Black Steel Dust",
-      minecraft_tags: ["forge:small_dusts/black_steel"],
-    })));
-    expect(smallDust[0]!).toMatchObject({
-      value: "black_steel",
-      source: "rule:material_family_from_common_tag",
-    });
-
-    const glass = materialFamilyRule.run(ctx(record({
-      id: "minecraft:tinted_glass",
-      path: "tinted_glass",
-      minecraft_tags: ["forge:glass/tinted"],
-    })));
-    expect(glass[0]!).toMatchObject({ value: "glass" });
-  });
-
-  test("structured metal paths and material-bearing display names derive family", () => {
-    const woodRoofing = materialFamilyRule.run(ctx(record({
-      id: "firmacivplus:wood/cypress_roofing",
-      namespace: "firmacivplus",
-      path: "wood/cypress_roofing",
-      display_name: "Cypress Roofing",
-    })));
-    expect(woodRoofing[0]!).toMatchObject({
-      value: "wood_cypress",
-      source: "rule:material_family_from_structured_wood_path",
-    });
-
-    const woodBarrel = materialFamilyRule.run(ctx(record({
-      id: "afc:wood/barrel/cypress",
-      namespace: "afc",
-      path: "wood/barrel/cypress",
-      display_name: "Cypress Barrel",
-    })));
-    expect(woodBarrel[0]!).toMatchObject({ value: "wood_cypress" });
-
-    const woodButton = materialFamilyRule.run(ctx(record({
-      id: "tfc:wood/planks/aspen_button",
-      namespace: "tfc",
-      path: "wood/planks/aspen_button",
-      display_name: "Aspen Button",
-    })));
-    expect(woodButton[0]!).toMatchObject({ value: "wood_aspen" });
-
-    const knifeBlade = materialFamilyRule.run(ctx(record({
-      id: "tfc:metal/knife_blade/copper",
-      namespace: "tfc",
-      path: "metal/knife_blade/copper",
-      display_name: "Copper Knife Blade",
-    })));
-    expect(knifeBlade[0]!).toMatchObject({
-      value: "copper",
-      source: "rule:material_family_from_structured_metal_path",
-    });
-
-    const trainHull = materialFamilyRule.run(ctx(record({
-      id: "createdeco:andesite_hull",
-      namespace: "createdeco",
-      path: "andesite_hull",
-      display_name: "Tin Alloy Train Hull",
-    })));
-    expect(trainHull[0]!).toMatchObject({
-      value: "tin_alloy",
-      source: "rule:material_family_from_display_name",
-    });
-
-    const mixer = materialFamilyRule.run(ctx(record({
-      id: "greate:tungsten_steel_mechanical_mixer",
-      namespace: "greate",
-      path: "tungsten_steel_mechanical_mixer",
-      display_name: "Tungsten Steel Mechanical Mixer",
-    })));
-    expect(mixer[0]!).toMatchObject({ value: "tungsten_steel" });
-
-    const greenhouse = materialFamilyRule.run(ctx(record({
-      id: "firmalife:iron_greenhouse_panel_wall",
-      namespace: "firmalife",
-      path: "iron_greenhouse_panel_wall",
-      display_name: "Iron Greenhouse Panel Wall",
-    })));
-    expect(greenhouse[0]!).toMatchObject({ value: "iron" });
-
-    const crushingWheel = materialFamilyRule.run(ctx(record({
-      id: "greate:neutronium_crushing_wheel",
-      namespace: "greate",
-      path: "neutronium_crushing_wheel",
-      display_name: "Neutronium Crushing Wheel",
-    })));
-    expect(crushingWheel[0]!).toMatchObject({ value: "neutronium" });
-
-    const mortar = materialFamilyRule.run(ctx(record({
-      id: "gtceu:bismuth_bronze_mortar",
-      namespace: "gtceu",
-      path: "bismuth_bronze_mortar",
-      display_name: "Bismuth Bronze Mortar",
-    })));
-    expect(mortar[0]!).toMatchObject({ value: "bismuth_bronze" });
-
-    const travertine = materialFamilyRule.run(ctx(record({
-      id: "create:cut_dripstone_brick_slab",
-      namespace: "create",
-      path: "cut_dripstone_brick_slab",
-      display_name: "Cut Travertine Brick Slab",
-      minecraft_tags: ["create:stone_types/dripstone_half"],
-    })));
-    expect(travertine[0]!).toMatchObject({
-      value: "travertine",
-      source: "rule:material_family_from_display_name",
-    });
-
-    const remappedStone = materialFamilyRule.run(ctx(record({
-      id: "create:polished_cut_granite",
-      namespace: "create",
-      path: "polished_cut_granite",
-      display_name: "Polished Cut Chert",
-      minecraft_tags: ["create:stone_types/granite", "tfg:stone_types/chert"],
-    })));
-    expect(remappedStone[0]!).toMatchObject({ value: "chert" });
-
-    const stoneTag = materialFamilyRule.run(ctx(record({
-      id: "create:scorchia_pillar",
-      namespace: "create",
-      path: "scorchia_pillar",
-      display_name: "Scorchia Pillar",
-      minecraft_tags: ["create:stone_types/scorchia"],
-    })));
-    expect(stoneTag[0]!).toMatchObject({ value: "scorchia" });
-
-    const gearbox = materialFamilyRule.run(ctx(record({
-      id: "create_connected:brass_gearbox",
-      namespace: "create_connected",
-      path: "brass_gearbox",
-      display_name: "Brass Gearbox",
-    })));
-    expect(gearbox[0]!).toMatchObject({ value: "brass" });
-
-    const sheet = materialFamilyRule.run(ctx(record({
-      id: "vintageimprovements:refined_glowstone_sheet",
-      namespace: "vintageimprovements",
-      path: "refined_glowstone_sheet",
-      display_name: "Refined Glowstone Sheet",
-    })));
-    expect(sheet[0]!).toMatchObject({ value: "refined_glowstone" });
-
-    const indicator = materialFamilyRule.run(ctx(record({
-      id: "gtceu:sodalite_indicator",
-      namespace: "gtceu",
-      path: "sodalite_indicator",
-      display_name: "Sodalite Indicator",
-    })));
-    expect(indicator[0]!).toMatchObject({ value: "sodalite" });
-
-    const fluixSword = materialFamilyRule.run(ctx(record({
-      id: "ae2:fluix_sword",
-      namespace: "ae2",
-      path: "fluix_sword",
-      display_name: "Fluix Sword",
-    })));
-    expect(fluixSword[0]!).toMatchObject({ value: "fluix" });
-
-    const diggerHelmet = materialFamilyRule.run(ctx(record({
-      id: "diggerhelmet:broken_red_steel_digger_helmet",
-      namespace: "diggerhelmet",
-      path: "broken_red_steel_digger_helmet",
-      display_name: "Broken Red Steel Digger Helmet",
-    })));
-    expect(diggerHelmet[0]!).toMatchObject({ value: "red_steel" });
-
-    const harvestBasket = materialFamilyRule.run(ctx(record({
-      id: "tfg:aluminium_harvest_basket",
-      namespace: "tfg",
-      path: "aluminium_harvest_basket",
-      display_name: "Aluminium Harvest Basket",
-    })));
-    expect(harvestBasket[0]!).toMatchObject({ value: "aluminium" });
-
-    const stoneSupport = materialFamilyRule.run(ctx(record({
-      id: "tfg:gabbro_support",
-      namespace: "tfg",
-      path: "gabbro_support",
-      display_name: "Gabbro Support",
-    })));
-    expect(stoneSupport[0]!).toMatchObject({ value: "gabbro" });
-
-    const whisk = materialFamilyRule.run(ctx(record({
-      id: "gtceu:steel_whisk",
-      namespace: "gtceu",
-      path: "steel_whisk",
-      display_name: "Steel Whisk",
-    })));
-    expect(whisk[0]!).toMatchObject({ value: "steel" });
-
-    const pipe = materialFamilyRule.run(ctx(record({
-      id: "gtceu:duranium_normal_fluid_pipe",
-      namespace: "gtceu",
-      path: "duranium_normal_fluid_pipe",
-      display_name: "Normal Duranium Fluid Pipe",
-    })));
-    expect(pipe[0]!).toMatchObject({ value: "duranium" });
-
-    const pipeCasing = materialFamilyRule.run(ctx(record({
-      id: "gtceu:steel_pipe_casing",
-      namespace: "gtceu",
-      path: "steel_pipe_casing",
-      display_name: "Steel Pipe Casing",
-    })));
-    expect(pipeCasing[0]!).toMatchObject({ value: "steel" });
-
-    const paperExtra = materialFamilyRule.run(ctx(record({
-      id: "domum_ornamentum:white_paper_extra",
-      namespace: "domum_ornamentum",
-      path: "white_paper_extra",
-      display_name: "White Paper Extra",
-    })));
-    expect(paperExtra[0]!).toMatchObject({ value: "paper" });
-
-    const file = materialFamilyRule.run(ctx(record({
-      id: "gtceu:steel_file",
-      namespace: "gtceu",
-      path: "steel_file",
-      display_name: "Steel File",
-    })));
-    expect(file[0]!).toMatchObject({ value: "steel" });
-
-    const swordHead = materialFamilyRule.run(ctx(record({
-      id: "gtceu:steel_sword_head",
-      namespace: "gtceu",
-      path: "steel_sword_head",
-      display_name: "Steel Sword Head",
-    })));
-    expect(swordHead[0]!).toMatchObject({ value: "steel" });
-
-    const knifeHead = materialFamilyRule.run(ctx(record({
-      id: "gtceu:stone_knife_head",
-      namespace: "gtceu",
-      path: "stone_knife_head",
-      display_name: "Stone Knife Head",
-    })));
-    expect(knifeHead[0]!).toMatchObject({ value: "stone" });
-
-    const miningHammer = materialFamilyRule.run(ctx(record({
-      id: "tfg:arsenic_bronze_mining_hammer",
-      namespace: "tfg",
-      path: "arsenic_bronze_mining_hammer",
-      display_name: "Arsenic Bronze Mining Hammer",
-    })));
-    expect(miningHammer[0]!).toMatchObject({ value: "arsenic_bronze" });
-  });
-
-  test("structured wood sections derive wood species family", () => {
-    const furniture = materialFamilyRule.run(ctx(record({
-      id: "mcw_tfc_aio:furniture/spruce_furniture/stripped_spruce_bookshelf_cupboard",
-      namespace: "mcw_tfc_aio",
-      path: "furniture/spruce_furniture/stripped_spruce_bookshelf_cupboard",
-    })));
-    expect(furniture[0]!).toMatchObject({ value: "wood_spruce" });
-
-    const bridge = materialFamilyRule.run(ctx(record({
-      id: "mcw_tfc_aio:bridges/maple_bridges/maple_log_bridge_middle",
-      namespace: "mcw_tfc_aio",
-      path: "bridges/maple_bridges/maple_log_bridge_middle",
-    })));
-    expect(bridge[0]!).toMatchObject({ value: "wood_maple" });
-
-    const brickBridge = materialFamilyRule.run(ctx(record({
-      id: "mcw_tfc_aio:bridges/brick_bridges/brick_bridge_pier",
-      namespace: "mcw_tfc_aio",
-      path: "bridges/brick_bridges/brick_bridge_pier",
-    })));
-    expect(brickBridge).toEqual([]);
-
-    const roof = materialFamilyRule.run(ctx(record({
-      id: "mcw_tfc_aio:roofs/oak_roofs/oak_planks_attic_roof",
-      namespace: "mcw_tfc_aio",
-      path: "roofs/oak_roofs/oak_planks_attic_roof",
-    })));
-    expect(roof[0]!).toMatchObject({ value: "wood_oak" });
-
-    const concreteRoof = materialFamilyRule.run(ctx(record({
-      id: "mcw_tfc_aio:roofs/red_concrete_roofs/red_concrete_attic_roof",
-      namespace: "mcw_tfc_aio",
-      path: "roofs/red_concrete_roofs/red_concrete_attic_roof",
-    })));
-    expect(concreteRoof).toEqual([]);
-  });
-
-  test("exact copper and glass blocks derive family", () => {
-    const oxidizedCopper = materialFamilyRule.run(ctx(record({
-      id: "minecraft:oxidized_copper",
-      path: "oxidized_copper",
-    })));
-    expect(oxidizedCopper[0]!).toMatchObject({ value: "copper" });
-
-    const tintedGlass = materialFamilyRule.run(ctx(record({
-      id: "minecraft:tinted_glass",
-      path: "tinted_glass",
-    })));
-    expect(tintedGlass[0]!).toMatchObject({ value: "glass" });
-  });
-
-  test("no signal → no output", () => {
-    const out = materialFamilyRule.run(ctx(record({
-      id: "minecraft:mystery",
-      path: "mystery",
-    })));
-    expect(out).toEqual([]);
-  });
-});
 
 describe("formRule", () => {
   test("stairs tag", () => {
@@ -1033,7 +536,7 @@ describe("dyeColorRule", () => {
 });
 
 describe("requiredToolRule", () => {
-  test("pickaxe + iron tier from block tags", () => {
+  test("pickaxe from block tags", () => {
     const out = requiredToolRule.run(ctx(record({
       id: "minecraft:diamond_ore",
       path: "diamond_ore",
@@ -1044,7 +547,7 @@ describe("requiredToolRule", () => {
     }));
     const byFacet = new Map(out.map((o) => [o.facet, o]));
     expect(byFacet.get("required_tool")).toMatchObject({ value: "pickaxe" });
-    expect(byFacet.get("required_tool_tier")).toMatchObject({ value: "iron" });
+    expect(byFacet.has("required_tool_tier")).toBe(false);
   });
 
   test("no block tags → no output", () => {
@@ -1200,8 +703,8 @@ describe("runDeterministic integration", () => {
     expect(layer.entries["minecraft:iron_ingot"]).toBeDefined();
     const facets = layer.entries["minecraft:iron_ingot"]!.facets;
     expect(facets.mod_namespace).toMatchObject({ value: "minecraft" });
-    expect(facets.material_family).toMatchObject({ value: "iron" });
     expect(facets.is_stackable).toMatchObject({ value: true });
+    expect(facets.material_family).toBeUndefined();
     expect(coverage.mod_namespace).toBe(1);
     expect(warnings).toEqual([]);
   });
@@ -1220,13 +723,23 @@ describe("runDeterministic integration", () => {
         lang: {}, blocks: {}, version: "t",
       },
       namespace: "minecraft",
-      rules: [materialFamilyRule, {
-        id: "material_family_dup",
-        facets: ["material_family"],
+      rules: [{
+        id: "first_form",
+        facets: ["form"],
         run: () => [{
-          facet: "material_family",
+          facet: "form",
           kind: "single",
-          value: "gold",
+          value: "ingot",
+          source: "rule:first",
+          confidence: 1,
+        }],
+      }, {
+        id: "form_dup",
+        facets: ["form"],
+        run: () => [{
+          facet: "form",
+          kind: "single",
+          value: "dust",
           source: "rule:dup",
           confidence: 1,
         }],

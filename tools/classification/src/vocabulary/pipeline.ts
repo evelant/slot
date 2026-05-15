@@ -5,6 +5,7 @@ import type {
 } from "../evidence/facet_evidence.ts";
 import { validateMultiValue } from "../schema/facets.ts";
 import {
+  isUsableVocabularyState,
   validateVocabularyArtifact,
   type PackFacetVocabulary,
   type VocabularyState,
@@ -26,6 +27,7 @@ import type {
   VocabularyFacetId,
   VocabularyReviewDecision,
   VocabularySemanticEvidence,
+  VocabularyItemSampleMode,
 } from "./types.ts";
 import {
   isRecord,
@@ -40,11 +42,12 @@ import {
 } from "./helpers.ts";
 import {
   CANDIDATE_EXAMPLE_LIMIT,
+  DEFAULT_COMBINED_MAX_CANDIDATES_PER_FACET,
+  BUILT_IN_VOCABULARY_SEEDS,
   DEFAULT_MAX_CANDIDATES_PER_FACET,
   GENERIC_TOKENS,
   ROLE_TOKENS,
   SEMANTIC_EVIDENCE_LIMIT,
-  UNIVERSAL_DEFAULTS,
   VOCABULARY_PROMPT_CHAR_BUDGET,
 } from "./constants.ts";
 import {
@@ -55,9 +58,14 @@ import {
   runtimeItemRefs,
   semanticEvidenceForCandidate,
 } from "./semantic_index.ts";
-import { buildVocabularyCurationPrompt } from "./prompt.ts";
+import {
+  buildCombinedVocabularyCurationPrompt,
+  buildVocabularyCurationPrompt,
+  type CombinedVocabularyPromptFacetInput,
+} from "./prompt.ts";
 import {
   parseVocabularyCurationResponse,
+  queryCombinedFacetCuration,
   queryFacetCuration,
 } from "./curation.ts";
 import {
@@ -104,6 +112,7 @@ export type {
   VocabularyFacetId,
   VocabularyReviewDecision,
   VocabularySemanticEvidence,
+  VocabularyItemSampleMode,
 } from "./types.ts";
 export { buildVocabularyCurationPrompt } from "./prompt.ts";
 export { parseVocabularyCurationResponse } from "./curation.ts";
@@ -136,7 +145,7 @@ export function extractVocabularyCandidates(
   const namespaces = new Set((options.namespaces ?? []).filter(Boolean));
   const acc = new Map<string, CandidateAccumulator>();
 
-  addUniversalDefaults(acc, facets);
+  addBuiltInVocabularySeeds(acc, facets);
   if (options.previousVocabulary) {
     addPreviousVocabulary(acc, options.previousVocabulary, facets);
   }
@@ -164,8 +173,12 @@ export async function proposePackFacetVocabulary(
   const promptRecords = options.evidence.records.filter((record) =>
     namespaceAllowed(record, new Set((options.namespaces ?? []).filter(Boolean)))
   );
+  const useCombinedPrompt = (options.facets?.length ?? 0) === 0 && facets.length > 1 && !options.maxCandidatesPerPrompt;
   const maxCandidatesPerFacet = options.maxCandidatesPerFacet ?? DEFAULT_MAX_CANDIDATES_PER_FACET;
-  const candidatesByFacet = groupCandidates(candidates, maxCandidatesPerFacet);
+  const promptMaxCandidatesPerFacet = useCombinedPrompt
+    ? (options.maxCandidatesPerFacet ?? DEFAULT_COMBINED_MAX_CANDIDATES_PER_FACET)
+    : maxCandidatesPerFacet;
+  const candidatesByFacet = groupCandidates(candidates, promptMaxCandidatesPerFacet);
   const rawCandidatesByFacet = groupCandidates(candidates, Number.MAX_SAFE_INTEGER);
   const previousAccepted = previousAcceptedByFacet(options.previousVocabulary);
   const acceptedWorkflowIds = new Set(previousAccepted.get("workflow") ?? []);
@@ -173,47 +186,104 @@ export async function proposePackFacetVocabulary(
   const decisions: Record<string, VocabularyDecision[]> = {};
   const diagnostics: VocabularyDiagnostic[] = [];
 
-  for (const facet of facets) {
-    const packOverview = buildVocabularyPromptOverview({ facet, records: promptRecords });
-    const facetCandidates = facet === "workflow_role"
-      ? selectPromptCandidates(
-        workflowRoleCandidatesForAcceptedWorkflows(rawCandidatesByFacet[facet] ?? [], acceptedWorkflowIds),
-        maxCandidatesPerFacet,
-      )
-      : candidatesByFacet[facet] ?? [];
-    const promptChunks = buildFacetPromptChunks({
+  if (useCombinedPrompt) {
+    const combinedInputs = facets.map((facet): CombinedVocabularyPromptFacetInput => ({
       facet,
-      packId: options.packId,
-      candidates: facetCandidates,
+      candidates: promptCandidatesForFacet({
+        facet,
+        rawCandidatesByFacet,
+        candidatesByFacet,
+        maxCandidatesPerFacet: promptMaxCandidatesPerFacet,
+        acceptedWorkflowIds,
+      }),
       previousAccepted: previousAccepted.get(facet) ?? [],
+    }));
+    const packOverview = buildVocabularyPromptOverview({
+      facet: facets.includes("organization_group") ? "organization_group" : facets[0]!,
+      records: promptRecords,
+      itemSampleSize: options.itemSampleSize,
+      itemSampleSeed: options.itemSampleSeed,
+      itemSampleMode: options.itemSampleMode,
+      vocabularyIteration: options.vocabularyIteration,
+    });
+    const prompt = buildCombinedVocabularyCurationPrompt({
+      packId: options.packId,
+      facets: combinedInputs,
       minEvidence: options.minEvidence,
       packOverview,
-      maxCandidatesPerPrompt: options.maxCandidatesPerPrompt,
     });
-    const curatedValues: CuratedValue[] = [];
-    for (let index = 0; index < promptChunks.length; index++) {
-      const promptChunk = promptChunks[index]!;
-      const promptKey = promptChunks.length === 1
-        ? facet
-        : `${facet}.part-${String(index + 1).padStart(2, "0")}-of-${String(promptChunks.length).padStart(2, "0")}`;
-      prompts[promptKey] = promptChunk.prompt;
-      const curated: { raw: string; values: CuratedValue[] } = options.client
-        ? await queryFacetCuration(options.client, prompts[promptKey]!, options.model, options.clientOptions)
-        : { raw: "", values: [] };
-      curatedValues.push(...curated.values);
+    prompts["all-facets"] = prompt;
+    const valuesByFacet = options.client
+      ? (await queryCombinedFacetCuration(options.client, prompt, facets, options.model, options.clientOptions)).valuesByFacet
+      : new Map<VocabularyFacetId, CuratedValue[]>();
+    for (const input of combinedInputs) {
+      const facet = input.facet;
+      decisions[facet] = applyFacetPolicy({
+        facet,
+        candidates: input.candidates,
+        allCandidates: rawCandidatesByFacet[facet] ?? input.candidates,
+        curated: valuesByFacet.get(facet) ?? [],
+        minEvidence: options.minEvidence,
+        diagnostics,
+        acceptedWorkflowIds: facet === "workflow_role" ? acceptedWorkflowIds : undefined,
+      });
+      if (facet === "workflow") {
+        for (const value of decisions[facet] ?? []) {
+          if (isUsableVocabularyState(value.state)) acceptedWorkflowIds.add(value.id);
+        }
+      }
     }
-    decisions[facet] = applyFacetPolicy({
-      facet,
-      candidates: facetCandidates,
-      allCandidates: rawCandidatesByFacet[facet] ?? facetCandidates,
-      curated: curatedValues,
-      minEvidence: options.minEvidence,
-      diagnostics,
-      acceptedWorkflowIds: facet === "workflow_role" ? acceptedWorkflowIds : undefined,
-    });
-    if (facet === "workflow") {
-      for (const value of decisions[facet] ?? []) {
-        if (value.state === "accepted") acceptedWorkflowIds.add(value.id);
+  } else {
+    for (const facet of facets) {
+      const packOverview = buildVocabularyPromptOverview({
+        facet,
+        records: promptRecords,
+        itemSampleSize: options.itemSampleSize,
+        itemSampleSeed: options.itemSampleSeed,
+        itemSampleMode: options.itemSampleMode,
+        vocabularyIteration: options.vocabularyIteration,
+      });
+      const facetCandidates = promptCandidatesForFacet({
+        facet,
+        rawCandidatesByFacet,
+        candidatesByFacet,
+        maxCandidatesPerFacet: promptMaxCandidatesPerFacet,
+        acceptedWorkflowIds,
+      });
+      const promptChunks = buildFacetPromptChunks({
+        facet,
+        packId: options.packId,
+        candidates: facetCandidates,
+        previousAccepted: previousAccepted.get(facet) ?? [],
+        minEvidence: options.minEvidence,
+        packOverview,
+        maxCandidatesPerPrompt: options.maxCandidatesPerPrompt,
+      });
+      const curatedValues: CuratedValue[] = [];
+      for (let index = 0; index < promptChunks.length; index++) {
+        const promptChunk = promptChunks[index]!;
+        const promptKey = promptChunks.length === 1
+          ? facet
+          : `${facet}.part-${String(index + 1).padStart(2, "0")}-of-${String(promptChunks.length).padStart(2, "0")}`;
+        prompts[promptKey] = promptChunk.prompt;
+        const curated: { raw: string; values: CuratedValue[] } = options.client
+          ? await queryFacetCuration(options.client, prompts[promptKey]!, options.model, options.clientOptions)
+          : { raw: "", values: [] };
+        curatedValues.push(...curated.values);
+      }
+      decisions[facet] = applyFacetPolicy({
+        facet,
+        candidates: facetCandidates,
+        allCandidates: rawCandidatesByFacet[facet] ?? facetCandidates,
+        curated: curatedValues,
+        minEvidence: options.minEvidence,
+        diagnostics,
+        acceptedWorkflowIds: facet === "workflow_role" ? acceptedWorkflowIds : undefined,
+      });
+      if (facet === "workflow") {
+        for (const value of decisions[facet] ?? []) {
+          if (isUsableVocabularyState(value.state)) acceptedWorkflowIds.add(value.id);
+        }
       }
     }
   }
@@ -229,7 +299,7 @@ export async function proposePackFacetVocabulary(
       ...(options.evidence.source ?? {}),
       ...(options.previousVocabularyPath ? { previous_vocabulary: options.previousVocabularyPath } : {}),
     },
-    facets: decisionsToAcceptedVocabulary(decisions),
+    facets: decisionsToUsableVocabulary(decisions),
   };
   const validation = validateVocabularyArtifact(vocabulary);
   if (!validation.ok) {
@@ -263,6 +333,22 @@ export async function proposePackFacetVocabulary(
 interface VocabularyPromptChunk {
   candidates: PackVocabularyCandidate[];
   prompt: { system: string; user: string };
+}
+
+function promptCandidatesForFacet(args: {
+  facet: VocabularyFacetId;
+  rawCandidatesByFacet: Record<string, PackVocabularyCandidate[]>;
+  candidatesByFacet: Record<string, PackVocabularyCandidate[]>;
+  maxCandidatesPerFacet: number;
+  acceptedWorkflowIds: ReadonlySet<string>;
+}): PackVocabularyCandidate[] {
+  if (args.facet === "workflow_role") {
+    return selectPromptCandidates(
+      workflowRoleCandidatesForAcceptedWorkflows(args.rawCandidatesByFacet[args.facet] ?? [], args.acceptedWorkflowIds),
+      args.maxCandidatesPerFacet,
+    );
+  }
+  return args.candidatesByFacet[args.facet] ?? [];
 }
 
 function buildFacetPromptChunks(args: {
@@ -311,11 +397,11 @@ function promptSize(prompt: { system: string; user: string }): number {
   return prompt.system.length + prompt.user.length;
 }
 
-function addUniversalDefaults(
+function addBuiltInVocabularySeeds(
   acc: Map<string, CandidateAccumulator>,
   facets: ReadonlySet<VocabularyFacetId>,
 ): void {
-  for (const [facet, values] of Object.entries(UNIVERSAL_DEFAULTS)) {
+  for (const [facet, values] of Object.entries(BUILT_IN_VOCABULARY_SEEDS)) {
     if (!isVocabularyFacet(facet) || !facets.has(facet)) continue;
     for (const value of values) {
       addCandidate(acc, {
@@ -324,11 +410,11 @@ function addUniversalDefaults(
         label: value.label,
         description: value.description,
         aliases: value.aliases,
-        origin: "universal_default",
+        origin: "built_in",
         suggestedState: "accepted",
         confidence: 0.95,
         support: 999,
-        reason: "universal default",
+        reason: "built-in seed value",
       });
     }
   }
@@ -373,7 +459,7 @@ function addCandidatesFromEvidence(
 ): void {
   switch (record.kind) {
     case "recipe_type": {
-      const id = normalizeScopedResourceId(record.id, packId, "namespace");
+      const id = normalizeVocabularyValueId(record.id);
       if (!id || isGenericValueId(id)) return;
       const count = record.count ?? record.input_count ?? record.output_count ?? 1;
       addEvidenceCandidate(acc, {
@@ -407,18 +493,18 @@ function addCandidatesFromEvidence(
       break;
     }
     case "guide_page": {
-      addDocumentCandidates(acc, record, packId, facets, "namespace", "guide page title", semanticIndex);
+      addDocumentCandidates(acc, record, facets, "guide page title", semanticIndex);
       addOrganizationGroupEvidenceCandidates(acc, record, packId, facets, semanticIndex);
       addModSubsystemDocumentCandidate(acc, record, packId, facets, semanticIndex);
       break;
     }
     case "quest_node": {
-      addDocumentCandidates(acc, record, packId, facets, "pack", "quest title", semanticIndex);
+      addDocumentCandidates(acc, record, facets, "quest title", semanticIndex);
       addOrganizationGroupEvidenceCandidates(acc, record, packId, facets, semanticIndex);
       break;
     }
     case "advancement": {
-      addDocumentCandidates(acc, record, packId, facets, "namespace", "advancement title", semanticIndex, {
+      addDocumentCandidates(acc, record, facets, "advancement title", semanticIndex, {
         requireWorkflowSignal: true,
       });
       addModSubsystemDocumentCandidate(acc, record, packId, facets, semanticIndex);
@@ -455,9 +541,7 @@ function addCandidatesFromEvidence(
 function addDocumentCandidates(
   acc: Map<string, CandidateAccumulator>,
   record: FacetEvidenceRecord,
-  packId: string,
   facets: ReadonlySet<VocabularyFacetId>,
-  scope: "namespace" | "pack",
   reason: string,
   semanticIndex: SemanticEvidenceIndex,
   options: { requireWorkflowSignal?: boolean } = {},
@@ -465,8 +549,7 @@ function addDocumentCandidates(
   const label = record.label ?? record.title ?? labelFromId(record.id);
   const token = tokenPath(label);
   if (!token || GENERIC_TOKENS.has(token)) return;
-  const namespace = scope === "namespace" ? record.namespace : undefined;
-  const id = scope === "pack" || !namespace ? `pack:${packId}/${token}` : `${namespace}:${token}`;
+  const id = token;
   const count = record.count ?? 1;
   if (!options.requireWorkflowSignal || documentLooksLikeWorkflowOrUseContext(record, label)) {
     addEvidenceCandidate(acc, {
@@ -511,16 +594,15 @@ function addTagDomainCandidates(
   semanticIndex: SemanticEvidenceIndex,
 ): void {
   const tokens = tokenSet(record.id);
-  for (const [facet, defaults] of Object.entries(UNIVERSAL_DEFAULTS)) {
+  for (const [facet, defaults] of Object.entries(BUILT_IN_VOCABULARY_SEEDS)) {
     if (!isVocabularyFacet(facet) || !facets.has(facet)) continue;
     for (const value of defaults) {
-      const valueToken = value.id.slice("slot:".length);
-      if (!tokens.has(valueToken)) continue;
+      if (!tokens.has(value.id)) continue;
       addCandidate(acc, {
         facet,
         id: value.id,
         label: value.label,
-        origin: "universal_default",
+        origin: "built_in",
         suggestedState: "accepted",
         confidence: Math.max(0.8, record.confidence),
         support: record.count ?? 1,
@@ -541,7 +623,7 @@ function addStackGroupCandidate(
   semanticIndex: SemanticEvidenceIndex,
 ): void {
   if (!facets.has("organization_group")) return;
-  const id = normalizeScopedResourceId(record.id, packId, "namespace");
+  const id = normalizeVocabularyValueId(record.label ?? record.id);
   if (!id || isGenericValueId(id)) return;
   addCandidate(acc, {
     facet: "organization_group",
@@ -572,7 +654,7 @@ function addWorkflowRoleCandidates(
         facet: "workflow_role",
         id: `${workflow.id}#${role}`,
         label: `${workflow.label} ${labelFromId(role)}`,
-        origin: workflow.origin === "universal_default" ? "universal_default" : "pack_generated",
+        origin: workflow.origin === "built_in" ? "built_in" : "pack_generated",
         suggestedState: workflow.suggested_state === "accepted" ? "accepted" : "review",
         confidence: Math.min(0.85, workflow.confidence),
         support: workflow.support,
@@ -605,7 +687,7 @@ function addEvidenceCandidate(
     facet: args.facet,
     id: args.id,
     label: args.record.label ?? labelFromId(args.id),
-    origin: args.id.startsWith("pack:") ? "pack_generated" : "namespace_generated",
+    origin: args.id.includes(":") ? "namespace_generated" : "pack_generated",
     suggestedState: args.state,
     confidence: Math.max(0.4, Math.min(0.9, args.record.confidence)),
     support: args.count,
@@ -636,7 +718,7 @@ function applyFacetPolicy(args: {
   const decisions: VocabularyDecision[] = [];
   const ids = new Set([
     ...args.candidates
-      .filter((candidate) => candidate.origin === "previous" || candidate.origin === "universal_default")
+      .filter((candidate) => candidate.origin === "previous" || candidate.origin === "built_in")
       .map((candidate) => candidate.id),
     ...args.curated.map((value) => value.id),
   ]);
@@ -660,19 +742,20 @@ function applyFacetPolicy(args: {
       [...(curated?.related_activity ?? []), ...(base.related_activity ?? [])],
       CANDIDATE_EXAMPLE_LIMIT,
     );
+    const policyCandidate = candidate ?? base;
 
     const issue = validateMultiValue(args.facet, [id]);
     if (issue) {
       state = "rejected";
       notes.push(issue.reason);
     }
-    if (!issue && candidate?.origin === "universal_default" && state !== "accepted") {
+    if (!issue && candidate?.origin === "built_in" && state !== "accepted") {
       state = "accepted";
-      origin = "universal_default";
+      origin = "built_in";
       confidence = Math.max(confidence, candidate.confidence);
-      notes.push("universal default kept accepted by policy");
+      notes.push("built-in value kept accepted by policy");
     }
-    if (!issue && candidate?.origin === "universal_default" && state === "accepted") {
+    if (!issue && candidate?.origin === "built_in" && state === "accepted") {
       label = candidate.label;
       description = candidate.description;
       aliases = candidate.aliases;
@@ -680,7 +763,7 @@ function applyFacetPolicy(args: {
       seedItems = candidate.seed_items;
       defaultOrganizationGroup = candidate.default_organization_group;
       relatedActivity = candidate.related_activity ?? [];
-      origin = "universal_default";
+      origin = "built_in";
       confidence = Math.max(confidence, candidate.confidence);
     }
     if (!candidate) {
@@ -689,14 +772,14 @@ function applyFacetPolicy(args: {
         notes.push("model-synthesized value accepted from context");
       }
     }
-    if (!curated && origin !== "previous" && origin !== "universal_default") {
+    if (!curated && origin !== "previous" && origin !== "built_in") {
       state = "rejected";
       notes.push("context record omitted by synthesis response");
     }
     if (
       candidate &&
       candidate.origin !== "previous" &&
-      candidate.origin !== "universal_default" &&
+      candidate.origin !== "built_in" &&
       candidate.support < args.minEvidence &&
       state === "accepted" &&
       !allowsLowSupportAcceptedValue(args.facet, candidate, curated)
@@ -704,13 +787,13 @@ function applyFacetPolicy(args: {
       state = "review";
       notes.push(`support ${candidate.support} below min_evidence ${args.minEvidence}`);
     }
-    if (isGenericValueId(id) && state === "accepted") {
+    if (isGenericValueId(id) && state === "accepted" && origin !== "built_in" && origin !== "previous") {
       state = "rejected";
       notes.push("generic catch-all value rejected by policy");
     }
     if (args.facet === "mod_subsystem" && modSubsystemIdLooksRejected(id)) {
       state = "rejected";
-      notes.push("mod_subsystem must be a namespace-scoped identity value, not pack/universal/generic");
+      notes.push("mod_subsystem must be a reusable identity value, not a generic catch-all");
     }
     if (state === "accepted" && args.facet === "organization_group" && customOrganizationGroupNeedsReview(candidate)) {
       state = "review";
@@ -724,32 +807,37 @@ function applyFacetPolicy(args: {
       }
       if (state === "accepted" && parent && args.acceptedWorkflowIds && !args.acceptedWorkflowIds.has(parent)) {
         state = "rejected";
-        notes.push("workflow_role parent is not an accepted workflow value");
+        notes.push("workflow_role parent is not a usable workflow value");
       }
     }
     if (
       state === "accepted" &&
       (args.facet === "workflow" || args.facet === "used_at") &&
-      documentAliasHasRecipeBackedCanonicalDuplicate(id, candidate, allCandidateById)
+      documentAliasHasRecipeBackedCanonicalDuplicate(id, policyCandidate, allCandidateById)
     ) {
       state = "review";
       notes.push("document-title alias duplicates a recipe-backed station/process id");
     }
-    if (state === "accepted" && args.facet === "workflow" && workflowCandidateLooksTooGranular(id, candidate)) {
+    if (state === "accepted" && args.facet === "workflow" && workflowCandidateLooksTooGranular(id, policyCandidate)) {
       state = "review";
       notes.push("guide/quest/advancement workflow title is too granular; prefer a reusable process/station id");
     }
-    if (state === "accepted" && args.facet === "used_at" && usedAtCandidateLooksTooGranular(id, candidate)) {
+    if (state === "accepted" && args.facet === "used_at" && usedAtCandidateLooksTooGranular(id, policyCandidate)) {
       state = "review";
       notes.push("guide/quest/advancement used_at title is too granular; prefer a reusable station/process id");
     }
-    if (state === "accepted" && args.facet === "progression_stage" && progressionCandidateLooksTooGranular(id, candidate)) {
+    if (state === "accepted" && args.facet === "progression_stage" && progressionCandidateLooksTooGranular(id, policyCandidate)) {
       state = "review";
       notes.push("progression value is too phrase-like; prefer a concise gate/tier/dimension id");
     }
-    if (state === "accepted" && candidate && evidence.length === 0 && origin !== "universal_default" && origin !== "previous") {
+    if (state === "accepted" && candidate && evidence.length === 0 && origin !== "built_in" && origin !== "previous") {
       state = "review";
       notes.push("accepted non-default values require evidence");
+    }
+    const sanitizedRelatedActivity = sanitizeRelatedActivityIds(relatedActivity);
+    relatedActivity = sanitizedRelatedActivity.values;
+    if (sanitizedRelatedActivity.dropped.length > 0) {
+      notes.push(`invalid related_activity ids dropped: ${sanitizedRelatedActivity.dropped.join(", ")}`);
     }
     if (state !== "accepted" && curated?.state === "accepted") {
       args.diagnostics.push({
@@ -782,6 +870,25 @@ function applyFacetPolicy(args: {
   return decisions.sort((a, b) => stateRank(a.state) - stateRank(b.state) || a.id.localeCompare(b.id));
 }
 
+function sanitizeRelatedActivityIds(values: readonly string[]): { values: string[]; dropped: string[] } {
+  const kept: string[] = [];
+  const dropped: string[] = [];
+  for (const raw of values) {
+    const value = raw.trim();
+    if (!value) continue;
+    const issue = validateMultiValue("activity", [value]);
+    if (issue) {
+      dropped.push(value);
+      continue;
+    }
+    kept.push(value);
+  }
+  return {
+    values: sortedLimited(kept, CANDIDATE_EXAMPLE_LIMIT),
+    dropped: sortedLimited(dropped, CANDIDATE_EXAMPLE_LIMIT),
+  };
+}
+
 function allowsLowSupportAcceptedValue(
   facet: VocabularyFacetId,
   candidate: PackVocabularyCandidate,
@@ -796,7 +903,7 @@ function allowsLowSupportAcceptedValue(
 function customOrganizationGroupNeedsReview(
   candidate: PackVocabularyCandidate | undefined,
 ): boolean {
-  return !candidate || (candidate.origin !== "previous" && candidate.origin !== "universal_default");
+  return !candidate || (candidate.origin !== "previous" && candidate.origin !== "built_in");
 }
 
 function summarizeReviewDecisions(
@@ -978,16 +1085,11 @@ function documentAliasHasRecipeBackedCanonicalDuplicate(
 
 function slashToUnderscoreValueId(id: string): string | null {
   const base = id.includes("#") ? id.slice(0, id.indexOf("#")) : id;
-  const split = splitResourceLocation(base);
-  if (!split) return null;
   const path = valueIdPath(base);
   if (!path.includes("/")) return null;
   const canonicalPath = path.replace(/\//g, "_");
-  if (split.namespace !== "pack") return `${split.namespace}:${canonicalPath}`;
-
-  const originalSlash = split.path.indexOf("/");
-  if (originalSlash < 0) return null;
-  return `pack:${split.path.slice(0, originalSlash)}/${canonicalPath}`;
+  const split = splitResourceLocation(base);
+  return split ? `${split.namespace}:${canonicalPath}` : canonicalPath;
 }
 
 function usedAtCandidateLooksTooGranular(
@@ -1104,26 +1206,22 @@ function progressionCandidateLooksTooGranular(
 function valueIdPath(id: string): string {
   const base = id.includes("#") ? id.slice(0, id.indexOf("#")) : id;
   const split = splitResourceLocation(base);
-  if (split?.namespace === "pack") {
-    const slash = split.path.indexOf("/");
-    return slash >= 0 ? split.path.slice(slash + 1) : split.path;
-  }
   return split?.path ?? base;
 }
 
-function decisionsToAcceptedVocabulary(
+function decisionsToUsableVocabulary(
   decisions: Record<string, VocabularyDecision[]>,
 ): PackFacetVocabulary["facets"] {
   const facets: PackFacetVocabulary["facets"] = {};
   for (const [facet, values] of Object.entries(decisions)) {
-    const accepted = values.filter((value) => value.state === "accepted");
-    if (accepted.length === 0) continue;
+    const usable = values.filter((value) => isUsableVocabularyState(value.state));
+    if (usable.length === 0) continue;
     facets[facet] = { values: {} };
-    for (const value of accepted) {
+    for (const value of usable) {
       const entry: VocabularyValue = {
         label: value.label,
         origin: value.origin,
-        state: "accepted",
+        state: value.state,
         confidence: value.confidence,
         ...(value.aliases?.length ? { aliases: value.aliases } : {}),
         ...(value.description ? { description: value.description } : {}),
@@ -1159,18 +1257,13 @@ function curatedToCandidate(facet: VocabularyFacetId, curated: CuratedValue): Pa
     reasons: ["model-synthesized value not present as a context record id"],
   };
 }
-function normalizeScopedResourceId(
-  id: string,
-  packId: string,
-  fallback: "namespace" | "pack",
-): string | null {
+function normalizeVocabularyValueId(id: string): string | null {
   const split = splitResourceLocation(id);
   if (!split) {
     const token = tokenPath(id);
-    return token ? `pack:${packId}/${token}` : null;
+    return token;
   }
   const path = tokenPath(split.path);
   if (!path) return null;
-  if (fallback === "pack") return `pack:${packId}/${path}`;
   return `${split.namespace}:${path}`;
 }

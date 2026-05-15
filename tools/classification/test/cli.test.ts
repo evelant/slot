@@ -32,21 +32,6 @@ describe("cli option validation", () => {
     expect(result.stderr.toString()).toContain("--batch-size must be a positive integer");
   });
 
-  test("rejects retry thresholds outside the confidence range", () => {
-    const result = runCli([
-      "classify",
-      "--mod",
-      "minecraft",
-      "--source",
-      "does-not-matter",
-      "--retry-threshold",
-      "2",
-    ]);
-
-    expect(result.exitCode).not.toBe(0);
-    expect(result.stderr.toString()).toContain("--retry-threshold must be a number between 0 and 1");
-  });
-
   test("rejects zero mod concurrency instead of silently clamping it", () => {
     const result = runCli(["classify-modpack", "missing.json", "--mod-concurrency", "0"]);
 
@@ -67,7 +52,7 @@ describe("cli option validation", () => {
     expect(result.stderr.toString()).toContain("--max-candidates-per-prompt must be a positive integer");
   });
 
-  test("validate-vocabulary accepts scoped pack vocabulary artifacts", () => {
+  test("validate-vocabulary accepts simple facet-scoped vocabulary artifacts", () => {
     withTempDir((dir) => {
       const vocabularyPath = join(dir, "fixture.facet-vocabulary.json");
       writeFileSync(vocabularyPath, JSON.stringify({
@@ -77,16 +62,16 @@ describe("cli option validation", () => {
         facets: {
           activity: {
             values: {
-              "slot:cooking": {
+              "cooking": {
                 label: "Cooking",
-                origin: "universal_default",
+                origin: "built_in",
                 state: "accepted",
               },
             },
           },
           workflow: {
             values: {
-              "pack:fixture/steelmaking": {
+              "steelmaking": {
                 label: "Steelmaking",
                 origin: "pack_generated",
                 state: "accepted",
@@ -123,7 +108,7 @@ describe("cli option validation", () => {
           item: "createaddition:copper_wire",
           facet: "material_process_stage",
           label: "Wire",
-          proposed_id: "slot:wire",
+          proposed_id: "wire",
           rationale: "Common material form missing from the vocabulary.",
         },
       ]));
@@ -144,7 +129,7 @@ describe("cli option validation", () => {
       const updated = JSON.parse(readFileSync(outPath, "utf8")) as {
         facets?: Record<string, { values?: Record<string, { state?: string; origin?: string; seed_items?: string[] }> }>;
       };
-      expect(updated.facets?.material_process_stage?.values?.["slot:wire"]).toMatchObject({
+      expect(updated.facets?.material_process_stage?.values?.["wire"]).toMatchObject({
         state: "accepted",
         origin: "manual",
         seed_items: ["createaddition:copper_wire"],
@@ -154,7 +139,7 @@ describe("cli option validation", () => {
       };
       expect(reviewed.decisions?.[0]).toMatchObject({
         decision: "approve",
-        approved_id: "slot:wire",
+        approved_id: "wire",
       });
     });
   });
@@ -205,6 +190,50 @@ description="fixture"
       expect(layer.metadata?.input?.source_kind).toBe("jar");
       expect(layer.metadata?.input?.file_name).toBe("example.jar");
       expect(layer.entries?.["example:gear"]).toBeDefined();
+    });
+  });
+
+  test("classify-folder default classification runs stage 3 dry-run without requiring stage 2", () => {
+    withTempDir((dir) => {
+      const mods = join(dir, "mods");
+      const out = join(dir, "out");
+      mkdirSync(mods, { recursive: true });
+      writeZip(join(mods, "example.jar"), {
+        "META-INF/mods.toml": `
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+[[mods]]
+modId="example"
+version="1.0.0"
+displayName="Example"
+description="fixture"
+`,
+        "assets/example/lang/en_us.json": JSON.stringify({
+          "item.example.gear": "Gear",
+        }),
+        "assets/example/models/item/gear.json": JSON.stringify({
+          parent: "minecraft:item/generated",
+        }),
+      });
+
+      const result = runCli([
+        "classify-folder",
+        "--mods",
+        mods,
+        "--out",
+        out,
+        "--mod",
+        "example",
+        "--dry-run",
+        "--force",
+      ]);
+
+      expect(result.exitCode).toBe(0);
+      expect(result.stdout.toString()).toContain("[stage3] dry run");
+      expect(existsSync(join(out, "example.items.ndjson"))).toBe(true);
+      expect(existsSync(join(out, "example.facets.partial.json"))).toBe(false);
+      expect(existsSync(join(out, "stage3-dry-run", "batch-01.system.md"))).toBe(true);
     });
   });
 
@@ -503,6 +532,98 @@ description="fixture"
     });
   });
 
+  test("refine-pack-facet-vocabulary writes multi-round dry-run prompts with item samples", () => {
+    withTempDir((dir) => {
+      const evidencePath = join(dir, "fixture.facet-evidence.json");
+      const out = join(dir, "out");
+      writeFileSync(evidencePath, JSON.stringify({
+        schema_version: 1,
+        kind: "slot-pack-facet-evidence",
+        pack_id: "fixture",
+        generated_by: "test",
+        generated_at: "2026-05-14T00:00:00.000Z",
+        source: { runtime_items: "fixture.runtime-items.ndjson", item_count: 2 },
+        records: [
+          {
+            kind: "runtime_item",
+            id: "example:copper_gear",
+            label: "Copper Gear",
+            namespace: "example",
+            source: "runtime-items",
+            confidence: 1,
+            tags: ["c:gears"],
+            direct_tags: ["c:gears"],
+            item_refs: ["example:copper_gear"],
+            recipe_roles: {
+              in_degree: 2,
+              out_degree: 1,
+              ingredient_types: { "example:assembling": 2 },
+              output_types: { "example:pressing": 1 },
+              ingredient_examples: ["example:shaft"],
+              output_examples: ["example:copper_gear"],
+            },
+            semantic_text: [{ source: "runtime-tooltip", text: "Mechanical gear used in small machines." }],
+          },
+          {
+            kind: "runtime_item",
+            id: "example:apple_pie",
+            label: "Apple Pie",
+            namespace: "example",
+            source: "runtime-items",
+            confidence: 1,
+            tags: ["c:foods"],
+            direct_tags: ["c:foods"],
+            item_refs: ["example:apple_pie"],
+          },
+          {
+            kind: "recipe_type",
+            id: "example:assembling",
+            label: "Assembling",
+            namespace: "example",
+            source: "runtime-summary",
+            confidence: 0.85,
+            count: 4,
+            item_refs: ["example:copper_gear"],
+          },
+        ],
+        diagnostics: [],
+      }));
+
+      const result = runCli([
+        "refine-pack-facet-vocabulary",
+        "--evidence",
+        evidencePath,
+        "--facet",
+        "workflow",
+        "--rounds",
+        "2",
+        "--item-sample-size",
+        "2",
+        "--out",
+        out,
+        "--dry-run",
+        "--force",
+      ]);
+
+      expect(result.exitCode).toBe(0);
+      const dryRunDir = join(out, "fixture.facet-vocabulary-loop-dry-run");
+      expect(existsSync(join(dryRunDir, "round-01", "workflow.user.json"))).toBe(true);
+      expect(existsSync(join(dryRunDir, "round-02", "workflow.user.json"))).toBe(true);
+      const user = JSON.parse(readFileSync(join(dryRunDir, "round-01", "workflow.user.json"), "utf8")) as {
+        pack_item_overview?: { runtime_item_sample?: unknown[] };
+      };
+      expect(user.pack_item_overview?.runtime_item_sample).toHaveLength(2);
+      const summary = JSON.parse(readFileSync(join(dryRunDir, "summary.json"), "utf8")) as {
+        kind?: string;
+        rounds?: number;
+        round_summaries?: unknown[];
+      };
+      expect(summary.kind).toBe("slot-pack-facet-vocabulary-loop");
+      expect(summary.rounds).toBe(2);
+      expect(summary.round_summaries).toHaveLength(2);
+    });
+  });
+
   test("review-pack-facet-vocabulary records interactive approvals into classifier vocabulary", () => {
     withTempDir((dir) => {
       const vocabularyPath = join(dir, "fixture.facet-vocabulary.json");
@@ -531,7 +652,7 @@ description="fixture"
           min_evidence: 2,
         },
         summary: {
-          workflow: { accepted: 0, review: 2, rejected: 0, total: 2 },
+          workflow: { accepted: 0, review: 3, rejected: 0, total: 3 },
         },
         decisions: {
           workflow: [
@@ -565,6 +686,21 @@ description="fixture"
                 notes: "",
               },
             },
+            {
+              facet: "workflow",
+              id: "example:watchlisted",
+              label: "Watchlisted",
+              state: "review",
+              description: "Usable by default but still visible for optional review.",
+              rationale: "This verifies skipped review values remain classifier vocabulary.",
+              examples: ["Watchlisted Item"],
+              human_review: {
+                decision: "pending",
+                approved_id: "example:watchlisted",
+                approved_label: "Watchlisted",
+                notes: "",
+              },
+            },
           ],
         },
         diagnostics: [],
@@ -584,12 +720,13 @@ description="fixture"
 
       expect(result.exitCode).toBe(0);
       expect(result.stdout.toString()).toContain("Casting molten materials");
-      expect(result.stdout.toString()).toContain("approved=1, rejected=1");
+      expect(result.stdout.toString()).toContain("approved=1, rejected=1, skipped=1");
       const approved = JSON.parse(readFileSync(outPath, "utf8")) as {
-        facets?: { workflow?: { values?: Record<string, unknown> } };
+        facets?: { workflow?: { values?: Record<string, { state?: string }> } };
       };
       expect(approved.facets?.workflow?.values?.["example:casting"]).toBeDefined();
       expect(approved.facets?.workflow?.values?.["example:single_item"]).toBeUndefined();
+      expect(approved.facets?.workflow?.values?.["example:watchlisted"]?.state).toBe("review");
       const reviewed = JSON.parse(readFileSync(reviewedPath, "utf8")) as {
         decisions?: { workflow?: Array<{ id?: string; human_review?: { decision?: string } }> };
       };

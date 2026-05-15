@@ -4,11 +4,12 @@ Formal specification of how facet values are authored, validated, and merged
 across classification layers. Referenced by:
 
 - [README.md](README.md) — overview of the classification system as a whole
-- [docs/plans/item-classification.md](../../plans/item-classification.md) — the planning document
+- [schema-authoring-rules.md](schema-authoring-rules.md) — how to decide
+  whether a facet may be closed, vocabulary-backed, exact, or free text
 - [tools/classification/layer.schema.json](../../../tools/classification/layer.schema.json) — the canonical JSON Schema that validates layer files
 - [schema-changelog.md](schema-changelog.md) — versioning policy
 
-Eight kinds are defined. `item_ref` / `item_ref_multi` / `numeric` are reserved for
+Eight kinds are defined. `item_ref` / `multi_item_ref` / `numeric` are reserved for
 V2 but the validator recognises them so forward-compatible schemas don't need a
 breaking bump when we activate them.
 
@@ -29,8 +30,14 @@ Validation: `value` ∈ the facet's declared `values` list.
 
 Modes: `replace` (default), `override-if-null`.
 
-Examples: `role`, `rarity`, `frequency`, `form`, `material_family`, `required_tool`,
-`required_tool_tier`, `equip_slot`, `multiblock_role`, `y_level_range`, `dye_color`.
+Examples: `rarity`, `carry_frequency`, `y_level_range`, and `dye_color`.
+
+Do not choose `enum` merely because the first known values are short strings.
+Pack-shaped semantic sets such as roles, forms, origins, stations, tool
+classes, equipment slots, storage kinds, mob interactions, combat bonuses,
+environmental properties, transport media, and multiblock roles should be
+vocabulary-backed unless the schema authoring audit explicitly scopes them to a
+narrow SLOT-owned or vanilla-only meaning.
 
 ### `multi_enum` — multiple values from a closed set
 
@@ -39,7 +46,7 @@ Facet declares a list of allowed values. Zero or more values per entry.
 Wire format:
 
 ```json
-"flavor": { "values": ["mechanical", "colored"], "mode": "add" }
+"<closed_multi_facet>": { "values": ["value_a", "value_b"], "mode": "add" }
 ```
 
 Validation: every string in `values` ∈ the facet's declared set. Duplicates within
@@ -47,9 +54,12 @@ the same `values` list are an error.
 
 Modes: `replace`, `add` (default), `remove`.
 
-Examples: `origin`, `flavor`, `palette`, `storage_categories`,
-`material_secondary`, `spawn_interaction`, `combat_bonus`, `environmental_property`,
-`transport_medium`.
+Examples: none in the current semantic schema unless a future narrow SLOT-owned
+multi-value scale is deliberately added.
+
+Existing `multi_enum` facets are not automatically valid closed sets. If a mod
+can add a valid value, migrate the facet to vocabulary-backed
+`multi_free_text`.
 
 ### `free_text` — single string matching a regex
 
@@ -59,15 +69,15 @@ entry, or absent.
 Wire format:
 
 ```json
-"tier": { "value": "mekanism:advanced", "mode": "replace" }
+"tier": { "value": "advanced", "mode": "replace" }
 ```
 
-Validation: `value` matches the facet's declared `pattern`. Standard pattern for
-namespace-scoped values: `^[a-z0-9_]+(:[a-z0-9_]+)?$`.
+Validation: `value` matches the facet's declared `pattern`.
 
 Modes: `replace` (default), `override-if-null`.
 
-Examples: `tier`, `mod_namespace`.
+Examples: `mod_namespace`, or a vocabulary-backed scalar facet such as
+`tier`.
 
 ### `multi_free_text` — multiple strings each matching a regex
 
@@ -76,7 +86,7 @@ Same validation as `free_text` applied element-wise to a list.
 Wire format:
 
 ```json
-"mod_subsystem": { "values": ["create:trains", "create:logistics"], "mode": "add" }
+"mod_subsystem": { "values": ["trains", "logistics"], "mode": "add" }
 ```
 
 Modes: `replace`, `add` (default), `remove`.
@@ -87,21 +97,23 @@ phrases), `biome`, `produces_effect`, `multiblock_component_of`.
 
 ### Vocabulary-backed values
 
-Most semantic `multi_free_text` facets are backed by a pack vocabulary
-artifact. The registry validates shape; `out/<pack>.facet-vocabulary.json`
-validates which values are accepted for that pack.
+Most semantic free-text facets are backed by a pack vocabulary artifact. The
+registry validates shape; `out/<pack>.facet-vocabulary.json` supplies grounding
+values for that pack. Values marked `review` in the vocabulary are still usable
+by default; the marker is a watchlist/debugging signal, not a rejection.
 
 Canonical value-id forms:
 
 ```text
-slot:<token>
-<mod_namespace>:<token_path>
-pack:<pack_id>/<token_path>
+<token>
+<resource_namespace>:<token_path>
 <workflow_value_id>#<role_token>
 ```
 
-`token` is lowercase snake case and starts with a letter. `workflow_role` uses
-the scoped `#role` form, for example `pack:tfg2/steelmaking#input`.
+`token` is lowercase snake case and starts with a letter. Use
+namespace-qualified values only when the value is a real registry/resource id,
+such as a station, status effect, multiblock, or biome id. `workflow_role` uses
+the scoped `#role` form, for example `steelmaking#input`.
 
 ### `boolean` — true/false
 
@@ -113,7 +125,9 @@ Wire format:
 "is_fuel": { "value": true, "mode": "replace" }
 ```
 
-Most booleans are derived at extraction time, not authored by hand.
+Boolean entries may be exact runtime facts, LLM judgments, or both. Code-derived
+boolean evidence is advisory for LLM-authored facets unless the facet is
+documented as an exact runtime fact.
 
 Modes: `replace` (default). `override-if-null` is not meaningful here — absence and
 false are indistinguishable.
@@ -158,7 +172,7 @@ Modes: `replace` (default), `override-if-null`.
 Examples: none in V1. Reserved for V2 facets like `grows_from`, `grows_into`,
 `parent_item`, `charges_with`.
 
-### `item_ref_multi` — multiple item ids (reserved)
+### `multi_item_ref` — multiple item ids (reserved)
 
 Multi-value form of `item_ref`.
 
@@ -181,23 +195,20 @@ Modes: `replace`, `add` (default), `remove`.
 | `boolean` | single | false | `replace` |
 | `numeric` | single | null | `replace` |
 | `item_ref` | single | null | `replace` |
-| `item_ref_multi` | multi | empty list | `add` |
+| `multi_item_ref` | multi | empty list | `add` |
 
-## Facet declaration (schema v1 format)
+## Facet declaration (live registry format)
 
-Each facet is declared in `schema.v1.json`:
+Each facet is declared in
+[`FACETS`](../../../tools/classification/src/schema/facets.ts):
 
 ```json
 {
-  "id": "role",
+  "id": "carry_frequency",
   "kind": "enum",
-  "description": "The fundamental kind of thing.",
-  "values": [
-    "material", "natural_resource", "building_block", "decorative_block",
-    "functional_block", "storage_block", "mechanism", "redstone_component",
-    "tool", "weapon", "armor", "consumable", "ammunition", "transport",
-    "container_portable", "utility", "curiosity", "upgrade", "trophy", "admin"
-  ]
+  "description": "How often this item lives in a player's carried inventory.",
+  "values": ["everyday", "frequent", "occasional", "rare", "display_only"],
+  "llm_authored": true
 }
 ```
 
@@ -205,10 +216,12 @@ For free-text kinds, replace `values` with `pattern`:
 
 ```json
 {
-  "id": "tier",
+  "id": "role",
   "kind": "free_text",
-  "description": "Progression tier (vanilla or mod-specific).",
-  "pattern": "^[a-z0-9_]+(:[a-z0-9_]+)?$"
+  "description": "Vocabulary-backed player-recognized item role.",
+  "pattern": "VOCABULARY_VALUE_ID_PATTERN",
+  "llm_authored": true,
+  "vocabulary_backed": true
 }
 ```
 
@@ -232,22 +245,30 @@ For booleans:
   "id": "is_fuel",
   "kind": "boolean",
   "description": "Burns in a furnace.",
-  "derived": true
+  "deterministic": true,
+  "llm_authored": true
 }
 ```
 
-Optional common fields across all kinds:
+Live registry metadata fields:
 
-- `deprecated: true` — retained for compatibility, not emitted by new pipeline runs.
-- `llm_authored: true` — hint for stage 3 that this facet needs LLM judgement.
-- `runtime_derivable: true` — hint that the runtime-crawl layer can fill this.
-- `applies_when: "<dsl>"` — optional precondition (e.g. `role in (tool, weapon, armor)` for `tier`). Purely advisory.
+- `llm_authored: true` — Stage 3 targets this facet for LLM judgment when the
+  caller includes it.
+- `vocabulary_backed: true` — usable values come from the pack vocabulary
+  artifact; unlisted useful values may be kept with `vocab_review: true`.
+- `deterministic: true` — exact/reference code may fill this facet for
+  diagnostics or raw facts. Do not use this flag to make semantic guesses
+  authoritative over LLM classification.
+- `examples: [...]` — prompt examples for non-vocabulary facets, or small shape
+  hints. Vocabulary-backed facets should receive their usable values from the
+  pack vocabulary artifact, not from examples.
 
 ## Cross-layer merge rules
 
 Given `(item, facet)` and a sequence of layers asserting entries:
 
-1. Walk layers lowest → highest priority. See [layer order](../../plans/item-classification.md#layer-order-lowest-priority-first).
+1. Walk layers lowest → highest priority: bundled vanilla, bundled per-mod,
+   datapack/modpack, server, then player.
 2. For each entry in priority order, apply its `mode` against the accumulating state:
    - `replace` — new value replaces accumulating value (single) or list (multi).
    - `add` — union new values into accumulating list (multi only).
@@ -261,13 +282,16 @@ Given `(item, facet)` and a sequence of layers asserting entries:
 - `mode` doesn't match kind (e.g. `add` on a single-value facet): entry rejected, rest of layer accepted.
 - Value fails kind-specific validation (bad enum value, regex mismatch, out-of-range number): entry rejected.
 
-### LLM-authored facet provenance
+### LLM-authored facet metadata
 
-Every entry produced by stage 3 of the pipeline also carries `confidence` (0–1),
-`rationale` (free text), `source` (e.g. `llm:haiku-4.5`), and optionally
-`ambiguous: true` (when the model emitted multiple low-confidence candidates for
-a single-value facet — see [LLM ambiguity policy](../../plans/item-classification.md#stage-3--llm-assisted-completion)).
+Current LLM classification output always gets `source: "llm:stage3"` when it is
+written into a layer. It may also carry:
 
-These fields are metadata and don't affect merge semantics, but they are preserved
-all the way to the runtime `FacetIndex` so debug tooling can explain *why* an item
-is where it is.
+- `rationale` for non-obvious choices or unlisted vocabulary values
+- `vocab_review: true` when a vocabulary-backed facet uses an unlisted value
+- `ambiguous: true` only for a single-value facet where the model intentionally
+  emitted two possible values
+
+`confidence` and `signal` are not classification contract fields. Legacy model
+responses may still contain them, but the parser ignores those keys and layer
+JSON must not write them.

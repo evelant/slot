@@ -20,8 +20,10 @@ out/
 .env
 
 # Classification replay intermediates. Archive result artifacts stay tracked;
-# prompt/response captures are generated scratch unless force-added.
+# prompt/response captures and archive replay shards are generated scratch
+# unless force-added.
 tools/classification/**/fixtures/**/*.prompt.md
 tools/classification/**/fixtures/**/*.system.md
 tools/classification/**/fixtures/**/*.user.md
 tools/classification/**/fixtures/**/*.response.json
+tools/classification/archives/**/fixtures/

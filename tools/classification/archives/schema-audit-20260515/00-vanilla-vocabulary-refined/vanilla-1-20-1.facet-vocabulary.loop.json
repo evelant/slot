@@ -1,0 +1,1531 @@
+{
+  "schema_version": 1,
+  "kind": "slot-pack-facet-vocabulary-loop",
+  "pack_id": "vanilla-1-20-1",
+  "generated_by": "slot-classify v0.1.0",
+  "generated_at": "2026-05-15T04:06:20.066Z",
+  "evidence": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary/vanilla-1-20-1.facet-evidence.json",
+  "model": "deepseek/deepseek-v4-flash",
+  "rounds": 5,
+  "item_sample_size": 1536,
+  "item_sample_mode": "coverage",
+  "item_sample_seed": null,
+  "facets": "all",
+  "namespaces": "all",
+  "round_summaries": [
+    {
+      "round": 1,
+      "item_sample_seed": "vanilla-1-20-1:vocabulary-loop:round-01",
+      "usable_total": 227,
+      "accepted_total": 227,
+      "review_total": 9,
+      "rejected_total": 2,
+      "usable_by_facet": {
+        "activity": 12,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 45,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9
+      },
+      "accepted_by_facet": {
+        "activity": 12,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 45,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9
+      },
+      "review_by_facet": {
+        "activity": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "biome": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "combat_bonus": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "container_state": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "environmental_property": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "equip_slot": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "equipment_effect": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "food_category": {
+          "accepted": 7,
+          "review": 2,
+          "rejected": 0,
+          "total": 9
+        },
+        "food_use": {
+          "accepted": 5,
+          "review": 1,
+          "rejected": 0,
+          "total": 6
+        },
+        "form": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "loadout_context": {
+          "accepted": 7,
+          "review": 0,
+          "rejected": 0,
+          "total": 7
+        },
+        "material_family": {
+          "accepted": 44,
+          "review": 1,
+          "rejected": 0,
+          "total": 45
+        },
+        "material_process_stage": {
+          "accepted": 14,
+          "review": 0,
+          "rejected": 0,
+          "total": 14
+        },
+        "material_secondary": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "mod_subsystem": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_component_of": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_role": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "organization_group": {
+          "accepted": 34,
+          "review": 4,
+          "rejected": 0,
+          "total": 38
+        },
+        "origin": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "preparation_state": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "produces_effect": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "progression_stage": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "protection_context": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "required_tool": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "required_tool_tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "role": {
+          "accepted": 11,
+          "review": 0,
+          "rejected": 0,
+          "total": 11
+        },
+        "spawn_interaction": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "stock_profile": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "storage_categories": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "transport_medium": {
+          "accepted": 3,
+          "review": 0,
+          "rejected": 0,
+          "total": 3
+        },
+        "use_affordance": {
+          "accepted": 9,
+          "review": 0,
+          "rejected": 0,
+          "total": 9
+        },
+        "used_at": {
+          "accepted": 13,
+          "review": 0,
+          "rejected": 1,
+          "total": 14
+        },
+        "workflow": {
+          "accepted": 8,
+          "review": 1,
+          "rejected": 1,
+          "total": 10
+        },
+        "workflow_role": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        }
+      },
+      "working_values_by_facet": {
+        "activity": 12,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 45,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 14,
+        "workflow": 10
+      },
+      "vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-01.json",
+      "review": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-01.review.json",
+      "working_vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-01.working.json"
+    },
+    {
+      "round": 2,
+      "item_sample_seed": "vanilla-1-20-1:vocabulary-loop:round-02",
+      "usable_total": 246,
+      "accepted_total": 246,
+      "review_total": 14,
+      "rejected_total": 2,
+      "usable_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 46,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9,
+        "workflow_role": 16
+      },
+      "accepted_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 46,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9,
+        "workflow_role": 16
+      },
+      "review_by_facet": {
+        "activity": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "biome": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "combat_bonus": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "container_state": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "environmental_property": {
+          "accepted": 2,
+          "review": 0,
+          "rejected": 0,
+          "total": 2
+        },
+        "equip_slot": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "equipment_effect": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "food_category": {
+          "accepted": 7,
+          "review": 2,
+          "rejected": 0,
+          "total": 9
+        },
+        "food_use": {
+          "accepted": 5,
+          "review": 1,
+          "rejected": 0,
+          "total": 6
+        },
+        "form": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "loadout_context": {
+          "accepted": 7,
+          "review": 0,
+          "rejected": 0,
+          "total": 7
+        },
+        "material_family": {
+          "accepted": 46,
+          "review": 0,
+          "rejected": 0,
+          "total": 46
+        },
+        "material_process_stage": {
+          "accepted": 14,
+          "review": 0,
+          "rejected": 0,
+          "total": 14
+        },
+        "material_secondary": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "mod_subsystem": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_component_of": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_role": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "organization_group": {
+          "accepted": 34,
+          "review": 4,
+          "rejected": 0,
+          "total": 38
+        },
+        "origin": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "preparation_state": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "produces_effect": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "progression_stage": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "protection_context": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "required_tool": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "required_tool_tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "role": {
+          "accepted": 11,
+          "review": 0,
+          "rejected": 0,
+          "total": 11
+        },
+        "spawn_interaction": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "stock_profile": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "storage_categories": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "transport_medium": {
+          "accepted": 3,
+          "review": 0,
+          "rejected": 0,
+          "total": 3
+        },
+        "use_affordance": {
+          "accepted": 9,
+          "review": 0,
+          "rejected": 0,
+          "total": 9
+        },
+        "used_at": {
+          "accepted": 13,
+          "review": 0,
+          "rejected": 1,
+          "total": 14
+        },
+        "workflow": {
+          "accepted": 8,
+          "review": 1,
+          "rejected": 1,
+          "total": 10
+        },
+        "workflow_role": {
+          "accepted": 10,
+          "review": 6,
+          "rejected": 0,
+          "total": 16
+        }
+      },
+      "working_values_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 46,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 14,
+        "workflow": 10,
+        "workflow_role": 16
+      },
+      "vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-02.json",
+      "review": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-02.review.json",
+      "working_vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-02.working.json"
+    },
+    {
+      "round": 3,
+      "item_sample_seed": "vanilla-1-20-1:vocabulary-loop:round-03",
+      "usable_total": 247,
+      "accepted_total": 247,
+      "review_total": 7,
+      "rejected_total": 2,
+      "usable_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 47,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9,
+        "workflow_role": 16
+      },
+      "accepted_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 47,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9,
+        "workflow_role": 16
+      },
+      "review_by_facet": {
+        "activity": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "biome": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "combat_bonus": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "container_state": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "environmental_property": {
+          "accepted": 2,
+          "review": 0,
+          "rejected": 0,
+          "total": 2
+        },
+        "equip_slot": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "equipment_effect": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "food_category": {
+          "accepted": 7,
+          "review": 2,
+          "rejected": 0,
+          "total": 9
+        },
+        "food_use": {
+          "accepted": 5,
+          "review": 1,
+          "rejected": 0,
+          "total": 6
+        },
+        "form": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "loadout_context": {
+          "accepted": 7,
+          "review": 0,
+          "rejected": 0,
+          "total": 7
+        },
+        "material_family": {
+          "accepted": 47,
+          "review": 0,
+          "rejected": 0,
+          "total": 47
+        },
+        "material_process_stage": {
+          "accepted": 14,
+          "review": 0,
+          "rejected": 0,
+          "total": 14
+        },
+        "material_secondary": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "mod_subsystem": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_component_of": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_role": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "organization_group": {
+          "accepted": 35,
+          "review": 3,
+          "rejected": 0,
+          "total": 38
+        },
+        "origin": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "preparation_state": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "produces_effect": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "progression_stage": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "protection_context": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "required_tool": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "required_tool_tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "role": {
+          "accepted": 11,
+          "review": 0,
+          "rejected": 0,
+          "total": 11
+        },
+        "spawn_interaction": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "stock_profile": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "storage_categories": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "transport_medium": {
+          "accepted": 3,
+          "review": 0,
+          "rejected": 0,
+          "total": 3
+        },
+        "use_affordance": {
+          "accepted": 9,
+          "review": 0,
+          "rejected": 0,
+          "total": 9
+        },
+        "used_at": {
+          "accepted": 13,
+          "review": 0,
+          "rejected": 1,
+          "total": 14
+        },
+        "workflow": {
+          "accepted": 8,
+          "review": 1,
+          "rejected": 1,
+          "total": 10
+        },
+        "workflow_role": {
+          "accepted": 16,
+          "review": 0,
+          "rejected": 0,
+          "total": 16
+        }
+      },
+      "working_values_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 47,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 14,
+        "workflow": 10,
+        "workflow_role": 16
+      },
+      "vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-03.json",
+      "review": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-03.review.json",
+      "working_vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-03.working.json"
+    },
+    {
+      "round": 4,
+      "item_sample_seed": "vanilla-1-20-1:vocabulary-loop:round-04",
+      "usable_total": 245,
+      "accepted_total": 245,
+      "review_total": 4,
+      "rejected_total": 4,
+      "usable_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 7,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 47,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9,
+        "workflow_role": 16
+      },
+      "accepted_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 7,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 47,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9,
+        "workflow_role": 16
+      },
+      "review_by_facet": {
+        "activity": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "biome": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "combat_bonus": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "container_state": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "environmental_property": {
+          "accepted": 2,
+          "review": 0,
+          "rejected": 0,
+          "total": 2
+        },
+        "equip_slot": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "equipment_effect": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "food_category": {
+          "accepted": 7,
+          "review": 0,
+          "rejected": 2,
+          "total": 9
+        },
+        "food_use": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "form": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "loadout_context": {
+          "accepted": 7,
+          "review": 0,
+          "rejected": 0,
+          "total": 7
+        },
+        "material_family": {
+          "accepted": 47,
+          "review": 0,
+          "rejected": 0,
+          "total": 47
+        },
+        "material_process_stage": {
+          "accepted": 14,
+          "review": 0,
+          "rejected": 0,
+          "total": 14
+        },
+        "material_secondary": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "mod_subsystem": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_component_of": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_role": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "organization_group": {
+          "accepted": 34,
+          "review": 4,
+          "rejected": 0,
+          "total": 38
+        },
+        "origin": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "preparation_state": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "produces_effect": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "progression_stage": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "protection_context": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "required_tool": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "required_tool_tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "role": {
+          "accepted": 11,
+          "review": 0,
+          "rejected": 0,
+          "total": 11
+        },
+        "spawn_interaction": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "stock_profile": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "storage_categories": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "transport_medium": {
+          "accepted": 3,
+          "review": 0,
+          "rejected": 0,
+          "total": 3
+        },
+        "use_affordance": {
+          "accepted": 9,
+          "review": 0,
+          "rejected": 0,
+          "total": 9
+        },
+        "used_at": {
+          "accepted": 13,
+          "review": 0,
+          "rejected": 1,
+          "total": 14
+        },
+        "workflow": {
+          "accepted": 9,
+          "review": 0,
+          "rejected": 1,
+          "total": 10
+        },
+        "workflow_role": {
+          "accepted": 16,
+          "review": 0,
+          "rejected": 0,
+          "total": 16
+        }
+      },
+      "working_values_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 47,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 14,
+        "workflow": 10,
+        "workflow_role": 16
+      },
+      "vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-04.json",
+      "review": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-04.review.json",
+      "working_vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-04.working.json"
+    },
+    {
+      "round": 5,
+      "item_sample_seed": "vanilla-1-20-1:vocabulary-loop:round-05",
+      "usable_total": 247,
+      "accepted_total": 247,
+      "review_total": 6,
+      "rejected_total": 4,
+      "usable_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 7,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 47,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9,
+        "workflow_role": 18
+      },
+      "accepted_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 7,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 47,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 13,
+        "workflow": 9,
+        "workflow_role": 18
+      },
+      "review_by_facet": {
+        "activity": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "biome": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "combat_bonus": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "container_state": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "environmental_property": {
+          "accepted": 2,
+          "review": 0,
+          "rejected": 0,
+          "total": 2
+        },
+        "equip_slot": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "equipment_effect": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "food_category": {
+          "accepted": 7,
+          "review": 0,
+          "rejected": 2,
+          "total": 9
+        },
+        "food_use": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "form": {
+          "accepted": 12,
+          "review": 0,
+          "rejected": 0,
+          "total": 12
+        },
+        "loadout_context": {
+          "accepted": 7,
+          "review": 0,
+          "rejected": 0,
+          "total": 7
+        },
+        "material_family": {
+          "accepted": 47,
+          "review": 0,
+          "rejected": 0,
+          "total": 47
+        },
+        "material_process_stage": {
+          "accepted": 14,
+          "review": 0,
+          "rejected": 0,
+          "total": 14
+        },
+        "material_secondary": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "mod_subsystem": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_component_of": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "multiblock_role": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "organization_group": {
+          "accepted": 34,
+          "review": 4,
+          "rejected": 0,
+          "total": 38
+        },
+        "origin": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "preparation_state": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "produces_effect": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "progression_stage": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "protection_context": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "required_tool": {
+          "accepted": 5,
+          "review": 0,
+          "rejected": 0,
+          "total": 5
+        },
+        "required_tool_tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "role": {
+          "accepted": 11,
+          "review": 0,
+          "rejected": 0,
+          "total": 11
+        },
+        "spawn_interaction": {
+          "accepted": 1,
+          "review": 0,
+          "rejected": 0,
+          "total": 1
+        },
+        "stock_profile": {
+          "accepted": 4,
+          "review": 0,
+          "rejected": 0,
+          "total": 4
+        },
+        "storage_categories": {
+          "accepted": 0,
+          "review": 0,
+          "rejected": 0,
+          "total": 0
+        },
+        "tier": {
+          "accepted": 6,
+          "review": 0,
+          "rejected": 0,
+          "total": 6
+        },
+        "transport_medium": {
+          "accepted": 3,
+          "review": 0,
+          "rejected": 0,
+          "total": 3
+        },
+        "use_affordance": {
+          "accepted": 9,
+          "review": 0,
+          "rejected": 0,
+          "total": 9
+        },
+        "used_at": {
+          "accepted": 13,
+          "review": 0,
+          "rejected": 1,
+          "total": 14
+        },
+        "workflow": {
+          "accepted": 9,
+          "review": 0,
+          "rejected": 1,
+          "total": 10
+        },
+        "workflow_role": {
+          "accepted": 16,
+          "review": 2,
+          "rejected": 0,
+          "total": 18
+        }
+      },
+      "working_values_by_facet": {
+        "activity": 12,
+        "environmental_property": 2,
+        "equip_slot": 6,
+        "equipment_effect": 4,
+        "food_category": 9,
+        "food_use": 6,
+        "form": 12,
+        "loadout_context": 7,
+        "material_family": 47,
+        "material_process_stage": 14,
+        "organization_group": 38,
+        "preparation_state": 5,
+        "produces_effect": 1,
+        "protection_context": 1,
+        "required_tool": 5,
+        "required_tool_tier": 6,
+        "role": 11,
+        "spawn_interaction": 1,
+        "stock_profile": 4,
+        "tier": 6,
+        "transport_medium": 3,
+        "use_affordance": 9,
+        "used_at": 14,
+        "workflow": 10,
+        "workflow_role": 18
+      },
+      "vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-05.json",
+      "review": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-05.review.json",
+      "working_vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-05.working.json"
+    }
+  ]
+}

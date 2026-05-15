@@ -17,11 +17,20 @@ function tinyVocabulary(): PackFacetVocabulary {
     pack_id: "fixture_pack",
     generated_by: "slot-classify v0.1.0",
     facets: {
+      role: {
+        values: {
+          material: {
+            label: "Material",
+            origin: "pack_generated",
+            state: "accepted",
+          },
+        },
+      },
       activity: {
         values: {
-          "slot:cooking": {
+          "cooking": {
             label: "Cooking",
-            origin: "universal_default",
+            origin: "built_in",
             state: "accepted",
             confidence: 0.9,
           },
@@ -29,35 +38,54 @@ function tinyVocabulary(): PackFacetVocabulary {
       },
       workflow: {
         values: {
-          "pack:fixture_pack/steelmaking": {
+          "steelmaking": {
             label: "Steelmaking",
             aliases: ["steel chain"],
             origin: "pack_generated",
             state: "accepted",
             evidence: [{ kind: "recipe_type", id: "gtceu:alloy_smelter", confidence: 0.8 }],
             seed_items: ["gtceu:steel_ingot"],
-            related_activity: ["slot:cooking"],
-            default_organization_group: "pack:fixture_pack/steelmaking",
+            related_activity: ["cooking"],
+            default_organization_group: "steelmaking",
             confidence: 0.85,
           },
         },
       },
       workflow_role: {
         values: {
-          "pack:fixture_pack/steelmaking#input": {
+          "steelmaking#input": {
             label: "Steelmaking input",
             origin: "pack_generated",
             state: "accepted",
-            parent: "pack:fixture_pack/steelmaking",
+            parent: "steelmaking",
           },
         },
       },
       organization_group: {
         values: {
-          "pack:fixture_pack/steelmaking": {
+          "steelmaking": {
             label: "Steelmaking",
             origin: "pack_generated",
             state: "accepted",
+          },
+        },
+      },
+      material_family: {
+        values: {
+          iron: {
+            label: "Iron",
+            origin: "pack_generated",
+            state: "accepted",
+          },
+          brass: {
+            label: "Brass",
+            origin: "pack_generated",
+            state: "review",
+          },
+          copper: {
+            label: "Copper",
+            origin: "pack_generated",
+            state: "rejected",
           },
         },
       },
@@ -74,10 +102,11 @@ function tinyLayer() {
       "gtceu:steel_ingot": {
         facets: {
           role: { value: "material" },
-          activity: { values: ["slot:cooking"] },
-          workflow: { values: ["pack:fixture_pack/steelmaking"] },
-          workflow_role: { values: ["pack:fixture_pack/steelmaking#input"] },
-          organization_group: { values: ["pack:fixture_pack/steelmaking"] },
+          material_family: { value: "iron" },
+          activity: { values: ["cooking"] },
+          workflow: { values: ["steelmaking"] },
+          workflow_role: { values: ["steelmaking#input"] },
+          organization_group: { values: ["steelmaking"] },
         },
       },
     },
@@ -85,19 +114,20 @@ function tinyLayer() {
 }
 
 describe("vocabulary id grammar", () => {
-  test("accepts universal, namespace, pack, and scoped workflow-role ids", () => {
-    expect(isVocabularyValueId("slot:cooking")).toBe(true);
+  test("accepts facet-scoped, real namespace, path, and scoped workflow-role ids", () => {
+    expect(isVocabularyValueId("cooking")).toBe(true);
     expect(isVocabularyValueId("create:mechanical_power")).toBe(true);
-    expect(isVocabularyValueId("pack:tfg2/steelmaking")).toBe(true);
-    expect(isVocabularyValueId("pack:tfg2/food/prep")).toBe(true);
-    expect(isScopedVocabularyValueId("pack:tfg2/steelmaking#catalyst")).toBe(true);
+    expect(isVocabularyValueId("steelmaking")).toBe(true);
+    expect(isVocabularyValueId("food/prep")).toBe(true);
+    expect(isScopedVocabularyValueId("steelmaking#catalyst")).toBe(true);
   });
 
-  test("rejects display labels, hyphenated tokens, missing role delimiters, and unscoped ids", () => {
+  test("rejects display labels, artificial provenance scopes, hyphenated tokens, and missing role delimiters", () => {
     expect(isVocabularyValueId("Food Prep")).toBe(false);
-    expect(isVocabularyValueId("pack:tfg2/food-prep")).toBe(false);
-    expect(isVocabularyValueId("cooking")).toBe(false);
-    expect(isScopedVocabularyValueId("pack:tfg2/steelmaking/catalyst")).toBe(false);
+    expect(isVocabularyValueId("slot:cooking")).toBe(false);
+    expect(isVocabularyValueId("pack:tfg2/steelmaking")).toBe(false);
+    expect(isVocabularyValueId("food-prep")).toBe(false);
+    expect(isScopedVocabularyValueId("steelmaking/catalyst")).toBe(false);
   });
 });
 
@@ -106,7 +136,7 @@ describe("layer facet validation", () => {
     expect(validateLayer(tinyLayer()).ok).toBe(true);
   });
 
-  test("rejects unknown facets and malformed vocabulary ids", () => {
+  test("rejects unknown facets and malformed vocabulary values", () => {
     const layer = tinyLayer();
     const facets = layer.entries["gtceu:steel_ingot"].facets as Record<string, unknown>;
     facets.workflow = { values: ["Steelmaking"] };
@@ -117,24 +147,37 @@ describe("layer facet validation", () => {
     expect(result.errors.some((error) => error.includes("fails pattern"))).toBe(true);
   });
 
-  test("validates layer values against accepted vocabulary values", () => {
+  test("validates layer values against usable vocabulary values", () => {
     const vocabulary = tinyVocabulary();
     const layer = tinyLayer();
     expect(validateLayer(layer, { vocabulary }).ok).toBe(true);
 
-    const universalDefault = tinyLayer();
-    universalDefault.entries["gtceu:steel_ingot"].facets.organization_group = {
-      values: ["slot:metal_stock"],
+    const reviewValue = tinyLayer();
+    reviewValue.entries["gtceu:steel_ingot"].facets.material_family = {
+      value: "brass",
     };
-    expect(validateLayer(universalDefault, { vocabulary }).ok).toBe(true);
+    expect(validateLayer(reviewValue, { vocabulary }).ok).toBe(true);
+
+    const missingBuiltIn = tinyLayer();
+    missingBuiltIn.entries["gtceu:steel_ingot"].facets.organization_group = {
+      values: ["metal_stock"],
+    };
+    expect(validateLayer(missingBuiltIn, { vocabulary }).ok).toBe(false);
 
     const rejected = tinyLayer();
-    rejected.entries["gtceu:steel_ingot"].facets.workflow = {
-      values: ["pack:fixture_pack/review_only"],
+    rejected.entries["gtceu:steel_ingot"].facets.material_family = {
+      value: "copper",
     };
     const errors = validateLayerAgainstVocabulary(rejected, vocabulary);
     expect(errors).toHaveLength(1);
-    expect(errors[0]!).toContain("not accepted by vocabulary");
+    expect(errors[0]!).toContain("not usable by vocabulary");
+
+    const reviewMarked = tinyLayer();
+    reviewMarked.entries["gtceu:steel_ingot"].facets.material_family = {
+      value: "copper",
+      vocab_review: true,
+    } as any;
+    expect(validateLayer(reviewMarked, { vocabulary }).ok).toBe(true);
   });
 });
 
@@ -154,11 +197,11 @@ describe("pack facet vocabulary validation", () => {
       state: "accepted",
     };
     facets.not_a_facet = { values: {} };
-    facets.workflow_role!.values["pack:fixture_pack/steelmaking#output"] = {
+    facets.workflow_role!.values["steelmaking#output"] = {
       label: "Wrong parent",
       origin: "pack_generated",
       state: "accepted",
-      parent: "pack:fixture_pack/other",
+      parent: "other",
     };
     const result = validateVocabularyArtifact(vocabulary);
     expect(result.ok).toBe(false);

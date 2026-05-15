@@ -1,0 +1,3340 @@
+{
+  "schema_version": 1,
+  "kind": "slot-pack-facet-vocabulary-review",
+  "pack_id": "vanilla-1-20-1",
+  "generated_by": "slot-classify v0.1.0",
+  "generated_at": "2026-05-15T03:56:56.740Z",
+  "source": {
+    "facet_evidence": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary/vanilla-1-20-1.facet-evidence.json",
+    "runtime_items": "/Users/imagio/dev/mc/slot/tools/classification/datasets/minecraft_runtime/vanilla-1-20-1.runtime-items.ndjson",
+    "runtime_summary": "/Users/imagio/dev/mc/slot/tools/classification/datasets/minecraft_runtime/vanilla-1-20-1.runtime-summary.json",
+    "loader": "forge",
+    "minecraft_version": "1.20.1",
+    "item_count": 1254,
+    "previous_vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-01.working.json"
+  },
+  "model": "deepseek/deepseek-v4-flash",
+  "filters": {
+    "facets": [
+      "activity",
+      "biome",
+      "combat_bonus",
+      "container_state",
+      "environmental_property",
+      "equip_slot",
+      "equipment_effect",
+      "food_category",
+      "food_use",
+      "form",
+      "loadout_context",
+      "material_family",
+      "material_process_stage",
+      "material_secondary",
+      "mod_subsystem",
+      "multiblock_component_of",
+      "multiblock_role",
+      "organization_group",
+      "origin",
+      "preparation_state",
+      "produces_effect",
+      "progression_stage",
+      "protection_context",
+      "required_tool",
+      "required_tool_tier",
+      "role",
+      "spawn_interaction",
+      "stock_profile",
+      "storage_categories",
+      "tier",
+      "transport_medium",
+      "use_affordance",
+      "used_at",
+      "workflow",
+      "workflow_role"
+    ],
+    "namespaces": [],
+    "min_evidence": 2,
+    "previous_vocabulary": "/Users/imagio/dev/mc/slot/tools/classification/archives/schema-audit-20260515/00-vanilla-vocabulary-refined/vanilla-1-20-1.facet-vocabulary-rounds/vanilla-1-20-1.facet-vocabulary.round-01.working.json"
+  },
+  "summary": {
+    "activity": {
+      "accepted": 12,
+      "review": 0,
+      "rejected": 0,
+      "total": 12
+    },
+    "biome": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "combat_bonus": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "container_state": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "environmental_property": {
+      "accepted": 2,
+      "review": 0,
+      "rejected": 0,
+      "total": 2
+    },
+    "equip_slot": {
+      "accepted": 6,
+      "review": 0,
+      "rejected": 0,
+      "total": 6
+    },
+    "equipment_effect": {
+      "accepted": 4,
+      "review": 0,
+      "rejected": 0,
+      "total": 4
+    },
+    "food_category": {
+      "accepted": 7,
+      "review": 2,
+      "rejected": 0,
+      "total": 9
+    },
+    "food_use": {
+      "accepted": 5,
+      "review": 1,
+      "rejected": 0,
+      "total": 6
+    },
+    "form": {
+      "accepted": 12,
+      "review": 0,
+      "rejected": 0,
+      "total": 12
+    },
+    "loadout_context": {
+      "accepted": 7,
+      "review": 0,
+      "rejected": 0,
+      "total": 7
+    },
+    "material_family": {
+      "accepted": 46,
+      "review": 0,
+      "rejected": 0,
+      "total": 46
+    },
+    "material_process_stage": {
+      "accepted": 14,
+      "review": 0,
+      "rejected": 0,
+      "total": 14
+    },
+    "material_secondary": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "mod_subsystem": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "multiblock_component_of": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "multiblock_role": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "organization_group": {
+      "accepted": 34,
+      "review": 4,
+      "rejected": 0,
+      "total": 38
+    },
+    "origin": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "preparation_state": {
+      "accepted": 5,
+      "review": 0,
+      "rejected": 0,
+      "total": 5
+    },
+    "produces_effect": {
+      "accepted": 1,
+      "review": 0,
+      "rejected": 0,
+      "total": 1
+    },
+    "progression_stage": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "protection_context": {
+      "accepted": 1,
+      "review": 0,
+      "rejected": 0,
+      "total": 1
+    },
+    "required_tool": {
+      "accepted": 5,
+      "review": 0,
+      "rejected": 0,
+      "total": 5
+    },
+    "required_tool_tier": {
+      "accepted": 6,
+      "review": 0,
+      "rejected": 0,
+      "total": 6
+    },
+    "role": {
+      "accepted": 11,
+      "review": 0,
+      "rejected": 0,
+      "total": 11
+    },
+    "spawn_interaction": {
+      "accepted": 1,
+      "review": 0,
+      "rejected": 0,
+      "total": 1
+    },
+    "stock_profile": {
+      "accepted": 4,
+      "review": 0,
+      "rejected": 0,
+      "total": 4
+    },
+    "storage_categories": {
+      "accepted": 0,
+      "review": 0,
+      "rejected": 0,
+      "total": 0
+    },
+    "tier": {
+      "accepted": 6,
+      "review": 0,
+      "rejected": 0,
+      "total": 6
+    },
+    "transport_medium": {
+      "accepted": 3,
+      "review": 0,
+      "rejected": 0,
+      "total": 3
+    },
+    "use_affordance": {
+      "accepted": 9,
+      "review": 0,
+      "rejected": 0,
+      "total": 9
+    },
+    "used_at": {
+      "accepted": 13,
+      "review": 0,
+      "rejected": 1,
+      "total": 14
+    },
+    "workflow": {
+      "accepted": 8,
+      "review": 1,
+      "rejected": 1,
+      "total": 10
+    },
+    "workflow_role": {
+      "accepted": 10,
+      "review": 6,
+      "rejected": 0,
+      "total": 16
+    }
+  },
+  "decisions": {
+    "activity": [
+      {
+        "facet": "activity",
+        "id": "brewing",
+        "label": "Brewing",
+        "state": "accepted",
+        "description": "Brewing potions using a brewing stand.",
+        "rationale": "Core player activity supported by potion ingredients.",
+        "examples": [
+          "blaze_powder",
+          "ghast_tear",
+          "nether_wart"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "building",
+        "label": "Building",
+        "state": "accepted",
+        "description": "Constructing and decorating structures.",
+        "rationale": "Covers diverse blocks used for construction.",
+        "examples": [
+          "glass_pane",
+          "oak_planks",
+          "stone"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "combat",
+        "label": "Combat",
+        "state": "accepted",
+        "description": "Fighting mobs and players with weapons and armor.",
+        "rationale": "Weapons and armor are central to combat.",
+        "examples": [
+          "bow",
+          "diamond_sword",
+          "shield"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "cooking",
+        "label": "Cooking",
+        "state": "accepted",
+        "description": "Preparing food through smelting, campfire, or smoking.",
+        "rationale": "Many foods require cooking.",
+        "examples": [
+          "bread",
+          "potato",
+          "raw_beef"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "enchanting",
+        "label": "Enchanting",
+        "state": "accepted",
+        "description": "Enchanting items at an enchanting table.",
+        "rationale": "Lapis lazuli and books are essential.",
+        "examples": [
+          "book",
+          "lapis_lazuli"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "exploration",
+        "label": "Exploration",
+        "state": "accepted",
+        "description": "Travelling and navigating the world.",
+        "rationale": "Items like maps and compasses aid exploration.",
+        "examples": [
+          "compass",
+          "map",
+          "spyglass"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "farming",
+        "label": "Farming",
+        "state": "accepted",
+        "description": "Growing crops and raising animals.",
+        "rationale": "Seeds, crops, and animal products.",
+        "examples": [
+          "carrot",
+          "wheat",
+          "wheat_seeds"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "mining",
+        "label": "Mining",
+        "state": "accepted",
+        "description": "Breaking stone, ores, and underground materials.",
+        "rationale": "Pickaxes and torches are fundamental.",
+        "examples": [
+          "coal_ore",
+          "iron_pickaxe",
+          "torch"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "redstone",
+        "label": "Redstone",
+        "state": "accepted",
+        "description": "Creating contraptions with redstone components.",
+        "rationale": "Redstone dust and repeaters are key.",
+        "examples": [
+          "piston",
+          "redstone",
+          "repeater"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "smelting",
+        "label": "Smelting",
+        "state": "accepted",
+        "description": "Processing ores and materials in furnaces.",
+        "rationale": "Covers ore-to-ingot conversion.",
+        "examples": [
+          "coal",
+          "cobblestone",
+          "iron_ore"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "storage",
+        "label": "Storage",
+        "state": "accepted",
+        "description": "Managing item storage with containers.",
+        "rationale": "Chests, barrels, shulker boxes.",
+        "examples": [
+          "barrel",
+          "chest",
+          "shulker_box"
+        ]
+      },
+      {
+        "facet": "activity",
+        "id": "transport",
+        "label": "Transport",
+        "state": "accepted",
+        "description": "Moving players and items via rails, boats, or minecarts.",
+        "rationale": "Rails and minecarts enable transport.",
+        "examples": [
+          "minecart",
+          "oak_boat",
+          "rail"
+        ]
+      }
+    ],
+    "biome": [],
+    "combat_bonus": [],
+    "container_state": [],
+    "environmental_property": [
+      {
+        "facet": "environmental_property",
+        "id": "light_emitting",
+        "label": "Light Emitting",
+        "state": "accepted",
+        "description": "Item emits light when placed.",
+        "rationale": "Many blocks are used as light sources.",
+        "examples": [
+          "glowstone",
+          "lantern",
+          "torch"
+        ],
+        "policy_notes": [
+          "model-synthesized value accepted from context"
+        ]
+      },
+      {
+        "facet": "environmental_property",
+        "id": "vibration_dampening",
+        "label": "Vibration Dampening",
+        "state": "accepted",
+        "description": "Item dampens vibrations, preventing sculk sensors from triggering.",
+        "rationale": "Wool blocks and carpets provide this property.",
+        "examples": [
+          "red_carpet",
+          "white_wool"
+        ],
+        "policy_notes": [
+          "model-synthesized value accepted from context"
+        ]
+      }
+    ],
+    "equip_slot": [
+      {
+        "facet": "equip_slot",
+        "id": "chest",
+        "label": "Chest",
+        "state": "accepted",
+        "description": "Worn on the chest slot.",
+        "rationale": "Standard armor slot.",
+        "examples": [
+          "diamond_chestplate"
+        ]
+      },
+      {
+        "facet": "equip_slot",
+        "id": "feet",
+        "label": "Feet",
+        "state": "accepted",
+        "description": "Worn on the feet slot.",
+        "rationale": "Standard armor slot.",
+        "examples": [
+          "iron_boots"
+        ]
+      },
+      {
+        "facet": "equip_slot",
+        "id": "hand",
+        "label": "Hand",
+        "state": "accepted",
+        "description": "Held in main or off hand.",
+        "rationale": "Tools and weapons are held.",
+        "examples": [
+          "bow",
+          "pickaxe"
+        ]
+      },
+      {
+        "facet": "equip_slot",
+        "id": "head",
+        "label": "Head",
+        "state": "accepted",
+        "description": "Worn on the head slot.",
+        "rationale": "Standard armor slot.",
+        "examples": [
+          "diamond_helmet"
+        ]
+      },
+      {
+        "facet": "equip_slot",
+        "id": "horse",
+        "label": "Horse",
+        "state": "accepted",
+        "description": "Placed on a horse mount.",
+        "rationale": "Horse armor equips to horses.",
+        "examples": [
+          "diamond_horse_armor"
+        ]
+      },
+      {
+        "facet": "equip_slot",
+        "id": "legs",
+        "label": "Legs",
+        "state": "accepted",
+        "description": "Worn on the leg slot.",
+        "rationale": "Standard armor slot.",
+        "examples": [
+          "iron_leggings"
+        ]
+      }
+    ],
+    "equipment_effect": [
+      {
+        "facet": "equipment_effect",
+        "id": "armor_toughness",
+        "label": "Armor Toughness",
+        "state": "accepted",
+        "description": "Reduces damage from attacks with high attack strength.",
+        "rationale": "Diamond armor provides armor toughness.",
+        "examples": [
+          "diamond_boots"
+        ]
+      },
+      {
+        "facet": "equipment_effect",
+        "id": "flight",
+        "label": "Flight",
+        "state": "accepted",
+        "description": "Enables gliding when equipped.",
+        "rationale": "Elytra is the only item that grants flight.",
+        "examples": [
+          "elytra"
+        ]
+      },
+      {
+        "facet": "equipment_effect",
+        "id": "freeze_protection",
+        "label": "Freeze Protection",
+        "state": "accepted",
+        "description": "Immunity to freezing from powdered snow.",
+        "rationale": "Leather armor provides this effect.",
+        "examples": [
+          "leather_boots",
+          "leather_helmet"
+        ]
+      },
+      {
+        "facet": "equipment_effect",
+        "id": "knockback_resistance",
+        "label": "Knockback Resistance",
+        "state": "accepted",
+        "description": "Reduces pushback from attacks.",
+        "rationale": "Netherite armor grants knockback resistance.",
+        "examples": [
+          "netherite_chestplate"
+        ]
+      }
+    ],
+    "food_category": [
+      {
+        "facet": "food_category",
+        "id": "baked_good",
+        "label": "Baked Good",
+        "state": "accepted",
+        "description": "Bread, cakes, cookies, and pies.",
+        "rationale": "Recurring vanilla food family.",
+        "examples": [
+          "bread",
+          "cake",
+          "cookie"
+        ]
+      },
+      {
+        "facet": "food_category",
+        "id": "fish",
+        "label": "Fish",
+        "state": "accepted",
+        "description": "Raw and cooked fish, including pufferfish.",
+        "rationale": "Separate food category from meat.",
+        "examples": [
+          "cod",
+          "pufferfish",
+          "salmon"
+        ]
+      },
+      {
+        "facet": "food_category",
+        "id": "fruit",
+        "label": "Fruit",
+        "state": "accepted",
+        "description": "Eat-in-hand fruits like apples and berries.",
+        "rationale": "Distinct from vegetables.",
+        "examples": [
+          "apple",
+          "melon_slice",
+          "sweet_berries"
+        ]
+      },
+      {
+        "facet": "food_category",
+        "id": "meat",
+        "label": "Meat",
+        "state": "accepted",
+        "description": "Raw and cooked animal meats.",
+        "rationale": "Primary protein source.",
+        "examples": [
+          "cooked_chicken",
+          "porkchop",
+          "raw_beef"
+        ]
+      },
+      {
+        "facet": "food_category",
+        "id": "mushroom",
+        "label": "Mushroom",
+        "state": "accepted",
+        "description": "Edible mushrooms, raw and in stews.",
+        "rationale": "Mushrooms are a distinct ingredient.",
+        "examples": [
+          "brown_mushroom",
+          "mushroom_stew",
+          "red_mushroom"
+        ]
+      },
+      {
+        "facet": "food_category",
+        "id": "stew",
+        "label": "Stew",
+        "state": "accepted",
+        "description": "Bowl-based foods like mushroom stew and rabbit stew.",
+        "rationale": "Bowl-returning food items.",
+        "examples": [
+          "beetroot_soup",
+          "mushroom_stew",
+          "rabbit_stew"
+        ]
+      },
+      {
+        "facet": "food_category",
+        "id": "vegetable",
+        "label": "Vegetable",
+        "state": "accepted",
+        "description": "Edible plant-based items like carrots and potatoes.",
+        "rationale": "Distinct from fruit and meat.",
+        "examples": [
+          "beetroot",
+          "carrot",
+          "potato"
+        ]
+      },
+      {
+        "facet": "food_category",
+        "id": "candy",
+        "label": "Candy",
+        "state": "review",
+        "description": "Sweets like honey bottle, golden apple?",
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "candy",
+          "approved_label": "Candy",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "food_category",
+        "id": "seafood",
+        "label": "Seafood",
+        "state": "review",
+        "description": "Edible items from the ocean like kelp, dried kelp.",
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "seafood",
+          "approved_label": "Seafood",
+          "notes": ""
+        }
+      }
+    ],
+    "food_use": [
+      {
+        "facet": "food_use",
+        "id": "breeding",
+        "label": "Breeding",
+        "state": "accepted",
+        "description": "Used to breed animals.",
+        "rationale": "Many foods serve as breeding items.",
+        "examples": [
+          "carrot",
+          "golden_apple",
+          "wheat"
+        ]
+      },
+      {
+        "facet": "food_use",
+        "id": "effect",
+        "label": "Effect Delivery",
+        "state": "accepted",
+        "description": "Grants a status effect when consumed.",
+        "rationale": "Some items provide poison/regeneration.",
+        "examples": [
+          "poisonous_potato",
+          "suspicious_stew"
+        ]
+      },
+      {
+        "facet": "food_use",
+        "id": "healing",
+        "label": "Healing",
+        "state": "accepted",
+        "description": "Restores health directly.",
+        "rationale": "Golden apples and honey bottles heal.",
+        "examples": [
+          "golden_apple",
+          "honey_bottle"
+        ]
+      },
+      {
+        "facet": "food_use",
+        "id": "hunger",
+        "label": "Hunger Restoration",
+        "state": "accepted",
+        "description": "Restores hunger and saturation.",
+        "rationale": "Most edible items restore hunger.",
+        "examples": [
+          "bread",
+          "cooked_beef"
+        ]
+      },
+      {
+        "facet": "food_use",
+        "id": "taming",
+        "label": "Taming",
+        "state": "accepted",
+        "description": "Used to tame or breed animals.",
+        "rationale": "Some items tame specific mobs.",
+        "examples": [
+          "bone",
+          "cod",
+          "salmon"
+        ]
+      },
+      {
+        "facet": "food_use",
+        "id": "trade",
+        "label": "Trading",
+        "state": "review",
+        "description": "Used as currency or trade item with villagers.",
+        "rationale": "Many crops are used in villager trades.",
+        "examples": [
+          "carrot",
+          "potato",
+          "wheat"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "trade",
+          "approved_label": "Trading",
+          "notes": ""
+        }
+      }
+    ],
+    "form": [
+      {
+        "facet": "form",
+        "id": "armor_piece",
+        "label": "Armor Piece",
+        "state": "accepted",
+        "description": "Wearable armor for a specific slot.",
+        "rationale": "Distinct from generic items.",
+        "examples": [
+          "diamond_boots",
+          "iron_helmet"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "block",
+        "label": "Block",
+        "state": "accepted",
+        "description": "Places a block in the world.",
+        "rationale": "Most items are blocks.",
+        "examples": [
+          "glass",
+          "oak_planks",
+          "stone"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "boat",
+        "label": "Boat",
+        "state": "accepted",
+        "description": "Watercraft for player transport.",
+        "rationale": "Boats have unique form.",
+        "examples": [
+          "birch_chest_boat",
+          "oak_boat"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "food",
+        "label": "Food",
+        "state": "accepted",
+        "description": "Edible item that restores hunger.",
+        "rationale": "Distinct from other items.",
+        "examples": [
+          "apple",
+          "cooked_chicken"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "head",
+        "label": "Head",
+        "state": "accepted",
+        "description": "Placeable mob or player head.",
+        "rationale": "Heads are decorative placeables.",
+        "examples": [
+          "creeper_head",
+          "skeleton_skull"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "item",
+        "label": "Item",
+        "state": "accepted",
+        "description": "Non-block item, stackable or not.",
+        "rationale": "Catch-all for items that are not placeable blocks.",
+        "examples": [
+          "diamond",
+          "paper",
+          "stick"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "minecart",
+        "label": "Minecart",
+        "state": "accepted",
+        "description": "Rideable rail vehicle.",
+        "rationale": "Minecarts are distinct vehicles.",
+        "examples": [
+          "chest_minecart",
+          "minecart"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "music_disc",
+        "label": "Music Disc",
+        "state": "accepted",
+        "description": "Disc that plays music in a jukebox.",
+        "rationale": "Unique form with sound.",
+        "examples": [
+          "music_disc_13",
+          "music_disc_cat"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "potion",
+        "label": "Potion",
+        "state": "accepted",
+        "description": "Drinkable liquid with effects.",
+        "rationale": "Potions are uniquely shaped.",
+        "examples": [
+          "lingering_potion",
+          "potion"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "spawn_egg",
+        "label": "Spawn Egg",
+        "state": "accepted",
+        "description": "Spawns a mob when used.",
+        "rationale": "Distinct egg shape.",
+        "examples": [
+          "creeper_spawn_egg",
+          "pig_spawn_egg"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "tool",
+        "label": "Tool",
+        "state": "accepted",
+        "description": "Handheld tool with durability and specific uses.",
+        "rationale": "Tools are a fundamental form.",
+        "examples": [
+          "fishing_rod",
+          "iron_pickaxe",
+          "shears"
+        ]
+      },
+      {
+        "facet": "form",
+        "id": "weapon",
+        "label": "Weapon",
+        "state": "accepted",
+        "description": "Combat item for dealing damage.",
+        "rationale": "Weapons are distinct from tools.",
+        "examples": [
+          "bow",
+          "crossbow",
+          "diamond_sword"
+        ]
+      }
+    ],
+    "loadout_context": [
+      {
+        "facet": "loadout_context",
+        "id": "brewing_setup",
+        "label": "Brewing Setup",
+        "state": "accepted",
+        "description": "Items for brewing potions.",
+        "rationale": "Brewing has dedicated gear.",
+        "examples": [
+          "blaze_powder",
+          "brewing_stand",
+          "nether_wart"
+        ]
+      },
+      {
+        "facet": "loadout_context",
+        "id": "building_project",
+        "label": "Building Project",
+        "state": "accepted",
+        "description": "Items for construction and decoration.",
+        "rationale": "Common loadout for builders.",
+        "examples": [
+          "glass",
+          "oak_planks",
+          "stone_bricks"
+        ]
+      },
+      {
+        "facet": "loadout_context",
+        "id": "combat_raid",
+        "label": "Combat Raid",
+        "state": "accepted",
+        "description": "Equipment for fighting.",
+        "rationale": "Packing for hostile areas.",
+        "examples": [
+          "armor",
+          "bow",
+          "food",
+          "sword"
+        ]
+      },
+      {
+        "facet": "loadout_context",
+        "id": "exploration",
+        "label": "Exploration",
+        "state": "accepted",
+        "description": "Travel and navigation gear.",
+        "rationale": "Essential for long trips.",
+        "examples": [
+          "boat",
+          "compass",
+          "map",
+          "torches"
+        ]
+      },
+      {
+        "facet": "loadout_context",
+        "id": "farming_session",
+        "label": "Farming Session",
+        "state": "accepted",
+        "description": "Items for tending crops and animals.",
+        "rationale": "Farmers carry seeds and tools.",
+        "examples": [
+          "bone_meal",
+          "hoe",
+          "seeds"
+        ]
+      },
+      {
+        "facet": "loadout_context",
+        "id": "mining_trip",
+        "label": "Mining Trip",
+        "state": "accepted",
+        "description": "Items needed for underground mining.",
+        "rationale": "Standard mining loadout.",
+        "examples": [
+          "food",
+          "pickaxe",
+          "shovel",
+          "torch"
+        ]
+      },
+      {
+        "facet": "loadout_context",
+        "id": "redstone_building",
+        "label": "Redstone Building",
+        "state": "accepted",
+        "description": "Components for redstone contraptions.",
+        "rationale": "Redstone builders need specific items.",
+        "examples": [
+          "observer",
+          "piston",
+          "redstone",
+          "repeater"
+        ]
+      }
+    ],
+    "material_family": [
+      {
+        "facet": "material_family",
+        "id": "amethyst",
+        "label": "Amethyst",
+        "state": "accepted",
+        "description": "Amethyst material family.",
+        "rationale": "Amethyst items have distinct crafting uses.",
+        "examples": [
+          "amethyst_block",
+          "amethyst_shard"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "andesite",
+        "label": "Andesite",
+        "state": "accepted",
+        "description": "Andesite material family.",
+        "rationale": "Common stone variant.",
+        "examples": [
+          "andesite",
+          "polished_andesite"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "basalt",
+        "label": "Basalt",
+        "state": "accepted",
+        "description": "Basalt material family.",
+        "rationale": "Nether stone variant.",
+        "examples": [
+          "basalt",
+          "polished_basalt"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "blackstone",
+        "label": "Blackstone",
+        "state": "accepted",
+        "description": "Blackstone material family.",
+        "rationale": "Nether stone with multiple variants.",
+        "examples": [
+          "blackstone",
+          "polished_blackstone"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "bone",
+        "label": "Bone",
+        "state": "accepted",
+        "description": "Bone material family.",
+        "rationale": "Bone meal and bone blocks.",
+        "examples": [
+          "bone",
+          "bone_block"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "brick",
+        "label": "Brick",
+        "state": "accepted",
+        "description": "Brick material family.",
+        "rationale": "Standard brick blocks and items.",
+        "examples": [
+          "brick",
+          "brick_slab",
+          "bricks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "clay",
+        "label": "Clay",
+        "state": "accepted",
+        "description": "Clay and terracotta material family.",
+        "rationale": "Clay and terracotta items share material.",
+        "examples": [
+          "clay_ball",
+          "terracotta",
+          "white_terracotta"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "concrete",
+        "label": "Concrete",
+        "state": "accepted",
+        "description": "Concrete material family.",
+        "rationale": "Concrete and concrete powder are distinct.",
+        "examples": [
+          "white_concrete",
+          "white_concrete_powder"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "copper",
+        "label": "Copper",
+        "state": "accepted",
+        "description": "Copper material family.",
+        "rationale": "Copper ingots and blocks.",
+        "examples": [
+          "copper_block",
+          "copper_ingot",
+          "cut_copper"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "deepslate",
+        "label": "Deepslate",
+        "state": "accepted",
+        "description": "Deepslate material family.",
+        "rationale": "Deepslate and its variants.",
+        "examples": [
+          "cobbled_deepslate",
+          "deepslate",
+          "deepslate_bricks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "diamond",
+        "label": "Diamond",
+        "state": "accepted",
+        "description": "Diamond material family.",
+        "rationale": "Diamond gem and block.",
+        "examples": [
+          "diamond",
+          "diamond_block"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "diorite",
+        "label": "Diorite",
+        "state": "accepted",
+        "description": "Diorite material family.",
+        "rationale": "Common stone variant.",
+        "examples": [
+          "diorite",
+          "polished_diorite"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "emerald",
+        "label": "Emerald",
+        "state": "accepted",
+        "description": "Emerald material family.",
+        "rationale": "Emerald gem and block.",
+        "examples": [
+          "emerald",
+          "emerald_block"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "end_stone",
+        "label": "End Stone",
+        "state": "accepted",
+        "description": "End stone material family.",
+        "rationale": "End stone and bricks.",
+        "examples": [
+          "end_stone",
+          "end_stone_bricks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "glass",
+        "label": "Glass",
+        "state": "accepted",
+        "description": "Glass material family.",
+        "rationale": "Glass blocks, panes, and stained variants.",
+        "examples": [
+          "glass",
+          "glass_pane",
+          "white_stained_glass"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "gold",
+        "label": "Gold",
+        "state": "accepted",
+        "description": "Gold material family.",
+        "rationale": "Gold ingots, nuggets, blocks.",
+        "examples": [
+          "gold_block",
+          "gold_ingot",
+          "gold_nugget"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "granite",
+        "label": "Granite",
+        "state": "accepted",
+        "description": "Granite material family.",
+        "rationale": "Common stone variant.",
+        "examples": [
+          "granite",
+          "polished_granite"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "honey",
+        "label": "Honey",
+        "state": "accepted",
+        "description": "Honey material family.",
+        "rationale": "Honey bottle, honeycomb, honey block.",
+        "examples": [
+          "honey_block",
+          "honey_bottle",
+          "honeycomb"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "iron",
+        "label": "Iron",
+        "state": "accepted",
+        "description": "Iron material family.",
+        "rationale": "Iron ingots, nuggets, blocks.",
+        "examples": [
+          "iron_block",
+          "iron_ingot",
+          "iron_nugget"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "lapis_lazuli",
+        "label": "Lapis Lazuli",
+        "state": "accepted",
+        "description": "Lapis lazuli material family.",
+        "rationale": "Lapis gem and block.",
+        "examples": [
+          "lapis_block",
+          "lapis_lazuli"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "leather",
+        "label": "Leather",
+        "state": "accepted",
+        "description": "Leather material family.",
+        "rationale": "Leather items and armor.",
+        "examples": [
+          "leather",
+          "leather_boots"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "mud_brick",
+        "label": "Mud Brick",
+        "state": "accepted",
+        "description": "Mud brick material family.",
+        "rationale": "Mud bricks and variants.",
+        "examples": [
+          "mud_brick_slab",
+          "mud_bricks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "nether_brick",
+        "label": "Nether Brick",
+        "state": "accepted",
+        "description": "Nether brick material family.",
+        "rationale": "Standard nether bricks.",
+        "examples": [
+          "nether_brick",
+          "nether_brick_fence",
+          "nether_bricks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "netherite",
+        "label": "Netherite",
+        "state": "accepted",
+        "description": "Netherite material family.",
+        "rationale": "Netherite ingot, scrap, block.",
+        "examples": [
+          "netherite_block",
+          "netherite_ingot",
+          "netherite_scrap"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "netherrack",
+        "label": "Netherrack",
+        "state": "accepted",
+        "description": "Netherrack material family.",
+        "rationale": "Netherrack blocks.",
+        "examples": [
+          "netherrack"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "obsidian",
+        "label": "Obsidian",
+        "state": "accepted",
+        "description": "Obsidian material family.",
+        "rationale": "Obsidian blocks.",
+        "examples": [
+          "crying_obsidian",
+          "obsidian"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "prismarine",
+        "label": "Prismarine",
+        "state": "accepted",
+        "description": "Prismarine material family.",
+        "rationale": "Prismarine shard, bricks, dark.",
+        "examples": [
+          "dark_prismarine",
+          "prismarine_bricks",
+          "prismarine_shard"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "quartz",
+        "label": "Quartz",
+        "state": "accepted",
+        "description": "Quartz material family.",
+        "rationale": "Nether quartz and blocks.",
+        "examples": [
+          "quartz",
+          "quartz_block",
+          "quartz_bricks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "red_nether_brick",
+        "label": "Red Nether Brick",
+        "state": "accepted",
+        "description": "Red nether brick material family.",
+        "rationale": "Distinct from standard nether brick.",
+        "examples": [
+          "red_nether_brick_slab",
+          "red_nether_bricks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "sandstone",
+        "label": "Sandstone",
+        "state": "accepted",
+        "description": "Sandstone material family.",
+        "rationale": "Sandstone, red sandstone, and variants.",
+        "examples": [
+          "cut_sandstone",
+          "red_sandstone",
+          "sandstone"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "slime",
+        "label": "Slime",
+        "state": "accepted",
+        "description": "Slime material family.",
+        "rationale": "Slime ball and block.",
+        "examples": [
+          "slime_ball",
+          "slime_block"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "stone",
+        "label": "Stone",
+        "state": "accepted",
+        "description": "Stone material family.",
+        "rationale": "Stone, cobblestone, stone bricks.",
+        "examples": [
+          "cobblestone",
+          "stone",
+          "stone_bricks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "string",
+        "label": "String",
+        "state": "accepted",
+        "description": "String material family.",
+        "rationale": "String is a basic crafting ingredient.",
+        "examples": [
+          "string"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "tuff",
+        "label": "Tuff",
+        "state": "accepted",
+        "description": "Tuff material family.",
+        "rationale": "Tuff is a common stone variant in vanilla.",
+        "examples": [
+          "tuff"
+        ],
+        "policy_notes": [
+          "model-synthesized value accepted from context"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_acacia",
+        "label": "Acacia Wood",
+        "state": "accepted",
+        "description": "Acacia wood family.",
+        "rationale": "Acacia logs, planks, and derivative items.",
+        "examples": [
+          "acacia_door",
+          "acacia_log",
+          "acacia_planks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_bamboo",
+        "label": "Bamboo",
+        "state": "accepted",
+        "description": "Bamboo material family.",
+        "rationale": "Bamboo planks and blocks.",
+        "examples": [
+          "bamboo_block",
+          "bamboo_mosaic",
+          "bamboo_planks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_birch",
+        "label": "Birch Wood",
+        "state": "accepted",
+        "description": "Birch wood family.",
+        "rationale": "Birch logs, planks, and derivative items.",
+        "examples": [
+          "birch_door",
+          "birch_log",
+          "birch_planks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_cherry",
+        "label": "Cherry Wood",
+        "state": "accepted",
+        "description": "Cherry wood family.",
+        "rationale": "Cherry logs, planks, and derivative items.",
+        "examples": [
+          "cherry_door",
+          "cherry_log",
+          "cherry_planks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_crimson",
+        "label": "Crimson Stem",
+        "state": "accepted",
+        "description": "Crimson hyphae family.",
+        "rationale": "Non-flammable nether wood.",
+        "examples": [
+          "crimson_door",
+          "crimson_planks",
+          "crimson_stem"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_dark_oak",
+        "label": "Dark Oak Wood",
+        "state": "accepted",
+        "description": "Dark oak wood family.",
+        "rationale": "Dark oak logs, planks, and derivative items.",
+        "examples": [
+          "dark_oak_door",
+          "dark_oak_log",
+          "dark_oak_planks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_jungle",
+        "label": "Jungle Wood",
+        "state": "accepted",
+        "description": "Jungle wood family.",
+        "rationale": "Jungle logs, planks, and derivative items.",
+        "examples": [
+          "jungle_door",
+          "jungle_log",
+          "jungle_planks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_mangrove",
+        "label": "Mangrove Wood",
+        "state": "accepted",
+        "description": "Mangrove wood family.",
+        "rationale": "Mangrove logs, planks, and derivative items.",
+        "examples": [
+          "mangrove_door",
+          "mangrove_log",
+          "mangrove_planks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_oak",
+        "label": "Oak Wood",
+        "state": "accepted",
+        "description": "Oak wood family.",
+        "rationale": "Oak logs, planks, and derivative items.",
+        "examples": [
+          "oak_door",
+          "oak_log",
+          "oak_planks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_spruce",
+        "label": "Spruce Wood",
+        "state": "accepted",
+        "description": "Spruce wood family.",
+        "rationale": "Spruce logs, planks, and derivative items.",
+        "examples": [
+          "spruce_door",
+          "spruce_log",
+          "spruce_planks"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wood_warped",
+        "label": "Warped Stem",
+        "state": "accepted",
+        "description": "Warped hyphae family.",
+        "rationale": "Non-flammable nether wood.",
+        "examples": [
+          "warped_door",
+          "warped_planks",
+          "warped_stem"
+        ]
+      },
+      {
+        "facet": "material_family",
+        "id": "wool",
+        "label": "Wool",
+        "state": "accepted",
+        "description": "Wool material family.",
+        "rationale": "All colors of wool and carpets.",
+        "examples": [
+          "black_carpet",
+          "white_wool"
+        ]
+      }
+    ],
+    "material_process_stage": [
+      {
+        "facet": "material_process_stage",
+        "id": "block",
+        "label": "Block",
+        "state": "accepted",
+        "description": "Storage block of a material (9 ingots or 9 nuggets).",
+        "rationale": "Common compact form for materials.",
+        "examples": [
+          "diamond_block",
+          "gold_block",
+          "iron_block"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "brick",
+        "label": "Brick",
+        "state": "accepted",
+        "description": "Fired clay or stone brick form.",
+        "rationale": "Brick is a processing output.",
+        "examples": [
+          "brick",
+          "nether_brick"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "crystal",
+        "label": "Crystal",
+        "state": "accepted",
+        "description": "Crystalline form of a material.",
+        "rationale": "Prismarine crystals and amethyst.",
+        "examples": [
+          "amethyst_shard",
+          "prismarine_crystals"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "dust",
+        "label": "Dust",
+        "state": "accepted",
+        "description": "Fine powder form.",
+        "rationale": "Redstone dust and glowstone dust.",
+        "examples": [
+          "glowstone_dust",
+          "redstone"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "gem",
+        "label": "Gem",
+        "state": "accepted",
+        "description": "Cut or natural gemstone.",
+        "rationale": "Diamond, emerald, lapis.",
+        "examples": [
+          "diamond",
+          "emerald",
+          "lapis_lazuli"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "ingot",
+        "label": "Ingot",
+        "state": "accepted",
+        "description": "Smelted metal ingot.",
+        "rationale": "Common metal form.",
+        "examples": [
+          "copper_ingot",
+          "gold_ingot",
+          "iron_ingot"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "meal",
+        "label": "Meal",
+        "state": "accepted",
+        "description": "Powdered organic material used as fertilizer.",
+        "rationale": "Bone meal is a key material.",
+        "examples": [
+          "bone_meal"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "nugget",
+        "label": "Nugget",
+        "state": "accepted",
+        "description": "Small piece of metal.",
+        "rationale": "Nuggets from smelting armor.",
+        "examples": [
+          "gold_nugget",
+          "iron_nugget"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "ore",
+        "label": "Ore",
+        "state": "accepted",
+        "description": "Raw ore block in the ground.",
+        "rationale": "Ores are the raw source.",
+        "examples": [
+          "coal_ore",
+          "diamond_ore",
+          "iron_ore"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "powder",
+        "label": "Powder",
+        "state": "accepted",
+        "description": "Loose powder, often from sand and gravel.",
+        "rationale": "Concrete powder is a distinct form.",
+        "examples": [
+          "gunpowder",
+          "white_concrete_powder"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "raw",
+        "label": "Raw",
+        "state": "accepted",
+        "description": "Unprocessed raw material directly from mining.",
+        "rationale": "Raw metals from ore blocks.",
+        "examples": [
+          "raw_copper",
+          "raw_gold",
+          "raw_iron"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "rod",
+        "label": "Rod",
+        "state": "accepted",
+        "description": "Long thin shape.",
+        "rationale": "Blaze rod and end rod.",
+        "examples": [
+          "blaze_rod",
+          "end_rod"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "scrap",
+        "label": "Scrap",
+        "state": "accepted",
+        "description": "Salvaged piece of material.",
+        "rationale": "Netherite scrap from ancient debris.",
+        "examples": [
+          "netherite_scrap"
+        ]
+      },
+      {
+        "facet": "material_process_stage",
+        "id": "shard",
+        "label": "Shard",
+        "state": "accepted",
+        "description": "Small fragment.",
+        "rationale": "Amethyst shard and echo shard.",
+        "examples": [
+          "amethyst_shard",
+          "echo_shard"
+        ]
+      }
+    ],
+    "material_secondary": [],
+    "mod_subsystem": [],
+    "multiblock_component_of": [],
+    "multiblock_role": [],
+    "organization_group": [
+      {
+        "facet": "organization_group",
+        "id": "armor",
+        "label": "Armor",
+        "state": "accepted",
+        "description": "Wearable protection and armor pieces."
+      },
+      {
+        "facet": "organization_group",
+        "id": "building_blocks",
+        "label": "Building Blocks",
+        "state": "accepted",
+        "description": "General structural blocks and ordinary building materials."
+      },
+      {
+        "facet": "organization_group",
+        "id": "ceramics_molds",
+        "label": "Ceramics & Molds",
+        "state": "accepted",
+        "description": "Clay, ceramic, brick, pottery, and mold stock.",
+        "aliases": [
+          "molds",
+          "pottery"
+        ]
+      },
+      {
+        "facet": "organization_group",
+        "id": "crops",
+        "label": "Crops",
+        "state": "accepted",
+        "description": "Harvested crop produce, grains, vegetables, and fruit."
+      },
+      {
+        "facet": "organization_group",
+        "id": "curiosities",
+        "label": "Curiosities",
+        "state": "accepted",
+        "description": "Trophies, relics, discs, spawn eggs, curios, and display oddities."
+      },
+      {
+        "facet": "organization_group",
+        "id": "decoration",
+        "label": "Decoration",
+        "state": "accepted",
+        "description": "Decorative blocks, ornaments, signs, banners, carpets, and visual flourish."
+      },
+      {
+        "facet": "organization_group",
+        "id": "doors",
+        "label": "Doors",
+        "state": "accepted",
+        "description": "Doors, trapdoors, and gates."
+      },
+      {
+        "facet": "organization_group",
+        "id": "dusts_powders",
+        "label": "Dusts & Powders",
+        "state": "accepted",
+        "description": "Dusts, powders, piles, and powdered processing outputs.",
+        "aliases": [
+          "dusts"
+        ]
+      },
+      {
+        "facet": "organization_group",
+        "id": "fences",
+        "label": "Fences",
+        "state": "accepted",
+        "description": "Fences and fence-like boundary pieces."
+      },
+      {
+        "facet": "organization_group",
+        "id": "food",
+        "label": "Food",
+        "state": "accepted",
+        "description": "Food, meals, edible ingredients, and drink items."
+      },
+      {
+        "facet": "organization_group",
+        "id": "gems_crystals",
+        "label": "Gems & Crystals",
+        "state": "accepted",
+        "description": "Gems, crystals, mineral gemstones, and similar cut or crystalline stock.",
+        "aliases": [
+          "gems"
+        ]
+      },
+      {
+        "facet": "organization_group",
+        "id": "lighting",
+        "label": "Lighting",
+        "state": "accepted",
+        "description": "Torches, lanterns, lamps, candles, and light-emitting blocks."
+      },
+      {
+        "facet": "organization_group",
+        "id": "materials",
+        "label": "Materials",
+        "state": "accepted",
+        "description": "Last-resort generic crafting stock when no narrower stock group fits; avoid when a better default or custom group applies."
+      },
+      {
+        "facet": "organization_group",
+        "id": "mechanisms",
+        "label": "Mechanisms",
+        "state": "accepted",
+        "description": "Machines, mechanisms, motors, gears, shafts, belts, pipes, and automation parts."
+      },
+      {
+        "facet": "organization_group",
+        "id": "metal_stock",
+        "label": "Metal Stock",
+        "state": "accepted",
+        "description": "Ingots, nuggets, plates, rods, wires, bolts, screws, foils, and similar metal stock.",
+        "aliases": [
+          "ingots",
+          "plates"
+        ]
+      },
+      {
+        "facet": "organization_group",
+        "id": "miscellaneous",
+        "label": "Miscellaneous",
+        "state": "accepted",
+        "description": "Last-resort home for items that do not fit any other broad player storage section.",
+        "aliases": [
+          "misc"
+        ]
+      },
+      {
+        "facet": "organization_group",
+        "id": "natural",
+        "label": "Natural",
+        "state": "accepted",
+        "description": "Dirt, sand, gravel, stone, rocks, soil, mud, and other natural terrain stock."
+      },
+      {
+        "facet": "organization_group",
+        "id": "ores_raw_stock",
+        "label": "Ores & Raw Stock",
+        "state": "accepted",
+        "description": "Ore blocks, raw ores, crushed ores, and mine-run resource stock.",
+        "aliases": [
+          "raw ore"
+        ]
+      },
+      {
+        "facet": "organization_group",
+        "id": "organic_materials",
+        "label": "Organic Materials",
+        "state": "accepted",
+        "description": "Leather, hide, wool, string, fiber, straw, bone, slime, wax, and animal/plant organic stock."
+      },
+      {
+        "facet": "organization_group",
+        "id": "plants",
+        "label": "Plants",
+        "state": "accepted",
+        "description": "Saplings, flowers, leaves, grass, mushrooms, and non-crop botanical stock."
+      },
+      {
+        "facet": "organization_group",
+        "id": "redstone",
+        "label": "Redstone",
+        "state": "accepted",
+        "description": "Redstone, signal components, levers, repeaters, comparators, buttons, and pressure plates."
+      },
+      {
+        "facet": "organization_group",
+        "id": "seeds",
+        "label": "Seeds",
+        "state": "accepted",
+        "description": "Seed stock and plantable crop starts."
+      },
+      {
+        "facet": "organization_group",
+        "id": "slabs",
+        "label": "Slabs",
+        "state": "accepted",
+        "description": "Slab-shaped building variants."
+      },
+      {
+        "facet": "organization_group",
+        "id": "stairs",
+        "label": "Stairs",
+        "state": "accepted",
+        "description": "Stair-shaped building variants."
+      },
+      {
+        "facet": "organization_group",
+        "id": "storage",
+        "label": "Storage",
+        "state": "accepted",
+        "description": "Chests, barrels, crates, sacks, bags, backpacks, drawers, tanks, and other containers.",
+        "aliases": [
+          "item containers"
+        ]
+      },
+      {
+        "facet": "organization_group",
+        "id": "tools",
+        "label": "Tools",
+        "state": "accepted",
+        "description": "Reusable handheld tools and utility implements."
+      },
+      {
+        "facet": "organization_group",
+        "id": "transport",
+        "label": "Transport",
+        "state": "accepted",
+        "description": "Rails, tracks, carts, boats, rockets, trains, and movement infrastructure."
+      },
+      {
+        "facet": "organization_group",
+        "id": "upgrades",
+        "label": "Upgrades",
+        "state": "accepted",
+        "description": "Upgrades, modules, augments, and installable improvement items."
+      },
+      {
+        "facet": "organization_group",
+        "id": "utility",
+        "label": "Utility",
+        "state": "accepted",
+        "description": "Buckets, bottles, maps, ropes, ladders, and other general utility items."
+      },
+      {
+        "facet": "organization_group",
+        "id": "walls",
+        "label": "Walls",
+        "state": "accepted",
+        "description": "Wall-shaped building variants."
+      },
+      {
+        "facet": "organization_group",
+        "id": "weapons",
+        "label": "Weapons",
+        "state": "accepted",
+        "description": "Weapons, ammunition, and combat attack items."
+      },
+      {
+        "facet": "organization_group",
+        "id": "windows",
+        "label": "Windows",
+        "state": "accepted",
+        "description": "Panes, bars, windows, and window-like blocks."
+      },
+      {
+        "facet": "organization_group",
+        "id": "wood",
+        "label": "Wood",
+        "state": "accepted",
+        "description": "Logs, planks, boards, lumber, sticks, beams, and close stock-wood siblings."
+      },
+      {
+        "facet": "organization_group",
+        "id": "workbenches",
+        "label": "Workbenches",
+        "state": "accepted",
+        "description": "Crafting stations, tables, benches, and placed work surfaces."
+      },
+      {
+        "facet": "organization_group",
+        "id": "beekeeping",
+        "label": "Beekeeping",
+        "state": "review",
+        "description": "Bees, hives, honey, wax, and apiary supplies.",
+        "rationale": "Small but cohesive subset for apiary management.",
+        "examples": [
+          "bee_nest",
+          "bee_spawn_egg",
+          "honey_bottle",
+          "honeycomb"
+        ],
+        "aliases": [
+          "bees"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "beekeeping",
+          "approved_label": "Beekeeping",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "organization_group",
+        "id": "cooking_tools",
+        "label": "Cooking Tools",
+        "state": "review",
+        "description": "Reusable utensils, bowls, pots, and cookware.",
+        "aliases": [
+          "cookware"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "cooking_tools",
+          "approved_label": "Cooking Tools",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "organization_group",
+        "id": "glass_products",
+        "label": "Glass Products",
+        "state": "review",
+        "description": "Glass blocks, panes, bottles, and stained glass.",
+        "rationale": "Players often want a unified glass section.",
+        "examples": [
+          "glass",
+          "glass_bottle",
+          "glass_pane",
+          "white_stained_glass"
+        ],
+        "aliases": [
+          "glassware"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "glass_products",
+          "approved_label": "Glass Products",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "organization_group",
+        "id": "weaving_cloth",
+        "label": "Weaving & Cloth",
+        "state": "review",
+        "description": "Cloth, thread, string, and weaving equipment.",
+        "aliases": [
+          "cloth",
+          "textiles"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "weaving_cloth",
+          "approved_label": "Weaving & Cloth",
+          "notes": ""
+        }
+      }
+    ],
+    "origin": [],
+    "preparation_state": [
+      {
+        "facet": "preparation_state",
+        "id": "cooked",
+        "label": "Cooked",
+        "state": "accepted",
+        "description": "Cooked in a furnace, campfire, or smoker.",
+        "rationale": "Base state for food preparation.",
+        "examples": [
+          "cooked_beef",
+          "cooked_chicken"
+        ]
+      },
+      {
+        "facet": "preparation_state",
+        "id": "dried",
+        "label": "Dried",
+        "state": "accepted",
+        "description": "Dried in a furnace or naturally.",
+        "rationale": "Kelp drying process.",
+        "examples": [
+          "dried_kelp"
+        ]
+      },
+      {
+        "facet": "preparation_state",
+        "id": "popped",
+        "label": "Popped",
+        "state": "accepted",
+        "description": "Popped in a furnace.",
+        "rationale": "Chorus fruit popping.",
+        "examples": [
+          "popped_chorus_fruit"
+        ]
+      },
+      {
+        "facet": "preparation_state",
+        "id": "raw",
+        "label": "Raw",
+        "state": "accepted",
+        "description": "Uncooked or unprocessed state.",
+        "rationale": "Raw meats and vegetables.",
+        "examples": [
+          "beef",
+          "chicken",
+          "potato"
+        ]
+      },
+      {
+        "facet": "preparation_state",
+        "id": "smoked",
+        "label": "Smoked",
+        "state": "accepted",
+        "description": "Smoked in a smoker.",
+        "rationale": "Smoker provides smoked food.",
+        "examples": [
+          "cooked_porkchop_from_smoking"
+        ]
+      }
+    ],
+    "produces_effect": [
+      {
+        "facet": "produces_effect",
+        "id": "minecraft:poison",
+        "label": "Poison",
+        "state": "accepted",
+        "description": "Applies the Poison status effect.",
+        "rationale": "Poisoned arrow and pufferfish evidence.",
+        "examples": [
+          "pufferfish",
+          "tipped_arrow"
+        ]
+      }
+    ],
+    "progression_stage": [],
+    "protection_context": [
+      {
+        "facet": "protection_context",
+        "id": "freeze",
+        "label": "Freeze",
+        "state": "accepted",
+        "description": "Protects against freezing damage from powdered snow.",
+        "rationale": "Leather armor provides this protection.",
+        "examples": [
+          "leather_boots",
+          "leather_helmet"
+        ]
+      }
+    ],
+    "required_tool": [
+      {
+        "facet": "required_tool",
+        "id": "axe",
+        "label": "Axe",
+        "state": "accepted",
+        "description": "Required to mine wood-based blocks.",
+        "rationale": "Standard tool for logs and planks.",
+        "examples": [
+          "iron_axe",
+          "wooden_axe"
+        ]
+      },
+      {
+        "facet": "required_tool",
+        "id": "hoe",
+        "label": "Hoe",
+        "state": "accepted",
+        "description": "Used to till soil and break some blocks.",
+        "rationale": "Essential for farming.",
+        "examples": [
+          "diamond_hoe",
+          "wooden_hoe"
+        ]
+      },
+      {
+        "facet": "required_tool",
+        "id": "pickaxe",
+        "label": "Pickaxe",
+        "state": "accepted",
+        "description": "Required to mine stone ores and blocks.",
+        "rationale": "Core mining tool.",
+        "examples": [
+          "iron_pickaxe",
+          "stone_pickaxe"
+        ]
+      },
+      {
+        "facet": "required_tool",
+        "id": "shears",
+        "label": "Shears",
+        "state": "accepted",
+        "description": "Required to shear sheep and harvest some blocks.",
+        "rationale": "Unique tool for wool and foliage.",
+        "examples": [
+          "shears"
+        ]
+      },
+      {
+        "facet": "required_tool",
+        "id": "shovel",
+        "label": "Shovel",
+        "state": "accepted",
+        "description": "Required to mine dirt, sand, gravel, snow.",
+        "rationale": "Tool for soft blocks.",
+        "examples": [
+          "iron_shovel",
+          "wooden_shovel"
+        ]
+      }
+    ],
+    "required_tool_tier": [
+      {
+        "facet": "required_tool_tier",
+        "id": "diamond",
+        "label": "Diamond",
+        "state": "accepted",
+        "description": "High tier, can mine obsidian and ancient debris.",
+        "rationale": "Vanilla highest tier.",
+        "examples": [
+          "diamond_pickaxe"
+        ]
+      },
+      {
+        "facet": "required_tool_tier",
+        "id": "gold",
+        "label": "Gold",
+        "state": "accepted",
+        "description": "Fast but low durability tier.",
+        "rationale": "Gold tools are unique.",
+        "examples": [
+          "golden_pickaxe"
+        ]
+      },
+      {
+        "facet": "required_tool_tier",
+        "id": "iron",
+        "label": "Iron",
+        "state": "accepted",
+        "description": "Mid-tier, can mine many ores.",
+        "rationale": "Standard upgrade from stone.",
+        "examples": [
+          "iron_pickaxe"
+        ]
+      },
+      {
+        "facet": "required_tool_tier",
+        "id": "netherite",
+        "label": "Netherite",
+        "state": "accepted",
+        "description": "Highest vanilla tier, knockback resistance.",
+        "rationale": "Endgame tool tier.",
+        "examples": [
+          "netherite_pickaxe"
+        ]
+      },
+      {
+        "facet": "required_tool_tier",
+        "id": "stone",
+        "label": "Stone",
+        "state": "accepted",
+        "description": "Second tier, can mine iron ore.",
+        "rationale": "Early game common tier.",
+        "examples": [
+          "stone_pickaxe"
+        ]
+      },
+      {
+        "facet": "required_tool_tier",
+        "id": "wood",
+        "label": "Wood",
+        "state": "accepted",
+        "description": "Lowest harvest tier.",
+        "rationale": "Starting tier.",
+        "examples": [
+          "wooden_pickaxe"
+        ]
+      }
+    ],
+    "role": [
+      {
+        "facet": "role",
+        "id": "armor",
+        "label": "Armor",
+        "state": "accepted",
+        "description": "Wearable protection.",
+        "rationale": "Distinct role from tools and weapons.",
+        "examples": [
+          "diamond_chestplate"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "block",
+        "label": "Block",
+        "state": "accepted",
+        "description": "Placeable block item.",
+        "rationale": "Most items are blocks.",
+        "examples": [
+          "oak_planks",
+          "stone"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "drink",
+        "label": "Drink",
+        "state": "accepted",
+        "description": "Drinkable item like potions and milk.",
+        "rationale": "Potions are not food but drink.",
+        "examples": [
+          "milk_bucket",
+          "potion"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "food",
+        "label": "Food",
+        "state": "accepted",
+        "description": "Edible item that restores hunger.",
+        "rationale": "Core role for food items.",
+        "examples": [
+          "apple",
+          "bread"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "ingredient",
+        "label": "Ingredient",
+        "state": "accepted",
+        "description": "Crafting or processing ingredient.",
+        "rationale": "Many items are used solely as ingredients.",
+        "examples": [
+          "iron_ingot",
+          "stick"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "music_disc",
+        "label": "Music Disc",
+        "state": "accepted",
+        "description": "Playable music disc.",
+        "rationale": "Unique role for jukebox.",
+        "examples": [
+          "music_disc_cat"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "spawn_egg",
+        "label": "Spawn Egg",
+        "state": "accepted",
+        "description": "Item that spawns a mob.",
+        "rationale": "Special spawn item.",
+        "examples": [
+          "creeper_spawn_egg"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "storage",
+        "label": "Storage",
+        "state": "accepted",
+        "description": "Container items for item storage.",
+        "rationale": "Chests, barrels, shulker boxes.",
+        "examples": [
+          "barrel",
+          "chest",
+          "shulker_box"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "tool",
+        "label": "Tool",
+        "state": "accepted",
+        "description": "Handheld tool with durability.",
+        "rationale": "Tools for mining, farming, etc.",
+        "examples": [
+          "iron_pickaxe",
+          "shears"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "transport",
+        "label": "Transport",
+        "state": "accepted",
+        "description": "Minecarts, boats, and related items.",
+        "rationale": "Vehicles for moving players/items.",
+        "examples": [
+          "minecart",
+          "oak_boat"
+        ]
+      },
+      {
+        "facet": "role",
+        "id": "weapon",
+        "label": "Weapon",
+        "state": "accepted",
+        "description": "Combat item for attack damage.",
+        "rationale": "Weapons are distinct from tools.",
+        "examples": [
+          "bow",
+          "diamond_sword"
+        ]
+      }
+    ],
+    "spawn_interaction": [
+      {
+        "facet": "spawn_interaction",
+        "id": "repel_piglin",
+        "label": "Repel Piglin",
+        "state": "accepted",
+        "description": "Soul fire items repel piglins.",
+        "rationale": "Piglin repelling is a key mechanic.",
+        "examples": [
+          "soul_campfire",
+          "soul_lantern",
+          "soul_torch"
+        ]
+      }
+    ],
+    "stock_profile": [
+      {
+        "facet": "stock_profile",
+        "id": "durable",
+        "label": "Durable",
+        "state": "accepted",
+        "description": "Has durability that decreases with use.",
+        "rationale": "Tools and armor have durability.",
+        "examples": [
+          "diamond_chestplate",
+          "iron_pickaxe"
+        ]
+      },
+      {
+        "facet": "stock_profile",
+        "id": "stack16",
+        "label": "Stack 16",
+        "state": "accepted",
+        "description": "Items that stack up to 16.",
+        "rationale": "Common stack limit for special items.",
+        "examples": [
+          "egg",
+          "ender_pearl",
+          "snowball"
+        ]
+      },
+      {
+        "facet": "stock_profile",
+        "id": "stack64",
+        "label": "Stack 64",
+        "state": "accepted",
+        "description": "Items that stack up to 64.",
+        "rationale": "Default stack size for most blocks.",
+        "examples": [
+          "diamond",
+          "stick",
+          "stone"
+        ]
+      },
+      {
+        "facet": "stock_profile",
+        "id": "unstackable",
+        "label": "Unstackable",
+        "state": "accepted",
+        "description": "Items that do not stack (max 1).",
+        "rationale": "Armor, tools, and unique items.",
+        "examples": [
+          "diamond_sword",
+          "elytra",
+          "potion"
+        ]
+      }
+    ],
+    "storage_categories": [],
+    "tier": [
+      {
+        "facet": "tier",
+        "id": "chainmail",
+        "label": "Chainmail",
+        "state": "accepted",
+        "description": "Chainmail armor tier.",
+        "rationale": "Distinct metal armor tier.",
+        "examples": [
+          "chainmail_helmet"
+        ]
+      },
+      {
+        "facet": "tier",
+        "id": "diamond",
+        "label": "Diamond",
+        "state": "accepted",
+        "description": "Diamond armor/tool tier.",
+        "rationale": "High-tier progression.",
+        "examples": [
+          "diamond_chestplate",
+          "diamond_pickaxe"
+        ]
+      },
+      {
+        "facet": "tier",
+        "id": "golden",
+        "label": "Golden",
+        "state": "accepted",
+        "description": "Golden armor tier.",
+        "rationale": "Unique gold tier.",
+        "examples": [
+          "golden_helmet"
+        ]
+      },
+      {
+        "facet": "tier",
+        "id": "iron",
+        "label": "Iron",
+        "state": "accepted",
+        "description": "Iron armor tier.",
+        "rationale": "Standard mid-tier.",
+        "examples": [
+          "iron_chestplate"
+        ]
+      },
+      {
+        "facet": "tier",
+        "id": "leather",
+        "label": "Leather",
+        "state": "accepted",
+        "description": "Leather armor tier.",
+        "rationale": "Basic armor tier.",
+        "examples": [
+          "leather_boots"
+        ]
+      },
+      {
+        "facet": "tier",
+        "id": "netherite",
+        "label": "Netherite",
+        "state": "accepted",
+        "description": "Netherite armor/tool tier.",
+        "rationale": "Endgame tier.",
+        "examples": [
+          "netherite_chestplate",
+          "netherite_pickaxe"
+        ]
+      }
+    ],
+    "transport_medium": [
+      {
+        "facet": "transport_medium",
+        "id": "fluid",
+        "label": "Fluid",
+        "state": "accepted",
+        "description": "Transports fluids (water, lava).",
+        "rationale": "Buckets transport fluids.",
+        "examples": [
+          "lava_bucket",
+          "water_bucket"
+        ]
+      },
+      {
+        "facet": "transport_medium",
+        "id": "item",
+        "label": "Item",
+        "state": "accepted",
+        "description": "Transports items.",
+        "rationale": "Hoppers and minecarts transport items.",
+        "examples": [
+          "chest_minecart",
+          "hopper_minecart"
+        ]
+      },
+      {
+        "facet": "transport_medium",
+        "id": "player",
+        "label": "Player",
+        "state": "accepted",
+        "description": "Transports the player.",
+        "rationale": "Boats and minecarts move players.",
+        "examples": [
+          "minecart",
+          "oak_boat"
+        ]
+      }
+    ],
+    "use_affordance": [
+      {
+        "facet": "use_affordance",
+        "id": "attack",
+        "label": "Attack",
+        "state": "accepted",
+        "description": "Attack with weapon or tool in hand.",
+        "rationale": "Basic interaction for combat items.",
+        "examples": [
+          "bow",
+          "diamond_sword"
+        ]
+      },
+      {
+        "facet": "use_affordance",
+        "id": "drink",
+        "label": "Drink",
+        "state": "accepted",
+        "description": "Drink potions or milk.",
+        "rationale": "Potion consumption.",
+        "examples": [
+          "milk_bucket",
+          "potion"
+        ]
+      },
+      {
+        "facet": "use_affordance",
+        "id": "eat",
+        "label": "Eat",
+        "state": "accepted",
+        "description": "Consume food items.",
+        "rationale": "Standard food interaction.",
+        "examples": [
+          "apple",
+          "bread"
+        ]
+      },
+      {
+        "facet": "use_affordance",
+        "id": "open",
+        "label": "Open",
+        "state": "accepted",
+        "description": "Open container inventory.",
+        "rationale": "Chests and shulker boxes.",
+        "examples": [
+          "chest",
+          "shulker_box"
+        ]
+      },
+      {
+        "facet": "use_affordance",
+        "id": "place",
+        "label": "Place",
+        "state": "accepted",
+        "description": "Place block in the world.",
+        "rationale": "Default block placement.",
+        "examples": [
+          "oak_planks",
+          "stone"
+        ]
+      },
+      {
+        "facet": "use_affordance",
+        "id": "shear",
+        "label": "Shear",
+        "state": "accepted",
+        "description": "Use shears to harvest.",
+        "rationale": "Shears have unique use.",
+        "examples": [
+          "shears"
+        ]
+      },
+      {
+        "facet": "use_affordance",
+        "id": "strip",
+        "label": "Strip",
+        "state": "accepted",
+        "description": "Strip bark from logs with an axe.",
+        "rationale": "Axe interaction.",
+        "examples": [
+          "iron_axe"
+        ]
+      },
+      {
+        "facet": "use_affordance",
+        "id": "till",
+        "label": "Till",
+        "state": "accepted",
+        "description": "Till soil with a hoe.",
+        "rationale": "Hoe interaction.",
+        "examples": [
+          "diamond_hoe"
+        ]
+      },
+      {
+        "facet": "use_affordance",
+        "id": "use",
+        "label": "Use",
+        "state": "accepted",
+        "description": "Right-click interaction (activate, shoot, etc.).",
+        "rationale": "Catch-all for right-click actions.",
+        "examples": [
+          "bow",
+          "fishing_rod",
+          "flint_and_steel"
+        ]
+      }
+    ],
+    "used_at": [
+      {
+        "facet": "used_at",
+        "id": "anvil",
+        "label": "Anvil",
+        "state": "accepted",
+        "description": "Used at an anvil.",
+        "rationale": "Anvil for repair and naming.",
+        "examples": [
+          "anvil"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "blast_furnace",
+        "label": "Blast Furnace",
+        "state": "accepted",
+        "description": "Used in a blast furnace.",
+        "rationale": "Blast furnace for ore smelting.",
+        "examples": [
+          "blast_furnace"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "brewing_stand",
+        "label": "Brewing Stand",
+        "state": "accepted",
+        "description": "Used in a brewing stand.",
+        "rationale": "Brewing station.",
+        "examples": [
+          "brewing_stand"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "campfire",
+        "label": "Campfire",
+        "state": "accepted",
+        "description": "Used on a campfire for cooking.",
+        "rationale": "Campfire cooking.",
+        "examples": [
+          "campfire"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "cartography_table",
+        "label": "Cartography Table",
+        "state": "accepted",
+        "description": "Used at a cartography table.",
+        "rationale": "Map cloning and expansion.",
+        "examples": [
+          "cartography_table"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "enchanting_table",
+        "label": "Enchanting Table",
+        "state": "accepted",
+        "description": "Used at an enchanting table.",
+        "rationale": "Enchanting station.",
+        "examples": [
+          "enchanting_table"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "fletching_table",
+        "label": "Fletching Table",
+        "state": "accepted",
+        "description": "Used at a fletching table.",
+        "rationale": "Fletching table for arrows.",
+        "examples": [
+          "fletching_table"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "furnace",
+        "label": "Furnace",
+        "state": "accepted",
+        "description": "Used in a furnace for smelting or cooking.",
+        "rationale": "Basic cooking station.",
+        "examples": [
+          "furnace"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "grindstone",
+        "label": "Grindstone",
+        "state": "accepted",
+        "description": "Used at a grindstone.",
+        "rationale": "Disenchanting and repair.",
+        "examples": [
+          "grindstone"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "loom",
+        "label": "Loom",
+        "state": "accepted",
+        "description": "Used with a loom.",
+        "rationale": "Banner pattern crafting.",
+        "examples": [
+          "loom"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "smithing_table",
+        "label": "Smithing Table",
+        "state": "accepted",
+        "description": "Used at a smithing table.",
+        "rationale": "Netherite upgrades and armor trimming.",
+        "examples": [
+          "smithing_table"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "smoker",
+        "label": "Smoker",
+        "state": "accepted",
+        "description": "Used in a smoker.",
+        "rationale": "Fast food cooking.",
+        "examples": [
+          "smoker"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "stonecutter",
+        "label": "Stonecutter",
+        "state": "accepted",
+        "description": "Used with a stonecutter.",
+        "rationale": "Stone block cutting.",
+        "examples": [
+          "stonecutter"
+        ]
+      },
+      {
+        "facet": "used_at",
+        "id": "crafting_table",
+        "label": "Crafting Table",
+        "state": "rejected",
+        "description": "Used at a crafting table."
+      }
+    ],
+    "workflow": [
+      {
+        "facet": "workflow",
+        "id": "blasting",
+        "label": "Blasting",
+        "state": "accepted",
+        "description": "Smelting ore in a blast furnace.",
+        "rationale": "Faster ore processing.",
+        "examples": [
+          "diamond",
+          "iron_ingot"
+        ]
+      },
+      {
+        "facet": "workflow",
+        "id": "brewing",
+        "label": "Brewing",
+        "state": "accepted",
+        "description": "Brewing potions in a brewing stand.",
+        "rationale": "Potion crafting.",
+        "examples": [
+          "blaze_powder",
+          "nether_wart"
+        ]
+      },
+      {
+        "facet": "workflow",
+        "id": "campfire_cooking",
+        "label": "Campfire Cooking",
+        "state": "accepted",
+        "description": "Cooking food on a campfire.",
+        "rationale": "Outdoor cooking workflow.",
+        "examples": [
+          "cooked_chicken",
+          "dried_kelp"
+        ]
+      },
+      {
+        "facet": "workflow",
+        "id": "enchanting",
+        "label": "Enchanting",
+        "state": "accepted",
+        "description": "Enchanting items at an enchanting table.",
+        "rationale": "Enchantment workflow.",
+        "examples": [
+          "book",
+          "lapis_lazuli"
+        ]
+      },
+      {
+        "facet": "workflow",
+        "id": "smelting",
+        "label": "Smelting",
+        "state": "accepted",
+        "description": "Cooking or smelting in a furnace.",
+        "rationale": "Furnace processing.",
+        "examples": [
+          "cooked_beef",
+          "iron_ingot"
+        ]
+      },
+      {
+        "facet": "workflow",
+        "id": "smithing",
+        "label": "Smithing",
+        "state": "accepted",
+        "description": "Using a smithing table for upgrades or trim.",
+        "rationale": "Netherite upgrades and armor trimming.",
+        "examples": [
+          "diamond_chestplate",
+          "netherite_ingot"
+        ]
+      },
+      {
+        "facet": "workflow",
+        "id": "smoking",
+        "label": "Smoking",
+        "state": "accepted",
+        "description": "Cooking food in a smoker.",
+        "rationale": "Fast cooking workflow.",
+        "examples": [
+          "cooked_beef",
+          "cooked_rabbit"
+        ]
+      },
+      {
+        "facet": "workflow",
+        "id": "stonecutting",
+        "label": "Stonecutting",
+        "state": "accepted",
+        "description": "Cutting stone into variants.",
+        "rationale": "Stonecutter workflow.",
+        "examples": [
+          "andesite_slab",
+          "stone_brick_stairs"
+        ]
+      },
+      {
+        "facet": "workflow",
+        "id": "grinding",
+        "label": "Grinding",
+        "state": "review",
+        "description": "Disenchanting at grindstone.",
+        "rationale": "Grindstone workflow.",
+        "examples": [
+          "grindstone"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "grinding",
+          "approved_label": "Grinding",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "workflow",
+        "id": "crafting",
+        "label": "Crafting",
+        "state": "rejected",
+        "description": "Standard 2x2 or 3x3 grid crafting."
+      }
+    ],
+    "workflow_role": [
+      {
+        "facet": "workflow_role",
+        "id": "blasting#input",
+        "label": "Blasting Input",
+        "state": "accepted",
+        "description": "Item that can be blasted.",
+        "rationale": "Ores and chainmail are inputs.",
+        "examples": [
+          "chainmail_boots",
+          "iron_ore"
+        ],
+        "parent": "blasting"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "blasting#output",
+        "label": "Blasting Output",
+        "state": "accepted",
+        "description": "Item produced by blasting.",
+        "rationale": "Faster smelting output.",
+        "examples": [
+          "gold_nugget",
+          "iron_ingot"
+        ],
+        "parent": "blasting"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "campfire_cooking#input",
+        "label": "Campfire Cooking Input",
+        "state": "accepted",
+        "description": "Item cooked on a campfire.",
+        "rationale": "Raw food inputs.",
+        "examples": [
+          "kelp",
+          "raw_beef"
+        ],
+        "parent": "campfire_cooking"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "campfire_cooking#output",
+        "label": "Campfire Cooking Output",
+        "state": "accepted",
+        "description": "Item produced by campfire cooking.",
+        "rationale": "Cooked food outputs.",
+        "examples": [
+          "cooked_beef",
+          "dried_kelp"
+        ],
+        "parent": "campfire_cooking"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "smelting#input",
+        "label": "Smelting Input",
+        "state": "accepted",
+        "description": "Item that can be smelted.",
+        "rationale": "Ores and food are inputs.",
+        "examples": [
+          "iron_ore",
+          "raw_beef"
+        ],
+        "parent": "smelting"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "smelting#output",
+        "label": "Smelting Output",
+        "state": "accepted",
+        "description": "Item produced by smelting.",
+        "rationale": "Common processing output.",
+        "examples": [
+          "cooked_beef",
+          "iron_ingot"
+        ],
+        "parent": "smelting"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "smoking#input",
+        "label": "Smoking Input",
+        "state": "accepted",
+        "description": "Item smoked in a smoker.",
+        "rationale": "Raw food inputs.",
+        "examples": [
+          "raw_chicken",
+          "salmon"
+        ],
+        "parent": "smoking"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "smoking#output",
+        "label": "Smoking Output",
+        "state": "accepted",
+        "description": "Item produced by smoking.",
+        "rationale": "Cooked food outputs.",
+        "examples": [
+          "cooked_chicken",
+          "cooked_salmon"
+        ],
+        "parent": "smoking"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "stonecutting#input",
+        "label": "Stonecutting Input",
+        "state": "accepted",
+        "description": "Item used as input in stonecutting.",
+        "rationale": "Common role for stone blocks.",
+        "examples": [
+          "andesite",
+          "stone_bricks"
+        ],
+        "parent": "stonecutting"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "stonecutting#output",
+        "label": "Stonecutting Output",
+        "state": "accepted",
+        "description": "Item produced by stonecutting.",
+        "rationale": "Common output.",
+        "examples": [
+          "andesite_slab",
+          "stone_brick_stairs"
+        ],
+        "parent": "stonecutting"
+      },
+      {
+        "facet": "workflow_role",
+        "id": "brewing#input",
+        "label": "Brewing Input",
+        "state": "review",
+        "description": "Item used as ingredient in brewing.",
+        "rationale": "Common brewing ingredients.",
+        "examples": [
+          "gunpowder",
+          "nether_wart"
+        ],
+        "parent": "brewing",
+        "policy_notes": [
+          "accepted non-default values require evidence"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "brewing#input",
+          "approved_label": "Brewing Input",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "workflow_role",
+        "id": "brewing#output",
+        "label": "Brewing Output",
+        "state": "review",
+        "description": "Item produced by brewing.",
+        "rationale": "Potion outputs.",
+        "examples": [
+          "potion",
+          "splash_potion"
+        ],
+        "parent": "brewing",
+        "policy_notes": [
+          "accepted non-default values require evidence"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "brewing#output",
+          "approved_label": "Brewing Output",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "workflow_role",
+        "id": "enchanting#input",
+        "label": "Enchanting Input",
+        "state": "review",
+        "description": "Item that can be enchanted.",
+        "rationale": "Tools and armor are inputs.",
+        "examples": [
+          "bow",
+          "diamond_sword"
+        ],
+        "parent": "enchanting",
+        "policy_notes": [
+          "accepted non-default values require evidence"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "enchanting#input",
+          "approved_label": "Enchanting Input",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "workflow_role",
+        "id": "enchanting#output",
+        "label": "Enchanting Output",
+        "state": "review",
+        "description": "Item produced by enchanting.",
+        "rationale": "Enchanted items.",
+        "examples": [
+          "enchanted_book"
+        ],
+        "parent": "enchanting",
+        "policy_notes": [
+          "accepted non-default values require evidence"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "enchanting#output",
+          "approved_label": "Enchanting Output",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "workflow_role",
+        "id": "smithing#input",
+        "label": "Smithing Input",
+        "state": "review",
+        "description": "Item used as base in smithing.",
+        "rationale": "Diamond equipment and templates are inputs.",
+        "examples": [
+          "diamond_chestplate",
+          "netherite_upgrade_smithing_template"
+        ],
+        "parent": "smithing",
+        "policy_notes": [
+          "accepted non-default values require evidence"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "smithing#input",
+          "approved_label": "Smithing Input",
+          "notes": ""
+        }
+      },
+      {
+        "facet": "workflow_role",
+        "id": "smithing#output",
+        "label": "Smithing Output",
+        "state": "review",
+        "description": "Item produced by smithing.",
+        "rationale": "Netherite gear and trimmed armor.",
+        "examples": [
+          "coast_armor_trim_smithing_template",
+          "netherite_chestplate"
+        ],
+        "parent": "smithing",
+        "policy_notes": [
+          "accepted non-default values require evidence"
+        ],
+        "human_review": {
+          "decision": "pending",
+          "approved_id": "smithing#output",
+          "approved_label": "Smithing Output",
+          "notes": ""
+        }
+      }
+    ]
+  },
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "facet": "workflow_role",
+      "id": "brewing#input",
+      "message": "policy downgraded accepted value to review: accepted non-default values require evidence"
+    },
+    {
+      "severity": "warning",
+      "facet": "workflow_role",
+      "id": "brewing#output",
+      "message": "policy downgraded accepted value to review: accepted non-default values require evidence"
+    },
+    {
+      "severity": "warning",
+      "facet": "workflow_role",
+      "id": "enchanting#input",
+      "message": "policy downgraded accepted value to review: accepted non-default values require evidence"
+    },
+    {
+      "severity": "warning",
+      "facet": "workflow_role",
+      "id": "enchanting#output",
+      "message": "policy downgraded accepted value to review: accepted non-default values require evidence"
+    },
+    {
+      "severity": "warning",
+      "facet": "workflow_role",
+      "id": "smithing#input",
+      "message": "policy downgraded accepted value to review: accepted non-default values require evidence"
+    },
+    {
+      "severity": "warning",
+      "facet": "workflow_role",
+      "id": "smithing#output",
+      "message": "policy downgraded accepted value to review: accepted non-default values require evidence"
+    }
+  ]
+}

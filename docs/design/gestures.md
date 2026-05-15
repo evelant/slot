@@ -126,10 +126,14 @@ resolution rule above) and shipped on the AtlasItem as
 ### Behavior shipped
 
 - Pip renders only when the resolved desired count > 0.
-- ctrl+scroll routes to the active scope server-side: kit-scope when
-  a kit is active, else player-global. Single ctrl+scroll on an atlas
-  card always edits whatever the player sees on the card.
-- Right-click "Set desired count…" same scope routing.
+- ctrl+scroll routes to the scope behind the visible pip: active
+  kit-scope when a kit override is visible, player-global when the card
+  is showing the global fallback, and kit-scope for a new count while a
+  kit is active. Single ctrl+scroll on an atlas card always edits
+  whatever the player sees on the card.
+- Right-click "Set desired count…" writes the active scope; its Clear
+  action follows the visible source so a global fallback can still be
+  removed while a kit is active.
 - Drag-onto-kit-bring-panel writes kit-scoped count = 1 (default
   seed); drag-out clears.
 - Persistence: event-sourced via `PlayerDesiredCountSet` and

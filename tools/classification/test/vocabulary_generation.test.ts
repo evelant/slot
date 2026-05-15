@@ -2,7 +2,9 @@ import { createHash } from "node:crypto";
 import { describe, expect, test } from "bun:test";
 import type { LlmClient, QueryOptions } from "../src/llm/client.ts";
 import type { FacetEvidenceArtifact } from "../src/evidence/facet_evidence.ts";
+import { FACETS, VOCABULARY_BACKED_FACETS } from "../src/schema/facets.ts";
 import { validateVocabularyArtifact, type PackFacetVocabulary } from "../src/schema/vocabulary.ts";
+import { FACET_POLICIES } from "../src/vocabulary/constants.ts";
 import {
 	  applyVocabularyReviewDecisions,
 	  buildVocabularyCurationPrompt,
@@ -15,7 +17,42 @@ import {
 import { selectPromptCandidates } from "../src/vocabulary/selection.ts";
 
 describe("pack facet vocabulary generation", () => {
-  test("extracts universal defaults and evidence-backed workflow candidates", () => {
+  test("has explicit curation policy for every vocabulary-backed schema facet", () => {
+    const registryBacked = Object.entries(FACETS)
+      .filter(([, def]) => def.vocabulary_backed)
+      .map(([facet]) => facet)
+      .sort();
+
+    const configuredBacked = VOCABULARY_BACKED_FACETS
+      .map((facet) => String(facet))
+      .sort();
+
+    expect(configuredBacked).toEqual(registryBacked);
+
+    const missingPolicy = VOCABULARY_BACKED_FACETS
+      .filter((facet) => !FACET_POLICIES[facet]?.trim());
+
+    expect(missingPolicy).toEqual([]);
+  });
+
+  test("does not hardcode pack-specific material process stages as built-in vocabulary", () => {
+    const prompt = buildVocabularyCurationPrompt({
+      facet: "material_process_stage",
+      packId: "fixture",
+      candidates: [],
+      previousAccepted: [],
+      minEvidence: 2,
+    });
+    const user = JSON.parse(prompt.user) as {
+      built_in_values?: Array<{ id?: string }>;
+    };
+
+    expect(user.built_in_values).toBeUndefined();
+    expect(JSON.stringify(user)).toContain("Do not rely on built-in pack-specific defaults");
+    expect(prompt.system).not.toContain("Do not rely on built-in pack-specific defaults");
+  });
+
+  test("extracts built-in organization homes and evidence-backed workflow candidates", () => {
     const evidence = fixtureEvidence();
     const candidates = extractVocabularyCandidates(evidence, {
       packId: "fixture",
@@ -23,8 +60,8 @@ describe("pack facet vocabulary generation", () => {
       facets: ["activity", "workflow", "workflow_role", "organization_group", "food_category", "use_affordance"],
     });
 
-    expect(candidates.find((candidate) => candidate.facet === "activity" && candidate.id === "slot:cooking")?.suggested_state).toBe("accepted");
-    expect(candidates.find((candidate) => candidate.facet === "use_affordance" && candidate.id === "slot:open")?.suggested_state).toBe("accepted");
+    expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "food")?.suggested_state).toBe("accepted");
+    expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "metal_stock")?.suggested_state).toBe("accepted");
     expect(candidates.find((candidate) => candidate.facet === "workflow" && candidate.id === "example:casting")?.suggested_state).toBe("accepted");
     expect(candidates.find((candidate) => candidate.facet === "workflow" && candidate.id === "example:casting")?.semantic_evidence.some((entry) =>
       entry.text?.includes("Reusable mold")
@@ -32,8 +69,8 @@ describe("pack facet vocabulary generation", () => {
     expect(candidates.find((candidate) => candidate.facet === "workflow" && candidate.id === "example:casting/ingot")).toBeUndefined();
     expect(candidates.find((candidate) => candidate.facet === "workflow_role" && candidate.id === "example:casting#input")?.parent).toBe("example:casting");
     expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "example:casting")).toBeUndefined();
-    expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "pack:fixture/casting_molds")?.suggested_state).toBe("review");
-    expect(candidates.find((candidate) => candidate.facet === "food_category" && candidate.id === "slot:fruit")?.evidence[0]?.kind).toBe("item_tag");
+    expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "casting_molds")?.suggested_state).toBe("review");
+    expect(candidates.find((candidate) => candidate.facet === "food_category" && candidate.id === "fruit")).toBeUndefined();
   });
 
   test("extracts mod_subsystem candidates from pack vocabulary evidence", () => {
@@ -118,18 +155,17 @@ describe("pack facet vocabulary generation", () => {
     });
     const ids = candidates.map((candidate) => candidate.id);
 
-    expect(ids).toContain("create:kinetics");
-    expect(ids).toContain("create:belt");
-    expect(ids).toContain("create:pipe");
-    expect(ids).toContain("create:fluid");
-    expect(ids).toContain("railways:rail");
-    expect(ids).not.toContain("create:pipes");
-    expect(ids).not.toContain("create:kinetic");
-    expect(ids).not.toContain("create:press");
-    expect(ids).not.toContain("create:storage");
-    expect(ids).not.toContain("create:using_mechanical_belts");
-    expect(ids).not.toContain("pack:fixture/kinetics");
-    expect(candidates.find((candidate) => candidate.id === "railways:rail")?.aliases).toEqual([]);
+    expect(ids).toContain("kinetics");
+    expect(ids).toContain("belt");
+    expect(ids).toContain("pipe");
+    expect(ids).toContain("fluid");
+    expect(ids).toContain("rail");
+    expect(ids).not.toContain("pipes");
+    expect(ids).not.toContain("kinetic");
+    expect(ids).not.toContain("press");
+    expect(ids).not.toContain("storage");
+    expect(ids).not.toContain("using_mechanical_belts");
+    expect(candidates.find((candidate) => candidate.id === "rail")?.aliases).toEqual([]);
   });
 
   test("extracts player-facing organization groups from item evidence instead of workflows", () => {
@@ -303,32 +339,34 @@ describe("pack facet vocabulary generation", () => {
       minEvidence: 2,
       facets: ["workflow", "organization_group"],
     });
-    const ids = candidates.filter((candidate) => candidate.facet === "organization_group").map((candidate) => candidate.id);
+    const ids = candidates
+      .filter((candidate) => candidate.facet === "organization_group" && candidate.origin !== "built_in")
+      .map((candidate) => candidate.id);
 
-    expect(ids).toContain("pack:fixture/beekeeping");
-    expect(ids).toContain("pack:fixture/glass_products");
-    expect(ids).not.toContain("pack:fixture/seeds");
-    expect(ids).not.toContain("pack:fixture/crops");
-    expect(ids).not.toContain("pack:fixture/inedible_plants");
-    expect(ids).not.toContain("pack:fixture/item_containers");
-    expect(ids).not.toContain("pack:fixture/lamps");
-    expect(ids).not.toContain("pack:fixture/pottery");
-    expect(ids).not.toContain("pack:fixture/redstone");
+    expect(ids).toContain("beekeeping");
+    expect(ids).toContain("glass_products");
+    expect(ids).not.toContain("seeds");
+    expect(ids).not.toContain("crops");
+    expect(ids).not.toContain("inedible_plants");
+    expect(ids).not.toContain("item_containers");
+    expect(ids).not.toContain("lamps");
+    expect(ids).not.toContain("pottery");
+    expect(ids).not.toContain("redstone");
     expect(ids).not.toContain("example:casting");
-    expect(ids).not.toContain("pack:fixture/unprocessed_ores");
-    expect(ids).not.toContain("pack:fixture/refined_ores");
+    expect(ids).not.toContain("unprocessed_ores");
+    expect(ids).not.toContain("refined_ores");
     expect(ids).not.toContain("gtceu:ulv_components");
-    expect(ids).not.toContain("pack:fixture/create_items");
-    expect(ids).not.toContain("pack:fixture/pileable_ingots");
-    expect(ids).not.toContain("pack:fixture/metamorphic_items");
-    expect(ids).not.toContain("pack:fixture/pickaxe");
-    expect(ids).not.toContain("pack:fixture/usable_on_tool_rack");
+    expect(ids).not.toContain("create_items");
+    expect(ids).not.toContain("pileable_ingots");
+    expect(ids).not.toContain("metamorphic_items");
+    expect(ids).not.toContain("pickaxe");
+    expect(ids).not.toContain("usable_on_tool_rack");
   });
 
   test("mod_subsystem curation prompt carries identity constraints", () => {
     const candidate: PackVocabularyCandidate = {
       facet: "mod_subsystem",
-      id: "create:kinetics",
+      id: "kinetics",
       label: "Kinetics",
       origin: "namespace_generated",
       suggested_state: "review",
@@ -354,17 +392,18 @@ describe("pack facet vocabulary generation", () => {
       minEvidence: 2,
     });
 
-    expect(prompt.system).toContain("namespace-scoped identity systems inside a mod");
-    expect(prompt.system).toContain("not a wall-home source");
-    expect(prompt.system).toContain("The item itself must belong to the subsystem");
-    expect(prompt.system).toContain("Do not assign a subsystem merely because the item is consumed by a subsystem recipe");
-    expect(JSON.stringify(JSON.parse(prompt.user))).toContain("create:kinetics");
+    const userText = JSON.stringify(JSON.parse(prompt.user));
+    expect(userText).toContain("identity systems inside a mod");
+    expect(userText).toContain("not a wall-home source");
+    expect(userText).toContain("The item itself must belong to the subsystem");
+    expect(userText).toContain("Do not assign a subsystem merely because the item is consumed by a subsystem recipe");
+    expect(userText).toContain("kinetics");
   });
 
   test("organization_group curation prompt leads with human storage intent", () => {
     const candidate: PackVocabularyCandidate = {
       facet: "organization_group",
-      id: "pack:fixture/casting_molds",
+      id: "casting_molds",
       label: "Casting Molds",
       origin: "pack_generated",
       suggested_state: "review",
@@ -401,25 +440,26 @@ describe("pack facet vocabulary generation", () => {
     expect(prompt.system).toContain("Do not output one value per context record");
     expect(prompt.system).toContain("Synthesize the vocabulary values the pack actually needs");
     expect(prompt.system).not.toContain("Curate from the candidate ids");
-    expect(prompt.system).toContain(
+    const userText = JSON.stringify(user);
+    expect(userText).toContain(
       "The #1 rule is: would a human player spend one of a small number of main inventory sections on this broad item type",
     );
-    expect(prompt.system).toContain("accepted + review custom groups should be human-sized");
-    expect(prompt.system).toContain("Do not be so conservative that you output nothing");
-    expect(prompt.system).toContain("usually 3-10 values");
-    expect(prompt.system).toContain("Pack-specific storage families should use pack:fixture/");
-    expect(prompt.system).toContain("Group primarily by broad item type or role");
-    expect(prompt.system).toContain("Protected built-in wall sections are good homes");
-    expect(prompt.system).toContain("Ores & Raw Stock, Metal Stock, Gems & Crystals, Dusts & Powders, Wood, Seeds, Crops, Plants, Ceramics & Molds, Organic Materials, Storage");
-    expect(prompt.system).toContain("Item containers belong to Storage");
-    expect(prompt.system).toContain("lamps/light sources to Lighting");
-    expect(prompt.system).toContain("beekeeping, glass products, cooking supplies");
-    expect(prompt.system).toContain("not a hard list");
-    expect(prompt.system).toContain("material form/state such as stackable or pileable");
-    expect(prompt.system).toContain("rock/geology taxonomy");
-    expect(prompt.system).toContain("broad storage family a player would actually maintain");
+    expect(userText).toContain("accepted + review custom groups should be human-sized");
+    expect(userText).toContain("Do not be so conservative that you output nothing");
+    expect(userText).toContain("usually 3-10 values");
+    expect(userText).toContain("Use concise lower_snake values");
+    expect(userText).toContain("Group primarily by broad item type or role");
+    expect(userText).toContain("Protected built-in wall sections are good homes");
+    expect(userText).toContain("Ores & Raw Stock, Metal Stock, Gems & Crystals, Dusts & Powders, Wood, Seeds, Crops, Plants, Ceramics & Molds, Organic Materials, Storage");
+    expect(userText).toContain("Item containers belong to Storage");
+    expect(userText).toContain("lamps/light sources to Lighting");
+    expect(userText).toContain("beekeeping, glass products, cooking supplies");
+    expect(userText).toContain("not a hard list");
+    expect(userText).toContain("material form/state such as stackable or pileable");
+    expect(userText).toContain("rock/geology taxonomy");
+    expect(userText).toContain("broad storage family a player would actually maintain");
     expect(user.policy).toContain("scarce, broad sections a human player would maintain primarily by item type/role");
-    expect(user.context_records?.[0]?.context_id).toBe("pack:fixture/casting_molds");
+    expect(user.context_records?.[0]?.context_id).toBe("casting_molds");
     expect(user.pack_item_overview).toBeUndefined();
     expect("candidates" in user).toBe(false);
     expect(user.synthesis_contract?.final_instructions?.join(" ")).toContain("not proposed values");
@@ -515,36 +555,91 @@ describe("pack facet vocabulary generation", () => {
     expect(user.synthesis_contract?.final_instructions?.join(" ")).toContain("context_id values are source handles");
   });
 
-  test("curation prompt renders universal defaults as protected defaults for every defaulted facet", () => {
-    const candidates = extractVocabularyCandidates(fixtureEvidence(), {
-      packId: "fixture",
-      minEvidence: 2,
-      facets: ["use_affordance"],
+  test("vocabulary prompt can include rotating raw item samples for every facet", () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push(
+      runtimeItemRecord("example:copper_gear", "Copper Gear", {
+        tags: ["c:gears/copper", "c:mechanical_parts"],
+        ingredientTypes: { "example:assembling": 4 },
+        outputTypes: { "example:pressing": 2 },
+        semantic: "Mechanical gear used in machines.",
+      }),
+      runtimeItemRecord("example:apple_pie", "Apple Pie", {
+        tags: ["c:foods", "c:foods/pies"],
+        ingredientTypes: { "example:cooking": 1 },
+        semantic: "A prepared pie eaten as food.",
+      }),
+    );
+    const overview = buildVocabularyPromptOverview({
+      facet: "workflow",
+      records: evidence.records,
+      itemSampleSize: 2,
+      itemSampleSeed: "fixture-seed",
+      itemSampleMode: "coverage",
+      vocabularyIteration: 2,
     });
 
     const prompt = buildVocabularyCurationPrompt({
-      facet: "use_affordance",
+      facet: "workflow",
+      packId: "fixture",
+      candidates: [],
+      previousAccepted: [],
+      minEvidence: 2,
+      packOverview: overview,
+    });
+    const user = JSON.parse(prompt.user) as {
+      pack_item_overview?: {
+        runtime_item_sample?: Array<{
+          id?: string;
+          tags?: string[];
+          recipe_roles?: { ingredient_types?: Record<string, number> };
+          semantic_context?: string[];
+        }>;
+        item_sample_iteration?: number;
+      };
+    };
+
+    expect(user.pack_item_overview?.item_sample_iteration).toBe(2);
+    expect(user.pack_item_overview?.runtime_item_sample).toHaveLength(2);
+    const serialized = JSON.stringify(user.pack_item_overview);
+    expect(serialized).toContain("example:");
+    expect(serialized).toContain("recipe_roles");
+    const sampleOnly = JSON.stringify(user.pack_item_overview?.runtime_item_sample);
+    expect(sampleOnly).not.toContain("material_family");
+    expect(sampleOnly).not.toContain("stage2");
+    expect(sampleOnly).not.toContain("deterministic");
+  });
+
+  test("curation prompt renders built-in organization homes as protected accepted values", () => {
+    const candidates = extractVocabularyCandidates(fixtureEvidence(), {
+      packId: "fixture",
+      minEvidence: 2,
+      facets: ["organization_group"],
+    });
+
+    const prompt = buildVocabularyCurationPrompt({
+      facet: "organization_group",
       packId: "fixture",
       candidates,
       previousAccepted: [],
       minEvidence: 2,
     });
     const user = JSON.parse(prompt.user) as {
-      universal_default_values?: Array<{ id?: string; label?: string; description?: string; aliases?: string[] }>;
+      built_in_values?: Array<{ id?: string; label?: string; description?: string; aliases?: string[] }>;
       context_records?: Array<{ context_id?: string }>;
       synthesis_contract?: { context_record_count?: number; final_instructions?: string[] };
     };
 
-    expect(prompt.system).toContain("universal_default_values is present");
+    expect(prompt.system).toContain("built_in_values is present");
     expect(prompt.system).toContain("already accepted built-ins for this facet");
-    expect(prompt.system).toContain("Do not synthesize pack/mod/slot values that duplicate");
-    expect(user.universal_default_values?.some((value) =>
-      value.id === "slot:launch" && value.description?.includes("launch")
+    expect(prompt.system).toContain("Do not synthesize values that duplicate");
+    expect(user.built_in_values?.some((value) =>
+      value.id === "food" && value.description?.includes("Food")
     )).toBe(true);
-    expect(user.universal_default_values?.some((value) =>
-      value.id === "slot:fuel" && value.aliases?.includes("burn")
+    expect(user.built_in_values?.some((value) =>
+      value.id === "metal_stock" && value.aliases?.includes("ingots")
     )).toBe(true);
-    expect(user.context_records?.some((record) => record.context_id === "slot:launch")).toBe(false);
+    expect(user.context_records?.some((record) => record.context_id === "food")).toBe(false);
     expect(user.synthesis_contract?.context_record_count).toBe(user.context_records?.length);
     expect(user.synthesis_contract?.final_instructions?.join(" ")).toContain("near-duplicates, synonyms, or narrow splits");
   });
@@ -565,13 +660,14 @@ describe("pack facet vocabulary generation", () => {
       previousAccepted: [],
       minEvidence: 2,
     });
-    expect(prompt.system).toContain("Synthesize reusable player-facing tasks, processes, or station workflows");
-    expect(prompt.system).toContain("Prefer canonical process/station names over tutorial titles");
+    const userText = prompt.user;
+    expect(userText).toContain("Synthesize reusable player-facing tasks, processes, or station workflows");
+    expect(userText).toContain("Prefer canonical process/station names over tutorial titles");
     expect(prompt.system).not.toContain("CRITICAL OUTPUT CONTRACT");
     expect(prompt.system).not.toContain("return exactly one value object for every candidate id");
-    expect(prompt.system).toContain("Reject implementation recipe mechanics");
-    expect(prompt.system).toContain("item families");
-    expect(prompt.system).toContain("environmental events");
+    expect(userText).toContain("Reject implementation recipe mechanics");
+    expect(userText).toContain("item families");
+    expect(userText).toContain("environmental events");
     const user = JSON.parse(prompt.user) as {
       context_records: Array<{
         context_id?: string;
@@ -658,7 +754,7 @@ describe("pack facet vocabulary generation", () => {
     expect(contextRecord.semantic_context_omitted).toBeGreaterThan(0);
   });
 
-  test("progression candidates reject namespace-only dimension noise", () => {
+  test("progression candidates normalize dimension gates to facet-scoped values", () => {
     const evidence = fixtureEvidence();
     evidence.records.push(
       {
@@ -745,13 +841,14 @@ describe("pack facet vocabulary generation", () => {
       facets: ["progression_stage"],
     });
 
-    expect(candidates.find((candidate) => candidate.id === "ad_astra:moon")).toBeDefined();
+    expect(candidates.find((candidate) => candidate.id === "ad_astra:moon")).toBeUndefined();
+    expect(candidates.find((candidate) => candidate.id === "moon")).toBeDefined();
     expect(candidates.find((candidate) => candidate.id === "beneath:warped/chest")).toBeUndefined();
     expect(candidates.find((candidate) => candidate.id === "tfc:black_steel")).toBeUndefined();
     expect(candidates.find((candidate) => candidate.id === "tfc:steel")).toBeUndefined();
     expect(candidates.find((candidate) => candidate.id === "tfc:dugout/canoes")).toBeUndefined();
-    expect(candidates.find((candidate) => candidate.id === "pack:fixture/applied_energistics_2")).toBeUndefined();
-    expect(candidates.find((candidate) => candidate.id?.startsWith("pack:fixture/eager/to/launch"))).toBeUndefined();
+    expect(candidates.find((candidate) => candidate.id === "applied_energistics_2")).toBeUndefined();
+    expect(candidates.find((candidate) => candidate.id?.startsWith("eager/to/launch"))).toBeUndefined();
   });
 
   test("parses curation responses from raw JSON and wrapped envelopes", () => {
@@ -817,14 +914,14 @@ describe("pack facet vocabulary generation", () => {
     expect(invented?.examples).toContain("example:item");
   });
 
-  test("keeps universal defaults accepted even when curation downgrades them", async () => {
+  test("keeps built-in vocabulary seeds accepted even when curation downgrades them", async () => {
     const client = new StaticSplitClient({
       values: [
         {
-          id: "slot:fill",
-          label: "Fill",
+          id: "materials",
+          label: "Materials",
           state: "review",
-          description: "Rejected because fill is not a useful use affordance.",
+          description: "Rejected because materials is generic.",
           aliases: ["not useful"],
           confidence: 0.4,
         },
@@ -837,21 +934,21 @@ describe("pack facet vocabulary generation", () => {
       packId: "fixture",
       generatedBy: "test",
       generatedAt: "2026-05-11T00:00:00.000Z",
-      facets: ["use_affordance"],
+      facets: ["organization_group"],
       minEvidence: 2,
       client,
       model: "test-model",
     });
 
-    expect(result.vocabulary.facets.use_affordance?.values["slot:fill"]?.state).toBe("accepted");
-    expect(result.vocabulary.facets.use_affordance?.values["slot:fill"]?.description).toBeUndefined();
-    expect(result.vocabulary.facets.use_affordance?.values["slot:fill"]?.aliases).toBeUndefined();
-    expect(result.review.decisions.use_affordance?.find((decision) => decision.id === "slot:fill")?.policy_notes).toContain(
-      "universal default kept accepted by policy",
+    expect(result.vocabulary.facets.organization_group?.values["materials"]?.state).toBe("accepted");
+    expect(result.vocabulary.facets.organization_group?.values["materials"]?.description).toBeDefined();
+    expect(result.vocabulary.facets.organization_group?.values["materials"]?.aliases).toBeUndefined();
+    expect(result.review.decisions.organization_group?.find((decision) => decision.id === "materials")?.policy_notes).toContain(
+      "built-in value kept accepted by policy",
     );
   });
 
-  test("rejects workflow roles whose parent workflow is not accepted", async () => {
+  test("rejects workflow roles whose parent workflow is not usable", async () => {
     const previousVocabulary: PackFacetVocabulary = {
       schema_version: 1,
       kind: "slot-pack-facet-vocabulary",
@@ -895,11 +992,11 @@ describe("pack facet vocabulary generation", () => {
 
     const decision = result.review.decisions.workflow_role?.find((value) => value.id === "example:missing#input");
     expect(decision?.state).toBe("rejected");
-    expect(decision?.policy_notes).toContain("workflow_role parent is not an accepted workflow value");
+    expect(decision?.policy_notes).toContain("workflow_role parent is not a usable workflow value");
     expect(result.vocabulary.facets.workflow_role?.values["example:missing#input"]).toBeUndefined();
   });
 
-  test("validates that accepted workflow_role parents exist in workflow vocabulary", () => {
+  test("validates that usable workflow_role parents exist in workflow vocabulary", () => {
     const validation = validateVocabularyArtifact({
       schema_version: 1,
       kind: "slot-pack-facet-vocabulary",
@@ -920,7 +1017,36 @@ describe("pack facet vocabulary generation", () => {
     });
 
     expect(validation.ok).toBe(false);
-    expect(validation.errors.join("\n")).toContain("references missing accepted workflow 'example:missing'");
+    expect(validation.errors.join("\n")).toContain("references missing usable workflow 'example:missing'");
+  });
+
+  test("drops invalid related_activity metadata from curation decisions", async () => {
+    const client = new StaticSplitClient({
+      values: [{
+        id: "medium_voltage",
+        label: "Medium Voltage",
+        state: "accepted",
+        confidence: 0.85,
+        related_activity: ["energy", "electric machines", " precision crafting "],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence: fixtureEvidence(),
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["progression_stage"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    const value = result.vocabulary.facets.progression_stage?.values.medium_voltage;
+    expect(value?.related_activity).toEqual(["energy"]);
+    const decision = result.review.decisions.progression_stage?.find((item) => item.id === "medium_voltage");
+    expect(decision?.policy_notes).toContain("invalid related_activity ids dropped: electric machines, precision crafting");
   });
 
   test("downgrades guide-title workflow phrases that are too granular for accepted workflow vocabulary", async () => {
@@ -960,7 +1086,7 @@ describe("pack facet vocabulary generation", () => {
     const decision = result.review.decisions.workflow?.find((value) => value.id === "create:using/the/deployer");
     expect(decision?.state).toBe("review");
     expect(decision?.policy_notes).toContain("guide/quest/advancement workflow title is too granular; prefer a reusable process/station id");
-    expect(result.vocabulary.facets.workflow?.values["create:using/the/deployer"]).toBeUndefined();
+    expect(result.vocabulary.facets.workflow?.values["create:using/the/deployer"]?.state).toBe("review");
   });
 
   test("downgrades document-only used_at page titles that are too granular", async () => {
@@ -1000,7 +1126,7 @@ describe("pack facet vocabulary generation", () => {
     const decision = result.review.decisions.used_at?.find((value) => value.id === "greate:processing/items/in/the/millstone");
     expect(decision?.state).toBe("review");
     expect(decision?.policy_notes).toContain("guide/quest/advancement used_at title is too granular; prefer a reusable station/process id");
-    expect(result.vocabulary.facets.used_at?.values["greate:processing/items/in/the/millstone"]).toBeUndefined();
+    expect(result.vocabulary.facets.used_at?.values["greate:processing/items/in/the/millstone"]?.state).toBe("review");
   });
 
   test("downgrades unsupported model-synthesized organization groups from material tags", async () => {
@@ -1017,7 +1143,7 @@ describe("pack facet vocabulary generation", () => {
     });
     const client = new StaticSplitClient({
       values: [{
-        id: "pack:fixture/copper",
+        id: "copper",
         label: "Copper",
         state: "accepted",
         confidence: 0.8,
@@ -1037,12 +1163,12 @@ describe("pack facet vocabulary generation", () => {
       model: "test-model",
     });
 
-    const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/copper");
+    const decision = result.review.decisions.organization_group?.find((value) => value.id === "copper");
     expect(decision?.state).toBe("review");
     expect(decision?.policy_notes).toContain(
       "custom organization_group requires human review before auto-home",
     );
-    expect(result.vocabulary.facets.organization_group?.values["pack:fixture/copper"]).toBeUndefined();
+    expect(result.vocabulary.facets.organization_group?.values["copper"]?.state).toBe("review");
   });
 
   test("downgrades model-synthesized organization groups without enough org evidence", async () => {
@@ -1059,7 +1185,7 @@ describe("pack facet vocabulary generation", () => {
     });
     const client = new StaticSplitClient({
       values: [{
-        id: "pack:fixture/axes",
+        id: "axes",
         label: "Axes",
         state: "accepted",
         confidence: 0.8,
@@ -1079,12 +1205,12 @@ describe("pack facet vocabulary generation", () => {
       model: "test-model",
     });
 
-    const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/axes");
+    const decision = result.review.decisions.organization_group?.find((value) => value.id === "axes");
     expect(decision?.state).toBe("review");
     expect(decision?.policy_notes).toContain(
       "custom organization_group requires human review before auto-home",
     );
-    expect(result.vocabulary.facets.organization_group?.values["pack:fixture/axes"]).toBeUndefined();
+    expect(result.vocabulary.facets.organization_group?.values["axes"]?.state).toBe("review");
   });
 
   test("records synthesized value rationale and examples without requiring evidence refs", async () => {
@@ -1123,7 +1249,7 @@ describe("pack facet vocabulary generation", () => {
   test("applies manual approve and rename decisions from the concise review artifact", async () => {
     const client = new StaticSplitClient({
       values: [{
-        id: "pack:fixture/casting_molds",
+        id: "casting_molds",
         label: "Casting Molds",
         state: "accepted",
         description: "Reusable molds and casting supplies.",
@@ -1143,14 +1269,14 @@ describe("pack facet vocabulary generation", () => {
       client,
       model: "test-model",
     });
-    const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/casting_molds");
+    const decision = result.review.decisions.organization_group?.find((value) => value.id === "casting_molds");
     expect(decision?.state).toBe("review");
     expect(decision?.human_review?.decision).toBe("pending");
-    expect(result.vocabulary.facets.organization_group?.values["pack:fixture/casting_molds"]).toBeUndefined();
+    expect(result.vocabulary.facets.organization_group?.values["casting_molds"]?.state).toBe("review");
 
     decision!.human_review = {
       decision: "rename",
-      approved_id: "pack:fixture/casting_supplies",
+      approved_id: "casting_supplies",
       approved_label: "Casting Supplies",
       notes: "Molds alone is a bit too narrow.",
     };
@@ -1166,17 +1292,17 @@ describe("pack facet vocabulary generation", () => {
     expect(applied.errors).toEqual([]);
     expect(applied.changes).toContainEqual({
       facet: "organization_group",
-      id: "pack:fixture/casting_molds",
+      id: "casting_molds",
       action: "rename",
-      approved_id: "pack:fixture/casting_supplies",
+      approved_id: "casting_supplies",
     });
-    expect(applied.vocabulary.facets.organization_group?.values["pack:fixture/casting_supplies"]).toMatchObject({
+    expect(applied.vocabulary.facets.organization_group?.values["casting_supplies"]).toMatchObject({
       label: "Casting Supplies",
       origin: "manual",
       state: "accepted",
       description: "Reusable molds and casting supplies.",
     });
-    expect(applied.vocabulary.facets.organization_group?.values["pack:fixture/casting_molds"]).toBeUndefined();
+    expect(applied.vocabulary.facets.organization_group?.values["casting_molds"]).toBeUndefined();
   });
 
   test("downgrades query-only organization groups without enough org evidence", async () => {
@@ -1216,21 +1342,21 @@ describe("pack facet vocabulary generation", () => {
     const client = new StaticSplitClient({
       values: [
         {
-          id: "pack:fixture/grapplemod_items",
+          id: "grapplemod_items",
           label: "Grappling Hook Mod Items",
           state: "accepted",
           confidence: 0.8,
           evidence: [{ kind: "mod_metadata", id: "grapplemod", confidence: 0.6 }],
         },
         {
-          id: "pack:fixture/pileable_ingots",
+          id: "pileable_ingots",
           label: "Pileable Ingots",
           state: "accepted",
           confidence: 0.8,
           evidence: [{ kind: "item_tag", id: "tfc:pileable_ingots", confidence: 0.75 }],
         },
         {
-          id: "pack:fixture/metamorphic_items",
+          id: "metamorphic_items",
           label: "Metamorphic Items",
           state: "accepted",
           confidence: 0.8,
@@ -1251,13 +1377,13 @@ describe("pack facet vocabulary generation", () => {
       model: "test-model",
     });
 
-    for (const id of ["pack:fixture/grapplemod_items", "pack:fixture/pileable_ingots", "pack:fixture/metamorphic_items"]) {
+    for (const id of ["grapplemod_items", "pileable_ingots", "metamorphic_items"]) {
       const decision = result.review.decisions.organization_group?.find((value) => value.id === id);
       expect(decision?.state).toBe("review");
       expect(decision?.policy_notes).toContain(
         "custom organization_group requires human review before auto-home",
       );
-      expect(result.vocabulary.facets.organization_group?.values[id]).toBeUndefined();
+      expect(result.vocabulary.facets.organization_group?.values[id]?.state).toBe("review");
     }
   });
 
@@ -1281,7 +1407,7 @@ describe("pack facet vocabulary generation", () => {
       facets: ["organization_group"],
     });
 
-    expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "pack:fixture/back")).toBeUndefined();
+    expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "back")).toBeUndefined();
   });
 
   test("downgrades slash-form document aliases when a recipe-backed station id exists", async () => {
@@ -1335,8 +1461,8 @@ describe("pack facet vocabulary generation", () => {
     expect(usedAt?.state).toBe("review");
     expect(workflow?.policy_notes).toContain("document-title alias duplicates a recipe-backed station/process id");
     expect(usedAt?.policy_notes).toContain("document-title alias duplicates a recipe-backed station/process id");
-    expect(result.vocabulary.facets.workflow?.values["example:blast/furnace"]).toBeUndefined();
-    expect(result.vocabulary.facets.used_at?.values["example:blast/furnace"]).toBeUndefined();
+    expect(result.vocabulary.facets.workflow?.values["example:blast/furnace"]?.state).toBe("review");
+    expect(result.vocabulary.facets.used_at?.values["example:blast/furnace"]?.state).toBe("review");
   });
 
   test("downgrades advancement-title progression phrases that are not concise gates", async () => {
@@ -1375,7 +1501,7 @@ describe("pack facet vocabulary generation", () => {
     const decision = result.review.decisions.progression_stage?.find((value) => value.id === "ad_astra:one/small/step");
     expect(decision?.state).toBe("review");
     expect(decision?.policy_notes).toContain("progression value is too phrase-like; prefer a concise gate/tier/dimension id");
-    expect(result.vocabulary.facets.progression_stage?.values["ad_astra:one/small/step"]).toBeUndefined();
+    expect(result.vocabulary.facets.progression_stage?.values["ad_astra:one/small/step"]?.state).toBe("review");
   });
 
   test("downgrades document workflow aliases without process signal", async () => {
@@ -1417,7 +1543,7 @@ describe("pack facet vocabulary generation", () => {
     expect(decision?.policy_notes).toContain(
       "guide/quest/advancement workflow title is too granular; prefer a reusable process/station id",
     );
-    expect(result.vocabulary.facets.workflow?.values["example:making/steel"]).toBeUndefined();
+    expect(result.vocabulary.facets.workflow?.values["example:making/steel"]?.state).toBe("review");
   });
 
   test("downgrades nested document used_at aliases even when they mention a station", async () => {
@@ -1459,7 +1585,7 @@ describe("pack facet vocabulary generation", () => {
     expect(decision?.policy_notes).toContain(
       "guide/quest/advancement used_at title is too granular; prefer a reusable station/process id",
     );
-    expect(result.vocabulary.facets.used_at?.values["example:blast/furnace/tips"]).toBeUndefined();
+    expect(result.vocabulary.facets.used_at?.values["example:blast/furnace/tips"]?.state).toBe("review");
   });
 
   test("allows model judgment for non-phrase progression labels without hardcoded canonical aliases", async () => {
@@ -1476,7 +1602,7 @@ describe("pack facet vocabulary generation", () => {
     });
     const client = new StaticSplitClient({
       values: [{
-        id: "pack:fixture/ev_extreme_voltage",
+        id: "ev_extreme_voltage",
         label: "EV Extreme Voltage",
         state: "accepted",
         confidence: 0.7,
@@ -1496,13 +1622,13 @@ describe("pack facet vocabulary generation", () => {
       model: "test-model",
     });
 
-    const decision = result.review.decisions.progression_stage?.find((value) => value.id === "pack:fixture/ev_extreme_voltage");
+    const decision = result.review.decisions.progression_stage?.find((value) => value.id === "ev_extreme_voltage");
     expect(decision?.state).toBe("accepted");
     expect(decision?.policy_notes ?? []).not.toContain("progression value is too phrase-like; prefer a concise gate/tier/dimension id");
-    expect(result.vocabulary.facets.progression_stage?.values["pack:fixture/ev_extreme_voltage"]).toBeDefined();
+    expect(result.vocabulary.facets.progression_stage?.values["ev_extreme_voltage"]).toBeDefined();
   });
 
-  test("rejects legacy pack-scoped mod_subsystem values during vocabulary policy", async () => {
+  test("rejects generic mod_subsystem values during vocabulary policy", async () => {
     const previousVocabulary: PackFacetVocabulary = {
       schema_version: 1,
       kind: "slot-pack-facet-vocabulary",
@@ -1510,8 +1636,8 @@ describe("pack facet vocabulary generation", () => {
       facets: {
         mod_subsystem: {
           values: {
-            "pack:fixture/wall": {
-              label: "Wall",
+            "items": {
+              label: "Items",
               origin: "previous",
               state: "accepted",
               confidence: 0.9,
@@ -1523,8 +1649,8 @@ describe("pack facet vocabulary generation", () => {
     const client = new StaticSplitClient({
       values: [
         {
-          id: "pack:fixture/wall",
-          label: "Wall",
+          id: "items",
+          label: "Items",
           state: "accepted",
           confidence: 0.9,
         },
@@ -1544,12 +1670,12 @@ describe("pack facet vocabulary generation", () => {
       model: "test-model",
     });
 
-    const decision = result.review.decisions.mod_subsystem?.find((value) => value.id === "pack:fixture/wall");
+    const decision = result.review.decisions.mod_subsystem?.find((value) => value.id === "items");
     expect(decision?.state).toBe("rejected");
     expect(decision?.policy_notes).toContain(
-      "mod_subsystem must be a namespace-scoped identity value, not pack/universal/generic",
+      "mod_subsystem must be a reusable identity value, not a generic catch-all",
     );
-    expect(result.vocabulary.facets.mod_subsystem?.values["pack:fixture/wall"]).toBeUndefined();
+    expect(result.vocabulary.facets.mod_subsystem?.values["items"]).toBeUndefined();
   });
 
   test("accepts compact synthesized curation responses without context-record coverage", async () => {
@@ -1633,6 +1759,25 @@ describe("pack facet vocabulary generation", () => {
 
     expect(client.contextRecordCounts).toHaveLength(1);
     expect(Object.keys(result.prompts)).toEqual(["workflow"]);
+  });
+
+  test("unfiltered vocabulary generation combines all facets into one prompt by default", async () => {
+    const client = new CombinedPromptProbeSplitClient();
+
+    const result = await proposePackFacetVocabulary({
+      evidence: fixtureEvidence(),
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    expect(client.calls).toBe(1);
+    expect(client.facetKeys.sort()).toEqual([...VOCABULARY_BACKED_FACETS].sort());
+    expect(Object.keys(result.prompts)).toEqual(["all-facets"]);
   });
 
   test("prompt selection does not starve strong candidates in crowded buckets", () => {
@@ -1884,6 +2029,26 @@ class PromptSizeProbeSplitClient implements LlmClient {
     return JSON.stringify({
       values: ids.map((id) => ({ id, state: "review" })),
     });
+  }
+}
+
+class CombinedPromptProbeSplitClient implements LlmClient {
+  calls = 0;
+  facetKeys: string[] = [];
+
+  async query(_prompt: string, _options: QueryOptions): Promise<string> {
+    return JSON.stringify({ facets: {} });
+  }
+
+  async querySplit(_system: string, user: string, options: QueryOptions): Promise<string> {
+    this.calls++;
+    const parsed = JSON.parse(user) as { facets?: Record<string, unknown> };
+    this.facetKeys = Object.keys(parsed.facets ?? {});
+    const response = JSON.stringify({
+      facets: Object.fromEntries(this.facetKeys.map((facet) => [facet, { values: [] }])),
+    });
+    expect(options.responseValidator?.(response).ok).toBe(true);
+    return response;
   }
 }
 

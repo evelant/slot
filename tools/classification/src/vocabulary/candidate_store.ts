@@ -42,7 +42,7 @@ export function addCandidate(
     candidate.confidence = Math.max(candidate.confidence, seed.confidence);
     candidate.suggested_state = strongestState(candidate.suggested_state, seed.suggestedState);
     if (candidate.origin !== "previous" && seed.origin === "previous") candidate.origin = "previous";
-    if (candidate.origin !== "universal_default" && seed.origin === "universal_default") candidate.origin = "universal_default";
+    if (candidate.origin !== "built_in" && seed.origin === "built_in") candidate.origin = "built_in";
     if (!candidate.description && seed.description) candidate.description = seed.description;
     if (!candidate.parent && seed.parent) candidate.parent = seed.parent;
     if (!candidate.default_organization_group && seed.defaultOrganizationGroup) {
@@ -126,7 +126,7 @@ function originRank(origin: VocabularyOrigin): number {
   switch (origin) {
     case "previous":
       return 0;
-    case "universal_default":
+    case "built_in":
       return 1;
     default:
       return 2;

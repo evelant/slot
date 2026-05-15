@@ -23,26 +23,21 @@ import {
   type VocabularyProposal,
 } from "./parse.ts";
 
-const STAGE2_FILL_IN_ONLY_FACETS = new Set([
-  "form",
-  "material_family",
-  "dye_color",
-  "required_tool",
-  "required_tool_tier",
-  "is_fuel",
-  "emits_light",
-]);
-
 export interface Stage3Options {
   /** Stage-1 records — the extractor output. */
   records: readonly ItemExtractRecord[];
-  /** Stage-2 layer file — facets already assigned; stage 3 fills the gaps. */
-  stage2Layer: LayerFile;
+  /**
+   * Base layer to start from. Active pack classification passes an empty layer
+   * so the LLM owns semantic classification; if a caller supplies existing
+   * entries, LLM-emitted facets replace same-id base facets rather than being
+   * suppressed.
+   */
+  baseLayer: LayerFile;
   /** LLM client (production or replay). */
   client: LlmClient;
   /** OpenRouter model id, passed to the client. */
   model?: string;
-  /** Items per LLM call. Default 20 per plan §"Batching". */
+  /** Items per LLM call. Default 1000 for large cached prompts. */
   batchSize?: number;
   /** Restrict to these item ids; omit for all records. */
   only?: readonly string[];
@@ -56,7 +51,7 @@ export interface Stage3Options {
   clientOptions?: Partial<QueryOptions>;
   /** Progress callback — one event per completed batch. */
   onBatch?: (info: BatchProgress) => void;
-  /** Accepted pack vocabulary for vocabulary-backed facets. */
+  /** Usable pack vocabulary for vocabulary-backed facets (`accepted` and `review`). */
   facetVocabulary?: PackFacetVocabulary;
   /**
    * Verbose-prompt extras. Defaults align with {@link LlmPromptInput.prompt_extras}:
@@ -80,7 +75,7 @@ export interface BatchProgress {
 }
 
 export interface Stage3Result {
-  /** A fresh layer file (stage-2 entries + new stage-3 entries merged in). */
+  /** A fresh layer file (base entries + new stage-3 entries merged in). */
   layer: LayerFile;
   /** Items the LLM returned facets for. */
   filledItems: number;
@@ -88,13 +83,11 @@ export interface Stage3Result {
   coverageAdded: Record<string, number>;
   /** Aggregated schema proposals for curator review. */
   proposals: SchemaProposal[];
-  /** Aggregated missing-vocabulary proposals for accepted vocabulary refinement. */
+  /** Aggregated missing-vocabulary proposals for usable vocabulary refinement. */
   vocabularyProposals: VocabularyProposal[];
-  /** Aggregated stage-2 corrections the LLM suggested (NOT auto-merged). */
+  /** Aggregated compatibility corrections parsed from old responses. */
   corrections: StageCorrection[];
-  /** Aggregated stage-2 fill-ins the LLM noticed (deterministic facets
-   *  the rules failed to derive). NOT auto-merged — surfaced for human
-   *  review of the stage-2 rule files. */
+  /** Aggregated compatibility fill-ins parsed from old responses. */
   fillIns: StageFillIn[];
   /** Warnings collected across all batches. */
   warnings: string[];
@@ -114,20 +107,19 @@ export interface BatchResponseMismatch {
 // deepseek provider. Locked in 2026-04-26 after the 60-item playtest sample
 // showed stable coverage, no batch dropping, and low per-pack cost.
 const DEFAULT_MODEL = "deepseek/deepseek-v4-flash";
-const DEFAULT_BATCH_SIZE = 20;
+const DEFAULT_BATCH_SIZE = 1000;
 /**
- * Per-mod batch concurrency default. OpenRouter handles 4 in-flight
- * calls comfortably and most mods finish in under 5 minutes at this
- * level. Bump on the cli with `--concurrency N` for fast modes; the
- * upper limit is governed by upstream provider rate limits, not the
- * client.
+ * Large-batch classification keeps the stable system/vocabulary prompt hot in
+ * provider cache and avoids stampeding several huge requests at once.
  */
-const DEFAULT_BATCH_CONCURRENCY = 4;
+const DEFAULT_BATCH_CONCURRENCY = 1;
 
 /**
  * Drive stage 3 end-to-end: slice the record list into batches, call the LLM
  * once per batch, parse each response, and return a fresh layer file with the
- * merged facets. Stage-2 entries are preserved — we never overwrite them.
+ * merged facets. The caller chooses the starting layer, but LLM output wins for
+ * any facet id it emits. Current modpack classification passes an empty base so
+ * the model owns all semantic facet decisions.
  */
 export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   const model = options.model ?? DEFAULT_MODEL;
@@ -154,7 +146,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
 
   // Deep-clone only what we'll mutate; the entries map itself is new but
   // entries that were already present are referenced, not copied.
-  const mergedEntries: LayerFile["entries"] = { ...options.stage2Layer.entries };
+  const mergedEntries: LayerFile["entries"] = { ...options.baseLayer.entries };
   let filledItems = 0;
 
   /**
@@ -168,10 +160,9 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   const processBatch = async (batch: ItemExtractRecord[], i: number): Promise<void> => {
     const start = Date.now();
 
-    const payloads: LlmItemPayload[] = batch.map((record) => {
-      const stage2 = options.stage2Layer.entries[record.id]?.facets ?? {};
-      return buildItemPayload(record, stage2, options.documentContextByItem?.[record.id]);
-    });
+    const payloads: LlmItemPayload[] = batch.map((record) =>
+      buildItemPayload(record, {}, options.documentContextByItem?.[record.id])
+    );
 
     // Prefer split prompt when the client supports it: stable system content
     // (preamble + schema + disambiguation) stays separate from per-batch item
@@ -184,7 +175,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     // (currently only OpenRouterClient), we hand it a `parseLlmResponse`
     // shim so it can re-ask while the prompt cache is still warm. Vocabulary
     // misses are handled after parsing so a mostly useful response is not
-    // retried wholesale just because one closed-set value needs to be dropped.
+    // retried wholesale just because one grounded-vocabulary value needs review.
     const queryOptions: Partial<QueryOptions> & { model: string } = {
       model,
       ...options.clientOptions,
@@ -263,26 +254,34 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       });
       return;
     }
-    const repairedVocabulary = repairAcceptedVocabularyProposals(
+    const repairedVocabulary = repairListedVocabularyProposals(
       parsed.items,
       parsed.vocabularyProposals,
       facetVocabulary,
     );
     if (repairedVocabulary.repairs.length > 0) {
       parsed.warnings.push(
-        `batch ${i + 1}: accepted vocabulary proposal(s) repaired into facets: ` +
+        `batch ${i + 1}: listed vocabulary proposal(s) repaired into facets: ` +
           repairedVocabulary.repairs.slice(0, 5).join("; ") +
           (repairedVocabulary.repairs.length > 5 ? `; +${repairedVocabulary.repairs.length - 5} more` : ""),
       );
     }
 
-    const vocabularyIssues = dropInvalidVocabularyValues(parsed.items, facetVocabulary);
-    if (vocabularyIssues.length > 0) {
-      parsed.warnings.push(`batch ${i + 1}: ${vocabularyMismatchReason(vocabularyIssues)}; dropped invalid value(s)`);
+    const vocabularyIssues = markOutOfVocabularyValues(parsed.items, facetVocabulary);
+    if (vocabularyIssues.issues.length > 0) {
+      parsed.warnings.push(
+        `batch ${i + 1}: ${vocabularyMismatchReason(vocabularyIssues.issues)}; ` +
+          `kept facet value(s) with vocab_review=true and recorded vocabulary proposal(s)`,
+      );
     }
     warnings.push(...parsed.warnings);
     proposals.push(...parsed.proposals);
-    vocabularyProposals.push(...repairedVocabulary.pending);
+    vocabularyProposals.push(
+      ...dedupeVocabularyProposals([
+        ...repairedVocabulary.pending,
+        ...vocabularyIssues.proposals,
+      ]),
+    );
     corrections.push(...parsed.corrections);
     fillIns.push(...parsed.fillIns);
 
@@ -307,32 +306,14 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
 
       let itemAdded = false;
       for (const [facetId, entry] of Object.entries(itemFacets.facets)) {
-        if (existing[facetId]) {
-          if (valuesDisagree(existing[facetId], entry)) {
-            warnings.push(`${itemId} ${facetId}: stage 2 asserted ${describeEntry(existing[facetId])}; LLM value ${describeEntry(toLayerEntry(entry))} dropped — put confident stage-2 disagreements in corrections`);
-          }
-          continue;
+        const nextEntry = toLayerEntry(entry);
+        if (existing[facetId] && valuesDisagree(existing[facetId], entry)) {
+          warnings.push(
+            `${itemId} ${facetId}: LLM value ${describeEntry(nextEntry)} replaced base value ` +
+              `${describeEntry(existing[facetId])}`,
+          );
         }
-        if (STAGE2_FILL_IN_ONLY_FACETS.has(facetId)) {
-          const value = singleFillInValue(entry);
-          if (value === undefined) {
-            warnings.push(`${itemId} ${facetId}: deterministic scalar emitted in facets without a single value; dropped`);
-            continue;
-          }
-          const rationale = entry.rationale || "LLM emitted deterministic scalar in facets";
-          fillIns.push({ item: itemId, facet: facetId, value, rationale });
-          next[facetId] = {
-            value,
-            confidence: entry.confidence ?? 0.85,
-            source: "llm:stage3-fill-in",
-            rationale,
-          } as unknown as LayerFile["entries"][string]["facets"][string];
-          warnings.push(`${itemId} ${facetId}: deterministic scalar emitted in facets; treated as fill_in`);
-          coverageAdded[facetId] = (coverageAdded[facetId] ?? 0) + 1;
-          itemAdded = true;
-          continue;
-        }
-        next[facetId] = toLayerEntry(entry);
+        next[facetId] = nextEntry;
         coverageAdded[facetId] = (coverageAdded[facetId] ?? 0) + 1;
         itemAdded = true;
       }
@@ -340,11 +321,9 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       if (itemAdded) filledItems++;
     }
 
-    // Merge fill-ins: the LLM put these in `fill_ins` instead of
-    // `facets` because they're deterministic facets stage-2 missed.
-    // The data still needs to reach the layer — fill_ins are tracked
-    // separately for audit (stage-2 rule gaps), but the runtime
-    // doesn't care which channel produced them.
+    // Merge compatibility fill-ins. The current prompt no longer asks for this
+    // channel, but older fixtures/responses can still contain it and the layer
+    // format can carry the resulting value.
     for (const fill of parsed.fillIns) {
       if (!recordIndex.has(fill.item)) {
         warnings.push(`${fill.item}: fill_in for item not in the extract set, ignoring`);
@@ -353,14 +332,13 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       const existing = mergedEntries[fill.item]?.facets ?? {};
       if (existing[fill.facet]) {
         warnings.push(
-          `${fill.item} ${fill.facet}: fill_in proposed but stage-2 already has a value (${describeEntry(existing[fill.facet])}); ignoring`,
+          `${fill.item} ${fill.facet}: fill_in proposed but base layer already has a value (${describeEntry(existing[fill.facet])}); ignoring`,
         );
         continue;
       }
       const next: LayerFile["entries"][string]["facets"] = { ...existing };
       next[fill.facet] = {
         value: fill.value,
-        confidence: 0.85,
         source: "llm:stage3-fill-in",
         rationale: fill.rationale,
       } as unknown as LayerFile["entries"][string]["facets"][string];
@@ -393,9 +371,9 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   );
 
   const layer: LayerFile = {
-    ...options.stage2Layer,
+    ...options.baseLayer,
     entries: mergedEntries,
-    generated_by: options.stage2Layer.generated_by,
+    generated_by: options.baseLayer.generated_by,
     generated_at: new Date().toISOString(),
   };
 
@@ -450,7 +428,7 @@ function describeEntry(entry: unknown): string {
 
 /**
  * True when the LLM's entry has at least one concrete value not already in
- * the stage-2 entry. For single-value facets, "disagree" means a different
+ * the reference entry. For single-value facets, "disagree" means a different
  * value. For multi-value facets, "disagree" means the LLM is trying to add
  * a value we don't have (i.e. LLM's values aren't a subset of existing).
  * A same-value or subset re-emission is harmless and not a warning.
@@ -474,7 +452,7 @@ function valuesDisagree(
   return llm.values.some((v) => !existingSet.has(JSON.stringify(v)));
 }
 
-function repairAcceptedVocabularyProposals(
+function repairListedVocabularyProposals(
   items: Map<string, ParsedItemFacets>,
   proposalEntries: readonly VocabularyProposal[],
   vocabulary: PromptFacetVocabulary | undefined,
@@ -483,7 +461,7 @@ function repairAcceptedVocabularyProposals(
     return { pending: [...proposalEntries], repairs: [] };
   }
 
-  const acceptedByFacet = new Map(
+  const usableByFacet = new Map(
     Object.entries(vocabulary).map(([facetId, values]) => [
       facetId,
       new Set(values.map((value) => value.id)),
@@ -495,20 +473,20 @@ function repairAcceptedVocabularyProposals(
   for (const proposal of proposalEntries) {
     const proposedId = proposal.proposed_id;
     const item = items.get(proposal.item);
-    const accepted = proposedId ? acceptedByFacet.get(proposal.facet) : undefined;
-    if (!proposedId || !item || !accepted?.has(proposedId)) {
+    const usable = proposedId ? usableByFacet.get(proposal.facet) : undefined;
+    if (!proposedId || !item || !usable?.has(proposedId)) {
       pending.push(proposal);
       continue;
     }
 
-    mergeAcceptedVocabularyValue(item, proposal.facet, proposedId, proposal.rationale);
+    mergeListedVocabularyValue(item, proposal.facet, proposedId, proposal.rationale);
     repairs.push(`${proposal.item} ${proposal.facet}=${proposedId}`);
   }
 
   return { pending, repairs };
 }
 
-function mergeAcceptedVocabularyValue(
+function mergeListedVocabularyValue(
   item: ParsedItemFacets,
   facet: string,
   value: string,
@@ -516,26 +494,37 @@ function mergeAcceptedVocabularyValue(
 ): void {
   const existing = item.facets[facet];
   if (!existing) {
-    item.facets[facet] = {
-      kind: "multi",
-      values: [value],
-      confidence: 0.8,
-      rationale,
-      signal: "inferred",
-    };
+    const def = FACETS[facet];
+    const isMulti =
+      def?.kind === "multi_enum" ||
+      def?.kind === "multi_free_text" ||
+      def?.kind === "multi_item_ref";
+    item.facets[facet] = isMulti
+      ? {
+          kind: "multi",
+          values: [value],
+          rationale,
+        }
+      : {
+          kind: "single",
+          value,
+          rationale,
+        };
     return;
   }
 
   if (existing.kind === "multi") {
     if (!existing.values.includes(value)) existing.values.push(value);
     if (!existing.rationale) existing.rationale = rationale;
+  } else if (existing.kind === "single" && !existing.rationale) {
+    existing.rationale = rationale;
   }
 }
 
-function dropInvalidVocabularyValues(
+function markOutOfVocabularyValues(
   items: Map<string, ParsedItemFacets>,
   vocabulary: PromptFacetVocabulary | undefined,
-): string[] {
+): { issues: string[]; proposals: VocabularyProposal[] } {
   return enforcePromptVocabulary(items, vocabulary, true);
 }
 
@@ -543,8 +532,8 @@ function enforcePromptVocabulary(
   items: Map<string, ParsedItemFacets>,
   vocabulary: PromptFacetVocabulary | undefined,
   mutate: boolean,
-): string[] {
-  if (!vocabulary) return [];
+): { issues: string[]; proposals: VocabularyProposal[] } {
+  if (!vocabulary) return { issues: [], proposals: [] };
   const allowedByFacet = new Map(
     Object.entries(vocabulary).map(([facetId, values]) => [
       facetId,
@@ -552,6 +541,7 @@ function enforcePromptVocabulary(
     ]),
   );
   const issues: string[] = [];
+  const proposals: VocabularyProposal[] = [];
 
   for (const [itemId, item] of items) {
     for (const [facetId, entry] of Object.entries(item.facets)) {
@@ -565,32 +555,53 @@ function enforcePromptVocabulary(
 
       for (const value of invalid) {
         issues.push(`${itemId} ${facetId}=${JSON.stringify(value)}`);
-      }
-      if (!mutate) continue;
-
-      if (entry.kind === "multi") {
-        const kept = entry.values.filter(validString);
-        if (kept.length > 0) {
-          entry.values = kept;
-        } else {
-          delete item.facets[facetId];
+        if (typeof value === "string") {
+          proposals.push({
+            item: itemId,
+            facet: facetId,
+            label: labelFromVocabularyValue(value),
+            proposed_id: value,
+            rationale: "The classifier judged this unlisted vocabulary value useful for the item; review whether the pack vocabulary should include it.",
+          });
         }
-        continue;
       }
-      if (entry.kind === "ambiguous") {
-        const kept = entry.values.filter(validString);
-        if (kept.length === 2) {
-          entry.values = [kept[0]!, kept[1]!];
-        } else {
-          delete item.facets[facetId];
-        }
-        continue;
-      }
-      delete item.facets[facetId];
+      if (mutate) entry.vocabReview = true;
     }
   }
 
-  return issues;
+  return {
+    issues,
+    proposals: dedupeVocabularyProposals(proposals),
+  };
+}
+
+function labelFromVocabularyValue(value: string): string {
+  const local = value.includes(":") ? value.split(":").pop()! : value;
+  const tail = local.split("/").pop() ?? local;
+  return tail
+    .split("_")
+    .filter((part) => part.length > 0)
+    .map((part) => `${part[0]?.toUpperCase() ?? ""}${part.slice(1)}`)
+    .join(" ") || value;
+}
+
+function dedupeVocabularyProposals(
+  proposals: readonly VocabularyProposal[],
+): VocabularyProposal[] {
+  const seen = new Set<string>();
+  const out: VocabularyProposal[] = [];
+  for (const proposal of proposals) {
+    const key = [
+      proposal.item,
+      proposal.facet,
+      proposal.proposed_id ?? "",
+      proposal.label,
+    ].join("\u0000");
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(proposal);
+  }
+  return out;
 }
 
 function parsedFacetValues(entry: ParsedFacetEntry): (string | number | boolean | null | undefined)[] {
@@ -601,7 +612,7 @@ function parsedFacetValues(entry: ParsedFacetEntry): (string | number | boolean 
 function vocabularyMismatchReason(issues: readonly string[]): string {
   const shown = issues.slice(0, 5).join("; ");
   const suffix = issues.length > 5 ? `; +${issues.length - 5} more` : "";
-  return `vocabulary-backed facet value not accepted by prompt vocabulary: ${shown}${suffix}`;
+  return `vocabulary-backed facet value not listed in prompt vocabulary: ${shown}${suffix}`;
 }
 
 function chunk<T>(arr: readonly T[], size: number): T[][] {
@@ -610,38 +621,33 @@ function chunk<T>(arr: readonly T[], size: number): T[][] {
   return out;
 }
 
-function singleFillInValue(entry: ParsedFacetEntry): StageFillIn["value"] | undefined {
-  return entry.kind === "single" ? entry.value : undefined;
-}
-
 function toLayerEntry(
   entry: ParsedFacetEntry,
 ): LayerFile["entries"][string]["facets"][string] {
-  const confidence = entry.confidence;
   const rationale = entry.rationale;
   if (entry.kind === "single") {
     return {
       value: entry.value,
-      ...(confidence !== undefined ? { confidence } : {}),
       source: "llm:stage3",
       ...(rationale ? { rationale } : {}),
+      ...(entry.vocabReview ? { vocab_review: true } : {}),
     };
   }
   if (entry.kind === "ambiguous") {
     return {
       values: [...entry.values],
       ambiguous: true,
-      ...(confidence !== undefined ? { confidence } : {}),
       source: "llm:stage3",
       ...(rationale ? { rationale } : {}),
+      ...(entry.vocabReview ? { vocab_review: true } : {}),
     };
   }
   // multi
   return {
     values: [...entry.values].sort((a, b) => String(a).localeCompare(String(b))),
     mode: "add",
-    ...(confidence !== undefined ? { confidence } : {}),
     source: "llm:stage3",
     ...(rationale ? { rationale } : {}),
+    ...(entry.vocabReview ? { vocab_review: true } : {}),
   };
 }

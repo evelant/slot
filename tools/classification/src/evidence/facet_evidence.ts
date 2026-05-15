@@ -46,6 +46,7 @@ export interface FacetEvidenceArtifact {
 export interface FacetEvidenceSource {
   runtime_items: string;
   runtime_summary?: string;
+  static_items?: string[];
   mods_path?: string;
   loader?: string;
   minecraft_version?: string;
@@ -113,6 +114,7 @@ export interface BuildFacetEvidenceOptions {
   generatedAt?: string;
   runtimeItemsPath: string;
   runtimeSummaryPath?: string;
+  staticItemsPaths?: readonly string[];
   modsPath?: string;
   records: readonly ItemExtractRecord[];
   summary?: RuntimeExportSummary | null;
@@ -180,6 +182,7 @@ export function buildFacetEvidenceArtifact(options: BuildFacetEvidenceOptions): 
     source: {
       runtime_items: options.runtimeItemsPath,
       ...(options.runtimeSummaryPath ? { runtime_summary: options.runtimeSummaryPath } : {}),
+      ...(options.staticItemsPaths?.length ? { static_items: options.staticItemsPaths.map((path) => resolve(path)) } : {}),
       ...(options.modsPath ? { mods_path: options.modsPath } : {}),
       ...(options.summary?.loader ? { loader: options.summary.loader } : {}),
       ...(options.summary?.minecraft_version ? { minecraft_version: options.summary.minecraft_version } : {}),

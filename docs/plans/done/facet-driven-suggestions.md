@@ -61,7 +61,7 @@ care about.
 
 For background:
 
-- [item-classification.md](item-classification.md) — how the dataset
+- [item-classification-v1.md](../outdated/item-classification-v1.md) — how the dataset
   is generated.
 - [relevance-lod.md](../design/relevance-lod.md) — the broader
   scoring model that placement priority will eventually feed into.

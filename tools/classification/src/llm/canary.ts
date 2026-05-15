@@ -5,8 +5,8 @@
  *     3 gets these wrong, something's off with the prompt structure.
  *   - Role-ambiguous cases the plan specifically calls out (`cut_copper_stairs`
  *     for building vs decorative; `creaking_heart` for functional vs decorative).
- *   - Items stage 2 couldn't classify (no form / no material) so we can see
- *     the LLM's default behavior.
+ *   - Items old deterministic rules could not classify (no form / no material)
+ *     so we can see the LLM's default behavior.
  *   - Items with strong lore/tooltip signals (`totem_of_undying`, `music_disc_13`,
  *     `enchanted_golden_apple`) that should flow through into `primary_uses`.
  *   - Breadth: one of each major role bucket plus biome/tier/processing edge cases.

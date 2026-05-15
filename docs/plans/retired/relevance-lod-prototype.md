@@ -28,7 +28,7 @@ client-owned layout), see
 3. **Phase 2.2** — drag-drop ordinal semantics + auto-square islands
    + freeform-helper cleanup. **Landed.**
 4. **`FacetIndex` runtime + atlas-homing wiring** —
-   [item-classification.md](item-classification.md) milestones 6 + 7.
+   [item-classification-v1.md](../outdated/item-classification-v1.md) milestones 6 + 7.
    **Landed** (V1 surface). Bundled `vanilla-base.json` resource +
    role lookup + `RoleSemanticBucketMap` + `FacetIndexBucketClassifier`
    with `SemanticBucketResolver::classify` as the no-data fallback.
@@ -65,7 +65,7 @@ client-owned layout), see
    → `material`, mob drops + raw ores → `material`. Locked in by
    [`IslandSuggestionTemplateCoverageTest`](../../common/src/test/java/dev/imagio/slot/inventory/triage/IslandSuggestionTemplateCoverageTest.java).
 6. **Modded classification layers** —
-   [item-classification.md milestones 10–11](item-classification.md#milestones).
+   [item-classification-v1.md milestones 10–11](../outdated/item-classification-v1.md#milestones).
    Per-mod LLM passes for the active modset (Create, Create New Age,
    Create Dreams n Desires, etc.) so role-driven chips fire on modded
    items the same way they do on vanilla. Vanilla-only V1 leaves modded
@@ -368,7 +368,7 @@ Tests added (or revised):
 
 ## Phase 3 — `FacetIndex` runtime (LANDED, V1 surface)
 
-Owned by [item-classification.md milestones 6 + 7](item-classification.md).
+Owned by [item-classification-v1.md milestones 6 + 7](../outdated/item-classification-v1.md).
 The V1 slice of these milestones — thin loader + role lookup + homing
 wiring — has landed. The full multi-layer / merge / inverted-index /
 expression-AST shape stays deferred until a second consumer actually

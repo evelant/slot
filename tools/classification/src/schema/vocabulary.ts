@@ -2,13 +2,13 @@ import { readFileSync } from "node:fs";
 import {
   FACETS,
   validateMultiValue,
+  validateSingleValue,
   type FacetDef,
 } from "./facets.ts";
-import { UNIVERSAL_DEFAULTS } from "../vocabulary/constants.ts";
 
 export type VocabularyState = "accepted" | "review" | "rejected";
 export type VocabularyOrigin =
-  | "universal_default"
+  | "built_in"
   | "pack_generated"
   | "namespace_generated"
   | "manual"
@@ -54,7 +54,7 @@ export interface VocabularyValidateResult {
 const PACK_ID_PATTERN = /^[a-z0-9_.-]+$/;
 const STATES = new Set<VocabularyState>(["accepted", "review", "rejected"]);
 const ORIGINS = new Set<VocabularyOrigin>([
-  "universal_default",
+  "built_in",
   "pack_generated",
   "namespace_generated",
   "manual",
@@ -107,7 +107,7 @@ export function validateLayerAgainstVocabulary(
   if (!isRecord(layer) || !isRecord(layer.entries)) {
     return [];
   }
-  const accepted = acceptedValuesByFacet(vocabulary);
+  const usable = usableValuesByFacet(vocabulary);
   const errors: string[] = [];
   for (const [itemId, itemEntry] of Object.entries(layer.entries)) {
     if (!isRecord(itemEntry) || !isRecord(itemEntry.facets)) {
@@ -118,14 +118,17 @@ export function validateLayerAgainstVocabulary(
       if (!def?.vocabulary_backed) {
         continue;
       }
-      const allowed = accepted.get(facetId);
+      const allowed = usable.get(facetId);
+      const markedForReview = isRecord(rawEntry) && rawEntry.vocab_review === true;
       if (!allowed || allowed.size === 0) {
-        errors.push(`/entries/${itemId}/facets/${facetId} has no accepted vocabulary values`);
+        if (!markedForReview) {
+          errors.push(`/entries/${itemId}/facets/${facetId} has no usable vocabulary values`);
+        }
         continue;
       }
       for (const value of facetValues(rawEntry)) {
-        if (!allowed.has(value)) {
-          errors.push(`/entries/${itemId}/facets/${facetId} value '${value}' is not accepted by vocabulary`);
+        if (!allowed.has(value) && !markedForReview) {
+          errors.push(`/entries/${itemId}/facets/${facetId} value '${value}' is not usable by vocabulary`);
         }
       }
     }
@@ -162,19 +165,19 @@ function validateWorkflowRoleParentReferences(
   const workflowFacet = facets.workflow;
   const workflowRoleFacet = facets.workflow_role;
   if (!isRecord(workflowRoleFacet) || !isRecord(workflowRoleFacet.values)) return;
-  const acceptedWorkflows = new Set<string>();
+  const usableWorkflows = new Set<string>();
   if (isRecord(workflowFacet) && isRecord(workflowFacet.values)) {
     for (const [valueId, rawValue] of Object.entries(workflowFacet.values)) {
-      if (isRecord(rawValue) && rawValue.state === "accepted") {
-        acceptedWorkflows.add(valueId);
+      if (isRecord(rawValue) && isUsableVocabularyState(rawValue.state)) {
+        usableWorkflows.add(valueId);
       }
     }
   }
   for (const [valueId, rawValue] of Object.entries(workflowRoleFacet.values)) {
-    if (!isRecord(rawValue) || rawValue.state !== "accepted") continue;
+    if (!isRecord(rawValue) || !isUsableVocabularyState(rawValue.state)) continue;
     const parent = typeof rawValue.parent === "string" ? rawValue.parent : valueId.split("#")[0] ?? "";
-    if (!parent || !acceptedWorkflows.has(parent)) {
-      errors.push(`/facets/workflow_role/values/${valueId}/parent references missing accepted workflow '${parent}'`);
+    if (!parent || !usableWorkflows.has(parent)) {
+      errors.push(`/facets/workflow_role/values/${valueId}/parent references missing usable workflow '${parent}'`);
     }
   }
 }
@@ -186,7 +189,7 @@ function validateVocabularyValues(
   errors: string[],
 ): void {
   for (const [valueId, rawValue] of Object.entries(values)) {
-    const issue = validateMultiValue(facetId, [valueId]);
+    const issue = validateVocabularyValueId(facetId, def, valueId);
     if (issue) {
       errors.push(`/facets/${facetId}/values/${valueId} ${issue.reason}`);
     }
@@ -241,31 +244,38 @@ function validateVocabularyValues(
     }
   }
 
-  if (def.kind !== "multi_free_text") {
-    errors.push(`/facets/${facetId} vocabulary-backed facets must currently be multi_free_text`);
+  if (def.kind !== "free_text" && def.kind !== "multi_free_text") {
+    errors.push(`/facets/${facetId} vocabulary-backed facets must be free_text or multi_free_text`);
   }
 }
 
-function acceptedValuesByFacet(
+function validateVocabularyValueId(
+  facetId: string,
+  def: FacetDef,
+  valueId: string,
+): { facet: string; reason: string } | null {
+  if (def.kind === "free_text") {
+    return validateSingleValue(facetId, valueId);
+  }
+  return validateMultiValue(facetId, [valueId]);
+}
+
+export function isUsableVocabularyState(state: unknown): state is "accepted" | "review" {
+  return state === "accepted" || state === "review";
+}
+
+function usableValuesByFacet(
   vocabulary: PackFacetVocabulary,
 ): Map<string, Set<string>> {
   const out = new Map<string, Set<string>>();
-  for (const [facetId, defaults] of Object.entries(UNIVERSAL_DEFAULTS)) {
-    if (!FACETS[facetId]?.vocabulary_backed) continue;
-    const accepted = new Set<string>();
-    for (const value of defaults) {
-      accepted.add(value.id);
-    }
-    if (accepted.size > 0) out.set(facetId, accepted);
-  }
   for (const [facetId, facet] of Object.entries(vocabulary.facets ?? {})) {
-    const accepted = out.get(facetId) ?? new Set<string>();
+    const usable = out.get(facetId) ?? new Set<string>();
     for (const [valueId, value] of Object.entries(facet.values ?? {})) {
-      if (value.state === "accepted") {
-        accepted.add(valueId);
+      if (isUsableVocabularyState(value.state)) {
+        usable.add(valueId);
       }
     }
-    out.set(facetId, accepted);
+    out.set(facetId, usable);
   }
   return out;
 }

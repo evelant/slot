@@ -3,14 +3,15 @@
 Policy for evolving the classification facet schema. Referenced by:
 
 - [README.md](README.md) — overview of the classification system as a whole
-- [docs/plans/item-classification.md](../../plans/item-classification.md)
 - [facet-kinds.md](facet-kinds.md) — kind definitions
 - [tools/classification/layer.schema.json](../../../tools/classification/layer.schema.json) — canonical wire format
 
 ## Current version
 
-No schema versions have been released yet. The in-flight draft is `v1` (documented
-in [docs/plans/item-classification.md § Proposed facet schema (v1)](../../plans/item-classification.md#proposed-facet-schema-v1)).
+No schema versions have been released yet. The in-flight draft is `v1`,
+documented by [README.md](README.md), [facet-kinds.md](facet-kinds.md), and
+the generated facet registry in
+[tools/classification/src/schema/facets.ts](../../../tools/classification/src/schema/facets.ts).
 `v1` freezes when the first layer file ships with `schema_version: 1`.
 
 ## Breaking vs non-breaking
@@ -27,7 +28,8 @@ Safe to ship without regenerating old layers:
 - Widening a `free_text` / `multi_free_text` regex (new pattern accepts everything the old one did).
 - Adding a new `mode` value.
 - Widening a `numeric` facet's range.
-- Adding descriptive metadata (`description`, `applies_when`, `deprecated`, …).
+- Adding descriptive metadata (`description`, `examples`,
+  `vocabulary_backed`, …).
 - Promoting a reserved kind (`item_ref`, `numeric`) to first use.
 
 Behaviour: older layers load unchanged. `FacetIndex` silently ignores facet values
@@ -74,8 +76,8 @@ preserve `player_island` intent. Concretely:
 ## Version bump process
 
 1. Draft the change as a PR touching:
-   - [docs/plans/item-classification.md](../../plans/item-classification.md) (the
-     living schema section, if applicable)
+   - [README.md](README.md) or the generated facet registry docs, if the facet
+     catalog changes
    - [facet-kinds.md](facet-kinds.md) (if kind behaviour changes)
    - This file (mandatory for every bump)
 2. Classify the change using the rules above. If uncertain, choose the stricter
@@ -112,7 +114,7 @@ Entry format:
 >
 > First stable release. Facets: 28. Kinds in use: `enum`, `multi_enum`,
 > `free_text`, `multi_free_text`, `boolean`. Reserved: `numeric`, `item_ref`,
-> `item_ref_multi`.
+> `multi_item_ref`.
 >
 > **Changes from v0 draft:** …
 >

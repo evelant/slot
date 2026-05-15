@@ -5,8 +5,8 @@ import type { Rule, RuleOutput } from "../types.ts";
  * isn't a block (tool, food, etc.) this rule does nothing.
  *
  * Tool-category tags: `minecraft:mineable/pickaxe|axe|shovel|hoe`.
- * Tier tags: `minecraft:needs_stone_tool|needs_iron_tool|needs_diamond_tool`.
- * Default tier (not tagged) is `wood` for anything under the pickaxe/etc.
+ * Tool-tier vocabulary is pack-shaped, so `required_tool_tier` is assigned by
+ * the LLM against usable vocabulary instead of this reference-only rule.
  */
 
 const TOOL_TAG_PRIORITY: readonly { tag: string; kind: string }[] = [
@@ -15,12 +15,6 @@ const TOOL_TAG_PRIORITY: readonly { tag: string; kind: string }[] = [
   { tag: "minecraft:mineable/shovel", kind: "shovel" },
   { tag: "minecraft:mineable/hoe", kind: "hoe" },
 ];
-
-const TIER_TAG_TO_VALUE: Record<string, string> = {
-  "minecraft:needs_stone_tool": "stone",
-  "minecraft:needs_iron_tool": "iron",
-  "minecraft:needs_diamond_tool": "diamond",
-};
 
 /**
  * Items where the `mineable/<tool>` tag describes mining speed but the actual
@@ -33,7 +27,7 @@ const REQUIRED_TOOL_OVERRIDES: Record<string, string> = {
 
 export const requiredToolRule: Rule = {
   id: "required_tool",
-  facets: ["required_tool", "required_tool_tier"],
+  facets: ["required_tool"],
   run({ record, blockTagClosure }) {
     const out: RuleOutput[] = [];
     const blockTags = blockTagsForRecord(record, blockTagClosure);
@@ -48,7 +42,8 @@ export const requiredToolRule: Rule = {
         confidence: 1,
         rationale: "id-specific override",
       });
-      // continue so we still emit tier from block-tag inspection
+      // Continue so ordinary mineable-tag inspection can still run for
+      // diagnostics if needed; this rule no longer emits tool-tier facets.
     }
     if (!blockTags || blockTags.length === 0) {
       if (!override && record.path.startsWith("ore/") && isBlockItem(record)) {
@@ -78,21 +73,6 @@ export const requiredToolRule: Rule = {
           });
           break;
         }
-      }
-    }
-
-    for (const tag of blockTags) {
-      const tier = TIER_TAG_TO_VALUE[tag];
-      if (tier) {
-        out.push({
-          facet: "required_tool_tier",
-          kind: "single",
-          value: tier,
-          source: "rule:required_tool_tier_from_block_tag",
-          confidence: 1,
-          rationale: `tag ${tag}`,
-        });
-        break;
       }
     }
 

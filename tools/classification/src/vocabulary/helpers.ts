@@ -61,7 +61,7 @@ export function defaultTuple(input: [string, string, string?, string[]?]): {
 }
 
 export function slotDefault(value: string): { id: string; label: string } {
-  return { id: `slot:${value}`, label: labelFromId(value) };
+  return { id: value, label: labelFromId(value) };
 }
 
 export function strongestState(a: VocabularyState, b: VocabularyState): VocabularyState {

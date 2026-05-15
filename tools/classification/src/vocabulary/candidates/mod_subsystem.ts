@@ -129,11 +129,9 @@ function addModSubsystemCandidate(
 }
 
 function modSubsystemId(namespace: string, value: string): string | null {
-  const normalizedNamespace = namespace.match(/^[a-z0-9_.-]+$/) ? namespace : null;
-  if (!normalizedNamespace) return null;
   const normalizedToken = token(value);
   if (!normalizedToken || MOD_SUBSYSTEM_STOP_TOKENS.has(normalizedToken)) return null;
-  return `${normalizedNamespace}:${normalizedToken}`;
+  return normalizedToken;
 }
 
 function modSubsystemSignalTokens(values: readonly string[]): string[] {
@@ -168,9 +166,6 @@ function isModSubsystemNamespace(namespace: string | undefined, packId?: string)
 }
 
 export function modSubsystemIdLooksRejected(id: string): boolean {
-  const split = splitResourceLocation(id);
-  if (!split) return true;
-  if (split.namespace === "slot" || split.namespace === "pack" || !isModSubsystemNamespace(split.namespace)) return true;
   const tail = resourcePathTail(id);
   return !tail || MOD_SUBSYSTEM_STOP_TOKENS.has(tail);
 }

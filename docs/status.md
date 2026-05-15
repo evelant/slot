@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-13. Operational handoff. Read after
+Last updated: 2026-05-14. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -15,37 +15,34 @@ is deleted; production Forge renders direct Taffy on vanilla `Screen`,
 and `:forge-1.20:compileSharedProbeJava` compiles the whole common tree
 against Forge 1.20.1 / Java 17 with real platform adapters.
 
-Phase 1 has shared action transport, Forge runtime, session-backed
-projection, and common-service routing for metadata, transfer, hotbar, kit,
-desired-count, chest, deposit/take, cursor, active-kit gather, and
-cross-surface actions. Forge `/slot test populate <profile>` and
-`/slot test clear` cover carried inventory, workflow state, and claimed chests.
+Phase 1 has shared action transport, Forge runtime, session-backed projection,
+and common-service routing for metadata, transfer, hotbar, kit, desired-count,
+chest, deposit/take, cursor, active-kit gather, and cross-surface actions.
 
-Phase 2 has the production wall shell on both loaders: fallback card
-details, Recents, vanilla-shaped Belt, active chest controls only while a
-chest is open, right-side vertical Kit Rack, desired/wanted count card
-chrome, remembered search/scroll state, and configurable sidebar margins.
-Forge full-screen and sidebar hosts share `ForgeWorkspaceSurface` and
-common view-model/search/wall/Recents/kit/active-chest/hotbar builders
-plus tooltip metadata. Forge key parity covers vanilla inventory, kit
-page cycle, gather, wayfinding HUD toggle, search-cancel Esc behavior,
-and wanted-count controls; normal Forge player inventory mounts the SLOT
-sidebar so EMI and SLOT can coexist on the carried-inventory surface.
-Modern drag/drop, richer LDLib2 card/kit affordances, and richer chest
-panels remain backend hooks, not common UI semantics.
+Phase 2 has the production wall shell on both loaders: fallback card details,
+Recents, vanilla-shaped Belt, active chest controls, Kit Rack, desired/wanted
+count chrome, remembered search/scroll state, configurable sidebar margins, and
+Forge key parity for inventory, kit cycle, gather, wayfinding, Esc, and
+wanted-count controls. Modern drag/drop, richer LDLib2 card/kit affordances,
+and richer chest panels remain backend hooks, not common UI semantics.
 
 Classification has a pack-authoring path for large modpacks: installed
-`mods/` scanning, jar extraction, OpenRouter-backed stage 3, runtime export,
-datapack output, facet-vocabulary evidence/proposals with `document_context`,
-accepted-vocabulary prompting, and runtime `organization_group` evidence.
-`organization_group` homing is temporarily disabled in the mod while the next
-vocabulary refresh is validated, so rehome falls through to built-in default
-sections. `mod_subsystem` remains semantic/query evidence and does not create
-main-wall sections.
-Semantic text remains the highest-value input; preserve tooltip/lore prose,
-guidebook/quest text, lang descriptions, KubeJS/datapack overlays,
+`mods/` scanning, jar/static enrichment, runtime export, rich facet-evidence
+collection, LLM vocabulary refinement loops, vocabulary-grounded LLM item
+classification, datapack output, and runtime inspect/rehome diagnostics. The
+current modpack strategy is no deterministic semantic curation stage: pre-LLM
+code gathers and formats evidence, then the LLM makes the vocabulary and item
+facet decisions. Review/watchlist flags are advisory for debugging and
+playtesting; valid model output is accepted into the vocabulary/layer rather
+than overwritten by rule-derived guesses. `organization_group` values are
+vocabulary-reviewed direct wall-home sections: when a loaded vanilla or pack
+layer has a large enough cohort, rehome/chip accept can materialize a dynamic
+`group:<id>` main-wall home. `mod_subsystem` remains semantic/query evidence
+and does not create main-wall sections. Semantic text remains the highest-value input; preserve tooltip/lore
+prose, guidebook/quest text, lang descriptions, KubeJS/datapack overlays,
 Ponder/category labels, stack groups, resource-pack overrides, and mod
-descriptions instead of reducing prompts to item ids.
+descriptions instead of reducing prompts to item ids or deterministic
+candidate lists.
 
 EMI goal projections now create server-persisted SLOT goal tabs from explicit
 EMI recipe-screen and drag/drop goal targets on both loaders. The current
@@ -243,14 +240,10 @@ bun test
 
 ## External resources
 
-Use local reference source first when available, then current docs/APIs.
-
-- LDLib2 docs: <https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/>
-- LDLib2 UI agent guide:
-  <https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/ui/agent_guide/>
-- LDLib2 data bindings:
-  <https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/ui/preliminary/data_bindings/>
-- LDLib2 RPC packet:
-  <https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/sync/rpc_packet/>
-- Use Context7 / DeepWiki / upstream docs for NeoForge / Minecraft /
-  LDLib2 APIs instead of guessing.
+Use local reference source first when available, then current docs/APIs. LDLib2:
+<https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/>,
+<https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/ui/agent_guide/>,
+<https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/ui/preliminary/data_bindings/>,
+<https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/sync/rpc_packet/>. Use
+Context7 / DeepWiki / upstream docs for NeoForge / Minecraft / LDLib2 APIs
+instead of guessing.
