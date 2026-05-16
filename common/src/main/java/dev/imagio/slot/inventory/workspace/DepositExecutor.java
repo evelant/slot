@@ -36,7 +36,7 @@ public final class DepositExecutor {
         }
         if (plan.isEmpty()) {
             SlotCommon.LOGGER.info(
-                    "[SLOT] deposit execute: plan is empty (no carried stack had affinity or matching contents)");
+                    "[SLOT] deposit execute: plan is empty (no carried stack had eligible affinity or matching contents)");
             return DepositOutcome.empty();
         }
         MinecraftServer server = player.getServer();

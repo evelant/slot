@@ -156,27 +156,33 @@ chest *wants* iron, currently empty of it" for (2).
 replaces ChestLinkMap and the explicit-claim and explicit-area-assign
 gestures.
 
-- Every player-initiated deposit of item X into chest C raises
-  `affinity[C, X]` by one increment.
+- Every player-initiated deposit of item X into storage-affinity-
+  eligible chest C raises `affinity[C, X]` by one increment. Eligibility
+  defaults to at least 6 storage slots; `slot:no_storage_affinity`
+  denies a block, and `slot:storage_affinity_allowed` admits a small
+  but deliberate storage block.
 - Affinity decay exists in code but is disabled for current playtests;
   re-enable only after the decay rate is tunable and validated.
 - Affinity is *not* recorded if the player takes the item back out
   within a short window (default 30 s), or if they undo the deposit.
   This is the accidental-placement guard.
-- Chest contents *now* (not history) also count as affinity — if a
-  chest has 12 iron in it right now, it has affinity for iron
-  regardless of history.
+- Current contents of an eligible chest also count as routing evidence:
+  if a chest has 12 iron in it right now, deposit may route iron there
+  regardless of history. Contents of tiny stations or deny-tagged
+  processors do not create storage affinity.
 
 Routing reads from `affinity[C, X]`. Discoverability reads from it
 too (ghost-slot "wants").
 
 ## Auto-claim
 
-A chest becomes part of the workspace the first time the player
-**deposits** into it (not on open, not on take). This naturally
-filters dungeon and structure chests, since the player only loots
-those. A "Forget chest" gesture on the chest tile removes it from
-the workspace and clears its affinity.
+A storage-affinity-eligible chest becomes part of the workspace the
+first time the player **deposits** into it (not on open, not on take).
+This naturally filters dungeon and structure chests, since the player
+only loots those, and it filters station inputs like cooling barrels
+or machine slots whose deposits are workflow steps rather than storage
+intent. A "Forget chest" gesture on the chest tile removes it from the
+workspace and clears its affinity.
 
 Open question: do we need a stronger threshold (N deposits, or
 deposit + open-twice) before claiming? Probably not; one deposit is
@@ -207,13 +213,18 @@ For each carried item the player wants to deposit:
 
 1. Restrict to **proximate** chests (already gated by
    `ChestProximityResolver`).
-2. Among those, find chests with `affinity[C, X] > 0`.
-3. If exactly one chest has clearly the highest affinity (e.g.
+2. Restrict to storage-affinity-eligible targets. Normal Minecraft
+   shift-click/machine insertion can still move items into stations;
+   SLOT just does not remember those moves as homes.
+3. Among those, find chests with `affinity[C, X] > 0` or matching live
+   contents.
+4. If exactly one chest has clearly the highest affinity (e.g.
    2× the runner-up), prefer it; deposit until full, then spill to
    the next-highest, etc.
-4. If no proximate chest has affinity for X, the item stays in
-   carry. Surface it as a "needs a home" hint (Triage already
-   handles unhomed items; reuse that surface).
+5. If no proximate eligible chest has affinity or matching live
+   contents for X, the item stays in carry. Surface it as a "needs a
+   home" hint (Triage already handles unhomed items; reuse that
+   surface).
 
 Open question: when many chests have similar affinity (e.g. four
 chests all hold building blocks), should deposit consolidate
@@ -297,7 +308,7 @@ per proximate chest. Each chip:
 - Chest name (default `Chest #abcd`, renamable)
 - Slot fullness summary (e.g., `16/27`)
 - Forget on hover/right-click
-- Drag target (deposit routes by affinity or existing matching contents)
+- Drag target (deposit routes by eligible affinity or existing matching contents)
 
 Chips do **not** render the chest grid. Contents surface as ghosts on
 islands; the chip is awareness + drag target + forget handle. The
@@ -496,8 +507,10 @@ What gets added:
 - **Bootstrapping.** First-ever deposit into a never-touched chest:
   no affinity anywhere and no claimed proximate chest already holds
   the item, so the item stays in carry. Player manually drops one
-  stack into the chest of their choice; existing contents and then
-  learned affinity make future deposits route.
+  stack into the eligible chest of their choice; existing contents and
+  then learned affinity make future deposits route. Deposits into
+  station-sized inventories still perform the vanilla/station action
+  but do not bootstrap persistent storage memory.
 - **Decay rate.** TBD. Probably play-time-based, not wall-clock,
   so a player who shelves the mod for a month doesn't lose state.
 - **Take-window for accidental-placement guard.** 30 s as a

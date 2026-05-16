@@ -29,6 +29,8 @@ class ChestContentAffinitySeederTest {
                         new ItemStack("minecraft:coal", 8, 64),
                         new ItemStack("minecraft:coal", 4, 64),
                         new ItemStack("minecraft:stone", 2, 64),
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY,
                         ItemStack.EMPTY
                 },
                 200L);
@@ -47,17 +49,48 @@ class ChestContentAffinitySeederTest {
         ChestContentAffinitySeeder.seedInitialContents(
                 chestService,
                 storageId,
-                new ItemStack[]{new ItemStack("minecraft:coal", 8, 64)},
+                new ItemStack[]{
+                        new ItemStack("minecraft:coal", 8, 64),
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY
+                },
                 200L);
 
         int seeded = ChestContentAffinitySeeder.seedInitialContents(
                 chestService,
                 storageId,
-                new ItemStack[]{new ItemStack("minecraft:coal", 32, 64)},
+                new ItemStack[]{
+                        new ItemStack("minecraft:coal", 32, 64),
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY
+                },
                 400L);
 
         assertEquals(0, seeded);
         assertEquals(1, chestService.chestAffinityMap().score(storageId, coal));
+    }
+
+    @Test
+    void ignoresSmallStationInventories() {
+        ChestClaimWorkflowDomainService chestService = service();
+        UUID storageId = UUID.randomUUID();
+        chestService.claimWithId(storageId, Set.of(anchor()), 0, 0, "");
+        ItemIdentity hotPart = ItemIdentityMatcher.create(new ItemStack("tfc:hot_metal_part", 1, 64));
+
+        int seeded = ChestContentAffinitySeeder.seedInitialContents(
+                chestService,
+                storageId,
+                new ItemStack[]{new ItemStack("tfc:hot_metal_part", 1, 64)},
+                200L);
+
+        assertEquals(0, seeded);
+        assertEquals(0, chestService.chestAffinityMap().score(storageId, hotPart));
     }
 
     private static ChestClaimWorkflowDomainService service() {

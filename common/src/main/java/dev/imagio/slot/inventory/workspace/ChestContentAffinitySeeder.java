@@ -35,7 +35,7 @@ public final class ChestContentAffinitySeeder {
         if (contents == null || contents.length == 0) {
             return 0;
         }
-        return seedInitialContents(chestService, storageId, Arrays.asList(contents), tick);
+        return seedInitialContents(chestService, storageId, contents.length, Arrays.asList(contents), tick);
     }
 
     public static int seedInitialContents(
@@ -47,7 +47,7 @@ public final class ChestContentAffinitySeeder {
         if (snapshot == null) {
             return 0;
         }
-        return seedInitialContents(chestService, storageId, snapshot.contents(), tick);
+        return seedInitialContents(chestService, storageId, snapshot.slotCount(), snapshot.contents(), tick);
     }
 
     public static int seedInitialContents(
@@ -56,8 +56,22 @@ public final class ChestContentAffinitySeeder {
             List<ItemStack> contents,
             long tick
     ) {
+        return seedInitialContents(chestService, storageId,
+                contents == null ? 0 : contents.size(), contents, tick);
+    }
+
+    public static int seedInitialContents(
+            ChestClaimWorkflowDomainService chestService,
+            UUID storageId,
+            int slotCount,
+            List<ItemStack> contents,
+            long tick
+    ) {
         if (chestService == null || storageId == null || contents == null || contents.isEmpty()
                 || chestService.chest(storageId) == null) {
+            return 0;
+        }
+        if (!StorageAffinityPolicy.isEligibleSlotCount(slotCount)) {
             return 0;
         }
         Map<ItemIdentity, Integer> counts = countsByIdentity(contents);

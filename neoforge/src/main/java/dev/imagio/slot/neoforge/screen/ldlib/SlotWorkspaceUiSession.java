@@ -2074,6 +2074,9 @@ final class SlotWorkspaceUiSession {
             return null;
         }
         ServerLevel level = serverPlayer.serverLevel();
+        if (!ChestStorageAnchors.isClaimable(level, pos)) {
+            return null;
+        }
         ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, pos);
         if (anchor == null) {
             return null;

@@ -545,7 +545,8 @@ public final class WorkspaceCursorCommandService {
                         claimedChestMap,
                         affinityMap,
                         proximate,
-                        storageIndex.liveChestContentPresence());
+                        storageIndex.liveChestContentPresence(),
+                        storageIndex.liveStorageAffinityEligibility());
                 WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
                 for (UUID storageUuid : ranked) {
                     ClaimedChest chest = claimedChestMap.chest(storageUuid);

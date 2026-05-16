@@ -38,8 +38,8 @@ The full universal click table while carrying:
 | 7 | Left-click a vanilla craft/machine slot | Vanilla drop-all / merge / swap |
 | 8 | Left-click anywhere else (empty UI region, search results, etc.) | Smart-deposit cascade |
 
-Smart-deposit cascade: desired-count gap fill → proximate chest with
-affinity or existing matching contents → home → Triage. Reuses
+Smart-deposit cascade: desired-count gap fill → eligible proximate chest
+with affinity or existing matching contents → home → Triage. Reuses
 [`DepositPlanner`](../../common/src/main/java/dev/imagio/slot/inventory/workspace/DepositPlanner.java)
 end-to-end.
 

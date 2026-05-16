@@ -97,6 +97,9 @@ public final class ForgeChestDepositObserver {
         if (pos == null) {
             return;
         }
+        if (!ForgeChestStorageAnchors.isClaimable(player.serverLevel(), pos)) {
+            return;
+        }
         List<Integer> storageSlots = ChestDepositObservationSupport.storageMenuSlots(menu, player.getInventory());
         if (storageSlots.isEmpty()) {
             return;

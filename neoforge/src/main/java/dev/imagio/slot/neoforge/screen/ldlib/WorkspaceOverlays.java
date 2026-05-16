@@ -96,14 +96,14 @@ final class WorkspaceOverlays {
             host.rpc.sendDeposit();
         });
         // Deposit is driven by explicit organization signals: learned
-        // affinity or existing matching contents in a proximate chest. Items
+        // affinity or existing matching contents in an eligible proximate chest. Items
         // with neither signal stay in carry. The tooltip surfaces this so
         // the player understands "nothing to deposit" instead of assuming
         // the button is broken.
         host.installTextTooltip(
                 depositButton,
                 Component.literal(
-                        "Deposit carried items into proximate chests by learned affinity or matching contents. "
+                        "Deposit carried items into eligible proximate chests by learned affinity or matching contents. "
                                 + "Items without either signal stay in carry."));
 
         // Top-level Gather button. Common gather semantics cover both

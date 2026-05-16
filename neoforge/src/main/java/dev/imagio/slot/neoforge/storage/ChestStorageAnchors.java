@@ -1,10 +1,15 @@
 package dev.imagio.slot.neoforge.storage;
 
+import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.inventory.workspace.StorageAffinityPolicy;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
@@ -15,6 +20,11 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public final class ChestStorageAnchors {
+    private static final TagKey<Block> STORAGE_AFFINITY_ALLOWED =
+            TagKey.create(Registries.BLOCK, SlotCommon.id("storage_affinity_allowed"));
+    private static final TagKey<Block> NO_STORAGE_AFFINITY =
+            TagKey.create(Registries.BLOCK, SlotCommon.id("no_storage_affinity"));
+
     private ChestStorageAnchors() {
     }
 
@@ -30,7 +40,13 @@ public final class ChestStorageAnchors {
             return false;
         }
         IItemHandler handler = level.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
-        return handler != null;
+        if (handler == null) {
+            return false;
+        }
+        return StorageAffinityPolicy.isEligible(
+                handler.getSlots(),
+                state.is(STORAGE_AFFINITY_ALLOWED),
+                state.is(NO_STORAGE_AFFINITY));
     }
 
     public static Set<ChestAnchor> resolveAnchors(Level level, BlockPos pos) {

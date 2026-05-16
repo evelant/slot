@@ -136,6 +136,9 @@ public final class ChestDepositObserver {
         if (pos == null) {
             return;
         }
+        if (!ChestStorageAnchors.isClaimable(player.serverLevel(), pos)) {
+            return;
+        }
         List<Integer> storageSlots = ChestDepositObservationSupport.storageMenuSlots(menu, player.getInventory());
         if (storageSlots.isEmpty()) {
             return;

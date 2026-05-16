@@ -30,7 +30,9 @@ import java.util.function.Function;
  * tracked storage uses the remembered read model so ordinary workspace
  * refreshes do not enumerate every loaded chest in the world. Mutation
  * planners must use {@link #liveChestContentPresence()} so remembered-only
- * data never authorizes a transfer.
+ * data never authorizes a transfer. They must also use
+ * {@link #liveStorageAffinityEligibility()} so tiny station inventories that
+ * happen to hold a matching item do not become deposit homes.
  */
 public final class WorkspaceStorageIndex {
     private final Map<String, StorageEntry> entriesByStorageId;
@@ -309,6 +311,9 @@ public final class WorkspaceStorageIndex {
             if (entry == null || !entry.live() || entry.target() == null || entry.target().displayTarget()) {
                 continue;
             }
+            if (!StorageAffinityPolicy.isEligibleSlotCount(entry.snapshot().slotCount())) {
+                continue;
+            }
             try {
                 UUID storageId = UUID.fromString(entry.target().storageId());
                 identitiesByChest.put(storageId, Set.copyOf(entry.countsByIdentity().keySet()));
@@ -324,6 +329,24 @@ public final class WorkspaceStorageIndex {
             Set<ItemIdentity> identities = identitiesByChest.getOrDefault(chest.storageId(), Set.of());
             return identities.contains(ItemIdentityMatcher.normalizeMovable(identity));
         };
+    }
+
+    public DepositPlanner.ChestEligibility liveStorageAffinityEligibility() {
+        LinkedHashMap<UUID, Boolean> eligibleByChest = new LinkedHashMap<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry == null || !entry.live() || entry.target() == null || entry.target().displayTarget()) {
+                continue;
+            }
+            try {
+                UUID storageId = UUID.fromString(entry.target().storageId());
+                eligibleByChest.put(storageId,
+                        StorageAffinityPolicy.isEligibleSlotCount(entry.snapshot().slotCount()));
+            } catch (IllegalArgumentException ignored) {
+                // Non-UUID ids are display storage and are intentionally not
+                // used as claimed-chest deposit authorization.
+            }
+        }
+        return chest -> chest != null && eligibleByChest.getOrDefault(chest.storageId(), false);
     }
 
     private static Map<ItemIdentity, Integer> carriedCounts(InventoryAuthoritySnapshot authority) {

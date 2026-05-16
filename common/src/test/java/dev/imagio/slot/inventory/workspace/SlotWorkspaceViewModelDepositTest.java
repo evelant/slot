@@ -16,6 +16,7 @@ import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
+import dev.imagio.slot.workflow.domain.ChestAffinity;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -77,6 +78,26 @@ class SlotWorkspaceViewModelDepositTest {
 
         assertFalse(viewModel.depositableIdentities().contains(
                 SlotWorkspaceViewModel.IdentityRef.from(ItemIdentity.of("minecraft:netherite_ingot"))));
+    }
+
+    @Test
+    void depositableIdentitiesIgnoreSmallStationsEvenWithAffinity() {
+        SlotWorkspaceViewModel viewModel = project(
+                carried("tfc:hot_metal_part", 1),
+                workflow(
+                        homeMap(ItemIdentity.of("tfc:hot_metal_part")),
+                        claimedMap(CHEST_A),
+                        affinity(CHEST_A, ItemIdentity.of("tfc:hot_metal_part"), 1)),
+                storageId -> CHEST_A.toString().equals(storageId)
+                        ? new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                                1,
+                                List.of(stack("tfc:hot_metal_part", 1)))
+                        : SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(CHEST_A.toString())
+        );
+
+        assertFalse(viewModel.depositableIdentities().contains(
+                SlotWorkspaceViewModel.IdentityRef.from(ItemIdentity.of("tfc:hot_metal_part"))));
     }
 
     @Test
@@ -223,7 +244,12 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     private static SlotWorkspaceViewModel.ChestContentsSnapshot snapshotOf(ItemStack... contents) {
-        return new SlotWorkspaceViewModel.ChestContentsSnapshot(contents.length, List.of(contents));
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(27, List.of(contents));
+    }
+
+    private static ChestAffinityMap affinity(UUID storageId, ItemIdentity identity, int score) {
+        return new ChestAffinityMap(Map.of(storageId,
+                Map.of(identity, new ChestAffinity(identity, score, 0L))));
     }
 
     private static ItemStack stack(String itemId, int count) {

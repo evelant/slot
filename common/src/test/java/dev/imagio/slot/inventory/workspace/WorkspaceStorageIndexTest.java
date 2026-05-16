@@ -67,6 +67,26 @@ class WorkspaceStorageIndexTest {
     }
 
     @Test
+    void smallLiveStationContentsDoNotAuthorizeStorageAffinity() {
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 1, List.of(content(0, stack("tfc:hot_metal_part", 1))));
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(),
+                Map.of());
+
+        assertFalse(index.liveChestContentPresence().contains(
+                claimed(CHEST_A),
+                ItemIdentity.of("tfc:hot_metal_part")));
+        assertFalse(index.liveStorageAffinityEligibility().isEligible(claimed(CHEST_A)));
+    }
+
+    @Test
     void liveContentsTakePrecedenceOverRememberedContents() {
         FakeWorldStorage world = new FakeWorldStorage()
                 .put(CHEST_A, 27, List.of(content(0, stack("minecraft:stone", 3))));

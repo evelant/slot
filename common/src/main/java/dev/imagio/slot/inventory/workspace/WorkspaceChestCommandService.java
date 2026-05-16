@@ -79,7 +79,8 @@ public final class WorkspaceChestCommandService {
                 claimedChestMap,
                 proximate,
                 reservedCountResolver(runtime),
-                storageIndex.liveChestContentPresence()
+                storageIndex.liveChestContentPresence(),
+                storageIndex.liveStorageAffinityEligibility()
         );
         plan = withDisplayDepositAssignments(
                 player,
@@ -88,7 +89,7 @@ public final class WorkspaceChestCommandService {
                 displaySources,
                 reservedCountResolver(runtime));
         SlotCommon.LOGGER.info(
-                "[SLOT] deposit plan: assignments={} (one per stack with learned affinity or matching contents)",
+                "[SLOT] deposit plan: assignments={} (one per stack with eligible learned affinity or matching contents)",
                 plan.assignments().size());
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(player, plan, claimedChestMap);
         observeStorageIds(player, claimedChestMap, outcome.destinations(), "slot.deposit");
@@ -104,7 +105,7 @@ public final class WorkspaceChestCommandService {
             return WorkspaceCommandOutcome.accepted(
                     "nothing_to_deposit",
                     plan.assignments().isEmpty()
-                            ? "no carried stack has learned affinity or matching contents with a proximate chest"
+                            ? "no carried stack has eligible learned affinity or matching contents with a proximate chest"
                             : "all candidate chests rejected the items");
         }
         if (outcome.deposited() > 0 && outcome.failed() == 0) {
@@ -572,7 +573,8 @@ public final class WorkspaceChestCommandService {
                 claimedChestMap,
                 affinityMap,
                 proximate,
-                storageIndex.liveChestContentPresence());
+                storageIndex.liveChestContentPresence(),
+                storageIndex.liveStorageAffinityEligibility());
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
         for (UUID storageId : ranked) {
             ClaimedChest chest = claimedChestMap.chest(storageId);
@@ -622,7 +624,8 @@ public final class WorkspaceChestCommandService {
                 claimedChestMap,
                 affinityMap,
                 proximate,
-                storageIndex.liveChestContentPresence());
+                storageIndex.liveChestContentPresence(),
+                storageIndex.liveStorageAffinityEligibility());
 
         int probeCount = Math.max(1, Math.min(sourceStack.getMaxStackSize(),
                 Math.min(requestedCount, sourceStack.getCount())));

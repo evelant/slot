@@ -857,6 +857,9 @@ final class ForgeWorkspaceSession {
             return null;
         }
         ServerLevel level = player.serverLevel();
+        if (!ForgeChestStorageAnchors.isClaimable(level, pos)) {
+            return null;
+        }
         ChestAnchor anchor = ForgeChestStorageAnchors.toAnchor(level, pos);
         if (anchor == null) {
             return null;

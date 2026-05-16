@@ -127,6 +127,22 @@ class DepositPlannerTest {
     }
 
     @Test
+    void ineligibleChestsDoNotRouteByAffinityOrContents() {
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:redstone", 16),
+                affinity(CHEST_A, "minecraft:redstone", 1),
+                claimedMap(CHEST_A),
+                Set.of(CHEST_A.toString()),
+                null,
+                (chest, identity) -> chest.storageId().equals(CHEST_A)
+                        && identity.equals(ItemIdentity.of("minecraft:redstone")),
+                chest -> false
+        );
+
+        assertTrue(plan.isEmpty());
+    }
+
+    @Test
     void similarBondsDoNotRouteWhenNoDirectAffinity() {
         // CHEST_A has strong learned bonds for other ingots, but the
         // carried identity itself has never been deposited there. The
@@ -201,6 +217,22 @@ class DepositPlannerTest {
         );
 
         assertEquals(List.of(CHEST_A), ranked);
+    }
+
+    @Test
+    void explicitDepositRespectsChestEligibility() {
+        ItemIdentity target = ItemIdentity.of("minecraft:netherite_ingot");
+
+        List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
+                target,
+                claimedMap(CHEST_A),
+                affinity(CHEST_A, "minecraft:netherite_ingot", 1),
+                Set.of(CHEST_A.toString()),
+                (chest, identity) -> true,
+                chest -> false
+        );
+
+        assertTrue(ranked.isEmpty());
     }
 
     @Test

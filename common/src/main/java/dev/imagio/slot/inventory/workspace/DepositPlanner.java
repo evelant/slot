@@ -22,13 +22,14 @@ import java.util.function.ToIntFunction;
  * Affinity/content-driven deposit routing.
  *
  * <p>For each carried item, route only to proximate claimed chests that
- * either already have a positive learned affinity bond for the exact
- * identity ({@code affinity[chest, identity] > 0}) or currently hold a
- * matching item identity. Similarity, classifier facets, empty-chest
- * fallback, and remote chests are intentionally ignored so deposit never
- * invents organization the player has not taught or already materialized.
- * Highest affinity score wins, content-only chests sort after affinity
- * chests, and stable storage-id ordering breaks remaining ties.
+ * are eligible for persistent storage affinity and either already have a
+ * positive learned affinity bond for the exact identity
+ * ({@code affinity[chest, identity] > 0}) or currently hold a matching
+ * item identity. Similarity, classifier facets, empty-chest fallback, and
+ * remote chests are intentionally ignored so deposit never invents
+ * organization the player has not taught or already materialized. Highest
+ * affinity score wins, content-only chests sort after affinity chests, and
+ * stable storage-id ordering breaks remaining ties.
  */
 public final class DepositPlanner {
     @FunctionalInterface
@@ -36,7 +37,13 @@ public final class DepositPlanner {
         boolean contains(ClaimedChest chest, ItemIdentity identity);
     }
 
+    @FunctionalInterface
+    public interface ChestEligibility {
+        boolean isEligible(ClaimedChest chest);
+    }
+
     private static final ChestContentPresence NO_CONTENT_PRESENCE = (chest, identity) -> false;
+    private static final ChestEligibility ALL_CHESTS_ELIGIBLE = chest -> true;
 
     private DepositPlanner() {
     }
@@ -84,6 +91,19 @@ public final class DepositPlanner {
             Set<String> proximateStorageIds,
             ToIntFunction<ItemIdentity> reservedCountResolver,
             ChestContentPresence chestContentPresence
+    ) {
+        return plan(authority, affinityMap, claimedChestMap, proximateStorageIds,
+                reservedCountResolver, chestContentPresence, null);
+    }
+
+    public static DepositPlan plan(
+            InventoryAuthoritySnapshot authority,
+            ChestAffinityMap affinityMap,
+            ClaimedChestMap claimedChestMap,
+            Set<String> proximateStorageIds,
+            ToIntFunction<ItemIdentity> reservedCountResolver,
+            ChestContentPresence chestContentPresence,
+            ChestEligibility chestEligibility
     ) {
         if (authority == null || claimedChestMap == null) {
             return DepositPlan.empty();
@@ -136,7 +156,7 @@ public final class DepositPlanner {
                     continue;
                 }
                 List<String> candidates = rankCandidates(
-                        identity, claimedChestMap, affinityMap, proximate, chestContentPresence);
+                        identity, claimedChestMap, affinityMap, proximate, chestContentPresence, chestEligibility);
                 if (candidates.isEmpty()) {
                     continue;
                 }
@@ -176,6 +196,18 @@ public final class DepositPlanner {
             Set<String> proximateStorageIds,
             ChestContentPresence chestContentPresence
     ) {
+        return rankChestsForIdentity(
+                identity, claimedChestMap, affinityMap, proximateStorageIds, chestContentPresence, null);
+    }
+
+    public static List<UUID> rankChestsForIdentity(
+            ItemIdentity identity,
+            ClaimedChestMap claimedChestMap,
+            ChestAffinityMap affinityMap,
+            Set<String> proximateStorageIds,
+            ChestContentPresence chestContentPresence,
+            ChestEligibility chestEligibility
+    ) {
         if (identity == null || claimedChestMap == null) {
             return List.of();
         }
@@ -186,6 +218,9 @@ public final class DepositPlanner {
         ChestContentPresence contentPresence = chestContentPresence == null
                 ? NO_CONTENT_PRESENCE
                 : chestContentPresence;
+        ChestEligibility eligibility = chestEligibility == null
+                ? ALL_CHESTS_ELIGIBLE
+                : chestEligibility;
         record Candidate(UUID storageId, int score, boolean containsIdentity) {
         }
         ArrayList<Candidate> ranked = new ArrayList<>();
@@ -195,6 +230,9 @@ public final class DepositPlanner {
             }
             UUID storageUuid = chest.storageId();
             if (!proximate.contains(storageUuid.toString())) {
+                continue;
+            }
+            if (!eligibility.isEligible(chest)) {
                 continue;
             }
             int score = affinityMap == null ? 0 : affinityMap.score(storageUuid, identity);
@@ -242,6 +280,19 @@ public final class DepositPlanner {
     ) {
         return rankChestsForIdentity(
                 identity, claimedChestMap, affinityMap, proximateStorageIds, chestContentPresence);
+    }
+
+    public static List<UUID> rankChestsForExplicitDeposit(
+            ItemIdentity identity,
+            ClaimedChestMap claimedChestMap,
+            ChestAffinityMap affinityMap,
+            Set<String> proximateStorageIds,
+            ChestContentPresence chestContentPresence,
+            ChestEligibility chestEligibility
+    ) {
+        return rankChestsForIdentity(
+                identity, claimedChestMap, affinityMap, proximateStorageIds,
+                chestContentPresence, chestEligibility);
     }
 
     /**
@@ -293,10 +344,11 @@ public final class DepositPlanner {
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap affinityMap,
             Set<String> proximate,
-            ChestContentPresence chestContentPresence
+            ChestContentPresence chestContentPresence,
+            ChestEligibility chestEligibility
     ) {
         List<UUID> uuids = rankChestsForIdentity(
-                identity, claimedChestMap, affinityMap, proximate, chestContentPresence);
+                identity, claimedChestMap, affinityMap, proximate, chestContentPresence, chestEligibility);
         if (uuids.isEmpty()) {
             return List.of();
         }

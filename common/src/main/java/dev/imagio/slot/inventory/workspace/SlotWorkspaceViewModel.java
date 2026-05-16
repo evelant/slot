@@ -1171,6 +1171,9 @@ public record SlotWorkspaceViewModel(
                 if (!proximateStorageIds.contains(chest.storageId().toString())) {
                     continue;
                 }
+                if (!storageAffinityEligible(chest.storageId().toString(), chestContentsResolver)) {
+                    continue;
+                }
                 boolean affinityMatch = affinityMap != null && affinityMap.score(chest.storageId(), identity) > 0;
                 boolean contentMatch = contentIdentities
                         .getOrDefault(chest.storageId().toString(), Set.of())
@@ -1207,6 +1210,9 @@ public record SlotWorkspaceViewModel(
             if (snapshot == null || snapshot.contents().isEmpty()) {
                 continue;
             }
+            if (!StorageAffinityPolicy.isEligibleSlotCount(snapshot.slotCount())) {
+                continue;
+            }
             LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
             for (ItemStack stack : snapshot.contents()) {
                 if (stack == null || stack.isEmpty()) {
@@ -1219,6 +1225,17 @@ public record SlotWorkspaceViewModel(
             }
         }
         return Map.copyOf(out);
+    }
+
+    private static boolean storageAffinityEligible(
+            String storageId,
+            Function<String, ChestContentsSnapshot> chestContentsResolver
+    ) {
+        if (storageId == null || storageId.isBlank() || chestContentsResolver == null) {
+            return true;
+        }
+        ChestContentsSnapshot snapshot = chestContentsResolver.apply(storageId);
+        return snapshot != null && StorageAffinityPolicy.isEligibleSlotCount(snapshot.slotCount());
     }
 
     /**
