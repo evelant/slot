@@ -98,15 +98,13 @@ final class HotkeyRouter {
                 || isTextInputFocused() || Screen.hasControlDown()) {
             return;
         }
+        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
+        if (target == null) {
+            return;
+        }
         event.stopPropagation();
         if (host.goalTabActive()) {
             host.localStatus.set("goal tab is browse only");
-            host.rebuild();
-            return;
-        }
-        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
-        if (target == null) {
-            host.localStatus.set("hover an atlas item to move it to hotbar");
             host.rebuild();
             return;
         }
@@ -119,13 +117,11 @@ final class HotkeyRouter {
                 || isTextInputFocused() || Screen.hasControlDown()) {
             return;
         }
-        event.stopPropagation();
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
-            host.localStatus.set("hover an item to scroll to it");
-            host.rebuild();
             return;
         }
+        event.stopPropagation();
         host.focusWallItem(target);
     }
 

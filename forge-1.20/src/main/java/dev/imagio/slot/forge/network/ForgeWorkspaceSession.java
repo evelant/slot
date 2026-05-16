@@ -3,6 +3,8 @@ package dev.imagio.slot.forge.network;
 import dev.imagio.slot.forge.storage.ForgeChestDepositObserver;
 import dev.imagio.slot.forge.storage.ForgeChestStorageAnchors;
 import dev.imagio.slot.forge.storage.ForgeChestStorageIds;
+import dev.imagio.slot.forge.compat.sacks.SacksNSuchCarriedProvider;
+import dev.imagio.slot.forge.compat.toolbelt.ToolBeltCarriedProvider;
 import dev.imagio.slot.forge.triage.Forge120IslandSignalExtractor;
 import dev.imagio.slot.forge.storage.ForgeCarriedActivityTracker;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
@@ -10,6 +12,7 @@ import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.ItemStackStructuralKey;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.integration.InventoryActionExecutor;
@@ -18,6 +21,7 @@ import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
 import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
+import dev.imagio.slot.inventory.integration.SophisticatedBackpackInventoryIntegrationProvider;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
@@ -52,6 +56,7 @@ import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.core.BlockPos;
@@ -67,7 +72,9 @@ import net.minecraft.world.Container;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -96,6 +103,7 @@ final class ForgeWorkspaceSession {
     private CompoundTag lastContentTag = new CompoundTag();
     private AbstractContainerMenu observedMenu;
     private ContainerListener observedMenuListener;
+    private final Map<Integer, ItemStackStructuralKey> observedSlotKeys = new HashMap<>();
     private boolean dirty;
 
     ForgeWorkspaceSession(WorkspaceActionEnvelope envelope, int menuContainerId, WorkflowDomainRuntime runtime) {
@@ -114,10 +122,11 @@ final class ForgeWorkspaceSession {
             return;
         }
         observedMenu = menu;
+        seedObservedSlotKeys(menu);
         observedMenuListener = new ContainerListener() {
             @Override
             public void slotChanged(AbstractContainerMenu changedMenu, int slotIndex, ItemStack stack) {
-                if (changedMenu == observedMenu) {
+                if (changedMenu == observedMenu && updateObservedSlotKey(slotIndex, stack)) {
                     markDirty();
                 }
             }
@@ -138,6 +147,7 @@ final class ForgeWorkspaceSession {
         }
         observedMenu = null;
         observedMenuListener = null;
+        observedSlotKeys.clear();
         dirty = false;
     }
 
@@ -157,6 +167,25 @@ final class ForgeWorkspaceSession {
         dirty = false;
     }
 
+    private void seedObservedSlotKeys(AbstractContainerMenu menu) {
+        observedSlotKeys.clear();
+        if (menu == null) {
+            return;
+        }
+        for (int slotIndex = 0; slotIndex < menu.slots.size(); slotIndex++) {
+            observedSlotKeys.put(slotIndex, ItemStackStructuralKey.from(menu.slots.get(slotIndex).getItem()));
+        }
+    }
+
+    private boolean updateObservedSlotKey(int slotIndex, ItemStack stack) {
+        if (slotIndex < 0) {
+            return true;
+        }
+        ItemStackStructuralKey next = ItemStackStructuralKey.from(stack);
+        ItemStackStructuralKey previous = observedSlotKeys.put(slotIndex, next);
+        return previous == null || !previous.equals(next);
+    }
+
     SlotWorkspaceViewModel project(ServerPlayer player) {
         return project(player, true);
     }
@@ -170,6 +199,17 @@ final class ForgeWorkspaceSession {
         String combinedDiagnostics = combineDiagnostics(hostDiagnostics, diagnostics);
         int selected = player == null ? -1 : player.getInventory().selected;
         long gameTime = player == null ? 0L : player.serverLevel().getGameTime();
+        if (runtime != null) {
+            runtime.contextualSuggestions().observeCarriedSnapshot(
+                    authority,
+                    gameTime,
+                    DomainEventMetadata.origin("contextual.forge.carried_snapshot"));
+            runtime.contextualSuggestions().observeStationContext(
+                    host,
+                    authority,
+                    gameTime,
+                    DomainEventMetadata.origin("contextual.forge.station_context"));
+        }
 
         SlotWorkspaceViewModel projected = project(authority, selected, combinedDiagnostics, gameTime, player);
         int autoHomeCount = 0;
@@ -641,13 +681,43 @@ final class ForgeWorkspaceSession {
                 Forge120IslandSignalExtractor::extract,
                 storageIndex.contentsResolver(),
                 proximateIds,
-                ignored -> null,
+                carriedContainerInfoResolver(player),
                 lootChestSource,
                 searchQuery,
                 gameTime,
                 activeChestPanel,
                 displaySources
         );
+    }
+
+    private static Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> carriedContainerInfoResolver(
+            ServerPlayer player
+    ) {
+        if (player == null) {
+            return ignored -> null;
+        }
+        LinkedHashMap<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> byIdentity = new LinkedHashMap<>();
+        mergeContainerInfo(byIdentity, SophisticatedBackpackInventoryIntegrationProvider.carriedContainerInfoByIdentity(player));
+        mergeContainerInfo(byIdentity, SacksNSuchCarriedProvider.carriedContainerInfoByIdentity(player));
+        mergeContainerInfo(byIdentity, ToolBeltCarriedProvider.carriedContainerInfoByIdentity(player));
+        return byIdentity.isEmpty() ? ignored -> null : byIdentity::get;
+    }
+
+    private static void mergeContainerInfo(
+            Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> target,
+            Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> source
+    ) {
+        if (target == null || source == null || source.isEmpty()) {
+            return;
+        }
+        source.forEach((identity, info) -> {
+            if (identity == null || info == null || info.slotCapacity() <= 0) {
+                return;
+            }
+            target.merge(identity, info, (left, right) -> new SlotWorkspaceViewModel.CarriedContainerInfo(
+                    left.freeSlots() + right.freeSlots(),
+                    left.slotCapacity() + right.slotCapacity()));
+        });
     }
 
     private WorkspaceCommandOutcome toggleWantedItem(ServerPlayer player, ItemIdentity identity) {

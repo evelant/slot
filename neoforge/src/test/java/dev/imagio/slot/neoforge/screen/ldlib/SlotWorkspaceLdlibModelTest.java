@@ -388,6 +388,10 @@ class SlotWorkspaceLdlibModelTest {
         assertEquals(original.islands().size(), restored.islands().size());
         assertEquals(original.hotbarSlots().getFirst().displayStack().itemId(), restored.hotbarSlots().getFirst().displayStack().itemId());
         assertTrue(restored.hotbarSlots().getFirst().selected());
+        assertFalse(restored.contextualSuggestionLanes().isEmpty());
+        assertEquals(
+                original.contextualSuggestionLanes().getFirst().placeholderText(),
+                restored.contextualSuggestionLanes().getFirst().placeholderText());
     }
 
     @Test

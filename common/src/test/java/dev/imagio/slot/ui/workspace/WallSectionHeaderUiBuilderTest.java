@@ -179,6 +179,31 @@ class WallSectionHeaderUiBuilderTest {
     }
 
     @Test
+    void wallCardStockPipLabelsUseReadableFontSize() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.searchQuery = "stone";
+        context.searchMatches = true;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:stone",
+                "Stone",
+                false,
+                true,
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("nearby", "Nearby", 32)),
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("remote", "Warehouse", 64))
+        );
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        java.util.Set<String> pipTexts = java.util.Set.of("32", "+96");
+        java.util.List<SlotUiElement> pipLabels = descendantLabels(card).stream()
+                .filter(label -> pipTexts.contains(label.text()))
+                .toList();
+
+        assertEquals(2, pipLabels.size());
+        assertTrue(pipLabels.stream().allMatch(label ->
+                Math.abs(label.textStyle().fontSize() - 5.5f) <= 0.001f));
+    }
+
+    @Test
     void wallCardExpandsForBestElsewhereSearchHit() {
         RecordingCardContext context = new RecordingCardContext();
         context.searchQuery = "stone";
@@ -206,6 +231,42 @@ class WallSectionHeaderUiBuilderTest {
         assertEquals(Boolean.TRUE, body.attachment(
                 WorkspaceUiAttachments.WALL_CARD_ACTIVE_SEARCH_MATCH,
                 Boolean.class));
+    }
+
+    @Test
+    void forcedWayfindingDoesNotUseNearbyPresenceForPutAwayCards() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.forceWayfinding = true;
+        SlotWorkspaceViewModel.ChestPresenceEntry nearby =
+                new SlotWorkspaceViewModel.ChestPresenceEntry("chest:near", "Nearby", 5);
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:stone",
+                "Stone",
+                false,
+                true,
+                java.util.List.of(nearby),
+                java.util.List.of());
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        SlotUiElement body = card.children().get(0);
+
+        assertEquals(WallCardUiBuilder.CARD_CELL_PX, card.layout().width());
+        assertNull(body.attachment(
+                WorkspaceUiAttachments.WALL_CARD_WAYFINDING_ENTRY,
+                SlotWorkspaceViewModel.ChestPresenceEntry.class));
+        assertTrue(descendantText(card).contains("5"));
+    }
+
+    @Test
+    void proximatePipCanShowDepositRouteWithoutStoredCount() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.proximateDepositRoute = true;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem("minecraft:stone", "Stone", false, true);
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+
+        assertEquals(WallCardUiBuilder.CARD_CELL_PX, card.layout().width());
+        assertTrue(descendantText(card).contains("+"));
     }
 
     @Test
@@ -348,6 +409,17 @@ class WallSectionHeaderUiBuilderTest {
             boolean carried,
             java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere
     ) {
+        return atlasItem(itemId, name, recent, carried, java.util.List.of(), elsewhere);
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem atlasItem(
+            String itemId,
+            String name,
+            boolean recent,
+            boolean carried,
+            java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> presence,
+            java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere
+    ) {
         SlotWorkspaceViewModel.IdentityRef identity = new SlotWorkspaceViewModel.IdentityRef(
                 itemId,
                 dev.imagio.slot.inventory.core.ItemComparisonMode.ITEM_ID.name(),
@@ -366,7 +438,7 @@ class WallSectionHeaderUiBuilderTest {
                 !carried,
                 0,
                 java.util.List.of(),
-                java.util.List.of(),
+                presence,
                 elsewhere,
                 false,
                 0,
@@ -386,6 +458,12 @@ class WallSectionHeaderUiBuilderTest {
         return text;
     }
 
+    private static java.util.List<SlotUiElement> descendantLabels(SlotUiElement root) {
+        java.util.ArrayList<SlotUiElement> labels = new java.util.ArrayList<>();
+        collectLabels(root, labels);
+        return labels;
+    }
+
     private static void collectText(SlotUiElement element, java.util.ArrayList<String> text) {
         if (element == null) {
             return;
@@ -395,6 +473,18 @@ class WallSectionHeaderUiBuilderTest {
         }
         for (SlotUiElement child : element.children()) {
             collectText(child, text);
+        }
+    }
+
+    private static void collectLabels(SlotUiElement element, java.util.ArrayList<SlotUiElement> labels) {
+        if (element == null) {
+            return;
+        }
+        if (element.kind() == SlotUiElement.Kind.LABEL) {
+            labels.add(element);
+        }
+        for (SlotUiElement child : element.children()) {
+            collectLabels(child, labels);
         }
     }
 
@@ -422,6 +512,8 @@ class WallSectionHeaderUiBuilderTest {
         String searchQuery = "";
         boolean searchMatches;
         boolean focused;
+        boolean forceWayfinding;
+        boolean proximateDepositRoute;
         StorageGhostRevealMode storageGhostRevealMode = StorageGhostRevealMode.COLLAPSED;
 
         @Override
@@ -457,6 +549,16 @@ class WallSectionHeaderUiBuilderTest {
         @Override
         public StorageGhostRevealMode storageGhostRevealMode() {
             return storageGhostRevealMode;
+        }
+
+        @Override
+        public boolean forceWayfindingStrip(SlotWorkspaceViewModel.AtlasItem item) {
+            return forceWayfinding;
+        }
+
+        @Override
+        public boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
+            return proximateDepositRoute;
         }
     }
 

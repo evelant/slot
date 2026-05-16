@@ -14,10 +14,11 @@ import dev.imagio.slot.inventory.core.InventoryPaneMembership;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WorkflowDomainRuntimeTest {
     @Test
-    void runtimePersistsCollectionProtectionQueryAndRecentMutationsSynchronously() {
+    void runtimeCoalescesPersistenceUntilPendingSaveIsFlushed() {
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
         RecordingPort port = new RecordingPort();
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
@@ -62,6 +63,10 @@ class WorkflowDomainRuntimeTest {
                 java.util.List.of(),
                 ""
         ));
+
+        assertEquals(WorkflowDomainSnapshot.empty(), port.saved);
+        assertTrue(runtime.savePending());
+        runtime.flushPendingSave();
 
         assertEquals(repository.snapshot(), port.saved);
         assertEquals("stone", port.saved.browseSessionState().filter().searchText());

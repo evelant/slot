@@ -40,6 +40,7 @@ import dev.imagio.slot.ui.workspace.WayfindingDisplay;
 import dev.imagio.slot.ui.workspace.WheelTransferBatcher;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.imagio.slot.ui.workspace.WorkspaceCountFormat;
+import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceSearchInputPolicy;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
@@ -409,13 +410,12 @@ public final class ForgeWorkspaceSurface {
         if (keyCode != GLFW.GLFW_KEY_TAB || Screen.hasShiftDown() || editorOpen() || Screen.hasControlDown()) {
             return false;
         }
-        if (goalTabActive()) {
-            setStatus("goal tab is browse only");
-            return true;
-        }
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
         if (identity == null || !byIdentity.containsKey(identity)) {
-            setStatus("hover an atlas item to move it to hotbar");
+            return false;
+        }
+        if (goalTabActive()) {
+            setStatus("goal tab is browse only");
             return true;
         }
         applySearchDecision(WorkspaceSearchInputPolicy.confirmForHotbar(searchActive, searchQuery));
@@ -429,8 +429,7 @@ public final class ForgeWorkspaceSurface {
         }
         SlotWorkspaceViewModel.AtlasItem item = hoveredIdentity == null ? null : byIdentity.get(hoveredIdentity);
         if (item == null) {
-            setStatus("hover an item to scroll to it");
-            return true;
+            return false;
         }
         focusWallItem(item);
         return true;
@@ -730,6 +729,10 @@ public final class ForgeWorkspaceSurface {
         }
         column.addChild(goalTabs(sidebarMode));
         column.addChild(recents(sidebarMode));
+        SlotUiElement suggestions = contextualSuggestions(sidebarMode);
+        if (suggestions != null) {
+            column.addChild(suggestions);
+        }
         column.addChild(wallArea(sidebarMode));
         column.addChild(statusRow(sidebarMode));
         column.addChild(hotbar(sidebarMode));
@@ -824,13 +827,13 @@ public final class ForgeWorkspaceSurface {
                             .alignItems(SlotUiLayout.AlignItems.CENTER)
                             .flexDirection(SlotUiLayout.FlexDirection.ROW);
                 });
-        row.addChild(SlotUiElement.label("Search", WorkspaceUiPalette.MUTED)
+        row.addChild(searchBarLabel("Search", WorkspaceUiPalette.MUTED)
                 .layout(layout -> layout.width(34))
                 .textStyle(style -> style
                         .color(WorkspaceUiPalette.MUTED)
                         .fontSize(7)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)));
-        row.addChild(SlotUiElement.label(searchDisplayText(), WorkspaceUiPalette.TEXT)
+        row.addChild(searchBarLabel(searchDisplayText(), WorkspaceUiPalette.TEXT)
                 .layout(layout -> layout.flex(1))
                 .textStyle(style -> style
                         .color(searchActive ? WorkspaceUiPalette.ACCENT : WorkspaceUiPalette.TEXT)
@@ -848,6 +851,17 @@ public final class ForgeWorkspaceSurface {
         row.addChild(gatherButton());
         row.addChild(depositButton());
         return row;
+    }
+
+    private SlotUiElement searchBarLabel(String text, int color) {
+        return SlotUiElement.label(text, color)
+                .on(SlotUiEventKind.MOUSE_DOWN, event -> {
+                    if (event.button() != 1) {
+                        return;
+                    }
+                    event.stopPropagation();
+                    clearSearchFromPointer();
+                });
     }
 
     private SlotUiElement storageXrayToggleButton(String label, StorageGhostRevealMode mode) {
@@ -959,6 +973,32 @@ public final class ForgeWorkspaceSurface {
         return SlotUiElement.element()
                 .layout(layout -> layout.width(workspaceWidth()))
                 .addChild(strip);
+    }
+
+    private SlotUiElement contextualSuggestions(boolean sidebarMode) {
+        if (goalTabActive()) {
+            return null;
+        }
+        boolean filtering = !normalizedSearchQuery().isBlank();
+        WallSectionHeaderUiBuilder headerBuilder = new WallSectionHeaderUiBuilder(new HeaderContext());
+        WallSectionUiBuilder sectionBuilder = new WallSectionUiBuilder(headerBuilder);
+        SlotUiElement lanes = SlotUiElement.element()
+                .layout(layout -> {
+                    if (sidebarMode) {
+                        layout.widthPercent(100);
+                    } else {
+                        layout.width(workspaceWidth());
+                    }
+                    layout.gapAll(4)
+                            .flexDirection(SlotUiLayout.FlexDirection.COLUMN);
+                });
+        for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : viewModel.contextualSuggestionLanes()) {
+            SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
+            if (visibleLane.displayable()) {
+                lanes.addChild(enrichSection(sectionBuilder.suggestionLane(visibleLane)));
+            }
+        }
+        return lanes.children().isEmpty() ? null : lanes;
     }
 
     private SlotUiElement wallArea(boolean sidebarMode) {
@@ -1153,6 +1193,27 @@ public final class ForgeWorkspaceSurface {
         }
         viewport.addChild(content);
         return viewport;
+    }
+
+    private SlotWorkspaceViewModel.ContextualSuggestionLane visibleSuggestionLane(
+            SlotWorkspaceViewModel.ContextualSuggestionLane lane,
+            boolean filtering
+    ) {
+        if (lane == null) {
+            return new SlotWorkspaceViewModel.ContextualSuggestionLane("", "", List.of());
+        }
+        if (!filtering) {
+            return lane;
+        }
+        if (lane.items().isEmpty()) {
+            return new SlotWorkspaceViewModel.ContextualSuggestionLane(
+                    lane.id(), lane.label(), List.of(), lane.placeholderText(), lane.debugInfo());
+        }
+        List<SlotWorkspaceViewModel.AtlasItem> visible = lane.items().stream()
+                .filter(this::matchesSearch)
+                .toList();
+        return new SlotWorkspaceViewModel.ContextualSuggestionLane(
+                lane.id(), lane.label(), visible, lane.placeholderText(), lane.debugInfo());
     }
 
     private boolean shouldShowSection(
@@ -1722,6 +1783,7 @@ public final class ForgeWorkspaceSurface {
     private SlotUiElement enrichSection(SlotUiElement section) {
         SlotUiElement header = null;
         ArrayList<SlotUiElement> grids = new ArrayList<>();
+        ArrayList<SlotUiElement> suggestionGrids = new ArrayList<>();
         SlotWorkspaceViewModel.AtlasIsland island = null;
         for (SlotUiElement child : section.children()) {
             if (child.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_HEADER)) {
@@ -1736,12 +1798,31 @@ public final class ForgeWorkspaceSurface {
                             SlotWorkspaceViewModel.AtlasIsland.class);
                 }
             }
+            if (child.hasAttachment(WorkspaceUiAttachments.WALL_SUGGESTION_GRID)) {
+                suggestionGrids.add(child);
+            }
         }
         installSectionHomeTarget(header, island);
-        if (grids.isEmpty()) {
+        if (grids.isEmpty() && suggestionGrids.isEmpty()) {
             return section;
         }
         WallCardUiBuilder cardBuilder = new WallCardUiBuilder(new CardContext());
+        for (SlotUiElement grid : suggestionGrids) {
+            SlotWorkspaceViewModel.ContextualSuggestionLane lane = grid.attachment(
+                    WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE,
+                    SlotWorkspaceViewModel.ContextualSuggestionLane.class);
+            WallCardUiBuilder suggestionCardBuilder = lane != null && lane.putAway()
+                    ? new WallCardUiBuilder(new CardContext(true, lane))
+                    : new WallCardUiBuilder(new CardContext(false, lane));
+            List<?> gridItems = grid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
+            if (gridItems != null) {
+                for (Object gridItem : gridItems) {
+                    if (gridItem instanceof SlotWorkspaceViewModel.AtlasItem item) {
+                        grid.addChild(enrichCard(suggestionCardBuilder.card(item), item));
+                    }
+                }
+            }
+        }
         for (SlotUiElement grid : grids) {
             SlotWorkspaceViewModel.AtlasIsland gridIsland = grid.attachment(
                     WorkspaceUiAttachments.ATLAS_ISLAND,
@@ -2333,7 +2414,7 @@ public final class ForgeWorkspaceSurface {
         status = switch (decision.action()) {
             case OPEN -> "search";
             case CONFIRM -> searchQuery.isBlank() ? "search confirmed" : "search: " + searchQuery;
-            case DISMISS -> "search dismissed";
+            case CLEAR -> "search cleared";
             case BACKSPACE, APPEND, IGNORE_DIGIT -> "search";
             case NONE -> status;
         };
@@ -2344,10 +2425,17 @@ public final class ForgeWorkspaceSurface {
     private static WorkspaceSearchInputPolicy.ControlKey searchControlKey(int keyCode) {
         return switch (keyCode) {
             case GLFW.GLFW_KEY_ENTER, GLFW.GLFW_KEY_KP_ENTER -> WorkspaceSearchInputPolicy.ControlKey.ENTER;
-            case GLFW.GLFW_KEY_ESCAPE -> WorkspaceSearchInputPolicy.ControlKey.ESCAPE;
             case GLFW.GLFW_KEY_BACKSPACE -> WorkspaceSearchInputPolicy.ControlKey.BACKSPACE;
+            case GLFW.GLFW_KEY_BACKSLASH -> WorkspaceSearchInputPolicy.ControlKey.CLEAR;
             default -> null;
         };
+    }
+
+    private void clearSearchFromPointer() {
+        applySearchDecision(WorkspaceSearchInputPolicy.keyPressed(
+                true,
+                searchQuery,
+                WorkspaceSearchInputPolicy.ControlKey.CLEAR));
     }
 
     private static boolean isSearchTypingKey(int keyCode) {
@@ -3146,6 +3234,25 @@ public final class ForgeWorkspaceSurface {
     }
 
     private final class CardContext implements WallCardUiBuilder.Context {
+        private final boolean forceWayfindingStrip;
+        private final SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane;
+
+        private CardContext() {
+            this(false, null);
+        }
+
+        private CardContext(boolean forceWayfindingStrip) {
+            this(forceWayfindingStrip, null);
+        }
+
+        private CardContext(
+                boolean forceWayfindingStrip,
+                SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane
+        ) {
+            this.forceWayfindingStrip = forceWayfindingStrip;
+            this.suggestionLane = suggestionLane;
+        }
+
         @Override
         public SlotWorkspaceViewModel.IdentityRef activeIdentity() {
             return cursorIdentity();
@@ -3204,8 +3311,15 @@ public final class ForgeWorkspaceSurface {
         @Override
         public List<Component> tooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
             GoalWorkspaceProjection goal = goalProjection();
+            if (SlotForgeClientConfig.contextualSuggestionDebugTooltips() && suggestionLane != null) {
+                return WorkspaceItemTooltipBuilder.slotLines(
+                        item,
+                        suggestionLane,
+                        true,
+                        hasProximateDepositRoute(item));
+            }
             return goal == null
-                    ? WallCardUiBuilder.Context.super.tooltipLines(item)
+                    ? WorkspaceItemTooltipBuilder.slotLines(item, hasProximateDepositRoute(item))
                     : goal.tooltipLines(item);
         }
 
@@ -3230,6 +3344,23 @@ public final class ForgeWorkspaceSurface {
         @Override
         public StorageGhostRevealMode storageGhostRevealMode() {
             return storageGhostRevealMode;
+        }
+
+        @Override
+        public boolean forceWayfindingStrip(SlotWorkspaceViewModel.AtlasItem item) {
+            return forceWayfindingStrip;
+        }
+
+        @Override
+        public boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
+            return item != null
+                    && !goalTabActive()
+                    && viewModel.depositableIdentities().contains(item.identity());
+        }
+
+        @Override
+        public SlotWorkspaceViewModel.ContextualSuggestionLane contextualSuggestionLane() {
+            return suggestionLane;
         }
     }
 

@@ -115,14 +115,21 @@ final class SearchController {
     }
 
     void handleKeyDown(UIEvent event) {
+        if (event.keyCode == GLFW.GLFW_KEY_BACKSLASH) {
+            WorkspaceSearchInputPolicy.Decision decision = WorkspaceSearchInputPolicy.keyPressed(
+                    searchModalActive,
+                    searchModalActive ? searchBuffer : searchQuery,
+                    WorkspaceSearchInputPolicy.ControlKey.CLEAR);
+            if (decision.handled()) {
+                event.stopPropagation();
+                clearSearch();
+            }
+            return;
+        }
         if (!searchModalActive) {
             return;
         }
         switch (event.keyCode) {
-            case GLFW.GLFW_KEY_ESCAPE -> {
-                event.stopPropagation();
-                abort();
-            }
             case GLFW.GLFW_KEY_ENTER, GLFW.GLFW_KEY_KP_ENTER -> {
                 event.stopPropagation();
                 searchInteractionDisablesAutoDismiss = true;
@@ -169,7 +176,7 @@ final class SearchController {
         searchMatches = List.of();
         searchMatchIndex = 0;
         setSearchQuery("");
-        setScreenClosesOnEsc(false);
+        setScreenClosesOnEsc(true);
         host.rebuild();
     }
 
@@ -210,7 +217,7 @@ final class SearchController {
         host.rebuild();
     }
 
-    private void abort() {
+    void clearSearch() {
         closeModal();
         setSearchQuery("");
         host.rebuild();

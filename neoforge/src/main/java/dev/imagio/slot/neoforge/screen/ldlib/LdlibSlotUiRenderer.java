@@ -19,6 +19,7 @@ import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.FlexWrap;
 import dev.vfyjxf.taffy.style.TaffyPosition;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 
 final class LdlibSlotUiRenderer {
     interface InteractionBridge {
@@ -54,6 +55,7 @@ final class LdlibSlotUiRenderer {
         switch (model.kind()) {
             case BUTTON:
                 Button button = WorkspaceUi.button(model.text(), model.buttonActive(), model.buttonColor());
+                button.setText(textComponent(model.text()));
                 if (!model.buttonHasText()) {
                     button.noText();
                 }
@@ -61,6 +63,7 @@ final class LdlibSlotUiRenderer {
                 return button;
             case LABEL:
                 Label label = WorkspaceUi.label(model.text(), model.textStyle().color());
+                label.setText(textComponent(model.text()));
                 applyTextStyle(label, model.textStyle());
                 return label;
             case ITEM_ICON:
@@ -147,8 +150,12 @@ final class LdlibSlotUiRenderer {
     private void applyMutableState(UIElement element, SlotUiElement model) {
         if (element instanceof Button button) {
             button.setActive(model.buttonActive());
+            button.setText(textComponent(model.text()));
             WorkspaceUi.applyButtonColors(button, model.buttonActive(), model.buttonColor());
             applyTextStyle(button, model.textStyle());
+        }
+        if (element instanceof Label label) {
+            label.setText(textComponent(model.text()));
         }
         element.style(style -> {
             if (model.backgroundColor() != null) {
@@ -172,6 +179,11 @@ final class LdlibSlotUiRenderer {
                 .adaptiveWidth(textStyle.adaptiveWidth())
                 .textAlignHorizontal(map(textStyle.horizontal()))
                 .textAlignVertical(map(textStyle.vertical())));
+    }
+
+    private static Component textComponent(String text) {
+        return Component.literal(text == null ? "" : text)
+                .withStyle(style -> style.withFont(WorkspaceTheme.FONT_UI));
     }
 
     private void applyTextStyle(Button button, SlotUiTextStyle textStyle) {

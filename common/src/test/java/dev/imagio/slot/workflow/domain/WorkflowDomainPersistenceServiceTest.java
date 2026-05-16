@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -146,6 +147,7 @@ class WorkflowDomainPersistenceServiceTest {
                 ItemIdentity.of("minecraft:iron_ingot")
         );
         runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:iron_ingot"), island.id(), 0);
+        runtime.flushPendingSave();
 
         assertEquals(0, repository.workflowEvents().snapshot().records().size());
         String saved = Files.readString(statePath);
@@ -155,6 +157,54 @@ class WorkflowDomainPersistenceServiceTest {
         service.loadInto(restored);
         assertEquals(0, restored.workflowEvents().snapshot().records().size());
         assertNotNull(restored.workflowProjection().visualHomeMap().assignment(ItemIdentity.of("minecraft:iron_ingot")));
+    }
+
+    @Test
+    void filePersistenceRoundTripsContextualSuggestionAggregates(@TempDir Path tempDir) throws Exception {
+        Path statePath = tempDir.resolve("workflow-contextual.json");
+        WorkflowDomainPersistenceService service = new WorkflowDomainPersistenceService(
+                new WorkflowDomainFileStore(statePath)
+        );
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(repository, service);
+
+        runtime.recordActivityEvent(new InventoryActivityEvent(
+                InventoryActivityKind.ACQUIRED,
+                InventoryActivityProducer.EXTERNAL_WITHDRAWAL,
+                InventoryActivityConfidence.AUTHORITATIVE,
+                ItemIdentity.of("minecraft:iron_ore"),
+                4,
+                null,
+                null,
+                "",
+                "",
+                List.of(),
+                "take_from_storage"
+        ));
+        runtime.contextualSuggestions().recordSignal(new ContextualSignalEvent(
+                ContextualSignalKind.STATION_OPENED,
+                null,
+                1,
+                400L,
+                "menu:test_forge",
+                "Test Forge",
+                "",
+                java.util.Map.of()),
+                DomainEventMetadata.origin("test.station"));
+        runtime.flushPendingSave();
+
+        String saved = Files.readString(statePath);
+        assertTrue(saved.contains("\"contextualSuggestions\""));
+
+        InMemoryWorkflowDomainStateRepository restored = new InMemoryWorkflowDomainStateRepository();
+        service.loadInto(restored);
+
+        ContextualSuggestionState contextual = restored.snapshot().contextualSuggestions();
+        ContextualItemAggregate iron = contextual.itemAggregates().get(ItemIdentity.of("minecraft:iron_ore"));
+        assertNotNull(iron);
+        assertEquals(1, iron.timesTakenFromStorage());
+        assertTrue(contextual.contextAggregates().containsKey("menu:test_forge"));
+        assertFalse(contextual.recentSignals().isEmpty());
     }
 
     private static final class RecordingPort implements WorkflowDomainPersistencePort {

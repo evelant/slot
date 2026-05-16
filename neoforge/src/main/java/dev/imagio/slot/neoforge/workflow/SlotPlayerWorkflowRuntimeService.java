@@ -13,15 +13,20 @@ import net.minecraft.world.level.storage.LevelResource;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
 public final class SlotPlayerWorkflowRuntimeService {
+    private static final int PENDING_SAVE_FLUSH_INTERVAL_TICKS = 20;
     private static final Map<RuntimeKey, WorkflowDomainRuntime> RUNTIMES = new LinkedHashMap<>();
+    private static long lastPendingSaveFlushTick = -1L;
     private static boolean registered;
 
     private SlotPlayerWorkflowRuntimeService() {
@@ -33,6 +38,7 @@ public final class SlotPlayerWorkflowRuntimeService {
         }
         NeoForge.EVENT_BUS.addListener(SlotPlayerWorkflowRuntimeService::onPlayerLoggedOut);
         NeoForge.EVENT_BUS.addListener(SlotPlayerWorkflowRuntimeService::onServerStopping);
+        NeoForge.EVENT_BUS.addListener(SlotPlayerWorkflowRuntimeService::onServerTick);
         registered = true;
     }
 
@@ -66,6 +72,13 @@ public final class SlotPlayerWorkflowRuntimeService {
         return runtime;
     }
 
+    private static void onServerTick(ServerTickEvent.Post event) {
+        if (event.getServer() == null) {
+            return;
+        }
+        flushPendingSaves(event.getServer().getTickCount());
+    }
+
     private static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
@@ -88,6 +101,27 @@ public final class SlotPlayerWorkflowRuntimeService {
                 }
             }
             RUNTIMES.clear();
+            lastPendingSaveFlushTick = -1L;
+        }
+    }
+
+    private static void flushPendingSaves(long serverTick) {
+        if (lastPendingSaveFlushTick >= 0
+                && serverTick - lastPendingSaveFlushTick < PENDING_SAVE_FLUSH_INTERVAL_TICKS) {
+            return;
+        }
+        lastPendingSaveFlushTick = serverTick;
+        List<WorkflowDomainRuntime> runtimes;
+        synchronized (RUNTIMES) {
+            if (RUNTIMES.isEmpty()) {
+                return;
+            }
+            runtimes = new ArrayList<>(RUNTIMES.values());
+        }
+        for (WorkflowDomainRuntime runtime : runtimes) {
+            if (runtime != null) {
+                runtime.flushPendingSave();
+            }
         }
     }
 

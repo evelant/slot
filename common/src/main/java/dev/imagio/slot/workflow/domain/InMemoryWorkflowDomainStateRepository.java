@@ -11,6 +11,7 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
 
     private WorkflowProjection.Snapshot workflowProjection;
     private ActivityProjection.Snapshot activityProjection;
+    private ContextualSuggestionState contextualSuggestionState;
     private long nextGlobalSequence;
 
     public InMemoryWorkflowDomainStateRepository() {
@@ -34,6 +35,7 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
         this.browseSessionState = Objects.requireNonNull(browseSessionState, "browseSessionState");
         this.workflowProjection = WorkflowProjection.Snapshot.empty();
         this.activityProjection = ActivityProjection.Snapshot.empty();
+        this.contextualSuggestionState = ContextualSuggestionState.empty();
         this.nextGlobalSequence = 1L;
     }
 
@@ -55,6 +57,11 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
     @Override
     public InventoryActivityStore activityEvents() {
         return activityEvents;
+    }
+
+    @Override
+    public ContextualSuggestionState contextualSuggestionState() {
+        return contextualSuggestionState;
     }
 
     @Override
@@ -82,6 +89,21 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
     }
 
     @Override
+    public ContextualSignalRecord appendContextualSignal(ContextualSignalEvent event, DomainEventMetadata metadata) {
+        ContextualSignalRecord record = new ContextualSignalRecord(
+                nextEnvelope(DomainEventStreamKind.CONTEXTUAL, metadata),
+                event);
+        nextGlobalSequence = Math.max(nextGlobalSequence, record.envelope().globalSequence() + 1L);
+        contextualSuggestionState = contextualSuggestionState.record(record);
+        return record;
+    }
+
+    @Override
+    public void replaceContextualSuggestionState(ContextualSuggestionState state) {
+        contextualSuggestionState = state == null ? ContextualSuggestionState.empty() : state;
+    }
+
+    @Override
     public InventoryBrowsePreferencesStore browsePreferences() {
         return browsePreferences;
     }
@@ -100,7 +122,8 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
                 activityProjection,
                 activityEvents.snapshot(),
                 browsePreferences.current(),
-                browseSessionState.current()
+                browseSessionState.current(),
+                contextualSuggestionState
         );
     }
 
@@ -115,6 +138,7 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
                 resolved.activityProjection(),
                 workflowProjection.recentDismissedUpToByIdentity()
         );
+        contextualSuggestionState = resolved.contextualSuggestions();
         browsePreferences.replaceWith(resolved.browsePreferences());
         browseSessionState.replaceWith(resolved.browseSessionState());
     }
@@ -124,6 +148,7 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
         long streamSequence = switch (streamKind) {
             case WORKFLOW -> workflowEvents.snapshot().nextStreamSequence();
             case ACTIVITY -> activityEvents.snapshot().nextStreamSequence();
+            case CONTEXTUAL -> contextualSuggestionState.nextStreamSequence();
         };
         return new DomainEventEnvelope(
                 nextGlobalSequence,

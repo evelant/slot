@@ -210,6 +210,15 @@ final class ListWallPanelBuilder {
         if (recentsStrip != null) {
             panel.addChild(recentsStrip);
         }
+        boolean filtering = !host.searchController.normalizedQuery().isBlank();
+        if (!host.goalTabActive()) {
+            for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : host.viewModel.contextualSuggestionLanes()) {
+                SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
+                if (visibleLane.displayable()) {
+                    panel.addChild(sectionRenderer.render(sectionBuilder.suggestionLane(visibleLane)));
+                }
+            }
+        }
         // Mid section: TOC sliver glued to the left edge of the wall
         // scroller (fixed CARDS_PER_ROW-derived width). The wall is the
         // primary surface; the sliver is a thin navigation strip and
@@ -288,6 +297,30 @@ final class ListWallPanelBuilder {
         }
     }
 
+    private SlotWorkspaceViewModel.ContextualSuggestionLane visibleSuggestionLane(
+            SlotWorkspaceViewModel.ContextualSuggestionLane lane,
+            boolean filtering
+    ) {
+        if (lane == null) {
+            return new SlotWorkspaceViewModel.ContextualSuggestionLane("", "", List.of());
+        }
+        if (!filtering) {
+            return lane;
+        }
+        if (lane.items().isEmpty()) {
+            return new SlotWorkspaceViewModel.ContextualSuggestionLane(
+                    lane.id(), lane.label(), List.of(), lane.placeholderText(), lane.debugInfo());
+        }
+        ArrayList<SlotWorkspaceViewModel.AtlasItem> visible = new ArrayList<>();
+        for (SlotWorkspaceViewModel.AtlasItem item : lane.items()) {
+            if (host.searchController.matchesItem(item)) {
+                visible.add(item);
+            }
+        }
+        return new SlotWorkspaceViewModel.ContextualSuggestionLane(
+                lane.id(), lane.label(), visible, lane.placeholderText(), lane.debugInfo());
+    }
+
     /**
      * Build a section: header row + flow grid of cards homed to the
      * island. When {@code filtering} is true, only matching cards
@@ -339,6 +372,22 @@ final class ListWallPanelBuilder {
     }
 
     private void installSectionInteractions(SlotUiElement model, UIElement element) {
+        if (model.hasAttachment(WorkspaceUiAttachments.WALL_SUGGESTION_GRID)) {
+            SlotWorkspaceViewModel.ContextualSuggestionLane lane = model.attachment(
+                    WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE,
+                    SlotWorkspaceViewModel.ContextualSuggestionLane.class);
+            boolean forceWayfinding = lane != null && lane.putAway();
+            List<?> cards = model.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
+            if (cards != null) {
+                for (Object cardObject : cards) {
+                    if (cardObject instanceof SlotWorkspaceViewModel.AtlasItem item) {
+                        Button card = host.atlasCard.atlasCardButton(item, forceWayfinding, lane);
+                        element.addChild(card);
+                    }
+                }
+            }
+            return;
+        }
         if (model.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_GRID)) {
             SlotWorkspaceViewModel.AtlasIsland island = model.attachment(
                     WorkspaceUiAttachments.ATLAS_ISLAND,

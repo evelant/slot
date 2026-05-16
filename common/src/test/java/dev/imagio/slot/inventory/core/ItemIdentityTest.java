@@ -59,6 +59,43 @@ class ItemIdentityTest {
     }
 
     @Test
+    void itemOnlyIgnoresVolatileComponentData() {
+        assertEquals(
+                ItemIdentity.of("tfc:metal/ingot/brass"),
+                ItemIdentityMatcher.itemOnly(new net.minecraft.world.item.ItemStack(
+                        "tfc:metal/ingot/brass",
+                        "{heat:704.2}",
+                        1,
+                        64)));
+    }
+
+    @Test
+    void structuralKeysIgnoreComponentOnlyChurn() {
+        assertEquals(
+                ItemStackStructuralKey.from(new net.minecraft.world.item.ItemStack(
+                        "tfc:metal/ingot/brass",
+                        "{heat:100.0}",
+                        1,
+                        64)),
+                ItemStackStructuralKey.from(new net.minecraft.world.item.ItemStack(
+                        "tfc:metal/ingot/brass",
+                        "{heat:725.0}",
+                        1,
+                        64)));
+        assertNotEquals(
+                ItemStackStructuralKey.from(new net.minecraft.world.item.ItemStack(
+                        "tfc:metal/ingot/brass",
+                        "{heat:725.0}",
+                        1,
+                        64)),
+                ItemStackStructuralKey.from(new net.minecraft.world.item.ItemStack(
+                        "tfc:metal/ingot/brass",
+                        "{heat:725.0}",
+                        2,
+                        64)));
+    }
+
+    @Test
     void blanksOnlyComparisonModeDowngradesByDirectConstruction() {
         ItemIdentity raw = new ItemIdentity(
                 "minecraft:water_bucket",

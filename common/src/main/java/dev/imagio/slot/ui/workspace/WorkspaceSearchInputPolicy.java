@@ -40,12 +40,20 @@ public final class WorkspaceSearchInputPolicy {
 
     public static Decision keyPressed(boolean active, String query, ControlKey key) {
         String cleanQuery = clean(query);
-        if (!active || key == null) {
+        if (key == null) {
             return Decision.unhandled(active, cleanQuery);
+        }
+        if (key == ControlKey.CLEAR) {
+            return active || !cleanQuery.isBlank()
+                    ? Decision.handled(Action.CLEAR, false, "")
+                    : Decision.unhandled(false, cleanQuery);
+        }
+        if (!active) {
+            return Decision.unhandled(false, cleanQuery);
         }
         return switch (key) {
             case ENTER -> Decision.handled(Action.CONFIRM, false, cleanQuery);
-            case ESCAPE -> Decision.handled(Action.DISMISS, false, "");
+            case CLEAR -> Decision.handled(Action.CLEAR, false, "");
             case BACKSPACE -> cleanQuery.isEmpty()
                     ? Decision.handled(Action.BACKSPACE, true, cleanQuery)
                     : Decision.handled(
@@ -67,8 +75,8 @@ public final class WorkspaceSearchInputPolicy {
 
     public enum ControlKey {
         ENTER,
-        ESCAPE,
-        BACKSPACE
+        BACKSPACE,
+        CLEAR
     }
 
     public enum Action {
@@ -77,7 +85,7 @@ public final class WorkspaceSearchInputPolicy {
         APPEND,
         BACKSPACE,
         CONFIRM,
-        DISMISS,
+        CLEAR,
         IGNORE_DIGIT
     }
 

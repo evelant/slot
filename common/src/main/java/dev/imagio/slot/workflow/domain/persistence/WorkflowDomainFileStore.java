@@ -38,6 +38,13 @@ import dev.imagio.slot.workflow.domain.KitMap;
 import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.CollectionProjection;
+import dev.imagio.slot.workflow.domain.ContextualCarriedObservation;
+import dev.imagio.slot.workflow.domain.ContextualContextAggregate;
+import dev.imagio.slot.workflow.domain.ContextualItemAggregate;
+import dev.imagio.slot.workflow.domain.ContextualSignalEvent;
+import dev.imagio.slot.workflow.domain.ContextualSignalKind;
+import dev.imagio.slot.workflow.domain.ContextualSignalRecord;
+import dev.imagio.slot.workflow.domain.ContextualSuggestionState;
 import dev.imagio.slot.workflow.domain.DomainEventEnvelope;
 import dev.imagio.slot.workflow.domain.DomainEventStreamKind;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
@@ -78,7 +85,7 @@ import java.util.UUID;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 7;
+    private static final int SCHEMA_VERSION = 8;
 
     private final Path statePath;
 
@@ -138,6 +145,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 .map(WorkflowDomainFileStore::encodeActivityRecord)
                 .filter(java.util.Objects::nonNull)
                 .toList();
+        state.contextualSuggestions = encodeContextualSuggestions(snapshot.contextualSuggestions());
 
         InventoryBrowsePreferences browsePreferences = snapshot.browsePreferences();
         state.browsePreferences = new BrowsePreferencesData(
@@ -194,6 +202,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         GSON.fromJson(json, ActivityCheckpointData.class);
                 case "activityEvents" -> state.activityEvents =
                         listFrom(GSON.fromJson(json, ActivityEventData[].class));
+                case "contextualSuggestions" -> state.contextualSuggestions =
+                        GSON.fromJson(json, ContextualSuggestionData.class);
                 case "browsePreferences" -> state.browsePreferences =
                         GSON.fromJson(json, BrowsePreferencesData.class);
                 case "browseSession" -> state.browseSession =
@@ -290,7 +300,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 activityProjection,
                 activityEvents,
                 browsePreferences,
-                browseSessionState
+                browseSessionState,
+                decodeContextualSuggestions(state.contextualSuggestions)
         );
     }
 
@@ -1314,6 +1325,263 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         );
     }
 
+    private static ContextualSuggestionData encodeContextualSuggestions(ContextualSuggestionState state) {
+        ContextualSuggestionState resolved = state == null ? ContextualSuggestionState.empty() : state;
+        return new ContextualSuggestionData(
+                resolved.nextStreamSequence(),
+                resolved.itemAggregates().values().stream()
+                        .map(WorkflowDomainFileStore::contextualItem)
+                        .toList(),
+                resolved.contextAggregates().values().stream()
+                        .map(WorkflowDomainFileStore::contextualContext)
+                        .toList(),
+                resolved.activeCarried().values().stream()
+                        .map(WorkflowDomainFileStore::contextualCarried)
+                        .toList(),
+                resolved.recentSignals().stream()
+                        .map(WorkflowDomainFileStore::contextualSignal)
+                        .toList(),
+                resolved.activeContextKey()
+        );
+    }
+
+    private static ContextualSuggestionState decodeContextualSuggestions(ContextualSuggestionData data) {
+        if (data == null) {
+            return ContextualSuggestionState.empty();
+        }
+        LinkedHashMap<ItemIdentity, ContextualItemAggregate> items = new LinkedHashMap<>();
+        if (data.itemAggregates != null) {
+            for (ContextualItemAggregateData itemData : data.itemAggregates) {
+                ContextualItemAggregate aggregate = decodeContextualItem(itemData);
+                if (aggregate != null && aggregate.identity() != null) {
+                    items.put(aggregate.identity(), aggregate);
+                }
+            }
+        }
+        LinkedHashMap<String, ContextualContextAggregate> contexts = new LinkedHashMap<>();
+        if (data.contextAggregates != null) {
+            for (ContextualContextAggregateData contextData : data.contextAggregates) {
+                ContextualContextAggregate aggregate = decodeContextualContext(contextData);
+                if (aggregate != null && !aggregate.contextKey().isBlank()) {
+                    contexts.put(aggregate.contextKey(), aggregate);
+                }
+            }
+        }
+        LinkedHashMap<ItemIdentity, ContextualCarriedObservation> active = new LinkedHashMap<>();
+        if (data.activeCarried != null) {
+            for (ContextualCarriedObservationData carriedData : data.activeCarried) {
+                ContextualCarriedObservation observation = decodeContextualCarried(carriedData);
+                if (observation != null && observation.identity() != null) {
+                    active.put(observation.identity(), observation);
+                }
+            }
+        }
+        ArrayList<ContextualSignalRecord> signals = new ArrayList<>();
+        if (data.recentSignals != null) {
+            for (ContextualSignalData signalData : data.recentSignals) {
+                ContextualSignalRecord signal = decodeContextualSignal(signalData);
+                if (signal != null) {
+                    signals.add(signal);
+                }
+            }
+        }
+        return new ContextualSuggestionState(
+                data.nextStreamSequence <= 0L ? 1L : data.nextStreamSequence,
+                items,
+                contexts,
+                active,
+                signals,
+                nonNull(data.activeContextKey)
+        );
+    }
+
+    private static ContextualItemAggregateData contextualItem(ContextualItemAggregate aggregate) {
+        if (aggregate == null) {
+            return null;
+        }
+        return new ContextualItemAggregateData(
+                identity(aggregate.identity()),
+                aggregate.timesObservedCarried(),
+                aggregate.timesAcquired(),
+                aggregate.timesTakenFromStorage(),
+                aggregate.timesDepositedToStorage(),
+                aggregate.timesCraftedOrProduced(),
+                aggregate.totalCarriedTicks(),
+                aggregate.recentCarriedTicksEwma(),
+                aggregate.lastCarriedSequence(),
+                aggregate.lastAcquiredSequence(),
+                aggregate.lastDepositedSequence(),
+                hints(aggregate.cooccurrenceHints())
+        );
+    }
+
+    private static ContextualItemAggregate decodeContextualItem(ContextualItemAggregateData data) {
+        ItemIdentity identity = decodeIdentity(data == null ? null : data.identity);
+        if (identity == null) {
+            return null;
+        }
+        return new ContextualItemAggregate(
+                identity,
+                data.timesObservedCarried,
+                data.timesAcquired,
+                data.timesTakenFromStorage,
+                data.timesDepositedToStorage,
+                data.timesCraftedOrProduced,
+                data.totalCarriedTicks,
+                data.recentCarriedTicksEwma,
+                data.lastCarriedSequence,
+                data.lastAcquiredSequence,
+                data.lastDepositedSequence,
+                decodeHints(data.cooccurrenceHints)
+        );
+    }
+
+    private static ContextualContextAggregateData contextualContext(ContextualContextAggregate aggregate) {
+        if (aggregate == null) {
+            return null;
+        }
+        return new ContextualContextAggregateData(
+                aggregate.contextKey(),
+                aggregate.label(),
+                aggregate.timesSeen(),
+                aggregate.lastSeenSequence(),
+                hints(aggregate.itemHints()),
+                hints(aggregate.facetHints())
+        );
+    }
+
+    private static ContextualContextAggregate decodeContextualContext(ContextualContextAggregateData data) {
+        if (data == null || blank(data.contextKey)) {
+            return null;
+        }
+        return new ContextualContextAggregate(
+                data.contextKey,
+                nonNull(data.label),
+                data.timesSeen,
+                data.lastSeenSequence,
+                decodeHints(data.itemHints),
+                decodeHints(data.facetHints)
+        );
+    }
+
+    private static ContextualCarriedObservationData contextualCarried(ContextualCarriedObservation observation) {
+        if (observation == null) {
+            return null;
+        }
+        return new ContextualCarriedObservationData(
+                identity(observation.identity()),
+                observation.firstSeenSequence(),
+                observation.firstSeenTick(),
+                observation.lastSeenTick(),
+                observation.count(),
+                observation.sourceKey()
+        );
+    }
+
+    private static ContextualCarriedObservation decodeContextualCarried(ContextualCarriedObservationData data) {
+        ItemIdentity identity = decodeIdentity(data == null ? null : data.identity);
+        if (identity == null) {
+            return null;
+        }
+        return new ContextualCarriedObservation(
+                identity,
+                data.firstSeenSequence,
+                data.firstSeenTick,
+                data.lastSeenTick,
+                data.count,
+                nonNull(data.sourceKey)
+        );
+    }
+
+    private static ContextualSignalData contextualSignal(ContextualSignalRecord record) {
+        if (record == null || record.event() == null) {
+            return null;
+        }
+        ContextualSignalEvent event = record.event();
+        return new ContextualSignalData(
+                encodeEnvelope(record.envelope()),
+                event.kind().name(),
+                identity(event.identity()),
+                event.count(),
+                event.observedTick(),
+                event.contextKey(),
+                event.contextLabel(),
+                event.sourceKey(),
+                metadata(event.metadata())
+        );
+    }
+
+    private static ContextualSignalRecord decodeContextualSignal(ContextualSignalData data) {
+        if (data == null || blank(data.kind)) {
+            return null;
+        }
+        return new ContextualSignalRecord(
+                decodeEnvelope(data.envelope, DomainEventStreamKind.CONTEXTUAL),
+                new ContextualSignalEvent(
+                        decodeEnum(ContextualSignalKind.class, data.kind, ContextualSignalKind.CARRIED_SET_CHANGED),
+                        decodeIdentity(data.identity),
+                        data.count,
+                        data.observedTick,
+                        nonNull(data.contextKey),
+                        nonNull(data.contextLabel),
+                        nonNull(data.sourceKey),
+                        decodeMetadata(data.metadata)
+                )
+        );
+    }
+
+    private static List<HintData> hints(Map<String, Double> hints) {
+        if (hints == null || hints.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<HintData> out = new ArrayList<>();
+        hints.forEach((key, value) -> {
+            if (key != null && !key.isBlank() && value != null && value > 0D && Double.isFinite(value)) {
+                out.add(new HintData(key, value));
+            }
+        });
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    private static Map<String, Double> decodeHints(List<HintData> hints) {
+        if (hints == null || hints.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<String, Double> decoded = new LinkedHashMap<>();
+        for (HintData hint : hints) {
+            if (hint != null && !blank(hint.key) && hint.value > 0D && Double.isFinite(hint.value)) {
+                decoded.put(hint.key, hint.value);
+            }
+        }
+        return decoded.isEmpty() ? Map.of() : Map.copyOf(decoded);
+    }
+
+    private static List<MetadataEntryData> metadata(Map<String, String> metadata) {
+        if (metadata == null || metadata.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<MetadataEntryData> out = new ArrayList<>();
+        metadata.forEach((key, value) -> {
+            if (key != null && !key.isBlank()) {
+                out.add(new MetadataEntryData(key, value == null ? "" : value));
+            }
+        });
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    private static Map<String, String> decodeMetadata(List<MetadataEntryData> metadata) {
+        if (metadata == null || metadata.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<String, String> decoded = new LinkedHashMap<>();
+        for (MetadataEntryData entry : metadata) {
+            if (entry != null && !blank(entry.key)) {
+                decoded.put(entry.key, nonNull(entry.value));
+            }
+        }
+        return decoded.isEmpty() ? Map.of() : Map.copyOf(decoded);
+    }
+
     private static EnvelopeData encodeEnvelope(DomainEventEnvelope envelope) {
         DomainEventEnvelope resolved = envelope == null ? DomainEventEnvelope.empty(DomainEventStreamKind.WORKFLOW) : envelope;
         return new EnvelopeData(
@@ -2052,6 +2320,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private List<WorkflowEventData> workflowEvents;
         private ActivityCheckpointData activityCheckpoint;
         private List<ActivityEventData> activityEvents;
+        private ContextualSuggestionData contextualSuggestions;
         private BrowsePreferencesData browsePreferences;
         private BrowseSessionData browseSession;
         private QueryStateData query;
@@ -2215,6 +2484,86 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<ActivityEventData> cleanupCandidates,
             List<ActivityEventData> undoCandidates
     ) {
+    }
+
+    private static final class ContextualSuggestionData {
+        private long nextStreamSequence;
+        private List<ContextualItemAggregateData> itemAggregates;
+        private List<ContextualContextAggregateData> contextAggregates;
+        private List<ContextualCarriedObservationData> activeCarried;
+        private List<ContextualSignalData> recentSignals;
+        private String activeContextKey;
+
+        private ContextualSuggestionData(
+                long nextStreamSequence,
+                List<ContextualItemAggregateData> itemAggregates,
+                List<ContextualContextAggregateData> contextAggregates,
+                List<ContextualCarriedObservationData> activeCarried,
+                List<ContextualSignalData> recentSignals,
+                String activeContextKey
+        ) {
+            this.nextStreamSequence = nextStreamSequence;
+            this.itemAggregates = itemAggregates;
+            this.contextAggregates = contextAggregates;
+            this.activeCarried = activeCarried;
+            this.recentSignals = recentSignals;
+            this.activeContextKey = activeContextKey;
+        }
+    }
+
+    private record ContextualItemAggregateData(
+            IdentityData identity,
+            int timesObservedCarried,
+            int timesAcquired,
+            int timesTakenFromStorage,
+            int timesDepositedToStorage,
+            int timesCraftedOrProduced,
+            long totalCarriedTicks,
+            double recentCarriedTicksEwma,
+            long lastCarriedSequence,
+            long lastAcquiredSequence,
+            long lastDepositedSequence,
+            List<HintData> cooccurrenceHints
+    ) {
+    }
+
+    private record ContextualContextAggregateData(
+            String contextKey,
+            String label,
+            int timesSeen,
+            long lastSeenSequence,
+            List<HintData> itemHints,
+            List<HintData> facetHints
+    ) {
+    }
+
+    private record ContextualCarriedObservationData(
+            IdentityData identity,
+            long firstSeenSequence,
+            long firstSeenTick,
+            long lastSeenTick,
+            int count,
+            String sourceKey
+    ) {
+    }
+
+    private record ContextualSignalData(
+            EnvelopeData envelope,
+            String kind,
+            IdentityData identity,
+            int count,
+            long observedTick,
+            String contextKey,
+            String contextLabel,
+            String sourceKey,
+            List<MetadataEntryData> metadata
+    ) {
+    }
+
+    private record HintData(String key, double value) {
+    }
+
+    private record MetadataEntryData(String key, String value) {
     }
 
     private static final class WorkflowEventData {

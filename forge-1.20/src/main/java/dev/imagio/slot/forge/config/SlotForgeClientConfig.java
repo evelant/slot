@@ -27,13 +27,23 @@ public final class SlotForgeClientConfig {
         return CLIENT.sidebarBottomMargin.get();
     }
 
+    public static boolean contextualSuggestionDebugTooltips() {
+        return CLIENT.contextualSuggestionDebugTooltips.get();
+    }
+
     public static final class Client {
+        public final ForgeConfigSpec.BooleanValue contextualSuggestionDebugTooltips;
         public final ForgeConfigSpec.IntValue sidebarLeftMargin;
         public final ForgeConfigSpec.IntValue sidebarTopMargin;
         public final ForgeConfigSpec.IntValue sidebarBottomMargin;
 
         private Client(ForgeConfigSpec.Builder builder) {
             builder.comment("Client-side SLOT settings").push("client");
+
+            contextualSuggestionDebugTooltips = builder
+                    .translation("slot.config.contextual_suggestion_debug_tooltips")
+                    .comment("When true, Useful Now and Put Away item tooltips include contextual suggestion scores and reason tokens.")
+                    .define("contextualSuggestionDebugTooltips", false);
 
             sidebarLeftMargin = builder
                     .translation("slot.config.sidebar_left_margin")

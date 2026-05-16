@@ -20,6 +20,7 @@ public final class SlotClientConfig {
         public final ModConfigSpec.BooleanValue debugLogging;
         public final ModConfigSpec.BooleanValue verboseLogging;
         public final ModConfigSpec.BooleanValue slotEnabled;
+        public final ModConfigSpec.BooleanValue contextualSuggestionDebugTooltips;
         public final ModConfigSpec.IntValue sidebarLeftMargin;
         public final ModConfigSpec.IntValue sidebarTopMargin;
         public final ModConfigSpec.IntValue sidebarBottomMargin;
@@ -46,6 +47,11 @@ public final class SlotClientConfig {
                             "vanilla inventory screen."
                     )
                     .define("slotEnabled", true);
+
+            contextualSuggestionDebugTooltips = builder
+                    .translation("slot.config.contextual_suggestion_debug_tooltips")
+                    .comment("When true, Useful Now and Put Away item tooltips include contextual suggestion scores and reason tokens.")
+                    .define("contextualSuggestionDebugTooltips", false);
 
             sidebarLeftMargin = builder
                     .translation("slot.config.sidebar_left_margin")

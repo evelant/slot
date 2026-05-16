@@ -5,6 +5,7 @@ import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackStructuralKey;
 import dev.imagio.slot.inventory.integration.InventoryHostContext;
 import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
@@ -27,6 +28,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -121,10 +123,11 @@ public final class ForgeCarriedActivityTracker {
             return;
         }
         detach(playerId);
+        Map<Integer, ItemStackStructuralKey> slotKeys = seedSlotKeys(menu);
         ContainerListener listener = new ContainerListener() {
             @Override
             public void slotChanged(AbstractContainerMenu changedMenu, int slotIndex, ItemStack stack) {
-                if (changedMenu == menu) {
+                if (changedMenu == menu && updateSlotKey(slotKeys, slotIndex, stack)) {
                     DIRTY_PLAYERS.add(playerId);
                 }
             }
@@ -134,8 +137,9 @@ public final class ForgeCarriedActivityTracker {
                 // Carried-acquisition recents derive from item slots only.
             }
         };
+        ObservationHandle handle = new ObservationHandle(menu, listener, slotKeys);
         menu.addSlotListener(listener);
-        HANDLES.put(playerId, new ObservationHandle(menu, listener));
+        HANDLES.put(playerId, handle);
         observe(player, sessionId);
         DIRTY_PLAYERS.remove(playerId);
     }
@@ -192,6 +196,30 @@ public final class ForgeCarriedActivityTracker {
         ));
     }
 
-    private record ObservationHandle(AbstractContainerMenu menu, ContainerListener listener) {
+    private static Map<Integer, ItemStackStructuralKey> seedSlotKeys(AbstractContainerMenu menu) {
+        HashMap<Integer, ItemStackStructuralKey> keys = new HashMap<>();
+        if (menu == null) {
+            return keys;
+        }
+        for (int slotIndex = 0; slotIndex < menu.slots.size(); slotIndex++) {
+            keys.put(slotIndex, ItemStackStructuralKey.from(menu.slots.get(slotIndex).getItem()));
+        }
+        return keys;
+    }
+
+    private static boolean updateSlotKey(Map<Integer, ItemStackStructuralKey> slotKeys, int slotIndex, ItemStack stack) {
+        if (slotIndex < 0) {
+            return true;
+        }
+        ItemStackStructuralKey next = ItemStackStructuralKey.from(stack);
+        ItemStackStructuralKey previous = slotKeys.put(slotIndex, next);
+        return previous == null || !previous.equals(next);
+    }
+
+    private record ObservationHandle(
+            AbstractContainerMenu menu,
+            ContainerListener listener,
+            Map<Integer, ItemStackStructuralKey> slotKeys
+    ) {
     }
 }

@@ -4,6 +4,7 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.goal.GoalChoiceKeys;
 import dev.imagio.slot.inventory.goal.GoalDescriptor;
 import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
+import dev.imagio.slot.inventory.goal.GoalPlanState;
 import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
 import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import org.junit.jupiter.api.AfterEach;
@@ -93,6 +94,19 @@ class GoalWorkspaceClientStateTest {
                 .anyMatch(alternative -> alternative.identity().equals(copperCutter)));
         assertTrue(GoalWorkspaceClientState.activeGoal().choiceResolution().hasChoice(ingredientChoice));
         assertTrue(GoalWorkspaceClientState.activeGoal().choiceResolution().hasChoice(producerChoice));
+    }
+
+    @Test
+    void persistedGoalsHydrateWithoutSelectingAGoalTab() {
+        GoalDescriptor descriptor = goal("slot:recipe/a", "A", 2);
+
+        assertTrue(GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(List.of(
+                new GoalPlanState(descriptor.goalId(), descriptor.label(), 2, descriptor, null))));
+
+        assertEquals(1, GoalWorkspaceClientState.goalTabs().size());
+        assertFalse(GoalWorkspaceClientState.hasActiveGoal());
+        assertNull(GoalWorkspaceClientState.activeGoal());
+        assertFalse(GoalWorkspaceClientState.goalTabs().getFirst().active());
     }
 
     private static GoalDescriptor goal(String recipeId, String label, int count) {

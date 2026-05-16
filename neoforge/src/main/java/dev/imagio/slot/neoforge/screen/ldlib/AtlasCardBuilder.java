@@ -13,12 +13,14 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache;
+import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
 import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
+import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -66,11 +68,26 @@ final class AtlasCardBuilder {
      * left-to-right, top-to-bottom.
      */
     Button atlasCardButton(SlotWorkspaceViewModel.AtlasItem item) {
+        return atlasCardButton(item, false);
+    }
+
+    Button atlasCardButton(SlotWorkspaceViewModel.AtlasItem item, boolean forceWayfindingStrip) {
+        return atlasCardButton(item, forceWayfindingStrip, null);
+    }
+
+    Button atlasCardButton(
+            SlotWorkspaceViewModel.AtlasItem item,
+            boolean forceWayfindingStrip,
+            SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane
+    ) {
         dev.imagio.slot.SlotDebugLog.verboseLog(
                 "[card] {} carried={} ghost={} totalCount={} proximate={} presence={} elsewhere={}",
                 item.identity().itemId(), item.carried(), item.ghost(), item.totalCount(),
                 item.proximateCount(), item.presence().size(), item.elsewhere().size());
-        UIElement element = cardRenderer.render(cardBuilder.card(item));
+        WallCardUiBuilder builder = forceWayfindingStrip || suggestionLane != null
+                ? new WallCardUiBuilder(new WallCardContext(forceWayfindingStrip, suggestionLane))
+                : cardBuilder;
+        UIElement element = cardRenderer.render(builder.card(item));
         if (element instanceof Button button) {
             return button;
         }
@@ -121,7 +138,10 @@ final class AtlasCardBuilder {
             return;
         }
         installCardClickHandlers(button, item);
-        host.drag.installAtlasHoverTooltip(button, item);
+        SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane = model.attachment(
+                WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE,
+                SlotWorkspaceViewModel.ContextualSuggestionLane.class);
+        host.drag.installAtlasHoverTooltip(button, item, suggestionLane);
         if (!host.goalTabActive()) {
             host.drag.installAtlasItemDragSource(button, item);
         }
@@ -225,14 +245,15 @@ final class AtlasCardBuilder {
         }
         AtlasCardStatus status = AtlasCardStatus.from(item);
         int proximateCount = proximateChestCount(item);
-        if (proximateCount > 0) {
+        boolean proximateDepositRoute = hasProximateDepositRoute(item);
+        if (proximateCount > 0 || proximateDepositRoute) {
             addProximatePip(body, item, status, proximateCount);
         }
         addCarriedCountBadge(body, item, status);
         if (status.wantsBorder()) {
             addStatusBorder(body, status);
         }
-        if (!host.goalTabActive() && host.viewModel.depositableIdentities().contains(item.identity())) {
+        if (proximateDepositRoute) {
             addDepositPreviewOutline(body);
         }
         if (!host.goalTabActive() && WorkspaceGatherUiSupport.isGatherableItem(item)) {
@@ -319,8 +340,8 @@ final class AtlasCardBuilder {
         int chrome = border + (status.wantsBorder() ? 1 : 0);
         int sideInset = border;
         int bottomInset = chrome;
-        int pipHeight = 5;
-        int pipWidth = Math.max(pipHeight, text.length() * 3 + 2);
+        int pipHeight = 6;
+        int pipWidth = Math.max(pipHeight, text.length() * 4 + 2);
         int textColor = status.level() == AtlasCardStatus.Level.NEUTRAL ? TEXT : status.color();
 
         UIElement pip = panel(0xC8121B1F).layout(layout -> layout
@@ -337,7 +358,7 @@ final class AtlasCardBuilder {
         badge.textStyle(style -> style
                 .textColor(textColor)
                 .textShadow(false)
-                .fontSize(5)
+                .fontSize(6)
                 .textAlignHorizontal(Horizontal.CENTER)
                 .textAlignVertical(Vertical.CENTER));
         pip.addChild(badge);
@@ -351,7 +372,7 @@ final class AtlasCardBuilder {
             int proximateCount
     ) {
         int sideInset = status.wantsBorder() ? 1 : 0;
-        int pipSize = 5;
+        int pipSize = 6;
         UIElement pip = panel(LINK_THREAD_COLOR).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .right(sideInset)
@@ -360,13 +381,14 @@ final class AtlasCardBuilder {
                 .height(pipSize));
         pip.style(style -> style.zIndex(265));
         pip.setAllowHitTest(false);
-        Label count = label(String.valueOf(Math.min(proximateCount, 999)), TEXT);
+        String text = proximateCount > 0 ? String.valueOf(Math.min(proximateCount, 999)) : "+";
+        Label count = label(text, TEXT);
         count.layout(layout -> layout.widthPercent(100).heightPercent(100));
         count.setAllowHitTest(false);
         count.textStyle(style -> style
                 .textColor(TEXT)
                 .textShadow(false)
-                .fontSize(5)
+                .fontSize(6)
                 .textAlignHorizontal(Horizontal.CENTER)
                 .textAlignVertical(Vertical.CENTER));
         pip.addChild(count);
@@ -376,8 +398,8 @@ final class AtlasCardBuilder {
     private void addSearchStoredBadge(UIElement body, AtlasCardStatus status, int storedCount) {
         int sideInset = status.wantsBorder() ? 1 : 0;
         String text = "+" + WorkspaceFormat.compactCount(storedCount);
-        int pipHeight = 5;
-        int pipWidth = Math.max(pipHeight, text.length() * 3 + 2);
+        int pipHeight = 6;
+        int pipWidth = Math.max(pipHeight, text.length() * 4 + 2);
         UIElement pip = panel(LINK_THREAD_COLOR).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(sideInset)
@@ -392,7 +414,7 @@ final class AtlasCardBuilder {
         count.textStyle(style -> style
                 .textColor(TEXT)
                 .textShadow(false)
-                .fontSize(5)
+                .fontSize(6)
                 .textAlignHorizontal(Horizontal.CENTER)
                 .textAlignVertical(Vertical.CENTER));
         pip.addChild(count);
@@ -722,6 +744,12 @@ final class AtlasCardBuilder {
         return WallCardTransferGesturePolicy.proximateChestCount(item);
     }
 
+    boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
+        return item != null
+                && !host.goalTabActive()
+                && host.viewModel.depositableIdentities().contains(item.identity());
+    }
+
     private void installCardClickHandlers(Button button, SlotWorkspaceViewModel.AtlasItem item) {
         // Capture-phase MOUSE_DOWN handles right-click cursor gestures.
         // Plain left-click pickup runs on UIEvents.CLICK (below), which
@@ -918,6 +946,25 @@ final class AtlasCardBuilder {
     }
 
     private final class WallCardContext implements WallCardUiBuilder.Context {
+        private final boolean forceWayfindingStrip;
+        private final SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane;
+
+        private WallCardContext() {
+            this(false, null);
+        }
+
+        private WallCardContext(boolean forceWayfindingStrip) {
+            this(forceWayfindingStrip, null);
+        }
+
+        private WallCardContext(
+                boolean forceWayfindingStrip,
+                SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane
+        ) {
+            this.forceWayfindingStrip = forceWayfindingStrip;
+            this.suggestionLane = suggestionLane;
+        }
+
         @Override
         public SlotWorkspaceViewModel.IdentityRef activeIdentity() {
             return host.activeIdentity();
@@ -952,7 +999,16 @@ final class AtlasCardBuilder {
 
         @Override
         public java.util.List<Component> tooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
-            return host.goalTooltipLines(item);
+            if (suggestionLane != null && SlotClientConfig.CLIENT.contextualSuggestionDebugTooltips.get()) {
+                return WorkspaceItemTooltipBuilder.slotLines(
+                        item,
+                        suggestionLane,
+                        true,
+                        hasProximateDepositRoute(item));
+            }
+            return host.goalTabActive()
+                    ? host.goalTooltipLines(item)
+                    : WorkspaceItemTooltipBuilder.slotLines(item, hasProximateDepositRoute(item));
         }
 
         @Override
@@ -968,6 +1024,21 @@ final class AtlasCardBuilder {
         @Override
         public StorageGhostRevealMode storageGhostRevealMode() {
             return host.storageGhostRevealMode;
+        }
+
+        @Override
+        public boolean forceWayfindingStrip(SlotWorkspaceViewModel.AtlasItem item) {
+            return forceWayfindingStrip;
+        }
+
+        @Override
+        public boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
+            return AtlasCardBuilder.this.hasProximateDepositRoute(item);
+        }
+
+        @Override
+        public SlotWorkspaceViewModel.ContextualSuggestionLane contextualSuggestionLane() {
+            return suggestionLane;
         }
     }
 

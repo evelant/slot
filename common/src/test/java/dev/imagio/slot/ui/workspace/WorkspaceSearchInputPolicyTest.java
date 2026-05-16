@@ -41,19 +41,32 @@ class WorkspaceSearchInputPolicyTest {
     }
 
     @Test
-    void enterConfirmsAndEscapeDismisses() {
+    void enterConfirmsAndBackslashClears() {
         WorkspaceSearchInputPolicy.Decision confirm = WorkspaceSearchInputPolicy.keyPressed(
                 true,
                 "axe",
                 WorkspaceSearchInputPolicy.ControlKey.ENTER);
-        WorkspaceSearchInputPolicy.Decision dismiss = WorkspaceSearchInputPolicy.keyPressed(
+        WorkspaceSearchInputPolicy.Decision clear = WorkspaceSearchInputPolicy.keyPressed(
                 true,
                 "axe",
-                WorkspaceSearchInputPolicy.ControlKey.ESCAPE);
+                WorkspaceSearchInputPolicy.ControlKey.CLEAR);
 
         assertFalse(confirm.active());
         assertEquals("axe", confirm.query());
-        assertFalse(dismiss.active());
-        assertEquals("", dismiss.query());
+        assertFalse(clear.active());
+        assertEquals("", clear.query());
+        assertEquals(WorkspaceSearchInputPolicy.Action.CLEAR, clear.action());
+    }
+
+    @Test
+    void backslashClearsRememberedQueryEvenWhenModalIsInactive() {
+        WorkspaceSearchInputPolicy.Decision clear = WorkspaceSearchInputPolicy.keyPressed(
+                false,
+                "axe",
+                WorkspaceSearchInputPolicy.ControlKey.CLEAR);
+
+        assertTrue(clear.handled());
+        assertFalse(clear.active());
+        assertEquals("", clear.query());
     }
 }

@@ -13,6 +13,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.atlas.lod.SectionOrdinal;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestStackDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestTileDrag;
@@ -20,8 +21,12 @@ import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.IslandDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitBringDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitSlotDrag;
+import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 /**
  * Drag-drop wiring for the sectioned list-view wall. Replaces the prior
@@ -107,23 +112,50 @@ final class DragDropWiring {
     }
 
     void installAtlasHoverTooltip(Button button, SlotWorkspaceViewModel.AtlasItem item) {
+        installAtlasHoverTooltip(button, item, null);
+    }
+
+    void installAtlasHoverTooltip(
+            Button button,
+            SlotWorkspaceViewModel.AtlasItem item,
+            SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane
+    ) {
         button.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
             if (item == null || item.displayStack().isEmpty()) {
                 return;
             }
             boolean goalTooltipOnly = host.goalTabActive() && host.goalSuppressVanillaTooltip(item);
+            boolean proximateDepositRoute = hasProximateDepositRoute(item);
             ItemStack tooltipStack = goalTooltipOnly ? ItemStack.EMPTY : item.displayStack();
-            event.hoverTooltips = new HoverTooltips(
-                    goalTooltipOnly
+            List<Component> tooltipLines = suggestionLane != null
+                    && SlotClientConfig.CLIENT.contextualSuggestionDebugTooltips.get()
+                    ? WorkspaceFormat.atlasTooltipLines(
+                            item,
+                            WorkspaceItemTooltipBuilder.slotLines(
+                                    item,
+                                    suggestionLane,
+                                    true,
+                                    proximateDepositRoute))
+                    : goalTooltipOnly
                             ? host.goalTooltipLines(item)
                             : host.goalTabActive()
-                            ? WorkspaceFormat.atlasTooltipLines(item, host.goalTooltipLines(item))
-                            : WorkspaceFormat.atlasTooltipLines(item),
+                                    ? WorkspaceFormat.atlasTooltipLines(item, host.goalTooltipLines(item))
+                                    : WorkspaceFormat.atlasTooltipLines(
+                                            item,
+                                            WorkspaceItemTooltipBuilder.slotLines(item, proximateDepositRoute));
+            event.hoverTooltips = new HoverTooltips(
+                    tooltipLines,
                     tooltipStack.isEmpty() ? null : tooltipStack.getTooltipImage().orElse(null),
                     null,
                     tooltipStack
             );
         });
+    }
+
+    private boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
+        return item != null
+                && !host.goalTabActive()
+                && host.viewModel.depositableIdentities().contains(item.identity());
     }
 
     boolean hotbarDragHasHome(HotbarSlotDrag drag) {

@@ -11,20 +11,25 @@ import dev.imagio.slot.workflow.domain.persistence.WorkflowDomainFileStore;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.storage.LevelResource;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = SlotForge.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public final class ForgePlayerWorkflowRuntimeService {
+    private static final int PENDING_SAVE_FLUSH_INTERVAL_TICKS = 20;
     private static final Map<RuntimeKey, WorkflowDomainRuntime> RUNTIMES = new LinkedHashMap<>();
+    private static long lastPendingSaveFlushTick = -1L;
 
     private ForgePlayerWorkflowRuntimeService() {
     }
@@ -60,6 +65,14 @@ public final class ForgePlayerWorkflowRuntimeService {
     }
 
     @SubscribeEvent
+    public static void onServerTick(TickEvent.ServerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || event.getServer() == null) {
+            return;
+        }
+        flushPendingSaves(event.getServer().getTickCount());
+    }
+
+    @SubscribeEvent
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
@@ -83,6 +96,27 @@ public final class ForgePlayerWorkflowRuntimeService {
                 }
             }
             RUNTIMES.clear();
+            lastPendingSaveFlushTick = -1L;
+        }
+    }
+
+    private static void flushPendingSaves(long serverTick) {
+        if (lastPendingSaveFlushTick >= 0
+                && serverTick - lastPendingSaveFlushTick < PENDING_SAVE_FLUSH_INTERVAL_TICKS) {
+            return;
+        }
+        lastPendingSaveFlushTick = serverTick;
+        List<WorkflowDomainRuntime> runtimes;
+        synchronized (RUNTIMES) {
+            if (RUNTIMES.isEmpty()) {
+                return;
+            }
+            runtimes = new ArrayList<>(RUNTIMES.values());
+        }
+        for (WorkflowDomainRuntime runtime : runtimes) {
+            if (runtime != null) {
+                runtime.flushPendingSave();
+            }
         }
     }
 

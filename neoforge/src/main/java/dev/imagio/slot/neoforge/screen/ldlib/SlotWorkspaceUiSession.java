@@ -10,6 +10,7 @@ import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackStructuralKey;
 import dev.imagio.slot.inventory.integration.InventoryActionExecutor;
 import dev.imagio.slot.inventory.integration.InventoryHostContext;
 import dev.imagio.slot.inventory.integration.SophisticatedBackpackInventoryIntegrationProvider;
@@ -57,6 +58,7 @@ import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.core.BlockPos;
@@ -95,6 +97,9 @@ final class SlotWorkspaceUiSession {
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private CompoundTag lastContentTag = new CompoundTag();
     private CompoundTag lastViewTag;
+    private int lastStructuralMenuId = Integer.MIN_VALUE;
+    private List<ItemStackStructuralKey> lastStructuralMenuKeys = List.of();
+    private ItemStackStructuralKey lastStructuralCursorKey = ItemStackStructuralKey.EMPTY;
     private long nextRevision = 1L;
     private String status = "ready";
     private String diagnostics = "";
@@ -143,7 +148,9 @@ final class SlotWorkspaceUiSession {
 
     Tag viewTag() {
         if (player instanceof ServerPlayer serverPlayer) {
-            refreshServerView(serverPlayer);
+            if (shouldRefreshServerView(serverPlayer)) {
+                refreshServerView(serverPlayer);
+            }
         }
         return lastViewTag == null ? SlotWorkspaceViewModelCodec.encode(viewModel, player.registryAccess()) : lastViewTag.copy();
     }
@@ -1902,6 +1909,16 @@ final class SlotWorkspaceUiSession {
         String combinedDiagnostics = combineDiagnostics(hostDiagnostics, diagnostics);
         int selected = serverPlayer.getInventory().selected;
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        long gameTime = serverPlayer.serverLevel().getGameTime();
+        runtime.contextualSuggestions().observeCarriedSnapshot(
+                authority,
+                gameTime,
+                DomainEventMetadata.origin("contextual.neoforge.carried_snapshot"));
+        runtime.contextualSuggestions().observeStationContext(
+                host,
+                authority,
+                gameTime,
+                DomainEventMetadata.origin("contextual.neoforge.station_context"));
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
         MinecraftServer server = serverPlayer.getServer();
         WorldStorageAccess worldStorage = StorageAccessRegistry.isInstalled()
@@ -1917,7 +1934,7 @@ final class SlotWorkspaceUiSession {
                 worldStorage,
                 proximateIds,
                 displaySources,
-                serverPlayer.serverLevel().getGameTime());
+                gameTime);
         Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver =
                 storageIndex.contentsResolver();
         displaySources = storageIndex.displaySources();
@@ -1944,7 +1961,7 @@ final class SlotWorkspaceUiSession {
                 containerResolver,
                 lootChestSource,
                 searchQuery,
-                serverPlayer.serverLevel().getGameTime(),
+                gameTime,
                 activeChestPanel,
                 displaySources
         );
@@ -1975,7 +1992,7 @@ final class SlotWorkspaceUiSession {
                     containerResolver,
                     lootChestSource,
                     searchQuery,
-                    serverPlayer.serverLevel().getGameTime(),
+                    gameTime,
                     activeChestPanel,
                     displaySources
             );
@@ -1987,6 +2004,42 @@ final class SlotWorkspaceUiSession {
             viewModel = projected.withRevision(nextRevision++);
             lastViewTag = SlotWorkspaceViewModelCodec.encode(viewModel, serverPlayer.registryAccess());
         }
+        rememberStructuralState(serverPlayer);
+    }
+
+    private boolean shouldRefreshServerView(ServerPlayer serverPlayer) {
+        if (lastViewTag == null) {
+            return true;
+        }
+        AbstractContainerMenu menu = serverPlayer == null ? null : serverPlayer.containerMenu;
+        int menuId = menu == null ? -1 : menu.containerId;
+        List<ItemStackStructuralKey> menuKeys = structuralMenuKeys(menu);
+        ItemStackStructuralKey cursorKey = menu == null
+                ? ItemStackStructuralKey.EMPTY
+                : ItemStackStructuralKey.from(menu.getCarried());
+        return menuId != lastStructuralMenuId
+                || !menuKeys.equals(lastStructuralMenuKeys)
+                || !cursorKey.equals(lastStructuralCursorKey);
+    }
+
+    private void rememberStructuralState(ServerPlayer serverPlayer) {
+        AbstractContainerMenu menu = serverPlayer == null ? null : serverPlayer.containerMenu;
+        lastStructuralMenuId = menu == null ? -1 : menu.containerId;
+        lastStructuralMenuKeys = structuralMenuKeys(menu);
+        lastStructuralCursorKey = menu == null
+                ? ItemStackStructuralKey.EMPTY
+                : ItemStackStructuralKey.from(menu.getCarried());
+    }
+
+    private static List<ItemStackStructuralKey> structuralMenuKeys(AbstractContainerMenu menu) {
+        if (menu == null || menu.slots.isEmpty()) {
+            return List.of();
+        }
+        java.util.ArrayList<ItemStackStructuralKey> keys = new java.util.ArrayList<>(menu.slots.size());
+        for (Slot slot : menu.slots) {
+            keys.add(ItemStackStructuralKey.from(slot == null ? ItemStack.EMPTY : slot.getItem()));
+        }
+        return List.copyOf(keys);
     }
 
     /**

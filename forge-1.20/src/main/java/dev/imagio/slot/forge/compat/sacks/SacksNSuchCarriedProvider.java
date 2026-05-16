@@ -2,6 +2,7 @@ package dev.imagio.slot.forge.compat.sacks;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.storage.CarriedProvider;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import net.minecraft.server.level.ServerPlayer;
@@ -9,7 +10,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public final class SacksNSuchCarriedProvider implements CarriedProvider {
@@ -59,6 +62,35 @@ public final class SacksNSuchCarriedProvider implements CarriedProvider {
     public int slotCount(Player player, String sourceId) {
         SacksNSuchSupport.ContainerSnapshot snapshot = SacksNSuchSupport.find(player, sourceId);
         return snapshot == null ? 0 : snapshot.slotCount();
+    }
+
+    public static Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> carriedContainerInfoByIdentity(
+            Player player
+    ) {
+        if (player == null || !SacksNSuchSupport.isAvailable()) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, int[]> byIdentity = new LinkedHashMap<>();
+        for (SacksNSuchSupport.ContainerSnapshot snapshot : SacksNSuchSupport.readPlayerContainers(player)) {
+            if (snapshot == null || snapshot.carrierStack().isEmpty() || snapshot.slotCount() <= 0) {
+                continue;
+            }
+            int occupied = 0;
+            for (int slot = 0; slot < snapshot.slotCount(); slot++) {
+                if (!SacksNSuchSupport.peek(snapshot, slot).isEmpty()) {
+                    occupied++;
+                }
+            }
+            ItemIdentity identity = ItemIdentityMatcher.create(snapshot.carrierStack());
+            int[] running = byIdentity.computeIfAbsent(identity, ignored -> new int[2]);
+            running[0] += Math.max(0, snapshot.slotCount() - occupied);
+            running[1] += snapshot.slotCount();
+        }
+        LinkedHashMap<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> result =
+                new LinkedHashMap<>(byIdentity.size());
+        byIdentity.forEach((identity, counts) ->
+                result.put(identity, new SlotWorkspaceViewModel.CarriedContainerInfo(counts[0], counts[1])));
+        return result.isEmpty() ? Map.of() : Map.copyOf(result);
     }
 
     @Override

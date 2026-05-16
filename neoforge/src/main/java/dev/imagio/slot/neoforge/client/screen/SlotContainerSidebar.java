@@ -26,10 +26,11 @@ import net.neoforged.neoforge.network.PacketDistributor;
  * screen. LDLib2's children-walking mixins drive the lifecycle from
  * there. Server-side data pump runs through
  * {@link dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarUiHandles},
- * which owns a per-player handle and ticks it from
- * {@code ServerTickEvent.Post}. This sidebar runs entirely outside
- * the vanilla menu lifecycle: the host menu (chest, crafting, machine)
- * remains the player's {@code containerMenu}.
+ * which owns a per-player handle and attaches the sidebar's sync manager
+ * to the active host menu. The host menu (chest, crafting, machine)
+ * remains the player's {@code containerMenu}; vanilla
+ * {@code broadcastChanges()} ticks LDLib sync, while the workspace view
+ * itself refreshes only when its structural menu state changes.
  */
 public final class SlotContainerSidebar {
     /**
@@ -281,7 +282,7 @@ public final class SlotContainerSidebar {
     /**
      * Forward key presses to the sidebar widget tree, same plumbing as
      * {@link #onCharTyped}. Required for the search modal's
-     * ESC/Enter/Backspace/Tab handlers, the 1–9 belt-assign hotkeys,
+     * Enter/Backspace/Backslash/Tab handlers, the 1–9 belt-assign hotkeys,
      * undo/redo, and the open-vanilla key — none of which fire while
      * the sidebar is mounted on a non-LDLib2 host screen because
      * LDLib2's mixin only forwards the inventory key.

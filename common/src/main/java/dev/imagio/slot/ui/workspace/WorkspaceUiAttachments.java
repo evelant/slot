@@ -13,6 +13,9 @@ public final class WorkspaceUiAttachments {
     public static final String RECENTS_STRIP = "slot.workspace.recents_strip";
     public static final String WALL_SECTION_HEADER = "slot.workspace.wall_section_header";
     public static final String WALL_SECTION_GRID = "slot.workspace.wall_section_grid";
+    public static final String WALL_SUGGESTION_LANE = "slot.workspace.wall_suggestion_lane";
+    public static final String WALL_SUGGESTION_GRID = "slot.workspace.wall_suggestion_grid";
+    public static final String CONTEXTUAL_SUGGESTION_LANE = "slot.workspace.contextual_suggestion_lane";
     public static final String WALL_SECTION_NEARBY_CHIP = "slot.workspace.wall_section_nearby_chip";
     public static final String WALL_SECTION_NEARBY_CHIP_COUNT = "slot.workspace.wall_section_nearby_chip_count";
     public static final String WALL_SECTION_NEARBY_CHIP_EXPANDED = "slot.workspace.wall_section_nearby_chip_expanded";

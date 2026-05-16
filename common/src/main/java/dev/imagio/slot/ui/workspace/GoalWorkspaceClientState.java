@@ -87,7 +87,6 @@ public final class GoalWorkspaceClientState {
         if (GOALS.isEmpty()) {
             return false;
         }
-        activeGoalId = GOALS.keySet().iterator().next();
         revision++;
         return true;
     }

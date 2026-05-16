@@ -81,9 +81,14 @@ public final class FacetIndex {
             List<String> roleCandidates = readAllStringFacetValues(facetsObj, "role");
             String role = roleCandidates.isEmpty() ? null : roleCandidates.get(0);
             String materialFamily = readSingleStringFacet(facetsObj, "material_family");
+            List<String> workflows = readMultiStringFacet(facetsObj, "workflow");
+            List<String> workflowRoles = readMultiStringFacet(facetsObj, "workflow_role");
+            List<String> usedAt = readMultiStringFacet(facetsObj, "used_at");
+            List<String> processingIn = readMultiStringFacet(facetsObj, "processing_in");
             List<String> subsystems = readMultiStringFacet(facetsObj, "mod_subsystem");
             List<String> organizationGroups = readMultiStringFacet(facetsObj, "organization_group");
             List<String> activities = readMultiStringFacet(facetsObj, "activity");
+            List<String> primaryUses = readMultiStringFacet(facetsObj, "primary_uses");
             String flavor = readSingleStringFacet(facetsObj, "flavor");
             String carryFrequency = readSingleStringFacet(facetsObj, "carry_frequency");
             String rarity = readSingleStringFacet(facetsObj, "rarity");
@@ -92,12 +97,18 @@ public final class FacetIndex {
             List<String> palette = readMultiStringFacet(facetsObj, "palette");
             String form = readSingleStringFacet(facetsObj, "form");
             boolean emitsLight = readBooleanFacet(facetsObj, "emits_light");
+            boolean isFuel = readBooleanFacet(facetsObj, "is_fuel");
 
             boolean hasAnyFacet = role != null
                     || materialFamily != null
+                    || !workflows.isEmpty()
+                    || !workflowRoles.isEmpty()
+                    || !usedAt.isEmpty()
+                    || !processingIn.isEmpty()
                     || !subsystems.isEmpty()
                     || !organizationGroups.isEmpty()
                     || !activities.isEmpty()
+                    || !primaryUses.isEmpty()
                     || flavor != null
                     || carryFrequency != null
                     || rarity != null
@@ -105,15 +116,21 @@ public final class FacetIndex {
                     || dyeColor != null
                     || !palette.isEmpty()
                     || form != null
-                    || emitsLight;
+                    || emitsLight
+                    || isFuel;
             if (hasAnyFacet) {
                 facets.put(itemId, new ItemFacets(
                         role,
                         roleCandidates,
                         materialFamily,
+                        workflows,
+                        workflowRoles,
+                        usedAt,
+                        processingIn,
                         subsystems,
                         organizationGroups,
                         activities,
+                        primaryUses,
                         flavor,
                         carryFrequency,
                         rarity,
@@ -121,7 +138,8 @@ public final class FacetIndex {
                         dyeColor,
                         palette,
                         form,
-                        emitsLight
+                        emitsLight,
+                        isFuel
                 ));
             }
         }
@@ -174,6 +192,26 @@ public final class FacetIndex {
         return f == null ? Optional.empty() : Optional.ofNullable(f.materialFamily());
     }
 
+    public List<String> workflows(String itemId) {
+        ItemFacets f = lookup(itemId);
+        return f == null ? List.of() : f.workflows();
+    }
+
+    public List<String> workflowRoles(String itemId) {
+        ItemFacets f = lookup(itemId);
+        return f == null ? List.of() : f.workflowRoles();
+    }
+
+    public List<String> usedAt(String itemId) {
+        ItemFacets f = lookup(itemId);
+        return f == null ? List.of() : f.usedAt();
+    }
+
+    public List<String> processingIn(String itemId) {
+        ItemFacets f = lookup(itemId);
+        return f == null ? List.of() : f.processingIn();
+    }
+
     public List<String> subsystems(String itemId) {
         ItemFacets f = lookup(itemId);
         return f == null ? List.of() : f.subsystems();
@@ -187,6 +225,11 @@ public final class FacetIndex {
     public List<String> activities(String itemId) {
         ItemFacets f = lookup(itemId);
         return f == null ? List.of() : f.activities();
+    }
+
+    public List<String> primaryUses(String itemId) {
+        ItemFacets f = lookup(itemId);
+        return f == null ? List.of() : f.primaryUses();
     }
 
     public Optional<String> flavor(String itemId) {
@@ -245,6 +288,11 @@ public final class FacetIndex {
         return f != null && f.emitsLight();
     }
 
+    public boolean isFuel(String itemId) {
+        ItemFacets f = lookup(itemId);
+        return f != null && f.isFuel();
+    }
+
     /**
      * Shape facet — {@code stairs}, {@code slab}, {@code wall},
      * {@code door}, {@code trapdoor}, {@code fence}, {@code fence_gate},
@@ -281,9 +329,14 @@ public final class FacetIndex {
             String role,
             List<String> roleAlternatives,
             String materialFamily,
+            List<String> workflows,
+            List<String> workflowRoles,
+            List<String> usedAt,
+            List<String> processingIn,
             List<String> subsystems,
             List<String> organizationGroups,
             List<String> activities,
+            List<String> primaryUses,
             String flavor,
             String carryFrequency,
             String rarity,
@@ -291,13 +344,19 @@ public final class FacetIndex {
             String dyeColor,
             List<String> palette,
             String form,
-            boolean emitsLight
+            boolean emitsLight,
+            boolean isFuel
     ) {
         ItemFacets {
             roleAlternatives = roleAlternatives == null ? List.of() : List.copyOf(roleAlternatives);
+            workflows = workflows == null ? List.of() : List.copyOf(workflows);
+            workflowRoles = workflowRoles == null ? List.of() : List.copyOf(workflowRoles);
+            usedAt = usedAt == null ? List.of() : List.copyOf(usedAt);
+            processingIn = processingIn == null ? List.of() : List.copyOf(processingIn);
             subsystems = subsystems == null ? List.of() : List.copyOf(subsystems);
             organizationGroups = organizationGroups == null ? List.of() : List.copyOf(organizationGroups);
             activities = activities == null ? List.of() : List.copyOf(activities);
+            primaryUses = primaryUses == null ? List.of() : List.copyOf(primaryUses);
             palette = palette == null ? List.of() : List.copyOf(palette);
         }
     }

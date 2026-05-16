@@ -57,21 +57,34 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-15** — Contextual suggestion lanes landed as a first playable
+  prototype: common contextual signals and bounded aggregates persist through
+  workflow schema 8, existing activity/deposit paths feed item history,
+  both loaders emit carried-set and station-open context, `SlotWorkspaceViewModel`
+  now projects Useful Now and Put Away lanes, both Forge and NeoForge render
+  those lanes above the wall with normal card gestures, empty Useful Now shows
+  a waiting placeholder, persisted goals no longer auto-select a goal tab on
+  hydration, Put Away cards show the existing non-proximate tracked-chest
+  wayfinding strip when available, and proximate deposit routes can show the
+  blue storage pip even when the matching chest currently holds zero of that
+  item. Slice 3 remains diagnostics and threshold tuning in
+  [`contextual-suggestions.md`](contextual-suggestions.md).
 - **2026-05-14** — Quiet nearby ghosts landed for playtesting: default
   wall sections show carried cards first and collapse ordinary proximate
   storage ghosts behind a per-section nearby chip, while search,
   desired/wanted/Kit/goal intent and storage x-ray toggles reveal the
   hidden storage cards on demand. Follow-up fixes generalized observed
   storage menus beyond vanilla chests for TFC vessels, kept search
-  keystrokes inside sidebar search, matched localized hover names in
-  search, disabled affinity decay behind the existing kill switch, and
-  added live TFC display storage ghosts for nearby tool racks and placed
-  items, with deposit limited to tool racks.
+  keystrokes inside sidebar search without using Esc as search-clear,
+  matched localized hover names in search, disabled affinity decay behind
+  the existing kill switch, and added live TFC display storage ghosts for
+  nearby tool racks and placed items, with deposit limited to tool racks.
 - **2026-05-12** — Forge + NeoForge sidebar polish landed: Kits moved
   from the bottom strip into a right-side vertical rack opened from the
   `All` row, the Belt now mirrors vanilla with offhand-left layout,
   active-chest controls hide when no chest is open, search query and wall
-  scroll persist across close/open, Esc clears Forge search before closing,
+  scroll persist across close/open, search clear moved off Esc so closing
+  stays consistent,
   carried card chrome no longer uses unexplained dimming, Cloth Config
   margin screens integrate with both mod menus, Forge shift-click keeps
   SLOT deposit/take semantics inside container screens, and Forge sidebar
@@ -93,12 +106,7 @@ hold the rest.
   inspect/rehome commands, vocabulary-backed evidence/proposals,
   vocabulary-grounded Stage 3 prompting, and explicit chest-signal
   deposit routing (learned affinity or existing matching contents).
-- **2026-05-07** — Forge parity pass moved active-kit gather and
-  in-world kit-page cycle into shared common services, registered
-  `GATHER_ACTIVE_KIT`, wired in-screen gather through catalog actions
-  on both loaders, added Forge vanilla-inventory / kit-cycle / gather /
-  wayfinding-HUD keys, removed the Forge debug/SPI product labels, and
-  fixed the NeoForge HUD toggle ordering bug.
+
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the

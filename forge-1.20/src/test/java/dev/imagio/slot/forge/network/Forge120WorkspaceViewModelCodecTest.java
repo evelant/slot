@@ -2,6 +2,7 @@ package dev.imagio.slot.forge.network;
 
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.goal.GoalRecipeDefaults;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
@@ -210,6 +211,37 @@ class Forge120WorkspaceViewModelCodecTest {
                 Forge120WorkspaceViewModelCodec.encode(second));
     }
 
+    @Test
+    void contextualSuggestionPlaceholderRoundTripsThroughForgeViewModelCodec() {
+        SlotWorkspaceViewModel.IdentityRef stone = identity("minecraft:stone");
+        SlotWorkspaceViewModel original = minimalView(
+                1,
+                stone,
+                ItemIdentity.of("minecraft:stone"),
+                List.of(new SlotWorkspaceViewModel.ContextualSuggestionLane(
+                        SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW,
+                        "Useful Now",
+                        List.of(),
+                        "Waiting for player actions to suggest items...",
+                        List.of(new SlotWorkspaceViewModel.ContextualSuggestionDebugInfo(
+                                stone,
+                                1.25D,
+                                0.75D,
+                                List.of("score 1.25 / threshold 0.90", "+ test reason"))))));
+
+        SlotWorkspaceViewModel restored = Forge120WorkspaceViewModelCodec.decode(
+                Forge120WorkspaceViewModelCodec.encode(original));
+
+        assertEquals(1, restored.contextualSuggestionLanes().size());
+        SlotWorkspaceViewModel.ContextualSuggestionLane lane = restored.contextualSuggestionLanes().get(0);
+        assertEquals(SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW, lane.id());
+        assertEquals("Waiting for player actions to suggest items...", lane.placeholderText());
+        assertTrue(lane.items().isEmpty());
+        assertEquals(1, lane.debugInfo().size());
+        assertEquals(stone, lane.debugInfo().get(0).identity());
+        assertEquals(List.of("score 1.25 / threshold 0.90", "+ test reason"), lane.debugInfo().get(0).reasons());
+    }
+
     private static SlotWorkspaceViewModel.IdentityRef identity(String itemId) {
         return new SlotWorkspaceViewModel.IdentityRef(itemId, ItemComparisonMode.ITEM_ID.name(), "");
     }
@@ -218,6 +250,15 @@ class Forge120WorkspaceViewModelCodecTest {
             long revision,
             SlotWorkspaceViewModel.IdentityRef stone,
             ItemIdentity stoneIdentity
+    ) {
+        return minimalView(revision, stone, stoneIdentity, List.of());
+    }
+
+    private static SlotWorkspaceViewModel minimalView(
+            long revision,
+            SlotWorkspaceViewModel.IdentityRef stone,
+            ItemIdentity stoneIdentity,
+            List<SlotWorkspaceViewModel.ContextualSuggestionLane> contextualSuggestionLanes
     ) {
         return new SlotWorkspaceViewModel(
                 revision,
@@ -241,7 +282,10 @@ class Forge120WorkspaceViewModelCodecTest {
                 List.of(),
                 Set.of(stone),
                 List.of(),
-                SlotWorkspaceViewModel.ActiveChestPanel.empty());
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                GoalRecipeDefaults.empty(),
+                List.of(),
+                contextualSuggestionLanes);
     }
 
     private static SlotWorkspaceViewModel.AtlasItem atlasItem(

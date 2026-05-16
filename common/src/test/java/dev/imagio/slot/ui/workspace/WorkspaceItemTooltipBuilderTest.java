@@ -83,6 +83,91 @@ class WorkspaceItemTooltipBuilderTest {
     }
 
     @Test
+    void tooltipExplainsProximateDepositRouteWithoutStoredCount() {
+        SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
+                identity("minecraft:stone"),
+                new ItemStack("minecraft:stone", 1, 64),
+                "Stone",
+                1,
+                0,
+                "blocks",
+                false,
+                true,
+                true,
+                false,
+                0,
+                List.of(),
+                List.of(),
+                List.of(),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                "player.main",
+                0,
+                1);
+
+        List<String> text = WorkspaceItemTooltipBuilder.slotLines(item, true).stream()
+                .map(Component::getString)
+                .toList();
+
+        assertTrue(text.contains("Nearby pip: deposit route available"));
+    }
+
+    @Test
+    void tooltipIncludesContextualDebugReasonsWhenEnabled() {
+        SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
+                identity("minecraft:charcoal"),
+                new ItemStack("minecraft:charcoal", 1, 64),
+                "Charcoal",
+                1,
+                0,
+                "fuel",
+                false,
+                false,
+                true,
+                false,
+                0,
+                List.of(),
+                List.of(),
+                List.of(),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                "player.main",
+                0,
+                1);
+        SlotWorkspaceViewModel.ContextualSuggestionLane lane =
+                new SlotWorkspaceViewModel.ContextualSuggestionLane(
+                        SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW,
+                        "Useful Now",
+                        List.of(item),
+                        "",
+                        List.of(new SlotWorkspaceViewModel.ContextualSuggestionDebugInfo(
+                                item.identity(),
+                                1.25D,
+                                0.80D,
+                                List.of(
+                                        "candidate: carried=true, source=player.main",
+                                        "context relevance 0.80 = active 0.80 + passive 0.00",
+                                        "score terms: relevance 0.80, carried +0.45"))));
+
+        List<String> text = WorkspaceItemTooltipBuilder.slotLines(item, lane, true).stream()
+                .map(Component::getString)
+                .toList();
+
+        assertTrue(text.contains("Contextual score (Useful Now)"));
+        assertTrue(text.contains("  candidate: carried=true, source=player.main"));
+        assertTrue(text.contains("  context relevance 0.80 = active 0.80 + passive 0.00"));
+        assertTrue(text.contains("  score terms: relevance 0.80, carried +0.45"));
+    }
+
+    @Test
     void wantedItemsReadAsTemporaryCountTargets() {
         SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
                 identity("minecraft:lantern"),

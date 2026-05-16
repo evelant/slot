@@ -13,6 +13,30 @@ public final class WorkspaceItemTooltipBuilder {
     }
 
     public static List<Component> slotLines(SlotWorkspaceViewModel.AtlasItem item) {
+        return slotLines(item, null, false, false);
+    }
+
+    public static List<Component> slotLines(
+            SlotWorkspaceViewModel.AtlasItem item,
+            boolean hasProximateDepositRoute
+    ) {
+        return slotLines(item, null, false, hasProximateDepositRoute);
+    }
+
+    public static List<Component> slotLines(
+            SlotWorkspaceViewModel.AtlasItem item,
+            SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane,
+            boolean includeContextualDebug
+    ) {
+        return slotLines(item, suggestionLane, includeContextualDebug, false);
+    }
+
+    public static List<Component> slotLines(
+            SlotWorkspaceViewModel.AtlasItem item,
+            SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane,
+            boolean includeContextualDebug,
+            boolean hasProximateDepositRoute
+    ) {
         if (item == null) {
             return List.of();
         }
@@ -20,8 +44,12 @@ public final class WorkspaceItemTooltipBuilder {
         addDesiredLine(lines, item);
         addCarriedLine(lines, item);
         addStorageLine(lines, "Nearby pip", sum(item.presence()), item.presence());
+        addProximateRouteLine(lines, item, hasProximateDepositRoute);
         addStorageLine(lines, "Stored elsewhere", sum(item.elsewhere()), item.elsewhere());
         addContainerLine(lines, item);
+        if (includeContextualDebug) {
+            addContextualDebugLines(lines, item, suggestionLane);
+        }
         if (lines.isEmpty()) {
             return List.of();
         }
@@ -75,12 +103,42 @@ public final class WorkspaceItemTooltipBuilder {
         lines.add(Component.literal(text.toString()));
     }
 
+    private static void addProximateRouteLine(
+            ArrayList<Component> lines,
+            SlotWorkspaceViewModel.AtlasItem item,
+            boolean hasProximateDepositRoute
+    ) {
+        if (!hasProximateDepositRoute || sum(item.presence()) > 0) {
+            return;
+        }
+        lines.add(Component.literal("Nearby pip: deposit route available"));
+    }
+
     private static void addContainerLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
         if (!item.isCarriedContainer() || item.containerSlotCapacity() <= 0) {
             return;
         }
         lines.add(Component.literal(
                 "Container: " + item.containerFreeSlotCount() + "/" + item.containerSlotCapacity() + " slots free"));
+    }
+
+    private static void addContextualDebugLines(
+            ArrayList<Component> lines,
+            SlotWorkspaceViewModel.AtlasItem item,
+            SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane
+    ) {
+        if (suggestionLane == null) {
+            return;
+        }
+        SlotWorkspaceViewModel.ContextualSuggestionDebugInfo info = suggestionLane.debugInfoFor(item);
+        if (info == null) {
+            return;
+        }
+        String label = suggestionLane.label().isBlank() ? "Suggestion" : suggestionLane.label();
+        lines.add(Component.literal("Contextual score (" + label + ")"));
+        for (String reason : info.reasons()) {
+            lines.add(Component.literal("  " + reason));
+        }
     }
 
     private static String chestBreakdown(List<SlotWorkspaceViewModel.ChestPresenceEntry> entries) {

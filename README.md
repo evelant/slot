@@ -88,6 +88,8 @@ Plans:
 - [docs/plans/ambient-task-views.md](docs/plans/ambient-task-views.md)
   — deferred/research plan for generic task views such as Cooking,
   Exploration, Mining, Cleanup, and Ore Processing.
+- [docs/plans/contextual-suggestions.md](docs/plans/contextual-suggestions.md)
+  — planning doc for behavior-scored Useful Now and Put Away suggestion lanes.
 - [docs/plans/inventory-fullness.md](docs/plans/inventory-fullness.md)
   — proposed UI slice for surfacing carried-inventory capacity
   without per-bag routing controls. Not yet active.

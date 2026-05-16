@@ -2269,14 +2269,11 @@ public final class SlotWorkspaceCommandService {
      * can drag-to-rehome to override; auto-placements aren't a sanctioned
      * adjacency signal.
      *
-     * <p>Processes at most one identity per call. Each
-     * {@code assignHome}/{@code createIsland} fires
-     * {@link WorkflowDomainRuntime#saveNow()} synchronously, so doing
-     * a whole-inventory pass in a single tick blocked the server thread
-     * long enough that crafting-table screens couldn't close.
-     * Per-tick throttling spreads the work and lets the input loop keep
-     * pumping; the projection's triage list only ever shrinks, so the
-     * pass converges.
+     * <p>Processes at most one identity per call. The workflow runtime
+     * coalesces persistence, but a whole-inventory pass still mutates the
+     * projection repeatedly on the server thread. Per-tick throttling
+     * spreads the work and lets the input loop keep pumping; the
+     * projection's triage list only ever shrinks, so the pass converges.
      *
      * <p>Returns true iff one assignment was written, so the caller
      * knows to re-project.

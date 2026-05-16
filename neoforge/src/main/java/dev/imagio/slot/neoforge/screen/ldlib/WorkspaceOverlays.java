@@ -328,7 +328,12 @@ final class WorkspaceOverlays {
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
         row.style(style -> style.zIndex(12));
-        row.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+        row.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            event.stopPropagation();
+            if (event.button == 1) {
+                host.searchController.clearSearch();
+            }
+        });
 
         String bufferDisplay = "/" + host.searchController.buffer() + "_";
         Label bufferLabel = label(bufferDisplay, ACCENT);
@@ -338,13 +343,13 @@ final class WorkspaceOverlays {
         String summary;
         if (host.searchController.buffer().length() < AtlasSearchIndex.DEFAULT_MIN_QUERY_CHARS) {
             summary = "Type " + AtlasSearchIndex.DEFAULT_MIN_QUERY_CHARS
-                    + "+ chars  ·  Esc to close";
+                    + "+ chars  ·  Esc closes";
         } else if (host.searchController.matches().isEmpty()) {
-            summary = "No matches  ·  Esc to close";
+            summary = "No matches  ·  Esc closes";
         } else {
             String commitHint = host.searchController.interactionDisablesAutoDismiss()
-                    ? "Esc to close"
-                    : "idle auto-commits  ·  Esc to abort";
+                    ? "Esc closes"
+                    : "idle auto-commits  ·  Esc closes";
             summary = (host.searchController.matchIndex() + 1) + " of " + host.searchController.matches().size()
                     + " matches  ·  Tab cycle  ·  Enter commit  ·  " + commitHint;
         }
@@ -369,7 +374,13 @@ final class WorkspaceOverlays {
                 .paddingVertical(4));
         hint.textStyle(style -> style.adaptiveWidth(true));
         hint.style(style -> style.zIndex(11).backgroundTexture(rect(GLASS)));
-        hint.setAllowHitTest(false);
+        hint.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (event.button != 1) {
+                return;
+            }
+            event.stopPropagation();
+            host.searchController.clearSearch();
+        });
         return hint;
     }
 

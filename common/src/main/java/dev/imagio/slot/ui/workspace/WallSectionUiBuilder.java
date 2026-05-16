@@ -78,6 +78,46 @@ public final class WallSectionUiBuilder {
         return section;
     }
 
+    public SlotUiElement suggestionLane(SlotWorkspaceViewModel.ContextualSuggestionLane lane) {
+        SlotWorkspaceViewModel.ContextualSuggestionLane resolved = lane == null
+                ? new SlotWorkspaceViewModel.ContextualSuggestionLane("", "", List.of())
+                : lane;
+        SlotUiElement section = SlotUiElement.element()
+                .id("suggestion:" + resolved.id())
+                .attach(WorkspaceUiAttachments.WALL_SUGGESTION_LANE, Boolean.TRUE)
+                .attach(WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE, resolved)
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .gapAll(2)
+                        .paddingAll(0)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
+        SlotUiElement header = SlotUiElement.panel(0xA01E2A34)
+                .allowHitTest(false)
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .height(WallSectionHeaderUiBuilder.HEADER_HEIGHT_PX)
+                        .paddingHorizontal(4)
+                        .alignItems(SlotUiLayout.AlignItems.CENTER)
+                        .flexDirection(SlotUiLayout.FlexDirection.ROW));
+        header.addChild(SlotUiElement.label(resolved.label(), 0xFFE6EDF3)
+                .layout(layout -> layout.flex(1).heightPercent(100))
+                .textStyle(style -> style
+                        .fontSize(7)
+                        .color(0xFFE6EDF3)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        header.addChild(SlotUiElement.label(Integer.toString(resolved.items().size()), 0xFF8EA0AE)
+                .layout(layout -> layout.width(16).heightPercent(100))
+                .textStyle(style -> style
+                        .fontSize(6)
+                        .color(0xFF8EA0AE)
+                        .horizontal(SlotUiTextStyle.Horizontal.RIGHT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        section.addChild(header);
+        section.addChild(suggestionGrid(resolved));
+        return section;
+    }
+
     private static int headerTotalCount(
             int totalCards,
             boolean filtering,
@@ -120,6 +160,32 @@ public final class WallSectionUiBuilder {
         if (nearby != null && nearby.showNearbyToggle()) {
             grid.attach(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT, nearby.nearbyToggleCount());
             grid.attach(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_EXPANDED, nearby.nearbyExpanded());
+        }
+        return grid;
+    }
+
+    private static SlotUiElement suggestionGrid(SlotWorkspaceViewModel.ContextualSuggestionLane lane) {
+        SlotUiElement grid = SlotUiElement.element()
+                .attach(WorkspaceUiAttachments.WALL_SUGGESTION_GRID, Boolean.TRUE)
+                .attach(WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE, lane)
+                .attach(WorkspaceUiAttachments.ATLAS_ITEMS, lane.items())
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .gapAll(CARD_GAP_PX)
+                        .paddingAll(0)
+                        .flexDirection(SlotUiLayout.FlexDirection.ROW)
+                        .flexWrap(SlotUiLayout.FlexWrap.WRAP)
+                        .alignItems(SlotUiLayout.AlignItems.FLEX_START)
+                        .alignContent(SlotUiLayout.AlignContent.FLEX_START));
+        if (lane.items().isEmpty() && !lane.placeholderText().isBlank()) {
+            grid.addChild(SlotUiElement.label(lane.placeholderText(), 0xFF8EA0AE)
+                    .allowHitTest(false)
+                    .layout(layout -> layout.widthPercent(100).height(14))
+                    .textStyle(style -> style
+                            .fontSize(7)
+                            .color(0xFF8EA0AE)
+                            .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                            .vertical(SlotUiTextStyle.Vertical.CENTER)));
         }
         return grid;
     }

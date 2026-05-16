@@ -33,6 +33,16 @@ public final class SlotForgeConfigScreens {
         ConfigEntryBuilder entries = builder.entryBuilder();
         ConfigCategory category = builder.getOrCreateCategory(Component.translatable("slot.config.category.interface"));
 
+        category.addEntry(entries.startBooleanToggle(
+                        Component.translatable("slot.config.contextual_suggestion_debug_tooltips"),
+                        SlotForgeClientConfig.CLIENT.contextualSuggestionDebugTooltips.get())
+                .setDefaultValue(false)
+                .setTooltip(Component.translatable("slot.config.contextual_suggestion_debug_tooltips.tooltip"))
+                .setSaveConsumer(next -> {
+                    SlotForgeClientConfig.CLIENT.contextualSuggestionDebugTooltips.set(next);
+                    SlotForgeClientConfig.CLIENT.contextualSuggestionDebugTooltips.save();
+                })
+                .build());
         category.addEntry(intMarginEntry(
                 entries,
                 "slot.config.sidebar_left_margin",

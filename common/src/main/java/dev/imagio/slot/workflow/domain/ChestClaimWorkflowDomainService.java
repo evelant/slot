@@ -3,6 +3,7 @@ package dev.imagio.slot.workflow.domain;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -275,6 +276,18 @@ public final class ChestClaimWorkflowDomainService {
         repository.appendWorkflowEvent(
                 new WorkflowEvent.ChestDepositObserved(storageId, identity, count, tick),
                 resolveMetadata(metadata, "workflow.storage.chest.deposit_observed")
+        );
+        repository.appendContextualSignal(
+                new ContextualSignalEvent(
+                        ContextualSignalKind.ITEM_DEPOSITED_TO_STORAGE,
+                        identity,
+                        count,
+                        tick,
+                        "",
+                        "",
+                        storageId.toString(),
+                        Map.of()),
+                resolveMetadata(metadata, "contextual.storage.deposit_observed")
         );
         mutationObserver.run();
     }

@@ -21,9 +21,11 @@ public final class WorkflowDomainRuntime {
     private final WantedCountWorkflowDomainService wantedCountWorkflow;
     private final GoalPlanWorkflowDomainService goalPlanWorkflow;
     private final GoalRecipeDefaultWorkflowDomainService goalRecipeDefaultWorkflow;
+    private final ContextualSuggestionDomainService contextualSuggestions;
     private final InventoryBrowsePreferencesStore browsePreferences;
     private final InventoryBrowseSessionStateStore browseSessionState;
     private final UndoStack undoStack;
+    private boolean savePending;
 
     public WorkflowDomainRuntime(
             WorkflowDomainStateRepository repository,
@@ -31,16 +33,17 @@ public final class WorkflowDomainRuntime {
     ) {
         this.repository = Objects.requireNonNull(repository, "repository");
         this.persistenceService = persistenceService;
-        this.browsePreferences = new ObservedInventoryBrowsePreferencesStore(repository.browsePreferences(), this::saveNow);
-        this.browseSessionState = new ObservedInventoryBrowseSessionStateStore(repository.browseSessionState(), this::saveNow);
-        this.collectionWorkflow = new CollectionWorkflowDomainService(repository, this::saveNow);
-        this.visualAtlasWorkflow = new VisualAtlasWorkflowDomainService(repository, this::saveNow);
-        this.chestClaimWorkflow = new ChestClaimWorkflowDomainService(repository, this::saveNow);
-        this.kitWorkflow = new KitWorkflowDomainService(repository, this::saveNow);
-        this.desiredCountWorkflow = new DesiredCountWorkflowDomainService(repository, this::saveNow);
-        this.wantedCountWorkflow = new WantedCountWorkflowDomainService(repository, this::saveNow);
-        this.goalPlanWorkflow = new GoalPlanWorkflowDomainService(repository, this::saveNow);
-        this.goalRecipeDefaultWorkflow = new GoalRecipeDefaultWorkflowDomainService(repository, this::saveNow);
+        this.browsePreferences = new ObservedInventoryBrowsePreferencesStore(repository.browsePreferences(), this::requestSave);
+        this.browseSessionState = new ObservedInventoryBrowseSessionStateStore(repository.browseSessionState(), this::requestSave);
+        this.collectionWorkflow = new CollectionWorkflowDomainService(repository, this::requestSave);
+        this.visualAtlasWorkflow = new VisualAtlasWorkflowDomainService(repository, this::requestSave);
+        this.chestClaimWorkflow = new ChestClaimWorkflowDomainService(repository, this::requestSave);
+        this.kitWorkflow = new KitWorkflowDomainService(repository, this::requestSave);
+        this.desiredCountWorkflow = new DesiredCountWorkflowDomainService(repository, this::requestSave);
+        this.wantedCountWorkflow = new WantedCountWorkflowDomainService(repository, this::requestSave);
+        this.goalPlanWorkflow = new GoalPlanWorkflowDomainService(repository, this::requestSave);
+        this.goalRecipeDefaultWorkflow = new GoalRecipeDefaultWorkflowDomainService(repository, this::requestSave);
+        this.contextualSuggestions = new ContextualSuggestionDomainService(repository, this::requestSave);
         this.undoStack = new UndoStack();
     }
 
@@ -78,6 +81,10 @@ public final class WorkflowDomainRuntime {
 
     public GoalPlanWorkflowDomainService goalPlanWorkflow() {
         return goalPlanWorkflow;
+    }
+
+    public ContextualSuggestionDomainService contextualSuggestions() {
+        return contextualSuggestions;
     }
 
     public WorkflowProjection.Snapshot workflowProjection() {
@@ -128,7 +135,7 @@ public final class WorkflowDomainRuntime {
                 protectedState ? new WorkflowEvent.ProtectedIdentityMarked(identity) : new WorkflowEvent.ProtectedIdentityUnmarked(identity),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.protection.identity")
         );
-        saveNow();
+        requestSave();
     }
 
     public void setProtectedTarget(InventoryActionTarget target, boolean protectedState) {
@@ -147,7 +154,7 @@ public final class WorkflowDomainRuntime {
                 protectedState ? new WorkflowEvent.ProtectedTargetMarked(target) : new WorkflowEvent.ProtectedTargetUnmarked(target),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.protection.target")
         );
-        saveNow();
+        requestSave();
     }
 
     public void setProtectPortableContainers(boolean enabled) {
@@ -159,7 +166,7 @@ public final class WorkflowDomainRuntime {
                 new WorkflowEvent.PortableContainerProtectionSet(enabled),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.protection.portable_containers")
         );
-        saveNow();
+        requestSave();
     }
 
     public InventoryBrowsePreferencesStore browsePreferences() {
@@ -192,11 +199,12 @@ public final class WorkflowDomainRuntime {
         if (activityEvent == null || !activityEvent.present()) {
             return false;
         }
-        repository.appendActivityEvent(
+        InventoryActivityRecord record = repository.appendActivityEvent(
                 activityEvent,
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("activity.external")
         );
-        saveNow();
+        contextualSuggestions.observeActivityRecord(record);
+        requestSave();
         return true;
     }
 
@@ -219,14 +227,33 @@ public final class WorkflowDomainRuntime {
                 new WorkflowEvent.RecentDismissedUpTo(identity, sequence),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.recent.dismiss")
         );
-        saveNow();
+        requestSave();
         return true;
     }
 
     public void saveNow() {
         if (persistenceService != null) {
+            savePending = false;
             persistenceService.saveFrom(repository);
         }
+    }
+
+    public void requestSave() {
+        if (persistenceService != null) {
+            savePending = true;
+        }
+    }
+
+    public boolean savePending() {
+        return savePending;
+    }
+
+    public boolean flushPendingSave() {
+        if (!savePending) {
+            return false;
+        }
+        saveNow();
+        return true;
     }
 
     private boolean recordActivityEvents(List<InventoryActivityEvent> activityEvents) {
@@ -243,15 +270,16 @@ public final class WorkflowDomainRuntime {
         boolean recorded = false;
         for (InventoryActivityEvent activityEvent : activityEvents) {
             if (activityEvent != null && activityEvent.present()) {
-                repository.appendActivityEvent(
+                InventoryActivityRecord record = repository.appendActivityEvent(
                         activityEvent,
                         (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("activity.outcome")
                 );
+                contextualSuggestions.observeActivityRecord(record);
                 recorded = true;
             }
         }
         if (recorded) {
-            saveNow();
+            requestSave();
         }
         return recorded;
     }

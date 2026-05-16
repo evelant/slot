@@ -353,6 +353,15 @@ final class WorkspaceFormat {
         if (text.startsWith("Container")) {
             return 0xFF8DB7D6;
         }
+        if (text.startsWith("Contextual score")) {
+            return WorkspaceUiPalette.ACCENT;
+        }
+        if (text.startsWith("  +")) {
+            return 0xFF7AC7A7;
+        }
+        if (text.startsWith("  -")) {
+            return WARNING;
+        }
         return WorkspaceUiPalette.TEXT;
     }
 }

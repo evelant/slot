@@ -10,7 +10,8 @@ public record WorkflowDomainSnapshot(
         ActivityProjection.Snapshot activityProjection,
         InventoryActivityStore.Snapshot activityEvents,
         InventoryBrowsePreferences browsePreferences,
-        InventoryBrowseSessionState browseSessionState
+        InventoryBrowseSessionState browseSessionState,
+        ContextualSuggestionState contextualSuggestions
 ) {
     public WorkflowDomainSnapshot {
         nextGlobalSequence = Math.max(1L, nextGlobalSequence);
@@ -22,6 +23,7 @@ public record WorkflowDomainSnapshot(
         browseSessionState = browseSessionState == null
                 ? InventoryBrowseSessionState.defaults(browsePreferences)
                 : browseSessionState;
+        contextualSuggestions = contextualSuggestions == null ? ContextualSuggestionState.empty() : contextualSuggestions;
     }
 
     public static WorkflowDomainSnapshot empty() {
@@ -33,7 +35,29 @@ public record WorkflowDomainSnapshot(
                 ActivityProjection.Snapshot.empty(),
                 InventoryActivityStore.Snapshot.empty(),
                 defaults,
-                InventoryBrowseSessionState.defaults(defaults)
+                InventoryBrowseSessionState.defaults(defaults),
+                ContextualSuggestionState.empty()
+        );
+    }
+
+    public WorkflowDomainSnapshot(
+            long nextGlobalSequence,
+            WorkflowProjection.Snapshot workflowProjection,
+            WorkflowEventStore.Snapshot workflowEvents,
+            ActivityProjection.Snapshot activityProjection,
+            InventoryActivityStore.Snapshot activityEvents,
+            InventoryBrowsePreferences browsePreferences,
+            InventoryBrowseSessionState browseSessionState
+    ) {
+        this(
+                nextGlobalSequence,
+                workflowProjection,
+                workflowEvents,
+                activityProjection,
+                activityEvents,
+                browsePreferences,
+                browseSessionState,
+                ContextualSuggestionState.empty()
         );
     }
 

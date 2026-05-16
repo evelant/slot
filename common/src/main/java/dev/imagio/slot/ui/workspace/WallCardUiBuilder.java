@@ -20,7 +20,7 @@ public final class WallCardUiBuilder {
     public static final int WAYFINDING_STRIP_WIDTH_PX = 36;
     private static final int FOCUS_OVERLAY = 0x44365743;
     private static final int STOCK_PIP_HEIGHT_PX = 6;
-    private static final float STOCK_PIP_FONT_SIZE = 4.5f;
+    private static final float STOCK_PIP_FONT_SIZE = 5.5f;
 
     private final Context context;
 
@@ -37,8 +37,9 @@ public final class WallCardUiBuilder {
         boolean filtering = !context.normalizedSearchQuery().isBlank();
         boolean activeSearchMatch = filtering && searchMatch;
         SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntry = context.showWayfindingStrip(item)
-                ? wayfindingEntryFor(item, activeSearchMatch)
+                ? wayfindingEntryFor(item, activeSearchMatch, context.forceWayfindingStrip(item))
                 : null;
+        SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane = context.contextualSuggestionLane();
         boolean expanded = wayfindingEntry != null;
         int cardWidth = expanded ? CARD_CELL_PX + WAYFINDING_STRIP_WIDTH_PX : CARD_CELL_PX;
 
@@ -51,6 +52,7 @@ public final class WallCardUiBuilder {
                 .tooltipLines(context.tooltipLines(item))
                 .attach(WorkspaceUiAttachments.WALL_CARD, Boolean.TRUE)
                 .attach(WorkspaceUiAttachments.ATLAS_ITEM, item)
+                .attach(WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE, suggestionLane)
                 .layout(layout -> layout
                         .width(cardWidth)
                         .height(CARD_CELL_PX)
@@ -101,7 +103,7 @@ public final class WallCardUiBuilder {
                         .width(16)
                         .height(16)));
         addCountBadge(body, item);
-        addProximatePip(body, item);
+        addProximatePip(body, item, context.hasProximateDepositRoute(item));
         addSearchStoredPip(body, item, activeSearchMatch, context.storageGhostRevealMode());
         addChoiceIndicator(body, item);
         addDesiredMarker(body, item);
@@ -144,19 +146,25 @@ public final class WallCardUiBuilder {
 
     private static SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntryFor(
             SlotWorkspaceViewModel.AtlasItem item,
-            boolean activeSearchMatch
+            boolean activeSearchMatch,
+            boolean force
     ) {
-        if (item == null || item.elsewhere().isEmpty()) {
+        if (item == null) {
+            return null;
+        }
+        List<SlotWorkspaceViewModel.ChestPresenceEntry> candidates = item.elsewhere();
+        if (candidates.isEmpty()) {
             return null;
         }
         boolean wantsPointer = activeSearchMatch
+                || force
                 || (hasDesiredGap(item) && item.presence().isEmpty());
         if (!wantsPointer) {
             return null;
         }
         SlotWorkspaceViewModel.ChestPresenceEntry best = null;
         int bestCount = -1;
-        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : candidates) {
             if (entry == null) {
                 continue;
             }
@@ -205,12 +213,16 @@ public final class WallCardUiBuilder {
         body.addChild(badge);
     }
 
-    private static void addProximatePip(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
+    private static void addProximatePip(
+            SlotUiElement body,
+            SlotWorkspaceViewModel.AtlasItem item,
+            boolean hasProximateDepositRoute
+    ) {
         int count = presenceCount(item.presence());
-        if (count <= 0) {
+        if (count <= 0 && !hasProximateDepositRoute) {
             return;
         }
-        String text = WorkspaceCountFormat.compact(count);
+        String text = count > 0 ? WorkspaceCountFormat.compact(count) : "+";
         SlotUiElement pip = SlotUiElement.panel(0xE07AC7A7)
                 .allowHitTest(false)
                 .zIndex(321)
@@ -418,7 +430,7 @@ public final class WallCardUiBuilder {
         }
 
         default List<Component> tooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
-            return WorkspaceItemTooltipBuilder.slotLines(item);
+            return WorkspaceItemTooltipBuilder.slotLines(item, hasProximateDepositRoute(item));
         }
 
         default boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
@@ -435,6 +447,18 @@ public final class WallCardUiBuilder {
 
         default boolean showWayfindingStrip(SlotWorkspaceViewModel.AtlasItem item) {
             return true;
+        }
+
+        default boolean forceWayfindingStrip(SlotWorkspaceViewModel.AtlasItem item) {
+            return false;
+        }
+
+        default boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
+            return false;
+        }
+
+        default SlotWorkspaceViewModel.ContextualSuggestionLane contextualSuggestionLane() {
+            return null;
         }
 
         default StorageGhostRevealMode storageGhostRevealMode() {

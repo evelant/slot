@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.classification.DynamicHomeCohortPolicy;
+import dev.imagio.slot.classification.FacetIndexHolder;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
@@ -75,7 +76,8 @@ public record SlotWorkspaceViewModel(
         List<IdentityRef> recentIdentities,
         ActiveChestPanel activeChestPanel,
         GoalRecipeDefaults goalRecipeDefaults,
-        List<GoalPlanState> goalPlans
+        List<GoalPlanState> goalPlans,
+        List<ContextualSuggestionLane> contextualSuggestionLanes
 ) {
     public SlotWorkspaceViewModel {
         status = status == null || status.isBlank() ? "ready" : status;
@@ -102,6 +104,62 @@ public record SlotWorkspaceViewModel(
         activeChestPanel = activeChestPanel == null ? ActiveChestPanel.empty() : activeChestPanel;
         goalRecipeDefaults = goalRecipeDefaults == null ? GoalRecipeDefaults.empty() : goalRecipeDefaults;
         goalPlans = goalPlans == null ? List.of() : List.copyOf(goalPlans);
+        contextualSuggestionLanes = contextualSuggestionLanes == null ? List.of() : List.copyOf(contextualSuggestionLanes);
+    }
+
+    public SlotWorkspaceViewModel(
+            long revision,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            int canvasWidth,
+            int canvasHeight,
+            int carriedFreeSlotCount,
+            int carriedSlotCapacity,
+            List<AtlasIsland> islands,
+            List<AtlasItem> atlasItems,
+            List<AtlasItem> triageItems,
+            List<ChestChip> chestChips,
+            List<ChestClusterDescriptor> chestClusters,
+            List<HotbarSlot> hotbarSlots,
+            OffhandSlot offhand,
+            List<KitCard> kits,
+            LootChestPanel lootChestPanel,
+            List<WayfindingTarget> wayfindingTargets,
+            Set<IdentityRef> depositableIdentities,
+            List<IdentityRef> recentIdentities,
+            ActiveChestPanel activeChestPanel,
+            GoalRecipeDefaults goalRecipeDefaults,
+            List<GoalPlanState> goalPlans
+    ) {
+        this(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                goalRecipeDefaults,
+                goalPlans,
+                List.of()
+        );
     }
 
     public SlotWorkspaceViewModel(
@@ -921,6 +979,16 @@ public record SlotWorkspaceViewModel(
                 proximate,
                 chestContentsResolver,
                 reservedCountResolver);
+        ArrayList<AtlasItem> contextualSuggestionCandidates = new ArrayList<>(atlasItems.size() + triageItems.size());
+        contextualSuggestionCandidates.addAll(atlasItems);
+        contextualSuggestionCandidates.addAll(triageItems);
+        List<ContextualSuggestionLane> contextualSuggestionLanes = ContextualSuggestionScorer.lanes(
+                contextualSuggestionCandidates,
+                resolvedWorkflow,
+                FacetIndexHolder.get(),
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                currentTick);
         List<IdentityRef> recentIdentitiesList = recentIdentityRefs(recents);
         return new SlotWorkspaceViewModel(
                 revision,
@@ -946,7 +1014,8 @@ public record SlotWorkspaceViewModel(
                 recentIdentitiesList,
                 activeChestPanel == null ? ActiveChestPanel.empty() : activeChestPanel,
                 new GoalRecipeDefaults(resolvedWorkflow.goalRecipeDefaults()),
-                resolvedWorkflow.goalPlans()
+                resolvedWorkflow.goalPlans(),
+                contextualSuggestionLanes
         );
     }
 
@@ -1794,7 +1863,8 @@ public record SlotWorkspaceViewModel(
                 recentIdentities,
                 activeChestPanel,
                 goalRecipeDefaults,
-                goalPlans
+                goalPlans,
+                contextualSuggestionLanes
         );
     }
 
@@ -1823,7 +1893,8 @@ public record SlotWorkspaceViewModel(
                 recentIdentities,
                 activeChestPanel,
                 goalRecipeDefaults,
-                goalPlans
+                goalPlans,
+                contextualSuggestionLanes
         );
     }
 
@@ -2118,6 +2189,70 @@ public record SlotWorkspaceViewModel(
 
         public AtlasIsland withCarriedCount(int newCarriedCount) {
             return new AtlasIsland(islandId, label, kind, x, y, color, itemCount, newCarriedCount);
+        }
+    }
+
+    public record ContextualSuggestionLane(
+            String id,
+            String label,
+            List<AtlasItem> items,
+            String placeholderText,
+            List<ContextualSuggestionDebugInfo> debugInfo
+    ) {
+        public static final String USEFUL_NOW = "useful_now";
+        public static final String PUT_AWAY = "put_away";
+
+        public ContextualSuggestionLane(String id, String label, List<AtlasItem> items) {
+            this(id, label, items, "");
+        }
+
+        public ContextualSuggestionLane(String id, String label, List<AtlasItem> items, String placeholderText) {
+            this(id, label, items, placeholderText, List.of());
+        }
+
+        public ContextualSuggestionLane {
+            id = id == null ? "" : id.trim();
+            label = label == null || label.isBlank() ? id : label.trim();
+            items = items == null ? List.of() : List.copyOf(items);
+            placeholderText = placeholderText == null ? "" : placeholderText.trim();
+            debugInfo = debugInfo == null ? List.of() : List.copyOf(debugInfo);
+        }
+
+        public boolean putAway() {
+            return PUT_AWAY.equals(id);
+        }
+
+        public boolean displayable() {
+            return !items.isEmpty() || !placeholderText.isBlank();
+        }
+
+        public ContextualSuggestionDebugInfo debugInfoFor(AtlasItem item) {
+            if (item == null || item.identity() == null || debugInfo.isEmpty()) {
+                return null;
+            }
+            for (ContextualSuggestionDebugInfo info : debugInfo) {
+                if (info != null && item.identity().equals(info.identity())) {
+                    return info;
+                }
+            }
+            return null;
+        }
+    }
+
+    public record ContextualSuggestionDebugInfo(
+            IdentityRef identity,
+            double score,
+            double relevance,
+            List<String> reasons
+    ) {
+        public ContextualSuggestionDebugInfo {
+            identity = identity == null ? new IdentityRef("", ItemComparisonMode.ITEM_ID.name(), "") : identity;
+            score = Double.isFinite(score) ? score : 0D;
+            relevance = Double.isFinite(relevance) ? relevance : 0D;
+            reasons = reasons == null ? List.of() : List.copyOf(reasons.stream()
+                    .filter(reason -> reason != null && !reason.isBlank())
+                    .map(String::trim)
+                    .toList());
         }
     }
 

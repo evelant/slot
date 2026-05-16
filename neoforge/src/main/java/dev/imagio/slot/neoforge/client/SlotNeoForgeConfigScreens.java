@@ -33,6 +33,16 @@ public final class SlotNeoForgeConfigScreens {
         ConfigEntryBuilder entries = builder.entryBuilder();
         ConfigCategory category = builder.getOrCreateCategory(Component.translatable("slot.config.category.interface"));
 
+        category.addEntry(entries.startBooleanToggle(
+                        Component.translatable("slot.config.contextual_suggestion_debug_tooltips"),
+                        SlotClientConfig.CLIENT.contextualSuggestionDebugTooltips.get())
+                .setDefaultValue(false)
+                .setTooltip(Component.translatable("slot.config.contextual_suggestion_debug_tooltips.tooltip"))
+                .setSaveConsumer(next -> {
+                    SlotClientConfig.CLIENT.contextualSuggestionDebugTooltips.set(next);
+                    SlotClientConfig.CLIENT.contextualSuggestionDebugTooltips.save();
+                })
+                .build());
         category.addEntry(intMarginEntry(
                 entries,
                 "slot.config.sidebar_left_margin",

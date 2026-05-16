@@ -23,10 +23,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -64,7 +68,7 @@ public final class ChestDepositObserver {
         if (registered) {
             return;
         }
-        NeoForge.EVENT_BUS.addListener(ChestDepositObserver::onRightClickBlock);
+        NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, true, ChestDepositObserver::onRightClickBlock);
         NeoForge.EVENT_BUS.addListener(ChestDepositObserver::onContainerOpen);
         NeoForge.EVENT_BUS.addListener(ChestDepositObserver::onContainerClose);
         registered = true;
@@ -125,11 +129,11 @@ public final class ChestDepositObserver {
         }
         AbstractContainerMenu menu = event.getContainer();
         PendingInteraction pending = PENDING.remove(player.getUUID());
-        if (pending == null) {
-            return;
-        }
         long now = player.serverLevel().getGameTime();
-        if (now - pending.tick > PENDING_TICK_BUDGET) {
+        BlockPos pos = pending != null && now - pending.tick <= PENDING_TICK_BUDGET
+                ? pending.pos
+                : claimableMenuPos(player, menu);
+        if (pos == null) {
             return;
         }
         List<Integer> storageSlots = ChestDepositObservationSupport.storageMenuSlots(menu, player.getInventory());
@@ -137,7 +141,7 @@ public final class ChestDepositObserver {
             return;
         }
         ItemStack[] snapshot = ChestDepositObservationSupport.snapshot(menu, storageSlots);
-        SESSIONS.put(menu, new OpenSession(pending.pos, snapshot, storageSlots));
+        SESSIONS.put(menu, new OpenSession(pos, snapshot, storageSlots));
     }
 
     private static void onContainerClose(PlayerContainerEvent.Close event) {
@@ -377,6 +381,50 @@ public final class ChestDepositObserver {
         if (paired != null) {
             ChestStorageIds.write(level, paired, storageId);
         }
+    }
+
+    private static BlockPos claimableMenuPos(ServerPlayer player, AbstractContainerMenu menu) {
+        if (player == null || menu == null) {
+            return null;
+        }
+        BlockEntity blockEntity = menuBlockEntity(menu);
+        if (blockEntity == null) {
+            return null;
+        }
+        BlockPos pos = blockEntity.getBlockPos();
+        if (!ChestStorageAnchors.isClaimable(player.serverLevel(), pos)) {
+            return null;
+        }
+        return pos.immutable();
+    }
+
+    private static BlockEntity menuBlockEntity(AbstractContainerMenu menu) {
+        Method method = findNoArgMethod(menu.getClass(), "getBlockEntity");
+        if (method == null) {
+            return null;
+        }
+        try {
+            method.setAccessible(true);
+            Object result = method.invoke(menu);
+            return result instanceof BlockEntity blockEntity ? blockEntity : null;
+        } catch (IllegalAccessException | InvocationTargetException | RuntimeException | LinkageError ignored) {
+            return null;
+        }
+    }
+
+    private static Method findNoArgMethod(Class<?> type, String name) {
+        Class<?> cursor = type;
+        while (cursor != null && cursor != Object.class) {
+            try {
+                Method method = cursor.getDeclaredMethod(name);
+                if (method.getParameterCount() == 0) {
+                    return method;
+                }
+            } catch (NoSuchMethodException ignored) {
+            }
+            cursor = cursor.getSuperclass();
+        }
+        return null;
     }
 
     private record PendingInteraction(BlockPos pos, long tick) {

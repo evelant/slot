@@ -9,9 +9,15 @@ public interface WorkflowDomainStateRepository {
 
     InventoryActivityStore activityEvents();
 
+    ContextualSuggestionState contextualSuggestionState();
+
     WorkflowEventRecord appendWorkflowEvent(WorkflowEvent event, DomainEventMetadata metadata);
 
     InventoryActivityRecord appendActivityEvent(InventoryActivityEvent event, DomainEventMetadata metadata);
+
+    ContextualSignalRecord appendContextualSignal(ContextualSignalEvent event, DomainEventMetadata metadata);
+
+    void replaceContextualSuggestionState(ContextualSuggestionState state);
 
     InventoryBrowsePreferencesStore browsePreferences();
 

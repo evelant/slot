@@ -3,8 +3,9 @@ package dev.imagio.slot.inventory.core;
 import dev.imagio.slot.platform.SlotStackAccess;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class ItemIdentityMatcher {
     private static final Set<String> STABLE_IDENTITY_TOKENS = Set.of(
@@ -19,6 +20,7 @@ public final class ItemIdentityMatcher {
             "totem", "trident", "wand", "water_skin", "waterskin", "weapon", "wrench", "zweihander"
     );
     private static final Set<String> STABLE_IDENTITY_SUFFIX_EXCLUSIONS = Set.of("case", "shulker");
+    private static final Map<String, Boolean> STABLE_IDENTITY_CACHE = new ConcurrentHashMap<>();
 
     private ItemIdentityMatcher() {
     }
@@ -33,6 +35,13 @@ public final class ItemIdentityMatcher {
             return ItemIdentity.exact(itemId, components);
         }
         return ItemIdentity.of(itemId);
+    }
+
+    public static ItemIdentity itemOnly(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            throw new IllegalArgumentException("stack must not be empty");
+        }
+        return ItemIdentity.of(resolveItemId(stack));
     }
 
     private static String resolveItemId(ItemStack stack) {
@@ -72,24 +81,65 @@ public final class ItemIdentityMatcher {
         if (itemId == null || itemId.isBlank()) {
             return false;
         }
+        return STABLE_IDENTITY_CACHE.computeIfAbsent(itemId, ItemIdentityMatcher::computeStableMovableIdentity);
+    }
+
+    private static boolean computeStableMovableIdentity(String itemId) {
         int separatorIndex = itemId.indexOf(':');
         String path = separatorIndex >= 0 ? itemId.substring(separatorIndex + 1) : itemId;
-        String normalizedPath = "_" + path.toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]+", "_") + "_";
+        String normalizedPath = boundaryTokenPath(path);
         for (String token : STABLE_IDENTITY_TOKENS) {
             if (normalizedPath.contains("_" + token + "_")) {
                 return true;
             }
         }
-        String compactPath = path.toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]+", "");
+        String compactPath = compactToken(path);
         for (String token : STABLE_IDENTITY_TOKENS) {
             if (STABLE_IDENTITY_SUFFIX_EXCLUSIONS.contains(token)) {
                 continue;
             }
-            String compactToken = token.replaceAll("[^a-z0-9]+", "");
+            String compactToken = compactToken(token);
             if (!compactToken.isBlank() && compactPath.endsWith(compactToken)) {
                 return true;
             }
         }
         return false;
+    }
+
+    private static String boundaryTokenPath(String path) {
+        String resolved = path == null ? "" : path;
+        StringBuilder builder = new StringBuilder(resolved.length() + 2);
+        builder.append('_');
+        boolean previousSeparator = true;
+        for (int index = 0; index < resolved.length(); index++) {
+            char character = Character.toLowerCase(resolved.charAt(index));
+            if (isAsciiAlphanumeric(character)) {
+                builder.append(character);
+                previousSeparator = false;
+            } else if (!previousSeparator) {
+                builder.append('_');
+                previousSeparator = true;
+            }
+        }
+        if (!previousSeparator) {
+            builder.append('_');
+        }
+        return builder.toString();
+    }
+
+    private static String compactToken(String input) {
+        String resolved = input == null ? "" : input;
+        StringBuilder builder = new StringBuilder(resolved.length());
+        for (int index = 0; index < resolved.length(); index++) {
+            char character = Character.toLowerCase(resolved.charAt(index));
+            if (isAsciiAlphanumeric(character)) {
+                builder.append(character);
+            }
+        }
+        return builder.toString();
+    }
+
+    private static boolean isAsciiAlphanumeric(char character) {
+        return (character >= 'a' && character <= 'z') || (character >= '0' && character <= '9');
     }
 }

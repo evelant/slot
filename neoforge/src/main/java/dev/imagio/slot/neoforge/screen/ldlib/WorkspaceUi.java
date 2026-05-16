@@ -111,7 +111,7 @@ final class WorkspaceUi {
 
     static Label label(String text, int color) {
         Label label = new Label();
-        label.setText(Component.literal(text == null ? "" : text));
+        label.setText(textComponent(text));
         label.textStyle(style -> style
                 .font(FONT_UI)
                 .textColor(color)
@@ -121,6 +121,11 @@ final class WorkspaceUi {
                 .textAlignHorizontal(Horizontal.LEFT));
         label.setAllowHitTest(false);
         return label;
+    }
+
+    static Component textComponent(String text) {
+        return Component.literal(text == null ? "" : text)
+                .withStyle(style -> style.withFont(FONT_UI));
     }
 
     static Label wrappedLabel(String text, int color) {

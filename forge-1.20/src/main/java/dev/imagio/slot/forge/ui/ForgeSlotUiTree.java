@@ -464,8 +464,8 @@ public final class ForgeSlotUiTree {
         if (text == null || text.isBlank()) {
             return;
         }
-        Component component = uiText(text);
         SlotUiTextStyle style = node.model.textStyle();
+        Component component = uiText(text);
         float scale = textScale(style);
         int textWidth = Math.round(font.width(component) * scale);
         int textHeight = Math.round(font.lineHeight * scale);
@@ -739,6 +739,15 @@ public final class ForgeSlotUiTree {
         if (text.startsWith("Carried count")) {
             return WorkspaceUiPalette.TEXT;
         }
+        if (text.startsWith("Contextual score")) {
+            return WorkspaceUiPalette.ACCENT;
+        }
+        if (text.startsWith("  +")) {
+            return 0xFF7AC7A7;
+        }
+        if (text.startsWith("  -")) {
+            return 0xFFFFD166;
+        }
         return 0;
     }
 
@@ -786,7 +795,9 @@ public final class ForgeSlotUiTree {
     private FloatSize measureText(SlotUiElement model) {
         String text = model.text() == null ? "" : model.text();
         float scale = textScale(model.textStyle());
-        return FloatSize.of(Math.max(1f, font.width(uiText(text)) * scale), Math.max(1f, font.lineHeight * scale));
+        return FloatSize.of(
+                Math.max(1f, font.width(uiText(text)) * scale),
+                Math.max(1f, font.lineHeight * scale));
     }
 
     private static Component uiText(String text) {

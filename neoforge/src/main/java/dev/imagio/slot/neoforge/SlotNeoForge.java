@@ -21,6 +21,7 @@ import dev.imagio.slot.neoforge.storage.ChestDepositObserver;
 import dev.imagio.slot.neoforge.storage.ChestStorageBreakListener;
 import dev.imagio.slot.neoforge.storage.NeoForgeCarriedActivityTracker;
 import dev.imagio.slot.neoforge.storage.NeoForgeCarriedSourceAccess;
+import dev.imagio.slot.neoforge.storage.NeoForgeWorldItemUseObserver;
 import dev.imagio.slot.neoforge.storage.NeoForgeWorldStorageAccess;
 import dev.imagio.slot.neoforge.storage.SlotAttachmentTypes;
 import dev.imagio.slot.neoforge.storage.SlotPickupRouter;
@@ -55,6 +56,7 @@ public final class SlotNeoForge {
         ChestStorageBreakListener.init();
         ChestDepositObserver.init();
         NeoForgeCarriedActivityTracker.init();
+        NeoForgeWorldItemUseObserver.init();
         SlotPickupRouter.init();
 
         if (dist == Dist.CLIENT) {

@@ -65,6 +65,7 @@ public final class Forge120WorkspaceViewModelCodec {
             triageItems.add(encodeItem(item));
         }
         tag.put("triageItems", triageItems);
+        tag.put("contextualSuggestionLanes", encodeSuggestionLanes(resolved.contextualSuggestionLanes()));
 
         ListTag chestChips = new ListTag();
         for (SlotWorkspaceViewModel.ChestChip chip : resolved.chestChips()) {
@@ -141,6 +142,8 @@ public final class Forge120WorkspaceViewModelCodec {
         for (int index = 0; index < triageTags.size(); index++) {
             triageItems.add(decodeItem(triageTags.getCompound(index)));
         }
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> contextualSuggestionLanes =
+                decodeSuggestionLanes(compound);
 
         ArrayList<SlotWorkspaceViewModel.ChestChip> chestChips = new ArrayList<>();
         ListTag chipTags = compound.getList("chestChips", Tag.TAG_COMPOUND);
@@ -238,8 +241,115 @@ public final class Forge120WorkspaceViewModelCodec {
                 recents,
                 activeChestPanel,
                 goalRecipeDefaults,
-                goalPlans
+                goalPlans,
+                contextualSuggestionLanes
         );
+    }
+
+    private static ListTag encodeSuggestionLanes(List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes) {
+        ListTag tags = new ListTag();
+        if (lanes == null || lanes.isEmpty()) {
+            return tags;
+        }
+        for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : lanes) {
+            if (lane == null || !lane.displayable()) {
+                continue;
+            }
+            CompoundTag tag = new CompoundTag();
+            tag.putString("id", lane.id());
+            tag.putString("label", lane.label());
+            if (!lane.placeholderText().isBlank()) {
+                tag.putString("placeholderText", lane.placeholderText());
+            }
+            ListTag itemTags = new ListTag();
+            for (SlotWorkspaceViewModel.AtlasItem item : lane.items()) {
+                itemTags.add(encodeItem(item));
+            }
+            tag.put("items", itemTags);
+            tag.put("debugInfo", encodeSuggestionDebugInfo(lane.debugInfo()));
+            tags.add(tag);
+        }
+        return tags;
+    }
+
+    private static ListTag encodeSuggestionDebugInfo(
+            List<SlotWorkspaceViewModel.ContextualSuggestionDebugInfo> debugInfo
+    ) {
+        ListTag tags = new ListTag();
+        if (debugInfo == null || debugInfo.isEmpty()) {
+            return tags;
+        }
+        for (SlotWorkspaceViewModel.ContextualSuggestionDebugInfo info : debugInfo) {
+            if (info == null) {
+                continue;
+            }
+            CompoundTag tag = new CompoundTag();
+            tag.put("identity", encodeIdentity(info.identity()));
+            tag.putDouble("score", info.score());
+            tag.putDouble("relevance", info.relevance());
+            ListTag reasons = new ListTag();
+            for (String reason : info.reasons()) {
+                if (reason == null || reason.isBlank()) {
+                    continue;
+                }
+                CompoundTag reasonTag = new CompoundTag();
+                reasonTag.putString("text", reason);
+                reasons.add(reasonTag);
+            }
+            tag.put("reasons", reasons);
+            tags.add(tag);
+        }
+        return tags;
+    }
+
+    private static List<SlotWorkspaceViewModel.ContextualSuggestionLane> decodeSuggestionLanes(CompoundTag compound) {
+        ArrayList<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = new ArrayList<>();
+        if (compound == null) {
+            return lanes;
+        }
+        ListTag laneTags = compound.getList("contextualSuggestionLanes", Tag.TAG_COMPOUND);
+        for (int laneIndex = 0; laneIndex < laneTags.size(); laneIndex++) {
+            CompoundTag laneTag = laneTags.getCompound(laneIndex);
+            ArrayList<SlotWorkspaceViewModel.AtlasItem> items = new ArrayList<>();
+            ListTag itemTags = laneTag.getList("items", Tag.TAG_COMPOUND);
+            for (int itemIndex = 0; itemIndex < itemTags.size(); itemIndex++) {
+                items.add(decodeItem(itemTags.getCompound(itemIndex)));
+            }
+            lanes.add(new SlotWorkspaceViewModel.ContextualSuggestionLane(
+                    laneTag.getString("id"),
+                    laneTag.getString("label"),
+                    items,
+                    laneTag.getString("placeholderText"),
+                    decodeSuggestionDebugInfo(laneTag)));
+        }
+        return lanes;
+    }
+
+    private static List<SlotWorkspaceViewModel.ContextualSuggestionDebugInfo> decodeSuggestionDebugInfo(
+            CompoundTag laneTag
+    ) {
+        ArrayList<SlotWorkspaceViewModel.ContextualSuggestionDebugInfo> result = new ArrayList<>();
+        if (laneTag == null) {
+            return result;
+        }
+        ListTag tags = laneTag.getList("debugInfo", Tag.TAG_COMPOUND);
+        for (int index = 0; index < tags.size(); index++) {
+            CompoundTag tag = tags.getCompound(index);
+            ArrayList<String> reasons = new ArrayList<>();
+            ListTag reasonTags = tag.getList("reasons", Tag.TAG_COMPOUND);
+            for (int reasonIndex = 0; reasonIndex < reasonTags.size(); reasonIndex++) {
+                String reason = reasonTags.getCompound(reasonIndex).getString("text");
+                if (!reason.isBlank()) {
+                    reasons.add(reason);
+                }
+            }
+            result.add(new SlotWorkspaceViewModel.ContextualSuggestionDebugInfo(
+                    decodeIdentity(tag.getCompound("identity")),
+                    tag.getDouble("score"),
+                    tag.getDouble("relevance"),
+                    reasons));
+        }
+        return result;
     }
 
     private static ListTag encodeGoalRecipeDefaults(Map<String, String> defaults) {
