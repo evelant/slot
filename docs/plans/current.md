@@ -57,17 +57,27 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-16** — Contextual suggestion signal tuning continued: passive
+  authority-diff acquisitions and internal moves no longer train Useful Now,
+  block placement no longer double-counts as right-click tool use, placed or
+  consumed identities get a short spent penalty instead of exact
+  self-promotion, placed/consumed signatures no longer replay old association
+  hints, broad station-open/item-use/acquisition/production signatures no
+  longer train or replay learned associations, generic carried-only
+  SLOT/backpack/inventory hosts no longer become station context, recent
+  signals decay by world tick, qualifying nearby storage ghosts get reserved
+  Useful Now slots, and `/slot debug contextual` dumps event history, source
+  counts, association hints, and the last closed workspace/sidebar lane score
+  breakdowns for playtest debugging.
 - **2026-05-15** — Contextual suggestion lanes landed as a first playable
-  prototype: common contextual signals and bounded aggregates persist through
-  workflow schema 8, existing activity/deposit paths feed item history,
-  both loaders emit carried-set and station-open context, `SlotWorkspaceViewModel`
-  now projects Useful Now and Put Away lanes, both Forge and NeoForge render
-  those lanes above the wall with normal card gestures, empty Useful Now shows
-  a waiting placeholder, persisted goals no longer auto-select a goal tab on
-  hydration, Put Away cards show the existing non-proximate tracked-chest
-  wayfinding strip when available, and proximate deposit routes can show the
-  blue storage pip even when the matching chest currently holds zero of that
-  item. Slice 3 remains diagnostics and threshold tuning in
+  prototype, then pivoted away from carried-state relevance: common contextual
+  signals, bounded item/context aggregates, and a learned event-association
+  index persist through workflow schema 9; strong item/station/use/deposit
+  events feed Useful Now and Put Away, while carried state is only card
+  eligibility/action state. Useful Now can include carried items plus
+  suggestion-only nearby storage ghosts, Put Away remains carried-only, both
+  loaders render the lanes above the wall with normal card gestures, and debug
+  tooltips show history/exact/advisory score terms for tuning in
   [`contextual-suggestions.md`](contextual-suggestions.md).
 - **2026-05-14** — Quiet nearby ghosts landed for playtesting: default
   wall sections show carried cards first and collapse ordinary proximate
@@ -77,8 +87,8 @@ hold the rest.
   storage menus beyond vanilla chests for TFC vessels, kept search
   keystrokes inside sidebar search without using Esc as search-clear,
   matched localized hover names in search, disabled affinity decay behind
-  the existing kill switch, and added live TFC display storage ghosts for
-  nearby tool racks and placed items, with deposit limited to tool racks.
+  the existing kill switch, and added TFC/TFG display storage tracking for
+  tool racks and placed items, with deposit limited to tool racks.
 - **2026-05-12** — Forge + NeoForge sidebar polish landed: Kits moved
   from the bottom strip into a right-side vertical rack opened from the
   `All` row, the Belt now mirrors vanilla with offhand-left layout,

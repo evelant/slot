@@ -33,6 +33,7 @@ public final class ForgeWorkspaceSessionEvents {
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             ForgeWorkspaceSessionRegistry.close(player);
+            ForgeWorkspaceSessionRegistry.forgetLastViewModel(player);
         }
     }
 

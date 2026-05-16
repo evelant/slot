@@ -29,9 +29,12 @@ import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
 import dev.imagio.slot.inventory.workspace.ClassificationRehomeScanner;
+import dev.imagio.slot.inventory.workspace.ContextualSuggestionDebugDump;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.classification.NeoForgeRuntimeClassificationExport;
+import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarUiHandles;
 import dev.imagio.slot.neoforge.storage.ChestStorageIds;
 import dev.imagio.slot.neoforge.storage.NeoForgeCarriedActivityTracker;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
@@ -161,7 +164,11 @@ public final class SlotTestCommands {
                                 .then(Commands.argument("pack_id", StringArgumentType.word())
                                         .executes(context -> runClassificationExport(
                                                 context,
-                                                StringArgumentType.getString(context, "pack_id"))))));
+                                                StringArgumentType.getString(context, "pack_id"))))))
+                .then(Commands.literal("debug")
+                        .requires(SlotTestCommands::canUseSlotCommand)
+                        .then(Commands.literal("contextual")
+                                .executes(SlotTestCommands::runContextualDebug)));
         dispatcher.register(root);
     }
 
@@ -315,6 +322,30 @@ public final class SlotTestCommands {
             context.getSource().sendSuccess(() -> Component.literal(line), false);
         }
         return status.totalEntries();
+    }
+
+    private static int runContextualDebug(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        ServerPlayer player = context.getSource().getPlayerOrException();
+        WorkflowDomainRuntime runtime = SlotPlayerWorkflowRuntimeService.runtime(player);
+        SlotWorkspaceViewModel viewModel = SlotSidebarUiHandles.currentViewModel(player);
+        List<String> lines = ContextualSuggestionDebugDump.format(
+                runtime == null ? null : runtime.snapshot(),
+                viewModel);
+        for (String line : lines) {
+            SlotCommon.LOGGER.info(line);
+        }
+        int chatLimit = Math.min(8, lines.size());
+        for (int i = 0; i < chatLimit; i++) {
+            String line = lines.get(i);
+            context.getSource().sendSuccess(() -> Component.literal(line), false);
+        }
+        int finalChatLimit = chatLimit;
+        context.getSource().sendSuccess(() -> Component.literal(
+                "[SLOT][contextual] dumped " + lines.size()
+                        + " lines to the server log"
+                        + (viewModel == null ? " (no active NeoForge sidebar view model)" : "")
+                        + (lines.size() > finalChatLimit ? "; chat showed first " + finalChatLimit : "")), false);
+        return lines.size();
     }
 
     private static int runClassificationInspect(

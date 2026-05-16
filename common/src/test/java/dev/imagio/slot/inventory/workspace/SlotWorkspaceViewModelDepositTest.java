@@ -47,6 +47,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class SlotWorkspaceViewModelDepositTest {
     private static final UUID CHEST_A = UUID.fromString("00000000-0000-0000-0000-000000000101");
     private static final ItemIdentity REDSTONE = ItemIdentity.of("minecraft:redstone");
+    private static final ItemIdentity STEEL_SAW = ItemIdentity.of("tfc:metal/saw/steel");
 
     @Test
     void depositableIdentitiesIncludeExistingProximateContentsWithoutAffinity() {
@@ -140,6 +141,118 @@ class SlotWorkspaceViewModelDepositTest {
         assertEquals(1, item.proximateCount());
         assertEquals(source.storageId(), item.presence().get(0).storageId());
         assertEquals("Tool rack @ 1,64,0", item.presence().get(0).label());
+    }
+
+    @Test
+    void proximateWorldDisplayToolRackNormalizesMovableToolIdentity() {
+        ItemIdentity exactSaw = ItemIdentity.exact("tfc:metal/saw/steel", "damage=7");
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.TOOL_RACK,
+                "Tool rack @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                4,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        new ItemStack("tfc:metal/saw/steel", "damage=7", 1, 1))));
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                workflow(homeMap(STEEL_SAW), ClaimedChestMap.empty(), ChestAffinityMap.empty()),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                storageId -> SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                List.of(source));
+
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItems().stream()
+                .filter(candidate -> STEEL_SAW.equals(candidate.identity().toIdentity()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(item.ghost());
+        assertEquals(1, item.proximateCount());
+        assertEquals(source.storageId(), item.presence().get(0).storageId());
+        assertTrue(viewModel.atlasItems().stream()
+                .noneMatch(candidate -> exactSaw.equals(candidate.identity().toIdentity())));
+    }
+
+    @Test
+    void trackedWorldDisplayStorageProjectsLikeChestPresence() {
+        SlotWorkspaceViewModel.setGhostStackResolver(id -> new ItemStack(id, 1, 64));
+        try {
+            WorldStorageAccess.Target.Display target = new WorldStorageAccess.Target.Display(
+                    WorldDisplayStorageKind.PLACED_ITEM,
+                    "minecraft:overworld",
+                    3,
+                    64,
+                    0);
+            RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
+                    StorageTargetRef.display(target, "Placed item @ 3,64,0", false, true, false),
+                    1,
+                    Map.of(REDSTONE, 1),
+                    10L,
+                    "test");
+            WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                    null,
+                    null,
+                    ClaimedChestMap.empty(),
+                    null,
+                    Set.of(),
+                    List.of(),
+                    Map.of(target.storageId(), remembered));
+
+            SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                    InventoryAuthoritySnapshot.empty(),
+                    workflow(homeMap(REDSTONE), ClaimedChestMap.empty(), ChestAffinityMap.empty()),
+                    "ready",
+                    "",
+                    0,
+                    0,
+                    1L,
+                    null,
+                    null,
+                    index.contentsResolver(),
+                    Set.of(),
+                    null,
+                    null,
+                    "",
+                    0L,
+                    SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                    index.displaySources(),
+                    Set.of(),
+                    index.displaySources(),
+                    index.trackedDisplayEntries());
+
+            SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItems().stream()
+                    .filter(candidate -> REDSTONE.equals(candidate.identity().toIdentity()))
+                    .findFirst()
+                    .orElseThrow();
+            SlotWorkspaceViewModel.ChestChip chip = viewModel.chestChip(target.storageId());
+
+            assertTrue(item.ghost());
+            assertEquals(0, item.proximateCount());
+            assertEquals(target.storageId(), item.elsewhere().get(0).storageId());
+            assertEquals("Placed item @ 3,64,0 — overworld", item.elsewhere().get(0).label());
+            assertEquals(target.storageId(), chip.storageId());
+            assertFalse(chip.proximate());
+            assertEquals(1, chip.contents().get(0).count());
+            assertEquals("minecraft:redstone", chip.contents().get(0).itemId());
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
     }
 
     @Test

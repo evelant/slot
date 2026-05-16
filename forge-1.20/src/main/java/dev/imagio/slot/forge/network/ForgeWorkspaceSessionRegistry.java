@@ -2,6 +2,7 @@ package dev.imagio.slot.forge.network;
 
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
 import dev.imagio.slot.ui.action.WorkspaceActionValidation;
@@ -16,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class ForgeWorkspaceSessionRegistry {
     private static final Map<UUID, ForgeWorkspaceSession> SESSIONS = new ConcurrentHashMap<>();
+    private static final Map<UUID, SlotWorkspaceViewModel> LAST_VIEW_MODELS = new ConcurrentHashMap<>();
 
     private ForgeWorkspaceSessionRegistry() {
     }
@@ -37,6 +39,7 @@ public final class ForgeWorkspaceSessionRegistry {
         }
         ForgeWorkspaceSession previous = SESSIONS.remove(player.getUUID());
         if (previous != null) {
+            rememberLastViewModel(player.getUUID(), previous);
             previous.detachMenuListener();
         }
         ForgeWorkspaceSession session = new ForgeWorkspaceSession(
@@ -71,6 +74,7 @@ public final class ForgeWorkspaceSessionRegistry {
         AbstractContainerMenu menu = player.containerMenu;
         if (menu == null || menu.containerId != context.menuContainerId()) {
             SESSIONS.remove(player.getUUID(), session);
+            rememberLastViewModel(player.getUUID(), session);
             session.detachMenuListener();
             SlotCommon.LOGGER.info(
                     "Closed stale Forge workspace session after menu drift: player={} session={} expectedMenu={} actualMenu={}",
@@ -83,10 +87,19 @@ public final class ForgeWorkspaceSessionRegistry {
         return session;
     }
 
+    public static SlotWorkspaceViewModel currentViewModel(ServerPlayer player) {
+        ForgeWorkspaceSession session = session(player);
+        if (session != null) {
+            return session.currentViewModel();
+        }
+        return player == null ? null : LAST_VIEW_MODELS.get(player.getUUID());
+    }
+
     public static void close(ServerPlayer player) {
         if (player != null) {
             ForgeWorkspaceSession session = SESSIONS.remove(player.getUUID());
             if (session != null) {
+                rememberLastViewModel(player.getUUID(), session);
                 session.detachMenuListener();
             }
         }
@@ -113,6 +126,7 @@ public final class ForgeWorkspaceSessionRegistry {
                 if (removed != null) {
                     removed.detachMenuListener();
                 }
+                LAST_VIEW_MODELS.remove(entry.getKey());
                 continue;
             }
             ForgeWorkspaceSession session = session(player);
@@ -125,9 +139,24 @@ public final class ForgeWorkspaceSessionRegistry {
     }
 
     public static void clear() {
-        for (ForgeWorkspaceSession session : SESSIONS.values()) {
-            session.detachMenuListener();
+        for (Entry<UUID, ForgeWorkspaceSession> entry : SESSIONS.entrySet()) {
+            rememberLastViewModel(entry.getKey(), entry.getValue());
+            entry.getValue().detachMenuListener();
         }
         SESSIONS.clear();
+        LAST_VIEW_MODELS.clear();
+    }
+
+    public static void forgetLastViewModel(ServerPlayer player) {
+        if (player != null) {
+            LAST_VIEW_MODELS.remove(player.getUUID());
+        }
+    }
+
+    private static void rememberLastViewModel(UUID playerId, ForgeWorkspaceSession session) {
+        if (playerId == null || session == null || session.currentViewModel() == null) {
+            return;
+        }
+        LAST_VIEW_MODELS.put(playerId, session.currentViewModel());
     }
 }

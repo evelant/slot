@@ -190,7 +190,7 @@ public final class WorkspaceStorageMemoryStore {
             return WorldDisplayStorageSource.targetFromStorageId(storageId)
                     .map(target -> {
                         if (!worldStorage.isAccessible(server, target)) {
-                            return false;
+                            return store.forget(storageId);
                         }
                         StorageTargetRef ref = StorageTargetRef.display(
                                 target,

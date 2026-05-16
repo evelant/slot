@@ -3,6 +3,7 @@ package dev.imagio.slot.neoforge.screen.ldlib;
 import com.lowdragmc.lowdraglib2.gui.holder.IModularUIHolderMenu;
 import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
 import dev.imagio.slot.SlotDebugLog;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
@@ -49,6 +50,10 @@ public final class SlotSidebarUiHandle {
 
     public ServerPlayer player() {
         return player;
+    }
+
+    public SlotWorkspaceViewModel currentViewModel() {
+        return session.currentViewModel();
     }
 
     private void attachToHostMenu() {

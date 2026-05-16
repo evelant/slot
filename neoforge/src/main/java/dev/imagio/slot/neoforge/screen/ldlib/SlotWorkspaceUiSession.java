@@ -146,6 +146,10 @@ final class SlotWorkspaceUiSession {
         return viewModel;
     }
 
+    public SlotWorkspaceViewModel currentViewModel() {
+        return viewModel;
+    }
+
     Tag viewTag() {
         if (player instanceof ServerPlayer serverPlayer) {
             if (shouldRefreshServerView(serverPlayer)) {
@@ -1003,8 +1007,7 @@ final class SlotWorkspaceUiSession {
                 kitId
         ));
         // Auto-fetch toward kit-scoped desired counts. Runs after the kit
-        // is recorded as active so the carried snapshot reads the
-        // post-apply state. Each identity gets pulled from proximate
+        // is recorded as active so each identity gets pulled from proximate
         // chests up to (desired - currently_carried). Best-effort: if no
         // chest has the item or carry is full the gap stays.
         autoFetchKitDesiredCounts(serverPlayer, kitId);
@@ -1910,10 +1913,6 @@ final class SlotWorkspaceUiSession {
         int selected = serverPlayer.getInventory().selected;
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
         long gameTime = serverPlayer.serverLevel().getGameTime();
-        runtime.contextualSuggestions().observeCarriedSnapshot(
-                authority,
-                gameTime,
-                DomainEventMetadata.origin("contextual.neoforge.carried_snapshot"));
         runtime.contextualSuggestions().observeStationContext(
                 host,
                 authority,
@@ -1925,6 +1924,10 @@ final class SlotWorkspaceUiSession {
                 ? StorageAccessRegistry.worldStorageAccess()
                 : null;
         Set<String> proximateIds = WorkspaceChestProjectionSupport.proximateStorageIds(serverPlayer, claimedChestMap);
+        Set<String> contextualSuggestionStorageIds = WorkspaceChestProjectionSupport.proximateStorageIds(
+                serverPlayer,
+                claimedChestMap,
+                WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
         List<WorldDisplayStorageSource> displaySources =
                 WorkspaceChestProjectionSupport.proximateDisplaySources(serverPlayer, worldStorage);
         WorkspaceStorageIndex storageIndex = WorkspaceStorageIndex.build(
@@ -1963,7 +1966,11 @@ final class SlotWorkspaceUiSession {
                 searchQuery,
                 gameTime,
                 activeChestPanel,
-                displaySources
+                displaySources,
+                contextualSuggestionStorageIds,
+                displaySources,
+                storageIndex.trackedDisplayEntries(),
+                storageIndex.liveDepositStorageIds()
         );
         // Pickup-time auto-home: at most one carried-but-unassigned
         // identity per refresh gets routed via its top chip suggestion
@@ -1994,7 +2001,11 @@ final class SlotWorkspaceUiSession {
                     searchQuery,
                     gameTime,
                     activeChestPanel,
-                    displaySources
+                    displaySources,
+                    contextualSuggestionStorageIds,
+                    displaySources,
+                    storageIndex.trackedDisplayEntries(),
+                    storageIndex.liveDepositStorageIds()
             );
         }
         hotbarRecency.observe(projected);

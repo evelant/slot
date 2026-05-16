@@ -1,7 +1,6 @@
 package dev.imagio.slot.workflow.domain;
 
 public enum ContextualSignalKind {
-    CARRIED_SET_CHANGED,
     STATION_OPENED,
     STATION_CONTENTS_CHANGED,
     GOAL_CONTEXT_OBSERVED,

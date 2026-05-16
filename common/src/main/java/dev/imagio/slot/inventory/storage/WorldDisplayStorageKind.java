@@ -4,19 +4,21 @@ import java.util.Locale;
 
 /**
  * Small set of non-container world displays that SLOT can browse as storage.
- * Live discovery is proximate; remembered display data is only meaningful
- * when a higher-level tracked-storage surface explicitly joins that target.
+ * Live discovery is proximate; tracked kinds also feed the remembered storage
+ * read model so SLOT can display them like chest contents.
  */
 public enum WorldDisplayStorageKind {
-    TOOL_RACK("tool_rack", true),
-    PLACED_ITEM("placed_item", false);
+    TOOL_RACK("tool_rack", true, true),
+    PLACED_ITEM("placed_item", false, true);
 
     private final String key;
     private final boolean depositTarget;
+    private final boolean trackedStorage;
 
-    WorldDisplayStorageKind(String key, boolean depositTarget) {
+    WorldDisplayStorageKind(String key, boolean depositTarget, boolean trackedStorage) {
         this.key = key;
         this.depositTarget = depositTarget;
+        this.trackedStorage = trackedStorage;
     }
 
     public String key() {
@@ -30,6 +32,15 @@ public enum WorldDisplayStorageKind {
      */
     public boolean depositTarget() {
         return depositTarget;
+    }
+
+    /**
+     * True when the display block participates in SLOT's tracked storage
+     * read model. Mutation capability stays separate: placed-item blocks can
+     * be tracked for display while remaining non-deposit targets.
+     */
+    public boolean trackedStorage() {
+        return trackedStorage;
     }
 
     public static WorldDisplayStorageKind fromKey(String key) {

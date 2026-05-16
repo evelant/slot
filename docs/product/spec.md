@@ -205,11 +205,12 @@ so the mode is discoverable without requiring key memory. X-ray does not grant
 remote mutation authority: non-proximate tracked ghosts are for quick
 inspection and wayfinding only.
 
-Supported placed item displays are live proximate storage ghosts, not claimed
-storage. TFC tool racks and TFC placed-item blocks may surface their contents
-when nearby. Tool racks may be chosen by deposit routing; placed-item blocks are
-browse/take/rollback only. Ordinary dropped `ItemEntity` stacks are never
-tracked.
+Supported placed item displays participate in SLOT's tracked storage display
+model. TFC / TFG tool racks and TFC placed-item blocks surface contents with
+the same carried / nearby / elsewhere display semantics as chest storage.
+Mutation capability stays per target: tool racks may be chosen by deposit
+routing, while placed-item blocks are browse/take/rollback only. Ordinary
+dropped `ItemEntity` stacks are never tracked.
 
 ## Search, Sorting, Categories, Kits, And Counts
 

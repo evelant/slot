@@ -1,24 +1,34 @@
 package dev.imagio.slot.forge.compat.tfc;
 
+import dev.imagio.slot.SlotDebugLog;
+import dev.imagio.slot.compat.tfc.TfcDisplayStorageIds;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 /**
  * TerraFirmaCraft item displays. TFC tool racks and placed-item blocks own
@@ -27,6 +37,14 @@ import java.util.Optional;
  * the storage pipeline generic.
  */
 public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.Delegate {
+    private static final long DIAGNOSTIC_LOG_INTERVAL_NANOS = 5_000_000_000L;
+    private static final Map<String, Long> LAST_DIAGNOSTIC_LOG_NANOS = new ConcurrentHashMap<>();
+
+    @SuppressWarnings("removal")
+    private static final TagKey<Block> TFC_TOOL_RACKS = TagKey.create(
+            Registries.BLOCK,
+            new ResourceLocation("tfc", "tool_racks"));
+
     @Override
     public boolean matches(WorldStorageAccess.Target target) {
         return target instanceof WorldStorageAccess.Target.Display display && supports(display.kind());
@@ -93,6 +111,10 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         BlockPos center = player.blockPosition();
         long radiusSquared = (long) radius * radius;
         ArrayList<WorldDisplayStorageSource> sources = new ArrayList<>();
+        int candidateBlocks = 0;
+        int recognizedBlocks = 0;
+        int blocksWithEntity = 0;
+        int blocksWithInventory = 0;
         for (BlockPos cursor : BlockPos.betweenClosed(
                 center.offset(-radius, -radius, -radius),
                 center.offset(radius, radius, radius))) {
@@ -103,18 +125,57 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
                 continue;
             }
             BlockState state = level.getBlockState(cursor);
-            WorldDisplayStorageKind kind = kindFor(state);
+            BlockClassification classification = classify(state);
+            if (classification.diagnosticCandidate()) {
+                candidateBlocks++;
+            }
+            WorldDisplayStorageKind kind = classification.kind();
             if (kind == null) {
+                if (classification.diagnosticCandidate()) {
+                    logCandidate(
+                            dimension,
+                            cursor,
+                            classification,
+                            "unrecognized_candidate",
+                            "block entity not inspected");
+                }
                 continue;
             }
+            recognizedBlocks++;
             BlockEntity blockEntity = level.getBlockEntity(cursor);
-            Object handler = inventory(blockEntity).orElse(null);
+            if (blockEntity != null) {
+                blocksWithEntity++;
+            }
+            InventoryLookup lookup = inventoryLookup(blockEntity);
+            Object handler = lookup.handler();
             if (handler == null) {
+                logCandidate(
+                        dimension,
+                        cursor,
+                        classification,
+                        "inventory_unavailable",
+                        "blockEntity={} diagnostic={}",
+                        blockEntityClass(blockEntity),
+                        lookup.diagnostic());
                 continue;
             }
-            int slots = slotCount(handler);
-            List<WorldStorageAccess.SlotContent> contents = enumerateHandler(handler);
+            blocksWithInventory++;
+            HandlerContents inspection = inspectHandler(handler);
+            int slots = inspection.slots();
+            List<WorldStorageAccess.SlotContent> contents = inspection.contents();
             if (slots <= 0 || (contents.isEmpty() && !kind.depositTarget())) {
+                logCandidate(
+                        dimension,
+                        cursor,
+                        classification,
+                        "contents_skipped",
+                        "blockEntity={} handler={} route={} slots={} contents={} diagnostic={}",
+                        blockEntityClass(blockEntity),
+                        handler.getClass().getName(),
+                        lookup.route(),
+                        slots,
+                        contentsSummary(contents),
+                        inspection.diagnostic());
                 continue;
             }
             sources.add(new WorldDisplayStorageSource(
@@ -127,7 +188,28 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
                     cursor.getZ(),
                     slots,
                     contents));
+            logCandidate(
+                    dimension,
+                    cursor,
+                    classification,
+                    "source_added",
+                    "blockEntity={} handler={} route={} slots={} contents={}",
+                    blockEntityClass(blockEntity),
+                    handler.getClass().getName(),
+                    lookup.route(),
+                    slots,
+                    contentsSummary(contents));
         }
+        logScanSummary(
+                player,
+                dimension,
+                center,
+                radius,
+                candidateBlocks,
+                recognizedBlocks,
+                blocksWithEntity,
+                blocksWithInventory,
+                sources.size());
         sources.sort(Comparator
                 .comparingLong((WorldDisplayStorageSource source) -> distanceSquared(source, center))
                 .thenComparing(WorldDisplayStorageSource::storageId));
@@ -165,19 +247,85 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
     }
 
     private static Optional<Object> inventory(BlockEntity blockEntity) {
+        Object handler = inventoryLookup(blockEntity).handler();
+        return handler == null ? Optional.empty() : Optional.of(handler);
+    }
+
+    private static InventoryLookup inventoryLookup(BlockEntity blockEntity) {
         if (blockEntity == null) {
-            return Optional.empty();
+            return new InventoryLookup(null, "", "no_block_entity");
         }
+        StringBuilder diagnostic = new StringBuilder();
+        Object handler = invokeInventoryMethod(blockEntity, "getInventory", diagnostic);
+        if (handler != null) {
+            return new InventoryLookup(handler, "getInventory", "");
+        }
+        handler = invokeSidedInventory(blockEntity, diagnostic);
+        if (handler != null) {
+            return new InventoryLookup(handler, "getSidedInventory(null)", "");
+        }
+        handler = readInventoryField(blockEntity, diagnostic);
+        if (handler != null) {
+            return new InventoryLookup(handler, "field:inventory", "");
+        }
+        String reason = diagnostic.isEmpty() ? "no_inventory_route" : diagnostic.toString();
+        return new InventoryLookup(null, "", reason);
+    }
+
+    private static Object invokeInventoryMethod(BlockEntity blockEntity, String methodName, StringBuilder diagnostic) {
         try {
-            Method method = findMethod(blockEntity.getClass(), "getInventory");
+            Method method = findMethod(blockEntity.getClass(), methodName);
             if (method == null) {
-                return Optional.empty();
+                appendDiagnostic(diagnostic, methodName + ":missing");
+                return null;
             }
             method.setAccessible(true);
-            Object handler = method.invoke(blockEntity);
-            return handler == null ? Optional.empty() : Optional.of(handler);
-        } catch (IllegalAccessException | InvocationTargetException | RuntimeException | LinkageError ignored) {
-            return Optional.empty();
+            Object result = method.invoke(blockEntity);
+            if (result == null) {
+                appendDiagnostic(diagnostic, methodName + ":null");
+            }
+            return result;
+        } catch (IllegalAccessException | InvocationTargetException | RuntimeException | LinkageError exception) {
+            appendDiagnostic(diagnostic, methodName + ":" + diagnosticName(exception));
+            return null;
+        }
+    }
+
+    private static Object invokeSidedInventory(BlockEntity blockEntity, StringBuilder diagnostic) {
+        try {
+            Method method = findMethod(blockEntity.getClass(), "getSidedInventory", Direction.class);
+            if (method == null) {
+                appendDiagnostic(diagnostic, "getSidedInventory:missing");
+                return null;
+            }
+            method.setAccessible(true);
+            Object result = method.invoke(blockEntity, (Object) null);
+            if (result == null) {
+                appendDiagnostic(diagnostic, "getSidedInventory:null");
+            }
+            return result;
+        } catch (IllegalAccessException | InvocationTargetException | RuntimeException | LinkageError exception) {
+            appendDiagnostic(diagnostic, "getSidedInventory:" + diagnosticName(exception));
+            return null;
+        }
+    }
+
+    private static Object readInventoryField(BlockEntity blockEntity, StringBuilder diagnostic) {
+        try {
+            Field field = findField(blockEntity.getClass(), "inventory");
+            if (field == null) {
+                appendDiagnostic(diagnostic, "field:inventory:missing");
+                return null;
+            }
+            field.setAccessible(true);
+            Object result = field.get(blockEntity);
+            if (result == null) {
+                appendDiagnostic(diagnostic, "field:inventory:null");
+            }
+            return result;
+        } catch (IllegalAccessException | RuntimeException | LinkageError exception) {
+            appendDiagnostic(diagnostic, "field:inventory:" + diagnosticName(exception));
+            return null;
         }
     }
 
@@ -199,26 +347,39 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
     }
 
     private static List<WorldStorageAccess.SlotContent> enumerateHandler(Object handler) {
+        return inspectHandler(handler).contents();
+    }
+
+    private static HandlerContents inspectHandler(Object handler) {
         int slots = slotCount(handler);
         if (slots <= 0) {
-            return List.of();
+            return new HandlerContents(slots, List.of(), slotCountDiagnostic(handler));
         }
         Method method = findMethod(handler.getClass(), "getStackInSlot", int.class);
         if (method == null) {
-            return List.of();
+            return new HandlerContents(slots, List.of(), "getStackInSlot:missing");
         }
         method.setAccessible(true);
         ArrayList<WorldStorageAccess.SlotContent> contents = new ArrayList<>(slots);
+        int failedSlots = 0;
+        String firstFailure = "";
         for (int slot = 0; slot < slots; slot++) {
             try {
                 Object result = method.invoke(handler, slot);
                 if (result instanceof ItemStack stack && !stack.isEmpty()) {
                     contents.add(new WorldStorageAccess.SlotContent(slot, stack.copy()));
                 }
-            } catch (IllegalAccessException | InvocationTargetException | RuntimeException | LinkageError ignored) {
+            } catch (IllegalAccessException | InvocationTargetException | RuntimeException | LinkageError exception) {
+                failedSlots++;
+                if (firstFailure.isBlank()) {
+                    firstFailure = diagnosticName(exception);
+                }
             }
         }
-        return contents.isEmpty() ? List.of() : List.copyOf(contents);
+        String diagnostic = failedSlots == 0
+                ? ""
+                : "getStackInSlot:failed_slots=" + failedSlots + ":first=" + firstFailure;
+        return new HandlerContents(slots, contents.isEmpty() ? List.of() : List.copyOf(contents), diagnostic);
     }
 
     private static ItemStack insertIntoHandler(Object handler, ItemStack stack, boolean simulate) {
@@ -276,22 +437,48 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         }
     }
 
-    private static WorldDisplayStorageKind kindFor(BlockState state) {
-        if (state == null) {
+    private static Field findField(Class<?> type, String name) {
+        Class<?> cursor = type;
+        while (cursor != null) {
+            try {
+                return cursor.getDeclaredField(name);
+            } catch (NoSuchFieldException ignored) {
+                cursor = cursor.getSuperclass();
+            }
+        }
+        try {
+            return type.getField(name);
+        } catch (NoSuchFieldException ignored) {
             return null;
+        }
+    }
+
+    private static WorldDisplayStorageKind kindFor(BlockState state) {
+        return classify(state).kind();
+    }
+
+    private static BlockClassification classify(BlockState state) {
+        if (state == null) {
+            return BlockClassification.empty();
         }
         ResourceLocation id = BuiltInRegistries.BLOCK.getKey(state.getBlock());
-        if (id == null || !"tfc".equals(id.getNamespace())) {
-            return null;
+        WorldDisplayStorageKind idKind = id == null
+                ? null
+                : TfcDisplayStorageIds.kindForBlockId(id.getNamespace(), id.getPath());
+        boolean toolRackTag = state.is(TFC_TOOL_RACKS);
+        WorldDisplayStorageKind kind = toolRackTag ? WorldDisplayStorageKind.TOOL_RACK : idKind;
+        boolean diagnosticCandidate = toolRackTag || idKind != null || suspiciousDisplayId(id);
+        return new BlockClassification(id, toolRackTag, idKind, kind, diagnosticCandidate);
+    }
+
+    private static boolean suspiciousDisplayId(ResourceLocation id) {
+        if (id == null) {
+            return false;
         }
         String path = id.getPath();
-        if ("placed_item".equals(path)) {
-            return WorldDisplayStorageKind.PLACED_ITEM;
-        }
-        if (path.startsWith("wood/tool_rack/")) {
-            return WorldDisplayStorageKind.TOOL_RACK;
-        }
-        return null;
+        return "placed_item".equals(path)
+                || path.contains("tool_rack")
+                || path.contains("toolrack");
     }
 
     private static boolean supports(WorldDisplayStorageKind kind) {
@@ -308,5 +495,155 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         long dy = (long) source.y() - center.getY();
         long dz = (long) source.z() - center.getZ();
         return dx * dx + dy * dy + dz * dz;
+    }
+
+    private static void logScanSummary(
+            ServerPlayer player,
+            String dimension,
+            BlockPos center,
+            int radius,
+            int candidateBlocks,
+            int recognizedBlocks,
+            int blocksWithEntity,
+            int blocksWithInventory,
+            int sources
+    ) {
+        logEvery(
+                "scan:" + player.getUUID() + ":" + dimension + ":" + radius,
+                "[tfc-display] scan player={} dim={} center={},{},{} radius={} candidates={} recognized={} withEntity={} withInventory={} sources={}",
+                player.getScoreboardName(),
+                dimension,
+                center.getX(),
+                center.getY(),
+                center.getZ(),
+                radius,
+                candidateBlocks,
+                recognizedBlocks,
+                blocksWithEntity,
+                blocksWithInventory,
+                sources);
+    }
+
+    private static void logCandidate(
+            String dimension,
+            BlockPos pos,
+            BlockClassification classification,
+            String outcome,
+            String detail,
+            Object... args
+    ) {
+        String formattedDetail = format(detail, args);
+        logEvery(
+                "candidate:" + dimension + ":" + pos.asLong() + ":" + outcome,
+                "[tfc-display] candidate outcome={} dim={} pos={},{},{} block={} tagToolRack={} idKind={} kind={} {}",
+                outcome,
+                dimension,
+                pos.getX(),
+                pos.getY(),
+                pos.getZ(),
+                blockIdText(classification.id()),
+                classification.toolRackTag(),
+                classification.idKind(),
+                classification.kind(),
+                formattedDetail);
+    }
+
+    private static void logEvery(String key, String message, Object... args) {
+        if (!SlotDebugLog.enabled()) {
+            return;
+        }
+        long now = System.nanoTime();
+        Long previous = LAST_DIAGNOSTIC_LOG_NANOS.get(key);
+        if (previous != null && now - previous < DIAGNOSTIC_LOG_INTERVAL_NANOS) {
+            return;
+        }
+        LAST_DIAGNOSTIC_LOG_NANOS.put(key, now);
+        SlotDebugLog.log(message, args);
+    }
+
+    private static String format(String pattern, Object... args) {
+        if (args == null || args.length == 0) {
+            return pattern;
+        }
+        String value = pattern;
+        for (Object arg : args) {
+            value = value.replaceFirst("\\{}", java.util.regex.Matcher.quoteReplacement(String.valueOf(arg)));
+        }
+        return value;
+    }
+
+    private static String blockIdText(ResourceLocation id) {
+        return id == null ? "<unknown>" : id.toString();
+    }
+
+    private static String blockEntityClass(BlockEntity blockEntity) {
+        return blockEntity == null ? "<none>" : blockEntity.getClass().getName();
+    }
+
+    private static String contentsSummary(List<WorldStorageAccess.SlotContent> contents) {
+        if (contents == null || contents.isEmpty()) {
+            return "<empty>";
+        }
+        String summary = contents.stream()
+                .limit(4)
+                .map(content -> content.slotIndex() + ":"
+                        + itemId(content.stack()) + "x" + content.stack().getCount())
+                .collect(Collectors.joining(","));
+        return contents.size() <= 4 ? summary : summary + ",...";
+    }
+
+    private static String itemId(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            return "empty";
+        }
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+        return id == null ? stack.getDescriptionId() : id.toString();
+    }
+
+    private static String slotCountDiagnostic(Object handler) {
+        if (handler == null) {
+            return "handler:null";
+        }
+        Method method = findMethod(handler.getClass(), "getSlots");
+        if (method == null) {
+            return "getSlots:missing";
+        }
+        return "getSlots:returned_zero";
+    }
+
+    private static void appendDiagnostic(StringBuilder diagnostic, String value) {
+        if (!diagnostic.isEmpty()) {
+            diagnostic.append("; ");
+        }
+        diagnostic.append(value);
+    }
+
+    private static String diagnosticName(Throwable exception) {
+        Throwable value = exception instanceof InvocationTargetException invocation && invocation.getCause() != null
+                ? invocation.getCause()
+                : exception;
+        return value.getClass().getSimpleName();
+    }
+
+    private record BlockClassification(
+            ResourceLocation id,
+            boolean toolRackTag,
+            WorldDisplayStorageKind idKind,
+            WorldDisplayStorageKind kind,
+            boolean diagnosticCandidate
+    ) {
+        static BlockClassification empty() {
+            return new BlockClassification(null, false, null, null, false);
+        }
+    }
+
+    private record InventoryLookup(Object handler, String route, String diagnostic) {
+    }
+
+    private record HandlerContents(
+            int slots,
+            List<WorldStorageAccess.SlotContent> contents,
+            String diagnostic
+    ) {
     }
 }

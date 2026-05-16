@@ -23,6 +23,7 @@ import dev.imagio.slot.debug.RealisticAtlasGenerator;
 import dev.imagio.slot.debug.RealisticAtlasPlan;
 import dev.imagio.slot.forge.SlotForge;
 import dev.imagio.slot.forge.classification.Forge120RuntimeClassificationExport;
+import dev.imagio.slot.forge.network.ForgeWorkspaceSessionRegistry;
 import dev.imagio.slot.forge.storage.ForgeCarriedActivityTracker;
 import dev.imagio.slot.forge.storage.ForgeChestStorageAnchors;
 import dev.imagio.slot.forge.storage.ForgeChestStorageIds;
@@ -34,7 +35,9 @@ import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.workspace.ClassificationRehomeScanner;
+import dev.imagio.slot.inventory.workspace.ContextualSuggestionDebugDump;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
@@ -131,7 +134,11 @@ public final class ForgeSlotTestCommands {
                                 .then(Commands.argument("pack_id", StringArgumentType.word())
                                         .executes(context -> runClassificationExport(
                                                 context,
-                                                StringArgumentType.getString(context, "pack_id"))))));
+                                                StringArgumentType.getString(context, "pack_id"))))))
+                .then(Commands.literal("debug")
+                        .requires(ForgeSlotTestCommands::canUseSlotCommand)
+                        .then(Commands.literal("contextual")
+                                .executes(ForgeSlotTestCommands::runContextualDebug)));
         dispatcher.register(root);
     }
 
@@ -366,6 +373,30 @@ public final class ForgeSlotTestCommands {
             context.getSource().sendSuccess(() -> Component.literal(line), false);
         }
         return status.totalEntries();
+    }
+
+    private static int runContextualDebug(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        ServerPlayer player = context.getSource().getPlayerOrException();
+        WorkflowDomainRuntime runtime = ForgePlayerWorkflowRuntimeService.runtime(player);
+        SlotWorkspaceViewModel viewModel = ForgeWorkspaceSessionRegistry.currentViewModel(player);
+        List<String> lines = ContextualSuggestionDebugDump.format(
+                runtime == null ? null : runtime.snapshot(),
+                viewModel);
+        for (String line : lines) {
+            SlotCommon.LOGGER.info(line);
+        }
+        int chatLimit = Math.min(8, lines.size());
+        for (int i = 0; i < chatLimit; i++) {
+            String line = lines.get(i);
+            context.getSource().sendSuccess(() -> Component.literal(line), false);
+        }
+        int finalChatLimit = chatLimit;
+        context.getSource().sendSuccess(() -> Component.literal(
+                "[SLOT][contextual] dumped " + lines.size()
+                        + " lines to the server log"
+                        + (viewModel == null ? " (no active Forge workspace view model)" : "")
+                        + (lines.size() > finalChatLimit ? "; chat showed first " + finalChatLimit : "")), false);
+        return lines.size();
     }
 
     private static int runClassificationInspect(

@@ -7,8 +7,10 @@ import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
 import dev.imagio.slot.inventory.goal.GoalPlanState;
 import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
 import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
-import dev.imagio.slot.workflow.domain.ContextualContextAggregate;
 import dev.imagio.slot.workflow.domain.ContextualItemAggregate;
+import dev.imagio.slot.workflow.domain.ContextualAssociationHint;
+import dev.imagio.slot.workflow.domain.ContextualAssociationSet;
+import dev.imagio.slot.workflow.domain.ContextualEventSignature;
 import dev.imagio.slot.workflow.domain.ContextualSignalEvent;
 import dev.imagio.slot.workflow.domain.ContextualSignalKind;
 import dev.imagio.slot.workflow.domain.ContextualSignalRecord;
@@ -26,10 +28,12 @@ import java.util.Set;
 
 public final class ContextualSuggestionScorer {
     private static final int LANE_LIMIT = 6;
+    private static final int USEFUL_STORAGE_GHOST_RESERVED_SLOTS = 2;
     private static final double USEFUL_THRESHOLD = 0.9D;
     private static final double PUT_AWAY_THRESHOLD = 1.0D;
     private static final double DESIRED_EXCESS_PUT_AWAY_SCORE = 8.0D;
-    private static final double PASSIVE_CARRIED_RELEVANCE_CAP = 0.35D;
+    private static final double FACET_ADVISORY_WEIGHT = 0.55D;
+    private static final double FACET_ADVISORY_RELEVANCE_CAP = 1.1D;
     private static final String USEFUL_NOW_WAITING_TEXT = "Waiting for player actions to suggest items...";
     private static final Set<String> LOW_INFORMATION_TEXT_TOKENS = Set.of(
             "and",
@@ -83,20 +87,20 @@ public final class ContextualSuggestionScorer {
         double pressure = carriedSlotCapacity <= 0
                 ? 0D
                 : Math.max(0D, Math.min(1D, (carriedSlotCapacity - carriedFreeSlotCount) / (double) carriedSlotCapacity));
-        ScoringContext scoringContext = ScoringContext.create(state, index);
+        ScoringContext scoringContext = ScoringContext.create(state, index, currentGameTick);
 
         List<ScoredItem> useful = new ArrayList<>();
         List<ScoredItem> putAway = new ArrayList<>();
-        ContextualContextAggregate activeContext = state.contextAggregates().get(state.activeContextKey());
         for (SlotWorkspaceViewModel.AtlasItem item : atlasItems) {
             if (item == null || item.identity() == null) {
                 continue;
             }
             ItemIdentity identity = item.identity().toIdentity();
             Map<String, Double> vector = scoringContext.facetVector(item.identity().itemId());
-            RelevanceBreakdown relevance = relevance(item, vector, scoringContext, identity, activeContext, false);
+            RelevanceBreakdown relevance = scoringContext.contextBreakdown(vector, identity);
             double depositPenalty = scoringContext.depositPenalty(identity);
-            UsefulScoreInputs usefulInputs = usefulInputs(item, relevance.total(), depositPenalty);
+            double spentPenalty = scoringContext.spentPenalty(identity);
+            UsefulScoreInputs usefulInputs = usefulInputs(item, relevance.total(), depositPenalty, spentPenalty);
             double usefulScore = usefulInputs.score();
             if (usefulScore >= USEFUL_THRESHOLD) {
                 useful.add(new ScoredItem(
@@ -105,7 +109,7 @@ public final class ContextualSuggestionScorer {
                         relevance,
                         usefulReasons(item, usefulInputs, relevance)));
             }
-            RelevanceBreakdown cleanupRelevance = relevance(item, vector, scoringContext, identity, activeContext, true);
+            RelevanceBreakdown cleanupRelevance = scoringContext.contextBreakdown(vector, identity);
             PutAwayScoreInputs putAwayInputs = putAwayInputs(
                     item, vector, cleanupRelevance, state, index, pressure, goalIdentities, currentGameTick);
             double putAwayScore = putAwayInputs.score();
@@ -119,7 +123,7 @@ public final class ContextualSuggestionScorer {
         }
 
         ArrayList<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = new ArrayList<>(2);
-        List<ScoredItem> usefulSorted = sorted(useful);
+        List<ScoredItem> usefulSorted = selectUseful(sortedAll(useful));
         List<SlotWorkspaceViewModel.AtlasItem> usefulItems = items(usefulSorted);
         lanes.add(new SlotWorkspaceViewModel.ContextualSuggestionLane(
                 SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW,
@@ -143,24 +147,26 @@ public final class ContextualSuggestionScorer {
     private static UsefulScoreInputs usefulInputs(
             SlotWorkspaceViewModel.AtlasItem item,
             double relevance,
-            double depositPenalty
+            double depositPenalty,
+            double spentPenalty
     ) {
         double resolvedDepositPenalty = Math.max(0D, depositPenalty);
-        double carriedBoost = item.carried() && item.desiredCount() <= 0 && relevance > 0.15D ? 0.45D : 0D;
+        double resolvedSpentPenalty = Math.max(0D, spentPenalty);
         double targetBoost = item.wantedCount() > 0 || item.kitNeeded() ? 1.35D : 0D;
         double desiredPenalty = item.carried() && item.desiredCount() > 0 && !item.desiredCountFromKit() ? 0.35D : 0D;
-        double missingSourcePenalty =
-                !item.carried() && item.presence().isEmpty() && item.elsewhere().isEmpty() && !item.kitNeeded()
-                        ? 0.8D
-                        : 0D;
+        boolean sourceAvailable = item.carried()
+                || item.proximateCount() > 0
+                || !item.presence().isEmpty()
+                || item.kitNeeded();
         return new UsefulScoreInputs(
                 item.isCarriedContainer(),
+                !sourceAvailable,
                 relevance,
                 resolvedDepositPenalty,
-                carriedBoost,
+                resolvedSpentPenalty,
                 targetBoost,
                 desiredPenalty,
-                missingSourcePenalty);
+                !sourceAvailable ? 1.25D : 0D);
     }
 
     private static PutAwayScoreInputs putAwayInputs(
@@ -171,7 +177,7 @@ public final class ContextualSuggestionScorer {
             FacetIndex index,
             double pressure,
             Set<ItemIdentity> goalIdentities,
-        long currentGameTick
+            long currentGameTick
     ) {
         if (!item.carried()) {
             return PutAwayScoreInputs.ineligible();
@@ -200,25 +206,14 @@ public final class ContextualSuggestionScorer {
 
         ContextualItemAggregate aggregate = identity == null ? null : state.itemAggregates().get(identity);
         double depositHistoryBoost = 0D;
-        double shortCarryBoost = 0D;
-        double longCarryPenalty = 0D;
         if (aggregate != null) {
             depositHistoryBoost = Math.min(1.2D, aggregate.timesDepositedToStorage() * 0.25D);
-            if (aggregate.recentCarriedTicksEwma() > 0D && aggregate.recentCarriedTicksEwma() < 1200D) {
-                shortCarryBoost = 0.4D;
-            }
-            if (aggregate.recentCarriedTicksEwma() > 6000D) {
-                longCarryPenalty = 0.8D;
-            }
         }
         return PutAwayScoreInputs.normal(
                 cleanupPrior(index, item.identity().itemId()),
                 pressureBoost,
                 storageRouteBoost,
                 depositHistoryBoost,
-                shortCarryBoost,
-                longCarryPenalty,
-                activeCarriedDurationBoost(state, identity, currentGameTick),
                 relevance.total() * 0.55D,
                 toolLike(vector, index, item.identity().itemId()) ? 1.1D : 0D,
                 item.isCarriedContainer() ? 0.7D : 0D);
@@ -242,9 +237,9 @@ public final class ContextualSuggestionScorer {
         reasons.add(contextLine(relevance));
         addMatchLines(reasons, relevance);
         reasons.add("score terms: relevance " + format(inputs.relevance())
-                + ", carried +" + format(inputs.carriedBoost())
                 + ", target +" + format(inputs.targetBoost())
                 + ", deposit -" + format(inputs.depositPenalty())
+                + ", spent -" + format(inputs.spentPenalty())
                 + ", desired -" + format(inputs.desiredPenalty())
                 + ", missing-source -" + format(inputs.missingSourcePenalty()));
         if (inputs.carriedContainerExcluded()) {
@@ -253,8 +248,8 @@ public final class ContextualSuggestionScorer {
         if (inputs.depositPenalty() > 0D) {
             reasons.add("- recently deposited " + format(inputs.depositPenalty()));
         }
-        if (inputs.carriedBoost() > 0D) {
-            reasons.add("+ carried and context-relevant");
+        if (inputs.spentPenalty() > 0D) {
+            reasons.add("- recently placed/consumed " + format(inputs.spentPenalty()));
         }
         if (item.wantedCount() > 0) {
             reasons.add("+ wanted target active");
@@ -299,9 +294,6 @@ public final class ContextualSuggestionScorer {
                 + ", pressure +" + format(inputs.pressureBoost())
                 + ", storage-route +" + format(inputs.storageRouteBoost())
                 + ", deposits +" + format(inputs.depositHistoryBoost())
-                + ", short-carry +" + format(inputs.shortCarryBoost())
-                + ", active-carry +" + format(inputs.activeCarryBoost())
-                + ", long-carry -" + format(inputs.longCarryPenalty())
                 + ", context -" + format(inputs.contextPenalty())
                 + ", tool -" + format(inputs.toolPenalty())
                 + ", container -" + format(inputs.containerPenalty()));
@@ -313,15 +305,6 @@ public final class ContextualSuggestionScorer {
         }
         if (aggregate != null && aggregate.timesDepositedToStorage() > 0) {
             reasons.add("+ deposited before x" + aggregate.timesDepositedToStorage());
-        }
-        if (inputs.shortCarryBoost() > 0D) {
-            reasons.add("+ historically short carry");
-        }
-        if (inputs.activeCarryBoost() > 0D) {
-            reasons.add("+ carried duration " + format(inputs.activeCarryBoost()));
-        }
-        if (inputs.longCarryPenalty() > 0D) {
-            reasons.add("- historically long carry");
         }
         if (inputs.contextPenalty() > 0D) {
             reasons.add("- current-context relevance " + format(relevance.total()));
@@ -354,25 +337,27 @@ public final class ContextualSuggestionScorer {
     }
 
     private static String contextLine(RelevanceBreakdown relevance) {
-        double unclampedBase = relevance.activeRaw() + relevance.passiveApplied();
+        double unclampedBase = relevance.historyRaw() + relevance.exactRaw()
+                + relevance.advisoryApplied() + relevance.exactContextHint();
         String capped = unclampedBase > 4D
                 ? " (base capped from " + format(unclampedBase) + ")"
                 : "";
         return "context relevance " + format(relevance.total())
-                + " = active " + format(relevance.activeRaw())
-                + " + passive " + format(relevance.passiveApplied())
-                + " (raw " + format(relevance.passiveRaw())
-                + ", cap " + format(PASSIVE_CARRIED_RELEVANCE_CAP)
+                + " = history " + format(relevance.historyRaw())
+                + " + exact " + format(relevance.exactRaw())
+                + " + advisory " + format(relevance.advisoryApplied())
+                + " (raw " + format(relevance.advisoryRaw())
+                + ", cap " + format(FACET_ADVISORY_RELEVANCE_CAP)
                 + ") + exact-context " + format(relevance.exactContextHint())
                 + capped;
     }
 
     private static void addMatchLines(ArrayList<String> reasons, RelevanceBreakdown relevance) {
-        if (!relevance.activeMatches().isEmpty()) {
-            reasons.add("active matches: " + contributionList(relevance.activeMatches()));
+        if (!relevance.historyMatches().isEmpty()) {
+            reasons.add("history matches: " + contributionList(relevance.historyMatches()));
         }
-        if (!relevance.passiveMatches().isEmpty()) {
-            reasons.add("passive matches: " + contributionList(relevance.passiveMatches()));
+        if (!relevance.advisoryMatches().isEmpty()) {
+            reasons.add("advisory matches: " + contributionList(relevance.advisoryMatches()));
         }
     }
 
@@ -380,13 +365,14 @@ public final class ContextualSuggestionScorer {
         if (aggregate == null) {
             return "history: no aggregate";
         }
-        return "history: observed=" + aggregate.timesObservedCarried()
-                + ", acquired=" + aggregate.timesAcquired()
+        return "history: acquired=" + aggregate.timesAcquired()
                 + ", taken=" + aggregate.timesTakenFromStorage()
                 + ", deposited=" + aggregate.timesDepositedToStorage()
                 + ", crafted=" + aggregate.timesCraftedOrProduced()
-                + ", carriedTicks=" + aggregate.totalCarriedTicks()
-                + ", carriedEwma=" + format(aggregate.recentCarriedTicksEwma());
+                + ", used=" + aggregate.timesUsed()
+                + ", placed=" + aggregate.timesPlaced()
+                + ", consumed=" + aggregate.timesConsumed()
+                + ", damaged=" + aggregate.timesDamaged();
     }
 
     private static String contributionList(List<TokenContribution> contributions) {
@@ -407,25 +393,6 @@ public final class ContextualSuggestionScorer {
             }
         }
         return count;
-    }
-
-    private static double activeCarriedDurationBoost(
-            ContextualSuggestionState state,
-            ItemIdentity identity,
-            long currentGameTick
-    ) {
-        if (state == null || identity == null || currentGameTick <= 0L) {
-            return 0D;
-        }
-        var observation = state.activeCarried().get(identity);
-        if (observation == null || observation.firstSeenTick() <= 0L) {
-            return 0D;
-        }
-        long elapsed = Math.max(0L, currentGameTick - observation.firstSeenTick());
-        if (elapsed < 1200L) {
-            return 0D;
-        }
-        return Math.min(0.85D, (elapsed - 1200L) / 4800D * 0.85D);
     }
 
     private static boolean protectedSource(String sourceId) {
@@ -449,21 +416,6 @@ public final class ContextualSuggestionScorer {
         };
     }
 
-    private static RelevanceBreakdown relevance(
-            SlotWorkspaceViewModel.AtlasItem item,
-            Map<String, Double> vector,
-            ScoringContext scoringContext,
-            ItemIdentity excludedCarriedIdentity,
-            ContextualContextAggregate activeContext,
-            boolean includeExactActiveContextHint
-    ) {
-        RelevanceBreakdown score = scoringContext.contextBreakdown(vector, excludedCarriedIdentity);
-        if (includeExactActiveContextHint && activeContext != null) {
-            return score.withExactContextHint(activeContext.itemHints().getOrDefault(item.identity().itemId(), 0D) * 0.55D);
-        }
-        return score;
-    }
-
     private static long latestSequence(ContextualSuggestionState state) {
         long latest = 0L;
         for (ContextualSignalRecord record : state.recentSignals()) {
@@ -480,7 +432,6 @@ public final class ContextualSuggestionScorer {
             case ITEM_PLACED, ITEM_CONSUMED, ITEM_DAMAGED -> 1.25D;
             case ITEM_USED -> 1.05D;
             case ITEM_ACQUIRED -> 1.05D;
-            case CARRIED_SET_CHANGED -> 0.65D;
             case ITEM_DEPOSITED_TO_STORAGE -> 0.35D;
             case STATION_OPENED, STATION_CONTENTS_CHANGED, GOAL_CONTEXT_OBSERVED, RECIPE_CONTEXT_OBSERVED -> 0.75D;
         };
@@ -488,6 +439,17 @@ public final class ContextualSuggestionScorer {
 
     private static double decay(long age) {
         return 1D / (1D + Math.max(0L, age) / 24D);
+    }
+
+    private static double tickDecay(long observedTick, long currentGameTick) {
+        if (observedTick <= 0L || currentGameTick <= 0L || currentGameTick <= observedTick) {
+            return 1D;
+        }
+        long ageTicks = currentGameTick - observedTick;
+        if (ageTicks <= 1200L) {
+            return 1D;
+        }
+        return 1D / (1D + (ageTicks - 1200L) / 2400D);
     }
 
     private static Map<String, Double> facetVector(FacetIndex index, String itemId) {
@@ -583,24 +545,6 @@ public final class ContextualSuggestionScorer {
         add(vector, "used_at:campfire", weight * 0.45D);
     }
 
-    private static Map<String, Double> stationCooccurrenceVector(Map<String, Double> hints) {
-        if (hints == null || hints.isEmpty()) {
-            return Map.of();
-        }
-        LinkedHashMap<String, Double> vector = new LinkedHashMap<>();
-        String prefix = ContextualSuggestionState.STATION_COOCCURRENCE_HINT_PREFIX;
-        hints.forEach((key, value) -> {
-            if (key == null || !key.startsWith(prefix) || value == null || value <= 0D || !Double.isFinite(value)) {
-                return;
-            }
-            String itemId = key.substring(prefix.length()).trim();
-            if (!itemId.isBlank()) {
-                add(vector, "item:" + itemId, value);
-            }
-        });
-        return vector.isEmpty() ? Map.of() : Map.copyOf(vector);
-    }
-
     private static boolean toolLike(Map<String, Double> vector, FacetIndex index, String itemId) {
         if (vector.keySet().stream().anyMatch(key -> key.contains("tool")
                 || key.contains("weapon")
@@ -669,12 +613,70 @@ public final class ContextualSuggestionScorer {
     }
 
     private static List<ScoredItem> sorted(List<ScoredItem> scored) {
+        return sortedAll(scored).stream()
+                .limit(LANE_LIMIT)
+                .toList();
+    }
+
+    private static List<ScoredItem> sortedAll(List<ScoredItem> scored) {
         return scored.stream()
                 .sorted(Comparator
                         .comparingDouble(ScoredItem::score).reversed()
                         .thenComparing(item -> item.item().identity().itemId()))
+                .toList();
+    }
+
+    private static List<ScoredItem> selectUseful(List<ScoredItem> sorted) {
+        if (sorted == null || sorted.isEmpty() || sorted.size() <= LANE_LIMIT) {
+            return sorted == null ? List.of() : sorted;
+        }
+        ArrayList<ScoredItem> selected = new ArrayList<>(sorted.stream().limit(LANE_LIMIT).toList());
+        long selectedStorage = selected.stream()
+                .filter(item -> storageOnly(item.item()))
+                .count();
+        long availableStorage = sorted.stream()
+                .filter(item -> storageOnly(item.item()))
+                .count();
+        long targetStorage = Math.min(USEFUL_STORAGE_GHOST_RESERVED_SLOTS, availableStorage);
+        if (selectedStorage >= targetStorage) {
+            return List.copyOf(selected);
+        }
+        for (ScoredItem candidate : sorted) {
+            if (selectedStorage >= targetStorage || !storageOnly(candidate.item()) || selected.contains(candidate)) {
+                continue;
+            }
+            int replacementIndex = lowestScoringNonStorageIndex(selected);
+            if (replacementIndex < 0) {
+                break;
+            }
+            selected.set(replacementIndex, candidate);
+            selectedStorage++;
+        }
+        return sortedAll(selected).stream()
                 .limit(LANE_LIMIT)
                 .toList();
+    }
+
+    private static int lowestScoringNonStorageIndex(List<ScoredItem> selected) {
+        int index = -1;
+        double lowestScore = Double.POSITIVE_INFINITY;
+        for (int i = 0; i < selected.size(); i++) {
+            ScoredItem item = selected.get(i);
+            if (item == null || storageOnly(item.item())) {
+                continue;
+            }
+            if (item.score() < lowestScore) {
+                index = i;
+                lowestScore = item.score();
+            }
+        }
+        return index;
+    }
+
+    private static boolean storageOnly(SlotWorkspaceViewModel.AtlasItem item) {
+        return item != null
+                && !item.carried()
+                && (item.proximateCount() > 0 || !item.presence().isEmpty());
     }
 
     private static List<SlotWorkspaceViewModel.AtlasItem> items(List<ScoredItem> scored) {
@@ -699,20 +701,21 @@ public final class ContextualSuggestionScorer {
 
     private record UsefulScoreInputs(
             boolean carriedContainerExcluded,
+            boolean missingSourceExcluded,
             double relevance,
             double depositPenalty,
-            double carriedBoost,
+            double spentPenalty,
             double targetBoost,
             double desiredPenalty,
             double missingSourcePenalty
     ) {
         private double score() {
-            if (carriedContainerExcluded) {
+            if (carriedContainerExcluded || missingSourceExcluded) {
                 return Double.NEGATIVE_INFINITY;
             }
             return relevance
                     - depositPenalty
-                    + carriedBoost
+                    - spentPenalty
                     + targetBoost
                     - desiredPenalty
                     - missingSourcePenalty;
@@ -728,16 +731,13 @@ public final class ContextualSuggestionScorer {
             double pressureBoost,
             double storageRouteBoost,
             double depositHistoryBoost,
-            double shortCarryBoost,
-            double longCarryPenalty,
-            double activeCarryBoost,
             double contextPenalty,
             double toolPenalty,
             double containerPenalty
     ) {
         private static PutAwayScoreInputs ineligible() {
             return new PutAwayScoreInputs(
-                    false, false, 0D, 0D, 0D, 0D, 0D, 0D, 0D, 0D, 0D, 0D, 0D, 0D);
+                    false, false, 0D, 0D, 0D, 0D, 0D, 0D, 0D, 0D, 0D);
         }
 
         private static PutAwayScoreInputs desiredExcess(
@@ -757,9 +757,6 @@ public final class ContextualSuggestionScorer {
                     0D,
                     0D,
                     0D,
-                    0D,
-                    0D,
-                    0D,
                     0D);
         }
 
@@ -768,9 +765,6 @@ public final class ContextualSuggestionScorer {
                 double pressureBoost,
                 double storageRouteBoost,
                 double depositHistoryBoost,
-                double shortCarryBoost,
-                double longCarryPenalty,
-                double activeCarryBoost,
                 double contextPenalty,
                 double toolPenalty,
                 double containerPenalty
@@ -784,9 +778,6 @@ public final class ContextualSuggestionScorer {
                     pressureBoost,
                     storageRouteBoost,
                     depositHistoryBoost,
-                    shortCarryBoost,
-                    longCarryPenalty,
-                    activeCarryBoost,
                     contextPenalty,
                     toolPenalty,
                     containerPenalty);
@@ -803,9 +794,6 @@ public final class ContextualSuggestionScorer {
                     + pressureBoost
                     + storageRouteBoost
                     + depositHistoryBoost
-                    + shortCarryBoost
-                    - longCarryPenalty
-                    + activeCarryBoost
                     - contextPenalty
                     - toolPenalty
                     - containerPenalty;
@@ -813,34 +801,37 @@ public final class ContextualSuggestionScorer {
     }
 
     private record RelevanceBreakdown(
-            double activeRaw,
-            double passiveRaw,
-            double passiveApplied,
+            double historyRaw,
+            double exactRaw,
+            double advisoryRaw,
+            double advisoryApplied,
             double exactContextHint,
             double total,
-            List<TokenContribution> activeMatches,
-            List<TokenContribution> passiveMatches
+            List<TokenContribution> historyMatches,
+            List<TokenContribution> advisoryMatches
     ) {
         private RelevanceBreakdown {
-            activeRaw = Double.isFinite(activeRaw) ? activeRaw : 0D;
-            passiveRaw = Double.isFinite(passiveRaw) ? passiveRaw : 0D;
-            passiveApplied = Double.isFinite(passiveApplied) ? passiveApplied : 0D;
+            historyRaw = Double.isFinite(historyRaw) ? historyRaw : 0D;
+            exactRaw = Double.isFinite(exactRaw) ? exactRaw : 0D;
+            advisoryRaw = Double.isFinite(advisoryRaw) ? advisoryRaw : 0D;
+            advisoryApplied = Double.isFinite(advisoryApplied) ? advisoryApplied : 0D;
             exactContextHint = Double.isFinite(exactContextHint) ? exactContextHint : 0D;
             total = Double.isFinite(total) ? total : 0D;
-            activeMatches = activeMatches == null ? List.of() : List.copyOf(activeMatches);
-            passiveMatches = passiveMatches == null ? List.of() : List.copyOf(passiveMatches);
+            historyMatches = historyMatches == null ? List.of() : List.copyOf(historyMatches);
+            advisoryMatches = advisoryMatches == null ? List.of() : List.copyOf(advisoryMatches);
         }
 
         private RelevanceBreakdown withExactContextHint(double exactHint) {
             double resolved = Double.isFinite(exactHint) ? Math.max(0D, exactHint) : 0D;
             return new RelevanceBreakdown(
-                    activeRaw,
-                    passiveRaw,
-                    passiveApplied,
+                    historyRaw,
+                    exactRaw,
+                    advisoryRaw,
+                    advisoryApplied,
                     resolved,
                     total + resolved,
-                    activeMatches,
-                    passiveMatches);
+                    historyMatches,
+                    advisoryMatches);
         }
     }
 
@@ -853,19 +844,22 @@ public final class ContextualSuggestionScorer {
 
     private static final class ScoringContext {
         private final FacetIndex index;
+        private final long currentGameTick;
         private final Map<String, Map<String, Double>> facetVectorCache = new LinkedHashMap<>();
         private Map<String, Double> activeContextVector = Map.of();
-        private Map<String, Double> passiveCarriedContextVector = Map.of();
-        private Map<ItemIdentity, Map<String, Double>> passiveIdentityExclusions = Map.of();
-        private Map<String, Map<String, Double>> passiveItemIdExclusions = Map.of();
+        private Map<String, Double> exactItemScores = Map.of();
+        private Map<String, Double> historyItemScores = Map.of();
+        private Map<String, List<TokenContribution>> historyContributions = Map.of();
         private Map<ItemIdentity, Double> depositPenalties = Map.of();
+        private Map<ItemIdentity, Double> spentPenalties = Map.of();
 
-        private ScoringContext(FacetIndex index) {
+        private ScoringContext(FacetIndex index, long currentGameTick) {
             this.index = index == null ? FacetIndex.empty() : index;
+            this.currentGameTick = Math.max(0L, currentGameTick);
         }
 
-        private static ScoringContext create(ContextualSuggestionState state, FacetIndex index) {
-            ScoringContext context = new ScoringContext(index);
+        private static ScoringContext create(ContextualSuggestionState state, FacetIndex index, long currentGameTick) {
+            ScoringContext context = new ScoringContext(index, currentGameTick);
             context.capture(state);
             return context;
         }
@@ -875,30 +869,31 @@ public final class ContextualSuggestionScorer {
             return facetVectorCache.computeIfAbsent(key, ignored -> ContextualSuggestionScorer.facetVector(index, key));
         }
 
-        private RelevanceBreakdown contextBreakdown(Map<String, Double> vector, ItemIdentity excludedCarriedIdentity) {
-            double activeScore = rawDot(vector, activeContextVector);
-            double passiveScore = rawDot(vector, passiveCarriedContextVector);
-            if (excludedCarriedIdentity != null) {
-                passiveScore -= rawDot(vector, passiveIdentityExclusions.get(excludedCarriedIdentity));
-                passiveScore -= rawDot(vector, passiveItemIdExclusions.get(excludedCarriedIdentity.itemId()));
-            }
-            double passiveApplied = Math.min(PASSIVE_CARRIED_RELEVANCE_CAP, Math.max(0D, passiveScore));
+        private RelevanceBreakdown contextBreakdown(Map<String, Double> vector, ItemIdentity identity) {
+            String itemId = identity == null ? "" : identity.itemId();
+            double historyScore = historyItemScores.getOrDefault(itemId, 0D);
+            double exactScore = exactItemScores.getOrDefault(itemId, 0D);
+            double advisoryRaw = rawDot(vector, activeContextVector);
+            double advisoryApplied = Math.min(
+                    FACET_ADVISORY_RELEVANCE_CAP,
+                    Math.max(0D, advisoryRaw * FACET_ADVISORY_WEIGHT));
             return new RelevanceBreakdown(
-                    activeScore,
-                    passiveScore,
-                    passiveApplied,
+                    historyScore,
+                    exactScore,
+                    advisoryRaw,
+                    advisoryApplied,
                     0D,
-                    clampDot(activeScore + passiveApplied),
-                    topContributions(vector, activeContextVector),
-                    topContributions(vector, passiveContributionVector(excludedCarriedIdentity)));
-        }
-
-        private double contextDot(Map<String, Double> vector, ItemIdentity excludedCarriedIdentity) {
-            return contextBreakdown(vector, excludedCarriedIdentity).total();
+                    clampDot(historyScore + exactScore + advisoryApplied),
+                    historyContributions.getOrDefault(itemId, List.of()),
+                    topContributions(vector, activeContextVector));
         }
 
         private double depositPenalty(ItemIdentity identity) {
             return identity == null ? 0D : depositPenalties.getOrDefault(identity, 0D);
+        }
+
+        private double spentPenalty(ItemIdentity identity) {
+            return identity == null ? 0D : spentPenalties.getOrDefault(identity, 0D);
         }
 
         private void capture(ContextualSuggestionState state) {
@@ -906,82 +901,111 @@ public final class ContextualSuggestionScorer {
                 return;
             }
             LinkedHashMap<String, Double> activeVector = new LinkedHashMap<>();
-            LinkedHashMap<String, Double> passiveCarriedVector = new LinkedHashMap<>();
-            LinkedHashMap<ItemIdentity, LinkedHashMap<String, Double>> passiveIdentityExclusionBuilder = new LinkedHashMap<>();
-            LinkedHashMap<String, LinkedHashMap<String, Double>> passiveItemIdExclusionBuilder = new LinkedHashMap<>();
+            LinkedHashMap<String, Double> exactItemBuilder = new LinkedHashMap<>();
+            LinkedHashMap<String, Double> historyItemBuilder = new LinkedHashMap<>();
+            LinkedHashMap<String, LinkedHashMap<String, Double>> historyContributionBuilder = new LinkedHashMap<>();
             LinkedHashMap<ItemIdentity, Double> depositPenaltyBuilder = new LinkedHashMap<>();
+            LinkedHashMap<ItemIdentity, Double> spentPenaltyBuilder = new LinkedHashMap<>();
 
             long latest = latestSequence(state);
             for (ContextualSignalRecord record : state.recentSignals()) {
                 if (record == null || record.event() == null) {
                     continue;
                 }
-                double weight = signalWeight(record.event().kind()) * decay(latest - record.envelope().globalSequence());
-                if (record.event().identity() != null) {
-                    ItemIdentity identity = record.event().identity();
-                    Map<String, Double> contribution = facetVector(identity.itemId());
-                    if (record.event().kind() == ContextualSignalKind.CARRIED_SET_CHANGED) {
-                        if ("start".equals(record.event().metadataValue("phase"))) {
-                            depositPenaltyBuilder.remove(identity);
-                        }
-                        addVector(passiveCarriedVector, contribution, weight);
-                        addExclusion(passiveIdentityExclusionBuilder, identity, contribution, weight);
-                        addExclusion(passiveItemIdExclusionBuilder, identity.itemId(), contribution, weight);
-                    } else if (record.event().kind() == ContextualSignalKind.ITEM_DEPOSITED_TO_STORAGE) {
+                ContextualSignalEvent event = record.event();
+                double weight = signalWeight(event.kind())
+                        * decay(latest - record.envelope().globalSequence())
+                        * tickDecay(event.observedTick(), currentGameTick);
+                boolean applyAssociationHistory = false;
+                if (event.identity() != null) {
+                    ItemIdentity identity = event.identity();
+                    if (event.kind() == ContextualSignalKind.ITEM_DEPOSITED_TO_STORAGE) {
                         depositPenaltyBuilder.put(identity, Math.min(1.4D, weight * 1.2D));
                     } else {
-                        depositPenaltyBuilder.remove(identity);
-                        contribution = activeSignalVector(identity.itemId());
-                        addVector(activeVector, contribution, weight);
-                        ContextualItemAggregate aggregate = state.itemAggregates().get(identity);
-                        if (aggregate != null) {
-                            addVector(activeVector, stationCooccurrenceVector(aggregate.cooccurrenceHints()), weight * 0.85D);
+                        if (clearsDepositPenalty(event.kind())) {
+                            depositPenaltyBuilder.remove(identity);
                         }
-                        if (!record.event().contextKey().isBlank()) {
-                            addVector(activeVector, contextEventVector(record.event()), weight * 0.35D);
+                        if (clearsSpentPenalty(event.kind())) {
+                            spentPenaltyBuilder.remove(identity);
+                        }
+                        if (event.kind() == ContextualSignalKind.ITEM_PLACED
+                                || event.kind() == ContextualSignalKind.ITEM_CONSUMED) {
+                            spentPenaltyBuilder.put(identity, Math.min(1.6D, weight * 1.1D));
+                        }
+                        Map<String, Double> contribution = activeSignalVector(event);
+                        applyAssociationHistory = ContextualEventSignature.trainsAssociations(event);
+                        double exactWeight = exactItemWeight(event, contribution);
+                        if (exactWeight > 0D) {
+                            exactItemBuilder.merge(identity.itemId(), weight * exactWeight, Double::sum);
+                        }
+                        addVector(activeVector, contribution, weight);
+                        if (!event.contextKey().isBlank()) {
+                            addVector(activeVector, contextEventVector(event), weight * 0.35D);
                         }
                     }
                 } else {
-                    addVector(activeVector, contextEventVector(record.event()), weight);
+                    addVector(activeVector, contextEventVector(event), weight);
                 }
-            }
-            state.activeCarried().forEach((identity, observation) -> {
-                if (identity != null) {
-                    Map<String, Double> contribution = facetVector(identity.itemId());
-                    addVector(passiveCarriedVector, contribution, 0.32D);
-                    addExclusion(passiveIdentityExclusionBuilder, identity, contribution, 0.32D);
-                    addExclusion(passiveItemIdExclusionBuilder, identity.itemId(), contribution, 0.32D);
-                }
-            });
-            ContextualContextAggregate activeContext = state.contextAggregates().get(state.activeContextKey());
-            if (activeContext != null) {
-                activeContext.itemHints().forEach((itemId, weight) -> {
-                    if (itemId != null) {
-                        Map<String, Double> contribution = facetVector(itemId);
-                        double contributionWeight = Math.min(0.75D, weight * 0.18D);
-                        addVector(passiveCarriedVector, contribution, contributionWeight);
-                        addExclusion(passiveItemIdExclusionBuilder, itemId, contribution, contributionWeight);
+
+                String signature = ContextualEventSignature.key(event);
+                if (applyAssociationHistory && !signature.isBlank()) {
+                    ContextualAssociationSet associationSet = state.associationIndex()
+                            .nextItemsBySignature()
+                            .get(signature);
+                    if (associationSet != null) {
+                        for (ContextualAssociationHint hint : associationSet.itemHints().values()) {
+                            if (hint == null || hint.itemId().isBlank()) {
+                                continue;
+                            }
+                            double score = Math.min(2.25D, hint.score()) * weight * 0.8D;
+                            if (score <= 0D || !Double.isFinite(score)) {
+                                continue;
+                            }
+                            historyItemBuilder.merge(hint.itemId(), score, Double::sum);
+                            historyContributionBuilder
+                                    .computeIfAbsent(hint.itemId(), ignored -> new LinkedHashMap<>())
+                                    .merge(signature, score, Double::sum);
+                        }
                     }
-                });
+                }
             }
             activeContextVector = freeze(activeVector);
-            passiveCarriedContextVector = freeze(passiveCarriedVector);
-            passiveIdentityExclusions = freezeNested(passiveIdentityExclusionBuilder);
-            passiveItemIdExclusions = freezeNested(passiveItemIdExclusionBuilder);
+            exactItemScores = freezeStringDoubles(exactItemBuilder);
+            historyItemScores = freezeStringDoubles(historyItemBuilder);
+            historyContributions = freezeContributionLists(historyContributionBuilder);
             depositPenalties = freezeIdentityDoubles(depositPenaltyBuilder);
+            spentPenalties = freezeIdentityDoubles(spentPenaltyBuilder);
         }
 
-        private static <K> void addExclusion(
-                Map<K, LinkedHashMap<String, Double>> exclusions,
-                K key,
-                Map<String, Double> vector,
-                double weight
-        ) {
-            if (key == null || vector == null || vector.isEmpty() || weight <= 0D) {
-                return;
+        private static boolean clearsDepositPenalty(ContextualSignalKind kind) {
+            return switch (kind) {
+                case ITEM_ACQUIRED, ITEM_TAKEN_FROM_STORAGE, ITEM_CRAFTED_OR_PRODUCED, ITEM_USED, ITEM_DAMAGED -> true;
+                case ITEM_DEPOSITED_TO_STORAGE, ITEM_PLACED, ITEM_CONSUMED, STATION_OPENED,
+                        STATION_CONTENTS_CHANGED, GOAL_CONTEXT_OBSERVED, RECIPE_CONTEXT_OBSERVED -> false;
+            };
+        }
+
+        private static boolean clearsSpentPenalty(ContextualSignalKind kind) {
+            return switch (kind) {
+                case ITEM_ACQUIRED, ITEM_TAKEN_FROM_STORAGE, ITEM_CRAFTED_OR_PRODUCED, ITEM_USED, ITEM_DAMAGED -> true;
+                case ITEM_DEPOSITED_TO_STORAGE, ITEM_PLACED, ITEM_CONSUMED, STATION_OPENED,
+                        STATION_CONTENTS_CHANGED, GOAL_CONTEXT_OBSERVED, RECIPE_CONTEXT_OBSERVED -> false;
+            };
+        }
+
+        private double exactItemWeight(ContextualSignalEvent event, Map<String, Double> contribution) {
+            if (event == null || event.identity() == null) {
+                return 0D;
             }
-            LinkedHashMap<String, Double> exclusion = exclusions.computeIfAbsent(key, ignored -> new LinkedHashMap<>());
-            addVector(exclusion, vector, weight);
+            String itemId = event.identity().itemId();
+            return switch (event.kind()) {
+                case ITEM_TAKEN_FROM_STORAGE, ITEM_CRAFTED_OR_PRODUCED -> 1.1D;
+                case ITEM_ACQUIRED -> 0.95D;
+                case ITEM_DAMAGED -> 0.9D;
+                case ITEM_USED -> toolLike(contribution, index, itemId) ? 1.0D : 0D;
+                case ITEM_PLACED, ITEM_CONSUMED, ITEM_DEPOSITED_TO_STORAGE, STATION_OPENED,
+                        STATION_CONTENTS_CHANGED, GOAL_CONTEXT_OBSERVED, RECIPE_CONTEXT_OBSERVED -> 0D;
+            };
         }
 
         private static Map<String, Double> freeze(Map<String, Double> source) {
@@ -997,51 +1021,80 @@ public final class ContextualSuggestionScorer {
             return copy.isEmpty() ? Map.of() : Map.copyOf(copy);
         }
 
-        private static <K> Map<K, Map<String, Double>> freezeNested(
-                Map<K, LinkedHashMap<String, Double>> source
-        ) {
+        private static Map<String, Double> freezeStringDoubles(Map<String, Double> source) {
             if (source == null || source.isEmpty()) {
                 return Map.of();
             }
-            LinkedHashMap<K, Map<String, Double>> copy = new LinkedHashMap<>();
+            LinkedHashMap<String, Double> copy = new LinkedHashMap<>();
             source.forEach((key, value) -> {
-                Map<String, Double> frozen = freeze(value);
-                if (key != null && !frozen.isEmpty()) {
-                    copy.put(key, frozen);
+                if (key != null && !key.isBlank() && value != null && value > 0D && Double.isFinite(value)) {
+                    copy.put(key, value);
                 }
             });
             return copy.isEmpty() ? Map.of() : Map.copyOf(copy);
         }
 
-        private Map<String, Double> passiveContributionVector(ItemIdentity excludedCarriedIdentity) {
-            if (excludedCarriedIdentity == null) {
-                return passiveCarriedContextVector;
+        private static Map<String, List<TokenContribution>> freezeContributionLists(
+                Map<String, LinkedHashMap<String, Double>> source
+        ) {
+            if (source == null || source.isEmpty()) {
+                return Map.of();
             }
-            LinkedHashMap<String, Double> adjusted = new LinkedHashMap<>(passiveCarriedContextVector);
-            subtractVector(adjusted, passiveIdentityExclusions.get(excludedCarriedIdentity));
-            subtractVector(adjusted, passiveItemIdExclusions.get(excludedCarriedIdentity.itemId()));
-            return freeze(adjusted);
-        }
-
-        private static void subtractVector(Map<String, Double> target, Map<String, Double> source) {
-            if (target == null || source == null || source.isEmpty()) {
-                return;
-            }
-            source.forEach((key, value) -> {
-                if (key != null && !key.isBlank() && value != null && value > 0D && Double.isFinite(value)) {
-                    target.merge(key.trim(), -value, Double::sum);
+            LinkedHashMap<String, List<TokenContribution>> copy = new LinkedHashMap<>();
+            source.forEach((itemId, contributions) -> {
+                if (itemId == null || itemId.isBlank() || contributions == null || contributions.isEmpty()) {
+                    return;
+                }
+                List<TokenContribution> frozen = contributions.entrySet().stream()
+                        .filter(entry -> entry.getKey() != null && !entry.getKey().isBlank())
+                        .filter(entry -> entry.getValue() != null && entry.getValue() > 0D && Double.isFinite(entry.getValue()))
+                        .map(entry -> new TokenContribution(entry.getKey(), entry.getValue()))
+                        .sorted(Comparator
+                                .comparingDouble(TokenContribution::score).reversed()
+                                .thenComparing(TokenContribution::key))
+                        .limit(4)
+                        .toList();
+                if (!frozen.isEmpty()) {
+                    copy.put(itemId, frozen);
                 }
             });
+            return copy.isEmpty() ? Map.of() : Map.copyOf(copy);
         }
 
-        private Map<String, Double> activeSignalVector(String itemId) {
+        private Map<String, Double> activeSignalVector(ContextualSignalEvent event) {
+            if (event == null || event.identity() == null) {
+                return Map.of();
+            }
+            String itemId = event.identity().itemId();
             Map<String, Double> vector = facetVector(itemId);
+            if (event.kind() == ContextualSignalKind.ITEM_USED && !toolLike(vector, index, itemId)) {
+                return Map.of();
+            }
+            if (event.kind() == ContextualSignalKind.ITEM_PLACED
+                    || event.kind() == ContextualSignalKind.ITEM_CONSUMED) {
+                return withoutExactIdentityKey(vector, itemId);
+            }
             if (!toolLike(vector, index, itemId)) {
                 return vector;
             }
             LinkedHashMap<String, Double> filtered = new LinkedHashMap<>();
             vector.forEach((key, value) -> {
                 if (isGenericToolKey(key)) {
+                    return;
+                }
+                add(filtered, key, value);
+            });
+            return filtered.isEmpty() ? Map.of() : Map.copyOf(filtered);
+        }
+
+        private static Map<String, Double> withoutExactIdentityKey(Map<String, Double> vector, String itemId) {
+            if (vector == null || vector.isEmpty() || itemId == null || itemId.isBlank()) {
+                return vector == null ? Map.of() : vector;
+            }
+            LinkedHashMap<String, Double> filtered = new LinkedHashMap<>();
+            String exactKey = "item:" + itemId;
+            vector.forEach((key, value) -> {
+                if (exactKey.equals(key)) {
                     return;
                 }
                 add(filtered, key, value);
@@ -1126,7 +1179,7 @@ public final class ContextualSuggestionScorer {
     ) {
         private ScoredItem {
             relevance = relevance == null
-                    ? new RelevanceBreakdown(0D, 0D, 0D, 0D, 0D, List.of(), List.of())
+                    ? new RelevanceBreakdown(0D, 0D, 0D, 0D, 0D, 0D, List.of(), List.of())
                     : relevance;
             reasons = reasons == null ? List.of() : List.copyOf(reasons);
         }

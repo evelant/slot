@@ -62,6 +62,17 @@ public final class DepositExecutor {
                 continue;
             }
             ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
+            List<DepositTargetCandidate> candidates = depositTargetsThatAccept(
+                    server,
+                    worldStorage,
+                    assignment.candidateStorageIds(),
+                    claimedChestMap,
+                    sourceStack,
+                    budget);
+            if (candidates.isEmpty()) {
+                failed++;
+                continue;
+            }
 
             // Extract from carry first so we own a real stack to push into
             // chests. Anything we can't insert later is reinserted into
@@ -81,14 +92,12 @@ public final class DepositExecutor {
             // be skipped (and the whole assignment failed if no single
             // chest fit everything); now its 30 land there and the other
             // 24 fall through to the next chest.
-            for (String candidateId : assignment.candidateStorageIds()) {
+            for (DepositTargetCandidate candidate : candidates) {
                 if (remaining.isEmpty()) {
                     break;
                 }
-                WorldStorageAccess.Target target = depositTarget(candidateId, claimedChestMap);
-                if (target == null) {
-                    continue;
-                }
+                String candidateId = candidate.storageId();
+                WorldStorageAccess.Target target = candidate.target();
                 int beforeCount = remaining.getCount();
                 ItemStack leftover = worldStorage.insert(server, target, remaining, false);
                 int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
@@ -128,6 +137,31 @@ public final class DepositExecutor {
         return new DepositOutcome(deposited, failed, destinations, records);
     }
 
+    private static List<DepositTargetCandidate> depositTargetsThatAccept(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            List<String> candidateStorageIds,
+            ClaimedChestMap claimedChestMap,
+            ItemStack sourceStack,
+            int budget
+    ) {
+        if (worldStorage == null || candidateStorageIds == null || candidateStorageIds.isEmpty()
+                || sourceStack == null || sourceStack.isEmpty() || budget <= 0) {
+            return List.of();
+        }
+        ArrayList<DepositTargetCandidate> out = new ArrayList<>();
+        for (String candidateId : candidateStorageIds) {
+            WorldStorageAccess.Target target = depositTarget(candidateId, claimedChestMap);
+            if (target == null) {
+                continue;
+            }
+            if (StorageMutationProbe.canInsertAny(server, worldStorage, target, sourceStack, budget)) {
+                out.add(new DepositTargetCandidate(candidateId, target));
+            }
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
     private static WorldStorageAccess.Target depositTarget(String storageId, ClaimedChestMap claimedChestMap) {
         if (storageId == null || storageId.isBlank()) {
             return null;
@@ -141,6 +175,12 @@ public final class DepositExecutor {
                     .filter(target -> target.kind().depositTarget())
                     .map(target -> (WorldStorageAccess.Target) target)
                     .orElse(null);
+        }
+    }
+
+    private record DepositTargetCandidate(String storageId, WorldStorageAccess.Target target) {
+        private DepositTargetCandidate {
+            storageId = storageId == null ? "" : storageId;
         }
     }
 

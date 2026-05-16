@@ -38,7 +38,9 @@ import dev.imagio.slot.workflow.domain.KitMap;
 import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.CollectionProjection;
-import dev.imagio.slot.workflow.domain.ContextualCarriedObservation;
+import dev.imagio.slot.workflow.domain.ContextualAssociationHint;
+import dev.imagio.slot.workflow.domain.ContextualAssociationIndex;
+import dev.imagio.slot.workflow.domain.ContextualAssociationSet;
 import dev.imagio.slot.workflow.domain.ContextualContextAggregate;
 import dev.imagio.slot.workflow.domain.ContextualItemAggregate;
 import dev.imagio.slot.workflow.domain.ContextualSignalEvent;
@@ -85,7 +87,7 @@ import java.util.UUID;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 8;
+    private static final int SCHEMA_VERSION = 9;
 
     private final Path statePath;
 
@@ -1335,9 +1337,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 resolved.contextAggregates().values().stream()
                         .map(WorkflowDomainFileStore::contextualContext)
                         .toList(),
-                resolved.activeCarried().values().stream()
-                        .map(WorkflowDomainFileStore::contextualCarried)
-                        .toList(),
+                contextualAssociationIndex(resolved.associationIndex()),
                 resolved.recentSignals().stream()
                         .map(WorkflowDomainFileStore::contextualSignal)
                         .toList(),
@@ -1367,15 +1367,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 }
             }
         }
-        LinkedHashMap<ItemIdentity, ContextualCarriedObservation> active = new LinkedHashMap<>();
-        if (data.activeCarried != null) {
-            for (ContextualCarriedObservationData carriedData : data.activeCarried) {
-                ContextualCarriedObservation observation = decodeContextualCarried(carriedData);
-                if (observation != null && observation.identity() != null) {
-                    active.put(observation.identity(), observation);
-                }
-            }
-        }
         ArrayList<ContextualSignalRecord> signals = new ArrayList<>();
         if (data.recentSignals != null) {
             for (ContextualSignalData signalData : data.recentSignals) {
@@ -1389,7 +1380,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.nextStreamSequence <= 0L ? 1L : data.nextStreamSequence,
                 items,
                 contexts,
-                active,
+                decodeContextualAssociationIndex(data.associationIndex),
                 signals,
                 nonNull(data.activeContextKey)
         );
@@ -1401,17 +1392,17 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         }
         return new ContextualItemAggregateData(
                 identity(aggregate.identity()),
-                aggregate.timesObservedCarried(),
                 aggregate.timesAcquired(),
                 aggregate.timesTakenFromStorage(),
                 aggregate.timesDepositedToStorage(),
                 aggregate.timesCraftedOrProduced(),
-                aggregate.totalCarriedTicks(),
-                aggregate.recentCarriedTicksEwma(),
-                aggregate.lastCarriedSequence(),
+                aggregate.timesUsed(),
+                aggregate.timesPlaced(),
+                aggregate.timesConsumed(),
+                aggregate.timesDamaged(),
+                aggregate.lastActiveSequence(),
                 aggregate.lastAcquiredSequence(),
-                aggregate.lastDepositedSequence(),
-                hints(aggregate.cooccurrenceHints())
+                aggregate.lastDepositedSequence()
         );
     }
 
@@ -1422,17 +1413,17 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         }
         return new ContextualItemAggregate(
                 identity,
-                data.timesObservedCarried,
                 data.timesAcquired,
                 data.timesTakenFromStorage,
                 data.timesDepositedToStorage,
                 data.timesCraftedOrProduced,
-                data.totalCarriedTicks,
-                data.recentCarriedTicksEwma,
-                data.lastCarriedSequence,
+                data.timesUsed,
+                data.timesPlaced,
+                data.timesConsumed,
+                data.timesDamaged,
+                data.lastActiveSequence,
                 data.lastAcquiredSequence,
-                data.lastDepositedSequence,
-                decodeHints(data.cooccurrenceHints)
+                data.lastDepositedSequence
         );
     }
 
@@ -1464,33 +1455,62 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         );
     }
 
-    private static ContextualCarriedObservationData contextualCarried(ContextualCarriedObservation observation) {
-        if (observation == null) {
-            return null;
-        }
-        return new ContextualCarriedObservationData(
-                identity(observation.identity()),
-                observation.firstSeenSequence(),
-                observation.firstSeenTick(),
-                observation.lastSeenTick(),
-                observation.count(),
-                observation.sourceKey()
-        );
+    private static ContextualAssociationIndexData contextualAssociationIndex(ContextualAssociationIndex index) {
+        ContextualAssociationIndex resolved = index == null ? ContextualAssociationIndex.empty() : index;
+        return new ContextualAssociationIndexData(resolved.nextItemsBySignature().entrySet().stream()
+                .map(entry -> new ContextualAssociationBucketData(
+                        entry.getKey(),
+                        entry.getValue().itemHints().values().stream()
+                                .map(WorkflowDomainFileStore::contextualAssociationHint)
+                                .toList()))
+                .toList());
     }
 
-    private static ContextualCarriedObservation decodeContextualCarried(ContextualCarriedObservationData data) {
-        ItemIdentity identity = decodeIdentity(data == null ? null : data.identity);
-        if (identity == null) {
+    private static ContextualAssociationHintData contextualAssociationHint(ContextualAssociationHint hint) {
+        if (hint == null) {
             return null;
         }
-        return new ContextualCarriedObservation(
-                identity,
-                data.firstSeenSequence,
-                data.firstSeenTick,
-                data.lastSeenTick,
+        return new ContextualAssociationHintData(
+                hint.itemId(),
+                hint.score(),
+                hint.count(),
+                hint.lastSequence(),
+                hint.averageDelta());
+    }
+
+    private static ContextualAssociationIndex decodeContextualAssociationIndex(ContextualAssociationIndexData data) {
+        if (data == null || data.nextItemsBySignature == null || data.nextItemsBySignature.isEmpty()) {
+            return ContextualAssociationIndex.empty();
+        }
+        LinkedHashMap<String, ContextualAssociationSet> next = new LinkedHashMap<>();
+        for (ContextualAssociationBucketData bucket : data.nextItemsBySignature) {
+            if (bucket == null || blank(bucket.signature) || bucket.itemHints == null || bucket.itemHints.isEmpty()) {
+                continue;
+            }
+            LinkedHashMap<String, ContextualAssociationHint> hints = new LinkedHashMap<>();
+            for (ContextualAssociationHintData hintData : bucket.itemHints) {
+                ContextualAssociationHint hint = decodeContextualAssociationHint(hintData);
+                if (hint != null && !hint.itemId().isBlank()) {
+                    hints.put(hint.itemId(), hint);
+                }
+            }
+            if (!hints.isEmpty()) {
+                next.put(bucket.signature, new ContextualAssociationSet(hints));
+            }
+        }
+        return new ContextualAssociationIndex(next);
+    }
+
+    private static ContextualAssociationHint decodeContextualAssociationHint(ContextualAssociationHintData data) {
+        if (data == null || blank(data.itemId)) {
+            return null;
+        }
+        return new ContextualAssociationHint(
+                data.itemId,
+                data.score,
                 data.count,
-                nonNull(data.sourceKey)
-        );
+                data.lastSequence,
+                data.averageDelta);
     }
 
     private static ContextualSignalData contextualSignal(ContextualSignalRecord record) {
@@ -1518,7 +1538,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         return new ContextualSignalRecord(
                 decodeEnvelope(data.envelope, DomainEventStreamKind.CONTEXTUAL),
                 new ContextualSignalEvent(
-                        decodeEnum(ContextualSignalKind.class, data.kind, ContextualSignalKind.CARRIED_SET_CHANGED),
+                        decodeEnum(ContextualSignalKind.class, data.kind, ContextualSignalKind.ITEM_ACQUIRED),
                         decodeIdentity(data.identity),
                         data.count,
                         data.observedTick,
@@ -2490,7 +2510,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private long nextStreamSequence;
         private List<ContextualItemAggregateData> itemAggregates;
         private List<ContextualContextAggregateData> contextAggregates;
-        private List<ContextualCarriedObservationData> activeCarried;
+        private ContextualAssociationIndexData associationIndex;
         private List<ContextualSignalData> recentSignals;
         private String activeContextKey;
 
@@ -2498,14 +2518,14 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 long nextStreamSequence,
                 List<ContextualItemAggregateData> itemAggregates,
                 List<ContextualContextAggregateData> contextAggregates,
-                List<ContextualCarriedObservationData> activeCarried,
+                ContextualAssociationIndexData associationIndex,
                 List<ContextualSignalData> recentSignals,
                 String activeContextKey
         ) {
             this.nextStreamSequence = nextStreamSequence;
             this.itemAggregates = itemAggregates;
             this.contextAggregates = contextAggregates;
-            this.activeCarried = activeCarried;
+            this.associationIndex = associationIndex;
             this.recentSignals = recentSignals;
             this.activeContextKey = activeContextKey;
         }
@@ -2513,17 +2533,17 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
 
     private record ContextualItemAggregateData(
             IdentityData identity,
-            int timesObservedCarried,
             int timesAcquired,
             int timesTakenFromStorage,
             int timesDepositedToStorage,
             int timesCraftedOrProduced,
-            long totalCarriedTicks,
-            double recentCarriedTicksEwma,
-            long lastCarriedSequence,
+            int timesUsed,
+            int timesPlaced,
+            int timesConsumed,
+            int timesDamaged,
+            long lastActiveSequence,
             long lastAcquiredSequence,
-            long lastDepositedSequence,
-            List<HintData> cooccurrenceHints
+            long lastDepositedSequence
     ) {
     }
 
@@ -2537,16 +2557,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
     ) {
     }
 
-    private record ContextualCarriedObservationData(
-            IdentityData identity,
-            long firstSeenSequence,
-            long firstSeenTick,
-            long lastSeenTick,
-            int count,
-            String sourceKey
-    ) {
-    }
-
     private record ContextualSignalData(
             EnvelopeData envelope,
             String kind,
@@ -2557,6 +2567,26 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             String contextLabel,
             String sourceKey,
             List<MetadataEntryData> metadata
+    ) {
+    }
+
+    private record ContextualAssociationIndexData(
+            List<ContextualAssociationBucketData> nextItemsBySignature
+    ) {
+    }
+
+    private record ContextualAssociationBucketData(
+            String signature,
+            List<ContextualAssociationHintData> itemHints
+    ) {
+    }
+
+    private record ContextualAssociationHintData(
+            String itemId,
+            double score,
+            int count,
+            long lastSequence,
+            double averageDelta
     ) {
     }
 

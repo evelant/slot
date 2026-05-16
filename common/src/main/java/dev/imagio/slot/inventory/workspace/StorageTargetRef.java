@@ -46,6 +46,17 @@ public record StorageTargetRef(
             boolean remembered,
             boolean proximate
     ) {
+        return claimed(chest, liveReadable, remembered, proximate, true, true);
+    }
+
+    public static StorageTargetRef claimed(
+            ClaimedChest chest,
+            boolean liveReadable,
+            boolean remembered,
+            boolean proximate,
+            boolean depositTarget,
+            boolean takeTarget
+    ) {
         if (chest == null) {
             return null;
         }
@@ -59,7 +70,9 @@ public record StorageTargetRef(
                 chest.label() == null || chest.label().isBlank() ? autoLabel(chest.storageId()) : chest.label(),
                 liveReadable,
                 remembered,
-                proximate);
+                proximate,
+                depositTarget,
+                takeTarget);
     }
 
     public static StorageTargetRef claimed(
@@ -73,6 +86,22 @@ public record StorageTargetRef(
             boolean remembered,
             boolean proximate
     ) {
+        return claimed(storageId, dimensionId, x, y, z, label, liveReadable, remembered, proximate, true, true);
+    }
+
+    public static StorageTargetRef claimed(
+            UUID storageId,
+            String dimensionId,
+            int x,
+            int y,
+            int z,
+            String label,
+            boolean liveReadable,
+            boolean remembered,
+            boolean proximate,
+            boolean depositTarget,
+            boolean takeTarget
+    ) {
         if (storageId == null) {
             return null;
         }
@@ -85,8 +114,8 @@ public record StorageTargetRef(
                 y,
                 z,
                 liveReadable,
-                true,
-                true,
+                depositTarget,
+                takeTarget,
                 remembered,
                 proximate);
     }

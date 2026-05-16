@@ -19,6 +19,7 @@ import java.util.function.Function;
 
 public final class WorkspaceChestProjectionSupport {
     public static final int DEFAULT_RADIUS_BLOCKS = 8;
+    public static final int CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS = 50;
 
     private WorkspaceChestProjectionSupport() {
     }

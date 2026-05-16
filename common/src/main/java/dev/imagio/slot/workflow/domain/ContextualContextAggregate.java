@@ -16,8 +16,8 @@ public record ContextualContextAggregate(
         label = label == null ? "" : label.trim();
         timesSeen = Math.max(0, timesSeen);
         lastSeenSequence = Math.max(0L, lastSeenSequence);
-        itemHints = ContextualItemAggregate.boundedHints(itemHints, 24);
-        facetHints = ContextualItemAggregate.boundedHints(facetHints, 24);
+        itemHints = boundedHints(itemHints, 24);
+        facetHints = boundedHints(facetHints, 24);
     }
 
     public static ContextualContextAggregate empty(String contextKey, String label) {
@@ -40,5 +40,19 @@ public record ContextualContextAggregate(
                 sequence,
                 mergedHints,
                 facetHints);
+    }
+
+    private static Map<String, Double> boundedHints(Map<String, Double> source, int limit) {
+        if (source == null || source.isEmpty() || limit <= 0) {
+            return Map.of();
+        }
+        return source.entrySet().stream()
+                .filter(entry -> entry.getKey() != null && !entry.getKey().isBlank())
+                .filter(entry -> entry.getValue() != null && entry.getValue() > 0D && Double.isFinite(entry.getValue()))
+                .sorted(Map.Entry.<String, Double>comparingByValue().reversed().thenComparing(Map.Entry.comparingByKey()))
+                .limit(limit)
+                .collect(LinkedHashMap::new,
+                        (map, entry) -> map.put(entry.getKey().trim(), entry.getValue()),
+                        LinkedHashMap::putAll);
     }
 }

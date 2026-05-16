@@ -16,7 +16,7 @@ public record ContextualSignalEvent(
         Map<String, String> metadata
 ) {
     public ContextualSignalEvent {
-        kind = kind == null ? ContextualSignalKind.CARRIED_SET_CHANGED : kind;
+        kind = kind == null ? ContextualSignalKind.ITEM_ACQUIRED : kind;
         count = Math.max(0, count);
         observedTick = Math.max(0L, observedTick);
         contextKey = contextKey == null ? "" : contextKey.trim();

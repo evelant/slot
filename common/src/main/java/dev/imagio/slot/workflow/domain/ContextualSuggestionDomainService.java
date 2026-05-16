@@ -49,11 +49,9 @@ public final class ContextualSuggestionDomainService {
         }
         InventoryActivityEvent activity = record.event();
         ContextualSignalKind kind = switch (activity.kind()) {
-            case ACQUIRED, TRANSFERRED, RESTORED -> activity.producer() == InventoryActivityProducer.EXTERNAL_WITHDRAWAL
-                    ? ContextualSignalKind.ITEM_TAKEN_FROM_STORAGE
-                    : ContextualSignalKind.ITEM_ACQUIRED;
+            case ACQUIRED -> contextualAcquisitionKind(activity.producer());
             case CRAFTED, SMELTED -> ContextualSignalKind.ITEM_CRAFTED_OR_PRODUCED;
-            case TRASHED, VOIDED, OVERFLOW_STAGED -> null;
+            case TRANSFERRED, RESTORED, TRASHED, VOIDED, OVERFLOW_STAGED -> null;
         };
         if (kind == null) {
             return false;
@@ -69,56 +67,13 @@ public final class ContextualSuggestionDomainService {
         return true;
     }
 
-    public boolean observeCarriedSnapshot(
-            InventoryAuthoritySnapshot authority,
-            long currentTick,
-            DomainEventMetadata metadata
-    ) {
-        InventoryAuthoritySnapshot resolved = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
-        LinkedHashMap<ItemIdentity, CarriedSample> current = carriedSamples(resolved);
-        ContextualSuggestionState state = repository.contextualSuggestionState();
-        boolean changed = false;
-
-        for (Map.Entry<ItemIdentity, CarriedSample> entry : current.entrySet()) {
-            if (state.activeCarried().containsKey(entry.getKey())) {
-                continue;
-            }
-            ContextualSignalEvent event = new ContextualSignalEvent(
-                    ContextualSignalKind.CARRIED_SET_CHANGED,
-                    entry.getKey(),
-                    entry.getValue().count(),
-                    currentTick,
-                    "",
-                    "",
-                    entry.getValue().sourceKey(),
-                    Map.of("phase", "start"));
-            repository.appendContextualSignal(event, resolveMetadata(metadata, "contextual.carried.start"));
-            state = repository.contextualSuggestionState();
-            changed = true;
-        }
-
-        for (ContextualCarriedObservation observation : state.activeCarried().values()) {
-            if (observation == null || observation.identity() == null || current.containsKey(observation.identity())) {
-                continue;
-            }
-            long elapsed = Math.max(0L, currentTick - observation.firstSeenTick());
-            ContextualSignalEvent event = new ContextualSignalEvent(
-                    ContextualSignalKind.CARRIED_SET_CHANGED,
-                    observation.identity(),
-                    (int) Math.min(Integer.MAX_VALUE, elapsed),
-                    currentTick,
-                    "",
-                    "",
-                    observation.sourceKey(),
-                    Map.of("phase", "end"));
-            repository.appendContextualSignal(event, resolveMetadata(metadata, "contextual.carried.end"));
-            changed = true;
-        }
-
-        if (changed) {
-            mutationObserver.run();
-        }
-        return changed;
+    private static ContextualSignalKind contextualAcquisitionKind(InventoryActivityProducer producer) {
+        return switch (producer == null ? InventoryActivityProducer.UNKNOWN_EXTERNAL : producer) {
+            case EXTERNAL_WITHDRAWAL -> ContextualSignalKind.ITEM_TAKEN_FROM_STORAGE;
+            case WORLD_PICKUP, CRAFTING_RESULT, SMELTING_RESULT, MERCHANT_TRADE, QUEST_REWARD,
+                    COMPATIBILITY_API, UNKNOWN_EXTERNAL -> ContextualSignalKind.ITEM_ACQUIRED;
+            case ROUTER_ACTION, TOOL_OUTPUT_EXTRACTION, SOPHISTICATED_BACKPACK_DELTA, AUTHORITY_DIFF -> null;
+        };
     }
 
     public boolean observeStationOpened(
@@ -126,7 +81,7 @@ public final class ContextualSuggestionDomainService {
             DomainEventMetadata metadata
     ) {
         String contextKey = contextKey(host);
-        if (contextKey.isBlank()) {
+        if (contextKey.isBlank() || !stationContextHost(host)) {
             ContextualSuggestionState state = repository.contextualSuggestionState();
             if (!state.activeContextKey().isBlank()) {
                 repository.replaceContextualSuggestionState(state.withActiveContextKey(""));
@@ -357,25 +312,6 @@ public final class ContextualSuggestionDomainService {
         return true;
     }
 
-    private static LinkedHashMap<ItemIdentity, CarriedSample> carriedSamples(InventoryAuthoritySnapshot authority) {
-        LinkedHashMap<ItemIdentity, CarriedSample> samples = new LinkedHashMap<>();
-        for (InventorySourceDescriptor source : authority.carriedSources()) {
-            if (source == null) {
-                continue;
-            }
-            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
-                if (entry == null || !entry.present()) {
-                    continue;
-                }
-                ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(entry.stack()));
-                samples.compute(identity, (ignored, previous) -> previous == null
-                        ? new CarriedSample(entry.count(), source.id())
-                        : new CarriedSample(previous.count() + entry.count(), previous.sourceKey()));
-            }
-        }
-        return samples;
-    }
-
     private static Map<StationSampleKey, StationSample> stationSamples(
             InventoryHostDescriptor host,
             InventoryAuthoritySnapshot authority
@@ -408,6 +344,13 @@ public final class ContextualSuggestionDomainService {
         return source != null
                 && source.domain() == InventorySourceDomain.TOOL_REGION
                 && source.paneMembership() != InventoryPaneMembership.CARRIED;
+    }
+
+    private static boolean stationContextHost(InventoryHostDescriptor host) {
+        if (host == null || host.sourceDescriptors().isEmpty()) {
+            return false;
+        }
+        return host.sourceDescriptors().stream().anyMatch(ContextualSuggestionDomainService::stationObservedSource);
     }
 
     private static ContextualSignalEvent stationChange(
@@ -458,13 +401,6 @@ public final class ContextualSuggestionDomainService {
         }
         String label = host.title().getString();
         return label == null ? "" : label;
-    }
-
-    private record CarriedSample(int count, String sourceKey) {
-        private CarriedSample {
-            count = Math.max(0, count);
-            sourceKey = sourceKey == null ? "" : sourceKey;
-        }
     }
 
     private record StationSampleKey(String value) {

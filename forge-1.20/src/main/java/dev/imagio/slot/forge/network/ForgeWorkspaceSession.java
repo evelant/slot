@@ -167,6 +167,10 @@ final class ForgeWorkspaceSession {
         dirty = false;
     }
 
+    public SlotWorkspaceViewModel currentViewModel() {
+        return viewModel;
+    }
+
     private void seedObservedSlotKeys(AbstractContainerMenu menu) {
         observedSlotKeys.clear();
         if (menu == null) {
@@ -200,10 +204,6 @@ final class ForgeWorkspaceSession {
         int selected = player == null ? -1 : player.getInventory().selected;
         long gameTime = player == null ? 0L : player.serverLevel().getGameTime();
         if (runtime != null) {
-            runtime.contextualSuggestions().observeCarriedSnapshot(
-                    authority,
-                    gameTime,
-                    DomainEventMetadata.origin("contextual.forge.carried_snapshot"));
             runtime.contextualSuggestions().observeStationContext(
                     host,
                     authority,
@@ -659,6 +659,10 @@ final class ForgeWorkspaceSession {
         List<WorldDisplayStorageSource> displaySources =
                 WorkspaceChestProjectionSupport.proximateDisplaySources(player, worldStorage);
         Set<String> proximateIds = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
+        Set<String> contextualSuggestionStorageIds = WorkspaceChestProjectionSupport.proximateStorageIds(
+                player,
+                claimedChestMap,
+                WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
         WorkspaceStorageIndex storageIndex = WorkspaceStorageIndex.build(
                 server,
                 authority,
@@ -686,7 +690,11 @@ final class ForgeWorkspaceSession {
                 searchQuery,
                 gameTime,
                 activeChestPanel,
-                displaySources
+                displaySources,
+                contextualSuggestionStorageIds,
+                displaySources,
+                storageIndex.trackedDisplayEntries(),
+                storageIndex.liveDepositStorageIds()
         );
     }
 

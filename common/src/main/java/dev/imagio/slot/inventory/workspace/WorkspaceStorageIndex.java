@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -131,7 +132,7 @@ public final class WorkspaceStorageIndex {
             String storageId = chest.storageId().toString();
             boolean proximateTarget = proximate.contains(storageId);
             if (proximateTarget) {
-                StorageEntry live = liveClaimedEntry(server, worldStorage, chest, true, memory, tick);
+                StorageEntry live = liveClaimedEntry(server, authority, worldStorage, chest, true, memory, tick);
                 if (live != null) {
                     entries.put(storageId, live);
                     continue;
@@ -157,12 +158,25 @@ public final class WorkspaceStorageIndex {
                 continue;
             }
             SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = snapshotFromDisplay(source);
+            StorageTargetRef ref = StorageTargetRef.display(source, false, true);
             entries.put(source.storageId(), new StorageEntry(
-                    StorageTargetRef.display(source, false, true),
+                    ref,
                     snapshot,
                     countsFromSnapshot(snapshot),
                     true,
                     false));
+            if (memory != null && source.kind().trackedStorage()) {
+                memory.observeSnapshot(ref, snapshot, tick, "workspace_index_display_live_read");
+            }
+        }
+
+        for (RememberedStorageContents rememberedContents : rememberedById.values()) {
+            if (rememberedContents == null
+                    || entries.containsKey(rememberedContents.storageId())
+                    || !isTrackedDisplayMemory(rememberedContents)) {
+                continue;
+            }
+            entries.put(rememberedContents.storageId(), rememberedEntry(rememberedContents, false));
         }
 
         return new WorkspaceStorageIndex(entries, carriedCounts(authority), liveDisplays, memoryRevision);
@@ -170,6 +184,7 @@ public final class WorkspaceStorageIndex {
 
     private static StorageEntry liveClaimedEntry(
             MinecraftServer server,
+            InventoryAuthoritySnapshot authority,
             WorldStorageAccess worldStorage,
             ClaimedChest chest,
             boolean proximate,
@@ -201,7 +216,16 @@ public final class WorkspaceStorageIndex {
                     chest.storageId(), safeMessage(exception));
             return null;
         }
-        StorageTargetRef ref = StorageTargetRef.claimed(chest, true, false, proximate);
+        boolean takeTarget = StorageMutationProbe.canExtractAny(server, worldStorage, target, snapshot);
+        boolean depositTarget = !hasCarriedProbe(authority)
+                || canInsertAnyCarried(server, worldStorage, target, authority);
+        StorageTargetRef ref = StorageTargetRef.claimed(
+                chest,
+                true,
+                false,
+                proximate,
+                depositTarget,
+                takeTarget);
         if (memory != null) {
             memory.observeSnapshot(ref, snapshot, tick, "workspace_index_live_read");
         }
@@ -277,6 +301,36 @@ public final class WorkspaceStorageIndex {
         return displaySources;
     }
 
+    public List<StorageEntry> trackedDisplayEntries() {
+        ArrayList<StorageEntry> out = new ArrayList<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry == null || entry.target() == null || !entry.target().displayTarget()) {
+                continue;
+            }
+            if (entry.target().displayKind() != null && entry.target().displayKind().trackedStorage()) {
+                out.add(entry);
+            }
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    public Set<String> liveDepositStorageIds() {
+        LinkedHashSet<String> out = new LinkedHashSet<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry == null || !entry.live() || entry.target() == null || entry.target().displayTarget()) {
+                continue;
+            }
+            if (!entry.target().depositTarget()) {
+                continue;
+            }
+            if (!StorageAffinityPolicy.isEligibleSlotCount(entry.snapshot().slotCount())) {
+                continue;
+            }
+            out.add(entry.target().storageId());
+        }
+        return out.isEmpty() ? Set.of() : Set.copyOf(out);
+    }
+
     public Map<ItemIdentity, Integer> carriedCountsByIdentity() {
         return carriedCountsByIdentity;
     }
@@ -311,6 +365,9 @@ public final class WorkspaceStorageIndex {
             if (entry == null || !entry.live() || entry.target() == null || entry.target().displayTarget()) {
                 continue;
             }
+            if (!entry.target().depositTarget()) {
+                continue;
+            }
             if (!StorageAffinityPolicy.isEligibleSlotCount(entry.snapshot().slotCount())) {
                 continue;
             }
@@ -340,7 +397,8 @@ public final class WorkspaceStorageIndex {
             try {
                 UUID storageId = UUID.fromString(entry.target().storageId());
                 eligibleByChest.put(storageId,
-                        StorageAffinityPolicy.isEligibleSlotCount(entry.snapshot().slotCount()));
+                        entry.target().depositTarget()
+                                && StorageAffinityPolicy.isEligibleSlotCount(entry.snapshot().slotCount()));
             } catch (IllegalArgumentException ignored) {
                 // Non-UUID ids are display storage and are intentionally not
                 // used as claimed-chest deposit authorization.
@@ -349,15 +407,58 @@ public final class WorkspaceStorageIndex {
         return chest -> chest != null && eligibleByChest.getOrDefault(chest.storageId(), false);
     }
 
+    private static boolean hasCarriedProbe(InventoryAuthoritySnapshot authority) {
+        if (authority == null) {
+            return false;
+        }
+        for (String sourceId : carriedSourceIds(authority)) {
+            for (InventoryEntrySnapshot entry : authority.entries(sourceId)) {
+                if (entry != null && entry.present() && entry.stack() != null && !entry.stack().isEmpty()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean canInsertAnyCarried(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            WorldStorageAccess.Target target,
+            InventoryAuthoritySnapshot authority
+    ) {
+        if (authority == null) {
+            return true;
+        }
+        for (String sourceId : carriedSourceIds(authority)) {
+            for (InventoryEntrySnapshot entry : authority.entries(sourceId)) {
+                if (entry == null || !entry.present()) {
+                    continue;
+                }
+                if (StorageMutationProbe.canInsertAny(server, worldStorage, target, entry.stack(), entry.count())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static Collection<String> carriedSourceIds(InventoryAuthoritySnapshot authority) {
+        if (authority == null) {
+            return List.of();
+        }
+        var carriedSources = authority.carriedSources();
+        return carriedSources.isEmpty()
+                ? authority.sourcesById().keySet()
+                : carriedSources.stream().map(source -> source.id()).toList();
+    }
+
     private static Map<ItemIdentity, Integer> carriedCounts(InventoryAuthoritySnapshot authority) {
         if (authority == null) {
             return Map.of();
         }
         LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
-        var carriedSources = authority.carriedSources();
-        Collection<String> sourceIds = carriedSources.isEmpty()
-                ? authority.sourcesById().keySet()
-                : carriedSources.stream().map(source -> source.id()).toList();
+        Collection<String> sourceIds = carriedSourceIds(authority);
         for (String sourceId : sourceIds) {
             for (InventoryEntrySnapshot entry : authority.entries(sourceId)) {
                 if (entry == null || !entry.present()) {
@@ -389,6 +490,18 @@ public final class WorkspaceStorageIndex {
             }
         }
         return Map.copyOf(counts);
+    }
+
+    private static boolean isTrackedDisplayMemory(RememberedStorageContents remembered) {
+        if (remembered == null) {
+            return false;
+        }
+        if (!remembered.targetKind().startsWith(StorageTargetRef.KIND_DISPLAY_PREFIX)) {
+            return false;
+        }
+        var kind = dev.imagio.slot.inventory.storage.WorldDisplayStorageKind.fromKey(
+                remembered.targetKind().substring(StorageTargetRef.KIND_DISPLAY_PREFIX.length()));
+        return kind != null && kind.trackedStorage();
     }
 
     private static void mergeCounts(Map<ItemIdentity, Integer> target, Map<ItemIdentity, Integer> source) {

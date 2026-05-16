@@ -1,6 +1,6 @@
 # Contextual Suggestions
 
-Last updated: 2026-05-15
+Last updated: 2026-05-16
 
 Status: first playable prototype landed; playtest diagnostics and tuning remain.
 This narrows the broader ambient task view idea into two prototype lanes:
@@ -20,28 +20,29 @@ Related docs:
 
 Landed 2026-05-15:
 
-- common contextual signal records, item/context aggregates, carried-set
-  boundary tracking, station-open context capture, and workflow persistence
-  under `WorkflowDomainFileStore` schema 8
-- deterministic `ContextualSuggestionScorer` using recent identity signals,
-  active carried context, station item hints, player aggregate history, and
-  narrow `FacetIndex` accessors for `workflow`, `workflow_role`, `used_at`,
-  and `processing_in`
+- common contextual signal records, item/context aggregates, learned event
+  association indexes, station-open context capture, and workflow persistence
+  under `WorkflowDomainFileStore` schema 9
+- deterministic `ContextualSuggestionScorer` using recent strong item/station
+  events, learned before/after item associations, player aggregate history, and
+  narrow advisory `FacetIndex` accessors for `workflow`, `workflow_role`,
+  `used_at`, and `processing_in`; carried state is no longer relevance
+  evidence
 - `SlotWorkspaceViewModel.ContextualSuggestionLane` projection with NeoForge
   and Forge NBT codecs
 - compact Useful Now / Put Away sections pinned above the wall scroller on both
   loaders, reusing normal wall cards and gestures; empty Useful Now shows a
-  waiting placeholder, and Put Away forces the existing wayfinding strip when a
-  non-proximate tracked chest containing that identity is known
+  waiting placeholder, Useful Now can include carried cards plus suggestion-only
+  nearby storage ghosts, and Put Away forces the existing wayfinding strip when
+  a non-proximate tracked chest containing that identity is known
 - Useful Now excludes carried storage containers and no longer treats desired
   carry reservations as current-use evidence by themselves
 - Put Away treats carried count above an explicit desired count as a strongest
   cleanup signal: the reserved desired amount remains protected, but excess is
   suggested for deposit
-- scoring excludes the candidate's own carried-set signal from current-context
-  evidence where self-presence would distort the result: it cannot make an item
-  useful right now, and it cannot suppress the very item Put Away is evaluating
-  for cleanup
+- carried state is candidate/action state only: it can make a card eligible for
+  Useful Now or Put Away and provide source/action data, but it does not train
+  associations or add relevance by itself
 - station-open signals now contribute semantic context even when they do not
   name an item identity; `primary_uses`, `is_fuel`, and a small token bridge
   cover early helper-tool cases such as campfire/pot fuel activity suggesting
@@ -50,28 +51,48 @@ Landed 2026-05-15:
   tooltip or primary-use prose cannot promote unrelated carried tools by
   sharing grammar instead of meaning
 - tool-region station input/output changes now emit contextual item events from
-  both loaders, so crafting grids and integrated tool panels can make the
-  changed item active context instead of relying only on carried snapshots;
+  both loaders, so crafting grids and integrated tool panels make the changed
+  item active context without relying on passive possession;
   station diffs use item id + count rather than component fingerprints, so
   heat/progress/damage NBT churn does not train Useful Now or force refreshes
 - world item use now emits contextual signals from both loaders: right-click
-  block/item/entity attempts, entity attacks, block-break tool use, block
-  placement, use-finish consumption, and item-destroyed durability events
-- item co-occurrence hints are learned only between items that actively changed
-  in the same station context, persisted in item aggregates with a scoped
-  `station_item:` prefix, and consumed by the scorer; passive carried tools do
-  not become station hints merely because the player had them in inventory, and
-  earlier unscoped `item:` hints from the broken learner are ignored
+  item/entity/tool attempts, entity attacks, block-break tool use, block
+  placement, use-finish consumption, and item-destroyed durability events;
+  right-click block placement by `BlockItem` is not also counted as a tool-use
+  signal
+- learned before/after associations are intentionally narrow: station item
+  moves can associate with other station item moves in the same context, and an
+  explicit storage take can associate with a following station item move.
+  Broad `STATION_OPENED`, `ITEM_USED`, acquisition, production, placement,
+  consumption, deposit, and damage signatures do not train or replay association
+  hints. Tool use still contributes exact recent relevance for that tool.
+  Passive carried tools do not become hints merely because the player had them
+  in inventory.
 - saved goal plans are not currently emitted as Useful Now context; goal state
   remains a Put Away protection signal until goal capture is reliable enough to
   train suggestions
 - deposit observations update cleanup history and apply a short exact-identity
   Useful Now penalty until a newer active signal re-promotes that item, so
   putting something away does not immediately imply it is useful again
+- placement and consumption apply a short exact-identity spent penalty, so
+  planting saplings or eating food does not pin that exact item as Useful Now
+  unless newer stronger evidence re-promotes it
+- non-tool right-click use remains context-only and does not replay learned
+  before/after associations, which prevents older block-placement double-count
+  history from keeping placed items alive
+- recent contextual signals also decay by observed world tick when a current
+  game tick is available, so an otherwise idle exact-use signal does not remain
+  Useful Now forever just because no newer signal arrived
 - suggestion lanes carry debug score/reason metadata through both loader codecs;
   a client config toggle can append detailed Useful Now / Put Away score inputs
-  to item tooltips, including candidate flags, active/passive context
-  relevance, top token matches, score terms, and Put Away history inputs
+  to item tooltips, including candidate flags, history/exact/advisory
+  relevance, top matches, score terms, and Put Away history inputs
+- `/slot debug contextual` dumps recent item/station events, learned
+  associations, aggregates, and workspace/sidebar score breakdowns to the
+  server log, including carried/proximate/elsewhere candidate source counts.
+  The loader registries retain the last closed view model long enough for the
+  command to be run after closing SLOT, since chat is not usable while the
+  sidebar owns search input.
 - saved goal tabs hydrate without auto-selecting a goal, keeping the All wall
   visible by default so contextual lanes are not hidden for an entire session
 - tests for scoring, persistence round-trip, and both loader view-model paths
@@ -167,16 +188,17 @@ Behavior signals:
 
 - item taken from tracked or proximate storage
 - item deposited into tracked or proximate storage
-- item carried duration
-- item recently acquired into carried inventory
-- item consumed, placed, crafted, damaged, or transformed
-- right-click world use attempts with a held item, even when final success is
-  ambiguous
+- item recently acquired from explicit pickup/take/reward signals; authority
+  diff and passive internal inventory movement do not train Useful Now
+- item crafted, damaged, or transformed
+- item consumed or placed as spent context, not as exact self-promotion
+- right-click world use attempts with a held non-block tool/item, even when
+  final success is ambiguous
 - machine, block entity, crafting grid, or workstation opened
 - station inventory changed because the player moved related items/tools
 - EMI recipe screen or SLOT goal tab recently active (deferred until those
   surfaces are reliable enough to train suggestions)
-- repeated item co-occurrence across nearby time windows
+- repeated item/station/use transitions across nearby time windows
 
 Facet signals:
 
@@ -204,12 +226,12 @@ Instead, score items against a latent, generic current-context model built from
 recent events and facets:
 
 - recent item identities and their facet vectors
-- recent station / screen contexts
+- recent real station contexts, not generic inventory/backpack/SLOT hosts
 - recent goal / recipe / Kit / wanted / desired context once those surfaces are
   reliable enough to train suggestions
-- item co-occurrence windows
+- learned station-item and explicit storage-take associations
 - decayed behavior signals
-- player-specific carry / deposit aggregates, once available
+- player-specific active-use / deposit aggregates, once available
 
 The output is item-level signal, not a named player activity:
 
@@ -227,11 +249,11 @@ without clearing older signals. Switching from metalworking-like behavior to
 food-prep-like behavior should make food items rise quickly while recent
 metalworking items decay slowly if they are still plausibly in use.
 
-Do not count the candidate item's own `CARRIED_SET_CHANGED` signal as evidence
-that it is relevant to the current context. Carrying an item is the condition
-Put Away is evaluating, not proof that the item is useful right now. Player
-desired counts are also carry reservations, not Useful Now evidence unless other
-recent behavior or context independently makes the item relevant.
+Do not emit or score carried-set changes as contextual evidence. Carrying an
+item is candidate/action state: Useful Now may show a carried card, and Put Away
+is carried-only, but possession is not proof that the item is useful right now.
+Player desired counts are also carry reservations, not Useful Now evidence
+unless other recent behavior or context independently makes the item relevant.
 
 Station/menu signals may not carry an item identity. They still need to add
 context through the menu key, title, and metadata, and opening the same station
@@ -323,8 +345,11 @@ fit `InventoryActivityEvent`.
 
 Candidate fields:
 
-- `kind`: `CARRIED_SET_CHANGED`, `STATION_OPENED`,
-  `STATION_CONTENTS_CHANGED`, `GOAL_CONTEXT_OBSERVED`, `RECIPE_CONTEXT_OBSERVED`
+- `kind`: `STATION_OPENED`, `STATION_CONTENTS_CHANGED`,
+  `GOAL_CONTEXT_OBSERVED`, `RECIPE_CONTEXT_OBSERVED`, `ITEM_ACQUIRED`,
+  `ITEM_TAKEN_FROM_STORAGE`, `ITEM_DEPOSITED_TO_STORAGE`,
+  `ITEM_CRAFTED_OR_PRODUCED`, `ITEM_USED`, `ITEM_PLACED`, `ITEM_CONSUMED`,
+  `ITEM_DAMAGED`
 - `globalSequence`: use the existing workflow sequence machinery so ordering is
   comparable with activity records
 - `identity`: optional, present for item-scoped signals
@@ -345,24 +370,31 @@ event log for scoring.
 Per-item aggregate:
 
 - `identity`
-- `timesObservedCarried`
 - `timesAcquired`
 - `timesTakenFromStorage`
 - `timesDepositedToStorage`
 - `timesCraftedOrProduced`
-- `totalCarriedTicks`
-- `recentCarriedTicksEwma`
-- `lastCarriedSequence`
+- `timesUsed`
+- `timesPlaced`
+- `timesConsumed`
+- `timesDamaged`
+- `lastActiveSequence`
 - `lastAcquiredSequence`
 - `lastDepositedSequence`
-- bounded co-occurrence hints keyed by item identity or facet token
 
 Per-context aggregate:
 
 - `contextKey`
 - `timesSeen`
 - `lastSeenSequence`
-- bounded item/facet hints observed around that context
+- label and bounded diagnostic hints, not scoring authority
+
+Association index:
+
+- normalized replayable event signature, currently `station_contents|...` or
+  `item_taken|...`
+- bounded top item hints likely to follow that signature
+- count, score, last sequence, and average sequence delta per hint
 
 Persistence rule: persist aggregates and enough recent raw signals to debug bad
 suggestions. Do not persist candidate scores, lane membership, or human-readable
@@ -410,20 +442,12 @@ Start from existing authoritative outcomes and storage observers:
 Audit for missing take/deposit activity events rather than adding a second
 observer that can disagree with the action pipeline.
 
-### Carry Duration
+### Carried State
 
-Track carried-set changes from authority snapshots, not from UI visibility.
-
-Implementation shape:
-
-- Maintain a per-player in-memory carried identity set with first-seen sequence
-  or tick.
-- On refresh/session tick, compare current carried identities against the prior
-  set.
-- When an identity enters carried inventory, update acquired/carried-start
-  aggregate state.
-- When an identity leaves carried inventory, add elapsed carried ticks to the
-  persistent aggregate.
+Do not emit carried-set changes as contextual signals. Carried state is already
+available in the workspace projection and should remain eligibility/action data:
+Useful Now may show carried cards, and Put Away is carried-only, but passive
+possession must not train relevance.
 - Save on boundary changes, not every tick.
 
 This gives Put Away real carry-duration history across sessions while avoiding
@@ -498,15 +522,16 @@ accessor there rather than duplicating classification parsing in the scorer.
 Build a decayed context vector from:
 
 - recently acquired/taken/deposited identities
-- currently carried identities
-- recently opened station/screen context keys
+- recently opened real station context keys, excluding generic carried-only
+  SLOT/backpack/inventory hosts
 - recent goal / recipe / Kit / wanted / desired context once those surfaces are
   reliable enough to train suggestions
-- co-occurrence hints from persistent aggregates
+- learned before/after associations from station item movement and explicit
+  storage take before station use
 
 Signals should decay, but not disappear instantly. A temporary food-prep detour
-should not erase the metalworking-like context if the player still carries
-metalworking-like items.
+should not erase the metalworking-like context if the player is still taking
+metalworking-like actions.
 
 ### Useful Now Score
 
@@ -514,16 +539,18 @@ High-level shape:
 
 ```text
 useful_now =
-  current_context_facet_overlap
-  + recent_station_affinity
-  + cooccurrence_affinity
+  learned_history_votes
+  + recent_exact_item_activity
+  + facet_advisory_overlap
   + explicit_goal_or_target_boost
-  + already_carried_access_boost
+  - recent_deposit_penalty
+  - recent_placed_or_consumed_penalty
   - noise_penalties
 ```
 
-Include already-carried items. Useful Now is a quick-access surface for the
-things needed now, not only a fetch list.
+Include already-carried items and nearby stored ghost items. Useful Now is a
+quick-access surface for the things needed now, not only a fetch list. Carried
+status affects eligibility and actions, not relevance.
 
 ### Put Away Score
 
@@ -548,6 +575,8 @@ should already produce meaningful Put Away cards from facet priors alone.
 
 - Cap each lane to a small number of cards so suggestions cannot consume the
   wall.
+- Reserve room for qualifying nearby-storage ghosts in Useful Now so a cluster
+  of recently used carried tools cannot crowd out every relevant stored item.
 - Use separate enter/exit thresholds or short hysteresis so cards do not flicker
   on every projection refresh.
 - Preserve lane order by score, then stable item identity order.
@@ -571,7 +600,7 @@ should already produce meaningful Put Away cards from facet priors alone.
 ### Slice 1 — Event Capture — Landed
 
 - connect existing activity outcomes to the aggregate updater
-- add carried-set boundary tracking from authority snapshots
+- add station/item/use/deposit event capture without passive carried observation
 - add first platform screen/station-open emitters for both loaders
 - persist aggregates across client/server restart in a dedicated test or manual
   verification path

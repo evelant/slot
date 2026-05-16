@@ -35,9 +35,8 @@ class ContextualSuggestionDomainServiceTest {
     void sameStationContextDoesNotTreatPassiveCarriedItemsAsHints() {
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
         ContextualSuggestionDomainService service = new ContextualSuggestionDomainService(repository, null);
-        InventoryHostDescriptor host = host();
+        InventoryHostDescriptor host = hostWithToolSource();
 
-        repository.appendContextualSignal(carriedStart("minecraft:wheat", 100L), DomainEventMetadata.origin("test"));
         assertTrue(service.observeStationOpened(host, DomainEventMetadata.origin("test.station")));
         assertFalse(repository.contextualSuggestionState()
                 .contextAggregates()
@@ -45,13 +44,22 @@ class ContextualSuggestionDomainServiceTest {
                 .itemHints()
                 .containsKey("minecraft:wheat"));
 
-        repository.appendContextualSignal(carriedStart("minecraft:oak_log", 120L), DomainEventMetadata.origin("test"));
         assertFalse(service.observeStationOpened(host, DomainEventMetadata.origin("test.station")));
         assertFalse(repository.contextualSuggestionState()
                 .contextAggregates()
                 .get("menu:" + TestMenu.class.getName())
                 .itemHints()
                 .containsKey("minecraft:oak_log"));
+    }
+
+    @Test
+    void carriedOnlyHostDoesNotBecomeStationContext() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        ContextualSuggestionDomainService service = new ContextualSuggestionDomainService(repository, null);
+
+        assertFalse(service.observeStationOpened(host(), DomainEventMetadata.origin("test.station")));
+        assertTrue(repository.contextualSuggestionState().recentSignals().isEmpty());
+        assertTrue(repository.contextualSuggestionState().activeContextKey().isBlank());
     }
 
     @Test
@@ -64,7 +72,6 @@ class ContextualSuggestionDomainServiceTest {
                 host,
                 List.of(new InventoryStackSnapshot(0, new ItemStack("tfc:knife", 1, 1), 1)),
                 List.of());
-        assertTrue(service.observeCarriedSnapshot(carriedKnife, 100L, DomainEventMetadata.origin("test.carried")));
         service.observeStationContext(host, carriedKnife, 100L, DomainEventMetadata.origin("test.station"));
 
         InventoryAuthoritySnapshot leatherInserted = authority(
@@ -77,10 +84,11 @@ class ContextualSuggestionDomainServiceTest {
                 .anyMatch(record -> record.event().kind() == ContextualSignalKind.STATION_CONTENTS_CHANGED
                         && ItemIdentity.of("tfc:leather").equals(record.event().identity())));
         assertFalse(repository.contextualSuggestionState()
-                .itemAggregates()
-                .get(ItemIdentity.of("tfc:leather"))
-                .cooccurrenceHints()
-                .containsKey(ContextualSuggestionState.STATION_COOCCURRENCE_HINT_PREFIX + "tfc:knife"));
+                .associationIndex()
+                .nextItemsBySignature()
+                .values()
+                .stream()
+                .anyMatch(set -> set.itemHints().containsKey("tfc:knife")));
     }
 
     @Test
@@ -107,15 +115,17 @@ class ContextualSuggestionDomainServiceTest {
         assertTrue(service.observeStationContext(host, sawInserted, 110L, DomainEventMetadata.origin("test.station")));
 
         assertTrue(repository.contextualSuggestionState()
-                .itemAggregates()
-                .get(ItemIdentity.of("tfc:leather"))
-                .cooccurrenceHints()
-                .containsKey(ContextualSuggestionState.STATION_COOCCURRENCE_HINT_PREFIX + "slot:test_saw"));
+                .associationIndex()
+                .nextItemsBySignature()
+                .get(stationSignature("menu:" + TestMenu.class.getName(), "tfc:leather", "increase"))
+                .itemHints()
+                .containsKey("slot:test_saw"));
         assertTrue(repository.contextualSuggestionState()
-                .itemAggregates()
-                .get(ItemIdentity.of("slot:test_saw"))
-                .cooccurrenceHints()
-                .containsKey(ContextualSuggestionState.STATION_COOCCURRENCE_HINT_PREFIX + "tfc:leather"));
+                .associationIndex()
+                .nextItemsBySignature()
+                .get(stationSignature("menu:" + TestMenu.class.getName(), "slot:test_saw", "increase"))
+                .itemHints()
+                .containsKey("tfc:leather"));
     }
 
     @Test
@@ -148,16 +158,85 @@ class ContextualSuggestionDomainServiceTest {
         assertEquals(signalCount, repository.contextualSuggestionState().recentSignals().size());
     }
 
-    private static ContextualSignalEvent carriedStart(String itemId, long tick) {
-        return new ContextualSignalEvent(
-                ContextualSignalKind.CARRIED_SET_CHANGED,
+    @Test
+    void authorityDiffAcquisitionsDoNotBecomeUsefulNowSignals() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        ContextualSuggestionDomainService service = new ContextualSuggestionDomainService(repository, null);
+
+        boolean recorded = service.observeActivityRecord(activityRecord(
+                InventoryActivityKind.ACQUIRED,
+                InventoryActivityProducer.AUTHORITY_DIFF,
+                "slot:test_knife"));
+
+        assertFalse(recorded);
+        assertTrue(repository.contextualSuggestionState().recentSignals().isEmpty());
+    }
+
+    @Test
+    void worldPickupAcquisitionsStillBecomeUsefulNowSignals() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        ContextualSuggestionDomainService service = new ContextualSuggestionDomainService(repository, null);
+
+        boolean recorded = service.observeActivityRecord(activityRecord(
+                InventoryActivityKind.ACQUIRED,
+                InventoryActivityProducer.WORLD_PICKUP,
+                "minecraft:charcoal"));
+
+        assertTrue(recorded);
+        assertTrue(repository.contextualSuggestionState().recentSignals().stream()
+                .anyMatch(record -> record.event().kind() == ContextualSignalKind.ITEM_ACQUIRED
+                        && ItemIdentity.of("minecraft:charcoal").equals(record.event().identity())));
+    }
+
+    @Test
+    void broadPersistedAssociationSignaturesArePruned() {
+        ContextualAssociationSet polluted = ContextualAssociationSet.empty()
+                .learn(ItemIdentity.of("firmalife:rennet"), 12L, 1L, 4.0D);
+        String stationSignature = stationSignature("menu:" + TestMenu.class.getName(), "tfc:leather", "increase");
+
+        ContextualAssociationIndex index = new ContextualAssociationIndex(Map.of(
+                "station_opened|context=menu:net.minecraft.world.inventory.inventorymenu", polluted,
+                "item_used|item=minecraft:oak_sapling|action=right_click_block|target=block:minecraft:dirt", polluted,
+                stationSignature, polluted));
+
+        assertFalse(index.nextItemsBySignature()
+                .containsKey("station_opened|context=menu:net.minecraft.world.inventory.inventorymenu"));
+        assertFalse(index.nextItemsBySignature()
+                .containsKey("item_used|item=minecraft:oak_sapling|action=right_click_block|target=block:minecraft:dirt"));
+        assertTrue(index.nextItemsBySignature().containsKey(stationSignature));
+    }
+
+    private static InventoryActivityRecord activityRecord(
+            InventoryActivityKind kind,
+            InventoryActivityProducer producer,
+            String itemId
+    ) {
+        return new InventoryActivityRecord(
+                new DomainEventEnvelope(1L, 1L, DomainEventStreamKind.ACTIVITY, 0L, "test", "", "", ""),
+                new InventoryActivityEvent(
+                        kind,
+                        producer,
+                        InventoryActivityConfidence.OBSERVED,
+                        ItemIdentity.of(itemId),
+                        1,
+                        null,
+                        null,
+                        "",
+                        "",
+                        List.of(),
+                        "test"));
+    }
+
+    private static String stationSignature(String contextKey, String itemId, String change) {
+        return ContextualEventSignature.key(new ContextualSignalEvent(
+                ContextualSignalKind.STATION_CONTENTS_CHANGED,
                 ItemIdentity.of(itemId),
                 1,
-                tick,
+                0L,
+                contextKey,
                 "",
-                "",
-                "test",
-                Map.of("phase", "start"));
+                "tool.input",
+                Map.of("change", change)));
     }
 
     private static InventoryHostDescriptor host() {

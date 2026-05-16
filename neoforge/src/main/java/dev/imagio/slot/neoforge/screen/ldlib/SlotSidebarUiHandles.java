@@ -1,6 +1,7 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
 import dev.imagio.slot.SlotDebugLog;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -23,6 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class SlotSidebarUiHandles {
     private static final Map<UUID, SlotSidebarUiHandle> HANDLES = new ConcurrentHashMap<>();
+    private static final Map<UUID, SlotWorkspaceViewModel> LAST_VIEW_MODELS = new ConcurrentHashMap<>();
     private static boolean registered;
 
     private SlotSidebarUiHandles() {
@@ -43,6 +45,7 @@ public final class SlotSidebarUiHandles {
         UUID id = player.getUUID();
         SlotSidebarUiHandle existing = HANDLES.remove(id);
         if (existing != null) {
+            rememberLastViewModel(id, existing);
             existing.dispose();
         }
         SlotSidebarUiHandle handle = new SlotSidebarUiHandle(player);
@@ -54,16 +57,37 @@ public final class SlotSidebarUiHandles {
         if (player == null) {
             return;
         }
-        SlotSidebarUiHandle handle = HANDLES.remove(player.getUUID());
+        UUID id = player.getUUID();
+        SlotSidebarUiHandle handle = HANDLES.remove(id);
         if (handle != null) {
+            rememberLastViewModel(id, handle);
             handle.dispose();
             SlotDebugLog.log("[SLOT][sidebar] closed handle for {}", player.getGameProfile().getName());
         }
     }
 
+    public static SlotWorkspaceViewModel currentViewModel(ServerPlayer player) {
+        if (player == null) {
+            return null;
+        }
+        SlotSidebarUiHandle handle = HANDLES.get(player.getUUID());
+        if (handle != null && !handle.isDisposed()) {
+            return handle.currentViewModel();
+        }
+        return LAST_VIEW_MODELS.get(player.getUUID());
+    }
+
+    private static void rememberLastViewModel(UUID playerId, SlotSidebarUiHandle handle) {
+        if (playerId == null || handle == null || handle.currentViewModel() == null) {
+            return;
+        }
+        LAST_VIEW_MODELS.put(playerId, handle.currentViewModel());
+    }
+
     private static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             close(player);
+            LAST_VIEW_MODELS.remove(player.getUUID());
         }
     }
 }

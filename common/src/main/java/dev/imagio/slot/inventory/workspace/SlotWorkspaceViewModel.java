@@ -35,6 +35,7 @@ import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -603,6 +604,142 @@ public record SlotWorkspaceViewModel(
             ActiveChestPanel activeChestPanel,
             List<WorldDisplayStorageSource> worldDisplaySources
     ) {
+        return project(
+                authority,
+                workflow,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                revision,
+                learnedRules,
+                signalExtractor,
+                chestContentsResolver,
+                proximateStorageIds,
+                carriedContainerInfoResolver,
+                lootChestSource,
+                searchQuery,
+                currentTick,
+                activeChestPanel,
+                worldDisplaySources,
+                proximateStorageIds,
+                worldDisplaySources,
+                List.of());
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            LootChestSource lootChestSource,
+            String searchQuery,
+            long currentTick,
+            ActiveChestPanel activeChestPanel,
+            List<WorldDisplayStorageSource> worldDisplaySources,
+            Set<String> contextualSuggestionStorageIds,
+            List<WorldDisplayStorageSource> contextualSuggestionDisplaySources
+    ) {
+        return project(
+                authority,
+                workflow,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                revision,
+                learnedRules,
+                signalExtractor,
+                chestContentsResolver,
+                proximateStorageIds,
+                carriedContainerInfoResolver,
+                lootChestSource,
+                searchQuery,
+                currentTick,
+                activeChestPanel,
+                worldDisplaySources,
+                contextualSuggestionStorageIds,
+                contextualSuggestionDisplaySources,
+                List.of());
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            LootChestSource lootChestSource,
+            String searchQuery,
+            long currentTick,
+            ActiveChestPanel activeChestPanel,
+            List<WorldDisplayStorageSource> worldDisplaySources,
+            Set<String> contextualSuggestionStorageIds,
+            List<WorldDisplayStorageSource> contextualSuggestionDisplaySources,
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries
+    ) {
+        return project(
+                authority,
+                workflow,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                revision,
+                learnedRules,
+                signalExtractor,
+                chestContentsResolver,
+                proximateStorageIds,
+                carriedContainerInfoResolver,
+                lootChestSource,
+                searchQuery,
+                currentTick,
+                activeChestPanel,
+                worldDisplaySources,
+                contextualSuggestionStorageIds,
+                contextualSuggestionDisplaySources,
+                trackedDisplayStorageEntries,
+                proximateStorageIds);
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            LootChestSource lootChestSource,
+            String searchQuery,
+            long currentTick,
+            ActiveChestPanel activeChestPanel,
+            List<WorldDisplayStorageSource> worldDisplaySources,
+            Set<String> contextualSuggestionStorageIds,
+            List<WorldDisplayStorageSource> contextualSuggestionDisplaySources,
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries,
+            Set<String> depositEligibleStorageIds
+    ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
         Map<ItemIdentity, Integer> wantedCounts = activeWantedCounts(resolvedAuthority, resolvedWorkflow.playerWantedCounts());
@@ -617,9 +754,19 @@ public record SlotWorkspaceViewModel(
         // the planner refuses to deposit (its decayed score is 0).
         ChestAffinityMap affinityMap = resolvedWorkflow.chestAffinityMap().decayed(currentTick);
         Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
+        Set<String> depositEligible = depositEligibleStorageIds == null ? proximate : depositEligibleStorageIds;
         List<WorldDisplayStorageSource> displaySources = worldDisplaySources == null
                 ? List.of()
                 : List.copyOf(worldDisplaySources);
+        List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries = trackedDisplayStorageEntries == null
+                ? List.of()
+                : trackedDisplayStorageEntries.stream()
+                        .filter(entry -> entry != null
+                                && entry.target() != null
+                                && entry.target().displayTarget()
+                                && entry.target().displayKind() != null
+                                && entry.target().displayKind().trackedStorage())
+                        .toList();
         int[] carriedCounts = countCarriedFreeSlotsAndCapacity(resolvedAuthority);
         int carriedFreeSlotCount = carriedCounts[0];
         int carriedSlotCapacity = carriedCounts[1];
@@ -637,11 +784,23 @@ public record SlotWorkspaceViewModel(
         // homed island. See docs/plans/learned-storage.md.
         ProximateGhostProjection ghosts = ProximateGhostProjection.build(
                 claimedChestMap, chestContentsResolver, proximate, visualHomeMap, displaySources);
+        Set<String> contextualSuggestionStorage = contextualSuggestionStorageIds == null
+                ? proximate
+                : contextualSuggestionStorageIds;
+        List<WorldDisplayStorageSource> contextualSuggestionDisplays = contextualSuggestionDisplaySources == null
+                ? displaySources
+                : contextualSuggestionDisplaySources;
+        ProximateGhostProjection contextualSuggestionGhosts = ProximateGhostProjection.build(
+                claimedChestMap,
+                chestContentsResolver,
+                contextualSuggestionStorage,
+                visualHomeMap,
+                contextualSuggestionDisplays);
         // Search-as-find: collect non-proximate chest stocks too, with the
         // dimension noted in the label. Hover/zoom on a search hit reveals
         // "Storage Area 2 — nether". See docs/plans/learned-storage.md.
         ElsewhereGhostProjection elsewhereGhosts = ElsewhereGhostProjection.build(
-                claimedChestMap, chestContentsResolver, proximate);
+                claimedChestMap, chestContentsResolver, proximate, trackedDisplayEntries);
         Map<ItemIdentity, List<ChestPresenceEntry>> elsewherePresence = elsewhereGhosts.presenceByIdentity();
 
         // Kit ghost markers: when a kit is active, every needed-but-not-
@@ -950,7 +1109,13 @@ public record SlotWorkspaceViewModel(
         List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(layoutIslands, atlasItems);
 
         ChestClusterMap clusterMap = ChestClusterMap.derive(claimedChestMap);
-        List<ChestChip> chestChips = chestChips(claimedChestMap, affinityMap, chestContentsResolver, proximate, clusterMap);
+        List<ChestChip> chestChips = chestChips(
+                claimedChestMap,
+                affinityMap,
+                chestContentsResolver,
+                proximate,
+                clusterMap,
+                trackedDisplayEntries);
         List<ChestClusterDescriptor> chestClusters = chestClusterDescriptors(clusterMap, resolvedWorkflow.clusterLabels());
 
         List<KitCard> kitCards = kitCards(
@@ -978,10 +1143,20 @@ public record SlotWorkspaceViewModel(
                 affinityMap,
                 proximate,
                 chestContentsResolver,
-                reservedCountResolver);
+                reservedCountResolver,
+                depositEligible);
         ArrayList<AtlasItem> contextualSuggestionCandidates = new ArrayList<>(atlasItems.size() + triageItems.size());
         contextualSuggestionCandidates.addAll(atlasItems);
         contextualSuggestionCandidates.addAll(triageItems);
+        addContextualSuggestionStorageGhosts(
+                contextualSuggestionCandidates,
+                contextualSuggestionGhosts,
+                recentIdentities,
+                kitNeededIdentities,
+                playerDesiredCounts,
+                activeKitDesiredCounts,
+                wantedCounts,
+                visualHomeMap);
         List<ContextualSuggestionLane> contextualSuggestionLanes = ContextualSuggestionScorer.lanes(
                 contextualSuggestionCandidates,
                 resolvedWorkflow,
@@ -1034,6 +1209,88 @@ public record SlotWorkspaceViewModel(
             }
         }
         return List.copyOf(refs);
+    }
+
+    private static void addContextualSuggestionStorageGhosts(
+            List<AtlasItem> candidates,
+            ProximateGhostProjection suggestionGhosts,
+            Set<ItemIdentity> recentIdentities,
+            Set<ItemIdentity> kitNeededIdentities,
+            Map<ItemIdentity, Integer> playerDesiredCounts,
+            Map<ItemIdentity, Integer> activeKitDesiredCounts,
+            Map<ItemIdentity, Integer> wantedCounts,
+            VisualHomeMap visualHomeMap
+    ) {
+        if (candidates == null || suggestionGhosts == null || suggestionGhosts.totalsByIdentity().isEmpty()) {
+            return;
+        }
+        LinkedHashMap<ItemIdentity, AtlasItem> existing = new LinkedHashMap<>();
+        for (AtlasItem item : candidates) {
+            if (item != null && item.identity() != null) {
+                existing.putIfAbsent(item.identity().toIdentity(), item);
+            }
+        }
+        for (Map.Entry<ItemIdentity, Integer> entry : suggestionGhosts.totalsByIdentity().entrySet()) {
+            ItemIdentity identity = entry.getKey();
+            if (identity == null) {
+                continue;
+            }
+            List<ChestPresenceEntry> presence =
+                    suggestionGhosts.presenceByIdentity().getOrDefault(identity, List.of());
+            int proximateCount = entry.getValue();
+            if (proximateCount <= 0 || presence.isEmpty()) {
+                continue;
+            }
+            AtlasItem base = existing.get(identity);
+            if (base != null && (base.carried() || base.proximateCount() > 0 || !base.presence().isEmpty())) {
+                continue;
+            }
+            ItemStack displayStack = base == null
+                    ? suggestionGhosts.displayStackByIdentity().get(identity)
+                    : base.displayStack();
+            if (displayStack == null || displayStack.isEmpty()) {
+                continue;
+            }
+            VisualHomeAssignment assignment = visualHomeMap == null ? null : visualHomeMap.assignment(identity);
+            String islandId = base == null
+                    ? assignment == null ? SlotWorkspaceAtlasLayout.ISLAND_TRIAGE : assignment.islandId()
+                    : base.islandId();
+            boolean playerPlaced = base != null
+                    ? base.playerPlaced()
+                    : assignment != null
+                            && assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED;
+            int kitDesired = activeKitDesiredCounts == null ? 0 : activeKitDesiredCounts.getOrDefault(identity, 0);
+            int playerDesired = playerDesiredCounts == null ? 0 : playerDesiredCounts.getOrDefault(identity, 0);
+            int desiredCount = base == null ? (kitDesired > 0 ? kitDesired : playerDesired) : base.desiredCount();
+            boolean desiredFromKit = base == null ? kitDesired > 0 : base.desiredCountFromKit();
+            candidates.add(new AtlasItem(
+                    IdentityRef.from(identity),
+                    displayStack,
+                    base == null ? identity.itemId() : base.name(),
+                    Math.max(proximateCount, base == null ? 0 : base.totalCount()),
+                    base == null ? 0 : base.firstSlotIndex(),
+                    islandId,
+                    (recentIdentities != null && recentIdentities.contains(identity)) || (base != null && base.recent()),
+                    playerPlaced,
+                    false,
+                    true,
+                    proximateCount,
+                    base == null ? List.of() : base.chipSuggestions(),
+                    presence,
+                    base == null ? List.of() : base.elsewhere(),
+                    false,
+                    0,
+                    0,
+                    base == null
+                            ? kitNeededIdentities != null && kitNeededIdentities.contains(identity)
+                            : base.kitNeeded(),
+                    desiredCount,
+                    desiredFromKit,
+                    base == null ? wantedCounts == null ? 0 : wantedCounts.getOrDefault(identity, 0) : base.wantedCount(),
+                    "",
+                    -1,
+                    0));
+        }
     }
 
     public static Map<ItemIdentity, Integer> activeWantedCounts(
@@ -1135,13 +1392,15 @@ public record SlotWorkspaceViewModel(
             ChestAffinityMap affinityMap,
             Set<String> proximateStorageIds,
             Function<String, ChestContentsSnapshot> chestContentsResolver,
-            java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver
+            java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver,
+            Set<String> depositEligibleStorageIds
     ) {
         if (atlasItems == null || atlasItems.isEmpty()
                 || claimedChestMap == null || claimedChestMap.chests().isEmpty()
                 || proximateStorageIds == null || proximateStorageIds.isEmpty()) {
             return Set.of();
         }
+        Set<String> depositEligible = depositEligibleStorageIds == null ? proximateStorageIds : depositEligibleStorageIds;
         Map<String, Set<ItemIdentity>> contentIdentities = proximateContentIdentitiesByChest(
                 claimedChestMap, chestContentsResolver, proximateStorageIds);
         LinkedHashSet<IdentityRef> result = new LinkedHashSet<>();
@@ -1169,6 +1428,9 @@ public record SlotWorkspaceViewModel(
                     continue;
                 }
                 if (!proximateStorageIds.contains(chest.storageId().toString())) {
+                    continue;
+                }
+                if (!depositEligible.contains(chest.storageId().toString())) {
                     continue;
                 }
                 if (!storageAffinityEligible(chest.storageId().toString(), chestContentsResolver)) {
@@ -1960,80 +2222,91 @@ public record SlotWorkspaceViewModel(
             ChestAffinityMap affinityMap,
             Function<String, ChestContentsSnapshot> chestContentsResolver,
             Set<String> proximate,
-            ChestClusterMap clusterMap
+            ChestClusterMap clusterMap,
+            List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries
     ) {
-        if (map == null || map.chests().isEmpty()) {
+        boolean hasChests = map != null && !map.chests().isEmpty();
+        boolean hasDisplays = trackedDisplayEntries != null && !trackedDisplayEntries.isEmpty();
+        if (!hasChests && !hasDisplays) {
             return List.of();
         }
-        ArrayList<ChestChip> chips = new ArrayList<>(map.chests().size());
-        for (ClaimedChest chest : map.chests()) {
-            if (chest == null) {
-                continue;
-            }
-            ChestAnchor primary = chest.anchors().iterator().next();
-            String dimension = primary == null ? "" : primary.dimensionId();
-            int worldX = primary == null ? 0 : primary.x();
-            int worldY = primary == null ? 0 : primary.y();
-            int worldZ = primary == null ? 0 : primary.z();
-            String storageId = chest.storageId().toString();
-            String label = chest.label() == null || chest.label().isBlank()
-                    ? autoLabel(chest)
-                    : chest.label();
-            ChestContentsSnapshot snapshot = chestContentsResolver == null
-                    ? ChestContentsSnapshot.empty()
-                    : chestContentsResolver.apply(storageId);
-            if (snapshot == null) {
-                snapshot = ChestContentsSnapshot.empty();
-            }
-            int slotCapacity = snapshot.slotCount();
-            int filledSlots = 0;
-            // Roll up the chest's slot-by-slot contents into per-identity
-            // summaries. The search-results panel uses this to count
-            // matches without re-walking the chest server-side.
-            LinkedHashMap<ItemIdentity, ChestContentSummary> summaryByIdentity = new LinkedHashMap<>();
-            for (ItemStack stack : snapshot.contents()) {
-                if (stack == null || stack.isEmpty()) {
+        ArrayList<ChestChip> chips = new ArrayList<>(
+                (hasChests ? map.chests().size() : 0)
+                        + (hasDisplays ? trackedDisplayEntries.size() : 0));
+        if (hasChests) {
+            for (ClaimedChest chest : map.chests()) {
+                if (chest == null) {
                     continue;
                 }
-                filledSlots++;
-                ItemIdentity identity = ItemIdentityMatcher.create(stack);
-                ChestContentSummary existing = summaryByIdentity.get(identity);
-                if (existing == null) {
-                    summaryByIdentity.put(identity, new ChestContentSummary(
-                            identity.itemId(),
-                            identity.componentFingerprint(),
-                            stack.getHoverName().getString(),
-                            stack.copy(),
-                            stack.getCount()
-                    ));
-                } else {
-                    summaryByIdentity.put(identity, new ChestContentSummary(
-                            existing.itemId(),
-                            existing.componentFingerprint(),
-                            existing.name(),
-                            existing.displayStack(),
-                            existing.count() + stack.getCount()
-                    ));
+                ChestAnchor primary = chest.anchors().iterator().next();
+                String dimension = primary == null ? "" : primary.dimensionId();
+                int worldX = primary == null ? 0 : primary.x();
+                int worldY = primary == null ? 0 : primary.y();
+                int worldZ = primary == null ? 0 : primary.z();
+                String storageId = chest.storageId().toString();
+                String label = chest.label() == null || chest.label().isBlank()
+                        ? autoLabel(chest)
+                        : chest.label();
+                ChestContentsSnapshot snapshot = chestContentsResolver == null
+                        ? ChestContentsSnapshot.empty()
+                        : chestContentsResolver.apply(storageId);
+                if (snapshot == null) {
+                    snapshot = ChestContentsSnapshot.empty();
                 }
+                boolean isProximate = proximate.contains(storageId);
+                int affinityCount = affinityMap == null ? 0 : affinityMap.forChest(chest.storageId()).size();
+                String clusterId = clusterMap == null ? "" : clusterMap.clusterId(chest.storageId());
+                chips.add(new ChestChip(
+                        storageId,
+                        dimension,
+                        label,
+                        chest.anchors().size(),
+                        snapshot.slotCount(),
+                        filledSlotCount(snapshot),
+                        isProximate,
+                        affinityCount,
+                        worldX,
+                        worldY,
+                        worldZ,
+                        clusterId == null ? "" : clusterId,
+                        contentSummaries(snapshot)
+                ));
             }
-            boolean isProximate = proximate.contains(storageId);
-            int affinityCount = affinityMap == null ? 0 : affinityMap.forChest(chest.storageId()).size();
-            String clusterId = clusterMap == null ? "" : clusterMap.clusterId(chest.storageId());
-            chips.add(new ChestChip(
-                    storageId,
-                    dimension,
-                    label,
-                    chest.anchors().size(),
-                    slotCapacity,
-                    filledSlots,
-                    isProximate,
-                    affinityCount,
-                    worldX,
-                    worldY,
-                    worldZ,
-                    clusterId == null ? "" : clusterId,
-                    List.copyOf(summaryByIdentity.values())
-            ));
+        }
+        if (hasDisplays) {
+            for (WorkspaceStorageIndex.StorageEntry entry : trackedDisplayEntries) {
+                if (entry == null || entry.target() == null || !entry.target().displayTarget()) {
+                    continue;
+                }
+                StorageTargetRef target = entry.target();
+                ChestContentsSnapshot snapshot = entry.snapshot();
+                String label = target.label().isBlank()
+                        ? target.storageId()
+                        : target.label();
+                String clusterId = "";
+                int affinityCount = 0;
+                if (target.displayKind() == null || !target.displayKind().trackedStorage()) {
+                    continue;
+                }
+                if (snapshot == null) {
+                    snapshot = ChestContentsSnapshot.empty();
+                }
+                chips.add(new ChestChip(
+                        target.storageId(),
+                        target.dimensionId(),
+                        label,
+                        1,
+                        snapshot.slotCount(),
+                        filledSlotCount(snapshot),
+                        target.proximate(),
+                        affinityCount,
+                        target.x(),
+                        target.y(),
+                        target.z(),
+                        clusterId,
+                        contentSummaries(snapshot)
+                ));
+            }
         }
         // Cluster ordinal lookup for stable in-cluster grouping during sort.
         java.util.Map<String, Integer> clusterOrdinals = new java.util.HashMap<>();
@@ -2047,6 +2320,47 @@ public record SlotWorkspaceViewModel(
                 .thenComparingInt(chip -> clusterOrdinals.getOrDefault(chip.clusterId(), Integer.MAX_VALUE))
                 .thenComparing(ChestChip::label, String.CASE_INSENSITIVE_ORDER));
         return List.copyOf(chips);
+    }
+
+    private static int filledSlotCount(ChestContentsSnapshot snapshot) {
+        if (snapshot == null || snapshot.contents().isEmpty()) {
+            return 0;
+        }
+        return snapshot.contents().size();
+    }
+
+    private static List<ChestContentSummary> contentSummaries(ChestContentsSnapshot snapshot) {
+        if (snapshot == null || snapshot.contents().isEmpty()) {
+            return List.of();
+        }
+        // Roll up slot-by-slot contents into per-identity summaries. Storage
+        // chips use this to count matches without re-walking the target.
+        LinkedHashMap<ItemIdentity, ChestContentSummary> summaryByIdentity = new LinkedHashMap<>();
+        for (ItemStack stack : snapshot.contents()) {
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            ItemIdentity identity = ItemIdentityMatcher.create(stack);
+            ChestContentSummary existing = summaryByIdentity.get(identity);
+            if (existing == null) {
+                summaryByIdentity.put(identity, new ChestContentSummary(
+                        identity.itemId(),
+                        identity.componentFingerprint(),
+                        stack.getHoverName().getString(),
+                        stack.copy(),
+                        stack.getCount()
+                ));
+            } else {
+                summaryByIdentity.put(identity, new ChestContentSummary(
+                        existing.itemId(),
+                        existing.componentFingerprint(),
+                        existing.name(),
+                        existing.displayStack(),
+                        existing.count() + stack.getCount()
+                ));
+            }
+        }
+        return summaryByIdentity.isEmpty() ? List.of() : List.copyOf(summaryByIdentity.values());
     }
 
     private static String autoLabel(ClaimedChest chest) {
@@ -3112,7 +3426,7 @@ public record SlotWorkspaceViewModel(
             if (storageId == null || storageId.isBlank() || stack == null || stack.isEmpty()) {
                 return;
             }
-            ItemIdentity identity = ItemIdentityMatcher.create(stack);
+            ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
             totals.merge(identity, stack.getCount(), Integer::sum);
             perStorage
                     .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
@@ -3154,61 +3468,78 @@ public record SlotWorkspaceViewModel(
         static ElsewhereGhostProjection build(
                 ClaimedChestMap map,
                 Function<String, ChestContentsSnapshot> chestContentsResolver,
-                Set<String> proximate
+                Set<String> proximate,
+                List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries
         ) {
-            if (map == null || map.chests().isEmpty() || chestContentsResolver == null) {
+            boolean hasChests = map != null && !map.chests().isEmpty() && chestContentsResolver != null;
+            boolean hasDisplays = trackedDisplayEntries != null && !trackedDisplayEntries.isEmpty();
+            if (!hasChests && !hasDisplays) {
                 return empty();
             }
             Set<String> proximateIds = proximate == null ? Set.of() : proximate;
-            LinkedHashMap<ItemIdentity, LinkedHashMap<UUID, int[]>> perChest = new LinkedHashMap<>();
-            LinkedHashMap<UUID, String> labelByStorage = new LinkedHashMap<>();
+            LinkedHashMap<ItemIdentity, LinkedHashMap<String, int[]>> perStorage = new LinkedHashMap<>();
+            LinkedHashMap<String, String> labelByStorage = new LinkedHashMap<>();
             LinkedHashMap<ItemIdentity, ItemStack> displayStacks = new LinkedHashMap<>();
             LinkedHashMap<ItemIdentity, Integer> totals = new LinkedHashMap<>();
-            for (ClaimedChest chest : map.chests()) {
-                if (chest == null) {
-                    continue;
-                }
-                String storageId = chest.storageId().toString();
-                if (proximateIds.contains(storageId)) {
-                    continue;
-                }
-                ChestContentsSnapshot snapshot = chestContentsResolver.apply(storageId);
-                if (snapshot == null || snapshot.contents().isEmpty()) {
-                    continue;
-                }
-                String baseLabel = chest.label() == null || chest.label().isBlank()
-                        ? autoLabelForChest(chest)
-                        : chest.label();
-                String dimension = chest.anchors().isEmpty()
-                        ? ""
-                        : shortDimension(chest.anchors().iterator().next().dimensionId());
-                String label = dimension.isBlank() ? baseLabel : baseLabel + " — " + dimension;
-                labelByStorage.put(chest.storageId(), label);
-                for (ItemStack stack : snapshot.contents()) {
-                    if (stack == null || stack.isEmpty()) {
+            if (hasChests) {
+                for (ClaimedChest chest : map.chests()) {
+                    if (chest == null) {
                         continue;
                     }
-                    ItemIdentity identity = ItemIdentityMatcher.create(stack);
-                    perChest
-                            .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
-                            .computeIfAbsent(chest.storageId(), ignored -> new int[]{0})[0] += stack.getCount();
-                    displayStacks.putIfAbsent(identity, stack.copy());
-                    totals.merge(identity, stack.getCount(), Integer::sum);
+                    String storageId = chest.storageId().toString();
+                    if (proximateIds.contains(storageId)) {
+                        continue;
+                    }
+                    ChestContentsSnapshot snapshot = chestContentsResolver.apply(storageId);
+                    if (snapshot == null || snapshot.contents().isEmpty()) {
+                        continue;
+                    }
+                    String baseLabel = chest.label() == null || chest.label().isBlank()
+                            ? autoLabelForChest(chest)
+                            : chest.label();
+                    String dimension = chest.anchors().isEmpty()
+                            ? ""
+                            : shortDimension(chest.anchors().iterator().next().dimensionId());
+                    String label = dimension.isBlank() ? baseLabel : baseLabel + " — " + dimension;
+                    labelByStorage.put(storageId, label);
+                    addElsewhereStacks(perStorage, displayStacks, totals, storageId, snapshot.contents());
                 }
             }
-            if (perChest.isEmpty()) {
+            if (hasDisplays) {
+                for (WorkspaceStorageIndex.StorageEntry entry : trackedDisplayEntries) {
+                    if (entry == null || entry.target() == null || !entry.target().displayTarget()
+                            || entry.target().proximate()) {
+                        continue;
+                    }
+                    StorageTargetRef target = entry.target();
+                    if (target.displayKind() == null || !target.displayKind().trackedStorage()) {
+                        continue;
+                    }
+                    ChestContentsSnapshot snapshot = entry.snapshot();
+                    if (snapshot == null || snapshot.contents().isEmpty()) {
+                        continue;
+                    }
+                    String baseLabel = target.label().isBlank() ? target.storageId() : target.label();
+                    String dimension = shortDimension(target.dimensionId());
+                    String label = dimension.isBlank() ? baseLabel : baseLabel + " — " + dimension;
+                    labelByStorage.put(target.storageId(), label);
+                    addElsewhereStacks(perStorage, displayStacks, totals, target.storageId(), snapshot.contents());
+                }
+            }
+            if (perStorage.isEmpty()) {
                 return empty();
             }
             LinkedHashMap<ItemIdentity, List<ChestPresenceEntry>> presence = new LinkedHashMap<>();
-            for (Map.Entry<ItemIdentity, LinkedHashMap<UUID, int[]>> entry : perChest.entrySet()) {
+            for (Map.Entry<ItemIdentity, LinkedHashMap<String, int[]>> entry : perStorage.entrySet()) {
                 ArrayList<ChestPresenceEntry> entries = new ArrayList<>(entry.getValue().size());
-                for (Map.Entry<UUID, int[]> chestEntry : entry.getValue().entrySet()) {
+                for (Map.Entry<String, int[]> chestEntry : entry.getValue().entrySet()) {
                     int count = chestEntry.getValue()[0];
                     if (count <= 0) {
                         continue;
                     }
-                    String label = labelByStorage.getOrDefault(chestEntry.getKey(), chestEntry.getKey().toString());
-                    entries.add(new ChestPresenceEntry(chestEntry.getKey().toString(), label, count));
+                    String storageId = chestEntry.getKey();
+                    String label = labelByStorage.getOrDefault(storageId, storageId);
+                    entries.add(new ChestPresenceEntry(storageId, label, count));
                 }
                 entries.sort(Comparator.<ChestPresenceEntry>comparingInt(ChestPresenceEntry::count).reversed()
                         .thenComparing(ChestPresenceEntry::label, String.CASE_INSENSITIVE_ORDER));
@@ -3219,6 +3550,29 @@ public record SlotWorkspaceViewModel(
                     Map.copyOf(displayStacks),
                     Map.copyOf(totals)
             );
+        }
+
+        private static void addElsewhereStacks(
+                LinkedHashMap<ItemIdentity, LinkedHashMap<String, int[]>> perStorage,
+                LinkedHashMap<ItemIdentity, ItemStack> displayStacks,
+                LinkedHashMap<ItemIdentity, Integer> totals,
+                String storageId,
+                List<ItemStack> stacks
+        ) {
+            if (storageId == null || storageId.isBlank() || stacks == null || stacks.isEmpty()) {
+                return;
+            }
+            for (ItemStack stack : stacks) {
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
+                perStorage
+                        .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
+                        .computeIfAbsent(storageId, ignored -> new int[]{0})[0] += stack.getCount();
+                displayStacks.putIfAbsent(identity, stack.copy());
+                totals.merge(identity, stack.getCount(), Integer::sum);
+            }
         }
 
         private static String autoLabelForChest(ClaimedChest chest) {

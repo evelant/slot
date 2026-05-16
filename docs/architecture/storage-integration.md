@@ -1,6 +1,6 @@
 # Storage Integration
 
-Last updated: 2026-04-23
+Last updated: 2026-05-16
 
 How SLOT abstracts storage, and how to add new storage mods without touching
 executors, UI code, or the core kernel.
@@ -30,7 +30,7 @@ Storage lives on one of two axes:
 | Axis | What it is | Examples |
 | --- | --- | --- |
 | **Carried** | Player-adjacent, stateful per-player | Vanilla main / hotbar / offhand; Sophisticated Backpacks; Curios slots; a hypothetical travelers-backpack mod |
-| **World** | Block-bound, addressed in the world | Chests, barrels, shulkers, hoppers; Storage Drawers; Tom's Storage terminals; AE2 networks (via delegate) |
+| **World** | Block-bound, addressed in the world | Chests, barrels, shulkers, hoppers; TFC/TFG tool racks; TFC placed-item blocks; Storage Drawers; Tom's Storage terminals; AE2 networks (via delegate) |
 
 Any code that needs to peek, extract, or insert goes through one of two
 platform-neutral interfaces in `dev.imagio.slot.inventory.storage`:
@@ -151,7 +151,10 @@ require `ServerPlayer` because they only run authoritatively.
 
 - **`WorldStorageAccess`** — interface for `insert` / `extract` /
   `enumerate` / `slotCount` / `isAccessible` on `Target`.
-- **`Target`** — sealed interface. Currently only `Chest(ClaimedChest)`.
+- **`Target`** — sealed interface. `Chest(ClaimedChest)` covers claimed
+  storage. `Display(WorldDisplayStorageKind, dimension, x, y, z)` covers
+  small world item displays such as TFC/TFG tool racks and TFC placed-item
+  blocks.
 - **`WorldStorageAccess.Delegate`** — SPI for virtual / aggregated
   storage that can't be reached via the default block-capability path.
 
@@ -166,6 +169,18 @@ Works by default. Any block that exposes
   Tom's Storage terminals, most modded containers
 
 No integration needed.
+
+The capability being present means "readable/reachable," not always
+"currently mutable." Some blocks expose a handler while temporarily
+refusing insert/extract. TFC large vessels are the reference case: sealed
+vessels stay visible as tracked storage, but their simulated insert/extract
+returns no movement, so bulk deposit, take, and affinity previews must treat
+them as read-only until unsealed.
+
+Small processing inventories still are not storage homes. TFC barrels have
+item slots for recipes, but they are liquid/recipe stations rather than
+bulk-storage targets; their slot count keeps them out of claim/affinity
+eligibility unless an explicit allow tag is added deliberately.
 
 ### Path 2: Virtual / aggregated storage (AE2, Create networks)
 
@@ -182,17 +197,14 @@ route the operation through the network, and return `Optional.of(result)`.
 Non-matching targets return `Optional.empty()` to fall through to the
 default capability lookup.
 
-### Known gap: non-chest `Target` variants
+### Known gap: claimed non-chest storage
 
-`Target` is currently sealed with only one variant: `Chest`. If you want
-to claim drawers, barrels, or AE2 network interfaces as **first-class
-SLOT storage** (beyond just "a block with `ItemHandler.BLOCK`"), you need
-to add a new `Target` variant — that's a larger refactor involving
-`ClaimedChestMap`, `ChestStorageBreakListener`, `ChestProximityResolver`
-(all chest-specific today). This is intentional YAGNI territory until we
-ship a non-chest claimed-storage feature. When the time comes, generalise
-the claim model (rename `ClaimedChest` → `ClaimedStorage`, expand the
-`Target` sum type, generalise the break / proximity listeners) as a
+`Display` targets are tracked for SLOT display and live nearby mutation, but
+they are not claimed-storage homes with player labels, chest clusters, or
+affinity learning. If you want drawers, barrels, AE2 network interfaces, or
+display blocks to become **claimable SLOT homes** rather than tracked display
+targets, generalise the claim model (`ClaimedChestMap`,
+`ChestStorageBreakListener`, `ChestProximityResolver`, and related naming) as a
 single slice rather than retrofitting piecemeal.
 
 ## Architectural invariants (do not violate)
