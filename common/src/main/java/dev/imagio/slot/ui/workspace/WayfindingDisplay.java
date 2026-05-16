@@ -2,6 +2,8 @@ package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -133,12 +135,23 @@ public final class WayfindingDisplay {
         if (storageId == null || storageId.isBlank()) {
             return "Chest";
         }
+        var displayTarget = WorldDisplayStorageSource.targetFromStorageId(storageId);
+        if (displayTarget.isPresent()) {
+            return displayLabel(displayTarget.get().kind());
+        }
         int dash = storageId.indexOf('-');
         String shortId = dash < 0 ? storageId : storageId.substring(0, dash);
         if (shortId.length() > 4) {
             shortId = shortId.substring(shortId.length() - 4);
         }
         return "Chest #" + shortId;
+    }
+
+    private static String displayLabel(WorldDisplayStorageKind kind) {
+        return switch (kind) {
+            case TOOL_RACK -> "Tool rack";
+            case PLACED_ITEM -> "Placed item";
+        };
     }
 
     private static Location locationFor(

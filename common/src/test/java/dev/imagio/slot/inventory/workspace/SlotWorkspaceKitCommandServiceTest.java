@@ -297,6 +297,91 @@ class SlotWorkspaceKitCommandServiceTest {
     }
 
     @Test
+    void setWantedCountUsesExactHoverTarget() {
+        WorkflowDomainRuntime runtime = runtime();
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setWantedCount(
+                runtime,
+                InventoryAuthoritySnapshot.empty(),
+                "minecraft:torch",
+                "",
+                "",
+                1);
+
+        assertTrue(outcome.success());
+        assertEquals("wanted count updated", outcome.status());
+        assertEquals(1, runtime.wantedCountWorkflow().getPlayer(ItemIdentity.of("minecraft:torch")));
+    }
+
+    @Test
+    void setWantedCountClearsWhenTargetAlreadyCarried() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity identity = ItemIdentity.of("minecraft:torch");
+        runtime.wantedCountWorkflow().setPlayer(identity, 4);
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setWantedCount(
+                runtime,
+                carriedAuthority("minecraft:torch", 1),
+                "minecraft:torch",
+                "",
+                "",
+                1);
+
+        assertTrue(outcome.success());
+        assertEquals("wanted cleared", outcome.status());
+        assertEquals(0, runtime.wantedCountWorkflow().getPlayer(identity));
+        assertFalse(runtime.wantedCountWorkflow().allPlayer().containsKey(identity));
+    }
+
+    @Test
+    void wantedCountSetParticipatesInUndoRedo() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity identity = ItemIdentity.of("minecraft:torch");
+
+        WorkspaceCommandOutcome set = SlotWorkspaceCommandService.setWantedCount(
+                runtime,
+                InventoryAuthoritySnapshot.empty(),
+                "minecraft:torch",
+                "",
+                "",
+                1);
+
+        assertTrue(set.success());
+        assertEquals(1, runtime.wantedCountWorkflow().getPlayer(identity));
+
+        WorkspaceCommandOutcome undo = SlotWorkspaceCommandService.performUndo(runtime);
+        assertTrue(undo.success());
+        assertEquals(0, runtime.wantedCountWorkflow().getPlayer(identity));
+
+        WorkspaceCommandOutcome redo = SlotWorkspaceCommandService.performRedo(runtime);
+        assertTrue(redo.success());
+        assertEquals(1, runtime.wantedCountWorkflow().getPlayer(identity));
+    }
+
+    @Test
+    void wantedCountClearRestoresPreviousTargetOnUndo() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity identity = ItemIdentity.of("minecraft:torch");
+        runtime.wantedCountWorkflow().setPlayer(identity, 4);
+        runtime.undoStack().clear();
+
+        WorkspaceCommandOutcome clear = SlotWorkspaceCommandService.setWantedCount(
+                runtime,
+                carriedAuthority("minecraft:torch", 1),
+                "minecraft:torch",
+                "",
+                "",
+                1);
+
+        assertTrue(clear.success());
+        assertEquals(0, runtime.wantedCountWorkflow().getPlayer(identity));
+
+        WorkspaceCommandOutcome undo = SlotWorkspaceCommandService.performUndo(runtime);
+        assertTrue(undo.success());
+        assertEquals(4, runtime.wantedCountWorkflow().getPlayer(identity));
+    }
+
+    @Test
     void wantedCountAdjustClearsWhenScrolledToCarriedTarget() {
         WorkflowDomainRuntime runtime = runtime();
         ItemIdentity identity = ItemIdentity.of("minecraft:torch");

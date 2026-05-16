@@ -2,6 +2,9 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
+import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
@@ -43,6 +46,7 @@ class WayfindingTargetTest {
     private static final ItemIdentity REDSTONE = ItemIdentity.of("minecraft:redstone");
     private static final ItemIdentity DIAMOND = ItemIdentity.of("minecraft:diamond");
     private static final ItemIdentity WATER_BUCKET = ItemIdentity.of("minecraft:water_bucket");
+    private static final ItemIdentity STEEL_SAW = ItemIdentity.of("tfc:metal/saw/steel");
 
     @Test
     void noKitNoDesiredCountsProducesNoTargets() {
@@ -96,6 +100,69 @@ class WayfindingTargetTest {
         assertTrue(target.wantedMissingIdentities().contains(DIAMOND));
         assertTrue(target.desiredMissingIdentities().isEmpty());
         assertTrue(target.kitMissingIdentities().isEmpty());
+    }
+
+    @Test
+    void wantedItemWithNoStorageStillCreatesCraftFindGhostCard() {
+        SlotWorkspaceViewModel.setGhostStackResolver(itemId -> new ItemStack(itemId, 1, 64));
+        try {
+            SlotWorkspaceViewModel projected = projectWith(
+                    Map.of(),
+                    Map.of(DIAMOND, 1),
+                    noKit(),
+                    Map.of(),
+                    Map.of(),
+                    List.of()
+            );
+
+            SlotWorkspaceViewModel.AtlasItem item = projected.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(DIAMOND));
+            assertNotNull(item);
+            assertEquals(SlotWorkspaceAtlasLayout.ISLAND_MISC, item.islandId());
+            assertTrue(item.ghost());
+            assertFalse(item.carried());
+            assertEquals(0, item.totalCount());
+            assertEquals(1, item.wantedCount());
+            assertTrue(item.presence().isEmpty());
+            assertTrue(item.elsewhere().isEmpty());
+            assertTrue(projected.wayfindingTargets().isEmpty());
+            SlotWorkspaceViewModel.ContextualSuggestionLane fetch = fetchLane(projected);
+            assertNotNull(fetch);
+            assertTrue(fetch.forceWayfindingStrip());
+            assertEquals(List.of(item), fetch.items());
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
+    void desiredItemWithNoStorageStillCreatesFetchGhostCard() {
+        SlotWorkspaceViewModel.setGhostStackResolver(itemId -> new ItemStack(itemId, 1, 64));
+        try {
+            SlotWorkspaceViewModel projected = projectWith(
+                    Map.of(DIAMOND, 1),
+                    Map.of(),
+                    noKit(),
+                    Map.of(),
+                    Map.of(),
+                    List.of()
+            );
+
+            SlotWorkspaceViewModel.AtlasItem item = projected.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(DIAMOND));
+            assertNotNull(item);
+            assertEquals(SlotWorkspaceAtlasLayout.ISLAND_MISC, item.islandId());
+            assertTrue(item.ghost());
+            assertFalse(item.carried());
+            assertEquals(0, item.totalCount());
+            assertEquals(1, item.desiredCount());
+            assertEquals(0, item.wantedCount());
+            assertTrue(projected.wayfindingTargets().isEmpty());
+            SlotWorkspaceViewModel.ContextualSuggestionLane fetch = fetchLane(projected);
+            assertNotNull(fetch);
+            assertTrue(fetch.forceWayfindingStrip());
+            assertEquals(List.of(item), fetch.items());
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
     }
 
     @Test
@@ -214,6 +281,73 @@ class WayfindingTargetTest {
     }
 
     @Test
+    void wantedToolOnToolRackCreatesDisplayWayfindingTarget() {
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.TOOL_RACK,
+                "Tool rack @ 4,64,0",
+                "minecraft:overworld",
+                4,
+                64,
+                0,
+                4,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        new ItemStack("tfc:metal/saw/steel", "damage=7", 1, 1))));
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                ClaimedChestMap.empty(),
+                null,
+                Set.of(source.storageId()),
+                List.of(source),
+                Map.of());
+        WorkflowDomainSnapshot snapshot = workflow(
+                Map.of(),
+                Map.of(STEEL_SAW, 1),
+                noKit(),
+                Map.of(),
+                ClaimedChestMap.empty());
+
+        SlotWorkspaceViewModel projected = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                snapshot,
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                index.contentsResolver(),
+                Set.of(source.storageId()),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                index.displaySources(),
+                Set.of(source.storageId()),
+                index.displaySources(),
+                index.trackedDisplayEntries());
+
+        assertEquals(1, projected.wayfindingTargets().size());
+        WayfindingTarget target = projected.wayfindingTargets().get(0);
+        assertEquals(source.storageId(), target.storageId());
+        assertEquals("minecraft:overworld", target.dimensionId());
+        assertEquals(4, target.worldX());
+        assertEquals(64, target.worldY());
+        assertEquals(0, target.worldZ());
+        assertEquals(WayfindingTarget.Scope.WANTED, target.scope());
+        assertTrue(target.wantedMissingIdentities().contains(STEEL_SAW));
+        SlotWorkspaceViewModel.ContextualSuggestionLane fetch = fetchLane(projected);
+        assertNotNull(fetch);
+        assertTrue(fetch.forceWayfindingStrip());
+        assertEquals(List.of(projected.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(STEEL_SAW))),
+                fetch.items());
+    }
+
+    @Test
     void carriedAlreadyCoversDesiredWhenCountMet() {
         // playerDesiredCounts asks for 16 redstone; player carries 16 — no
         // target should fire (not missing).
@@ -241,6 +375,18 @@ class WayfindingTargetTest {
     private static KitDefinition kitWithSlot(ItemIdentity identity) {
         KitPage page = KitPage.empty().withSlot(0, identity);
         return new KitDefinition("kit-1", "Kit 1", List.of(page), null);
+    }
+
+    private static SlotWorkspaceViewModel.ContextualSuggestionLane fetchLane(SlotWorkspaceViewModel projected) {
+        if (projected == null) {
+            return null;
+        }
+        for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : projected.contextualSuggestionLanes()) {
+            if (lane.fetch()) {
+                return lane;
+            }
+        }
+        return null;
     }
 
     private static List<AnchorSpec> anchorOverworld(int x, int y, int z, UUID storageId) {
@@ -293,32 +439,12 @@ class WayfindingTargetTest {
             List<AnchorSpec> anchors
     ) {
         ClaimedChestMap claimedChestMap = claimedChestMap(anchors);
-        WorkflowProjection.Snapshot projection = new WorkflowProjection.Snapshot(
-                List.of(),
-                Map.of(),
-                Map.of(),
-                Set.of(),
-                Set.of(),
-                new ProtectionSnapshotPolicy(Set.of(), Set.of(), false),
-                Map.of(),
-                VisualHomeMap.empty(),
-                claimedChestMap,
-                ChestAffinityMap.empty(),
-                Map.of(),
-                kitMap,
+        WorkflowDomainSnapshot snapshot = workflow(
                 playerDesiredCounts,
+                playerWantedCounts,
+                kitMap,
                 kitDesiredCounts,
-                playerWantedCounts
-        );
-        WorkflowDomainSnapshot snapshot = new WorkflowDomainSnapshot(
-                1L,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
+                claimedChestMap);
         Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> resolver = storageId -> {
             try {
                 return contentsByChest.getOrDefault(UUID.fromString(storageId),
@@ -340,6 +466,41 @@ class WayfindingTargetTest {
                 null,
                 resolver,
                 proximate
+        );
+    }
+
+    private static WorkflowDomainSnapshot workflow(
+            Map<ItemIdentity, Integer> playerDesiredCounts,
+            Map<ItemIdentity, Integer> playerWantedCounts,
+            KitMap kitMap,
+            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
+            ClaimedChestMap claimedChestMap
+    ) {
+        WorkflowProjection.Snapshot projection = new WorkflowProjection.Snapshot(
+                List.of(),
+                Map.of(),
+                Map.of(),
+                Set.of(),
+                Set.of(),
+                new ProtectionSnapshotPolicy(Set.of(), Set.of(), false),
+                Map.of(),
+                VisualHomeMap.empty(),
+                claimedChestMap,
+                ChestAffinityMap.empty(),
+                Map.of(),
+                kitMap,
+                playerDesiredCounts,
+                kitDesiredCounts,
+                playerWantedCounts
+        );
+        return new WorkflowDomainSnapshot(
+                1L,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
         );
     }
 

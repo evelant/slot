@@ -88,6 +88,14 @@ public final class ForgeWorkspaceClient {
             CATEGORY
     );
 
+    public static final KeyMapping SET_WANTED_HOVER = new KeyMapping(
+            "key.slot.set_wanted_hover",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_W,
+            CATEGORY
+    );
+
     public static final KeyMapping STORAGE_XRAY = new KeyMapping(
             "key.slot.storage_xray",
             KeyConflictContext.GUI,
@@ -123,6 +131,14 @@ public final class ForgeWorkspaceClient {
 
     public static boolean matchesMarkWanted(int keyCode, int scanCode) {
         return MARK_WANTED.matches(keyCode, scanCode);
+    }
+
+    public static boolean matchesSetWantedHover(int keyCode, int scanCode) {
+        return SET_WANTED_HOVER.matches(keyCode, scanCode);
+    }
+
+    public static boolean setWantedHoverDown() {
+        return SET_WANTED_HOVER.isDown() || keyPhysicallyDown(SET_WANTED_HOVER);
     }
 
     public static boolean matchesStorageXray(int keyCode, int scanCode) {
@@ -208,6 +224,7 @@ public final class ForgeWorkspaceClient {
             event.register(GATHER_ACTIVE_KIT);
             event.register(TOGGLE_WAYFINDING_HUD);
             event.register(MARK_WANTED);
+            event.register(SET_WANTED_HOVER);
             event.register(STORAGE_XRAY);
         }
     }
@@ -242,6 +259,7 @@ public final class ForgeWorkspaceClient {
                 }
                 SlotForgeNetworking.gatherActiveKit();
             }
+            ForgeHoveredWantedHotkey.onClientTick();
             ForgeContainerSidebar.onClientTick();
         }
 
@@ -287,6 +305,7 @@ public final class ForgeWorkspaceClient {
 
         @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
         public static void onKeyPressed(ScreenEvent.KeyPressed.Pre event) {
+            ForgeHoveredWantedHotkey.onKeyPressed(event);
             ForgeContainerSidebar.onKeyPressed(event);
         }
 

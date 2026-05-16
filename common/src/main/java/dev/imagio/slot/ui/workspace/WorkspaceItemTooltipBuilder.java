@@ -1,6 +1,7 @@
 package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceItemTargets;
 import net.minecraft.network.chat.Component;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public final class WorkspaceItemTooltipBuilder {
         addStorageLine(lines, "Nearby pip", sum(item.presence()), item.presence());
         addProximateRouteLine(lines, item, hasProximateDepositRoute);
         addStorageLine(lines, "Stored elsewhere", sum(item.elsewhere()), item.elsewhere());
+        addMissingTargetLine(lines, item);
         addContainerLine(lines, item);
         if (includeContextualDebug) {
             addContextualDebugLines(lines, item, suggestionLane);
@@ -112,6 +114,17 @@ public final class WorkspaceItemTooltipBuilder {
             return;
         }
         lines.add(Component.literal("Nearby pip: deposit route available"));
+    }
+
+    private static void addMissingTargetLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
+        int carried = item.carried() ? item.totalCount() : 0;
+        int stored = sum(item.presence()) + sum(item.elsewhere());
+        int target = WorkspaceItemTargets.from(item).displayTargetCount();
+        int missing = target - carried - stored;
+        if (missing <= 0) {
+            return;
+        }
+        lines.add(Component.literal("Need to craft/find: " + missing));
     }
 
     private static void addContainerLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {

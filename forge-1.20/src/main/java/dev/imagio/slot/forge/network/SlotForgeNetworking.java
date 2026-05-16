@@ -4,8 +4,17 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.forge.storage.ForgeCarriedActivityTracker;
 import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
 import dev.imagio.slot.inventory.goal.GoalPlanState;
+import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.integration.InventoryHostContext;
+import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
+import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
+import dev.imagio.slot.inventory.integration.InventoryHostResolver;
+import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
+import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.workspace.KitPageCycleService;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.action.WorkspaceActionPacket;
 import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
@@ -14,16 +23,19 @@ import dev.imagio.slot.ui.action.WorkspaceActionValidation;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 
+import java.util.Map;
 import java.util.function.Supplier;
 
 public final class SlotForgeNetworking {
-    private static final String PROTOCOL_VERSION = "1";
+    private static final String PROTOCOL_VERSION = "2";
     private static SimpleChannel channel;
 
     private SlotForgeNetworking() {
@@ -77,6 +89,11 @@ public final class SlotForgeNetworking {
                 .encoder(ForgeGoalPlanMessage::encode)
                 .decoder(ForgeGoalPlanMessage::decode)
                 .consumerMainThread(SlotForgeNetworking::handleGoalPlan)
+                .add();
+        channel.messageBuilder(ForgeSetWantedCountMessage.class, 8, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ForgeSetWantedCountMessage::encode)
+                .decoder(ForgeSetWantedCountMessage::decode)
+                .consumerMainThread(SlotForgeNetworking::handleSetWantedCount)
                 .add();
     }
 
@@ -188,6 +205,29 @@ public final class SlotForgeNetworking {
             return true;
         } catch (RuntimeException exception) {
             SlotCommon.LOGGER.warn("Failed to send Forge goal plan remove packet", exception);
+            return false;
+        }
+    }
+
+    public static boolean setWantedCount(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            int targetCount
+    ) {
+        if (channel == null) {
+            SlotCommon.LOGGER.warn("Cannot set Forge wanted count before network channel registration");
+            return false;
+        }
+        try {
+            channel.sendToServer(new ForgeSetWantedCountMessage(
+                    itemId,
+                    comparisonMode,
+                    componentFingerprint,
+                    targetCount));
+            return true;
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn("Failed to send Forge wanted count packet", exception);
             return false;
         }
     }
@@ -419,6 +459,43 @@ public final class SlotForgeNetworking {
                 changed);
     }
 
+    private static void handleSetWantedCount(
+            ForgeSetWantedCountMessage message,
+            Supplier<NetworkEvent.Context> contextSupplier
+    ) {
+        ServerPlayer player = contextSupplier.get().getSender();
+        if (player == null || message == null) {
+            return;
+        }
+        InventoryHostDescriptor host = resolveCarriedHost(player);
+        if (host == null) {
+            SlotCommon.LOGGER.info(
+                    "[SLOT] rejected Forge wanted hover hotkey: player={} item={} diagnostics=host_resolution_failed",
+                    playerName(player),
+                    message.itemId());
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setWantedCount(
+                ForgePlayerWorkflowRuntimeService.runtime(player),
+                authority,
+                message.itemId(),
+                message.comparisonMode(),
+                message.componentFingerprint(),
+                message.targetCount());
+        ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);
+        if (session != null) {
+            sendViewToPlayer(player, session, true);
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] Forge wanted hover hotkey: player={} item={} target={} status={} diagnostics={}",
+                playerName(player),
+                message.itemId(),
+                message.targetCount(),
+                outcome.status(),
+                outcome.diagnostics());
+    }
+
     static void sendViewToPlayer(ServerPlayer player, ForgeWorkspaceSession session, boolean logViewSend) {
         if (player == null || channel == null || session == null) {
             return;
@@ -455,5 +532,28 @@ public final class SlotForgeNetworking {
 
     private static String playerName(ServerPlayer player) {
         return player == null ? "<unknown>" : player.getGameProfile().getName();
+    }
+
+    private static InventoryHostDescriptor resolveCarriedHost(ServerPlayer player) {
+        if (player == null) {
+            return null;
+        }
+        AbstractContainerMenu menu = player.containerMenu;
+        if (menu == null) {
+            return null;
+        }
+        return InventoryHostResolver.resolve(new InventoryHostContext(
+                menu,
+                player.getInventory(),
+                Component.literal("SLOT Wanted Hover"),
+                SlotForgeNetworking.class.getName(),
+                new InventoryHostObservationHints(
+                        InventoryHostFamilyHint.CARRIED_ONLY,
+                        InventorySlotOwnershipPosture.SLOT_OWNED,
+                        true,
+                        true,
+                        Map.of("slotWantedHover", "forge")
+                )
+        ));
     }
 }

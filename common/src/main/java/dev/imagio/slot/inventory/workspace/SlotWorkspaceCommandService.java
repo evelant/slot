@@ -1151,13 +1151,56 @@ public final class SlotWorkspaceCommandService {
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
-        if (runtime.wantedCountWorkflow().getPlayer(identity) > 0) {
+        int before = runtime.wantedCountWorkflow().getPlayer(identity);
+        if (before > 0) {
             runtime.wantedCountWorkflow().clearPlayer(identity);
+            recordWantedCountUndo(runtime, identity, before, 0);
             return WorkspaceCommandOutcome.accepted("wanted cleared", identity.itemId());
         }
         int target = SlotWorkspaceViewModel.carriedMovableCount(authority, identity) + 1;
         runtime.wantedCountWorkflow().setPlayer(identity, target);
+        recordWantedCountUndo(runtime, identity, before, target);
         return WorkspaceCommandOutcome.accepted("wanted", identity.itemId() + " target=" + target);
+    }
+
+    /**
+     * Set an exact wanted carry target from a non-workspace hover source
+     * such as a recipe viewer slot. The target is a total desired carried
+     * count, not "one more than currently carried"; if the player already
+     * carries enough, the wanted marker is cleared immediately.
+     */
+    public static WorkspaceCommandOutcome setWantedCount(
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            int targetCount
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_wanted_runtime");
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        int target = Math.max(0, targetCount);
+        int carried = SlotWorkspaceViewModel.carriedMovableCount(authority, identity);
+        int before = runtime.wantedCountWorkflow().getPlayer(identity);
+        if (target <= carried) {
+            boolean changed = runtime.wantedCountWorkflow().clearPlayer(identity);
+            if (changed) {
+                recordWantedCountUndo(runtime, identity, before, 0);
+            }
+            return WorkspaceCommandOutcome.accepted(
+                    changed ? "wanted cleared" : "wanted unchanged",
+                    identity.itemId());
+        }
+        boolean changed = runtime.wantedCountWorkflow().setPlayer(identity, target);
+        if (changed) {
+            recordWantedCountUndo(runtime, identity, before, target);
+        }
+        return WorkspaceCommandOutcome.accepted("wanted count updated", identity.itemId() + " target=" + target);
     }
 
     /**
@@ -1190,11 +1233,17 @@ public final class SlotWorkspaceCommandService {
                 : carried + Math.max(0, delta);
         if (target <= carried) {
             boolean changed = runtime.wantedCountWorkflow().clearPlayer(identity);
+            if (changed) {
+                recordWantedCountUndo(runtime, identity, current, 0);
+            }
             return WorkspaceCommandOutcome.accepted(
                     changed ? "wanted cleared" : "wanted unchanged",
                     identity.itemId());
         }
-        runtime.wantedCountWorkflow().setPlayer(identity, target);
+        boolean changed = runtime.wantedCountWorkflow().setPlayer(identity, target);
+        if (changed) {
+            recordWantedCountUndo(runtime, identity, current, target);
+        }
         return WorkspaceCommandOutcome.accepted("wanted count updated", identity.itemId() + " target=" + target);
     }
 
@@ -2224,6 +2273,37 @@ public final class SlotWorkspaceCommandService {
                 snapshot.iconIdentity(),
                 DomainEventMetadata.origin("workflow.undo.island.recreate")
         );
+    }
+
+    private static void recordWantedCountUndo(
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity,
+            int before,
+            int after
+    ) {
+        if (runtime == null || identity == null || before == after) {
+            return;
+        }
+        runtime.undoStack().record(
+                after <= 0 ? "clear wanted" : "set wanted",
+                ctx -> restoreWantedCount(ctx.runtime(), identity, before),
+                ctx -> restoreWantedCount(ctx.runtime(), identity, after)
+        );
+    }
+
+    private static void restoreWantedCount(
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity,
+            int count
+    ) {
+        if (runtime == null || identity == null) {
+            return;
+        }
+        if (count <= 0) {
+            runtime.wantedCountWorkflow().clearPlayer(identity);
+        } else {
+            runtime.wantedCountWorkflow().setPlayer(identity, count);
+        }
     }
 
     public static WorkspaceCommandOutcome performUndo(WorkflowDomainRuntime runtime) {

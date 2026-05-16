@@ -39,8 +39,11 @@ public final class WallCardUiBuilder {
         SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntry = context.showWayfindingStrip(item)
                 ? wayfindingEntryFor(item, activeSearchMatch, context.forceWayfindingStrip(item))
                 : null;
+        MissingTargetDisplay missingTarget = wayfindingEntry == null && context.showWayfindingStrip(item)
+                ? missingTargetFor(item, activeSearchMatch, context.forceWayfindingStrip(item))
+                : null;
         SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane = context.contextualSuggestionLane();
-        boolean expanded = wayfindingEntry != null;
+        boolean expanded = wayfindingEntry != null || missingTarget != null;
         int cardWidth = expanded ? CARD_CELL_PX + WAYFINDING_STRIP_WIDTH_PX : CARD_CELL_PX;
 
         SlotUiElement button = SlotUiElement.button("",
@@ -86,6 +89,9 @@ public final class WallCardUiBuilder {
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
         if (wayfindingEntry != null) {
             body.attach(WorkspaceUiAttachments.WALL_CARD_WAYFINDING_ENTRY, wayfindingEntry);
+        }
+        if (missingTarget != null) {
+            body.attach(WorkspaceUiAttachments.WALL_CARD_MISSING_TARGET, missingTarget);
         }
         buildFallbackBody(body, item, activeSearchMatch);
         button.addChild(body);
@@ -174,6 +180,27 @@ public final class WallCardUiBuilder {
             }
         }
         return best;
+    }
+
+    private static MissingTargetDisplay missingTargetFor(
+            SlotWorkspaceViewModel.AtlasItem item,
+            boolean activeSearchMatch,
+            boolean force
+    ) {
+        if (item == null || hasKnownStorage(item)) {
+            return null;
+        }
+        WorkspaceItemTargets targets = WorkspaceItemTargets.from(item);
+        int missing = targets.displayTargetCount() - carriedCount(item);
+        if (missing <= 0) {
+            return null;
+        }
+        boolean wantsMissingState = activeSearchMatch || force || hasDesiredGap(item);
+        return wantsMissingState ? new MissingTargetDisplay(missing) : null;
+    }
+
+    private static boolean hasKnownStorage(SlotWorkspaceViewModel.AtlasItem item) {
+        return presenceCount(item.presence()) > 0 || presenceCount(item.elsewhere()) > 0;
     }
 
     private static boolean hasDesiredGap(SlotWorkspaceViewModel.AtlasItem item) {
@@ -333,6 +360,7 @@ public final class WallCardUiBuilder {
                 WorkspaceUiAttachments.WALL_CARD_WAYFINDING_ENTRY,
                 SlotWorkspaceViewModel.ChestPresenceEntry.class);
         if (entry == null) {
+            addMissingTargetStrip(body);
             return;
         }
         SlotUiElement strip = SlotUiElement.panel(0xAA1F3448)
@@ -372,6 +400,42 @@ public final class WallCardUiBuilder {
         body.addChild(strip);
     }
 
+    private static void addMissingTargetStrip(SlotUiElement body) {
+        MissingTargetDisplay missing = body.attachment(
+                WorkspaceUiAttachments.WALL_CARD_MISSING_TARGET,
+                MissingTargetDisplay.class);
+        if (missing == null) {
+            return;
+        }
+        SlotUiElement strip = SlotUiElement.panel(0xB08C5A22)
+                .allowHitTest(false)
+                .zIndex(310)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(CARD_CELL_PX)
+                        .top(3)
+                        .width(28)
+                        .height(16)
+                        .paddingHorizontal(1)
+                        .alignItems(SlotUiLayout.AlignItems.CENTER)
+                        .flexDirection(SlotUiLayout.FlexDirection.ROW));
+        strip.addChild(SlotUiElement.label("craft", 0xFFFFD166)
+                .layout(layout -> layout.flex(1).heightPercent(100))
+                .textStyle(style -> style
+                        .fontSize(5.5f)
+                        .color(0xFFFFD166)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        strip.addChild(SlotUiElement.label(WorkspaceCountFormat.compact(missing.count()), 0xFFE6EDF3)
+                .layout(layout -> layout.width(9).heightPercent(100))
+                .textStyle(style -> style
+                        .fontSize(6)
+                        .color(0xFFE6EDF3)
+                        .horizontal(SlotUiTextStyle.Horizontal.RIGHT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        body.addChild(strip);
+    }
+
     private WayfindingDisplay.CardText wayfindingText(SlotWorkspaceViewModel.ChestPresenceEntry entry) {
         WayfindingDisplay.CardText text = context.wayfindingText(entry);
         if (text != null) {
@@ -388,6 +452,12 @@ public final class WallCardUiBuilder {
                     + "/" + WorkspaceCountFormat.compact(target);
         }
         return carried <= 0 ? "" : WorkspaceCountFormat.compact(carried);
+    }
+
+    public record MissingTargetDisplay(int count) {
+        public MissingTargetDisplay {
+            count = Math.max(0, count);
+        }
     }
 
     private static int carriedCount(SlotWorkspaceViewModel.AtlasItem item) {

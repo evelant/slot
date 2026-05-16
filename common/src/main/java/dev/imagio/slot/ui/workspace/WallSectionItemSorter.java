@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.WithinIslandOrdering;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceItemTargets;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -84,8 +85,17 @@ public final class WallSectionItemSorter {
             .thenComparingInt(SortEntry::ordinal);
 
     private static final Comparator<SortEntry> GHOST_COMPARATOR = Comparator
-            .comparingInt((SortEntry entry) -> entry.item().desiredCount() > 0 ? 0 : 1)
+            .comparingInt(WallSectionItemSorter::ghostIntentRank)
             .thenComparing(ENTRY_COMPARATOR);
+
+    private static int ghostIntentRank(SortEntry entry) {
+        if (entry == null || entry.item() == null) {
+            return 1;
+        }
+        WorkspaceItemTargets targets = WorkspaceItemTargets.from(entry.item());
+        int carriedCount = entry.item().carried() ? entry.item().totalCount() : 0;
+        return targets.hasAnyGap(carriedCount) || entry.item().kitNeeded() ? 0 : 1;
+    }
 
     private static IslandSignalDescriptor descriptor(
             FacetIndex index,

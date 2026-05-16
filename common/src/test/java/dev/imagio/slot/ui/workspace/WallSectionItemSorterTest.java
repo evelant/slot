@@ -80,6 +80,19 @@ class WallSectionItemSorterTest {
     }
 
     @Test
+    void ghostsWithWantedCountsSortBeforeOtherGhosts() {
+        SlotWorkspaceViewModel.AtlasItem ordinaryGhost = item("minecraft:apple", false, 0, 0);
+        SlotWorkspaceViewModel.AtlasItem wantedGhost = item("minecraft:zinc_ingot", false, 0, 1);
+
+        WallSectionItemSorter.Groups groups = WallSectionItemSorter.groupAndSort(List.of(
+                ordinaryGhost,
+                wantedGhost
+        ));
+
+        assertEquals(List.of(wantedGhost, ordinaryGhost), groups.ghosts());
+    }
+
+    @Test
     void sectionHidesOrdinaryProximateGhostsBehindNearbyChipByDefault() {
         WallSectionUiBuilder builder = new WallSectionUiBuilder(new WallSectionHeaderUiBuilder(new HeaderContext()));
         SlotWorkspaceViewModel.AtlasItem carriedStone = item("minecraft:stone", true);
@@ -204,6 +217,26 @@ class WallSectionItemSorterTest {
     }
 
     @Test
+    void wantedGhostsRevealWithoutManualExpansion() {
+        WallSectionUiBuilder builder = new WallSectionUiBuilder(new WallSectionHeaderUiBuilder(new HeaderContext()));
+        SlotWorkspaceViewModel.AtlasItem wantedGhost = item("minecraft:torch", false, 0, 1);
+
+        SlotUiElement section = builder.section(
+                island(),
+                List.of(wantedGhost),
+                1,
+                false,
+                StorageGhostRevealMode.COLLAPSED,
+                false,
+                false);
+
+        assertEquals(List.of(wantedGhost), section.children().get(1).attachment(
+                WorkspaceUiAttachments.ATLAS_ITEMS,
+                List.class));
+        assertTrue(!section.children().get(1).hasAttachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT));
+    }
+
+    @Test
     void forceRevealShowsGoalGhostsWithoutNearbyChip() {
         WallSectionUiBuilder builder = new WallSectionUiBuilder(new WallSectionHeaderUiBuilder(new HeaderContext()));
         SlotWorkspaceViewModel.AtlasItem ordinaryGhost = item("minecraft:torch", false);
@@ -259,13 +292,33 @@ class WallSectionItemSorterTest {
     }
 
     private static SlotWorkspaceViewModel.AtlasItem item(String itemId, boolean carried, int desiredCount) {
-        return item(itemId, carried, desiredCount, carried ? 0 : 8, List.of());
+        return item(itemId, carried, desiredCount, 0);
     }
 
     private static SlotWorkspaceViewModel.AtlasItem item(
             String itemId,
             boolean carried,
             int desiredCount,
+            int wantedCount
+    ) {
+        return item(itemId, carried, desiredCount, wantedCount, carried ? 0 : 8, List.of());
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem item(
+            String itemId,
+            boolean carried,
+            int desiredCount,
+            int proximateCount,
+            List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere
+    ) {
+        return item(itemId, carried, desiredCount, 0, proximateCount, elsewhere);
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem item(
+            String itemId,
+            boolean carried,
+            int desiredCount,
+            int wantedCount,
             int proximateCount,
             List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere
     ) {
@@ -296,7 +349,7 @@ class WallSectionItemSorterTest {
                 false,
                 desiredCount,
                 false,
-                0,
+                wantedCount,
                 "",
                 -1,
                 0);

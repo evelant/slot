@@ -1,9 +1,13 @@
 package dev.imagio.slot.ui.workspace;
 
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -52,5 +56,26 @@ class WayfindingDisplayTest {
 
         assertEquals("nether", text.arrow());
         assertEquals("", text.distance());
+    }
+
+    @Test
+    void displayStorageLabelUsesDisplayKind() {
+        String storageId = WorldDisplayStorageSource.storageId(
+                WorldDisplayStorageKind.TOOL_RACK,
+                "minecraft:overworld",
+                4,
+                64,
+                0);
+        WayfindingTarget target = new WayfindingTarget(
+                storageId,
+                "minecraft:overworld",
+                4,
+                64,
+                0,
+                Set.of(),
+                1,
+                WayfindingTarget.Scope.WANTED);
+
+        assertEquals("Tool rack", WayfindingDisplay.chestLabel(target));
     }
 }

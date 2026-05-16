@@ -8,6 +8,7 @@ public final class WorkspaceUiAttachments {
     public static final String WALL_CARD_BODY = "slot.workspace.wall_card_body";
     public static final String WALL_CARD_ACTIVE_SEARCH_MATCH = "slot.workspace.wall_card_active_search_match";
     public static final String WALL_CARD_WAYFINDING_ENTRY = "slot.workspace.wall_card_wayfinding_entry";
+    public static final String WALL_CARD_MISSING_TARGET = "slot.workspace.wall_card_missing_target";
     public static final String RECENTS_CARD = "slot.workspace.recents_card";
     public static final String RECENTS_ICON = "slot.workspace.recents_icon";
     public static final String RECENTS_STRIP = "slot.workspace.recents_strip";

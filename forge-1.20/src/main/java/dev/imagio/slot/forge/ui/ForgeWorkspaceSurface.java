@@ -1811,7 +1811,7 @@ public final class ForgeWorkspaceSurface {
             SlotWorkspaceViewModel.ContextualSuggestionLane lane = grid.attachment(
                     WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE,
                     SlotWorkspaceViewModel.ContextualSuggestionLane.class);
-            WallCardUiBuilder suggestionCardBuilder = lane != null && lane.putAway()
+            WallCardUiBuilder suggestionCardBuilder = lane != null && lane.forceWayfindingStrip()
                     ? new WallCardUiBuilder(new CardContext(true, lane))
                     : new WallCardUiBuilder(new CardContext(false, lane));
             List<?> gridItems = grid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);

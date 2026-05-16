@@ -376,7 +376,7 @@ final class ListWallPanelBuilder {
             SlotWorkspaceViewModel.ContextualSuggestionLane lane = model.attachment(
                     WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE,
                     SlotWorkspaceViewModel.ContextualSuggestionLane.class);
-            boolean forceWayfinding = lane != null && lane.putAway();
+            boolean forceWayfinding = lane != null && lane.forceWayfindingStrip();
             List<?> cards = model.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
             if (cards != null) {
                 for (Object cardObject : cards) {

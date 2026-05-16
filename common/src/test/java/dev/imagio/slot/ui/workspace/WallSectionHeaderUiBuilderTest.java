@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -234,6 +235,67 @@ class WallSectionHeaderUiBuilderTest {
     }
 
     @Test
+    void wantedOrDesiredGapWithoutKnownStorageRendersCraftState() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.forceWayfinding = true;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:torch",
+                "Torch",
+                false,
+                true,
+                27,
+                64,
+                0,
+                java.util.List.of(),
+                java.util.List.of());
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        SlotUiElement body = card.children().get(0);
+
+        assertEquals(WallCardUiBuilder.CARD_CELL_PX + WallCardUiBuilder.WAYFINDING_STRIP_WIDTH_PX,
+                card.layout().width());
+        assertNull(body.attachment(
+                WorkspaceUiAttachments.WALL_CARD_WAYFINDING_ENTRY,
+                SlotWorkspaceViewModel.ChestPresenceEntry.class));
+        WallCardUiBuilder.MissingTargetDisplay missing = body.attachment(
+                WorkspaceUiAttachments.WALL_CARD_MISSING_TARGET,
+                WallCardUiBuilder.MissingTargetDisplay.class);
+        assertNotNull(missing);
+        assertEquals(37, missing.count());
+        assertTrue(descendantText(card).contains("27/64"));
+        assertTrue(descendantText(card).contains("craft"));
+        assertTrue(descendantText(card).contains("37"));
+    }
+
+    @Test
+    void wantedOrDesiredGapWithRemoteStorageUsesWayfindingInsteadOfCraftState() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.forceWayfinding = true;
+        SlotWorkspaceViewModel.ChestPresenceEntry remote =
+                new SlotWorkspaceViewModel.ChestPresenceEntry("chest:remote", "Remote", 37);
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:torch",
+                "Torch",
+                false,
+                true,
+                27,
+                64,
+                0,
+                java.util.List.of(),
+                java.util.List.of(remote));
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        SlotUiElement body = card.children().get(0);
+
+        assertSame(remote, body.attachment(
+                WorkspaceUiAttachments.WALL_CARD_WAYFINDING_ENTRY,
+                SlotWorkspaceViewModel.ChestPresenceEntry.class));
+        assertNull(body.attachment(
+                WorkspaceUiAttachments.WALL_CARD_MISSING_TARGET,
+                WallCardUiBuilder.MissingTargetDisplay.class));
+    }
+
+    @Test
     void forcedWayfindingDoesNotUseNearbyPresenceForPutAwayCards() {
         RecordingCardContext context = new RecordingCardContext();
         context.forceWayfinding = true;
@@ -420,6 +482,20 @@ class WallSectionHeaderUiBuilderTest {
             java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> presence,
             java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere
     ) {
+        return atlasItem(itemId, name, recent, carried, 1, 0, 0, presence, elsewhere);
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem atlasItem(
+            String itemId,
+            String name,
+            boolean recent,
+            boolean carried,
+            int totalCount,
+            int desiredCount,
+            int wantedCount,
+            java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> presence,
+            java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere
+    ) {
         SlotWorkspaceViewModel.IdentityRef identity = new SlotWorkspaceViewModel.IdentityRef(
                 itemId,
                 dev.imagio.slot.inventory.core.ItemComparisonMode.ITEM_ID.name(),
@@ -427,9 +503,9 @@ class WallSectionHeaderUiBuilderTest {
         );
         return new SlotWorkspaceViewModel.AtlasItem(
                 identity,
-                new ItemStack(itemId, 1, 64),
+                new ItemStack(itemId, Math.max(1, totalCount), 64),
                 name,
-                1,
+                totalCount,
                 0,
                 "tools",
                 recent,
@@ -444,8 +520,9 @@ class WallSectionHeaderUiBuilderTest {
                 0,
                 0,
                 false,
-                0,
+                desiredCount,
                 false,
+                wantedCount,
                 "",
                 -1,
                 0
