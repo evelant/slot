@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-16
+Last updated: 2026-05-17
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -59,20 +59,22 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
-- **2026-05-16** — Contextual suggestion signal tuning continued: passive
+- **2026-05-17** — Contextual suggestion signal tuning continued: passive
   authority-diff acquisitions and internal moves no longer train Useful Now,
   block placement no longer double-counts as right-click tool use, placed or
   consumed identities get a short spent penalty instead of exact
   self-promotion, placed/consumed signatures no longer replay old association
   hints, broad station-open/item-use/acquisition/production signatures no
   longer train or replay learned associations, generic carried-only
-  SLOT/backpack/inventory hosts and the vanilla player inventory menu no longer
-  become station context, low-information storage/openable-block right-clicks
-  while a tool is in hand no longer count as tool use, recent signals decay by
-  world tick, qualifying nearby storage ghosts get reserved Useful Now slots,
-  and `/slot debug contextual` dumps event history, source counts, association
-  hints, and the last closed workspace/sidebar lane score breakdowns for
-  playtest debugging.
+  SLOT/backpack/inventory hosts, portable menus, and the vanilla player
+  inventory menu no longer become station context, low-information
+  storage/openable-block right-clicks while a tool is in hand no longer count
+  as tool use, targetless/air right-clicks keep exact held-tool relevance
+  without adding advisory context, weak advisory-only overlap can no longer
+  surface nearby storage ghosts, recent signals decay by world tick, qualifying
+  nearby storage ghosts get reserved Useful Now slots, and `/slot debug
+  contextual` dumps event history, source counts, association hints, and the
+  last closed workspace/sidebar lane score breakdowns for playtest debugging.
 - **2026-05-16** — EMI recipe screens now show the normal SLOT sidebar filtered
   to the visible recipe ingredients on NeoForge and Forge. The projection is
   transient, not a goal: present ingredients keep their normal section/storage

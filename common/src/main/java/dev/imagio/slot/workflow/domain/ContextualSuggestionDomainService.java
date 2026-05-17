@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDomain;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 
@@ -353,6 +354,10 @@ public final class ContextualSuggestionDomainService {
         if (host == null
                 || host.sourceDescriptors().isEmpty()
                 || ContextualSignalFilters.ignoredStationContext(contextKey(host))) {
+            return false;
+        }
+        if (host.observationHints().carriedOnly()
+                || host.observationHints().hostFamilyHint() == InventoryHostFamilyHint.CARRIED_ONLY) {
             return false;
         }
         return host.sourceDescriptors().stream().anyMatch(ContextualSuggestionDomainService::stationObservedSource);

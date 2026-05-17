@@ -1,6 +1,6 @@
 # Contextual Suggestions
 
-Last updated: 2026-05-16
+Last updated: 2026-05-17
 
 Status: first playable prototype landed; playtest diagnostics and tuning remain.
 This narrows the broader ambient task view idea into two prototype lanes:
@@ -62,7 +62,8 @@ Landed 2026-05-15:
   right-click block placement by `BlockItem` is not also counted as a tool-use
   signal. Right-clicking storage/openable blocks while a tool happens to be in
   hand is ignored as low-information use, while real tool interactions such as
-  wrenching Create machines still count.
+  wrenching Create machines still count. Targetless/air right-clicks keep exact
+  held-tool relevance but no longer add target advisory context.
 - learned before/after associations are intentionally narrow: station item
   moves can associate with other station item moves in the same context, and an
   explicit storage take can associate with a following station item move.
@@ -71,9 +72,13 @@ Landed 2026-05-15:
   hints. Tool use still contributes exact recent relevance for that tool.
   Passive carried tools do not become hints merely because the player had them
   in inventory.
-- the vanilla player inventory menu is not treated as a station context even
-  though it has a small crafting grid; stale `InventoryMenu` station-content
-  association buckets are pruned from the replayable association index
+- the vanilla player inventory menu and carried-only portable/container menus
+  are not treated as station context even when they expose tool-like regions;
+  stale `InventoryMenu` and portable-menu station-content association buckets
+  are pruned from the replayable association index
+- nearby storage ghosts need exact/history relevance or a strong structured
+  advisory match; weak text-only overlap such as generic fuel/fire terms cannot
+  surface stored ghosts by itself
 - saved goal plans are not currently emitted as Useful Now context; goal state
   remains a Put Away protection signal until goal capture is reliable enough to
   train suggestions
@@ -221,6 +226,41 @@ The model should treat `processing_in` as raw evidence and `used_at` /
 workflow facets as stronger relevance context. `carry_frequency` should act as
 the base prior for Put Away when SLOT has little or no player-specific carry
 duration history.
+
+## Signal Rules Matrix
+
+Contextual scoring has three separate decisions:
+
+- candidate/action state: can this identity appear in Useful Now or Put Away,
+  and which source/action affordances can the card expose?
+- relevance evidence: does this observation make an identity more or less
+  useful right now?
+- history learning: is this observation safe to persist as a before/after
+  association that can influence future sessions?
+
+Most bad suggestions have come from treating candidate state or low-information
+UI noise as relevance evidence. Use this matrix as the implementation checklist
+for new signals and tuning.
+
+| Case | Examples | Suggestion rule | Learning rule | Status |
+| --- | --- | --- | --- | --- |
+| Passive carried state | food, axe, pickaxe, knife, supports, grappling hook always carried | Eligibility/action state only. Useful Now may show carried cards and Put Away is carried-only, but possession adds no Useful Now relevance. | Never train associations or context hints. | Implemented. |
+| Internal carried moves | main inventory to backpack, backpack to main, sacks/baskets, hotbar reordering | Ignore for Useful Now relevance. Preserve source/action data for normal cards. | Never train. Audit new carried providers so their menus do not look like external stations. | Implemented for core carried state and carried-only host hints; keep auditing new provider menus. |
+| External storage take or world pickup | taking an ingredient from a chest, picking up drops | Exact recent item relevance and clears newer deposit/spent penalties for that identity. | Storage take may train only when followed shortly by station item movement; plain pickup does not create broad associations. | Implemented. |
+| Deposit into real storage | putting ores, gears, or supplies into chests/barrels | Negative Useful Now signal for that exact identity and positive Put Away/cleanup history. A newer take/pickup/use can re-promote it. | Do not teach future usefulness; deposits are cleanup evidence. | Implemented. |
+| Station item movement | moving ingredients/tools in a workbench, machine, forge-like UI, or tool panel | Strong context for the moved identity and station. | May learn same-station moved-item relationships and explicit storage-take -> station-move relationships. | Implemented for observed station diffs; broaden per-station coverage only after testing. |
+| Generic or carried-only menus | vanilla player inventory, SLOT/backpack workspace, sacks/baskets opened as carried storage | Not station context. Do not let their contents become Useful Now context. | Never train station-content associations. | Implemented through carried-only host hints plus explicit portable-menu context filters. |
+| Real station opened | workbench, anvil, crucible, forge, machine menu | Context-only signal. Useful for station facets and exact later station movement, but opening alone should be weak. | Do not train before/after item associations from open events. | Implemented. |
+| Held tool used on real target | wrenching a Create machine, axe/chisel/hammer/tongs use, entity attack | Exact recent relevance for the held item. Target context may add advisory tokens. | Do not train broad associations from tool use. | Implemented. |
+| Held tool while opening storage/openable block | right-click chest/barrel/drawer/tool rack while wrench/knife/etc. is in hand | Low-information use; ignore as tool relevance so storage access does not pin the held item. | Never train. | Implemented for known storage/openable target names; extend marker list from logs. |
+| Right-click air or failed world use | repeated `target=air`, ambiguous right-click item attempts | Exact held-item context only when the item itself matters; no target advisory boost from `air`. Rate/decay should prevent stuck suggestions. | Do not train associations. | Implemented for targetless/air advisory suppression; keep tuning exact-use decay from logs. |
+| Placement and consumption | planting saplings, placing blocks, eating/drinking | Treat as spent context, not self-promotion. The exact identity should cool down unless newer evidence appears. | Do not replay placement/consumption associations. | Implemented. |
+| Damage or item destroyed | durability loss, tool breaks | Useful as exact active-tool evidence and possible replacement/repair hint, not as proof nearby carried items mattered. | Do not train broad associations. | Partial: destroyed events exist; fine-grained durability deltas are still pending. |
+| Advisory facet/text overlap | `fire`, `fuel`, `wood`, `used_at:campfire`, workflow text | Advisory only. It can explain/order a candidate, but broad text overlap should not be enough to surface unrelated storage ghosts by itself. | Never train from advisory overlap. | Implemented for storage ghosts through strong structured-advisory gating; carried-card advisory tuning remains playtest-driven. |
+| Nearby storage ghosts | stored ingredients/tools within the proximate radius | Eligible for Useful Now only when there is meaningful recent relevance. Do not fill the lane with generic nearby materials. | Candidate presence never trains history. | Implemented for exact/history/strong structured relevance; keep tuning what qualifies as strong. |
+| Tracked non-proximate ghosts | known storage elsewhere | May appear in Useful Now only from strong relevance or explicit target/goal state. Do not make Useful Now a remote storage browser. | Candidate presence never trains history. | Partial; keep conservative until proximate ghosts behave well. |
+| Goals and recipe context | EMI recipe screen, SLOT saved goals | Ignore for training until those surfaces are reliable. Goal state can protect Put Away reservations. | Deferred; do not persist learned associations from rough goals. | Deferred by design. |
+| Persisted historical noise | old broad `station_opened`, `item_used`, `InventoryMenu`, placement, consumption, or portable-menu buckets | Do not score polluted broad buckets. Prefer clear pruning over compatibility with bad history. | Reject non-replayable signatures during load/replay. | Implemented for known broad and portable-menu signatures; add versioned pruning if more polluted buckets appear. |
 
 ## Context Scoring
 
@@ -627,6 +667,8 @@ should already produce meaningful Put Away cards from facet priors alone.
 
 - use detailed tooltip debug output to tune top candidates, scores, and reason
   tokens
+- keep testing the signal rules matrix against playtest logs, especially exact
+  tool-use decay and the threshold for strong storage-ghost advisory matches
 - tune thresholds from playtest screenshots/logs
 - only then consider suppression/correction state, search zero-state changes,
   or richer station-content events
@@ -653,6 +695,8 @@ Still open:
 
 - Does inventory fullness change Put Away thresholds?
 - Which crafting and machine interaction events are reliable on both loaders?
+- Is the current strong structured-advisory gate for storage ghosts too strict
+  for real cooking/forge workflows, or still too permissive for generic fuel?
 - Are the detailed tooltip diagnostics enough to explain scoring mistakes, or
   do playtest logs need a parallel `/slot` dump for candidates that did not
   make a lane?

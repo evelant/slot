@@ -13,6 +13,13 @@ public final class ContextualSignalFilters {
         return lowInformationWorldUse(event.metadataValue("action"), event.metadataValue("target"));
     }
 
+    public static boolean targetlessWorldUse(ContextualSignalEvent event) {
+        if (event == null || event.kind() != ContextualSignalKind.ITEM_USED) {
+            return false;
+        }
+        return targetlessWorldUse(event.metadataValue("action"), event.metadataValue("target"));
+    }
+
     public static boolean lowInformationWorldUse(String action, String targetKey) {
         String normalizedAction = clean(action);
         String normalizedTarget = clean(targetKey);
@@ -41,8 +48,30 @@ public final class ContextualSignalFilters {
                 || path.contains("shulker_box");
     }
 
+    public static boolean targetlessWorldUse(String action, String targetKey) {
+        String normalizedAction = clean(action);
+        if (!normalizedAction.startsWith("right_click")) {
+            return false;
+        }
+        String normalizedTarget = clean(targetKey);
+        return normalizedTarget.isBlank()
+                || "air".equals(normalizedTarget)
+                || "block:minecraft:air".equals(normalizedTarget)
+                || "minecraft:air".equals(normalizedTarget);
+    }
+
     public static boolean ignoredStationContext(String contextKey) {
-        return "menu:net.minecraft.world.inventory.inventorymenu".equals(clean(contextKey));
+        String normalized = clean(contextKey);
+        if ("menu:net.minecraft.world.inventory.inventorymenu".equals(normalized)) {
+            return true;
+        }
+        return normalized.contains("backpack")
+                || normalized.contains("satchel")
+                || normalized.contains("pouch")
+                || normalized.contains("sack")
+                || normalized.contains("basket")
+                || normalized.contains("shulker")
+                || normalized.contains("vessel");
     }
 
     private static String clean(String value) {

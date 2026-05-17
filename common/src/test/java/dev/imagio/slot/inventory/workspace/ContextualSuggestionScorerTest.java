@@ -808,6 +808,61 @@ class ContextualSuggestionScorerTest {
     }
 
     @Test
+    void usefulNowDoesNotPromoteNearbyGhostFromWeakAdvisoryOnlyMatch() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        repository.appendContextualSignal(
+                ContextualSignalEvent.item(
+                        ContextualSignalKind.ITEM_ACQUIRED,
+                        ItemIdentity.of("minecraft:charcoal"),
+                        1,
+                        ""),
+                DomainEventMetadata.origin("test"));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(storedItem("afc:wood/fallen_leaves/black_oak", true)),
+                repository.snapshot(),
+                index,
+                12,
+                36,
+                120L);
+
+        assertFalse(laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW)
+                .contains("afc:wood/fallen_leaves/black_oak"));
+    }
+
+    @Test
+    void targetlessRightClickKeepsToolExactButDoesNotCreateGhostContext() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        repository.appendContextualSignal(
+                new ContextualSignalEvent(
+                        ContextualSignalKind.ITEM_USED,
+                        ItemIdentity.of("slot:test_wrench"),
+                        1,
+                        100L,
+                        "world:right_click_block",
+                        "block:minecraft:air",
+                        "hand:main_hand",
+                        Map.of("action", "right_click_block", "target", "block:minecraft:air")),
+                DomainEventMetadata.origin("test"));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(
+                        item("slot:test_wrench", true, BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0),
+                        storedItem("afc:wood/fallen_leaves/black_oak", true)),
+                repository.snapshot(),
+                index,
+                12,
+                36,
+                120L);
+
+        List<String> useful = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
+        assertTrue(useful.contains("slot:test_wrench"));
+        assertFalse(useful.contains("afc:wood/fallen_leaves/black_oak"));
+    }
+
+    @Test
     void usefulNowUsesSpentAndDamagedSignalsWithoutSelfPromotingPlacedItems() {
         FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();

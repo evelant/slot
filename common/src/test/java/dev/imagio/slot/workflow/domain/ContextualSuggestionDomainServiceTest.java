@@ -13,7 +13,9 @@ import dev.imagio.slot.inventory.core.InventoryStackSnapshot;
 import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.PlayerRuntimeStateDescriptor;
+import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
+import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
 import net.minecraft.network.chat.Component;
@@ -58,6 +60,27 @@ class ContextualSuggestionDomainServiceTest {
         ContextualSuggestionDomainService service = new ContextualSuggestionDomainService(repository, null);
 
         assertFalse(service.observeStationOpened(host(), DomainEventMetadata.origin("test.station")));
+        assertTrue(repository.contextualSuggestionState().recentSignals().isEmpty());
+        assertTrue(repository.contextualSuggestionState().activeContextKey().isBlank());
+    }
+
+    @Test
+    void carriedOnlyHostWithToolRegionDoesNotBecomeStationContext() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        ContextualSuggestionDomainService service = new ContextualSuggestionDomainService(repository, null);
+        InventoryHostDescriptor host = hostWithToolSource(new InventoryHostObservationHints(
+                InventoryHostFamilyHint.CARRIED_ONLY,
+                InventorySlotOwnershipPosture.SLOT_OWNED,
+                true,
+                true,
+                Map.of("portableLike", "true")));
+
+        InventoryAuthoritySnapshot stationContents = authority(
+                host,
+                List.of(),
+                List.of(new InventoryStackSnapshot(0, new ItemStack("tfc:leather", 1, 64), 1)));
+
+        assertFalse(service.observeStationContext(host, stationContents, 100L, DomainEventMetadata.origin("test.station")));
         assertTrue(repository.contextualSuggestionState().recentSignals().isEmpty());
         assertTrue(repository.contextualSuggestionState().activeContextKey().isBlank());
     }
@@ -206,6 +229,8 @@ class ContextualSuggestionDomainServiceTest {
     @Test
     void playerInventoryMenuIsNotStationContext() {
         assertTrue(ContextualSignalFilters.ignoredStationContext("menu:net.minecraft.world.inventory.InventoryMenu"));
+        assertTrue(ContextualSignalFilters.ignoredStationContext(
+                "menu:net.p3pp3rf1y.sophisticatedbackpacks.common.gui.BackpackContainer"));
     }
 
     @Test
@@ -283,6 +308,10 @@ class ContextualSuggestionDomainServiceTest {
     }
 
     private static InventoryHostDescriptor hostWithToolSource() {
+        return hostWithToolSource(InventoryHostObservationHints.defaults());
+    }
+
+    private static InventoryHostDescriptor hostWithToolSource(InventoryHostObservationHints hints) {
         TestMenu menu = new TestMenu();
         InventorySourceDescriptor carried = InventorySourceDescriptor.builder("player.main")
                 .label(Component.literal("Inventory"))
@@ -335,7 +364,7 @@ class ContextualSuggestionDomainServiceTest {
                         Map.of(),
                         null,
                         "")),
-                InventoryHostObservationHints.defaults(),
+                hints,
                 "");
     }
 
