@@ -1730,6 +1730,26 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
+    void setWantedCount(String itemId, String comparisonMode, String componentFingerprint, Integer countBoxed) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.setWantedCount(
+                workflowRuntime(serverPlayer),
+                authority,
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                countBoxed == null ? 0 : countBoxed
+        ));
+    }
+
     void adjustWantedCount(String itemId, String comparisonMode, String componentFingerprint, Integer deltaBoxed) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;

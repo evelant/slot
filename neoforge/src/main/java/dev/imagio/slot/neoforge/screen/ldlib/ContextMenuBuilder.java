@@ -168,6 +168,9 @@ final class ContextMenuBuilder {
     }
 
     UIElement buildAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
+        if (host.recipeSidebarActive()) {
+            return buildRecipeAtlasContextMenu(item);
+        }
         if (host.goalTabActive()) {
             return buildGoalAtlasContextMenu(item);
         }
@@ -243,6 +246,82 @@ final class ContextMenuBuilder {
                     }
             ));
         }
+
+        UIElement wrapper = new UIElement().layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(0).right(0).top(0).bottom(0));
+        wrapper.addChildren(catcher, menu);
+        return wrapper;
+    }
+
+    private UIElement buildRecipeAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
+        UIElement catcher = contextMenuCatcher(this::closeContextMenu);
+        UIElement menu = panel(GLASS).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .width(164)
+                .paddingAll(4)
+                .gapAll(2)
+                .flexDirection(FlexDirection.COLUMN));
+        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180, 120);
+        menu.style(style -> style.zIndex(22));
+        menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+
+        menu.addChild(label(shorten(item.name(), 22), ACCENT)
+                .layout(layout -> layout.widthPercent(100).height(12)));
+
+        if (item.ghost()) {
+            menu.addChild(menuButton(
+                    "Take stack",
+                    item.proximateCount() > 0,
+                    null,
+                    () -> {
+                        host.rpc.sendTakeStackByIdentity(item.identity());
+                        closeContextMenu();
+                    }));
+        }
+
+        int freeHotbarIndex = host.firstFreeHotbarIndex();
+        if (item.carried() && freeHotbarIndex >= 0) {
+            menu.addChild(menuButton(
+                    "Send to hotbar",
+                    true,
+                    null,
+                    () -> {
+                        host.rpc.sendAssignHomeToHotbarOnly(item);
+                        closeContextMenu();
+                    }
+            ));
+        }
+
+        if (item.carried() && host.atlasItemHasDepositTarget(item)) {
+            menu.addChild(menuButton(
+                    "Deposit to linked chest",
+                    true,
+                    null,
+                    () -> {
+                        host.rpc.sendDepositHomeToLinkedChest(item);
+                        closeContextMenu();
+                    }
+            ));
+        }
+
+        menu.addChild(menuButton(
+                "Open recipe in EMI",
+                true,
+                null,
+                () -> {
+                    host.openRecipe(item);
+                    closeContextMenu();
+                }));
+        menu.addChild(menuButton(
+                "Open uses in EMI",
+                true,
+                null,
+                () -> {
+                    host.openUses(item);
+                    closeContextMenu();
+                }));
+        menu.addChild(menuButton("Close", true, null, this::closeContextMenu));
 
         UIElement wrapper = new UIElement().layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)

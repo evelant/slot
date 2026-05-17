@@ -66,6 +66,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter takeDesiredGapOrStackByIdentityEmitter;
     RPCEmitter takeStackByIdentityEmitter;
     RPCEmitter toggleWantedItemEmitter;
+    RPCEmitter setWantedCountEmitter;
     RPCEmitter adjustWantedCountEmitter;
     RPCEmitter assignHomeToHotbarOnlyEmitter;
     RPCEmitter assignIdentityToAutoHotbarEmitter;
@@ -413,6 +414,13 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 String.class,
                 host.session::toggleWantedItem
+        ));
+        setWantedCountEmitter = add(WorkspaceActionId.SET_WANTED_COUNT, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                Integer.class,
+                host.session::setWantedCount
         ));
         adjustWantedCountEmitter = add(WorkspaceActionId.ADJUST_WANTED_COUNT, RPCEventBuilder.simple(
                 String.class,
@@ -1132,6 +1140,20 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
         boolean sent = send(WorkspaceActionId.TOGGLE_WANTED_ITEM,
                 identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
         host.localStatus.set(sent ? "wanted item updated" : "wanted item unavailable");
+        host.rebuild();
+    }
+
+    void sendSetWantedCount(SlotWorkspaceViewModel.IdentityRef identity, int count) {
+        if (setWantedCountEmitter == null || identity == null) {
+            return;
+        }
+        boolean sent = send(WorkspaceActionId.SET_WANTED_COUNT,
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                Math.max(0, count)
+        );
+        host.localStatus.set(sent ? "wanted count updated" : "wanted count update unavailable");
         host.rebuild();
     }
 

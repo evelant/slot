@@ -125,7 +125,7 @@ public final class ContextualSuggestionDomainService {
             DomainEventMetadata metadata
     ) {
         String contextKey = contextKey(host);
-        if (contextKey.isBlank() || host == null || authority == null) {
+        if (contextKey.isBlank() || host == null || authority == null || !stationContextHost(host)) {
             stationSnapshotContextKey = "";
             stationSnapshot = Map.of();
             return false;
@@ -191,6 +191,9 @@ public final class ContextualSuggestionDomainService {
             String sourceKey,
             DomainEventMetadata metadata
     ) {
+        if (ContextualSignalFilters.lowInformationWorldUse(action, targetKey)) {
+            return false;
+        }
         return observeItemSignal(
                 ContextualSignalKind.ITEM_USED,
                 identity,
@@ -347,7 +350,9 @@ public final class ContextualSuggestionDomainService {
     }
 
     private static boolean stationContextHost(InventoryHostDescriptor host) {
-        if (host == null || host.sourceDescriptors().isEmpty()) {
+        if (host == null
+                || host.sourceDescriptors().isEmpty()
+                || ContextualSignalFilters.ignoredStationContext(contextKey(host))) {
             return false;
         }
         return host.sourceDescriptors().stream().anyMatch(ContextualSuggestionDomainService::stationObservedSource);

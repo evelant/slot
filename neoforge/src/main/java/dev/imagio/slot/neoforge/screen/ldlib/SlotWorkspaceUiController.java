@@ -26,6 +26,7 @@ import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceProjection;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceProjectionCache;
+import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WheelTransferBatcher;
@@ -107,6 +108,10 @@ final class SlotWorkspaceUiController {
     float contextMenuScreenY;
     final ArrayDeque<String> recentRehomeIslandIds = new ArrayDeque<>();
     final GoalWorkspaceProjectionCache goalProjectionCache = new GoalWorkspaceProjectionCache();
+    private RecipeIngredientSidebarSpec recipeSidebarSpec = RecipeIngredientSidebarSpec.empty();
+    private RecipeIngredientSidebarSpec.Projection recipeSidebarProjection;
+    private long recipeSidebarProjectionRevision = Long.MIN_VALUE;
+    private String recipeSidebarProjectionKey = "";
     static final int RECENT_REHOME_MAX_DISPLAYED = 3;
     static final int RECENT_REHOME_CAPACITY = 6;
     String editingIslandId = null;
@@ -347,11 +352,12 @@ final class SlotWorkspaceUiController {
                 .remoteSetter(tag -> {
                     session.acceptRemoteView(tag);
                     viewModel = session.viewModel();
+                    recipeSidebarProjection = null;
                     if (GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(viewModel.goalPlans())) {
                         appliedGoalStateRevision = GoalWorkspaceClientState.revision();
                     }
                     dev.imagio.slot.neoforge.client.SlotClientWorkspaceCache.update(viewModel);
-                    localStatus.set("");
+                    localStatus.set(recipeSidebarActive() ? recipeSidebarSpec.label() : "");
                     rebuild();
                 })
                 .build());
@@ -821,8 +827,40 @@ final class SlotWorkspaceUiController {
         return null;
     }
 
+    void setRecipeSidebarSpec(RecipeIngredientSidebarSpec spec) {
+        RecipeIngredientSidebarSpec next = spec == null ? RecipeIngredientSidebarSpec.empty() : spec;
+        String currentKey = recipeSidebarSpec == null ? "" : recipeSidebarSpec.sourceKey();
+        if (currentKey.equals(next.sourceKey())) {
+            return;
+        }
+        recipeSidebarSpec = next;
+        recipeSidebarProjection = null;
+        localStatus.set(next.active() ? next.label() : "");
+        rebuild();
+    }
+
+    boolean recipeSidebarActive() {
+        return recipeSidebarSpec != null && recipeSidebarSpec.active();
+    }
+
+    private RecipeIngredientSidebarSpec.Projection recipeProjection() {
+        if (!recipeSidebarActive()) {
+            return null;
+        }
+        long revision = viewModel == null ? -1L : viewModel.revision();
+        String key = recipeSidebarSpec.sourceKey();
+        if (recipeSidebarProjection == null
+                || recipeSidebarProjectionRevision != revision
+                || !recipeSidebarProjectionKey.equals(key)) {
+            recipeSidebarProjection = recipeSidebarSpec.project(viewModel);
+            recipeSidebarProjectionRevision = revision;
+            recipeSidebarProjectionKey = key;
+        }
+        return recipeSidebarProjection;
+    }
+
     boolean goalTabActive() {
-        return GoalWorkspaceClientState.hasActiveGoal();
+        return !recipeSidebarActive() && GoalWorkspaceClientState.hasActiveGoal();
     }
 
     GoalWorkspaceProjection goalProjection() {
@@ -830,6 +868,10 @@ final class SlotWorkspaceUiController {
     }
 
     List<SlotWorkspaceViewModel.AtlasIsland> currentIslands() {
+        RecipeIngredientSidebarSpec.Projection recipe = recipeProjection();
+        if (recipe != null) {
+            return recipe.islands();
+        }
         GoalWorkspaceProjection goal = goalProjection();
         return goal == null ? viewModel.islands() : goal.islands();
     }
@@ -847,6 +889,10 @@ final class SlotWorkspaceUiController {
     }
 
     List<SlotWorkspaceViewModel.AtlasItem> currentAtlasItems() {
+        RecipeIngredientSidebarSpec.Projection recipe = recipeProjection();
+        if (recipe != null) {
+            return recipe.atlasItems();
+        }
         GoalWorkspaceProjection goal = goalProjection();
         return goal == null ? viewModel.atlasItems() : goal.atlasItems();
     }
@@ -855,33 +901,64 @@ final class SlotWorkspaceUiController {
         if (identity == null) {
             return null;
         }
+        RecipeIngredientSidebarSpec.Projection recipe = recipeProjection();
+        if (recipe != null) {
+            return recipe.atlasItem(identity);
+        }
         GoalWorkspaceProjection goal = goalProjection();
         return goal == null ? viewModel.atlasItem(identity) : goal.atlasItem(identity);
     }
 
     boolean goalChoiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
+        if (recipeSidebarActive()) {
+            return false;
+        }
         GoalWorkspaceProjection goal = goalProjection();
         return goal != null && goal.choiceInvolved(item);
     }
 
     boolean goalChoiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+        if (recipeSidebarActive()) {
+            return false;
+        }
         GoalWorkspaceProjection goal = goalProjection();
         return goal != null && goal.choiceCard(item);
     }
 
     boolean goalSuppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
+        if (recipeSidebarActive()) {
+            return false;
+        }
         GoalWorkspaceProjection goal = goalProjection();
         return goal != null && goal.suppressVanillaTooltip(item);
     }
 
     List<Component> goalTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+        if (recipeSidebarActive()) {
+            return dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder.slotLines(item);
+        }
         GoalWorkspaceProjection goal = goalProjection();
         return goal == null
                 ? dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder.slotLines(item)
                 : goal.tooltipLines(item);
     }
 
+    boolean recipeSuppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
+        RecipeIngredientSidebarSpec.Projection recipe = recipeProjection();
+        return recipe != null && recipe.suppressVanillaTooltip(item);
+    }
+
+    List<Component> recipeTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+        RecipeIngredientSidebarSpec.Projection recipe = recipeProjection();
+        return recipe == null
+                ? dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder.slotLines(item)
+                : recipe.tooltipLines(item);
+    }
+
     String goalChoiceGroupId(SlotWorkspaceViewModel.AtlasItem item) {
+        if (recipeSidebarActive()) {
+            return "";
+        }
         GoalWorkspaceProjection goal = goalProjection();
         if (goal == null) {
             return "";

@@ -6,11 +6,17 @@ import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.mixin.ScreenInvoker;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
+import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Collections;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 /**
  * Client-side bridge that hides the LDLib2 surface from the rest of
@@ -36,6 +42,9 @@ import org.jetbrains.annotations.Nullable;
  * </ol>
  */
 public final class SlotSidebarClientUi {
+    private static final Set<ModularUI> SIDEBAR_UIS = Collections.synchronizedSet(
+            Collections.newSetFromMap(new WeakHashMap<>()));
+
     @Nullable
     private static ActiveMount activeMount;
 
@@ -77,18 +86,42 @@ public final class SlotSidebarClientUi {
         if (!(hostScreen instanceof AbstractContainerScreen<?> containerScreen)) {
             return false;
         }
+        return mount(player, hostScreen, containerScreen.getMenu(), sidebarWidth, sidebarHeight);
+    }
+
+    /**
+     * Mount a sidebar workspace as a child widget of {@code hostScreen}, while
+     * routing LDLib sync through the live menu that still owns the player's
+     * server-side container state. EMI's recipe screen is the motivating
+     * non-container host: it renders as a plain {@link Screen}, but keeps the
+     * previous handled screen/menu alive as its backing context.
+     */
+    public static boolean mount(
+            Player player,
+            Screen hostScreen,
+            @Nullable AbstractContainerMenu syncMenu,
+            int sidebarWidth,
+            int sidebarHeight
+    ) {
+        if (hostScreen == null || syncMenu == null) {
+            return false;
+        }
         SlotWorkspaceUiSession session = new SlotWorkspaceUiSession(player);
         SlotWorkspaceUiController controller = new SlotWorkspaceUiController(session, player, true);
         ModularUI sidebar = controller.create();
+        SIDEBAR_UIS.add(sidebar);
         sidebar.init(sidebarWidth, sidebarHeight);
-        ((ScreenInvoker) containerScreen).slot$addRenderableWidget(sidebar.getWidget());
+        ((ScreenInvoker) hostScreen).slot$addRenderableWidget(sidebar.getWidget());
 
-        if (containerScreen.getMenu() instanceof IModularUIHolderMenu holder) {
+        if (syncMenu instanceof IModularUIHolderMenu holder) {
             ModularUI existing = holder.getModularUI();
-            if (existing != null && existing != sidebar) {
+            if (existing != null
+                    && existing != sidebar
+                    && existing.getScreen() == hostScreen
+                    && !SIDEBAR_UIS.contains(existing)) {
                 SlotDebugLog.log(
                         "[SLOT][sidebar] host menu {} already carries a ModularUI on the client; not attaching",
-                        containerScreen.getMenu().getClass().getName()
+                        syncMenu.getClass().getName()
                 );
             } else {
                 holder.setModularUI(sidebar);
@@ -105,6 +138,13 @@ public final class SlotSidebarClientUi {
 
     public static boolean isActive() {
         return activeMount != null;
+    }
+
+    public static void setRecipeSidebarSpec(RecipeIngredientSidebarSpec spec) {
+        ActiveMount mount = activeMount;
+        if (mount != null) {
+            mount.controller.setRecipeSidebarSpec(spec);
+        }
     }
 
     /**

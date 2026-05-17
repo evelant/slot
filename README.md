@@ -82,9 +82,6 @@ Plans:
 - [docs/plans/classification-facet-vocabulary.md](docs/plans/classification-facet-vocabulary.md)
   — active LLM-first classification authoring plan: evidence, iterative
   vocabulary, item classification, and datapack/resource assembly.
-- [docs/plans/emi-goal-projections.md](docs/plans/emi-goal-projections.md)
-  — EMI recipe goal tabs with normal wall cards, ghosts, pips, and
-  goal-scoped desired counts.
 - [docs/plans/ambient-task-views.md](docs/plans/ambient-task-views.md)
   — deferred/research plan for generic task views such as Cooking,
   Exploration, Mining, Cleanup, and Ore Processing.
@@ -103,7 +100,9 @@ Plans:
 - [docs/plans/retired/](docs/plans/retired/) — superseded directions
   (storage-areas: the explicit-named-areas direction; storage-prototype:
   the chest-link / chest-tile / storage-zone prototype that was
-  wholesale replaced by learned-storage).
+  wholesale replaced by learned-storage; emi-goal-projections: the retired
+  SLOT-side recipe-goal direction replaced by transient EMI recipe sidebar
+  filtering).
 - [docs/plans/outdated/](docs/plans/outdated/) — old planning narratives that
   no longer describe current work.
 
@@ -123,6 +122,9 @@ Decisions (ADR-style):
 - [docs/decisions/0006-cross-loader-legacy-forge.md](docs/decisions/0006-cross-loader-legacy-forge.md)
   — SLOT adds a 1.20.1 Forge target through a SLOT-owned UI/platform SPI
   instead of backporting LDLib2.
+- [docs/decisions/0007-emi-recipe-sidebar.md](docs/decisions/0007-emi-recipe-sidebar.md)
+  — EMI recipe context uses the normal SLOT sidebar as a transient ingredient
+  filter instead of growing SLOT-side recipe goals.
 
 Research and assessments:
 

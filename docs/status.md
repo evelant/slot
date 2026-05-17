@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-14. Operational handoff. Read after
+Last updated: 2026-05-16. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -44,11 +44,14 @@ Ponder/category labels, stack groups, resource-pack overrides, and mod
 descriptions instead of reducing prompts to item ids or deterministic
 candidate lists.
 
-EMI goal projections now create server-persisted SLOT goal tabs from explicit
-EMI recipe-screen and drag/drop goal targets on both loaders. The current
-playtest pass in [plans/emi-goal-projections.md](plans/emi-goal-projections.md)
-stabilizes recipe choices, visible-storage auto-resolution, wanted-count
-projection, and non-item/fluid placeholders before broader goal UX grows.
+EMI recipe context now uses the normal SLOT sidebar as a transient recipe
+ingredient filter on both loaders. When EMI's recipe screen is open, SLOT
+renders into that screen while syncing through EMI's underlying handled menu;
+the wall shows only visible recipe ingredients, with carried/storage context
+and existing missing/craft target chrome. ADR
+[0007](decisions/0007-emi-recipe-sidebar.md) records the pivot away from the
+near-term recipe-goal surface; the old plan lives in
+[plans/retired/emi-goal-projections.md](plans/retired/emi-goal-projections.md).
 
 ### Production wall shape (post-list-view)
 
@@ -62,7 +65,9 @@ sidebar embed sub-plan in
 The workspace mounts in two surfaces with the **same widget tree**:
 standalone (player-inventory key) opens a full-screen
 `ModularUIContainerScreen`; sidebar mounts as a child widget on any
-non-SLOT `AbstractContainerScreen` (chest, crafting, machine). Both use
+non-SLOT `AbstractContainerScreen` (chest, crafting, machine) and on
+registered non-container overlays such as EMI's recipe screen when a handled
+menu remains available for sync. Both use
 the same top search/action row, goal row (`All` plus Kit Rack toggle),
 optional active-chest strip, Recents, wall scroller, optional right-side
 Kit Rack, status row, and bottom Belt. The Belt mirrors vanilla: offhand

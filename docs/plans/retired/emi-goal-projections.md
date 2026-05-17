@@ -1,5 +1,11 @@
 # EMI Goal Projections Plan
 
+> Retired 2026-05-16. Replaced as the near-term EMI surface by
+> [ADR 0007](../../decisions/0007-emi-recipe-sidebar.md): when an EMI recipe
+> screen is open, SLOT shows the normal sidebar filtered to visible recipe
+> ingredients. Do not resume this plan unless playtesting proves a persistent
+> recipe-goal surface is needed.
+
 Last updated: 2026-05-12
 
 Status: in progress; Slice 0 contract spike completed 2026-05-11, Slice 1 common
@@ -14,8 +20,8 @@ exposes a stable public API for it; the first implementation must not depend on
 internal favorite state.
 
 This plan deliberately does not own vocabulary generation or generic ambient
-task views. See [classification-facet-vocabulary.md](classification-facet-vocabulary.md)
-and [ambient-task-views.md](ambient-task-views.md).
+task views. See [classification-facet-vocabulary.md](../classification-facet-vocabulary.md)
+and [ambient-task-views.md](../ambient-task-views.md).
 
 ## Product Boundary
 

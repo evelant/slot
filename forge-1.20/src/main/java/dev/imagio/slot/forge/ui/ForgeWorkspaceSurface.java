@@ -29,6 +29,7 @@ import dev.imagio.slot.ui.workspace.GoalWorkspaceProjectionCache;
 import dev.imagio.slot.ui.workspace.HotbarBeltUiBuilder;
 import dev.imagio.slot.ui.workspace.KitRackUiBuilder;
 import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
+import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
@@ -92,6 +93,10 @@ public final class ForgeWorkspaceSurface {
     private final GoalWorkspaceProjectionCache goalProjectionCache = new GoalWorkspaceProjectionCache();
     private final ArrayDeque<String> recentRehomeIslandIds = new ArrayDeque<>();
     private final Map<SlotWorkspaceViewModel.IdentityRef, Float> wheelAccumulatorByIdentity = new LinkedHashMap<>();
+    private RecipeIngredientSidebarSpec recipeSidebarSpec = RecipeIngredientSidebarSpec.empty();
+    private RecipeIngredientSidebarSpec.Projection recipeSidebarProjection;
+    private long recipeSidebarProjectionRevision = Long.MIN_VALUE;
+    private String recipeSidebarProjectionKey = "";
 
     private ForgeSlotUiTree tree;
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
@@ -126,6 +131,7 @@ public final class ForgeWorkspaceSurface {
     private SlotWorkspaceViewModel.IdentityRef pendingHomeDragIdentity;
     private String pendingHomeDragOriginIslandId;
     private boolean markWantedKeyConsumed;
+    private boolean setWantedHoverKeyConsumed;
     private boolean storageXrayKeyConsumed;
     private StorageGhostRevealMode storageGhostRevealMode = StorageGhostRevealMode.COLLAPSED;
     private float pendingWallScrollRestore = Float.NaN;
@@ -146,6 +152,19 @@ public final class ForgeWorkspaceSurface {
 
     public int contentWidth() {
         return workspaceWidth();
+    }
+
+    public void setRecipeSidebarSpec(RecipeIngredientSidebarSpec spec) {
+        RecipeIngredientSidebarSpec next = spec == null ? RecipeIngredientSidebarSpec.empty() : spec;
+        String currentKey = recipeSidebarSpec == null ? "" : recipeSidebarSpec.sourceKey();
+        if (currentKey.equals(next.sourceKey())) {
+            return;
+        }
+        recipeSidebarSpec = next;
+        recipeSidebarProjection = null;
+        status = next.active() ? next.label() : openedStatus();
+        refreshPresentedItems();
+        rebuildRequested = true;
     }
 
     public void openSessionIfNeeded() {
@@ -173,6 +192,9 @@ public final class ForgeWorkspaceSurface {
         shiftClickTransferState.observeShiftDown(Screen.hasShiftDown());
         if (!ForgeWorkspaceClient.markWantedDown()) {
             markWantedKeyConsumed = false;
+        }
+        if (!ForgeWorkspaceClient.setWantedHoverDown()) {
+            setWantedHoverKeyConsumed = false;
         }
         if (!ForgeWorkspaceClient.storageXrayDown()) {
             storageXrayKeyConsumed = false;
@@ -294,6 +316,9 @@ public final class ForgeWorkspaceSurface {
         if (handleAutoHotbarKey(keyCode)) {
             return true;
         }
+        if (handleSetWantedHoverKey(keyCode, scanCode)) {
+            return true;
+        }
         if (handleMarkWantedKey(keyCode, scanCode)) {
             return true;
         }
@@ -386,6 +411,35 @@ public final class ForgeWorkspaceSurface {
             return true;
         }
         sendIdentityRefAction(WorkspaceActionId.TOGGLE_WANTED_ITEM, identity, "wanted item updated");
+        return true;
+    }
+
+    private boolean handleSetWantedHoverKey(int keyCode, int scanCode) {
+        if (searchActive || wantsKeyboardInput() || Screen.hasControlDown()) {
+            return false;
+        }
+        if (!ForgeWorkspaceClient.matchesSetWantedHover(keyCode, scanCode)) {
+            return false;
+        }
+        if (setWantedHoverKeyConsumed) {
+            return true;
+        }
+        setWantedHoverKeyConsumed = true;
+        if (goalTabActive()) {
+            setStatus("goal tab is browse only");
+            return true;
+        }
+        SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
+        SlotWorkspaceViewModel.AtlasItem item = identity == null ? null : byIdentity.get(identity);
+        if (identity == null || item == null) {
+            setStatus("hover an item to mark wanted");
+            return true;
+        }
+        sendIdentityRefAction(
+                WorkspaceActionId.SET_WANTED_COUNT,
+                identity,
+                "wanted count updated",
+                wantedHoverTargetCount(item));
         return true;
     }
 
@@ -509,7 +563,7 @@ public final class ForgeWorkspaceSurface {
         }
         appliedRevision = synced.revision();
         applyViewModel(synced);
-        status = displayStatus(synced.status(), synced.diagnostics());
+        status = recipeSidebarActive() ? recipeSidebarSpec.label() : displayStatus(synced.status(), synced.diagnostics());
         rebuildRequested = true;
     }
 
@@ -523,6 +577,7 @@ public final class ForgeWorkspaceSurface {
 
     private void applyViewModel(SlotWorkspaceViewModel synced) {
         viewModel = synced == null ? SlotWorkspaceViewModel.empty() : synced;
+        recipeSidebarProjection = null;
         if (GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(viewModel.goalPlans())) {
             appliedGoalStateRevision = GoalWorkspaceClientState.revision();
         }
@@ -538,7 +593,11 @@ public final class ForgeWorkspaceSurface {
         islands.clear();
         items.clear();
         byIdentity.clear();
-        if (goalTabActive()) {
+        RecipeIngredientSidebarSpec.Projection recipe = recipeProjection();
+        if (recipe != null) {
+            islands.addAll(recipe.islands());
+            items.addAll(recipe.atlasItems());
+        } else if (goalTabActive()) {
             GoalWorkspaceProjection goal = goalProjection();
             if (goal != null) {
                 islands.addAll(goal.islands());
@@ -572,8 +631,28 @@ public final class ForgeWorkspaceSurface {
         return goalProjectionCache.get(viewModel);
     }
 
+    private boolean recipeSidebarActive() {
+        return recipeSidebarSpec != null && recipeSidebarSpec.active();
+    }
+
+    private RecipeIngredientSidebarSpec.Projection recipeProjection() {
+        if (!recipeSidebarActive()) {
+            return null;
+        }
+        long revision = viewModel == null ? -1L : viewModel.revision();
+        String key = recipeSidebarSpec.sourceKey();
+        if (recipeSidebarProjection == null
+                || recipeSidebarProjectionRevision != revision
+                || !recipeSidebarProjectionKey.equals(key)) {
+            recipeSidebarProjection = recipeSidebarSpec.project(viewModel);
+            recipeSidebarProjectionRevision = revision;
+            recipeSidebarProjectionKey = key;
+        }
+        return recipeSidebarProjection;
+    }
+
     private boolean goalTabActive() {
-        return GoalWorkspaceClientState.hasActiveGoal();
+        return !recipeSidebarActive() && GoalWorkspaceClientState.hasActiveGoal();
     }
 
     private int workspaceWidth() {
@@ -976,7 +1055,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement contextualSuggestions(boolean sidebarMode) {
-        if (goalTabActive()) {
+        if (goalTabActive() || recipeSidebarActive()) {
             return null;
         }
         boolean filtering = !normalizedSearchQuery().isBlank();
@@ -1340,6 +1419,9 @@ public final class ForgeWorkspaceSurface {
             contextMenuIdentity = null;
             return null;
         }
+        if (recipeSidebarActive()) {
+            return recipeItemContextOverlay(item);
+        }
         if (goalTabActive()) {
             return goalItemContextOverlay(item);
         }
@@ -1414,6 +1496,51 @@ public final class ForgeWorkspaceSurface {
         if (targetCount == 0) {
             panel.addChild(menuLabel("No other sections", WorkspaceUiPalette.MUTED));
         }
+        overlay.addChild(panel);
+        return overlay;
+    }
+
+    private SlotUiElement recipeItemContextOverlay(SlotWorkspaceViewModel.AtlasItem item) {
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 174);
+        panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.ACCENT));
+        if (item.ghost()) {
+            panel.addChild(menuButton(
+                    "Take stack",
+                    item.proximateCount() > 0,
+                    "Take this stack from a nearby chest",
+                    closeThen(() -> sendIdentityRefAction(
+                            WorkspaceActionId.TAKE_STACK_BY_IDENTITY,
+                            item.identity(),
+                            "taking " + item.name()))));
+        }
+        panel.addChild(menuButton(
+                "Put in hotbar",
+                item.carried(),
+                "Move this carried item to a free hotbar slot",
+                closeThen(() -> sendIdentityRefAction(
+                        WorkspaceActionId.ASSIGN_HOME_TO_HOTBAR_ONLY,
+                        item.identity(),
+                        "moving to hotbar"))));
+        panel.addChild(menuButton(
+                "Deposit to chest",
+                item.carried() && anyChestProximate(),
+                "Deposit this item into a nearby chest",
+                closeThen(() -> sendIdentityRefAction(
+                        WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST,
+                        item.identity(),
+                        "depositing " + item.name()))));
+        panel.addChild(menuButton(
+                "Open recipe in EMI",
+                true,
+                "Delegate recipe details to EMI",
+                closeThen(() -> openRecipe(item))));
+        panel.addChild(menuButton(
+                "Open uses in EMI",
+                true,
+                "Delegate usage details to EMI",
+                closeThen(() -> openUses(item))));
+        panel.addChild(menuButton("Close", true, "Close", this::closeOverlays));
         overlay.addChild(panel);
         return overlay;
     }
@@ -1935,6 +2062,14 @@ public final class ForgeWorkspaceSurface {
             if (steps == 0) {
                 return;
             }
+            if (recipeSidebarActive() && wantedAdjustDown) {
+                sendIdentityRefAction(
+                        WorkspaceActionId.SET_WANTED_COUNT,
+                        target.identity(),
+                        "wanted count updated",
+                        recipeWantedTargetCount(target, steps));
+                return;
+            }
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.wheel(
                     cardGestureContext(target, 0, event.shiftDown(), controlDown, wantedAdjustDown),
                     steps);
@@ -2013,10 +2148,16 @@ public final class ForgeWorkspaceSurface {
     }
 
     private String normalizedSearchQuery() {
+        if (recipeSidebarActive()) {
+            return "";
+        }
         return WorkspaceSearchQuery.normalized(searchQuery);
     }
 
     private boolean matchesSearch(SlotWorkspaceViewModel.AtlasItem item) {
+        if (recipeSidebarActive()) {
+            return true;
+        }
         return WorkspaceSearchQuery.matchesItem(
                 searchQuery,
                 item,
@@ -2943,6 +3084,27 @@ public final class ForgeWorkspaceSurface {
         sendAction(action, sentStatus, args);
     }
 
+    private int wantedHoverTargetCount(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null) {
+            return 1;
+        }
+        if (recipeSidebarActive() && item.desiredCount() > 0) {
+            return item.desiredCount();
+        }
+        return 1;
+    }
+
+    private int recipeWantedTargetCount(SlotWorkspaceViewModel.AtlasItem item, int delta) {
+        if (item == null) {
+            return Math.max(0, delta);
+        }
+        int base = item.wantedCount() > 0 ? item.wantedCount() : item.desiredCount();
+        if (base <= 0) {
+            base = item.carried() ? item.totalCount() : 0;
+        }
+        return Math.max(0, base + delta);
+    }
+
     private boolean sendKitAction(WorkspaceActionId action, String sentStatus, Object... args) {
         boolean sent = actionChannel.send(action, args);
         status = sent ? sentStatus : "failed to send " + action.name().toLowerCase();
@@ -3310,6 +3472,10 @@ public final class ForgeWorkspaceSurface {
 
         @Override
         public List<Component> tooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+            RecipeIngredientSidebarSpec.Projection recipe = recipeProjection();
+            if (recipe != null) {
+                return recipe.tooltipLines(item);
+            }
             GoalWorkspaceProjection goal = goalProjection();
             if (SlotForgeClientConfig.contextualSuggestionDebugTooltips() && suggestionLane != null) {
                 return WorkspaceItemTooltipBuilder.slotLines(
@@ -3325,18 +3491,28 @@ public final class ForgeWorkspaceSurface {
 
         @Override
         public boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
+            if (recipeSidebarActive()) {
+                return false;
+            }
             GoalWorkspaceProjection goal = goalProjection();
             return goal != null && goal.choiceInvolved(item);
         }
 
         @Override
         public boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+            if (recipeSidebarActive()) {
+                return false;
+            }
             GoalWorkspaceProjection goal = goalProjection();
             return goal != null && goal.choiceCard(item);
         }
 
         @Override
         public boolean suppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
+            RecipeIngredientSidebarSpec.Projection recipe = recipeProjection();
+            if (recipe != null) {
+                return recipe.suppressVanillaTooltip(item);
+            }
             GoalWorkspaceProjection goal = goalProjection();
             return goal != null && goal.suppressVanillaTooltip(item);
         }

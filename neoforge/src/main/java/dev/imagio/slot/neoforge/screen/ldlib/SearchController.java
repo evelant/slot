@@ -59,10 +59,16 @@ final class SearchController {
     }
 
     String normalizedQuery() {
+        if (host.recipeSidebarActive()) {
+            return "";
+        }
         return WorkspaceSearchQuery.normalized(searchQuery);
     }
 
     boolean matchesItem(SlotWorkspaceViewModel.AtlasItem item) {
+        if (host.recipeSidebarActive()) {
+            return true;
+        }
         return WorkspaceSearchQuery.matchesItem(
                 searchQuery,
                 item,

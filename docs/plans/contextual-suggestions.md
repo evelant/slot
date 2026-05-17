@@ -13,8 +13,9 @@ Related docs:
   task-lens idea.
 - [classification-facet-vocabulary.md](classification-facet-vocabulary.md) for
   the facet data that can power contextual scoring.
-- [emi-goal-projections.md](emi-goal-projections.md) for explicit recipe-goal
-  projections, which remain separate from inferred ambient suggestions.
+- [retired/emi-goal-projections.md](retired/emi-goal-projections.md) for the
+  retired explicit recipe-goal direction. Current EMI recipe context uses the
+  transient sidebar filter from ADR 0007 instead.
 
 ## Implementation State
 
@@ -59,7 +60,9 @@ Landed 2026-05-15:
   item/entity/tool attempts, entity attacks, block-break tool use, block
   placement, use-finish consumption, and item-destroyed durability events;
   right-click block placement by `BlockItem` is not also counted as a tool-use
-  signal
+  signal. Right-clicking storage/openable blocks while a tool happens to be in
+  hand is ignored as low-information use, while real tool interactions such as
+  wrenching Create machines still count.
 - learned before/after associations are intentionally narrow: station item
   moves can associate with other station item moves in the same context, and an
   explicit storage take can associate with a following station item move.
@@ -68,6 +71,9 @@ Landed 2026-05-15:
   hints. Tool use still contributes exact recent relevance for that tool.
   Passive carried tools do not become hints merely because the player had them
   in inventory.
+- the vanilla player inventory menu is not treated as a station context even
+  though it has a small crafting grid; stale `InventoryMenu` station-content
+  association buckets are pruned from the replayable association index
 - saved goal plans are not currently emitted as Useful Now context; goal state
   remains a Put Away protection signal until goal capture is reliable enough to
   train suggestions
@@ -523,7 +529,7 @@ Build a decayed context vector from:
 
 - recently acquired/taken/deposited identities
 - recently opened real station context keys, excluding generic carried-only
-  SLOT/backpack/inventory hosts
+  SLOT/backpack/inventory hosts and the vanilla player inventory menu
 - recent goal / recipe / Kit / wanted / desired context once those surfaces are
   reliable enough to train suggestions
 - learned before/after associations from station item movement and explicit

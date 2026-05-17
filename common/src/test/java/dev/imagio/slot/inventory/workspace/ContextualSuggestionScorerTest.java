@@ -749,6 +749,65 @@ class ContextualSuggestionScorerTest {
     }
 
     @Test
+    void usefulNowIgnoresStorageOpenRightClickNoiseForNearbyFuelGhosts() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        repository.appendContextualSignal(
+                new ContextualSignalEvent(
+                        ContextualSignalKind.ITEM_USED,
+                        ItemIdentity.of("slot:test_wrench"),
+                        1,
+                        100L,
+                        "world:right_click_block",
+                        "block:tfc:wood/chest/blackwood",
+                        "hand:main_hand",
+                        Map.of("action", "right_click_block", "target", "block:tfc:wood/chest/blackwood")),
+                DomainEventMetadata.origin("test"));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(storedItem("afc:wood/fallen_leaves/black_oak", true)),
+                repository.snapshot(),
+                index,
+                12,
+                36,
+                120L);
+
+        assertFalse(laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW)
+                .contains("afc:wood/fallen_leaves/black_oak"));
+    }
+
+    @Test
+    void usefulNowKeepsActualMachineWrenchUseWithoutPromotingLeaves() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        repository.appendContextualSignal(
+                new ContextualSignalEvent(
+                        ContextualSignalKind.ITEM_USED,
+                        ItemIdentity.of("slot:test_wrench"),
+                        1,
+                        100L,
+                        "world:right_click_block",
+                        "block:create:rotation_speed_controller",
+                        "hand:main_hand",
+                        Map.of("action", "right_click_block", "target", "block:create:rotation_speed_controller")),
+                DomainEventMetadata.origin("test"));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(
+                        item("slot:test_wrench", true, BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0),
+                        storedItem("afc:wood/fallen_leaves/black_oak", true)),
+                repository.snapshot(),
+                index,
+                12,
+                36,
+                120L);
+
+        List<String> useful = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
+        assertTrue(useful.contains("slot:test_wrench"));
+        assertFalse(useful.contains("afc:wood/fallen_leaves/black_oak"));
+    }
+
+    @Test
     void usefulNowUsesSpentAndDamagedSignalsWithoutSelfPromotingPlacedItems() {
         FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
@@ -1211,6 +1270,23 @@ class ContextualSuggestionScorerTest {
                         "workflow": {"values": ["mining"]},
                         "workflow_role": {"values": ["tool"]},
                         "carry_frequency": {"value": "everyday"}
+                      }
+                    },
+                    "slot:test_wrench": {
+                      "facets": {
+                        "role": {"value": "tool"},
+                        "primary_uses": {"values": ["dismantling machines blocks"]},
+                        "workflow_role": {"values": ["tool"]},
+                        "carry_frequency": {"value": "everyday"}
+                      }
+                    },
+                    "afc:wood/fallen_leaves/black_oak": {
+                      "facets": {
+                        "role": {"value": "block"},
+                        "primary_uses": {"values": ["fuel"]},
+                        "used_at": {"values": ["campfire"]},
+                        "carry_frequency": {"value": "rare"},
+                        "is_fuel": {"value": true}
                       }
                     }
                   }

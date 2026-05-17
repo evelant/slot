@@ -7,6 +7,10 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
+import java.util.Collections;
+import java.util.Set;
+import java.util.WeakHashMap;
+
 /**
  * Server-side per-player handle for an active SLOT sidebar. Owns a
  * {@link SlotWorkspaceUiSession} + {@link ModularUI} built in
@@ -34,6 +38,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
  * reference and does not touch slot or item handling.
  */
 public final class SlotSidebarUiHandle {
+    private static final Set<ModularUI> SIDEBAR_UIS = Collections.synchronizedSet(
+            Collections.newSetFromMap(new WeakHashMap<>()));
+
     private final ServerPlayer player;
     private final SlotWorkspaceUiSession session;
     private final ModularUI modularUI;
@@ -44,6 +51,7 @@ public final class SlotSidebarUiHandle {
         this.player = player;
         this.session = new SlotWorkspaceUiSession(player);
         this.modularUI = SlotWorkspaceUiFactory.create(session, player);
+        SIDEBAR_UIS.add(modularUI);
         this.hostMenu = player.containerMenu;
         attachToHostMenu();
     }
@@ -61,9 +69,11 @@ public final class SlotSidebarUiHandle {
             // If the host already had its own ModularUI (i.e. this is an
             // LDLib2-driven menu), we'd clobber it — bail. This shouldn't
             // happen because SlotContainerSidebar excludes LDLib2 / SLOT
-            // screens, but the guard is cheap.
+            // screens, but the guard is cheap. A stale previous SLOT
+            // sidebar can remain on the same menu while EMI swaps from the
+            // handled screen to RecipeScreen; replacing that one is safe.
             ModularUI existing = holder.getModularUI();
-            if (existing != null && existing != modularUI) {
+            if (existing != null && existing != modularUI && !SIDEBAR_UIS.contains(existing)) {
                 SlotDebugLog.log(
                         "[SLOT][sidebar] host menu {} already carries a ModularUI; not attaching",
                         hostMenu.getClass().getName()

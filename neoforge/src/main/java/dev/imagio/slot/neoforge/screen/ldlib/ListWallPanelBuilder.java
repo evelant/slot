@@ -211,7 +211,7 @@ final class ListWallPanelBuilder {
             panel.addChild(recentsStrip);
         }
         boolean filtering = !host.searchController.normalizedQuery().isBlank();
-        if (!host.goalTabActive()) {
+        if (!host.goalTabActive() && !host.recipeSidebarActive()) {
             for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : host.viewModel.contextualSuggestionLanes()) {
                 SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
                 if (visibleLane.displayable()) {

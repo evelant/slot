@@ -5,14 +5,14 @@ Last updated: 2026-05-10
 Status: deferred/research. This plan captures the generic task-view idea so it
 does not block the more actionable work in
 [classification-facet-vocabulary.md](classification-facet-vocabulary.md) and
-[emi-goal-projections.md](emi-goal-projections.md).
+ADR [0007](../decisions/0007-emi-recipe-sidebar.md).
 
 Ambient task views are reusable workflow lenses such as Cooking, Exploration,
 Mining, Building, Farming, Combat, Cleanup, and Ore Processing. They answer:
 "show me relevant things I already have or know about for this activity."
 
 They do not answer: "what do I need for this specific recipe?" That belongs to
-EMI goal projections.
+EMI's recipe screen plus SLOT's transient recipe sidebar filter.
 
 ## Why Deferred
 
@@ -113,4 +113,3 @@ metal/process workflow.
 - Which generic views are actually useful after EMI goal tabs exist?
 - How should broad views avoid becoming noisy catch-all categories?
 - Should player corrections attach to facets, view membership, or both?
-

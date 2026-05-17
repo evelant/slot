@@ -189,6 +189,26 @@ class ContextualSuggestionDomainServiceTest {
     }
 
     @Test
+    void storageOpenRightClickDoesNotBecomeItemUseSignal() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        ContextualSuggestionDomainService service = new ContextualSuggestionDomainService(repository, null);
+
+        assertFalse(service.observeItemUse(
+                ItemIdentity.of("gtceu:bronze_wrench"),
+                100L,
+                "right_click_block",
+                "block:tfc:wood/chest/blackwood",
+                "hand:main_hand",
+                DomainEventMetadata.origin("test.use")));
+        assertTrue(repository.contextualSuggestionState().recentSignals().isEmpty());
+    }
+
+    @Test
+    void playerInventoryMenuIsNotStationContext() {
+        assertTrue(ContextualSignalFilters.ignoredStationContext("menu:net.minecraft.world.inventory.InventoryMenu"));
+    }
+
+    @Test
     void broadPersistedAssociationSignaturesArePruned() {
         ContextualAssociationSet polluted = ContextualAssociationSet.empty()
                 .learn(ItemIdentity.of("firmalife:rennet"), 12L, 1L, 4.0D);
@@ -197,12 +217,15 @@ class ContextualSuggestionDomainServiceTest {
         ContextualAssociationIndex index = new ContextualAssociationIndex(Map.of(
                 "station_opened|context=menu:net.minecraft.world.inventory.inventorymenu", polluted,
                 "item_used|item=minecraft:oak_sapling|action=right_click_block|target=block:minecraft:dirt", polluted,
+                "station_contents|context=menu:net.minecraft.world.inventory.inventorymenu|item=greate:steel_gearbox|change=increase", polluted,
                 stationSignature, polluted));
 
         assertFalse(index.nextItemsBySignature()
                 .containsKey("station_opened|context=menu:net.minecraft.world.inventory.inventorymenu"));
         assertFalse(index.nextItemsBySignature()
                 .containsKey("item_used|item=minecraft:oak_sapling|action=right_click_block|target=block:minecraft:dirt"));
+        assertFalse(index.nextItemsBySignature()
+                .containsKey("station_contents|context=menu:net.minecraft.world.inventory.inventorymenu|item=greate:steel_gearbox|change=increase"));
         assertTrue(index.nextItemsBySignature().containsKey(stationSignature));
     }
 

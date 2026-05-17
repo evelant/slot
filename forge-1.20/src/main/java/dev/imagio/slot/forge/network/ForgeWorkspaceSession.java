@@ -351,6 +351,10 @@ final class ForgeWorkspaceSession {
                 yield chestOutcome;
             }
             case TOGGLE_WANTED_ITEM -> toggleWantedItem(player, identityArg(args, 0));
+            case SET_WANTED_COUNT -> setWantedCount(
+                    player,
+                    identityArg(args, 0),
+                    integerArg(args, 3) == null ? 0 : integerArg(args, 3));
             case ADJUST_WANTED_COUNT -> adjustWantedCount(
                     player,
                     identityArg(args, 0),
@@ -766,6 +770,25 @@ final class ForgeWorkspaceSession {
                 ref.comparisonMode(),
                 ref.componentFingerprint(),
                 delta);
+    }
+
+    private WorkspaceCommandOutcome setWantedCount(ServerPlayer player, ItemIdentity identity, int count) {
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        InventoryHostDescriptor host = resolveHost(player);
+        if (host == null) {
+            return WorkspaceCommandOutcome.rejected("host_resolution_failed");
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+        SlotWorkspaceViewModel.IdentityRef ref = SlotWorkspaceViewModel.IdentityRef.from(identity);
+        return SlotWorkspaceCommandService.setWantedCount(
+                runtime,
+                authority,
+                ref.itemId(),
+                ref.comparisonMode(),
+                ref.componentFingerprint(),
+                count);
     }
 
     private void clearSatisfiedWantedCounts(InventoryAuthoritySnapshot authority) {

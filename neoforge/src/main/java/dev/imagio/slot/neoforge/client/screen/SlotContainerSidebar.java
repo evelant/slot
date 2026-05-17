@@ -7,13 +7,18 @@ import dev.imagio.slot.neoforge.mixin.AbstractContainerScreenAccessor;
 import dev.imagio.slot.neoforge.network.SlotSidebarClosePayload;
 import dev.imagio.slot.neoforge.network.SlotSidebarOpenPayload;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarClientUi;
+import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
+
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Phase 3a entry point — when an {@link AbstractContainerScreen} other
@@ -46,10 +51,33 @@ public final class SlotContainerSidebar {
     static final int MIN_SIDEBAR_WIDTH = 240;
 
     private static boolean registered;
+    private static final List<SidebarHostResolver> SIDEBAR_HOST_RESOLVERS = new CopyOnWriteArrayList<>();
     private static Screen activeHostScreen;
     private static int activeSidebarWidth;
+    private static boolean activeHostSlotBridge;
 
     private SlotContainerSidebar() {
+    }
+
+    @FunctionalInterface
+    public interface SidebarHostResolver {
+        SidebarHost resolve(Screen screen);
+    }
+
+    public record SidebarHost(
+            Screen renderScreen,
+            AbstractContainerScreen<?> menuScreen,
+            boolean hostSlotBridge
+    ) {
+        public SidebarHost {
+            if (renderScreen == null || menuScreen == null) {
+                throw new IllegalArgumentException("sidebar host screens must be non-null");
+            }
+        }
+
+        public AbstractContainerMenu menu() {
+            return menuScreen.getMenu();
+        }
     }
 
     /**
@@ -68,6 +96,18 @@ public final class SlotContainerSidebar {
      */
     public static int activeSidebarWidth() {
         return activeHostScreen == null ? 0 : activeSidebarWidth;
+    }
+
+    public static void registerSidebarHostResolver(SidebarHostResolver resolver) {
+        if (resolver != null && !SIDEBAR_HOST_RESOLVERS.contains(resolver)) {
+            SIDEBAR_HOST_RESOLVERS.add(resolver);
+        }
+    }
+
+    public static void setRecipeSidebarSpec(Screen screen, RecipeIngredientSidebarSpec spec) {
+        if (activeHostScreen == screen) {
+            SlotSidebarClientUi.setRecipeSidebarSpec(spec);
+        }
     }
 
     public static void init() {
@@ -93,32 +133,17 @@ public final class SlotContainerSidebar {
     }
 
     private static void onScreenInit(ScreenEvent.Init.Post event) {
-        if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {
-            return;
-        }
-        // The SLOT workspace screen is itself an AbstractContainerScreen
-        // wrapper around LDLib2's ModularUI; never sidebar-mount inside
-        // our own screen or any other LDLib2-driven workspace.
-        String className = screen.getClass().getName();
-        if (className.startsWith("dev.imagio.slot.")
-                || className.startsWith("com.lowdragmc.lowdraglib2.")) {
-            return;
-        }
-        // Vanilla {@link InventoryScreen} only ever shows up as the
-        // bypass-to-vanilla escape hatch from the workspace's "open
-        // vanilla inventory" button (or when SLOT is disabled below).
-        // Mounting a sidebar on it defeats the purpose — and the
-        // sidebar widget swallows the Esc keystroke before the host
-        // screen sees it, leaving the player unable to dismiss the
-        // screen short of killing the client.
-        if (screen instanceof InventoryScreen) {
-            return;
-        }
         // Honor the global escape hatch — if SLOT is disabled in the
         // client config, do not mount anything anywhere.
         if (!SlotClientConfig.CLIENT.slotEnabled.get()) {
             return;
         }
+        SidebarHost host = sidebarHost(event.getScreen());
+        if (host == null) {
+            return;
+        }
+        Screen renderScreen = host.renderScreen();
+        String className = renderScreen.getClass().getName();
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft == null || minecraft.player == null) {
             return;
@@ -131,12 +156,13 @@ public final class SlotContainerSidebar {
             PacketDistributor.sendToServer(new SlotSidebarClosePayload());
             activeHostScreen = null;
             activeSidebarWidth = 0;
+            activeHostSlotBridge = false;
         }
 
         int sidebarContentWidth = sidebarContentWidthFor();
         int sidebarContentHeight = Math.max(
                 1,
-                screen.height
+                renderScreen.height
                         - SlotClientConfig.CLIENT.sidebarTopMargin.get()
                         - SlotClientConfig.CLIENT.sidebarBottomMargin.get());
 
@@ -151,23 +177,70 @@ public final class SlotContainerSidebar {
         // separate design pass.
         boolean mounted = SlotSidebarClientUi.mount(
                 minecraft.player,
-                screen,
+                renderScreen,
+                host.menu(),
                 sidebarContentWidth,
                 sidebarContentHeight);
         if (!mounted) {
             return;
         }
-        activeHostScreen = screen;
+        activeHostScreen = renderScreen;
         activeSidebarWidth = SlotClientConfig.CLIENT.sidebarLeftMargin.get() + sidebarContentWidth;
+        activeHostSlotBridge = host.hostSlotBridge();
 
         PacketDistributor.sendToServer(new SlotSidebarOpenPayload());
 
         if (SlotDebugLog.enabled()) {
             SlotCommon.LOGGER.info(
                     "[SLOT][sidebar] mounted on {} (sidebarWidth={}, screen={}x{})",
-                    className, activeSidebarWidth, screen.width, screen.height
+                    className, activeSidebarWidth, renderScreen.width, renderScreen.height
             );
         }
+    }
+
+    private static SidebarHost sidebarHost(Screen screen) {
+        if (screen instanceof AbstractContainerScreen<?> containerScreen) {
+            if (!canMountOnContainer(containerScreen)) {
+                return null;
+            }
+            return new SidebarHost(containerScreen, containerScreen, true);
+        }
+        for (SidebarHostResolver resolver : SIDEBAR_HOST_RESOLVERS) {
+            SidebarHost host = resolver.resolve(screen);
+            if (host != null && canUseBackingContainer(host.menuScreen())) {
+                return host;
+            }
+        }
+        return null;
+    }
+
+    private static boolean canMountOnContainer(AbstractContainerScreen<?> screen) {
+        if (!canUseBackingContainer(screen)) {
+            return false;
+        }
+        // Vanilla {@link InventoryScreen} only ever shows up as the
+        // bypass-to-vanilla escape hatch from the workspace's "open
+        // vanilla inventory" button (or when SLOT is disabled below).
+        // Mounting a sidebar on it defeats the purpose — and the
+        // sidebar widget swallows the Esc keystroke before the host
+        // screen sees it, leaving the player unable to dismiss the
+        // screen short of killing the client.
+        return !(screen instanceof InventoryScreen);
+    }
+
+    private static boolean canUseBackingContainer(AbstractContainerScreen<?> screen) {
+        if (screen == null) {
+            return false;
+        }
+        // The SLOT workspace screen is itself an AbstractContainerScreen
+        // wrapper around LDLib2's ModularUI; never sidebar-mount inside
+        // our own screen or any other LDLib2-driven workspace.
+        String className = screen.getClass().getName();
+        if (className.startsWith("dev.imagio.slot.")
+                || className.startsWith("com.lowdragmc.lowdraglib2.")) {
+            return false;
+        }
+        return true;
     }
 
     private static void onScreenClosing(ScreenEvent.Closing event) {
@@ -180,6 +253,7 @@ public final class SlotContainerSidebar {
         Screen host = activeHostScreen;
         activeHostScreen = null;
         activeSidebarWidth = 0;
+        activeHostSlotBridge = false;
         SlotSidebarClientUi.release();
         PacketDistributor.sendToServer(new SlotSidebarClosePayload());
         if (SlotDebugLog.enabled()) {
@@ -202,6 +276,9 @@ public final class SlotContainerSidebar {
      */
     private static void onMouseReleased(ScreenEvent.MouseButtonReleased.Pre event) {
         if (activeHostScreen == null || event.getScreen() != activeHostScreen) {
+            return;
+        }
+        if (!activeHostSlotBridge) {
             return;
         }
         if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {

@@ -38,6 +38,7 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
 
     @Override
     public void register(EmiRegistry registry) {
+        ForgeContainerSidebar.registerSidebarHostResolver(SlotForgeEmiRecipeSidebarAdapter::sidebarHost);
         registerRecipeGoalButtonEvents();
         GoalWorkspaceIntegration.registerDelegate(new GoalWorkspaceIntegration.Delegate() {
             @Override
@@ -149,6 +150,9 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
     }
 
     private static void onRecipeScreenRender(ScreenEvent.Render.Post event) {
+        ForgeContainerSidebar.setRecipeSidebarSpec(
+                event.getScreen(),
+                SlotForgeEmiRecipeSidebarAdapter.recipeSidebarSpec(event.getScreen()));
         SlotForgeEmiGoalAdapter.renderRecipeGoalButtons(
                 event.getScreen(),
                 event.getGuiGraphics(),

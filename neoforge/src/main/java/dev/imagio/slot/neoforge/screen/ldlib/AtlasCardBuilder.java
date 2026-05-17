@@ -848,11 +848,26 @@ final class AtlasCardBuilder {
             }
             accumulator[0] -= steps;
             SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+            if (host.recipeSidebarActive() && wantedAdjustDown) {
+                host.rpc.sendSetWantedCount(target.identity(), recipeWantedTargetCount(target, steps));
+                return;
+            }
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.wheel(
                     cardGestureContext(target, 0, Screen.hasShiftDown(), Screen.hasControlDown(), wantedAdjustDown),
                     steps);
             dispatchCardGestureDecision(target, decision);
         });
+    }
+
+    private int recipeWantedTargetCount(SlotWorkspaceViewModel.AtlasItem item, int delta) {
+        if (item == null) {
+            return Math.max(0, delta);
+        }
+        int base = item.wantedCount() > 0 ? item.wantedCount() : item.desiredCount();
+        if (base <= 0) {
+            base = item.carried() ? item.totalCount() : 0;
+        }
+        return Math.max(0, base + delta);
     }
 
     private SlotWorkspaceViewModel.AtlasItem freshItem(SlotWorkspaceViewModel.AtlasItem item) {
@@ -999,6 +1014,9 @@ final class AtlasCardBuilder {
 
         @Override
         public java.util.List<Component> tooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+            if (host.recipeSidebarActive()) {
+                return host.recipeTooltipLines(item);
+            }
             if (suggestionLane != null && SlotClientConfig.CLIENT.contextualSuggestionDebugTooltips.get()) {
                 return WorkspaceItemTooltipBuilder.slotLines(
                         item,
@@ -1019,6 +1037,13 @@ final class AtlasCardBuilder {
         @Override
         public boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
             return host.goalChoiceCard(item);
+        }
+
+        @Override
+        public boolean suppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
+            return host.recipeSidebarActive()
+                    ? host.recipeSuppressVanillaTooltip(item)
+                    : host.goalSuppressVanillaTooltip(item);
         }
 
         @Override

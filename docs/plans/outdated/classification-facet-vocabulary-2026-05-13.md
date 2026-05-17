@@ -45,9 +45,9 @@ regeneration. TerraFirmaGreg is the first deep validation fixture because it
 stresses the system hard; it must not be baked into the tool's schema, prompts,
 runtime, or default rules.
 
-It does not define EMI goal tabs or generic task UI; those live in
-[emi-goal-projections.md](emi-goal-projections.md) and
-[ambient-task-views.md](ambient-task-views.md).
+It does not define EMI recipe context or generic task UI; those live in
+[ADR 0007](../../decisions/0007-emi-recipe-sidebar.md) and
+[ambient-task-views.md](../ambient-task-views.md).
 
 For the existing classification pipeline, see
 [item-classification-v1.md](item-classification-v1.md) and

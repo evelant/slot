@@ -14,6 +14,7 @@ import org.lwjgl.glfw.GLFW;
 final class HotkeyRouter {
     private final SlotWorkspaceUiController host;
     private boolean markWantedKeyConsumed;
+    private boolean setWantedHoverKeyConsumed;
     private boolean storageXrayKeyConsumed;
 
     HotkeyRouter(SlotWorkspaceUiController host) {
@@ -29,6 +30,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleFocusHoveredItemKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleAutoHotbarKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleSetWantedHoverKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMarkWantedKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGoalRecipeKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
@@ -53,6 +55,9 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.TICK, event -> {
             if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.markWantedDown()) {
                 markWantedKeyConsumed = false;
+            }
+            if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.setWantedHoverDown()) {
+                setWantedHoverKeyConsumed = false;
             }
             if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.storageXrayDown()) {
                 storageXrayKeyConsumed = false;
@@ -185,6 +190,33 @@ final class HotkeyRouter {
         host.rpc.sendToggleWantedItem(target.identity());
     }
 
+    void handleSetWantedHoverKey(UIEvent event) {
+        if (isTextInputFocused() || host.searchController.modalActive() || Screen.hasControlDown()) {
+            return;
+        }
+        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesSetWantedHover(event.keyCode, event.scanCode)) {
+            return;
+        }
+        event.stopPropagation();
+        if (setWantedHoverKeyConsumed) {
+            return;
+        }
+        setWantedHoverKeyConsumed = true;
+        if (host.goalTabActive()) {
+            host.localStatus.set("goal tab is browse only");
+            host.rebuild();
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
+        if (target == null) {
+            host.localStatus.set("hover an item to mark wanted");
+            host.rebuild();
+            return;
+        }
+        host.rpc.sendSetWantedCount(target.identity(), wantedHoverTargetCount(target));
+    }
+
     void handleCycleKitPageKey(UIEvent event) {
         if (isTextInputFocused() || host.searchController.modalActive()) {
             return;
@@ -257,6 +289,16 @@ final class HotkeyRouter {
             }
         }
         return false;
+    }
+
+    private int wantedHoverTargetCount(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null) {
+            return 1;
+        }
+        if (host.recipeSidebarActive() && item.desiredCount() > 0) {
+            return item.desiredCount();
+        }
+        return 1;
     }
 
     void handleUndoRedoKey(UIEvent event) {

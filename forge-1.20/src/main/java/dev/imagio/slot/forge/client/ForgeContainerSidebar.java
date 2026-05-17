@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
 import dev.imagio.slot.forge.config.SlotForgeClientConfig;
+import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.MultiLineEditBox;
 import net.minecraft.client.gui.components.events.ContainerEventHandler;
@@ -14,12 +15,29 @@ import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraftforge.client.event.ScreenEvent;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public final class ForgeContainerSidebar {
+    private static final List<SidebarHostResolver> SIDEBAR_HOST_RESOLVERS = new CopyOnWriteArrayList<>();
     private static Screen activeHostScreen;
     private static ForgeWorkspaceSurface activeSurface;
     private static boolean bypassNextInventorySidebar;
 
     private ForgeContainerSidebar() {
+    }
+
+    @FunctionalInterface
+    public interface SidebarHostResolver {
+        SidebarHost resolve(Screen screen);
+    }
+
+    public record SidebarHost(Screen renderScreen, AbstractContainerScreen<?> menuScreen) {
+        public SidebarHost {
+            if (renderScreen == null || menuScreen == null) {
+                throw new IllegalArgumentException("sidebar host screens must be non-null");
+            }
+        }
     }
 
     /**
@@ -43,6 +61,18 @@ public final class ForgeContainerSidebar {
         return SlotForgeClientConfig.sidebarLeftMargin() + contentWidth;
     }
 
+    public static void registerSidebarHostResolver(SidebarHostResolver resolver) {
+        if (resolver != null && !SIDEBAR_HOST_RESOLVERS.contains(resolver)) {
+            SIDEBAR_HOST_RESOLVERS.add(resolver);
+        }
+    }
+
+    public static void setRecipeSidebarSpec(Screen screen, RecipeIngredientSidebarSpec spec) {
+        if (screen == activeHostScreen && activeSurface != null) {
+            activeSurface.setRecipeSidebarSpec(spec);
+        }
+    }
+
     public static void clearClientState() {
         release();
         bypassNextInventorySidebar = false;
@@ -62,25 +92,51 @@ public final class ForgeContainerSidebar {
         if (event.getScreen() instanceof ForgeWorkspaceScreen) {
             return;
         }
-        if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {
-            return;
-        }
-        if (screen instanceof InventoryScreen) {
-            if (bypassNextInventorySidebar) {
+        Screen renderScreen = event.getScreen();
+        if (renderScreen instanceof AbstractContainerScreen<?> screen) {
+            if (screen instanceof InventoryScreen) {
+                if (bypassNextInventorySidebar) {
+                    bypassNextInventorySidebar = false;
+                    return;
+                }
+            } else {
                 bypassNextInventorySidebar = false;
+            }
+            if (!canMountOnContainer(screen)) {
                 return;
             }
         } else {
+            SidebarHost host = sidebarHost(renderScreen);
+            if (host == null || !canUseBackingContainer(host.menuScreen())) {
+                return;
+            }
             bypassNextInventorySidebar = false;
         }
-        String className = screen.getClass().getName();
-        if (className.startsWith("dev.imagio.slot.")) {
-            return;
-        }
         release();
-        activeHostScreen = screen;
+        activeHostScreen = renderScreen;
         activeSurface = new ForgeWorkspaceSurface(ForgeWorkspaceSurface.Mode.SIDEBAR);
         activeSurface.openSessionIfNeeded();
+    }
+
+    private static SidebarHost sidebarHost(Screen screen) {
+        for (SidebarHostResolver resolver : SIDEBAR_HOST_RESOLVERS) {
+            SidebarHost host = resolver.resolve(screen);
+            if (host != null) {
+                return host;
+            }
+        }
+        return null;
+    }
+
+    private static boolean canMountOnContainer(AbstractContainerScreen<?> screen) {
+        return canUseBackingContainer(screen);
+    }
+
+    private static boolean canUseBackingContainer(AbstractContainerScreen<?> screen) {
+        if (screen == null) {
+            return false;
+        }
+        return !screen.getClass().getName().startsWith("dev.imagio.slot.");
     }
 
     public static void onScreenClosing(ScreenEvent.Closing event) {

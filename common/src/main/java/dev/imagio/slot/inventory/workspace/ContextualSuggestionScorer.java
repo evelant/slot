@@ -11,6 +11,7 @@ import dev.imagio.slot.workflow.domain.ContextualItemAggregate;
 import dev.imagio.slot.workflow.domain.ContextualAssociationHint;
 import dev.imagio.slot.workflow.domain.ContextualAssociationSet;
 import dev.imagio.slot.workflow.domain.ContextualEventSignature;
+import dev.imagio.slot.workflow.domain.ContextualSignalFilters;
 import dev.imagio.slot.workflow.domain.ContextualSignalEvent;
 import dev.imagio.slot.workflow.domain.ContextualSignalKind;
 import dev.imagio.slot.workflow.domain.ContextualSignalRecord;
@@ -525,7 +526,7 @@ public final class ContextualSuggestionScorer {
         switch (token) {
             case "campfire", "firepit", "fire", "fires", "igniting", "ignite", "ignition", "kindling" ->
                     addCombustionFeatures(vector, weight);
-            case "fuel", "fuels", "charcoal", "coal", "log", "logs", "wood" ->
+            case "fuel", "fuels", "charcoal", "coal", "log", "logs" ->
                     addCombustionFeatures(vector, weight * 0.85D);
             case "cook", "cooking", "cooked", "pot", "pots", "meal", "food", "grain", "grains", "pumpkin" -> {
                 add(vector, "activity:cooking", weight * 0.65D);
@@ -913,6 +914,9 @@ public final class ContextualSuggestionScorer {
                     continue;
                 }
                 ContextualSignalEvent event = record.event();
+                if (ContextualSignalFilters.lowInformationUse(event)) {
+                    continue;
+                }
                 double weight = signalWeight(event.kind())
                         * decay(latest - record.envelope().globalSequence())
                         * tickDecay(event.observedTick(), currentGameTick);

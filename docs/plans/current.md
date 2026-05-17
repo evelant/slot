@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-15
+Last updated: 2026-05-16
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -24,13 +24,15 @@ sidebar margins. NeoForge remains the semantic oracle; the next risk is
 migrating richer modern-only affordances without reintroducing
 backend-specific semantics.
 
-Sidecar product slice: [`emi-goal-projections.md`](emi-goal-projections.md)
-has landed Slices 0-3 plus the first playtest stabilization passes: explicit
-EMI recipe-screen and drag/drop goal creation, server-persisted goal tabs,
-server-persisted producer recipe defaults, manual recipe-choice capture through
-EMI, visible-authority auto-resolution, quiet projection caching/logging, and
-synthetic non-item/fluid display fallbacks. Keep this as a playtest refinement
-track before adding broader goal chrome or pack-guide UX.
+Sidecar product slice: EMI recipe context now uses the normal sidebar as a
+transient visible-ingredient filter, per
+[`0007`](../decisions/0007-emi-recipe-sidebar.md). When EMI's recipe screen is
+open, SLOT renders the sidebar into that screen while syncing through EMI's
+underlying handled menu; the wall shows only visible recipe ingredients and
+reuses normal carried/storage/missing-card chrome. The earlier recipe-goal plan
+is retired at [`retired/emi-goal-projections.md`](retired/emi-goal-projections.md);
+do not grow the goal system unless playtesting proves transient recipe context
+is insufficient.
 
 Previously active
 [`single-column-workspace.md`](single-column-workspace.md) is paused
@@ -64,11 +66,19 @@ hold the rest.
   self-promotion, placed/consumed signatures no longer replay old association
   hints, broad station-open/item-use/acquisition/production signatures no
   longer train or replay learned associations, generic carried-only
-  SLOT/backpack/inventory hosts no longer become station context, recent
-  signals decay by world tick, qualifying nearby storage ghosts get reserved
-  Useful Now slots, and `/slot debug contextual` dumps event history, source
-  counts, association hints, and the last closed workspace/sidebar lane score
-  breakdowns for playtest debugging.
+  SLOT/backpack/inventory hosts and the vanilla player inventory menu no longer
+  become station context, low-information storage/openable-block right-clicks
+  while a tool is in hand no longer count as tool use, recent signals decay by
+  world tick, qualifying nearby storage ghosts get reserved Useful Now slots,
+  and `/slot debug contextual` dumps event history, source counts, association
+  hints, and the last closed workspace/sidebar lane score breakdowns for
+  playtest debugging.
+- **2026-05-16** — EMI recipe screens now show the normal SLOT sidebar filtered
+  to the visible recipe ingredients on NeoForge and Forge. The projection is
+  transient, not a goal: present ingredients keep their normal section/storage
+  context, missing ingredients reuse the existing craft-target state, EMI
+  remains the recipe explanation surface, and the old recipe-goal plan moved to
+  `retired/` with ADR 0007 recording the pivot.
 - **2026-05-15** — Contextual suggestion lanes landed as a first playable
   prototype, then pivoted away from carried-state relevance: common contextual
   signals, bounded item/context aggregates, and a learned event-association
@@ -136,20 +146,15 @@ item 2; this section is the leftover pile.
 Roughly ordered by playtest signal. Pull from the top when the active
 track lands.
 
-1. **EMI goal projection playtest bug pass**
-   ([emi-goal-projections.md](emi-goal-projections.md)). The first
-   stabilization passes are in place: normal wall sections, duplicate
-   aggregation, readable choice badges, placeholder labels, wanted-count
-   projection, clicked-card EMI delegation, SLOT-owned manual choices,
-   server-persisted goals, server-persisted producer recipe defaults, quiet
-   projection caching/logging, breadth-first producer collection, reusable-tool
-   handling, empty-slot omission, visible-storage choice enrichment, and
-   synthetic display fallbacks for fluid-like requirements. Next pass is
-   validation, not new chrome: replay Blackwood Barrel Press and similar real
-   goals, confirm tracked-storage tools auto-fill choices, verify downstream
-   metal/glue/fluid recursion, confirm persisted goals/defaults survive
-   reconnect, and refine fluid/source-acquisition placeholders only from that
-   evidence.
+1. **EMI recipe sidebar playtest validation.** Validate the new transient
+   sidebar filter against real recipes before adding more chrome: open recipes
+   from vanilla inventory, chest/crafting/machine screens, and both loaders;
+   confirm the sidebar mounts on EMI's recipe screen and returns to normal on
+   close; verify duplicate inputs aggregate into the existing missing/craft
+   state; verify tag/list ingredients show the visible alternative when one is
+   present and a useful missing card otherwise; confirm tracked/proximate
+   storage pips survive the projection; and check EMI exclusion bounds/search
+   focus do not overlap or trap keys.
 
 2. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
    Active-scope desired counts, player wanted counts, unified gap chrome,

@@ -40,6 +40,9 @@ public final class ContextualEventSignature {
         }
         String kind = event.kind().name().toLowerCase(Locale.ROOT);
         String context = clean(event.contextKey());
+        if (ContextualSignalFilters.ignoredStationContext(context)) {
+            return "";
+        }
         String item = itemId(event.identity());
         String action = clean(event.metadataValue("action"));
         String target = clean(event.metadataValue("target"));
@@ -63,6 +66,9 @@ public final class ContextualEventSignature {
 
     public static boolean replayableSignature(String signature) {
         String normalized = clean(signature);
+        if (normalized.contains("context=menu:net.minecraft.world.inventory.inventorymenu")) {
+            return false;
+        }
         return normalized.startsWith("station_contents|")
                 || normalized.startsWith("item_taken|");
     }
