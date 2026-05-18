@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
 import dev.imagio.slot.forge.config.SlotForgeClientConfig;
+import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.MultiLineEditBox;
@@ -93,6 +94,7 @@ public final class ForgeContainerSidebar {
             return;
         }
         Screen renderScreen = event.getScreen();
+        AbstractContainerScreen<?> backingMenuScreen;
         if (renderScreen instanceof AbstractContainerScreen<?> screen) {
             if (screen instanceof InventoryScreen) {
                 if (bypassNextInventorySidebar) {
@@ -105,16 +107,20 @@ public final class ForgeContainerSidebar {
             if (!canMountOnContainer(screen)) {
                 return;
             }
+            backingMenuScreen = screen;
         } else {
             SidebarHost host = sidebarHost(renderScreen);
             if (host == null || !canUseBackingContainer(host.menuScreen())) {
                 return;
             }
             bypassNextInventorySidebar = false;
+            backingMenuScreen = host.menuScreen();
         }
         release();
         activeHostScreen = renderScreen;
-        activeSurface = new ForgeWorkspaceSurface(ForgeWorkspaceSurface.Mode.SIDEBAR);
+        activeSurface = new ForgeWorkspaceSurface(
+                ForgeWorkspaceSurface.Mode.SIDEBAR,
+                menuContainerId(backingMenuScreen));
         activeSurface.openSessionIfNeeded();
     }
 
@@ -137,6 +143,13 @@ public final class ForgeContainerSidebar {
             return false;
         }
         return !screen.getClass().getName().startsWith("dev.imagio.slot.");
+    }
+
+    static int menuContainerId(AbstractContainerScreen<?> screen) {
+        if (screen == null || screen.getMenu() == null) {
+            return WorkspaceActionEnvelope.NO_MENU_CONTAINER;
+        }
+        return screen.getMenu().containerId;
     }
 
     public static void onScreenClosing(ScreenEvent.Closing event) {

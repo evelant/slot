@@ -227,6 +227,21 @@ class ContextualSuggestionDomainServiceTest {
     }
 
     @Test
+    void passiveOffhandRightClickDoesNotBecomeItemUseSignal() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        ContextualSuggestionDomainService service = new ContextualSuggestionDomainService(repository, null);
+
+        assertFalse(service.observeItemUse(
+                ItemIdentity.of("tfc:metal/shield/bronze"),
+                100L,
+                "right_click_block",
+                "block:tfc:wood/planks/pine_loom",
+                "hand:off_hand",
+                DomainEventMetadata.origin("test.use")));
+        assertTrue(repository.contextualSuggestionState().recentSignals().isEmpty());
+    }
+
+    @Test
     void playerInventoryMenuIsNotStationContext() {
         assertTrue(ContextualSignalFilters.ignoredStationContext("menu:net.minecraft.world.inventory.InventoryMenu"));
         assertTrue(ContextualSignalFilters.ignoredStationContext(

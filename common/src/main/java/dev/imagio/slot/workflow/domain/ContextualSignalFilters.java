@@ -20,6 +20,13 @@ public final class ContextualSignalFilters {
         return targetlessWorldUse(event.metadataValue("action"), event.metadataValue("target"));
     }
 
+    public static boolean passiveOffhandWorldUse(ContextualSignalEvent event) {
+        if (event == null || event.kind() != ContextualSignalKind.ITEM_USED) {
+            return false;
+        }
+        return passiveOffhandWorldUse(event.metadataValue("action"), event.sourceKey());
+    }
+
     public static boolean lowInformationWorldUse(String action, String targetKey) {
         String normalizedAction = clean(action);
         String normalizedTarget = clean(targetKey);
@@ -58,6 +65,12 @@ public final class ContextualSignalFilters {
                 || "air".equals(normalizedTarget)
                 || "block:minecraft:air".equals(normalizedTarget)
                 || "minecraft:air".equals(normalizedTarget);
+    }
+
+    public static boolean passiveOffhandWorldUse(String action, String sourceKey) {
+        String normalizedAction = clean(action);
+        String normalizedSource = clean(sourceKey);
+        return normalizedAction.startsWith("right_click") && "hand:off_hand".equals(normalizedSource);
     }
 
     public static boolean ignoredStationContext(String contextKey) {

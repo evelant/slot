@@ -1,6 +1,6 @@
 # Contextual Suggestions
 
-Last updated: 2026-05-17
+Last updated: 2026-05-18
 
 Status: first playable prototype landed; playtest diagnostics and tuning remain.
 This narrows the broader ambient task view idea into two prototype lanes:
@@ -41,6 +41,9 @@ Landed 2026-05-15:
 - Put Away treats carried count above an explicit desired count as a strongest
   cleanup signal: the reserved desired amount remains protected, but excess is
   suggested for deposit
+- Put Away no longer admits ordinary-pressure suggestions from rare
+  `carry_frequency` alone; a card needs cleanup evidence such as a visible
+  route, deposit history, desired excess, or very high inventory pressure
 - carried state is candidate/action state only: it can make a card eligible for
   Useful Now or Put Away and provide source/action data, but it does not train
   associations or add relevance by itself
@@ -62,8 +65,12 @@ Landed 2026-05-15:
   right-click block placement by `BlockItem` is not also counted as a tool-use
   signal. Right-clicking storage/openable blocks while a tool happens to be in
   hand is ignored as low-information use, while real tool interactions such as
-  wrenching Create machines still count. Targetless/air right-clicks keep exact
-  held-tool relevance but no longer add target advisory context.
+  wrenching Create machines still count. Passive offhand right-clicks are
+  ignored so shields or offhand supplies do not inherit main-hand target
+  context. Targetless/air right-clicks keep exact held-tool relevance but no
+  longer add target advisory context. Non-tool right-clicks on meaningful
+  targets, such as yarn on a loom, can count as exact current-use evidence;
+  placeable/block-like uses such as saplings do not become exact anchors.
 - learned before/after associations are intentionally narrow: station item
   moves can associate with other station item moves in the same context, and an
   explicit storage take can associate with a following station item move.
@@ -76,9 +83,18 @@ Landed 2026-05-15:
   are not treated as station context even when they expose tool-like regions;
   stale `InventoryMenu` and portable-menu station-content association buckets
   are pruned from the replayable association index
-- nearby storage ghosts need exact/history relevance or a strong structured
-  advisory match; weak text-only overlap such as generic fuel/fire terms cannot
-  surface stored ghosts by itself
+- Useful Now candidates need enough exact/history relevance, exact context
+  hints, or a strong structured advisory match; weak association crumbs and
+  broad text/material/form/role overlap such as generic crafting/material/block
+  terms cannot surface carried clutter or nearby storage ghosts by itself
+- Useful Now no longer repeats a just-picked-up or just-taken item simply
+  because it is recent. Pickup/take events still seed surrounding context for
+  related candidates, but the exact identity belongs in Recents until it is
+  actively used, produced, wanted, or needed by a Kit.
+- Useful Now deduplicates cards by identity and suppresses exact-use cards that
+  are already in quick access, offhand, or armor unless target/wanted/Kit state
+  independently makes them useful. The lane should find supporting items, not
+  mirror the hotbar or the Recent strip.
 - saved goal plans are not currently emitted as Useful Now context; goal state
   remains a Put Away protection signal until goal capture is reliable enough to
   train suggestions
@@ -88,9 +104,17 @@ Landed 2026-05-15:
 - placement and consumption apply a short exact-identity spent penalty, so
   planting saplings or eating food does not pin that exact item as Useful Now
   unless newer stronger evidence re-promotes it
-- non-tool right-click use remains context-only and does not replay learned
-  before/after associations, which prevents older block-placement double-count
-  history from keeping placed items alive
+- non-tool right-click use on meaningful non-placeable targets can provide exact
+  current-use evidence but does not replay learned before/after associations;
+  targetless and placeable/block-like non-tool uses remain context-only or
+  ignored, which prevents older block-placement double-count history from
+  keeping placed items alive
+- non-tool item-destroyed/damage signals do not provide exact Useful Now credit
+  or advisory context; only tool-like damage signals can re-promote the damaged
+  identity
+- Put Away caps desired-count excess to two cards per lane so cleanup does not
+  become a quota audit, and single stale deposit crumbs without a visible route
+  no longer qualify a carried item at ordinary inventory pressure
 - recent contextual signals also decay by observed world tick when a current
   game tick is available, so an otherwise idle exact-use signal does not remain
   Useful Now forever just because no newer signal arrived
@@ -167,8 +191,10 @@ storage.
 Put Away is the inverse of Useful Now. It favors carried items that appear
 unrelated to the current context and are likely to be out-of-place clutter.
 Having a confident nearby deposit route improves the card's immediate action
-value, but is not required for suggestion. Items without a known route still
-help the player notice that they need to find or create a home.
+value, but route confidence is not the only evidence. Items without a known
+route need some other cleanup signal, such as prior deposits, desired excess, or
+very high inventory pressure; rare carry-frequency by itself is too noisy at
+ordinary pressure.
 
 Strong candidates:
 
@@ -177,7 +203,8 @@ Strong candidates:
 - not protected by the active Kit
 - not wanted, desired, or goal-needed
 - exception: carried count above an explicit desired count is a high-confidence
-  Put Away candidate because only the desired amount is reserved
+  Put Away candidate because only the desired amount is reserved, but desired
+  excess is capped per lane so it cannot crowd out ordinary cleanup
 - not strongly related to current context signals
 - low `carry_frequency` or other short/rare-carry facet priors when player
   history is sparse
@@ -186,6 +213,8 @@ Strong candidates:
 - usually deposited soon after pickup
 - has a confident nearby deposit route through learned affinity or matching
   existing chest contents, when available
+- if no route is known, has fresh/repeated deposit history, desired-count
+  excess, or extreme inventory pressure
 - low tool/equipment signal from facets
 
 Items not selected for Put Away do not move to a separate cleanup bucket. They
@@ -199,9 +228,10 @@ Behavior signals:
 
 - item taken from tracked or proximate storage
 - item deposited into tracked or proximate storage
-- item recently acquired from explicit pickup/take/reward signals; authority
-  diff and passive internal inventory movement do not train Useful Now
-- item crafted, damaged, or transformed
+- item recently acquired from explicit pickup/take/reward signals; these seed
+  related context but do not self-suggest the exact recent identity, and
+  authority diff / passive internal inventory movement do not train Useful Now
+- item crafted, tool-damaged, or transformed
 - item consumed or placed as spent context, not as exact self-promotion
 - right-click world use attempts with a held non-block tool/item, even when
   final success is ambiguous
@@ -246,17 +276,20 @@ for new signals and tuning.
 | --- | --- | --- | --- | --- |
 | Passive carried state | food, axe, pickaxe, knife, supports, grappling hook always carried | Eligibility/action state only. Useful Now may show carried cards and Put Away is carried-only, but possession adds no Useful Now relevance. | Never train associations or context hints. | Implemented. |
 | Internal carried moves | main inventory to backpack, backpack to main, sacks/baskets, hotbar reordering | Ignore for Useful Now relevance. Preserve source/action data for normal cards. | Never train. Audit new carried providers so their menus do not look like external stations. | Implemented for core carried state and carried-only host hints; keep auditing new provider menus. |
-| External storage take or world pickup | taking an ingredient from a chest, picking up drops | Exact recent item relevance and clears newer deposit/spent penalties for that identity. | Storage take may train only when followed shortly by station item movement; plain pickup does not create broad associations. | Implemented. |
+| External storage take or world pickup | taking an ingredient from a chest, picking up drops | Seeds surrounding context and clears newer deposit/spent penalties, but does not self-suggest the exact picked-up identity; Recents owns that card until newer active use/production/target state appears. | Storage take may train only when followed shortly by station item movement; plain pickup does not create broad associations. | Implemented. |
 | Deposit into real storage | putting ores, gears, or supplies into chests/barrels | Negative Useful Now signal for that exact identity and positive Put Away/cleanup history. A newer take/pickup/use can re-promote it. | Do not teach future usefulness; deposits are cleanup evidence. | Implemented. |
 | Station item movement | moving ingredients/tools in a workbench, machine, forge-like UI, or tool panel | Strong context for the moved identity and station. | May learn same-station moved-item relationships and explicit storage-take -> station-move relationships. | Implemented for observed station diffs; broaden per-station coverage only after testing. |
 | Generic or carried-only menus | vanilla player inventory, SLOT/backpack workspace, sacks/baskets opened as carried storage | Not station context. Do not let their contents become Useful Now context. | Never train station-content associations. | Implemented through carried-only host hints plus explicit portable-menu context filters. |
 | Real station opened | workbench, anvil, crucible, forge, machine menu | Context-only signal. Useful for station facets and exact later station movement, but opening alone should be weak. | Do not train before/after item associations from open events. | Implemented. |
-| Held tool used on real target | wrenching a Create machine, axe/chisel/hammer/tongs use, entity attack | Exact recent relevance for the held item. Target context may add advisory tokens. | Do not train broad associations from tool use. | Implemented. |
+| Held tool used on real target | wrenching a Create machine, axe/chisel/hammer/tongs use, entity attack | Exact recent relevance for the held item when it is not already visible in quick access/equipment. Target context may add advisory tokens for related items. | Do not train broad associations from tool use. | Implemented. |
 | Held tool while opening storage/openable block | right-click chest/barrel/drawer/tool rack while wrench/knife/etc. is in hand | Low-information use; ignore as tool relevance so storage access does not pin the held item. | Never train. | Implemented for known storage/openable target names; extend marker list from logs. |
-| Right-click air or failed world use | repeated `target=air`, ambiguous right-click item attempts | Exact held-item context only when the item itself matters; no target advisory boost from `air`. Rate/decay should prevent stuck suggestions. | Do not train associations. | Implemented for targetless/air advisory suppression; keep tuning exact-use decay from logs. |
+| Passive offhand right-click | shield fires while main hand right-clicks a loom, offhand supply echoes target use | Ignore as item-use evidence. The main-hand event should carry the target context. | Never train. | Implemented. |
+| Right-click air or failed world use | repeated `target=air`, ambiguous right-click item attempts | Exact held-tool context only when the tool itself matters; no target advisory boost from `air`. Rate/decay should prevent stuck suggestions. | Do not train associations. | Implemented for targetless/air advisory suppression; keep tuning exact-use decay from logs. |
+| Non-tool item used on real target | wool yarn on a loom, other material-on-station interactions | Exact recent relevance when the item is a meaningful material/use item and the target is not air. Remove exact identity from its advisory vector so it does not self-match through facets. | Do not train associations. | Implemented for non-placeable uses. |
+| Placeable-like item use | sapling planting, block-like item right-clicks | Do not self-promote as Useful Now. Placement/spent handling owns the cooldown. | Do not train associations. | Implemented for block/seed-like facet vectors. |
 | Placement and consumption | planting saplings, placing blocks, eating/drinking | Treat as spent context, not self-promotion. The exact identity should cool down unless newer evidence appears. | Do not replay placement/consumption associations. | Implemented. |
 | Damage or item destroyed | durability loss, tool breaks | Useful as exact active-tool evidence and possible replacement/repair hint, not as proof nearby carried items mattered. | Do not train broad associations. | Partial: destroyed events exist; fine-grained durability deltas are still pending. |
-| Advisory facet/text overlap | `fire`, `fuel`, `wood`, `used_at:campfire`, workflow text | Advisory only. It can explain/order a candidate, but broad text overlap should not be enough to surface unrelated storage ghosts by itself. | Never train from advisory overlap. | Implemented for storage ghosts through strong structured-advisory gating; carried-card advisory tuning remains playtest-driven. |
+| Advisory facet/text overlap | `fire`, `fuel`, `wood`, `used_at:campfire`, workflow text | Advisory only. It can explain/order a candidate, but broad text/material/form overlap should not be enough to surface unrelated carried cards or storage ghosts by itself. | Never train from advisory overlap. | Implemented through strong structured-advisory gating; keep tuning the structured key allowlist. |
 | Nearby storage ghosts | stored ingredients/tools within the proximate radius | Eligible for Useful Now only when there is meaningful recent relevance. Do not fill the lane with generic nearby materials. | Candidate presence never trains history. | Implemented for exact/history/strong structured relevance; keep tuning what qualifies as strong. |
 | Tracked non-proximate ghosts | known storage elsewhere | May appear in Useful Now only from strong relevance or explicit target/goal state. Do not make Useful Now a remote storage browser. | Candidate presence never trains history. | Partial; keep conservative until proximate ghosts behave well. |
 | Goals and recipe context | EMI recipe screen, SLOT saved goals | Ignore for training until those surfaces are reliable. Goal state can protect Put Away reservations. | Deferred; do not persist learned associations from rough goals. | Deferred by design. |
@@ -344,9 +377,10 @@ boost visibility and expose actions; mutations remain explicit.
 
 - Suggestions are projection only. They never create authority.
 - Useful Now may reveal ghosts, but it does not grant remote mutation authority.
-- Put Away does not require a confident deposit destination. Missing route
-  confidence only means bulk deposit or quick deposit cannot work for that card
-  yet; it does not mean the item is useful to keep carrying.
+- Put Away does not require a confident deposit destination when another cleanup
+  signal is present. Missing route confidence only means bulk deposit or quick
+  deposit cannot work for that card yet; it is not enough to surface a rare
+  carried item by itself.
 - Put Away must respect active Kit protection, desired-count reservations,
   wanted counts, goal-needed items, hotbar/offhand/equipment boundaries, and
   carried-source safety rules. Desired-count excess is the exception: if the
@@ -543,8 +577,9 @@ Put Away candidates:
 - exclude active Kit protected identities
 - exclude wanted, desired, and goal-needed identities
 
-Do not require a known deposit route for Put Away. Destination confidence is a
-boost and a card affordance, not an eligibility gate.
+Do not require a known deposit route for Put Away when the item has another
+cleanup signal. Destination confidence is a boost and card affordance, but
+ordinary-pressure carry-frequency prior alone is not enough evidence.
 
 ### Facet Vector
 
@@ -567,7 +602,8 @@ accessor there rather than duplicating classification parsing in the scorer.
 
 Build a decayed context vector from:
 
-- recently acquired/taken/deposited identities
+- recently acquired/taken/deposited identities, with pickup/take events treated
+  as context seeds rather than exact self-suggestions
 - recently opened real station context keys, excluding generic carried-only
   SLOT/backpack/inventory hosts and the vanilla player inventory menu
 - recent goal / recipe / Kit / wanted / desired context once those surfaces are
@@ -591,12 +627,20 @@ useful_now =
   + explicit_goal_or_target_boost
   - recent_deposit_penalty
   - recent_placed_or_consumed_penalty
+  - recent_pickup_or_take_self_penalty
   - noise_penalties
 ```
 
 Include already-carried items and nearby stored ghost items. Useful Now is a
 quick-access surface for the things needed now, not only a fetch list. Carried
 status affects eligibility and actions, not relevance.
+
+Useful Now should not be admitted by the capped advisory term alone. A candidate
+needs enough learned history plus exact recent activity, exact context hints, or
+a strong structured advisory key such as `workflow:*`, `workflow_role:*`,
+`used_at:*`, `processing_in:*`, or `subsystem:*`. Generic
+text/material/form/role/carry overlap can still explain or rank a candidate
+after it has real evidence, but it should not open the gate by itself.
 
 ### Put Away Score
 
@@ -613,9 +657,12 @@ put_away =
   - tool_equipment_long_carry_penalties
 ```
 
-`carry_frequency` is the base value when player-specific carry history is
-missing. Player history can override it gradually, but the first playtest build
-should already produce meaningful Put Away cards from facet priors alone.
+`carry_frequency` is a base value when player-specific carry history is
+missing, not a complete suggestion reason. Player history can override it
+gradually, and ordinary-pressure Put Away needs a visible route, deposit
+fresh/repeated deposit history, desired excess, or similarly concrete cleanup
+evidence. Desired-excess candidates are capped per lane so explicit carry
+reservations do not turn Put Away into a quota audit.
 
 ### Thresholds And Stability
 
@@ -638,8 +685,10 @@ should already produce meaningful Put Away cards from facet priors alone.
 - add deterministic scorer tests with hand-authored facet fixtures for
   metallurgy-like and cooking-like item sets
 - prove Useful Now includes already-carried relevant items
-- prove Put Away works with zero player history through `carry_frequency`
-- prove Put Away does not require a destination route
+- prove Put Away works with zero player history when `carry_frequency` combines
+  with route evidence or very high inventory pressure
+- prove Put Away can work without a destination route when another cleanup
+  signal exists
 - prove mixed context scoring with the metallurgy + food-prep interruption
   example
 
@@ -679,10 +728,10 @@ Resolved for the first prototype:
 
 - Inventory event abstraction mostly belongs in `common/`; platform-specific
   work is likely needed for crafting and machine-open events.
-- Put Away should work with zero carry-duration history by falling back to
-  `carry_frequency` and related facet priors.
-- Do not implement Put Away suppression in the initial version. Revisit only if
-  false positives become noisy.
+- Put Away should work with zero carry-duration history by using
+  `carry_frequency` as a prior, but not as the sole ordinary-pressure reason.
+- Put Away now suppresses rare-prior-only cards at ordinary pressure because
+  false positives became noisy in playtesting.
 - Useful Now should include already-carried items. Quick access to what is
   useful right now is the point; fetch-only suggestions would force browsing
   for carried-but-relevant items.

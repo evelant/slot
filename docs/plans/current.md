@@ -59,6 +59,13 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-18** — Contextual suggestion scoring now treats pickup/storage-take
+  events as context seeds rather than exact Useful Now self-suggestions,
+  deduplicates lane cards by identity, suppresses exact-use cards that are
+  already visible in quick access/equipment, ignores non-tool item-destroyed
+  events as usefulness evidence, caps desired-count excess to two Put Away
+  cards, and requires fresh/repeated deposit history when no storage route is
+  visible.
 - **2026-05-17** — Contextual suggestion signal tuning continued: passive
   authority-diff acquisitions and internal moves no longer train Useful Now,
   block placement no longer double-counts as right-click tool use, placed or
@@ -70,11 +77,18 @@ hold the rest.
   inventory menu no longer become station context, low-information
   storage/openable-block right-clicks while a tool is in hand no longer count
   as tool use, targetless/air right-clicks keep exact held-tool relevance
-  without adding advisory context, weak advisory-only overlap can no longer
-  surface nearby storage ghosts, recent signals decay by world tick, qualifying
-  nearby storage ghosts get reserved Useful Now slots, and `/slot debug
-  contextual` dumps event history, source counts, association hints, and the
-  last closed workspace/sidebar lane score breakdowns for playtest debugging.
+  without adding advisory context, passive offhand right-clicks no longer train
+  or score as item use, non-tool meaningful target use can still promote exact
+  material interactions while placeable/block-like uses cannot pin themselves,
+  weak advisory-only overlap and weak old associations can no longer surface
+  carried clutter or nearby storage ghosts, broad advisory terms such as
+  generic crafting/material/block/role text no longer pad Useful Now scores,
+  Put Away no longer admits ordinary-pressure rare-prior-only carried blocks
+  without route or deposit evidence, recent signals decay by world tick,
+  qualifying nearby storage ghosts get reserved Useful Now slots, and `/slot
+  debug contextual` dumps event history, source counts, association hints, and
+  the last closed workspace/sidebar lane score breakdowns for playtest
+  debugging.
 - **2026-05-16** — EMI recipe screens now show the normal SLOT sidebar filtered
   to the visible recipe ingredients on NeoForge and Forge. The projection is
   transient, not a goal: present ingredients keep their normal section/storage
@@ -255,20 +269,15 @@ track lands.
    obvious latest location instead of scattered stale directories. Then
    regenerate vanilla/pack vocabulary and run `classify-runtime-pack` with the
    usable vocabulary.
-5. **Kit-holdout deposit + explicit withdraw verb.** Two pieces of
-   open work that the retired storage-prototype plan tracked under
-   Slices 4b / 5; they need re-planning against the current chip /
-   affinity model.
-   - *Kit-holdout deposit:* when a Kit is active, the deposit verb
-     should skip identities the Kit declares as bring-list members
-     (so a deposit pass doesn't strip Kit-critical items into the
-     nearest chip). The Kit's protection flags exist; the gate just
-     needs wiring into `DepositPlanner` / `DepositExecutor`.
-   - *Explicit withdraw:* the gather button (kit rack) already pulls
-     reachable Kit-needed identities from proximate chests in one
-     click. A general-purpose withdraw verb (independent of an active
-     Kit) hasn't been planned. Defer until playtest signals demand.
-6. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
+5. **Workflow tabs** ([workflow-tabs.md](workflow-tabs.md)).
+   Replace future Kit Rack work with player-authored tabs: `All`
+   desired/wanted counts are the inherited baseline; tabs add local
+   targets, implicit wanted-one membership, one-level variants, optional
+   Belt pages, gather guidance, put-away guidance, and an adjacent
+   overflow/junk pressure relief slice.
+6. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
+   The landed Kit code remains the implementation substrate, but future
+   user-facing task workflow work should follow `workflow-tabs.md`.
 7. **Single-column workspace width pass**
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the

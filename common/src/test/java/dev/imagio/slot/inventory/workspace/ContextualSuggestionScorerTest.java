@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ContextualSuggestionScorerTest {
     @Test
-    void usefulNowIncludesAlreadyCarriedItemsRelevantToRecentContext() {
+    void usefulNowUsesPickupAsContextWithoutRepeatingThePickedUpItem() {
         FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
         repository.appendContextualSignal(
@@ -42,19 +42,20 @@ class ContextualSuggestionScorerTest {
         List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
                 List.of(
                         item("minecraft:charcoal", true, BuiltinInventoryIds.PLAYER_MAIN),
-                        item("minecraft:iron_ore", false, "")),
+                        storedItem("minecraft:iron_ore", true)),
                 repository.snapshot(),
                 index,
                 12,
                 36);
 
-        assertTrue(laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW)
-                .contains("minecraft:charcoal"));
+        List<String> useful = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
+        assertFalse(useful.contains("minecraft:charcoal"));
+        assertTrue(useful.contains("minecraft:iron_ore"));
         List<String> reasons = debugReasons(
                 lanes,
                 SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW,
-                "minecraft:charcoal");
-        assertTrue(reasons.stream().anyMatch(reason -> reason.startsWith("candidate: carried=true")));
+                "minecraft:iron_ore");
+        assertTrue(reasons.stream().anyMatch(reason -> reason.startsWith("candidate: carried=false")));
         assertTrue(reasons.stream().anyMatch(reason -> reason.startsWith("context relevance ")));
         assertTrue(reasons.stream().anyMatch(reason -> reason.startsWith("score terms: relevance ")));
     }
@@ -109,6 +110,21 @@ class ContextualSuggestionScorerTest {
         assertTrue(reasons.stream().anyMatch(reason -> reason.startsWith("context relevance ")));
         assertTrue(reasons.stream().anyMatch(reason -> reason.startsWith("score terms: cleanup ")));
         assertTrue(reasons.contains("history: no aggregate"));
+    }
+
+    @Test
+    void putAwayDoesNotUseRareCarryFrequencyAloneWhenPressureIsModerate() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(item("minecraft:flower_pot", true, BuiltinInventoryIds.PLAYER_MAIN)),
+                WorkflowDomainSnapshot.empty(),
+                index,
+                20,
+                36);
+
+        assertFalse(laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.PUT_AWAY)
+                .contains("minecraft:flower_pot"));
     }
 
     @Test
@@ -251,7 +267,7 @@ class ContextualSuggestionScorerTest {
     }
 
     @Test
-    void usefulNowDepositPenaltyClearsWhenItemIsPickedUpAgain() {
+    void usefulNowDepositPenaltyClearsWhenItemIsActivelyUsedAgain() {
         FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
         repository.appendContextualSignal(
@@ -267,14 +283,14 @@ class ContextualSuggestionScorerTest {
                 DomainEventMetadata.origin("test"));
         repository.appendContextualSignal(
                 new ContextualSignalEvent(
-                        ContextualSignalKind.ITEM_ACQUIRED,
+                        ContextualSignalKind.ITEM_USED,
                         ItemIdentity.of("minecraft:charcoal"),
                         1,
                         110L,
-                        "",
-                        "",
+                        "world:right_click_block",
+                        "block:tfc:charcoal_forge",
                         BuiltinInventoryIds.PLAYER_MAIN,
-                        Map.of()),
+                        Map.of("action", "right_click_block", "target", "block:tfc:charcoal_forge")),
                 DomainEventMetadata.origin("test"));
         repository.appendContextualSignal(
                 ContextualSignalEvent.item(
@@ -777,7 +793,7 @@ class ContextualSuggestionScorerTest {
     }
 
     @Test
-    void usefulNowKeepsActualMachineWrenchUseWithoutPromotingLeaves() {
+    void usefulNowDoesNotMirrorQuickAccessMachineWrenchOrPromoteLeaves() {
         FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
         repository.appendContextualSignal(
@@ -803,7 +819,7 @@ class ContextualSuggestionScorerTest {
                 120L);
 
         List<String> useful = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
-        assertTrue(useful.contains("slot:test_wrench"));
+        assertFalse(useful.contains("slot:test_wrench"));
         assertFalse(useful.contains("afc:wood/fallen_leaves/black_oak"));
     }
 
@@ -832,7 +848,7 @@ class ContextualSuggestionScorerTest {
     }
 
     @Test
-    void targetlessRightClickKeepsToolExactButDoesNotCreateGhostContext() {
+    void targetlessRightClickDoesNotCreateGhostContextOrQuickAccessSuggestion() {
         FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
         repository.appendContextualSignal(
@@ -858,8 +874,174 @@ class ContextualSuggestionScorerTest {
                 120L);
 
         List<String> useful = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
-        assertTrue(useful.contains("slot:test_wrench"));
+        assertFalse(useful.contains("slot:test_wrench"));
         assertFalse(useful.contains("afc:wood/fallen_leaves/black_oak"));
+    }
+
+    @Test
+    void usefulNowDeduplicatesMultipleCardsForSameIdentity() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        repository.appendContextualSignal(
+                new ContextualSignalEvent(
+                        ContextualSignalKind.ITEM_USED,
+                        ItemIdentity.of("slot:test_saw"),
+                        1,
+                        100L,
+                        "world:right_click_block",
+                        "block:minecraft:oak_log",
+                        "hand:main_hand",
+                        Map.of("action", "right_click_block", "target", "block:minecraft:oak_log")),
+                DomainEventMetadata.origin("test"));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(
+                        item("slot:test_saw", true, BuiltinInventoryIds.PLAYER_MAIN),
+                        item("slot:test_saw", true, "sophisticatedbackpacks:carried/test")),
+                repository.snapshot(),
+                index,
+                12,
+                36,
+                120L);
+
+        List<String> useful = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
+        assertEquals(1, useful.stream().filter("slot:test_saw"::equals).count());
+    }
+
+    @Test
+    void usefulNowIgnoresPersistedPassiveOffhandUseAndKeepsMainHandMaterialUse() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        for (int i = 0; i < 16; i++) {
+            repository.appendContextualSignal(
+                    new ContextualSignalEvent(
+                            ContextualSignalKind.ITEM_USED,
+                            ItemIdentity.of("tfc:metal/shield/bronze"),
+                            1,
+                            100L + i,
+                            "world:right_click_block",
+                            "block:tfc:wood/planks/pine_loom",
+                            "hand:off_hand",
+                            Map.of("action", "right_click_block", "target", "block:tfc:wood/planks/pine_loom")),
+                    DomainEventMetadata.origin("test"));
+            repository.appendContextualSignal(
+                    new ContextualSignalEvent(
+                            ContextualSignalKind.ITEM_USED,
+                            ItemIdentity.of("tfc:wool_yarn"),
+                            1,
+                            100L + i,
+                            "world:right_click_block",
+                            "block:tfc:wood/planks/pine_loom",
+                            "hand:main_hand",
+                            Map.of("action", "right_click_block", "target", "block:tfc:wood/planks/pine_loom")),
+                    DomainEventMetadata.origin("test"));
+        }
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(
+                        item("tfc:metal/shield/bronze", true, BuiltinInventoryIds.PLAYER_OFFHAND),
+                        item("tfc:wool_yarn", true, BuiltinInventoryIds.PLAYER_MAIN)),
+                repository.snapshot(),
+                index,
+                12,
+                36,
+                140L);
+
+        List<String> useful = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
+        assertTrue(useful.contains("tfc:wool_yarn"));
+        assertFalse(useful.contains("tfc:metal/shield/bronze"));
+    }
+
+    @Test
+    void usefulNowDoesNotPromoteCopperStorageGhostsFromToolMaterialOnly() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        repository.appendContextualSignal(
+                new ContextualSignalEvent(
+                        ContextualSignalKind.ITEM_USED,
+                        ItemIdentity.of("gtceu:copper_hammer"),
+                        1,
+                        100L,
+                        "world:right_click_block",
+                        "block:tfc:wood/planks/pine_loom",
+                        "hand:main_hand",
+                        Map.of("action", "right_click_block", "target", "block:tfc:wood/planks/pine_loom")),
+                DomainEventMetadata.origin("test"));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(
+                        item("gtceu:copper_hammer", true, BuiltinInventoryIds.PLAYER_MAIN),
+                        storedItem("create:copper_valve_handle", true)),
+                repository.snapshot(),
+                index,
+                12,
+                36,
+                120L);
+
+        List<String> useful = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
+        assertTrue(useful.contains("gtceu:copper_hammer"));
+        assertFalse(useful.contains("create:copper_valve_handle"));
+    }
+
+    @Test
+    void usefulNowDoesNotPromoteCarriedItemsFromWeakTextOnlyContext() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        repository.appendContextualSignal(
+                ContextualSignalEvent.item(
+                        ContextualSignalKind.ITEM_ACQUIRED,
+                        ItemIdentity.of("minecraft:oak_log"),
+                        1,
+                        ""),
+                DomainEventMetadata.origin("test"));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(item("afc:wood/sapling/giant_rosewood", true, BuiltinInventoryIds.PLAYER_MAIN)),
+                repository.snapshot(),
+                index,
+                12,
+                36,
+                120L);
+
+        assertFalse(laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW)
+                .contains("afc:wood/sapling/giant_rosewood"));
+    }
+
+    @Test
+    void usefulNowDoesNotPromoteStorageGhostFromWeakAssociationAndGenericAdvisory() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        ContextualSuggestionState base = repository.contextualSuggestionState();
+        repository.replaceContextualSuggestionState(new ContextualSuggestionState(
+                base.nextStreamSequence(),
+                base.itemAggregates(),
+                base.contextAggregates(),
+                base.associationIndex().learnNextItem(
+                        "item_taken|item=gtceu:wrought_iron_plate",
+                        ItemIdentity.of("minecraft:brick"),
+                        1L,
+                        18L,
+                        0.48D),
+                base.recentSignals(),
+                base.activeContextKey()));
+        repository.appendContextualSignal(
+                ContextualSignalEvent.item(
+                        ContextualSignalKind.ITEM_TAKEN_FROM_STORAGE,
+                        ItemIdentity.of("gtceu:wrought_iron_plate"),
+                        1,
+                        ""),
+                DomainEventMetadata.origin("test"));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(storedItem("minecraft:brick", true)),
+                repository.snapshot(),
+                index,
+                12,
+                36,
+                120L);
+
+        assertFalse(laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW)
+                .contains("minecraft:brick"));
     }
 
     @Test
@@ -996,6 +1178,65 @@ class ContextualSuggestionScorerTest {
     }
 
     @Test
+    void putAwayCapsDesiredExcessSoCleanupDoesNotBecomeAQuotaAudit() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(
+                        item("minecraft:iron_ore", true, BuiltinInventoryIds.PLAYER_MAIN, 1, false, 0, false, 8),
+                        item("minecraft:charcoal", true, BuiltinInventoryIds.PLAYER_MAIN, 1, false, 0, false, 8),
+                        item("minecraft:carrot", true, BuiltinInventoryIds.PLAYER_MAIN, 1, false, 0, false, 8),
+                        item("minecraft:bowl", true, BuiltinInventoryIds.PLAYER_MAIN, 1, false, 0, false, 8),
+                        item("minecraft:flower_pot", true, BuiltinInventoryIds.PLAYER_MAIN)),
+                WorkflowDomainSnapshot.empty(),
+                index,
+                0,
+                36);
+
+        List<String> putAway = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.PUT_AWAY);
+        long desiredExcessCards = putAway.stream()
+                .filter(itemId -> List.of("minecraft:iron_ore", "minecraft:charcoal", "minecraft:carrot", "minecraft:bowl")
+                        .contains(itemId))
+                .count();
+        assertEquals(2, desiredExcessCards);
+        assertTrue(putAway.contains("minecraft:flower_pot"));
+    }
+
+    @Test
+    void putAwayIgnoresStaleSingleDepositHistoryWithoutRoute() {
+        FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        repository.appendContextualSignal(
+                new ContextualSignalEvent(
+                        ContextualSignalKind.ITEM_DEPOSITED_TO_STORAGE,
+                        ItemIdentity.of("minecraft:flower_pot"),
+                        1,
+                        100L,
+                        "",
+                        "",
+                        "storage",
+                        Map.of()),
+                DomainEventMetadata.origin("test"));
+        repository.appendContextualSignal(
+                ContextualSignalEvent.item(
+                        ContextualSignalKind.ITEM_ACQUIRED,
+                        ItemIdentity.of("minecraft:flower_pot"),
+                        1,
+                        BuiltinInventoryIds.PLAYER_MAIN),
+                DomainEventMetadata.origin("test"));
+
+        List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
+                List.of(item("minecraft:flower_pot", true, BuiltinInventoryIds.PLAYER_MAIN)),
+                repository.snapshot(),
+                index,
+                12,
+                36);
+
+        assertFalse(laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.PUT_AWAY)
+                .contains("minecraft:flower_pot"));
+    }
+
+    @Test
     void mixedRecentContextCanKeepOlderClusterAndRaiseNewCluster() {
         FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
@@ -1016,7 +1257,7 @@ class ContextualSuggestionScorerTest {
 
         List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
                 List.of(
-                        item("minecraft:iron_ore", true, BuiltinInventoryIds.PLAYER_MAIN),
+                        item("minecraft:charcoal", true, BuiltinInventoryIds.PLAYER_MAIN),
                         item("minecraft:bowl", true, BuiltinInventoryIds.PLAYER_MAIN)),
                 repository.snapshot(),
                 index,
@@ -1024,7 +1265,7 @@ class ContextualSuggestionScorerTest {
                 36);
 
         List<String> useful = laneItems(lanes, SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
-        assertTrue(useful.contains("minecraft:iron_ore"));
+        assertTrue(useful.contains("minecraft:charcoal"));
         assertTrue(useful.contains("minecraft:bowl"));
     }
 
@@ -1271,6 +1512,20 @@ class ContextualSuggestionScorerTest {
                         "carry_frequency": {"value": "occasional"}
                       }
                     },
+                    "minecraft:brick": {
+                      "facets": {
+                        "role": {"value": "ingredient"},
+                        "primary_uses": {"values": ["crafting building material"]},
+                        "carry_frequency": {"value": "rare"}
+                      }
+                    },
+                    "gtceu:wrought_iron_plate": {
+                      "facets": {
+                        "role": {"value": "ingredient"},
+                        "primary_uses": {"values": ["crafting machine components"]},
+                        "carry_frequency": {"value": "occasional"}
+                      }
+                    },
                     "slot:test_construction_wand": {
                       "facets": {
                         "role": {"value": "tool"},
@@ -1333,6 +1588,48 @@ class ContextualSuggestionScorerTest {
                         "primary_uses": {"values": ["dismantling machines blocks"]},
                         "workflow_role": {"values": ["tool"]},
                         "carry_frequency": {"value": "everyday"}
+                      }
+                    },
+                    "gtceu:copper_hammer": {
+                      "facets": {
+                        "role": {"value": "tool"},
+                        "material_family": {"value": "copper"},
+                        "form": {"value": "tool"},
+                        "workflow_role": {"values": ["tool"]},
+                        "carry_frequency": {"value": "everyday"}
+                      }
+                    },
+                    "create:copper_valve_handle": {
+                      "facets": {
+                        "role": {"value": "material"},
+                        "material_family": {"value": "copper"},
+                        "carry_frequency": {"value": "occasional"}
+                      }
+                    },
+                    "tfc:metal/shield/bronze": {
+                      "facets": {
+                        "role": {"value": "equipment"},
+                        "primary_uses": {"values": ["blocking attacks defense"]},
+                        "workflow_role": {"values": ["equipment"]},
+                        "carry_frequency": {"value": "everyday"}
+                      }
+                    },
+                    "tfc:wool_yarn": {
+                      "facets": {
+                        "role": {"value": "material"},
+                        "workflow": {"values": ["weaving"]},
+                        "workflow_role": {"values": ["input"]},
+                        "used_at": {"values": ["loom"]},
+                        "carry_frequency": {"value": "occasional"}
+                      }
+                    },
+                    "afc:wood/sapling/giant_rosewood": {
+                      "facets": {
+                        "role": {"value": "block"},
+                        "workflow": {"values": ["forestry"]},
+                        "workflow_role": {"values": ["seed"]},
+                        "primary_uses": {"values": ["planting trees"]},
+                        "carry_frequency": {"value": "occasional"}
                       }
                     },
                     "afc:wood/fallen_leaves/black_oak": {

@@ -24,11 +24,12 @@ import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SlotWorkspaceViewModelContextualSuggestionTest {
     @Test
-    void putAwayScoresUnhomedCarriedItemsFromCarryFrequency() {
+    void putAwayDoesNotScoreUnhomedCarriedItemsFromCarryFrequencyAlone() {
         FacetIndexHolder.install(FacetIndex.load(new StringReader("""
                 {
                   "schema_version": 1,
@@ -56,7 +57,7 @@ class SlotWorkspaceViewModelContextualSuggestionTest {
 
             assertTrue(viewModel.triageItems().stream()
                     .anyMatch(item -> item.identity().itemId().equals("minecraft:flower_pot")));
-            assertTrue(viewModel.contextualSuggestionLanes().stream()
+            assertFalse(viewModel.contextualSuggestionLanes().stream()
                     .filter(lane -> SlotWorkspaceViewModel.ContextualSuggestionLane.PUT_AWAY.equals(lane.id()))
                     .flatMap(lane -> lane.items().stream())
                     .anyMatch(item -> item.identity().itemId().equals("minecraft:flower_pot")));

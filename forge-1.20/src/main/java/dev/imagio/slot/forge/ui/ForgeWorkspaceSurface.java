@@ -138,10 +138,14 @@ public final class ForgeWorkspaceSurface {
     private boolean pendingWallScrollRestoreActive;
 
     public ForgeWorkspaceSurface(Mode mode) {
+        this(mode, currentMenuContainerId());
+    }
+
+    public ForgeWorkspaceSurface(Mode mode, int menuContainerId) {
         this.mode = mode == null ? Mode.STANDALONE : mode;
         this.envelope = new WorkspaceActionEnvelope(
                 UUID.randomUUID().toString(),
-                currentMenuContainerId(),
+                normalizedMenuContainerId(menuContainerId),
                 0L);
         this.actionChannel = new ForgeWorkspaceActionChannel(envelope);
         this.status = this.mode == Mode.SIDEBAR
@@ -3185,6 +3189,10 @@ public final class ForgeWorkspaceSurface {
             return WorkspaceActionEnvelope.NO_MENU_CONTAINER;
         }
         return minecraft.player.containerMenu.containerId;
+    }
+
+    private static int normalizedMenuContainerId(int menuContainerId) {
+        return Math.max(WorkspaceActionEnvelope.NO_MENU_CONTAINER, menuContainerId);
     }
 
     public enum Mode {

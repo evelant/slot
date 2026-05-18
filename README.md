@@ -74,8 +74,13 @@ Plans:
   canonical design ref for the chest-affinity / chip-stack /
   proximate-ghost storage system (shipped 2026-04-30; residual polish
   items listed in `current.md`).
+- [docs/plans/workflow-tabs.md](docs/plans/workflow-tabs.md) —
+  implementation plan for replacing future Kit Rack work with
+  player-authored task tabs that reuse desired/wanted counts, gather
+  guidance, put-away guidance, and the existing hotbar page code.
 - [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit
-  prototype slices.
+  prototype slices; future user-facing task workflow work should follow
+  `workflow-tabs.md`.
 - [docs/plans/classification-database.md](docs/plans/classification-database.md)
   — proposed public classification database, installed-pack scanning, and
   contribution workflow plan.

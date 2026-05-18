@@ -192,7 +192,8 @@ public final class ContextualSuggestionDomainService {
             String sourceKey,
             DomainEventMetadata metadata
     ) {
-        if (ContextualSignalFilters.lowInformationWorldUse(action, targetKey)) {
+        if (ContextualSignalFilters.lowInformationWorldUse(action, targetKey)
+                || ContextualSignalFilters.passiveOffhandWorldUse(action, sourceKey)) {
             return false;
         }
         return observeItemSignal(
