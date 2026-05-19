@@ -51,6 +51,23 @@ class ChestDepositObservationSupportTest {
     }
 
     @Test
+    void observesMovableContainerDepositsByNormalizedIdentity() {
+        ItemStack[] snapshot = {
+                ItemStack.EMPTY
+        };
+        List<ItemStack> current = List.of(new ItemStack(
+                "sns:straw_basket",
+                "{Inventory:[{Slot:0b,id:\"minecraft:torch\",Count:8b}]}",
+                1,
+                1));
+
+        ChestDepositObservationSupport.Observation observation =
+                ChestDepositObservationSupport.observe(snapshot, current);
+
+        assertEquals(1, observation.deposits().get(ItemIdentity.of("sns:straw_basket")));
+    }
+
+    @Test
     void storageMenuSlotsIgnorePlayerInventorySlots() {
         Inventory playerInventory = new Inventory(null);
         FakeContainer storage = new FakeContainer();

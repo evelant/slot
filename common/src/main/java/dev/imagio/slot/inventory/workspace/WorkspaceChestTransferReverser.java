@@ -5,6 +5,7 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -30,16 +31,29 @@ public final class WorkspaceChestTransferReverser {
             ItemIdentity identity,
             int count
     ) {
-        if (player == null || runtime == null || storageId == null || identity == null || count <= 0) {
+        if (storageId == null) {
+            return 0;
+        }
+        return pullFromStorageToCarry(player, runtime, storageId.toString(), identity, count);
+    }
+
+    public static int pullFromStorageToCarry(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            String storageId,
+            ItemIdentity identity,
+            int count
+    ) {
+        if (player == null || runtime == null || storageId == null || storageId.isBlank()
+                || identity == null || count <= 0) {
             return 0;
         }
         MinecraftServer server = player.getServer();
-        ClaimedChest chest = lookupChest(runtime, storageId);
-        if (server == null || chest == null) {
+        WorldStorageAccess.Target target = lookupTarget(runtime, storageId);
+        if (server == null || target == null) {
             return 0;
         }
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
-        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
         if (!world.isAccessible(server, target)) {
             return 0;
         }
@@ -52,7 +66,7 @@ public final class WorkspaceChestTransferReverser {
                 break;
             }
             ItemStack stack = entry.stack();
-            if (stack == null || stack.isEmpty() || !identity.equals(ItemIdentityMatcher.create(stack))) {
+            if (stack == null || stack.isEmpty() || !ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 continue;
             }
             int pullCount = Math.min(stack.getCount(), remaining);
@@ -75,12 +89,12 @@ public final class WorkspaceChestTransferReverser {
             ItemStack reinsertLeftover = world.insert(server, target, leftover, false);
             if (reinsertLeftover != null && !reinsertLeftover.isEmpty()) {
                 SlotCommon.LOGGER.warn(
-                        "[SLOT] chest-transfer-undo: lost {} of {} (chest={} carry rejected, chest reinsert rejected)",
+                        "[SLOT] chest-transfer-undo: lost {} of {} (storage={} carry rejected, storage reinsert rejected)",
                         reinsertLeftover.getCount(), identity.itemId(), storageId);
             }
         }
         SlotCommon.LOGGER.info(
-                "[SLOT] chest-transfer-undo pulled identity={} requested={} restored={} chest={}",
+                "[SLOT] chest-transfer-undo pulled identity={} requested={} restored={} storage={}",
                 identity.itemId(), count, restored, storageId);
         return restored;
     }
@@ -92,16 +106,29 @@ public final class WorkspaceChestTransferReverser {
             ItemIdentity identity,
             int count
     ) {
-        if (player == null || runtime == null || storageId == null || identity == null || count <= 0) {
+        if (storageId == null) {
+            return 0;
+        }
+        return pushFromCarryToStorage(player, runtime, storageId.toString(), identity, count);
+    }
+
+    public static int pushFromCarryToStorage(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            String storageId,
+            ItemIdentity identity,
+            int count
+    ) {
+        if (player == null || runtime == null || storageId == null || storageId.isBlank()
+                || identity == null || count <= 0) {
             return 0;
         }
         MinecraftServer server = player.getServer();
-        ClaimedChest chest = lookupChest(runtime, storageId);
-        if (server == null || chest == null) {
+        WorldStorageAccess.Target target = lookupTarget(runtime, storageId);
+        if (server == null || target == null) {
             return 0;
         }
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
-        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
         if (!world.isAccessible(server, target)) {
             return 0;
         }
@@ -133,15 +160,30 @@ public final class WorkspaceChestTransferReverser {
             ItemStack carryLeftover = carried.insertBestFit(player, chestLeftover, false);
             if (carryLeftover != null && !carryLeftover.isEmpty()) {
                 SlotCommon.LOGGER.warn(
-                        "[SLOT] chest-transfer-redo: lost {} of {} (chest={} both rejected leftover)",
+                        "[SLOT] chest-transfer-redo: lost {} of {} (storage={} both rejected leftover)",
                         carryLeftover.getCount(), identity.itemId(), storageId);
             }
             break;
         }
         SlotCommon.LOGGER.info(
-                "[SLOT] chest-transfer-redo pushed identity={} requested={} delivered={} chest={}",
+                "[SLOT] chest-transfer-redo pushed identity={} requested={} delivered={} storage={}",
                 identity.itemId(), count, delivered, storageId);
         return delivered;
+    }
+
+    private static WorldStorageAccess.Target lookupTarget(WorkflowDomainRuntime runtime, String storageId) {
+        if (runtime == null || storageId == null || storageId.isBlank()) {
+            return null;
+        }
+        try {
+            UUID uuid = UUID.fromString(storageId);
+            ClaimedChest chest = lookupChest(runtime, uuid);
+            return chest == null ? null : new WorldStorageAccess.Target.Chest(chest);
+        } catch (IllegalArgumentException ignored) {
+            return WorldDisplayStorageSource.targetFromStorageId(storageId)
+                    .map(target -> (WorldStorageAccess.Target) target)
+                    .orElse(null);
+        }
     }
 
     private static ClaimedChest lookupChest(WorkflowDomainRuntime runtime, UUID storageId) {

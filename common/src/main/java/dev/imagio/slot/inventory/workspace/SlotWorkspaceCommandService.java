@@ -30,6 +30,7 @@ import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeOrigin;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import dev.imagio.slot.workflow.domain.undo.UndoContext;
 import dev.imagio.slot.workflow.domain.undo.UndoRecord;
@@ -729,11 +730,11 @@ public final class SlotWorkspaceCommandService {
                             .withOffhand(offhand);
                     if (!runtime.kitWorkflow().update(next,
                             DomainEventMetadata.origin("slot_workspace.ldlib.kit_page_update"))) {
-                        return WorkspaceCommandOutcome.accepted("kit page unchanged", activeKit.name());
+                        return WorkspaceCommandOutcome.accepted("tab page unchanged", activeKit.name());
                     }
                     SlotDebugLog.log("LDLib kit page updated {} page={}", activeKit.id(), pageIndex);
                     return WorkspaceCommandOutcome.accepted(
-                            "kit page updated",
+                            "tab page updated",
                             activeKit.name() + " (page " + (pageIndex + 1) + ")");
                 } catch (IllegalArgumentException exception) {
                     return WorkspaceCommandOutcome.rejected(exception.getMessage());
@@ -752,11 +753,11 @@ public final class SlotWorkspaceCommandService {
                     DomainEventMetadata.origin("slot_workspace.ldlib.kit_snapshot")
             );
             if (created == null) {
-                return WorkspaceCommandOutcome.rejected("kit_snapshot_rejected");
+                return WorkspaceCommandOutcome.rejected("tab_snapshot_rejected");
             }
             SlotDebugLog.log("LDLib kit snapshot created {} ({} slots filled)",
                     created.id(), created.pages().get(0).filledSlotCount());
-            return WorkspaceCommandOutcome.accepted("kit saved", created.name());
+            return WorkspaceCommandOutcome.accepted("workflow tab saved", created.name());
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -804,7 +805,7 @@ public final class SlotWorkspaceCommandService {
         if (!planReasons.isBlank()) {
             diagnostics.append(" reasons=").append(planReasons);
         }
-        String status = missing == 0 ? "kit activated" : "kit activated (missing " + missing + ")";
+        String status = missing == 0 ? "workflow tab activated" : "workflow tab activated (missing " + missing + ")";
         return WorkspaceCommandOutcome.accepted(status, diagnostics.toString());
     }
 
@@ -896,7 +897,7 @@ public final class SlotWorkspaceCommandService {
         String planReasons = result.diagnostics().isEmpty() ? "" : String.join(",", result.diagnostics());
         SlotDebugLog.log("LDLib kit page switched {} page={} satisfied={} missing={} reasons={}",
                 kit.id(), nextPage, satisfied, missing, planReasons);
-        String status = "kit page " + (nextPage + 1) + "/" + pageCount;
+        String status = "tab page " + (nextPage + 1) + "/" + pageCount;
         StringBuilder diagnostics = new StringBuilder()
                 .append("satisfied=").append(satisfied)
                 .append(" missing=").append(missing);
@@ -927,7 +928,81 @@ public final class SlotWorkspaceCommandService {
         }
         KitDefinition updated = runtime.kitWorkflow().kit(kitId);
         SlotDebugLog.log("LDLib kit page added {} pages={}", kitId, updated.pageCount());
-        return WorkspaceCommandOutcome.accepted("kit page added", existing.name());
+        return WorkspaceCommandOutcome.accepted("tab page added", existing.name());
+    }
+
+    public static WorkspaceCommandOutcome createKitVariant(
+            WorkflowDomainRuntime runtime,
+            String parentKitId,
+            String name
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (parentKitId == null || parentKitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_parent_tab");
+        }
+        KitDefinition parent = runtime.kitWorkflow().kit(parentKitId);
+        if (parent == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_parent_tab");
+        }
+        if (parent.variant()) {
+            return WorkspaceCommandOutcome.rejected("variant_cannot_have_variant");
+        }
+        String normalizedName = name == null ? "" : name.trim();
+        if (normalizedName.isBlank()) {
+            int existingVariants = runtime.kitWorkflow().kitMap().variantsOf(parentKitId).size();
+            normalizedName = parent.name() + " " + (existingVariants + 1);
+        }
+        try {
+            KitDefinition variant = runtime.kitWorkflow().createVariant(
+                    parentKitId,
+                    normalizedName,
+                    KitPage.empty(),
+                    null,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.workflow_variant_create")
+            );
+            if (variant == null) {
+                return WorkspaceCommandOutcome.rejected("variant_create_rejected");
+            }
+            SlotDebugLog.log("LDLib workflow variant created {} parent={}", variant.id(), parentKitId);
+            return WorkspaceCommandOutcome.accepted("workflow variant created", variant.name());
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected(exception.getMessage());
+        }
+    }
+
+    public static WorkspaceCommandOutcome createWorkflowTab(
+            WorkflowDomainRuntime runtime,
+            String name
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        String normalizedName = name == null ? "" : name.trim();
+        if (normalizedName.isBlank()) {
+            normalizedName = defaultKitName(runtime);
+        }
+        try {
+            KitDefinition created = runtime.kitWorkflow().create(
+                    normalizedName,
+                    KitPage.empty(),
+                    null,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.workflow_tab_create")
+            );
+            if (created == null) {
+                return WorkspaceCommandOutcome.rejected("workflow_tab_create_rejected");
+            }
+            runtime.kitWorkflow().activate(
+                    created.id(),
+                    0,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.workflow_tab_create_activate")
+            );
+            SlotDebugLog.log("LDLib workflow tab created {}", created.id());
+            return WorkspaceCommandOutcome.accepted("workflow tab created", created.name());
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected(exception.getMessage());
+        }
     }
 
     public static WorkspaceCommandOutcome setKitSlotIdentity(
@@ -994,14 +1069,99 @@ public final class SlotWorkspaceCommandService {
 
         String status;
         if (beltSynced && beltMissing == 0) {
-            status = "kit slot updated (belt synced)";
+            status = "tab slot updated (belt synced)";
         } else if (beltSynced) {
-            status = "kit slot updated (belt synced, missing " + beltMissing + ")";
+            status = "tab slot updated (belt synced, missing " + beltMissing + ")";
         } else {
-            status = "kit slot updated";
+            status = "tab slot updated";
         }
         String detail = (identity == null ? "cleared" : identity.itemId());
         return WorkspaceCommandOutcome.accepted(status, detail);
+    }
+
+    public static WorkspaceCommandOutcome setKitMember(
+            WorkflowDomainRuntime runtime,
+            String kitId,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            int member
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        if (runtime.kitWorkflow().kit(kitId) == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        boolean add = member > 0;
+        boolean changed = runtime.kitWorkflow().setMember(
+                kitId,
+                identity,
+                add,
+                DomainEventMetadata.origin(add
+                        ? "slot_workspace.ldlib.workflow_member_add"
+                        : "slot_workspace.ldlib.workflow_member_remove")
+        );
+        if (!changed) {
+            return WorkspaceCommandOutcome.accepted("noop", "");
+        }
+        return WorkspaceCommandOutcome.accepted(
+                add ? "workflow member added" : "workflow member removed",
+                identity.itemId());
+    }
+
+    public static WorkspaceCommandOutcome setKitAcceptedInput(
+            WorkflowDomainRuntime runtime,
+            String kitId,
+            String kind,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            String tagId,
+            int accepted
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        if (runtime.kitWorkflow().kit(kitId) == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        WorkflowAcceptedInputRule.Kind parsedKind = WorkflowAcceptedInputRule.parseKind(kind);
+        WorkflowAcceptedInputRule rule;
+        if (parsedKind == WorkflowAcceptedInputRule.Kind.ITEM_TAG) {
+            rule = WorkflowAcceptedInputRule.itemTag(tagId);
+        } else {
+            ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+            rule = WorkflowAcceptedInputRule.exact(identity);
+        }
+        if (rule == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_accepted_input");
+        }
+        boolean add = accepted > 0;
+        boolean changed = runtime.kitWorkflow().setAcceptedInput(
+                kitId,
+                rule,
+                add,
+                DomainEventMetadata.origin(add
+                        ? "slot_workspace.ldlib.workflow_accept_input_add"
+                        : "slot_workspace.ldlib.workflow_accept_input_remove")
+        );
+        if (!changed) {
+            return WorkspaceCommandOutcome.accepted("noop", "");
+        }
+        return WorkspaceCommandOutcome.accepted(
+                add ? "workflow input accepted" : "workflow input removed",
+                rule.displayLabel());
     }
 
     public static WorkspaceCommandOutcome setKitScopedDesiredCount(
@@ -1030,17 +1190,15 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.accepted("noop", "");
         }
         return WorkspaceCommandOutcome.accepted(
-                count > 0 ? "kit_desired_set_" + count : "kit_desired_cleared",
+                count > 0 ? "tab_desired_set_" + count : "tab_desired_cleared",
                 "");
     }
 
     /**
-     * Set the active-scope desired count. If a kit is active the write lands
-     * in that kit's desired-count scope; otherwise it lands in the player
-     * global scope. Clearing follows the scope behind the visible desired
-     * count so clearing a global fallback while a kit is active removes the
-     * fallback instead of writing a no-op kit clear. The platform adapter
-     * must not choose the scope.
+     * Set the active-scope desired count. If a workflow tab is active the
+     * write lands in that tab's desired-count scope; otherwise it lands in
+     * {@code All}. Clearing a tab-local value never lowers the inherited
+     * {@code All} floor.
      */
     public static WorkspaceCommandOutcome setPlayerDesiredCount(
             WorkflowDomainRuntime runtime,
@@ -1058,9 +1216,7 @@ public final class SlotWorkspaceCommandService {
         }
         DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
         String activeKit = desired.activeScope(runtime.snapshot().kitMap());
-        String writeKit = count <= 0
-                ? desiredVisibleScopeKit(desired, runtime, identity)
-                : activeKit;
+        String writeKit = activeKit;
         boolean changed = writeKit != null
                 ? desired.setForKit(writeKit, identity, count)
                 : desired.setPlayer(identity, count);
@@ -1074,10 +1230,9 @@ public final class SlotWorkspaceCommandService {
     }
 
     /**
-     * Adjust the visible desired count. Active kit scope wins when it has a
-     * non-zero override; otherwise global fallback remains editable while it
-     * is the value surfaced on the card. A new count still starts in the
-     * active kit scope when a kit is active.
+     * Adjust the visible desired count. Active workflow tabs write local
+     * counts on top of the inherited {@code All} floor; they do not edit
+     * the global value just because it is currently visible.
      */
     public static WorkspaceCommandOutcome adjustPlayerDesiredCount(
             WorkflowDomainRuntime runtime,
@@ -1097,16 +1252,22 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.accepted("noop", "");
         }
         DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
-        String activeKit = desiredVisibleScopeKit(desired, runtime, identity);
+        String activeKit = desired.activeScope(runtime.snapshot().kitMap());
+        int inheritedFloor = activeKit == null ? 0 : desired.getPlayer(identity);
+        int current = activeKit != null
+                ? Math.max(inheritedFloor, desired.getForKit(activeKit, identity))
+                : desired.getPlayer(identity);
+        int next = Math.max(0, current + delta);
+        if (activeKit != null && next < inheritedFloor) {
+            next = 0;
+        }
         boolean changed = activeKit != null
-                ? desired.adjustForKit(activeKit, identity, delta)
-                : desired.adjustPlayer(identity, delta);
+                ? desired.setForKit(activeKit, identity, next)
+                : desired.setPlayer(identity, next);
         if (!changed) {
             return WorkspaceCommandOutcome.accepted("noop", "");
         }
-        int now = activeKit != null
-                ? desired.getForKit(activeKit, identity)
-                : desired.getPlayer(identity);
+        int now = activeKit != null ? desired.getForKit(activeKit, identity) : desired.getPlayer(identity);
         if (now <= 0) {
             return WorkspaceCommandOutcome.accepted("desired_count_cleared", "");
         }
@@ -1114,28 +1275,11 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted("desired_count_" + scopeTag + "_" + now, "");
     }
 
-    private static String desiredVisibleScopeKit(
-            DesiredCountWorkflowDomainService desired,
-            WorkflowDomainRuntime runtime,
-            ItemIdentity identity
-    ) {
-        String activeKit = desired.activeScope(runtime.snapshot().kitMap());
-        if (activeKit == null || identity == null) {
-            return null;
-        }
-        if (desired.getForKit(activeKit, identity) > 0) {
-            return activeKit;
-        }
-        if (desired.getPlayer(identity) > 0) {
-            return null;
-        }
-        return activeKit;
-    }
-
     /**
-     * Toggle a wanted target. Wanted counts are persisted player state, but
-     * remain separate from desired counts and clear automatically when the
-     * carried count satisfies them.
+     * Toggle a wanted target. On {@code All}, wanted counts retain the
+     * player-global auto-clear behavior. With a workflow tab active, the
+     * wanted count is tab-scoped so satisfaction keeps the item visible until
+     * the tab is deactivated.
      */
     public static WorkspaceCommandOutcome toggleWantedCount(
             WorkflowDomainRuntime runtime,
@@ -1151,15 +1295,26 @@ public final class SlotWorkspaceCommandService {
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
-        int before = runtime.wantedCountWorkflow().getPlayer(identity);
+        String activeKit = runtime.wantedCountWorkflow().activeScope(runtime.snapshot().kitMap());
+        int before = activeKit == null
+                ? runtime.wantedCountWorkflow().getPlayer(identity)
+                : runtime.wantedCountWorkflow().getForKit(activeKit, identity);
         if (before > 0) {
-            runtime.wantedCountWorkflow().clearPlayer(identity);
-            recordWantedCountUndo(runtime, identity, before, 0);
+            if (activeKit == null) {
+                runtime.wantedCountWorkflow().clearPlayer(identity);
+            } else {
+                runtime.wantedCountWorkflow().clearForKit(activeKit, identity);
+            }
+            recordWantedCountUndo(runtime, activeKit, identity, before, 0);
             return WorkspaceCommandOutcome.accepted("wanted cleared", identity.itemId());
         }
         int target = SlotWorkspaceViewModel.carriedMovableCount(authority, identity) + 1;
-        runtime.wantedCountWorkflow().setPlayer(identity, target);
-        recordWantedCountUndo(runtime, identity, before, target);
+        if (activeKit == null) {
+            runtime.wantedCountWorkflow().setPlayer(identity, target);
+        } else {
+            runtime.wantedCountWorkflow().setForKit(activeKit, identity, target);
+        }
+        recordWantedCountUndo(runtime, activeKit, identity, before, target);
         return WorkspaceCommandOutcome.accepted("wanted", identity.itemId() + " target=" + target);
     }
 
@@ -1185,20 +1340,36 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
         int target = Math.max(0, targetCount);
+        String activeKit = runtime.wantedCountWorkflow().activeScope(runtime.snapshot().kitMap());
         int carried = SlotWorkspaceViewModel.carriedMovableCount(authority, identity);
-        int before = runtime.wantedCountWorkflow().getPlayer(identity);
-        if (target <= carried) {
-            boolean changed = runtime.wantedCountWorkflow().clearPlayer(identity);
+        int before = activeKit == null
+                ? runtime.wantedCountWorkflow().getPlayer(identity)
+                : runtime.wantedCountWorkflow().getForKit(activeKit, identity);
+        if (target <= 0) {
+            boolean changed = activeKit == null
+                    ? runtime.wantedCountWorkflow().clearPlayer(identity)
+                    : runtime.wantedCountWorkflow().clearForKit(activeKit, identity);
             if (changed) {
-                recordWantedCountUndo(runtime, identity, before, 0);
+                recordWantedCountUndo(runtime, activeKit, identity, before, 0);
             }
             return WorkspaceCommandOutcome.accepted(
                     changed ? "wanted cleared" : "wanted unchanged",
                     identity.itemId());
         }
-        boolean changed = runtime.wantedCountWorkflow().setPlayer(identity, target);
+        if (target <= carried && activeKit == null) {
+            boolean changed = runtime.wantedCountWorkflow().clearPlayer(identity);
+            if (changed) {
+                recordWantedCountUndo(runtime, null, identity, before, 0);
+            }
+            return WorkspaceCommandOutcome.accepted(
+                    changed ? "wanted cleared" : "wanted unchanged",
+                    identity.itemId());
+        }
+        boolean changed = activeKit == null
+                ? runtime.wantedCountWorkflow().setPlayer(identity, target)
+                : runtime.wantedCountWorkflow().setForKit(activeKit, identity, target);
         if (changed) {
-            recordWantedCountUndo(runtime, identity, before, target);
+            recordWantedCountUndo(runtime, activeKit, identity, before, target);
         }
         return WorkspaceCommandOutcome.accepted("wanted count updated", identity.itemId() + " target=" + target);
     }
@@ -1226,23 +1397,39 @@ public final class SlotWorkspaceCommandService {
         if (delta == 0) {
             return WorkspaceCommandOutcome.accepted("wanted unchanged", identity.itemId());
         }
+        String activeKit = runtime.wantedCountWorkflow().activeScope(runtime.snapshot().kitMap());
         int carried = SlotWorkspaceViewModel.carriedMovableCount(authority, identity);
-        int current = runtime.wantedCountWorkflow().getPlayer(identity);
+        int current = activeKit == null
+                ? runtime.wantedCountWorkflow().getPlayer(identity)
+                : runtime.wantedCountWorkflow().getForKit(activeKit, identity);
         int target = current > carried
                 ? current + delta
                 : carried + Math.max(0, delta);
-        if (target <= carried) {
-            boolean changed = runtime.wantedCountWorkflow().clearPlayer(identity);
+        if (target <= 0) {
+            boolean changed = activeKit == null
+                    ? runtime.wantedCountWorkflow().clearPlayer(identity)
+                    : runtime.wantedCountWorkflow().clearForKit(activeKit, identity);
             if (changed) {
-                recordWantedCountUndo(runtime, identity, current, 0);
+                recordWantedCountUndo(runtime, activeKit, identity, current, 0);
             }
             return WorkspaceCommandOutcome.accepted(
                     changed ? "wanted cleared" : "wanted unchanged",
                     identity.itemId());
         }
-        boolean changed = runtime.wantedCountWorkflow().setPlayer(identity, target);
+        if (target <= carried && activeKit == null) {
+            boolean changed = runtime.wantedCountWorkflow().clearPlayer(identity);
+            if (changed) {
+                recordWantedCountUndo(runtime, null, identity, current, 0);
+            }
+            return WorkspaceCommandOutcome.accepted(
+                    changed ? "wanted cleared" : "wanted unchanged",
+                    identity.itemId());
+        }
+        boolean changed = activeKit == null
+                ? runtime.wantedCountWorkflow().setPlayer(identity, target)
+                : runtime.wantedCountWorkflow().setForKit(activeKit, identity, target);
         if (changed) {
-            recordWantedCountUndo(runtime, identity, current, target);
+            recordWantedCountUndo(runtime, activeKit, identity, current, target);
         }
         return WorkspaceCommandOutcome.accepted("wanted count updated", identity.itemId() + " target=" + target);
     }
@@ -1289,7 +1476,7 @@ public final class SlotWorkspaceCommandService {
         }
         SlotDebugLog.log("LDLib kit slots swapped {} page={} from={} to={}",
                 kitId, pageIndex, fromIndex, toIndex);
-        return WorkspaceCommandOutcome.accepted("kit slots swapped", kitId);
+        return WorkspaceCommandOutcome.accepted("tab slots swapped", kitId);
     }
 
     public static WorkspaceCommandOutcome removeKitPage(WorkflowDomainRuntime runtime, String kitId, int pageIndex) {
@@ -1315,7 +1502,7 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("invalid_page_index");
         }
         SlotDebugLog.log("LDLib kit page removed {} page={}", kitId, pageIndex);
-        return WorkspaceCommandOutcome.accepted("kit page removed", existing.name());
+        return WorkspaceCommandOutcome.accepted("tab page removed", existing.name());
     }
 
     public static WorkspaceCommandOutcome deactivateKit(WorkflowDomainRuntime runtime) {
@@ -1329,7 +1516,7 @@ public final class SlotWorkspaceCommandService {
                 DomainEventMetadata.origin("slot_workspace.ldlib.kit_deactivate")
         );
         SlotDebugLog.log("LDLib kit deactivated");
-        return WorkspaceCommandOutcome.accepted("kit deactivated", "");
+        return WorkspaceCommandOutcome.accepted("workflow tab deactivated", "");
     }
 
     public static WorkspaceCommandOutcome renameKit(WorkflowDomainRuntime runtime, String kitId, String newName) {
@@ -1354,13 +1541,13 @@ public final class SlotWorkspaceCommandService {
                     DomainEventMetadata.origin("slot_workspace.ldlib.kit_rename")
             );
             if (!renamed) {
-                return WorkspaceCommandOutcome.accepted("kit name unchanged", existing.name());
+                return WorkspaceCommandOutcome.accepted("tab name unchanged", existing.name());
             }
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
         SlotDebugLog.log("LDLib kit renamed {} -> {}", kitId, trimmed);
-        return WorkspaceCommandOutcome.accepted("kit renamed", trimmed);
+        return WorkspaceCommandOutcome.accepted("workflow tab renamed", trimmed);
     }
 
     public static WorkspaceCommandOutcome duplicateKit(WorkflowDomainRuntime runtime, String kitId) {
@@ -1380,10 +1567,10 @@ public final class SlotWorkspaceCommandService {
                     DomainEventMetadata.origin("slot_workspace.ldlib.kit_duplicate")
             );
             if (copy == null) {
-                return WorkspaceCommandOutcome.rejected("kit_duplicate_rejected");
+                return WorkspaceCommandOutcome.rejected("tab_duplicate_rejected");
             }
             SlotDebugLog.log("LDLib kit duplicated {} -> {}", kitId, copy.id());
-            return WorkspaceCommandOutcome.accepted("kit duplicated", copy.name());
+            return WorkspaceCommandOutcome.accepted("workflow tab duplicated", copy.name());
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -1405,12 +1592,12 @@ public final class SlotWorkspaceCommandService {
                 DomainEventMetadata.origin("slot_workspace.ldlib.kit_delete")
         );
         SlotDebugLog.log("LDLib kit deleted {}", kitId);
-        return WorkspaceCommandOutcome.accepted("kit deleted", existing.name());
+        return WorkspaceCommandOutcome.accepted("workflow tab deleted", existing.name());
     }
 
     private static String defaultKitName(WorkflowDomainRuntime runtime) {
         int count = runtime.kitWorkflow().kits().size();
-        return "Kit " + (count + 1);
+        return "Tab " + (count + 1);
     }
 
     public static WorkspaceCommandOutcome deleteIsland(
@@ -2281,13 +2468,23 @@ public final class SlotWorkspaceCommandService {
             int before,
             int after
     ) {
+        recordWantedCountUndo(runtime, null, identity, before, after);
+    }
+
+    private static void recordWantedCountUndo(
+            WorkflowDomainRuntime runtime,
+            String kitId,
+            ItemIdentity identity,
+            int before,
+            int after
+    ) {
         if (runtime == null || identity == null || before == after) {
             return;
         }
         runtime.undoStack().record(
                 after <= 0 ? "clear wanted" : "set wanted",
-                ctx -> restoreWantedCount(ctx.runtime(), identity, before),
-                ctx -> restoreWantedCount(ctx.runtime(), identity, after)
+                ctx -> restoreWantedCount(ctx.runtime(), kitId, identity, before),
+                ctx -> restoreWantedCount(ctx.runtime(), kitId, identity, after)
         );
     }
 
@@ -2296,13 +2493,28 @@ public final class SlotWorkspaceCommandService {
             ItemIdentity identity,
             int count
     ) {
+        restoreWantedCount(runtime, null, identity, count);
+    }
+
+    private static void restoreWantedCount(
+            WorkflowDomainRuntime runtime,
+            String kitId,
+            ItemIdentity identity,
+            int count
+    ) {
         if (runtime == null || identity == null) {
             return;
         }
-        if (count <= 0) {
-            runtime.wantedCountWorkflow().clearPlayer(identity);
+        if (kitId == null || kitId.isBlank()) {
+            if (count <= 0) {
+                runtime.wantedCountWorkflow().clearPlayer(identity);
+            } else {
+                runtime.wantedCountWorkflow().setPlayer(identity, count);
+            }
+        } else if (count <= 0) {
+            runtime.wantedCountWorkflow().clearForKit(kitId, identity);
         } else {
-            runtime.wantedCountWorkflow().setPlayer(identity, count);
+            runtime.wantedCountWorkflow().setForKit(kitId, identity, count);
         }
     }
 

@@ -120,7 +120,7 @@ public final class TakeAllExecutor {
             if (stack.isEmpty()) {
                 continue;
             }
-            if (!identity.equals(dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack))) {
+            if (!ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 continue;
             }
             return takeFromTargetSlot(
@@ -156,7 +156,7 @@ public final class TakeAllExecutor {
             if (stack.isEmpty()) {
                 continue;
             }
-            if (!identity.equals(dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack))) {
+            if (!ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 continue;
             }
             return takeFromTargetSlot(player, target, storageId, entry.slotIndex(), maxCount, logLabel);

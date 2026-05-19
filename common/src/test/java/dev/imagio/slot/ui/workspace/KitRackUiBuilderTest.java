@@ -37,10 +37,13 @@ class KitRackUiBuilderTest {
         SlotUiElement rack = new KitRackUiBuilder(context).rack(viewModel(inactive));
         rack.children().get(0).children().get(1)
                 .dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
+        rack.children().get(0).children().get(2)
+                .dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
         SlotUiElement card = rack.children().get(1).children().get(0);
         card.dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
 
         assertTrue(rack.hasAttachment(WorkspaceUiAttachments.KIT_RACK));
+        assertEquals(1, context.createCount);
         assertEquals(1, context.saveCount);
         assertEquals(inactive.kitId(), context.activatedKitId);
         assertSame(inactive, card.attachment(WorkspaceUiAttachments.KIT_CARD, SlotWorkspaceViewModel.KitCard.class));
@@ -62,7 +65,7 @@ class KitRackUiBuilderTest {
         actions.children().get(1).dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
 
         assertEquals(List.of(stone), context.taken);
-        assertEquals("gathering 1 kit item", context.status);
+        assertEquals("gathering 1 tab target", context.status);
     }
 
     @Test
@@ -161,6 +164,7 @@ class KitRackUiBuilderTest {
         final List<SlotWorkspaceViewModel.IdentityRef> taken = new ArrayList<>();
         int pageDirection;
         int saveCount;
+        int createCount;
         String activatedKitId;
         String clearedKitId;
         int clearedPageIndex = -1;
@@ -178,6 +182,11 @@ class KitRackUiBuilderTest {
         @Override
         public void saveCurrentBeltAsKit() {
             saveCount++;
+        }
+
+        @Override
+        public void createEmptyTab() {
+            createCount++;
         }
 
         @Override

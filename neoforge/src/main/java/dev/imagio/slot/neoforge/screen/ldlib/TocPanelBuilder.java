@@ -62,8 +62,7 @@ final class TocPanelBuilder {
             if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
                 continue;
             }
-            if (host.storageGhostRevealMode.revealsProximate()
-                    || visibilityFor(island, filtering).hasVisibleContent()) {
+            if (visibilityFor(island, filtering).hasVisibleContent()) {
                 entries.add(island);
             }
         }
@@ -88,7 +87,8 @@ final class TocPanelBuilder {
                 filtering,
                 host.storageGhostSectionExpanded(island.islandId()),
                 host.storageGhostRevealMode,
-                host.goalTabActive());
+                host.goalTabActive(),
+                !host.activeWorkflowTab());
     }
 
     private UIElement dot(

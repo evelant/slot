@@ -43,9 +43,10 @@ public final class WorkspaceItemTooltipBuilder {
         }
         ArrayList<Component> lines = new ArrayList<>();
         addDesiredLine(lines, item);
+        addPutAwayLine(lines, item);
         addCarriedLine(lines, item);
         addStorageLine(lines, "Nearby pip", sum(item.presence()), item.presence());
-        addProximateRouteLine(lines, item, hasProximateDepositRoute);
+        addProximateRouteLine(lines, item, hasProximateDepositRoute || item.putAwayState().routed());
         addStorageLine(lines, "Stored elsewhere", sum(item.elsewhere()), item.elsewhere());
         addMissingTargetLine(lines, item);
         addContainerLine(lines, item);
@@ -66,7 +67,7 @@ public final class WorkspaceItemTooltipBuilder {
         int desired = item.desiredCount();
         int carried = item.carried() ? item.totalCount() : 0;
         if (desired > 0) {
-            String source = item.desiredCountFromKit() ? " kit" : "";
+            String source = item.desiredCountFromKit() ? " tab" : "";
             lines.add(Component.literal("Desired badge: " + carried + "/" + desired + source));
             if (item.wantedCount() <= 0) {
                 return;
@@ -77,7 +78,7 @@ public final class WorkspaceItemTooltipBuilder {
             return;
         }
         if (item.kitNeeded()) {
-            lines.add(Component.literal("Kit marker: needed by active kit"));
+            lines.add(Component.literal("Tab marker: needed by active workflow tab"));
         }
     }
 
@@ -86,6 +87,14 @@ public final class WorkspaceItemTooltipBuilder {
             return;
         }
         lines.add(Component.literal("Carried count: " + item.totalCount()));
+    }
+
+    private static void addPutAwayLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
+        if (item.putAwayState().routed()) {
+            lines.add(Component.literal("Put away: learned route nearby"));
+        } else if (item.putAwayState().noRoute()) {
+            lines.add(Component.literal("Put away: no learned home nearby"));
+        }
     }
 
     private static void addStorageLine(

@@ -95,13 +95,27 @@ class WallSectionHeaderUiBuilderTest {
         WallSectionHeaderUiBuilder headerBuilder = new WallSectionHeaderUiBuilder(context);
         WallSectionUiBuilder sectionBuilder = new WallSectionUiBuilder(headerBuilder);
         SlotWorkspaceViewModel.AtlasIsland island = island("building", "Building", 0);
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem("minecraft:stone", "Stone", false, true);
 
-        SlotUiElement section = sectionBuilder.section(island, java.util.List.of(), 0, false);
+        SlotUiElement section = sectionBuilder.section(island, java.util.List.of(item), 1, false);
         SlotUiElement grid = section.children().get(1);
 
         assertTrue(grid.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_GRID));
         assertSame(island, grid.attachment(WorkspaceUiAttachments.ATLAS_ISLAND, SlotWorkspaceViewModel.AtlasIsland.class));
-        assertEquals(java.util.List.of(), grid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, java.util.List.class));
+        assertEquals(java.util.List.of(item), grid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, java.util.List.class));
+    }
+
+    @Test
+    void emptySectionUsesCompactHeaderWithoutEmptyGrid() {
+        RecordingContext context = new RecordingContext();
+        WallSectionHeaderUiBuilder headerBuilder = new WallSectionHeaderUiBuilder(context);
+        WallSectionUiBuilder sectionBuilder = new WallSectionUiBuilder(headerBuilder);
+
+        SlotUiElement section = sectionBuilder.section(island("empty", "Empty", 0), java.util.List.of(), 0, false);
+        SlotUiElement header = section.children().get(0);
+
+        assertEquals(1, section.children().size());
+        assertEquals(WallSectionHeaderUiBuilder.COMPACT_HEADER_HEIGHT_PX, header.layout().height());
     }
 
     @Test
@@ -358,7 +372,8 @@ class WallSectionHeaderUiBuilderTest {
         assertTrue(strip.hasAttachment(WorkspaceUiAttachments.RECENTS_STRIP));
         assertEquals(2, strip.children().size());
         assertEquals("Recent", strip.children().get(0).text());
-        assertEquals("nothing yet", strip.children().get(1).text());
+        SlotUiElement grid = strip.children().get(1);
+        assertEquals("nothing yet", grid.children().get(0).text());
     }
 
     @Test
@@ -373,7 +388,7 @@ class WallSectionHeaderUiBuilderTest {
         SlotUiElement strip = new RecentsStripUiBuilder(context).overlay(java.util.List.of(identity));
 
         assertEquals(2, strip.children().size());
-        assertEquals("not visible", strip.children().get(1).text());
+        assertEquals("not visible", strip.children().get(1).children().get(0).text());
     }
 
     @Test
@@ -401,9 +416,11 @@ class WallSectionHeaderUiBuilderTest {
         }
 
         SlotUiElement strip = new RecentsStripUiBuilder(context).overlay(recents);
-        SlotUiElement firstCard = strip.children().get(1);
+        SlotUiElement grid = strip.children().get(1);
+        SlotUiElement firstCard = grid.children().get(0);
 
-        assertEquals(RecentsStripUiBuilder.MAX_ICONS + 1, strip.children().size());
+        assertEquals(2, strip.children().size());
+        assertEquals(RecentsStripUiBuilder.MAX_ICONS, grid.children().size());
         assertTrue(firstCard.hasAttachment(WorkspaceUiAttachments.RECENTS_CARD));
         assertTrue(firstCard.hasAttachment(WorkspaceUiAttachments.WALL_CARD));
         assertSame(first, firstCard.attachment(
@@ -418,7 +435,7 @@ class WallSectionHeaderUiBuilderTest {
         SlotWorkspaceViewModel.AtlasItem item = atlasItem("minecraft:stone", "Stone", true, true);
         context.items.put(item.identity(), item);
         SlotUiElement strip = new RecentsStripUiBuilder(context).overlay(java.util.List.of(item.identity()));
-        SlotUiElement card = strip.children().get(1);
+        SlotUiElement card = strip.children().get(1).children().get(0);
 
         SlotUiEvent event = new SlotUiEvent(SlotUiEventKind.MOUSE_DOWN, 0, 0, 0, false);
         card.dispatch(event);
@@ -432,7 +449,7 @@ class WallSectionHeaderUiBuilderTest {
         SlotWorkspaceViewModel.AtlasItem item = atlasItem("minecraft:stone", "Stone", true, true);
         context.items.put(item.identity(), item);
         SlotUiElement strip = new RecentsStripUiBuilder(context).overlay(java.util.List.of(item.identity()));
-        SlotUiElement icon = strip.children().get(1);
+        SlotUiElement icon = strip.children().get(1).children().get(0);
 
         icon.dispatch(new SlotUiEvent(SlotUiEventKind.MOUSE_ENTER, 0, 0, 0, false));
         icon.dispatch(new SlotUiEvent(SlotUiEventKind.MOUSE_LEAVE, 0, 0, 0, false));
@@ -579,6 +596,10 @@ class WallSectionHeaderUiBuilderTest {
             editedIsland = island;
             editX = screenX;
             editY = screenY;
+        }
+
+        @Override
+        public void toggleNearbySection(SlotWorkspaceViewModel.AtlasIsland island) {
         }
     }
 

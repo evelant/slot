@@ -10,6 +10,7 @@ import dev.imagio.slot.ui.action.WorkspaceActionCatalog;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.imagio.slot.ui.action.WorkspaceActionValidation;
 import dev.imagio.slot.ui.action.WorkspaceActionValidator;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 
 import java.util.EnumMap;
 
@@ -42,6 +43,8 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter deleteIslandEmitter;
     RPCEmitter acceptChipEmitter;
     RPCEmitter saveKitEmitter;
+    RPCEmitter createWorkflowTabEmitter;
+    RPCEmitter createKitVariantEmitter;
     RPCEmitter activateKitEmitter;
     RPCEmitter deactivateKitEmitter;
     RPCEmitter undoEmitter;
@@ -50,6 +53,8 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter switchKitPageEmitter;
     RPCEmitter addKitPageEmitter;
     RPCEmitter removeKitPageEmitter;
+    RPCEmitter setKitMemberEmitter;
+    RPCEmitter setKitAcceptedInputEmitter;
     RPCEmitter setKitScopedDesiredCountEmitter;
     RPCEmitter setKitSlotIdentityEmitter;
     RPCEmitter renameKitEmitter;
@@ -71,6 +76,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter assignHomeToHotbarOnlyEmitter;
     RPCEmitter assignIdentityToAutoHotbarEmitter;
     RPCEmitter assignIdentityToHotbarSlotEmitter;
+    RPCEmitter moveIdentityBetweenBackpackAndMainEmitter;
     RPCEmitter depositHomeToLinkedChestEmitter;
     RPCEmitter depositOneHomeToLinkedChestEmitter;
     RPCEmitter depositItemsHomeToLinkedChestEmitter;
@@ -285,6 +291,15 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 host.session::saveBeltAsKit
         ));
+        createWorkflowTabEmitter = add(WorkspaceActionId.CREATE_WORKFLOW_TAB, RPCEventBuilder.simple(
+                String.class,
+                host.session::createWorkflowTab
+        ));
+        createKitVariantEmitter = add(WorkspaceActionId.CREATE_KIT_VARIANT, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                host.session::createKitVariant
+        ));
         activateKitEmitter = add(WorkspaceActionId.ACTIVATE_KIT, RPCEventBuilder.simple(
                 String.class,
                 host.session::activateKit
@@ -314,6 +329,24 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 Integer.class,
                 host.session::removeKitPage
+        ));
+        setKitMemberEmitter = add(WorkspaceActionId.SET_KIT_MEMBER, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                Integer.class,
+                host.session::setKitMember
+        ));
+        setKitAcceptedInputEmitter = add(WorkspaceActionId.SET_KIT_ACCEPTED_INPUT, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                Integer.class,
+                host.session::setKitAcceptedInput
         ));
         // Replaces the legacy addKitBring/removeKitBring pair: writes the
         // kit-scoped desired count for an explicit kitId, even when that
@@ -447,6 +480,12 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 Integer.class,
                 host.session::assignIdentityToHotbarSlot
+        ));
+        moveIdentityBetweenBackpackAndMainEmitter = add(WorkspaceActionId.MOVE_IDENTITY_BETWEEN_BACKPACK_AND_MAIN, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                host.session::moveIdentityBetweenBackpackAndMain
         ));
         depositHomeToLinkedChestEmitter = add(WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST, RPCEventBuilder.simple(
                 String.class,
@@ -705,49 +744,98 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
 
     void sendDuplicateKit(String kitId) {
         boolean sent = send(WorkspaceActionId.DUPLICATE_KIT, kitId);
-        host.localStatus.set(sent ? "duplicating kit..." : "duplicate unavailable");
+        host.localStatus.set(sent ? "duplicating workflow tab..." : "duplicate unavailable");
+        host.rebuild();
+    }
+
+    void sendCreateKitVariant(String parentKitId) {
+        boolean sent = send(WorkspaceActionId.CREATE_KIT_VARIANT, parentKitId, "");
+        host.localStatus.set(sent ? "creating workflow variant..." : "variant unavailable");
+        host.rebuild();
+    }
+
+    void sendCreateWorkflowTab() {
+        boolean sent = send(WorkspaceActionId.CREATE_WORKFLOW_TAB, "");
+        host.localStatus.set(sent ? "creating workflow tab..." : "create tab unavailable");
         host.rebuild();
     }
 
     void sendSaveKit() {
         boolean sent = send(WorkspaceActionId.SAVE_KIT, "");
-        host.localStatus.set(sent ? "saving kit..." : "save kit unavailable");
+        host.localStatus.set(sent ? "saving workflow tab..." : "save tab unavailable");
         host.rebuild();
     }
 
     void sendActivateKit(String kitId) {
         boolean sent = send(WorkspaceActionId.ACTIVATE_KIT, kitId);
-        host.localStatus.set(sent ? "activating kit..." : "activate kit unavailable");
+        host.localStatus.set(sent ? "activating workflow tab..." : "activate tab unavailable");
         host.rebuild();
     }
 
     void sendDeactivateKit() {
         boolean sent = send(WorkspaceActionId.DEACTIVATE_KIT);
-        host.localStatus.set(sent ? "deactivating kit..." : "deactivate kit unavailable");
+        host.localStatus.set(sent ? "deactivating workflow tab..." : "deactivate tab unavailable");
         host.rebuild();
     }
 
     void sendDeleteKit(String kitId) {
         boolean sent = send(WorkspaceActionId.DELETE_KIT, kitId);
-        host.localStatus.set(sent ? "deleting kit..." : "delete kit unavailable");
+        host.localStatus.set(sent ? "deleting workflow tab..." : "delete tab unavailable");
         host.rebuild();
     }
 
     void sendSwitchKitPage(int direction) {
         boolean sent = send(WorkspaceActionId.SWITCH_KIT_PAGE, direction);
-        host.localStatus.set(sent ? "switching kit page..." : "page switch unavailable");
+        host.localStatus.set(sent ? "switching tab page..." : "page switch unavailable");
         host.rebuild();
     }
 
     void sendAddKitPage(String kitId) {
         boolean sent = send(WorkspaceActionId.ADD_KIT_PAGE, kitId);
-        host.localStatus.set(sent ? "adding kit page..." : "add page unavailable");
+        host.localStatus.set(sent ? "adding tab page..." : "add page unavailable");
         host.rebuild();
     }
 
     void sendRemoveKitPage(String kitId, int pageIndex) {
         boolean sent = send(WorkspaceActionId.REMOVE_KIT_PAGE, kitId, pageIndex);
-        host.localStatus.set(sent ? "removing kit page..." : "remove page unavailable");
+        host.localStatus.set(sent ? "removing tab page..." : "remove page unavailable");
+        host.rebuild();
+    }
+
+    void sendSetKitMember(String kitId, SlotWorkspaceViewModel.IdentityRef identity, boolean member) {
+        if (kitId == null || kitId.isBlank() || identity == null) {
+            return;
+        }
+        boolean sent = send(WorkspaceActionId.SET_KIT_MEMBER,
+                kitId,
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                member ? 1 : 0);
+        host.localStatus.set(sent
+                ? (member ? "added to workflow tab" : "removed from workflow tab")
+                : "workflow membership unavailable");
+        host.rebuild();
+    }
+
+    void sendSetKitAcceptedInput(String kitId, WorkflowAcceptedInputRule rule, boolean accepted) {
+        if (kitId == null || kitId.isBlank() || rule == null) {
+            return;
+        }
+        SlotWorkspaceViewModel.IdentityRef identity = rule.identity() == null
+                ? new SlotWorkspaceViewModel.IdentityRef("", "", "")
+                : SlotWorkspaceViewModel.IdentityRef.from(rule.identity());
+        boolean sent = send(WorkspaceActionId.SET_KIT_ACCEPTED_INPUT,
+                kitId,
+                rule.kind().name(),
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                rule.tagId(),
+                accepted ? 1 : 0);
+        host.localStatus.set(sent
+                ? (accepted ? "accepted workflow input" : "removed workflow input")
+                : "workflow input update unavailable");
         host.rebuild();
     }
 
@@ -770,14 +858,14 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 identity.componentFingerprint(),
                 count);
         host.localStatus.set(sent
-                ? (count > 0 ? "kit desired count updated" : "kit desired count cleared")
-                : "kit desired count unavailable");
+                ? (count > 0 ? "tab target updated" : "tab target cleared")
+                : "tab target unavailable");
         host.rebuild();
     }
 
     void sendSwapKitSlots(String kitId, int pageIndex, int fromIndex, int toIndex) {
         boolean sent = send(WorkspaceActionId.SWAP_KIT_SLOTS, kitId, pageIndex, fromIndex, toIndex);
-        host.localStatus.set(sent ? "swapping kit slots..." : "swap slots unavailable");
+        host.localStatus.set(sent ? "swapping tab slots..." : "swap slots unavailable");
         host.rebuild();
     }
 
@@ -787,7 +875,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
         String fingerprint = identity == null ? "" : identity.componentFingerprint();
         boolean sent = send(WorkspaceActionId.SET_KIT_SLOT_IDENTITY,
                 kitId, pageIndex, slotIndex, itemId, comparisonMode, fingerprint);
-        host.localStatus.set(sent ? "updating kit slot..." : "update slot unavailable");
+        host.localStatus.set(sent ? "updating tab slot..." : "update slot unavailable");
         host.rebuild();
     }
 

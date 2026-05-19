@@ -21,6 +21,8 @@ import java.util.List;
  * wall and the chest-locator panel.
  */
 final class SearchController {
+    private static final long AUTO_COMMIT_MILLIS = 2_000L;
+
     private final SlotWorkspaceUiController host;
 
     private String searchQuery = "";
@@ -29,6 +31,7 @@ final class SearchController {
     private boolean searchInteractionDisablesAutoDismiss;
     private List<AtlasSearchIndex.SearchRow> searchMatches = List.of();
     private int searchMatchIndex;
+    private long lastSearchInputMillis;
 
     SearchController(SlotWorkspaceUiController host) {
         this.host = host;
@@ -181,6 +184,7 @@ final class SearchController {
         searchInteractionDisablesAutoDismiss = false;
         searchMatches = List.of();
         searchMatchIndex = 0;
+        touchSearchInput();
         setSearchQuery("");
         setScreenClosesOnEsc(true);
         host.rebuild();
@@ -199,6 +203,7 @@ final class SearchController {
             return;
         }
         searchBuffer = next;
+        touchSearchInput();
         recomputeMatches();
         syncQuery();
         host.rebuild();
@@ -209,6 +214,7 @@ final class SearchController {
             return;
         }
         searchBuffer = searchBuffer.substring(0, searchBuffer.length() - 1);
+        touchSearchInput();
         recomputeMatches();
         syncQuery();
         host.rebuild();
@@ -220,6 +226,7 @@ final class SearchController {
         }
         searchMatchIndex = (searchMatchIndex + 1) % searchMatches.size();
         searchInteractionDisablesAutoDismiss = true;
+        touchSearchInput();
         host.rebuild();
     }
 
@@ -314,10 +321,15 @@ final class SearchController {
         return keyCode >= GLFW.GLFW_KEY_SPACE && keyCode <= GLFW.GLFW_KEY_WORLD_2;
     }
 
-    /**
-     * No-op kept for caller compatibility; the prior implementation
-     * panned the camera on idle. List-view mode has no camera.
-     */
     void tickIdleTimer() {
+        if (!searchModalActive || System.currentTimeMillis() - lastSearchInputMillis < AUTO_COMMIT_MILLIS) {
+            return;
+        }
+        closeModal();
+        host.rebuild();
+    }
+
+    private void touchSearchInput() {
+        lastSearchInputMillis = System.currentTimeMillis();
     }
 }

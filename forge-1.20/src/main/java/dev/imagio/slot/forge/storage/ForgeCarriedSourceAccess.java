@@ -121,17 +121,13 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
         if (player == null || identity == null) {
             return Optional.empty();
         }
-        Optional<CarriedLocation> builtin = findBuiltinIdentity(player, identity);
-        if (builtin.isPresent()) {
-            return builtin;
-        }
         for (CarriedProvider provider : CarriedProviderRegistry.all()) {
             Optional<CarriedLocation> hit = provider.findIdentity(player, identity);
             if (hit.isPresent()) {
                 return hit;
             }
         }
-        return Optional.empty();
+        return findBuiltinIdentity(player, identity);
     }
 
     @Override
@@ -140,10 +136,10 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
             return List.of();
         }
         ArrayList<CarriedLocation> hits = new ArrayList<>();
-        collectBuiltinMatches(player, identity, hits);
         for (CarriedProvider provider : CarriedProviderRegistry.all()) {
             hits.addAll(provider.findAllMatching(player, identity));
         }
+        collectBuiltinMatches(player, identity, hits);
         return List.copyOf(hits);
     }
 
@@ -238,19 +234,19 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
         Inventory inventory = player.getInventory();
         for (int raw = 9; raw < inventory.items.size() && raw < 36; raw++) {
             ItemStack stack = inventory.items.get(raw);
-            if (!stack.isEmpty() && ItemIdentityMatcher.create(stack).equals(identity)) {
+            if (!stack.isEmpty() && ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 return Optional.of(new CarriedLocation(BuiltinInventoryIds.PLAYER_MAIN, raw - 9));
             }
         }
         for (int raw = 0; raw < 9 && raw < inventory.items.size(); raw++) {
             ItemStack stack = inventory.items.get(raw);
-            if (!stack.isEmpty() && ItemIdentityMatcher.create(stack).equals(identity)) {
+            if (!stack.isEmpty() && ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 return Optional.of(new CarriedLocation(BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0, raw));
             }
         }
         if (!inventory.offhand.isEmpty()) {
             ItemStack stack = inventory.offhand.get(0);
-            if (!stack.isEmpty() && ItemIdentityMatcher.create(stack).equals(identity)) {
+            if (!stack.isEmpty() && ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 return Optional.of(new CarriedLocation(BuiltinInventoryIds.PLAYER_OFFHAND, 0));
             }
         }
@@ -261,19 +257,19 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
         Inventory inventory = player.getInventory();
         for (int raw = 9; raw < inventory.items.size() && raw < 36; raw++) {
             ItemStack stack = inventory.items.get(raw);
-            if (!stack.isEmpty() && ItemIdentityMatcher.create(stack).equals(identity)) {
+            if (!stack.isEmpty() && ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 out.add(new CarriedLocation(BuiltinInventoryIds.PLAYER_MAIN, raw - 9));
             }
         }
         for (int raw = 0; raw < 9 && raw < inventory.items.size(); raw++) {
             ItemStack stack = inventory.items.get(raw);
-            if (!stack.isEmpty() && ItemIdentityMatcher.create(stack).equals(identity)) {
+            if (!stack.isEmpty() && ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 out.add(new CarriedLocation(BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0, raw));
             }
         }
         if (!inventory.offhand.isEmpty()) {
             ItemStack stack = inventory.offhand.get(0);
-            if (!stack.isEmpty() && ItemIdentityMatcher.create(stack).equals(identity)) {
+            if (!stack.isEmpty() && ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 out.add(new CarriedLocation(BuiltinInventoryIds.PLAYER_OFFHAND, 0));
             }
         }

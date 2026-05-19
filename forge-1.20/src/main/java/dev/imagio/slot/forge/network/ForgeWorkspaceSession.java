@@ -548,6 +548,13 @@ final class ForgeWorkspaceSession {
                 refreshViewBeforeCommand(player);
                 yield saveBeltAsKit(player, stringArg(args, 0));
             }
+            case CREATE_WORKFLOW_TAB -> SlotWorkspaceCommandService.createWorkflowTab(
+                    runtime,
+                    stringArg(args, 0));
+            case CREATE_KIT_VARIANT -> SlotWorkspaceCommandService.createKitVariant(
+                    runtime,
+                    stringArg(args, 0),
+                    stringArg(args, 1));
             case ACTIVATE_KIT -> {
                 refreshViewBeforeCommand(player);
                 yield activateKit(player, stringArg(args, 0));
@@ -563,6 +570,22 @@ final class ForgeWorkspaceSession {
                     runtime,
                     stringArg(args, 0),
                     integerArg(args, 1) == null ? -1 : integerArg(args, 1));
+            case SET_KIT_MEMBER -> SlotWorkspaceCommandService.setKitMember(
+                    runtime,
+                    stringArg(args, 0),
+                    stringArg(args, 1),
+                    stringArg(args, 2),
+                    stringArg(args, 3),
+                    integerArg(args, 4) == null ? 0 : integerArg(args, 4));
+            case SET_KIT_ACCEPTED_INPUT -> SlotWorkspaceCommandService.setKitAcceptedInput(
+                    runtime,
+                    stringArg(args, 0),
+                    stringArg(args, 1),
+                    stringArg(args, 2),
+                    stringArg(args, 3),
+                    stringArg(args, 4),
+                    stringArg(args, 5),
+                    integerArg(args, 6) == null ? 0 : integerArg(args, 6));
             case SET_KIT_SLOT_IDENTITY -> {
                 refreshViewBeforeCommand(player);
                 yield setKitSlotIdentity(
@@ -634,6 +657,12 @@ final class ForgeWorkspaceSession {
                         player,
                         identityArg(args, 0),
                         integerArg(args, 3));
+            }
+            case MOVE_IDENTITY_BETWEEN_BACKPACK_AND_MAIN -> {
+                refreshViewBeforeCommand(player);
+                yield moveIdentityBetweenBackpackAndMain(
+                        player,
+                        identityArg(args, 0));
             }
             case UNDO -> SlotWorkspaceCommandService.performUndo(runtime);
             case REDO -> SlotWorkspaceCommandService.performRedo(runtime);
@@ -895,6 +924,9 @@ final class ForgeWorkspaceSession {
         if (anchor == null) {
             return null;
         }
+        if (!WorkspaceChestProjectionSupport.isProximate(player, anchor)) {
+            return null;
+        }
         UUID storageId = ForgeChestDepositObserver.resolveOrCreateClaim(
                 runtime.chestClaimWorkflow(),
                 level,
@@ -1107,6 +1139,34 @@ final class ForgeWorkspaceSession {
                 hotbarIndex,
                 "slot_workspace.forge");
         return outcome;
+    }
+
+    private WorkspaceCommandOutcome moveIdentityBetweenBackpackAndMain(
+            ServerPlayer player,
+            ItemIdentity identity
+    ) {
+        InventoryHostDescriptor host = resolveHost(player);
+        if (host == null) {
+            return WorkspaceCommandOutcome.rejected("host_resolution_failed");
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+        return WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+                player,
+                host,
+                authority,
+                StorageAccessRegistry.carriedSourceAccess(),
+                request -> {
+                    InventoryActionOutcome actionOutcome = InventoryActionExecutor.execute(
+                            host,
+                            player,
+                            request,
+                            ProtectionPolicy.allowAll()
+                    );
+                    recordOutcome(player, actionOutcome);
+                    return actionOutcome;
+                },
+                identity,
+                "slot_workspace.forge");
     }
 
     private static boolean missingFromCarry(WorkspaceCommandOutcome outcome) {

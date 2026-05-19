@@ -97,7 +97,7 @@ public final class WorkflowDomainRuntime {
 
     public ProtectionPolicy protection() {
         WorkflowProjection.Snapshot projection = repository.workflowProjection();
-        // Stack: base → player-global desired counts → player-global wanted counts → kit-active.
+        // Stack: base → player-global desired counts → player-global wanted counts → active workflow tab.
         // Each layer adds cleanup protection; lookups OR through the
         // chain so any layer that protects an identity wins.
         ProtectionPolicy withGlobalDesired = CarryTargetProtection.compose(
@@ -111,7 +111,8 @@ public final class WorkflowDomainRuntime {
         return KitActiveProtection.compose(
                 withWanted,
                 projection.kitMap(),
-                projection.kitDesiredCounts()
+                projection.kitDesiredCounts(),
+                projection.kitWantedCounts()
         );
     }
 

@@ -133,6 +133,9 @@ public final class SlotSidebarClientUi {
 
     /** Drop the static handle so a fresh sidebar can mount on the next host screen. */
     public static void release() {
+        if (activeMount != null) {
+            activeMount.controller.markSurfaceClosed();
+        }
         activeMount = null;
     }
 

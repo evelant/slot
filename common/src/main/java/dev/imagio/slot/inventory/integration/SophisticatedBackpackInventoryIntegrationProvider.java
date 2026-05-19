@@ -260,7 +260,7 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
             }
             int freeSlots = Math.max(0, snapshot.slotCount() - snapshot.entries().size());
             int capacity = Math.max(0, snapshot.slotCount());
-            ItemIdentity identity = ItemIdentityMatcher.create(carrierStack);
+            ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(carrierStack));
             int[] running = byIdentity.computeIfAbsent(identity, ignored -> new int[2]);
             running[0] += freeSlots;
             running[1] += capacity;

@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -273,14 +274,15 @@ public final class ChestClaimWorkflowDomainService {
         if (storageId == null || identity == null || claimedChestMap().chest(storageId) == null) {
             return;
         }
+        ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(identity);
         repository.appendWorkflowEvent(
-                new WorkflowEvent.ChestDepositObserved(storageId, identity, count, tick),
+                new WorkflowEvent.ChestDepositObserved(storageId, normalized, count, tick),
                 resolveMetadata(metadata, "workflow.storage.chest.deposit_observed")
         );
         repository.appendContextualSignal(
                 new ContextualSignalEvent(
                         ContextualSignalKind.ITEM_DEPOSITED_TO_STORAGE,
-                        identity,
+                        normalized,
                         count,
                         tick,
                         "",
@@ -297,11 +299,12 @@ public final class ChestClaimWorkflowDomainService {
         if (storageId == null || identity == null) {
             return false;
         }
-        if (chestAffinityMap().score(storageId, identity) <= 0) {
+        ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(identity);
+        if (chestAffinityMap().score(storageId, normalized) <= 0) {
             return false;
         }
         repository.appendWorkflowEvent(
-                new WorkflowEvent.ChestAffinityForgotten(storageId, identity),
+                new WorkflowEvent.ChestAffinityForgotten(storageId, normalized),
                 DomainEventMetadata.origin("workflow.storage.chest.forget_identity")
         );
         mutationObserver.run();

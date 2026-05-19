@@ -47,7 +47,7 @@ class WorkspaceItemTooltipBuilderTest {
 
         assertEquals("", text.get(0));
         assertEquals("SLOT", text.get(1));
-        assertTrue(text.contains("Desired badge: 7/16 kit"));
+        assertTrue(text.contains("Desired badge: 7/16 tab"));
         assertTrue(text.contains("Nearby pip: 12 in Main Base: 8, Mine: 4"));
         assertTrue(text.contains("Stored elsewhere: 30 in Warehouse: 30"));
     }
@@ -114,6 +114,42 @@ class WorkspaceItemTooltipBuilderTest {
                 .toList();
 
         assertTrue(text.contains("Nearby pip: deposit route available"));
+    }
+
+    @Test
+    void tooltipExplainsPutAwayItemsWithoutKnownHomes() {
+        SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
+                identity("minecraft:dirt"),
+                new ItemStack("minecraft:dirt", 64, 64),
+                "Dirt",
+                64,
+                0,
+                "blocks",
+                false,
+                true,
+                true,
+                false,
+                0,
+                List.of(),
+                List.of(),
+                List.of(),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                0,
+                "player.main",
+                0,
+                64,
+                SlotWorkspaceViewModel.PutAwayState.NO_ROUTE);
+
+        List<String> text = WorkspaceItemTooltipBuilder.slotLines(item).stream()
+                .map(Component::getString)
+                .toList();
+
+        assertTrue(text.contains("Put away: no learned home nearby"));
     }
 
     @Test

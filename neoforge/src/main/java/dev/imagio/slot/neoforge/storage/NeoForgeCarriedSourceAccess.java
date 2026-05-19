@@ -4,6 +4,7 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.integration.InventoryHostContext;
 import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
@@ -150,19 +151,13 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
         if (player == null || identity == null) {
             return Optional.empty();
         }
-        // Builtin lanes first (stableOrder preference: main/hotbar/offhand
-        // before backpacks), then each provider in registration order.
-        Optional<CarriedLocation> builtin = findBuiltinIdentity(player, identity);
-        if (builtin.isPresent()) {
-            return builtin;
-        }
         for (CarriedProvider provider : CarriedProviderRegistry.all()) {
             Optional<CarriedLocation> hit = provider.findIdentity(player, identity);
             if (hit.isPresent()) {
                 return hit;
             }
         }
-        return Optional.empty();
+        return findBuiltinIdentity(player, identity);
     }
 
     @Override
@@ -171,10 +166,10 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
             return List.of();
         }
         ArrayList<CarriedLocation> hits = new ArrayList<>();
-        collectBuiltinMatches(player, identity, hits);
         for (CarriedProvider provider : CarriedProviderRegistry.all()) {
             hits.addAll(provider.findAllMatching(player, identity));
         }
+        collectBuiltinMatches(player, identity, hits);
         return List.copyOf(hits);
     }
 
@@ -264,21 +259,21 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
         // Main: raw slots 9..35 → logical 0..26
         for (int raw = 9; raw < inv.items.size() && raw < 36; raw++) {
             ItemStack s = inv.items.get(raw);
-            if (!s.isEmpty() && dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(s).equals(identity)) {
+            if (!s.isEmpty() && ItemIdentityMatcher.matchesMovable(s, identity)) {
                 return Optional.of(new CarriedLocation(BuiltinInventoryIds.PLAYER_MAIN, raw - 9));
             }
         }
         // Hotbar: raw slots 0..8
         for (int raw = 0; raw < 9 && raw < inv.items.size(); raw++) {
             ItemStack s = inv.items.get(raw);
-            if (!s.isEmpty() && dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(s).equals(identity)) {
+            if (!s.isEmpty() && ItemIdentityMatcher.matchesMovable(s, identity)) {
                 return Optional.of(new CarriedLocation(BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0, raw));
             }
         }
         // Offhand
         if (!inv.offhand.isEmpty()) {
             ItemStack s = inv.offhand.get(0);
-            if (!s.isEmpty() && dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(s).equals(identity)) {
+            if (!s.isEmpty() && ItemIdentityMatcher.matchesMovable(s, identity)) {
                 return Optional.of(new CarriedLocation(BuiltinInventoryIds.PLAYER_OFFHAND, 0));
             }
         }
@@ -289,19 +284,19 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
         Inventory inv = player.getInventory();
         for (int raw = 9; raw < inv.items.size() && raw < 36; raw++) {
             ItemStack s = inv.items.get(raw);
-            if (!s.isEmpty() && dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(s).equals(identity)) {
+            if (!s.isEmpty() && ItemIdentityMatcher.matchesMovable(s, identity)) {
                 out.add(new CarriedLocation(BuiltinInventoryIds.PLAYER_MAIN, raw - 9));
             }
         }
         for (int raw = 0; raw < 9 && raw < inv.items.size(); raw++) {
             ItemStack s = inv.items.get(raw);
-            if (!s.isEmpty() && dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(s).equals(identity)) {
+            if (!s.isEmpty() && ItemIdentityMatcher.matchesMovable(s, identity)) {
                 out.add(new CarriedLocation(BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0, raw));
             }
         }
         if (!inv.offhand.isEmpty()) {
             ItemStack s = inv.offhand.get(0);
-            if (!s.isEmpty() && dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(s).equals(identity)) {
+            if (!s.isEmpty() && ItemIdentityMatcher.matchesMovable(s, identity)) {
                 out.add(new CarriedLocation(BuiltinInventoryIds.PLAYER_OFFHAND, 0));
             }
         }

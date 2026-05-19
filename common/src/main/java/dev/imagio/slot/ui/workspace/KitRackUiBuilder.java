@@ -85,11 +85,11 @@ public final class KitRackUiBuilder {
 
     private static String clusterLabel(SlotWorkspaceViewModel.KitCard active, boolean compact) {
         if (active == null) {
-            return "Kits";
+            return "Tabs";
         }
         if (compact) {
             return active.pageCount() > 1
-                    ? "Kit " + (active.activePageIndex() + 1) + "/" + active.pageCount()
+                    ? "Page " + (active.activePageIndex() + 1) + "/" + active.pageCount()
                     : shorten(active.name(), 7);
         }
         return shorten(active.name(), 10) + (active.pageCount() > 1
@@ -130,7 +130,7 @@ public final class KitRackUiBuilder {
         SlotWorkspaceViewModel.KitCard active = activeKit(kits);
         String saveText = active == null
                 ? "Save Belt"
-                : active.pageCount() > 1 ? "Update Page " + (active.activePageIndex() + 1) : "Update Kit";
+                : active.pageCount() > 1 ? "Update Page " + (active.activePageIndex() + 1) : "Update Tab";
         SlotUiElement row = SlotUiElement.element()
                 .layout(layout -> layout
                         .widthPercent(100)
@@ -138,13 +138,23 @@ public final class KitRackUiBuilder {
                         .gapAll(4)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
-        row.addChild(SlotUiElement.label("Kits (" + count + ")", ACCENT)
+        row.addChild(SlotUiElement.label("Tabs (" + count + ")", ACCENT)
                 .layout(layout -> layout.flex(1).height(12))
                 .textStyle(style -> style
                         .color(ACCENT)
                         .fontSize(9)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        SlotUiElement create = button("New Tab", true, PANEL_ALT)
+                .layout(layout -> layout.width(48).height(14));
+        create.on(SlotUiEventKind.CLICK, event -> {
+            if (event.button() != 0) {
+                return;
+            }
+            event.stopPropagation();
+            context.createEmptyTab();
+        });
+        row.addChild(create);
         SlotUiElement save = button(saveText, true, ACCENT)
                 .layout(layout -> layout.width(Math.max(58, saveText.length() * 5 + 12)).height(14));
         save.on(SlotUiEventKind.CLICK, event -> {
@@ -175,7 +185,7 @@ public final class KitRackUiBuilder {
                         .height(32)
                         .paddingAll(4)
                         .alignItems(SlotUiLayout.AlignItems.CENTER))
-                .addChild(SlotUiElement.label("No kits yet. Load the belt, then save it.", MUTED)
+                .addChild(SlotUiElement.label("No workflow tabs yet. Create one or save the current belt.", MUTED)
                         .layout(layout -> layout.widthPercent(100).height(12))
                         .textStyle(style -> style
                                 .color(MUTED)
@@ -315,7 +325,7 @@ public final class KitRackUiBuilder {
             if (canAdd) {
                 context.addKitPage(card.kitId());
             } else {
-                context.setStatus("no room for another kit page");
+                context.setStatus("no room for another tab page");
             }
         });
         row.addChild(add);
@@ -332,7 +342,7 @@ public final class KitRackUiBuilder {
                 }
                 event.stopPropagation();
                 if (pullable <= 0) {
-                    context.setStatus(missing.size() + " kit items not in nearby chests");
+                    context.setStatus(missing.size() + " tab targets not in nearby chests");
                     return;
                 }
                 int requested = 0;
@@ -342,7 +352,7 @@ public final class KitRackUiBuilder {
                         requested++;
                     }
                 }
-                context.setStatus("gathering " + requested + " kit item" + (requested == 1 ? "" : "s"));
+                context.setStatus("gathering " + requested + " tab target" + (requested == 1 ? "" : "s"));
             });
             row.addChild(gather);
         }
@@ -359,7 +369,7 @@ public final class KitRackUiBuilder {
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
         int color = card.bringSlotCount() == 0 ? MUTED
                 : card.bringReadyCount() == card.bringSlotCount() ? ACCENT : WARNING;
-        column.addChild(SlotUiElement.label("bring " + card.bringReadyCount() + "/" + card.bringSlotCount(), color)
+        column.addChild(SlotUiElement.label("targets " + card.bringReadyCount() + "/" + card.bringSlotCount(), color)
                 .layout(layout -> layout.widthPercent(100).height(10))
                 .textStyle(style -> style
                         .color(color)
@@ -515,6 +525,8 @@ public final class KitRackUiBuilder {
         void closeKitRack();
 
         void saveCurrentBeltAsKit();
+
+        void createEmptyTab();
 
         void activateKit(String kitId);
 

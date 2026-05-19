@@ -5,6 +5,8 @@ import dev.imagio.slot.classification.FacetIndexHolder;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.spi.SlotUiElement;
+import dev.imagio.slot.ui.spi.SlotUiEvent;
+import dev.imagio.slot.ui.spi.SlotUiEventKind;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.AfterEach;
@@ -93,7 +95,7 @@ class WallSectionItemSorterTest {
     }
 
     @Test
-    void sectionHidesOrdinaryProximateGhostsBehindNearbyChipByDefault() {
+    void sectionHidesOrdinaryProximateGhostsBehindHeaderToggleByDefault() {
         WallSectionUiBuilder builder = new WallSectionUiBuilder(new WallSectionHeaderUiBuilder(new HeaderContext()));
         SlotWorkspaceViewModel.AtlasItem carriedStone = item("minecraft:stone", true);
         SlotWorkspaceViewModel.AtlasItem ghostTorch = item("minecraft:torch", false);
@@ -109,12 +111,15 @@ class WallSectionItemSorterTest {
                 false);
 
         assertEquals(2, section.children().size());
+        SlotUiElement header = section.children().get(0);
+        SlotUiElement toggle = header.children().get(1);
         SlotUiElement carriedGrid = section.children().get(1);
         assertEquals(List.of(carriedStone), carriedGrid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class));
-        assertEquals(1, carriedGrid.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT, Integer.class));
-        assertEquals(Boolean.FALSE, carriedGrid.attachment(
-                WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_EXPANDED,
+        assertEquals(1, toggle.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_COUNT, Integer.class));
+        assertEquals(Boolean.FALSE, toggle.attachment(
+                WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_EXPANDED,
                 Boolean.class));
+        assertEquals(List.of("Building", "+1", "2/1\u25CF"), descendantText(header));
     }
 
     @Test
@@ -145,7 +150,7 @@ class WallSectionItemSorterTest {
     }
 
     @Test
-    void expandedSectionRevealsProximateGhostsAndKeepsCollapseChip() {
+    void expandedSectionRevealsProximateGhostsAndKeepsHeaderCollapseToggle() {
         WallSectionUiBuilder builder = new WallSectionUiBuilder(new WallSectionHeaderUiBuilder(new HeaderContext()));
         SlotWorkspaceViewModel.AtlasItem carriedStone = item("minecraft:stone", true);
         SlotWorkspaceViewModel.AtlasItem ghostTorch = item("minecraft:torch", false);
@@ -161,20 +166,29 @@ class WallSectionItemSorterTest {
                 false);
 
         assertEquals(3, section.children().size());
+        SlotUiElement header = section.children().get(0);
+        SlotUiElement toggle = header.children().get(1);
         SlotUiElement ghostGrid = section.children().get(2);
         assertEquals(List.of(ghostTorch), ghostGrid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class));
-        assertEquals(Boolean.TRUE, ghostGrid.attachment(
-                WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_EXPANDED,
+        assertEquals(Boolean.TRUE, toggle.attachment(
+                WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_EXPANDED,
                 Boolean.class));
     }
 
     @Test
-    void nearbyChipUsesCompactGhostCardLabel() {
-        SlotUiElement chip = WallSectionUiBuilder.nearbyChip(island(), 12, false);
+    void nearbyHeaderToggleUsesCompactLabelAndClickHandler() {
+        HeaderContext context = new HeaderContext();
+        SlotWorkspaceViewModel.AtlasIsland island = island(0);
+        SlotUiElement header = new WallSectionHeaderUiBuilder(context)
+                .header(island, 0, 0, false, 12, false, true);
+        SlotUiElement toggle = header.children().get(1);
 
-        assertEquals(WallCardUiBuilder.CARD_CELL_PX, chip.layout().width());
-        assertEquals(WallCardUiBuilder.CARD_CELL_PX, chip.layout().height());
-        assertEquals(List.of("+12"), descendantText(chip));
+        assertEquals(WallSectionHeaderUiBuilder.COMPACT_HEADER_HEIGHT_PX, header.layout().height());
+        assertEquals(List.of("+12"), descendantText(toggle));
+        SlotUiEvent click = new SlotUiEvent(SlotUiEventKind.CLICK, 0, 1, 1, false);
+        toggle.dispatch(click);
+        assertTrue(click.propagationStopped());
+        assertEquals(island, context.toggled);
     }
 
     @Test
@@ -193,7 +207,7 @@ class WallSectionItemSorterTest {
 
         SlotUiElement ghostGrid = section.children().get(1);
         assertEquals(List.of(ghostTorch), ghostGrid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class));
-        assertTrue(!ghostGrid.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT));
+        assertTrue(!ghostGrid.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_COUNT));
     }
 
     @Test
@@ -213,7 +227,7 @@ class WallSectionItemSorterTest {
         assertEquals(List.of(desiredGhost), section.children().get(1).attachment(
                 WorkspaceUiAttachments.ATLAS_ITEMS,
                 List.class));
-        assertTrue(!section.children().get(1).hasAttachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT));
+        assertTrue(!section.children().get(1).hasAttachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_COUNT));
     }
 
     @Test
@@ -233,7 +247,7 @@ class WallSectionItemSorterTest {
         assertEquals(List.of(wantedGhost), section.children().get(1).attachment(
                 WorkspaceUiAttachments.ATLAS_ITEMS,
                 List.class));
-        assertTrue(!section.children().get(1).hasAttachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT));
+        assertTrue(!section.children().get(1).hasAttachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_COUNT));
     }
 
     @Test
@@ -253,7 +267,7 @@ class WallSectionItemSorterTest {
         assertEquals(List.of(ordinaryGhost), section.children().get(1).attachment(
                 WorkspaceUiAttachments.ATLAS_ITEMS,
                 List.class));
-        assertTrue(!section.children().get(1).hasAttachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT));
+        assertTrue(!section.children().get(1).hasAttachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_COUNT));
     }
 
     @Test
@@ -274,7 +288,8 @@ class WallSectionItemSorterTest {
                 StorageGhostRevealMode.COLLAPSED,
                 false,
                 false);
-        assertEquals(List.of(), collapsed.children().get(1).attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class));
+        assertEquals(1, collapsed.children().size());
+        assertEquals(WallSectionHeaderUiBuilder.COMPACT_HEADER_HEIGHT_PX, collapsed.children().get(0).layout().height());
 
         SlotUiElement xray = builder.section(
                 island(),
@@ -419,12 +434,19 @@ class WallSectionItemSorterTest {
     }
 
     private static final class HeaderContext implements WallSectionHeaderUiBuilder.Context {
+        SlotWorkspaceViewModel.AtlasIsland toggled;
+
         @Override
         public void beginIslandEdit(
                 SlotWorkspaceViewModel.AtlasIsland island,
                 float screenX,
                 float screenY
         ) {
+        }
+
+        @Override
+        public void toggleNearbySection(SlotWorkspaceViewModel.AtlasIsland island) {
+            toggled = island;
         }
     }
 }

@@ -408,6 +408,132 @@ class WorkspaceBeltCommandServiceTest {
         assertEquals(0, dispatched.get());
     }
 
+    @Test
+    void moveIdentityBetweenBackpackAndMainPullsProviderStackToMainFirst() {
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty());
+        InventorySourceDescriptor backpack = carriedSource(
+                "sophisticatedbackpacks:carried/abc",
+                InventorySourceDomain.PLAYER_EXTENSION,
+                InventorySourceRole.PROVIDER_DEFINED,
+                InventoryBindingRoute.PROVIDER,
+                15);
+        InventoryHostDescriptor host = host(backpack, main);
+        InventoryAuthoritySnapshot authority = InventoryAuthorityFixtures.authority(
+                host,
+                Map.of(backpack.id(), List.of(new InventoryStackSnapshot(
+                        3,
+                        new ItemStack("minecraft:oak_log", 8, 64),
+                        8))),
+                Map.of(backpack.id(), 27, BuiltinInventoryIds.PLAYER_MAIN, 27)
+        );
+        AtomicReference<InventoryActionRequest> requestRef = new AtomicReference<>();
+
+        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+                new ServerPlayer(),
+                host,
+                authority,
+                ThrowingCarriedSourceAccess.INSTANCE,
+                request -> {
+                    requestRef.set(request);
+                    return accepted(host, request);
+                },
+                ItemIdentity.of("minecraft:oak_log"),
+                "test");
+
+        assertTrue(outcome.success());
+        assertEquals("moved_to_main_inventory", outcome.status());
+        InventoryActionRequest request = requestRef.get();
+        assertEquals("test.move_identity_to_main", request.origin());
+        InventoryActionTarget.SourceSlotTarget source =
+                (InventoryActionTarget.SourceSlotTarget) request.primaryTarget();
+        assertEquals(backpack.id(), source.sourceId());
+        assertEquals(3, source.slotIndex());
+        InventoryActionTarget.SourceTarget destination =
+                (InventoryActionTarget.SourceTarget) request.secondaryTarget();
+        assertEquals(BuiltinInventoryIds.PLAYER_MAIN, destination.sourceId());
+    }
+
+    @Test
+    void moveIdentityBetweenBackpackAndMainPushesMainStackToProviderWhenNoProviderCopyExists() {
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty());
+        InventorySourceDescriptor backpack = carriedSource(
+                "sophisticatedbackpacks:carried/abc",
+                InventorySourceDomain.PLAYER_EXTENSION,
+                InventorySourceRole.PROVIDER_DEFINED,
+                InventoryBindingRoute.PROVIDER,
+                15);
+        InventoryHostDescriptor host = host(backpack, main);
+        InventoryAuthoritySnapshot authority = InventoryAuthorityFixtures.authority(
+                host,
+                Map.of(BuiltinInventoryIds.PLAYER_MAIN, List.of(new InventoryStackSnapshot(
+                        5,
+                        new ItemStack("minecraft:oak_log", 8, 64),
+                        8))),
+                Map.of(backpack.id(), 27, BuiltinInventoryIds.PLAYER_MAIN, 27)
+        );
+        AtomicReference<InventoryActionRequest> requestRef = new AtomicReference<>();
+
+        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+                new ServerPlayer(),
+                host,
+                authority,
+                ThrowingCarriedSourceAccess.INSTANCE,
+                request -> {
+                    requestRef.set(request);
+                    return accepted(host, request);
+                },
+                ItemIdentity.of("minecraft:oak_log"),
+                "test");
+
+        assertTrue(outcome.success());
+        assertEquals("moved_to_backpack", outcome.status());
+        InventoryActionRequest request = requestRef.get();
+        assertEquals("test.move_identity_to_backpack", request.origin());
+        InventoryActionTarget.SourceSlotTarget source =
+                (InventoryActionTarget.SourceSlotTarget) request.primaryTarget();
+        assertEquals(BuiltinInventoryIds.PLAYER_MAIN, source.sourceId());
+        assertEquals(5, source.slotIndex());
+        InventoryActionTarget.SourceTarget destination =
+                (InventoryActionTarget.SourceTarget) request.secondaryTarget();
+        assertEquals(backpack.id(), destination.sourceId());
+    }
+
+    @Test
+    void moveIdentityBetweenBackpackAndMainMovesHotbarStackToMainWhenNoProviderCopyExists() {
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty());
+        InventorySourceDescriptor hotbar = BuiltinInventoryDescriptors.quickAccessLane0Source(InventoryTopologyDescriptor.empty());
+        InventoryHostDescriptor host = host(main, hotbar);
+        InventoryAuthoritySnapshot authority = InventoryAuthorityFixtures.authority(
+                host,
+                Map.of(BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0, List.of(new InventoryStackSnapshot(
+                        1,
+                        new ItemStack("minecraft:oak_log", 8, 64),
+                        8))),
+                Map.of(BuiltinInventoryIds.PLAYER_MAIN, 27, BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0, 9)
+        );
+        AtomicReference<InventoryActionRequest> requestRef = new AtomicReference<>();
+
+        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+                new ServerPlayer(),
+                host,
+                authority,
+                ThrowingCarriedSourceAccess.INSTANCE,
+                request -> {
+                    requestRef.set(request);
+                    return accepted(host, request);
+                },
+                ItemIdentity.of("minecraft:oak_log"),
+                "test");
+
+        assertTrue(outcome.success());
+        InventoryActionTarget.QuickAccessTarget source =
+                (InventoryActionTarget.QuickAccessTarget) requestRef.get().primaryTarget();
+        assertEquals(1, source.slotIndex());
+        InventoryActionTarget.SourceTarget destination =
+                (InventoryActionTarget.SourceTarget) requestRef.get().secondaryTarget();
+        assertEquals(BuiltinInventoryIds.PLAYER_MAIN, destination.sourceId());
+    }
+
     private static SlotWorkspaceViewModel viewModel(SlotWorkspaceViewModel.HotbarSlot... occupied) {
         ArrayList<SlotWorkspaceViewModel.HotbarSlot> slots = new ArrayList<>(SlotWorkspaceViewModel.emptyHotbar());
         for (SlotWorkspaceViewModel.HotbarSlot slot : occupied) {

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
@@ -72,6 +73,40 @@ public final class KitWorkflowDomainService {
         return kit(id);
     }
 
+    public KitDefinition createVariant(String parentKitId, String name) {
+        return createVariant(parentKitId, name, KitPage.empty(), null,
+                DomainEventMetadata.origin("workflow.kit.variant.create"));
+    }
+
+    public KitDefinition createVariant(
+            String parentKitId,
+            String name,
+            KitPage firstPage,
+            ItemIdentity offhand,
+            DomainEventMetadata metadata
+    ) {
+        KitDefinition parent = requireKit(parentKitId);
+        if (parent.variant()) {
+            throw new IllegalArgumentException("Workflow tab variants cannot have variants: " + parentKitId);
+        }
+        String normalizedName = normalizeName(name);
+        String id = uniqueSlug(normalizedName, existingIds());
+        KitDefinition variant = new KitDefinition(
+                id,
+                normalizedName,
+                List.of(firstPage == null ? KitPage.empty() : firstPage),
+                offhand,
+                parent.id(),
+                Set.of()
+        );
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitCreated(variant),
+                resolveMetadata(metadata, "workflow.kit.variant.create")
+        );
+        notifyMutated();
+        return kit(id);
+    }
+
     public boolean rename(String kitId, String newName) {
         return rename(kitId, newName, DomainEventMetadata.origin("workflow.kit.rename"));
     }
@@ -102,6 +137,7 @@ public final class KitWorkflowDomainService {
         if (existing.equals(next)) {
             return false;
         }
+        validateParent(next);
         if (!next.fitsCarriedCapacity()) {
             throw new IllegalArgumentException(
                     "Kit exceeds carried capacity: " + next.carriedSlotCount()
@@ -158,6 +194,60 @@ public final class KitWorkflowDomainService {
         repository.appendWorkflowEvent(
                 new WorkflowEvent.KitUpdated(existing.withPageReplaced(pageIndex, nextPage)),
                 resolveMetadata(metadata, "workflow.kit.set_slot")
+        );
+        notifyMutated();
+        return true;
+    }
+
+    public boolean setMember(String kitId, ItemIdentity identity, boolean member) {
+        return setMember(kitId, identity, member, DomainEventMetadata.origin("workflow.kit.member"));
+    }
+
+    public boolean setMember(
+            String kitId,
+            ItemIdentity identity,
+            boolean member,
+            DomainEventMetadata metadata
+    ) {
+        if (identity == null) {
+            return false;
+        }
+        KitDefinition existing = requireKit(kitId);
+        KitDefinition next = member ? existing.withMember(identity) : existing.withoutMember(identity);
+        if (existing.equals(next)) {
+            return false;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitUpdated(next),
+                resolveMetadata(metadata, member ? "workflow.kit.member.add" : "workflow.kit.member.remove")
+        );
+        notifyMutated();
+        return true;
+    }
+
+    public boolean setAcceptedInput(String kitId, WorkflowAcceptedInputRule rule, boolean accepted) {
+        return setAcceptedInput(kitId, rule, accepted, DomainEventMetadata.origin("workflow.kit.accepted_input"));
+    }
+
+    public boolean setAcceptedInput(
+            String kitId,
+            WorkflowAcceptedInputRule rule,
+            boolean accepted,
+            DomainEventMetadata metadata
+    ) {
+        if (rule == null) {
+            return false;
+        }
+        KitDefinition existing = requireKit(kitId);
+        KitDefinition next = accepted ? existing.withAcceptedInput(rule) : existing.withoutAcceptedInput(rule);
+        if (existing.equals(next)) {
+            return false;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitUpdated(next),
+                resolveMetadata(metadata, accepted
+                        ? "workflow.kit.accepted_input.add"
+                        : "workflow.kit.accepted_input.remove")
         );
         notifyMutated();
         return true;
@@ -239,7 +329,10 @@ public final class KitWorkflowDomainService {
                 newId,
                 baseName,
                 source.pages(),
-                source.offhand()
+                source.offhand(),
+                source.parentId(),
+                source.members(),
+                source.acceptedInputs()
         );
         repository.appendWorkflowEvent(
                 new WorkflowEvent.KitCreated(copy),
@@ -301,11 +394,13 @@ public final class KitWorkflowDomainService {
 
     public boolean activate(String kitId, int pageIndex, DomainEventMetadata metadata) {
         KitDefinition existing = requireKit(kitId);
-        int boundedPageIndex = Math.max(0, Math.min(pageIndex, existing.pageCount() - 1));
+        KitDefinition pageOwner = pageOwner(existing);
+        int boundedPageIndex = Math.max(0, Math.min(pageIndex, pageOwner.pageCount() - 1));
         KitActivation current = activation();
         if (current.kitId().equals(kitId) && current.pageIndex() == boundedPageIndex) {
             return false;
         }
+        clearActiveLineageWantedCounts(current);
         repository.appendWorkflowEvent(
                 new WorkflowEvent.KitActivated(kitId, boundedPageIndex),
                 resolveMetadata(metadata, "workflow.kit.activate")
@@ -322,6 +417,7 @@ public final class KitWorkflowDomainService {
         if (!activation().isActive()) {
             return false;
         }
+        clearActiveLineageWantedCounts(activation());
         repository.appendWorkflowEvent(
                 new WorkflowEvent.KitDeactivated(),
                 resolveMetadata(metadata, "workflow.kit.deactivate")
@@ -340,7 +436,8 @@ public final class KitWorkflowDomainService {
             return false;
         }
         KitDefinition active = requireKit(current.kitId());
-        int bounded = Math.floorMod(pageIndex, Math.max(1, active.pageCount()));
+        KitDefinition pageOwner = pageOwner(active);
+        int bounded = Math.floorMod(pageIndex, Math.max(1, pageOwner.pageCount()));
         if (bounded == current.pageIndex()) {
             return false;
         }
@@ -356,7 +453,8 @@ public final class KitWorkflowDomainService {
         if (kit == null) {
             return null;
         }
-        KitPage page = kit.page(pageIndex);
+        KitDefinition pageOwner = pageOwner(kit);
+        KitPage page = pageOwner.page(pageIndex);
         if (page == null) {
             return null;
         }
@@ -370,10 +468,10 @@ public final class KitWorkflowDomainService {
                 ));
             }
         }
-        if (kit.offhand() != null) {
+        if (pageOwner.offhand() != null) {
             entries.add(new QuickAccessLoadoutEntry(
                     new LoadoutTarget.EquipmentSlotTarget(BuiltinInventoryIds.EQUIPMENT_GROUP_OFFHAND, 0),
-                    kit.offhand()
+                    pageOwner.offhand()
             ));
         }
         String loadoutId = kit.id() + "#p" + pageIndex;
@@ -399,7 +497,8 @@ public final class KitWorkflowDomainService {
         // Page slots with a null identity encode "this belt slot should be empty" —
         // pass them as clearTargets so any existing occupant gets staged out to main
         // rather than lingering on the belt under the new layout.
-        KitPage page = kit.page(pageIndex);
+        KitDefinition pageOwner = pageOwner(kit);
+        KitPage page = pageOwner.page(pageIndex);
         LinkedHashSet<LoadoutTarget> clearTargets = new LinkedHashSet<>();
         if (page != null) {
             for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
@@ -435,6 +534,69 @@ public final class KitWorkflowDomainService {
             throw new IllegalArgumentException("Unknown kit: " + kitId);
         }
         return kit;
+    }
+
+    private void validateParent(KitDefinition kit) {
+        if (kit == null || kit.parentId().isBlank()) {
+            return;
+        }
+        if (kit.parentId().equals(kit.id())) {
+            throw new IllegalArgumentException("Workflow tab cannot parent itself: " + kit.id());
+        }
+        KitDefinition parent = requireKit(kit.parentId());
+        if (parent.variant()) {
+            throw new IllegalArgumentException("Workflow tab variants cannot have variants: " + kit.parentId());
+        }
+    }
+
+    private void clearActiveLineageWantedCounts(KitActivation current) {
+        if (current == null || !current.isActive()) {
+            return;
+        }
+        KitDefinition active = kit(current.kitId());
+        if (active == null) {
+            return;
+        }
+        LinkedHashSet<String> scopeIds = new LinkedHashSet<>();
+        KitDefinition parent = kitMap().parentOf(active);
+        if (parent != null) {
+            scopeIds.add(parent.id());
+        }
+        scopeIds.add(active.id());
+        Map<String, Map<ItemIdentity, Integer>> wantedCounts =
+                repository.workflowProjection().kitWantedCounts();
+        for (String scopeId : scopeIds) {
+            Map<ItemIdentity, Integer> counts = wantedCounts.getOrDefault(scopeId, Map.of());
+            for (ItemIdentity identity : counts.keySet()) {
+                repository.appendWorkflowEvent(
+                        new WorkflowEvent.KitWantedCountSet(scopeId, identity, 0),
+                        DomainEventMetadata.origin("workflow.wanted_count.kit.clear_on_deactivate")
+                );
+            }
+        }
+    }
+
+    private KitDefinition pageOwner(KitDefinition kit) {
+        if (kit == null || !kit.variant() || hasExplicitBeltPage(kit)) {
+            return kit;
+        }
+        KitDefinition parent = kit(kit.parentId());
+        return parent == null ? kit : parent;
+    }
+
+    private static boolean hasExplicitBeltPage(KitDefinition kit) {
+        if (kit == null) {
+            return false;
+        }
+        if (kit.offhand() != null) {
+            return true;
+        }
+        for (KitPage page : kit.pages()) {
+            if (page != null && page.filledSlotCount() > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void notifyMutated() {

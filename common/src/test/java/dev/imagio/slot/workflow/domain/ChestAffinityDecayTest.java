@@ -96,4 +96,35 @@ class ChestAffinityDecayTest {
         ChestAffinityMap empty = ChestAffinityMap.empty();
         assertSame(empty, empty.decayed(123456L));
     }
+
+    @Test
+    void mapNormalizesMovableIdentityBonds() {
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        ItemIdentity damagedHammer = ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}");
+
+        ChestAffinityMap map = new ChestAffinityMap(Map.of(CHEST, Map.of(
+                damagedHammer, new ChestAffinity(damagedHammer, 3, 100L))));
+
+        assertEquals(3, map.score(CHEST, hammer));
+        assertEquals(3, map.score(CHEST, damagedHammer));
+        assertEquals(1, map.forChest(CHEST).size());
+        assertEquals(hammer, map.forChest(CHEST).keySet().iterator().next());
+    }
+
+    @Test
+    void mapMergesMovableIdentityBonds() {
+        ItemIdentity basket = ItemIdentity.of("sns:straw_basket");
+        ItemIdentity filledBasket = ItemIdentity.exact(
+                "sns:straw_basket",
+                "{Inventory:[{Slot:0b,id:\"minecraft:torch\",Count:8b}]}");
+
+        ChestAffinityMap map = new ChestAffinityMap(Map.of(CHEST, Map.of(
+                basket, new ChestAffinity(basket, 2, 100L),
+                filledBasket, new ChestAffinity(filledBasket, 3, 200L))));
+
+        assertEquals(5, map.score(CHEST, basket));
+        assertEquals(5, map.score(CHEST, filledBasket));
+        assertEquals(1, map.forChest(CHEST).size());
+        assertEquals(200L, map.affinity(CHEST, basket).lastTouchedTick());
+    }
 }

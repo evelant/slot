@@ -8,6 +8,7 @@ import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackTags;
 import dev.imagio.slot.inventory.goal.GoalPlanState;
 import dev.imagio.slot.inventory.goal.GoalRecipeDefaults;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
@@ -32,7 +33,9 @@ import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
+import dev.imagio.slot.workflow.domain.WorkflowTabTargets;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -740,10 +743,12 @@ public record SlotWorkspaceViewModel(
             List<WorldDisplayStorageSource> contextualSuggestionDisplaySources,
             Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries,
             Set<String> depositEligibleStorageIds
-    ) {
+        ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
-        Map<ItemIdentity, Integer> wantedCounts = activeWantedCounts(resolvedAuthority, resolvedWorkflow.playerWantedCounts());
+        WorkflowTabTargets.Resolution targetResolution =
+                WorkflowTabTargets.resolve(resolvedAuthority, resolvedWorkflow);
+        Map<ItemIdentity, Integer> wantedCounts = targetResolution.wantedCounts();
         RecentView recents = resolvedWorkflow.recents();
         VisualHomeMap visualHomeMap = resolvedWorkflow.visualHomeMap();
         ClaimedChestMap claimedChestMap = resolvedWorkflow.claimedChestMap();
@@ -809,20 +814,11 @@ public record SlotWorkspaceViewModel(
         // so the atlas card highlights it. Items the player has never seen
         // yet are added as synthesized ghost accumulators below so they
         // render where their visual home is.
-        Set<ItemIdentity> kitNeededIdentities = kitNeededIdentities(
-                resolvedAuthority, resolvedWorkflow.kitMap(), resolvedWorkflow.kitDesiredCounts());
+        Set<ItemIdentity> kitNeededIdentities = targetResolution.missingWorkflowIdentities();
         Map<ItemIdentity, Integer> playerDesiredCounts = resolvedWorkflow.playerDesiredCounts();
-        Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts = resolvedWorkflow.kitDesiredCounts();
-        KitActivation desiredScopeActivation = resolvedWorkflow.kitMap() == null
-                ? null : resolvedWorkflow.kitMap().activation();
-        String desiredScopeKitId = desiredScopeActivation != null && desiredScopeActivation.isActive()
-                ? desiredScopeActivation.kitId() : null;
-        Map<ItemIdentity, Integer> activeKitDesiredCounts = desiredScopeKitId == null
-                ? Map.of() : kitDesiredCounts.getOrDefault(desiredScopeKitId, Map.of());
         Map<ItemIdentity, Integer> activeDesiredCounts = activeDesiredCounts(
                 resolvedAuthority,
-                activeKitDesiredCounts,
-                playerDesiredCounts);
+                targetResolution.desiredCounts());
 
         // Synthesize ghost accumulators for identities present only in
         // proximate chests (homed-but-not-carried). Carried identities use
@@ -968,15 +964,9 @@ public record SlotWorkspaceViewModel(
             boolean ghostOnly = !accumulator.carried();
             int proximateCount = ghosts.totalsByIdentity().getOrDefault(accumulator.identity(), 0);
             boolean kitNeeded = kitNeededIdentities.contains(accumulator.identity()) && !accumulator.carried();
-            // Resolve desired count: kit-scoped wins when a kit is active
-            // and has a non-zero entry, else the player-global value. Mirror
-            // of DesiredCountWorkflowDomainService.resolved — kept inline
-            // here so the build pass doesn't need a runtime-service handle.
-            int kitDesired = activeKitDesiredCounts.getOrDefault(accumulator.identity(), 0);
-            int playerDesired = playerDesiredCounts.getOrDefault(accumulator.identity(), 0);
-            int desiredCount = kitDesired > 0 ? kitDesired : playerDesired;
-            boolean desiredCountFromKit = kitDesired > 0;
-            int wantedCount = wantedCounts.getOrDefault(accumulator.identity(), 0);
+            int desiredCount = targetResolution.desiredCount(accumulator.identity());
+            boolean desiredCountFromKit = targetResolution.desiredFromWorkflowTab(accumulator.identity());
+            int wantedCount = targetResolution.wantedCount(accumulator.identity());
 
             if (assignment == null) {
                 List<ChipSuggestion> chipSuggestions = List.of();
@@ -1161,6 +1151,28 @@ public record SlotWorkspaceViewModel(
                 .thenComparing(item -> item.name().toLowerCase(Locale.ROOT))
                 .thenComparing(item -> item.identity().itemId()));
 
+        java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver = identity -> reservedCarryCount(
+                identity,
+                targetResolution);
+        List<AtlasItem> workflowPutAwayItems = List.of();
+        if (resolvedWorkflow.kitMap() != null && !resolvedWorkflow.kitMap().activeLineage().isEmpty()) {
+            Set<IdentityRef> putAwayRouted = depositableIdentities(
+                    atlasItems,
+                    claimedChestMap,
+                    affinityMap,
+                    proximate,
+                    chestContentsResolver,
+                    reservedCountResolver,
+                    depositEligible);
+            workflowPutAwayItems = activeWorkflowPutAwayItems(
+                    atlasItems,
+                    triageItems,
+                    targetResolution,
+                    putAwayRouted);
+            atlasItems = filterForActiveWorkflowTab(atlasItems, targetResolution, putAwayRouted);
+            triageItems = filterForActiveWorkflowTab(triageItems, targetResolution, Set.of());
+        }
+
         List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(layoutIslands, atlasItems);
 
         ChestClusterMap clusterMap = ChestClusterMap.derive(claimedChestMap);
@@ -1185,14 +1197,8 @@ public record SlotWorkspaceViewModel(
                 trackedDisplayEntries,
                 kitNeededIdentities,
                 wantedCounts,
-                activeKitDesiredCounts,
-                playerDesiredCounts);
-        java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver = identity -> reservedCarryCount(
-                identity,
-                resolvedWorkflow.kitMap(),
-                activeKitDesiredCounts,
-                playerDesiredCounts,
-                wantedCounts);
+                targetResolution.desiredCounts(),
+                targetResolution.desiredFromWorkflowTab());
         Set<IdentityRef> depositableIdentities = depositableIdentities(
                 atlasItems,
                 claimedChestMap,
@@ -1209,12 +1215,13 @@ public record SlotWorkspaceViewModel(
                 contextualSuggestionGhosts,
                 recentIdentities,
                 kitNeededIdentities,
-                playerDesiredCounts,
-                activeKitDesiredCounts,
+                targetResolution.desiredCounts(),
+                targetResolution.desiredFromWorkflowTab(),
                 wantedCounts,
                 visualHomeMap);
         List<ContextualSuggestionLane> contextualSuggestionLanes = contextualSuggestionLanes(
                 contextualSuggestionCandidates,
+                workflowPutAwayItems,
                 resolvedWorkflow,
                 FacetIndexHolder.get(),
                 carriedFreeSlotCount,
@@ -1269,6 +1276,7 @@ public record SlotWorkspaceViewModel(
 
     private static List<ContextualSuggestionLane> contextualSuggestionLanes(
             List<AtlasItem> candidates,
+            List<AtlasItem> workflowPutAwayItems,
             WorkflowDomainSnapshot workflow,
             FacetIndex facetIndex,
             int carriedFreeSlotCount,
@@ -1280,14 +1288,48 @@ public record SlotWorkspaceViewModel(
         if (fetch.displayable()) {
             lanes.add(fetch);
         }
-        lanes.addAll(ContextualSuggestionScorer.lanes(
+        List<ContextualSuggestionLane> scored = ContextualSuggestionScorer.lanes(
                 candidates,
                 workflow,
                 facetIndex,
                 carriedFreeSlotCount,
                 carriedSlotCapacity,
-                currentTick));
+                currentTick);
+        ContextualSuggestionLane workflowPutAway = workflowPutAwayLane(workflowPutAwayItems);
+        if (workflowPutAway.displayable()) {
+            lanes.add(workflowPutAway);
+            for (ContextualSuggestionLane lane : scored) {
+                if (lane != null && !lane.putAway()) {
+                    lanes.add(lane);
+                }
+            }
+        } else {
+            lanes.addAll(scored);
+        }
         return lanes.isEmpty() ? List.of() : List.copyOf(lanes);
+    }
+
+    private static ContextualSuggestionLane workflowPutAwayLane(List<AtlasItem> items) {
+        if (items == null || items.isEmpty()) {
+            return new ContextualSuggestionLane(ContextualSuggestionLane.PUT_AWAY, "Put Away", List.of());
+        }
+        LinkedHashMap<IdentityRef, AtlasItem> unique = new LinkedHashMap<>();
+        for (AtlasItem item : items) {
+            if (item == null || item.identity() == null) {
+                continue;
+            }
+            unique.putIfAbsent(item.identity(), item);
+        }
+        ArrayList<AtlasItem> sorted = new ArrayList<>(unique.values());
+        sorted.sort(Comparator
+                .comparing((AtlasItem item) -> item.putAwayState() != PutAwayState.ROUTED)
+                .thenComparing(item -> item.name().toLowerCase(Locale.ROOT))
+                .thenComparing(item -> item.identity().itemId()));
+        return new ContextualSuggestionLane(
+                ContextualSuggestionLane.PUT_AWAY,
+                "Put Away",
+                sorted,
+                "");
     }
 
     private static ContextualSuggestionLane fetchLane(List<AtlasItem> candidates) {
@@ -1317,13 +1359,88 @@ public record SlotWorkspaceViewModel(
         return WorkspaceItemTargets.from(item).hasAnyGap(carried);
     }
 
+    private static ArrayList<AtlasItem> filterForActiveWorkflowTab(
+            List<AtlasItem> items,
+            WorkflowTabTargets.Resolution targets,
+            Set<IdentityRef> routedPutAwayIdentities
+    ) {
+        if (items == null || items.isEmpty() || targets == null) {
+            return new ArrayList<>();
+        }
+        Set<IdentityRef> putAway = routedPutAwayIdentities == null ? Set.of() : routedPutAwayIdentities;
+        ArrayList<AtlasItem> filtered = new ArrayList<>(items.size());
+        for (AtlasItem item : items) {
+            if (item == null || item.identity() == null) {
+                continue;
+            }
+            ItemIdentity identity = item.identity().toIdentity();
+            boolean workflowRelevant = targets.workflowRelevant(identity, ItemStackTags.itemTagIds(item.displayStack()));
+            boolean storageGhost = !item.carried() && (item.proximateCount() > 0 || !item.elsewhere().isEmpty());
+            if (identity != null && (workflowRelevant || putAway.contains(item.identity()) || storageGhost)) {
+                filtered.add((workflowRelevant || storageGhost) ? item.withPutAwayState(PutAwayState.NONE)
+                        : item.withPutAwayState(PutAwayState.ROUTED));
+            }
+        }
+        return filtered;
+    }
+
+    private static List<AtlasItem> activeWorkflowPutAwayItems(
+            List<AtlasItem> atlasItems,
+            List<AtlasItem> triageItems,
+            WorkflowTabTargets.Resolution targets,
+            Set<IdentityRef> routedPutAwayIdentities
+    ) {
+        if (targets == null) {
+            return List.of();
+        }
+        ArrayList<AtlasItem> items = new ArrayList<>();
+        collectActiveWorkflowPutAwayItems(items, atlasItems, targets, routedPutAwayIdentities);
+        collectActiveWorkflowPutAwayItems(items, triageItems, targets, routedPutAwayIdentities);
+        return items.isEmpty() ? List.of() : List.copyOf(items);
+    }
+
+    private static void collectActiveWorkflowPutAwayItems(
+            List<AtlasItem> output,
+            List<AtlasItem> items,
+            WorkflowTabTargets.Resolution targets,
+            Set<IdentityRef> routedPutAwayIdentities
+    ) {
+        if (output == null || items == null || items.isEmpty() || targets == null) {
+            return;
+        }
+        Set<IdentityRef> routed = routedPutAwayIdentities == null ? Set.of() : routedPutAwayIdentities;
+        for (AtlasItem item : items) {
+            if (item == null || !item.carried() || item.identity() == null) {
+                continue;
+            }
+            if (protectedPutAwaySource(item.largestCarriedSourceId())) {
+                continue;
+            }
+            ItemIdentity identity = item.identity().toIdentity();
+            if (identity == null || targets.workflowRelevant(identity, ItemStackTags.itemTagIds(item.displayStack()))) {
+                continue;
+            }
+            output.add(item.withPutAwayState(
+                    routed.contains(item.identity()) ? PutAwayState.ROUTED : PutAwayState.NO_ROUTE));
+        }
+    }
+
+    private static boolean protectedPutAwaySource(String sourceId) {
+        if (sourceId == null || sourceId.isBlank()) {
+            return false;
+        }
+        return BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId)
+                || BuiltinInventoryIds.PLAYER_OFFHAND.equals(sourceId)
+                || BuiltinInventoryIds.PLAYER_ARMOR.equals(sourceId);
+    }
+
     private static void addContextualSuggestionStorageGhosts(
             List<AtlasItem> candidates,
             ProximateGhostProjection suggestionGhosts,
             Set<ItemIdentity> recentIdentities,
             Set<ItemIdentity> kitNeededIdentities,
-            Map<ItemIdentity, Integer> playerDesiredCounts,
-            Map<ItemIdentity, Integer> activeKitDesiredCounts,
+            Map<ItemIdentity, Integer> desiredCounts,
+            Set<ItemIdentity> desiredFromWorkflowTab,
             Map<ItemIdentity, Integer> wantedCounts,
             VisualHomeMap visualHomeMap
     ) {
@@ -1365,10 +1482,12 @@ public record SlotWorkspaceViewModel(
                     ? base.playerPlaced()
                     : assignment != null
                             && assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED;
-            int kitDesired = activeKitDesiredCounts == null ? 0 : activeKitDesiredCounts.getOrDefault(identity, 0);
-            int playerDesired = playerDesiredCounts == null ? 0 : playerDesiredCounts.getOrDefault(identity, 0);
-            int desiredCount = base == null ? (kitDesired > 0 ? kitDesired : playerDesired) : base.desiredCount();
-            boolean desiredFromKit = base == null ? kitDesired > 0 : base.desiredCountFromKit();
+            int desiredCount = base == null
+                    ? desiredCounts == null ? 0 : desiredCounts.getOrDefault(identity, 0)
+                    : base.desiredCount();
+            boolean desiredFromKit = base == null
+                    ? desiredFromWorkflowTab != null && desiredFromWorkflowTab.contains(identity)
+                    : base.desiredCountFromKit();
             candidates.add(new AtlasItem(
                     IdentityRef.from(identity),
                     displayStack,
@@ -1425,29 +1544,18 @@ public record SlotWorkspaceViewModel(
 
     private static Map<ItemIdentity, Integer> activeDesiredCounts(
             InventoryAuthoritySnapshot authority,
-            Map<ItemIdentity, Integer> activeKitDesiredCounts,
-            Map<ItemIdentity, Integer> playerDesiredCounts
+            Map<ItemIdentity, Integer> desiredCounts
     ) {
-        boolean hasKit = activeKitDesiredCounts != null && !activeKitDesiredCounts.isEmpty();
-        boolean hasPlayer = playerDesiredCounts != null && !playerDesiredCounts.isEmpty();
-        if (!hasKit && !hasPlayer) {
+        if (desiredCounts == null || desiredCounts.isEmpty()) {
             return Map.of();
         }
-        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
-        if (hasKit) {
-            identities.addAll(activeKitDesiredCounts.keySet());
-        }
-        if (hasPlayer) {
-            identities.addAll(playerDesiredCounts.keySet());
-        }
         LinkedHashMap<ItemIdentity, Integer> active = new LinkedHashMap<>();
-        for (ItemIdentity identity : identities) {
+        for (Map.Entry<ItemIdentity, Integer> entry : desiredCounts.entrySet()) {
+            ItemIdentity identity = entry.getKey();
             if (identity == null) {
                 continue;
             }
-            int kitTarget = hasKit ? activeKitDesiredCounts.getOrDefault(identity, 0) : 0;
-            int playerTarget = hasPlayer ? playerDesiredCounts.getOrDefault(identity, 0) : 0;
-            int target = kitTarget > 0 ? kitTarget : playerTarget;
+            int target = entry.getValue() == null ? 0 : entry.getValue();
             if (target <= 0) {
                 continue;
             }
@@ -1468,51 +1576,9 @@ public record SlotWorkspaceViewModel(
      */
     public static int reservedCarryCount(
             ItemIdentity identity,
-            KitMap kitMap,
-            Map<ItemIdentity, Integer> activeKitDesiredCounts,
-            Map<ItemIdentity, Integer> playerDesiredCounts,
-            Map<ItemIdentity, Integer> playerWantedCounts
+            WorkflowTabTargets.Resolution targets
     ) {
-        if (identity == null) {
-            return 0;
-        }
-        int kitDesired = activeKitDesiredCounts == null ? 0
-                : activeKitDesiredCounts.getOrDefault(identity, 0);
-        int playerDesired = playerDesiredCounts == null ? 0
-                : playerDesiredCounts.getOrDefault(identity, 0);
-        int playerWanted = playerWantedCounts == null ? 0
-                : playerWantedCounts.getOrDefault(identity, 0);
-        // Mirror DesiredCountWorkflowDomainService.resolved: kit scope wins
-        // when active and non-zero, else player scope.
-        int desired = kitDesired > 0 ? kitDesired : playerDesired;
-        int kitSlotCount = activeKitPageSlotCount(kitMap, identity);
-        return Math.max(Math.max(desired, playerWanted), kitSlotCount);
-    }
-
-    private static int activeKitPageSlotCount(KitMap kitMap, ItemIdentity identity) {
-        if (kitMap == null || identity == null) {
-            return 0;
-        }
-        KitActivation activation = kitMap.activation();
-        if (activation == null || !activation.isActive()) {
-            return 0;
-        }
-        KitDefinition kit = kitMap.kit(activation.kitId());
-        if (kit == null) {
-            return 0;
-        }
-        int pageIndex = Math.max(0, Math.min(activation.pageIndex(), kit.pageCount() - 1));
-        KitPage page = kit.page(pageIndex);
-        if (page == null) {
-            return 0;
-        }
-        int count = 0;
-        for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
-            if (identity.equals(page.slot(slotIndex))) {
-                count++;
-            }
-        }
-        return count;
+        return targets == null ? 0 : targets.reservedCarryCount(identity);
     }
 
     /**
@@ -1671,7 +1737,7 @@ public record SlotWorkspaceViewModel(
                 slotIndex++;
                 continue;
             }
-            ItemIdentity identity = ItemIdentityMatcher.create(stack);
+            ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
             displayByIdentity.putIfAbsent(identity, stack.copy());
             totals.merge(identity, stack.getCount(), Integer::sum);
             firstSlotByIdentity.putIfAbsent(identity, slotIndex);
@@ -1800,10 +1866,11 @@ public record SlotWorkspaceViewModel(
                 continue;
             }
             boolean active = activation.isActive() && activation.kitId().equals(kit.id());
-            int renderedPage = active ? Math.max(0, Math.min(activation.pageIndex(), kit.pageCount() - 1)) : 0;
-            ArrayList<KitPageView> pages = new ArrayList<>(kit.pageCount());
-            for (int pageIndex = 0; pageIndex < kit.pageCount(); pageIndex++) {
-                KitPage page = kit.page(pageIndex);
+            KitDefinition pageOwner = pageOwner(kitMap, kit);
+            int renderedPage = active ? Math.max(0, Math.min(activation.pageIndex(), pageOwner.pageCount() - 1)) : 0;
+            ArrayList<KitPageView> pages = new ArrayList<>(pageOwner.pageCount());
+            for (int pageIndex = 0; pageIndex < pageOwner.pageCount(); pageIndex++) {
+                KitPage page = pageOwner.page(pageIndex);
                 if (page == null) {
                     continue;
                 }
@@ -1871,12 +1938,17 @@ public record SlotWorkspaceViewModel(
             result.add(new KitCard(
                     kit.id(),
                     kit.name(),
-                    kit.pageCount(),
+                    kit.parentId(),
+                    pageOwner.pageCount(),
                     renderedPage,
                     active,
+                    kit.variant(),
+                    kit.members().size(),
+                    kit.members().stream().map(IdentityRef::from).toList(),
+                    kit.acceptedInputs().stream().toList(),
                     KitPage.HOTBAR_SLOT_COUNT,
                     renderedReady,
-                    kit.carriedSlotCount(),
+                    pageOwner.carriedSlotCount(),
                     KitDefinition.MAX_CARRIED_CAPACITY,
                     bringItems.size(),
                     bringReady,
@@ -1888,49 +1960,27 @@ public record SlotWorkspaceViewModel(
         return List.copyOf(result);
     }
 
-    /**
-     * Identities the active kit needs that aren't carried right now —
-     * page slots on the active page plus every identity with a non-zero
-     * kit-scoped desired count. Empty when no kit is active.
-     */
-    private static Set<ItemIdentity> kitNeededIdentities(
-            InventoryAuthoritySnapshot authority,
-            KitMap kitMap,
-            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts
-    ) {
-        if (kitMap == null) {
-            return Set.of();
+    private static KitDefinition pageOwner(KitMap kitMap, KitDefinition kit) {
+        if (kit == null || !kit.variant() || hasExplicitBeltPage(kit)) {
+            return kit;
         }
-        KitActivation activation = kitMap.activation();
-        if (!activation.isActive()) {
-            return Set.of();
-        }
-        KitDefinition kit = kitMap.kit(activation.kitId());
+        KitDefinition parent = kitMap == null ? null : kitMap.kit(kit.parentId());
+        return parent == null ? kit : parent;
+    }
+
+    private static boolean hasExplicitBeltPage(KitDefinition kit) {
         if (kit == null) {
-            return Set.of();
+            return false;
         }
-        Set<ItemIdentity> carried = carriedIdentities(authority);
-        LinkedHashSet<ItemIdentity> needed = new LinkedHashSet<>();
-        int pageIndex = Math.max(0, Math.min(activation.pageIndex(), kit.pageCount() - 1));
-        KitPage page = kit.page(pageIndex);
-        if (page != null) {
-            for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
-                ItemIdentity identity = page.slot(slotIndex);
-                if (identity != null && !carriedHasMovable(carried, identity)) {
-                    needed.add(identity);
-                }
+        if (kit.offhand() != null) {
+            return true;
+        }
+        for (KitPage page : kit.pages()) {
+            if (page != null && page.filledSlotCount() > 0) {
+                return true;
             }
         }
-        if (kitDesiredCounts != null) {
-            Map<ItemIdentity, Integer> kitWants = kitDesiredCounts.getOrDefault(activation.kitId(), Map.of());
-            for (Map.Entry<ItemIdentity, Integer> entry : kitWants.entrySet()) {
-                if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0
-                        && !carriedHasMovable(carried, entry.getKey())) {
-                    needed.add(entry.getKey());
-                }
-            }
-        }
-        return Set.copyOf(needed);
+        return false;
     }
 
     /**
@@ -1952,8 +2002,8 @@ public record SlotWorkspaceViewModel(
             Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries,
             Set<ItemIdentity> kitNeededIdentities,
             Map<ItemIdentity, Integer> wantedCounts,
-            Map<ItemIdentity, Integer> activeKitDesiredCounts,
-            Map<ItemIdentity, Integer> playerDesiredCounts
+            Map<ItemIdentity, Integer> desiredCounts,
+            Set<ItemIdentity> desiredFromWorkflowTab
     ) {
         boolean hasClaimedChests = claimedChestMap != null && !claimedChestMap.chests().isEmpty();
         boolean hasDisplayEntries = trackedDisplayEntries != null && !trackedDisplayEntries.isEmpty();
@@ -1969,8 +2019,8 @@ public record SlotWorkspaceViewModel(
                 missingSources.computeIfAbsent(identity, ignored -> new WayfindingNeedSources()).kit = true;
             }
         }
-        if (activeKitDesiredCounts != null) {
-            for (Map.Entry<ItemIdentity, Integer> entry : activeKitDesiredCounts.entrySet()) {
+        if (desiredCounts != null) {
+            for (Map.Entry<ItemIdentity, Integer> entry : desiredCounts.entrySet()) {
                 ItemIdentity identity = entry.getKey();
                 Integer target = entry.getValue();
                 if (identity == null || target == null || target <= 0) {
@@ -1979,28 +2029,10 @@ public record SlotWorkspaceViewModel(
                 if (carriedMovableCount(authority, identity) < target) {
                     WayfindingNeedSources sources =
                             missingSources.computeIfAbsent(identity, ignored -> new WayfindingNeedSources());
-                    sources.kit = true;
                     sources.desired = true;
-                }
-            }
-        }
-        if (playerDesiredCounts != null) {
-            for (Map.Entry<ItemIdentity, Integer> entry : playerDesiredCounts.entrySet()) {
-                ItemIdentity identity = entry.getKey();
-                Integer target = entry.getValue();
-                if (identity == null || target == null || target <= 0) {
-                    continue;
-                }
-                // Kit-scoped desired count overrides player-global at the
-                // same identity (mirrors the AtlasItem desiredCount kit-wins
-                // resolution); skip the player check when the active kit
-                // already has a non-zero target for this identity.
-                if (activeKitDesiredCounts != null
-                        && activeKitDesiredCounts.getOrDefault(identity, 0) > 0) {
-                    continue;
-                }
-                if (carriedMovableCount(authority, identity) < target) {
-                    missingSources.computeIfAbsent(identity, ignored -> new WayfindingNeedSources()).desired = true;
+                    if (desiredFromWorkflowTab != null && desiredFromWorkflowTab.contains(identity)) {
+                        sources.kit = true;
+                    }
                 }
             }
         }
@@ -2208,7 +2240,7 @@ public record SlotWorkspaceViewModel(
                 if (entry == null || !entry.present()) {
                     continue;
                 }
-                identities.add(ItemIdentityMatcher.create(entry.stack()));
+                identities.add(ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(entry.stack())));
             }
         }
         return identities;
@@ -2560,7 +2592,7 @@ public record SlotWorkspaceViewModel(
             if (stack == null || stack.isEmpty()) {
                 continue;
             }
-            ItemIdentity identity = ItemIdentityMatcher.create(stack);
+            ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
             ChestContentSummary existing = summaryByIdentity.get(identity);
             if (existing == null) {
                 summaryByIdentity.put(identity, new ChestContentSummary(
@@ -2607,6 +2639,16 @@ public record SlotWorkspaceViewModel(
                 return item;
             }
         }
+        for (ContextualSuggestionLane lane : contextualSuggestionLanes) {
+            if (lane == null || lane.items().isEmpty()) {
+                continue;
+            }
+            for (AtlasItem item : lane.items()) {
+                if (item.identity().equals(identityRef)) {
+                    return item;
+                }
+            }
+        }
         return null;
     }
 
@@ -2621,7 +2663,7 @@ public record SlotWorkspaceViewModel(
                 if (entry == null || !entry.present()) {
                     continue;
                 }
-                ItemIdentity identity = ItemIdentityMatcher.create(entry.stack());
+                ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(entry.stack()));
                 byIdentity.computeIfAbsent(identity, ignored -> new AtlasItemAccumulator(identity, entry)).add(entry);
             }
         }
@@ -2816,6 +2858,35 @@ public record SlotWorkspaceViewModel(
         }
     }
 
+    public enum PutAwayState {
+        NONE,
+        ROUTED,
+        NO_ROUTE;
+
+        public static PutAwayState parse(String value) {
+            if (value == null || value.isBlank()) {
+                return NONE;
+            }
+            try {
+                return PutAwayState.valueOf(value);
+            } catch (IllegalArgumentException ignored) {
+                return NONE;
+            }
+        }
+
+        public boolean active() {
+            return this != NONE;
+        }
+
+        public boolean routed() {
+            return this == ROUTED;
+        }
+
+        public boolean noRoute() {
+            return this == NO_ROUTE;
+        }
+    }
+
     /**
      * Per-identity atlas projection.
      *
@@ -2848,7 +2919,8 @@ public record SlotWorkspaceViewModel(
             int wantedCount,
             String largestCarriedSourceId,
             int largestCarriedSlotIndex,
-            int largestCarriedSlotCount
+            int largestCarriedSlotCount,
+            PutAwayState putAwayState
     ) {
         public AtlasItem {
             identity = identity == null ? new IdentityRef("", ItemComparisonMode.ITEM_ID.name(), "") : identity;
@@ -2878,6 +2950,7 @@ public record SlotWorkspaceViewModel(
             largestCarriedSourceId = largestCarriedSourceId == null ? "" : largestCarriedSourceId;
             largestCarriedSlotIndex = Math.max(-1, largestCarriedSlotIndex);
             largestCarriedSlotCount = Math.max(0, largestCarriedSlotCount);
+            putAwayState = putAwayState == null ? PutAwayState.NONE : putAwayState;
         }
 
         public boolean wanted() {
@@ -2891,6 +2964,73 @@ public record SlotWorkspaceViewModel(
          */
         public boolean hasLargestCarriedSlot() {
             return !largestCarriedSourceId.isBlank() && largestCarriedSlotIndex >= 0 && largestCarriedSlotCount > 0;
+        }
+
+        public AtlasItem withPutAwayState(PutAwayState state) {
+            PutAwayState next = state == null ? PutAwayState.NONE : state;
+            if (putAwayState == next) {
+                return this;
+            }
+            return new AtlasItem(
+                    identity,
+                    displayStack,
+                    name,
+                    totalCount,
+                    firstSlotIndex,
+                    islandId,
+                    recent,
+                    playerPlaced,
+                    carried,
+                    ghost,
+                    proximateCount,
+                    chipSuggestions,
+                    presence,
+                    elsewhere,
+                    isCarriedContainer,
+                    containerFreeSlotCount,
+                    containerSlotCapacity,
+                    kitNeeded,
+                    desiredCount,
+                    desiredCountFromKit,
+                    wantedCount,
+                    largestCarriedSourceId,
+                    largestCarriedSlotIndex,
+                    largestCarriedSlotCount,
+                    next);
+        }
+
+        /** Backward-compat constructor: defaults put-away guidance state. */
+        public AtlasItem(
+                IdentityRef identity,
+                ItemStack displayStack,
+                String name,
+                int totalCount,
+                int firstSlotIndex,
+                String islandId,
+                boolean recent,
+                boolean playerPlaced,
+                boolean carried,
+                boolean ghost,
+                int proximateCount,
+                List<ChipSuggestion> chipSuggestions,
+                List<ChestPresenceEntry> presence,
+                List<ChestPresenceEntry> elsewhere,
+                boolean isCarriedContainer,
+                int containerFreeSlotCount,
+                int containerSlotCapacity,
+                boolean kitNeeded,
+                int desiredCount,
+                boolean desiredCountFromKit,
+                int wantedCount,
+                String largestCarriedSourceId,
+                int largestCarriedSlotIndex,
+                int largestCarriedSlotCount
+        ) {
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
+                    recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions, presence, elsewhere,
+                    isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, desiredCount,
+                    desiredCountFromKit, wantedCount, largestCarriedSourceId, largestCarriedSlotIndex,
+                    largestCarriedSlotCount, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults elsewhere/kitNeeded/desiredCount/largestCarriedSlot. */
@@ -2915,7 +3055,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, List.of(), isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, false, 0,
-                    false, 0, "", -1, 0);
+                    false, 0, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults kitNeeded/desiredCount/largestCarriedSlot. */
@@ -2941,7 +3081,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, false, 0,
-                    false, 0, "", -1, 0);
+                    false, 0, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults desiredCount/largestCarriedSlot. */
@@ -2968,7 +3108,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, 0,
-                    false, 0, "", -1, 0);
+                    false, 0, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults largestCarriedSlot only. */
@@ -2996,7 +3136,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
-                    kitNeeded, desiredCount, false, 0, "", -1, 0);
+                    kitNeeded, desiredCount, false, 0, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults wantedCount only. */
@@ -3029,7 +3169,7 @@ public record SlotWorkspaceViewModel(
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
                     kitNeeded, desiredCount, desiredCountFromKit, 0,
-                    largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount);
+                    largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: maps the previous boolean wanted flag to a one-item target. */
@@ -3063,7 +3203,7 @@ public record SlotWorkspaceViewModel(
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
                     kitNeeded, desiredCount, desiredCountFromKit, wanted ? 1 : 0,
-                    largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount);
+                    largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount, PutAwayState.NONE);
         }
 
         /**
@@ -3351,9 +3491,14 @@ public record SlotWorkspaceViewModel(
     public record KitCard(
             String kitId,
             String name,
+            String parentId,
             int pageCount,
             int activePageIndex,
             boolean active,
+            boolean variant,
+            int memberCount,
+            List<IdentityRef> members,
+            List<WorkflowAcceptedInputRule> acceptedInputs,
             int slotCount,
             int readyCount,
             int carriedSlotCount,
@@ -3367,8 +3512,13 @@ public record SlotWorkspaceViewModel(
         public KitCard {
             kitId = kitId == null ? "" : kitId;
             name = name == null || name.isBlank() ? kitId : name;
+            parentId = parentId == null ? "" : parentId.trim();
             pageCount = Math.max(1, pageCount);
             activePageIndex = Math.max(0, Math.min(activePageIndex, pageCount - 1));
+            variant = variant || !parentId.isBlank();
+            members = members == null ? List.of() : List.copyOf(members);
+            memberCount = Math.max(Math.max(0, memberCount), members.size());
+            acceptedInputs = acceptedInputs == null ? List.of() : List.copyOf(acceptedInputs);
             slotCount = Math.max(0, slotCount);
             readyCount = Math.max(0, Math.min(readyCount, slotCount));
             carriedSlotCount = Math.max(0, carriedSlotCount);
@@ -3378,6 +3528,45 @@ public record SlotWorkspaceViewModel(
             slots = slots == null ? List.of() : List.copyOf(slots);
             pages = pages == null ? List.of() : List.copyOf(pages);
             bring = bring == null ? List.of() : List.copyOf(bring);
+        }
+
+        public KitCard(
+                String kitId,
+                String name,
+                int pageCount,
+                int activePageIndex,
+                boolean active,
+                int slotCount,
+                int readyCount,
+                int carriedSlotCount,
+                int carriedSlotCapacity,
+                int bringSlotCount,
+                int bringReadyCount,
+                List<KitSlotState> slots,
+                List<KitPageView> pages,
+                List<KitBringItem> bring
+        ) {
+            this(
+                    kitId,
+                    name,
+                    "",
+                    pageCount,
+                    activePageIndex,
+                    active,
+                    false,
+                    0,
+                    List.of(),
+                    List.of(),
+                    slotCount,
+                    readyCount,
+                    carriedSlotCount,
+                    carriedSlotCapacity,
+                    bringSlotCount,
+                    bringReadyCount,
+                    slots,
+                    pages,
+                    bring
+            );
         }
 
         public KitPageView activePage() {

@@ -109,10 +109,11 @@ public final class WallCardUiBuilder {
                         .width(16)
                         .height(16)));
         addCountBadge(body, item);
-        addProximatePip(body, item, context.hasProximateDepositRoute(item));
+        addProximatePip(body, item, context.hasProximateDepositRoute(item) || item.putAwayState().routed());
         addSearchStoredPip(body, item, activeSearchMatch, context.storageGhostRevealMode());
         addChoiceIndicator(body, item);
         addDesiredMarker(body, item);
+        addPutAwayBorder(body, item);
         addWayfindingStrip(body);
     }
 
@@ -320,6 +321,49 @@ public final class WallCardUiBuilder {
                         .bottom(0)
                         .width(5)
                         .height(5)));
+    }
+
+    private static void addPutAwayBorder(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || !item.putAwayState().active()) {
+            return;
+        }
+        int color = item.putAwayState().routed() ? 0xE04ADE80 : 0xE0F59E0B;
+        body.addChild(SlotUiElement.panel(color)
+                .allowHitTest(false)
+                .zIndex(318)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(0)
+                        .top(0)
+                        .width(CARD_CELL_PX)
+                        .height(1)));
+        body.addChild(SlotUiElement.panel(color)
+                .allowHitTest(false)
+                .zIndex(318)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(0)
+                        .bottom(0)
+                        .width(CARD_CELL_PX)
+                        .height(1)));
+        body.addChild(SlotUiElement.panel(color)
+                .allowHitTest(false)
+                .zIndex(318)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(0)
+                        .top(0)
+                        .width(1)
+                        .height(CARD_CELL_PX)));
+        body.addChild(SlotUiElement.panel(color)
+                .allowHitTest(false)
+                .zIndex(318)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .right(0)
+                        .top(0)
+                        .width(1)
+                        .height(CARD_CELL_PX)));
     }
 
     private void addChoiceIndicator(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {

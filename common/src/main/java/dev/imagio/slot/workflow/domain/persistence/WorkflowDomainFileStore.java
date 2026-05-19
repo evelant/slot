@@ -65,6 +65,7 @@ import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
 import dev.imagio.slot.workflow.domain.VisualHomeOrigin;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistencePort;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import dev.imagio.slot.workflow.domain.WorkflowEvent;
@@ -87,7 +88,7 @@ import java.util.UUID;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 9;
+    private static final int SCHEMA_VERSION = 11;
 
     private final Path statePath;
 
@@ -490,6 +491,12 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         resolved.playerWantedCounts().forEach((identity, count) ->
                 playerWantedCounts.add(new PlayerWantedCountData(identity(identity), count))
         );
+        ArrayList<KitWantedCountData> kitWantedCounts = new ArrayList<>();
+        resolved.kitWantedCounts().forEach((kitId, counts) ->
+                counts.forEach((identity, count) ->
+                        kitWantedCounts.add(new KitWantedCountData(kitId, identity(identity), count))
+                )
+        );
         ArrayList<GoalRecipeDefaultData> goalRecipeDefaults = new ArrayList<>();
         resolved.goalRecipeDefaults().forEach((outputItemId, recipeId) ->
                 goalRecipeDefaults.add(new GoalRecipeDefaultData(outputItemId, recipeId))
@@ -529,6 +536,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 playerDesiredCounts,
                 kitDesiredCounts,
                 playerWantedCounts,
+                kitWantedCounts,
                 goalPlans,
                 goalRecipeDefaults
         );
@@ -766,6 +774,21 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 }
             }
         }
+        LinkedHashMap<String, Map<ItemIdentity, Integer>> kitWantedCounts = new LinkedHashMap<>();
+        if (data.kitWantedCounts != null) {
+            for (KitWantedCountData counted : data.kitWantedCounts) {
+                if (counted == null || blank(counted.kitId)) {
+                    continue;
+                }
+                ItemIdentity identity = decodeIdentity(counted.identity);
+                if (identity != null && counted.count > 0) {
+                    kitWantedCounts.computeIfAbsent(counted.kitId, ignored -> new LinkedHashMap<>())
+                            .put(identity, counted.count);
+                }
+            }
+        }
+        LinkedHashMap<String, Map<ItemIdentity, Integer>> kitWantedCountsFrozen = new LinkedHashMap<>();
+        kitWantedCounts.forEach((kitId, counts) -> kitWantedCountsFrozen.put(kitId, Map.copyOf(counts)));
 
         LinkedHashMap<String, String> goalRecipeDefaults = new LinkedHashMap<>();
         if (data.goalRecipeDefaults != null) {
@@ -802,6 +825,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 playerDesiredCounts,
                 kitDesiredCountsFrozen,
                 playerWantedCounts,
+                kitWantedCountsFrozen,
                 goalPlans,
                 goalRecipeDefaults
         );
@@ -816,10 +840,16 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             pages.add(kitPage(page));
         }
         IdentityData offhand = kit.offhand() == null ? null : identity(kit.offhand());
+        List<IdentityData> members = kit.members().stream()
+                .map(WorkflowDomainFileStore::identity)
+                .toList();
+        List<AcceptedInputData> acceptedInputs = kit.acceptedInputs().stream()
+                .map(WorkflowDomainFileStore::acceptedInput)
+                .toList();
         // bring list retired (folded into kit-scoped desired counts);
         // serialize as empty so older builds parsing this checkpoint fall
         // back to "no bring" cleanly.
-        return new KitDefinitionData(kit.id(), kit.name(), pages, List.of(), offhand);
+        return new KitDefinitionData(kit.id(), kit.name(), pages, List.of(), offhand, kit.parentId(), members, acceptedInputs);
     }
 
     private static KitPageData kitPage(KitPage page) {
@@ -848,11 +878,48 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             pages.add(KitPage.empty());
         }
         ItemIdentity offhand = decodeIdentity(data.offhand);
+        LinkedHashSet<ItemIdentity> members = new LinkedHashSet<>();
+        if (data.members != null) {
+            for (IdentityData member : data.members) {
+                ItemIdentity identity = decodeIdentity(member);
+                if (identity != null) {
+                    members.add(identity);
+                }
+            }
+        }
+        LinkedHashSet<WorkflowAcceptedInputRule> acceptedInputs = new LinkedHashSet<>();
+        if (data.acceptedInputs != null) {
+            for (AcceptedInputData acceptedInput : data.acceptedInputs) {
+                WorkflowAcceptedInputRule rule = decodeAcceptedInput(acceptedInput);
+                if (rule != null) {
+                    acceptedInputs.add(rule);
+                }
+            }
+        }
         // Legacy data.bring is silently dropped — the bring concept moved
         // to kit-scoped desired counts (no migration / no compat per
         // project memory). Per-prototype users who had bring entries will
         // need to re-enter them as desired counts.
-        return new KitDefinition(data.id, data.name, pages, offhand);
+        return new KitDefinition(data.id, data.name, pages, offhand, data.parentId, members, acceptedInputs);
+    }
+
+    private static AcceptedInputData acceptedInput(WorkflowAcceptedInputRule rule) {
+        if (rule == null) {
+            return null;
+        }
+        IdentityData identity = rule.identity() == null ? null : identity(rule.identity());
+        return new AcceptedInputData(rule.kind().name(), identity, rule.tagId());
+    }
+
+    private static WorkflowAcceptedInputRule decodeAcceptedInput(AcceptedInputData data) {
+        if (data == null) {
+            return null;
+        }
+        WorkflowAcceptedInputRule.Kind kind = WorkflowAcceptedInputRule.parseKind(data.kind);
+        if (kind == WorkflowAcceptedInputRule.Kind.ITEM_TAG) {
+            return WorkflowAcceptedInputRule.itemTag(data.tagId);
+        }
+        return WorkflowAcceptedInputRule.exact(decodeIdentity(data.identity));
     }
 
     private static KitPage decodeKitPage(KitPageData data) {
@@ -1146,6 +1213,12 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.identity = identity(event.identity());
                 data.count = event.count();
             }
+        else if (workflowEvent instanceof WorkflowEvent.KitWantedCountSet event) {
+                data.kind = "KitWantedCountSet";
+                data.kitId = event.kitId();
+                data.identity = identity(event.identity());
+                data.count = event.count();
+            }
         else if (workflowEvent instanceof WorkflowEvent.GoalRecipeDefaultSet event) {
                 data.kind = "GoalRecipeDefaultSet";
                 data.outputItemId = event.outputItemId();
@@ -1271,6 +1344,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                     data.kitId, decodeIdentity(data.identity), Math.max(0, data.desiredCount));
             case "PlayerWantedCountSet" -> new WorkflowEvent.PlayerWantedCountSet(
                     decodeIdentity(data.identity), Math.max(0, data.count));
+            case "KitWantedCountSet" -> blank(data.kitId) ? null : new WorkflowEvent.KitWantedCountSet(
+                    data.kitId, decodeIdentity(data.identity), Math.max(0, data.count));
             case "GoalRecipeDefaultSet" -> new WorkflowEvent.GoalRecipeDefaultSet(
                     nonNull(data.outputItemId), nonNull(data.recipeId));
             case "GoalPlanSaved" -> {
@@ -2372,6 +2447,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<PlayerDesiredCountData> playerDesiredCounts,
             List<KitDesiredCountData> kitDesiredCounts,
             List<PlayerWantedCountData> playerWantedCounts,
+            List<KitWantedCountData> kitWantedCounts,
             List<GoalPlanData> goalPlans,
             List<GoalRecipeDefaultData> goalRecipeDefaults
     ) {
@@ -2384,6 +2460,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
     }
 
     private record PlayerWantedCountData(IdentityData identity, int count) {
+    }
+
+    private record KitWantedCountData(String kitId, IdentityData identity, int count) {
     }
 
     private record GoalRecipeDefaultData(String outputItemId, String recipeId) {
@@ -2454,7 +2533,17 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             String name,
             List<KitPageData> pages,
             List<IdentityData> bring,
-            IdentityData offhand
+            IdentityData offhand,
+            String parentId,
+            List<IdentityData> members,
+            List<AcceptedInputData> acceptedInputs
+    ) {
+    }
+
+    private record AcceptedInputData(
+            String kind,
+            IdentityData identity,
+            String tagId
     ) {
     }
 

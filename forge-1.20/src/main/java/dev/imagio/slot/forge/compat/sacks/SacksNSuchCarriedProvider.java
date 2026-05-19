@@ -81,7 +81,8 @@ public final class SacksNSuchCarriedProvider implements CarriedProvider {
                     occupied++;
                 }
             }
-            ItemIdentity identity = ItemIdentityMatcher.create(snapshot.carrierStack());
+            ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(
+                    ItemIdentityMatcher.create(snapshot.carrierStack()));
             int[] running = byIdentity.computeIfAbsent(identity, ignored -> new int[2]);
             running[0] += Math.max(0, snapshot.slotCount() - occupied);
             running[1] += snapshot.slotCount();

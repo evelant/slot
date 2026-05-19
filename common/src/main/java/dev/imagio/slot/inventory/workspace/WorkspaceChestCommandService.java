@@ -5,6 +5,7 @@ import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackTags;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
@@ -18,6 +19,7 @@ import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import dev.imagio.slot.workflow.domain.WorkflowTabTargets;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -73,21 +75,25 @@ public final class WorkspaceChestCommandService {
 
         long tick = player.serverLevel().getGameTime();
         ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
+        ToIntFunction<ItemIdentity> reservedCounts = reservedCountResolver(runtime);
+        DepositPlanner.StackProtection acceptedInputProtection = acceptedInputProtection(runtime);
         DepositPlan plan = DepositPlanner.plan(
                 resolvedAuthority,
                 affinityMap,
                 claimedChestMap,
                 proximate,
-                reservedCountResolver(runtime),
+                reservedCounts,
                 storageIndex.liveChestContentPresence(),
-                storageIndex.liveStorageAffinityEligibility()
+                storageIndex.liveStorageAffinityEligibility(),
+                acceptedInputProtection
         );
         plan = withDisplayDepositAssignments(
                 player,
                 resolvedAuthority,
                 plan,
                 displaySources,
-                reservedCountResolver(runtime));
+                reservedCounts,
+                acceptedInputProtection);
         SlotCommon.LOGGER.info(
                 "[SLOT] deposit plan: assignments={} (one per stack with eligible learned affinity or matching contents)",
                 plan.assignments().size());
@@ -668,7 +674,8 @@ public final class WorkspaceChestCommandService {
             InventoryAuthoritySnapshot authority,
             DepositPlan basePlan,
             List<WorldDisplayStorageSource> displaySources,
-            ToIntFunction<ItemIdentity> reservedCountResolver
+            ToIntFunction<ItemIdentity> reservedCountResolver,
+            DepositPlanner.StackProtection stackProtection
     ) {
         DepositPlan resolvedBase = basePlan == null ? DepositPlan.empty() : basePlan;
         if (player == null || player.getServer() == null || authority == null
@@ -682,6 +689,7 @@ public final class WorkspaceChestCommandService {
                 ? List.copyOf(authority.sourcesById().keySet())
                 : declaredCarried.stream().map(InventorySourceDescriptor::id).toList();
         LinkedHashMap<ItemIdentity, Integer> budgetByIdentity = new LinkedHashMap<>();
+        LinkedHashMap<ItemIdentity, Boolean> fullyProtected = new LinkedHashMap<>();
         LinkedHashMap<String, Integer> assignedBySlot = new LinkedHashMap<>();
         for (String sourceId : sourceIds) {
             for (InventoryEntrySnapshot entry : authority.entries(sourceId)) {
@@ -689,13 +697,20 @@ public final class WorkspaceChestCommandService {
                     continue;
                 }
                 ItemIdentity identity = ItemIdentityMatcher.create(entry.stack());
-                budgetByIdentity.merge(identity, entry.count(), Integer::sum);
+                ItemIdentity budgetIdentity = displayDepositBudgetIdentity(entry.stack());
+                budgetByIdentity.merge(budgetIdentity, entry.count(), Integer::sum);
+                if (stackProtection != null && stackProtection.protects(entry.stack(), identity)) {
+                    fullyProtected.put(budgetIdentity, true);
+                }
             }
         }
         for (Map.Entry<ItemIdentity, Integer> entry : new ArrayList<>(budgetByIdentity.entrySet())) {
             int reserved = reservedCountResolver == null
                     ? 0
                     : Math.max(0, reservedCountResolver.applyAsInt(entry.getKey()));
+            if (fullyProtected.getOrDefault(entry.getKey(), false)) {
+                reserved = Math.max(reserved, entry.getValue());
+            }
             budgetByIdentity.put(entry.getKey(), Math.max(0, entry.getValue() - reserved));
         }
         for (DepositPlan.Assignment assignment : resolvedBase.assignments()) {
@@ -703,7 +718,7 @@ public final class WorkspaceChestCommandService {
             if (entry == null || !entry.present()) {
                 continue;
             }
-            ItemIdentity identity = ItemIdentityMatcher.create(entry.stack());
+            ItemIdentity identity = displayDepositBudgetIdentity(entry.stack());
             int allocated = Math.min(entry.count(), Math.max(0, assignment.count()));
             if (allocated <= 0) {
                 continue;
@@ -718,7 +733,8 @@ public final class WorkspaceChestCommandService {
                     continue;
                 }
                 ItemIdentity identity = ItemIdentityMatcher.create(entry.stack());
-                int remainingBudget = budgetByIdentity.getOrDefault(identity, 0);
+                ItemIdentity budgetIdentity = displayDepositBudgetIdentity(entry.stack());
+                int remainingBudget = budgetByIdentity.getOrDefault(budgetIdentity, 0);
                 if (remainingBudget <= 0) {
                     continue;
                 }
@@ -738,12 +754,16 @@ public final class WorkspaceChestCommandService {
                         identity.itemId(),
                         allocated,
                         candidates));
-                budgetByIdentity.put(identity, remainingBudget - allocated);
+                budgetByIdentity.put(budgetIdentity, remainingBudget - allocated);
             }
         }
         return assignments.size() == resolvedBase.assignments().size()
                 ? resolvedBase
                 : new DepositPlan(assignments);
+    }
+
+    private static ItemIdentity displayDepositBudgetIdentity(ItemStack stack) {
+        return ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
     }
 
     private static List<String> displayDepositCandidates(
@@ -761,8 +781,12 @@ public final class WorkspaceChestCommandService {
         int probeCount = Math.max(1, Math.min(sourceStack.getMaxStackSize(),
                 Math.min(requestedCount, sourceStack.getCount())));
         ArrayList<String> candidates = new ArrayList<>();
+        ItemIdentity sourceIdentity = displayDepositBudgetIdentity(sourceStack);
         for (WorldDisplayStorageSource source : displaySources) {
             if (source == null || !source.depositTarget()) {
+                continue;
+            }
+            if (!WorldDisplayDepositRouting.containsMatchingContent(source, sourceIdentity)) {
                 continue;
             }
             ItemStack probe = sourceStack.copy();
@@ -883,6 +907,9 @@ public final class WorkspaceChestCommandService {
         }
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
         if (claimedChestMap.chest(fallbackChest.storageId()) == null) {
+            return List.of();
+        }
+        if (!WorkspaceChestProjectionSupport.isProximate(player, fallbackChest)) {
             return List.of();
         }
         MinecraftServer server = player.getServer();
@@ -1008,22 +1035,22 @@ public final class WorkspaceChestCommandService {
                 label,
                 ctx -> {
                     for (DepositExecutor.DepositRecord record : captured) {
-                        UUID storageUuid = record.storageUuid();
-                        if (storageUuid == null) {
+                        String storageId = record.storageId();
+                        if (storageId == null || storageId.isBlank()) {
                             continue;
                         }
-                        WorkspaceChestTransferReverser.pullFromChestToCarry(
-                                player, ctx.runtime(), storageUuid, record.identity(), record.count());
+                        WorkspaceChestTransferReverser.pullFromStorageToCarry(
+                                player, ctx.runtime(), storageId, record.identity(), record.count());
                     }
                 },
                 ctx -> {
                     for (DepositExecutor.DepositRecord record : captured) {
-                        UUID storageUuid = record.storageUuid();
-                        if (storageUuid == null) {
+                        String storageId = record.storageId();
+                        if (storageId == null || storageId.isBlank()) {
                             continue;
                         }
-                        WorkspaceChestTransferReverser.pushFromCarryToChest(
-                                player, ctx.runtime(), storageUuid, record.identity(), record.count());
+                        WorkspaceChestTransferReverser.pushFromCarryToStorage(
+                                player, ctx.runtime(), storageId, record.identity(), record.count());
                     }
                 }
         );
@@ -1117,24 +1144,28 @@ public final class WorkspaceChestCommandService {
     }
 
     private static ToIntFunction<ItemIdentity> reservedCountResolver(WorkflowDomainRuntime runtime) {
+        WorkflowTabTargets.Resolution targets = runtime == null
+                ? WorkflowTabTargets.Resolution.empty()
+                : WorkflowTabTargets.resolve(InventoryAuthoritySnapshot.empty(), runtime.snapshot());
         return identity -> {
-            if (runtime == null || identity == null) {
+            if (identity == null) {
                 return 0;
             }
-            var snapshot = runtime.snapshot();
-            var kitMap = snapshot.kitMap();
-            var activation = kitMap == null ? null : kitMap.activation();
-            String kitId = activation != null && activation.isActive() ? activation.kitId() : null;
-            Map<ItemIdentity, Integer> activeKitDesired = kitId == null
-                    ? Map.of()
-                    : snapshot.kitDesiredCounts().getOrDefault(kitId, Map.of());
-            return SlotWorkspaceViewModel.reservedCarryCount(
-                    identity,
-                    kitMap,
-                    activeKitDesired,
-                    snapshot.playerDesiredCounts(),
-                    snapshot.playerWantedCounts());
+            return SlotWorkspaceViewModel.reservedCarryCount(identity, targets);
         };
+    }
+
+    private static DepositPlanner.StackProtection acceptedInputProtection(WorkflowDomainRuntime runtime) {
+        if (runtime == null) {
+            return null;
+        }
+        WorkflowTabTargets.Resolution targets = WorkflowTabTargets.resolve(
+                InventoryAuthoritySnapshot.empty(),
+                runtime.snapshot());
+        if (targets.acceptedInputs().isEmpty()) {
+            return null;
+        }
+        return (stack, identity) -> targets.acceptedInput(identity, ItemStackTags.itemTagIds(stack));
     }
 
     private static int totalCarriedCount(ServerPlayer player, ItemIdentity identity) {

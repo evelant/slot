@@ -50,7 +50,7 @@ public final class WorkspaceCursorCommandService {
         int requested = count == null || count <= 0 ? Integer.MAX_VALUE : count;
         ItemStack carriedStack = menu.getCarried();
         boolean cursorHasSameIdentity = !carriedStack.isEmpty()
-                && identity.equals(ItemIdentityMatcher.create(carriedStack));
+                && ItemIdentityMatcher.matchesMovable(carriedStack, identity);
         if (!carriedStack.isEmpty() && !cursorHasSameIdentity) {
             return rejected("cursor_occupied", null);
         }
@@ -473,7 +473,7 @@ public final class WorkspaceCursorCommandService {
             WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
             for (WorldStorageAccess.SlotContent entry : worldStorage.enumerate(server, target)) {
                 ItemStack stackInChest = entry.stack();
-                if (stackInChest.isEmpty() || !identity.equals(ItemIdentityMatcher.create(stackInChest))) {
+                if (stackInChest.isEmpty() || !ItemIdentityMatcher.matchesMovable(stackInChest, identity)) {
                     continue;
                 }
                 int extractAmount = Math.min(amount, stackInChest.getCount());
@@ -505,7 +505,7 @@ public final class WorkspaceCursorCommandService {
             return ItemStack.EMPTY;
         }
         ItemStack remaining = stack.copy();
-        ItemIdentity identity = ItemIdentityMatcher.create(remaining);
+        ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(remaining));
 
         int desired = runtime.desiredCountWorkflow().resolved(runtime.snapshot().kitMap(), identity);
         if (desired > 0) {

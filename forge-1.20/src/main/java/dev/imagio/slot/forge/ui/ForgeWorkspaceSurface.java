@@ -12,6 +12,7 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.goal.GoalProjectionEntry;
 import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackTags;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
@@ -39,6 +40,7 @@ import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionVisibility;
 import dev.imagio.slot.ui.workspace.WayfindingDisplay;
 import dev.imagio.slot.ui.workspace.WheelTransferBatcher;
+import dev.imagio.slot.ui.workspace.WorkflowTabsUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.imagio.slot.ui.workspace.WorkspaceCountFormat;
 import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
@@ -47,6 +49,7 @@ import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -56,6 +59,7 @@ import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,6 +82,7 @@ public final class ForgeWorkspaceSurface {
     private static final int RECENT_REHOME_MAX_DISPLAYED = 3;
     private static final int REHOME_MENU_MAX_DISPLAYED = 8;
     private static final int WHEEL_ACCUMULATOR_MAX_IDENTITIES = 64;
+    private static final long SEARCH_AUTO_CONFIRM_MILLIS = 2_000L;
 
     private final Mode mode;
     private final WorkspaceActionEnvelope envelope;
@@ -105,6 +110,7 @@ public final class ForgeWorkspaceSurface {
     private String searchQuery = "";
     private String lastSentSearchQuery = "";
     private boolean searchActive;
+    private long lastSearchInputMillis = System.currentTimeMillis();
     private long appliedRevision = -1L;
     private String status;
     private boolean openSessionRequested;
@@ -185,6 +191,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     public void closeSession() {
+        WorkspaceUiSessionMemory.markClosed(surfaceMemoryKey());
         if (!openSessionRequested) {
             return;
         }
@@ -205,6 +212,7 @@ public final class ForgeWorkspaceSurface {
         }
         openSessionIfNeeded();
         flushWheelTransferBatch();
+        autoConfirmSearchIfIdle();
         applyGoalStateIfChanged();
         boolean pointerActive = tree != null && tree.hasActivePointerGesture();
         if (!pointerActive) {
@@ -304,6 +312,9 @@ public final class ForgeWorkspaceSurface {
         if (searchActive && isSearchTypingKey(keyCode)) {
             return true;
         }
+        if (wantsKeyboardInput()) {
+            return true;
+        }
         if (!wantsKeyboardInput()) {
             if (ForgeWorkspaceClient.matchesUndo(keyCode, scanCode)) {
                 sendAction(WorkspaceActionId.UNDO, "undo requested");
@@ -318,6 +329,9 @@ public final class ForgeWorkspaceSurface {
             return true;
         }
         if (handleAutoHotbarKey(keyCode)) {
+            return true;
+        }
+        if (handleMoveToMainInventoryKey(keyCode, scanCode)) {
             return true;
         }
         if (handleSetWantedHoverKey(keyCode, scanCode)) {
@@ -345,6 +359,9 @@ public final class ForgeWorkspaceSurface {
         }
         if (ForgeWorkspaceClient.matchesGatherActiveKit(keyCode, scanCode)) {
             return gatherActiveKitFromKey();
+        }
+        if (ForgeWorkspaceClient.matchesDepositPutAway(keyCode, scanCode)) {
+            return depositPutAwayFromKey();
         }
         int hotbarIndex = hotbarIndexFromKeyCode(keyCode);
         if (hotbarIndex >= 0) {
@@ -481,6 +498,29 @@ public final class ForgeWorkspaceSurface {
         return true;
     }
 
+    private boolean handleMoveToMainInventoryKey(int keyCode, int scanCode) {
+        if (searchActive || wantsKeyboardInput() || editorOpen() || Screen.hasControlDown()) {
+            return false;
+        }
+        if (!ForgeWorkspaceClient.matchesMoveToMainInventory(keyCode, scanCode)) {
+            return false;
+        }
+        SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
+        if (identity == null || !byIdentity.containsKey(identity)) {
+            setStatus("hover an item to move between backpack and main inventory");
+            return true;
+        }
+        if (goalTabActive()) {
+            setStatus("goal tab is browse only");
+            return true;
+        }
+        sendIdentityRefAction(
+                WorkspaceActionId.MOVE_IDENTITY_BETWEEN_BACKPACK_AND_MAIN,
+                identity,
+                "moving between backpack and main inventory");
+        return true;
+    }
+
     private boolean handleFocusHoveredItemKey(int keyCode) {
         if (keyCode != GLFW.GLFW_KEY_TAB || !Screen.hasShiftDown() || editorOpen() || Screen.hasControlDown()) {
             return false;
@@ -507,11 +547,11 @@ public final class ForgeWorkspaceSurface {
     private boolean switchKitPageFromKey(int direction) {
         SlotWorkspaceViewModel.KitCard active = viewModel.activeKit();
         if (active == null || active.pageCount() <= 1) {
-            status = active == null ? "activate a kit first" : "kit has one page";
+            status = active == null ? "activate a workflow tab first" : "tab has one page";
             rebuildRequested = true;
             return true;
         }
-        sendKitAction(WorkspaceActionId.SWITCH_KIT_PAGE, "switching kit page", direction);
+        sendKitAction(WorkspaceActionId.SWITCH_KIT_PAGE, "switching tab page", direction);
         return true;
     }
 
@@ -527,6 +567,21 @@ public final class ForgeWorkspaceSurface {
             return true;
         }
         sendAction(WorkspaceActionId.GATHER_ACTIVE_KIT, "gathering desired items from nearby chests");
+        return true;
+    }
+
+    private boolean depositPutAwayFromKey() {
+        if (goalTabActive()) {
+            status = "goal tab is browse only";
+            rebuildRequested = true;
+            return true;
+        }
+        if (viewModel.depositableIdentities().isEmpty()) {
+            status = "nothing to put away";
+            rebuildRequested = true;
+            return true;
+        }
+        sendAction(WorkspaceActionId.DEPOSIT, "putting away carried clutter");
         return true;
     }
 
@@ -617,6 +672,16 @@ public final class ForgeWorkspaceSurface {
         if (!goalTabActive()) {
             for (SlotWorkspaceViewModel.AtlasItem item : viewModel.triageItems()) {
                 byIdentity.putIfAbsent(item.identity(), item);
+            }
+            for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : viewModel.contextualSuggestionLanes()) {
+                if (lane == null) {
+                    continue;
+                }
+                for (SlotWorkspaceViewModel.AtlasItem item : lane.items()) {
+                    if (item != null) {
+                        byIdentity.putIfAbsent(item.identity(), item);
+                    }
+                }
             }
         }
     }
@@ -827,23 +892,35 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement goalTabs(boolean sidebarMode) {
-        return SlotUiElement.element()
+        int workflowTabsHeight = WorkflowTabsUiBuilder.height(viewModel);
+        SlotUiElement stack = SlotUiElement.element()
                 .layout(layout -> {
                     if (sidebarMode) {
                         layout.widthPercent(100);
                     } else {
                         layout.width(workspaceWidth());
                     }
-                    layout.height(Math.max(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX, KitRackUiBuilder.CLUSTER_HEIGHT_PX))
-                            .gapAll(4)
-                            .alignItems(SlotUiLayout.AlignItems.CENTER)
-                            .flexDirection(SlotUiLayout.FlexDirection.ROW);
-                })
-                .addChild(new GoalTabsUiBuilder(new GoalTabsContext()).tabs()
-                        .layout(layout -> layout.flex(1).height(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX)))
+                    layout.gapAll(4)
+                            .flexDirection(SlotUiLayout.FlexDirection.COLUMN);
+                });
+        SlotUiElement workflowRow = SlotUiElement.element()
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .height(Math.max(workflowTabsHeight, KitRackUiBuilder.CLUSTER_HEIGHT_PX))
+                        .gapAll(4)
+                        .alignItems(SlotUiLayout.AlignItems.CENTER)
+                        .flexDirection(SlotUiLayout.FlexDirection.ROW))
+                .addChild(new WorkflowTabsUiBuilder(new WorkflowTabsContext()).tabs(viewModel)
+                        .layout(layout -> layout.flex(1).height(workflowTabsHeight)))
                 .addChild(new KitRackUiBuilder(new KitContext())
                         .cluster(viewModel, kitRackOpen, true)
                         .layout(layout -> layout.height(KitRackUiBuilder.CLUSTER_HEIGHT_PX)));
+        stack.addChild(workflowRow);
+        if (!GoalWorkspaceClientState.goalTabs().isEmpty()) {
+            stack.addChild(new GoalTabsUiBuilder(new GoalTabsContext()).tabs()
+                    .layout(layout -> layout.widthPercent(100).height(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX)));
+        }
+        return stack;
     }
 
     private SlotUiElement titleRow(boolean sidebarMode) {
@@ -938,6 +1015,7 @@ public final class ForgeWorkspaceSurface {
 
     private SlotUiElement searchBarLabel(String text, int color) {
         return SlotUiElement.label(text, color)
+                .allowHitTest(true)
                 .on(SlotUiEventKind.MOUSE_DOWN, event -> {
                     if (event.button() != 1) {
                         return;
@@ -984,7 +1062,7 @@ public final class ForgeWorkspaceSurface {
                         true,
                         color,
                         enabled ? WorkspaceUiPalette.TEXT : WorkspaceUiPalette.MUTED,
-                        "Pull target-count gaps and active-kit needs from nearby chests.")
+                        "Pull target-count gaps and active-tab needs from nearby chests.")
                 .on(SlotUiEventKind.CLICK, event -> {
                     if (event.button() != 0) {
                         return;
@@ -1077,7 +1155,7 @@ public final class ForgeWorkspaceSurface {
                 });
         for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : viewModel.contextualSuggestionLanes()) {
             SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
-            if (visibleLane.displayable()) {
+            if (WallSectionUiBuilder.shouldRenderSuggestionLane(visibleLane)) {
                 lanes.addChild(enrichSection(sectionBuilder.suggestionLane(visibleLane)));
             }
         }
@@ -1186,13 +1264,13 @@ public final class ForgeWorkspaceSurface {
             if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
                 continue;
             }
-            if (storageGhostRevealMode.revealsProximate()
-                    || WallSectionVisibility.classify(
-                            visibleItemsFor(island, filtering),
-                            filtering,
-                            storageGhostSectionExpanded(island.islandId()),
-                            storageGhostRevealMode,
-                            goalTabActive()).hasVisibleContent()) {
+            if (WallSectionVisibility.classify(
+                    visibleItemsFor(island, filtering),
+                    filtering,
+                    storageGhostSectionExpanded(island.islandId()),
+                    storageGhostRevealMode,
+                    goalTabActive(),
+                    !activeWorkflowTab()).hasVisibleContent()) {
                 entries.add(island);
             }
         }
@@ -1271,7 +1349,8 @@ public final class ForgeWorkspaceSurface {
                                 filtering,
                                 storageGhostRevealMode,
                                 storageGhostSectionExpanded(island.islandId()),
-                                goalTabActive())));
+                                goalTabActive(),
+                                !activeWorkflowTab())));
             }
         }
         viewport.addChild(content);
@@ -1304,15 +1383,17 @@ public final class ForgeWorkspaceSurface {
             List<SlotWorkspaceViewModel.AtlasItem> visibleItems,
             boolean filtering
     ) {
-        if (storageGhostRevealMode.revealsProximate()) {
-            return true;
-        }
         return WallSectionVisibility.classify(
                 visibleItems,
                 filtering,
                 storageGhostSectionExpanded(island.islandId()),
                 storageGhostRevealMode,
-                goalTabActive()).hasVisibleContent();
+                goalTabActive(),
+                !activeWorkflowTab()).hasVisibleContent();
+    }
+
+    private boolean activeWorkflowTab() {
+        return !goalTabActive() && viewModel.activeKit() != null;
     }
 
     private void enrichRecentCards(SlotUiElement root) {
@@ -1432,6 +1513,46 @@ public final class ForgeWorkspaceSurface {
         SlotUiElement overlay = overlayRoot();
         SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 174);
         panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.TEXT));
+        SlotWorkspaceViewModel.KitCard activeTab = viewModel.activeKit();
+        if (activeTab != null) {
+            boolean member = activeTab.members().contains(item.identity());
+            panel.addChild(menuButton(
+                    member
+                            ? "Remove from " + shorten(activeTab.name(), 16)
+                            : "Add to " + shorten(activeTab.name(), 20),
+                    true,
+                    "Update active workflow tab membership",
+                    closeThen(() -> sendKitAction(
+                            WorkspaceActionId.SET_KIT_MEMBER,
+                            member ? "removing from workflow tab" : "adding to workflow tab",
+                            activeTab.kitId(),
+                            item.identity().itemId(),
+                            item.identity().comparisonMode(),
+                            item.identity().componentFingerprint(),
+                            member ? 0 : 1))));
+            for (WorkflowAcceptedInputRule rule : acceptedInputOptions(item)) {
+                WorkflowAcceptedInputRule matchedRule = acceptedInputMatch(activeTab, rule);
+                boolean accepted = matchedRule != null;
+                WorkflowAcceptedInputRule commandRule = accepted ? matchedRule : rule;
+                SlotWorkspaceViewModel.IdentityRef identity = commandRule.identity() == null
+                        ? new SlotWorkspaceViewModel.IdentityRef("", "", "")
+                        : SlotWorkspaceViewModel.IdentityRef.from(commandRule.identity());
+                panel.addChild(menuButton(
+                        acceptedInputButtonLabel(rule, accepted),
+                        true,
+                        accepted ? "Stop accepting this workflow input" : "Accept this workflow input",
+                        closeThen(() -> sendKitAction(
+                                WorkspaceActionId.SET_KIT_ACCEPTED_INPUT,
+                                accepted ? "removing accepted workflow input" : "accepting workflow input",
+                                activeTab.kitId(),
+                                commandRule.kind().name(),
+                                identity.itemId(),
+                                identity.comparisonMode(),
+                                identity.componentFingerprint(),
+                                commandRule.tagId(),
+                                accepted ? 0 : 1))));
+            }
+        }
         if (item.ghost()) {
             panel.addChild(menuButton(
                     "Take stack",
@@ -1502,6 +1623,68 @@ public final class ForgeWorkspaceSurface {
         }
         overlay.addChild(panel);
         return overlay;
+    }
+
+    private static List<WorkflowAcceptedInputRule> acceptedInputOptions(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || item.identity() == null) {
+            return List.of();
+        }
+        ArrayList<WorkflowAcceptedInputRule> rules = new ArrayList<>();
+        WorkflowAcceptedInputRule exact = WorkflowAcceptedInputRule.exact(item.identity().toIdentity());
+        if (exact != null) {
+            rules.add(exact);
+        }
+        ArrayList<String> tags = new ArrayList<>(ItemStackTags.itemTagIds(item.displayStack()));
+        tags.removeIf(tag -> !selectableAcceptedInputTag(tag));
+        tags.sort(Comparator.comparingInt(ForgeWorkspaceSurface::acceptedTagRank).thenComparing(tag -> tag));
+        int added = 0;
+        for (String tag : tags) {
+            WorkflowAcceptedInputRule rule = WorkflowAcceptedInputRule.itemTag(tag);
+            if (rule != null && !rules.contains(rule)) {
+                rules.add(rule);
+                added++;
+                if (added >= 4) {
+                    break;
+                }
+            }
+        }
+        return rules.isEmpty() ? List.of() : List.copyOf(rules);
+    }
+
+    private static boolean selectableAcceptedInputTag(String tag) {
+        return tag != null && tag.contains(":");
+    }
+
+    private static int acceptedTagRank(String tag) {
+        int colon = tag == null ? -1 : tag.indexOf(':');
+        String path = colon >= 0 ? tag.substring(colon + 1) : "";
+        return path.contains("/") ? 0 : 1;
+    }
+
+    private static String acceptedInputButtonLabel(WorkflowAcceptedInputRule rule, boolean accepted) {
+        if (rule.itemTag()) {
+            return (accepted ? "Stop accepting " : "Accept ") + shorten(rule.displayLabel(), 26);
+        }
+        return accepted ? "Stop accepting exact item" : "Accept exact item";
+    }
+
+    private static WorkflowAcceptedInputRule acceptedInputMatch(
+            SlotWorkspaceViewModel.KitCard activeTab,
+            WorkflowAcceptedInputRule rule
+    ) {
+        if (activeTab == null || rule == null) {
+            return null;
+        }
+        for (WorkflowAcceptedInputRule existing : activeTab.acceptedInputs()) {
+            if (existing == null) {
+                continue;
+            }
+            if (existing.equals(rule) || (existing.exactItem() && rule.exactItem()
+                    && existing.matches(rule.identity(), java.util.Set.of()))) {
+                return existing;
+            }
+        }
+        return null;
     }
 
     private SlotUiElement recipeItemContextOverlay(SlotWorkspaceViewModel.AtlasItem item) {
@@ -1702,27 +1885,38 @@ public final class ForgeWorkspaceSurface {
         panel.addChild(menuLabel(shorten(kit.name(), 30), WorkspaceUiPalette.ACCENT));
         if (kit.kitId().equals(renamingKitId)) {
             panel.addChild(menuLabel("Name: " + renameKitDraft + "_", WorkspaceUiPalette.TEXT));
-            panel.addChild(menuButton("Save", true, "Rename this kit", this::commitKitRenameEdit));
+            panel.addChild(menuButton("Save", true, "Rename this workflow tab", this::commitKitRenameEdit));
             panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
         } else if (kit.kitId().equals(confirmDeleteKitId)) {
-            panel.addChild(menuLabel("Delete this kit?", WorkspaceUiPalette.MUTED));
+            panel.addChild(menuLabel("Delete this workflow tab?", WorkspaceUiPalette.MUTED));
             panel.addChild(menuButton(
                     "Delete",
                     true,
-                    "Delete this kit",
-                    closeThen(() -> sendKitAction(WorkspaceActionId.DELETE_KIT, "deleting kit", kit.kitId()))));
+                    "Delete this workflow tab",
+                    closeThen(() -> sendKitAction(WorkspaceActionId.DELETE_KIT, "deleting workflow tab", kit.kitId()))));
             panel.addChild(menuButton("Cancel", true, "Close", () -> {
                 confirmDeleteKitId = null;
                 rebuildRequested = true;
             }));
         } else {
-            panel.addChild(menuButton("Rename...", true, "Rename this kit", () -> beginKitRenameEdit(kit)));
+            panel.addChild(menuButton("Rename...", true, "Rename this workflow tab", () -> beginKitRenameEdit(kit)));
             panel.addChild(menuButton(
                     "Duplicate",
                     true,
-                    "Duplicate this kit",
-                    closeThen(() -> sendKitAction(WorkspaceActionId.DUPLICATE_KIT, "duplicating kit", kit.kitId()))));
-            panel.addChild(menuButton("Delete...", true, "Delete this kit", () -> {
+                    "Duplicate this workflow tab",
+                    closeThen(() -> sendKitAction(WorkspaceActionId.DUPLICATE_KIT, "duplicating workflow tab", kit.kitId()))));
+            if (!kit.variant()) {
+                panel.addChild(menuButton(
+                        "Create variant",
+                        true,
+                        "Create a one-level workflow variant",
+                        closeThen(() -> sendKitAction(
+                                WorkspaceActionId.CREATE_KIT_VARIANT,
+                                "creating workflow variant",
+                                kit.kitId(),
+                                ""))));
+            }
+            panel.addChild(menuButton("Delete...", true, "Delete this workflow tab", () -> {
                 confirmDeleteKitId = kit.kitId();
                 renamingKitId = null;
                 renameKitDraft = "";
@@ -1967,26 +2161,8 @@ public final class ForgeWorkspaceSurface {
                     }
                 }
             }
-            addNearbyChip(grid, gridIsland == null ? island : gridIsland);
         }
         return section;
-    }
-
-    private void addNearbyChip(SlotUiElement grid, SlotWorkspaceViewModel.AtlasIsland island) {
-        if (grid == null || island == null) {
-            return;
-        }
-        Integer count = grid.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT, Integer.class);
-        if (count == null || count <= 0) {
-            return;
-        }
-        Boolean expanded = grid.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_EXPANDED, Boolean.class);
-        SlotUiElement chip = WallSectionUiBuilder.nearbyChip(island, count, Boolean.TRUE.equals(expanded));
-        chip.on(SlotUiEventKind.CLICK, event -> {
-            event.stopPropagation();
-            toggleStorageGhostSection(island.islandId());
-        });
-        grid.addChild(chip);
     }
 
     private SlotUiElement enrichCard(SlotUiElement card, SlotWorkspaceViewModel.AtlasItem item) {
@@ -2213,7 +2389,7 @@ public final class ForgeWorkspaceSurface {
 
     private void openKitContextMenu(String kitId, float screenX, float screenY) {
         if (kitId == null || kitId.isBlank()) {
-            setStatus("missing kit");
+            setStatus("missing workflow tab");
             return;
         }
         contextMenuKitId = kitId;
@@ -2229,7 +2405,7 @@ public final class ForgeWorkspaceSurface {
         confirmDeleteKitId = null;
         renamingChestStorageId = null;
         renameChestDraft = "";
-        status = "kit menu";
+        status = "workflow tab menu";
         rebuildRequested = true;
     }
 
@@ -2319,13 +2495,13 @@ public final class ForgeWorkspaceSurface {
 
     private void beginKitRenameEdit(SlotWorkspaceViewModel.KitCard kit) {
         if (kit == null || kit.kitId().isBlank()) {
-            setStatus("missing kit");
+            setStatus("missing workflow tab");
             return;
         }
         renamingKitId = kit.kitId();
         renameKitDraft = kit.name();
         confirmDeleteKitId = null;
-        status = "renaming kit";
+        status = "renaming workflow tab";
         rebuildRequested = true;
     }
 
@@ -2458,12 +2634,12 @@ public final class ForgeWorkspaceSurface {
         }
         String label = renameKitDraft == null ? "" : renameKitDraft.trim();
         if (label.isBlank()) {
-            setStatus("kit name required");
+            setStatus("tab name required");
             return;
         }
         String kitId = renamingKitId;
         closeOverlayState();
-        sendKitAction(WorkspaceActionId.RENAME_KIT, "renaming kit", kitId, label);
+        sendKitAction(WorkspaceActionId.RENAME_KIT, "renaming workflow tab", kitId, label);
     }
 
     private void commitChestRenameEdit() {
@@ -2555,6 +2731,12 @@ public final class ForgeWorkspaceSurface {
             return false;
         }
         searchActive = decision.active();
+        if (decision.action() == WorkspaceSearchInputPolicy.Action.OPEN
+                || decision.action() == WorkspaceSearchInputPolicy.Action.APPEND
+                || decision.action() == WorkspaceSearchInputPolicy.Action.BACKSPACE
+                || decision.action() == WorkspaceSearchInputPolicy.Action.IGNORE_DIGIT) {
+            lastSearchInputMillis = System.currentTimeMillis();
+        }
         setSearchQuery(decision.query());
         status = switch (decision.action()) {
             case OPEN -> "search";
@@ -2565,6 +2747,13 @@ public final class ForgeWorkspaceSurface {
         };
         rebuildRequested = true;
         return true;
+    }
+
+    private void autoConfirmSearchIfIdle() {
+        if (!searchActive || System.currentTimeMillis() - lastSearchInputMillis < SEARCH_AUTO_CONFIRM_MILLIS) {
+            return;
+        }
+        applySearchDecision(WorkspaceSearchInputPolicy.confirmForHotbar(true, searchQuery));
     }
 
     private static WorkspaceSearchInputPolicy.ControlKey searchControlKey(int keyCode) {
@@ -2743,6 +2932,26 @@ public final class ForgeWorkspaceSurface {
         GoalWorkspaceClientState.selectAll();
         refreshPresentedItems();
         setStatus("showing all items");
+    }
+
+    private void selectAllWorkflowTab() {
+        GoalWorkspaceClientState.selectAll();
+        if (viewModel.activeKit() != null) {
+            sendKitAction(WorkspaceActionId.DEACTIVATE_KIT, "showing All");
+        } else {
+            refreshPresentedItems();
+            setStatus("showing All");
+        }
+    }
+
+    private void selectWorkflowTab(String kitId) {
+        if (kitId == null || kitId.isBlank()) {
+            selectAllWorkflowTab();
+            return;
+        }
+        GoalWorkspaceClientState.selectAll();
+        SlotWorkspaceViewModel.KitCard tab = viewModel.kit(kitId);
+        sendKitAction(WorkspaceActionId.ACTIVATE_KIT, "showing " + (tab == null ? "workflow tab" : tab.name()), kitId);
     }
 
     private void selectGoalTab(String goalId) {
@@ -3118,7 +3327,7 @@ public final class ForgeWorkspaceSurface {
 
     private void sendTakeByIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
         if (identity == null) {
-            setStatus("invalid kit identity");
+            setStatus("invalid tab identity");
             return;
         }
         sendKitAction(
@@ -3246,6 +3455,28 @@ public final class ForgeWorkspaceSurface {
         }
     }
 
+    private final class WorkflowTabsContext implements WorkflowTabsUiBuilder.Context {
+        @Override
+        public void selectAll() {
+            selectAllWorkflowTab();
+        }
+
+        @Override
+        public void selectTab(String kitId) {
+            selectWorkflowTab(kitId);
+        }
+
+        @Override
+        public void createTab() {
+            sendKitAction(WorkspaceActionId.CREATE_WORKFLOW_TAB, "creating workflow tab", "");
+        }
+
+        @Override
+        public void openTabMenu(String kitId, float screenX, float screenY) {
+            ForgeWorkspaceSurface.this.openKitContextMenu(kitId, screenX, screenY);
+        }
+    }
+
     private final class ActiveChestContext implements ActiveChestStripUiBuilder.Context {
         @Override
         public void claimChestAt(SlotWorkspaceViewModel.ActiveChestPanel panel) {
@@ -3286,6 +3517,14 @@ public final class ForgeWorkspaceSurface {
             }
             ForgeWorkspaceSurface.this.beginIslandEdit(island, screenX, screenY);
         }
+
+        @Override
+        public void toggleNearbySection(SlotWorkspaceViewModel.AtlasIsland island) {
+            if (island == null) {
+                return;
+            }
+            toggleStorageGhostSection(island.islandId());
+        }
     }
 
     private final class KitContext implements KitRackUiBuilder.Context {
@@ -3293,51 +3532,56 @@ public final class ForgeWorkspaceSurface {
         public void toggleKitRack() {
             kitRackOpen = !kitRackOpen;
             setStatus(kitRackOpen
-                    ? "kit rack open (" + viewModel.kits().size() + ")"
-                    : "kit rack closed");
+                    ? "workflow tabs open (" + viewModel.kits().size() + ")"
+                    : "workflow tabs closed");
         }
 
         @Override
         public void closeKitRack() {
             kitRackOpen = false;
-            setStatus("kit rack closed");
+            setStatus("workflow tabs closed");
         }
 
         @Override
         public void saveCurrentBeltAsKit() {
-            sendKitAction(WorkspaceActionId.SAVE_KIT, "saving belt as kit", "");
+            sendKitAction(WorkspaceActionId.SAVE_KIT, "saving belt as workflow tab", "");
+        }
+
+        @Override
+        public void createEmptyTab() {
+            sendKitAction(WorkspaceActionId.CREATE_WORKFLOW_TAB, "creating workflow tab", "");
         }
 
         @Override
         public void activateKit(String kitId) {
-            sendKitAction(WorkspaceActionId.ACTIVATE_KIT, "activating kit", kitId);
+            sendKitAction(WorkspaceActionId.ACTIVATE_KIT, "activating workflow tab", kitId);
         }
 
         @Override
         public void deactivateKit() {
-            sendKitAction(WorkspaceActionId.DEACTIVATE_KIT, "deactivating kit");
+            sendKitAction(WorkspaceActionId.DEACTIVATE_KIT, "deactivating workflow tab");
         }
 
         @Override
         public void switchActiveKitPage(int direction) {
-            sendKitAction(WorkspaceActionId.SWITCH_KIT_PAGE, "switching kit page", direction);
+            sendKitAction(WorkspaceActionId.SWITCH_KIT_PAGE, "switching tab page", direction);
         }
 
         @Override
         public void addKitPage(String kitId) {
-            sendKitAction(WorkspaceActionId.ADD_KIT_PAGE, "adding kit page", kitId);
+            sendKitAction(WorkspaceActionId.ADD_KIT_PAGE, "adding tab page", kitId);
         }
 
         @Override
         public void removeKitPage(String kitId, int pageIndex) {
-            sendKitAction(WorkspaceActionId.REMOVE_KIT_PAGE, "removing kit page", kitId, pageIndex);
+            sendKitAction(WorkspaceActionId.REMOVE_KIT_PAGE, "removing tab page", kitId, pageIndex);
         }
 
         @Override
         public void clearKitSlot(String kitId, int pageIndex, int slotIndex) {
             sendKitAction(
                     WorkspaceActionId.SET_KIT_SLOT_IDENTITY,
-                    "clearing kit slot",
+                    "clearing tab slot",
                     kitId,
                     pageIndex,
                     slotIndex,
@@ -3349,12 +3593,12 @@ public final class ForgeWorkspaceSurface {
         @Override
         public void clearKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity) {
             if (identity == null) {
-                setStatus("invalid kit bring item");
+                setStatus("invalid tab target");
                 return;
             }
             sendKitAction(
                     WorkspaceActionId.SET_KIT_SCOPED_DESIRED_COUNT,
-                    "clearing kit desired item",
+                    "clearing tab target",
                     kitId,
                     identity.itemId(),
                     identity.comparisonMode(),

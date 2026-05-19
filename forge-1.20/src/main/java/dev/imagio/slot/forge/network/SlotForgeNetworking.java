@@ -15,6 +15,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.workspace.KitPageCycleService;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
+import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.action.WorkspaceActionPacket;
 import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
@@ -35,7 +36,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public final class SlotForgeNetworking {
-    private static final String PROTOCOL_VERSION = "2";
+    private static final String PROTOCOL_VERSION = "3";
     private static SimpleChannel channel;
 
     private SlotForgeNetworking() {
@@ -95,6 +96,11 @@ public final class SlotForgeNetworking {
                 .decoder(ForgeSetWantedCountMessage::decode)
                 .consumerMainThread(SlotForgeNetworking::handleSetWantedCount)
                 .add();
+        channel.messageBuilder(ForgeDepositPutAwayMessage.class, 9, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ForgeDepositPutAwayMessage::encode)
+                .decoder(ForgeDepositPutAwayMessage::decode)
+                .consumerMainThread(SlotForgeNetworking::handleDepositPutAway)
+                .add();
     }
 
     public static boolean sendToServer(ForgeWorkspaceActionMessage message) {
@@ -149,6 +155,20 @@ public final class SlotForgeNetworking {
             return true;
         } catch (RuntimeException exception) {
             SlotCommon.LOGGER.warn("Failed to send Forge gather desired items packet", exception);
+            return false;
+        }
+    }
+
+    public static boolean depositPutAway() {
+        if (channel == null) {
+            SlotCommon.LOGGER.warn("Cannot put away carried clutter before network channel registration");
+            return false;
+        }
+        try {
+            channel.sendToServer(new ForgeDepositPutAwayMessage());
+            return true;
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn("Failed to send Forge put away packet", exception);
             return false;
         }
     }
@@ -368,6 +388,37 @@ public final class SlotForgeNetworking {
                 outcome.identitiesUnreachable());
     }
 
+    private static void handleDepositPutAway(
+            ForgeDepositPutAwayMessage message,
+            Supplier<NetworkEvent.Context> contextSupplier
+    ) {
+        ServerPlayer player = contextSupplier.get().getSender();
+        if (player == null) {
+            return;
+        }
+        InventoryHostDescriptor host = resolveCarriedHost(player);
+        if (host == null) {
+            SlotCommon.LOGGER.info(
+                    "[SLOT] rejected Forge put-away hotkey: player={} diagnostics=host_resolution_failed",
+                    playerName(player));
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+        WorkspaceCommandOutcome outcome = WorkspaceChestCommandService.deposit(
+                player,
+                ForgePlayerWorkflowRuntimeService.runtime(player),
+                authority);
+        ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);
+        if (session != null) {
+            sendViewToPlayer(player, session, true);
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] Forge put-away hotkey: player={} status={} diagnostics={}",
+                playerName(player),
+                outcome.status(),
+                outcome.diagnostics());
+    }
+
     private static void handleKitPageCycle(
             ForgeKitPageCycleMessage message,
             Supplier<NetworkEvent.Context> contextSupplier
@@ -545,14 +596,14 @@ public final class SlotForgeNetworking {
         return InventoryHostResolver.resolve(new InventoryHostContext(
                 menu,
                 player.getInventory(),
-                Component.literal("SLOT Wanted Hover"),
+                Component.literal("SLOT Carried Hotkey"),
                 SlotForgeNetworking.class.getName(),
                 new InventoryHostObservationHints(
                         InventoryHostFamilyHint.CARRIED_ONLY,
                         InventorySlotOwnershipPosture.SLOT_OWNED,
                         true,
                         true,
-                        Map.of("slotWantedHover", "forge")
+                        Map.of("slotCarriedHotkey", "forge")
                 )
         ));
     }

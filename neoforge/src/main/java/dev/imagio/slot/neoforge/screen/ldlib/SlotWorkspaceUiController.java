@@ -307,6 +307,7 @@ final class SlotWorkspaceUiController {
         // overlay (abs, on top of everything). The flex-column flow
         // gives content the leftover height above the bottom slots.
         root.addChildren(syncBinding(), content, beltSlot, popoverSlot);
+        root.addEventListener(UIEvents.REMOVED, event -> markSurfaceClosed());
         // Bubble-phase universal handlers for the real menu cursor:
         // rows 1 (right-click cancel) + 8 (left-click smart-deposit) of
         // the universal click table. Reaching root means no specific
@@ -327,6 +328,10 @@ final class SlotWorkspaceUiController {
         rebuildNow();
         searchController.syncRememberedQuery();
         return ModularUI.of(UI.of(root), player);
+    }
+
+    void markSurfaceClosed() {
+        WorkspaceUiSessionMemory.markClosed(surfaceMemoryKey());
     }
 
 
@@ -863,6 +868,10 @@ final class SlotWorkspaceUiController {
         return !recipeSidebarActive() && GoalWorkspaceClientState.hasActiveGoal();
     }
 
+    boolean activeWorkflowTab() {
+        return !goalTabActive() && viewModel.activeKit() != null;
+    }
+
     GoalWorkspaceProjection goalProjection() {
         return goalProjectionCache.get(viewModel);
     }
@@ -970,6 +979,29 @@ final class SlotWorkspaceUiController {
     void selectAllTab() {
         GoalWorkspaceClientState.selectAll();
         localStatus.set("showing all items");
+        rebuild();
+    }
+
+    void selectAllWorkflowTab() {
+        GoalWorkspaceClientState.selectAll();
+        if (viewModel != null && viewModel.activeKit() != null) {
+            rpc.sendDeactivateKit();
+            localStatus.set("showing All");
+        } else {
+            localStatus.set("showing All");
+            rebuild();
+        }
+    }
+
+    void selectWorkflowTab(String kitId) {
+        if (kitId == null || kitId.isBlank()) {
+            selectAllWorkflowTab();
+            return;
+        }
+        GoalWorkspaceClientState.selectAll();
+        SlotWorkspaceViewModel.KitCard tab = viewModel == null ? null : viewModel.kit(kitId);
+        rpc.sendActivateKit(kitId);
+        localStatus.set("showing " + (tab == null ? "workflow tab" : tab.name()));
         rebuild();
     }
 

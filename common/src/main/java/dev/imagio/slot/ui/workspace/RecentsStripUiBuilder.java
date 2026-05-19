@@ -14,8 +14,11 @@ public final class RecentsStripUiBuilder {
     public static final int CARD_SIZE_PX = WallCardUiBuilder.CARD_CELL_PX;
     public static final int GAP_PX = 2;
     public static final int PADDING_PX = 3;
-    public static final int MAX_CARDS = 9;
+    public static final int MAX_ROWS = 2;
+    public static final int MAX_CARDS_PER_ROW = 9;
+    public static final int MAX_CARDS = MAX_ROWS * MAX_CARDS_PER_ROW;
     public static final int MAX_ICONS = MAX_CARDS;
+    public static final int STRIP_HEIGHT_PX = CARD_SIZE_PX * MAX_ROWS + GAP_PX + PADDING_PX * 2;
 
     private static final int STRIP_BACKGROUND = 0xB810171D;
 
@@ -35,16 +38,16 @@ public final class RecentsStripUiBuilder {
                 .attach(WorkspaceUiAttachments.RECENTS_STRIP, Boolean.TRUE)
                 .layout(layout -> layout
                         .widthPercent(100)
-                        .height(CARD_SIZE_PX + PADDING_PX * 2)
+                        .height(STRIP_HEIGHT_PX)
                         .paddingHorizontal(PADDING_PX)
                         .paddingVertical(PADDING_PX)
                         .gapAll(GAP_PX)
-                        .alignItems(SlotUiLayout.AlignItems.CENTER)
+                        .alignItems(SlotUiLayout.AlignItems.FLEX_START)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
         strip.on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation());
 
         strip.addChild(SlotUiElement.label("Recent", MUTED)
-                .layout(layout -> layout.height(CARD_SIZE_PX).paddingRight(2))
+                .layout(layout -> layout.height(CARD_SIZE_PX * MAX_ROWS + GAP_PX).paddingRight(2))
                 .textStyle(style -> style
                         .color(MUTED)
                         .shadow(false)
@@ -52,6 +55,16 @@ public final class RecentsStripUiBuilder {
                         .adaptiveWidth(true)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
+
+        SlotUiElement grid = SlotUiElement.element()
+                .layout(layout -> layout
+                        .flex(1)
+                        .height(CARD_SIZE_PX * MAX_ROWS + GAP_PX)
+                        .gapAll(GAP_PX)
+                        .flexWrap(SlotUiLayout.FlexWrap.WRAP)
+                        .alignItems(SlotUiLayout.AlignItems.FLEX_START)
+                        .flexDirection(SlotUiLayout.FlexDirection.ROW));
+        strip.addChild(grid);
 
         List<SlotWorkspaceViewModel.IdentityRef> identities = safeList(recentIdentities);
         int rendered = 0;
@@ -63,11 +76,11 @@ public final class RecentsStripUiBuilder {
             if (item == null) {
                 continue;
             }
-            strip.addChild(recentCard(item));
+            grid.addChild(recentCard(item));
             rendered++;
         }
         if (rendered == 0) {
-            strip.addChild(SlotUiElement.label(identities.isEmpty() ? "nothing yet" : "not visible", MUTED)
+            grid.addChild(SlotUiElement.label(identities.isEmpty() ? "nothing yet" : "not visible", MUTED)
                     .layout(layout -> layout.flex(1).height(CARD_SIZE_PX))
                     .textStyle(style -> style
                             .color(MUTED)

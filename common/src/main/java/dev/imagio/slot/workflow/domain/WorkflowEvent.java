@@ -56,6 +56,7 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.PlayerDesiredCountSet,
         WorkflowEvent.KitDesiredCountSet,
         WorkflowEvent.PlayerWantedCountSet,
+        WorkflowEvent.KitWantedCountSet,
         WorkflowEvent.GoalPlanSaved,
         WorkflowEvent.GoalPlanRemoved,
         WorkflowEvent.GoalRecipeDefaultSet {
@@ -437,6 +438,18 @@ public sealed interface WorkflowEvent permits
      */
     record PlayerWantedCountSet(ItemIdentity identity, int count) implements WorkflowEvent {
         public PlayerWantedCountSet {
+            count = Math.max(0, count);
+        }
+    }
+
+    /**
+     * Workflow-tab-scoped wanted count: temporary active-tab pressure that is
+     * only considered while the tab (or its variant lineage) is active.
+     * Deactivating/switching workflow tabs clears these entries.
+     */
+    record KitWantedCountSet(String kitId, ItemIdentity identity, int count) implements WorkflowEvent {
+        public KitWantedCountSet {
+            kitId = kitId == null ? "" : kitId;
             count = Math.max(0, count);
         }
     }

@@ -75,9 +75,9 @@ Plans:
   proximate-ghost storage system (shipped 2026-04-30; residual polish
   items listed in `current.md`).
 - [docs/plans/workflow-tabs.md](docs/plans/workflow-tabs.md) —
-  implementation plan for replacing future Kit Rack work with
-  player-authored task tabs that reuse desired/wanted counts, gather
-  guidance, put-away guidance, and the existing hotbar page code.
+  plan/reference for the workflow-tab task surface: player-authored tabs
+  that reuse desired/wanted counts, gather guidance, put-away guidance,
+  and the existing hotbar page code.
 - [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit
   prototype slices; future user-facing task workflow work should follow
   `workflow-tabs.md`.

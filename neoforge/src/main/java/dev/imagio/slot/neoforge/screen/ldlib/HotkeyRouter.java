@@ -29,12 +29,14 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCursorCancelKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleFocusHoveredItemKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleAutoHotbarKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMoveToMainInventoryKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleSetWantedHoverKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMarkWantedKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGoalRecipeKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGatherActiveKitKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleDepositPutAwayKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleStorageXrayKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleUndoRedoKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleOpenVanillaKey, true);
@@ -115,6 +117,35 @@ final class HotkeyRouter {
         }
         host.searchController.confirmForHotbar();
         host.rpc.sendAssignToAutoHotbar(target);
+    }
+
+    void handleMoveToMainInventoryKey(UIEvent event) {
+        if (isTextInputFocused() || host.searchController.modalActive() || Screen.hasControlDown()) {
+            return;
+        }
+        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesMoveToMainInventory(event.keyCode, event.scanCode)) {
+            return;
+        }
+        event.stopPropagation();
+        if (host.goalTabActive()) {
+            host.localStatus.set("goal tab is browse only");
+            host.rebuild();
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
+        if (target == null) {
+            host.localStatus.set("hover an item to move between backpack and main inventory");
+            host.rebuild();
+            return;
+        }
+        host.rpc.send(
+                WorkspaceActionId.MOVE_IDENTITY_BETWEEN_BACKPACK_AND_MAIN,
+                target.identity().itemId(),
+                target.identity().comparisonMode(),
+                target.identity().componentFingerprint());
+        host.localStatus.set("moving between backpack and main inventory");
+        host.rebuild();
     }
 
     void handleFocusHoveredItemKey(UIEvent event) {
@@ -261,6 +292,32 @@ final class HotkeyRouter {
         event.stopPropagation();
         host.rpc.send(WorkspaceActionId.GATHER_ACTIVE_KIT);
         host.localStatus.set("gathering desired items from nearby chests");
+        host.rebuild();
+    }
+
+    void handleDepositPutAwayKey(UIEvent event) {
+        if (isTextInputFocused() || host.searchController.modalActive()) {
+            return;
+        }
+        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesDepositPutAway(event.keyCode, event.scanCode)) {
+            return;
+        }
+        if (host.goalTabActive()) {
+            event.stopPropagation();
+            host.localStatus.set("goal tab is browse only");
+            host.rebuild();
+            return;
+        }
+        if (host.viewModel.depositableIdentities().isEmpty()) {
+            event.stopPropagation();
+            host.localStatus.set("nothing to put away");
+            host.rebuild();
+            return;
+        }
+        event.stopPropagation();
+        host.rpc.send(WorkspaceActionId.DEPOSIT);
+        host.localStatus.set("putting away carried clutter");
         host.rebuild();
     }
 

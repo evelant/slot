@@ -80,7 +80,7 @@ final class KitRackBuilder {
                     : "";
             label = shorten(activeCard.name(), 10) + suffix;
         } else {
-            label = "Kits";
+            label = "Tabs";
         }
         int bgColor = host.kitRackOpen
                 ? PANEL_ALT
@@ -104,8 +104,8 @@ final class KitRackBuilder {
             event.stopPropagation();
             host.kitRackOpen = !host.kitRackOpen;
             host.localStatus.set(host.kitRackOpen
-                    ? "kit rack open (" + kitCount + " kit" + (kitCount == 1 ? "" : "s") + ")"
-                    : "kit rack closed");
+                    ? "workflow tabs open (" + kitCount + " tab" + (kitCount == 1 ? "" : "s") + ")"
+                    : "workflow tabs closed");
             host.rebuild();
         });
         return button;
@@ -125,7 +125,7 @@ final class KitRackBuilder {
                 .textAlignHorizontal(Horizontal.CENTER)
                 .textAlignVertical(Vertical.CENTER));
         button.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> event.hoverTooltips = new HoverTooltips(
-                List.of(Component.literal("Next Kit page (" + activeCard.pageCount() + " total)")),
+                List.of(Component.literal("Next workflow page (" + activeCard.pageCount() + " total)")),
                 null,
                 null,
                 ItemStack.EMPTY
@@ -160,7 +160,7 @@ final class KitRackBuilder {
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
         int kitCount = host.viewModel.kits().size();
-        Label title = label("Kits (" + kitCount + ")", ACCENT);
+        Label title = label("Tabs (" + kitCount + ")", ACCENT);
         title.layout(layout -> layout.flex(1).height(12));
         title.textStyle(style -> style
                 .textColor(ACCENT)
@@ -173,10 +173,22 @@ final class KitRackBuilder {
         if (activeCard != null) {
             saveLabel = activeCard.pageCount() > 1
                     ? "Update Page " + (activeCard.activePageIndex() + 1)
-                    : "Update Active Kit";
+                    : "Update Active Tab";
         } else {
-            saveLabel = "Save Current Belt as Kit";
+            saveLabel = "Save Current Belt as Tab";
         }
+        Button create = button("New Tab", true, PANEL_ALT);
+        create.layout(layout -> layout.width(56).height(14));
+        create.textStyle(style -> style
+                .textColor(ACCENT)
+                .textShadow(false)
+                .fontSize(8)
+                .textAlignHorizontal(Horizontal.CENTER)
+                .textAlignVertical(Vertical.CENTER));
+        create.setOnClick(event -> {
+            event.stopPropagation();
+            host.rpc.sendCreateWorkflowTab();
+        });
         Button save = button(saveLabel, true, PANEL_ALT);
         save.layout(layout -> layout.width(Math.max(110, saveLabel.length() * 6 + 10)).height(14));
         save.textStyle(style -> style
@@ -202,7 +214,7 @@ final class KitRackBuilder {
             host.kitRackOpen = false;
             host.rebuild();
         });
-        row.addChildren(title, save, close);
+        row.addChildren(title, create, save, close);
         return row;
     }
 
@@ -213,7 +225,7 @@ final class KitRackBuilder {
                     .flex(1)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.COLUMN));
-            Label empty = label("No kits yet. Load your belt, then Save Current Belt.", MUTED);
+            Label empty = label("No workflow tabs yet. Create one or save the current belt.", MUTED);
             empty.layout(layout -> layout.flex(1).height(12));
             empty.textStyle(style -> style
                     .textColor(MUTED)
@@ -516,7 +528,7 @@ final class KitRackBuilder {
                 .gapAll(2)
                 .alignItems(AlignItems.FLEX_START)
                 .flexDirection(FlexDirection.COLUMN));
-        String header = "bring " + card.bringReadyCount() + "/" + card.bringSlotCount();
+        String header = "targets " + card.bringReadyCount() + "/" + card.bringSlotCount();
         Label title = label(header, card.bringSlotCount() == 0 ? MUTED
                 : card.bringReadyCount() == card.bringSlotCount() ? ACCENT : WARNING);
         title.layout(layout -> layout.widthPercent(100).height(10));
@@ -569,7 +581,7 @@ final class KitRackBuilder {
                     new KitBringDrag(card.kitId(), item.identity(), item.displayStack().copy()),
                     host.drag.dragTexture(item.displayStack())
             ).setDragTexture(-10, -10, 20, 20);
-            host.localStatus.set("dragging kit bring");
+            host.localStatus.set("dragging tab target");
         }, true);
         cell.addEventListener(UIEvents.DRAG_END, host.drag::handleDragEnd);
         if (!item.displayStack().isEmpty()) {
@@ -677,7 +689,7 @@ final class KitRackBuilder {
                         new KitSlotDrag(card.kitId(), page.pageIndex(), slot.slotIndex(), slot.identity(), slot.displayStack().copy()),
                         host.drag.dragTexture(slot.displayStack())
                 ).setDragTexture(-10, -10, 20, 20);
-                host.localStatus.set("dragging kit slot");
+                host.localStatus.set("dragging tab slot");
             }, true);
             cell.addEventListener(UIEvents.DRAG_END, host.drag::handleDragEnd);
         }

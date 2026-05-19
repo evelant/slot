@@ -50,7 +50,7 @@ public final class DesiredCountWorkflowDomainService {
         if (identity == null) {
             return 0;
         }
-        return repository.workflowProjection().playerDesiredCounts().getOrDefault(identity, 0);
+        return WorkflowTargetCounts.count(repository.workflowProjection().playerDesiredCounts(), identity);
     }
 
     public boolean setPlayer(ItemIdentity identity, int count) {
@@ -62,12 +62,13 @@ public final class DesiredCountWorkflowDomainService {
             return false;
         }
         int normalized = Math.max(0, count);
-        int current = getPlayer(identity);
+        ItemIdentity target = WorkflowTargetCounts.key(identity);
+        int current = getPlayer(target);
         if (current == normalized) {
             return false;
         }
         repository.appendWorkflowEvent(
-                new WorkflowEvent.PlayerDesiredCountSet(identity, normalized),
+                new WorkflowEvent.PlayerDesiredCountSet(target, normalized),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata)
                         .withOrigin("workflow.desired_count.player.set")
         );
@@ -97,7 +98,7 @@ public final class DesiredCountWorkflowDomainService {
         if (kitId == null || kitId.isBlank() || identity == null) {
             return 0;
         }
-        return forKit(kitId).getOrDefault(identity, 0);
+        return WorkflowTargetCounts.count(forKit(kitId), identity);
     }
 
     public boolean setForKit(String kitId, ItemIdentity identity, int count) {
@@ -109,12 +110,13 @@ public final class DesiredCountWorkflowDomainService {
             return false;
         }
         int normalized = Math.max(0, count);
-        int current = getForKit(kitId, identity);
+        ItemIdentity target = WorkflowTargetCounts.key(identity);
+        int current = getForKit(kitId, target);
         if (current == normalized) {
             return false;
         }
         repository.appendWorkflowEvent(
-                new WorkflowEvent.KitDesiredCountSet(kitId, identity, normalized),
+                new WorkflowEvent.KitDesiredCountSet(kitId, target, normalized),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata)
                         .withOrigin("workflow.desired_count.kit.set")
         );
@@ -153,21 +155,24 @@ public final class DesiredCountWorkflowDomainService {
     }
 
     /**
-     * Resolve the effective desired count for {@code identity}: kit-scoped
-     * value if a kit is active and has a non-zero entry, else player-global.
-     * Returns 0 when neither scope has a value.
+     * Resolve the effective desired count for {@code identity}: the maximum
+     * of the player-global floor and every active workflow-tab scope
+     * (parent first, then variant). A workflow tab can ask for more than
+     * {@code All}; it cannot silently lower {@code All}.
      */
     public int resolved(KitMap kitMap, ItemIdentity identity) {
         if (identity == null) {
             return 0;
         }
-        String kitId = activeScope(kitMap);
-        if (kitId != null) {
-            int kitVal = getForKit(kitId, identity);
-            if (kitVal > 0) {
-                return kitVal;
+        int resolved = getPlayer(identity);
+        if (kitMap == null) {
+            return resolved;
+        }
+        for (KitDefinition kit : kitMap.activeLineage()) {
+            if (kit != null) {
+                resolved = Math.max(resolved, getForKit(kit.id(), identity));
             }
         }
-        return getPlayer(identity);
+        return resolved;
     }
 }

@@ -10,8 +10,10 @@ import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.InventoryBindingRoute;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.InventoryCapability;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
+import dev.imagio.slot.inventory.core.InventorySourceRole;
 import dev.imagio.slot.inventory.core.InventoryToolActionId;
 import dev.imagio.slot.inventory.core.InventoryToolToggleId;
 import dev.imagio.slot.inventory.core.ItemIdentity;
@@ -29,11 +31,14 @@ import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
 /**
  * Shared belt / hotbar command semantics. Platform sessions provide the live
@@ -478,15 +483,172 @@ public final class WorkspaceBeltCommandService {
         return WorkspaceCommandOutcome.rejected(execution.feedback().diagnostics());
     }
 
+    public static WorkspaceCommandOutcome moveIdentityBetweenBackpackAndMain(
+            ServerPlayer player,
+            InventoryHostDescriptor host,
+            InventoryAuthoritySnapshot authority,
+            CarriedSourceAccess carried,
+            Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor,
+            ItemIdentity identity,
+            String originPrefix
+    ) {
+        if (player == null) {
+            return WorkspaceCommandOutcome.rejected("missing_player");
+        }
+        if (host == null || authority == null || actionExecutor == null) {
+            return WorkspaceCommandOutcome.rejected("host_resolution_failed");
+        }
+        if (carried == null) {
+            return WorkspaceCommandOutcome.rejected("carried_source_access_unavailable");
+        }
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+
+        Optional<LocatedCarriedEntry> backpackEntry = findIdentityInAuthority(
+                authority,
+                identity,
+                WorkspaceBeltCommandService::extractableProviderSource);
+        if (backpackEntry.isPresent()) {
+            return moveLocatedEntry(
+                    player,
+                    host,
+                    authority,
+                    carried,
+                    actionExecutor,
+                    backpackEntry.get(),
+                    new InventoryActionTarget.SourceTarget(BuiltinInventoryIds.PLAYER_MAIN),
+                    "moved_to_main_inventory",
+                    "moved to main inventory",
+                    "moved_partial_to_main_inventory",
+                    "moved some to main inventory",
+                    origin(originPrefix, "move_identity_to_main"));
+        }
+
+        Optional<LocatedCarriedEntry> hotbarEntry = findIdentityInAuthority(
+                authority,
+                identity,
+                WorkspaceBeltCommandService::extractableQuickAccessSource);
+        if (hotbarEntry.isPresent()) {
+            return moveLocatedEntry(
+                    player,
+                    host,
+                    authority,
+                    carried,
+                    actionExecutor,
+                    hotbarEntry.get(),
+                    new InventoryActionTarget.SourceTarget(BuiltinInventoryIds.PLAYER_MAIN),
+                    "moved_to_main_inventory",
+                    "moved to main inventory",
+                    "moved_partial_to_main_inventory",
+                    "moved some to main inventory",
+                    origin(originPrefix, "move_identity_hotbar_to_main"));
+        }
+
+        Optional<LocatedCarriedEntry> mainEntry = findIdentityInAuthority(
+                authority,
+                identity,
+                WorkspaceBeltCommandService::extractableMainSource);
+        if (mainEntry.isEmpty()) {
+            return WorkspaceCommandOutcome.rejected(CARRIED_IDENTITY_NOT_FOUND);
+        }
+
+        List<InventorySourceDescriptor> providerDestinations = providerDestinationSources(
+                authority,
+                mainEntry.get().sourceId());
+        if (providerDestinations.isEmpty()) {
+            return WorkspaceCommandOutcome.rejected("no_backpack_storage_available");
+        }
+
+        WorkspaceTransferExecution lastExecution = null;
+        for (InventorySourceDescriptor destination : providerDestinations) {
+            WorkspaceCommandOutcome outcome = moveLocatedEntry(
+                    player,
+                    host,
+                    authority,
+                    carried,
+                    actionExecutor,
+                    mainEntry.get(),
+                    new InventoryActionTarget.SourceTarget(destination.id()),
+                    "moved_to_backpack",
+                    "moved to backpack",
+                    "moved_partial_to_backpack",
+                    "moved some to backpack",
+                    origin(originPrefix, "move_identity_to_backpack"));
+            if (outcome.success()) {
+                return outcome;
+            }
+            lastExecution = new WorkspaceTransferExecution(null, null, null,
+                    WorkspaceTransferFeedback.rejected(outcome.diagnostics()));
+        }
+        return lastExecution == null
+                ? WorkspaceCommandOutcome.rejected("no_backpack_storage_available")
+                : WorkspaceCommandOutcome.rejected(lastExecution.feedback().diagnostics());
+    }
+
+    private static WorkspaceCommandOutcome moveLocatedEntry(
+            ServerPlayer player,
+            InventoryHostDescriptor host,
+            InventoryAuthoritySnapshot authority,
+            CarriedSourceAccess carried,
+            Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor,
+            LocatedCarriedEntry located,
+            InventoryActionTarget destination,
+            String fullStatus,
+            String fullDiagnostics,
+            String partialStatus,
+            String partialDiagnostics,
+            String origin
+    ) {
+        if (located == null) {
+            return WorkspaceCommandOutcome.rejected(CARRIED_IDENTITY_NOT_FOUND);
+        }
+        InventoryActionTarget sourceTarget = sourceTarget(host, located.sourceId(), located.slotIndex());
+        InventoryEntrySnapshot sourceEntry = located.entry();
+        if (sourceEntry == null || !sourceEntry.present()) {
+            sourceEntry = sourceEntry(authority, carried, player, located.sourceId(), located.slotIndex(), sourceTarget);
+        }
+        if (sourceEntry == null || !sourceEntry.present()) {
+            return WorkspaceCommandOutcome.rejected("source_stack_missing");
+        }
+        ItemStack sourceStack = sourceEntry.stack().copy();
+        sourceStack.setCount(sourceEntry.count());
+        ItemIdentity sourceIdentity = ItemIdentityMatcher.create(sourceStack);
+        WorkspaceTransferExecution execution = executeTransferRequest(
+                host,
+                actionExecutor,
+                sourceTarget,
+                destination,
+                origin,
+                sourceIdentity,
+                sourceStack,
+                sourceEntry.count());
+        if (execution.appliedCompletely()) {
+            return new WorkspaceCommandOutcome(true, fullStatus, fullDiagnostics);
+        }
+        if ("partial transfer applied".equals(execution.feedback().status())) {
+            return new WorkspaceCommandOutcome(true, partialStatus, partialDiagnostics);
+        }
+        return WorkspaceCommandOutcome.rejected(execution.feedback().diagnostics());
+    }
+
     static Optional<LocatedCarriedEntry> findIdentityInAuthority(
             InventoryAuthoritySnapshot authority,
             ItemIdentity identity
+    ) {
+        return findIdentityInAuthority(authority, identity, source -> true);
+    }
+
+    private static Optional<LocatedCarriedEntry> findIdentityInAuthority(
+            InventoryAuthoritySnapshot authority,
+            ItemIdentity identity,
+            Predicate<InventorySourceDescriptor> sourcePredicate
     ) {
         if (authority == null || identity == null) {
             return Optional.empty();
         }
         for (InventorySourceDescriptor source : authority.carriedSources()) {
-            if (source == null) {
+            if (source == null || !sourcePredicate.test(source)) {
                 continue;
             }
             for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
@@ -498,12 +660,13 @@ public final class WorkspaceBeltCommandService {
                 }
             }
         }
-        return findUniqueStackableItemIdInAuthority(authority, identity);
+        return findUniqueStackableItemIdInAuthority(authority, identity, sourcePredicate);
     }
 
     private static Optional<LocatedCarriedEntry> findUniqueStackableItemIdInAuthority(
             InventoryAuthoritySnapshot authority,
-            ItemIdentity identity
+            ItemIdentity identity,
+            Predicate<InventorySourceDescriptor> sourcePredicate
     ) {
         if (authority == null || identity == null) {
             return Optional.empty();
@@ -511,7 +674,7 @@ public final class WorkspaceBeltCommandService {
         LocatedCarriedEntry selected = null;
         ItemIdentity liveVariant = null;
         for (InventorySourceDescriptor source : authority.carriedSources()) {
-            if (source == null) {
+            if (source == null || !sourcePredicate.test(source)) {
                 continue;
             }
             for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
@@ -537,6 +700,46 @@ public final class WorkspaceBeltCommandService {
             }
         }
         return Optional.ofNullable(selected);
+    }
+
+    private static boolean extractableProviderSource(InventorySourceDescriptor source) {
+        return providerSource(source) && source.supports(InventoryCapability.EXTRACT);
+    }
+
+    private static boolean insertableProviderSource(InventorySourceDescriptor source) {
+        return providerSource(source) && source.supports(InventoryCapability.INSERT);
+    }
+
+    private static boolean providerSource(InventorySourceDescriptor source) {
+        return source != null && source.inCarriedPane() && source.providerBacked();
+    }
+
+    private static boolean extractableMainSource(InventorySourceDescriptor source) {
+        return source != null
+                && source.supports(InventoryCapability.EXTRACT)
+                && (source.role() == InventorySourceRole.MAIN
+                || BuiltinInventoryIds.PLAYER_MAIN.equals(source.id()));
+    }
+
+    private static boolean extractableQuickAccessSource(InventorySourceDescriptor source) {
+        return source != null
+                && source.supports(InventoryCapability.EXTRACT)
+                && (source.role() == InventorySourceRole.QUICK_ACCESS
+                || BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(source.id()));
+    }
+
+    private static List<InventorySourceDescriptor> providerDestinationSources(
+            InventoryAuthoritySnapshot authority,
+            String sourceIdToSkip
+    ) {
+        if (authority == null) {
+            return List.of();
+        }
+        return authority.carriedSources().stream()
+                .filter(WorkspaceBeltCommandService::insertableProviderSource)
+                .filter(source -> !source.id().equals(sourceIdToSkip))
+                .sorted(Comparator.comparingInt(InventorySourceDescriptor::stableOrder))
+                .toList();
     }
 
     record LocatedCarriedEntry(String sourceId, int slotIndex, InventoryEntrySnapshot entry) {

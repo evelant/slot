@@ -281,6 +281,23 @@ class DepositPlannerTest {
     }
 
     @Test
+    void bulkDepositWithMovableToolReservationKeepsDamagedTool() {
+        DepositPlan plan = DepositPlanner.plan(
+                authority(
+                        BuiltinInventoryIds.PLAYER_MAIN,
+                        0,
+                        new ItemStack("gtceu:steel_mining_hammer", "{Damage:512}", 1, 1)),
+                ChestAffinityMap.empty(),
+                claimedMap(CHEST_A),
+                Set.of(CHEST_A.toString()),
+                identity -> ItemIdentity.of("gtceu:steel_mining_hammer").equals(identity) ? 1 : 0,
+                (chest, identity) -> true
+        );
+
+        assertTrue(plan.isEmpty());
+    }
+
+    @Test
     void bulkDepositWithReservationDoesNotUseExplicitSimilarityOrEmptyChestFallback() {
         DepositPlan plan = DepositPlanner.plan(
                 authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:amethyst_shard", 5),
@@ -335,12 +352,17 @@ class DepositPlannerTest {
     }
 
     private static InventoryAuthoritySnapshot authority(String sourceId, int slotIndex, String itemId, int count) {
+        return authority(sourceId, slotIndex, new ItemStack(itemId, count, 64));
+    }
+
+    private static InventoryAuthoritySnapshot authority(String sourceId, int slotIndex, ItemStack stack) {
+        int count = stack == null || stack.isEmpty() ? 0 : stack.getCount();
         InventorySourceSnapshot source = new InventorySourceSnapshot(
                 sourceId,
                 36,
                 List.of(new InventoryEntrySnapshot(
                         InventoryEntryKey.slot(sourceId, slotIndex),
-                        new ItemStack(itemId, count, 64),
+                        stack,
                         count,
                         ""
                 )),

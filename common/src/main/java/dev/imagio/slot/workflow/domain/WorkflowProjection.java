@@ -2,6 +2,7 @@ package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.goal.GoalPlanState;
 
 import java.util.ArrayList;
@@ -48,6 +49,10 @@ public final class WorkflowProjection {
             kitDesiredCounts.put(entry.getKey(), new LinkedHashMap<>(entry.getValue()));
         }
         LinkedHashMap<ItemIdentity, Integer> playerWantedCounts = new LinkedHashMap<>(current.playerWantedCounts());
+        LinkedHashMap<String, Map<ItemIdentity, Integer>> kitWantedCounts = new LinkedHashMap<>();
+        for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : current.kitWantedCounts().entrySet()) {
+            kitWantedCounts.put(entry.getKey(), new LinkedHashMap<>(entry.getValue()));
+        }
         LinkedHashMap<String, GoalPlanState> goalPlans = indexGoalPlans(current.goalPlans());
         LinkedHashMap<String, String> goalRecipeDefaults = new LinkedHashMap<>(current.goalRecipeDefaults());
 
@@ -348,22 +353,25 @@ public final class WorkflowProjection {
         else if (workflowEvent instanceof WorkflowEvent.ChestDepositObserved event) {
                 if (event.storageId() != null && event.identity() != null
                         && claimedChests.containsKey(event.storageId())) {
+                    ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(event.identity());
                     LinkedHashMap<ItemIdentity, ChestAffinity> bonds =
                             new LinkedHashMap<>(affinity.getOrDefault(event.storageId(), Map.of()));
-                    ChestAffinity existing = bonds.get(event.identity());
+                    ChestAffinity existing = bonds.get(identity);
                     ChestAffinity bumped = existing == null
-                            ? new ChestAffinity(event.identity(), 1, event.tick())
+                            ? new ChestAffinity(identity, 1, event.tick())
                             : existing.bump(1, event.tick());
-                    bonds.put(event.identity(), bumped);
+                    bonds.put(identity, bumped);
                     affinity.put(event.storageId(), Map.copyOf(bonds));
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.ChestAffinityForgotten event) {
                 if (event.storageId() != null && event.identity() != null) {
                     Map<ItemIdentity, ChestAffinity> bonds = affinity.get(event.storageId());
-                    if (bonds != null && bonds.containsKey(event.identity())) {
+                    ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(event.identity());
+                    if (bonds != null && bonds.keySet().stream()
+                            .anyMatch(candidate -> ItemIdentityMatcher.matchesMovable(candidate, identity))) {
                         LinkedHashMap<ItemIdentity, ChestAffinity> next = new LinkedHashMap<>(bonds);
-                        next.remove(event.identity());
+                        next.keySet().removeIf(candidate -> ItemIdentityMatcher.matchesMovable(candidate, identity));
                         if (next.isEmpty()) {
                             affinity.remove(event.storageId());
                         } else {
@@ -400,12 +408,16 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.KitDeleted event) {
                 if (!event.kitId().isBlank()) {
+                    Set<String> removedKitIds = kitMap.idsRemovedByDeleting(event.kitId());
                     kitMap = kitMap.withoutKit(event.kitId());
                     // Drop any kit-scoped desired counts that referenced
                     // this kit. Without the cascade, a re-created kit with
                     // the same id would inherit stale counts from the
                     // deleted one.
-                    kitDesiredCounts.remove(event.kitId());
+                    for (String removedKitId : removedKitIds) {
+                        kitDesiredCounts.remove(removedKitId);
+                        kitWantedCounts.remove(removedKitId);
+                    }
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.KitActivated event) {
@@ -427,22 +439,14 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.PlayerDesiredCountSet event) {
                 if (event.identity() != null) {
-                    if (event.count() <= 0) {
-                        playerDesiredCounts.remove(event.identity());
-                    } else {
-                        playerDesiredCounts.put(event.identity(), event.count());
-                    }
+                    WorkflowTargetCounts.putOrClear(playerDesiredCounts, event.identity(), event.count());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.KitDesiredCountSet event) {
                 if (event.identity() != null && !event.kitId().isBlank()) {
                     Map<ItemIdentity, Integer> existing = kitDesiredCounts.getOrDefault(event.kitId(), Map.of());
                     LinkedHashMap<ItemIdentity, Integer> updated = new LinkedHashMap<>(existing);
-                    if (event.count() <= 0) {
-                        updated.remove(event.identity());
-                    } else {
-                        updated.put(event.identity(), event.count());
-                    }
+                    WorkflowTargetCounts.putOrClear(updated, event.identity(), event.count());
                     if (updated.isEmpty()) {
                         kitDesiredCounts.remove(event.kitId());
                     } else {
@@ -452,10 +456,18 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.PlayerWantedCountSet event) {
                 if (event.identity() != null) {
-                    if (event.count() <= 0) {
-                        playerWantedCounts.remove(event.identity());
+                    WorkflowTargetCounts.putOrClear(playerWantedCounts, event.identity(), event.count());
+                }
+            }
+        else if (workflowEvent instanceof WorkflowEvent.KitWantedCountSet event) {
+                if (event.identity() != null && !event.kitId().isBlank()) {
+                    Map<ItemIdentity, Integer> existing = kitWantedCounts.getOrDefault(event.kitId(), Map.of());
+                    LinkedHashMap<ItemIdentity, Integer> updated = new LinkedHashMap<>(existing);
+                    WorkflowTargetCounts.putOrClear(updated, event.identity(), event.count());
+                    if (updated.isEmpty()) {
+                        kitWantedCounts.remove(event.kitId());
                     } else {
-                        playerWantedCounts.put(event.identity(), event.count());
+                        kitWantedCounts.put(event.kitId(), Map.copyOf(updated));
                     }
                 }
             }
@@ -483,6 +495,10 @@ public final class WorkflowProjection {
         for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : kitDesiredCounts.entrySet()) {
             kitDesiredCountsCopy.put(entry.getKey(), Map.copyOf(entry.getValue()));
         }
+        LinkedHashMap<String, Map<ItemIdentity, Integer>> kitWantedCountsCopy = new LinkedHashMap<>();
+        for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : kitWantedCounts.entrySet()) {
+            kitWantedCountsCopy.put(entry.getKey(), Map.copyOf(entry.getValue()));
+        }
         return new Snapshot(
                 userCollections,
                 memberships,
@@ -499,6 +515,7 @@ public final class WorkflowProjection {
                 Map.copyOf(playerDesiredCounts),
                 Map.copyOf(kitDesiredCountsCopy),
                 Map.copyOf(playerWantedCounts),
+                Map.copyOf(kitWantedCountsCopy),
                 new ArrayList<>(goalPlans.values()),
                 Map.copyOf(goalRecipeDefaults)
         );
@@ -647,6 +664,7 @@ public final class WorkflowProjection {
             Map<ItemIdentity, Integer> playerDesiredCounts,
             Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
             Map<ItemIdentity, Integer> playerWantedCounts,
+            Map<String, Map<ItemIdentity, Integer>> kitWantedCounts,
             List<GoalPlanState> goalPlans,
             Map<String, String> goalRecipeDefaults
     ) {
@@ -683,8 +701,50 @@ public final class WorkflowProjection {
                     playerDesiredCounts,
                     kitDesiredCounts,
                     playerWantedCounts,
+                    Map.of(),
                     List.of(),
                     Map.of()
+            );
+        }
+
+        public Snapshot(
+                List<CollectionDefinition> userCollections,
+                Map<ItemIdentity, Set<String>> memberships,
+                Map<String, List<QuickAccessLoadoutDefinition>> loadoutsByCollection,
+                Set<ItemIdentity> favoriteTags,
+                Set<ItemIdentity> junkTags,
+                ProtectionSnapshotPolicy protection,
+                Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
+                VisualHomeMap visualHomeMap,
+                ClaimedChestMap claimedChestMap,
+                ChestAffinityMap chestAffinityMap,
+                Map<String, String> clusterLabels,
+                KitMap kitMap,
+                Map<ItemIdentity, Integer> playerDesiredCounts,
+                Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
+                Map<ItemIdentity, Integer> playerWantedCounts,
+                List<GoalPlanState> goalPlans,
+                Map<String, String> goalRecipeDefaults
+        ) {
+            this(
+                    userCollections,
+                    memberships,
+                    loadoutsByCollection,
+                    favoriteTags,
+                    junkTags,
+                    protection,
+                    recentDismissedUpToByIdentity,
+                    visualHomeMap,
+                    claimedChestMap,
+                    chestAffinityMap,
+                    clusterLabels,
+                    kitMap,
+                    playerDesiredCounts,
+                    kitDesiredCounts,
+                    playerWantedCounts,
+                    Map.of(),
+                    goalPlans,
+                    goalRecipeDefaults
             );
         }
 
@@ -704,6 +764,7 @@ public final class WorkflowProjection {
             playerDesiredCounts = playerDesiredCounts == null ? Map.of() : Map.copyOf(playerDesiredCounts);
             kitDesiredCounts = kitDesiredCounts == null ? Map.of() : Map.copyOf(kitDesiredCounts);
             playerWantedCounts = playerWantedCounts == null ? Map.of() : Map.copyOf(playerWantedCounts);
+            kitWantedCounts = kitWantedCounts == null ? Map.of() : Map.copyOf(kitWantedCounts);
             goalPlans = copyGoalPlans(goalPlans);
             goalRecipeDefaults = copyRecipeDefaults(goalRecipeDefaults);
         }
@@ -722,6 +783,7 @@ public final class WorkflowProjection {
                     ChestAffinityMap.empty(),
                     Map.of(),
                     KitMap.empty(),
+                    Map.of(),
                     Map.of(),
                     Map.of(),
                     Map.of(),

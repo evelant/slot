@@ -18,6 +18,7 @@ import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionVisibility;
+import dev.imagio.slot.ui.workspace.WorkflowTabsUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
@@ -184,16 +185,21 @@ final class ListWallPanelBuilder {
             topRow.addChild(host.topRightActionsElement);
             panel.addChild(topRow);
         }
+        int workflowTabsHeight = WorkflowTabsUiBuilder.height(host.viewModel);
         UIElement goalRow = new UIElement().layout(layout -> layout
                 .widthPercent(100)
-                .height(Math.max(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX, BELT_SLOT_SIZE))
+                .height(Math.max(workflowTabsHeight, BELT_SLOT_SIZE))
                 .gapAll(SECTION_GAP_PX)
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
-        goalRow.addChild(tabsRenderer.render(new GoalTabsUiBuilder(new GoalTabsContext()).tabs())
-                .layout(layout -> layout.flex(1).height(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX)));
+        goalRow.addChild(tabsRenderer.render(new WorkflowTabsUiBuilder(new WorkflowTabsContext()).tabs(host.viewModel))
+                .layout(layout -> layout.flex(1).height(workflowTabsHeight)));
         goalRow.addChild(host.kit.kitCluster());
         panel.addChild(goalRow);
+        if (!GoalWorkspaceClientState.goalTabs().isEmpty()) {
+            panel.addChild(tabsRenderer.render(new GoalTabsUiBuilder(new GoalTabsContext()).tabs())
+                    .layout(layout -> layout.widthPercent(100).height(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX)));
+        }
         // Active-chest control strip — only when the host screen is a
         // chest screen. Shows above the recents strip so the chest
         // controls stay close to the action row, with recents (which is
@@ -214,7 +220,7 @@ final class ListWallPanelBuilder {
         if (!host.goalTabActive() && !host.recipeSidebarActive()) {
             for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : host.viewModel.contextualSuggestionLanes()) {
                 SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
-                if (visibleLane.displayable()) {
+                if (WallSectionUiBuilder.shouldRenderSuggestionLane(visibleLane)) {
                     panel.addChild(sectionRenderer.render(sectionBuilder.suggestionLane(visibleLane)));
                 }
             }
@@ -352,7 +358,8 @@ final class ListWallPanelBuilder {
                 filtering,
                 host.storageGhostRevealMode,
                 host.storageGhostSectionExpanded(island.islandId()),
-                host.goalTabActive()));
+                host.goalTabActive(),
+                !host.activeWorkflowTab()));
     }
 
     private boolean shouldShowSection(
@@ -360,15 +367,13 @@ final class ListWallPanelBuilder {
             List<SlotWorkspaceViewModel.AtlasItem> visibleCards,
             boolean filtering
     ) {
-        if (host.storageGhostRevealMode.revealsProximate()) {
-            return true;
-        }
         return WallSectionVisibility.classify(
                 visibleCards,
                 filtering,
                 host.storageGhostSectionExpanded(island.islandId()),
                 host.storageGhostRevealMode,
-                host.goalTabActive()).hasVisibleContent();
+                host.goalTabActive(),
+                !host.activeWorkflowTab()).hasVisibleContent();
     }
 
     private void installSectionInteractions(SlotUiElement model, UIElement element) {
@@ -408,7 +413,6 @@ final class ListWallPanelBuilder {
                     }
                 }
             }
-            addNearbyChip(model, element);
             return;
         }
         if (!model.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_HEADER)) {
@@ -429,27 +433,6 @@ final class ListWallPanelBuilder {
         }
     }
 
-    private void addNearbyChip(SlotUiElement model, UIElement element) {
-        Integer count = model.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_COUNT, Integer.class);
-        if (count == null || count <= 0) {
-            return;
-        }
-        SlotWorkspaceViewModel.AtlasIsland island = model.attachment(
-                WorkspaceUiAttachments.ATLAS_ISLAND,
-                SlotWorkspaceViewModel.AtlasIsland.class
-        );
-        if (island == null) {
-            return;
-        }
-        Boolean expanded = model.attachment(WorkspaceUiAttachments.WALL_SECTION_NEARBY_CHIP_EXPANDED, Boolean.class);
-        UIElement chip = sectionRenderer.render(WallSectionUiBuilder.nearbyChip(island, count, Boolean.TRUE.equals(expanded)));
-        chip.addEventListener(UIEvents.CLICK, event -> {
-            event.stopPropagation();
-            host.toggleStorageGhostSection(island.islandId());
-        });
-        element.addChild(chip);
-    }
-
     private final class WallSectionHeaderContext implements WallSectionHeaderUiBuilder.Context {
         @Override
         public void beginIslandEdit(
@@ -463,6 +446,14 @@ final class ListWallPanelBuilder {
                 return;
             }
             host.menu.beginIslandEdit(island, screenX, screenY);
+        }
+
+        @Override
+        public void toggleNearbySection(SlotWorkspaceViewModel.AtlasIsland island) {
+            if (island == null) {
+                return;
+            }
+            host.toggleStorageGhostSection(island.islandId());
         }
     }
 
@@ -509,6 +500,28 @@ final class ListWallPanelBuilder {
         @Override
         public void adjustGoalTargetCount(String goalId, int delta) {
             host.adjustGoalTargetCount(goalId, delta);
+        }
+    }
+
+    private final class WorkflowTabsContext implements WorkflowTabsUiBuilder.Context {
+        @Override
+        public void selectAll() {
+            host.selectAllWorkflowTab();
+        }
+
+        @Override
+        public void selectTab(String kitId) {
+            host.selectWorkflowTab(kitId);
+        }
+
+        @Override
+        public void createTab() {
+            host.rpc.sendCreateWorkflowTab();
+        }
+
+        @Override
+        public void openTabMenu(String kitId, float screenX, float screenY) {
+            host.menu.openContextMenuForKit(kitId, screenX, screenY);
         }
     }
 }

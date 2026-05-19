@@ -1,7 +1,9 @@
 package dev.imagio.slot.workflow.domain;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public record KitMap(List<KitDefinition> kits, KitActivation activation) {
     public KitMap {
@@ -25,6 +27,60 @@ public record KitMap(List<KitDefinition> kits, KitActivation activation) {
         return null;
     }
 
+    public KitDefinition activeKit() {
+        return activation == null || !activation.isActive() ? null : kit(activation.kitId());
+    }
+
+    public KitDefinition parentOf(KitDefinition kit) {
+        if (kit == null || kit.parentId().isBlank()) {
+            return null;
+        }
+        return kit(kit.parentId());
+    }
+
+    /**
+     * Active workflow inheritance chain, ordered from broadest to narrowest:
+     * parent tab first, then active variant; or just the active parent tab.
+     */
+    public List<KitDefinition> activeLineage() {
+        KitDefinition active = activeKit();
+        if (active == null) {
+            return List.of();
+        }
+        KitDefinition parent = parentOf(active);
+        if (parent == null) {
+            return List.of(active);
+        }
+        return List.of(parent, active);
+    }
+
+    public List<KitDefinition> variantsOf(String parentId) {
+        if (parentId == null || parentId.isBlank()) {
+            return List.of();
+        }
+        ArrayList<KitDefinition> variants = new ArrayList<>();
+        for (KitDefinition kit : kits) {
+            if (kit != null && parentId.equals(kit.parentId())) {
+                variants.add(kit);
+            }
+        }
+        return List.copyOf(variants);
+    }
+
+    public Set<String> idsRemovedByDeleting(String kitId) {
+        if (kitId == null || kitId.isBlank() || kit(kitId) == null) {
+            return Set.of();
+        }
+        LinkedHashSet<String> removed = new LinkedHashSet<>();
+        removed.add(kitId);
+        for (KitDefinition kit : kits) {
+            if (kit != null && kitId.equals(kit.parentId())) {
+                removed.add(kit.id());
+            }
+        }
+        return Set.copyOf(removed);
+    }
+
     public KitMap withKit(KitDefinition kit) {
         if (kit == null || kit.id().isBlank()) {
             return this;
@@ -43,9 +99,10 @@ public record KitMap(List<KitDefinition> kits, KitActivation activation) {
         if (kitId == null || kitId.isBlank()) {
             return this;
         }
+        Set<String> removedIds = idsRemovedByDeleting(kitId);
         ArrayList<KitDefinition> next = new ArrayList<>(kits);
-        next.removeIf(kit -> kit.id().equals(kitId));
-        KitActivation nextActivation = activation.kitId().equals(kitId) ? KitActivation.NONE : activation;
+        next.removeIf(kit -> removedIds.contains(kit.id()));
+        KitActivation nextActivation = removedIds.contains(activation.kitId()) ? KitActivation.NONE : activation;
         return new KitMap(next, nextActivation);
     }
 

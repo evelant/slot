@@ -48,6 +48,42 @@ public final class WorkspaceChestProjectionSupport {
         return result;
     }
 
+    public static boolean isProximate(ServerPlayer player, ClaimedChest chest) {
+        return isProximate(player, chest, DEFAULT_RADIUS_BLOCKS);
+    }
+
+    public static boolean isProximate(
+            ServerPlayer player,
+            ClaimedChest chest,
+            int radiusBlocks
+    ) {
+        if (player == null || chest == null) {
+            return false;
+        }
+        String dimension = player.level().dimension().location().toString();
+        BlockPos playerPos = player.blockPosition();
+        long radiusSquared = (long) Math.max(0, radiusBlocks) * Math.max(0, radiusBlocks);
+        return isWithin(chest, dimension, playerPos, radiusSquared);
+    }
+
+    public static boolean isProximate(ServerPlayer player, ChestAnchor anchor) {
+        return isProximate(player, anchor, DEFAULT_RADIUS_BLOCKS);
+    }
+
+    public static boolean isProximate(
+            ServerPlayer player,
+            ChestAnchor anchor,
+            int radiusBlocks
+    ) {
+        if (player == null || anchor == null) {
+            return false;
+        }
+        String dimension = player.level().dimension().location().toString();
+        BlockPos playerPos = player.blockPosition();
+        long radiusSquared = (long) Math.max(0, radiusBlocks) * Math.max(0, radiusBlocks);
+        return isWithin(anchor, dimension, playerPos, radiusSquared);
+    }
+
     public static Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver(
             MinecraftServer server,
             ClaimedChestMap map,
@@ -111,17 +147,26 @@ public final class WorkspaceChestProjectionSupport {
             long radiusSquared
     ) {
         for (ChestAnchor anchor : chest.anchors()) {
-            if (anchor == null || !dimension.equals(anchor.dimensionId())) {
-                continue;
-            }
-            long dx = (long) playerPos.getX() - anchor.x();
-            long dy = (long) playerPos.getY() - anchor.y();
-            long dz = (long) playerPos.getZ() - anchor.z();
-            if (dx * dx + dy * dy + dz * dz <= radiusSquared) {
+            if (isWithin(anchor, dimension, playerPos, radiusSquared)) {
                 return true;
             }
         }
         return false;
+    }
+
+    private static boolean isWithin(
+            ChestAnchor anchor,
+            String dimension,
+            BlockPos playerPos,
+            long radiusSquared
+    ) {
+        if (anchor == null || playerPos == null || !dimension.equals(anchor.dimensionId())) {
+            return false;
+        }
+        long dx = (long) playerPos.getX() - anchor.x();
+        long dy = (long) playerPos.getY() - anchor.y();
+        long dz = (long) playerPos.getZ() - anchor.z();
+        return dx * dx + dy * dy + dz * dz <= radiusSquared;
     }
 
     private static UUID parseUuid(String raw) {

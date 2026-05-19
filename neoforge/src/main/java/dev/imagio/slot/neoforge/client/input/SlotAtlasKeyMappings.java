@@ -125,6 +125,17 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    // Same explicit deposit route as the workspace button. Unbound by default
+    // so players can opt into a one-key cleanup flow once they trust their
+    // learned storage homes.
+    private static final KeyMapping DEPOSIT_PUT_AWAY = new KeyMapping(
+            "key.slot.deposit_put_away",
+            KeyConflictContext.UNIVERSAL,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
     // Modifier-style default so holding it for wanted-count scroll adjust
     // does not generate text-key repeat toggles. The translation id changed
     // from the original A-key binding so existing dev-profile options do not
@@ -153,6 +164,14 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    private static final KeyMapping MOVE_TO_MAIN_INVENTORY = new KeyMapping(
+            "key.slot.move_to_main_inventory",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_GRAVE_ACCENT,
+            CATEGORY
+    );
+
     private static boolean wayfindingHudEnabled = true;
 
     private SlotAtlasKeyMappings() {
@@ -170,9 +189,11 @@ public final class SlotAtlasKeyMappings {
         event.register(RELEVANCE_DEBUG_OVERLAY);
         event.register(TOGGLE_WAYFINDING_HUD);
         event.register(GATHER_ACTIVE_KIT);
+        event.register(DEPOSIT_PUT_AWAY);
         event.register(MARK_WANTED);
         event.register(SET_WANTED_HOVER);
         event.register(STORAGE_XRAY);
+        event.register(MOVE_TO_MAIN_INVENTORY);
     }
 
     public static KeyMapping gatherActiveKitMapping() {
@@ -181,6 +202,14 @@ public final class SlotAtlasKeyMappings {
 
     public static boolean matchesGatherActiveKit(int keyCode, int scanCode) {
         return keyMatches(GATHER_ACTIVE_KIT, keyCode, scanCode);
+    }
+
+    public static KeyMapping depositPutAwayMapping() {
+        return DEPOSIT_PUT_AWAY;
+    }
+
+    public static boolean matchesDepositPutAway(int keyCode, int scanCode) {
+        return keyMatches(DEPOSIT_PUT_AWAY, keyCode, scanCode);
     }
 
     public static boolean matchesMarkWanted(int keyCode, int scanCode) {
@@ -222,6 +251,10 @@ public final class SlotAtlasKeyMappings {
 
     public static boolean matchesStorageXray(int keyCode, int scanCode) {
         return keyMatches(STORAGE_XRAY, keyCode, scanCode);
+    }
+
+    public static boolean matchesMoveToMainInventory(int keyCode, int scanCode) {
+        return keyMatches(MOVE_TO_MAIN_INVENTORY, keyCode, scanCode);
     }
 
     public static String storageXrayKeyLabel() {

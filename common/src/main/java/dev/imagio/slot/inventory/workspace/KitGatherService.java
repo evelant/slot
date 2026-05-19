@@ -18,10 +18,9 @@ import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.KitActivation;
-import dev.imagio.slot.workflow.domain.KitDefinition;
 import dev.imagio.slot.workflow.domain.KitMap;
-import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import dev.imagio.slot.workflow.domain.WorkflowTabTargets;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -78,7 +77,7 @@ public final class KitGatherService {
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
         SlotWorkspaceCommandService.clearSatisfiedWantedCounts(runtime, authority);
 
-        Map<ItemIdentity, Integer> targets = gatherTargets(runtime, kitMap, activation);
+        Map<ItemIdentity, Integer> targets = gatherTargets(runtime, authority);
         if (targets.isEmpty()) {
             return Outcome.empty("no_target_counts");
         }
@@ -176,42 +175,20 @@ public final class KitGatherService {
 
     private static Map<ItemIdentity, Integer> gatherTargets(
             WorkflowDomainRuntime runtime,
-            KitMap kitMap,
-            KitActivation activation
+            InventoryAuthoritySnapshot authority
     ) {
-        Map<ItemIdentity, Integer> targets = new LinkedHashMap<>();
-        for (Map.Entry<ItemIdentity, Integer> entry : runtime.desiredCountWorkflow().allPlayer().entrySet()) {
-            mergePositiveTarget(targets, entry.getKey(), entry.getValue());
+        WorkflowTabTargets.Resolution resolution = WorkflowTabTargets.resolve(authority, runtime.snapshot());
+        LinkedHashMap<ItemIdentity, Integer> targets = new LinkedHashMap<>();
+        for (Map.Entry<ItemIdentity, Integer> entry : resolution.desiredCounts().entrySet()) {
+            targets.merge(entry.getKey(), entry.getValue(), Math::max);
         }
-        for (Map.Entry<ItemIdentity, Integer> entry : runtime.wantedCountWorkflow().allPlayer().entrySet()) {
-            mergePositiveTarget(targets, entry.getKey(), entry.getValue());
+        for (Map.Entry<ItemIdentity, Integer> entry : resolution.wantedCounts().entrySet()) {
+            targets.merge(entry.getKey(), entry.getValue(), Math::max);
         }
-        if (activation == null || !activation.isActive()) {
-            return targets;
-        }
-        KitDefinition kit = kitMap.kit(activation.kitId());
-        if (kit == null) {
-            return targets;
-        }
-        int activePageIndex = Math.max(0, Math.min(activation.pageIndex(), kit.pageCount() - 1));
-        KitPage page = kit.page(activePageIndex);
-        if (page != null) {
-            for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
-                mergePositiveTarget(targets, page.slot(slotIndex), 1);
-            }
-        }
-        Map<ItemIdentity, Integer> kitWants = runtime.desiredCountWorkflow().forKit(kit.id());
-        for (Map.Entry<ItemIdentity, Integer> entry : kitWants.entrySet()) {
-            mergePositiveTarget(targets, entry.getKey(), entry.getValue());
+        for (Map.Entry<ItemIdentity, Integer> entry : resolution.beltPageRequirements().entrySet()) {
+            targets.merge(entry.getKey(), entry.getValue(), Math::max);
         }
         return targets;
-    }
-
-    private static void mergePositiveTarget(Map<ItemIdentity, Integer> targets, ItemIdentity identity, Integer count) {
-        if (targets == null || identity == null || count == null || count <= 0) {
-            return;
-        }
-        targets.merge(identity, count, Math::max);
     }
 
     public static WorkspaceCommandOutcome toWorkspaceOutcome(Outcome outcome) {

@@ -14,10 +14,12 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.TextField;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
+import dev.imagio.slot.inventory.core.ItemStackTags;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
@@ -27,6 +29,7 @@ import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 final class ContextMenuBuilder {
@@ -181,12 +184,42 @@ final class ContextMenuBuilder {
                 .paddingAll(4)
                 .gapAll(2)
                 .flexDirection(FlexDirection.COLUMN));
-        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 160, 96);
+        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 160, 160);
         menu.style(style -> style.zIndex(22));
         menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
         menu.addChild(label(shorten(item.name(), 22), ACCENT)
                 .layout(layout -> layout.widthPercent(100).height(12)));
+
+        SlotWorkspaceViewModel.KitCard activeTab = host.viewModel.activeKit();
+        if (activeTab != null) {
+            boolean member = activeTab.members().contains(item.identity());
+            menu.addChild(menuButton(
+                    member
+                            ? "Remove from " + shorten(activeTab.name(), 14)
+                            : "Add to " + shorten(activeTab.name(), 18),
+                    true,
+                    null,
+                    () -> {
+                        host.rpc.sendSetKitMember(activeTab.kitId(), item.identity(), !member);
+                        closeContextMenu();
+                    }
+            ));
+            for (WorkflowAcceptedInputRule rule : acceptedInputOptions(item)) {
+                WorkflowAcceptedInputRule matchedRule = acceptedInputMatch(activeTab, rule);
+                boolean accepted = matchedRule != null;
+                WorkflowAcceptedInputRule commandRule = accepted ? matchedRule : rule;
+                menu.addChild(menuButton(
+                        acceptedInputButtonLabel(rule, accepted),
+                        true,
+                        null,
+                        () -> {
+                            host.rpc.sendSetKitAcceptedInput(activeTab.kitId(), commandRule, !accepted);
+                            closeContextMenu();
+                        }
+                ));
+            }
+        }
 
         int freeHotbarIndex = host.firstFreeHotbarIndex();
         if (item.carried() && freeHotbarIndex >= 0) {
@@ -252,6 +285,68 @@ final class ContextMenuBuilder {
                 .left(0).right(0).top(0).bottom(0));
         wrapper.addChildren(catcher, menu);
         return wrapper;
+    }
+
+    private static List<WorkflowAcceptedInputRule> acceptedInputOptions(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || item.identity() == null) {
+            return List.of();
+        }
+        ArrayList<WorkflowAcceptedInputRule> rules = new ArrayList<>();
+        WorkflowAcceptedInputRule exact = WorkflowAcceptedInputRule.exact(item.identity().toIdentity());
+        if (exact != null) {
+            rules.add(exact);
+        }
+        ArrayList<String> tags = new ArrayList<>(ItemStackTags.itemTagIds(item.displayStack()));
+        tags.removeIf(tag -> !selectableAcceptedInputTag(tag));
+        tags.sort(Comparator.comparingInt(ContextMenuBuilder::acceptedTagRank).thenComparing(tag -> tag));
+        int added = 0;
+        for (String tag : tags) {
+            WorkflowAcceptedInputRule rule = WorkflowAcceptedInputRule.itemTag(tag);
+            if (rule != null && !rules.contains(rule)) {
+                rules.add(rule);
+                added++;
+                if (added >= 4) {
+                    break;
+                }
+            }
+        }
+        return rules.isEmpty() ? List.of() : List.copyOf(rules);
+    }
+
+    private static boolean selectableAcceptedInputTag(String tag) {
+        return tag != null && tag.contains(":");
+    }
+
+    private static int acceptedTagRank(String tag) {
+        int colon = tag == null ? -1 : tag.indexOf(':');
+        String path = colon >= 0 ? tag.substring(colon + 1) : "";
+        return path.contains("/") ? 0 : 1;
+    }
+
+    private static String acceptedInputButtonLabel(WorkflowAcceptedInputRule rule, boolean accepted) {
+        if (rule.itemTag()) {
+            return (accepted ? "Stop accepting " : "Accept ") + shorten(rule.displayLabel(), 24);
+        }
+        return accepted ? "Stop accepting exact item" : "Accept exact item";
+    }
+
+    private static WorkflowAcceptedInputRule acceptedInputMatch(
+            SlotWorkspaceViewModel.KitCard activeTab,
+            WorkflowAcceptedInputRule rule
+    ) {
+        if (activeTab == null || rule == null) {
+            return null;
+        }
+        for (WorkflowAcceptedInputRule existing : activeTab.acceptedInputs()) {
+            if (existing == null) {
+                continue;
+            }
+            if (existing.equals(rule) || (existing.exactItem() && rule.exactItem()
+                    && existing.matches(rule.identity(), java.util.Set.of()))) {
+                return existing;
+            }
+        }
+        return null;
     }
 
     private UIElement buildRecipeAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
@@ -455,6 +550,8 @@ final class ContextMenuBuilder {
             approxHeight = 70;
         } else if (card.kitId().equals(host.confirmDeleteKitId)) {
             approxHeight = 64;
+        } else if (!card.variant()) {
+            approxHeight = 94;
         }
         anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180, approxHeight);
         menu.style(style -> style.zIndex(22));
@@ -477,6 +574,12 @@ final class ContextMenuBuilder {
                 host.rpc.sendDuplicateKit(card.kitId());
                 closeContextMenu();
             }));
+            if (!card.variant()) {
+                menu.addChild(menuButton("Create variant", true, null, () -> {
+                    host.rpc.sendCreateKitVariant(card.kitId());
+                    closeContextMenu();
+                }));
+            }
             menu.addChild(menuButton("Delete\u2026", true, null, () -> {
                 host.confirmDeleteKitId = card.kitId();
                 host.rebuild();

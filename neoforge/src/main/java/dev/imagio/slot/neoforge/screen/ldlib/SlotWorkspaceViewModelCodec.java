@@ -14,6 +14,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -828,9 +829,22 @@ public final class SlotWorkspaceViewModelCodec {
         CompoundTag tag = new CompoundTag();
         tag.putString("kitId", card.kitId());
         tag.putString("name", card.name());
+        tag.putString("parentId", card.parentId());
         tag.putInt("pageCount", card.pageCount());
         tag.putInt("activePageIndex", card.activePageIndex());
         tag.putBoolean("active", card.active());
+        tag.putBoolean("variant", card.variant());
+        tag.putInt("memberCount", card.memberCount());
+        ListTag members = new ListTag();
+        for (SlotWorkspaceViewModel.IdentityRef member : card.members()) {
+            members.add(encodeIdentity(member));
+        }
+        tag.put("members", members);
+        ListTag acceptedInputs = new ListTag();
+        for (WorkflowAcceptedInputRule rule : card.acceptedInputs()) {
+            acceptedInputs.add(encodeAcceptedInput(rule));
+        }
+        tag.put("acceptedInputs", acceptedInputs);
         tag.putInt("slotCount", card.slotCount());
         tag.putInt("readyCount", card.readyCount());
         tag.putInt("carriedSlotCount", card.carriedSlotCount());
@@ -871,12 +885,30 @@ public final class SlotWorkspaceViewModelCodec {
         for (int index = 0; index < bringTags.size(); index++) {
             bring.add(decodeKitBring(provider, bringTags.getCompound(index)));
         }
+        ArrayList<SlotWorkspaceViewModel.IdentityRef> members = new ArrayList<>();
+        ListTag memberTags = tag.getList("members", Tag.TAG_COMPOUND);
+        for (int index = 0; index < memberTags.size(); index++) {
+            members.add(decodeIdentity(memberTags.getCompound(index)));
+        }
+        ArrayList<WorkflowAcceptedInputRule> acceptedInputs = new ArrayList<>();
+        ListTag acceptedInputTags = tag.getList("acceptedInputs", Tag.TAG_COMPOUND);
+        for (int index = 0; index < acceptedInputTags.size(); index++) {
+            WorkflowAcceptedInputRule rule = decodeAcceptedInput(acceptedInputTags.getCompound(index));
+            if (rule != null) {
+                acceptedInputs.add(rule);
+            }
+        }
         return new SlotWorkspaceViewModel.KitCard(
                 tag.getString("kitId"),
                 tag.getString("name"),
+                tag.getString("parentId"),
                 tag.getInt("pageCount"),
                 tag.getInt("activePageIndex"),
                 tag.getBoolean("active"),
+                tag.getBoolean("variant"),
+                tag.getInt("memberCount"),
+                members,
+                acceptedInputs,
                 tag.getInt("slotCount"),
                 tag.getInt("readyCount"),
                 tag.getInt("carriedSlotCount"),
@@ -887,6 +919,31 @@ public final class SlotWorkspaceViewModelCodec {
                 pages,
                 bring
         );
+    }
+
+    private static CompoundTag encodeAcceptedInput(WorkflowAcceptedInputRule rule) {
+        CompoundTag tag = new CompoundTag();
+        if (rule == null) {
+            return tag;
+        }
+        tag.putString("kind", rule.kind().name());
+        tag.putString("tagId", rule.tagId());
+        if (rule.identity() != null) {
+            tag.put("identity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(rule.identity())));
+        }
+        return tag;
+    }
+
+    private static WorkflowAcceptedInputRule decodeAcceptedInput(CompoundTag tag) {
+        if (tag == null) {
+            return null;
+        }
+        WorkflowAcceptedInputRule.Kind kind = WorkflowAcceptedInputRule.parseKind(tag.getString("kind"));
+        if (kind == WorkflowAcceptedInputRule.Kind.ITEM_TAG) {
+            return WorkflowAcceptedInputRule.itemTag(tag.getString("tagId"));
+        }
+        SlotWorkspaceViewModel.IdentityRef identity = decodeIdentity(tag.getCompound("identity"));
+        return WorkflowAcceptedInputRule.exact(identity.toIdentity());
     }
 
     private static CompoundTag encodeKitBring(SlotWorkspaceViewModel.KitBringItem item, HolderLookup.Provider provider) {
@@ -1041,6 +1098,7 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putString("largestCarriedSourceId", item.largestCarriedSourceId());
         tag.putInt("largestCarriedSlotIndex", item.largestCarriedSlotIndex());
         tag.putInt("largestCarriedSlotCount", item.largestCarriedSlotCount());
+        tag.putString("putAwayState", item.putAwayState().name());
         return tag;
     }
 
@@ -1108,7 +1166,8 @@ public final class SlotWorkspaceViewModelCodec {
                 decodeWantedCount(tag),
                 tag.getString("largestCarriedSourceId"),
                 decodedSlotIndex,
-                tag.getInt("largestCarriedSlotCount")
+                tag.getInt("largestCarriedSlotCount"),
+                SlotWorkspaceViewModel.PutAwayState.parse(tag.getString("putAwayState"))
         );
     }
 

@@ -70,8 +70,8 @@ public interface CarriedSourceAccess {
     /**
      * Find the first carried slot containing a stack matching the given
      * identity. Walks {@link InventoryAuthoritySnapshot#carriedSources()} in
-     * {@code stableOrder}, so main/hotbar/offhand are checked before
-     * backpacks (matching the routing preference).
+     * {@code stableOrder}: provider-backed overflow storage first, then
+     * main/hotbar/offhand.
      */
     Optional<CarriedLocation> findIdentity(ServerPlayer player, ItemIdentity identity);
 

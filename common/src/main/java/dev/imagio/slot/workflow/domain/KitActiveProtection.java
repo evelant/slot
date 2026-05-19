@@ -10,10 +10,10 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Protection overlay that guards the active Kit's belt + offhand + every
- * identity with a non-zero kit-scoped desired count from trash/void/cleanup
- * flows. Composes with the base workflow protection; does not replace it.
- * When no Kit is active the overlay is a no-op.
+ * Protection overlay that guards the active workflow tab's effective local
+ * targets (parent + variant membership, desired/wanted counts, belt/offhand)
+ * from trash/void/cleanup flows. Composes with the base workflow protection;
+ * does not replace it. When no tab is active the overlay is a no-op.
  */
 public final class KitActiveProtection implements ProtectionPolicy {
     private final ProtectionPolicy base;
@@ -27,54 +27,25 @@ public final class KitActiveProtection implements ProtectionPolicy {
     }
 
     public static Set<ItemIdentity> identitiesFor(KitMap kitMap) {
-        return identitiesFor(kitMap, Map.of());
+        return identitiesFor(kitMap, Map.of(), Map.of());
     }
 
     /**
-     * Collect the identities the active kit considers protected. Includes
-     * every belt/page slot, the offhand pin, and every identity with a
-     * non-zero kit-scoped desired count for the active kit. The
-     * desired-count side of the set replaces the legacy "bring" field.
+     * Collect the identities the active workflow tab considers protected.
      */
     public static Set<ItemIdentity> identitiesFor(
             KitMap kitMap,
             Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts
     ) {
-        if (kitMap == null) {
-            return Set.of();
-        }
-        KitActivation activation = kitMap.activation();
-        if (!activation.isActive()) {
-            return Set.of();
-        }
-        KitDefinition kit = kitMap.kit(activation.kitId());
-        if (kit == null) {
-            return Set.of();
-        }
-        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
-        for (KitPage page : kit.pages()) {
-            if (page == null) {
-                continue;
-            }
-            for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
-                ItemIdentity identity = page.slot(slotIndex);
-                if (identity != null) {
-                    identities.add(identity);
-                }
-            }
-        }
-        if (kit.offhand() != null) {
-            identities.add(kit.offhand());
-        }
-        if (kitDesiredCounts != null) {
-            Map<ItemIdentity, Integer> kitDesired = kitDesiredCounts.getOrDefault(activation.kitId(), Map.of());
-            for (Map.Entry<ItemIdentity, Integer> entry : kitDesired.entrySet()) {
-                if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0) {
-                    identities.add(entry.getKey());
-                }
-            }
-        }
-        return Set.copyOf(identities);
+        return identitiesFor(kitMap, kitDesiredCounts, Map.of());
+    }
+
+    public static Set<ItemIdentity> identitiesFor(
+            KitMap kitMap,
+            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
+            Map<String, Map<ItemIdentity, Integer>> kitWantedCounts
+    ) {
+        return WorkflowTabTargets.protectedIdentities(kitMap, kitDesiredCounts, kitWantedCounts);
     }
 
     public static ProtectionPolicy compose(ProtectionPolicy base, KitMap kitMap) {
@@ -86,7 +57,16 @@ public final class KitActiveProtection implements ProtectionPolicy {
             KitMap kitMap,
             Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts
     ) {
-        Set<ItemIdentity> activeIdentities = identitiesFor(kitMap, kitDesiredCounts);
+        return compose(base, kitMap, kitDesiredCounts, Map.of());
+    }
+
+    public static ProtectionPolicy compose(
+            ProtectionPolicy base,
+            KitMap kitMap,
+            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
+            Map<String, Map<ItemIdentity, Integer>> kitWantedCounts
+    ) {
+        Set<ItemIdentity> activeIdentities = identitiesFor(kitMap, kitDesiredCounts, kitWantedCounts);
         if (activeIdentities.isEmpty()) {
             return base == null ? ProtectionPolicy.allowAll() : base;
         }

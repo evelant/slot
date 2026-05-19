@@ -59,6 +59,29 @@ class ItemIdentityTest {
     }
 
     @Test
+    void packToolIdsMatchMovableByItemId() {
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}"),
+                ItemIdentity.of("gtceu:steel_mining_hammer")));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("tfc:metal/hammer/steel", "{Damage:45}"),
+                ItemIdentity.of("tfc:metal/hammer/steel")));
+    }
+
+    @Test
+    void portableStorageContainerIdsMatchMovableByItemId() {
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("sns:straw_basket", "{Inventory:[{Slot:0b,id:\"minecraft:torch\",Count:8b}]}"),
+                ItemIdentity.of("sns:straw_basket")));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("sns:leather_sack", "{Inventory:[{Slot:0b,id:\"minecraft:ore\",Count:16b}]}"),
+                ItemIdentity.of("sns:leather_sack")));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("sns:lunchbox", "{Food:7}"),
+                ItemIdentity.of("sns:lunchbox")));
+    }
+
+    @Test
     void itemOnlyIgnoresVolatileComponentData() {
         assertEquals(
                 ItemIdentity.of("tfc:metal/ingot/brass"),

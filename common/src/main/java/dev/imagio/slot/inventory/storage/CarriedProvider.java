@@ -119,7 +119,7 @@ public interface CarriedProvider {
                 if (stack.isEmpty()) {
                     continue;
                 }
-                if (dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack).equals(identity)) {
+                if (dev.imagio.slot.inventory.core.ItemIdentityMatcher.matchesMovable(stack, identity)) {
                     return Optional.of(new CarriedSourceAccess.CarriedLocation(sourceId, slot));
                 }
             }
@@ -140,7 +140,7 @@ public interface CarriedProvider {
                 if (stack.isEmpty()) {
                     continue;
                 }
-                if (dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack).equals(identity)) {
+                if (dev.imagio.slot.inventory.core.ItemIdentityMatcher.matchesMovable(stack, identity)) {
                     hits.add(new CarriedSourceAccess.CarriedLocation(sourceId, slot));
                 }
             }

@@ -1,0 +1,395 @@
+package dev.imagio.slot.inventory.workspace;
+
+import dev.imagio.slot.inventory.core.BuiltinInventoryDescriptors;
+import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.HostInstanceKey;
+import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.InventoryStackSnapshot;
+import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
+import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.PlayerRuntimeStateDescriptor;
+import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
+import dev.imagio.slot.inventory.integration.InventoryHostSession;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
+import dev.imagio.slot.inventory.storage.WorldStorageAccess;
+import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
+import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
+import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
+import dev.imagio.slot.workflow.domain.KitDefinition;
+import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
+import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class SlotWorkspaceViewModelWorkflowTabsTest {
+    @Test
+    void activeWorkflowTabHidesUnrelatedCarriedCards() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setMember(mining.id(), ItemIdentity.of("minecraft:torch"), true);
+        runtime.kitWorkflow().activate(mining.id());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(
+                        new InventoryStackSnapshot(0, new ItemStack("minecraft:torch", 8, 64), 8),
+                        new InventoryStackSnapshot(1, new ItemStack("minecraft:dirt", 64, 64), 64)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        assertEquals(
+                List.of("minecraft:torch"),
+                viewModel.triageItems().stream().map(item -> item.identity().itemId()).toList());
+
+        SlotWorkspaceViewModel.ContextualSuggestionLane putAway = viewModel.contextualSuggestionLanes().stream()
+                .filter(SlotWorkspaceViewModel.ContextualSuggestionLane::putAway)
+                .findFirst()
+                .orElseThrow();
+        assertEquals(
+                List.of("minecraft:dirt"),
+                putAway.items().stream().map(item -> item.identity().itemId()).toList());
+        assertTrue(putAway.items().get(0).putAwayState().noRoute());
+        assertNotNull(viewModel.atlasItem(putAway.items().get(0).identity()));
+    }
+
+    @Test
+    void activeWorkflowPutAwayDoesNotSuggestEquippedArmor() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setMember(mining.id(), ItemIdentity.of("minecraft:torch"), true);
+        runtime.kitWorkflow().activate(mining.id());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carriedBySource(Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN,
+                        List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:torch", 8, 64), 8)),
+                        BuiltinInventoryIds.PLAYER_ARMOR,
+                        List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:iron_boots", 1, 1), 1)))),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        List<String> putAwayIds = viewModel.contextualSuggestionLanes().stream()
+                .filter(SlotWorkspaceViewModel.ContextualSuggestionLane::putAway)
+                .flatMap(lane -> lane.items().stream())
+                .map(item -> item.identity().itemId())
+                .toList();
+        assertFalse(putAwayIds.contains("minecraft:iron_boots"));
+    }
+
+    @Test
+    void acceptedWorkflowInputIsKeptWithoutDesiredOrWantedCount() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity ore = ItemIdentity.of("minecraft:iron_ore");
+        KitDefinition smelting = runtime.kitWorkflow().create("Smelting");
+        runtime.kitWorkflow().setAcceptedInput(
+                smelting.id(),
+                WorkflowAcceptedInputRule.exact(ore),
+                true);
+        runtime.kitWorkflow().activate(smelting.id());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(
+                        new InventoryStackSnapshot(0, new ItemStack("minecraft:iron_ore", 8, 64), 8),
+                        new InventoryStackSnapshot(1, new ItemStack("minecraft:dirt", 64, 64), 64)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.AtlasItem acceptedOre = viewModel.triageItems().stream()
+                .filter(item -> "minecraft:iron_ore".equals(item.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+        assertEquals(0, acceptedOre.desiredCount());
+        assertEquals(0, acceptedOre.wantedCount());
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NONE, acceptedOre.putAwayState());
+
+        List<String> putAwayIds = viewModel.contextualSuggestionLanes().stream()
+                .filter(SlotWorkspaceViewModel.ContextualSuggestionLane::putAway)
+                .flatMap(lane -> lane.items().stream())
+                .map(item -> item.identity().itemId())
+                .toList();
+        assertFalse(putAwayIds.contains("minecraft:iron_ore"));
+        assertTrue(putAwayIds.contains("minecraft:dirt"));
+    }
+
+    @Test
+    void damagedWorkflowToolSatisfiesItemOnlyTarget() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setMember(mining.id(), hammer, true);
+        runtime.kitWorkflow().activate(mining.id());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(new InventoryStackSnapshot(
+                        0,
+                        new ItemStack("gtceu:steel_mining_hammer", "{Damage:512}", 1, 1),
+                        1)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.triageItems().stream()
+                .filter(candidate -> "gtceu:steel_mining_hammer".equals(candidate.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(item.carried());
+        assertFalse(item.ghost());
+        assertEquals(hammer, item.identity().toIdentity());
+        assertFalse(item.kitNeeded());
+        assertEquals(0, item.wantedCount());
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NONE, item.putAwayState());
+    }
+
+    @Test
+    void damagedWorkflowToolMarksBeltSlotReady() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setSlotIdentity(mining.id(), 0, 0, hammer);
+        runtime.kitWorkflow().activate(mining.id());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(new InventoryStackSnapshot(
+                        0,
+                        new ItemStack("gtceu:steel_mining_hammer", "{Damage:512}", 1, 1),
+                        1)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.KitCard card = viewModel.kits().stream()
+                .filter(candidate -> mining.id().equals(candidate.kitId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertEquals(1, card.readyCount());
+        assertTrue(card.activePage().slots().get(0).ready());
+    }
+
+    @Test
+    void workflowStorageContainerWithContentsSatisfiesItemOnlyTarget() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity basket = ItemIdentity.of("sns:straw_basket");
+        KitDefinition gathering = runtime.kitWorkflow().create("Gathering");
+        runtime.kitWorkflow().setMember(gathering.id(), basket, true);
+        runtime.kitWorkflow().activate(gathering.id());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(new InventoryStackSnapshot(
+                        0,
+                        new ItemStack(
+                                "sns:straw_basket",
+                                "{Inventory:[{Slot:0b,id:\"minecraft:torch\",Count:8b}]}",
+                                1,
+                                1),
+                        1)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.triageItems().stream()
+                .filter(candidate -> "sns:straw_basket".equals(candidate.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(item.carried());
+        assertFalse(item.ghost());
+        assertEquals(basket, item.identity().toIdentity());
+        assertFalse(item.kitNeeded());
+        assertEquals(0, item.wantedCount());
+    }
+
+    @Test
+    void workflowStorageContainerInKnownStorageDoesNotRenderAsCraftTarget() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity basket = ItemIdentity.of("sns:straw_basket");
+        KitDefinition gathering = runtime.kitWorkflow().create("Gathering");
+        runtime.kitWorkflow().setMember(gathering.id(), basket, true);
+        runtime.kitWorkflow().activate(gathering.id());
+
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.PLACED_ITEM,
+                "Basket shelf @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                4,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        new ItemStack(
+                                "sns:straw_basket",
+                                "{Inventory:[{Slot:0b,id:\"minecraft:torch\",Count:8b}]}",
+                                1,
+                                1))));
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                storageId -> SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                List.of(source));
+
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.triageItems().stream()
+                .filter(candidate -> "sns:straw_basket".equals(candidate.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+        List<String> tooltip = WorkspaceItemTooltipBuilder.slotLines(item).stream()
+                .map(Component::getString)
+                .toList();
+
+        assertEquals(basket, item.identity().toIdentity());
+        assertTrue(item.ghost());
+        assertTrue(item.kitNeeded());
+        assertEquals(1, item.proximateCount());
+        assertFalse(item.presence().isEmpty());
+        assertFalse(tooltip.contains("Need to craft/find: 1"));
+    }
+
+    @Test
+    void activeWorkflowTabKeepsUnrelatedNearbyGhostsForXrayReveal() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setMember(mining.id(), ItemIdentity.of("minecraft:torch"), true);
+        runtime.kitWorkflow().activate(mining.id());
+        VisualAtlasIsland blocks = runtime.visualAtlasWorkflow().createIsland(
+                "Blocks",
+                0,
+                0,
+                0xFF6B8E23,
+                null);
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:dirt"), blocks.id(), 0);
+
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.TOOL_RACK,
+                "Tool rack @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                4,
+                List.of(new WorldStorageAccess.SlotContent(0, new ItemStack("minecraft:dirt", 12, 64))));
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                storageId -> SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                List.of(source));
+
+        SlotWorkspaceViewModel.AtlasItem dirt = viewModel.atlasItems().stream()
+                .filter(item -> "minecraft:dirt".equals(item.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(dirt.ghost());
+        assertEquals(12, dirt.proximateCount());
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NONE, dirt.putAwayState());
+    }
+
+    private static InventoryAuthoritySnapshot carried(InventoryStackSnapshot... stacks) {
+        return carriedBySource(Map.of(BuiltinInventoryIds.PLAYER_MAIN, List.of(stacks)));
+    }
+
+    private static InventoryAuthoritySnapshot carriedBySource(
+            Map<String, List<InventoryStackSnapshot>> snapshotsBySource
+    ) {
+        return InventoryAuthorityFixtures.authority(
+                host(),
+                snapshotsBySource,
+                Map.of());
+    }
+
+    private static InventoryHostDescriptor host() {
+        TestMenu menu = new TestMenu();
+        return new InventoryHostDescriptor(
+                new HostInstanceKey(TestMenu.class.getName(), 0, "slot.workspace.workflow-tabs.test", ""),
+                InventoryHostDescriptor.serverMenuRef(menu),
+                "slot.workspace.workflow-tabs.test",
+                Component.literal("Workspace Workflow Tabs Test"),
+                menu,
+                InventoryTopologyDescriptor.empty(),
+                InventoryHostSession.empty(),
+                List.of(),
+                PlayerRuntimeStateDescriptor.vanilla(0),
+                BuiltinInventoryDescriptors.builtInPlayerSources(InventoryTopologyDescriptor.empty()),
+                BuiltinInventoryDescriptors.builtInQuickAccessLanes(),
+                BuiltinInventoryDescriptors.builtInEquipmentGroups(),
+                List.of(),
+                InventoryHostObservationHints.defaults(),
+                "");
+    }
+
+    private static final class TestMenu extends AbstractContainerMenu {
+        private TestMenu() {
+            super(null, 0);
+        }
+
+        @Override
+        public boolean stillValid(Player player) {
+            return true;
+        }
+    }
+}

@@ -40,9 +40,9 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
     private static final long DIAGNOSTIC_LOG_INTERVAL_NANOS = 5_000_000_000L;
     private static final Map<String, Long> LAST_DIAGNOSTIC_LOG_NANOS = new ConcurrentHashMap<>();
 
-    private static final TagKey<Block> TFC_TOOL_RACKS = TagKey.create(
-            Registries.BLOCK,
-            ResourceLocation.fromNamespaceAndPath("tfc", "tool_racks"));
+    private static final ResourceLocation TFC_TOOL_RACKS_ID = ResourceLocation.fromNamespaceAndPath("tfc", "tool_racks");
+    private static volatile TagKey<Block> tfcToolRacks;
+    private static volatile boolean toolRackTagUnavailable;
 
     @Override
     public boolean matches(WorldStorageAccess.Target target) {
@@ -59,8 +59,14 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         if (!(target instanceof WorldStorageAccess.Target.Display display) || stack == null || stack.isEmpty()) {
             return Optional.empty();
         }
-        Optional<Object> handler = resolveInventory(server, display);
-        return handler.map(value -> insertIntoHandler(value, stack, simulate));
+        Optional<ResolvedInventory> inventory = resolveInventory(server, display);
+        return inventory.map(value -> {
+            ItemStack remaining = insertIntoHandler(value.handler(), stack, simulate);
+            if (!simulate && insertedAny(stack, remaining)) {
+                markDisplayChanged(value);
+            }
+            return remaining;
+        });
     }
 
     @Override
@@ -74,8 +80,14 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         if (!(target instanceof WorldStorageAccess.Target.Display display) || amount <= 0) {
             return Optional.empty();
         }
-        Optional<Object> handler = resolveInventory(server, display);
-        return handler.map(value -> extractFromHandler(value, slotIndex, amount, simulate));
+        Optional<ResolvedInventory> inventory = resolveInventory(server, display);
+        return inventory.map(value -> {
+            ItemStack extracted = extractFromHandler(value.handler(), slotIndex, amount, simulate);
+            if (!simulate && extracted != null && !extracted.isEmpty()) {
+                markDisplayChanged(value);
+            }
+            return extracted;
+        });
     }
 
     @Override
@@ -86,8 +98,8 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         if (!(target instanceof WorldStorageAccess.Target.Display display)) {
             return Optional.empty();
         }
-        Optional<Object> handler = resolveInventory(server, display);
-        return handler.map(TfcWorldDisplayStorageDelegate::enumerateHandler);
+        Optional<ResolvedInventory> inventory = resolveInventory(server, display);
+        return inventory.map(value -> enumerateHandler(value.handler()));
     }
 
     @Override
@@ -95,8 +107,8 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         if (!(target instanceof WorldStorageAccess.Target.Display display)) {
             return Optional.empty();
         }
-        Optional<Object> handler = resolveInventory(server, display);
-        return handler.map(TfcWorldDisplayStorageDelegate::slotCount);
+        Optional<ResolvedInventory> inventory = resolveInventory(server, display);
+        return inventory.map(value -> slotCount(value.handler()));
     }
 
     @Override
@@ -215,7 +227,7 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         return sources.isEmpty() ? List.of() : List.copyOf(sources);
     }
 
-    private static Optional<Object> resolveInventory(
+    private static Optional<ResolvedInventory> resolveInventory(
             MinecraftServer server,
             WorldStorageAccess.Target.Display display
     ) {
@@ -230,7 +242,8 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         if (!level.isLoaded(pos) || kindFor(level.getBlockState(pos)) != display.kind()) {
             return Optional.empty();
         }
-        return inventory(level.getBlockEntity(pos));
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        return inventory(blockEntity).map(handler -> new ResolvedInventory(handler, level, pos, blockEntity));
     }
 
     private static ServerLevel level(MinecraftServer server, String dimensionId) {
@@ -403,6 +416,14 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         return remaining == null ? ItemStack.EMPTY : remaining;
     }
 
+    private static boolean insertedAny(ItemStack original, ItemStack remaining) {
+        if (original == null || original.isEmpty()) {
+            return false;
+        }
+        int remainingCount = remaining == null || remaining.isEmpty() ? 0 : remaining.getCount();
+        return remainingCount < original.getCount();
+    }
+
     private static ItemStack extractFromHandler(Object handler, int slotIndex, int amount, boolean simulate) {
         if (handler == null || slotIndex < 0 || amount <= 0 || slotIndex >= slotCount(handler)) {
             return ItemStack.EMPTY;
@@ -417,6 +438,37 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
             return result instanceof ItemStack stack ? stack : ItemStack.EMPTY;
         } catch (IllegalAccessException | InvocationTargetException | RuntimeException | LinkageError ignored) {
             return ItemStack.EMPTY;
+        }
+    }
+
+    private static void markDisplayChanged(ResolvedInventory inventory) {
+        if (inventory == null || inventory.level() == null || inventory.pos() == null) {
+            return;
+        }
+        if (inventory.blockEntity() != null) {
+            if (invokeMarkForSync(inventory.blockEntity())) {
+                return;
+            }
+            inventory.blockEntity().setChanged();
+        }
+        BlockState state = inventory.level().getBlockState(inventory.pos());
+        inventory.level().sendBlockUpdated(inventory.pos(), state, state, 3);
+    }
+
+    private static boolean invokeMarkForSync(BlockEntity blockEntity) {
+        if (blockEntity == null) {
+            return false;
+        }
+        try {
+            Method method = findMethod(blockEntity.getClass(), "markForSync");
+            if (method == null) {
+                return false;
+            }
+            method.setAccessible(true);
+            method.invoke(blockEntity);
+            return true;
+        } catch (IllegalAccessException | InvocationTargetException | RuntimeException | LinkageError ignored) {
+            return false;
         }
     }
 
@@ -464,10 +516,49 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         WorldDisplayStorageKind idKind = id == null
                 ? null
                 : TfcDisplayStorageIds.kindForBlockId(id.getNamespace(), id.getPath());
-        boolean toolRackTag = state.is(TFC_TOOL_RACKS);
+        boolean toolRackTag = toolRackTag(state);
         WorldDisplayStorageKind kind = toolRackTag ? WorldDisplayStorageKind.TOOL_RACK : idKind;
         boolean diagnosticCandidate = toolRackTag || idKind != null || suspiciousDisplayId(id);
         return new BlockClassification(id, toolRackTag, idKind, kind, diagnosticCandidate);
+    }
+
+    private static boolean toolRackTag(BlockState state) {
+        if (state == null || toolRackTagUnavailable) {
+            return false;
+        }
+        TagKey<Block> tag = tfcToolRacksTag();
+        if (tag == null) {
+            return false;
+        }
+        try {
+            return state.is(tag);
+        } catch (RuntimeException | LinkageError exception) {
+            markToolRackTagUnavailable(exception);
+            return false;
+        }
+    }
+
+    private static TagKey<Block> tfcToolRacksTag() {
+        TagKey<Block> cached = tfcToolRacks;
+        if (cached != null || toolRackTagUnavailable) {
+            return cached;
+        }
+        try {
+            TagKey<Block> created = TagKey.create(Registries.BLOCK, TFC_TOOL_RACKS_ID);
+            tfcToolRacks = created;
+            return created;
+        } catch (RuntimeException | LinkageError exception) {
+            markToolRackTagUnavailable(exception);
+            return null;
+        }
+    }
+
+    private static void markToolRackTagUnavailable(Throwable exception) {
+        toolRackTagUnavailable = true;
+        logEvery(
+                "tool_rack_tag_unavailable",
+                "[tfc-display] tool rack tag unavailable; falling back to block-id recognition diagnostic={}",
+                diagnosticName(exception));
     }
 
     private static boolean suspiciousDisplayId(ResourceLocation id) {
@@ -637,6 +728,9 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
     }
 
     private record InventoryLookup(Object handler, String route, String diagnostic) {
+    }
+
+    private record ResolvedInventory(Object handler, ServerLevel level, BlockPos pos, BlockEntity blockEntity) {
     }
 
     private record HandlerContents(

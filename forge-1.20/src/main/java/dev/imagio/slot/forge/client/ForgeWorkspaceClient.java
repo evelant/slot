@@ -72,6 +72,14 @@ public final class ForgeWorkspaceClient {
             CATEGORY
     );
 
+    public static final KeyMapping DEPOSIT_PUT_AWAY = new KeyMapping(
+            "key.slot.deposit_put_away",
+            KeyConflictContext.UNIVERSAL,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
     public static final KeyMapping TOGGLE_WAYFINDING_HUD = new KeyMapping(
             "key.slot.toggle_wayfinding_hud",
             KeyConflictContext.UNIVERSAL,
@@ -104,6 +112,14 @@ public final class ForgeWorkspaceClient {
             CATEGORY
     );
 
+    public static final KeyMapping MOVE_TO_MAIN_INVENTORY = new KeyMapping(
+            "key.slot.move_to_main_inventory",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_GRAVE_ACCENT,
+            CATEGORY
+    );
+
     private static boolean wayfindingHudEnabled = true;
 
     private ForgeWorkspaceClient() {
@@ -119,6 +135,10 @@ public final class ForgeWorkspaceClient {
 
     public static boolean matchesGatherActiveKit(int keyCode, int scanCode) {
         return GATHER_ACTIVE_KIT.matches(keyCode, scanCode);
+    }
+
+    public static boolean matchesDepositPutAway(int keyCode, int scanCode) {
+        return DEPOSIT_PUT_AWAY.matches(keyCode, scanCode);
     }
 
     public static boolean matchesUndo(int keyCode, int scanCode) {
@@ -143,6 +163,10 @@ public final class ForgeWorkspaceClient {
 
     public static boolean matchesStorageXray(int keyCode, int scanCode) {
         return STORAGE_XRAY.matches(keyCode, scanCode);
+    }
+
+    public static boolean matchesMoveToMainInventory(int keyCode, int scanCode) {
+        return MOVE_TO_MAIN_INVENTORY.matches(keyCode, scanCode);
     }
 
     public static boolean markWantedDown() {
@@ -222,10 +246,12 @@ public final class ForgeWorkspaceClient {
             event.register(UNDO);
             event.register(REDO);
             event.register(GATHER_ACTIVE_KIT);
+            event.register(DEPOSIT_PUT_AWAY);
             event.register(TOGGLE_WAYFINDING_HUD);
             event.register(MARK_WANTED);
             event.register(SET_WANTED_HOVER);
             event.register(STORAGE_XRAY);
+            event.register(MOVE_TO_MAIN_INVENTORY);
         }
     }
 
@@ -258,6 +284,12 @@ public final class ForgeWorkspaceClient {
                     continue;
                 }
                 SlotForgeNetworking.gatherActiveKit();
+            }
+            while (DEPOSIT_PUT_AWAY.consumeClick()) {
+                if (minecraft == null || minecraft.screen != null) {
+                    continue;
+                }
+                SlotForgeNetworking.depositPutAway();
             }
             ForgeHoveredWantedHotkey.onClientTick();
             ForgeContainerSidebar.onClientTick();

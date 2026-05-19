@@ -8,6 +8,7 @@ import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -40,6 +41,11 @@ public final class DepositPlanner {
     @FunctionalInterface
     public interface ChestEligibility {
         boolean isEligible(ClaimedChest chest);
+    }
+
+    @FunctionalInterface
+    public interface StackProtection {
+        boolean protects(ItemStack stack, ItemIdentity identity);
     }
 
     private static final ChestContentPresence NO_CONTENT_PRESENCE = (chest, identity) -> false;
@@ -108,6 +114,30 @@ public final class DepositPlanner {
         if (authority == null || claimedChestMap == null) {
             return DepositPlan.empty();
         }
+        return plan(
+                authority,
+                affinityMap,
+                claimedChestMap,
+                proximateStorageIds,
+                reservedCountResolver,
+                chestContentPresence,
+                chestEligibility,
+                null);
+    }
+
+    public static DepositPlan plan(
+            InventoryAuthoritySnapshot authority,
+            ChestAffinityMap affinityMap,
+            ClaimedChestMap claimedChestMap,
+            Set<String> proximateStorageIds,
+            ToIntFunction<ItemIdentity> reservedCountResolver,
+            ChestContentPresence chestContentPresence,
+            ChestEligibility chestEligibility,
+            StackProtection stackProtection
+    ) {
+        if (authority == null || claimedChestMap == null) {
+            return DepositPlan.empty();
+        }
         Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
         if (proximate.isEmpty()) {
             return DepositPlan.empty();
@@ -121,13 +151,18 @@ public final class DepositPlanner {
         // Tally carried totals per identity so the protection cap is applied
         // across all carry sources, not slot-by-slot.
         LinkedHashMap<ItemIdentity, Integer> carriedTotals = new LinkedHashMap<>();
+        LinkedHashMap<ItemIdentity, Boolean> fullyProtected = new LinkedHashMap<>();
         for (String sourceId : sourceIds) {
             for (InventoryEntrySnapshot entry : authority.entries(sourceId)) {
                 if (entry == null || !entry.present()) {
                     continue;
                 }
                 ItemIdentity identity = ItemIdentityMatcher.create(entry.stack());
-                carriedTotals.merge(identity, entry.count(), Integer::sum);
+                ItemIdentity budgetIdentity = depositBudgetIdentity(entry.stack());
+                carriedTotals.merge(budgetIdentity, entry.count(), Integer::sum);
+                if (stackProtection != null && stackProtection.protects(entry.stack(), identity)) {
+                    fullyProtected.put(budgetIdentity, true);
+                }
             }
         }
         // Per-identity remaining-depositable budget. Walks slots and
@@ -137,6 +172,9 @@ public final class DepositPlanner {
         for (Map.Entry<ItemIdentity, Integer> e : carriedTotals.entrySet()) {
             int reserved = reservedCountResolver == null ? 0
                     : Math.max(0, reservedCountResolver.applyAsInt(e.getKey()));
+            if (fullyProtected.getOrDefault(e.getKey(), false)) {
+                reserved = Math.max(reserved, e.getValue());
+            }
             depositBudget.put(e.getKey(), Math.max(0, e.getValue() - reserved));
         }
 
@@ -147,7 +185,8 @@ public final class DepositPlanner {
                     continue;
                 }
                 ItemIdentity identity = ItemIdentityMatcher.create(entry.stack());
-                int remaining = depositBudget.getOrDefault(identity, 0);
+                ItemIdentity budgetIdentity = depositBudgetIdentity(entry.stack());
+                int remaining = depositBudget.getOrDefault(budgetIdentity, 0);
                 if (remaining <= 0) {
                     continue;
                 }
@@ -160,7 +199,7 @@ public final class DepositPlanner {
                 if (candidates.isEmpty()) {
                     continue;
                 }
-                depositBudget.put(identity, remaining - allocated);
+                depositBudget.put(budgetIdentity, remaining - allocated);
                 assignments.add(new DepositPlan.Assignment(
                         sourceId,
                         entry.slotIndex(),
@@ -171,6 +210,10 @@ public final class DepositPlanner {
             }
         }
         return new DepositPlan(assignments);
+    }
+
+    private static ItemIdentity depositBudgetIdentity(ItemStack stack) {
+        return ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
     }
 
     /**

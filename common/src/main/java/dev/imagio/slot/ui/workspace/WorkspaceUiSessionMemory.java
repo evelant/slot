@@ -14,16 +14,25 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class WorkspaceUiSessionMemory {
     private static final Map<String, State> STATES = new ConcurrentHashMap<>();
     private static final String STORAGE_GHOST_SECTION_KEY = "workspace.storageGhostSections";
+    private static final long SEARCH_CLOSE_CLEAR_MILLIS = 10_000L;
 
     private WorkspaceUiSessionMemory() {
     }
 
     public static String searchQuery(String surfaceKey) {
-        return state(surfaceKey).searchQuery;
+        State state = state(surfaceKey);
+        clearExpiredSearchQuery(state, System.currentTimeMillis());
+        return state.searchQuery;
     }
 
     public static void setSearchQuery(String surfaceKey, String query) {
-        state(surfaceKey).searchQuery = query == null ? "" : WorkspaceSearchQuery.cleanInput(query);
+        State state = state(surfaceKey);
+        state.searchQuery = query == null ? "" : WorkspaceSearchQuery.cleanInput(query);
+        state.searchClosedAtMillis = 0L;
+    }
+
+    public static void markClosed(String surfaceKey) {
+        state(surfaceKey).searchClosedAtMillis = System.currentTimeMillis();
     }
 
     public static float wallScroll(String surfaceKey) {
@@ -59,8 +68,19 @@ public final class WorkspaceUiSessionMemory {
         return STATES.computeIfAbsent(key, ignored -> new State());
     }
 
+    private static void clearExpiredSearchQuery(State state, long nowMillis) {
+        if (state == null || state.searchQuery.isBlank() || state.searchClosedAtMillis <= 0L) {
+            return;
+        }
+        if (nowMillis - state.searchClosedAtMillis >= SEARCH_CLOSE_CLEAR_MILLIS) {
+            state.searchQuery = "";
+            state.searchClosedAtMillis = 0L;
+        }
+    }
+
     private static final class State {
         private String searchQuery = "";
+        private long searchClosedAtMillis;
         private float wallScroll;
         private final Set<String> expandedStorageGhostSections = new LinkedHashSet<>();
     }

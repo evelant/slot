@@ -36,6 +36,17 @@ public final class WallSectionVisibility {
             StorageGhostRevealMode revealMode,
             boolean forceRevealGhosts
     ) {
+        return classify(cards, filtering, nearbyExpanded, revealMode, forceRevealGhosts, true);
+    }
+
+    public static Result classify(
+            List<SlotWorkspaceViewModel.AtlasItem> cards,
+            boolean filtering,
+            boolean nearbyExpanded,
+            StorageGhostRevealMode revealMode,
+            boolean forceRevealGhosts,
+            boolean allowCollapsedNearbyToggle
+    ) {
         if (cards == null || cards.isEmpty()) {
             return new Result(List.of(), 0, nearbyExpanded);
         }
@@ -53,7 +64,11 @@ public final class WallSectionVisibility {
             boolean proximateGhost = isProximateGhost(item);
             boolean intentGhost = isIntentGhost(item);
             boolean ordinaryProximate = proximateGhost && !intentGhost;
-            if (ordinaryProximate && !filtering && !forceRevealGhosts && mode == StorageGhostRevealMode.COLLAPSED) {
+            if (allowCollapsedNearbyToggle
+                    && ordinaryProximate
+                    && !filtering
+                    && !forceRevealGhosts
+                    && mode == StorageGhostRevealMode.COLLAPSED) {
                 ordinaryProximateGhosts++;
             }
             if (shouldRevealGhost(item, filtering, nearbyExpanded, mode, forceRevealGhosts)) {
@@ -61,6 +76,7 @@ public final class WallSectionVisibility {
             }
         }
         boolean showToggle = ordinaryProximateGhosts > 0
+                && allowCollapsedNearbyToggle
                 && !filtering
                 && !forceRevealGhosts
                 && mode == StorageGhostRevealMode.COLLAPSED;

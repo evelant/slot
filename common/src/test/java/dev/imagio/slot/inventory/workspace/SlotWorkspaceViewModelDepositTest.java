@@ -190,6 +190,35 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     @Test
+    void bulkDisplayDepositRequiresExistingMatchingContent() {
+        WorldDisplayStorageSource emptyRack = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.TOOL_RACK,
+                "Tool rack @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                4,
+                List.of());
+        WorldDisplayStorageSource sawRack = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.TOOL_RACK,
+                "Tool rack @ 2,64,0",
+                "minecraft:overworld",
+                2,
+                64,
+                0,
+                4,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        new ItemStack("tfc:metal/saw/steel", "damage=7", 1, 1))));
+
+        assertFalse(WorldDisplayDepositRouting.containsMatchingContent(emptyRack, STEEL_SAW));
+        assertTrue(WorldDisplayDepositRouting.containsMatchingContent(sawRack, STEEL_SAW));
+    }
+
+    @Test
     void trackedWorldDisplayStorageProjectsLikeChestPresence() {
         SlotWorkspaceViewModel.setGhostStackResolver(id -> new ItemStack(id, 1, 64));
         try {
@@ -253,6 +282,35 @@ class SlotWorkspaceViewModelDepositTest {
         } finally {
             SlotWorkspaceViewModel.setGhostStackResolver(null);
         }
+    }
+
+    @Test
+    void chestContentSummariesNormalizeMovableContainers() {
+        SlotWorkspaceViewModel viewModel = project(
+                InventoryAuthoritySnapshot.empty(),
+                workflow(homeMap(ItemIdentity.of("sns:straw_basket")), claimedMap(CHEST_A), ChestAffinityMap.empty()),
+                storageId -> CHEST_A.toString().equals(storageId)
+                        ? snapshotOf(
+                                new ItemStack(
+                                        "sns:straw_basket",
+                                        "{Inventory:[{Slot:0b,id:\"minecraft:torch\",Count:8b}]}",
+                                        1,
+                                        1),
+                                new ItemStack(
+                                        "sns:straw_basket",
+                                        "{Inventory:[{Slot:0b,id:\"minecraft:stick\",Count:3b}]}",
+                                        1,
+                                        1))
+                        : SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(CHEST_A.toString())
+        );
+
+        SlotWorkspaceViewModel.ChestChip chip = viewModel.chestChip(CHEST_A.toString());
+
+        assertEquals(1, chip.contents().size());
+        assertEquals("sns:straw_basket", chip.contents().get(0).itemId());
+        assertEquals("", chip.contents().get(0).componentFingerprint());
+        assertEquals(2, chip.contents().get(0).count());
     }
 
     @Test

@@ -2,8 +2,13 @@
 
 Last updated: 2026-05-18
 
-Status: implementation plan. This supersedes future Kit Rack / Kit prototype
-work as the next task-workflow direction, while reusing the current Kit,
+Status: core implementation landed 2026-05-18; remaining follow-ups are recipe
+import/staging, explicit bulk-deposit keybinding polish, no-home put-away
+guidance, reorder UI, tab duplication/rename polish, and the adjacent
+overflow/junk slice. Hidden right-click accepted-input rules have landed for
+exact items and item tags, so recipe/process inputs can stay in a workflow tab
+without becoming desired or wanted targets. This supersedes Kit Rack / Kit
+prototype work as the task-workflow direction while reusing the current Kit,
 desired-count, wanted-count, gather, and loadout code wherever it already fits.
 
 ## Core Decision
@@ -22,6 +27,8 @@ A workflow tab adds task-local intent on top of `All`:
 - tab-local wanted counts
 - persistent tab membership, which behaves as an implicit active wanted count
   of `1` when no explicit tab count exists
+- accepted inputs, which match exact items or item tags and suppress Put Away
+  while adding no wanted/desired count and no missing-item pressure
 - optional Belt/offhand pages, reusing the current Kit hotbar code
 - optional one-level variants that add more task-local intent on top of their
   parent tab
@@ -250,8 +257,8 @@ Workflow tabs must be cheap to create and modify:
 - create new tab from visible EMI recipe ingredients
 - set tab-local desired/wanted counts from card chrome or menu
 
-The old Kit Rack should not remain a hidden separate mode. Workflow tabs should
-be visible as tabs, and the active tab's Belt pages should be available near the
+The old Kit Rack should not remain a hidden separate mode. Workflow tabs are
+visible as tabs, and the active tab's Belt pages should stay available near the
 bottom Belt area rather than hidden behind a rack toggle.
 
 ## EMI Crafting Workflow
@@ -330,6 +337,8 @@ Goal: make the wall actually behave like the active tab.
 
 - active tab projection includes `All` baseline, tab members, tab counts, and
   tab Belt/offhand identities
+- accepted-input rules make matching carried items relevant without showing a
+  desired/wanted count or missing target
 - active variant projection includes `All`, parent tab, and variant targets
 - active tab projection hides irrelevant ordinary cards by default
 - active tab projection still reveals missing/relevant storage ghosts via the
@@ -342,10 +351,15 @@ Acceptance:
 - activating a tab hides unrelated carried clutter
 - activating a variant keeps parent workflow items visible
 - already-carried tab members show as satisfied
+- accepted inputs remain visible and are not placed in Put Away guidance
 - missing tab members show gaps and storage guidance
 - deactivating the tab returns to the `All` wall behavior
 
 ### Slice 3: Put-Away Guidance And Deposit Wayfinding
+
+Status: compact guidance lane, no-home marker, and cross-loader put-away
+hotkey landed 2026-05-18. Destination highlighting/wayfinding polish remains
+follow-up work.
 
 Goal: make cleanup as first-class as acquisition.
 
@@ -367,8 +381,21 @@ Acceptance:
 - put-away guidance respects existing protection and active target counts
 - bulk deposit follows the same eligibility and protection rules as visible
   put-away guidance
+- bulk deposit uses the shared workflow target resolver for tab members,
+  desired counts, wanted counts, accepted inputs, and movable tool/container
+  identities; automatic display-storage deposit is content-backed, so empty
+  tool racks remain explicit-deposit targets rather than generic cleanup
+  targets
+- deposit undo keeps raw storage target ids, so deposits into display storage
+  can be reversed through the same world-storage abstraction as chests
+- active-chest deposit fallback still uses the shared proximate-storage radius;
+  open-container state must not grant longer-range deposits than pickup
 
 ### Slice 4: Tab UI And Editing
+
+Status: core tab rendering, activation, variant display, membership menus, and
+active-tab filtering landed 2026-05-18. Remaining editing polish is tracked as
+follow-up work in `current.md`.
 
 Goal: replace Kit Rack interaction with visible workflow tabs.
 
@@ -411,11 +438,12 @@ Acceptance:
 
 ### Slice 6: Retire Kit-Only UI And Docs
 
-Goal: finish the pivot cleanly.
+Goal: finish the pivot cleanup around names and docs.
 
-- remove user-facing Kit Rack language once workflow tabs ship
-- rename or delete Kit-only UI paths that are no longer useful
-- update product spec, product direction, status, and README references
+- keep user-facing Kit Rack language out of the live UI
+- rename or delete Kit-only code paths that are no longer useful
+- keep product spec, product direction, status, and README references pointed at
+  workflow tabs
 - move or trim superseded Kit planning docs
 
 Acceptance:

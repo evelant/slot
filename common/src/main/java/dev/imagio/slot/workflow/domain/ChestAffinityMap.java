@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -39,7 +40,17 @@ public record ChestAffinityMap(Map<UUID, Map<ItemIdentity, ChestAffinity>> entri
         if (bonds == null) {
             return null;
         }
-        return bonds.get(identity);
+        ItemIdentity key = key(identity);
+        ChestAffinity direct = bonds.get(key);
+        if (direct != null) {
+            return direct;
+        }
+        for (Map.Entry<ItemIdentity, ChestAffinity> entry : bonds.entrySet()) {
+            if (ItemIdentityMatcher.matchesMovable(entry.getKey(), key)) {
+                return entry.getValue();
+            }
+        }
+        return null;
     }
 
     public int score(UUID storageId, ItemIdentity identity) {
@@ -103,7 +114,12 @@ public record ChestAffinityMap(Map<UUID, Map<ItemIdentity, ChestAffinity>> entri
             LinkedHashMap<ItemIdentity, ChestAffinity> copied = new LinkedHashMap<>(bonds.size());
             for (Map.Entry<ItemIdentity, ChestAffinity> bond : bonds.entrySet()) {
                 if (bond.getKey() != null && bond.getValue() != null && bond.getValue().score() > 0) {
-                    copied.put(bond.getKey(), bond.getValue());
+                    ItemIdentity key = key(bond.getKey());
+                    ChestAffinity value = new ChestAffinity(
+                            key,
+                            bond.getValue().score(),
+                            bond.getValue().lastTouchedTick());
+                    copied.merge(key, value, ChestAffinityMap::merge);
                 }
             }
             if (!copied.isEmpty()) {
@@ -111,5 +127,17 @@ public record ChestAffinityMap(Map<UUID, Map<ItemIdentity, ChestAffinity>> entri
             }
         }
         return Map.copyOf(out);
+    }
+
+    private static ItemIdentity key(ItemIdentity identity) {
+        return ItemIdentityMatcher.normalizeMovable(identity);
+    }
+
+    private static ChestAffinity merge(ChestAffinity left, ChestAffinity right) {
+        ItemIdentity identity = key(left.identity());
+        return new ChestAffinity(
+                identity,
+                left.score() + right.score(),
+                Math.max(left.lastTouchedTick(), right.lastTouchedTick()));
     }
 }

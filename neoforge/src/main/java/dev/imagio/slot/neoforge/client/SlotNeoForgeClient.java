@@ -9,6 +9,7 @@ import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.client.screen.SlotContainerSidebar;
 import dev.imagio.slot.neoforge.client.screen.SlotReenableButton;
 import dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController;
+import dev.imagio.slot.neoforge.network.SlotDepositPutAwayPayload;
 import dev.imagio.slot.neoforge.network.SlotGatherActiveKitPayload;
 import dev.imagio.slot.neoforge.network.SlotKitPageCyclePayload;
 import net.minecraft.client.Minecraft;
@@ -78,6 +79,12 @@ public final class SlotNeoForgeClient {
                 continue;
             }
             PacketDistributor.sendToServer(new SlotGatherActiveKitPayload());
+        }
+        while (SlotAtlasKeyMappings.depositPutAwayMapping().consumeClick()) {
+            if (current != null) {
+                continue;
+            }
+            PacketDistributor.sendToServer(new SlotDepositPutAwayPayload());
         }
     }
 }

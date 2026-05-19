@@ -977,6 +977,29 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
+    void createWorkflowTab(String name) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.createWorkflowTab(
+                workflowRuntime(serverPlayer),
+                name
+        ));
+    }
+
+    void createKitVariant(String parentKitId, String name) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.createKitVariant(
+                workflowRuntime(serverPlayer),
+                parentKitId,
+                name
+        ));
+    }
+
     void activateKit(String kitId) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
@@ -1258,6 +1281,50 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
+    void setKitMember(
+            String kitId,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            Integer member
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.setKitMember(
+                workflowRuntime(serverPlayer),
+                kitId,
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                member == null ? 0 : member
+        ));
+    }
+
+    void setKitAcceptedInput(
+            String kitId,
+            String kind,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            String tagId,
+            Integer accepted
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.setKitAcceptedInput(
+                workflowRuntime(serverPlayer),
+                kitId,
+                kind,
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                tagId,
+                accepted == null ? 0 : accepted
+        ));
+    }
+
     /**
      * Set or clear a kit-scoped desired count for an explicit kitId
      * (which may not be the active kit). Replaces the legacy
@@ -1525,6 +1592,46 @@ final class SlotWorkspaceUiSession {
                 identity,
                 hotbarRecency.placementSequence(),
                 targetHotbarIndex -> assignIdentityToHotbarIndex(serverPlayer, identity, targetHotbarIndex)));
+    }
+
+    void moveIdentityBetweenBackpackAndMain(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        refreshServerView(serverPlayer);
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor = request -> {
+            InventoryActionOutcome outcome = InventoryActionExecutor.execute(
+                    host,
+                    serverPlayer,
+                    request,
+                    ProtectionPolicy.allowAll()
+            );
+            recordOutcome(serverPlayer, outcome);
+            return outcome;
+        };
+        applyOutcome(serverPlayer, WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+                serverPlayer,
+                host,
+                authority,
+                StorageAccessRegistry.carriedSourceAccess(),
+                actionExecutor,
+                identity,
+                "slot_workspace.ldlib"));
     }
 
     private void recordHotbarPlacementOnSuccess(int hotbarIndex, WorkspaceCommandOutcome outcome) {
@@ -2110,6 +2217,9 @@ final class SlotWorkspaceUiSession {
         }
         ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, pos);
         if (anchor == null) {
+            return null;
+        }
+        if (!WorkspaceChestProjectionSupport.isProximate(serverPlayer, anchor)) {
             return null;
         }
         UUID storageId = ChestDepositObserver.resolveOrCreateClaim(

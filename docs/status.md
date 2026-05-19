@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-16. Operational handoff. Read after
+Last updated: 2026-05-18. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -16,33 +16,27 @@ and `:forge-1.20:compileSharedProbeJava` compiles the whole common tree
 against Forge 1.20.1 / Java 17 with real platform adapters.
 
 Phase 1 has shared action transport, Forge runtime, session-backed projection,
-and common-service routing for metadata, transfer, hotbar, kit, desired-count,
-chest, deposit/take, cursor, active-kit gather, and cross-surface actions.
+and common-service routing for metadata, transfer, hotbar, workflow tabs,
+desired-count, chest, deposit/take, cursor, active-tab gather, and
+cross-surface actions.
 
 Phase 2 has the production wall shell on both loaders: fallback card details,
-Recents, vanilla-shaped Belt, active chest controls, Kit Rack, desired/wanted
-count chrome, remembered search/scroll state, configurable sidebar margins, and
-Forge key parity for inventory, kit cycle, gather, wayfinding, Esc, and
-wanted-count controls. Modern drag/drop, richer LDLib2 card/kit affordances,
-and richer chest panels remain backend hooks, not common UI semantics.
+Recents, vanilla-shaped Belt, active chest controls, workflow tabs,
+desired/wanted count chrome, remembered search/scroll state, configurable
+sidebar margins, put-away guidance, and Forge key parity for inventory,
+tab-page cycle, gather, put-away, wayfinding, Esc, and wanted-count controls.
+Modern drag/drop, richer LDLib2 card/tab affordances, and richer chest panels
+remain backend hooks, not common UI semantics.
 
 Classification has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar/static enrichment, runtime export, rich facet-evidence
-collection, LLM vocabulary refinement loops, vocabulary-grounded LLM item
-classification, datapack output, and runtime inspect/rehome diagnostics. The
-current modpack strategy is no deterministic semantic curation stage: pre-LLM
-code gathers and formats evidence, then the LLM makes the vocabulary and item
-facet decisions. Review/watchlist flags are advisory for debugging and
-playtesting; valid model output is accepted into the vocabulary/layer rather
-than overwritten by rule-derived guesses. `organization_group` values are
-vocabulary-reviewed direct wall-home sections: when a loaded vanilla or pack
-layer has a large enough cohort, rehome/chip accept can materialize a dynamic
-`group:<id>` main-wall home. `mod_subsystem` remains semantic/query evidence
-and does not create main-wall sections. Semantic text remains the highest-value input; preserve tooltip/lore
-prose, guidebook/quest text, lang descriptions, KubeJS/datapack overlays,
-Ponder/category labels, stack groups, resource-pack overrides, and mod
-descriptions instead of reducing prompts to item ids or deterministic
-candidate lists.
+collection, LLM vocabulary loops, vocabulary-grounded item classification,
+datapack output, and runtime inspect/rehome diagnostics. Pre-LLM code gathers
+and formats evidence; the LLM owns vocabulary and item-facet decisions, with
+review/watchlist flags kept advisory. `organization_group` can materialize
+direct wall-home sections; `mod_subsystem` stays semantic/query evidence. Keep
+rich semantic text intact instead of reducing prompts to item ids or
+deterministic candidates.
 
 EMI recipe context now uses the normal SLOT sidebar as a transient recipe
 ingredient filter on both loaders. When EMI's recipe screen is open, SLOT
@@ -63,17 +57,12 @@ sidebar embed sub-plan in
 [plans/done/list-view-phase-3a.md](plans/done/list-view-phase-3a.md).
 
 The workspace mounts in two surfaces with the **same widget tree**:
-standalone (player-inventory key) opens a full-screen
-`ModularUIContainerScreen`; sidebar mounts as a child widget on any
-non-SLOT `AbstractContainerScreen` (chest, crafting, machine) and on
-registered non-container overlays such as EMI's recipe screen when a handled
-menu remains available for sync. Both use
-the same top search/action row, goal row (`All` plus Kit Rack toggle),
-optional active-chest strip, Recents, wall scroller, optional right-side
-Kit Rack, status row, and bottom Belt. The Belt mirrors vanilla: offhand
-on the left, a gap, then the nine hotbar slots. Sidebar placement is
-controlled by client left/top/bottom margin config so packs with FTB
-Chunks, quests, EMI, or other screen buttons can make room.
+standalone full-screen inventory replacement and a sidebar child on supported
+container/non-container screens, including EMI recipe screens when a handled
+menu remains available for sync. Both use the same search/action row, workflow
+tabs, optional active-chest strip, Recents, wall scroller, optional tab editor,
+status row, and vanilla-shaped bottom Belt. Sidebar margins are client-config
+so packs with FTB Chunks, quests, EMI, or other buttons can make room.
 
 Cross-surface drag from a wall card to a vanilla menu slot remains wired.
 Shift-click in sidebar/container mode now stays on SLOT's semantic path:
@@ -131,7 +120,7 @@ Common module:
 - `classification`: `FacetIndex`, layer bootstrap/load reports, runtime
   export formatting, dynamic home-cohort policy
 - `workflow/domain`: visual homes, claimed chests, chest affinity, chest
-  cluster map, kits, recents, persistence
+  cluster map, workflow tabs, recents, persistence
 - `atlas`: pure helpers — `AtlasSearchIndex`, `AtlasRelevance` +
   contributors, `SectionOrdinal` (per-section ordinal lookups for
   drag-drop). Camera / layout / nudge / band / packer code retired
@@ -145,7 +134,7 @@ NeoForge module:
 - `neoforge/screen/ldlib`: LDLib2 workspace menu, holder, UI session,
   view-model projection, panel builders (`ListWallPanelBuilder`
   is the wall surface; `TocPanelBuilder` the docked TOC),
-  `AtlasCardBuilder` for single-LOD pixel cards, right-side Kit Rack,
+  `AtlasCardBuilder` for single-LOD pixel cards, right-side workflow tab editor,
   active-chest / Recents / Belt builders, RPC dispatcher, drag/drop
 - `neoforge/network`: workspace-open + RPC payload definitions
 - `neoforge/storage`: BE `storage_id` attachment, claim orchestrator,
@@ -164,7 +153,7 @@ Forge 1.20 module:
   compilation, direct Taffy + `GuiGraphics` workspace renderer,
   `SimpleChannel` action transport, workflow persistence, session-backed
   projection, carried/world storage accessors, guarded
-  transfer/hotbar/kit/desired/wanted/chest/cursor/gather/wayfinding
+  transfer/hotbar/workflow-tab/desired/wanted/chest/cursor/gather/wayfinding
   actions, sidebar margin config/depth fixes, `/slot test` and
   classification commands, and the Phase 0.5 `compileSharedProbeJava`
   shared-source compile gate.
@@ -185,7 +174,7 @@ Reference code (read-only): `reference/LDLib2`, `InventoryEssentials`,
 | Host resolution, mutation router | `inventory/integration` |
 | Workspace composition + view model | `inventory/workspace` |
 | Deposit planner (pure) | `inventory/workspace` |
-| Visual homes, claimed chests, chest affinity, clusters, kits, persistence | `workflow/domain` |
+| Visual homes, claimed chests, chest affinity, clusters, workflow tabs, persistence | `workflow/domain` |
 | Section ordinal lookups, search index, relevance scoring | `atlas/lod` |
 | Item facets / classification | `classification` |
 | LDLib2 workspace UI | `neoforge/screen/ldlib` |
@@ -206,12 +195,14 @@ to minimize churn — see list-view.md § Naming. **Section** —
 player-facing organizational block (the new presentation of an
 "island"). **Home** — stable section + ordinal owned by one item
 identity. **Recents** — pinned strip of recently picked-up identities
-above the wall. **Kit** — task-shaped unit unifying earlier
-"collection" + "loadout"; non-hotbar bring targets are kit-scoped
-desired counts. **Belt** — docked hotbar strip at the bottom of the wall
+above the wall. **Workflow tab** — player-authored task view layered on top of
+`All`; tab membership behaves as an implicit active wanted-one target, tabs can
+have one level of variants, and optional Belt/offhand pages reuse the older Kit
+implementation substrate. **Belt** — docked hotbar strip at the bottom of the wall
 with vanilla offhand-left layout. **Desired count** — persistent target
-count, player-global or active-kit scoped. **Wanted count** — temporary
-player target that auto-clears when satisfied. **Authority** — source of
+count, player-global (`All`) or active-tab scoped. **Wanted count** — temporary
+player target; `All` wanted counts retain global auto-clear behavior while
+active-tab wanted counts stay visible until the tab deactivates. **Authority** — source of
 truth about slot contents (kernel owns it; UI never invents).
 **Projection** — derived read model built from authority for a surface.
 

@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.storage;
 
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -34,21 +35,21 @@ class CarriedSourceAccessContractTest {
 
     @Test
     void findIdentityReturnsFirstMatchInStableOrder() {
-        // stableOrder preference: main/hotbar/offhand come first, then backpack.
-        // Identity appears in BOTH main and backpack — must pick main.
+        // stableOrder preference: provider-backed overflow storage comes
+        // before main/hotbar/offhand so workspace lanes stay intact.
         FakeCarriedSourceAccess carried = new FakeCarriedSourceAccess(java.util.List.of(
+                BACKPACK_SOURCE,
                 BuiltinInventoryIds.PLAYER_MAIN,
                 BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
-                BuiltinInventoryIds.PLAYER_OFFHAND,
-                BACKPACK_SOURCE
+                BuiltinInventoryIds.PLAYER_OFFHAND
         ));
         carried.put(BuiltinInventoryIds.PLAYER_MAIN, 5, stack("minecraft:redstone", 16));
         carried.put(BACKPACK_SOURCE, 3, stack("minecraft:redstone", 8));
 
         Optional<CarriedSourceAccess.CarriedLocation> found = carried.findIdentity(null, identity("minecraft:redstone"));
         assertTrue(found.isPresent());
-        assertEquals(BuiltinInventoryIds.PLAYER_MAIN, found.get().sourceId());
-        assertEquals(5, found.get().slotIndex());
+        assertEquals(BACKPACK_SOURCE, found.get().sourceId());
+        assertEquals(3, found.get().slotIndex());
     }
 
     @Test
@@ -69,8 +70,8 @@ class CarriedSourceAccessContractTest {
     @Test
     void findAllMatchingReturnsEveryOccurrenceInStableOrder() {
         FakeCarriedSourceAccess carried = new FakeCarriedSourceAccess(java.util.List.of(
-                BuiltinInventoryIds.PLAYER_MAIN,
                 BACKPACK_SOURCE,
+                BuiltinInventoryIds.PLAYER_MAIN,
                 CURIOS_SOURCE
         ));
         carried.put(BuiltinInventoryIds.PLAYER_MAIN, 0, stack("minecraft:coal", 64));
@@ -79,9 +80,26 @@ class CarriedSourceAccessContractTest {
 
         List<CarriedSourceAccess.CarriedLocation> hits = carried.findAllMatching(null, identity("minecraft:coal"));
         assertEquals(3, hits.size());
-        assertEquals(BuiltinInventoryIds.PLAYER_MAIN, hits.get(0).sourceId());
-        assertEquals(BACKPACK_SOURCE, hits.get(1).sourceId());
+        assertEquals(BACKPACK_SOURCE, hits.get(0).sourceId());
+        assertEquals(BuiltinInventoryIds.PLAYER_MAIN, hits.get(1).sourceId());
         assertEquals(CURIOS_SOURCE, hits.get(2).sourceId());
+    }
+
+    @Test
+    void movableIdentityMatchesComponentBearingStacks() {
+        FakeCarriedSourceAccess carried = new FakeCarriedSourceAccess(java.util.List.of(BACKPACK_SOURCE));
+        carried.put(BACKPACK_SOURCE, 0, new ItemStack(
+                "sns:straw_basket",
+                "{Inventory:[{Slot:0b,id:\"minecraft:torch\",Count:8b}]}",
+                1,
+                1));
+
+        Optional<CarriedSourceAccess.CarriedLocation> found =
+                carried.findIdentity(null, ItemIdentity.of("sns:straw_basket"));
+
+        assertTrue(found.isPresent());
+        assertEquals(BACKPACK_SOURCE, found.get().sourceId());
+        assertEquals(0, found.get().slotIndex());
     }
 
     @Test
@@ -181,7 +199,7 @@ class CarriedSourceAccessContractTest {
                 if (src == null) continue;
                 for (Map.Entry<Integer, ItemStack> e : src.entrySet()) {
                     if (e.getValue() == null || e.getValue().isEmpty()) continue;
-                    if (ItemIdentity.of(e.getValue().itemId()).equals(identity)) {
+                    if (ItemIdentityMatcher.matchesMovable(e.getValue(), identity)) {
                         return Optional.of(new CarriedLocation(sourceId, e.getKey()));
                     }
                 }
@@ -197,7 +215,7 @@ class CarriedSourceAccessContractTest {
                 if (src == null) continue;
                 for (Map.Entry<Integer, ItemStack> e : src.entrySet()) {
                     if (e.getValue() == null || e.getValue().isEmpty()) continue;
-                    if (ItemIdentity.of(e.getValue().itemId()).equals(identity)) {
+                    if (ItemIdentityMatcher.matchesMovable(e.getValue(), identity)) {
                         out.add(new CarriedLocation(sourceId, e.getKey()));
                     }
                 }

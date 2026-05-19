@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-17
+Last updated: 2026-05-18
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -16,9 +16,9 @@ NeoForge + LDLib2 build.** ADR
 platform decision. Phase 2 remains active: Forge now consumes the common
 tree with production adapters, shared action packet/session envelopes,
 common workspace projection, carried/world storage accessors, guarded
-metadata/transfer/hotbar/kit/chest/cursor/gather/wayfinding actions, and
+metadata/transfer/hotbar/workflow-tab/chest/cursor/gather/wayfinding actions, and
 the direct Taffy/GuiGraphics `G` screen plus mounted sidebar. The latest
-UI parity pass aligned both loaders on right-side Kits, vanilla-shaped
+UI parity pass aligned both loaders on right-side workflow tabs, vanilla-shaped
 Belt, wanted/desired counts, remembered search/scroll, and configurable
 sidebar margins. NeoForge remains the semantic oracle; the next risk is
 migrating richer modern-only affordances without reintroducing
@@ -38,6 +38,13 @@ Previously active
 [`single-column-workspace.md`](single-column-workspace.md) is paused
 behind the cross-loader work. Do not delete it; resume when the loader
 boundary no longer dominates engineering risk.
+
+Sidecar product slice: workflow tabs are now the task surface layered over the
+normal wall. `All` remains the global desired/wanted baseline; active tabs and
+one-level variants add local desired/wanted targets, implicit member targets,
+Belt/offhand pages, accepted inputs, gather targets, and routed put-away
+clutter. The code still uses `Kit*` names as the transitional implementation
+substrate, but user-facing work should speak in workflow tabs.
 
 **Recently shipped, no further plan:**
 
@@ -66,29 +73,38 @@ hold the rest.
   events as usefulness evidence, caps desired-count excess to two Put Away
   cards, and requires fresh/repeated deposit history when no storage route is
   visible.
+- **2026-05-18** — Workflow tabs landed on the existing Kit substrate: `All`
+  targets are inherited by active tabs, parent + variant targets compose as
+  floors, tab membership creates an implicit wanted-one target, active-tab
+  wanted counts clear on deactivation, gather/protection/wayfinding use the
+  shared tab resolver, the wall filters to active-tab relevance while keeping
+  routed put-away clutter visible, both loaders render visible workflow tabs
+  with one-level variants, and card/tab menus can add/remove tab members or
+  create variants.
+- **2026-05-18** — Workflow-tab cleanup guidance now has a dedicated Put Away
+  lane for active-tab-irrelevant carried items, marks items without a learned
+  nearby home instead of dropping them silently, preserves routed clutter on
+  normal wall cards, and adds an unbound cross-loader put-away hotkey that
+  delegates to the same protected deposit command as the button.
+- **2026-05-18** — Workflow tabs can now accept exact items or deterministic
+  item tags from the card right-click menu without creating wanted/desired
+  targets; accepted inputs stay visible in active tabs, are omitted from Put
+  Away, persist through workflow state/view-model codecs, and are protected
+  from bulk put-away deposit.
+- **2026-05-18** — Workflow-tab target cleanup now canonicalizes desired and
+  wanted tool/storage-container identities through the shared target resolver,
+  uses that resolver for bulk-deposit reservation, keeps damaged carried tools
+  and NBT-bearing baskets/sacks from becoming stuck craft targets, limits
+  automatic tool-rack deposits to racks with matching visible contents,
+  preserves display target ids for deposit undo, keeps active-chest deposit
+  fallback behind the shared proximity gate, and syncs TFC display blocks after
+  SLOT mutates them.
 - **2026-05-17** — Contextual suggestion signal tuning continued: passive
-  authority-diff acquisitions and internal moves no longer train Useful Now,
-  block placement no longer double-counts as right-click tool use, placed or
-  consumed identities get a short spent penalty instead of exact
-  self-promotion, placed/consumed signatures no longer replay old association
-  hints, broad station-open/item-use/acquisition/production signatures no
-  longer train or replay learned associations, generic carried-only
-  SLOT/backpack/inventory hosts, portable menus, and the vanilla player
-  inventory menu no longer become station context, low-information
-  storage/openable-block right-clicks while a tool is in hand no longer count
-  as tool use, targetless/air right-clicks keep exact held-tool relevance
-  without adding advisory context, passive offhand right-clicks no longer train
-  or score as item use, non-tool meaningful target use can still promote exact
-  material interactions while placeable/block-like uses cannot pin themselves,
-  weak advisory-only overlap and weak old associations can no longer surface
-  carried clutter or nearby storage ghosts, broad advisory terms such as
-  generic crafting/material/block/role text no longer pad Useful Now scores,
-  Put Away no longer admits ordinary-pressure rare-prior-only carried blocks
-  without route or deposit evidence, recent signals decay by world tick,
-  qualifying nearby storage ghosts get reserved Useful Now slots, and `/slot
-  debug contextual` dumps event history, source counts, association hints, and
-  the last closed workspace/sidebar lane score breakdowns for playtest
-  debugging.
+  acquisitions/internal moves no longer train Useful Now, broad station/use
+  signatures no longer replay weak associations, place/use/consume events
+  avoid exact self-promotion loops, Put Away requires route or deposit evidence,
+  nearby storage ghosts reserve Useful Now slots, and `/slot debug contextual`
+  dumps event history plus score breakdowns for playtest debugging.
 - **2026-05-16** — EMI recipe screens now show the normal SLOT sidebar filtered
   to the visible recipe ingredients on NeoForge and Forge. The projection is
   transient, not a goal: present ingredients keep their normal section/storage
@@ -96,19 +112,13 @@ hold the rest.
   remains the recipe explanation surface, and the old recipe-goal plan moved to
   `retired/` with ADR 0007 recording the pivot.
 - **2026-05-15** — Contextual suggestion lanes landed as a first playable
-  prototype, then pivoted away from carried-state relevance: common contextual
-  signals, bounded item/context aggregates, and a learned event-association
-  index persist through workflow schema 9; strong item/station/use/deposit
-  events feed Useful Now and Put Away, while carried state is only card
-  eligibility/action state. Useful Now can include carried items plus
-  suggestion-only nearby storage ghosts, Put Away remains carried-only, both
-  loaders render the lanes above the wall with normal card gestures, and debug
-  tooltips show history/exact/advisory score terms for tuning in
-  [`contextual-suggestions.md`](contextual-suggestions.md).
+  prototype: common signals, bounded aggregates, and learned event associations
+  feed Useful Now and Put Away while carried state stays eligibility/action
+  state; both loaders render the lanes above the wall with debug score terms.
 - **2026-05-14** — Quiet nearby ghosts landed for playtesting: default
   wall sections show carried cards first and collapse ordinary proximate
   storage ghosts behind a per-section nearby chip, while search,
-  desired/wanted/Kit/goal intent and storage x-ray toggles reveal the
+  desired/wanted/workflow-tab/goal intent and storage x-ray toggles reveal the
   hidden storage cards on demand. Follow-up fixes generalized observed
   storage menus beyond vanilla chests for TFC vessels, kept search
   keystrokes inside sidebar search without using Esc as search-clear,
@@ -149,12 +159,12 @@ Operational bugs not currently tied to a plan. Items from the
 2026-05-01 cursor + desired/wanted-counts batch live under [Queue](#queue)
 item 2; this section is the leftover pile.
 
-- **Kit drag-edit doesn't auto-apply to the active belt.** Dragging
-  a home onto an *active* kit's slot updates the kit definition
+- **Workflow tab drag-edit doesn't auto-apply to the active belt.** Dragging
+  a home onto an *active* tab's slot updates the tab definition
   but the belt isn't re-applied. Per
   [`../design/kits.md § Edit a Kit`](../design/kits.md), the edit
   should propagate immediately when the target page is the active
-  page. Scoped follow-up for the next person touching kit
+  page. Scoped follow-up for the next person touching tab
   drag-to-edit.
 
 ## Queue
@@ -175,72 +185,13 @@ track lands.
 2. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
    Active-scope desired counts, player wanted counts, unified gap chrome,
    gather for wanted/desired gaps, and the basic right-click desired-count
-   editor are live. These are the remaining items from the original
-   2026-05-01 batch; likely best taken as one batch because the chest
-   projection issues share diagnosis paths and the logging item unblocks
-   faster validation.
-
-   1. **Duplicate chest in proximate panel + chest-locator panel.**
-      A nearby chest holding a kit-needed item appears in both
-      sections. Decide which surface owns "proximate + kit-needed"
-      (chest locator already shows kit-needed identities under
-      search; proximate panel shouldn't double up) or render a single
-      visual hint that the chest covers both intents.
-   2. **Multi-chest / non-stackable identity bug.** Specific repro:
-      kit needs `bucket_of_water`, a proximate chest contains one,
-      and the atlas ends up with **two** `bucket_of_water` cards —
-      one with the desired-count star but no chest-stock pip, one
-      with the chest-stock pip but no desired star. Chest locator
-      lists two chests for the identity (one proximate, one not).
-      Kit progress still says "need 1." Strongly suggests the
-      proximate-chest ghost projection produces a parallel identity
-      key for non-stackables that doesn't `equals()` the kit-page
-      identity. Likely culprits: `ElsewhereGhostProjection`,
-      ghost-accumulator merge logic in
-      `SlotWorkspaceViewModel.build`, or the chest-locator query.
-      Wayfinding's `WayfindingTarget` projection sidesteps this with
-      `ItemIdentityMatcher.matchesMovable` end-to-end; the older atlas
-      paths still don't.
-   3. **More debug logging.** The deposit pipeline got end-to-end
-      structured logging on 2026-05-02. The kit-need / chest-presence /
-      identity-resolution paths are still sparse, making bugs like the
-      multi-chest identity split hard to triage from screenshots alone.
-      Add structured INFO/DEBUG at: identity creation per chest enumeration,
-      chest-locator query (which identities matched and via which
-      equality path), kit-needed projection (input identities +
-      carried set + final needed set), proximate vs elsewhere
-      classification. Prefer `SlotDiagnostics` / `SlotDebugLog` over
-      raw `LOGGER.info` so the pattern stays consistent.
-
-   Cursor / desired/wanted-counts polish that was deferred from the
-   2026-05-01 ship and could be folded into this pass if convenient
-   (each documented in [`../design/gestures.md`](../design/gestures.md)):
-
-   - Atlas card *drop* (cursor → "send to home").
-   - Chest-drop overflow tracking (return-count from RPC).
-   - Origin-slot highlight while cursor is non-empty.
-   - "Need N more" status text on the desired-count pip — partially
-     subsumed by 2026-05-02's unified `M/N` badge with status-coloured
-     digits, which already communicates the gap; explicit "need N more"
-     text would still be a more direct read.
-   - Right-click "Set desired count…" kit-vs-global toggle.
-   - **Extend shift+click on take to auto-deposit excess** (carry-
-     forward from [`done/cursor-pickup.md`](done/cursor-pickup.md) §
-     Follow-up adjacent to this plan). When the player shift+clicks
-     (or shift+wheels) to pull from a proximate chest and the
-     resulting carried count exceeds their desired-count for the
-     identity, auto-deposit the excess to a proximate chest with
-     affinity (same as the smart-deposit cascade's step 2 from the
-     cursor-pickup plan). Mirrors the cancel path's "satisfy desired
-     count then store" rule on the take side. Reuses
-     `DepositPlanner` end-to-end; no new domain.
-
-   Wayfinding follow-ups (each minor; defer until playtest signals
-   demand):
-
-   - The `[SLOT] deposit ...` log lines fire on every click. Throttle
-     once the deposit UX is stable — currently they're useful for
-     bug triage but will eventually be log-spam.
+   editor are live. Remaining work: dedupe nearby chest identities that are
+   both proximate and tab-needed, fix the non-stackable multi-chest identity
+   split (`bucket_of_water` repro), add structured identity/chest/tab-needed
+   diagnostics, finish the deferred cursor-drop/origin-highlight/overflow
+   polish, add a tab-vs-global toggle to "Set desired count...", carry forward
+   shift-click-take auto-deposit of excess, and eventually throttle stable
+   deposit logs.
 
 3. **Learned-storage residual polish**
    ([learned-storage.md](learned-storage.md)). Sticky cluster
@@ -269,12 +220,12 @@ track lands.
    obvious latest location instead of scattered stale directories. Then
    regenerate vanilla/pack vocabulary and run `classify-runtime-pack` with the
    usable vocabulary.
-5. **Workflow tabs** ([workflow-tabs.md](workflow-tabs.md)).
-   Replace future Kit Rack work with player-authored tabs: `All`
-   desired/wanted counts are the inherited baseline; tabs add local
-   targets, implicit wanted-one membership, one-level variants, optional
-   Belt pages, gather guidance, put-away guidance, and an adjacent
-   overflow/junk pressure relief slice.
+5. **Workflow tab follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
+   Core tabs are live. Remaining slices are recipe import/staging into
+   current tabs, destination highlighting/wayfinding polish for put-away,
+   reorder UI for tabs/variants, tab duplicate/rename polish where the existing
+   context-menu editor is too rough, and the adjacent explicit overflow/junk
+   pressure relief slice.
 6. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
    The landed Kit code remains the implementation substrate, but future
    user-facing task workflow work should follow `workflow-tabs.md`.
@@ -283,9 +234,9 @@ track lands.
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
 8. **Workspace projection caching.** `SlotWorkspaceViewModel`
-   re-projects carried / proximate / elsewhere / kit-needed identities
+   re-projects carried / proximate / elsewhere / tab-needed identities
    every server tick while open. Add cache invalidators for inventory
-   deltas, chest content, kit changes, and chest-proximity movement;
+   deltas, chest content, tab changes, and chest-proximity movement;
    the main win is server CPU, with log-spam reduction as a side
    benefit.
 

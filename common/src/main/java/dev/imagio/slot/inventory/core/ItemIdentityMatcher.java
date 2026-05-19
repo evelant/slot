@@ -9,14 +9,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class ItemIdentityMatcher {
     private static final Set<String> STABLE_IDENTITY_TOKENS = Set.of(
-            "amulet", "armor", "artifact", "axe", "backpack", "bauble", "battleaxe", "blade",
+            "amulet", "armor", "artifact", "axe", "backpack", "bag", "basket", "bauble", "battleaxe", "blade",
             "boots", "bow", "bracelet", "bundle", "cannon", "canteen", "case", "charm", "chestplate", "claymore",
             "clock", "compass", "crossbow", "dagger", "drill", "elytra", "excavator",
             "fishing_rod", "flask", "flint_and_steel", "gadget", "gauntlet", "glaive", "greatsword", "hammer",
             "hatchet", "helmet", "hoe", "hook", "knife", "lance", "leggings", "mace", "machete",
-            "mattock", "necklace", "offhand", "paxel", "pickaxe", "pouch", "quiver", "relic",
+            "lunchbox", "mattock", "necklace", "offhand", "pack", "paxel", "pickaxe", "pouch", "quiver", "relic",
             "ring", "rod", "satchel", "saw", "scanner", "scepter", "sceptre", "scope", "shears", "shield", "shovel",
-            "shulker", "sickle", "spade", "spear", "staff", "sword", "talisman", "tool",
+            "shulker", "sack", "sickle", "spade", "spear", "staff", "sword", "talisman", "tool",
             "totem", "trident", "wand", "water_skin", "waterskin", "weapon", "wrench", "zweihander"
     );
     private static final Set<String> STABLE_IDENTITY_SUFFIX_EXCLUSIONS = Set.of("case", "shulker");

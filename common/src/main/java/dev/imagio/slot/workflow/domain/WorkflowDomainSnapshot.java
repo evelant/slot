@@ -105,6 +105,10 @@ public record WorkflowDomainSnapshot(
         return workflowProjection.playerWantedCounts();
     }
 
+    public java.util.Map<String, java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity, Integer>> kitWantedCounts() {
+        return workflowProjection.kitWantedCounts();
+    }
+
     public java.util.List<dev.imagio.slot.inventory.goal.GoalPlanState> goalPlans() {
         return workflowProjection.goalPlans();
     }

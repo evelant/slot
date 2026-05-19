@@ -57,7 +57,7 @@ class SlotWorkspaceKitCommandServiceTest {
         );
 
         assertTrue(outcome.success());
-        assertEquals("kit saved", outcome.status());
+        assertEquals("workflow tab saved", outcome.status());
         List<KitDefinition> kits = runtime.kitWorkflow().kits();
         assertEquals(1, kits.size());
         assertEquals("Mining", kits.get(0).name());
@@ -75,7 +75,23 @@ class SlotWorkspaceKitCommandServiceTest {
         );
 
         assertTrue(outcome.success());
-        assertEquals("Kit 1", runtime.kitWorkflow().kits().get(0).name());
+        assertEquals("Tab 1", runtime.kitWorkflow().kits().get(0).name());
+    }
+
+    @Test
+    void createWorkflowTabCreatesEmptyActiveTab() {
+        WorkflowDomainRuntime runtime = runtime();
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.createWorkflowTab(runtime, "");
+
+        assertTrue(outcome.success());
+        assertEquals("workflow tab created", outcome.status());
+        List<KitDefinition> kits = runtime.kitWorkflow().kits();
+        assertEquals(1, kits.size());
+        assertEquals("Tab 1", kits.get(0).name());
+        assertTrue(runtime.kitWorkflow().activation().isActive());
+        assertEquals(kits.get(0).id(), runtime.kitWorkflow().activation().kitId());
+        assertEquals(0, kits.get(0).pages().get(0).filledSlotCount());
     }
 
     @Test
@@ -172,8 +188,30 @@ class SlotWorkspaceKitCommandServiceTest {
         );
 
         assertTrue(outcome.success());
-        assertEquals("kit_desired_set_32", outcome.status());
+        assertEquals("tab_desired_set_32", outcome.status());
         assertEquals(32, runtime.desiredCountWorkflow().getForKit(kit.id(), ItemIdentity.of("minecraft:torch")));
+    }
+
+    @Test
+    void setKitAcceptedInputWritesAcceptedRuleWithoutDesiredCount() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Smelting");
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setKitAcceptedInput(
+                runtime,
+                kit.id(),
+                "ITEM_TAG",
+                "",
+                "",
+                "",
+                "forge:ores/iron",
+                1);
+
+        assertTrue(outcome.success());
+        assertEquals("workflow input accepted", outcome.status());
+        assertTrue(runtime.kitWorkflow().kit(kit.id()).acceptedInputs().stream()
+                .anyMatch(rule -> rule.itemTag() && "forge:ores/iron".equals(rule.tagId())));
+        assertEquals(0, runtime.desiredCountWorkflow().getForKit(kit.id(), ItemIdentity.of("minecraft:iron_ore")));
     }
 
     @Test
@@ -197,7 +235,7 @@ class SlotWorkspaceKitCommandServiceTest {
     }
 
     @Test
-    void clearPlayerDesiredCountClearsVisibleGlobalFallbackWhenKitActive() {
+    void clearPlayerDesiredCountDoesNotLowerAllFallbackWhenKitActive() {
         WorkflowDomainRuntime runtime = runtime();
         ItemIdentity identity = ItemIdentity.of("minecraft:coal");
         runtime.desiredCountWorkflow().setPlayer(identity, 1);
@@ -213,8 +251,8 @@ class SlotWorkspaceKitCommandServiceTest {
         );
 
         assertTrue(outcome.success());
-        assertEquals("desired_count_cleared", outcome.status());
-        assertEquals(0, runtime.desiredCountWorkflow().getPlayer(identity));
+        assertEquals("noop", outcome.status());
+        assertEquals(1, runtime.desiredCountWorkflow().getPlayer(identity));
         assertEquals(0, runtime.desiredCountWorkflow().getForKit(kit.id(), identity));
     }
 
@@ -257,7 +295,7 @@ class SlotWorkspaceKitCommandServiceTest {
     }
 
     @Test
-    void adjustPlayerDesiredCountClearsVisibleGlobalFallbackWhenKitActive() {
+    void adjustPlayerDesiredCountDoesNotLowerAllFallbackWhenKitActive() {
         WorkflowDomainRuntime runtime = runtime();
         ItemIdentity identity = ItemIdentity.of("minecraft:arrow");
         runtime.desiredCountWorkflow().setPlayer(identity, 1);
@@ -273,8 +311,8 @@ class SlotWorkspaceKitCommandServiceTest {
         );
 
         assertTrue(outcome.success());
-        assertEquals("desired_count_cleared", outcome.status());
-        assertEquals(0, runtime.desiredCountWorkflow().getPlayer(identity));
+        assertEquals("noop", outcome.status());
+        assertEquals(1, runtime.desiredCountWorkflow().getPlayer(identity));
         assertEquals(0, runtime.desiredCountWorkflow().getForKit(kit.id(), identity));
     }
 
@@ -311,6 +349,26 @@ class SlotWorkspaceKitCommandServiceTest {
         assertTrue(outcome.success());
         assertEquals("wanted count updated", outcome.status());
         assertEquals(1, runtime.wantedCountWorkflow().getPlayer(ItemIdentity.of("minecraft:torch")));
+    }
+
+    @Test
+    void setWantedCountUsesActiveWorkflowTabScope() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().activate(kit.id());
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setWantedCount(
+                runtime,
+                carriedAuthority("minecraft:torch", 1),
+                "minecraft:torch",
+                "",
+                "",
+                1);
+
+        assertTrue(outcome.success());
+        ItemIdentity identity = ItemIdentity.of("minecraft:torch");
+        assertEquals(0, runtime.wantedCountWorkflow().getPlayer(identity));
+        assertEquals(1, runtime.wantedCountWorkflow().getForKit(kit.id(), identity));
     }
 
     @Test
@@ -379,6 +437,33 @@ class SlotWorkspaceKitCommandServiceTest {
         WorkspaceCommandOutcome undo = SlotWorkspaceCommandService.performUndo(runtime);
         assertTrue(undo.success());
         assertEquals(4, runtime.wantedCountWorkflow().getPlayer(identity));
+    }
+
+    @Test
+    void wantedCountClearUsesMovableToolIdentity() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity stored = ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:12}");
+        ItemIdentity current = ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}");
+        runtime.wantedCountWorkflow().setPlayer(stored, 1);
+
+        assertEquals(1, runtime.wantedCountWorkflow().getPlayer(current));
+        assertTrue(runtime.wantedCountWorkflow().allPlayer()
+                .containsKey(ItemIdentity.of("gtceu:steel_mining_hammer")));
+
+        WorkspaceCommandOutcome clear = SlotWorkspaceCommandService.setWantedCount(
+                runtime,
+                InventoryAuthoritySnapshot.empty(),
+                "gtceu:steel_mining_hammer",
+                "ITEM_ID_AND_COMPONENTS",
+                "{Damage:512}",
+                0);
+
+        assertTrue(clear.success());
+        assertEquals("wanted cleared", clear.status());
+        assertEquals(0, runtime.wantedCountWorkflow().getPlayer(stored));
+        assertEquals(0, runtime.wantedCountWorkflow().getPlayer(current));
+        assertFalse(runtime.wantedCountWorkflow().allPlayer()
+                .containsKey(ItemIdentity.of("gtceu:steel_mining_hammer")));
     }
 
     @Test

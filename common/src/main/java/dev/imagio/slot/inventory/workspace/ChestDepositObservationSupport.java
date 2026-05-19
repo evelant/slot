@@ -118,13 +118,19 @@ public final class ChestDepositObservationSupport {
         for (int i = 0; i < slots; i++) {
             ItemStack stack = initial[i];
             if (stack != null && !stack.isEmpty()) {
-                netDeltas.merge(ItemIdentityMatcher.create(stack), -stack.getCount(), Integer::sum);
+                netDeltas.merge(
+                        ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack)),
+                        -stack.getCount(),
+                        Integer::sum);
             }
         }
         for (int i = 0; i < slots; i++) {
             ItemStack stack = currentStack.apply(i);
             if (stack != null && !stack.isEmpty()) {
-                netDeltas.merge(ItemIdentityMatcher.create(stack), stack.getCount(), Integer::sum);
+                netDeltas.merge(
+                        ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack)),
+                        stack.getCount(),
+                        Integer::sum);
             }
         }
         return new Observation(positiveOnly(netDeltas), negativeOnly(netDeltas));

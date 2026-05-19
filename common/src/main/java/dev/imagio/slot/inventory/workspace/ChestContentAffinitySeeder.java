@@ -101,7 +101,10 @@ public final class ChestContentAffinitySeeder {
             if (stack == null || stack.isEmpty()) {
                 continue;
             }
-            counts.merge(ItemIdentityMatcher.create(stack), stack.getCount(), Integer::sum);
+            counts.merge(
+                    ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack)),
+                    stack.getCount(),
+                    Integer::sum);
         }
         return Map.copyOf(counts);
     }
