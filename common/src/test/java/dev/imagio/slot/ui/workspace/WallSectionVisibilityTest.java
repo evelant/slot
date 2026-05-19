@@ -60,6 +60,41 @@ class WallSectionVisibilityTest {
     }
 
     @Test
+    void collapsedWorkflowTabRevealsNearbyAcceptedInputGhosts() {
+        SlotWorkspaceViewModel.AtlasItem ghost = proximateGhost("tfc:coke")
+                .withAcceptedWorkflowInput(true);
+
+        WallSectionVisibility.Result result = WallSectionVisibility.classify(
+                List.of(ghost),
+                false,
+                false,
+                StorageGhostRevealMode.COLLAPSED,
+                false,
+                false);
+
+        assertTrue(result.hasVisibleContent());
+        assertFalse(result.showNearbyToggle());
+        assertEquals(List.of(ghost), result.visibleCards());
+    }
+
+    @Test
+    void collapsedWorkflowTabDoesNotRevealTrackedOnlyAcceptedInputGhosts() {
+        SlotWorkspaceViewModel.AtlasItem ghost = trackedGhost("tfc:coke")
+                .withAcceptedWorkflowInput(true);
+
+        WallSectionVisibility.Result result = WallSectionVisibility.classify(
+                List.of(ghost),
+                false,
+                false,
+                StorageGhostRevealMode.COLLAPSED,
+                false,
+                false);
+
+        assertFalse(result.hasVisibleContent());
+        assertEquals(List.of(), result.visibleCards());
+    }
+
+    @Test
     void usefulNowAndPutAwaySuggestionLanesStayProjectedButHiddenInUi() {
         SlotWorkspaceViewModel.AtlasItem item = proximateGhost("minecraft:dirt");
 

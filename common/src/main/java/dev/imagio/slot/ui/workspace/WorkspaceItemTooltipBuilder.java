@@ -1,7 +1,6 @@
 package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.inventory.workspace.WorkspaceItemTargets;
 import net.minecraft.network.chat.Component;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public final class WorkspaceItemTooltipBuilder {
         addDesiredLine(lines, item);
         addPutAwayLine(lines, item);
         addCarriedLine(lines, item);
-        addStorageLine(lines, "Nearby pip", sum(item.presence()), item.presence());
+        addStorageLine(lines, "Nearby stored", sum(item.presence()), item.presence());
         addProximateRouteLine(lines, item, hasProximateDepositRoute || item.putAwayState().routed());
         addStorageLine(lines, "Stored elsewhere", sum(item.elsewhere()), item.elsewhere());
         addMissingTargetLine(lines, item);
@@ -68,17 +67,17 @@ public final class WorkspaceItemTooltipBuilder {
         int carried = item.carried() ? item.totalCount() : 0;
         if (desired > 0) {
             String source = item.desiredCountFromKit() ? " tab" : "";
-            lines.add(Component.literal("Desired badge: " + carried + "/" + desired + source));
+            lines.add(Component.literal("Desired target: " + carried + "/" + desired + source));
             if (item.wantedCount() <= 0) {
                 return;
             }
         }
         if (item.wantedCount() > 0) {
-            lines.add(Component.literal("Wanted: " + carried + "/" + item.wantedCount()));
+            lines.add(Component.literal("Wanted target: " + carried + "/" + item.wantedCount()));
             return;
         }
         if (item.kitNeeded()) {
-            lines.add(Component.literal("Tab marker: needed by active workflow tab"));
+            lines.add(Component.literal("Workflow target: needed by active workflow tab"));
         }
     }
 
@@ -122,13 +121,13 @@ public final class WorkspaceItemTooltipBuilder {
         if (!hasProximateDepositRoute || sum(item.presence()) > 0) {
             return;
         }
-        lines.add(Component.literal("Nearby pip: deposit route available"));
+        lines.add(Component.literal("Nearby route: deposit route available"));
     }
 
     private static void addMissingTargetLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
         int carried = item.carried() ? item.totalCount() : 0;
         int stored = sum(item.presence()) + sum(item.elsewhere());
-        int target = WorkspaceItemTargets.from(item).displayTargetCount();
+        int target = WallCardChromeSpec.targetChoice(item).count();
         int missing = target - carried - stored;
         if (missing <= 0) {
             return;

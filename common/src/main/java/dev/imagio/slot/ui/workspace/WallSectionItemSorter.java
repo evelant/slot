@@ -94,7 +94,11 @@ public final class WallSectionItemSorter {
         }
         WorkspaceItemTargets targets = WorkspaceItemTargets.from(entry.item());
         int carriedCount = entry.item().carried() ? entry.item().totalCount() : 0;
-        return targets.hasAnyGap(carriedCount) || entry.item().kitNeeded() ? 0 : 1;
+        return targets.hasAnyGap(carriedCount)
+                || entry.item().kitNeeded()
+                || (entry.item().acceptedWorkflowInput() && entry.item().proximateCount() > 0)
+                ? 0
+                : 1;
     }
 
     private static IslandSignalDescriptor descriptor(

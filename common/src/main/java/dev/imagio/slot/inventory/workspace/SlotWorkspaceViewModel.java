@@ -1374,11 +1374,14 @@ public record SlotWorkspaceViewModel(
                 continue;
             }
             ItemIdentity identity = item.identity().toIdentity();
-            boolean workflowRelevant = targets.workflowRelevant(identity, ItemStackTags.itemTagIds(item.displayStack()));
+            Set<String> itemTags = ItemStackTags.itemTagIds(item.displayStack());
+            boolean acceptedInput = targets.acceptedInput(identity, itemTags);
+            boolean workflowRelevant = targets.workflowRelevant(identity, itemTags);
             boolean storageGhost = !item.carried() && (item.proximateCount() > 0 || !item.elsewhere().isEmpty());
             if (identity != null && (workflowRelevant || putAway.contains(item.identity()) || storageGhost)) {
-                filtered.add((workflowRelevant || storageGhost) ? item.withPutAwayState(PutAwayState.NONE)
-                        : item.withPutAwayState(PutAwayState.ROUTED));
+                AtlasItem visibleItem = item.withAcceptedWorkflowInput(acceptedInput);
+                filtered.add((workflowRelevant || storageGhost) ? visibleItem.withPutAwayState(PutAwayState.NONE)
+                        : visibleItem.withPutAwayState(PutAwayState.ROUTED));
             }
         }
         return filtered;
@@ -2917,6 +2920,7 @@ public record SlotWorkspaceViewModel(
             int desiredCount,
             boolean desiredCountFromKit,
             int wantedCount,
+            boolean acceptedWorkflowInput,
             String largestCarriedSourceId,
             int largestCarriedSlotIndex,
             int largestCarriedSlotCount,
@@ -2947,6 +2951,9 @@ public record SlotWorkspaceViewModel(
             if (carried && totalCount >= wantedCount) {
                 wantedCount = 0;
             }
+            // Accepted workflow inputs are relevance-only: they may reveal a
+            // nearby substitute ghost, but they must not act like missing
+            // workflow targets.
             largestCarriedSourceId = largestCarriedSourceId == null ? "" : largestCarriedSourceId;
             largestCarriedSlotIndex = Math.max(-1, largestCarriedSlotIndex);
             largestCarriedSlotCount = Math.max(0, largestCarriedSlotCount);
@@ -2993,10 +3000,79 @@ public record SlotWorkspaceViewModel(
                     desiredCount,
                     desiredCountFromKit,
                     wantedCount,
+                    acceptedWorkflowInput,
                     largestCarriedSourceId,
                     largestCarriedSlotIndex,
                     largestCarriedSlotCount,
                     next);
+        }
+
+        public AtlasItem withAcceptedWorkflowInput(boolean accepted) {
+            if (acceptedWorkflowInput == accepted) {
+                return this;
+            }
+            return new AtlasItem(
+                    identity,
+                    displayStack,
+                    name,
+                    totalCount,
+                    firstSlotIndex,
+                    islandId,
+                    recent,
+                    playerPlaced,
+                    carried,
+                    ghost,
+                    proximateCount,
+                    chipSuggestions,
+                    presence,
+                    elsewhere,
+                    isCarriedContainer,
+                    containerFreeSlotCount,
+                    containerSlotCapacity,
+                    kitNeeded,
+                    desiredCount,
+                    desiredCountFromKit,
+                    wantedCount,
+                    accepted,
+                    largestCarriedSourceId,
+                    largestCarriedSlotIndex,
+                    largestCarriedSlotCount,
+                    putAwayState);
+        }
+
+        /** Backward-compat constructor: defaults accepted-workflow-input state. */
+        public AtlasItem(
+                IdentityRef identity,
+                ItemStack displayStack,
+                String name,
+                int totalCount,
+                int firstSlotIndex,
+                String islandId,
+                boolean recent,
+                boolean playerPlaced,
+                boolean carried,
+                boolean ghost,
+                int proximateCount,
+                List<ChipSuggestion> chipSuggestions,
+                List<ChestPresenceEntry> presence,
+                List<ChestPresenceEntry> elsewhere,
+                boolean isCarriedContainer,
+                int containerFreeSlotCount,
+                int containerSlotCapacity,
+                boolean kitNeeded,
+                int desiredCount,
+                boolean desiredCountFromKit,
+                int wantedCount,
+                String largestCarriedSourceId,
+                int largestCarriedSlotIndex,
+                int largestCarriedSlotCount,
+                PutAwayState putAwayState
+        ) {
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
+                    recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions, presence, elsewhere,
+                    isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, desiredCount,
+                    desiredCountFromKit, wantedCount, false, largestCarriedSourceId, largestCarriedSlotIndex,
+                    largestCarriedSlotCount, putAwayState);
         }
 
         /** Backward-compat constructor: defaults put-away guidance state. */
@@ -3029,7 +3105,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions, presence, elsewhere,
                     isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, desiredCount,
-                    desiredCountFromKit, wantedCount, largestCarriedSourceId, largestCarriedSlotIndex,
+                    desiredCountFromKit, wantedCount, false, largestCarriedSourceId, largestCarriedSlotIndex,
                     largestCarriedSlotCount, PutAwayState.NONE);
         }
 
@@ -3055,7 +3131,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, List.of(), isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, false, 0,
-                    false, 0, "", -1, 0, PutAwayState.NONE);
+                    false, 0, false, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults kitNeeded/desiredCount/largestCarriedSlot. */
@@ -3081,7 +3157,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, false, 0,
-                    false, 0, "", -1, 0, PutAwayState.NONE);
+                    false, 0, false, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults desiredCount/largestCarriedSlot. */
@@ -3108,7 +3184,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, 0,
-                    false, 0, "", -1, 0, PutAwayState.NONE);
+                    false, 0, false, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults largestCarriedSlot only. */
@@ -3136,7 +3212,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
-                    kitNeeded, desiredCount, false, 0, "", -1, 0, PutAwayState.NONE);
+                    kitNeeded, desiredCount, false, 0, false, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults wantedCount only. */
@@ -3168,7 +3244,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
-                    kitNeeded, desiredCount, desiredCountFromKit, 0,
+                    kitNeeded, desiredCount, desiredCountFromKit, 0, false,
                     largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount, PutAwayState.NONE);
         }
 
@@ -3202,7 +3278,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
-                    kitNeeded, desiredCount, desiredCountFromKit, wanted ? 1 : 0,
+                    kitNeeded, desiredCount, desiredCountFromKit, wanted ? 1 : 0, false,
                     largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount, PutAwayState.NONE);
         }
 

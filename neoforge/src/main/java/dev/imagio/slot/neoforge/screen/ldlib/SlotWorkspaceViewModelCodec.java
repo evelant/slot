@@ -1095,6 +1095,7 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putBoolean("desiredCountFromKit", item.desiredCountFromKit());
         tag.putInt("wantedCount", item.wantedCount());
         tag.putBoolean("wanted", item.wanted());
+        tag.putBoolean("acceptedWorkflowInput", item.acceptedWorkflowInput());
         tag.putString("largestCarriedSourceId", item.largestCarriedSourceId());
         tag.putInt("largestCarriedSlotIndex", item.largestCarriedSlotIndex());
         tag.putInt("largestCarriedSlotCount", item.largestCarriedSlotCount());
@@ -1164,6 +1165,7 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getInt("desiredCount"),
                 tag.getBoolean("desiredCountFromKit"),
                 decodeWantedCount(tag),
+                tag.getBoolean("acceptedWorkflowInput"),
                 tag.getString("largestCarriedSourceId"),
                 decodedSlotIndex,
                 tag.getInt("largestCarriedSlotCount"),

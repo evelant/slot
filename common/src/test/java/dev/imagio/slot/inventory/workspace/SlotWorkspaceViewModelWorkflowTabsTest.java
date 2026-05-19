@@ -15,6 +15,8 @@ import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
+import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
+import dev.imagio.slot.ui.workspace.WallSectionVisibility;
 import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.KitDefinition;
@@ -135,6 +137,78 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
                 .toList();
         assertFalse(putAwayIds.contains("minecraft:iron_ore"));
         assertTrue(putAwayIds.contains("minecraft:dirt"));
+    }
+
+    @Test
+    void acceptedWorkflowTagRevealsNearbySubstituteGhostWithoutTargetPressure() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity coke = ItemIdentity.of("tfc:coke");
+        KitDefinition smelting = runtime.kitWorkflow().create("Smelting");
+        runtime.kitWorkflow().setAcceptedInput(
+                smelting.id(),
+                WorkflowAcceptedInputRule.itemTag("tfc:blast_furnace_fuel"),
+                true);
+        runtime.kitWorkflow().activate(smelting.id());
+        VisualAtlasIsland fuels = runtime.visualAtlasWorkflow().createIsland(
+                "Fuels",
+                0,
+                0,
+                0xFFAA6633,
+                null);
+        runtime.visualAtlasWorkflow().assignHome(coke, fuels.id(), 0);
+
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.PLACED_ITEM,
+                "Fuel shelf @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                4,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        new ItemStack("tfc:coke", 16, 64).withTags("tfc:blast_furnace_fuel"))));
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                storageId -> SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                List.of(source));
+
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItems().stream()
+                .filter(candidate -> "tfc:coke".equals(candidate.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(item.ghost());
+        assertEquals(16, item.proximateCount());
+        assertTrue(item.acceptedWorkflowInput());
+        assertFalse(item.kitNeeded());
+        assertEquals(0, item.desiredCount());
+        assertEquals(0, item.wantedCount());
+
+        WallSectionVisibility.Result collapsed = WallSectionVisibility.classify(
+                List.of(item),
+                false,
+                false,
+                StorageGhostRevealMode.COLLAPSED,
+                false,
+                false);
+        assertEquals(List.of(item), collapsed.visibleCards());
     }
 
     @Test

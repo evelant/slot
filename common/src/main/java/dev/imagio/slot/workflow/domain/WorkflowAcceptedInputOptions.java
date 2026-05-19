@@ -33,6 +33,9 @@ public final class WorkflowAcceptedInputOptions {
                 .thenComparing(tag -> tag));
         int added = 0;
         for (String tag : tags) {
+            if (broadProcessPath(tagPath(tag))) {
+                continue;
+            }
             WorkflowAcceptedInputRule rule = WorkflowAcceptedInputRule.itemTag(tag);
             if (rule != null && !rules.contains(rule)) {
                 rules.add(rule);
@@ -111,9 +114,26 @@ public final class WorkflowAcceptedInputOptions {
                 || path.equals("ore_pieces")
                 || path.equals("small_ore_pieces")
                 || path.equals("raw_materials")
+                || path.equals("raw_blocks")
+                || path.equals("crushed_ores")
+                || path.equals("crushed")
+                || path.equals("dirty_dusts")
+                || path.equals("impure_dusts")
+                || path.equals("pure_dusts")
                 || path.equals("dusts")
                 || path.equals("powders")
-                || path.equals("ingots");
+                || path.equals("gems")
+                || path.equals("ingots")
+                || path.equals("nuggets")
+                || path.equals("plates")
+                || path.equals("rods")
+                || path.equals("sheets")
+                || path.equals("double_ingots")
+                || path.equals("double_sheets")
+                || path.equals("storage_blocks")
+                || path.equals("clumps")
+                || path.equals("shards")
+                || path.equals("crystals");
     }
 
     private static boolean startsWithAny(String value, String... prefixes) {

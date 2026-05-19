@@ -338,17 +338,20 @@ final class WorkspaceFormat {
         if ("SLOT".equals(text)) {
             return WorkspaceUiPalette.ACCENT;
         }
-        if (text.startsWith("Desired badge")) {
-            return WARNING;
+        if (text.startsWith("Desired target")) {
+            return WorkspaceUiPalette.COUNT_BADGE_DESIRED;
         }
-        if (text.startsWith("Nearby pip")) {
+        if (text.startsWith("Wanted target")) {
+            return WorkspaceUiPalette.COUNT_BADGE_WANTED;
+        }
+        if (text.startsWith("Nearby stored") || text.startsWith("Nearby route")) {
             return WorkspaceUiPalette.ACCENT;
         }
         if (text.startsWith("Stored elsewhere")) {
             return WorkspaceUiPalette.MUTED;
         }
-        if (text.startsWith("Kit marker")) {
-            return 0xFFB38CFF;
+        if (text.startsWith("Workflow target")) {
+            return WorkspaceUiPalette.COUNT_BADGE_WORKFLOW;
         }
         if (text.startsWith("Container")) {
             return 0xFF8DB7D6;

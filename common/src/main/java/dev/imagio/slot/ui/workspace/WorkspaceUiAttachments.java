@@ -6,6 +6,12 @@ public final class WorkspaceUiAttachments {
     public static final String ATLAS_ISLAND = "slot.workspace.atlas_island";
     public static final String WALL_CARD = "slot.workspace.wall_card";
     public static final String WALL_CARD_BODY = "slot.workspace.wall_card_body";
+    public static final String WALL_CARD_CHROME_SPEC = "slot.workspace.wall_card_chrome_spec";
+    public static final String WALL_CARD_COUNT_BADGE = "slot.workspace.wall_card_count_badge";
+    public static final String WALL_CARD_NEARBY_BADGE = "slot.workspace.wall_card_nearby_badge";
+    public static final String WALL_CARD_NEARBY_ROUTE_NOTCH = "slot.workspace.wall_card_nearby_route_notch";
+    public static final String WALL_CARD_DISTANT_BADGE = "slot.workspace.wall_card_distant_badge";
+    public static final String WALL_CARD_RING = "slot.workspace.wall_card_ring";
     public static final String WALL_CARD_ACTIVE_SEARCH_MATCH = "slot.workspace.wall_card_active_search_match";
     public static final String WALL_CARD_WAYFINDING_ENTRY = "slot.workspace.wall_card_wayfinding_entry";
     public static final String WALL_CARD_MISSING_TARGET = "slot.workspace.wall_card_missing_target";

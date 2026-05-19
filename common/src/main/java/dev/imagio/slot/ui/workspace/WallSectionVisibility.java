@@ -106,6 +106,9 @@ public final class WallSectionVisibility {
         if (item.kitNeeded()) {
             return true;
         }
+        if (item.acceptedWorkflowInput() && isProximateGhost(item)) {
+            return true;
+        }
         int carried = item.carried() ? Math.max(0, item.totalCount()) : 0;
         return WorkspaceItemTargets.from(item).hasAnyGap(carried);
     }

@@ -5,29 +5,23 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.*;
 
 import com.lowdragmc.lowdraglib2.gui.texture.IGuiTexture;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
-import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
-import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
-import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.inventory.workspace.WayfindingTarget;
-import dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
+import dev.imagio.slot.ui.workspace.WayfindingDisplay;
 import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
 import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
+import dev.imagio.slot.ui.workspace.WorkspaceCountFormat;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
-import dev.vfyjxf.taffy.style.AlignItems;
-import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 
 /**
@@ -37,20 +31,12 @@ import net.minecraft.network.chat.Component;
  * layout in the parent grid handles wrap/positioning. No world-unit
  * math, no camera dependency.
  *
- * <p>Card chrome (status border + count badge + proximate pip + search
- * outline + deposit preview + container fullness + selection highlight
- * + carried/ghost tint) is preserved at the new fixed size; sized for
- * legibility at the chosen cell size.
+ * <p>Card chrome is rendered by the common {@link WallCardUiBuilder}
+ * so Forge and NeoForge share the same badges, wayfinding strip, and
+ * status ring. This adapter only supplies platform context and
+ * interaction wiring.
  */
 final class AtlasCardBuilder {
-    /**
-     * Width (px) of the inline wayfinding strip that grows on the right
-     * of an expanded card. Sized to fit "↗ 12m" comfortably; cards
-     * without wayfinding info stay at the standard square so the grid
-     * keeps its rhythm. See Phase 5 of {@code single-column-workspace.md}.
-     */
-    private static final int WAYFINDING_STRIP_WIDTH_PX = WallCardUiBuilder.WAYFINDING_STRIP_WIDTH_PX;
-
     private final SlotWorkspaceUiController host;
     private final WallCardUiBuilder cardBuilder;
     private final LdlibSlotUiRenderer cardRenderer;
@@ -96,35 +82,6 @@ final class AtlasCardBuilder {
 
     void installCardInteractions(SlotUiElement model, UIElement element) {
         if (model.hasAttachment(WorkspaceUiAttachments.WALL_CARD_BODY)) {
-            SlotWorkspaceViewModel.AtlasItem item = model.attachment(
-                    WorkspaceUiAttachments.ATLAS_ITEM,
-                    SlotWorkspaceViewModel.AtlasItem.class
-            );
-            if (item == null) {
-                return;
-            }
-            Boolean activeSearchMatch = model.attachment(
-                    WorkspaceUiAttachments.WALL_CARD_ACTIVE_SEARCH_MATCH,
-                    Boolean.class
-            );
-            SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntry = model.attachment(
-                    WorkspaceUiAttachments.WALL_CARD_WAYFINDING_ENTRY,
-                    SlotWorkspaceViewModel.ChestPresenceEntry.class
-            );
-            if (wayfindingEntry != null) {
-                element.clearAllChildren();
-                UIElement iconCell = new UIElement().layout(layout -> layout
-                        .positionType(TaffyPosition.ABSOLUTE)
-                        .left(0).top(0)
-                        .width(ListWallPanelBuilder.CARD_CELL_PX)
-                        .height(ListWallPanelBuilder.CARD_CELL_PX));
-                iconCell.setAllowHitTest(false);
-                buildCardBody(iconCell, item, Boolean.TRUE.equals(activeSearchMatch));
-                element.addChild(iconCell);
-                element.addChild(buildWayfindingStrip(wayfindingEntry));
-            } else {
-                buildCardBody(element, item, Boolean.TRUE.equals(activeSearchMatch));
-            }
             return;
         }
         if (!model.hasAttachment(WorkspaceUiAttachments.WALL_CARD)) {
@@ -181,527 +138,6 @@ final class AtlasCardBuilder {
             }
         }
         return false;
-    }
-
-    void buildCardBody(UIElement body, SlotWorkspaceViewModel.AtlasItem item, boolean activeSearchMatch) {
-        body.clearAllChildren();
-        // Search outline: hollow border framing the card when it matches
-        // the active query. Painted before slotPreview so the icon draws
-        // over its inner edge but the outline edges remain visible.
-        if (activeSearchMatch) {
-            addSearchMatchOutline(body);
-        }
-        body.addChild(slotPreview(item));
-        addOverlaySignals(body, item);
-    }
-
-    /**
-     * Card icon + shell. 32px cell:
-     *   - 1px outer breathing room
-     *   - shell rect (CARD_SHELL or CARD_SHELL_GHOST)
-     *   - 1px inner inset for the inner backing (CARD_INNER / CARD_INNER_GHOST)
-     *   - centered item icon
-     */
-    private UIElement slotPreview(SlotWorkspaceViewModel.AtlasItem item) {
-        boolean carried = item.carried();
-        int shellPx = ListWallPanelBuilder.CARD_CELL_PX - 2;
-        int inset = 1;
-        int iconSize = shellPx - inset * 2;
-
-        int shellColor = carried ? CARD_SHELL : CARD_SHELL_GHOST;
-        int innerColor = carried ? CARD_INNER : CARD_INNER_GHOST;
-
-        UIElement wrapper = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .heightPercent(100));
-        wrapper.setAllowHitTest(false);
-
-        UIElement shell = panel(shellColor).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(1)
-                .top(1)
-                .width(shellPx)
-                .height(shellPx));
-        shell.setAllowHitTest(false);
-        shell.addChild(panel(innerColor).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(inset)
-                .top(inset)
-                .width(shellPx - inset * 2)
-                .height(shellPx - inset * 2)));
-        // Suppress vanilla count decoration — the card draws its own
-        // status-aware M/N badge in addCarriedCountBadge.
-        shell.addChild(itemIcon(item.displayStack(), iconSize, carried, false).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(inset)
-                .top(inset)));
-        wrapper.addChild(shell);
-        return wrapper;
-    }
-
-    private void addOverlaySignals(UIElement body, SlotWorkspaceViewModel.AtlasItem item) {
-        if (item.isCarriedContainer()) {
-            addContainerFullnessBar(body, item);
-        }
-        AtlasCardStatus status = AtlasCardStatus.from(item);
-        int proximateCount = proximateChestCount(item);
-        boolean proximateDepositRoute = hasProximateDepositRoute(item);
-        if (proximateCount > 0 || proximateDepositRoute) {
-            addProximatePip(body, item, status, proximateCount);
-        }
-        addCarriedCountBadge(body, item, status);
-        if (status.wantsBorder()) {
-            addStatusBorder(body, status);
-        }
-        if (proximateDepositRoute) {
-            addDepositPreviewOutline(body);
-        }
-        if (!host.goalTabActive() && WorkspaceGatherUiSupport.isGatherableItem(item)) {
-            addGatherPreviewOutline(body);
-        }
-        if (host.goalChoiceInvolved(item)) {
-            addChoiceIndicator(body, item);
-        }
-        if (!host.searchController.normalizedQuery().isBlank()) {
-            int storedCount = proximateCount;
-            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
-                storedCount += entry.count();
-            }
-            if (storedCount > 0) {
-                addSearchStoredBadge(body, status, storedCount);
-            }
-        }
-        if (RelevanceDebugOverlay.enabled()) {
-            addRelevanceDebugBadge(body, item);
-        }
-    }
-
-    private void addSearchMatchOutline(UIElement body) {
-        int color = WARNING;
-        int thickness = 1;
-        outlineRect(body, color, thickness, 263);
-    }
-
-    private void addStatusBorder(UIElement body, AtlasCardStatus status) {
-        outlineRect(body, status.color(), 1, 261);
-    }
-
-    /**
-     * Hollow 4-rect border. zIndex pushes pose Z above the +232 item-icon
-     * depth so the border survives the icon's depth-write.
-     */
-    private void outlineRect(UIElement body, int color, int thickness, int zIndex) {
-        UIElement top = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).top(0).widthPercent(100).height(thickness));
-        top.style(style -> style.zIndex(zIndex));
-        top.setAllowHitTest(false);
-        body.addChild(top);
-        UIElement bottom = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).bottom(0).widthPercent(100).height(thickness));
-        bottom.style(style -> style.zIndex(zIndex));
-        bottom.setAllowHitTest(false);
-        body.addChild(bottom);
-        UIElement left = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).top(0).width(thickness).heightPercent(100));
-        left.style(style -> style.zIndex(zIndex));
-        left.setAllowHitTest(false);
-        body.addChild(left);
-        UIElement right = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .right(0).top(0).width(thickness).heightPercent(100));
-        right.style(style -> style.zIndex(zIndex));
-        right.setAllowHitTest(false);
-        body.addChild(right);
-    }
-
-    /**
-     * Bottom-right "M" or "M/N" badge replacing both the vanilla count and
-     * the standalone desired-count pip. Kit-needed status modulates the
-     * status colour rather than introducing a separate glyph.
-     */
-    private void addCarriedCountBadge(UIElement body, SlotWorkspaceViewModel.AtlasItem item, AtlasCardStatus status) {
-        int carried = status.carriedCount();
-        int target = status.targetCount();
-        if (carried <= 0 && target <= 0) {
-            return;
-        }
-        String text;
-        if (target > 0) {
-            text = WorkspaceFormat.compactCount(carried) + "/" + WorkspaceFormat.compactCount(target);
-        } else if (carried > 0) {
-            text = WorkspaceFormat.compactCount(carried);
-        } else {
-            return;
-        }
-        int border = status.wantsBorder() ? 1 : 0;
-        int chrome = border + (status.wantsBorder() ? 1 : 0);
-        int sideInset = border;
-        int bottomInset = chrome;
-        int pipHeight = 6;
-        int pipWidth = Math.max(pipHeight, text.length() * 4 + 2);
-        int textColor = status.level() == AtlasCardStatus.Level.NEUTRAL ? TEXT : status.color();
-
-        UIElement pip = panel(0xC8121B1F).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .right(sideInset)
-                .bottom(bottomInset)
-                .width(pipWidth)
-                .height(pipHeight));
-        pip.style(style -> style.zIndex(265));
-        pip.setAllowHitTest(false);
-        Label badge = label(text, textColor);
-        badge.layout(layout -> layout.widthPercent(100).heightPercent(100));
-        badge.setAllowHitTest(false);
-        badge.textStyle(style -> style
-                .textColor(textColor)
-                .textShadow(false)
-                .fontSize(6)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        pip.addChild(badge);
-        body.addChild(pip);
-    }
-
-    private void addProximatePip(
-            UIElement body,
-            SlotWorkspaceViewModel.AtlasItem item,
-            AtlasCardStatus status,
-            int proximateCount
-    ) {
-        int sideInset = status.wantsBorder() ? 1 : 0;
-        int pipSize = 6;
-        UIElement pip = panel(LINK_THREAD_COLOR).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .right(sideInset)
-                .top(sideInset)
-                .width(pipSize)
-                .height(pipSize));
-        pip.style(style -> style.zIndex(265));
-        pip.setAllowHitTest(false);
-        String text = proximateCount > 0 ? String.valueOf(Math.min(proximateCount, 999)) : "+";
-        Label count = label(text, TEXT);
-        count.layout(layout -> layout.widthPercent(100).heightPercent(100));
-        count.setAllowHitTest(false);
-        count.textStyle(style -> style
-                .textColor(TEXT)
-                .textShadow(false)
-                .fontSize(6)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        pip.addChild(count);
-        body.addChild(pip);
-    }
-
-    private void addSearchStoredBadge(UIElement body, AtlasCardStatus status, int storedCount) {
-        int sideInset = status.wantsBorder() ? 1 : 0;
-        String text = "+" + WorkspaceFormat.compactCount(storedCount);
-        int pipHeight = 6;
-        int pipWidth = Math.max(pipHeight, text.length() * 4 + 2);
-        UIElement pip = panel(LINK_THREAD_COLOR).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(sideInset)
-                .top(sideInset)
-                .width(pipWidth)
-                .height(pipHeight));
-        pip.style(style -> style.zIndex(265));
-        pip.setAllowHitTest(false);
-        Label count = label(text, TEXT);
-        count.layout(layout -> layout.widthPercent(100).heightPercent(100));
-        count.setAllowHitTest(false);
-        count.textStyle(style -> style
-                .textColor(TEXT)
-                .textShadow(false)
-                .fontSize(6)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        pip.addChild(count);
-        body.addChild(pip);
-    }
-
-    private void addChoiceIndicator(UIElement body, SlotWorkspaceViewModel.AtlasItem item) {
-        int color = 0xE00B1117;
-        int markColor = host.goalChoiceCard(item) ? 0xFFFFD27A : 0xFFE7D9FF;
-        UIElement pip = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(6)
-                .top(0)
-                .width(6)
-                .height(6));
-        pip.style(style -> style.zIndex(270));
-        pip.setAllowHitTest(false);
-        Label mark = label("?", markColor);
-        mark.layout(layout -> layout.widthPercent(100).heightPercent(100));
-        mark.setAllowHitTest(false);
-        mark.textStyle(style -> style
-                .textColor(markColor)
-                .textShadow(false)
-                .fontSize(6)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        pip.addChild(mark);
-        body.addChild(pip);
-    }
-
-    private UIElement buildWayfindingStrip(SlotWorkspaceViewModel.ChestPresenceEntry entry) {
-        UIElement strip = new UIElement().layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(ListWallPanelBuilder.CARD_CELL_PX)
-                .top(0)
-                .width(WAYFINDING_STRIP_WIDTH_PX)
-                .height(ListWallPanelBuilder.CARD_CELL_PX)
-                .paddingHorizontal(2)
-                .gapAll(2)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-        strip.setAllowHitTest(false);
-
-        Label arrow = label("·", ACCENT);
-        arrow.layout(layout -> layout.height(ListWallPanelBuilder.CARD_CELL_PX));
-        arrow.textStyle(style -> style
-                .textColor(ACCENT)
-                .textShadow(false)
-                .fontSize(7)
-                .adaptiveWidth(true)
-                .textAlignVertical(Vertical.CENTER));
-        arrow.setAllowHitTest(false);
-        strip.addChild(arrow);
-
-        Label distance = label("--m", MUTED);
-        distance.layout(layout -> layout.flex(1).height(ListWallPanelBuilder.CARD_CELL_PX));
-        distance.textStyle(style -> style
-                .textColor(MUTED)
-                .textShadow(false)
-                .fontSize(6)
-                .textAlignHorizontal(Horizontal.RIGHT)
-                .textAlignVertical(Vertical.CENTER));
-        distance.setAllowHitTest(false);
-        strip.addChild(distance);
-
-        strip.addEventListener(UIEvents.TICK, ignored ->
-                updateWayfindingStrip(arrow, distance, entry.storageId()));
-        return strip;
-    }
-
-    private void updateWayfindingStrip(Label arrow, Label distance, String storageId) {
-        // wayfindingTargets() only carries chests with kit/desired-gap
-        // missing identities; for plain search-only matches we fall back
-        // to chestChips, which has every claimed chest's coords.
-        String dimensionId = null;
-        int worldX = 0, worldY = 0, worldZ = 0;
-        WayfindingTarget target = WayfindingTargetCache.targetFor(storageId);
-        if (target != null) {
-            dimensionId = target.dimensionId();
-            worldX = target.worldX();
-            worldY = target.worldY();
-            worldZ = target.worldZ();
-        } else {
-            for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
-                if (storageId.equals(chip.storageId())) {
-                    dimensionId = chip.dimensionId();
-                    worldX = chip.worldX();
-                    worldY = chip.worldY();
-                    worldZ = chip.worldZ();
-                    break;
-                }
-            }
-        }
-        if (dimensionId == null) {
-            arrow.setText(Component.literal("·"));
-            distance.setText(Component.literal("--m"));
-            return;
-        }
-        Minecraft mc = Minecraft.getInstance();
-        LocalPlayer player = mc == null ? null : mc.player;
-        if (player == null || mc.level == null) {
-            arrow.setText(Component.literal("·"));
-            distance.setText(Component.literal("--m"));
-            return;
-        }
-        if (!mc.level.dimension().location().toString().equals(dimensionId)) {
-            arrow.setText(Component.literal(shortDimension(dimensionId)));
-            distance.setText(Component.literal(""));
-            return;
-        }
-        double dx = (worldX + 0.5) - player.getX();
-        double dz = (worldZ + 0.5) - player.getZ();
-        double dy = (worldY + 0.5) - player.getY();
-        double horizontal = Math.sqrt(dx * dx + dz * dz);
-        double dist = Math.sqrt(horizontal * horizontal + dy * dy);
-        float yawRadians = (float) Math.toRadians(player.getYRot());
-        double absoluteBearing = Math.atan2(-dx, dz);
-        double relativeBearing = absoluteBearing - yawRadians;
-        arrow.setText(Component.literal(arrowGlyph(relativeBearing)));
-        distance.setText(Component.literal(((int) Math.round(dist)) + "m"));
-    }
-
-    private static String arrowGlyph(double relativeBearing) {
-        double normalized = ((relativeBearing % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-        int sector = (int) Math.floor((normalized + Math.PI / 8.0) / (Math.PI / 4.0)) % 8;
-        return switch (sector) {
-            case 0 -> "↑";
-            case 1 -> "↗";
-            case 2 -> "→";
-            case 3 -> "↘";
-            case 4 -> "↓";
-            case 5 -> "↙";
-            case 6 -> "←";
-            case 7 -> "↖";
-            default -> "·";
-        };
-    }
-
-    private static String shortDimension(String dimensionId) {
-        if (dimensionId == null) {
-            return "";
-        }
-        int colon = dimensionId.indexOf(':');
-        String tail = colon < 0 ? dimensionId : dimensionId.substring(colon + 1);
-        if (tail.startsWith("the_")) {
-            tail = tail.substring(4);
-        }
-        return tail;
-    }
-
-    /** Twin of {@link #addDepositPreviewOutline}, gated on
-     *  {@link SlotWorkspaceUiController#gatherPreviewActive}. Uses the
-     *  active-hotbar (kit) palette so the player learns one preview
-     *  vocabulary: ACCENT for deposit, kit-color for gather. */
-    private void addGatherPreviewOutline(UIElement body) {
-        int thickness = 1;
-        UIElement preview = new UIElement().layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).top(0).widthPercent(100).heightPercent(100));
-        preview.style(style -> style.zIndex(264));
-        preview.setAllowHitTest(false);
-        preview.setVisible(host.gatherPreviewActive);
-        boolean[] lastVisible = {host.gatherPreviewActive};
-        preview.addEventListener(UIEvents.TICK, event -> {
-            boolean now = host.gatherPreviewActive;
-            if (now == lastVisible[0]) {
-                return;
-            }
-            lastVisible[0] = now;
-            preview.setVisible(now);
-        });
-        int color = ACTIVE_HOTBAR;
-        UIElement top = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).top(0).widthPercent(100).height(thickness));
-        top.setAllowHitTest(false);
-        preview.addChild(top);
-        UIElement bottom = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).bottom(0).widthPercent(100).height(thickness));
-        bottom.setAllowHitTest(false);
-        preview.addChild(bottom);
-        UIElement left = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).top(0).width(thickness).heightPercent(100));
-        left.setAllowHitTest(false);
-        preview.addChild(left);
-        UIElement right = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .right(0).top(0).width(thickness).heightPercent(100));
-        right.setAllowHitTest(false);
-        preview.addChild(right);
-        body.addChild(preview);
-    }
-
-    private void addDepositPreviewOutline(UIElement body) {
-        int thickness = 1;
-        UIElement preview = new UIElement().layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).top(0).widthPercent(100).heightPercent(100));
-        preview.style(style -> style.zIndex(264));
-        preview.setAllowHitTest(false);
-        preview.setVisible(host.depositPreviewActive);
-        boolean[] lastVisible = {host.depositPreviewActive};
-        preview.addEventListener(UIEvents.TICK, event -> {
-            boolean now = host.depositPreviewActive;
-            if (now == lastVisible[0]) {
-                return;
-            }
-            lastVisible[0] = now;
-            preview.setVisible(now);
-        });
-        int color = ACCENT;
-        UIElement top = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).top(0).widthPercent(100).height(thickness));
-        top.setAllowHitTest(false);
-        preview.addChild(top);
-        UIElement bottom = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).bottom(0).widthPercent(100).height(thickness));
-        bottom.setAllowHitTest(false);
-        preview.addChild(bottom);
-        UIElement left = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).top(0).width(thickness).heightPercent(100));
-        left.setAllowHitTest(false);
-        preview.addChild(left);
-        UIElement right = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .right(0).top(0).width(thickness).heightPercent(100));
-        right.setAllowHitTest(false);
-        preview.addChild(right);
-        body.addChild(preview);
-    }
-
-    private void addContainerFullnessBar(UIElement body, SlotWorkspaceViewModel.AtlasItem item) {
-        int trackWidth = ListWallPanelBuilder.CARD_CELL_PX - 4;
-        int barHeight = 2;
-        int capacity = Math.max(0, item.containerSlotCapacity());
-        int free = Math.max(0, item.containerFreeSlotCount());
-        int filled = Math.max(0, capacity - free);
-
-        UIElement track = panel(CARRIED_CONTAINER_PIP & 0x66FFFFFF).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(2).top(2)
-                .width(trackWidth).height(barHeight));
-        track.style(style -> style.zIndex(260));
-        track.setAllowHitTest(false);
-        body.addChild(track);
-        if (capacity > 0 && filled > 0) {
-            float ratio = Math.min(1f, (float) filled / capacity);
-            int fillWidth = Math.max(0, Math.round(trackWidth * ratio));
-            int fillColor = WorkspaceFormat.fullnessColor(filled, capacity);
-            UIElement fill = panel(fillColor).layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .left(2).top(2)
-                    .width(fillWidth).height(barHeight));
-            fill.style(style -> style.zIndex(261));
-            fill.setAllowHitTest(false);
-            body.addChild(fill);
-        }
-    }
-
-    private void addRelevanceDebugBadge(UIElement body, SlotWorkspaceViewModel.AtlasItem item) {
-        String text = RelevanceDebugOverlay.formatScore(
-                RelevanceDebugOverlay.scoreFor(item, host.viewModel, host.searchController.normalizedQuery())
-        );
-        int badgeWidth = 18;
-        int badgeHeight = 6;
-        UIElement badge = panel(0xCC0C141A).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(1).bottom(1)
-                .width(badgeWidth).height(badgeHeight));
-        badge.style(style -> style.zIndex(280));
-        badge.setAllowHitTest(false);
-        Label score = label(text, ACCENT);
-        score.layout(layout -> layout.widthPercent(100).heightPercent(100));
-        score.setAllowHitTest(false);
-        score.textStyle(style -> style
-                .textColor(ACCENT)
-                .textShadow(false)
-                .fontSize(5)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        badge.addChild(score);
-        body.addChild(badge);
     }
 
     /**
@@ -1013,6 +449,29 @@ final class AtlasCardBuilder {
         }
 
         @Override
+        public WayfindingDisplay.CardText wayfindingText(SlotWorkspaceViewModel.ChestPresenceEntry entry) {
+            if (entry == null) {
+                return WayfindingDisplay.CardText.unavailable();
+            }
+            if (entry.storageId() != null && entry.storageId().startsWith("goal:")) {
+                return new WayfindingDisplay.CardText(">", WorkspaceCountFormat.compact(entry.count()));
+            }
+            Minecraft minecraft = Minecraft.getInstance();
+            if (minecraft.player == null || minecraft.level == null || host.viewModel == null) {
+                return WayfindingDisplay.CardText.unavailable();
+            }
+            return WayfindingDisplay.forStorage(
+                    entry.storageId(),
+                    host.viewModel.wayfindingTargets(),
+                    host.viewModel.chestChips(),
+                    minecraft.level.dimension().location().toString(),
+                    minecraft.player.getX(),
+                    minecraft.player.getY(),
+                    minecraft.player.getZ(),
+                    minecraft.player.getYRot());
+        }
+
+        @Override
         public java.util.List<Component> tooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
             if (host.recipeSidebarActive()) {
                 return host.recipeTooltipLines(item);
@@ -1059,6 +518,21 @@ final class AtlasCardBuilder {
         @Override
         public boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
             return AtlasCardBuilder.this.hasProximateDepositRoute(item);
+        }
+
+        @Override
+        public boolean depositPreviewActive() {
+            return host.depositPreviewActive;
+        }
+
+        @Override
+        public boolean gatherPreviewActive() {
+            return host.gatherPreviewActive;
+        }
+
+        @Override
+        public boolean gatherPreviewEligible(SlotWorkspaceViewModel.AtlasItem item) {
+            return !host.goalTabActive() && WorkspaceGatherUiSupport.isGatherableItem(item);
         }
 
         @Override

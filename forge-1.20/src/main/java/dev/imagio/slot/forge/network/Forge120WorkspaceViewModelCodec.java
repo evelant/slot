@@ -1119,6 +1119,7 @@ public final class Forge120WorkspaceViewModelCodec {
         tag.putBoolean("desiredCountFromKit", item.desiredCountFromKit());
         tag.putInt("wantedCount", item.wantedCount());
         tag.putBoolean("wanted", item.wanted());
+        tag.putBoolean("acceptedWorkflowInput", item.acceptedWorkflowInput());
         tag.putString("largestCarriedSourceId", item.largestCarriedSourceId());
         tag.putInt("largestCarriedSlotIndex", item.largestCarriedSlotIndex());
         tag.putInt("largestCarriedSlotCount", item.largestCarriedSlotCount());
@@ -1167,6 +1168,7 @@ public final class Forge120WorkspaceViewModelCodec {
                 tag.getInt("desiredCount"),
                 tag.getBoolean("desiredCountFromKit"),
                 decodeWantedCount(tag),
+                tag.getBoolean("acceptedWorkflowInput"),
                 tag.getString("largestCarriedSourceId"),
                 tag.getInt("largestCarriedSlotIndex"),
                 tag.getInt("largestCarriedSlotCount"),

@@ -385,8 +385,8 @@ public final class ForgeSlotUiTree {
         }
         return TaffyRect.ltrb(
                 LengthPercentage.length(left),
-                LengthPercentage.length(right),
                 LengthPercentage.length(top),
+                LengthPercentage.length(right),
                 LengthPercentage.length(bottom));
     }
 
@@ -407,7 +407,7 @@ public final class ForgeSlotUiTree {
         if (layout.hasBottom()) {
             bottom = LengthPercentageAuto.length(layout.bottom());
         }
-        return TaffyRect.ltrb(left, right, top, bottom);
+        return TaffyRect.ltrb(left, top, right, bottom);
     }
 
     private void renderNode(
@@ -478,9 +478,14 @@ public final class ForgeSlotUiTree {
         float drawY = y;
         if (style.vertical() == SlotUiTextStyle.Vertical.CENTER) {
             drawY = y + (height - textHeight) / 2f;
+            if (style.fontSize() <= 6.0f && height <= 8.0f && node.model.backgroundColor() != null) {
+                drawY += 1.0f;
+            }
         } else if (style.vertical() == SlotUiTextStyle.Vertical.BOTTOM) {
             drawY = y + height - textHeight;
         }
+        drawX = Math.round(drawX);
+        drawY = Math.round(drawY);
         graphics.pose().pushPose();
         graphics.pose().translate(drawX, drawY, 0);
         graphics.pose().scale(scale, scale, 1f);
@@ -721,17 +726,20 @@ public final class ForgeSlotUiTree {
         if ("SLOT".equals(text)) {
             return WorkspaceUiPalette.ACCENT;
         }
-        if (text.startsWith("Desired badge")) {
-            return 0xFFFFD166;
+        if (text.startsWith("Desired target")) {
+            return WorkspaceUiPalette.COUNT_BADGE_DESIRED;
         }
-        if (text.startsWith("Nearby pip")) {
+        if (text.startsWith("Wanted target")) {
+            return WorkspaceUiPalette.COUNT_BADGE_WANTED;
+        }
+        if (text.startsWith("Nearby stored") || text.startsWith("Nearby route")) {
             return WorkspaceUiPalette.ACCENT;
         }
         if (text.startsWith("Stored elsewhere")) {
             return WorkspaceUiPalette.MUTED;
         }
-        if (text.startsWith("Kit marker")) {
-            return 0xFFB38CFF;
+        if (text.startsWith("Workflow target")) {
+            return WorkspaceUiPalette.COUNT_BADGE_WORKFLOW;
         }
         if (text.startsWith("Container")) {
             return 0xFF8DB7D6;

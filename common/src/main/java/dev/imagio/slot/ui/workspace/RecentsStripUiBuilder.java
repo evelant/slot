@@ -15,7 +15,7 @@ public final class RecentsStripUiBuilder {
     public static final int GAP_PX = 2;
     public static final int PADDING_PX = 3;
     public static final int MAX_ROWS = 2;
-    public static final int MAX_CARDS_PER_ROW = 9;
+    public static final int MAX_CARDS_PER_ROW = 8;
     public static final int MAX_CARDS = MAX_ROWS * MAX_CARDS_PER_ROW;
     public static final int MAX_ICONS = MAX_CARDS;
     public static final int STRIP_HEIGHT_PX = CARD_SIZE_PX * MAX_ROWS + GAP_PX + PADDING_PX * 2;

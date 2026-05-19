@@ -47,8 +47,8 @@ class WorkspaceItemTooltipBuilderTest {
 
         assertEquals("", text.get(0));
         assertEquals("SLOT", text.get(1));
-        assertTrue(text.contains("Desired badge: 7/16 tab"));
-        assertTrue(text.contains("Nearby pip: 12 in Main Base: 8, Mine: 4"));
+        assertTrue(text.contains("Desired target: 7/16 tab"));
+        assertTrue(text.contains("Nearby stored: 12 in Main Base: 8, Mine: 4"));
         assertTrue(text.contains("Stored elsewhere: 30 in Warehouse: 30"));
     }
 
@@ -113,7 +113,7 @@ class WorkspaceItemTooltipBuilderTest {
                 .map(Component::getString)
                 .toList();
 
-        assertTrue(text.contains("Nearby pip: deposit route available"));
+        assertTrue(text.contains("Nearby route: deposit route available"));
     }
 
     @Test
@@ -235,7 +235,7 @@ class WorkspaceItemTooltipBuilderTest {
                 .map(Component::getString)
                 .toList();
 
-        assertTrue(text.contains("Wanted: 0/5"));
+        assertTrue(text.contains("Wanted target: 0/5"));
         assertTrue(WorkspaceGatherUiSupport.isGatherableItem(item));
     }
 

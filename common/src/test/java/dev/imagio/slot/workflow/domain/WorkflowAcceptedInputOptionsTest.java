@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class WorkflowAcceptedInputOptionsTest {
     @Test
-    void optionsIncludeExactAndRankMaterialSpecificTagsBeforeBroadTags() {
+    void optionsIncludeExactAndSkipBroadProcessTags() {
         List<WorkflowAcceptedInputRule> options = WorkflowAcceptedInputOptions.forItem(
                 ItemIdentity.of("tfc:ore/normal_hematite/granite"),
                 Set.of(
@@ -23,17 +24,16 @@ class WorkflowAcceptedInputOptionsTest {
 
         assertEquals(WorkflowAcceptedInputRule.exact(ItemIdentity.of("tfc:ore/normal_hematite/granite")), options.get(0));
         assertEquals(WorkflowAcceptedInputRule.itemTag("c:ores/cast_iron/normal"), options.get(1));
-        assertEquals(WorkflowAcceptedInputRule.itemTag("c:ores"), options.get(2));
-        assertEquals(WorkflowAcceptedInputRule.itemTag("tfc:metal_ores"), options.get(3));
-        assertEquals(WorkflowAcceptedInputRule.itemTag("tfc:ore_pieces"), options.get(4));
-        assertEquals(5, options.size());
+        assertEquals(2, options.size());
     }
 
     @Test
-    void optionsCapTagChoicesButKeepBroadOreGroupWithinMenu() {
+    void optionsCapTagChoicesAfterSkippingBroadProcessTags() {
         List<WorkflowAcceptedInputRule> options = WorkflowAcceptedInputOptions.forItem(
                 ItemIdentity.of("gtceu:crushed_hematite_ore"),
                 List.of(
+                        "forge:crushed_ores",
+                        "forge:dusts",
                         "minecraft:ignored_0",
                         "minecraft:ignored_1",
                         "minecraft:ignored_2",
@@ -49,5 +49,7 @@ class WorkflowAcceptedInputOptionsTest {
         assertEquals(9, options.size());
         assertEquals(WorkflowAcceptedInputRule.itemTag("c:dusts/iron"), options.get(1));
         assertEquals(WorkflowAcceptedInputRule.itemTag("c:ores/cast_iron/normal"), options.get(2));
+        assertFalse(options.contains(WorkflowAcceptedInputRule.itemTag("forge:crushed_ores")));
+        assertFalse(options.contains(WorkflowAcceptedInputRule.itemTag("forge:dusts")));
     }
 }

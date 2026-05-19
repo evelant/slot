@@ -208,14 +208,131 @@ class WallSectionHeaderUiBuilderTest {
         );
 
         SlotUiElement card = new WallCardUiBuilder(context).card(item);
-        java.util.Set<String> pipTexts = java.util.Set.of("32", "+96");
+        java.util.Set<String> pipTexts = java.util.Set.of("32", "+64");
         java.util.List<SlotUiElement> pipLabels = descendantLabels(card).stream()
                 .filter(label -> pipTexts.contains(label.text()))
                 .toList();
 
         assertEquals(2, pipLabels.size());
         assertTrue(pipLabels.stream().allMatch(label ->
-                Math.abs(label.textStyle().fontSize() - 5.5f) <= 0.001f));
+                Math.abs(label.textStyle().fontSize() - 5.0f) <= 0.001f));
+    }
+
+    @Test
+    void wallCardCapsTopBadgesToHalfCardWhenBothStorageCountsRender() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.searchQuery = "stone";
+        context.searchMatches = true;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:stone",
+                "Stone",
+                false,
+                true,
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("nearby", "Nearby", 128)),
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("remote", "Warehouse", 128))
+        );
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        SlotUiElement nearby = firstDescendantWithAttachment(card, WorkspaceUiAttachments.WALL_CARD_NEARBY_BADGE);
+        SlotUiElement distant = firstDescendantWithAttachment(card, WorkspaceUiAttachments.WALL_CARD_DISTANT_BADGE);
+
+        assertNotNull(nearby);
+        assertNotNull(distant);
+        assertEquals("99+", nearby.text());
+        assertEquals("+99", distant.text());
+        assertFalse(nearby.layout().hasWidth());
+        assertFalse(distant.layout().hasWidth());
+        assertEquals(1.0f, nearby.layout().paddingHorizontal());
+        assertEquals(1.0f, distant.layout().paddingHorizontal());
+        assertTrue(nearby.textStyle().adaptiveWidth());
+        assertTrue(distant.textStyle().adaptiveWidth());
+    }
+
+    @Test
+    void expandedWallCardKeepsChromeAnchoredToSquareIconCell() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.forceWayfinding = true;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:support",
+                "Blackwood Support",
+                false,
+                true,
+                128,
+                128,
+                0,
+                java.util.List.of(),
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("remote", "Warehouse", 128))
+        );
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        SlotUiElement body = card.children().get(0);
+        SlotUiElement iconCell = body.children().get(0);
+        SlotUiElement strip = body.children().get(1);
+        SlotUiElement countBadge = firstDescendantWithAttachment(iconCell,
+                WorkspaceUiAttachments.WALL_CARD_COUNT_BADGE);
+
+        assertEquals(WallCardUiBuilder.CARD_CELL_PX + WallCardUiBuilder.WAYFINDING_STRIP_WIDTH_PX,
+                card.layout().width());
+        assertEquals(WallCardUiBuilder.CARD_CELL_PX, iconCell.layout().width());
+        assertEquals(WallCardUiBuilder.CARD_CELL_PX, iconCell.layout().height());
+        assertNotNull(countBadge);
+        assertEquals(WallCardUiBuilder.CARD_CELL_PX, countBadge.layout().width());
+        assertEquals(5.5f, countBadge.textStyle().fontSize(), 0.001f);
+        assertFalse(countBadge.textStyle().adaptiveWidth());
+        assertNull(firstDescendantWithAttachment(strip, WorkspaceUiAttachments.WALL_CARD_COUNT_BADGE));
+        assertTrue(descendantText(card).contains("128/128"));
+    }
+
+    @Test
+    void expandedWallCardRendersPrimaryRingInsideSquareIconCell() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.forceWayfinding = true;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:torch",
+                "Torch",
+                false,
+                true,
+                1,
+                64,
+                0,
+                java.util.List.of(),
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("remote", "Warehouse", 64))
+        );
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        SlotUiElement iconCell = card.children().get(0).children().get(0);
+
+        assertNotNull(firstDescendantWithAttachment(iconCell, WorkspaceUiAttachments.WALL_CARD_RING));
+        assertEquals(WallCardUiBuilder.CARD_CELL_PX, iconCell.layout().width());
+    }
+
+    @Test
+    void wallCardKeepsNearbyAndElsewhereBadgesSeparateForTargetGap() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.searchQuery = "stone";
+        context.searchMatches = true;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:stone",
+                "Stone",
+                false,
+                true,
+                1,
+                64,
+                0,
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("nearby", "Nearby", 32)),
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("remote", "Warehouse", 64))
+        );
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+
+        assertTrue(descendantText(card).contains("1/64"));
+        assertTrue(descendantText(card).contains("32"));
+        assertTrue(descendantText(card).contains("+64"));
+        WallCardChromeSpec spec = card.children().get(0).attachment(
+                WorkspaceUiAttachments.WALL_CARD_CHROME_SPEC,
+                WallCardChromeSpec.class);
+        assertNotNull(spec);
+        assertEquals(WallCardChromeSpec.Gap.STORED, spec.gap());
     }
 
     @Test
@@ -249,7 +366,7 @@ class WallSectionHeaderUiBuilderTest {
     }
 
     @Test
-    void wantedOrDesiredGapWithoutKnownStorageRendersCraftState() {
+    void wantedOrDesiredGapWithoutKnownStorageRendersNeedState() {
         RecordingCardContext context = new RecordingCardContext();
         context.forceWayfinding = true;
         SlotWorkspaceViewModel.AtlasItem item = atlasItem(
@@ -277,8 +394,30 @@ class WallSectionHeaderUiBuilderTest {
         assertNotNull(missing);
         assertEquals(37, missing.count());
         assertTrue(descendantText(card).contains("27/64"));
-        assertTrue(descendantText(card).contains("craft"));
+        assertTrue(descendantText(card).contains("need"));
         assertTrue(descendantText(card).contains("37"));
+    }
+
+    @Test
+    void partialNearbyStorageStillShowsNeedStripForRemainingTargetGap() {
+        RecordingCardContext context = new RecordingCardContext();
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:torch",
+                "Torch",
+                false,
+                true,
+                27,
+                64,
+                0,
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("nearby", "Nearby", 10)),
+                java.util.List.of());
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+
+        assertEquals(WallCardUiBuilder.CARD_CELL_PX + WallCardUiBuilder.WAYFINDING_STRIP_WIDTH_PX,
+                card.layout().width());
+        assertTrue(descendantText(card).contains("need"));
+        assertTrue(descendantText(card).contains("27"));
     }
 
     @Test
@@ -342,7 +481,102 @@ class WallSectionHeaderUiBuilderTest {
         SlotUiElement card = new WallCardUiBuilder(context).card(item);
 
         assertEquals(WallCardUiBuilder.CARD_CELL_PX, card.layout().width());
-        assertTrue(descendantText(card).contains("+"));
+        assertNotNull(firstDescendantWithAttachment(card, WorkspaceUiAttachments.WALL_CARD_NEARBY_ROUTE_NOTCH));
+        assertFalse(descendantText(card).contains("+"));
+    }
+
+    @Test
+    void countBadgeColorFollowsDisplayedTargetSource() {
+        RecordingCardContext context = new RecordingCardContext();
+
+        assertEquals(
+                WorkspaceUiPalette.COUNT_BADGE_NEUTRAL,
+                countBadge(atlasItem("minecraft:stone", "Stone", false, true, 7, 0, 0,
+                        java.util.List.of(), java.util.List.of()), context).backgroundColor());
+        assertEquals(
+                WorkspaceUiPalette.COUNT_BADGE_DESIRED,
+                countBadge(atlasItem("minecraft:stone", "Stone", false, true, 2, 5, 0,
+                        java.util.List.of(), java.util.List.of()), context).backgroundColor());
+        assertEquals(
+                WorkspaceUiPalette.COUNT_BADGE_WANTED,
+                countBadge(atlasItem("minecraft:stone", "Stone", false, true, 2, 0, 5,
+                        java.util.List.of(), java.util.List.of()), context).backgroundColor());
+        assertEquals(
+                WorkspaceUiPalette.COUNT_BADGE_WORKFLOW,
+                countBadge(atlasItem("minecraft:stone", "Stone", false, true, 2, 5, true, false, 5,
+                        java.util.List.of(), java.util.List.of()), context).backgroundColor());
+    }
+
+    @Test
+    void targetGapUsesRingWithoutBottomLeftMarker() {
+        RecordingCardContext context = new RecordingCardContext();
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:torch",
+                "Torch",
+                false,
+                true,
+                1,
+                5,
+                0,
+                java.util.List.of(),
+                java.util.List.of());
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+
+        assertNotNull(firstDescendantWithAttachment(card, WorkspaceUiAttachments.WALL_CARD_RING));
+        assertTrue(descendants(card).stream().noneMatch(element ->
+                Integer.valueOf(0xE0FFD166).equals(element.backgroundColor())
+                        && element.layout().hasWidth()
+                        && element.layout().width() == 5
+                        && element.layout().hasHeight()
+                        && element.layout().height() == 5));
+    }
+
+    @Test
+    void choiceStateDoesNotRenderQuestionMarker() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.choiceInvolved = true;
+        context.choiceCard = true;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem("minecraft:stone", "Stone", false, true);
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+
+        assertFalse(descendantText(card).contains("?"));
+    }
+
+    @Test
+    void putAwayStateWinsPrimaryRingBeforeTargetGap() {
+        RecordingCardContext context = new RecordingCardContext();
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:dirt",
+                "Dirt",
+                false,
+                true,
+                1,
+                5,
+                0,
+                java.util.List.of(),
+                java.util.List.of())
+                .withPutAwayState(SlotWorkspaceViewModel.PutAwayState.ROUTED);
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        SlotUiElement ring = firstDescendantWithAttachment(card, WorkspaceUiAttachments.WALL_CARD_RING);
+
+        assertNotNull(ring);
+        assertEquals(WorkspaceUiPalette.PUT_AWAY_ROUTED, ring.backgroundColor());
+    }
+
+    @Test
+    void putAwayNoRouteUsesPrimaryRing() {
+        RecordingCardContext context = new RecordingCardContext();
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem("minecraft:dirt", "Dirt", false, true)
+                .withPutAwayState(SlotWorkspaceViewModel.PutAwayState.NO_ROUTE);
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        SlotUiElement ring = firstDescendantWithAttachment(card, WorkspaceUiAttachments.WALL_CARD_RING);
+
+        assertNotNull(ring);
+        assertEquals(WorkspaceUiPalette.PUT_AWAY_NO_ROUTE, ring.backgroundColor());
     }
 
     @Test
@@ -513,6 +747,23 @@ class WallSectionHeaderUiBuilderTest {
             java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> presence,
             java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere
     ) {
+        return atlasItem(itemId, name, recent, carried, totalCount, desiredCount, false, false, wantedCount,
+                presence, elsewhere);
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem atlasItem(
+            String itemId,
+            String name,
+            boolean recent,
+            boolean carried,
+            int totalCount,
+            int desiredCount,
+            boolean desiredCountFromKit,
+            boolean kitNeeded,
+            int wantedCount,
+            java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> presence,
+            java.util.List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere
+    ) {
         SlotWorkspaceViewModel.IdentityRef identity = new SlotWorkspaceViewModel.IdentityRef(
                 itemId,
                 dev.imagio.slot.inventory.core.ItemComparisonMode.ITEM_ID.name(),
@@ -536,9 +787,9 @@ class WallSectionHeaderUiBuilderTest {
                 false,
                 0,
                 0,
-                false,
+                kitNeeded,
                 desiredCount,
-                false,
+                desiredCountFromKit,
                 wantedCount,
                 "",
                 -1,
@@ -558,6 +809,29 @@ class WallSectionHeaderUiBuilderTest {
         return labels;
     }
 
+    private static java.util.List<SlotUiElement> descendants(SlotUiElement root) {
+        java.util.ArrayList<SlotUiElement> elements = new java.util.ArrayList<>();
+        collectDescendants(root, elements);
+        return elements;
+    }
+
+    private static SlotUiElement firstDescendantWithAttachment(SlotUiElement root, String attachment) {
+        return descendants(root).stream()
+                .filter(element -> element.hasAttachment(attachment))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private static SlotUiElement countBadge(
+            SlotWorkspaceViewModel.AtlasItem item,
+            RecordingCardContext context
+    ) {
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+        SlotUiElement badge = firstDescendantWithAttachment(card, WorkspaceUiAttachments.WALL_CARD_COUNT_BADGE);
+        assertNotNull(badge);
+        return badge;
+    }
+
     private static void collectText(SlotUiElement element, java.util.ArrayList<String> text) {
         if (element == null) {
             return;
@@ -567,6 +841,16 @@ class WallSectionHeaderUiBuilderTest {
         }
         for (SlotUiElement child : element.children()) {
             collectText(child, text);
+        }
+    }
+
+    private static void collectDescendants(SlotUiElement element, java.util.ArrayList<SlotUiElement> elements) {
+        if (element == null) {
+            return;
+        }
+        elements.add(element);
+        for (SlotUiElement child : element.children()) {
+            collectDescendants(child, elements);
         }
     }
 
@@ -612,6 +896,8 @@ class WallSectionHeaderUiBuilderTest {
         boolean focused;
         boolean forceWayfinding;
         boolean proximateDepositRoute;
+        boolean choiceInvolved;
+        boolean choiceCard;
         StorageGhostRevealMode storageGhostRevealMode = StorageGhostRevealMode.COLLAPSED;
 
         @Override
@@ -657,6 +943,16 @@ class WallSectionHeaderUiBuilderTest {
         @Override
         public boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
             return proximateDepositRoute;
+        }
+
+        @Override
+        public boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
+            return choiceInvolved;
+        }
+
+        @Override
+        public boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+            return choiceCard;
         }
     }
 
