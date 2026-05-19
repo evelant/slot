@@ -2,9 +2,11 @@ package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.BackpackReroute;
+import dev.imagio.slot.inventory.workspace.WorkspaceTrashCommandService;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
+import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.NeoForge;
@@ -44,14 +46,16 @@ public final class SlotPickupRouter {
             return;
         }
 
+        WorkflowDomainRuntime runtime = SlotPlayerWorkflowRuntimeService.runtime(player);
         InventoryAcquisitionActivityRecorder.recordStackAcquired(
-                SlotPlayerWorkflowRuntimeService.runtime(player),
+                runtime,
                 original,
                 pickedCount,
                 InventoryActivityProducer.WORLD_PICKUP,
                 InventoryActivityConfidence.AUTHORITATIVE,
                 "world_pickup");
+        int trashed = WorkspaceTrashCommandService.trashOverflowPickup(player, runtime, original, pickedCount);
         NeoForgeCarriedActivityTracker.suppressNext(player);
-        BackpackReroute.routeToBackpack(player, original, pickedCount);
+        BackpackReroute.routeToBackpack(player, original, pickedCount - trashed);
     }
 }

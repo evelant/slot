@@ -3,6 +3,7 @@ package dev.imagio.slot.inventory.core;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -39,46 +40,82 @@ class ItemIdentityTest {
     }
 
     @Test
-    void mutableUtilityItemsMatchMovableByItemId() {
+    void itemOnlyIdentityMatchesExactMovableIdentity() {
         assertTrue(ItemIdentityMatcher.matchesMovable(
                 ItemIdentity.exact("mod:water_flask", "{Water:100}"),
-                ItemIdentity.exact("mod:water_flask", "{Water:20}")));
+                ItemIdentity.of("mod:water_flask")));
         assertTrue(ItemIdentityMatcher.matchesMovable(
                 ItemIdentity.exact("mod:building_gadget", "{Mode:\"wall\"}"),
-                ItemIdentity.exact("mod:building_gadget", "{Mode:\"surface\"}")));
+                ItemIdentity.of("mod:building_gadget")));
     }
 
     @Test
-    void gluedToolNamesMatchMovableByItemId() {
-        assertTrue(ItemIdentityMatcher.matchesMovable(
+    void exactComponentIdentitiesRemainExactWithoutAStackPolicySignal() {
+        assertFalse(ItemIdentityMatcher.matchesMovable(
                 ItemIdentity.exact("grapplemod:grapplinghook", "{Damage:7,hookState:\"attached\"}"),
                 ItemIdentity.exact("grapplemod:grapplinghook", "{Damage:1,hookState:\"idle\"}")));
+        assertFalse(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("mod:configurable_gadget", "{Mode:\"wall\"}"),
+                ItemIdentity.exact("mod:configurable_gadget", "{Mode:\"surface\"}")));
+    }
+
+    @Test
+    void damageOnlyExactIdentitiesNormalizeAsMovableCondition() {
         assertTrue(ItemIdentityMatcher.matchesMovable(
                 ItemIdentity.exact("grapplemod:longfallboots", "{Damage:12}"),
                 ItemIdentity.exact("grapplemod:longfallboots", "{Damage:44}")));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("minecraft:diamond_pickaxe", "{minecraft:damage=>12}"),
+                ItemIdentity.of("minecraft:diamond_pickaxe")));
     }
 
     @Test
-    void packToolIdsMatchMovableByItemId() {
-        assertTrue(ItemIdentityMatcher.matchesMovable(
-                ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}"),
-                ItemIdentity.of("gtceu:steel_mining_hammer")));
-        assertTrue(ItemIdentityMatcher.matchesMovable(
-                ItemIdentity.exact("tfc:metal/hammer/steel", "{Damage:45}"),
-                ItemIdentity.of("tfc:metal/hammer/steel")));
+    void damageableStacksCreateItemOnlyMovableIdentities() {
+        assertEquals(
+                ItemIdentity.of("gtceu:steel_mining_hammer"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "gtceu:steel_mining_hammer",
+                        "{Damage:512}",
+                        1,
+                        1).damageable()));
+        assertEquals(
+                ItemIdentity.of("tfc:metal/hammer/steel"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "tfc:metal/hammer/steel",
+                        "{Damage:45}",
+                        1,
+                        1).damageable()));
+        assertEquals(
+                ItemIdentity.of("tfc:metal/tongs/steel"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "tfc:metal/tongs/steel",
+                        "{Damage:45}",
+                        1,
+                        1).damageable()));
     }
 
     @Test
-    void portableStorageContainerIdsMatchMovableByItemId() {
-        assertTrue(ItemIdentityMatcher.matchesMovable(
-                ItemIdentity.exact("sns:straw_basket", "{Inventory:[{Slot:0b,id:\"minecraft:torch\",Count:8b}]}"),
-                ItemIdentity.of("sns:straw_basket")));
-        assertTrue(ItemIdentityMatcher.matchesMovable(
-                ItemIdentity.exact("sns:leather_sack", "{Inventory:[{Slot:0b,id:\"minecraft:ore\",Count:16b}]}"),
-                ItemIdentity.of("sns:leather_sack")));
-        assertTrue(ItemIdentityMatcher.matchesMovable(
-                ItemIdentity.exact("sns:lunchbox", "{Food:7}"),
-                ItemIdentity.of("sns:lunchbox")));
+    void containerOnlyFingerprintsCreateItemOnlyMovableIdentities() {
+        assertEquals(
+                ItemIdentity.of("sns:straw_basket"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "sns:straw_basket",
+                        "{Inventory:[{Slot:0b,id:\"minecraft:torch\",Count:8b}]}",
+                        1,
+                        1)));
+    }
+
+    @Test
+    void registeredPortableContainerStacksCreateItemOnlyMovableIdentities() {
+        PortableContainerClassifiers.register(stack -> "mod:portable_case".equals(stack.itemId()));
+
+        assertEquals(
+                ItemIdentity.of("mod:portable_case"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "mod:portable_case",
+                        "{CustomState:1}",
+                        1,
+                        1)));
     }
 
     @Test

@@ -143,6 +143,7 @@ public final class ForgeWorkspaceSurface {
     private String pendingHomeDragOriginIslandId;
     private boolean markWantedKeyConsumed;
     private boolean setWantedHoverKeyConsumed;
+    private boolean trashHoverKeyConsumed;
     private boolean storageXrayKeyConsumed;
     private StorageGhostRevealMode storageGhostRevealMode = StorageGhostRevealMode.COLLAPSED;
     private float pendingWallScrollRestore = Float.NaN;
@@ -211,6 +212,9 @@ public final class ForgeWorkspaceSurface {
         }
         if (!ForgeWorkspaceClient.setWantedHoverDown()) {
             setWantedHoverKeyConsumed = false;
+        }
+        if (!ForgeWorkspaceClient.trashHoverDown()) {
+            trashHoverKeyConsumed = false;
         }
         if (!ForgeWorkspaceClient.storageXrayDown()) {
             storageXrayKeyConsumed = false;
@@ -342,6 +346,9 @@ public final class ForgeWorkspaceSurface {
         if (handleSetWantedHoverKey(keyCode, scanCode)) {
             return true;
         }
+        if (handleTrashHoverKey(keyCode, scanCode)) {
+            return true;
+        }
         if (handleMarkWantedKey(keyCode, scanCode)) {
             return true;
         }
@@ -466,6 +473,30 @@ public final class ForgeWorkspaceSurface {
                 identity,
                 "wanted count updated",
                 wantedHoverTargetCount(item));
+        return true;
+    }
+
+    private boolean handleTrashHoverKey(int keyCode, int scanCode) {
+        if (searchActive || wantsKeyboardInput() || Screen.hasControlDown()) {
+            return false;
+        }
+        if (!ForgeWorkspaceClient.matchesTrashHover(keyCode, scanCode)) {
+            return false;
+        }
+        if (trashHoverKeyConsumed) {
+            return true;
+        }
+        trashHoverKeyConsumed = true;
+        if (goalTabActive()) {
+            setStatus("goal tab is browse only");
+            return true;
+        }
+        SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
+        if (identity == null || !byIdentity.containsKey(identity)) {
+            setStatus("hover an item to trash");
+            return true;
+        }
+        sendIdentityRefAction(WorkspaceActionId.TRASH_IDENTITY, identity, "trashing carried item");
         return true;
     }
 
@@ -1603,6 +1634,23 @@ public final class ForgeWorkspaceSurface {
                         WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST,
                         item.identity(),
                         "depositing " + item.name()))));
+        panel.addChild(menuButton(
+                item.junk() ? "Unmark junk" : "Mark as junk",
+                true,
+                item.junk() ? "Stop treating this item as low priority" : "Treat this item as low priority",
+                closeThen(() -> sendIdentityRefAction(
+                        WorkspaceActionId.SET_JUNK,
+                        item.identity(),
+                        item.junk() ? "unmarking junk" : "marking junk",
+                        item.junk() ? 0 : 1))));
+        panel.addChild(menuButton(
+                "Trash carried item",
+                item.carried(),
+                "Delete carried stacks of this item",
+                closeThen(() -> sendIdentityRefAction(
+                        WorkspaceActionId.TRASH_IDENTITY,
+                        item.identity(),
+                        "trashing " + item.name()))));
         panel.addChild(menuButton(
                 item.desiredCount() > 0 ? "Desired: " + item.desiredCount() : "Set desired count",
                 true,
@@ -3610,22 +3658,6 @@ public final class ForgeWorkspaceSurface {
                     "",
                     "",
                     "");
-        }
-
-        @Override
-        public void clearKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity) {
-            if (identity == null) {
-                setStatus("invalid tab target");
-                return;
-            }
-            sendKitAction(
-                    WorkspaceActionId.SET_KIT_SCOPED_DESIRED_COUNT,
-                    "clearing tab target",
-                    kitId,
-                    identity.itemId(),
-                    identity.comparisonMode(),
-                    identity.componentFingerprint(),
-                    0);
         }
 
         @Override

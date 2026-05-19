@@ -54,10 +54,4 @@ final class WorkspaceDrags {
     ) {
     }
 
-    record KitBringDrag(
-            String kitId,
-            SlotWorkspaceViewModel.IdentityRef identity,
-            ItemStack displayStack
-    ) {
-    }
 }

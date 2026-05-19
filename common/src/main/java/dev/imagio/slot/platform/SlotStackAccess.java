@@ -28,6 +28,10 @@ public final class SlotStackAccess {
 
         String dataFingerprint(ItemStack stack);
 
+        default boolean damageable(ItemStack stack) {
+            return DefaultStackAccess.damageableStack(stack);
+        }
+
         boolean sameItemAndData(ItemStack first, ItemStack second);
     }
 
@@ -88,6 +92,11 @@ public final class SlotStackAccess {
         }
 
         @Override
+        public boolean damageable(ItemStack stack) {
+            return damageableStack(stack);
+        }
+
+        @Override
         public boolean sameItemAndData(ItemStack first, ItemStack second) {
             if (first == second) {
                 return true;
@@ -116,6 +125,18 @@ public final class SlotStackAccess {
             } catch (RuntimeException | LinkageError ignored) {
                 return stack == null;
             }
+        }
+
+        private static boolean damageableStack(ItemStack stack) {
+            if (stack == null) {
+                return false;
+            }
+            Boolean damageable = invokeBooleanMethod(stack, "isDamageableItem");
+            if (damageable != null) {
+                return damageable;
+            }
+            Integer maxDamage = invokeIntMethod(stack, "getMaxDamage");
+            return maxDamage != null && maxDamage > 0;
         }
 
         private static String componentPatchFingerprint(ItemStack stack) {
@@ -154,6 +175,16 @@ public final class SlotStackAccess {
         private static String invokeStringMethod(ItemStack stack, String methodName) {
             Object value = invokeObjectMethod(stack, methodName);
             return value instanceof String string ? string : "";
+        }
+
+        private static Boolean invokeBooleanMethod(ItemStack stack, String methodName) {
+            Object value = invokeObjectMethod(stack, methodName);
+            return value instanceof Boolean booleanValue ? booleanValue : null;
+        }
+
+        private static Integer invokeIntMethod(ItemStack stack, String methodName) {
+            Object value = invokeObjectMethod(stack, methodName);
+            return value instanceof Number number ? number.intValue() : null;
         }
 
         private static Object invokeObjectMethod(ItemStack stack, String methodName) {

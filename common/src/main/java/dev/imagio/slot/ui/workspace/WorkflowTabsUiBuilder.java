@@ -201,7 +201,7 @@ public final class WorkflowTabsUiBuilder {
             label = "Tab";
         }
         int memberCount = tab == null ? 0 : tab.memberCount();
-        int targetCount = memberCount + (tab == null ? 0 : tab.bringSlotCount()) + (tab == null ? 0 : tab.slotCount());
+        int targetCount = memberCount + (tab == null ? 0 : tab.slotCount());
         String clipped = label.length() > 13 ? label.substring(0, 12) + "." : label;
         return targetCount > 0 ? clipped + " " + targetCount : clipped;
     }

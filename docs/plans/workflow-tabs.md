@@ -1,15 +1,18 @@
 # Workflow Tabs Plan
 
-Last updated: 2026-05-18
+Last updated: 2026-05-19
 
-Status: core implementation landed 2026-05-18; remaining follow-ups are recipe
-import/staging, explicit bulk-deposit keybinding polish, no-home put-away
-guidance, reorder UI, tab duplication/rename polish, and the adjacent
-overflow/junk slice. Hidden right-click accepted-input rules have landed for
-exact items and item tags, so recipe/process inputs can stay in a workflow tab
-without becoming desired or wanted targets. This supersedes Kit Rack / Kit
+Status: core implementation and the first playtest polish pass have landed.
+Workflow tabs now support active-tab filtering, one-level variants, tab-local
+desired/wanted targets, accepted exact/tag inputs, accepted proximate substitute
+ghosts, compact nearby headers, two-row Recents, hidden noisy suggestion rows,
+search/keybind polish, shared tool/container/display-storage target resolution,
+and the adjacent junk/trash pressure-relief slice. Remaining follow-ups are
+recipe import/staging, destination highlighting/wayfinding polish for put-away,
+reorder UI, and tab duplication/rename polish. This supersedes Kit Rack / Kit
 prototype work as the task-workflow direction while reusing the current Kit,
-desired-count, wanted-count, gather, and loadout code wherever it already fits.
+desired-count, wanted-count, gather, loadout, and storage code wherever it
+already fits.
 
 ## Core Decision
 
@@ -37,6 +40,43 @@ When a workflow tab is active, missing tab targets use the same gather,
 wayfinding, storage-ghost, and gap chrome that desired/wanted counts already
 use. Carried items not relevant to `All` or the active tab get put-away
 guidance.
+
+## Current Landed Behavior
+
+- User-facing workflow tabs are live on both loaders, but code still uses
+  transitional `Kit*` domain names where the old substrate is still useful.
+- `All`, active parent tab, and active variant targets compose as floors through
+  the shared workflow target resolver. Bulk gather, bulk deposit/protection,
+  active-tab projection, and loadout page apply all consume that resolver instead
+  of duplicating target math.
+- Right-click item menus can add/remove accepted exact-item rules or accepted
+  tag rules for the active tab. Tag options prefer material-specific paths such
+  as `forge:ores/hematite` and skip broad parent process tags such as
+  `forge:dusts`.
+- Accepted inputs are relevance-only: they suppress put-away and can reveal a
+  nearby substitute, but they do not create desired/wanted counts or missing
+  craft pressure.
+- Ordinary nearby/proximate storage ghosts are still present in the view model
+  but stay collapsed unless search, storage x-ray, or the section header reveal
+  asks for them. Accepted-tag proximate substitutes are intent ghosts and show
+  inside the active tab by default.
+- Search uses the same global item/section matcher everywhere. An active
+  workflow tab may hide unrelated cards by default, but a query can reveal any
+  matching carried, proximate, or tracked-storage card; active tabs do not get a
+  narrower search dialect.
+- Empty sections render as compact headers with `+x` nearby counts on the
+  header. Clicking anywhere on a header with hidden nearby cards toggles the
+  section reveal.
+- Useful Now and Put Away suggestion lanes are currently hidden in the rendered
+  wall while their projection/scoring code remains in place for later playtests.
+  Put-away card state and bulk deposit still use the same eligibility logic.
+- Two rows of Recents render above the wall. Search auto-commits after about two
+  seconds idle, clears after the interface has been closed for about ten seconds,
+  and can be cleared by right-clicking the search label. Text inputs suppress
+  workspace hotkeys while focused.
+- The configurable move-to-main-inventory key defaults to grave accent. It moves
+  a hovered identity from backpack/hotbar into main inventory, or from main
+  inventory back into backpack storage when provider space exists.
 
 ## Why
 
@@ -83,8 +123,11 @@ The active tab shows:
 - tab-local desired/wanted targets
 - tab Belt/offhand page items
 - visible missing cards for needed items
-- relevant nearby/tracked storage ghosts for those needed items
-- carried items that are not relevant only when they need put-away guidance
+- relevant nearby/tracked storage ghosts for needed items
+- nearby/proximate substitute ghosts that satisfy accepted exact/tag inputs
+- ordinary nearby/tracked storage ghosts only when search, storage x-ray, or a
+  section-header reveal asks for them
+- carried items that are not relevant only when they have put-away card state
 
 The active tab does not change inventory authority. It changes what the wall
 prioritizes and what guidance is active.
@@ -144,10 +187,20 @@ Already-carried members are immediately satisfied. Missing members get the
 normal guidance to gather or navigate to storage. If the player wants a
 specific quantity, they set a tab-local desired or wanted count.
 
-Implementation note: current Kit bring behavior is already close. The code has
-folded "bring" into kit-scoped desired counts. The implementation may initially
-represent membership as a tab-scoped count of `1`, but the user-facing model is
-"added to this tab", not a new global favorite/protection concept.
+Implementation note: historical Kit "bring" behavior has been folded into
+kit-scoped desired counts, and the old visible `targets` row / drag payload is
+retired. Desired counts are edited through the normal item context menu or
+scroll gesture and resolve through the shared workflow target resolver. Tab
+activation applies Belt/offhand slots only; explicit gather uses the shared
+server-authoritative gather path instead of a platform-local auto-fetch pass.
+
+Movable identity matching is shared in `common/`, not per workflow action.
+`ITEM_ID` targets are broad matches for the same item id. Stack-created
+identities collapse to item-id when shared signals say their component data is
+condition rather than identity: Minecraft damageability, registered portable
+container classifiers, or single-field damage/container fingerprints. Do not
+add item-name token exceptions for one modpack item family; add a shared signal
+or classifier instead.
 
 ### Tab Wanted Counts
 
@@ -162,6 +215,29 @@ Wanted counts need active-tab semantics:
   count
 
 This is still the wanted-count concept. It is not a separate scratchpad UI.
+
+### Accepted Inputs
+
+Accepted inputs are for "any of these is okay" workflow materials: ore variants,
+fuel tags, recipe alternatives, and similar process inputs where the workflow
+should recognize relevance without demanding a particular stack.
+
+Rules:
+
+- accepted inputs can be exact item identities or item tags
+- the same right-click menu path adds and removes accepted inputs
+- accepted inputs do not display a wanted or desired count
+- accepted inputs do not create a missing target when none are carried nearby
+- matching carried items are not considered active-tab put-away clutter
+- matching proximate storage ghosts are revealed as substitutes in the active tab
+- matching tracked-only ghosts stay behind storage x-ray until we add better
+  wayfinding for "any of these accepted inputs"
+
+Tag choices are intentionally conservative. The menu filters out broad parent
+process tags such as `forge:dusts` / `forge:ores` and prefers material-specific
+paths such as `forge:dusts/hematite` or `forge:ores/hematite`. Facet
+classification data such as `material_family` is useful evidence, but it is not
+currently an active acceptance matcher; item tags are the shipped matcher.
 
 ### Effective Targets
 
@@ -215,9 +291,12 @@ When eligible, SLOT should surface where it can go:
 - known tracked storage destination that requires walking there
 - no known home / needs manual storage choice
 
-Put-away guidance should use a distinct visual language from gather guidance,
-including a distinct chest world-highlight color. Acquisition and cleanup are
-opposite intents; they should not look identical.
+Current UI hides the experimental Put Away suggestion row, but the projection
+and card state are still live: active-tab-irrelevant carried cards can remain
+visible with put-away border/chrome, and bulk deposit uses the same eligibility
+and protection logic. Put-away guidance should continue to use a distinct visual
+language from gather guidance, including a distinct chest world-highlight color.
+Acquisition and cleanup are opposite intents; they should not look identical.
 
 ## Bulk Hotkeys
 
@@ -230,20 +309,28 @@ almost every workflow and should not require finding a small UI button:
 - **Bulk deposit active tab clutter:** deposit carried identities that are not
   relevant to `All`, the active parent, or the active tab/variant. This is the
   hotkey version of put-away guidance.
-- **Delete carried trash:** delete currently carried overflow/junk identities,
-  matching the Junk section's `delete all` action.
+- **Trash hovered identity:** delete carried stacks matching the hovered item
+  type, with undo, while marking that identity as junk for later pickup pressure
+  relief.
+- **Move hovered identity to main/backpack:** grave accent by default. If the
+  hovered identity is in a backpack or hotbar, move it to main inventory; if it
+  is already in main inventory, move it back into backpack storage when provider
+  space exists.
 
 Bindings should be configurable and should share the same action pipeline as
-their visible buttons. If no active workflow tab is selected, bulk gather uses
-`All` targets and bulk deposit uses the normal `All` cleanup eligibility.
-Delete trash is always limited to identities the player explicitly marked as
-overflow/junk.
+their visible buttons. Bulk put-away is unbound by default so players opt into
+one-key cleanup after trusting their storage homes. If no active workflow tab is
+selected, bulk gather uses `All` targets and bulk deposit uses the normal `All`
+cleanup eligibility. Direct trash still respects desired/wanted/tab protection
+and only deletes currently carried matching stacks.
 
 ## Authoring Flows
 
 Workflow tabs must be cheap to create and modify:
 
 - create empty tab
+- create an empty tab from the visible workflow-tab controls, not only by saving
+  a hidden Kit page
 - create variant under a tab
 - duplicate tab
 - rename/delete/reorder tab
@@ -260,6 +347,23 @@ Workflow tabs must be cheap to create and modify:
 The old Kit Rack should not remain a hidden separate mode. Workflow tabs are
 visible as tabs, and the active tab's Belt pages should stay available near the
 bottom Belt area rather than hidden behind a rack toggle.
+
+### Input And Search Behavior
+
+The workspace should treat text fields as text fields, even in sidebar mode.
+While the player is typing in a tab name, search, anvil field, or other focused
+input, workspace hotkeys such as `e`, `x`, tab-to-hotbar, wanted-count controls,
+and move-to-main should not steal the keypress.
+
+Search is a temporary filter, not a sticky modal trap. Current behavior:
+
+- typing `/` opens search
+- idle for about two seconds commits/unfocuses the search field
+- right-click on the search label clears the query
+- after the workspace has been closed for about ten seconds, the remembered
+  query clears automatically
+- `x` storage reveal remains available while a workflow tab is active so players
+  can reveal nearby candidates while building the tab
 
 ## EMI Crafting Workflow
 
@@ -286,19 +390,22 @@ EMI-specific friction to address after tab import works:
 This remains source-aware and server-authoritative. SLOT should not pretend EMI
 can pull from carried providers that EMI cannot actually see.
 
-## Overflow / Junk Adjacent Slice
+## Overflow / Junk Pressure Relief
 
 Junk is independent from workflow tabs but fits the same "reduce scanning"
 theme.
 
-Proposed small slice:
+Landed slice:
 
-- right-click item identity -> mark/unmark as overflow junk
-- junk identities appear in a Junk section/lane
-- Junk section has `delete all`
-- hotkey binding deletes carried junk through the same explicit delete action
-- optional toggle: when carried storage is at least 75% full, delete stacks
-  from carried junk before blocking pickup of non-junk items
+- right-click item identity -> mark/unmark as junk
+- junk marks auto-expire after 30 minutes
+- junk identity cards show a small low-priority indicator
+- direct trash is available from the item context menu and from a configurable,
+  unbound hovered-item hotkey
+- direct trash deletes carried stacks matching the hovered identity, records
+  undo/redo, and marks the identity as junk
+- when carried storage is over 75% full, newly picked-up junk identities are
+  deleted before backpack reroute
 
 This is not an item-value heuristic and not a progression system. The player
 explicitly marks junk identities; SLOT uses them as pressure relief.
@@ -333,6 +440,10 @@ Acceptance:
 
 ### Slice 2: Projection And Filtering
 
+Status: landed. Follow-up polish added accepted-input substitute ghosts, kept
+ordinary storage ghosts collapsed until search/x-ray/header reveal, and compacted
+empty section headers without changing the wall section model.
+
 Goal: make the wall actually behave like the active tab.
 
 - active tab projection includes `All` baseline, tab members, tab counts, and
@@ -343,6 +454,9 @@ Goal: make the wall actually behave like the active tab.
 - active tab projection hides irrelevant ordinary cards by default
 - active tab projection still reveals missing/relevant storage ghosts via the
   existing active-intent rule
+- active tab projection reveals accepted-input proximate substitutes as
+  intentful ghosts, while ordinary nearby/tracked ghosts stay collapsed unless
+  the player explicitly reveals them
 - recents remain unchanged and are not absorbed into tabs
 - `All` remains the current unfiltered wall
 
@@ -352,14 +466,17 @@ Acceptance:
 - activating a variant keeps parent workflow items visible
 - already-carried tab members show as satisfied
 - accepted inputs remain visible and are not placed in Put Away guidance
+- accepted-input proximate substitutes appear without showing as missing targets
 - missing tab members show gaps and storage guidance
 - deactivating the tab returns to the `All` wall behavior
 
 ### Slice 3: Put-Away Guidance And Deposit Wayfinding
 
-Status: compact guidance lane, no-home marker, and cross-loader put-away
-hotkey landed 2026-05-18. Destination highlighting/wayfinding polish remains
-follow-up work.
+Status: put-away card state, protected bulk deposit, no-home card chrome,
+content-backed display-storage deposit, display-storage undo ids, active-chest
+range gating, and cross-loader put-away hotkey landed. The explicit Put Away
+suggestion row is currently hidden for playtesting. Destination
+highlighting/wayfinding polish remains follow-up work.
 
 Goal: make cleanup as first-class as acquisition.
 
@@ -393,8 +510,10 @@ Acceptance:
 
 ### Slice 4: Tab UI And Editing
 
-Status: core tab rendering, activation, variant display, membership menus, and
-active-tab filtering landed 2026-05-18. Remaining editing polish is tracked as
+Status: core tab rendering, activation, variant display, visible create flow,
+membership/accepted-input menus, wider right-click menus, active-tab filtering,
+two-row Recents, search idle commit/clear, header reveal clicks, and
+main-inventory move keybind landed. Remaining editing polish is tracked as
 follow-up work in `current.md`.
 
 Goal: replace Kit Rack interaction with visible workflow tabs.
@@ -473,11 +592,16 @@ Likely starting points:
 - `DesiredCountWorkflowDomainService`
 - `WantedCountWorkflowDomainService`
 - `SlotWorkspaceViewModel`
+- `WorkflowTabTargets`
+- `WorkflowAcceptedInputOptions`
 - `WorkspaceItemTargets`
+- `WallSectionVisibility`, `WallSectionHeaderUiBuilder`
+- `WorkspaceUiSessionMemory`, `RecentsStripUiBuilder`
 - `WayfindingTarget` and `WayfindingDisplay`
 - `KitGatherService`
 - `KitPageCycleService`
 - `LoadoutApplyService`
+- `WorkspaceBeltCommandService`
 - `KitRackUiBuilder`, `KitRackBuilder`, `BeltPanelBuilder`
 - EMI recipe sidebar projection and wanted-count actions
 

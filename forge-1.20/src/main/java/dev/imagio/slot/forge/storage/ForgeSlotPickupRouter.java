@@ -6,8 +6,10 @@ import dev.imagio.slot.compat.sophisticated.SophisticatedBackpackTransferSupport
 import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.BackpackReroute;
+import dev.imagio.slot.inventory.workspace.WorkspaceTrashCommandService;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
+import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
@@ -41,17 +43,20 @@ public final class ForgeSlotPickupRouter {
             return;
         }
 
+        WorkflowDomainRuntime runtime = ForgePlayerWorkflowRuntimeService.runtime(player);
         InventoryAcquisitionActivityRecorder.recordStackAcquired(
-                ForgePlayerWorkflowRuntimeService.runtime(player),
+                runtime,
                 picked,
                 pickedCount,
                 InventoryActivityProducer.WORLD_PICKUP,
                 InventoryActivityConfidence.AUTHORITATIVE,
                 "world_pickup");
+        int trashed = WorkspaceTrashCommandService.trashOverflowPickup(player, runtime, picked, pickedCount);
         ForgeCarriedActivityTracker.suppressNext(player);
-        int routed = BackpackReroute.routeToBackpack(player, picked, pickedCount);
-        if (routed <= 0) {
-            logUnroutedPickup(player, picked, pickedCount);
+        int remaining = pickedCount - trashed;
+        int routed = BackpackReroute.routeToBackpack(player, picked, remaining);
+        if (remaining > 0 && routed <= 0) {
+            logUnroutedPickup(player, picked, remaining);
         }
     }
 

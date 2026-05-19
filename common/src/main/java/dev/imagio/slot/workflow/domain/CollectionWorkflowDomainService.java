@@ -6,13 +6,17 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
 
 public final class CollectionWorkflowDomainService {
+    public static final long JUNK_MARK_TTL_MILLIS = 30L * 60L * 1000L;
+
     private final WorkflowDomainStateRepository repository;
     private final Runnable mutationObserver;
 
@@ -394,13 +398,77 @@ public final class CollectionWorkflowDomainService {
         if (identity == null) {
             return false;
         }
-        boolean nextState = !repository.workflowProjection().junkTags().contains(identity);
+        return setJunk(
+                identity,
+                !repository.workflowProjection().junkTags().contains(identity),
+                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.junk.toggle"));
+    }
+
+    public boolean setJunk(ItemIdentity identity, boolean junkState) {
+        return setJunk(identity, junkState, DomainEventMetadata.origin(
+                junkState ? "workflow.junk.mark" : "workflow.junk.unmark"));
+    }
+
+    public boolean setJunk(ItemIdentity identity, boolean junkState, DomainEventMetadata metadata) {
+        if (identity == null) {
+            return false;
+        }
+        boolean currentlyMarked = repository.workflowProjection().junkTags().contains(identity);
+        if (!junkState && !currentlyMarked) {
+            return false;
+        }
         repository.appendWorkflowEvent(
-                nextState ? new WorkflowEvent.JunkMarked(identity) : new WorkflowEvent.JunkUnmarked(identity),
-                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.junk.toggle")
+                junkState ? new WorkflowEvent.JunkMarked(identity) : new WorkflowEvent.JunkUnmarked(identity),
+                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin(
+                        junkState ? "workflow.junk.mark" : "workflow.junk.unmark")
         );
         notifyMutated();
         return true;
+    }
+
+    public boolean isJunk(ItemIdentity identity) {
+        return identity != null && repository.workflowProjection().junkTags().contains(identity);
+    }
+
+    public boolean expireJunkTags() {
+        return expireJunkTags(System.currentTimeMillis());
+    }
+
+    public boolean expireJunkTags(long nowEpochMillis) {
+        Set<ItemIdentity> liveJunk = repository.workflowProjection().junkTags();
+        if (liveJunk.isEmpty()) {
+            return false;
+        }
+        Map<ItemIdentity, Long> latestMarkedAt = new LinkedHashMap<>();
+        for (WorkflowEventRecord record : repository.workflowEvents().records()) {
+            if (record == null || record.event() == null || record.envelope() == null) {
+                continue;
+            }
+            long occurredAt = record.envelope().occurredAtEpochMillis();
+            if (record.event() instanceof WorkflowEvent.JunkMarked event && event.identity() != null) {
+                latestMarkedAt.put(event.identity(), occurredAt);
+            } else if (record.event() instanceof WorkflowEvent.JunkUnmarked event && event.identity() != null) {
+                latestMarkedAt.remove(event.identity());
+            }
+        }
+        boolean changed = false;
+        for (ItemIdentity identity : liveJunk) {
+            Long markedAt = latestMarkedAt.get(identity);
+            if (markedAt == null || markedAt <= 0L) {
+                continue;
+            }
+            if (nowEpochMillis - markedAt >= JUNK_MARK_TTL_MILLIS) {
+                repository.appendWorkflowEvent(
+                        new WorkflowEvent.JunkUnmarked(identity),
+                        DomainEventMetadata.origin("workflow.junk.expire")
+                );
+                changed = true;
+            }
+        }
+        if (changed) {
+            notifyMutated();
+        }
+        return changed;
     }
 
     public boolean toggleCollectionMembership(ItemIdentity identity, String collectionId) {

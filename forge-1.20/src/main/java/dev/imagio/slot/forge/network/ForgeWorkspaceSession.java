@@ -359,6 +359,13 @@ final class ForgeWorkspaceSession {
                     player,
                     identityArg(args, 0),
                     integerArg(args, 3) == null ? 0 : integerArg(args, 3));
+            case SET_JUNK -> setJunk(
+                    identityArg(args, 0),
+                    integerArg(args, 3) != null && integerArg(args, 3) != 0);
+            case TRASH_IDENTITY -> SlotWorkspaceCommandService.trashIdentity(
+                    player,
+                    runtime,
+                    identityArg(args, 0));
             case DEPOSIT_HOME_TO_LINKED_CHEST -> WorkspaceChestCommandService.depositIdentityToLinkedChest(
                     player,
                     runtime,
@@ -678,6 +685,9 @@ final class ForgeWorkspaceSession {
             long gameTime,
             ServerPlayer player
     ) {
+        if (runtime != null) {
+            runtime.collectionWorkflow().expireJunkTags();
+        }
         WorkflowDomainSnapshot snapshot = runtime == null ? null : runtime.snapshot();
         ClaimedChestMap claimedChestMap = snapshot == null
                 ? ClaimedChestMap.empty()
@@ -818,6 +828,19 @@ final class ForgeWorkspaceSession {
                 ref.comparisonMode(),
                 ref.componentFingerprint(),
                 count);
+    }
+
+    private WorkspaceCommandOutcome setJunk(ItemIdentity identity, boolean marked) {
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        SlotWorkspaceViewModel.IdentityRef ref = SlotWorkspaceViewModel.IdentityRef.from(identity);
+        return SlotWorkspaceCommandService.setJunk(
+                runtime,
+                ref.itemId(),
+                ref.comparisonMode(),
+                ref.componentFingerprint(),
+                marked);
     }
 
     private void clearSatisfiedWantedCounts(InventoryAuthoritySnapshot authority) {

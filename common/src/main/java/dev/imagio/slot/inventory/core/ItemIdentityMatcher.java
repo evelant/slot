@@ -3,25 +3,9 @@ package dev.imagio.slot.inventory.core;
 import dev.imagio.slot.platform.SlotStackAccess;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Objects;
 
 public final class ItemIdentityMatcher {
-    private static final Set<String> STABLE_IDENTITY_TOKENS = Set.of(
-            "amulet", "armor", "artifact", "axe", "backpack", "bag", "basket", "bauble", "battleaxe", "blade",
-            "boots", "bow", "bracelet", "bundle", "cannon", "canteen", "case", "charm", "chestplate", "claymore",
-            "clock", "compass", "crossbow", "dagger", "drill", "elytra", "excavator",
-            "fishing_rod", "flask", "flint_and_steel", "gadget", "gauntlet", "glaive", "greatsword", "hammer",
-            "hatchet", "helmet", "hoe", "hook", "knife", "lance", "leggings", "mace", "machete",
-            "lunchbox", "mattock", "necklace", "offhand", "pack", "paxel", "pickaxe", "pouch", "quiver", "relic",
-            "ring", "rod", "satchel", "saw", "scanner", "scepter", "sceptre", "scope", "shears", "shield", "shovel",
-            "shulker", "sack", "sickle", "spade", "spear", "staff", "sword", "talisman", "tool",
-            "totem", "trident", "wand", "water_skin", "waterskin", "weapon", "wrench", "zweihander"
-    );
-    private static final Set<String> STABLE_IDENTITY_SUFFIX_EXCLUSIONS = Set.of("case", "shulker");
-    private static final Map<String, Boolean> STABLE_IDENTITY_CACHE = new ConcurrentHashMap<>();
-
     private ItemIdentityMatcher() {
     }
 
@@ -31,6 +15,9 @@ public final class ItemIdentityMatcher {
         }
         String itemId = resolveItemId(stack);
         String components = resolveComponentFingerprint(stack);
+        if (usesItemOnlyMovableIdentity(stack) || hasMovableConditionOnlyFingerprint(components)) {
+            return ItemIdentity.of(itemId);
+        }
         if (!stackable(stack) || !components.isBlank()) {
             return ItemIdentity.exact(itemId, components);
         }
@@ -60,14 +47,25 @@ public final class ItemIdentityMatcher {
         if (identity == null || identity.comparisonMode() != ItemComparisonMode.ITEM_ID_AND_COMPONENTS) {
             return identity;
         }
-        return usesStableMovableIdentity(identity.itemId()) ? ItemIdentity.of(identity.itemId()) : identity;
+        return hasMovableConditionOnlyFingerprint(identity.componentFingerprint())
+                ? ItemIdentity.of(identity.itemId())
+                : identity;
     }
 
     public static boolean matchesMovable(ItemIdentity left, ItemIdentity right) {
         if (left == null || right == null) {
             return false;
         }
-        return normalizeMovable(left).equals(normalizeMovable(right));
+        ItemIdentity normalizedLeft = normalizeMovable(left);
+        ItemIdentity normalizedRight = normalizeMovable(right);
+        if (!Objects.equals(normalizedLeft.itemId(), normalizedRight.itemId())) {
+            return false;
+        }
+        if (normalizedLeft.comparisonMode() == ItemComparisonMode.ITEM_ID
+                || normalizedRight.comparisonMode() == ItemComparisonMode.ITEM_ID) {
+            return true;
+        }
+        return Objects.equals(normalizedLeft.componentFingerprint(), normalizedRight.componentFingerprint());
     }
 
     public static boolean matchesMovable(ItemStack stack, ItemIdentity identity) {
@@ -77,69 +75,96 @@ public final class ItemIdentityMatcher {
         return matchesMovable(create(stack), identity);
     }
 
-    public static boolean usesStableMovableIdentity(String itemId) {
-        if (itemId == null || itemId.isBlank()) {
+    public static boolean usesItemOnlyMovableIdentity(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
             return false;
         }
-        return STABLE_IDENTITY_CACHE.computeIfAbsent(itemId, ItemIdentityMatcher::computeStableMovableIdentity);
+        return SlotStackAccess.current().damageable(stack)
+                || PortableContainerClassifiers.isPortableContainer(stack);
     }
 
-    private static boolean computeStableMovableIdentity(String itemId) {
-        int separatorIndex = itemId.indexOf(':');
-        String path = separatorIndex >= 0 ? itemId.substring(separatorIndex + 1) : itemId;
-        String normalizedPath = boundaryTokenPath(path);
-        for (String token : STABLE_IDENTITY_TOKENS) {
-            if (normalizedPath.contains("_" + token + "_")) {
-                return true;
+    private static boolean hasMovableConditionOnlyFingerprint(String fingerprint) {
+        String normalized = normalizeFingerprint(fingerprint);
+        if (normalized.isBlank()) {
+            return false;
+        }
+        normalized = stripOuter(normalized, '{', '}');
+        normalized = stripOuter(normalized, '[', ']');
+        if (normalized.isBlank() || hasTopLevelComma(normalized)) {
+            return false;
+        }
+        String key = leadingFingerprintKey(normalized);
+        return key.equals("damage")
+                || key.equals("minecraft:damage")
+                || key.equals("inventory")
+                || key.equals("container")
+                || key.equals("minecraft:container")
+                || key.equals("minecraft:bundle_contents");
+    }
+
+    private static String normalizeFingerprint(String fingerprint) {
+        if (fingerprint == null || fingerprint.isBlank()) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder(fingerprint.length());
+        for (int index = 0; index < fingerprint.length(); index++) {
+            char c = Character.toLowerCase(fingerprint.charAt(index));
+            if (!Character.isWhitespace(c) && c != '"') {
+                builder.append(c);
             }
         }
-        String compactPath = compactToken(path);
-        for (String token : STABLE_IDENTITY_TOKENS) {
-            if (STABLE_IDENTITY_SUFFIX_EXCLUSIONS.contains(token)) {
-                continue;
-            }
-            String compactToken = compactToken(token);
-            if (!compactToken.isBlank() && compactPath.endsWith(compactToken)) {
+        return builder.toString();
+    }
+
+    private static String stripOuter(String value, char open, char close) {
+        String resolved = value == null ? "" : value;
+        while (resolved.length() >= 2 && resolved.charAt(0) == open
+                && resolved.charAt(resolved.length() - 1) == close) {
+            resolved = resolved.substring(1, resolved.length() - 1);
+        }
+        return resolved;
+    }
+
+    private static boolean hasTopLevelComma(String value) {
+        int curlyDepth = 0;
+        int squareDepth = 0;
+        for (int index = 0; index < value.length(); index++) {
+            char c = value.charAt(index);
+            if (c == '{') {
+                curlyDepth++;
+            } else if (c == '}') {
+                curlyDepth = Math.max(0, curlyDepth - 1);
+            } else if (c == '[') {
+                squareDepth++;
+            } else if (c == ']') {
+                squareDepth = Math.max(0, squareDepth - 1);
+            } else if (c == ',' && curlyDepth == 0 && squareDepth == 0) {
                 return true;
             }
         }
         return false;
     }
 
-    private static String boundaryTokenPath(String path) {
-        String resolved = path == null ? "" : path;
-        StringBuilder builder = new StringBuilder(resolved.length() + 2);
-        builder.append('_');
-        boolean previousSeparator = true;
-        for (int index = 0; index < resolved.length(); index++) {
-            char character = Character.toLowerCase(resolved.charAt(index));
-            if (isAsciiAlphanumeric(character)) {
-                builder.append(character);
-                previousSeparator = false;
-            } else if (!previousSeparator) {
-                builder.append('_');
-                previousSeparator = true;
-            }
+    private static String leadingFingerprintKey(String value) {
+        if (value == null || value.isBlank()) {
+            return "";
         }
-        if (!previousSeparator) {
-            builder.append('_');
+        int arrow = value.indexOf("=>");
+        if (arrow > 0) {
+            return value.substring(0, arrow);
         }
-        return builder.toString();
-    }
-
-    private static String compactToken(String input) {
-        String resolved = input == null ? "" : input;
-        StringBuilder builder = new StringBuilder(resolved.length());
-        for (int index = 0; index < resolved.length(); index++) {
-            char character = Character.toLowerCase(resolved.charAt(index));
-            if (isAsciiAlphanumeric(character)) {
-                builder.append(character);
-            }
+        int equals = value.indexOf('=');
+        if (equals > 0) {
+            return value.substring(0, equals);
         }
-        return builder.toString();
-    }
-
-    private static boolean isAsciiAlphanumeric(char character) {
-        return (character >= 'a' && character <= 'z') || (character >= '0' && character <= '9');
+        int colon = value.indexOf(':');
+        if (colon <= 0) {
+            return "";
+        }
+        if (!value.startsWith("minecraft:")) {
+            return value.substring(0, colon);
+        }
+        int secondColon = value.indexOf(':', colon + 1);
+        return secondColon > 0 ? value.substring(0, secondColon) : value.substring(0, colon);
     }
 }

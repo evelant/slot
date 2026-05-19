@@ -81,6 +81,22 @@ class CollectionWorkflowDomainServiceTest {
     }
 
     @Test
+    void junkMarksExpireAfterThirtyMinutes() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        CollectionWorkflowDomainService workflow = new CollectionWorkflowDomainService(repository);
+        ItemIdentity identity = ItemIdentity.of("minecraft:cobblestone");
+
+        assertTrue(workflow.setJunk(identity, true));
+        assertTrue(repository.workflowProjection().junkTags().contains(identity));
+        long markedAt = repository.workflowEvents().records().get(0).envelope().occurredAtEpochMillis();
+
+        assertFalse(workflow.expireJunkTags(markedAt + CollectionWorkflowDomainService.JUNK_MARK_TTL_MILLIS - 1));
+        assertTrue(repository.workflowProjection().junkTags().contains(identity));
+        assertTrue(workflow.expireJunkTags(markedAt + CollectionWorkflowDomainService.JUNK_MARK_TTL_MILLIS));
+        assertFalse(repository.workflowProjection().junkTags().contains(identity));
+    }
+
+    @Test
     void updateAndDeleteSelectedLoadoutStayAnchoredToTypedTargets() {
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
         CollectionWorkflowDomainService workflow = new CollectionWorkflowDomainService(repository);

@@ -13,8 +13,8 @@ import java.util.Set;
  * The "bring" list (non-hotbar identities the kit wanted in carry) was
  * folded into kit-scoped desired counts — see
  * {@link DesiredCountWorkflowDomainService#forKit(String)}. Kit
- * activation auto-fetches toward those counts in lieu of the old bring
- * fetch path.
+ * activation applies explicit belt/offhand slots; desired-count fetching
+ * is an explicit gather/fetch action through the shared workflow target path.
  */
 public record KitDefinition(
         String id,

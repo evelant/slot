@@ -11,6 +11,7 @@ public final class WorkspaceUiAttachments {
     public static final String WALL_CARD_NEARBY_BADGE = "slot.workspace.wall_card_nearby_badge";
     public static final String WALL_CARD_NEARBY_ROUTE_NOTCH = "slot.workspace.wall_card_nearby_route_notch";
     public static final String WALL_CARD_DISTANT_BADGE = "slot.workspace.wall_card_distant_badge";
+    public static final String WALL_CARD_JUNK_MARK = "slot.workspace.wall_card_junk_mark";
     public static final String WALL_CARD_RING = "slot.workspace.wall_card_ring";
     public static final String WALL_CARD_ACTIVE_SEARCH_MATCH = "slot.workspace.wall_card_active_search_match";
     public static final String WALL_CARD_WAYFINDING_ENTRY = "slot.workspace.wall_card_wayfinding_entry";
@@ -37,7 +38,6 @@ public final class WorkspaceUiAttachments {
     public static final String KIT_CARD = "slot.workspace.kit_card";
     public static final String KIT_PAGE = "slot.workspace.kit_page";
     public static final String KIT_SLOT = "slot.workspace.kit_slot";
-    public static final String KIT_BRING_ITEM = "slot.workspace.kit_bring_item";
 
     private WorkspaceUiAttachments() {
     }

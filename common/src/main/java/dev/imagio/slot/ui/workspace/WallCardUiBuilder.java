@@ -144,6 +144,7 @@ public final class WallCardUiBuilder {
         addCountBadge(iconCell, chrome);
         addProximatePip(iconCell, chrome);
         addSearchStoredPip(iconCell, chrome);
+        addJunkIndicator(iconCell, item);
         addPrimaryRing(iconCell, item, chrome, routeOnly, gatherPreviewEligible);
         body.addChild(iconCell);
         addWayfindingStrip(body);
@@ -363,6 +364,39 @@ public final class WallCardUiBuilder {
                         .height(STOCK_PIP_HEIGHT_PX)
                         .paddingHorizontal(TOP_BADGE_HORIZONTAL_PAD_PX));
         body.addChild(pip);
+    }
+
+    private static void addJunkIndicator(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || !item.junk()) {
+            return;
+        }
+        SlotUiElement mark = SlotUiElement.element()
+                .allowHitTest(false)
+                .zIndex(COUNT_BADGE_Z + 1)
+                .attach(WorkspaceUiAttachments.WALL_CARD_JUNK_MARK, Boolean.TRUE)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(0)
+                        .bottom(0)
+                        .width(7)
+                        .height(7));
+        mark.addChild(SlotUiElement.panel(WorkspaceUiPalette.JUNK_MARK)
+                .allowHitTest(false)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(0)
+                        .bottom(0)
+                        .width(7)
+                        .height(2)));
+        mark.addChild(SlotUiElement.panel(WorkspaceUiPalette.JUNK_MARK)
+                .allowHitTest(false)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(0)
+                        .bottom(0)
+                        .width(2)
+                        .height(7)));
+        body.addChild(mark);
     }
 
     private void addPrimaryRing(

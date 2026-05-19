@@ -27,7 +27,6 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.workspace.ActiveChestPanelProjectionSupport;
 import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
-import dev.imagio.slot.inventory.workspace.DepositPlanner;
 import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyTracker;
 import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
@@ -36,7 +35,6 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceTransferRequestFactory;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.inventory.workspace.TakeAllExecutor;
 import dev.imagio.slot.inventory.workspace.WorkspaceBeltCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
@@ -54,7 +52,6 @@ import dev.imagio.slot.neoforge.storage.ChestStorageIds;
 import dev.imagio.slot.neoforge.storage.NeoForgeCarriedActivityTracker;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
-import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -1029,91 +1026,6 @@ final class SlotWorkspaceUiSession {
                 actionExecutor,
                 kitId
         ));
-        // Auto-fetch toward kit-scoped desired counts. Runs after the kit
-        // is recorded as active so each identity gets pulled from proximate
-        // chests up to (desired - currently_carried). Best-effort: if no
-        // chest has the item or carry is full the gap stays.
-        autoFetchKitDesiredCounts(serverPlayer, kitId);
-    }
-
-    /**
-     * Pull items from proximate chests toward the kit-scoped desired
-     * counts. Replaces the legacy bring-list fetch path (the bring list
-     * itself is now folded into kit-scoped desired counts). Mirrors the
-     * chest-walk in {@link #takeByIdentity}: highest-affinity proximate
-     * chest first, falls through to the rest. Multi-pass per identity
-     * because a chest may only have part of the gap; subsequent chests
-     * fill the rest.
-     */
-    private void autoFetchKitDesiredCounts(ServerPlayer serverPlayer, String kitId) {
-        if (kitId == null || kitId.isBlank()) {
-            return;
-        }
-        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        java.util.Map<ItemIdentity, Integer> wants = runtime.desiredCountWorkflow().forKit(kitId);
-        if (wants.isEmpty()) {
-            return;
-        }
-        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(serverPlayer, claimedChestMap);
-        if (proximate.isEmpty()) {
-            return;
-        }
-        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap();
-        // Refresh authority snapshot once before the pull loop so the
-        // carried-count check sees the post-apply state.
-        InventoryHostDescriptor host = resolveHost(serverPlayer);
-        if (host == null) {
-            return;
-        }
-        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
-        for (java.util.Map.Entry<ItemIdentity, Integer> want : wants.entrySet()) {
-            ItemIdentity identity = want.getKey();
-            int desired = want.getValue() == null ? 0 : want.getValue();
-            if (identity == null || desired <= 0) {
-                continue;
-            }
-            int carried = countCarried(authority, identity);
-            int gap = desired - carried;
-            if (gap <= 0) {
-                continue;
-            }
-            // Sort chests for THIS identity by affinity score so the most
-            // likely home gets walked first.
-            java.util.List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
-                    identity, claimedChestMap, affinityMap, proximate);
-            int remaining = gap;
-            for (ClaimedChest chest : ranked) {
-                if (remaining <= 0) {
-                    break;
-                }
-                TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
-                        serverPlayer, chest, identity, remaining, "kit-auto-fetch");
-                if (outcome.tookAnything()) {
-                    remaining -= outcome.moved();
-                }
-            }
-        }
-        // Re-apply the kit so the new carry surfaces in any kit-needed slot.
-        reapplyActiveKitFromCarry(serverPlayer);
-    }
-
-    private static int countCarried(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
-        if (authority == null || identity == null) {
-            return 0;
-        }
-        int total = 0;
-        for (var source : authority.carriedSources()) {
-            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
-                if (entry == null || !entry.present()) {
-                    continue;
-                }
-                if (ItemIdentityMatcher.matchesMovable(entry.stack(), identity)) {
-                    total += entry.count();
-                }
-            }
-        }
-        return total;
     }
 
     /**
@@ -1877,6 +1789,32 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
+    void setJunk(String itemId, String comparisonMode, String componentFingerprint, Integer markedBoxed) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.setJunk(
+                workflowRuntime(serverPlayer),
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                markedBoxed != null && markedBoxed != 0
+        ));
+    }
+
+    void trashIdentity(String itemId, String comparisonMode, String componentFingerprint) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.trashIdentity(
+                serverPlayer,
+                workflowRuntime(serverPlayer),
+                itemId,
+                comparisonMode,
+                componentFingerprint
+        ));
+    }
+
     /**
      * Take one item of {@code identity} from the highest-affinity proximate
      * chest that contains it. Replaces slot-precise client-side take so
@@ -2039,6 +1977,7 @@ final class SlotWorkspaceUiSession {
         String combinedDiagnostics = combineDiagnostics(hostDiagnostics, diagnostics);
         int selected = serverPlayer.getInventory().selected;
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        runtime.collectionWorkflow().expireJunkTags();
         long gameTime = serverPlayer.serverLevel().getGameTime();
         runtime.contextualSuggestions().observeStationContext(
                 host,

@@ -34,6 +34,7 @@ import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import dev.imagio.slot.workflow.domain.undo.UndoContext;
 import dev.imagio.slot.workflow.domain.undo.UndoRecord;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -1316,6 +1317,36 @@ public final class SlotWorkspaceCommandService {
         }
         recordWantedCountUndo(runtime, activeKit, identity, before, target);
         return WorkspaceCommandOutcome.accepted("wanted", identity.itemId() + " target=" + target);
+    }
+
+    public static WorkspaceCommandOutcome setJunk(
+            WorkflowDomainRuntime runtime,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            boolean marked
+    ) {
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        return WorkspaceTrashCommandService.setJunk(runtime, identity, marked);
+    }
+
+    public static WorkspaceCommandOutcome trashIdentity(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        return WorkspaceTrashCommandService.trashCarriedIdentity(player, runtime, identity);
+    }
+
+    public static WorkspaceCommandOutcome trashIdentity(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity
+    ) {
+        return WorkspaceTrashCommandService.trashCarriedIdentity(player, runtime, identity);
     }
 
     /**

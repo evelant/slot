@@ -2,6 +2,7 @@ package dev.imagio.slot.forge.compat.sacks;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.PortableContainerClassifiers;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.storage.CarriedProvider;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
@@ -17,6 +18,10 @@ import java.util.Optional;
 
 public final class SacksNSuchCarriedProvider implements CarriedProvider {
     public static final String PREFIX = SacksNSuchSupport.PREFIX;
+
+    static {
+        PortableContainerClassifiers.register(SacksNSuchSupport::isContainerItem);
+    }
 
     @Override
     public String prefix() {

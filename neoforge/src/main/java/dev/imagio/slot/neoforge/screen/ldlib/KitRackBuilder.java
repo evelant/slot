@@ -18,13 +18,11 @@ import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitBringDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitSlotDrag;
 import dev.imagio.slot.workflow.domain.KitPage;
 import dev.vfyjxf.taffy.style.AlignContent;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
-import dev.vfyjxf.taffy.style.TaffyPosition;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -43,11 +41,9 @@ final class KitRackBuilder {
         this.host = host;
     }
 
-    static int kitCardHeight(int pageCount, int bringCount) {
+    static int kitCardHeight(int pageCount) {
         int pages = Math.max(1, pageCount);
-        // header + per-page rows + add-page footer + bring row + bring label
-        int bringHeight = bringCount > 0 ? 28 : 16;
-        return 12 + pages * 18 + 14 + bringHeight;
+        return 12 + pages * 18 + 14;
     }
 
     UIElement kitCluster() {
@@ -271,7 +267,7 @@ final class KitRackBuilder {
         button.textStyle(style -> style.font(FONT_UI).textColor(TEXT).textShadow(false).fontSize(8));
         button.layout(layout -> layout
                 .width(KIT_CARD_WIDTH)
-                .height(kitCardHeight(card.pageCount(), card.bringSlotCount()))
+                .height(kitCardHeight(card.pageCount()))
                 .paddingAll(4)
                 .gapAll(2)
                 .alignItems(AlignItems.CENTER)
@@ -296,7 +292,6 @@ final class KitRackBuilder {
             button.addChild(kitCardPageRow(card, page));
         }
         button.addChild(kitCardAddPageRow(card));
-        button.addChild(kitCardBringRow(card));
         return button;
     }
 
@@ -521,119 +516,6 @@ final class KitRackBuilder {
         host.rebuild();
     }
 
-    UIElement kitCardBringRow(SlotWorkspaceViewModel.KitCard card) {
-        UIElement column = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .height(card.bringSlotCount() > 0 ? 28 : 16)
-                .gapAll(2)
-                .alignItems(AlignItems.FLEX_START)
-                .flexDirection(FlexDirection.COLUMN));
-        String header = "targets " + card.bringReadyCount() + "/" + card.bringSlotCount();
-        Label title = label(header, card.bringSlotCount() == 0 ? MUTED
-                : card.bringReadyCount() == card.bringSlotCount() ? ACCENT : WARNING);
-        title.layout(layout -> layout.widthPercent(100).height(10));
-        title.textStyle(style -> style
-                .textColor(card.bringSlotCount() == 0 ? MUTED
-                        : card.bringReadyCount() == card.bringSlotCount() ? ACCENT : WARNING)
-                .textShadow(false)
-                .fontSize(8)
-                .textAlignHorizontal(Horizontal.LEFT)
-                .textAlignVertical(Vertical.CENTER));
-        title.setAllowHitTest(false);
-        column.addChild(title);
-        UIElement strip = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .height(KIT_CELL_SIZE)
-                .gapAll(1)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-        for (SlotWorkspaceViewModel.KitBringItem item : card.bring()) {
-            strip.addChild(kitCardBringCell(card, item));
-        }
-        installKitBringDropTarget(strip, card);
-        column.addChild(strip);
-        return column;
-    }
-
-    UIElement kitCardBringCell(SlotWorkspaceViewModel.KitCard card, SlotWorkspaceViewModel.KitBringItem item) {
-        int fill = item.ready() ? ROW : CARD_INNER_GHOST;
-        UIElement cell = panel(fill).layout(layout -> layout
-                .width(KIT_CELL_SIZE)
-                .height(KIT_CELL_SIZE)
-                .paddingAll(1)
-                .alignItems(AlignItems.CENTER));
-        WorkspaceUi.installItemTooltip(cell, item.displayStack());
-        cell.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (event.button == 0) {
-                event.stopPropagation();
-                return;
-            }
-            if (event.button == 1) {
-                event.stopPropagation();
-                host.rpc.sendSetKitScopedDesiredCount(card.kitId(), item.identity(), 0);
-            }
-        });
-        cell.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-            if (!DragDropWiring.mouseIsHeldOnSource(cell) || host.drag.isDragging(cell)) {
-                return;
-            }
-            cell.startDrag(
-                    new KitBringDrag(card.kitId(), item.identity(), item.displayStack().copy()),
-                    host.drag.dragTexture(item.displayStack())
-            ).setDragTexture(-10, -10, 20, 20);
-            host.localStatus.set("dragging tab target");
-        }, true);
-        cell.addEventListener(UIEvents.DRAG_END, host.drag::handleDragEnd);
-        if (!item.displayStack().isEmpty()) {
-            UIElement icon = itemIcon(item.displayStack(), KIT_CELL_ICON_SIZE, item.ready());
-            icon.setAllowHitTest(false);
-            cell.addChild(icon);
-        }
-        // Want-vs-have indicator: surface "presentCount/targetCount" inside
-        // the cell when the kit wants more than one. For target=1 the
-        // ready/faded fill already conveys it. Color tracks readiness:
-        // ACCENT when fully met, WARNING otherwise.
-        if (item.targetCount() > 1) {
-            int color = item.presentCount() >= item.targetCount() ? ACCENT : WARNING;
-            Label countLabel = label(item.presentCount() + "/" + item.targetCount(), color);
-            countLabel.layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .right(0).bottom(0)
-                    .width(KIT_CELL_SIZE).height(6));
-            countLabel.textStyle(style -> style
-                    .textColor(color)
-                    .textShadow(true)
-                    .fontSize(5)
-                    .textAlignHorizontal(Horizontal.RIGHT)
-                    .textAlignVertical(Vertical.BOTTOM));
-            countLabel.setAllowHitTest(false);
-            cell.addChild(countLabel);
-        }
-        return cell;
-    }
-
-    void installKitBringDropTarget(UIElement target, SlotWorkspaceViewModel.KitCard card) {
-        target.addEventListener(UIEvents.DRAG_ENTER, event -> updateKitBringDropOverlay(target, event), true);
-        target.addEventListener(UIEvents.DRAG_UPDATE, event -> updateKitBringDropOverlay(target, event));
-        target.addEventListener(UIEvents.DRAG_LEAVE, event -> host.drag.clearDropOverlay(target), true);
-        target.addEventListener(UIEvents.DRAG_PERFORM, event -> {
-            host.drag.clearDropOverlay(target);
-            SlotWorkspaceViewModel.IdentityRef identity = kitDropIdentity(event);
-            if (identity == null) {
-                return;
-            }
-            // Default kit-scoped desired count for newly-added bring items.
-            // Players can adjust with ctrl+scrollwheel or right-click menu.
-            host.rpc.sendSetKitScopedDesiredCount(card.kitId(), identity, 1);
-            event.stopPropagation();
-        });
-    }
-
-    void updateKitBringDropOverlay(UIElement target, UIEvent event) {
-        SlotWorkspaceViewModel.IdentityRef identity = kitDropIdentity(event);
-        host.drag.updateGenericDropOverlay(target, identity != null, ACCENT);
-    }
-
     SlotWorkspaceViewModel.IdentityRef kitDropIdentity(UIEvent event) {
         AtlasItemDrag atlasItem = host.drag.atlasItemDrag(event);
         if (atlasItem != null) {
@@ -648,21 +530,12 @@ final class KitRackBuilder {
         if (slotDrag != null && slotDrag.identity() != null && !slotDrag.identity().itemId().isBlank()) {
             return slotDrag.identity();
         }
-        KitBringDrag bringDrag = kitBringDrag(event);
-        if (bringDrag != null) {
-            return bringDrag.identity();
-        }
         return null;
     }
 
     KitSlotDrag kitSlotDrag(UIEvent event) {
         Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
         return payload instanceof KitSlotDrag slotDrag ? slotDrag : null;
-    }
-
-    KitBringDrag kitBringDrag(UIEvent event) {
-        Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
-        return payload instanceof KitBringDrag bringDrag ? bringDrag : null;
     }
 
     UIElement kitCardSlotCell(

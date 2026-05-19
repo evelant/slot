@@ -2,6 +2,7 @@ package dev.imagio.slot.forge.compat.toolbelt;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.PortableContainerClassifiers;
 import dev.imagio.slot.inventory.storage.CarriedProvider;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
@@ -17,6 +18,10 @@ import java.util.Optional;
 
 public final class ToolBeltCarriedProvider implements CarriedProvider {
     public static final String PREFIX = ToolBeltSupport.PREFIX;
+
+    static {
+        PortableContainerClassifiers.register(ToolBeltSupport::isToolBeltItem);
+    }
 
     @Override
     public String prefix() {

@@ -19,7 +19,6 @@ import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestStackDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestTileDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.IslandDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitBringDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitSlotDrag;
 import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;

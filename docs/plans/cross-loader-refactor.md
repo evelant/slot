@@ -124,7 +124,6 @@ interaction/drag hook owned by the backend:
 | `HotbarSlotDrag` | LDLib2 drag | cursor/drop |
 | `ChestStackDrag` | LDLib2 drag | cursor/drop |
 | `KitSlotDrag` | LDLib2 drag | cursor/drop |
-| `KitBringDrag` | LDLib2 drag | cursor/drop |
 
 ## Phases
 

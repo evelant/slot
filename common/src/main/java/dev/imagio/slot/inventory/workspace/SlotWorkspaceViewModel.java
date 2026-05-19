@@ -949,6 +949,7 @@ public record SlotWorkspaceViewModel(
         ArrayList<AtlasItem> atlasItems = new ArrayList<>();
         ArrayList<AtlasItem> triageItems = new ArrayList<>();
         Set<ItemIdentity> recentIdentities = new LinkedHashSet<>(recents.visibleItems());
+        Set<ItemIdentity> junkTags = resolvedWorkflow.workflowProjection().junkTags();
         List<TriageIslandRef> triageIslandRefs = triageIslandRefs(visualHomeMap);
         LearnedIslandRuleStore resolvedLearnedRules = learnedRules == null ? new LearnedIslandRuleStore() : learnedRules;
         DynamicHomeCohortPolicy cohortPolicy = signalExtractor == null ? null : DynamicHomeCohortPolicy.current();
@@ -967,6 +968,7 @@ public record SlotWorkspaceViewModel(
             int desiredCount = targetResolution.desiredCount(accumulator.identity());
             boolean desiredCountFromKit = targetResolution.desiredFromWorkflowTab(accumulator.identity());
             int wantedCount = targetResolution.wantedCount(accumulator.identity());
+            boolean junk = junkTags.contains(accumulator.identity());
 
             if (assignment == null) {
                 List<ChipSuggestion> chipSuggestions = List.of();
@@ -1018,6 +1020,7 @@ public record SlotWorkspaceViewModel(
                                 desiredCount,
                                 desiredCountFromKit,
                                 wantedCount,
+                                junk,
                                 accumulator.largestCarriedSourceId(),
                                 accumulator.largestCarriedSlotIndex(),
                                 accumulator.largestCarriedSlotCount()
@@ -1045,6 +1048,7 @@ public record SlotWorkspaceViewModel(
                                 desiredCount,
                                 desiredCountFromKit,
                                 wantedCount,
+                                junk,
                                 accumulator.largestCarriedSourceId(),
                                 accumulator.largestCarriedSlotIndex(),
                                 accumulator.largestCarriedSlotCount()
@@ -1074,6 +1078,7 @@ public record SlotWorkspaceViewModel(
                         desiredCount,
                         desiredCountFromKit,
                         wantedCount,
+                        junk,
                         accumulator.largestCarriedSourceId(),
                         accumulator.largestCarriedSlotIndex(),
                         accumulator.largestCarriedSlotCount()
@@ -1112,6 +1117,7 @@ public record SlotWorkspaceViewModel(
                         desiredCount,
                         desiredCountFromKit,
                         wantedCount,
+                        junk,
                         accumulator.largestCarriedSourceId(),
                         accumulator.largestCarriedSlotIndex(),
                         accumulator.largestCarriedSlotCount()
@@ -1140,6 +1146,7 @@ public record SlotWorkspaceViewModel(
                     desiredCount,
                     desiredCountFromKit,
                     wantedCount,
+                    junk,
                     accumulator.largestCarriedSourceId(),
                     accumulator.largestCarriedSlotIndex(),
                     accumulator.largestCarriedSlotCount()
@@ -1156,6 +1163,7 @@ public record SlotWorkspaceViewModel(
                 targetResolution);
         List<AtlasItem> workflowPutAwayItems = List.of();
         if (resolvedWorkflow.kitMap() != null && !resolvedWorkflow.kitMap().activeLineage().isEmpty()) {
+            Map<String, AtlasIsland> islandsById = islandsById(layoutIslands);
             Set<IdentityRef> putAwayRouted = depositableIdentities(
                     atlasItems,
                     claimedChestMap,
@@ -1169,8 +1177,8 @@ public record SlotWorkspaceViewModel(
                     triageItems,
                     targetResolution,
                     putAwayRouted);
-            atlasItems = filterForActiveWorkflowTab(atlasItems, targetResolution, putAwayRouted);
-            triageItems = filterForActiveWorkflowTab(triageItems, targetResolution, Set.of());
+            atlasItems = filterForActiveWorkflowTab(atlasItems, targetResolution, putAwayRouted, searchQuery, islandsById);
+            triageItems = filterForActiveWorkflowTab(triageItems, targetResolution, Set.of(), searchQuery, islandsById);
         }
 
         List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(layoutIslands, atlasItems);
@@ -1362,12 +1370,16 @@ public record SlotWorkspaceViewModel(
     private static ArrayList<AtlasItem> filterForActiveWorkflowTab(
             List<AtlasItem> items,
             WorkflowTabTargets.Resolution targets,
-            Set<IdentityRef> routedPutAwayIdentities
+            Set<IdentityRef> routedPutAwayIdentities,
+            String searchQuery,
+            Map<String, AtlasIsland> islandsById
     ) {
         if (items == null || items.isEmpty() || targets == null) {
             return new ArrayList<>();
         }
         Set<IdentityRef> putAway = routedPutAwayIdentities == null ? Set.of() : routedPutAwayIdentities;
+        String normalizedSearch = WorkspaceSearchQuery.normalized(searchQuery);
+        boolean searchActive = !normalizedSearch.isBlank();
         ArrayList<AtlasItem> filtered = new ArrayList<>(items.size());
         for (AtlasItem item : items) {
             if (item == null || item.identity() == null) {
@@ -1378,13 +1390,34 @@ public record SlotWorkspaceViewModel(
             boolean acceptedInput = targets.acceptedInput(identity, itemTags);
             boolean workflowRelevant = targets.workflowRelevant(identity, itemTags);
             boolean storageGhost = !item.carried() && (item.proximateCount() > 0 || !item.elsewhere().isEmpty());
-            if (identity != null && (workflowRelevant || putAway.contains(item.identity()) || storageGhost)) {
+            boolean putAwayCandidate = item.carried()
+                    && !workflowRelevant
+                    && putAway.contains(item.identity());
+            boolean searchMatch = searchActive && WorkspaceSearchQuery.matchesItem(
+                    normalizedSearch,
+                    item,
+                    islandsById == null ? null : islandsById.get(item.islandId()));
+            if (identity != null && (workflowRelevant || putAwayCandidate || storageGhost || searchMatch)) {
                 AtlasItem visibleItem = item.withAcceptedWorkflowInput(acceptedInput);
-                filtered.add((workflowRelevant || storageGhost) ? visibleItem.withPutAwayState(PutAwayState.NONE)
-                        : visibleItem.withPutAwayState(PutAwayState.ROUTED));
+                filtered.add(putAwayCandidate
+                        ? visibleItem.withPutAwayState(PutAwayState.ROUTED)
+                        : visibleItem.withPutAwayState(PutAwayState.NONE));
             }
         }
         return filtered;
+    }
+
+    private static Map<String, AtlasIsland> islandsById(List<AtlasIsland> islands) {
+        if (islands == null || islands.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<String, AtlasIsland> byId = new LinkedHashMap<>();
+        for (AtlasIsland island : islands) {
+            if (island != null && island.islandId() != null && !island.islandId().isBlank()) {
+                byId.putIfAbsent(island.islandId(), island);
+            }
+        }
+        return byId.isEmpty() ? Map.of() : Map.copyOf(byId);
     }
 
     private static List<AtlasItem> activeWorkflowPutAwayItems(
@@ -1515,6 +1548,7 @@ public record SlotWorkspaceViewModel(
                     desiredCount,
                     desiredFromKit,
                     base == null ? wantedCounts == null ? 0 : wantedCounts.getOrDefault(identity, 0) : base.wantedCount(),
+                    base != null && base.junk(),
                     "",
                     -1,
                     0));
@@ -2920,6 +2954,7 @@ public record SlotWorkspaceViewModel(
             int desiredCount,
             boolean desiredCountFromKit,
             int wantedCount,
+            boolean junk,
             boolean acceptedWorkflowInput,
             String largestCarriedSourceId,
             int largestCarriedSlotIndex,
@@ -3000,6 +3035,7 @@ public record SlotWorkspaceViewModel(
                     desiredCount,
                     desiredCountFromKit,
                     wantedCount,
+                    junk,
                     acceptedWorkflowInput,
                     largestCarriedSourceId,
                     largestCarriedSlotIndex,
@@ -3033,6 +3069,7 @@ public record SlotWorkspaceViewModel(
                     desiredCount,
                     desiredCountFromKit,
                     wantedCount,
+                    junk,
                     accepted,
                     largestCarriedSourceId,
                     largestCarriedSlotIndex,
@@ -3063,6 +3100,7 @@ public record SlotWorkspaceViewModel(
                 int desiredCount,
                 boolean desiredCountFromKit,
                 int wantedCount,
+                boolean junk,
                 String largestCarriedSourceId,
                 int largestCarriedSlotIndex,
                 int largestCarriedSlotCount,
@@ -3071,11 +3109,81 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions, presence, elsewhere,
                     isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, desiredCount,
-                    desiredCountFromKit, wantedCount, false, largestCarriedSourceId, largestCarriedSlotIndex,
+                    desiredCountFromKit, wantedCount, junk, false, largestCarriedSourceId, largestCarriedSlotIndex,
+                    largestCarriedSlotCount, putAwayState);
+        }
+
+        /** Backward-compat constructor: defaults junk and accepted-workflow-input state. */
+        public AtlasItem(
+                IdentityRef identity,
+                ItemStack displayStack,
+                String name,
+                int totalCount,
+                int firstSlotIndex,
+                String islandId,
+                boolean recent,
+                boolean playerPlaced,
+                boolean carried,
+                boolean ghost,
+                int proximateCount,
+                List<ChipSuggestion> chipSuggestions,
+                List<ChestPresenceEntry> presence,
+                List<ChestPresenceEntry> elsewhere,
+                boolean isCarriedContainer,
+                int containerFreeSlotCount,
+                int containerSlotCapacity,
+                boolean kitNeeded,
+                int desiredCount,
+                boolean desiredCountFromKit,
+                int wantedCount,
+                String largestCarriedSourceId,
+                int largestCarriedSlotIndex,
+                int largestCarriedSlotCount,
+                PutAwayState putAwayState
+        ) {
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
+                    recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions, presence, elsewhere,
+                    isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, desiredCount,
+                    desiredCountFromKit, wantedCount, false, false, largestCarriedSourceId, largestCarriedSlotIndex,
                     largestCarriedSlotCount, putAwayState);
         }
 
         /** Backward-compat constructor: defaults put-away guidance state. */
+        public AtlasItem(
+                IdentityRef identity,
+                ItemStack displayStack,
+                String name,
+                int totalCount,
+                int firstSlotIndex,
+                String islandId,
+                boolean recent,
+                boolean playerPlaced,
+                boolean carried,
+                boolean ghost,
+                int proximateCount,
+                List<ChipSuggestion> chipSuggestions,
+                List<ChestPresenceEntry> presence,
+                List<ChestPresenceEntry> elsewhere,
+                boolean isCarriedContainer,
+                int containerFreeSlotCount,
+                int containerSlotCapacity,
+                boolean kitNeeded,
+                int desiredCount,
+                boolean desiredCountFromKit,
+                int wantedCount,
+                boolean junk,
+                String largestCarriedSourceId,
+                int largestCarriedSlotIndex,
+                int largestCarriedSlotCount
+        ) {
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
+                    recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions, presence, elsewhere,
+                    isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, desiredCount,
+                    desiredCountFromKit, wantedCount, junk, false, largestCarriedSourceId, largestCarriedSlotIndex,
+                    largestCarriedSlotCount, PutAwayState.NONE);
+        }
+
+        /** Backward-compat constructor: defaults junk, accepted-workflow-input, and put-away state. */
         public AtlasItem(
                 IdentityRef identity,
                 ItemStack displayStack,
@@ -3105,7 +3213,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions, presence, elsewhere,
                     isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, desiredCount,
-                    desiredCountFromKit, wantedCount, false, largestCarriedSourceId, largestCarriedSlotIndex,
+                    desiredCountFromKit, wantedCount, false, false, largestCarriedSourceId, largestCarriedSlotIndex,
                     largestCarriedSlotCount, PutAwayState.NONE);
         }
 
@@ -3131,7 +3239,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, List.of(), isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, false, 0,
-                    false, 0, false, "", -1, 0, PutAwayState.NONE);
+                    false, 0, false, false, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults kitNeeded/desiredCount/largestCarriedSlot. */
@@ -3157,7 +3265,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, false, 0,
-                    false, 0, false, "", -1, 0, PutAwayState.NONE);
+                    false, 0, false, false, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults desiredCount/largestCarriedSlot. */
@@ -3184,7 +3292,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, 0,
-                    false, 0, false, "", -1, 0, PutAwayState.NONE);
+                    false, 0, false, false, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults largestCarriedSlot only. */
@@ -3212,7 +3320,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
-                    kitNeeded, desiredCount, false, 0, false, "", -1, 0, PutAwayState.NONE);
+                    kitNeeded, desiredCount, false, 0, false, false, "", -1, 0, PutAwayState.NONE);
         }
 
         /** Backward-compat constructor: defaults wantedCount only. */
@@ -3244,7 +3352,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
-                    kitNeeded, desiredCount, desiredCountFromKit, 0, false,
+                    kitNeeded, desiredCount, desiredCountFromKit, 0, false, false,
                     largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount, PutAwayState.NONE);
         }
 
@@ -3278,7 +3386,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
-                    kitNeeded, desiredCount, desiredCountFromKit, wanted ? 1 : 0, false,
+                    kitNeeded, desiredCount, desiredCountFromKit, wanted ? 1 : 0, false, false,
                     largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount, PutAwayState.NONE);
         }
 

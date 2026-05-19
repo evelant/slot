@@ -246,6 +246,8 @@ class WallSectionHeaderUiBuilderTest {
         assertEquals(1.0f, distant.layout().paddingHorizontal());
         assertTrue(nearby.textStyle().adaptiveWidth());
         assertTrue(distant.textStyle().adaptiveWidth());
+        assertEquals(WorkspaceUiPalette.NEARBY_BADGE, nearby.backgroundColor());
+        assertEquals(WorkspaceUiPalette.DISTANT_BADGE, distant.backgroundColor());
     }
 
     @Test

@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-18
+Last updated: 2026-05-19
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -19,10 +19,11 @@ common workspace projection, carried/world storage accessors, guarded
 metadata/transfer/hotbar/workflow-tab/chest/cursor/gather/wayfinding actions, and
 the direct Taffy/GuiGraphics `G` screen plus mounted sidebar. The latest
 UI parity pass aligned both loaders on right-side workflow tabs, vanilla-shaped
-Belt, wanted/desired counts, remembered search/scroll, and configurable
+Belt, shared item-card state chrome, accepted-input menus, remembered
+search/scroll, two-row Recents, compact section headers, and configurable
 sidebar margins. NeoForge remains the semantic oracle; the next risk is
-migrating richer modern-only affordances without reintroducing
-backend-specific semantics.
+migrating richer modern-only affordances without reintroducing backend-specific
+semantics.
 
 Sidecar product slice: EMI recipe context now uses the normal sidebar as a
 transient visible-ingredient filter, per
@@ -42,8 +43,9 @@ boundary no longer dominates engineering risk.
 Sidecar product slice: workflow tabs are now the task surface layered over the
 normal wall. `All` remains the global desired/wanted baseline; active tabs and
 one-level variants add local desired/wanted targets, implicit member targets,
-Belt/offhand pages, accepted inputs, gather targets, and routed put-away
-clutter. The code still uses `Kit*` names as the transitional implementation
+Belt/offhand pages, accepted inputs, gather targets, accepted-tag substitute
+ghosts, and routed put-away clutter. The code still uses `Kit*` names as the
+transitional implementation
 substrate, but user-facing work should speak in workflow tabs.
 
 **Recently shipped, no further plan:**
@@ -66,6 +68,30 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-19** — Workflow-tab playtest polish landed: active tabs now reveal
+  only intentful accepted-tag proximate substitutes by default while leaving
+  unrelated storage ghosts behind `x`/header reveal, accepted-input menus can add
+  or remove exact/tag rules with filtered material-specific tags and wider labels,
+  section headers carry `+x` nearby counts and compact empty sections, Useful Now
+  and Put Away suggestion rows are hidden while their projection/scoring remains
+  live, Recents renders two rows, search idle-commits and later clears after close
+  with right-click clear working on Forge, the default grave-accent key toggles
+  hovered identities between backpack/hotbar and main inventory, and the shared
+  target/display-storage fixes stabilized damaged tools, baskets/sacks, tool
+  racks, bulk deposit, undo, and TFC startup.
+- **2026-05-19** — Item-card chrome now has a shared common grammar:
+  `24px` cells, measured 1px-padded top storage pips, route-only notches,
+  have/target bottom badges colored by target source, right-side wayfinding or
+  `need N`, and one precedence-ordered status ring. NeoForge now renders that
+  common tree instead of replacing card chrome, and Forge fixed its Taffy
+  inset/padding order plus tiny-text placement/SDF settings so badges no longer
+  overlap or render through the wrong edge.
+- **2026-05-19** — Junk/trash pressure relief landed: item-card context menus
+  can mark/unmark junk or trash carried matching stacks, junk marks expire after
+  30 minutes and show a small card indicator, direct trash records undo/redo and
+  marks the identity as junk, a configurable unbound hovered-trash hotkey exists
+  on both loaders, and pickup routing deletes newly picked junk when carried
+  storage is over 75% full before backpack reroute.
 - **2026-05-18** — Contextual suggestion scoring now treats pickup/storage-take
   events as context seeds rather than exact Useful Now self-suggestions,
   deduplicates lane cards by identity, suppresses exact-use cards that are
@@ -81,11 +107,12 @@ hold the rest.
   routed put-away clutter visible, both loaders render visible workflow tabs
   with one-level variants, and card/tab menus can add/remove tab members or
   create variants.
-- **2026-05-18** — Workflow-tab cleanup guidance now has a dedicated Put Away
-  lane for active-tab-irrelevant carried items, marks items without a learned
-  nearby home instead of dropping them silently, preserves routed clutter on
-  normal wall cards, and adds an unbound cross-loader put-away hotkey that
-  delegates to the same protected deposit command as the button.
+- **2026-05-18** — Workflow-tab cleanup guidance added Put Away projection for
+  active-tab-irrelevant carried items, marks items without a learned nearby home
+  instead of dropping them silently, preserves routed clutter on normal wall
+  cards, and adds an unbound cross-loader put-away hotkey that delegates to the
+  same protected deposit command as the button. The rendered row was hidden by
+  the 2026-05-19 playtest polish entry above.
 - **2026-05-18** — Workflow tabs can now accept exact items or deterministic
   item tags from the card right-click menu without creating wanted/desired
   targets; accepted inputs stay visible in active tabs, are omitted from Put
@@ -142,17 +169,6 @@ hold the rest.
   resolve choice ingredients, omitted empty crafting slots, handled reusable
   tools, restored non-item producer recursion, and added named synthetic fluid
   display fallbacks.
-- **2026-05-11** — EMI recipe goal projections landed through Slice 3:
-  the common goal/projection model, goal-tab wall projection, browse-only
-  goal mode, initial recipe-goal tabs, and explicit EMI recipe-screen /
-  drag/drop goal creation/delegation now exist on NeoForge and Forge.
-- **2026-05-11** — classification pack-layer work landed installed
-  `mods/` scanning, jar extraction, OpenRouter live runs, runtime export,
-  datapack generation, dynamic organization-group auto-home cohorts,
-  inspect/rehome commands, vocabulary-backed evidence/proposals,
-  vocabulary-grounded Stage 3 prompting, and explicit chest-signal
-  deposit routing (learned affinity or existing matching contents).
-
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the
@@ -221,11 +237,12 @@ track lands.
    regenerate vanilla/pack vocabulary and run `classify-runtime-pack` with the
    usable vocabulary.
 5. **Workflow tab follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
-   Core tabs are live. Remaining slices are recipe import/staging into
-   current tabs, destination highlighting/wayfinding polish for put-away,
-   reorder UI for tabs/variants, tab duplicate/rename polish where the existing
-   context-menu editor is too rough, and the adjacent explicit overflow/junk
-   pressure relief slice.
+   Core tabs, accepted inputs, compact nearby headers, hidden noisy suggestion
+   rows, search/keybind polish, and the shared display-storage/tool fix pass are
+   live. Remaining slices are recipe import/staging into current tabs,
+   destination highlighting/wayfinding polish for put-away, reorder UI for
+   tabs/variants, tab duplicate/rename polish where the existing context-menu
+   editor is too rough.
 6. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
    The landed Kit code remains the implementation substrate, but future
    user-facing task workflow work should follow `workflow-tabs.md`.

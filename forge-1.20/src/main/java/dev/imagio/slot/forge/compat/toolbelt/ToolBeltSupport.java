@@ -31,6 +31,13 @@ final class ToolBeltSupport {
         return REFLECTION.available();
     }
 
+    static boolean isToolBeltItem(ItemStack stack) {
+        return stack != null
+                && !stack.isEmpty()
+                && REFLECTION.isToolBelt(stack)
+                && REFLECTION.itemHandler(stack) != null;
+    }
+
     static List<BeltSnapshot> readPlayerBelts(Player player) {
         if (player == null || !isAvailable()) {
             return List.of();

@@ -219,10 +219,6 @@ class KitRackUiBuilderTest {
         }
 
         @Override
-        public void clearKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity) {
-        }
-
-        @Override
         public void takeStackByIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
             taken.add(identity);
         }

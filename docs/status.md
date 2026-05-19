@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-18. Operational handoff. Read after
+Last updated: 2026-05-19. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -20,11 +20,17 @@ and common-service routing for metadata, transfer, hotbar, workflow tabs,
 desired-count, chest, deposit/take, cursor, active-tab gather, and
 cross-surface actions.
 
-Phase 2 has the production wall shell on both loaders: fallback card details,
-Recents, vanilla-shaped Belt, active chest controls, workflow tabs,
-desired/wanted count chrome, remembered search/scroll state, configurable
-sidebar margins, put-away guidance, and Forge key parity for inventory,
-tab-page cycle, gather, put-away, wayfinding, Esc, and wanted-count controls.
+Phase 2 has the production wall shell on both loaders: shared 24px item-card
+chrome, two-row Recents, vanilla-shaped Belt, active chest controls, workflow
+tabs, accepted-input menus, compact nearby headers, remembered search/scroll,
+configurable sidebar margins, hidden Useful Now / Put Away suggestion rows, and
+Forge key parity for inventory, tab-page cycle, gather, unbound put-away,
+main-inventory move, wayfinding, Esc, wanted-count controls, and unbound hovered
+trash. Junk/trash pressure relief marks low-priority identities for 30 minutes,
+shows a card indicator, deletes carried matches with undo, and drops newly
+picked junk when carried storage is over 75% full. Card chrome is
+computed in common so counts, storage pips, route notches, right strips, and
+status rings follow one state grammar on Forge and NeoForge.
 Modern drag/drop, richer LDLib2 card/tab affordances, and richer chest panels
 remain backend hooks, not common UI semantics.
 
@@ -83,17 +89,13 @@ Sophisticated Backpacks etc.) + `Slot.safeInsert` (respects
 `mayPlace` so crafting input limits / machine filters apply
 natively).
 
-**Phase 3b — hide vanilla player-inventory band — deferred as a
-separate experiment.** The visual reclaim is worth playtesting in
-isolation and the mod-compat surface (EMI `+`, sorting / hotkey-move
-observers, hard-custom screens) wants its own plan. Tracked from
-[plans/current.md § Queue](plans/current.md) under "deferred
-experiments." If you start this, write a fresh plan in
-`docs/plans/`; don't reopen the closed list-view plan.
+**Phase 3b — hide vanilla player-inventory band — deferred experiment.**
+Tracked from [plans/current.md § Queue](plans/current.md). If you start this,
+write a fresh plan in `docs/plans/`; don't reopen the closed list-view plan.
 
 **Discovered LDLib2 bug** (worked around, **user filing upstream**):
-`ModularUI.calculateStyleAndLayout` checks width twice instead of height;
-keep root at `widthPercent(100)` so scrollers get bounded space.
+`ModularUI.calculateStyleAndLayout` checks width twice; keep root at
+`widthPercent(100)` so scrollers get bounded space.
 
 ## Project structure
 
@@ -125,6 +127,8 @@ Common module:
   contributors, `SectionOrdinal` (per-section ordinal lookups for
   drag-drop). Camera / layout / nudge / band / packer code retired
   with the list-view swap.
+- `ui/workspace`: loader-neutral wall/card builders and chrome semantics;
+  platform UIs render this tree rather than owning card state.
 - `compat`: shared compat helpers
 
 NeoForge module:
@@ -154,7 +158,8 @@ Forge 1.20 module:
   `SimpleChannel` action transport, workflow persistence, session-backed
   projection, carried/world storage accessors, guarded
   transfer/hotbar/workflow-tab/desired/wanted/chest/cursor/gather/wayfinding
-  actions, sidebar margin config/depth fixes, `/slot test` and
+  actions, measured shared-card badges, sidebar margin config/depth fixes,
+  `/slot test` and
   classification commands, and the Phase 0.5 `compileSharedProbeJava`
   shared-source compile gate.
 
@@ -194,10 +199,11 @@ Now a sectioned vertical scroll list of single-LOD cards. The
 to minimize churn — see list-view.md § Naming. **Section** —
 player-facing organizational block (the new presentation of an
 "island"). **Home** — stable section + ordinal owned by one item
-identity. **Recents** — pinned strip of recently picked-up identities
+identity. **Recents** — two-row pinned strip of recently picked-up identities
 above the wall. **Workflow tab** — player-authored task view layered on top of
-`All`; tab membership behaves as an implicit active wanted-one target, tabs can
-have one level of variants, and optional Belt/offhand pages reuse the older Kit
+`All`; tab membership behaves as an implicit active wanted-one target, accepted
+inputs make exact/tag matches relevant without target pressure, tabs can have
+one level of variants, and optional Belt/offhand pages reuse the older Kit
 implementation substrate. **Belt** — docked hotbar strip at the bottom of the wall
 with vanilla offhand-left layout. **Desired count** — persistent target
 count, player-global (`All`) or active-tab scoped. **Wanted count** — temporary

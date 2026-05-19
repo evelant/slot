@@ -104,6 +104,14 @@ public final class ForgeWorkspaceClient {
             CATEGORY
     );
 
+    public static final KeyMapping TRASH_HOVER = new KeyMapping(
+            "key.slot.trash_hovered_item",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
     public static final KeyMapping STORAGE_XRAY = new KeyMapping(
             "key.slot.storage_xray",
             KeyConflictContext.GUI,
@@ -159,6 +167,14 @@ public final class ForgeWorkspaceClient {
 
     public static boolean setWantedHoverDown() {
         return SET_WANTED_HOVER.isDown() || keyPhysicallyDown(SET_WANTED_HOVER);
+    }
+
+    public static boolean matchesTrashHover(int keyCode, int scanCode) {
+        return TRASH_HOVER.matches(keyCode, scanCode);
+    }
+
+    public static boolean trashHoverDown() {
+        return TRASH_HOVER.isDown() || keyPhysicallyDown(TRASH_HOVER);
     }
 
     public static boolean matchesStorageXray(int keyCode, int scanCode) {
@@ -250,6 +266,7 @@ public final class ForgeWorkspaceClient {
             event.register(TOGGLE_WAYFINDING_HUD);
             event.register(MARK_WANTED);
             event.register(SET_WANTED_HOVER);
+            event.register(TRASH_HOVER);
             event.register(STORAGE_XRAY);
             event.register(MOVE_TO_MAIN_INVENTORY);
         }
@@ -292,6 +309,7 @@ public final class ForgeWorkspaceClient {
                 SlotForgeNetworking.depositPutAway();
             }
             ForgeHoveredWantedHotkey.onClientTick();
+            ForgeHoveredTrashHotkey.onClientTick();
             ForgeContainerSidebar.onClientTick();
         }
 
@@ -338,6 +356,7 @@ public final class ForgeWorkspaceClient {
         @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
         public static void onKeyPressed(ScreenEvent.KeyPressed.Pre event) {
             ForgeHoveredWantedHotkey.onKeyPressed(event);
+            ForgeHoveredTrashHotkey.onKeyPressed(event);
             ForgeContainerSidebar.onKeyPressed(event);
         }
 

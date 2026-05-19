@@ -73,6 +73,8 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter toggleWantedItemEmitter;
     RPCEmitter setWantedCountEmitter;
     RPCEmitter adjustWantedCountEmitter;
+    RPCEmitter setJunkEmitter;
+    RPCEmitter trashIdentityEmitter;
     RPCEmitter assignHomeToHotbarOnlyEmitter;
     RPCEmitter assignIdentityToAutoHotbarEmitter;
     RPCEmitter assignIdentityToHotbarSlotEmitter;
@@ -461,6 +463,19 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 Integer.class,
                 host.session::adjustWantedCount
+        ));
+        setJunkEmitter = add(WorkspaceActionId.SET_JUNK, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                Integer.class,
+                host.session::setJunk
+        ));
+        trashIdentityEmitter = add(WorkspaceActionId.TRASH_IDENTITY, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                host.session::trashIdentity
         ));
         assignHomeToHotbarOnlyEmitter = add(WorkspaceActionId.ASSIGN_HOME_TO_HOTBAR_ONLY, RPCEventBuilder.simple(
                 String.class,
@@ -1259,6 +1274,31 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
             host.localStatus.set("wanted count update unavailable");
             host.rebuild();
         }
+    }
+
+    void sendSetJunk(SlotWorkspaceViewModel.IdentityRef identity, boolean marked) {
+        if (setJunkEmitter == null || identity == null) {
+            return;
+        }
+        boolean sent = send(WorkspaceActionId.SET_JUNK,
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                marked ? 1 : 0);
+        host.localStatus.set(sent ? (marked ? "marked as junk" : "unmarked junk") : "junk update unavailable");
+        host.rebuild();
+    }
+
+    void sendTrashIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
+        if (trashIdentityEmitter == null || identity == null) {
+            return;
+        }
+        boolean sent = send(WorkspaceActionId.TRASH_IDENTITY,
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint());
+        host.localStatus.set(sent ? "trashing carried item" : "trash unavailable");
+        host.rebuild();
     }
 
     void sendMoveHotbarToAtlas(int hotbarIndex, String islandId, Integer ordinal) {

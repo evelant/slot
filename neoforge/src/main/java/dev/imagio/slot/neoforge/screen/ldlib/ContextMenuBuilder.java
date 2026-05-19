@@ -256,6 +256,25 @@ final class ContextMenuBuilder {
             ));
         }
 
+        menu.addChild(menuButton(
+                item.junk() ? "Unmark junk" : "Mark as junk",
+                true,
+                null,
+                () -> {
+                    host.rpc.sendSetJunk(item.identity(), !item.junk());
+                    closeContextMenu();
+                }
+        ));
+        menu.addChild(menuButton(
+                "Trash carried item",
+                item.carried(),
+                null,
+                () -> {
+                    host.rpc.sendTrashIdentity(item.identity());
+                    closeContextMenu();
+                }
+        ));
+
         List<SlotWorkspaceViewModel.AtlasIsland> recent = host.recentRehomeTargets(item);
         for (SlotWorkspaceViewModel.AtlasIsland target : recent) {
             String targetIslandId = target.islandId();

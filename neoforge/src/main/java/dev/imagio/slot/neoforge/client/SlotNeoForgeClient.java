@@ -2,6 +2,7 @@ package dev.imagio.slot.neoforge.client;
 
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings;
+import dev.imagio.slot.neoforge.client.input.SlotHoveredTrashHotkey;
 import dev.imagio.slot.neoforge.client.input.SlotHoveredWantedHotkey;
 import dev.imagio.slot.neoforge.client.wayfinding.WayfindingChestGlowRenderer;
 import dev.imagio.slot.neoforge.client.wayfinding.WayfindingHudRenderer;
@@ -48,6 +49,7 @@ public final class SlotNeoForgeClient {
         SlotReenableButton.init();
         SlotContainerSidebar.init();
         SlotHoveredWantedHotkey.init();
+        SlotHoveredTrashHotkey.init();
         NeoForge.EVENT_BUS.addListener(SlotNeoForgeClient::onClientTick);
         NeoForge.EVENT_BUS.addListener(RenderLevelStageEvent.class, WayfindingChestGlowRenderer::onRenderLevelStage);
         NeoForge.EVENT_BUS.addListener(RenderGuiEvent.Post.class, WayfindingHudRenderer::onRenderGui);

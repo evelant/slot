@@ -156,6 +156,14 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    private static final KeyMapping TRASH_HOVER = new KeyMapping(
+            "key.slot.trash_hovered_item",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
     private static final KeyMapping STORAGE_XRAY = new KeyMapping(
             "key.slot.storage_xray",
             KeyConflictContext.GUI,
@@ -192,6 +200,7 @@ public final class SlotAtlasKeyMappings {
         event.register(DEPOSIT_PUT_AWAY);
         event.register(MARK_WANTED);
         event.register(SET_WANTED_HOVER);
+        event.register(TRASH_HOVER);
         event.register(STORAGE_XRAY);
         event.register(MOVE_TO_MAIN_INVENTORY);
     }
@@ -222,6 +231,14 @@ public final class SlotAtlasKeyMappings {
 
     public static boolean setWantedHoverDown() {
         return SET_WANTED_HOVER.isDown() || keyPhysicallyDown(SET_WANTED_HOVER);
+    }
+
+    public static boolean matchesTrashHover(int keyCode, int scanCode) {
+        return keyMatches(TRASH_HOVER, keyCode, scanCode);
+    }
+
+    public static boolean trashHoverDown() {
+        return TRASH_HOVER.isDown() || keyPhysicallyDown(TRASH_HOVER);
     }
 
     public static boolean markWantedDown() {

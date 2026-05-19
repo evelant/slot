@@ -15,6 +15,7 @@ final class HotkeyRouter {
     private final SlotWorkspaceUiController host;
     private boolean markWantedKeyConsumed;
     private boolean setWantedHoverKeyConsumed;
+    private boolean trashHoverKeyConsumed;
     private boolean storageXrayKeyConsumed;
 
     HotkeyRouter(SlotWorkspaceUiController host) {
@@ -32,6 +33,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMoveToMainInventoryKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleSetWantedHoverKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleTrashHoverKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMarkWantedKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGoalRecipeKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
@@ -60,6 +62,9 @@ final class HotkeyRouter {
             }
             if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.setWantedHoverDown()) {
                 setWantedHoverKeyConsumed = false;
+            }
+            if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.trashHoverDown()) {
+                trashHoverKeyConsumed = false;
             }
             if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.storageXrayDown()) {
                 storageXrayKeyConsumed = false;
@@ -246,6 +251,33 @@ final class HotkeyRouter {
             return;
         }
         host.rpc.sendSetWantedCount(target.identity(), wantedHoverTargetCount(target));
+    }
+
+    void handleTrashHoverKey(UIEvent event) {
+        if (isTextInputFocused() || host.searchController.modalActive() || Screen.hasControlDown()) {
+            return;
+        }
+        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesTrashHover(event.keyCode, event.scanCode)) {
+            return;
+        }
+        event.stopPropagation();
+        if (trashHoverKeyConsumed) {
+            return;
+        }
+        trashHoverKeyConsumed = true;
+        if (host.goalTabActive()) {
+            host.localStatus.set("goal tab is browse only");
+            host.rebuild();
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
+        if (target == null) {
+            host.localStatus.set("hover an item to trash");
+            host.rebuild();
+            return;
+        }
+        host.rpc.sendTrashIdentity(target.identity());
     }
 
     void handleCycleKitPageKey(UIEvent event) {

@@ -227,7 +227,6 @@ public final class KitRackUiBuilder {
             button.addChild(kitCardPageRow(card, page));
         }
         button.addChild(kitCardActions(card));
-        button.addChild(kitCardBringRow(card));
         return button;
     }
 
@@ -359,37 +358,6 @@ public final class KitRackUiBuilder {
         return row;
     }
 
-    private SlotUiElement kitCardBringRow(SlotWorkspaceViewModel.KitCard card) {
-        SlotUiElement column = SlotUiElement.element()
-                .layout(layout -> layout
-                        .widthPercent(100)
-                        .height(card.bringSlotCount() > 0 ? 28 : 16)
-                        .gapAll(2)
-                        .alignItems(SlotUiLayout.AlignItems.FLEX_START)
-                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
-        int color = card.bringSlotCount() == 0 ? MUTED
-                : card.bringReadyCount() == card.bringSlotCount() ? ACCENT : WARNING;
-        column.addChild(SlotUiElement.label("targets " + card.bringReadyCount() + "/" + card.bringSlotCount(), color)
-                .layout(layout -> layout.widthPercent(100).height(10))
-                .textStyle(style -> style
-                        .color(color)
-                        .fontSize(8)
-                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
-                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
-        SlotUiElement strip = SlotUiElement.element()
-                .layout(layout -> layout
-                        .widthPercent(100)
-                        .height(KIT_CELL_SIZE_PX)
-                        .gapAll(1)
-                        .alignItems(SlotUiLayout.AlignItems.CENTER)
-                        .flexDirection(SlotUiLayout.FlexDirection.ROW));
-        for (SlotWorkspaceViewModel.KitBringItem item : card.bring()) {
-            strip.addChild(kitBringCell(card, item));
-        }
-        column.addChild(strip);
-        return column;
-    }
-
     private SlotUiElement kitSlotCell(
             SlotWorkspaceViewModel.KitCard card,
             SlotWorkspaceViewModel.KitPageView page,
@@ -417,48 +385,6 @@ public final class KitRackUiBuilder {
             cell.tooltipStack(slot.displayStack());
             cell.addChild(SlotUiElement.itemIcon(slot.displayStack(), KIT_CELL_ICON_SIZE_PX, slot.ready())
                     .renderVanillaCount(false));
-        }
-        return cell;
-    }
-
-    private SlotUiElement kitBringCell(SlotWorkspaceViewModel.KitCard card, SlotWorkspaceViewModel.KitBringItem item) {
-        SlotUiElement cell = SlotUiElement.panel(item.ready() ? ROW : GHOST_CELL)
-                .attach(WorkspaceUiAttachments.KIT_BRING_ITEM, item)
-                .layout(layout -> layout
-                        .width(KIT_CELL_SIZE_PX)
-                        .height(KIT_CELL_SIZE_PX)
-                        .paddingAll(1)
-                        .alignItems(SlotUiLayout.AlignItems.CENTER));
-        cell.on(SlotUiEventKind.MOUSE_DOWN, event -> {
-            if (event.button() == 0) {
-                event.stopPropagation();
-                return;
-            }
-            if (event.button() == 1) {
-                event.stopPropagation();
-                context.clearKitBring(card.kitId(), item.identity());
-            }
-        });
-        if (!item.displayStack().isEmpty()) {
-            cell.tooltipStack(item.displayStack());
-            cell.addChild(SlotUiElement.itemIcon(item.displayStack(), KIT_CELL_ICON_SIZE_PX, item.ready())
-                    .renderVanillaCount(false));
-        }
-        if (item.targetCount() > 1) {
-            int color = item.presentCount() >= item.targetCount() ? ACCENT : WARNING;
-            cell.addChild(SlotUiElement.label(item.presentCount() + "/" + item.targetCount(), color)
-                    .layout(layout -> layout
-                            .positionType(SlotUiLayout.PositionType.ABSOLUTE)
-                            .right(0)
-                            .bottom(0)
-                            .width(KIT_CELL_SIZE_PX)
-                            .height(6))
-                    .textStyle(style -> style
-                            .color(color)
-                            .fontSize(5)
-                            .shadow(true)
-                            .horizontal(SlotUiTextStyle.Horizontal.RIGHT)
-                            .vertical(SlotUiTextStyle.Vertical.BOTTOM)));
         }
         return cell;
     }
@@ -539,8 +465,6 @@ public final class KitRackUiBuilder {
         void removeKitPage(String kitId, int pageIndex);
 
         void clearKitSlot(String kitId, int pageIndex, int slotIndex);
-
-        void clearKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity);
 
         void takeStackByIdentity(SlotWorkspaceViewModel.IdentityRef identity);
 

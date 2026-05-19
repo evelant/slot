@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public final class SlotForgeNetworking {
-    private static final String PROTOCOL_VERSION = "3";
+    private static final String PROTOCOL_VERSION = "4";
     private static SimpleChannel channel;
 
     private SlotForgeNetworking() {
@@ -100,6 +100,11 @@ public final class SlotForgeNetworking {
                 .encoder(ForgeDepositPutAwayMessage::encode)
                 .decoder(ForgeDepositPutAwayMessage::decode)
                 .consumerMainThread(SlotForgeNetworking::handleDepositPutAway)
+                .add();
+        channel.messageBuilder(ForgeTrashIdentityMessage.class, 10, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ForgeTrashIdentityMessage::encode)
+                .decoder(ForgeTrashIdentityMessage::decode)
+                .consumerMainThread(SlotForgeNetworking::handleTrashIdentity)
                 .add();
     }
 
@@ -248,6 +253,27 @@ public final class SlotForgeNetworking {
             return true;
         } catch (RuntimeException exception) {
             SlotCommon.LOGGER.warn("Failed to send Forge wanted count packet", exception);
+            return false;
+        }
+    }
+
+    public static boolean trashIdentity(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (channel == null) {
+            SlotCommon.LOGGER.warn("Cannot trash Forge identity before network channel registration");
+            return false;
+        }
+        try {
+            channel.sendToServer(new ForgeTrashIdentityMessage(
+                    itemId,
+                    comparisonMode,
+                    componentFingerprint));
+            return true;
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn("Failed to send Forge trash identity packet", exception);
             return false;
         }
     }
@@ -543,6 +569,32 @@ public final class SlotForgeNetworking {
                 playerName(player),
                 message.itemId(),
                 message.targetCount(),
+                outcome.status(),
+                outcome.diagnostics());
+    }
+
+    private static void handleTrashIdentity(
+            ForgeTrashIdentityMessage message,
+            Supplier<NetworkEvent.Context> contextSupplier
+    ) {
+        ServerPlayer player = contextSupplier.get().getSender();
+        if (player == null || message == null) {
+            return;
+        }
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.trashIdentity(
+                player,
+                ForgePlayerWorkflowRuntimeService.runtime(player),
+                message.itemId(),
+                message.comparisonMode(),
+                message.componentFingerprint());
+        ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);
+        if (session != null) {
+            sendViewToPlayer(player, session, true);
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] Forge trash hover hotkey: player={} item={} status={} diagnostics={}",
+                playerName(player),
+                message.itemId(),
                 outcome.status(),
                 outcome.diagnostics());
     }

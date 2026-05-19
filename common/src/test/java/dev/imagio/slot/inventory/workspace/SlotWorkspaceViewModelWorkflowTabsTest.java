@@ -73,6 +73,47 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
     }
 
     @Test
+    void activeWorkflowSearchUsesGlobalItemAndSectionMatching() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setMember(mining.id(), ItemIdentity.of("minecraft:torch"), true);
+        runtime.kitWorkflow().activate(mining.id());
+        VisualAtlasIsland blocks = runtime.visualAtlasWorkflow().createIsland(
+                "Building Blocks",
+                0,
+                0,
+                0xFF6B8E23,
+                null);
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:dirt"), blocks.id(), 0);
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(
+                        new InventoryStackSnapshot(0, new ItemStack("minecraft:torch", 8, 64), 8),
+                        new InventoryStackSnapshot(1, new ItemStack("minecraft:dirt", 64, 64), 64)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                storageId -> SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(),
+                null,
+                null,
+                "building");
+
+        SlotWorkspaceViewModel.AtlasItem dirt = viewModel.atlasItems().stream()
+                .filter(item -> "minecraft:dirt".equals(item.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(dirt.carried());
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NONE, dirt.putAwayState());
+    }
+
+    @Test
     void activeWorkflowPutAwayDoesNotSuggestEquippedArmor() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         KitDefinition mining = runtime.kitWorkflow().create("Mining");
@@ -241,6 +282,41 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
         assertEquals(hammer, item.identity().toIdentity());
         assertFalse(item.kitNeeded());
         assertEquals(0, item.wantedCount());
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NONE, item.putAwayState());
+    }
+
+    @Test
+    void damagedOffhandWorkflowTongsSatisfyItemOnlyTarget() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity tongs = ItemIdentity.of("tfc:metal/tongs/steel");
+        KitDefinition smithing = runtime.kitWorkflow().create("Smithing");
+        runtime.kitWorkflow().update(smithing.withOffhand(tongs));
+        runtime.kitWorkflow().activate(smithing.id());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carriedBySource(Map.of(
+                        BuiltinInventoryIds.PLAYER_OFFHAND,
+                        List.of(new InventoryStackSnapshot(
+                                0,
+                                new ItemStack("tfc:metal/tongs/steel", "{Damage:50}", 1, 1),
+                                1)))),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.triageItems().stream()
+                .filter(candidate -> "tfc:metal/tongs/steel".equals(candidate.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(item.carried());
+        assertFalse(item.ghost());
+        assertEquals(tongs, item.identity().toIdentity());
+        assertFalse(item.kitNeeded());
+        assertEquals(0, item.desiredCount());
         assertEquals(SlotWorkspaceViewModel.PutAwayState.NONE, item.putAwayState());
     }
 

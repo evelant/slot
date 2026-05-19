@@ -17,6 +17,7 @@ public class ItemStack {
     private final String itemId;
     private final String componentFingerprint;
     private final int maxStackSize;
+    private final boolean damageable;
     private final boolean immutableEmpty;
     private final List<TagKey<Object>> tags = new ArrayList<>();
     private int count;
@@ -35,10 +36,22 @@ public class ItemStack {
     }
 
     private ItemStack(String itemId, String componentFingerprint, int count, int maxStackSize, boolean immutableEmpty) {
+        this(itemId, componentFingerprint, count, maxStackSize, false, immutableEmpty);
+    }
+
+    private ItemStack(
+            String itemId,
+            String componentFingerprint,
+            int count,
+            int maxStackSize,
+            boolean damageable,
+            boolean immutableEmpty
+    ) {
         this.itemId = itemId == null ? "" : itemId;
         this.componentFingerprint = componentFingerprint == null ? "" : componentFingerprint;
         this.count = Math.max(0, count);
         this.maxStackSize = Math.max(0, maxStackSize);
+        this.damageable = damageable;
         this.immutableEmpty = immutableEmpty;
     }
 
@@ -46,7 +59,7 @@ public class ItemStack {
         if (isEmpty()) {
             return EMPTY;
         }
-        ItemStack copy = new ItemStack(itemId, componentFingerprint, count, maxStackSize);
+        ItemStack copy = new ItemStack(itemId, componentFingerprint, count, maxStackSize, damageable, false);
         copy.hoverName = hoverName;
         copy.tags.addAll(tags);
         return copy;
@@ -80,6 +93,18 @@ public class ItemStack {
 
     public int getMaxStackSize() {
         return maxStackSize;
+    }
+
+    public int getMaxDamage() {
+        return damageable ? 100 : 0;
+    }
+
+    public boolean isDamageableItem() {
+        return damageable;
+    }
+
+    public ItemStack damageable() {
+        return new ItemStack(itemId, componentFingerprint, count, maxStackSize, true, immutableEmpty);
     }
 
     public String itemId() {
