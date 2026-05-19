@@ -49,6 +49,7 @@ import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputOptions;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -59,7 +60,6 @@ import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -1629,36 +1629,9 @@ public final class ForgeWorkspaceSurface {
         if (item == null || item.identity() == null) {
             return List.of();
         }
-        ArrayList<WorkflowAcceptedInputRule> rules = new ArrayList<>();
-        WorkflowAcceptedInputRule exact = WorkflowAcceptedInputRule.exact(item.identity().toIdentity());
-        if (exact != null) {
-            rules.add(exact);
-        }
-        ArrayList<String> tags = new ArrayList<>(ItemStackTags.itemTagIds(item.displayStack()));
-        tags.removeIf(tag -> !selectableAcceptedInputTag(tag));
-        tags.sort(Comparator.comparingInt(ForgeWorkspaceSurface::acceptedTagRank).thenComparing(tag -> tag));
-        int added = 0;
-        for (String tag : tags) {
-            WorkflowAcceptedInputRule rule = WorkflowAcceptedInputRule.itemTag(tag);
-            if (rule != null && !rules.contains(rule)) {
-                rules.add(rule);
-                added++;
-                if (added >= 4) {
-                    break;
-                }
-            }
-        }
-        return rules.isEmpty() ? List.of() : List.copyOf(rules);
-    }
-
-    private static boolean selectableAcceptedInputTag(String tag) {
-        return tag != null && tag.contains(":");
-    }
-
-    private static int acceptedTagRank(String tag) {
-        int colon = tag == null ? -1 : tag.indexOf(':');
-        String path = colon >= 0 ? tag.substring(colon + 1) : "";
-        return path.contains("/") ? 0 : 1;
+        return WorkflowAcceptedInputOptions.forItem(
+                item.identity().toIdentity(),
+                ItemStackTags.itemTagIds(item.displayStack()));
     }
 
     private static String acceptedInputButtonLabel(WorkflowAcceptedInputRule rule, boolean accepted) {
@@ -3521,6 +3494,9 @@ public final class ForgeWorkspaceSurface {
         @Override
         public void toggleNearbySection(SlotWorkspaceViewModel.AtlasIsland island) {
             if (island == null) {
+                return;
+            }
+            if (isCursorCarrying()) {
                 return;
             }
             toggleStorageGhostSection(island.islandId());

@@ -453,6 +453,9 @@ final class ListWallPanelBuilder {
             if (island == null) {
                 return;
             }
+            if (WorkspaceCursorState.isCarrying()) {
+                return;
+            }
             host.toggleStorageGhostSection(island.islandId());
         }
     }

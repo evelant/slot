@@ -4,6 +4,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class ItemStack {
     public static final ItemStack EMPTY = new ItemStack("", "", 0, 64, true);
@@ -12,6 +18,7 @@ public class ItemStack {
     private final String componentFingerprint;
     private final int maxStackSize;
     private final boolean immutableEmpty;
+    private final List<TagKey<Object>> tags = new ArrayList<>();
     private int count;
     private Component hoverName;
 
@@ -41,6 +48,7 @@ public class ItemStack {
         }
         ItemStack copy = new ItemStack(itemId, componentFingerprint, count, maxStackSize);
         copy.hoverName = hoverName;
+        copy.tags.addAll(tags);
         return copy;
     }
 
@@ -91,6 +99,23 @@ public class ItemStack {
             this.hoverName = hoverName;
         }
         return this;
+    }
+
+    public ItemStack withTags(String... tagIds) {
+        tags.clear();
+        if (tagIds != null) {
+            for (String tagId : tagIds) {
+                ResourceLocation location = ResourceLocation.tryParse(tagId);
+                if (location != null) {
+                    tags.add(TagKey.create(null, location));
+                }
+            }
+        }
+        return this;
+    }
+
+    public Stream<TagKey<Object>> getTags() {
+        return tags.stream();
     }
 
     public Tag saveOptional(HolderLookup.Provider provider) {

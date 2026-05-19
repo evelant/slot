@@ -19,6 +19,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputOptions;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -28,8 +29,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 final class ContextMenuBuilder {
@@ -291,36 +290,9 @@ final class ContextMenuBuilder {
         if (item == null || item.identity() == null) {
             return List.of();
         }
-        ArrayList<WorkflowAcceptedInputRule> rules = new ArrayList<>();
-        WorkflowAcceptedInputRule exact = WorkflowAcceptedInputRule.exact(item.identity().toIdentity());
-        if (exact != null) {
-            rules.add(exact);
-        }
-        ArrayList<String> tags = new ArrayList<>(ItemStackTags.itemTagIds(item.displayStack()));
-        tags.removeIf(tag -> !selectableAcceptedInputTag(tag));
-        tags.sort(Comparator.comparingInt(ContextMenuBuilder::acceptedTagRank).thenComparing(tag -> tag));
-        int added = 0;
-        for (String tag : tags) {
-            WorkflowAcceptedInputRule rule = WorkflowAcceptedInputRule.itemTag(tag);
-            if (rule != null && !rules.contains(rule)) {
-                rules.add(rule);
-                added++;
-                if (added >= 4) {
-                    break;
-                }
-            }
-        }
-        return rules.isEmpty() ? List.of() : List.copyOf(rules);
-    }
-
-    private static boolean selectableAcceptedInputTag(String tag) {
-        return tag != null && tag.contains(":");
-    }
-
-    private static int acceptedTagRank(String tag) {
-        int colon = tag == null ? -1 : tag.indexOf(':');
-        String path = colon >= 0 ? tag.substring(colon + 1) : "";
-        return path.contains("/") ? 0 : 1;
+        return WorkflowAcceptedInputOptions.forItem(
+                item.identity().toIdentity(),
+                ItemStackTags.itemTagIds(item.displayStack()));
     }
 
     private static String acceptedInputButtonLabel(WorkflowAcceptedInputRule rule, boolean accepted) {

@@ -185,6 +185,12 @@ class WallSectionItemSorterTest {
 
         assertEquals(WallSectionHeaderUiBuilder.COMPACT_HEADER_HEIGHT_PX, header.layout().height());
         assertEquals(List.of("+12"), descendantText(toggle));
+        SlotUiEvent headerClick = new SlotUiEvent(SlotUiEventKind.CLICK, 0, 1, 1, false);
+        header.dispatch(headerClick);
+        assertTrue(headerClick.propagationStopped());
+        assertEquals(island, context.toggled);
+        context.toggled = null;
+
         SlotUiEvent click = new SlotUiEvent(SlotUiEventKind.CLICK, 0, 1, 1, false);
         toggle.dispatch(click);
         assertTrue(click.propagationStopped());

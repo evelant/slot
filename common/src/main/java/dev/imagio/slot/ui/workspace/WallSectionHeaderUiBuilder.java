@@ -75,6 +75,14 @@ public final class WallSectionHeaderUiBuilder {
         int countColor = hasCarried ? ACCENT : MUTED;
         int normalizedNearbyCount = Math.max(0, nearbyToggleCount);
         if (normalizedNearbyCount > 0) {
+            header.tooltipLines(nearbyToggleTooltip(normalizedNearbyCount, nearbyExpanded));
+            header.on(SlotUiEventKind.CLICK, event -> {
+                if (event.button() != 0) {
+                    return;
+                }
+                event.stopPropagation();
+                context.toggleNearbySection(island);
+            });
             header.addChild(nearbyToggle(island, normalizedNearbyCount, nearbyExpanded, compact));
         }
         String countText = countText(island, visibleCount, totalCount, filtering, hasCarried);
@@ -115,9 +123,7 @@ public final class WallSectionHeaderUiBuilder {
                 .attach(WorkspaceUiAttachments.ATLAS_ISLAND, island)
                 .attach(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_COUNT, count)
                 .attach(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_EXPANDED, expanded)
-                .tooltipLines(List.of(Component.literal((expanded ? "Hide " : "Show ")
-                        + count
-                        + " nearby storage cards")))
+                .tooltipLines(nearbyToggleTooltip(count, expanded))
                 .layout(layout -> layout
                         .width(Math.max(compact ? 10 : 14, label.length() * (compact ? 4 : 5)))
                         .heightPercent(100))
@@ -134,6 +140,12 @@ public final class WallSectionHeaderUiBuilder {
                     event.stopPropagation();
                     context.toggleNearbySection(island);
                 });
+    }
+
+    private static List<Component> nearbyToggleTooltip(int count, boolean expanded) {
+        return List.of(Component.literal((expanded ? "Hide " : "Show ")
+                + Math.max(0, count)
+                + " nearby storage cards"));
     }
 
     private static String countText(
