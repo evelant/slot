@@ -32,6 +32,12 @@ import org.lwjgl.glfw.GLFW;
 import java.util.List;
 
 final class ContextMenuBuilder {
+    private static final int ITEM_CONTEXT_MENU_MIN_WIDTH = 160;
+    private static final int ITEM_CONTEXT_MENU_MAX_WIDTH = 480;
+    private static final int ITEM_CONTEXT_MENU_TEXT_MARGIN = 14;
+    private static final int ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR = 4;
+    private static final int ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS = 88;
+
     private final SlotWorkspaceUiController host;
 
     ContextMenuBuilder(SlotWorkspaceUiController host) {
@@ -176,21 +182,26 @@ final class ContextMenuBuilder {
         if (host.goalTabActive()) {
             return buildGoalAtlasContextMenu(item);
         }
+        SlotWorkspaceViewModel.KitCard activeTab = host.viewModel.activeKit();
+        List<WorkflowAcceptedInputRule> acceptedInputRules = activeTab == null
+                ? List.of()
+                : acceptedInputOptions(item);
+        int menuWidth = itemContextMenuWidth(item, activeTab, acceptedInputRules);
         UIElement catcher = contextMenuCatcher(this::closeContextMenu);
         UIElement menu = panel(GLASS).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .width(160)
-                .paddingAll(4)
+                .width(menuWidth)
+                .paddingHorizontal(2)
+                .paddingVertical(3)
                 .gapAll(2)
                 .flexDirection(FlexDirection.COLUMN));
-        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 160, 160);
+        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, menuWidth, 160);
         menu.style(style -> style.zIndex(22));
         menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
-        menu.addChild(label(shorten(item.name(), 22), ACCENT)
+        menu.addChild(label(shorten(item.name(), Math.max(22, menuWidth / ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR)), ACCENT)
                 .layout(layout -> layout.widthPercent(100).height(12)));
 
-        SlotWorkspaceViewModel.KitCard activeTab = host.viewModel.activeKit();
         if (activeTab != null) {
             boolean member = activeTab.members().contains(item.identity());
             menu.addChild(menuButton(
@@ -204,7 +215,7 @@ final class ContextMenuBuilder {
                         closeContextMenu();
                     }
             ));
-            for (WorkflowAcceptedInputRule rule : acceptedInputOptions(item)) {
+            for (WorkflowAcceptedInputRule rule : acceptedInputRules) {
                 WorkflowAcceptedInputRule matchedRule = acceptedInputMatch(activeTab, rule);
                 boolean accepted = matchedRule != null;
                 WorkflowAcceptedInputRule commandRule = accepted ? matchedRule : rule;
@@ -297,9 +308,31 @@ final class ContextMenuBuilder {
 
     private static String acceptedInputButtonLabel(WorkflowAcceptedInputRule rule, boolean accepted) {
         if (rule.itemTag()) {
-            return (accepted ? "Stop accepting " : "Accept ") + shorten(rule.displayLabel(), 24);
+            return (accepted ? "Stop accepting " : "Accept ")
+                    + shorten(rule.displayLabel(), ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS);
         }
         return accepted ? "Stop accepting exact item" : "Accept exact item";
+    }
+
+    private static int itemContextMenuWidth(
+            SlotWorkspaceViewModel.AtlasItem item,
+            SlotWorkspaceViewModel.KitCard activeTab,
+            List<WorkflowAcceptedInputRule> acceptedInputRules
+    ) {
+        int longest = item == null ? 0 : Math.min(item.name().length(), ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS);
+        if (activeTab != null && item != null) {
+            boolean member = activeTab.members().contains(item.identity());
+            String memberLabel = member
+                    ? "Remove from " + shorten(activeTab.name(), 14)
+                    : "Add to " + shorten(activeTab.name(), 18);
+            longest = Math.max(longest, memberLabel.length());
+            for (WorkflowAcceptedInputRule rule : acceptedInputRules) {
+                WorkflowAcceptedInputRule matchedRule = acceptedInputMatch(activeTab, rule);
+                longest = Math.max(longest, acceptedInputButtonLabel(rule, matchedRule != null).length());
+            }
+        }
+        int desired = ITEM_CONTEXT_MENU_TEXT_MARGIN + longest * ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR;
+        return Math.max(ITEM_CONTEXT_MENU_MIN_WIDTH, Math.min(ITEM_CONTEXT_MENU_MAX_WIDTH, desired));
     }
 
     private static WorkflowAcceptedInputRule acceptedInputMatch(

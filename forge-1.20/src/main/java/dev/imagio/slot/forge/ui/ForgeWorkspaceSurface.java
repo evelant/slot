@@ -82,6 +82,11 @@ public final class ForgeWorkspaceSurface {
     private static final int RECENT_REHOME_MAX_DISPLAYED = 3;
     private static final int REHOME_MENU_MAX_DISPLAYED = 8;
     private static final int WHEEL_ACCUMULATOR_MAX_IDENTITIES = 64;
+    private static final float ITEM_CONTEXT_MENU_MIN_WIDTH = 174f;
+    private static final float ITEM_CONTEXT_MENU_MAX_WIDTH = 480f;
+    private static final int ITEM_CONTEXT_MENU_TEXT_MARGIN = 16;
+    private static final int ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR = 4;
+    private static final int ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS = 88;
     private static final long SEARCH_AUTO_CONFIRM_MILLIS = 2_000L;
 
     private final Mode mode;
@@ -1481,8 +1486,20 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement overlayPanel(float screenX, float screenY, float width) {
+        return overlayPanel(screenX, screenY, width, 6f, 6f, 4f, true);
+    }
+
+    private SlotUiElement overlayPanel(
+            float screenX,
+            float screenY,
+            float width,
+            float horizontalPadding,
+            float verticalPadding,
+            float gap,
+            boolean clampToWorkspace
+    ) {
         float x = mode == Mode.SIDEBAR
-                ? Math.max(4f, Math.min(screenX, workspaceWidth() - width - 4f))
+                ? Math.max(4f, clampToWorkspace ? Math.min(screenX, workspaceWidth() - width - 4f) : screenX)
                 : Math.max(4f, screenX);
         float y = Math.max(8f, screenY - 4f);
         return SlotUiElement.panel(0xF00B1117)
@@ -1492,8 +1509,9 @@ public final class ForgeWorkspaceSurface {
                         .left(x)
                         .top(y)
                         .width(width)
-                        .paddingAll(6)
-                        .gapAll(4)
+                        .paddingHorizontal(horizontalPadding)
+                        .paddingVertical(verticalPadding)
+                        .gapAll(gap)
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN))
                 .on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation(), true);
     }
@@ -1510,10 +1528,16 @@ public final class ForgeWorkspaceSurface {
         if (goalTabActive()) {
             return goalItemContextOverlay(item);
         }
-        SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 174);
-        panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.TEXT));
         SlotWorkspaceViewModel.KitCard activeTab = viewModel.activeKit();
+        List<WorkflowAcceptedInputRule> acceptedInputRules = activeTab == null
+                ? List.of()
+                : acceptedInputOptions(item);
+        float menuWidth = itemContextMenuWidth(item, activeTab, acceptedInputRules);
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, menuWidth, 2f, 3f, 3f, false);
+        panel.addChild(menuLabel(
+                shorten(item.name(), Math.max(30, Math.round(menuWidth) / ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR)),
+                WorkspaceUiPalette.TEXT));
         if (activeTab != null) {
             boolean member = activeTab.members().contains(item.identity());
             panel.addChild(menuButton(
@@ -1530,7 +1554,7 @@ public final class ForgeWorkspaceSurface {
                             item.identity().comparisonMode(),
                             item.identity().componentFingerprint(),
                             member ? 0 : 1))));
-            for (WorkflowAcceptedInputRule rule : acceptedInputOptions(item)) {
+            for (WorkflowAcceptedInputRule rule : acceptedInputRules) {
                 WorkflowAcceptedInputRule matchedRule = acceptedInputMatch(activeTab, rule);
                 boolean accepted = matchedRule != null;
                 WorkflowAcceptedInputRule commandRule = accepted ? matchedRule : rule;
@@ -1636,9 +1660,31 @@ public final class ForgeWorkspaceSurface {
 
     private static String acceptedInputButtonLabel(WorkflowAcceptedInputRule rule, boolean accepted) {
         if (rule.itemTag()) {
-            return (accepted ? "Stop accepting " : "Accept ") + shorten(rule.displayLabel(), 26);
+            return (accepted ? "Stop accepting " : "Accept ")
+                    + shorten(rule.displayLabel(), ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS);
         }
         return accepted ? "Stop accepting exact item" : "Accept exact item";
+    }
+
+    private static float itemContextMenuWidth(
+            SlotWorkspaceViewModel.AtlasItem item,
+            SlotWorkspaceViewModel.KitCard activeTab,
+            List<WorkflowAcceptedInputRule> acceptedInputRules
+    ) {
+        int longest = item == null ? 0 : Math.min(item.name().length(), ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS);
+        if (activeTab != null && item != null) {
+            boolean member = activeTab.members().contains(item.identity());
+            String memberLabel = member
+                    ? "Remove from " + shorten(activeTab.name(), 16)
+                    : "Add to " + shorten(activeTab.name(), 20);
+            longest = Math.max(longest, memberLabel.length());
+            for (WorkflowAcceptedInputRule rule : acceptedInputRules) {
+                WorkflowAcceptedInputRule matchedRule = acceptedInputMatch(activeTab, rule);
+                longest = Math.max(longest, acceptedInputButtonLabel(rule, matchedRule != null).length());
+            }
+        }
+        float desired = ITEM_CONTEXT_MENU_TEXT_MARGIN + longest * ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR;
+        return Math.max(ITEM_CONTEXT_MENU_MIN_WIDTH, Math.min(ITEM_CONTEXT_MENU_MAX_WIDTH, desired));
     }
 
     private static WorkflowAcceptedInputRule acceptedInputMatch(
@@ -2052,7 +2098,7 @@ public final class ForgeWorkspaceSurface {
                 .textStyle(style -> style
                         .color(enabled ? WorkspaceUiPalette.TEXT : WorkspaceUiPalette.MUTED)
                         .fontSize(7)
-                        .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER))
                 .on(SlotUiEventKind.CLICK, event -> {
                     if (event.button() != 0) {
