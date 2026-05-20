@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 public record ContextualItemAggregate(
         ItemIdentity identity,
@@ -17,6 +18,7 @@ public record ContextualItemAggregate(
         long lastDepositedSequence
 ) {
     public ContextualItemAggregate {
+        identity = ItemIdentityCollections.key(identity);
         timesAcquired = Math.max(0, timesAcquired);
         timesTakenFromStorage = Math.max(0, timesTakenFromStorage);
         timesDepositedToStorage = Math.max(0, timesDepositedToStorage);

@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -33,7 +34,7 @@ public record RecentView(
         LinkedHashMap<ItemIdentity, Integer> copied = new LinkedHashMap<>();
         source.forEach((identity, count) -> {
             if (identity != null && count != null && count > 0) {
-                copied.put(identity, count);
+                ItemIdentityCollections.mergePositive(copied, identity, count);
             }
         });
         return java.util.Collections.unmodifiableMap(copied);
@@ -46,7 +47,8 @@ public record RecentView(
         LinkedHashMap<ItemIdentity, Long> copied = new LinkedHashMap<>();
         source.forEach((identity, sequence) -> {
             if (identity != null && sequence != null && sequence >= 0L) {
-                copied.put(identity, sequence);
+                ItemIdentity key = ItemIdentityCollections.key(identity);
+                copied.merge(key, sequence, Math::max);
             }
         });
         return java.util.Collections.unmodifiableMap(copied);

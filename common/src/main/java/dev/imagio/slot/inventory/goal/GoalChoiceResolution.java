@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.goal;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -21,7 +22,7 @@ public record GoalChoiceResolution(
                 if (entry.getKey() == null || entry.getKey().isBlank() || entry.getValue() == null) {
                     continue;
                 }
-                copy.put(entry.getKey().trim(), entry.getValue());
+                copy.put(entry.getKey().trim(), ItemIdentityCollections.key(entry.getValue()));
             }
         }
         choicesByKey = Collections.unmodifiableMap(copy);
@@ -48,7 +49,7 @@ public record GoalChoiceResolution(
             return this;
         }
         LinkedHashMap<String, ItemIdentity> copy = new LinkedHashMap<>(choicesByKey);
-        copy.put(choiceGroupId.trim(), identity);
+        copy.put(choiceGroupId.trim(), ItemIdentityCollections.key(identity));
         return new GoalChoiceResolution(copy, recipeChoicesByKey);
     }
 

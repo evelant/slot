@@ -35,7 +35,7 @@ final class Forge120StackAccess implements SlotStackAccess.StackAccess {
 
     @Override
     public boolean damageable(ItemStack stack) {
-        return stack != null && stack.isDamageableItem();
+        return stack != null && (stack.isDamageableItem() || stack.getMaxDamage() > 0);
     }
 
     @Override

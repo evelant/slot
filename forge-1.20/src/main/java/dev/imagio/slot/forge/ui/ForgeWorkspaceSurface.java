@@ -88,6 +88,11 @@ public final class ForgeWorkspaceSurface {
     private static final int ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR = 4;
     private static final int ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS = 88;
     private static final long SEARCH_AUTO_CONFIRM_MILLIS = 2_000L;
+    private static final float POPOVER_SCREEN_MARGIN = 4f;
+    private static final float POPOVER_TOP_MARGIN = 8f;
+    private static final float MENU_LABEL_HEIGHT = 11f;
+    private static final float MENU_BUTTON_HEIGHT = 14f;
+    private static final float MENU_CUSTOM_ROW_HEIGHT = 14f;
 
     private final Mode mode;
     private final WorkspaceActionEnvelope envelope;
@@ -113,6 +118,7 @@ public final class ForgeWorkspaceSurface {
     private SlotWorkspaceViewModel.OffhandSlot offhand = SlotWorkspaceViewModel.OffhandSlot.empty();
     private SlotWorkspaceViewModel.IdentityRef hoveredIdentity;
     private String searchQuery = "";
+    private int viewportHeight = 240;
     private String lastSentSearchQuery = "";
     private boolean searchActive;
     private long lastSearchInputMillis = System.currentTimeMillis();
@@ -206,6 +212,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     public void tick(int width, int height) {
+        rememberViewport(width, height);
         shiftClickTransferState.observeShiftDown(Screen.hasShiftDown());
         if (!ForgeWorkspaceClient.markWantedDown()) {
             markWantedKeyConsumed = false;
@@ -235,6 +242,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     public void render(GuiGraphics graphics, int mouseX, int mouseY, int width, int height) {
+        rememberViewport(width, height);
         if (tree == null) {
             rebuild(width, height);
         }
@@ -247,6 +255,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     public void rebuild(int width, int height) {
+        rememberViewport(width, height);
         rebuildRequested = false;
         float scrollY = tree == null ? 0f : tree.scrollY();
         if (tree == null) {
@@ -772,6 +781,10 @@ public final class ForgeWorkspaceSurface {
 
     private String surfaceMemoryKey() {
         return mode == Mode.SIDEBAR ? "forge.sidebar" : "forge.standalone";
+    }
+
+    private void rememberViewport(int width, int height) {
+        viewportHeight = Math.max(1, height);
     }
 
     private boolean storageGhostSectionExpanded(String islandId) {
@@ -1517,34 +1530,78 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement overlayPanel(float screenX, float screenY, float width) {
-        return overlayPanel(screenX, screenY, width, 6f, 6f, 4f, true);
+        return overlayPanel(screenX, screenY, width, menuHeight(6f, 4f, 1, 5), 6f, 6f, 4f, true);
+    }
+
+    private SlotUiElement overlayPanel(float screenX, float screenY, float width, float approximateHeight) {
+        return overlayPanel(screenX, screenY, width, approximateHeight, 6f, 6f, 4f, true);
     }
 
     private SlotUiElement overlayPanel(
             float screenX,
             float screenY,
             float width,
+            float approximateHeight,
             float horizontalPadding,
             float verticalPadding,
             float gap,
             boolean clampToWorkspace
     ) {
-        float x = mode == Mode.SIDEBAR
-                ? Math.max(4f, clampToWorkspace ? Math.min(screenX, workspaceWidth() - width - 4f) : screenX)
-                : Math.max(4f, screenX);
-        float y = Math.max(8f, screenY - 4f);
+        float originX = popoverOriginX();
+        float x = Math.max(POPOVER_SCREEN_MARGIN, screenX - originX);
+        if (mode == Mode.SIDEBAR && clampToWorkspace) {
+            float maxX = Math.max(POPOVER_SCREEN_MARGIN, workspaceWidth() - width - POPOVER_SCREEN_MARGIN);
+            x = Math.min(x, maxX);
+        }
+        float panelX = x;
+        float panelY = anchoredPopoverY(screenY, approximateHeight);
         return SlotUiElement.panel(0xF00B1117)
                 .zIndex(501)
                 .layout(layout -> layout
                         .positionType(SlotUiLayout.PositionType.ABSOLUTE)
-                        .left(x)
-                        .top(y)
+                        .left(panelX)
+                        .top(panelY)
                         .width(width)
                         .paddingHorizontal(horizontalPadding)
                         .paddingVertical(verticalPadding)
                         .gapAll(gap)
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN))
                 .on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation(), true);
+    }
+
+    private float anchoredPopoverY(float screenY, float approximateHeight) {
+        float y = screenY - popoverOriginY() - POPOVER_SCREEN_MARGIN;
+        float availableHeight = Math.max(1f, viewportHeight - popoverOriginY() - popoverBottomInset());
+        float maxY = availableHeight - Math.max(0f, approximateHeight) - POPOVER_SCREEN_MARGIN;
+        return Math.max(POPOVER_TOP_MARGIN, Math.min(y, Math.max(POPOVER_TOP_MARGIN, maxY)));
+    }
+
+    private float popoverOriginX() {
+        return mode == Mode.SIDEBAR ? SlotForgeClientConfig.sidebarLeftMargin() : 0f;
+    }
+
+    private float popoverOriginY() {
+        return mode == Mode.SIDEBAR ? SlotForgeClientConfig.sidebarTopMargin() : 0f;
+    }
+
+    private float popoverBottomInset() {
+        return mode == Mode.SIDEBAR ? SlotForgeClientConfig.sidebarBottomMargin() : 0f;
+    }
+
+    private static float menuHeight(float verticalPadding, float gap, int labels, int buttons) {
+        return menuHeight(verticalPadding, gap, labels, buttons, 0);
+    }
+
+    private static float menuHeight(float verticalPadding, float gap, int labels, int buttons, int customRows) {
+        int rows = Math.max(0, labels) + Math.max(0, buttons) + Math.max(0, customRows);
+        if (rows == 0) {
+            return verticalPadding * 2f;
+        }
+        return verticalPadding * 2f
+                + Math.max(0, labels) * MENU_LABEL_HEIGHT
+                + Math.max(0, buttons) * MENU_BUTTON_HEIGHT
+                + Math.max(0, customRows) * MENU_CUSTOM_ROW_HEIGHT
+                + (rows - 1) * gap;
     }
 
     private SlotUiElement itemContextOverlay() {
@@ -1563,14 +1620,23 @@ public final class ForgeWorkspaceSurface {
         List<WorkflowAcceptedInputRule> acceptedInputRules = activeTab == null
                 ? List.of()
                 : acceptedInputOptions(item);
+        List<SlotWorkspaceViewModel.AtlasIsland> rehomeTargets = rehomeMenuTargets(item);
         float menuWidth = itemContextMenuWidth(item, activeTab, acceptedInputRules);
         SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, menuWidth, 2f, 3f, 3f, false);
+        SlotUiElement panel = overlayPanel(
+                contextMenuX,
+                contextMenuY,
+                menuWidth,
+                itemContextMenuHeight(item, activeTab, acceptedInputRules, rehomeTargets.size()),
+                2f,
+                3f,
+                3f,
+                false);
         panel.addChild(menuLabel(
                 shorten(item.name(), Math.max(30, Math.round(menuWidth) / ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR)),
                 WorkspaceUiPalette.TEXT));
         if (activeTab != null) {
-            boolean member = activeTab.members().contains(item.identity());
+            boolean member = activeTab.hasMember(item.identity());
             panel.addChild(menuButton(
                     member
                             ? "Remove from " + shorten(activeTab.name(), 16)
@@ -1682,7 +1748,7 @@ public final class ForgeWorkspaceSurface {
                         0))));
         panel.addChild(menuLabel("Move home", WorkspaceUiPalette.MUTED));
         int targetCount = 0;
-        for (SlotWorkspaceViewModel.AtlasIsland island : rehomeMenuTargets(item)) {
+        for (SlotWorkspaceViewModel.AtlasIsland island : rehomeTargets) {
             targetCount++;
             panel.addChild(menuButton(
                     shorten(island.label(), 26),
@@ -1721,7 +1787,7 @@ public final class ForgeWorkspaceSurface {
     ) {
         int longest = item == null ? 0 : Math.min(item.name().length(), ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS);
         if (activeTab != null && item != null) {
-            boolean member = activeTab.members().contains(item.identity());
+            boolean member = activeTab.hasMember(item.identity());
             String memberLabel = member
                     ? "Remove from " + shorten(activeTab.name(), 16)
                     : "Add to " + shorten(activeTab.name(), 20);
@@ -1733,6 +1799,26 @@ public final class ForgeWorkspaceSurface {
         }
         float desired = ITEM_CONTEXT_MENU_TEXT_MARGIN + longest * ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR;
         return Math.max(ITEM_CONTEXT_MENU_MIN_WIDTH, Math.min(ITEM_CONTEXT_MENU_MAX_WIDTH, desired));
+    }
+
+    private static float itemContextMenuHeight(
+            SlotWorkspaceViewModel.AtlasItem item,
+            SlotWorkspaceViewModel.KitCard activeTab,
+            List<WorkflowAcceptedInputRule> acceptedInputRules,
+            int rehomeTargetCount
+    ) {
+        int labels = 2 + (rehomeTargetCount <= 0 ? 1 : 0);
+        int buttons = 6 + Math.max(0, rehomeTargetCount);
+        if (activeTab != null) {
+            buttons += 1 + acceptedInputRules.size();
+        }
+        if (item != null && item.ghost()) {
+            buttons++;
+        }
+        if (item != null && item.desiredCount() > 0 && !item.desiredCountFromKit()) {
+            buttons++;
+        }
+        return menuHeight(3f, 3f, labels, buttons);
     }
 
     private static WorkflowAcceptedInputRule acceptedInputMatch(
@@ -1756,7 +1842,11 @@ public final class ForgeWorkspaceSurface {
 
     private SlotUiElement recipeItemContextOverlay(SlotWorkspaceViewModel.AtlasItem item) {
         SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 174);
+        SlotUiElement panel = overlayPanel(
+                contextMenuX,
+                contextMenuY,
+                174,
+                menuHeight(6f, 4f, 1, 5 + (item.ghost() ? 1 : 0)));
         panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.ACCENT));
         if (item.ghost()) {
             panel.addChild(menuButton(
@@ -1822,7 +1912,7 @@ public final class ForgeWorkspaceSurface {
         int lastIndex = Math.max(0, allSections.size() - 1);
 
         SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178);
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178, menuHeight(6f, 4f, 1, 5));
         panel.addChild(menuLabel(shorten(island.label(), 30), WorkspaceUiPalette.ACCENT));
         panel.addChild(menuButton(
                 previousVisible == null
@@ -1854,8 +1944,24 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement goalItemContextOverlay(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        List<GoalStackDescriptor> alternatives = goal != null && goal.hasChoiceControls(item)
+                ? goal.choiceAlternatives(item)
+                : List.of();
+        boolean hasChoiceControls = goal != null && goal.hasChoiceControls(item);
+        boolean hasManualChoice = hasChoiceControls && goal.hasManualChoice(item);
+        int alternativeCount = Math.min(8, alternatives.size());
+        int labelCount = 1 + (hasChoiceControls && !alternatives.isEmpty() ? 1 : 0);
+        int buttonCount = 3;
+        if (hasChoiceControls) {
+            buttonCount += alternativeCount + 1 + (hasManualChoice ? 1 : 0);
+        }
         SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178);
+        SlotUiElement panel = overlayPanel(
+                contextMenuX,
+                contextMenuY,
+                178,
+                menuHeight(6f, 4f, labelCount, buttonCount));
         panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.ACCENT));
         panel.addChild(menuButton(
                 "Open recipe in EMI",
@@ -1867,9 +1973,7 @@ public final class ForgeWorkspaceSurface {
                 true,
                 "Delegate usage details to EMI",
                 closeThen(() -> openGoalUses(item))));
-        GoalWorkspaceProjection goal = goalProjection();
-        if (goal != null && goal.hasChoiceControls(item)) {
-            List<GoalStackDescriptor> alternatives = goal.choiceAlternatives(item);
+        if (hasChoiceControls) {
             if (!alternatives.isEmpty()) {
                 panel.addChild(menuLabel("Use ingredient", WorkspaceUiPalette.MUTED));
                 for (GoalStackDescriptor alternative : alternatives.stream().limit(8).toList()) {
@@ -1948,7 +2052,11 @@ public final class ForgeWorkspaceSurface {
             return null;
         }
         SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178);
+        int labels = kit.kitId().equals(renamingKitId) || kit.kitId().equals(confirmDeleteKitId) ? 2 : 1;
+        int buttons = kit.kitId().equals(renamingKitId) || kit.kitId().equals(confirmDeleteKitId)
+                ? 2
+                : 4 + (kit.variant() ? 0 : 1);
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178, menuHeight(6f, 4f, labels, buttons));
         panel.addChild(menuLabel(shorten(kit.name(), 30), WorkspaceUiPalette.ACCENT));
         if (kit.kitId().equals(renamingKitId)) {
             panel.addChild(menuLabel("Name: " + renameKitDraft + "_", WorkspaceUiPalette.TEXT));
@@ -2002,10 +2110,15 @@ public final class ForgeWorkspaceSurface {
             return null;
         }
         SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178);
+        boolean renaming = chip.storageId().equals(renamingChestStorageId);
+        SlotUiElement panel = overlayPanel(
+                contextMenuX,
+                contextMenuY,
+                178,
+                menuHeight(6f, 4f, renaming ? 2 : 1, renaming ? 2 : 3));
         String label = chip.label().isBlank() ? "Chest" : chip.label();
         panel.addChild(menuLabel(shorten(label, 30), WorkspaceUiPalette.ACCENT));
-        if (chip.storageId().equals(renamingChestStorageId)) {
+        if (renaming) {
             panel.addChild(menuLabel("Name: " + renameChestDraft + "_", WorkspaceUiPalette.TEXT));
             panel.addChild(menuButton("Save", true, "Rename this chest", this::commitChestRenameEdit));
             panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
@@ -2049,7 +2162,7 @@ public final class ForgeWorkspaceSurface {
         SlotWorkspaceViewModel.IdentityRef identity = editingDesiredCountIdentity;
         SlotWorkspaceViewModel.AtlasItem item = byIdentity.get(identity);
         SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 170);
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 170, menuHeight(6f, 4f, 3, 3));
         panel.addChild(menuLabel("Desired count", WorkspaceUiPalette.ACCENT));
         panel.addChild(menuLabel(shorten(item == null ? identity.itemId() : item.name(), 30), WorkspaceUiPalette.TEXT));
         panel.addChild(menuLabel("Count: " + (desiredCountDraft.isBlank() ? "0" : desiredCountDraft) + "_",
@@ -2071,7 +2184,7 @@ public final class ForgeWorkspaceSurface {
             return null;
         }
         SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(islandEditX, islandEditY, 178);
+        SlotUiElement panel = overlayPanel(islandEditX, islandEditY, 178, menuHeight(6f, 4f, 2, 5, 1));
         panel.addChild(menuLabel("Edit section", WorkspaceUiPalette.ACCENT));
         panel.addChild(menuLabel("Name: " + islandLabelDraft + "_", WorkspaceUiPalette.TEXT));
         panel.addChild(menuButton("Save name", true, "Rename this section", this::commitIslandNameEdit));
@@ -2252,6 +2365,11 @@ public final class ForgeWorkspaceSurface {
                 return;
             }
             SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+            if (event.button() == 1 && !event.shiftDown() && !isCursorCarrying()) {
+                event.stopPropagation();
+                openItemContextMenu(target, event.x(), event.y());
+                return;
+            }
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.pointerDown(
                     cardGestureContext(target, event.button(), event.shiftDown()));
             if (dispatchCardGestureDecision(target, decision)) {

@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -50,10 +51,14 @@ public record ContextualSuggestionState(
         ContextualAssociationIndex nextAssociations = associationIndex;
         String nextActiveContextKey = activeContextKey;
 
-        ItemIdentity identity = event.identity();
+        ItemIdentity identity = ItemIdentityCollections.key(event.identity());
         if (identity != null) {
-            ContextualItemAggregate aggregate = nextItems.getOrDefault(identity, ContextualItemAggregate.empty(identity))
+            ContextualItemAggregate aggregate = ItemIdentityCollections.findOrDefault(
+                            nextItems,
+                            identity,
+                            ContextualItemAggregate.empty(identity))
                     .record(event.kind(), sequence);
+            ItemIdentityCollections.removeMatching(nextItems, identity);
             nextItems.put(identity, aggregate);
         }
 
@@ -101,7 +106,7 @@ public record ContextualSuggestionState(
             long sequence
     ) {
         ContextualAssociationIndex next = index == null ? ContextualAssociationIndex.empty() : index;
-        ItemIdentity identity = event.identity();
+        ItemIdentity identity = ItemIdentityCollections.key(event.identity());
         String currentSignature = ContextualEventSignature.key(event);
         for (ContextualSignalRecord recent : recentSignals) {
             if (recent == null || recent.event() == null || recent.envelope() == null) {
@@ -197,7 +202,7 @@ public record ContextualSuggestionState(
                         .reversed())
                 .limit(MAX_ITEM_AGGREGATES)
                 .collect(LinkedHashMap::new,
-                        (map, entry) -> map.put(entry.getKey(), entry.getValue()),
+                        (map, entry) -> ItemIdentityCollections.putIfAbsent(map, entry.getKey(), entry.getValue()),
                         LinkedHashMap::putAll);
         return copy.isEmpty() ? Map.of() : Map.copyOf(copy);
     }

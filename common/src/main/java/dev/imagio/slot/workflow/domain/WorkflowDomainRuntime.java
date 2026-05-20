@@ -5,6 +5,7 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSessionState;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.workflow.domain.undo.UndoStack;
 
 import java.util.List;
@@ -220,7 +221,10 @@ public final class WorkflowDomainRuntime {
         if (identity == null) {
             return false;
         }
-        long sequence = repository.activityProjection().recents().latestSequenceByIdentity().getOrDefault(identity, 0L);
+        long sequence = ItemIdentityCollections.findOrDefault(
+                repository.activityProjection().recents().latestSequenceByIdentity(),
+                identity,
+                0L);
         if (sequence <= 0L) {
             return false;
         }

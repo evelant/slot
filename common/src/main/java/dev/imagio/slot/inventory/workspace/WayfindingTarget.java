@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -105,7 +106,7 @@ public record WayfindingTarget(
         if (source == null || source.isEmpty()) {
             return Set.of();
         }
-        return Set.copyOf(new LinkedHashSet<>(source));
+        return ItemIdentityCollections.normalizedSet(source);
     }
 
     public enum Scope {

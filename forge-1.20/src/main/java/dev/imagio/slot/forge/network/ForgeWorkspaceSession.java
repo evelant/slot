@@ -46,6 +46,7 @@ import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageRoutingContext;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
@@ -689,32 +690,16 @@ final class ForgeWorkspaceSession {
             runtime.collectionWorkflow().expireJunkTags();
         }
         WorkflowDomainSnapshot snapshot = runtime == null ? null : runtime.snapshot();
-        ClaimedChestMap claimedChestMap = snapshot == null
-                ? ClaimedChestMap.empty()
-                : snapshot.claimedChestMap();
-        MinecraftServer server = player == null ? null : player.getServer();
-        WorldStorageAccess worldStorage = StorageAccessRegistry.isInstalled()
-                ? StorageAccessRegistry.worldStorageAccess()
-                : null;
+        WorkspaceStorageRoutingContext storageContext =
+                WorkspaceStorageRoutingContext.build(player, runtime, authority);
+        ClaimedChestMap claimedChestMap = storageContext.claimedChestMap();
         SlotWorkspaceViewModel.LootChestSource lootChestSource = resolveLootChestSource(player, claimedChestMap);
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel =
                 resolveActiveChestPanel(player, claimedChestMap);
-        List<WorldDisplayStorageSource> displaySources =
-                WorkspaceChestProjectionSupport.proximateDisplaySources(player, worldStorage);
-        Set<String> proximateIds = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
-        Set<String> contextualSuggestionStorageIds = WorkspaceChestProjectionSupport.proximateStorageIds(
-                player,
-                claimedChestMap,
-                WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
-        WorkspaceStorageIndex storageIndex = WorkspaceStorageIndex.build(
-                server,
-                authority,
-                snapshot,
-                worldStorage,
-                proximateIds,
-                displaySources,
-                gameTime);
-        displaySources = storageIndex.displaySources();
+        List<WorldDisplayStorageSource> displaySources = storageContext.displaySources();
+        Set<String> proximateIds = storageContext.proximateStorageIds();
+        Set<String> contextualSuggestionStorageIds = storageContext.contextualSuggestionStorageIds();
+        WorkspaceStorageIndex storageIndex = storageContext.storageIndex();
         clearSatisfiedWantedCounts(authority);
         return SlotWorkspaceViewModel.project(
                 authority,
@@ -737,7 +722,9 @@ final class ForgeWorkspaceSession {
                 contextualSuggestionStorageIds,
                 displaySources,
                 storageIndex.trackedDisplayEntries(),
-                storageIndex.liveDepositStorageIds()
+                storageIndex.liveDepositStorageIds(),
+                storageContext.liveChestContentPresence(),
+                storageContext.liveStorageAffinityEligibility()
         );
     }
 

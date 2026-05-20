@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
@@ -93,11 +94,11 @@ public final class WorkflowTabTargets {
     }
 
     private static int countFor(Map<ItemIdentity, Integer> counts, ItemIdentity identity) {
-        return WorkflowTargetCounts.count(counts, identity);
+        return ItemIdentityCollections.count(counts, identity);
     }
 
     private static boolean containsMovable(Set<ItemIdentity> identities, ItemIdentity identity) {
-        return WorkflowTargetCounts.contains(identities, identity);
+        return ItemIdentityCollections.contains(identities, identity);
     }
 
     public static Resolution resolve(
@@ -293,11 +294,11 @@ public final class WorkflowTabTargets {
     }
 
     private static void mergePositive(Map<ItemIdentity, Integer> targets, ItemIdentity identity, Integer count) {
-        WorkflowTargetCounts.mergePositive(targets, identity, count);
+        ItemIdentityCollections.mergePositive(targets, identity, count);
     }
 
     private static void mergePositive(Set<ItemIdentity> targets, ItemIdentity identity) {
-        WorkflowTargetCounts.add(targets, identity);
+        ItemIdentityCollections.add(targets, identity);
     }
 
     private static int carriedMovableCount(InventoryAuthoritySnapshot authority, ItemIdentity identity) {

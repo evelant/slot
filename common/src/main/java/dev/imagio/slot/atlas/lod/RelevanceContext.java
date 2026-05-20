@@ -1,6 +1,7 @@
 package dev.imagio.slot.atlas.lod;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.Set;
 import java.util.UUID;
@@ -38,15 +39,15 @@ public record RelevanceContext(
             Set.of(), Set.of(), Set.of(), Set.of());
 
     public RelevanceContext {
-        carriedIdentities = carriedIdentities == null ? Set.of() : Set.copyOf(carriedIdentities);
-        recentIdentities = recentIdentities == null ? Set.of() : Set.copyOf(recentIdentities);
-        activeKitMembers = activeKitMembers == null ? Set.of() : Set.copyOf(activeKitMembers);
-        activeKitMissing = activeKitMissing == null ? Set.of() : Set.copyOf(activeKitMissing);
-        searchMatchedIdentities = searchMatchedIdentities == null ? Set.of() : Set.copyOf(searchMatchedIdentities);
+        carriedIdentities = ItemIdentityCollections.normalizedSet(carriedIdentities);
+        recentIdentities = ItemIdentityCollections.normalizedSet(recentIdentities);
+        activeKitMembers = ItemIdentityCollections.normalizedSet(activeKitMembers);
+        activeKitMissing = ItemIdentityCollections.normalizedSet(activeKitMissing);
+        searchMatchedIdentities = ItemIdentityCollections.normalizedSet(searchMatchedIdentities);
         proximateAreaIds = proximateAreaIds == null ? Set.of() : Set.copyOf(proximateAreaIds);
         relevantStorageIds = relevantStorageIds == null ? Set.of() : Set.copyOf(relevantStorageIds);
-        areaProximityBoostedIdentities = areaProximityBoostedIdentities == null ? Set.of() : Set.copyOf(areaProximityBoostedIdentities);
-        chestHoldsRelevantIdentities = chestHoldsRelevantIdentities == null ? Set.of() : Set.copyOf(chestHoldsRelevantIdentities);
+        areaProximityBoostedIdentities = ItemIdentityCollections.normalizedSet(areaProximityBoostedIdentities);
+        chestHoldsRelevantIdentities = ItemIdentityCollections.normalizedSet(chestHoldsRelevantIdentities);
     }
 
     public static RelevanceContext empty() {
@@ -62,23 +63,23 @@ public record RelevanceContext(
     }
 
     public boolean isCarried(ItemIdentity identity) {
-        return identity != null && carriedIdentities.contains(identity);
+        return ItemIdentityCollections.contains(carriedIdentities, identity);
     }
 
     public boolean isRecent(ItemIdentity identity) {
-        return identity != null && recentIdentities.contains(identity);
+        return ItemIdentityCollections.contains(recentIdentities, identity);
     }
 
     public boolean isActiveKitMember(ItemIdentity identity) {
-        return identity != null && activeKitMembers.contains(identity);
+        return ItemIdentityCollections.contains(activeKitMembers, identity);
     }
 
     public boolean isActiveKitMissing(ItemIdentity identity) {
-        return identity != null && activeKitMissing.contains(identity);
+        return ItemIdentityCollections.contains(activeKitMissing, identity);
     }
 
     public boolean matchesActiveSearch(ItemIdentity identity) {
-        return identity != null && searchMatchedIdentities.contains(identity);
+        return ItemIdentityCollections.contains(searchMatchedIdentities, identity);
     }
 
     public boolean isProximateArea(UUID areaId) {
@@ -90,11 +91,11 @@ public record RelevanceContext(
     }
 
     public boolean isAreaProximityBoosted(ItemIdentity identity) {
-        return identity != null && areaProximityBoostedIdentities.contains(identity);
+        return ItemIdentityCollections.contains(areaProximityBoostedIdentities, identity);
     }
 
     public boolean chestHoldsRelevant(ItemIdentity identity) {
-        return identity != null && chestHoldsRelevantIdentities.contains(identity);
+        return ItemIdentityCollections.contains(chestHoldsRelevantIdentities, identity);
     }
 
     public static final class Builder {

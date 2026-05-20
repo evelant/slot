@@ -3,6 +3,7 @@ package dev.imagio.slot.workflow.domain;
 import dev.imagio.slot.inventory.action.InventoryActionKind;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -13,13 +14,13 @@ public record ProtectionSnapshotPolicy(
         boolean protectPortableContainers
 ) implements ProtectionPolicy {
     public ProtectionSnapshotPolicy {
-        protectedIdentities = protectedIdentities == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(protectedIdentities));
+        protectedIdentities = ItemIdentityCollections.normalizedSet(protectedIdentities);
         protectedTargets = protectedTargets == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(protectedTargets));
     }
 
     @Override
     public boolean protects(ItemIdentity identity, InventoryActionKind actionKind) {
-        return identity != null && protectedIdentities.contains(identity);
+        return ItemIdentityCollections.contains(protectedIdentities, identity);
     }
 
     @Override

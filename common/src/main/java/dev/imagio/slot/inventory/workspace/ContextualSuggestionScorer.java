@@ -3,6 +3,7 @@ package dev.imagio.slot.inventory.workspace;
 import dev.imagio.slot.classification.FacetIndex;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
 import dev.imagio.slot.inventory.goal.GoalPlanState;
 import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
@@ -232,7 +233,7 @@ public final class ContextualSuggestionScorer {
             return PutAwayScoreInputs.ineligible();
         }
         ItemIdentity identity = item.identity().toIdentity();
-        if (!desiredExcess && identity != null && goalIdentities.contains(identity)) {
+        if (!desiredExcess && ItemIdentityCollections.contains(goalIdentities, identity)) {
             return PutAwayScoreInputs.ineligible();
         }
         if (!desiredExcess && protectedSource(item.largestCarriedSourceId())) {
@@ -728,7 +729,7 @@ public final class ContextualSuggestionScorer {
             if (identity == null) {
                 continue;
             }
-            byIdentity.putIfAbsent(identity, item);
+            ItemIdentityCollections.putIfAbsent(byIdentity, identity, item);
         }
         return List.copyOf(byIdentity.values());
     }
@@ -1073,15 +1074,15 @@ public final class ContextualSuggestionScorer {
         }
 
         private double depositPenalty(ItemIdentity identity) {
-            return identity == null ? 0D : depositPenalties.getOrDefault(identity, 0D);
+            return ItemIdentityCollections.findOrDefault(depositPenalties, identity, 0D);
         }
 
         private double spentPenalty(ItemIdentity identity) {
-            return identity == null ? 0D : spentPenalties.getOrDefault(identity, 0D);
+            return ItemIdentityCollections.findOrDefault(spentPenalties, identity, 0D);
         }
 
         private double passiveSelfPenalty(ItemIdentity identity) {
-            return identity == null ? 0D : passiveSelfPenalties.getOrDefault(identity, 0D);
+            return ItemIdentityCollections.findOrDefault(passiveSelfPenalties, identity, 0D);
         }
 
         private void capture(ContextualSuggestionState state) {
@@ -1111,18 +1112,18 @@ public final class ContextualSuggestionScorer {
                         * tickDecay(event.observedTick(), currentGameTick);
                 boolean applyAssociationHistory = false;
                 if (event.identity() != null) {
-                    ItemIdentity identity = event.identity();
+                    ItemIdentity identity = ItemIdentityCollections.key(event.identity());
                     if (event.kind() == ContextualSignalKind.ITEM_DEPOSITED_TO_STORAGE) {
                         depositPenaltyBuilder.put(identity, Math.min(1.4D, weight * 1.2D));
                     } else {
                         if (clearsDepositPenalty(event.kind())) {
-                            depositPenaltyBuilder.remove(identity);
+                            ItemIdentityCollections.removeMatching(depositPenaltyBuilder, identity);
                         }
                         if (clearsSpentPenalty(event.kind())) {
-                            spentPenaltyBuilder.remove(identity);
+                            ItemIdentityCollections.removeMatching(spentPenaltyBuilder, identity);
                         }
                         if (clearsPassiveSelfPenalty(event.kind())) {
-                            passiveSelfPenaltyBuilder.remove(identity);
+                            ItemIdentityCollections.removeMatching(passiveSelfPenaltyBuilder, identity);
                         }
                         if (event.kind() == ContextualSignalKind.ITEM_ACQUIRED
                                 || event.kind() == ContextualSignalKind.ITEM_TAKEN_FROM_STORAGE) {
@@ -1417,7 +1418,7 @@ public final class ContextualSuggestionScorer {
         }
         for (GoalStackDescriptor stack : stacks) {
             if (stack != null && stack.identity() != null) {
-                identities.add(stack.identity());
+                ItemIdentityCollections.add(identities, stack.identity());
             }
         }
     }

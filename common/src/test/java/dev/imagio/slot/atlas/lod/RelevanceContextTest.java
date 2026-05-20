@@ -47,6 +47,32 @@ class RelevanceContextTest {
     }
 
     @Test
+    void identitySetsUseMovableMatching() {
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        ItemIdentity damagedHammer = ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}");
+        ItemIdentity toolStateHammer = ItemIdentity.exact(
+                "gtceu:steel_mining_hammer",
+                "{Damage:12,\"GT.Tool\":{MaxDamage:960}}");
+        RelevanceContext ctx = RelevanceContext.builder()
+                .carriedIdentities(Set.of(damagedHammer))
+                .recentIdentities(Set.of(toolStateHammer))
+                .activeKitMembers(Set.of(damagedHammer))
+                .activeKitMissing(Set.of(toolStateHammer))
+                .searchMatchedIdentities(Set.of(damagedHammer))
+                .areaProximityBoostedIdentities(Set.of(toolStateHammer))
+                .chestHoldsRelevantIdentities(Set.of(damagedHammer))
+                .build();
+
+        assertTrue(ctx.isCarried(hammer));
+        assertTrue(ctx.isRecent(hammer));
+        assertTrue(ctx.isActiveKitMember(hammer));
+        assertTrue(ctx.isActiveKitMissing(hammer));
+        assertTrue(ctx.matchesActiveSearch(hammer));
+        assertTrue(ctx.isAreaProximityBoosted(hammer));
+        assertTrue(ctx.chestHoldsRelevant(hammer));
+    }
+
+    @Test
     void nullSetsBecomeEmpty() {
         RelevanceContext ctx = RelevanceContext.builder()
                 .carriedIdentities(null)

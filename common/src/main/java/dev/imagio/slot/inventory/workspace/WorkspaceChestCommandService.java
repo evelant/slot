@@ -13,7 +13,6 @@ import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
-import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
@@ -53,38 +52,31 @@ public final class WorkspaceChestCommandService {
         if (player == null || runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_deposit_context");
         }
-        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
-        List<WorldDisplayStorageSource> displaySources = proximateDisplaySources(player);
         InventoryAuthoritySnapshot resolvedAuthority = authority == null
                 ? InventoryAuthoritySnapshot.empty()
                 : authority;
-        WorkspaceStorageIndex storageIndex = storageIndex(
-                player,
-                runtime,
-                resolvedAuthority,
-                proximate,
-                displaySources);
-        displaySources = storageIndex.displaySources();
+        WorkspaceStorageRoutingContext routing =
+                WorkspaceStorageRoutingContext.build(player, runtime, resolvedAuthority);
+        ClaimedChestMap claimedChestMap = routing.claimedChestMap();
+        Set<String> proximate = routing.proximateStorageIds();
+        List<WorldDisplayStorageSource> displaySources = routing.displaySources();
         SlotCommon.LOGGER.info(
                 "[SLOT] deposit command received: player={} claimedChests={} proximate={} displays={}",
                 player.getName().getString(), claimedChestMap.chests().size(), proximate.size(), displaySources.size());
-        if (proximate.isEmpty() && !hasDisplayDepositTarget(displaySources)) {
+        if (proximate.isEmpty() && !routing.hasDisplayDepositTarget()) {
             return WorkspaceCommandOutcome.rejected("no_proximate_chest");
         }
 
-        long tick = player.serverLevel().getGameTime();
-        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
         ToIntFunction<ItemIdentity> reservedCounts = reservedCountResolver(runtime);
         DepositPlanner.StackProtection acceptedInputProtection = acceptedInputProtection(runtime);
         DepositPlan plan = DepositPlanner.plan(
                 resolvedAuthority,
-                affinityMap,
+                routing.affinityMap(),
                 claimedChestMap,
                 proximate,
                 reservedCounts,
-                storageIndex.liveChestContentPresence(),
-                storageIndex.liveStorageAffinityEligibility(),
+                routing.liveChestContentPresence(),
+                routing.liveStorageAffinityEligibility(),
                 acceptedInputProtection
         );
         plan = withDisplayDepositAssignments(
@@ -103,7 +95,7 @@ public final class WorkspaceChestCommandService {
             UUID storageUuid = record.storageUuid();
             if (storageUuid != null) {
                 runtime.chestClaimWorkflow().recordDeposit(
-                        storageUuid, record.identity(), record.count(), tick);
+                        storageUuid, record.identity(), record.count(), routing.tick());
             }
         }
         recordDepositUndo(player, runtime, outcome.records());
@@ -432,15 +424,16 @@ public final class WorkspaceChestCommandService {
         if (player == null || runtime == null || maxCount <= 0) {
             return WorkspaceCommandOutcome.rejected("invalid_take_context");
         }
-        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
-        List<WorldDisplayStorageSource> displaySources = proximateDisplaySources(player);
-        if (proximate.isEmpty() && displaySources.stream().allMatch(source -> source.contents().isEmpty())) {
+        WorkspaceStorageRoutingContext routing =
+                WorkspaceStorageRoutingContext.build(player, runtime, InventoryAuthoritySnapshot.empty());
+        ClaimedChestMap claimedChestMap = routing.claimedChestMap();
+        Set<String> proximate = routing.proximateStorageIds();
+        List<WorldDisplayStorageSource> displaySources = routing.displaySources();
+        if (!routing.hasNearbyClaimedOrDisplayStorage()) {
             return WorkspaceCommandOutcome.rejected("no_proximate_chest");
         }
-        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap();
         List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
-                identity, claimedChestMap, affinityMap, proximate);
+                identity, claimedChestMap, routing.affinityMap(), proximate);
         boolean foundMatchButCouldNotInsert = false;
         boolean one = maxCount == 1;
         boolean singleSlotOnly = one || maxCount == Integer.MAX_VALUE;
@@ -557,8 +550,10 @@ public final class WorkspaceChestCommandService {
         if (player == null || runtime == null || identity == null || sourceStack == null || sourceStack.isEmpty()) {
             return null;
         }
-        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
+        WorkspaceStorageRoutingContext routing =
+                WorkspaceStorageRoutingContext.build(player, runtime, InventoryAuthoritySnapshot.empty());
+        ClaimedChestMap claimedChestMap = routing.claimedChestMap();
+        Set<String> proximate = routing.proximateStorageIds();
         if (proximate.isEmpty()) {
             return null;
         }
@@ -566,21 +561,13 @@ public final class WorkspaceChestCommandService {
         if (server == null || !StorageAccessRegistry.isInstalled()) {
             return null;
         }
-        long tick = player.serverLevel().getGameTime();
-        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
-        WorkspaceStorageIndex storageIndex = storageIndex(
-                player,
-                runtime,
-                InventoryAuthoritySnapshot.empty(),
-                proximate,
-                List.of());
         List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
                 identity,
                 claimedChestMap,
-                affinityMap,
+                routing.affinityMap(),
                 proximate,
-                storageIndex.liveChestContentPresence(),
-                storageIndex.liveStorageAffinityEligibility());
+                routing.liveChestContentPresence(),
+                routing.liveStorageAffinityEligibility());
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
         for (UUID storageId : ranked) {
             ClaimedChest chest = claimedChestMap.chest(storageId);
@@ -614,24 +601,17 @@ public final class WorkspaceChestCommandService {
         if (server == null || !StorageAccessRegistry.isInstalled()) {
             return List.of();
         }
-        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
-        long tick = player.serverLevel().getGameTime();
-        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
-        List<WorldDisplayStorageSource> displaySources = proximateDisplaySources(player);
-        WorkspaceStorageIndex storageIndex = storageIndex(
-                player,
-                runtime,
-                InventoryAuthoritySnapshot.empty(),
-                proximate,
-                displaySources);
+        WorkspaceStorageRoutingContext routing =
+                WorkspaceStorageRoutingContext.build(player, runtime, InventoryAuthoritySnapshot.empty());
+        ClaimedChestMap claimedChestMap = routing.claimedChestMap();
+        Set<String> proximate = routing.proximateStorageIds();
         List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
                 identity,
                 claimedChestMap,
-                affinityMap,
+                routing.affinityMap(),
                 proximate,
-                storageIndex.liveChestContentPresence(),
-                storageIndex.liveStorageAffinityEligibility());
+                routing.liveChestContentPresence(),
+                routing.liveStorageAffinityEligibility());
 
         int probeCount = Math.max(1, Math.min(sourceStack.getMaxStackSize(),
                 Math.min(requestedCount, sourceStack.getCount())));
@@ -654,7 +634,7 @@ public final class WorkspaceChestCommandService {
                 candidates.add(storageId.toString());
             }
         }
-        for (WorldDisplayStorageSource source : storageIndex.displaySources()) {
+        for (WorldDisplayStorageSource source : routing.displaySources()) {
             if (source == null || !source.depositTarget()) {
                 continue;
             }
@@ -800,15 +780,6 @@ public final class WorkspaceChestCommandService {
         return candidates.isEmpty() ? List.of() : List.copyOf(candidates);
     }
 
-    private static List<WorldDisplayStorageSource> proximateDisplaySources(ServerPlayer player) {
-        if (player == null || !StorageAccessRegistry.isInstalled()) {
-            return List.of();
-        }
-        return WorkspaceChestProjectionSupport.proximateDisplaySources(
-                player,
-                StorageAccessRegistry.worldStorageAccess());
-    }
-
     private static boolean hasDisplayDepositTarget(List<WorldDisplayStorageSource> displaySources) {
         if (displaySources == null || displaySources.isEmpty()) {
             return false;
@@ -819,26 +790,6 @@ public final class WorkspaceChestCommandService {
             }
         }
         return false;
-    }
-
-    private static WorkspaceStorageIndex storageIndex(
-            ServerPlayer player,
-            WorkflowDomainRuntime runtime,
-            InventoryAuthoritySnapshot authority,
-            Set<String> proximate,
-            List<WorldDisplayStorageSource> displaySources
-    ) {
-        if (player == null || runtime == null || player.getServer() == null || !StorageAccessRegistry.isInstalled()) {
-            return WorkspaceStorageIndex.empty();
-        }
-        return WorkspaceStorageIndex.build(
-                player.getServer(),
-                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
-                runtime.snapshot(),
-                StorageAccessRegistry.worldStorageAccess(),
-                proximate,
-                displaySources,
-                player.serverLevel().getGameTime());
     }
 
     private static void observeTakeRecords(

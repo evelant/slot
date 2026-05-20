@@ -12,9 +12,7 @@ import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
-import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
-import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.KitActivation;
@@ -64,25 +62,25 @@ public final class KitGatherService {
         var snapshot = runtime.snapshot();
         KitMap kitMap = snapshot.kitMap();
         KitActivation activation = kitMap.activation();
-        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
-        java.util.List<WorldDisplayStorageSource> displaySources = proximateDisplaySources(player);
-        if (proximate.isEmpty() && displaySources.stream().allMatch(source -> source.contents().isEmpty())) {
-            return Outcome.empty("no_proximate_chest");
-        }
         InventoryHostDescriptor host = resolveHost(player);
         if (host == null) {
             return Outcome.empty("no_host");
         }
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
         SlotWorkspaceCommandService.clearSatisfiedWantedCounts(runtime, authority);
+        WorkspaceStorageRoutingContext routing = WorkspaceStorageRoutingContext.build(player, runtime, authority);
+        ClaimedChestMap claimedChestMap = routing.claimedChestMap();
+        Set<String> proximate = routing.proximateStorageIds();
+        java.util.List<WorldDisplayStorageSource> displaySources = routing.displaySources();
+        if (!routing.hasNearbyClaimedOrDisplayStorage()) {
+            return Outcome.empty("no_proximate_chest");
+        }
 
         Map<ItemIdentity, Integer> targets = gatherTargets(runtime, authority);
         if (targets.isEmpty()) {
             return Outcome.empty("no_target_counts");
         }
 
-        ChestAffinityMap affinityMap = snapshot.chestAffinityMap();
         int identitiesPulled = 0;
         int totalItemsPulled = 0;
         int unreachable = 0;
@@ -97,7 +95,7 @@ public final class KitGatherService {
             var ranked = DepositPlanner.rankProximateChestsForTake(
                     identity,
                     claimedChestMap,
-                    affinityMap,
+                    routing.affinityMap(),
                     proximate);
             int remaining = gap;
             int pulledForIdentity = 0;
@@ -162,15 +160,6 @@ public final class KitGatherService {
                 InventoryAuthorityReadService.serverAuthority(player, host)
         );
         return new Outcome(identitiesPulled, totalItemsPulled, unreachable, reason);
-    }
-
-    private static java.util.List<WorldDisplayStorageSource> proximateDisplaySources(ServerPlayer player) {
-        if (player == null || !StorageAccessRegistry.isInstalled()) {
-            return java.util.List.of();
-        }
-        return WorkspaceChestProjectionSupport.proximateDisplaySources(
-                player,
-                StorageAccessRegistry.worldStorageAccess());
     }
 
     private static Map<ItemIdentity, Integer> gatherTargets(

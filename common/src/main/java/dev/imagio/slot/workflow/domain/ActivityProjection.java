@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -35,11 +36,16 @@ public final class ActivityProjection {
             InventoryActivityEvent event = record.event();
             long sequence = record.envelope().globalSequence();
             if (event.present() && contributesToRecent(event)) {
-                long dismissedUpTo = dismissed.getOrDefault(event.identity(), 0L);
+                ItemIdentity identity = ItemIdentityCollections.key(event.identity());
+                if (identity == null) {
+                    continue;
+                }
+                long dismissedUpTo = ItemIdentityCollections.findOrDefault(dismissed, identity, 0L);
                 if (sequence > dismissedUpTo) {
-                    recentCounts.remove(event.identity());
-                    recentCounts.put(event.identity(), event.count());
-                    recentSequences.put(event.identity(), sequence);
+                    ItemIdentityCollections.removeMatching(recentCounts, identity);
+                    ItemIdentityCollections.removeMatching(recentSequences, identity);
+                    recentCounts.put(identity, event.count());
+                    recentSequences.put(identity, sequence);
                 }
             }
             if (!event.recoveryToken().isBlank()) {
@@ -80,10 +86,13 @@ public final class ActivityProjection {
 
         InventoryActivityEvent event = record.event();
         long sequence = record.envelope().globalSequence();
-        if (event.present() && contributesToRecent(event) && sequence > dismissed.getOrDefault(event.identity(), 0L)) {
-            recentCounts.remove(event.identity());
-            recentCounts.put(event.identity(), event.count());
-            recentSequences.put(event.identity(), sequence);
+        ItemIdentity identity = ItemIdentityCollections.key(event.identity());
+        if (identity != null && event.present() && contributesToRecent(event)
+                && sequence > ItemIdentityCollections.findOrDefault(dismissed, identity, 0L)) {
+            ItemIdentityCollections.removeMatching(recentCounts, identity);
+            ItemIdentityCollections.removeMatching(recentSequences, identity);
+            recentCounts.put(identity, event.count());
+            recentSequences.put(identity, sequence);
         }
         applyRecoverableMutation(recoverableByToken, record);
 
@@ -105,9 +114,10 @@ public final class ActivityProjection {
 
         current.recents().countsByIdentity().forEach((identity, count) -> {
             long sequence = current.recents().latestSequenceByIdentity().getOrDefault(identity, 0L);
-            if (sequence > dismissed.getOrDefault(identity, 0L)) {
-                recentCounts.put(identity, count);
-                recentSequences.put(identity, sequence);
+            ItemIdentity key = ItemIdentityCollections.key(identity);
+            if (sequence > ItemIdentityCollections.findOrDefault(dismissed, key, 0L)) {
+                recentCounts.put(key, count);
+                recentSequences.put(key, sequence);
             }
         });
 

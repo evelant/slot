@@ -42,6 +42,7 @@ import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageRoutingContext;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
@@ -1984,29 +1985,15 @@ final class SlotWorkspaceUiSession {
                 authority,
                 gameTime,
                 DomainEventMetadata.origin("contextual.neoforge.station_context"));
-        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        MinecraftServer server = serverPlayer.getServer();
-        WorldStorageAccess worldStorage = StorageAccessRegistry.isInstalled()
-                ? StorageAccessRegistry.worldStorageAccess()
-                : null;
-        Set<String> proximateIds = WorkspaceChestProjectionSupport.proximateStorageIds(serverPlayer, claimedChestMap);
-        Set<String> contextualSuggestionStorageIds = WorkspaceChestProjectionSupport.proximateStorageIds(
-                serverPlayer,
-                claimedChestMap,
-                WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
-        List<WorldDisplayStorageSource> displaySources =
-                WorkspaceChestProjectionSupport.proximateDisplaySources(serverPlayer, worldStorage);
-        WorkspaceStorageIndex storageIndex = WorkspaceStorageIndex.build(
-                server,
-                authority,
-                runtime.snapshot(),
-                worldStorage,
-                proximateIds,
-                displaySources,
-                gameTime);
+        WorkspaceStorageRoutingContext storageContext =
+                WorkspaceStorageRoutingContext.build(serverPlayer, runtime, authority);
+        ClaimedChestMap claimedChestMap = storageContext.claimedChestMap();
+        Set<String> proximateIds = storageContext.proximateStorageIds();
+        Set<String> contextualSuggestionStorageIds = storageContext.contextualSuggestionStorageIds();
+        List<WorldDisplayStorageSource> displaySources = storageContext.displaySources();
+        WorkspaceStorageIndex storageIndex = storageContext.storageIndex();
         Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver =
                 storageIndex.contentsResolver();
-        displaySources = storageIndex.displaySources();
         Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerInfo =
                 SophisticatedBackpackInventoryIntegrationProvider.carriedContainerInfoByIdentity(serverPlayer);
         Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver =
@@ -2036,7 +2023,9 @@ final class SlotWorkspaceUiSession {
                 contextualSuggestionStorageIds,
                 displaySources,
                 storageIndex.trackedDisplayEntries(),
-                storageIndex.liveDepositStorageIds()
+                storageIndex.liveDepositStorageIds(),
+                storageContext.liveChestContentPresence(),
+                storageContext.liveStorageAffinityEligibility()
         );
         // Pickup-time auto-home: at most one carried-but-unassigned
         // identity per refresh gets routed via its top chip suggestion
@@ -2071,7 +2060,9 @@ final class SlotWorkspaceUiSession {
                     contextualSuggestionStorageIds,
                     displaySources,
                     storageIndex.trackedDisplayEntries(),
-                    storageIndex.liveDepositStorageIds()
+                    storageIndex.liveDepositStorageIds(),
+                    storageContext.liveChestContentPresence(),
+                    storageContext.liveStorageAffinityEligibility()
             );
         }
         hotbarRecency.observe(projected);

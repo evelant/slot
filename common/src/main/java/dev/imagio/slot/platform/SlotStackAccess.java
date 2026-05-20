@@ -132,11 +132,14 @@ public final class SlotStackAccess {
                 return false;
             }
             Boolean damageable = invokeBooleanMethod(stack, "isDamageableItem");
-            if (damageable != null) {
-                return damageable;
+            if (Boolean.TRUE.equals(damageable)) {
+                return true;
             }
             Integer maxDamage = invokeIntMethod(stack, "getMaxDamage");
-            return maxDamage != null && maxDamage > 0;
+            if (maxDamage != null && maxDamage > 0) {
+                return true;
+            }
+            return Boolean.TRUE.equals(damageable);
         }
 
         private static String componentPatchFingerprint(ItemStack stack) {

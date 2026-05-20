@@ -4,6 +4,8 @@ import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,5 +36,25 @@ class WorkflowDomainModelTest {
                 ),
                 loadout.entries().stream().map(entry -> entry.target().stableKey()).collect(java.util.stream.Collectors.toSet())
         );
+    }
+
+    @Test
+    void visualHomeAssignmentsUseMovableIdentitySemantics() {
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        ItemIdentity damagedHammer = ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}");
+        ItemIdentity toolStateHammer = ItemIdentity.exact(
+                "gtceu:steel_mining_hammer",
+                "{Damage:12,\"GT.Tool\":{MaxDamage:960}}");
+        VisualHomeMap map = new VisualHomeMap(
+                List.of(new VisualAtlasIsland("tools", "Tools", VisualAtlasIslandKind.PLAYER, 0, 0, 0xFFFFFF, null)),
+                Map.of(damagedHammer, new VisualHomeAssignment(
+                        damagedHammer,
+                        "tools",
+                        3,
+                        VisualHomeOrigin.PLAYER_PLACED,
+                        false)));
+
+        assertEquals(hammer, map.assignments().keySet().iterator().next());
+        assertEquals("tools", map.assignment(toolStateHammer).islandId());
     }
 }

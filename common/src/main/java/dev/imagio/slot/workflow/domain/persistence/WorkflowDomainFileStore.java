@@ -19,6 +19,7 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSortMode;
 import dev.imagio.slot.inventory.browse.InventoryBrowseSubjectRef;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
 import dev.imagio.slot.inventory.goal.GoalChoiceResolution;
 import dev.imagio.slot.inventory.goal.GoalDescriptor;
@@ -330,7 +331,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 if (identity == null) {
                     continue;
                 }
-                memberships.put(identity, membership.collectionIds == null ? Set.of() : Set.copyOf(membership.collectionIds));
+                memberships.put(
+                        ItemIdentityCollections.key(identity),
+                        membership.collectionIds == null ? Set.of() : Set.copyOf(membership.collectionIds));
             }
         }
 
@@ -351,7 +354,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         LoadoutTarget target = decodeTarget(entry == null ? null : entry.target);
                         ItemIdentity identity = decodeIdentity(entry == null ? null : entry.identity);
                         if (target != null && identity != null) {
-                            entries.add(new QuickAccessLoadoutEntry(target, identity));
+                            entries.add(new QuickAccessLoadoutEntry(target, ItemIdentityCollections.key(identity)));
                         }
                     }
                 }
@@ -367,7 +370,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             for (RecentData recent : state.recents) {
                 ItemIdentity identity = decodeIdentity(recent == null ? null : recent.identity);
                 if (identity != null && recent.count > 0) {
-                    recents.put(identity, recent.count);
+                    ItemIdentityCollections.mergePositive(recents, identity, recent.count);
                 }
             }
         }
@@ -380,7 +383,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 for (IdentityData identityData : state.protection.identities) {
                     ItemIdentity identity = decodeIdentity(identityData);
                     if (identity != null) {
-                        protectedIdentities.add(identity);
+                        ItemIdentityCollections.add(protectedIdentities, identity);
                     }
                 }
             }
@@ -562,7 +565,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             for (MembershipData membership : data.memberships) {
                 ItemIdentity identity = decodeIdentity(membership == null ? null : membership.identity);
                 if (identity != null) {
-                    memberships.put(identity, membership.collectionIds == null ? Set.of() : Set.copyOf(membership.collectionIds));
+                    memberships.put(
+                            ItemIdentityCollections.key(identity),
+                            membership.collectionIds == null ? Set.of() : Set.copyOf(membership.collectionIds));
                 }
             }
         }
@@ -581,7 +586,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         LoadoutTarget target = decodeTarget(entry == null ? null : entry.target);
                         ItemIdentity identity = decodeIdentity(entry == null ? null : entry.identity);
                         if (target != null && identity != null) {
-                            entries.add(new QuickAccessLoadoutEntry(target, identity));
+                            entries.add(new QuickAccessLoadoutEntry(target, ItemIdentityCollections.key(identity)));
                         }
                     }
                 }
@@ -595,7 +600,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             for (IdentityData identityData : data.favoriteTags) {
                 ItemIdentity identity = decodeIdentity(identityData);
                 if (identity != null) {
-                    favoriteTags.add(identity);
+                    ItemIdentityCollections.add(favoriteTags, identity);
                 }
             }
         }
@@ -605,7 +610,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             for (IdentityData identityData : data.junkTags) {
                 ItemIdentity identity = decodeIdentity(identityData);
                 if (identity != null) {
-                    junkTags.add(identity);
+                    ItemIdentityCollections.add(junkTags, identity);
                 }
             }
         }
@@ -618,7 +623,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 for (IdentityData identityData : data.protection.identities) {
                     ItemIdentity identity = decodeIdentity(identityData);
                     if (identity != null) {
-                        protectedIdentities.add(identity);
+                        ItemIdentityCollections.add(protectedIdentities, identity);
                     }
                 }
             }
@@ -638,7 +643,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             for (RecentDismissalData dismissal : data.recentDismissals) {
                 ItemIdentity identity = decodeIdentity(dismissal == null ? null : dismissal.identity);
                 if (identity != null && dismissal != null) {
-                    recentDismissals.put(identity, Math.max(0L, dismissal.dismissedUpToSequence));
+                    recentDismissals.put(
+                            ItemIdentityCollections.key(identity),
+                            Math.max(0L, dismissal.dismissedUpToSequence));
                 }
             }
         }
@@ -692,7 +699,14 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                     if (identity == null || bond.score <= 0) {
                         continue;
                     }
-                    bonds.put(identity, new ChestAffinity(identity, bond.score, bond.lastTouchedTick));
+                    ItemIdentity key = ItemIdentityCollections.key(identity);
+                    bonds.merge(
+                            key,
+                            new ChestAffinity(key, bond.score, bond.lastTouchedTick),
+                            (left, right) -> new ChestAffinity(
+                                    key,
+                                    left.score() + right.score(),
+                                    Math.max(left.lastTouchedTick(), right.lastTouchedTick())));
                 }
                 if (!bonds.isEmpty()) {
                     affinity.put(storageId, Map.copyOf(bonds));
@@ -737,7 +751,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 }
                 ItemIdentity identity = decodeIdentity(counted.identity);
                 if (identity != null && counted.count > 0) {
-                    playerDesiredCounts.put(identity, counted.count);
+                    ItemIdentityCollections.mergePositive(playerDesiredCounts, identity, counted.count);
                 }
             }
         }
@@ -751,7 +765,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 ItemIdentity identity = decodeIdentity(counted.identity);
                 if (identity != null && counted.count > 0) {
                     kitDesiredCounts.computeIfAbsent(counted.kitId, ignored -> new LinkedHashMap<>())
-                            .put(identity, counted.count);
+                            .merge(ItemIdentityCollections.key(identity), counted.count, Math::max);
                 }
             }
         }
@@ -770,7 +784,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 }
                 ItemIdentity identity = decodeIdentity(counted.identity);
                 if (identity != null && counted.count > 0) {
-                    playerWantedCounts.put(identity, counted.count);
+                    ItemIdentityCollections.mergePositive(playerWantedCounts, identity, counted.count);
                 }
             }
         }
@@ -783,7 +797,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 ItemIdentity identity = decodeIdentity(counted.identity);
                 if (identity != null && counted.count > 0) {
                     kitWantedCounts.computeIfAbsent(counted.kitId, ignored -> new LinkedHashMap<>())
-                            .put(identity, counted.count);
+                            .merge(ItemIdentityCollections.key(identity), counted.count, Math::max);
                 }
             }
         }
@@ -883,7 +897,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             for (IdentityData member : data.members) {
                 ItemIdentity identity = decodeIdentity(member);
                 if (identity != null) {
-                    members.add(identity);
+                    ItemIdentityCollections.add(members, identity);
                 }
             }
         }
@@ -929,7 +943,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         ArrayList<ItemIdentity> identities = new ArrayList<>();
         for (int index = 0; index < KitPage.HOTBAR_SLOT_COUNT; index++) {
             if (index < data.hotbarIdentities.size()) {
-                identities.add(decodeIdentity(data.hotbarIdentities.get(index)));
+                ItemIdentity identity = decodeIdentity(data.hotbarIdentities.get(index));
+                identities.add(identity == null ? null : ItemIdentityCollections.key(identity));
             } else {
                 identities.add(null);
             }
@@ -960,8 +975,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             for (RecentData recent : data.recents) {
                 ItemIdentity identity = decodeIdentity(recent == null ? null : recent.identity);
                 if (identity != null && recent.count > 0) {
-                    recentCounts.put(identity, recent.count);
-                    recentSequences.put(identity, Math.max(0L, recent.latestSequence));
+                    ItemIdentity key = ItemIdentityCollections.key(identity);
+                    recentCounts.merge(key, recent.count, Math::max);
+                    recentSequences.merge(key, Math.max(0L, recent.latestSequence), Math::max);
                 }
             }
         }
@@ -1741,7 +1757,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             LoadoutTarget target = decodeTarget(entry == null ? null : entry.target);
             ItemIdentity identity = decodeIdentity(entry == null ? null : entry.identity);
             if (target != null && identity != null) {
-                decoded.add(new QuickAccessLoadoutEntry(target, identity));
+                decoded.add(new QuickAccessLoadoutEntry(target, ItemIdentityCollections.key(identity)));
             }
         }
         return Set.copyOf(decoded);
@@ -2054,7 +2070,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             for (GoalChoiceData choice : data.choices) {
                 ItemIdentity identity = decodeIdentity(choice == null ? null : choice.identity);
                 if (choice != null && !blank(choice.choiceGroupId) && identity != null) {
-                    choices.put(choice.choiceGroupId.trim(), identity);
+                    choices.put(choice.choiceGroupId.trim(), ItemIdentityCollections.key(identity));
                 }
             }
         }
@@ -2211,7 +2227,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             for (VisualHomeData raw : rawHomes) {
                 VisualHomeAssignment assignment = decodeVisualHome(raw);
                 if (assignment != null) {
-                    result.put(assignment.identity(), assignment);
+                    ItemIdentityCollections.removeMatching(result, assignment.identity());
+                    result.put(ItemIdentityCollections.key(assignment.identity()), assignment);
                 }
             }
             return result;
@@ -2242,8 +2259,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 if (identity == null) {
                     continue;
                 }
-                result.put(identity, new VisualHomeAssignment(
-                        identity,
+                ItemIdentity key = ItemIdentityCollections.key(identity);
+                result.put(key, new VisualHomeAssignment(
+                        key,
                         raw.islandId,
                         ordinal,
                         decodeEnum(VisualHomeOrigin.class, raw.origin, VisualHomeOrigin.PLAYER_PLACED),

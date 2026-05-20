@@ -53,6 +53,40 @@ class RecentAndProtectionDomainTest {
     }
 
     @Test
+    void protectionPoliciesUseMovableIdentitySemantics() {
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        ItemIdentity damagedHammer = ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}");
+        ItemIdentity toolStateHammer = ItemIdentity.exact(
+                "gtceu:steel_mining_hammer",
+                "{Damage:12,\"GT.Tool\":{MaxDamage:960}}");
+
+        ProtectionSnapshotPolicy snapshot = new ProtectionSnapshotPolicy(Set.of(damagedHammer), Set.of(), false);
+        CarryTargetProtection carry = new CarryTargetProtection(ProtectionPolicy.allowAll(), Set.of(damagedHammer));
+        KitActiveProtection activeKit = new KitActiveProtection(ProtectionPolicy.allowAll(), Set.of(damagedHammer));
+
+        assertTrue(snapshot.protects(toolStateHammer, InventoryActionKind.DROP_TO_WORLD));
+        assertTrue(carry.protects(hammer, InventoryActionKind.DROP_TO_WORLD));
+        assertTrue(activeKit.protects(toolStateHammer, InventoryActionKind.DROP_TO_WORLD));
+    }
+
+    @Test
+    void recentsUseMovableIdentitySemanticsForDismissalAndStorage() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        ItemIdentity damagedHammer = ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}");
+        ItemIdentity toolStateHammer = ItemIdentity.exact(
+                "gtceu:steel_mining_hammer",
+                "{Damage:12,\"GT.Tool\":{MaxDamage:960}}");
+
+        runtime.recordActivityEvent(activity(InventoryActivityProducer.WORLD_PICKUP, damagedHammer, 1));
+        runtime.recordActivityEvent(activity(InventoryActivityProducer.WORLD_PICKUP, toolStateHammer, 1));
+
+        assertEquals(java.util.List.of(hammer), runtime.activityProjection().recents().visibleItems());
+        assertTrue(runtime.dismissRecent(damagedHammer));
+        assertTrue(runtime.activityProjection().recents().visibleItems().isEmpty());
+    }
+
+    @Test
     void runtimeConsumesOnlySuccessfulAuthoritativeOutcomes() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         ItemIdentity diamond = ItemIdentity.of("minecraft:diamond");

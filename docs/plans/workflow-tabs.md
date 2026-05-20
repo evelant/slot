@@ -194,13 +194,16 @@ scroll gesture and resolve through the shared workflow target resolver. Tab
 activation applies Belt/offhand slots only; explicit gather uses the shared
 server-authoritative gather path instead of a platform-local auto-fetch pass.
 
-Movable identity matching is shared in `common/`, not per workflow action.
-`ITEM_ID` targets are broad matches for the same item id. Stack-created
-identities collapse to item-id when shared signals say their component data is
-condition rather than identity: Minecraft damageability, registered portable
-container classifiers, or single-field damage/container fingerprints. Do not
-add item-name token exceptions for one modpack item family; add a shared signal
-or classifier instead.
+Movable identity matching is shared in `common/`, not per workflow action, and
+workflow-facing identity sets/maps should use `ItemIdentityCollections` rather
+than strict `Set.contains`, `Map.get`, `putIfAbsent`, or `remove`. `ITEM_ID`
+targets are broad matches for the same item id. Stack-created identities
+collapse to item-id when shared signals say their component data is condition
+rather than identity: Minecraft damageability, registered portable container
+classifiers, common tool item tags, tool-state component/NBT keys such as
+`minecraft:tool` / `GT.Tool`, or condition-only damage/container fingerprints.
+Do not add item-name token exceptions for one modpack item family; add a shared
+signal or classifier instead.
 
 ### Tab Wanted Counts
 

@@ -3,6 +3,7 @@ package dev.imagio.slot.workflow.domain;
 import dev.imagio.slot.inventory.action.InventoryActionKind;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -21,9 +22,7 @@ public final class KitActiveProtection implements ProtectionPolicy {
 
     public KitActiveProtection(ProtectionPolicy base, Set<ItemIdentity> activeKitIdentities) {
         this.base = base == null ? ProtectionPolicy.allowAll() : base;
-        this.activeKitIdentities = activeKitIdentities == null
-                ? Set.of()
-                : Set.copyOf(new LinkedHashSet<>(activeKitIdentities));
+        this.activeKitIdentities = ItemIdentityCollections.normalizedSet(activeKitIdentities);
     }
 
     public static Set<ItemIdentity> identitiesFor(KitMap kitMap) {
@@ -88,7 +87,7 @@ public final class KitActiveProtection implements ProtectionPolicy {
         if (!isCleanupKind(actionKind)) {
             return false;
         }
-        return activeKitIdentities.contains(identity);
+        return ItemIdentityCollections.contains(activeKitIdentities, identity);
     }
 
     @Override

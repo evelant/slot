@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.goal;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
@@ -21,7 +22,11 @@ public record GoalVisibleAuthority(
                 if (entry.getKey() == null || entry.getValue() == null || entry.getValue().totalCount() <= 0) {
                     continue;
                 }
-                copy.put(entry.getKey(), entry.getValue());
+                GoalAuthorityCount value = entry.getValue();
+                copy.merge(
+                        ItemIdentityCollections.key(entry.getKey()),
+                        value,
+                        GoalVisibleAuthority::mergeCounts);
             }
         }
         countsByIdentity = Collections.unmodifiableMap(copy);
@@ -60,8 +65,7 @@ public record GoalVisibleAuthority(
                     if (entry == null || !entry.present()) {
                         continue;
                     }
-                    ItemIdentity identity = ItemIdentityMatcher.create(entry.stack());
-                    carried.merge(identity, entry.count(), Integer::sum);
+                    ItemIdentityCollections.mergeCount(carried, ItemIdentityMatcher.create(entry.stack()), entry.count());
                 }
             }
         }
@@ -72,11 +76,10 @@ public record GoalVisibleAuthority(
         if (identity == null) {
             return new GoalAuthorityCount(0, 0, 0);
         }
-        GoalAuthorityCount exact = countsByIdentity.get(identity);
-        if (exact != null) {
-            return exact;
-        }
-        return countsByIdentity.getOrDefault(movableKey(identity), new GoalAuthorityCount(0, 0, 0));
+        return ItemIdentityCollections.findOrDefault(
+                countsByIdentity,
+                identity,
+                new GoalAuthorityCount(0, 0, 0));
     }
 
     public List<GoalStackDescriptor> visibleAlternativesInAuthorityOrder(List<GoalStackDescriptor> alternatives) {
@@ -86,7 +89,10 @@ public record GoalVisibleAuthority(
         LinkedHashMap<ItemIdentity, GoalStackDescriptor> alternativesByMovableIdentity = new LinkedHashMap<>();
         for (GoalStackDescriptor alternative : alternatives) {
             if (alternative != null && alternative.identity() != null) {
-                alternativesByMovableIdentity.putIfAbsent(movableKey(alternative.identity()), alternative);
+                ItemIdentityCollections.putIfAbsent(
+                        alternativesByMovableIdentity,
+                        alternative.identity(),
+                        alternative);
             }
         }
         if (alternativesByMovableIdentity.isEmpty()) {
@@ -94,7 +100,7 @@ public record GoalVisibleAuthority(
         }
         ArrayList<GoalStackDescriptor> ordered = new ArrayList<>();
         for (ItemIdentity visible : countsByIdentity.keySet()) {
-            GoalStackDescriptor alternative = alternativesByMovableIdentity.get(movableKey(visible));
+            GoalStackDescriptor alternative = ItemIdentityCollections.find(alternativesByMovableIdentity, visible);
             if (alternative != null && count(alternative.identity()).totalCount() > 0) {
                 ordered.add(alternative);
             }
@@ -126,14 +132,19 @@ public record GoalVisibleAuthority(
             if (entry.getKey() == null || entry.getValue() == null || entry.getValue() <= 0) {
                 continue;
             }
-            MutableCount count = counts.computeIfAbsent(movableKey(entry.getKey()), ignored -> new MutableCount());
+            MutableCount count = ItemIdentityCollections.computeIfAbsent(
+                    counts,
+                    entry.getKey(),
+                    ignored -> new MutableCount());
             mutator.apply(count, entry.getValue());
         }
     }
 
-    private static ItemIdentity movableKey(ItemIdentity identity) {
-        ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(identity);
-        return normalized == null ? identity : normalized;
+    private static GoalAuthorityCount mergeCounts(GoalAuthorityCount left, GoalAuthorityCount right) {
+        return new GoalAuthorityCount(
+                left.carriedCount() + right.carriedCount(),
+                left.proximateStorageCount() + right.proximateStorageCount(),
+                left.elsewhereStorageCount() + right.elsewhereStorageCount());
     }
 
     private interface CountMutator {

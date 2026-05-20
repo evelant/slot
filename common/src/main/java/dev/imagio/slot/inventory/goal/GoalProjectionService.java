@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.goal;
 
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 
 import java.util.ArrayList;
@@ -157,7 +158,7 @@ public final class GoalProjectionService {
         private void seedAuthority() {
             for (Map.Entry<ItemIdentity, GoalAuthorityCount> entry : authority.countsByIdentity().entrySet()) {
                 GoalAuthorityCount count = entry.getValue();
-                ItemIdentity key = movableKey(entry.getKey());
+                ItemIdentity key = ItemIdentityCollections.key(entry.getKey());
                 remainingCounts
                         .computeIfAbsent(key, ignored -> new MutableAuthorityCount(0, 0, 0))
                         .add(count);
@@ -190,7 +191,7 @@ public final class GoalProjectionService {
                         ingredientTokens(recipe.catalysts()),
                         recipe.diagnostics());
                 for (GoalStackDescriptor output : recipe.outputs()) {
-                    ItemIdentity outputKey = movableKey(output.identity());
+                    ItemIdentity outputKey = ItemIdentityCollections.key(output.identity());
                     GoalRecipeDescriptor previous = recipesByOutput.putIfAbsent(outputKey, recipe);
                     producerIdsByOutput
                             .computeIfAbsent(outputKey, ignored -> new ArrayList<>())
@@ -227,7 +228,7 @@ public final class GoalProjectionService {
                 return List.of();
             }
             LinkedHashSet<String> producerIds = new LinkedHashSet<>();
-            List<String> exactIds = producerIdsByOutput.get(movableKey(outputIdentity));
+            List<String> exactIds = producerIdsByOutput.get(ItemIdentityCollections.key(outputIdentity));
             if (exactIds != null) {
                 producerIds.addAll(exactIds);
             }
@@ -337,7 +338,7 @@ public final class GoalProjectionService {
             if (identity == null) {
                 return 0;
             }
-            MutableAuthorityCount exact = remainingCounts.get(movableKey(identity));
+            MutableAuthorityCount exact = remainingCounts.get(ItemIdentityCollections.key(identity));
             if (exact != null) {
                 return exact.total();
             }
@@ -403,7 +404,7 @@ public final class GoalProjectionService {
                     breadcrumbs);
             LinkedHashSet<ItemIdentity> nextPath = new LinkedHashSet<>(outputPath);
             if (requestedOutput != null) {
-                nextPath.add(movableKey(requestedOutput));
+                ItemIdentityCollections.add(nextPath, requestedOutput);
             }
             for (GoalIngredientDescriptor ingredient : recipe.inputs()) {
                 int required = ingredient.consumed()
@@ -765,7 +766,7 @@ public final class GoalProjectionService {
         }
 
         private MutableAuthorityCount remainingCount(ItemIdentity identity) {
-            ItemIdentity key = movableKey(identity);
+            ItemIdentity key = ItemIdentityCollections.key(identity);
             MutableAuthorityCount exact = remainingCounts.get(key);
             if (exact != null) {
                 return exact;
@@ -779,12 +780,7 @@ public final class GoalProjectionService {
             if (identities == null || identities.isEmpty() || identity == null) {
                 return false;
             }
-            return identities.contains(movableKey(identity));
-        }
-
-        private ItemIdentity movableKey(ItemIdentity identity) {
-            ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(identity);
-            return normalized == null ? identity : normalized;
+            return ItemIdentityCollections.contains(identities, identity);
         }
 
         private List<String> recipeIds(List<GoalRecipeDescriptor> recipes) {

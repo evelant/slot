@@ -4,12 +4,12 @@ import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.platform.SlotStackAccess;
-import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
@@ -460,14 +460,15 @@ public final class WorkspaceCursorCommandService {
         if (server == null) {
             return Extraction.empty();
         }
-        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
+        WorkspaceStorageRoutingContext routing =
+                WorkspaceStorageRoutingContext.build(player, runtime, InventoryAuthoritySnapshot.empty());
+        ClaimedChestMap claimedChestMap = routing.claimedChestMap();
+        Set<String> proximate = routing.proximateStorageIds();
         if (proximate.isEmpty()) {
             return Extraction.empty();
         }
-        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(player.serverLevel().getGameTime());
         List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
-                identity, claimedChestMap, affinityMap, proximate);
+                identity, claimedChestMap, routing.affinityMap(), proximate);
         WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
         for (ClaimedChest chest : ranked) {
             WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
@@ -527,26 +528,18 @@ public final class WorkspaceCursorCommandService {
 
         MinecraftServer server = player.getServer();
         if (server != null) {
-            ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-            Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
+            WorkspaceStorageRoutingContext routing =
+                    WorkspaceStorageRoutingContext.build(player, runtime, InventoryAuthoritySnapshot.empty());
+            ClaimedChestMap claimedChestMap = routing.claimedChestMap();
+            Set<String> proximate = routing.proximateStorageIds();
             if (!proximate.isEmpty()) {
-                long tick = player.serverLevel().getGameTime();
-                ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
-                WorkspaceStorageIndex storageIndex = WorkspaceStorageIndex.build(
-                        server,
-                        dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot.empty(),
-                        runtime.snapshot(),
-                        StorageAccessRegistry.worldStorageAccess(),
-                        proximate,
-                        List.of(),
-                        tick);
                 List<UUID> ranked = DepositPlanner.rankChestsForIdentity(
                         identity,
                         claimedChestMap,
-                        affinityMap,
+                        routing.affinityMap(),
                         proximate,
-                        storageIndex.liveChestContentPresence(),
-                        storageIndex.liveStorageAffinityEligibility());
+                        routing.liveChestContentPresence(),
+                        routing.liveStorageAffinityEligibility());
                 WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
                 for (UUID storageUuid : ranked) {
                     ClaimedChest chest = claimedChestMap.chest(storageUuid);
@@ -559,7 +552,7 @@ public final class WorkspaceCursorCommandService {
                     remaining = leftover == null ? ItemStack.EMPTY : leftover;
                     int depositedHere = beforeCount - remaining.getCount();
                     if (depositedHere > 0) {
-                        runtime.chestClaimWorkflow().recordDeposit(storageUuid, identity, depositedHere, tick);
+                        runtime.chestClaimWorkflow().recordDeposit(storageUuid, identity, depositedHere, routing.tick());
                         WorkspaceChestCommandService.observeStorageIds(
                                 player,
                                 claimedChestMap,

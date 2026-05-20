@@ -18,6 +18,7 @@ public class ItemStack {
     private final String componentFingerprint;
     private final int maxStackSize;
     private final boolean damageable;
+    private final int maxDamageOverride;
     private final boolean immutableEmpty;
     private final List<TagKey<Object>> tags = new ArrayList<>();
     private int count;
@@ -47,11 +48,24 @@ public class ItemStack {
             boolean damageable,
             boolean immutableEmpty
     ) {
+        this(itemId, componentFingerprint, count, maxStackSize, damageable, -1, immutableEmpty);
+    }
+
+    private ItemStack(
+            String itemId,
+            String componentFingerprint,
+            int count,
+            int maxStackSize,
+            boolean damageable,
+            int maxDamageOverride,
+            boolean immutableEmpty
+    ) {
         this.itemId = itemId == null ? "" : itemId;
         this.componentFingerprint = componentFingerprint == null ? "" : componentFingerprint;
         this.count = Math.max(0, count);
         this.maxStackSize = Math.max(0, maxStackSize);
         this.damageable = damageable;
+        this.maxDamageOverride = maxDamageOverride;
         this.immutableEmpty = immutableEmpty;
     }
 
@@ -59,7 +73,14 @@ public class ItemStack {
         if (isEmpty()) {
             return EMPTY;
         }
-        ItemStack copy = new ItemStack(itemId, componentFingerprint, count, maxStackSize, damageable, false);
+        ItemStack copy = new ItemStack(
+                itemId,
+                componentFingerprint,
+                count,
+                maxStackSize,
+                damageable,
+                maxDamageOverride,
+                false);
         copy.hoverName = hoverName;
         copy.tags.addAll(tags);
         return copy;
@@ -96,7 +117,7 @@ public class ItemStack {
     }
 
     public int getMaxDamage() {
-        return damageable ? 100 : 0;
+        return maxDamageOverride >= 0 ? maxDamageOverride : damageable ? 100 : 0;
     }
 
     public boolean isDamageableItem() {
@@ -104,7 +125,18 @@ public class ItemStack {
     }
 
     public ItemStack damageable() {
-        return new ItemStack(itemId, componentFingerprint, count, maxStackSize, true, immutableEmpty);
+        return new ItemStack(itemId, componentFingerprint, count, maxStackSize, true, maxDamageOverride, immutableEmpty);
+    }
+
+    public ItemStack maxDamage(int maxDamage) {
+        return new ItemStack(
+                itemId,
+                componentFingerprint,
+                count,
+                maxStackSize,
+                damageable,
+                Math.max(0, maxDamage),
+                immutableEmpty);
     }
 
     public String itemId() {

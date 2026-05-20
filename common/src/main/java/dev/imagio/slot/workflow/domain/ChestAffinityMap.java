@@ -64,6 +64,49 @@ public record ChestAffinityMap(Map<UUID, Map<ItemIdentity, ChestAffinity>> entri
         return bond == null ? 0 : bond.effectiveScore(currentTick);
     }
 
+    public ChestAffinityMap recordDeposit(UUID storageId, ItemIdentity identity, long tick) {
+        if (storageId == null || identity == null) {
+            return this;
+        }
+        ItemIdentity key = key(identity);
+        LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> next = new LinkedHashMap<>(entries);
+        LinkedHashMap<ItemIdentity, ChestAffinity> bonds = new LinkedHashMap<>(
+                next.getOrDefault(storageId, Map.of()));
+        ChestAffinity existing = affinity(storageId, key);
+        if (existing != null) {
+            bonds.keySet().removeIf(candidate -> ItemIdentityMatcher.matchesMovable(candidate, key));
+        }
+        ChestAffinity bumped = existing == null
+                ? new ChestAffinity(key, 1, tick)
+                : existing.bump(1, tick);
+        bonds.put(key, bumped);
+        next.put(storageId, Map.copyOf(bonds));
+        return new ChestAffinityMap(next);
+    }
+
+    public ChestAffinityMap forget(UUID storageId, ItemIdentity identity) {
+        if (storageId == null || identity == null) {
+            return this;
+        }
+        Map<ItemIdentity, ChestAffinity> bonds = entries.get(storageId);
+        if (bonds == null || bonds.isEmpty()) {
+            return this;
+        }
+        ItemIdentity key = key(identity);
+        LinkedHashMap<ItemIdentity, ChestAffinity> nextBonds = new LinkedHashMap<>(bonds);
+        boolean removed = nextBonds.keySet().removeIf(candidate -> ItemIdentityMatcher.matchesMovable(candidate, key));
+        if (!removed) {
+            return this;
+        }
+        LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> next = new LinkedHashMap<>(entries);
+        if (nextBonds.isEmpty()) {
+            next.remove(storageId);
+        } else {
+            next.put(storageId, Map.copyOf(nextBonds));
+        }
+        return new ChestAffinityMap(next);
+    }
+
     /**
      * Return a copy of this map with every bond's score replaced by its
      * decayed value at {@code currentTick}. Bonds that decay to zero are

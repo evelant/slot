@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,7 +54,8 @@ public record KitPage(
         ArrayList<ItemIdentity> normalized = new ArrayList<>(HOTBAR_SLOT_COUNT);
         if (source != null) {
             for (int index = 0; index < HOTBAR_SLOT_COUNT && index < source.size(); index++) {
-                normalized.add(source.get(index));
+                ItemIdentity identity = source.get(index);
+                normalized.add(identity == null ? null : ItemIdentityCollections.key(identity));
             }
         }
         while (normalized.size() < HOTBAR_SLOT_COUNT) {

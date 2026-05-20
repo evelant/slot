@@ -40,6 +40,36 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SlotWorkspaceViewModelWorkflowTabsTest {
     @Test
+    void kitCardMembershipUsesMovableIdentitySemantics() {
+        ItemIdentity damagedHammer = ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}");
+        ItemIdentity toolStateHammer = ItemIdentity.exact(
+                "gtceu:steel_mining_hammer",
+                "{Damage:12,\"GT.Tool\":{MaxDamage:960}}");
+        SlotWorkspaceViewModel.KitCard card = new SlotWorkspaceViewModel.KitCard(
+                "kit-1",
+                "Mining",
+                "",
+                1,
+                0,
+                true,
+                false,
+                1,
+                List.of(SlotWorkspaceViewModel.IdentityRef.from(damagedHammer)),
+                List.of(),
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                List.of(),
+                List.of(),
+                List.of());
+
+        assertTrue(card.hasMember(SlotWorkspaceViewModel.IdentityRef.from(toolStateHammer)));
+    }
+
+    @Test
     void activeWorkflowTabHidesUnrelatedCarriedCards() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         KitDefinition mining = runtime.kitWorkflow().create("Mining");
@@ -350,6 +380,96 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
     }
 
     @Test
+    void exactToolStateWorkflowTargetMatchesLiveToolStateDrift() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity savedHammer = ItemIdentity.exact(
+                "gtceu:steel_mining_hammer",
+                "{Damage:0,HideFlags:2,\"GT.Tool\":{MaxDamage:960}}");
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setSlotIdentity(mining.id(), 0, 0, savedHammer);
+        runtime.kitWorkflow().activate(mining.id());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carriedBySource(Map.of(
+                        BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                        List.of(new InventoryStackSnapshot(
+                                0,
+                                new ItemStack(
+                                        "gtceu:steel_mining_hammer",
+                                        "{Damage:512,HideFlags:2,\"GT.Tool\":{MaxDamage:960}}",
+                                        1,
+                                        1),
+                                1)))),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.KitCard card = viewModel.kits().stream()
+                .filter(candidate -> mining.id().equals(candidate.kitId()))
+                .findFirst()
+                .orElseThrow();
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.triageItems().stream()
+                .filter(candidate -> "gtceu:steel_mining_hammer".equals(candidate.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertEquals(1, card.readyCount());
+        assertTrue(card.activePage().slots().get(0).ready());
+        assertTrue(item.carried());
+        assertFalse(item.kitNeeded());
+        assertEquals(ItemIdentity.of("gtceu:steel_mining_hammer"), item.identity().toIdentity());
+    }
+
+    @Test
+    void exactSavedToolTargetWithStackMaxDamageDoesNotCreateFetchGhost() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity savedHammer = ItemIdentity.exact(
+                "mod:stack_data_hammer",
+                "{Damage:0,Mode:\"old\"}");
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setSlotIdentity(mining.id(), 0, 0, savedHammer);
+        runtime.kitWorkflow().activate(mining.id());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carriedBySource(Map.of(
+                        BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                        List.of(new InventoryStackSnapshot(
+                                0,
+                                new ItemStack(
+                                        "mod:stack_data_hammer",
+                                        "{Damage:512,Mode:\"wide\"}",
+                                        1,
+                                        1).maxDamage(960),
+                                1)))),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.KitCard card = viewModel.kits().stream()
+                .filter(candidate -> mining.id().equals(candidate.kitId()))
+                .findFirst()
+                .orElseThrow();
+        SlotWorkspaceViewModel.ContextualSuggestionLane fetch = fetchLane(viewModel);
+        List<String> fetchItemIds = fetch == null
+                ? List.of()
+                : fetch.items().stream().map(item -> item.identity().itemId()).toList();
+
+        assertEquals(1, card.readyCount());
+        assertTrue(card.activePage().slots().get(0).ready());
+        assertTrue(viewModel.triageItems().stream()
+                .anyMatch(item -> item.carried()
+                        && "mod:stack_data_hammer".equals(item.identity().itemId())
+                        && !item.kitNeeded()));
+        assertFalse(fetchItemIds.contains("mod:stack_data_hammer"));
+    }
+
+    @Test
     void workflowStorageContainerWithContentsSatisfiesItemOnlyTarget() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         ItemIdentity basket = ItemIdentity.of("sns:straw_basket");
@@ -510,6 +630,13 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
                 host(),
                 snapshotsBySource,
                 Map.of());
+    }
+
+    private static SlotWorkspaceViewModel.ContextualSuggestionLane fetchLane(SlotWorkspaceViewModel viewModel) {
+        return viewModel.contextualSuggestionLanes().stream()
+                .filter(lane -> SlotWorkspaceViewModel.ContextualSuggestionLane.FETCH.equals(lane.id()))
+                .findFirst()
+                .orElse(null);
     }
 
     private static InventoryHostDescriptor host() {

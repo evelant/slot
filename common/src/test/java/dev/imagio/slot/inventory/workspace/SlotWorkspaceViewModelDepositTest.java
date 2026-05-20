@@ -102,6 +102,38 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     @Test
+    void depositableIdentitiesUseLivePlannerEligibilityWhenProvided() {
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried("minecraft:redstone", 16),
+                workflow(homeMap(REDSTONE), claimedMap(CHEST_A), affinity(CHEST_A, REDSTONE, 1)),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                storageId -> CHEST_A.toString().equals(storageId)
+                        ? snapshotOf(stack("minecraft:redstone", 32))
+                        : SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(CHEST_A.toString()),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                List.of(),
+                Set.of(CHEST_A.toString()),
+                List.of(),
+                List.of(),
+                Set.of(CHEST_A.toString()),
+                (chest, identity) -> true,
+                chest -> false);
+
+        assertFalse(viewModel.depositableIdentities().contains(SlotWorkspaceViewModel.IdentityRef.from(REDSTONE)));
+    }
+
+    @Test
     void proximateWorldDisplayStorageCreatesNearbyGhostPresence() {
         WorldDisplayStorageSource source = new WorldDisplayStorageSource(
                 null,

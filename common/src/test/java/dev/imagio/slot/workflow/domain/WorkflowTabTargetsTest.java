@@ -114,6 +114,29 @@ class WorkflowTabTargetsTest {
     }
 
     @Test
+    void kitMembershipUsesMovableIdentitySemantics() {
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        ItemIdentity damagedHammer = ItemIdentity.exact("gtceu:steel_mining_hammer", "{Damage:512}");
+        ItemIdentity toolStateHammer = ItemIdentity.exact(
+                "gtceu:steel_mining_hammer",
+                "{Damage:12,\"GT.Tool\":{MaxDamage:960}}");
+
+        KitDefinition kit = new KitDefinition(
+                "kit-1",
+                "Mining",
+                List.of(KitPage.empty().withSlot(0, damagedHammer)),
+                toolStateHammer,
+                "",
+                Set.of(damagedHammer));
+
+        assertEquals(Set.of(hammer), kit.members());
+        assertEquals(hammer, kit.page(0).slot(0));
+        assertEquals(hammer, kit.offhand());
+        assertEquals(Set.of(hammer), kit.withMember(toolStateHammer).members());
+        assertTrue(kit.withoutMember(toolStateHammer).members().isEmpty());
+    }
+
+    @Test
     void acceptedInputsAreRelevantWithoutWantedDesiredOrMissingPressure() {
         WorkflowDomainRuntime runtime = runtime();
         ItemIdentity hematite = ItemIdentity.of("tfg:hematite_ore");

@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -42,7 +43,7 @@ public record VisualHomeMap(
     }
 
     public VisualHomeAssignment assignment(ItemIdentity identity) {
-        return identity == null ? null : assignments.get(identity);
+        return ItemIdentityCollections.find(assignments, identity);
     }
 
     public boolean templateDismissed(String templateId) {
@@ -74,8 +75,9 @@ public record VisualHomeMap(
             if (identity == null || assignment == null) {
                 return;
             }
-            copied.put(identity, new VisualHomeAssignment(
-                    identity,
+            ItemIdentity normalized = ItemIdentityCollections.key(identity);
+            copied.put(normalized, new VisualHomeAssignment(
+                    normalized,
                     assignment.islandId(),
                     assignment.ordinal(),
                     assignment.origin(),

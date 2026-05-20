@@ -7,6 +7,7 @@ import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.query.InventoryWorkingSetProjection;
 import dev.imagio.slot.inventory.query.InventoryWorkingSetProjectionService;
 import dev.imagio.slot.inventory.query.ProjectedInventoryRow;
@@ -230,12 +231,12 @@ public final class InventoryBrowseService {
 
         LinkedHashSet<ItemIdentity> visibleIdentities = new LinkedHashSet<>();
         for (InventoryBrowseEntry.ItemEntry itemEntry : visibleItemEntries) {
-            visibleIdentities.add(itemEntry.row().identity());
+            ItemIdentityCollections.add(visibleIdentities, itemEntry.row().identity());
         }
 
         ArrayList<InventoryBrowseEntry.PlaceholderEntry> placeholders = new ArrayList<>();
         for (ItemIdentity identity : trackedIdentities) {
-            if (identity == null || visibleIdentities.contains(identity)) {
+            if (identity == null || ItemIdentityCollections.contains(visibleIdentities, identity)) {
                 continue;
             }
             if (!matchesSearch(request.sessionState().filter().searchText(), identity.itemId())) {
@@ -305,15 +306,15 @@ public final class InventoryBrowseService {
             RecentView recents,
             String selectedCollectionId
     ) {
-        Set<String> collectionIds = collections.memberships().getOrDefault(identity, Set.of());
+        Set<String> collectionIds = ItemIdentityCollections.findOrDefault(collections.memberships(), identity, Set.of());
         // Collection-scoped desired counts retired with the kits replacement
         // of collections; this annotation is now always 0 for the
         // collection pane. Player-global / kit-scoped counts surface on the
         // atlas card, not in the collection browse rows.
         return new InventoryBrowseAnnotations(
-                collections.favoriteTags().contains(identity),
-                collections.junkTags().contains(identity),
-                recents.countsByIdentity().containsKey(identity),
+                ItemIdentityCollections.contains(collections.favoriteTags(), identity),
+                ItemIdentityCollections.contains(collections.junkTags(), identity),
+                ItemIdentityCollections.find(recents.countsByIdentity(), identity) != null,
                 collectionIds,
                 0
         );
@@ -473,7 +474,7 @@ public final class InventoryBrowseService {
         }
         workflow.collections().memberships().forEach((identity, collectionIds) -> {
             if (identity != null && collectionIds != null && collectionIds.contains(collectionId)) {
-                identities.add(identity);
+                ItemIdentityCollections.add(identities, identity);
             }
         });
         // Legacy desired-count membership join retired alongside the

@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -48,8 +49,9 @@ public record KitDefinition(
         pages = pages == null || pages.isEmpty()
                 ? List.of(KitPage.empty())
                 : List.copyOf(pages);
+        offhand = ItemIdentityCollections.key(offhand);
         parentId = parentId == null ? "" : parentId.trim();
-        members = members == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(members));
+        members = ItemIdentityCollections.normalizedSet(members);
         acceptedInputs = acceptedInputs == null
                 ? Set.of()
                 : Set.copyOf(new LinkedHashSet<>(acceptedInputs));
@@ -108,20 +110,20 @@ public record KitDefinition(
     }
 
     public KitDefinition withMember(ItemIdentity identity) {
-        if (identity == null || members.contains(identity)) {
+        if (identity == null || ItemIdentityCollections.contains(members, identity)) {
             return this;
         }
         LinkedHashSet<ItemIdentity> next = new LinkedHashSet<>(members);
-        next.add(identity);
+        ItemIdentityCollections.add(next, identity);
         return withMembers(next);
     }
 
     public KitDefinition withoutMember(ItemIdentity identity) {
-        if (identity == null || !members.contains(identity)) {
+        if (identity == null || !ItemIdentityCollections.contains(members, identity)) {
             return this;
         }
         LinkedHashSet<ItemIdentity> next = new LinkedHashSet<>(members);
-        next.remove(identity);
+        ItemIdentityCollections.removeMatching(next, identity);
         return withMembers(next);
     }
 

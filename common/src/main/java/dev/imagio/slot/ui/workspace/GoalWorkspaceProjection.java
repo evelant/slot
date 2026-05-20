@@ -2,6 +2,7 @@ package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.goal.GoalChoiceResolution;
 import dev.imagio.slot.inventory.goal.GoalChoiceKeys;
@@ -787,25 +788,13 @@ public record GoalWorkspaceProjection(
                 if (entry.identity() == null) {
                     continue;
                 }
-                ItemIdentity key = matchingRequirementKey(requirements, entry.identity());
+                ItemIdentity key = ItemIdentityCollections.key(entry.identity());
                 requirements.merge(key, entry, ProjectionBuilder::mergeEntry);
             }
             ArrayList<GoalProjectionEntry> result = new ArrayList<>(requirements.size() + choices.size());
             result.addAll(requirements.values());
             result.addAll(choices.values());
             return List.copyOf(result);
-        }
-
-        private static ItemIdentity matchingRequirementKey(
-                LinkedHashMap<ItemIdentity, GoalProjectionEntry> requirements,
-                ItemIdentity identity
-        ) {
-            for (ItemIdentity key : requirements.keySet()) {
-                if (ItemIdentityMatcher.matchesMovable(key, identity)) {
-                    return key;
-                }
-            }
-            return identity;
         }
 
         private static GoalProjectionEntry mergeEntry(GoalProjectionEntry left, GoalProjectionEntry right) {
@@ -849,10 +838,10 @@ public record GoalWorkspaceProjection(
         ) {
             LinkedHashMap<ItemIdentity, GoalStackDescriptor> merged = new LinkedHashMap<>();
             for (GoalStackDescriptor stack : left) {
-                merged.putIfAbsent(stack.identity(), stack);
+                ItemIdentityCollections.putIfAbsent(merged, stack.identity(), stack);
             }
             for (GoalStackDescriptor stack : right) {
-                merged.putIfAbsent(stack.identity(), stack);
+                ItemIdentityCollections.putIfAbsent(merged, stack.identity(), stack);
             }
             return List.copyOf(merged.values());
         }

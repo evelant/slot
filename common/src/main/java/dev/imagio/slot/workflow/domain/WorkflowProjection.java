@@ -2,7 +2,7 @@ package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
-import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.goal.GoalPlanState;
 
 import java.util.ArrayList;
@@ -84,19 +84,28 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.CollectionItemAdded event) {
                 if (event.identity() != null && current.collectionIds().contains(event.collectionId())) {
-                    LinkedHashSet<String> updated = new LinkedHashSet<>(memberships.getOrDefault(event.identity(), Set.of()));
+                    ItemIdentity identity = ItemIdentityCollections.key(event.identity());
+                    LinkedHashSet<String> updated = new LinkedHashSet<>(ItemIdentityCollections.findOrDefault(
+                            memberships,
+                            identity,
+                            Set.of()));
                     updated.add(event.collectionId());
-                    memberships.put(event.identity(), Set.copyOf(updated));
+                    memberships.put(identity, Set.copyOf(updated));
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.CollectionItemRemoved event) {
                 if (event.identity() != null) {
-                    LinkedHashSet<String> updated = new LinkedHashSet<>(memberships.getOrDefault(event.identity(), Set.of()));
+                    ItemIdentity identity = ItemIdentityCollections.key(event.identity());
+                    LinkedHashSet<String> updated = new LinkedHashSet<>(ItemIdentityCollections.findOrDefault(
+                            memberships,
+                            identity,
+                            Set.of()));
                     updated.remove(event.collectionId());
+                    ItemIdentityCollections.removeMatching(memberships, identity);
                     if (updated.isEmpty()) {
-                        memberships.remove(event.identity());
+                        memberships.remove(identity);
                     } else {
-                        memberships.put(event.identity(), Set.copyOf(updated));
+                        memberships.put(identity, Set.copyOf(updated));
                     }
                 }
             }
@@ -137,32 +146,32 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.FavoriteMarked event) {
                 if (event.identity() != null) {
-                    favorites.add(event.identity());
+                    ItemIdentityCollections.add(favorites, event.identity());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.FavoriteUnmarked event) {
                 if (event.identity() != null) {
-                    favorites.remove(event.identity());
+                    ItemIdentityCollections.removeMatching(favorites, event.identity());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.JunkMarked event) {
                 if (event.identity() != null) {
-                    junk.add(event.identity());
+                    ItemIdentityCollections.add(junk, event.identity());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.JunkUnmarked event) {
                 if (event.identity() != null) {
-                    junk.remove(event.identity());
+                    ItemIdentityCollections.removeMatching(junk, event.identity());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.ProtectedIdentityMarked event) {
                 if (event.identity() != null) {
-                    protectedIdentities.add(event.identity());
+                    ItemIdentityCollections.add(protectedIdentities, event.identity());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.ProtectedIdentityUnmarked event) {
                 if (event.identity() != null) {
-                    protectedIdentities.remove(event.identity());
+                    ItemIdentityCollections.removeMatching(protectedIdentities, event.identity());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.ProtectedTargetMarked event) {
@@ -180,8 +189,9 @@ public final class WorkflowProjection {
         }
         else if (workflowEvent instanceof WorkflowEvent.RecentDismissedUpTo event) {
                 if (event.identity() != null) {
-                    recentDismissals.put(event.identity(), Math.max(
-                            recentDismissals.getOrDefault(event.identity(), 0L),
+                    ItemIdentity identity = ItemIdentityCollections.key(event.identity());
+                    recentDismissals.put(identity, Math.max(
+                            ItemIdentityCollections.findOrDefault(recentDismissals, identity, 0L),
                             event.dismissedUpToGlobalSequence()
                     ));
                 }
@@ -299,7 +309,8 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.VisualHomeCleared event) {
                 if (event.identity() != null) {
-                    VisualHomeAssignment removed = visualHomes.remove(event.identity());
+                    VisualHomeAssignment removed = ItemIdentityCollections.find(visualHomes, event.identity());
+                    ItemIdentityCollections.removeMatching(visualHomes, event.identity());
                     if (removed != null) {
                         compactOrdinalsAfterRemove(visualHomes, removed.islandId(), removed.ordinal());
                     }
@@ -353,31 +364,16 @@ public final class WorkflowProjection {
         else if (workflowEvent instanceof WorkflowEvent.ChestDepositObserved event) {
                 if (event.storageId() != null && event.identity() != null
                         && claimedChests.containsKey(event.storageId())) {
-                    ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(event.identity());
-                    LinkedHashMap<ItemIdentity, ChestAffinity> bonds =
-                            new LinkedHashMap<>(affinity.getOrDefault(event.storageId(), Map.of()));
-                    ChestAffinity existing = bonds.get(identity);
-                    ChestAffinity bumped = existing == null
-                            ? new ChestAffinity(identity, 1, event.tick())
-                            : existing.bump(1, event.tick());
-                    bonds.put(identity, bumped);
-                    affinity.put(event.storageId(), Map.copyOf(bonds));
+                    affinity = copyAffinity(new ChestAffinityMap(affinity)
+                            .recordDeposit(event.storageId(), event.identity(), event.tick())
+                            .entries());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.ChestAffinityForgotten event) {
                 if (event.storageId() != null && event.identity() != null) {
-                    Map<ItemIdentity, ChestAffinity> bonds = affinity.get(event.storageId());
-                    ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(event.identity());
-                    if (bonds != null && bonds.keySet().stream()
-                            .anyMatch(candidate -> ItemIdentityMatcher.matchesMovable(candidate, identity))) {
-                        LinkedHashMap<ItemIdentity, ChestAffinity> next = new LinkedHashMap<>(bonds);
-                        next.keySet().removeIf(candidate -> ItemIdentityMatcher.matchesMovable(candidate, identity));
-                        if (next.isEmpty()) {
-                            affinity.remove(event.storageId());
-                        } else {
-                            affinity.put(event.storageId(), Map.copyOf(next));
-                        }
-                    }
+                    affinity = copyAffinity(new ChestAffinityMap(affinity)
+                            .forget(event.storageId(), event.identity())
+                            .entries());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.ChestAffinityCleared event) {
@@ -439,14 +435,14 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.PlayerDesiredCountSet event) {
                 if (event.identity() != null) {
-                    WorkflowTargetCounts.putOrClear(playerDesiredCounts, event.identity(), event.count());
+                    ItemIdentityCollections.putOrClear(playerDesiredCounts, event.identity(), event.count());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.KitDesiredCountSet event) {
                 if (event.identity() != null && !event.kitId().isBlank()) {
                     Map<ItemIdentity, Integer> existing = kitDesiredCounts.getOrDefault(event.kitId(), Map.of());
                     LinkedHashMap<ItemIdentity, Integer> updated = new LinkedHashMap<>(existing);
-                    WorkflowTargetCounts.putOrClear(updated, event.identity(), event.count());
+                    ItemIdentityCollections.putOrClear(updated, event.identity(), event.count());
                     if (updated.isEmpty()) {
                         kitDesiredCounts.remove(event.kitId());
                     } else {
@@ -456,14 +452,14 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.PlayerWantedCountSet event) {
                 if (event.identity() != null) {
-                    WorkflowTargetCounts.putOrClear(playerWantedCounts, event.identity(), event.count());
+                    ItemIdentityCollections.putOrClear(playerWantedCounts, event.identity(), event.count());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.KitWantedCountSet event) {
                 if (event.identity() != null && !event.kitId().isBlank()) {
                     Map<ItemIdentity, Integer> existing = kitWantedCounts.getOrDefault(event.kitId(), Map.of());
                     LinkedHashMap<ItemIdentity, Integer> updated = new LinkedHashMap<>(existing);
-                    WorkflowTargetCounts.putOrClear(updated, event.identity(), event.count());
+                    ItemIdentityCollections.putOrClear(updated, event.identity(), event.count());
                     if (updated.isEmpty()) {
                         kitWantedCounts.remove(event.kitId());
                     } else {
@@ -538,11 +534,12 @@ public final class WorkflowProjection {
             LinkedHashMap<ItemIdentity, VisualHomeAssignment> assignments,
             VisualHomeAssignment requested
     ) {
-        ItemIdentity identity = requested.identity();
+        ItemIdentity identity = ItemIdentityCollections.key(requested.identity());
         String dstIslandId = requested.islandId();
         int dstOrdinal = Math.max(0, requested.ordinal());
 
-        VisualHomeAssignment previous = assignments.remove(identity);
+        VisualHomeAssignment previous = ItemIdentityCollections.find(assignments, identity);
+        ItemIdentityCollections.removeMatching(assignments, identity);
         if (previous != null) {
             compactOrdinalsAfterRemove(assignments, previous.islandId(), previous.ordinal());
         }
@@ -752,8 +749,8 @@ public final class WorkflowProjection {
             userCollections = userCollections == null ? List.of() : List.copyOf(userCollections);
             memberships = CollectionProjection.copyMemberships(memberships);
             loadoutsByCollection = CollectionProjection.copyLoadouts(loadoutsByCollection);
-            favoriteTags = favoriteTags == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(favoriteTags));
-            junkTags = junkTags == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(junkTags));
+            favoriteTags = ItemIdentityCollections.normalizedSet(favoriteTags);
+            junkTags = ItemIdentityCollections.normalizedSet(junkTags);
             protection = protection == null ? new ProtectionSnapshotPolicy(Set.of(), Set.of(), false) : protection;
             recentDismissedUpToByIdentity = copyRecentDismissals(recentDismissedUpToByIdentity);
             visualHomeMap = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
@@ -832,7 +829,7 @@ public final class WorkflowProjection {
             LinkedHashMap<ItemIdentity, Long> copied = new LinkedHashMap<>();
             source.forEach((identity, value) -> {
                 if (identity != null && value != null && value >= 0L) {
-                    copied.put(identity, value);
+                    copied.merge(ItemIdentityCollections.key(identity), value, Math::max);
                 }
             });
             return Map.copyOf(copied);

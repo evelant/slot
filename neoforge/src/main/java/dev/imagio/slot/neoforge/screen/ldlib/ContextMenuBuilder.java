@@ -18,12 +18,14 @@ import dev.imagio.slot.inventory.core.ItemStackTags;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
+import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputOptions;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -37,6 +39,9 @@ final class ContextMenuBuilder {
     private static final int ITEM_CONTEXT_MENU_TEXT_MARGIN = 14;
     private static final int ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR = 4;
     private static final int ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS = 88;
+    private static final int POPOVER_MARGIN = 4;
+    private static final int MENU_LABEL_HEIGHT = 12;
+    private static final int MENU_BUTTON_HEIGHT = 14;
 
     private final SlotWorkspaceUiController host;
 
@@ -187,6 +192,11 @@ final class ContextMenuBuilder {
                 ? List.of()
                 : acceptedInputOptions(item);
         int menuWidth = itemContextMenuWidth(item, activeTab, acceptedInputRules);
+        int freeHotbarIndex = host.firstFreeHotbarIndex();
+        boolean canSendToHotbar = item.carried() && freeHotbarIndex >= 0;
+        boolean canDeposit = item.carried() && host.atlasItemHasDepositTarget(item);
+        List<SlotWorkspaceViewModel.AtlasIsland> recent = host.recentRehomeTargets(item);
+        boolean editingDesiredCount = item.identity().equals(host.editingDesiredCountIdentity);
         UIElement catcher = contextMenuCatcher(this::closeContextMenu);
         UIElement menu = panel(GLASS).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -195,7 +205,18 @@ final class ContextMenuBuilder {
                 .paddingVertical(3)
                 .gapAll(2)
                 .flexDirection(FlexDirection.COLUMN));
-        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, menuWidth, 160);
+        anchorPopover(
+                menu,
+                host.contextMenuScreenX,
+                host.contextMenuScreenY,
+                menuWidth,
+                itemContextMenuHeight(
+                        activeTab,
+                        acceptedInputRules,
+                        canSendToHotbar,
+                        canDeposit,
+                        recent.size(),
+                        editingDesiredCount));
         menu.style(style -> style.zIndex(22));
         menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
@@ -203,7 +224,7 @@ final class ContextMenuBuilder {
                 .layout(layout -> layout.widthPercent(100).height(12)));
 
         if (activeTab != null) {
-            boolean member = activeTab.members().contains(item.identity());
+            boolean member = activeTab.hasMember(item.identity());
             menu.addChild(menuButton(
                     member
                             ? "Remove from " + shorten(activeTab.name(), 14)
@@ -231,8 +252,7 @@ final class ContextMenuBuilder {
             }
         }
 
-        int freeHotbarIndex = host.firstFreeHotbarIndex();
-        if (item.carried() && freeHotbarIndex >= 0) {
+        if (canSendToHotbar) {
             menu.addChild(menuButton(
                     "Send to hotbar",
                     true,
@@ -244,7 +264,7 @@ final class ContextMenuBuilder {
             ));
         }
 
-        if (item.carried() && host.atlasItemHasDepositTarget(item)) {
+        if (canDeposit) {
             menu.addChild(menuButton(
                     "Deposit to linked chest",
                     true,
@@ -275,7 +295,6 @@ final class ContextMenuBuilder {
                 }
         ));
 
-        List<SlotWorkspaceViewModel.AtlasIsland> recent = host.recentRehomeTargets(item);
         for (SlotWorkspaceViewModel.AtlasIsland target : recent) {
             String targetIslandId = target.islandId();
             menu.addChild(menuButton(
@@ -289,7 +308,7 @@ final class ContextMenuBuilder {
             ));
         }
 
-        if (item.identity().equals(host.editingDesiredCountIdentity)) {
+        if (editingDesiredCount) {
             appendDesiredCountEditor(menu, item);
         } else {
             String label = item.desiredCount() > 0
@@ -340,7 +359,7 @@ final class ContextMenuBuilder {
     ) {
         int longest = item == null ? 0 : Math.min(item.name().length(), ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS);
         if (activeTab != null && item != null) {
-            boolean member = activeTab.members().contains(item.identity());
+            boolean member = activeTab.hasMember(item.identity());
             String memberLabel = member
                     ? "Remove from " + shorten(activeTab.name(), 14)
                     : "Add to " + shorten(activeTab.name(), 18);
@@ -352,6 +371,52 @@ final class ContextMenuBuilder {
         }
         int desired = ITEM_CONTEXT_MENU_TEXT_MARGIN + longest * ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR;
         return Math.max(ITEM_CONTEXT_MENU_MIN_WIDTH, Math.min(ITEM_CONTEXT_MENU_MAX_WIDTH, desired));
+    }
+
+    private static int itemContextMenuHeight(
+            SlotWorkspaceViewModel.KitCard activeTab,
+            List<WorkflowAcceptedInputRule> acceptedInputRules,
+            boolean canSendToHotbar,
+            boolean canDeposit,
+            int recentTargetCount,
+            boolean editingDesiredCount
+    ) {
+        int labels = 1;
+        int buttons = 2 + Math.max(0, recentTargetCount);
+        if (activeTab != null) {
+            buttons += 1 + acceptedInputRules.size();
+        }
+        if (canSendToHotbar) {
+            buttons++;
+        }
+        if (canDeposit) {
+            buttons++;
+        }
+        int customRows = editingDesiredCount ? 2 : 0;
+        int customHeight = editingDesiredCount ? 18 + 14 : 0;
+        if (!editingDesiredCount) {
+            buttons++;
+        }
+        return menuHeight(3, 2, labels, buttons, customRows, customHeight);
+    }
+
+    private static int menuHeight(
+            int verticalPadding,
+            int gap,
+            int labels,
+            int buttons,
+            int customRows,
+            int customHeight
+    ) {
+        int rows = Math.max(0, labels) + Math.max(0, buttons) + Math.max(0, customRows);
+        if (rows == 0) {
+            return verticalPadding * 2;
+        }
+        return verticalPadding * 2
+                + Math.max(0, labels) * MENU_LABEL_HEIGHT
+                + Math.max(0, buttons) * MENU_BUTTON_HEIGHT
+                + Math.max(0, customHeight)
+                + (rows - 1) * gap;
     }
 
     private static WorkflowAcceptedInputRule acceptedInputMatch(
@@ -450,6 +515,15 @@ final class ContextMenuBuilder {
     }
 
     private UIElement buildGoalAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
+        boolean hasChoiceControls = host.goalHasChoiceControls(item);
+        List<GoalStackDescriptor> alternatives = hasChoiceControls ? host.goalChoiceAlternatives(item) : List.of();
+        boolean hasManualChoice = hasChoiceControls && host.goalHasManualChoice(item);
+        int alternativeCount = Math.min(8, alternatives.size());
+        int labelCount = 1 + (hasChoiceControls && !alternatives.isEmpty() ? 1 : 0);
+        int buttonCount = 3;
+        if (hasChoiceControls) {
+            buttonCount += alternativeCount + 1 + (hasManualChoice ? 1 : 0);
+        }
         UIElement catcher = contextMenuCatcher(this::closeContextMenu);
         UIElement menu = panel(GLASS).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -457,7 +531,8 @@ final class ContextMenuBuilder {
                 .paddingAll(4)
                 .gapAll(2)
                 .flexDirection(FlexDirection.COLUMN));
-        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180, 120);
+        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180,
+                menuHeight(4, 2, labelCount, buttonCount, 0, 0));
         menu.style(style -> style.zIndex(22));
         menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
@@ -479,8 +554,7 @@ final class ContextMenuBuilder {
                     host.openGoalUses(item);
                     closeContextMenu();
                 }));
-        if (host.goalHasChoiceControls(item)) {
-            List<GoalStackDescriptor> alternatives = host.goalChoiceAlternatives(item);
+        if (hasChoiceControls) {
             if (!alternatives.isEmpty()) {
                 menu.addChild(label("Use ingredient", MUTED)
                         .layout(layout -> layout.widthPercent(100).height(10)));
@@ -503,7 +577,7 @@ final class ContextMenuBuilder {
                         host.openGoalChoiceEditor(item);
                         closeContextMenu();
                     }));
-            if (host.goalHasManualChoice(item)) {
+            if (hasManualChoice) {
                 menu.addChild(menuButton(
                         "Clear manual choice",
                         true,
@@ -952,15 +1026,27 @@ final class ContextMenuBuilder {
 
     void anchorPopover(UIElement menu, float screenX, float screenY, int width, int approxHeight) {
         // Popovers mount in the root-level popoverSlot which fills the
-        // entire screen at (0, 0), so screen coordinates can pass through
-        // unchanged.
-        int left = Math.max(4, Math.round(screenX) + 4);
-        int top = Math.max(4, Math.round(screenY) + 4);
+        // entire screen. In sidebar mode the root itself is inset by the
+        // configured margins, so convert the screen click into root-local
+        // coordinates before clamping.
+        int originX = host.sidebarMode ? SlotClientConfig.CLIENT.sidebarLeftMargin.get() : 0;
+        int originY = host.sidebarMode ? SlotClientConfig.CLIENT.sidebarTopMargin.get() : 0;
+        int bottomInset = host.sidebarMode ? SlotClientConfig.CLIENT.sidebarBottomMargin.get() : 0;
+        int screenWidth = Minecraft.getInstance().getWindow().getGuiScaledWidth();
+        int screenHeight = Minecraft.getInstance().getWindow().getGuiScaledHeight();
+        int maxLeft = Math.max(POPOVER_MARGIN, screenWidth - originX - width - POPOVER_MARGIN);
+        int maxTop = Math.max(POPOVER_MARGIN, screenHeight - originY - bottomInset - approxHeight - POPOVER_MARGIN);
+        int left = clamp(Math.round(screenX) - originX + POPOVER_MARGIN, POPOVER_MARGIN, maxLeft);
+        int top = clamp(Math.round(screenY) - originY + POPOVER_MARGIN, POPOVER_MARGIN, maxTop);
         menu.layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(left)
                 .top(top)
                 .width(width));
+    }
+
+    private static int clamp(int value, int min, int max) {
+        return Math.max(min, Math.min(value, Math.max(min, max)));
     }
 
     void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island, float screenX, float screenY) {

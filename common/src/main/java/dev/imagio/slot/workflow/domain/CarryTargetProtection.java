@@ -3,6 +3,7 @@ package dev.imagio.slot.workflow.domain;
 import dev.imagio.slot.inventory.action.InventoryActionKind;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -21,9 +22,7 @@ public final class CarryTargetProtection implements ProtectionPolicy {
 
     public CarryTargetProtection(ProtectionPolicy base, Set<ItemIdentity> protectedIdentities) {
         this.base = base == null ? ProtectionPolicy.allowAll() : base;
-        this.protectedIdentities = protectedIdentities == null
-                ? Set.of()
-                : Set.copyOf(new LinkedHashSet<>(protectedIdentities));
+        this.protectedIdentities = ItemIdentityCollections.normalizedSet(protectedIdentities);
     }
 
     public static Set<ItemIdentity> identitiesFor(Map<ItemIdentity, Integer> targetCounts) {
@@ -33,7 +32,7 @@ public final class CarryTargetProtection implements ProtectionPolicy {
         LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
         for (Map.Entry<ItemIdentity, Integer> entry : targetCounts.entrySet()) {
             if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0) {
-                identities.add(entry.getKey());
+                ItemIdentityCollections.add(identities, entry.getKey());
             }
         }
         return Set.copyOf(identities);
@@ -59,7 +58,7 @@ public final class CarryTargetProtection implements ProtectionPolicy {
         if (identity == null || !isCleanupKind(actionKind)) {
             return false;
         }
-        return protectedIdentities.contains(identity);
+        return ItemIdentityCollections.contains(protectedIdentities, identity);
     }
 
     @Override

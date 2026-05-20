@@ -70,6 +70,51 @@ class ItemIdentityTest {
     }
 
     @Test
+    void mixedToolConditionFingerprintsNormalizeAsMovableCondition() {
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact(
+                        "gtceu:steel_mining_hammer",
+                        "{Damage:12,HideFlags:2,\"GT.Tool\":{MaxDamage:960}}"),
+                ItemIdentity.exact(
+                        "gtceu:steel_mining_hammer",
+                        "{Damage:512,HideFlags:2,\"GT.Tool\":{MaxDamage:960}}")));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact(
+                        "mod:component_tool",
+                        "{minecraft:damage=>12,minecraft:tool=>{rules:[]}}"),
+                ItemIdentity.of("mod:component_tool")));
+    }
+
+    @Test
+    void toolTaggedStacksCreateItemOnlyMovableIdentities() {
+        assertEquals(
+                ItemIdentity.of("mod:odd_hammer"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "mod:odd_hammer",
+                        "{Mode:\"dig\",Energy:400}",
+                        1,
+                        1).withTags("c:tools/hammer")));
+        assertEquals(
+                ItemIdentity.of("mod:vanilla_tagged_tool"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "mod:vanilla_tagged_tool",
+                        "{Mode:\"dig\",Energy:400}",
+                        1,
+                        1).withTags("minecraft:pickaxes")));
+    }
+
+    @Test
+    void toolStateFingerprintsCreateItemOnlyMovableIdentities() {
+        assertEquals(
+                ItemIdentity.of("gtceu:steel_mining_hammer"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "gtceu:steel_mining_hammer",
+                        "{Damage:512,HideFlags:2,\"GT.Tool\":{MaxDamage:960}}",
+                        1,
+                        1)));
+    }
+
+    @Test
     void damageableStacksCreateItemOnlyMovableIdentities() {
         assertEquals(
                 ItemIdentity.of("gtceu:steel_mining_hammer"),
@@ -92,6 +137,17 @@ class ItemIdentityTest {
                         "{Damage:45}",
                         1,
                         1).damageable()));
+    }
+
+    @Test
+    void maxDamageOnlyStacksCreateItemOnlyMovableIdentities() {
+        assertEquals(
+                ItemIdentity.of("mod:stack_data_tool"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "mod:stack_data_tool",
+                        "{Damage:512,Mode:\"wide\"}",
+                        1,
+                        1).maxDamage(960)));
     }
 
     @Test

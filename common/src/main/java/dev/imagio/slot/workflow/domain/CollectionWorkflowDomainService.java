@@ -2,6 +2,7 @@ package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.browse.InventoryBrowseSessionState;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 
@@ -381,7 +382,7 @@ public final class CollectionWorkflowDomainService {
         if (identity == null) {
             return false;
         }
-        boolean nextState = !repository.workflowProjection().favoriteTags().contains(identity);
+        boolean nextState = !ItemIdentityCollections.contains(repository.workflowProjection().favoriteTags(), identity);
         repository.appendWorkflowEvent(
                 nextState ? new WorkflowEvent.FavoriteMarked(identity) : new WorkflowEvent.FavoriteUnmarked(identity),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.favorite.toggle")
@@ -400,7 +401,7 @@ public final class CollectionWorkflowDomainService {
         }
         return setJunk(
                 identity,
-                !repository.workflowProjection().junkTags().contains(identity),
+                !ItemIdentityCollections.contains(repository.workflowProjection().junkTags(), identity),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.junk.toggle"));
     }
 
@@ -413,7 +414,7 @@ public final class CollectionWorkflowDomainService {
         if (identity == null) {
             return false;
         }
-        boolean currentlyMarked = repository.workflowProjection().junkTags().contains(identity);
+        boolean currentlyMarked = ItemIdentityCollections.contains(repository.workflowProjection().junkTags(), identity);
         if (!junkState && !currentlyMarked) {
             return false;
         }
@@ -427,7 +428,7 @@ public final class CollectionWorkflowDomainService {
     }
 
     public boolean isJunk(ItemIdentity identity) {
-        return identity != null && repository.workflowProjection().junkTags().contains(identity);
+        return ItemIdentityCollections.contains(repository.workflowProjection().junkTags(), identity);
     }
 
     public boolean expireJunkTags() {
@@ -446,9 +447,9 @@ public final class CollectionWorkflowDomainService {
             }
             long occurredAt = record.envelope().occurredAtEpochMillis();
             if (record.event() instanceof WorkflowEvent.JunkMarked event && event.identity() != null) {
-                latestMarkedAt.put(event.identity(), occurredAt);
+                latestMarkedAt.put(ItemIdentityCollections.key(event.identity()), occurredAt);
             } else if (record.event() instanceof WorkflowEvent.JunkUnmarked event && event.identity() != null) {
-                latestMarkedAt.remove(event.identity());
+                ItemIdentityCollections.removeMatching(latestMarkedAt, event.identity());
             }
         }
         boolean changed = false;
@@ -486,7 +487,7 @@ public final class CollectionWorkflowDomainService {
         if (!collections().collectionIds().contains(collectionId)) {
             return false;
         }
-        if (collections().memberships().getOrDefault(identity, Set.of()).contains(collectionId)) {
+        if (ItemIdentityCollections.findOrDefault(collections().memberships(), identity, Set.of()).contains(collectionId)) {
             repository.appendWorkflowEvent(
                     new WorkflowEvent.CollectionItemRemoved(collectionId, identity),
                     (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.collection.toggle_membership")

@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
@@ -1736,7 +1737,7 @@ public final class SlotWorkspaceCommandService {
             inputStacks++;
             ItemStack stack = source.copy();
             ItemIdentity identity = ItemIdentityMatcher.create(stack);
-            candidates.putIfAbsent(identity, new RehomeCandidate(identity, stack));
+            ItemIdentityCollections.putIfAbsent(candidates, identity, new RehomeCandidate(identity, stack));
         }
         if (candidates.isEmpty()) {
             return new ClassificationRehomeResult(inputStacks, 0, 0, 0, 0, 0, 0);
@@ -1975,7 +1976,7 @@ public final class SlotWorkspaceCommandService {
             if (assignment == null || assignment.islandId() == null || assignment.islandId().isBlank()) {
                 continue;
             }
-            if (excluded.contains(assignment.identity())) {
+            if (ItemIdentityCollections.contains(excluded, assignment.identity())) {
                 continue;
             }
             counts.merge(assignment.islandId(), 1, Integer::sum);
@@ -2619,17 +2620,17 @@ public final class SlotWorkspaceCommandService {
                 continue;
             }
             ItemIdentity identity = item.identity().toIdentity();
-            if (alreadyAttempted != null && alreadyAttempted.contains(identity)) {
+            if (ItemIdentityCollections.contains(alreadyAttempted, identity)) {
                 continue;
             }
             if (runtime.visualAtlasWorkflow().visualHomeMap().assignment(identity) != null) {
                 if (alreadyAttempted != null) {
-                    alreadyAttempted.add(identity);
+                    ItemIdentityCollections.add(alreadyAttempted, identity);
                 }
                 continue;
             }
             if (alreadyAttempted != null) {
-                alreadyAttempted.add(identity);
+                ItemIdentityCollections.add(alreadyAttempted, identity);
             }
             String targetIslandId = resolveAutoHomeIsland(runtime, item);
             if (targetIslandId == null || targetIslandId.isBlank()) {

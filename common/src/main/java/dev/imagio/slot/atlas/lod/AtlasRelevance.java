@@ -8,6 +8,7 @@ import dev.imagio.slot.atlas.lod.contributors.KitMissingContributor;
 import dev.imagio.slot.atlas.lod.contributors.RecentlyTouchedContributor;
 import dev.imagio.slot.atlas.lod.contributors.SearchMatchContributor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
 
@@ -149,7 +150,7 @@ public final class AtlasRelevance {
         }
         for (SlotWorkspaceViewModel.AtlasItem item : items) {
             if (item != null && item.carried()) {
-                sink.add(item.identity().toIdentity());
+                ItemIdentityCollections.add(sink, item.identity().toIdentity());
             }
         }
     }
@@ -163,7 +164,7 @@ public final class AtlasRelevance {
         }
         for (SlotWorkspaceViewModel.AtlasItem item : items) {
             if (item != null && item.recent()) {
-                sink.add(item.identity().toIdentity());
+                ItemIdentityCollections.add(sink, item.identity().toIdentity());
             }
         }
     }
@@ -182,7 +183,7 @@ public final class AtlasRelevance {
                     if (slot != null && slot.filled()) {
                         ItemIdentity id = slot.identity().toIdentity();
                         if (id != null) {
-                            members.add(id);
+                            ItemIdentityCollections.add(members, id);
                         }
                     }
                 }
@@ -195,7 +196,7 @@ public final class AtlasRelevance {
                 }
                 ItemIdentity id = bringItem.identity().toIdentity();
                 if (id != null) {
-                    members.add(id);
+                    ItemIdentityCollections.add(members, id);
                 }
             }
         }
@@ -215,8 +216,8 @@ public final class AtlasRelevance {
                 continue;
             }
             ItemIdentity id = bringItem.identity().toIdentity();
-            if (id != null && !carried.contains(id)) {
-                missing.add(id);
+            if (id != null && !ItemIdentityCollections.contains(carried, id)) {
+                ItemIdentityCollections.add(missing, id);
             }
         }
         return missing;
@@ -250,7 +251,7 @@ public final class AtlasRelevance {
             if (WorkspaceSearchQuery.matchesItem(query, item, null)) {
                 ItemIdentity id = item.identity().toIdentity();
                 if (id != null) {
-                    sink.add(id);
+                    ItemIdentityCollections.add(sink, id);
                 }
             }
         }

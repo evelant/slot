@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -19,8 +20,8 @@ public record CollectionProjection(
         userCollections = userCollections == null ? List.of() : List.copyOf(userCollections);
         memberships = copyMemberships(memberships);
         loadoutsByCollection = copyLoadouts(loadoutsByCollection);
-        favoriteTags = favoriteTags == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(favoriteTags));
-        junkTags = junkTags == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(junkTags));
+        favoriteTags = ItemIdentityCollections.normalizedSet(favoriteTags);
+        junkTags = ItemIdentityCollections.normalizedSet(junkTags);
     }
 
     public static CollectionProjection empty() {
@@ -44,7 +45,7 @@ public record CollectionProjection(
         LinkedHashMap<ItemIdentity, Set<String>> copied = new LinkedHashMap<>();
         source.forEach((identity, collections) -> {
             if (identity != null) {
-                copied.put(identity, collections == null ? Set.of() : Set.copyOf(collections));
+                copied.put(ItemIdentityCollections.key(identity), collections == null ? Set.of() : Set.copyOf(collections));
             }
         });
         return Map.copyOf(copied);

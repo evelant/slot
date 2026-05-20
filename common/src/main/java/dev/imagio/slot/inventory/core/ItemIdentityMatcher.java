@@ -3,7 +3,9 @@ package dev.imagio.slot.inventory.core;
 import dev.imagio.slot.platform.SlotStackAccess;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public final class ItemIdentityMatcher {
     private ItemIdentityMatcher() {
@@ -15,7 +17,7 @@ public final class ItemIdentityMatcher {
         }
         String itemId = resolveItemId(stack);
         String components = resolveComponentFingerprint(stack);
-        if (usesItemOnlyMovableIdentity(stack) || hasMovableConditionOnlyFingerprint(components)) {
+        if (usesItemOnlyMovableIdentity(stack, components) || hasMovableConditionOnlyFingerprint(components)) {
             return ItemIdentity.of(itemId);
         }
         if (!stackable(stack) || !components.isBlank()) {
@@ -79,7 +81,13 @@ public final class ItemIdentityMatcher {
         if (stack == null || stack.isEmpty()) {
             return false;
         }
+        return usesItemOnlyMovableIdentity(stack, resolveComponentFingerprint(stack));
+    }
+
+    private static boolean usesItemOnlyMovableIdentity(ItemStack stack, String components) {
         return SlotStackAccess.current().damageable(stack)
+                || hasMovableToolTag(stack)
+                || hasToolStateFingerprint(components)
                 || PortableContainerClassifiers.isPortableContainer(stack);
     }
 
@@ -90,16 +98,101 @@ public final class ItemIdentityMatcher {
         }
         normalized = stripOuter(normalized, '{', '}');
         normalized = stripOuter(normalized, '[', ']');
-        if (normalized.isBlank() || hasTopLevelComma(normalized)) {
+        if (normalized.isBlank()) {
             return false;
         }
-        String key = leadingFingerprintKey(normalized);
+        Set<String> keys = topLevelFingerprintKeys(normalized);
+        if (keys.isEmpty()) {
+            return false;
+        }
+        boolean hasMovableKey = false;
+        for (String key : keys) {
+            if (!isMovableConditionKey(key) && !isToolStateKey(key)) {
+                return false;
+            }
+            hasMovableKey = true;
+        }
+        return hasMovableKey;
+    }
+
+    private static boolean hasMovableToolTag(ItemStack stack) {
+        for (String tag : ItemStackTags.itemTagIds(stack)) {
+            if (isToolTag(tag)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isToolTag(String tag) {
+        if (tag == null || tag.isBlank()) {
+            return false;
+        }
+        String normalized = tag.toLowerCase(java.util.Locale.ROOT).trim();
+        int namespace = normalized.indexOf(':');
+        String path = namespace >= 0 ? normalized.substring(namespace + 1) : normalized;
+        if (path.equals("tools") || path.startsWith("tools/")) {
+            return true;
+        }
+        return normalized.equals("minecraft:axes")
+                || normalized.equals("minecraft:hoes")
+                || normalized.equals("minecraft:pickaxes")
+                || normalized.equals("minecraft:shovels")
+                || normalized.equals("minecraft:swords")
+                || normalized.equals("minecraft:tridents")
+                || normalized.equals("minecraft:enchantable/durability")
+                || normalized.equals("minecraft:enchantable/mining")
+                || normalized.equals("minecraft:enchantable/sharp_weapon")
+                || normalized.equals("minecraft:enchantable/weapon");
+    }
+
+    private static boolean hasToolStateFingerprint(String fingerprint) {
+        String normalized = normalizeFingerprint(fingerprint);
+        if (normalized.isBlank()) {
+            return false;
+        }
+        normalized = stripOuter(normalized, '{', '}');
+        normalized = stripOuter(normalized, '[', ']');
+        for (String key : topLevelFingerprintKeys(normalized)) {
+            if (isToolStateKey(key)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isMovableConditionKey(String key) {
         return key.equals("damage")
                 || key.equals("minecraft:damage")
+                || key.equals("maxdamage")
+                || key.equals("max_damage")
+                || key.equals("minecraft:max_damage")
+                || key.equals("repaircost")
+                || key.equals("repair_cost")
+                || key.equals("minecraft:repair_cost")
+                || key.equals("unbreakable")
+                || key.equals("minecraft:unbreakable")
+                || key.equals("hideflags")
+                || key.equals("minecraft:hide_additional_tooltip")
                 || key.equals("inventory")
                 || key.equals("container")
                 || key.equals("minecraft:container")
                 || key.equals("minecraft:bundle_contents");
+    }
+
+    private static boolean isToolStateKey(String key) {
+        return key.equals("tool")
+                || key.equals("tooldata")
+                || key.equals("tool_data")
+                || key.equals("toolstats")
+                || key.equals("tool_stats")
+                || key.equals("gt.tool")
+                || key.equals("minecraft:tool")
+                || key.endsWith(":tool")
+                || key.endsWith(":tool_data")
+                || key.endsWith(":tooldata")
+                || key.endsWith(":tool_stats")
+                || key.endsWith(":toolstats");
     }
 
     private static String normalizeFingerprint(String fingerprint) {
@@ -125,7 +218,12 @@ public final class ItemIdentityMatcher {
         return resolved;
     }
 
-    private static boolean hasTopLevelComma(String value) {
+    private static Set<String> topLevelFingerprintKeys(String value) {
+        if (value == null || value.isBlank()) {
+            return Set.of();
+        }
+        LinkedHashSet<String> keys = new LinkedHashSet<>();
+        int segmentStart = 0;
         int curlyDepth = 0;
         int squareDepth = 0;
         for (int index = 0; index < value.length(); index++) {
@@ -139,10 +237,19 @@ public final class ItemIdentityMatcher {
             } else if (c == ']') {
                 squareDepth = Math.max(0, squareDepth - 1);
             } else if (c == ',' && curlyDepth == 0 && squareDepth == 0) {
-                return true;
+                addFingerprintKey(keys, value.substring(segmentStart, index));
+                segmentStart = index + 1;
             }
         }
-        return false;
+        addFingerprintKey(keys, value.substring(segmentStart));
+        return keys.isEmpty() ? Set.of() : Set.copyOf(keys);
+    }
+
+    private static void addFingerprintKey(Set<String> keys, String segment) {
+        String key = leadingFingerprintKey(segment == null ? "" : segment.strip());
+        if (!key.isBlank()) {
+            keys.add(key);
+        }
     }
 
     private static String leadingFingerprintKey(String value) {

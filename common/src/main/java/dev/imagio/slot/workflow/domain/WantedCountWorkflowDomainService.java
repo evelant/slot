@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
 import java.util.Map;
 
@@ -34,7 +35,7 @@ public final class WantedCountWorkflowDomainService {
         if (identity == null) {
             return 0;
         }
-        return WorkflowTargetCounts.count(repository.workflowProjection().playerWantedCounts(), identity);
+        return ItemIdentityCollections.count(repository.workflowProjection().playerWantedCounts(), identity);
     }
 
     public boolean setPlayer(ItemIdentity identity, int count) {
@@ -46,7 +47,7 @@ public final class WantedCountWorkflowDomainService {
             return false;
         }
         int normalized = Math.max(0, count);
-        ItemIdentity target = WorkflowTargetCounts.key(identity);
+        ItemIdentity target = ItemIdentityCollections.key(identity);
         int current = getPlayer(target);
         if (current == normalized) {
             return false;
@@ -75,7 +76,7 @@ public final class WantedCountWorkflowDomainService {
         if (kitId == null || kitId.isBlank() || identity == null) {
             return 0;
         }
-        return WorkflowTargetCounts.count(forKit(kitId), identity);
+        return ItemIdentityCollections.count(forKit(kitId), identity);
     }
 
     public boolean setForKit(String kitId, ItemIdentity identity, int count) {
@@ -87,7 +88,7 @@ public final class WantedCountWorkflowDomainService {
             return false;
         }
         int normalized = Math.max(0, count);
-        ItemIdentity target = WorkflowTargetCounts.key(identity);
+        ItemIdentity target = ItemIdentityCollections.key(identity);
         int current = getForKit(kitId, target);
         if (current == normalized) {
             return false;

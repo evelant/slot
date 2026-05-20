@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
@@ -384,7 +385,7 @@ public final class WorkspaceStorageIndex {
                 return false;
             }
             Set<ItemIdentity> identities = identitiesByChest.getOrDefault(chest.storageId(), Set.of());
-            return identities.contains(ItemIdentityMatcher.normalizeMovable(identity));
+            return ItemIdentityCollections.contains(identities, identity);
         };
     }
 
@@ -464,10 +465,7 @@ public final class WorkspaceStorageIndex {
                 if (entry == null || !entry.present()) {
                     continue;
                 }
-                ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(entry.stack()));
-                if (identity != null) {
-                    counts.merge(identity, entry.count(), Integer::sum);
-                }
+                ItemIdentityCollections.mergeCount(counts, ItemIdentityMatcher.create(entry.stack()), entry.count());
             }
         }
         return Map.copyOf(counts);
@@ -484,10 +482,7 @@ public final class WorkspaceStorageIndex {
             if (stack == null || stack.isEmpty()) {
                 continue;
             }
-            ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
-            if (identity != null) {
-                counts.merge(identity, stack.getCount(), Integer::sum);
-            }
+            ItemIdentityCollections.mergeCount(counts, ItemIdentityMatcher.create(stack), stack.getCount());
         }
         return Map.copyOf(counts);
     }
