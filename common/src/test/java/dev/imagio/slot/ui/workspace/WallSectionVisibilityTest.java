@@ -44,6 +44,38 @@ class WallSectionVisibilityTest {
     }
 
     @Test
+    void collapsedWorkflowTabIgnoresPreviouslyExpandedNearbySection() {
+        WallSectionVisibility.Result result = WallSectionVisibility.classify(
+                List.of(proximateGhost("minecraft:dirt")),
+                false,
+                true,
+                StorageGhostRevealMode.COLLAPSED,
+                false,
+                false);
+
+        assertFalse(result.hasVisibleContent());
+        assertFalse(result.nearbyExpanded());
+        assertEquals(List.of(), result.visibleCards());
+    }
+
+    @Test
+    void expandedAllViewRevealsNearbyGhostOnlySections() {
+        SlotWorkspaceViewModel.AtlasItem ghost = proximateGhost("minecraft:dirt");
+
+        WallSectionVisibility.Result result = WallSectionVisibility.classify(
+                List.of(ghost),
+                false,
+                true,
+                StorageGhostRevealMode.COLLAPSED,
+                false,
+                true);
+
+        assertTrue(result.hasVisibleContent());
+        assertTrue(result.nearbyExpanded());
+        assertEquals(List.of(ghost), result.visibleCards());
+    }
+
+    @Test
     void trackedXrayRevealsWorkflowTabTrackedGhostOnlySections() {
         SlotWorkspaceViewModel.AtlasItem ghost = trackedGhost("minecraft:dirt");
 

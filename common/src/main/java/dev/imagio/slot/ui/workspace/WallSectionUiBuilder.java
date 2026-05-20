@@ -150,7 +150,8 @@ public final class WallSectionUiBuilder {
         if (lane == null || !lane.displayable()) {
             return false;
         }
-        // Keep projection/scoring alive while hiding noisy experimental rows for playtesting.
+        // Defensive UI-side filter for legacy or debug projections; common
+        // projection currently skips these hidden experimental rows.
         return !HIDDEN_SUGGESTION_LANES.contains(lane.id());
     }
 

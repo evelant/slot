@@ -759,7 +759,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
 
     void sendDuplicateKit(String kitId) {
         boolean sent = send(WorkspaceActionId.DUPLICATE_KIT, kitId);
-        host.localStatus.set(sent ? "duplicating workflow tab..." : "duplicate unavailable");
+        host.localStatus.set(sent ? "duplicating workflow..." : "duplicate unavailable");
         host.rebuild();
     }
 
@@ -771,49 +771,49 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
 
     void sendCreateWorkflowTab() {
         boolean sent = send(WorkspaceActionId.CREATE_WORKFLOW_TAB, "");
-        host.localStatus.set(sent ? "creating workflow tab..." : "create tab unavailable");
+        host.localStatus.set(sent ? "creating workflow..." : "create workflow unavailable");
         host.rebuild();
     }
 
     void sendSaveKit() {
         boolean sent = send(WorkspaceActionId.SAVE_KIT, "");
-        host.localStatus.set(sent ? "saving workflow tab..." : "save tab unavailable");
+        host.localStatus.set(sent ? "saving workflow..." : "save workflow unavailable");
         host.rebuild();
     }
 
     void sendActivateKit(String kitId) {
         boolean sent = send(WorkspaceActionId.ACTIVATE_KIT, kitId);
-        host.localStatus.set(sent ? "activating workflow tab..." : "activate tab unavailable");
+        host.localStatus.set(sent ? "activating workflow..." : "activate workflow unavailable");
         host.rebuild();
     }
 
     void sendDeactivateKit() {
         boolean sent = send(WorkspaceActionId.DEACTIVATE_KIT);
-        host.localStatus.set(sent ? "deactivating workflow tab..." : "deactivate tab unavailable");
+        host.localStatus.set(sent ? "deactivating workflow..." : "deactivate workflow unavailable");
         host.rebuild();
     }
 
     void sendDeleteKit(String kitId) {
         boolean sent = send(WorkspaceActionId.DELETE_KIT, kitId);
-        host.localStatus.set(sent ? "deleting workflow tab..." : "delete tab unavailable");
+        host.localStatus.set(sent ? "deleting workflow..." : "delete workflow unavailable");
         host.rebuild();
     }
 
     void sendSwitchKitPage(int direction) {
         boolean sent = send(WorkspaceActionId.SWITCH_KIT_PAGE, direction);
-        host.localStatus.set(sent ? "switching tab page..." : "page switch unavailable");
+        host.localStatus.set(sent ? "switching workflow page..." : "page switch unavailable");
         host.rebuild();
     }
 
     void sendAddKitPage(String kitId) {
         boolean sent = send(WorkspaceActionId.ADD_KIT_PAGE, kitId);
-        host.localStatus.set(sent ? "adding tab page..." : "add page unavailable");
+        host.localStatus.set(sent ? "adding workflow page..." : "add page unavailable");
         host.rebuild();
     }
 
     void sendRemoveKitPage(String kitId, int pageIndex) {
         boolean sent = send(WorkspaceActionId.REMOVE_KIT_PAGE, kitId, pageIndex);
-        host.localStatus.set(sent ? "removing tab page..." : "remove page unavailable");
+        host.localStatus.set(sent ? "removing workflow page..." : "remove page unavailable");
         host.rebuild();
     }
 
@@ -828,7 +828,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 identity.componentFingerprint(),
                 member ? 1 : 0);
         host.localStatus.set(sent
-                ? (member ? "added to workflow tab" : "removed from workflow tab")
+                ? (member ? "added to workflow" : "removed from workflow")
                 : "workflow membership unavailable");
         host.rebuild();
     }
@@ -873,14 +873,14 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 identity.componentFingerprint(),
                 count);
         host.localStatus.set(sent
-                ? (count > 0 ? "tab target updated" : "tab target cleared")
-                : "tab target unavailable");
+                ? (count > 0 ? "workflow target updated" : "workflow target cleared")
+                : "workflow target unavailable");
         host.rebuild();
     }
 
     void sendSwapKitSlots(String kitId, int pageIndex, int fromIndex, int toIndex) {
         boolean sent = send(WorkspaceActionId.SWAP_KIT_SLOTS, kitId, pageIndex, fromIndex, toIndex);
-        host.localStatus.set(sent ? "swapping tab slots..." : "swap slots unavailable");
+        host.localStatus.set(sent ? "swapping workflow slots..." : "swap slots unavailable");
         host.rebuild();
     }
 
@@ -890,7 +890,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
         String fingerprint = identity == null ? "" : identity.componentFingerprint();
         boolean sent = send(WorkspaceActionId.SET_KIT_SLOT_IDENTITY,
                 kitId, pageIndex, slotIndex, itemId, comparisonMode, fingerprint);
-        host.localStatus.set(sent ? "updating tab slot..." : "update slot unavailable");
+        host.localStatus.set(sent ? "updating workflow slot..." : "update slot unavailable");
         host.rebuild();
     }
 

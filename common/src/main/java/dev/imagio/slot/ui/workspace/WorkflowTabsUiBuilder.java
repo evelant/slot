@@ -70,7 +70,7 @@ public final class WorkflowTabsUiBuilder {
         row.addChild(tabButton(
                 "+",
                 false,
-                "Create a workflow tab",
+                "Create a workflow",
                 16,
                 context::createTab,
                 null
@@ -83,7 +83,7 @@ public final class WorkflowTabsUiBuilder {
             row.addChild(tabButton(
                     tabText(tab),
                     selected,
-                    "Activate workflow tab. Right-click for tab actions.",
+                    "Activate workflow. Right-click for workflow actions.",
                     tabWidth(tab),
                     () -> context.selectTab(tab.kitId()),
                     (x, y) -> context.openTabMenu(tab.kitId(), x, y)
@@ -196,9 +196,9 @@ public final class WorkflowTabsUiBuilder {
     }
 
     private static String tabText(SlotWorkspaceViewModel.KitCard tab) {
-        String label = tab == null ? "Tab" : tab.name();
+        String label = tab == null ? "Workflow" : tab.name();
         if (label == null || label.isBlank()) {
-            label = "Tab";
+            label = "Workflow";
         }
         int memberCount = tab == null ? 0 : tab.memberCount();
         int targetCount = memberCount + (tab == null ? 0 : tab.slotCount());

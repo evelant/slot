@@ -592,11 +592,11 @@ public final class ForgeWorkspaceSurface {
     private boolean switchKitPageFromKey(int direction) {
         SlotWorkspaceViewModel.KitCard active = viewModel.activeKit();
         if (active == null || active.pageCount() <= 1) {
-            status = active == null ? "activate a workflow tab first" : "tab has one page";
+            status = active == null ? "activate a workflow first" : "workflow has one page";
             rebuildRequested = true;
             return true;
         }
-        sendKitAction(WorkspaceActionId.SWITCH_KIT_PAGE, "switching tab page", direction);
+        sendKitAction(WorkspaceActionId.SWITCH_KIT_PAGE, "switching workflow page", direction);
         return true;
     }
 
@@ -1111,7 +1111,7 @@ public final class ForgeWorkspaceSurface {
                         true,
                         color,
                         enabled ? WorkspaceUiPalette.TEXT : WorkspaceUiPalette.MUTED,
-                        "Pull target-count gaps and active-tab needs from nearby chests.")
+                        "Pull target-count gaps and active-workflow needs from nearby chests.")
                 .on(SlotUiEventKind.CLICK, event -> {
                     if (event.button() != 0) {
                         return;
@@ -1642,10 +1642,10 @@ public final class ForgeWorkspaceSurface {
                             ? "Remove from " + shorten(activeTab.name(), 16)
                             : "Add to " + shorten(activeTab.name(), 20),
                     true,
-                    "Update active workflow tab membership",
+                    "Update active workflow membership",
                     closeThen(() -> sendKitAction(
                             WorkspaceActionId.SET_KIT_MEMBER,
-                            member ? "removing from workflow tab" : "adding to workflow tab",
+                            member ? "removing from workflow" : "adding to workflow",
                             activeTab.kitId(),
                             item.identity().itemId(),
                             item.identity().comparisonMode(),
@@ -2060,26 +2060,26 @@ public final class ForgeWorkspaceSurface {
         panel.addChild(menuLabel(shorten(kit.name(), 30), WorkspaceUiPalette.ACCENT));
         if (kit.kitId().equals(renamingKitId)) {
             panel.addChild(menuLabel("Name: " + renameKitDraft + "_", WorkspaceUiPalette.TEXT));
-            panel.addChild(menuButton("Save", true, "Rename this workflow tab", this::commitKitRenameEdit));
+            panel.addChild(menuButton("Save", true, "Rename this workflow", this::commitKitRenameEdit));
             panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
         } else if (kit.kitId().equals(confirmDeleteKitId)) {
-            panel.addChild(menuLabel("Delete this workflow tab?", WorkspaceUiPalette.MUTED));
+            panel.addChild(menuLabel("Delete this workflow?", WorkspaceUiPalette.MUTED));
             panel.addChild(menuButton(
                     "Delete",
                     true,
-                    "Delete this workflow tab",
-                    closeThen(() -> sendKitAction(WorkspaceActionId.DELETE_KIT, "deleting workflow tab", kit.kitId()))));
+                    "Delete this workflow",
+                    closeThen(() -> sendKitAction(WorkspaceActionId.DELETE_KIT, "deleting workflow", kit.kitId()))));
             panel.addChild(menuButton("Cancel", true, "Close", () -> {
                 confirmDeleteKitId = null;
                 rebuildRequested = true;
             }));
         } else {
-            panel.addChild(menuButton("Rename...", true, "Rename this workflow tab", () -> beginKitRenameEdit(kit)));
+            panel.addChild(menuButton("Rename...", true, "Rename this workflow", () -> beginKitRenameEdit(kit)));
             panel.addChild(menuButton(
                     "Duplicate",
                     true,
-                    "Duplicate this workflow tab",
-                    closeThen(() -> sendKitAction(WorkspaceActionId.DUPLICATE_KIT, "duplicating workflow tab", kit.kitId()))));
+                    "Duplicate this workflow",
+                    closeThen(() -> sendKitAction(WorkspaceActionId.DUPLICATE_KIT, "duplicating workflow", kit.kitId()))));
             if (!kit.variant()) {
                 panel.addChild(menuButton(
                         "Create variant",
@@ -2091,7 +2091,7 @@ public final class ForgeWorkspaceSurface {
                                 kit.kitId(),
                                 ""))));
             }
-            panel.addChild(menuButton("Delete...", true, "Delete this workflow tab", () -> {
+            panel.addChild(menuButton("Delete...", true, "Delete this workflow", () -> {
                 confirmDeleteKitId = kit.kitId();
                 renamingKitId = null;
                 renameKitDraft = "";
@@ -2574,7 +2574,7 @@ public final class ForgeWorkspaceSurface {
 
     private void openKitContextMenu(String kitId, float screenX, float screenY) {
         if (kitId == null || kitId.isBlank()) {
-            setStatus("missing workflow tab");
+            setStatus("missing workflow");
             return;
         }
         contextMenuKitId = kitId;
@@ -2590,7 +2590,7 @@ public final class ForgeWorkspaceSurface {
         confirmDeleteKitId = null;
         renamingChestStorageId = null;
         renameChestDraft = "";
-        status = "workflow tab menu";
+        status = "workflow menu";
         rebuildRequested = true;
     }
 
@@ -2680,13 +2680,13 @@ public final class ForgeWorkspaceSurface {
 
     private void beginKitRenameEdit(SlotWorkspaceViewModel.KitCard kit) {
         if (kit == null || kit.kitId().isBlank()) {
-            setStatus("missing workflow tab");
+            setStatus("missing workflow");
             return;
         }
         renamingKitId = kit.kitId();
         renameKitDraft = kit.name();
         confirmDeleteKitId = null;
-        status = "renaming workflow tab";
+        status = "renaming workflow";
         rebuildRequested = true;
     }
 
@@ -2819,12 +2819,12 @@ public final class ForgeWorkspaceSurface {
         }
         String label = renameKitDraft == null ? "" : renameKitDraft.trim();
         if (label.isBlank()) {
-            setStatus("tab name required");
+            setStatus("workflow name required");
             return;
         }
         String kitId = renamingKitId;
         closeOverlayState();
-        sendKitAction(WorkspaceActionId.RENAME_KIT, "renaming workflow tab", kitId, label);
+        sendKitAction(WorkspaceActionId.RENAME_KIT, "renaming workflow", kitId, label);
     }
 
     private void commitChestRenameEdit() {
@@ -3136,7 +3136,7 @@ public final class ForgeWorkspaceSurface {
         }
         GoalWorkspaceClientState.selectAll();
         SlotWorkspaceViewModel.KitCard tab = viewModel.kit(kitId);
-        sendKitAction(WorkspaceActionId.ACTIVATE_KIT, "showing " + (tab == null ? "workflow tab" : tab.name()), kitId);
+        sendKitAction(WorkspaceActionId.ACTIVATE_KIT, "showing " + (tab == null ? "workflow" : tab.name()), kitId);
     }
 
     private void selectGoalTab(String goalId) {
@@ -3653,7 +3653,7 @@ public final class ForgeWorkspaceSurface {
 
         @Override
         public void createTab() {
-            sendKitAction(WorkspaceActionId.CREATE_WORKFLOW_TAB, "creating workflow tab", "");
+            sendKitAction(WorkspaceActionId.CREATE_WORKFLOW_TAB, "creating workflow", "");
         }
 
         @Override
@@ -3720,56 +3720,56 @@ public final class ForgeWorkspaceSurface {
         public void toggleKitRack() {
             kitRackOpen = !kitRackOpen;
             setStatus(kitRackOpen
-                    ? "workflow tabs open (" + viewModel.kits().size() + ")"
-                    : "workflow tabs closed");
+                    ? "workflows open (" + viewModel.kits().size() + ")"
+                    : "workflows closed");
         }
 
         @Override
         public void closeKitRack() {
             kitRackOpen = false;
-            setStatus("workflow tabs closed");
+            setStatus("workflows closed");
         }
 
         @Override
         public void saveCurrentBeltAsKit() {
-            sendKitAction(WorkspaceActionId.SAVE_KIT, "saving belt as workflow tab", "");
+            sendKitAction(WorkspaceActionId.SAVE_KIT, "saving belt as workflow", "");
         }
 
         @Override
         public void createEmptyTab() {
-            sendKitAction(WorkspaceActionId.CREATE_WORKFLOW_TAB, "creating workflow tab", "");
+            sendKitAction(WorkspaceActionId.CREATE_WORKFLOW_TAB, "creating workflow", "");
         }
 
         @Override
         public void activateKit(String kitId) {
-            sendKitAction(WorkspaceActionId.ACTIVATE_KIT, "activating workflow tab", kitId);
+            sendKitAction(WorkspaceActionId.ACTIVATE_KIT, "activating workflow", kitId);
         }
 
         @Override
         public void deactivateKit() {
-            sendKitAction(WorkspaceActionId.DEACTIVATE_KIT, "deactivating workflow tab");
+            sendKitAction(WorkspaceActionId.DEACTIVATE_KIT, "deactivating workflow");
         }
 
         @Override
         public void switchActiveKitPage(int direction) {
-            sendKitAction(WorkspaceActionId.SWITCH_KIT_PAGE, "switching tab page", direction);
+            sendKitAction(WorkspaceActionId.SWITCH_KIT_PAGE, "switching workflow page", direction);
         }
 
         @Override
         public void addKitPage(String kitId) {
-            sendKitAction(WorkspaceActionId.ADD_KIT_PAGE, "adding tab page", kitId);
+            sendKitAction(WorkspaceActionId.ADD_KIT_PAGE, "adding workflow page", kitId);
         }
 
         @Override
         public void removeKitPage(String kitId, int pageIndex) {
-            sendKitAction(WorkspaceActionId.REMOVE_KIT_PAGE, "removing tab page", kitId, pageIndex);
+            sendKitAction(WorkspaceActionId.REMOVE_KIT_PAGE, "removing workflow page", kitId, pageIndex);
         }
 
         @Override
         public void clearKitSlot(String kitId, int pageIndex, int slotIndex) {
             sendKitAction(
                     WorkspaceActionId.SET_KIT_SLOT_IDENTITY,
-                    "clearing tab slot",
+                    "clearing workflow slot",
                     kitId,
                     pageIndex,
                     slotIndex,

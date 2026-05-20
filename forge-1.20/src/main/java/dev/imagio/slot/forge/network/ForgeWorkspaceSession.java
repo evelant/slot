@@ -52,6 +52,7 @@ import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.action.WorkspaceActionPacket;
+import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
@@ -86,7 +87,6 @@ final class ForgeWorkspaceSession {
     private static final int TARGET_MAIN_SOURCE = 1;
     private static final int TARGET_MAIN_SLOT = 2;
     private static final int TARGET_HOTBAR_SLOT = 3;
-    private static final int AUTO_HOME_MAX_PER_PROJECTION = 64;
     private static final Function<InventoryEntrySnapshot, ItemIdentity> KIT_IDENTITY_RESOLVER =
             entry -> entry == null ? null : ItemIdentityMatcher.create(entry.stack());
 
@@ -204,7 +204,7 @@ final class ForgeWorkspaceSession {
         String combinedDiagnostics = combineDiagnostics(hostDiagnostics, diagnostics);
         int selected = player == null ? -1 : player.getInventory().selected;
         long gameTime = player == null ? 0L : player.serverLevel().getGameTime();
-        if (runtime != null) {
+        if (runtime != null && ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
             runtime.contextualSuggestions().observeStationContext(
                     host,
                     authority,
@@ -213,14 +213,7 @@ final class ForgeWorkspaceSession {
         }
 
         SlotWorkspaceViewModel projected = project(authority, selected, combinedDiagnostics, gameTime, player);
-        int autoHomeCount = 0;
-        while (autoHomeCount < AUTO_HOME_MAX_PER_PROJECTION
-                && SlotWorkspaceCommandService.autoHomeTriageItems(runtime, projected, autoHomeAttempted)) {
-            autoHomeCount++;
-            projected = project(authority, selected, combinedDiagnostics, gameTime, player);
-        }
-        if (autoHomeCount >= AUTO_HOME_MAX_PER_PROJECTION && !projected.triageItems().isEmpty()) {
-            combinedDiagnostics = combineDiagnostics(combinedDiagnostics, "auto_home_deferred");
+        if (SlotWorkspaceCommandService.autoHomeTriageItems(runtime, projected, autoHomeAttempted)) {
             projected = project(authority, selected, combinedDiagnostics, gameTime, player);
         }
         hotbarRecency.observe(projected);

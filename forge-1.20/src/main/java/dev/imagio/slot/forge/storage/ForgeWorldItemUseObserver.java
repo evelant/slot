@@ -4,6 +4,7 @@ import dev.imagio.slot.forge.SlotForge;
 import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -76,6 +77,9 @@ public final class ForgeWorldItemUseObserver {
 
     @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
     public static void onBlockPlace(BlockEvent.EntityPlaceEvent event) {
+        if (!ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
+            return;
+        }
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
@@ -95,6 +99,9 @@ public final class ForgeWorldItemUseObserver {
 
     @SubscribeEvent
     public static void onItemUseFinish(LivingEntityUseItemEvent.Finish event) {
+        if (!ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
+            return;
+        }
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
@@ -112,6 +119,9 @@ public final class ForgeWorldItemUseObserver {
 
     @SubscribeEvent
     public static void onPlayerDestroyItem(PlayerDestroyItemEvent event) {
+        if (!ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
+            return;
+        }
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
@@ -135,6 +145,9 @@ public final class ForgeWorldItemUseObserver {
             String action,
             String targetKey
     ) {
+        if (!ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
+            return;
+        }
         if (!(playerEntity instanceof ServerPlayer player) || stack == null || stack.isEmpty()) {
             return;
         }
@@ -152,7 +165,7 @@ public final class ForgeWorldItemUseObserver {
     }
 
     private static ItemIdentity identity(ItemStack stack) {
-        return ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
+        return ItemIdentityMatcher.itemOnly(stack);
     }
 
     private static String sourceKey(InteractionHand hand) {

@@ -50,6 +50,20 @@ public final class ItemIdentityCollections {
         return false;
     }
 
+    /**
+     * Direct lookup for collections whose keys were already materialized
+     * through {@link #key(ItemIdentity)} / {@link #add(Collection, ItemIdentity)}.
+     * Use this in hot projection paths that own the collection shape; use
+     * {@link #contains(Collection, ItemIdentity)} for legacy or external maps
+     * that may still contain un-normalized exact identities.
+     */
+    public static boolean containsCanonical(Collection<ItemIdentity> identities, ItemIdentity identity) {
+        return identities != null
+                && !identities.isEmpty()
+                && identity != null
+                && identities.contains(key(identity));
+    }
+
     public static int count(Map<ItemIdentity, Integer> counts, ItemIdentity identity) {
         if (counts == null || counts.isEmpty() || identity == null) {
             return 0;
@@ -83,6 +97,18 @@ public final class ItemIdentityCollections {
             }
         }
         return null;
+    }
+
+    /**
+     * Direct lookup for maps whose keys were already materialized through
+     * {@link #key(ItemIdentity)}. Avoids the movable scan used by
+     * {@link #find(Map, ItemIdentity)} for legacy/raw maps.
+     */
+    public static <V> V findCanonical(Map<ItemIdentity, V> entries, ItemIdentity identity) {
+        if (entries == null || entries.isEmpty() || identity == null) {
+            return null;
+        }
+        return entries.get(key(identity));
     }
 
     public static <V> V findOrDefault(Map<ItemIdentity, V> entries, ItemIdentity identity, V defaultValue) {

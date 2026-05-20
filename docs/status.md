@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-19. Operational handoff. Read after
+Last updated: 2026-05-20. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -16,15 +16,17 @@ and `:forge-1.20:compileSharedProbeJava` compiles the whole common tree
 against Forge 1.20.1 / Java 17 with real platform adapters.
 
 Phase 1 has shared action transport, Forge runtime, session-backed projection,
-and common-service routing for metadata, transfer, hotbar, workflow tabs,
-desired-count, chest, deposit/take, cursor, active-tab gather, and
+and common-service routing for metadata, transfer, hotbar, workflows,
+desired-count, chest, deposit/take, cursor, active-workflow gather, and
 cross-surface actions.
 
 Phase 2 has the production wall shell on both loaders: shared 24px item-card
 chrome, two-row Recents, vanilla-shaped Belt, active chest controls, workflow
-tabs, accepted-input menus, compact nearby headers, remembered search/scroll,
-configurable sidebar margins, hidden Useful Now / Put Away suggestion rows, and
-Forge key parity for inventory, tab-page cycle, gather, unbound put-away,
+controls, accepted-input menus, compact nearby headers, remembered search/scroll,
+configurable sidebar margins, hidden Useful Now / Put Away suggestion rows
+with live contextual observation, expensive contextual scoring, and
+storage-ghost expansion disabled for now, and
+Forge key parity for inventory, workflow-page cycle, gather, unbound put-away,
 main-inventory move, wayfinding, Esc, wanted-count controls, and unbound hovered
 trash. Junk/trash pressure relief marks low-priority identities for 30 minutes,
 shows a card indicator, deletes carried matches with undo, and drops newly
@@ -66,7 +68,7 @@ The workspace mounts in two surfaces with the **same widget tree**:
 standalone full-screen inventory replacement and a sidebar child on supported
 container/non-container screens, including EMI recipe screens when a handled
 menu remains available for sync. Both use the same search/action row, workflow
-tabs, optional active-chest strip, Recents, wall scroller, optional tab editor,
+controls, optional active-chest strip, Recents, wall scroller, optional workflow editor,
 status row, and vanilla-shaped bottom Belt. Sidebar margins are client-config
 so packs with FTB Chunks, quests, EMI, or other buttons can make room.
 
@@ -122,7 +124,7 @@ Common module:
 - `classification`: `FacetIndex`, layer bootstrap/load reports, runtime
   export formatting, dynamic home-cohort policy
 - `workflow/domain`: visual homes, claimed chests, chest affinity, chest
-  cluster map, workflow tabs, recents, persistence
+  cluster map, workflows, recents, persistence
 - `atlas`: pure helpers — `AtlasSearchIndex`, `AtlasRelevance` +
   contributors, `SectionOrdinal` (per-section ordinal lookups for
   drag-drop). Camera / layout / nudge / band / packer code retired
@@ -138,7 +140,7 @@ NeoForge module:
 - `neoforge/screen/ldlib`: LDLib2 workspace menu, holder, UI session,
   view-model projection, panel builders (`ListWallPanelBuilder`
   is the wall surface; `TocPanelBuilder` the docked TOC),
-  `AtlasCardBuilder` for single-LOD pixel cards, right-side workflow tab editor,
+  `AtlasCardBuilder` for single-LOD pixel cards, right-side workflow editor,
   active-chest / Recents / Belt builders, RPC dispatcher, drag/drop
 - `neoforge/network`: workspace-open + RPC payload definitions
 - `neoforge/storage`: BE `storage_id` attachment, claim orchestrator,
@@ -157,7 +159,7 @@ Forge 1.20 module:
   compilation, direct Taffy + `GuiGraphics` workspace renderer,
   `SimpleChannel` action transport, workflow persistence, session-backed
   projection, carried/world storage accessors, guarded
-  transfer/hotbar/workflow-tab/desired/wanted/chest/cursor/gather/wayfinding
+  transfer/hotbar/workflow/desired/wanted/chest/cursor/gather/wayfinding
   actions, measured shared-card badges, sidebar margin config/depth fixes,
   `/slot test` and
   classification commands, and the Phase 0.5 `compileSharedProbeJava`
@@ -179,7 +181,7 @@ Reference code (read-only): `reference/LDLib2`, `InventoryEssentials`,
 | Host resolution, mutation router | `inventory/integration` |
 | Workspace composition + view model | `inventory/workspace` |
 | Deposit planner (pure) | `inventory/workspace` |
-| Visual homes, claimed chests, chest affinity, clusters, workflow tabs, persistence | `workflow/domain` |
+| Visual homes, claimed chests, chest affinity, clusters, workflows, persistence | `workflow/domain` |
 | Section ordinal lookups, search index, relevance scoring | `atlas/lod` |
 | Item facets / classification | `classification` |
 | LDLib2 workspace UI | `neoforge/screen/ldlib` |
@@ -200,15 +202,15 @@ to minimize churn — see list-view.md § Naming. **Section** —
 player-facing organizational block (the new presentation of an
 "island"). **Home** — stable section + ordinal owned by one item
 identity. **Recents** — two-row pinned strip of recently picked-up identities
-above the wall. **Workflow tab** — player-authored task view layered on top of
-`All`; tab membership behaves as an implicit active wanted-one target, accepted
-inputs make exact/tag matches relevant without target pressure, tabs can have
+above the wall. **Workflow** — player-authored task view layered on top of
+`All`; workflow membership behaves as an implicit active wanted-one target, accepted
+inputs make exact/tag matches relevant without target pressure, workflows can have
 one level of variants, and optional Belt/offhand pages reuse the older Kit
 implementation substrate. **Belt** — docked hotbar strip at the bottom of the wall
 with vanilla offhand-left layout. **Desired count** — persistent target
-count, player-global (`All`) or active-tab scoped. **Wanted count** — temporary
+count, player-global (`All`) or active-workflow scoped. **Wanted count** — temporary
 player target; `All` wanted counts retain global auto-clear behavior while
-active-tab wanted counts stay visible until the tab deactivates. **Authority** — source of
+active-workflow wanted counts stay visible until the workflow deactivates. **Authority** — source of
 truth about slot contents (kernel owns it; UI never invents).
 **Projection** — derived read model built from authority for a surface.
 

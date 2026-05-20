@@ -99,4 +99,25 @@ class ItemIdentityCollectionsTest {
 
         assertSame(value, ItemIdentityCollections.find(entries, MODDED_HAMMER));
     }
+
+    @Test
+    void canonicalLookupsUsePreNormalizedKeysOnly() {
+        LinkedHashSet<ItemIdentity> normalizedIdentities = new LinkedHashSet<>();
+        ItemIdentityCollections.add(normalizedIdentities, DAMAGED_HAMMER);
+        assertTrue(ItemIdentityCollections.containsCanonical(normalizedIdentities, MODDED_HAMMER));
+
+        assertFalse(ItemIdentityCollections.containsCanonical(Set.of(DAMAGED_HAMMER), MODDED_HAMMER));
+        assertTrue(ItemIdentityCollections.contains(Set.of(DAMAGED_HAMMER), MODDED_HAMMER));
+    }
+
+    @Test
+    void canonicalMapLookupUsesPreNormalizedKeysOnly() {
+        LinkedHashMap<ItemIdentity, Object> normalizedEntries = new LinkedHashMap<>();
+        Object value = new Object();
+        normalizedEntries.put(ItemIdentityCollections.key(DAMAGED_HAMMER), value);
+
+        assertSame(value, ItemIdentityCollections.findCanonical(normalizedEntries, MODDED_HAMMER));
+        assertNull(ItemIdentityCollections.findCanonical(Map.of(DAMAGED_HAMMER, value), MODDED_HAMMER));
+        assertSame(value, ItemIdentityCollections.find(Map.of(DAMAGED_HAMMER, value), MODDED_HAMMER));
+    }
 }

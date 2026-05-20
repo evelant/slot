@@ -1001,7 +1001,7 @@ final class SlotWorkspaceUiController {
         GoalWorkspaceClientState.selectAll();
         SlotWorkspaceViewModel.KitCard tab = viewModel == null ? null : viewModel.kit(kitId);
         rpc.sendActivateKit(kitId);
-        localStatus.set("showing " + (tab == null ? "workflow tab" : tab.name()));
+        localStatus.set("showing " + (tab == null ? "workflow" : tab.name()));
         rebuild();
     }
 

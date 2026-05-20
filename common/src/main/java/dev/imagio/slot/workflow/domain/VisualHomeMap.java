@@ -43,7 +43,7 @@ public record VisualHomeMap(
     }
 
     public VisualHomeAssignment assignment(ItemIdentity identity) {
-        return ItemIdentityCollections.find(assignments, identity);
+        return ItemIdentityCollections.findCanonical(assignments, identity);
     }
 
     public boolean templateDismissed(String templateId) {

@@ -715,8 +715,8 @@ public final class SlotWorkspaceCommandService {
         }
         InventoryAuthoritySnapshot resolvedAuthority = authority == null
                 ? InventoryAuthoritySnapshot.empty() : authority;
-        // If a kit is active, treat "Save Current Belt" as "update active kit's current page"
-        // so the button stays in-place instead of silently forking a new kit.
+        // If a kit is active, treat "Save Current Belt" as "update the active workflow's current page"
+        // so the button stays in-place instead of silently forking a new workflow.
         var activation = runtime.kitWorkflow().activation();
         if (activation.isActive()) {
             KitDefinition activeKit = runtime.kitWorkflow().kit(activation.kitId());
@@ -732,11 +732,11 @@ public final class SlotWorkspaceCommandService {
                             .withOffhand(offhand);
                     if (!runtime.kitWorkflow().update(next,
                             DomainEventMetadata.origin("slot_workspace.ldlib.kit_page_update"))) {
-                        return WorkspaceCommandOutcome.accepted("tab page unchanged", activeKit.name());
+                        return WorkspaceCommandOutcome.accepted("workflow page unchanged", activeKit.name());
                     }
                     SlotDebugLog.log("LDLib kit page updated {} page={}", activeKit.id(), pageIndex);
                     return WorkspaceCommandOutcome.accepted(
-                            "tab page updated",
+                            "workflow page updated",
                             activeKit.name() + " (page " + (pageIndex + 1) + ")");
                 } catch (IllegalArgumentException exception) {
                     return WorkspaceCommandOutcome.rejected(exception.getMessage());
@@ -759,7 +759,7 @@ public final class SlotWorkspaceCommandService {
             }
             SlotDebugLog.log("LDLib kit snapshot created {} ({} slots filled)",
                     created.id(), created.pages().get(0).filledSlotCount());
-            return WorkspaceCommandOutcome.accepted("workflow tab saved", created.name());
+            return WorkspaceCommandOutcome.accepted("workflow saved", created.name());
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -807,7 +807,7 @@ public final class SlotWorkspaceCommandService {
         if (!planReasons.isBlank()) {
             diagnostics.append(" reasons=").append(planReasons);
         }
-        String status = missing == 0 ? "workflow tab activated" : "workflow tab activated (missing " + missing + ")";
+        String status = missing == 0 ? "workflow activated" : "workflow activated (missing " + missing + ")";
         return WorkspaceCommandOutcome.accepted(status, diagnostics.toString());
     }
 
@@ -899,7 +899,7 @@ public final class SlotWorkspaceCommandService {
         String planReasons = result.diagnostics().isEmpty() ? "" : String.join(",", result.diagnostics());
         SlotDebugLog.log("LDLib kit page switched {} page={} satisfied={} missing={} reasons={}",
                 kit.id(), nextPage, satisfied, missing, planReasons);
-        String status = "tab page " + (nextPage + 1) + "/" + pageCount;
+        String status = "workflow page " + (nextPage + 1) + "/" + pageCount;
         StringBuilder diagnostics = new StringBuilder()
                 .append("satisfied=").append(satisfied)
                 .append(" missing=").append(missing);
@@ -930,7 +930,7 @@ public final class SlotWorkspaceCommandService {
         }
         KitDefinition updated = runtime.kitWorkflow().kit(kitId);
         SlotDebugLog.log("LDLib kit page added {} pages={}", kitId, updated.pageCount());
-        return WorkspaceCommandOutcome.accepted("tab page added", existing.name());
+        return WorkspaceCommandOutcome.accepted("workflow page added", existing.name());
     }
 
     public static WorkspaceCommandOutcome createKitVariant(
@@ -1000,8 +1000,8 @@ public final class SlotWorkspaceCommandService {
                     0,
                     DomainEventMetadata.origin("slot_workspace.ldlib.workflow_tab_create_activate")
             );
-            SlotDebugLog.log("LDLib workflow tab created {}", created.id());
-            return WorkspaceCommandOutcome.accepted("workflow tab created", created.name());
+            SlotDebugLog.log("LDLib workflow created {}", created.id());
+            return WorkspaceCommandOutcome.accepted("workflow created", created.name());
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -1071,11 +1071,11 @@ public final class SlotWorkspaceCommandService {
 
         String status;
         if (beltSynced && beltMissing == 0) {
-            status = "tab slot updated (belt synced)";
+            status = "workflow slot updated (belt synced)";
         } else if (beltSynced) {
-            status = "tab slot updated (belt synced, missing " + beltMissing + ")";
+            status = "workflow slot updated (belt synced, missing " + beltMissing + ")";
         } else {
-            status = "tab slot updated";
+            status = "workflow slot updated";
         }
         String detail = (identity == null ? "cleared" : identity.itemId());
         return WorkspaceCommandOutcome.accepted(status, detail);
@@ -1197,7 +1197,7 @@ public final class SlotWorkspaceCommandService {
     }
 
     /**
-     * Set the active-scope desired count. If a workflow tab is active the
+     * Set the active-scope desired count. If a workflow is active the
      * write lands in that tab's desired-count scope; otherwise it lands in
      * {@code All}. Clearing a tab-local value never lowers the inherited
      * {@code All} floor.
@@ -1232,7 +1232,7 @@ public final class SlotWorkspaceCommandService {
     }
 
     /**
-     * Adjust the visible desired count. Active workflow tabs write local
+     * Adjust the visible desired count. Active workflows write local
      * counts on top of the inherited {@code All} floor; they do not edit
      * the global value just because it is currently visible.
      */
@@ -1279,7 +1279,7 @@ public final class SlotWorkspaceCommandService {
 
     /**
      * Toggle a wanted target. On {@code All}, wanted counts retain the
-     * player-global auto-clear behavior. With a workflow tab active, the
+     * player-global auto-clear behavior. With a workflow active, the
      * wanted count is tab-scoped so satisfaction keeps the item visible until
      * the tab is deactivated.
      */
@@ -1508,7 +1508,7 @@ public final class SlotWorkspaceCommandService {
         }
         SlotDebugLog.log("LDLib kit slots swapped {} page={} from={} to={}",
                 kitId, pageIndex, fromIndex, toIndex);
-        return WorkspaceCommandOutcome.accepted("tab slots swapped", kitId);
+        return WorkspaceCommandOutcome.accepted("workflow slots swapped", kitId);
     }
 
     public static WorkspaceCommandOutcome removeKitPage(WorkflowDomainRuntime runtime, String kitId, int pageIndex) {
@@ -1534,7 +1534,7 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("invalid_page_index");
         }
         SlotDebugLog.log("LDLib kit page removed {} page={}", kitId, pageIndex);
-        return WorkspaceCommandOutcome.accepted("tab page removed", existing.name());
+        return WorkspaceCommandOutcome.accepted("workflow page removed", existing.name());
     }
 
     public static WorkspaceCommandOutcome deactivateKit(WorkflowDomainRuntime runtime) {
@@ -1548,7 +1548,7 @@ public final class SlotWorkspaceCommandService {
                 DomainEventMetadata.origin("slot_workspace.ldlib.kit_deactivate")
         );
         SlotDebugLog.log("LDLib kit deactivated");
-        return WorkspaceCommandOutcome.accepted("workflow tab deactivated", "");
+        return WorkspaceCommandOutcome.accepted("workflow deactivated", "");
     }
 
     public static WorkspaceCommandOutcome renameKit(WorkflowDomainRuntime runtime, String kitId, String newName) {
@@ -1573,13 +1573,13 @@ public final class SlotWorkspaceCommandService {
                     DomainEventMetadata.origin("slot_workspace.ldlib.kit_rename")
             );
             if (!renamed) {
-                return WorkspaceCommandOutcome.accepted("tab name unchanged", existing.name());
+                return WorkspaceCommandOutcome.accepted("workflow name unchanged", existing.name());
             }
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
         SlotDebugLog.log("LDLib kit renamed {} -> {}", kitId, trimmed);
-        return WorkspaceCommandOutcome.accepted("workflow tab renamed", trimmed);
+        return WorkspaceCommandOutcome.accepted("workflow renamed", trimmed);
     }
 
     public static WorkspaceCommandOutcome duplicateKit(WorkflowDomainRuntime runtime, String kitId) {
@@ -1602,7 +1602,7 @@ public final class SlotWorkspaceCommandService {
                 return WorkspaceCommandOutcome.rejected("tab_duplicate_rejected");
             }
             SlotDebugLog.log("LDLib kit duplicated {} -> {}", kitId, copy.id());
-            return WorkspaceCommandOutcome.accepted("workflow tab duplicated", copy.name());
+            return WorkspaceCommandOutcome.accepted("workflow duplicated", copy.name());
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -1624,12 +1624,12 @@ public final class SlotWorkspaceCommandService {
                 DomainEventMetadata.origin("slot_workspace.ldlib.kit_delete")
         );
         SlotDebugLog.log("LDLib kit deleted {}", kitId);
-        return WorkspaceCommandOutcome.accepted("workflow tab deleted", existing.name());
+        return WorkspaceCommandOutcome.accepted("workflow deleted", existing.name());
     }
 
     private static String defaultKitName(WorkflowDomainRuntime runtime) {
         int count = runtime.kitWorkflow().kits().size();
-        return "Tab " + (count + 1);
+        return "Workflow " + (count + 1);
     }
 
     public static WorkspaceCommandOutcome deleteIsland(

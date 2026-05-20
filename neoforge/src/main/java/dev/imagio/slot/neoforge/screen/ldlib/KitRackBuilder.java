@@ -76,7 +76,7 @@ final class KitRackBuilder {
                     : "";
             label = shorten(activeCard.name(), 10) + suffix;
         } else {
-            label = "Tabs";
+            label = "Workflows";
         }
         int bgColor = host.kitRackOpen
                 ? PANEL_ALT
@@ -100,8 +100,8 @@ final class KitRackBuilder {
             event.stopPropagation();
             host.kitRackOpen = !host.kitRackOpen;
             host.localStatus.set(host.kitRackOpen
-                    ? "workflow tabs open (" + kitCount + " tab" + (kitCount == 1 ? "" : "s") + ")"
-                    : "workflow tabs closed");
+                    ? "workflows open (" + kitCount + " workflow" + (kitCount == 1 ? "" : "s") + ")"
+                    : "workflows closed");
             host.rebuild();
         });
         return button;
@@ -156,7 +156,7 @@ final class KitRackBuilder {
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
         int kitCount = host.viewModel.kits().size();
-        Label title = label("Tabs (" + kitCount + ")", ACCENT);
+        Label title = label("Workflows (" + kitCount + ")", ACCENT);
         title.layout(layout -> layout.flex(1).height(12));
         title.textStyle(style -> style
                 .textColor(ACCENT)
@@ -169,12 +169,12 @@ final class KitRackBuilder {
         if (activeCard != null) {
             saveLabel = activeCard.pageCount() > 1
                     ? "Update Page " + (activeCard.activePageIndex() + 1)
-                    : "Update Active Tab";
+                    : "Update Workflow";
         } else {
-            saveLabel = "Save Current Belt as Tab";
+            saveLabel = "Save Belt as Workflow";
         }
-        Button create = button("New Tab", true, PANEL_ALT);
-        create.layout(layout -> layout.width(56).height(14));
+        Button create = button("New", true, PANEL_ALT);
+        create.layout(layout -> layout.width(34).height(14));
         create.textStyle(style -> style
                 .textColor(ACCENT)
                 .textShadow(false)
@@ -221,7 +221,7 @@ final class KitRackBuilder {
                     .flex(1)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.COLUMN));
-            Label empty = label("No workflow tabs yet. Create one or save the current belt.", MUTED);
+            Label empty = label("No workflows yet. Create one or save the current belt.", MUTED);
             empty.layout(layout -> layout.flex(1).height(12));
             empty.textStyle(style -> style
                     .textColor(MUTED)
@@ -562,7 +562,7 @@ final class KitRackBuilder {
                         new KitSlotDrag(card.kitId(), page.pageIndex(), slot.slotIndex(), slot.identity(), slot.displayStack().copy()),
                         host.drag.dragTexture(slot.displayStack())
                 ).setDragTexture(-10, -10, 20, 20);
-                host.localStatus.set("dragging tab slot");
+                host.localStatus.set("dragging workflow slot");
             }, true);
             cell.addEventListener(UIEvents.DRAG_END, host.drag::handleDragEnd);
         }

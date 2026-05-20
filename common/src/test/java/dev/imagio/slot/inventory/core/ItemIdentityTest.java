@@ -60,6 +60,30 @@ class ItemIdentityTest {
     }
 
     @Test
+    void patchouliGuideBookIdentityUsesBookSelectorNotIncidentalData() {
+        ItemIdentity guide = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "patchouli:guide_book",
+                "{\"patchouli:book\":\"tfc:field_guide\"}",
+                1,
+                1));
+        ItemIdentity guideWithDisplayData = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "patchouli:guide_book",
+                "{display:{Name:\"TerraFirmaGreg Guide\"},\"patchouli:book\":\"tfc:field_guide\"}",
+                1,
+                1));
+        ItemIdentity otherGuide = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "patchouli:guide_book",
+                "{\"patchouli:book\":\"ae2:guide\"}",
+                1,
+                1));
+
+        assertEquals(ItemIdentity.exact("patchouli:guide_book", "patchouli:book=tfc:field_guide"), guide);
+        assertEquals(guide, guideWithDisplayData);
+        assertTrue(ItemIdentityMatcher.matchesMovable(guide, guideWithDisplayData));
+        assertFalse(ItemIdentityMatcher.matchesMovable(guide, otherGuide));
+    }
+
+    @Test
     void damageOnlyExactIdentitiesNormalizeAsMovableCondition() {
         assertTrue(ItemIdentityMatcher.matchesMovable(
                 ItemIdentity.exact("grapplemod:longfallboots", "{Damage:12}"),

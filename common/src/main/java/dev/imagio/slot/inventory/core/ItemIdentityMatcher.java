@@ -3,7 +3,9 @@ package dev.imagio.slot.inventory.core;
 import dev.imagio.slot.platform.SlotStackAccess;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -16,8 +18,15 @@ public final class ItemIdentityMatcher {
             throw new IllegalArgumentException("stack must not be empty");
         }
         String itemId = resolveItemId(stack);
+        if (usesItemOnlyMovableIdentityWithoutFingerprint(stack)) {
+            return ItemIdentity.of(itemId);
+        }
         String components = resolveComponentFingerprint(stack);
-        if (usesItemOnlyMovableIdentity(stack, components) || hasMovableConditionOnlyFingerprint(components)) {
+        String selectorFingerprint = stableSelectorFingerprint(itemId, components);
+        if (!selectorFingerprint.isBlank()) {
+            return ItemIdentity.exact(itemId, selectorFingerprint);
+        }
+        if (hasToolStateFingerprint(components) || hasMovableConditionOnlyFingerprint(components)) {
             return ItemIdentity.of(itemId);
         }
         if (!stackable(stack) || !components.isBlank()) {
@@ -49,6 +58,10 @@ public final class ItemIdentityMatcher {
         if (identity == null || identity.comparisonMode() != ItemComparisonMode.ITEM_ID_AND_COMPONENTS) {
             return identity;
         }
+        String selectorFingerprint = stableSelectorFingerprint(identity.itemId(), identity.componentFingerprint());
+        if (!selectorFingerprint.isBlank()) {
+            return ItemIdentity.exact(identity.itemId(), selectorFingerprint);
+        }
         return hasMovableConditionOnlyFingerprint(identity.componentFingerprint())
                 ? ItemIdentity.of(identity.itemId())
                 : identity;
@@ -58,11 +71,18 @@ public final class ItemIdentityMatcher {
         if (left == null || right == null) {
             return false;
         }
-        ItemIdentity normalizedLeft = normalizeMovable(left);
-        ItemIdentity normalizedRight = normalizeMovable(right);
-        if (!Objects.equals(normalizedLeft.itemId(), normalizedRight.itemId())) {
+        if (left.equals(right)) {
+            return true;
+        }
+        if (!Objects.equals(left.itemId(), right.itemId())) {
             return false;
         }
+        if (left.comparisonMode() == ItemComparisonMode.ITEM_ID
+                || right.comparisonMode() == ItemComparisonMode.ITEM_ID) {
+            return true;
+        }
+        ItemIdentity normalizedLeft = normalizeMovable(left);
+        ItemIdentity normalizedRight = normalizeMovable(right);
         if (normalizedLeft.comparisonMode() == ItemComparisonMode.ITEM_ID
                 || normalizedRight.comparisonMode() == ItemComparisonMode.ITEM_ID) {
             return true;
@@ -81,13 +101,13 @@ public final class ItemIdentityMatcher {
         if (stack == null || stack.isEmpty()) {
             return false;
         }
-        return usesItemOnlyMovableIdentity(stack, resolveComponentFingerprint(stack));
+        return usesItemOnlyMovableIdentityWithoutFingerprint(stack)
+                || hasToolStateFingerprint(resolveComponentFingerprint(stack));
     }
 
-    private static boolean usesItemOnlyMovableIdentity(ItemStack stack, String components) {
+    private static boolean usesItemOnlyMovableIdentityWithoutFingerprint(ItemStack stack) {
         return SlotStackAccess.current().damageable(stack)
                 || hasMovableToolTag(stack)
-                || hasToolStateFingerprint(components)
                 || PortableContainerClassifiers.isPortableContainer(stack);
     }
 
@@ -113,6 +133,68 @@ public final class ItemIdentityMatcher {
             hasMovableKey = true;
         }
         return hasMovableKey;
+    }
+
+    private static String stableSelectorFingerprint(String itemId, String fingerprint) {
+        if (itemId == null || itemId.isBlank()) {
+            return "";
+        }
+        String normalized = normalizeFingerprint(fingerprint);
+        if (normalized.isBlank()) {
+            return "";
+        }
+        normalized = stripOuter(normalized, '{', '}');
+        normalized = stripOuter(normalized, '[', ']');
+        if (normalized.isBlank()) {
+            return "";
+        }
+        // Patchouli multiplexes multiple logical books through one item id.
+        // The selected book is stable identity; display/progress data is not.
+        String patchouliBook = topLevelSelectorValue(normalized, "patchouli:book");
+        if (!patchouliBook.isBlank()) {
+            return "patchouli:book=" + patchouliBook;
+        }
+        return "";
+    }
+
+    private static String topLevelSelectorValue(String normalized, String selectorKey) {
+        if (normalized == null || normalized.isBlank() || selectorKey == null || selectorKey.isBlank()) {
+            return "";
+        }
+        for (String segment : topLevelFingerprintSegments(normalized)) {
+            String value = selectorValue(segment, selectorKey);
+            if (!value.isBlank()) {
+                return value;
+            }
+        }
+        return "";
+    }
+
+    private static String selectorValue(String segment, String selectorKey) {
+        String normalized = segment == null ? "" : segment.strip();
+        if (normalized.isBlank()) {
+            return "";
+        }
+        String arrowPrefix = selectorKey + "=>";
+        String equalsPrefix = selectorKey + "=";
+        String colonPrefix = selectorKey + ":";
+        if (normalized.startsWith(arrowPrefix)) {
+            return cleanSelectorValue(normalized.substring(arrowPrefix.length()));
+        }
+        if (normalized.startsWith(equalsPrefix)) {
+            return cleanSelectorValue(normalized.substring(equalsPrefix.length()));
+        }
+        if (normalized.startsWith(colonPrefix)) {
+            return cleanSelectorValue(normalized.substring(colonPrefix.length()));
+        }
+        return "";
+    }
+
+    private static String cleanSelectorValue(String value) {
+        String resolved = value == null ? "" : value.strip();
+        resolved = stripOuter(resolved, '{', '}');
+        resolved = stripOuter(resolved, '[', ']');
+        return resolved;
     }
 
     private static boolean hasMovableToolTag(ItemStack stack) {
@@ -223,6 +305,17 @@ public final class ItemIdentityMatcher {
             return Set.of();
         }
         LinkedHashSet<String> keys = new LinkedHashSet<>();
+        for (String segment : topLevelFingerprintSegments(value)) {
+            addFingerprintKey(keys, segment);
+        }
+        return keys.isEmpty() ? Set.of() : Set.copyOf(keys);
+    }
+
+    private static List<String> topLevelFingerprintSegments(String value) {
+        if (value == null || value.isBlank()) {
+            return List.of();
+        }
+        ArrayList<String> segments = new ArrayList<>();
         int segmentStart = 0;
         int curlyDepth = 0;
         int squareDepth = 0;
@@ -237,12 +330,19 @@ public final class ItemIdentityMatcher {
             } else if (c == ']') {
                 squareDepth = Math.max(0, squareDepth - 1);
             } else if (c == ',' && curlyDepth == 0 && squareDepth == 0) {
-                addFingerprintKey(keys, value.substring(segmentStart, index));
+                addFingerprintSegment(segments, value.substring(segmentStart, index));
                 segmentStart = index + 1;
             }
         }
-        addFingerprintKey(keys, value.substring(segmentStart));
-        return keys.isEmpty() ? Set.of() : Set.copyOf(keys);
+        addFingerprintSegment(segments, value.substring(segmentStart));
+        return segments.isEmpty() ? List.of() : List.copyOf(segments);
+    }
+
+    private static void addFingerprintSegment(List<String> segments, String segment) {
+        String normalized = segment == null ? "" : segment.strip();
+        if (!normalized.isBlank()) {
+            segments.add(normalized);
+        }
     }
 
     private static void addFingerprintKey(Set<String> keys, String segment) {

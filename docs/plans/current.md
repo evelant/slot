@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-19
+Last updated: 2026-05-20
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -16,9 +16,9 @@ NeoForge + LDLib2 build.** ADR
 platform decision. Phase 2 remains active: Forge now consumes the common
 tree with production adapters, shared action packet/session envelopes,
 common workspace projection, carried/world storage accessors, guarded
-metadata/transfer/hotbar/workflow-tab/chest/cursor/gather/wayfinding actions, and
+metadata/transfer/hotbar/workflow/chest/cursor/gather/wayfinding actions, and
 the direct Taffy/GuiGraphics `G` screen plus mounted sidebar. The latest
-UI parity pass aligned both loaders on right-side workflow tabs, vanilla-shaped
+UI parity pass aligned both loaders on right-side workflows, vanilla-shaped
 Belt, shared item-card state chrome, accepted-input menus, remembered
 search/scroll, two-row Recents, compact section headers, and configurable
 sidebar margins. NeoForge remains the semantic oracle; the next risk is
@@ -40,13 +40,13 @@ Previously active
 behind the cross-loader work. Do not delete it; resume when the loader
 boundary no longer dominates engineering risk.
 
-Sidecar product slice: workflow tabs are now the task surface layered over the
-normal wall. `All` remains the global desired/wanted baseline; active tabs and
+Sidecar product slice: workflows are now the task surface layered over the
+normal wall. `All` remains the global desired/wanted baseline; active workflows and
 one-level variants add local desired/wanted targets, implicit member targets,
 Belt/offhand pages, accepted inputs, gather targets, accepted-tag substitute
 ghosts, and routed put-away clutter. The code still uses `Kit*` names as the
 transitional implementation
-substrate, but user-facing work should speak in workflow tabs.
+substrate, but user-facing work should speak in workflows.
 
 **Recently shipped, no further plan:**
 
@@ -68,13 +68,16 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
-- **2026-05-19** — Workflow-tab playtest polish landed: active tabs now reveal
-  only intentful accepted-tag proximate substitutes by default while leaving
-  unrelated storage ghosts behind `x`/header reveal, accepted-input menus can add
-  or remove exact/tag rules with filtered material-specific tags and wider labels,
+- **2026-05-19** — Workflow playtest polish landed: active workflows now keep
+  all carried cards visible, reveal only intentful accepted-tag proximate
+  substitutes by default, and leave unrelated storage ghosts behind `x`/header
+  reveal; accepted-input menus can add or remove exact/tag rules with filtered
+  material-specific tags and wider labels,
   section headers carry `+x` nearby counts and compact empty sections, Useful Now
-  and Put Away suggestion rows are hidden while their projection/scoring remains
-  live, Recents renders two rows, search idle-commits and later clears after close
+  and Put Away suggestion rows are hidden while live contextual observation,
+  expensive contextual scoring, and storage-ghost expansion are disabled for now,
+  Recents renders two rows, search
+  idle-commits and later clears after close
   with right-click clear working on Forge, the default grave-accent key toggles
   hovered identities between backpack/hotbar and main inventory, and the shared
   target/display-storage fixes stabilized damaged tools, baskets/sacks, tool
@@ -99,26 +102,27 @@ hold the rest.
   events as usefulness evidence, caps desired-count excess to two Put Away
   cards, and requires fresh/repeated deposit history when no storage route is
   visible.
-- **2026-05-18** — Workflow tabs landed on the existing Kit substrate: `All`
-  targets are inherited by active tabs, parent + variant targets compose as
-  floors, tab membership creates an implicit wanted-one target, active-tab
+- **2026-05-18** — Workflows landed on the existing Kit substrate: `All`
+  targets are inherited by active workflows, parent + variant targets compose as
+  floors, workflow membership creates an implicit wanted-one target, active-workflow
   wanted counts clear on deactivation, gather/protection/wayfinding use the
-  shared tab resolver, the wall filters to active-tab relevance while keeping
-  routed put-away clutter visible, both loaders render visible workflow tabs
-  with one-level variants, and card/tab menus can add/remove tab members or
+  shared workflow resolver, the wall keeps carried cards and filters non-carried
+  cards to active-workflow relevance while keeping routed put-away clutter visible,
+  both loaders render visible workflows
+  with one-level variants, and card/workflow menus can add/remove workflow members or
   create variants.
-- **2026-05-18** — Workflow-tab cleanup guidance added Put Away projection for
-  active-tab-irrelevant carried items, marks items without a learned nearby home
+- **2026-05-18** — Workflow cleanup guidance added Put Away projection for
+  active-workflow-irrelevant carried items, marks items without a learned nearby home
   instead of dropping them silently, preserves routed clutter on normal wall
   cards, and adds an unbound cross-loader put-away hotkey that delegates to the
   same protected deposit command as the button. The rendered row was hidden by
   the 2026-05-19 playtest polish entry above.
-- **2026-05-18** — Workflow tabs can now accept exact items or deterministic
+- **2026-05-18** — Workflows can now accept exact items or deterministic
   item tags from the card right-click menu without creating wanted/desired
-  targets; accepted inputs stay visible in active tabs, are omitted from Put
+  targets; accepted inputs stay visible in active workflows, are omitted from Put
   Away, persist through workflow state/view-model codecs, and are protected
   from bulk put-away deposit.
-- **2026-05-18** — Workflow-tab target cleanup now canonicalizes desired and
+- **2026-05-18** — Workflow target cleanup now canonicalizes desired and
   wanted tool/storage-container identities through the shared target resolver,
   uses that resolver for bulk-deposit reservation, keeps damaged carried tools
   and NBT-bearing baskets/sacks from becoming stuck craft targets, limits
@@ -175,12 +179,12 @@ Operational bugs not currently tied to a plan. Items from the
 2026-05-01 cursor + desired/wanted-counts batch live under [Queue](#queue)
 item 2; this section is the leftover pile.
 
-- **Workflow tab drag-edit doesn't auto-apply to the active belt.** Dragging
-  a home onto an *active* tab's slot updates the tab definition
+- **Workflow drag-edit doesn't auto-apply to the active belt.** Dragging
+  a home onto an *active* workflow's slot updates the workflow definition
   but the belt isn't re-applied. Per
   [`../design/kits.md § Edit a Kit`](../design/kits.md), the edit
   should propagate immediately when the target page is the active
-  page. Scoped follow-up for the next person touching tab
+  page. Scoped follow-up for the next person touching workflow
   drag-to-edit.
 
 ## Queue
@@ -202,10 +206,10 @@ track lands.
    Active-scope desired counts, player wanted counts, unified gap chrome,
    gather for wanted/desired gaps, and the basic right-click desired-count
    editor are live. Remaining work: dedupe nearby chest identities that are
-   both proximate and tab-needed, fix the non-stackable multi-chest identity
-   split (`bucket_of_water` repro), add structured identity/chest/tab-needed
+   both proximate and workflow-needed, fix the non-stackable multi-chest identity
+   split (`bucket_of_water` repro), add structured identity/chest/workflow-needed
    diagnostics, finish the deferred cursor-drop/origin-highlight/overflow
-   polish, add a tab-vs-global toggle to "Set desired count...", carry forward
+   polish, add a workflow-vs-global toggle to "Set desired count...", carry forward
    shift-click-take auto-deposit of excess, and eventually throttle stable
    deposit logs.
 
@@ -236,24 +240,24 @@ track lands.
    obvious latest location instead of scattered stale directories. Then
    regenerate vanilla/pack vocabulary and run `classify-runtime-pack` with the
    usable vocabulary.
-5. **Workflow tab follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
-   Core tabs, accepted inputs, compact nearby headers, hidden noisy suggestion
+5. **Workflow follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
+   Core workflows, accepted inputs, compact nearby headers, hidden noisy suggestion
    rows, search/keybind polish, and the shared display-storage/tool fix pass are
-   live. Remaining slices are recipe import/staging into current tabs,
+   live. Remaining slices are recipe import/staging into current workflows,
    destination highlighting/wayfinding polish for put-away, reorder UI for
-   tabs/variants, tab duplicate/rename polish where the existing context-menu
+   workflows/variants, workflow duplicate/rename polish where the existing context-menu
    editor is too rough.
 6. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
    The landed Kit code remains the implementation substrate, but future
-   user-facing task workflow work should follow `workflow-tabs.md`.
+   user-facing workflow work should follow `workflow-tabs.md`.
 7. **Single-column workspace width pass**
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
 8. **Workspace projection caching.** `SlotWorkspaceViewModel`
-   re-projects carried / proximate / elsewhere / tab-needed identities
+   re-projects carried / proximate / elsewhere / workflow-needed identities
    every server tick while open. Add cache invalidators for inventory
-   deltas, chest content, tab changes, and chest-proximity movement;
+   deltas, chest content, workflow changes, and chest-proximity movement;
    the main win is server CPU, with log-spam reduction as a side
    benefit.
 

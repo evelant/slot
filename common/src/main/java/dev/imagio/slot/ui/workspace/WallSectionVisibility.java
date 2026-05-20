@@ -53,6 +53,7 @@ public final class WallSectionVisibility {
         StorageGhostRevealMode mode = revealMode == null ? StorageGhostRevealMode.COLLAPSED : revealMode;
         ArrayList<SlotWorkspaceViewModel.AtlasItem> visible = new ArrayList<>(cards.size());
         int ordinaryProximateGhosts = 0;
+        boolean sectionNearbyExpanded = allowCollapsedNearbyToggle && nearbyExpanded;
         for (SlotWorkspaceViewModel.AtlasItem item : cards) {
             if (item == null) {
                 continue;
@@ -71,7 +72,7 @@ public final class WallSectionVisibility {
                     && mode == StorageGhostRevealMode.COLLAPSED) {
                 ordinaryProximateGhosts++;
             }
-            if (shouldRevealGhost(item, filtering, nearbyExpanded, mode, forceRevealGhosts)) {
+            if (shouldRevealGhost(item, filtering, sectionNearbyExpanded, mode, forceRevealGhosts)) {
                 visible.add(item);
             }
         }
@@ -80,7 +81,7 @@ public final class WallSectionVisibility {
                 && !filtering
                 && !forceRevealGhosts
                 && mode == StorageGhostRevealMode.COLLAPSED;
-        return new Result(visible, showToggle ? ordinaryProximateGhosts : 0, nearbyExpanded);
+        return new Result(visible, showToggle ? ordinaryProximateGhosts : 0, sectionNearbyExpanded);
     }
 
     private static boolean shouldRevealGhost(

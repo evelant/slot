@@ -2,9 +2,8 @@ package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
-import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.query.CarriedIdentityCounts;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
-import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -105,11 +104,18 @@ public final class WorkflowTabTargets {
             InventoryAuthoritySnapshot authority,
             WorkflowDomainSnapshot snapshot
     ) {
+        return resolve(CarriedIdentityCounts.from(authority), snapshot);
+    }
+
+    public static Resolution resolve(
+            CarriedIdentityCounts carriedCounts,
+            WorkflowDomainSnapshot snapshot
+    ) {
         if (snapshot == null) {
             return Resolution.empty();
         }
         return resolve(
-                authority,
+                carriedCounts,
                 snapshot.kitMap(),
                 snapshot.playerDesiredCounts(),
                 snapshot.kitDesiredCounts(),
@@ -125,9 +131,27 @@ public final class WorkflowTabTargets {
             Map<ItemIdentity, Integer> playerWantedCounts,
             Map<String, Map<ItemIdentity, Integer>> kitWantedCounts
     ) {
+        return resolve(
+                CarriedIdentityCounts.from(authority),
+                kitMap,
+                playerDesiredCounts,
+                kitDesiredCounts,
+                playerWantedCounts,
+                kitWantedCounts);
+    }
+
+    public static Resolution resolve(
+            CarriedIdentityCounts carriedCounts,
+            KitMap kitMap,
+            Map<ItemIdentity, Integer> playerDesiredCounts,
+            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
+            Map<ItemIdentity, Integer> playerWantedCounts,
+            Map<String, Map<ItemIdentity, Integer>> kitWantedCounts
+    ) {
+        CarriedIdentityCounts carried = carriedCounts == null ? CarriedIdentityCounts.empty() : carriedCounts;
         LinkedHashMap<ItemIdentity, Integer> desired = positiveCopy(playerDesiredCounts);
         LinkedHashSet<ItemIdentity> desiredFromWorkflow = new LinkedHashSet<>();
-        LinkedHashMap<ItemIdentity, Integer> wanted = activePlayerWantedCounts(authority, playerWantedCounts);
+        LinkedHashMap<ItemIdentity, Integer> wanted = activePlayerWantedCounts(carried, playerWantedCounts);
         LinkedHashSet<ItemIdentity> relevant = new LinkedHashSet<>();
         relevant.addAll(desired.keySet());
         relevant.addAll(wanted.keySet());
@@ -188,7 +212,7 @@ public final class WorkflowTabTargets {
         LinkedHashSet<ItemIdentity> missing = new LinkedHashSet<>();
         for (ItemIdentity identity : relevant) {
             if (identity != null && containsMovable(workflowOwned, identity)
-                    && carriedMovableCount(authority, identity) < Math.max(1, Math.max(
+                    && carried.count(identity) < Math.max(1, Math.max(
                     countFor(wanted, identity),
                     Math.max(countFor(desired, identity), countFor(beltRequirements, identity))))) {
                 mergePositive(missing, identity);
@@ -275,9 +299,10 @@ public final class WorkflowTabTargets {
     }
 
     private static LinkedHashMap<ItemIdentity, Integer> activePlayerWantedCounts(
-            InventoryAuthoritySnapshot authority,
+            CarriedIdentityCounts carriedCounts,
             Map<ItemIdentity, Integer> playerWantedCounts
     ) {
+        CarriedIdentityCounts carried = carriedCounts == null ? CarriedIdentityCounts.empty() : carriedCounts;
         LinkedHashMap<ItemIdentity, Integer> out = new LinkedHashMap<>();
         if (playerWantedCounts == null || playerWantedCounts.isEmpty()) {
             return out;
@@ -286,7 +311,7 @@ public final class WorkflowTabTargets {
             ItemIdentity identity = entry.getKey();
             Integer target = entry.getValue();
             if (identity != null && target != null && target > 0
-                    && carriedMovableCount(authority, identity) < target) {
+                    && carried.count(identity) < target) {
                 mergePositive(out, identity, target);
             }
         }
@@ -299,23 +324,5 @@ public final class WorkflowTabTargets {
 
     private static void mergePositive(Set<ItemIdentity> targets, ItemIdentity identity) {
         ItemIdentityCollections.add(targets, identity);
-    }
-
-    private static int carriedMovableCount(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
-        if (authority == null || identity == null) {
-            return 0;
-        }
-        int total = 0;
-        for (var source : authority.carriedSources()) {
-            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
-                if (entry == null || !entry.present()) {
-                    continue;
-                }
-                if (ItemIdentityMatcher.matchesMovable(entry.stack(), identity)) {
-                    total += entry.count();
-                }
-            }
-        }
-        return total;
     }
 }

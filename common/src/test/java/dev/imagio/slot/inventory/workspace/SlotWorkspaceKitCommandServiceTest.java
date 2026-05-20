@@ -57,7 +57,7 @@ class SlotWorkspaceKitCommandServiceTest {
         );
 
         assertTrue(outcome.success());
-        assertEquals("workflow tab saved", outcome.status());
+        assertEquals("workflow saved", outcome.status());
         List<KitDefinition> kits = runtime.kitWorkflow().kits();
         assertEquals(1, kits.size());
         assertEquals("Mining", kits.get(0).name());
@@ -75,7 +75,7 @@ class SlotWorkspaceKitCommandServiceTest {
         );
 
         assertTrue(outcome.success());
-        assertEquals("Tab 1", runtime.kitWorkflow().kits().get(0).name());
+        assertEquals("Workflow 1", runtime.kitWorkflow().kits().get(0).name());
     }
 
     @Test
@@ -85,10 +85,10 @@ class SlotWorkspaceKitCommandServiceTest {
         WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.createWorkflowTab(runtime, "");
 
         assertTrue(outcome.success());
-        assertEquals("workflow tab created", outcome.status());
+        assertEquals("workflow created", outcome.status());
         List<KitDefinition> kits = runtime.kitWorkflow().kits();
         assertEquals(1, kits.size());
-        assertEquals("Tab 1", kits.get(0).name());
+        assertEquals("Workflow 1", kits.get(0).name());
         assertTrue(runtime.kitWorkflow().activation().isActive());
         assertEquals(kits.get(0).id(), runtime.kitWorkflow().activation().kitId());
         assertEquals(0, kits.get(0).pages().get(0).filledSlotCount());

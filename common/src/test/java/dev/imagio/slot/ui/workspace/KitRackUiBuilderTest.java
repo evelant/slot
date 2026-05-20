@@ -65,7 +65,7 @@ class KitRackUiBuilderTest {
         actions.children().get(1).dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
 
         assertEquals(List.of(stone), context.taken);
-        assertEquals("gathering 1 tab target", context.status);
+        assertEquals("gathering 1 workflow target", context.status);
     }
 
     @Test

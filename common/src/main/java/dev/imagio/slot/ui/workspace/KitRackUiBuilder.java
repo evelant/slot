@@ -85,7 +85,7 @@ public final class KitRackUiBuilder {
 
     private static String clusterLabel(SlotWorkspaceViewModel.KitCard active, boolean compact) {
         if (active == null) {
-            return "Tabs";
+            return "Workflows";
         }
         if (compact) {
             return active.pageCount() > 1
@@ -129,8 +129,8 @@ public final class KitRackUiBuilder {
         int count = kits == null ? 0 : kits.size();
         SlotWorkspaceViewModel.KitCard active = activeKit(kits);
         String saveText = active == null
-                ? "Save Belt"
-                : active.pageCount() > 1 ? "Update Page " + (active.activePageIndex() + 1) : "Update Tab";
+                ? "Save Workflow"
+                : active.pageCount() > 1 ? "Update Page " + (active.activePageIndex() + 1) : "Update Workflow";
         SlotUiElement row = SlotUiElement.element()
                 .layout(layout -> layout
                         .widthPercent(100)
@@ -138,15 +138,15 @@ public final class KitRackUiBuilder {
                         .gapAll(4)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
-        row.addChild(SlotUiElement.label("Tabs (" + count + ")", ACCENT)
+        row.addChild(SlotUiElement.label("Workflows (" + count + ")", ACCENT)
                 .layout(layout -> layout.flex(1).height(12))
                 .textStyle(style -> style
                         .color(ACCENT)
                         .fontSize(9)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
-        SlotUiElement create = button("New Tab", true, PANEL_ALT)
-                .layout(layout -> layout.width(48).height(14));
+        SlotUiElement create = button("New", true, PANEL_ALT)
+                .layout(layout -> layout.width(34).height(14));
         create.on(SlotUiEventKind.CLICK, event -> {
             if (event.button() != 0) {
                 return;
@@ -185,7 +185,7 @@ public final class KitRackUiBuilder {
                         .height(32)
                         .paddingAll(4)
                         .alignItems(SlotUiLayout.AlignItems.CENTER))
-                .addChild(SlotUiElement.label("No workflow tabs yet. Create one or save the current belt.", MUTED)
+                .addChild(SlotUiElement.label("No workflows yet. Create one or save the current belt.", MUTED)
                         .layout(layout -> layout.widthPercent(100).height(12))
                         .textStyle(style -> style
                                 .color(MUTED)
@@ -324,7 +324,7 @@ public final class KitRackUiBuilder {
             if (canAdd) {
                 context.addKitPage(card.kitId());
             } else {
-                context.setStatus("no room for another tab page");
+                context.setStatus("no room for another workflow page");
             }
         });
         row.addChild(add);
@@ -341,7 +341,7 @@ public final class KitRackUiBuilder {
                 }
                 event.stopPropagation();
                 if (pullable <= 0) {
-                    context.setStatus(missing.size() + " tab targets not in nearby chests");
+                    context.setStatus(missing.size() + " workflow targets not in nearby chests");
                     return;
                 }
                 int requested = 0;
@@ -351,7 +351,7 @@ public final class KitRackUiBuilder {
                         requested++;
                     }
                 }
-                context.setStatus("gathering " + requested + " tab target" + (requested == 1 ? "" : "s"));
+                context.setStatus("gathering " + requested + " workflow target" + (requested == 1 ? "" : "s"));
             });
             row.addChild(gather);
         }

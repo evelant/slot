@@ -368,7 +368,7 @@ class SlotWorkspaceLdlibModelTest {
         HolderLookup.Provider provider = new HolderLookup.Provider() {
         };
 
-        SlotWorkspaceViewModel original = SlotWorkspaceViewModel.project(
+        SlotWorkspaceViewModel original = withSyntheticContextualSuggestionLane(SlotWorkspaceViewModel.project(
                 authority,
                 runtime.snapshot(),
                 "transfer rejected",
@@ -376,7 +376,7 @@ class SlotWorkspaceLdlibModelTest {
                 1,
                 0,
                 12
-        );
+        ));
         SlotWorkspaceViewModel restored = SlotWorkspaceViewModelCodec.decode(provider, SlotWorkspaceViewModelCodec.encode(original, provider));
 
         assertEquals(original.revision(), restored.revision());
@@ -392,6 +392,43 @@ class SlotWorkspaceLdlibModelTest {
         assertEquals(
                 original.contextualSuggestionLanes().getFirst().placeholderText(),
                 restored.contextualSuggestionLanes().getFirst().placeholderText());
+        assertEquals(
+                original.contextualSuggestionLanes().getFirst().items().getFirst().identity().itemId(),
+                restored.contextualSuggestionLanes().getFirst().items().getFirst().identity().itemId());
+    }
+
+    private static SlotWorkspaceViewModel withSyntheticContextualSuggestionLane(SlotWorkspaceViewModel viewModel) {
+        SlotWorkspaceViewModel.ContextualSuggestionLane lane = new SlotWorkspaceViewModel.ContextualSuggestionLane(
+                SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW,
+                "Useful Now",
+                List.of(viewModel.triageItems().getFirst()),
+                "Hidden feature lane codec coverage");
+        return new SlotWorkspaceViewModel(
+                viewModel.revision(),
+                viewModel.status(),
+                viewModel.diagnostics(),
+                viewModel.pendingCount(),
+                viewModel.selectedQuickAccessSlot(),
+                viewModel.canvasWidth(),
+                viewModel.canvasHeight(),
+                viewModel.carriedFreeSlotCount(),
+                viewModel.carriedSlotCapacity(),
+                viewModel.islands(),
+                viewModel.atlasItems(),
+                viewModel.triageItems(),
+                viewModel.chestChips(),
+                viewModel.chestClusters(),
+                viewModel.hotbarSlots(),
+                viewModel.offhand(),
+                viewModel.kits(),
+                viewModel.lootChestPanel(),
+                viewModel.wayfindingTargets(),
+                viewModel.depositableIdentities(),
+                viewModel.recentIdentities(),
+                viewModel.activeChestPanel(),
+                viewModel.goalRecipeDefaults(),
+                viewModel.goalPlans(),
+                List.of(lane));
     }
 
     @Test

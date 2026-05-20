@@ -77,7 +77,7 @@ public final class WorkspaceItemTooltipBuilder {
             return;
         }
         if (item.kitNeeded()) {
-            lines.add(Component.literal("Workflow target: needed by active workflow tab"));
+            lines.add(Component.literal("Workflow target: needed by active workflow"));
         }
     }
 

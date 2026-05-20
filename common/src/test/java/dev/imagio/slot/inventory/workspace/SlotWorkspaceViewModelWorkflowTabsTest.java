@@ -70,7 +70,7 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
     }
 
     @Test
-    void activeWorkflowTabHidesUnrelatedCarriedCards() {
+    void activeWorkflowKeepsUnrelatedCarriedCardsVisible() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         KitDefinition mining = runtime.kitWorkflow().create("Mining");
         runtime.kitWorkflow().setMember(mining.id(), ItemIdentity.of("minecraft:torch"), true);
@@ -87,9 +87,18 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
                 0,
                 1L);
 
-        assertEquals(
-                List.of("minecraft:torch"),
-                viewModel.triageItems().stream().map(item -> item.identity().itemId()).toList());
+        List<String> triageIds = viewModel.triageItems().stream()
+                .map(item -> item.identity().itemId())
+                .toList();
+        assertTrue(triageIds.contains("minecraft:torch"));
+        assertTrue(triageIds.contains("minecraft:dirt"));
+
+        SlotWorkspaceViewModel.AtlasItem dirt = viewModel.triageItems().stream()
+                .filter(item -> "minecraft:dirt".equals(item.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+        assertTrue(dirt.carried());
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NONE, dirt.putAwayState());
 
         SlotWorkspaceViewModel.ContextualSuggestionLane putAway = viewModel.contextualSuggestionLanes().stream()
                 .filter(SlotWorkspaceViewModel.ContextualSuggestionLane::putAway)
@@ -467,6 +476,47 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
                         && "mod:stack_data_hammer".equals(item.identity().itemId())
                         && !item.kitNeeded()));
         assertFalse(fetchItemIds.contains("mod:stack_data_hammer"));
+    }
+
+    @Test
+    void patchouliGuideBookDesiredCountIsSatisfiedByCarriedCopyWithIncidentalData() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity savedGuide = ItemIdentity.exact(
+                "patchouli:guide_book",
+                "{\"patchouli:book\":\"tfc:field_guide\"}");
+        runtime.desiredCountWorkflow().setPlayer(savedGuide, 1);
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(new InventoryStackSnapshot(
+                        0,
+                        new ItemStack(
+                                "patchouli:guide_book",
+                                "{display:{Name:\"TerraFirmaGreg Guide\"},\"patchouli:book\":\"tfc:field_guide\"}",
+                                1,
+                                1),
+                        1)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        List<SlotWorkspaceViewModel.AtlasItem> guides = viewModel.triageItems().stream()
+                .filter(candidate -> "patchouli:guide_book".equals(candidate.identity().itemId()))
+                .toList();
+        SlotWorkspaceViewModel.ContextualSuggestionLane fetch = fetchLane(viewModel);
+        List<String> fetchItemIds = fetch == null
+                ? List.of()
+                : fetch.items().stream().map(item -> item.identity().itemId()).toList();
+
+        assertEquals(1, guides.size());
+        assertTrue(guides.getFirst().carried());
+        assertFalse(guides.getFirst().ghost());
+        assertEquals(ItemIdentity.exact("patchouli:guide_book", "patchouli:book=tfc:field_guide"),
+                guides.getFirst().identity().toIdentity());
+        assertEquals(1, guides.getFirst().desiredCount());
+        assertFalse(fetchItemIds.contains("patchouli:guide_book"));
     }
 
     @Test

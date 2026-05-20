@@ -23,7 +23,7 @@ public final class ActivityProjection {
     ) {
         Snapshot current = checkpoint == null ? Snapshot.empty() : checkpoint;
         InventoryActivityStore.Snapshot resolvedStore = storeSnapshot == null ? InventoryActivityStore.Snapshot.empty() : storeSnapshot;
-        Map<ItemIdentity, Long> dismissed = dismissedUpToByIdentity == null ? Map.of() : dismissedUpToByIdentity;
+        Map<ItemIdentity, Long> dismissed = canonicalDismissals(dismissedUpToByIdentity);
 
         LinkedHashMap<ItemIdentity, Integer> recentCounts = new LinkedHashMap<>(current.recents().countsByIdentity());
         LinkedHashMap<ItemIdentity, Long> recentSequences = new LinkedHashMap<>(current.recents().latestSequenceByIdentity());
@@ -40,7 +40,7 @@ public final class ActivityProjection {
                 if (identity == null) {
                     continue;
                 }
-                long dismissedUpTo = ItemIdentityCollections.findOrDefault(dismissed, identity, 0L);
+                long dismissedUpTo = dismissed.getOrDefault(identity, 0L);
                 if (sequence > dismissedUpTo) {
                     ItemIdentityCollections.removeMatching(recentCounts, identity);
                     ItemIdentityCollections.removeMatching(recentSequences, identity);
@@ -79,7 +79,7 @@ public final class ActivityProjection {
             return current;
         }
 
-        Map<ItemIdentity, Long> dismissed = dismissedUpToByIdentity == null ? Map.of() : dismissedUpToByIdentity;
+        Map<ItemIdentity, Long> dismissed = canonicalDismissals(dismissedUpToByIdentity);
         LinkedHashMap<ItemIdentity, Integer> recentCounts = new LinkedHashMap<>(current.recents().countsByIdentity());
         LinkedHashMap<ItemIdentity, Long> recentSequences = new LinkedHashMap<>(current.recents().latestSequenceByIdentity());
         LinkedHashMap<String, InventoryActivityRecord> recoverableByToken = cleanupIndex(current.cleanupCandidates());
@@ -88,7 +88,7 @@ public final class ActivityProjection {
         long sequence = record.envelope().globalSequence();
         ItemIdentity identity = ItemIdentityCollections.key(event.identity());
         if (identity != null && event.present() && contributesToRecent(event)
-                && sequence > ItemIdentityCollections.findOrDefault(dismissed, identity, 0L)) {
+                && sequence > dismissed.getOrDefault(identity, 0L)) {
             ItemIdentityCollections.removeMatching(recentCounts, identity);
             ItemIdentityCollections.removeMatching(recentSequences, identity);
             recentCounts.put(identity, event.count());
@@ -108,14 +108,14 @@ public final class ActivityProjection {
             Map<ItemIdentity, Long> dismissedUpToByIdentity
     ) {
         Snapshot current = snapshot == null ? Snapshot.empty() : snapshot;
-        Map<ItemIdentity, Long> dismissed = dismissedUpToByIdentity == null ? Map.of() : dismissedUpToByIdentity;
+        Map<ItemIdentity, Long> dismissed = canonicalDismissals(dismissedUpToByIdentity);
         LinkedHashMap<ItemIdentity, Integer> recentCounts = new LinkedHashMap<>();
         LinkedHashMap<ItemIdentity, Long> recentSequences = new LinkedHashMap<>();
 
         current.recents().countsByIdentity().forEach((identity, count) -> {
             long sequence = current.recents().latestSequenceByIdentity().getOrDefault(identity, 0L);
             ItemIdentity key = ItemIdentityCollections.key(identity);
-            if (sequence > ItemIdentityCollections.findOrDefault(dismissed, key, 0L)) {
+            if (sequence > dismissed.getOrDefault(key, 0L)) {
                 recentCounts.put(key, count);
                 recentSequences.put(key, sequence);
             }
@@ -133,6 +133,19 @@ public final class ActivityProjection {
             case ACQUIRED, CRAFTED, SMELTED -> true;
             default -> false;
         };
+    }
+
+    private static Map<ItemIdentity, Long> canonicalDismissals(Map<ItemIdentity, Long> source) {
+        if (source == null || source.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, Long> copied = new LinkedHashMap<>();
+        source.forEach((identity, sequence) -> {
+            if (identity != null && sequence != null && sequence >= 0L) {
+                copied.merge(ItemIdentityCollections.key(identity), sequence, Math::max);
+            }
+        });
+        return copied.isEmpty() ? Map.of() : java.util.Collections.unmodifiableMap(copied);
     }
 
     private static LinkedHashMap<String, InventoryActivityRecord> cleanupIndex(List<InventoryActivityRecord> cleanupCandidates) {

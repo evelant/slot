@@ -56,6 +56,7 @@ import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
@@ -1980,11 +1981,13 @@ final class SlotWorkspaceUiSession {
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
         runtime.collectionWorkflow().expireJunkTags();
         long gameTime = serverPlayer.serverLevel().getGameTime();
-        runtime.contextualSuggestions().observeStationContext(
-                host,
-                authority,
-                gameTime,
-                DomainEventMetadata.origin("contextual.neoforge.station_context"));
+        if (ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
+            runtime.contextualSuggestions().observeStationContext(
+                    host,
+                    authority,
+                    gameTime,
+                    DomainEventMetadata.origin("contextual.neoforge.station_context"));
+        }
         WorkspaceStorageRoutingContext storageContext =
                 WorkspaceStorageRoutingContext.build(serverPlayer, runtime, authority);
         ClaimedChestMap claimedChestMap = storageContext.claimedChestMap();
