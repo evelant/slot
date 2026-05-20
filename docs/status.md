@@ -23,9 +23,9 @@ cross-surface actions.
 Phase 2 has the production wall shell on both loaders: shared 24px item-card
 chrome, two-row Recents, vanilla-shaped Belt, active chest controls, workflow
 controls, accepted-input menus, compact nearby headers, remembered search/scroll,
-configurable sidebar margins, hidden Useful Now / Put Away suggestion rows
-with live contextual observation, expensive contextual scoring, and
-storage-ghost expansion disabled for now, and
+configurable sidebar margins, visible activation-scoped Put Away guidance,
+Useful Now scoring hidden, live contextual observation, expensive contextual
+scoring, and storage-ghost expansion disabled for now, and
 Forge key parity for inventory, workflow-page cycle, gather, unbound put-away,
 main-inventory move, wayfinding, Esc, wanted-count controls, and unbound hovered
 trash. Junk/trash pressure relief marks low-priority identities for 30 minutes,

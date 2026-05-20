@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -61,6 +62,21 @@ class KitWorkflowDomainServiceTest {
     }
 
     @Test
+    void renameRejectsDuplicateSiblingName() {
+        KitWorkflowDomainService kits = kits();
+        kits.create("Mining");
+        KitDefinition combat = kits.create("Combat");
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> kits.rename(combat.id(), "Mining")
+        );
+
+        assertEquals("Workflow name already exists: Mining", exception.getMessage());
+        assertEquals("Combat", kits.kit(combat.id()).name());
+    }
+
+    @Test
     void updateReplacesPages() {
         KitWorkflowDomainService kits = kits();
         KitDefinition kit = kits.create("Combat");
@@ -98,6 +114,17 @@ class KitWorkflowDomainServiceTest {
     }
 
     @Test
+    void activateStoresPutAwaySnapshot() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition kit = kits.create("Mining");
+        ItemIdentity dirt = ItemIdentity.of("minecraft:dirt");
+
+        assertTrue(kits.activate(kit.id(), 0, Set.of(dirt)));
+
+        assertEquals(Set.of(dirt), kits.activation().putAwayIdentities());
+    }
+
+    @Test
     void activateReturnsFalseWhenAlreadyActive() {
         KitWorkflowDomainService kits = kits();
         KitDefinition kit = kits.create("Mining");
@@ -130,10 +157,11 @@ class KitWorkflowDomainServiceTest {
         KitPage pageC = KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:fishing_rod"));
         KitDefinition kit = kits.create("Multi");
         kits.update(kit.withPages(List.of(pageA, pageB, pageC)));
-        kits.activate(kit.id());
+        kits.activate(kit.id(), 0, Set.of(ItemIdentity.of("minecraft:dirt")));
 
         assertTrue(kits.switchPage(1));
         assertEquals(1, kits.activation().pageIndex());
+        assertEquals(Set.of(ItemIdentity.of("minecraft:dirt")), kits.activation().putAwayIdentities());
         assertTrue(kits.switchPage(2));
         assertEquals(2, kits.activation().pageIndex());
         assertTrue(kits.switchPage(0));
@@ -164,6 +192,69 @@ class KitWorkflowDomainServiceTest {
         assertEquals(pick, copy.page(0).slot(0));
         assertEquals(ItemIdentity.of("minecraft:shield"), copy.offhand());
         assertEquals(2, kits.kits().size());
+    }
+
+    @Test
+    void duplicateUsesReadableNamesAndStaysBesideSourceFamily() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition mining = kits.create("Mining");
+        KitDefinition building = kits.create("Building");
+
+        KitDefinition firstCopy = kits.duplicate(mining.id());
+        KitDefinition secondCopy = kits.duplicate(mining.id());
+        KitDefinition copyOfCopy = kits.duplicate(firstCopy.id());
+
+        assertEquals("Mining (copy)", firstCopy.name());
+        assertEquals("Mining (copy 2)", secondCopy.name());
+        assertEquals("Mining (copy 3)", copyOfCopy.name());
+        assertEquals(
+                List.of(mining.id(), firstCopy.id(), secondCopy.id(), copyOfCopy.id(), building.id()),
+                topLevelIds(kits.kits())
+        );
+    }
+
+    @Test
+    void reorderMovesTopLevelWorkflowsWithoutChangingVariantParentage() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition mining = kits.create("Mining");
+        KitDefinition combat = kits.create("Combat");
+        KitDefinition farming = kits.create("Farming");
+        KitDefinition deepMining = kits.createVariant(mining.id(), "Deep Mining");
+
+        assertTrue(kits.reorder(farming.id(), 0));
+
+        assertEquals(
+                List.of(farming.id(), mining.id(), combat.id()),
+                topLevelIds(kits.kits())
+        );
+        assertEquals(List.of(deepMining.id()), kitIds(kits.kitMap().variantsOf(mining.id())));
+    }
+
+    @Test
+    void reorderMovesVariantsOnlyWithinTheirParent() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition mining = kits.create("Mining");
+        KitDefinition combat = kits.create("Combat");
+        KitDefinition deepMining = kits.createVariant(mining.id(), "Deep Mining");
+        KitDefinition netherMining = kits.createVariant(mining.id(), "Nether Mining");
+        KitDefinition bossPrep = kits.createVariant(combat.id(), "Boss Prep");
+
+        assertTrue(kits.reorder(netherMining.id(), 0));
+
+        assertEquals(
+                List.of(netherMining.id(), deepMining.id()),
+                kitIds(kits.kitMap().variantsOf(mining.id()))
+        );
+        assertEquals(List.of(bossPrep.id()), kitIds(kits.kitMap().variantsOf(combat.id())));
+    }
+
+    @Test
+    void reorderReturnsFalseWhenWorkflowAlreadyAtTarget() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition mining = kits.create("Mining");
+        kits.create("Combat");
+
+        assertFalse(kits.reorder(mining.id(), 0));
     }
 
     @Test
@@ -373,5 +464,18 @@ class KitWorkflowDomainServiceTest {
 
     private static KitWorkflowDomainService kits() {
         return new KitWorkflowDomainService(new InMemoryWorkflowDomainStateRepository());
+    }
+
+    private static List<String> topLevelIds(List<KitDefinition> kits) {
+        return kits.stream()
+                .filter(kit -> !kit.variant())
+                .map(KitDefinition::id)
+                .toList();
+    }
+
+    private static List<String> kitIds(List<KitDefinition> kits) {
+        return kits.stream()
+                .map(KitDefinition::id)
+                .toList();
     }
 }

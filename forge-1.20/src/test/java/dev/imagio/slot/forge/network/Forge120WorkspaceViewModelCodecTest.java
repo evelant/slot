@@ -99,6 +99,7 @@ class Forge120WorkspaceViewModelCodecTest {
                 "minecraft:overworld",
                 "Loot Chest",
                 List.of(atlasItem));
+        ItemIdentity dirtIdentity = ItemIdentity.of("minecraft:dirt");
         WayfindingTarget wayfindingTarget = new WayfindingTarget(
                 "storage-1",
                 "minecraft:overworld",
@@ -106,6 +107,10 @@ class Forge120WorkspaceViewModelCodecTest {
                 64,
                 -3,
                 Set.of(stoneIdentity),
+                Set.of(stoneIdentity),
+                Set.of(),
+                Set.of(),
+                Set.of(dirtIdentity),
                 5,
                 WayfindingTarget.Scope.KIT);
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel = new SlotWorkspaceViewModel.ActiveChestPanel(
@@ -187,6 +192,7 @@ class Forge120WorkspaceViewModelCodecTest {
         assertEquals("Loot Chest", restored.lootChestPanel().label());
         assertEquals(1, restored.lootChestPanel().items().size());
         assertEquals(WayfindingTarget.Scope.KIT, restored.wayfindingTargets().get(0).scope());
+        assertTrue(restored.wayfindingTargets().get(0).putAwayIdentities().contains(dirtIdentity));
         assertTrue(restored.depositableIdentities().contains(stone));
         assertEquals("storage-1", restored.activeChestPanel().storageId());
     }

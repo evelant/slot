@@ -147,6 +147,11 @@ public final class WayfindingDisplay {
         return "Chest #" + shortId;
     }
 
+    public static String targetLabel(WayfindingTarget target) {
+        String label = chestLabel(target);
+        return target != null && target.putAwayOnly() ? "Put away: " + label : label;
+    }
+
     private static String displayLabel(WorldDisplayStorageKind kind) {
         return switch (kind) {
             case TOOL_RACK -> "Tool rack";

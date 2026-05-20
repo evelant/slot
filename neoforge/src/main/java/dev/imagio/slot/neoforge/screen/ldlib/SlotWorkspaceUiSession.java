@@ -1130,6 +1130,18 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
+    void reorderKit(String kitId, Integer targetIndex) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.reorderKit(
+                workflowRuntime(serverPlayer),
+                kitId,
+                targetIndex == null ? -1 : targetIndex
+        ));
+    }
+
     void deleteKit(String kitId) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;

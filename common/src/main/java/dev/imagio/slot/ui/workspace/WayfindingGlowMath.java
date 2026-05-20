@@ -7,6 +7,7 @@ public final class WayfindingGlowMath {
     public static final double LOS_TRACE_LIMIT = 32.0;
     public static final int KIT_RGB = 0xFFB347;
     public static final int PLAYER_RGB = 0x4FB8FF;
+    public static final int PUT_AWAY_RGB = 0x4ADE80;
     public static final float MIN_ALPHA = 0.10f;
     public static final float MAX_ALPHA = 0.85f;
 
@@ -31,8 +32,12 @@ public final class WayfindingGlowMath {
     }
 
     public static int scopeRgb(WayfindingTarget target) {
-        return target != null && target.hasKitMissing()
-                ? KIT_RGB
-                : PLAYER_RGB;
+        if (target == null) {
+            return PLAYER_RGB;
+        }
+        if (target.hasKitMissing()) {
+            return KIT_RGB;
+        }
+        return target.putAwayOnly() ? PUT_AWAY_RGB : PLAYER_RGB;
     }
 }

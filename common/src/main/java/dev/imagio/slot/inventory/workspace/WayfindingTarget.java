@@ -7,12 +7,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * Per-chest projection used by the wayfinding HUD + atlas chip + in-world
- * glow. A target says: this chest holds at least one identity the player
- * still needs (kit-active, or a desired-count gap), with the gap-by-gap
- * intersection in {@code missingIdentities}. Built by
- * {@link SlotWorkspaceViewModel#project} alongside the existing
- * kit-needed projection.
+ * Per-storage projection used by the wayfinding HUD + atlas chip + in-world
+ * glow. Acquisition targets say this storage holds at least one identity the
+ * player still needs; put-away targets say this storage is a known destination
+ * for carried clutter.
  *
  * <p>Coordinates are flat ints to mirror {@link dev.imagio.slot.workflow.domain.ChestAnchor}
  * — the common module avoids dragging in {@code net.minecraft.core.BlockPos}
@@ -28,6 +26,7 @@ public record WayfindingTarget(
         Set<ItemIdentity> kitMissingIdentities,
         Set<ItemIdentity> desiredMissingIdentities,
         Set<ItemIdentity> wantedMissingIdentities,
+        Set<ItemIdentity> putAwayIdentities,
         int totalMissingCount,
         Scope scope
 ) {
@@ -51,6 +50,35 @@ public record WayfindingTarget(
                 scope == Scope.KIT ? missingIdentities : Set.of(),
                 scope == Scope.PLAYER ? missingIdentities : Set.of(),
                 scope == Scope.WANTED ? missingIdentities : Set.of(),
+                scope == Scope.PUT_AWAY ? missingIdentities : Set.of(),
+                totalMissingCount,
+                scope);
+    }
+
+    public WayfindingTarget(
+            String storageId,
+            String dimensionId,
+            int worldX,
+            int worldY,
+            int worldZ,
+            Set<ItemIdentity> missingIdentities,
+            Set<ItemIdentity> kitMissingIdentities,
+            Set<ItemIdentity> desiredMissingIdentities,
+            Set<ItemIdentity> wantedMissingIdentities,
+            int totalMissingCount,
+            Scope scope
+    ) {
+        this(
+                storageId,
+                dimensionId,
+                worldX,
+                worldY,
+                worldZ,
+                missingIdentities,
+                kitMissingIdentities,
+                desiredMissingIdentities,
+                wantedMissingIdentities,
+                Set.of(),
                 totalMissingCount,
                 scope);
     }
@@ -61,6 +89,7 @@ public record WayfindingTarget(
         kitMissingIdentities = copyIdentitySet(kitMissingIdentities);
         desiredMissingIdentities = copyIdentitySet(desiredMissingIdentities);
         wantedMissingIdentities = copyIdentitySet(wantedMissingIdentities);
+        putAwayIdentities = copyIdentitySet(putAwayIdentities);
         LinkedHashSet<ItemIdentity> allMissing = new LinkedHashSet<>();
         if (missingIdentities != null) {
             allMissing.addAll(missingIdentities);
@@ -68,10 +97,12 @@ public record WayfindingTarget(
         allMissing.addAll(kitMissingIdentities);
         allMissing.addAll(desiredMissingIdentities);
         allMissing.addAll(wantedMissingIdentities);
+        allMissing.addAll(putAwayIdentities);
         missingIdentities = copyIdentitySet(allMissing);
         totalMissingCount = Math.max(0, totalMissingCount);
         scope = scope == null
-                ? inferScope(kitMissingIdentities, desiredMissingIdentities, wantedMissingIdentities)
+                ? inferScope(kitMissingIdentities, desiredMissingIdentities, wantedMissingIdentities,
+                        putAwayIdentities)
                 : scope;
     }
 
@@ -87,10 +118,22 @@ public record WayfindingTarget(
         return !wantedMissingIdentities.isEmpty();
     }
 
+    public boolean hasPutAway() {
+        return !putAwayIdentities.isEmpty();
+    }
+
+    public boolean putAwayOnly() {
+        return hasPutAway()
+                && kitMissingIdentities.isEmpty()
+                && desiredMissingIdentities.isEmpty()
+                && wantedMissingIdentities.isEmpty();
+    }
+
     private static Scope inferScope(
             Set<ItemIdentity> kitMissingIdentities,
             Set<ItemIdentity> desiredMissingIdentities,
-            Set<ItemIdentity> wantedMissingIdentities
+            Set<ItemIdentity> wantedMissingIdentities,
+            Set<ItemIdentity> putAwayIdentities
     ) {
         if (kitMissingIdentities != null && !kitMissingIdentities.isEmpty()) {
             return Scope.KIT;
@@ -98,6 +141,11 @@ public record WayfindingTarget(
         if ((desiredMissingIdentities == null || desiredMissingIdentities.isEmpty())
                 && wantedMissingIdentities != null && !wantedMissingIdentities.isEmpty()) {
             return Scope.WANTED;
+        }
+        if ((desiredMissingIdentities == null || desiredMissingIdentities.isEmpty())
+                && (wantedMissingIdentities == null || wantedMissingIdentities.isEmpty())
+                && putAwayIdentities != null && !putAwayIdentities.isEmpty()) {
+            return Scope.PUT_AWAY;
         }
         return Scope.PLAYER;
     }
@@ -115,6 +163,8 @@ public record WayfindingTarget(
         /** All missing identities are player-global desired-count gaps. */
         PLAYER,
         /** All missing identities are player-global wanted-count gaps. */
-        WANTED
+        WANTED,
+        /** Storage is a destination for active-workflow put-away clutter. */
+        PUT_AWAY
     }
 }

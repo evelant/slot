@@ -3,6 +3,7 @@ package dev.imagio.slot.workflow.domain;
 import dev.imagio.slot.inventory.action.InventoryActionMode;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
@@ -117,6 +118,7 @@ public final class KitWorkflowDomainService {
         if (existing.name().equals(normalizedName)) {
             return false;
         }
+        validateUniqueSiblingName(existing, normalizedName);
         repository.appendWorkflowEvent(
                 new WorkflowEvent.KitUpdated(existing.withName(normalizedName)),
                 resolveMetadata(metadata, "workflow.kit.rename")
@@ -323,7 +325,7 @@ public final class KitWorkflowDomainService {
 
     public KitDefinition duplicate(String kitId, DomainEventMetadata metadata) {
         KitDefinition source = requireKit(kitId);
-        String baseName = source.name() + " (copy)";
+        String baseName = uniqueCopyName(source);
         String newId = uniqueSlug(baseName, existingIds());
         KitDefinition copy = new KitDefinition(
                 newId,
@@ -334,12 +336,39 @@ public final class KitWorkflowDomainService {
                 source.members(),
                 source.acceptedInputs()
         );
+        int targetIndex = duplicateInsertIndex(source);
         repository.appendWorkflowEvent(
                 new WorkflowEvent.KitCreated(copy),
                 resolveMetadata(metadata, "workflow.kit.duplicate")
         );
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitReordered(newId, targetIndex),
+                resolveMetadata(metadata, "workflow.kit.duplicate.insert")
+        );
         notifyMutated();
         return kit(newId);
+    }
+
+    public boolean reorder(String kitId, int targetIndex) {
+        return reorder(kitId, targetIndex, DomainEventMetadata.origin("workflow.kit.reorder"));
+    }
+
+    public boolean reorder(String kitId, int targetIndex, DomainEventMetadata metadata) {
+        KitDefinition existing = requireKit(kitId);
+        int currentIndex = siblingIndex(existing.id());
+        if (currentIndex < 0) {
+            return false;
+        }
+        int boundedTarget = Math.max(0, Math.min(targetIndex, siblingCount(existing) - 1));
+        if (boundedTarget == currentIndex) {
+            return false;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitReordered(kitId, boundedTarget),
+                resolveMetadata(metadata, "workflow.kit.reorder")
+        );
+        notifyMutated();
+        return true;
     }
 
     public boolean delete(String kitId) {
@@ -393,16 +422,36 @@ public final class KitWorkflowDomainService {
     }
 
     public boolean activate(String kitId, int pageIndex, DomainEventMetadata metadata) {
+        return activate(kitId, pageIndex, Set.of(), metadata);
+    }
+
+    public boolean activate(String kitId, int pageIndex, Set<ItemIdentity> putAwayIdentities) {
+        return activate(
+                kitId,
+                pageIndex,
+                putAwayIdentities,
+                DomainEventMetadata.origin("workflow.kit.activate"));
+    }
+
+    public boolean activate(
+            String kitId,
+            int pageIndex,
+            Set<ItemIdentity> putAwayIdentities,
+            DomainEventMetadata metadata
+    ) {
         KitDefinition existing = requireKit(kitId);
         KitDefinition pageOwner = pageOwner(existing);
         int boundedPageIndex = Math.max(0, Math.min(pageIndex, pageOwner.pageCount() - 1));
         KitActivation current = activation();
-        if (current.kitId().equals(kitId) && current.pageIndex() == boundedPageIndex) {
+        Set<ItemIdentity> putAway = ItemIdentityCollections.normalizedSet(putAwayIdentities);
+        if (current.kitId().equals(kitId)
+                && current.pageIndex() == boundedPageIndex
+                && current.putAwayIdentities().equals(putAway)) {
             return false;
         }
         clearActiveLineageWantedCounts(current);
         repository.appendWorkflowEvent(
-                new WorkflowEvent.KitActivated(kitId, boundedPageIndex),
+                new WorkflowEvent.KitActivated(kitId, boundedPageIndex, putAway),
                 resolveMetadata(metadata, "workflow.kit.activate")
         );
         notifyMutated();
@@ -547,6 +596,116 @@ public final class KitWorkflowDomainService {
         if (parent.variant()) {
             throw new IllegalArgumentException("Workflow tab variants cannot have variants: " + kit.parentId());
         }
+    }
+
+    private void validateUniqueSiblingName(KitDefinition existing, String name) {
+        if (existing == null || name == null || name.isBlank()) {
+            return;
+        }
+        for (KitDefinition candidate : kits()) {
+            if (candidate == null || candidate.id().equals(existing.id())) {
+                continue;
+            }
+            if (sameSiblingGroup(existing, candidate)
+                    && candidate.name().equalsIgnoreCase(name)) {
+                throw new IllegalArgumentException("Workflow name already exists: " + name);
+            }
+        }
+    }
+
+    private String uniqueCopyName(KitDefinition source) {
+        String rootName = copyRootName(source.name());
+        String base = rootName + " (copy)";
+        if (!siblingNameExists(source, base)) {
+            return base;
+        }
+        int counter = 2;
+        while (siblingNameExists(source, rootName + " (copy " + counter + ")")) {
+            counter++;
+        }
+        return rootName + " (copy " + counter + ")";
+    }
+
+    private static String copyRootName(String name) {
+        String normalized = name == null ? "" : name.trim();
+        String root = normalized.replaceFirst("\\s+\\(copy(?: \\d+)?\\)$", "").trim();
+        return root.isBlank() ? normalized : root;
+    }
+
+    private boolean siblingNameExists(KitDefinition source, String name) {
+        if (source == null || name == null || name.isBlank()) {
+            return false;
+        }
+        for (KitDefinition candidate : kits()) {
+            if (candidate != null
+                    && sameSiblingGroup(source, candidate)
+                    && candidate.name().equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int duplicateInsertIndex(KitDefinition source) {
+        if (source == null) {
+            return 0;
+        }
+        String rootName = copyRootName(source.name());
+        int insertAfter = siblingIndex(source.id());
+        int index = 0;
+        for (KitDefinition candidate : kits()) {
+            if (!sameSiblingGroup(source, candidate)) {
+                continue;
+            }
+            if (copyRootName(candidate.name()).equalsIgnoreCase(rootName)) {
+                insertAfter = index;
+            }
+            index++;
+        }
+        return Math.max(0, insertAfter + 1);
+    }
+
+    private int siblingIndex(String kitId) {
+        KitDefinition kit = kit(kitId);
+        if (kit == null) {
+            return -1;
+        }
+        int index = 0;
+        for (KitDefinition candidate : kits()) {
+            if (!sameSiblingGroup(kit, candidate)) {
+                continue;
+            }
+            if (kit.id().equals(candidate.id())) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+
+    private int siblingCount(KitDefinition kit) {
+        if (kit == null) {
+            return 0;
+        }
+        int count = 0;
+        for (KitDefinition candidate : kits()) {
+            if (sameSiblingGroup(kit, candidate)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static boolean sameSiblingGroup(KitDefinition left, KitDefinition right) {
+        if (left == null || right == null) {
+            return false;
+        }
+        if (left.variant() || right.variant()) {
+            return left.variant()
+                    && right.variant()
+                    && left.parentId().equals(right.parentId());
+        }
+        return !right.variant();
     }
 
     private void clearActiveLineageWantedCounts(KitActivation current) {

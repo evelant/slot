@@ -127,14 +127,14 @@ class WallSectionVisibilityTest {
     }
 
     @Test
-    void usefulNowAndPutAwaySuggestionLanesStayProjectedButHiddenInUi() {
+    void usefulNowSuggestionLaneStaysHiddenButPutAwayLaneRenders() {
         SlotWorkspaceViewModel.AtlasItem item = proximateGhost("minecraft:dirt");
 
         assertFalse(WallSectionUiBuilder.shouldRenderSuggestionLane(new SlotWorkspaceViewModel.ContextualSuggestionLane(
                 SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW,
                 "Useful Now",
                 List.of(item))));
-        assertFalse(WallSectionUiBuilder.shouldRenderSuggestionLane(new SlotWorkspaceViewModel.ContextualSuggestionLane(
+        assertTrue(WallSectionUiBuilder.shouldRenderSuggestionLane(new SlotWorkspaceViewModel.ContextualSuggestionLane(
                 SlotWorkspaceViewModel.ContextualSuggestionLane.PUT_AWAY,
                 "Put Away",
                 List.of(item))));

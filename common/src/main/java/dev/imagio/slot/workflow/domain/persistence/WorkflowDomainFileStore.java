@@ -478,7 +478,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         }
         KitActivation activation = resolved.kitMap().activation();
         KitActivationData activationData = activation.isActive()
-                ? new KitActivationData(activation.kitId(), activation.pageIndex())
+                ? new KitActivationData(
+                        activation.kitId(),
+                        activation.pageIndex(),
+                        identities(activation.putAwayIdentities()))
                 : null;
         ArrayList<PlayerDesiredCountData> playerDesiredCounts = new ArrayList<>();
         resolved.playerDesiredCounts().forEach((identity, count) ->
@@ -727,7 +730,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 ? KitActivation.NONE
                 : new KitActivation(
                         data.kitActivation.kitId == null ? "" : data.kitActivation.kitId,
-                        Math.max(0, data.kitActivation.pageIndex));
+                        Math.max(0, data.kitActivation.pageIndex),
+                        decodeIdentities(data.kitActivation.putAwayIdentities));
         // if activation references an unknown kit after decode, fall back to none
         if (kitActivation.isActive()) {
             boolean found = false;
@@ -1197,6 +1201,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kit = kitDefinition(event.kit());
                 data.kitId = event.kit() == null ? "" : event.kit().id();
             }
+        else if (workflowEvent instanceof WorkflowEvent.KitReordered event) {
+                data.kind = "KitReordered";
+                data.kitId = event.kitId();
+                data.targetIndex = event.targetIndex();
+            }
         else if (workflowEvent instanceof WorkflowEvent.KitDeleted event) {
                 data.kind = "KitDeleted";
                 data.kitId = event.kitId();
@@ -1205,6 +1214,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kind = "KitActivated";
                 data.kitId = event.kitId();
                 data.pageIndex = event.pageIndex();
+                data.putAwayIdentities = identities(event.putAwayIdentities());
             }
         else if (workflowEvent instanceof WorkflowEvent.KitDeactivated event) {
                 data.kind = "KitDeactivated";
@@ -1349,9 +1359,14 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 KitDefinition kit = decodeKitDefinition(data.kit);
                 yield kit == null ? null : new WorkflowEvent.KitUpdated(kit);
             }
+            case "KitReordered" -> blank(data.kitId) ? null
+                    : new WorkflowEvent.KitReordered(data.kitId, data.targetIndex);
             case "KitDeleted" -> blank(data.kitId) ? null : new WorkflowEvent.KitDeleted(data.kitId);
             case "KitActivated" -> blank(data.kitId) ? null
-                    : new WorkflowEvent.KitActivated(data.kitId, Math.max(0, data.pageIndex));
+                    : new WorkflowEvent.KitActivated(
+                            data.kitId,
+                            Math.max(0, data.pageIndex),
+                            decodeIdentities(data.putAwayIdentities));
             case "KitDeactivated" -> new WorkflowEvent.KitDeactivated();
             case "KitPageSwitched" -> new WorkflowEvent.KitPageSwitched(Math.max(0, data.pageIndex));
             case "PlayerDesiredCountSet" -> new WorkflowEvent.PlayerDesiredCountSet(
@@ -1821,6 +1836,19 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
 
     private static IdentityData identity(ItemIdentity identity) {
         return identity == null ? null : new IdentityData(identity.itemId(), identity.comparisonMode().name(), identity.componentFingerprint());
+    }
+
+    private static List<IdentityData> identities(Set<ItemIdentity> identities) {
+        if (identities == null || identities.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<IdentityData> out = new ArrayList<>();
+        for (ItemIdentity identity : identities) {
+            if (identity != null) {
+                out.add(identity(identity));
+            }
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
     }
 
     private static GoalPlanData goalPlan(GoalPlanState goal) {
@@ -2355,6 +2383,20 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         return new ItemIdentity(data.itemId, comparisonMode, nonNull(data.componentFingerprint));
     }
 
+    private static Set<ItemIdentity> decodeIdentities(List<IdentityData> identities) {
+        if (identities == null || identities.isEmpty()) {
+            return Set.of();
+        }
+        LinkedHashSet<ItemIdentity> out = new LinkedHashSet<>();
+        for (IdentityData data : identities) {
+            ItemIdentity identity = decodeIdentity(data);
+            if (identity != null) {
+                ItemIdentityCollections.add(out, identity);
+            }
+        }
+        return out.isEmpty() ? Set.of() : Set.copyOf(out);
+    }
+
     private static LoadoutTarget decodeTarget(TargetData data) {
         if (data == null || blank(data.kind)) {
             return null;
@@ -2572,7 +2614,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
 
     private record KitActivationData(
             String kitId,
-            int pageIndex
+            int pageIndex,
+            List<IdentityData> putAwayIdentities
     ) {
     }
 
@@ -2737,6 +2780,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private GoalPlanData goalPlan;
         private int targetIndex;
         private KitDefinitionData kit;
+        private List<IdentityData> putAwayIdentities;
     }
 
     private static final class ActivityEventData {

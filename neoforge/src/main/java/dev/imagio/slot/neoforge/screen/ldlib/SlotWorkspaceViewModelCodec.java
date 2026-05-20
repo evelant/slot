@@ -769,6 +769,7 @@ public final class SlotWorkspaceViewModelCodec {
         tag.put("kitMissingIdentities", encodeIdentitySet(target.kitMissingIdentities()));
         tag.put("desiredMissingIdentities", encodeIdentitySet(target.desiredMissingIdentities()));
         tag.put("wantedMissingIdentities", encodeIdentitySet(target.wantedMissingIdentities()));
+        tag.put("putAwayIdentities", encodeIdentitySet(target.putAwayIdentities()));
         return tag;
     }
 
@@ -777,6 +778,7 @@ public final class SlotWorkspaceViewModelCodec {
         java.util.LinkedHashSet<ItemIdentity> kitIdentities = decodeIdentitySet(tag, "kitMissingIdentities");
         java.util.LinkedHashSet<ItemIdentity> desiredIdentities = decodeIdentitySet(tag, "desiredMissingIdentities");
         java.util.LinkedHashSet<ItemIdentity> wantedIdentities = decodeIdentitySet(tag, "wantedMissingIdentities");
+        java.util.LinkedHashSet<ItemIdentity> putAwayIdentities = decodeIdentitySet(tag, "putAwayIdentities");
         WayfindingTarget.Scope scope;
         try {
             String raw = tag.getString("scope");
@@ -796,6 +798,7 @@ public final class SlotWorkspaceViewModelCodec {
                 kitIdentities,
                 desiredIdentities,
                 wantedIdentities,
+                putAwayIdentities,
                 tag.getInt("totalMissingCount"),
                 scope
         );

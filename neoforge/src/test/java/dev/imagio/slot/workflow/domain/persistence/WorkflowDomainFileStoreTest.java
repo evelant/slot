@@ -100,6 +100,11 @@ class WorkflowDomainFileStoreTest {
         );
         runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:torch"), island.id(), 0);
         runtime.visualAtlasWorkflow().moveIsland(island.id(), 912, 236);
+        KitDefinition cleanup = runtime.kitWorkflow().create("Cleanup");
+        runtime.kitWorkflow().activate(
+                cleanup.id(),
+                0,
+                Set.of(ItemIdentity.of("minecraft:dirt")));
         source.browseSessionState().replaceWith(new InventoryBrowseSessionState(
                 new InventoryBrowseFilter("torch", InventoryBrowseFilterScope.SELECTED_COLLECTION),
                 InventoryBrowseSortMode.COUNT_DESC,
@@ -261,6 +266,7 @@ class WorkflowDomainFileStoreTest {
         runtime.kitWorkflow().update(combat.withPages(java.util.List.of(
                 KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:iron_sword"))
         )));
+        runtime.kitWorkflow().reorder(combat.id(), 0);
         runtime.kitWorkflow().activate(mining.id());
         runtime.kitWorkflow().switchPage(1);
 
@@ -273,6 +279,8 @@ class WorkflowDomainFileStoreTest {
 
         assertEquals(source.snapshot(), restored.snapshot());
         assertEquals(2, restored.workflowProjection().kitMap().kits().size());
+        assertEquals(combat.id(), restored.workflowProjection().kitMap().kits().get(0).id());
+        assertEquals(mining.id(), restored.workflowProjection().kitMap().kits().get(1).id());
         KitDefinition restoredMining = restored.workflowProjection().kitMap().kit(mining.id());
         assertEquals(2, restoredMining.pageCount());
         assertEquals(ItemIdentity.of("minecraft:iron_pickaxe"), restoredMining.page(0).slot(0));

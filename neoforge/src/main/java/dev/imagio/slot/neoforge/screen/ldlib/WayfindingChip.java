@@ -17,6 +17,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+import dev.imagio.slot.ui.workspace.WayfindingDisplay;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import net.minecraft.client.Minecraft;
@@ -266,7 +267,7 @@ public final class WayfindingChip {
     ) {
         return build(
                 target,
-                chip.label(),
+                target == null ? chip.label() : WayfindingDisplay.targetLabel(target),
                 chip.dimensionId(),
                 chip.worldX(),
                 chip.worldY(),

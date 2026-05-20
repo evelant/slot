@@ -402,6 +402,11 @@ public final class WorkflowProjection {
                     kitMap = kitMap.withKit(event.kit());
                 }
             }
+        else if (workflowEvent instanceof WorkflowEvent.KitReordered event) {
+                if (!event.kitId().isBlank()) {
+                    kitMap = kitMap.withKitReordered(event.kitId(), event.targetIndex());
+                }
+            }
         else if (workflowEvent instanceof WorkflowEvent.KitDeleted event) {
                 if (!event.kitId().isBlank()) {
                     Set<String> removedKitIds = kitMap.idsRemovedByDeleting(event.kitId());
@@ -418,7 +423,10 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.KitActivated event) {
                 if (!event.kitId().isBlank() && kitMap.kit(event.kitId()) != null) {
-                    kitMap = kitMap.withActivation(new KitActivation(event.kitId(), event.pageIndex()));
+                    kitMap = kitMap.withActivation(new KitActivation(
+                            event.kitId(),
+                            event.pageIndex(),
+                            event.putAwayIdentities()));
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.KitDeactivated event) {
@@ -429,7 +437,10 @@ public final class WorkflowProjection {
                 if (activeAssignment.isActive()) {
                     KitDefinition activeKit = kitMap.kit(activeAssignment.kitId());
                     if (activeKit != null && event.pageIndex() < activeKit.pageCount()) {
-                        kitMap = kitMap.withActivation(new KitActivation(activeAssignment.kitId(), event.pageIndex()));
+                        kitMap = kitMap.withActivation(new KitActivation(
+                                activeAssignment.kitId(),
+                                event.pageIndex(),
+                                activeAssignment.putAwayIdentities()));
                     }
                 }
             }

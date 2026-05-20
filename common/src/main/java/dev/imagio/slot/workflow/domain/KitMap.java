@@ -106,6 +106,39 @@ public record KitMap(List<KitDefinition> kits, KitActivation activation) {
         return new KitMap(next, nextActivation);
     }
 
+    public KitMap withKitReordered(String kitId, int targetIndex) {
+        KitDefinition moving = kit(kitId);
+        if (moving == null) {
+            return this;
+        }
+        ArrayList<KitDefinition> siblings = new ArrayList<>();
+        for (KitDefinition kit : kits) {
+            if (sameSiblingGroup(moving, kit)) {
+                siblings.add(kit);
+            }
+        }
+        int currentIndex = indexOf(siblings, kitId);
+        if (currentIndex < 0 || siblings.size() <= 1) {
+            return this;
+        }
+        int target = Math.max(0, Math.min(targetIndex, siblings.size() - 1));
+        if (target == currentIndex) {
+            return this;
+        }
+        siblings.remove(currentIndex);
+        siblings.add(target, moving);
+        ArrayList<KitDefinition> next = new ArrayList<>(kits.size());
+        int siblingIndex = 0;
+        for (KitDefinition kit : kits) {
+            if (sameSiblingGroup(moving, kit)) {
+                next.add(siblings.get(siblingIndex++));
+            } else {
+                next.add(kit);
+            }
+        }
+        return new KitMap(next, activation);
+    }
+
     public KitMap withActivation(KitActivation next) {
         return new KitMap(kits, next == null ? KitActivation.NONE : next);
     }
@@ -117,5 +150,30 @@ public record KitMap(List<KitDefinition> kits, KitActivation activation) {
             }
         }
         return -1;
+    }
+
+    private static int indexOf(List<KitDefinition> source, String kitId) {
+        if (source == null || kitId == null) {
+            return -1;
+        }
+        for (int index = 0; index < source.size(); index++) {
+            KitDefinition kit = source.get(index);
+            if (kit != null && kitId.equals(kit.id())) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    private static boolean sameSiblingGroup(KitDefinition left, KitDefinition right) {
+        if (left == null || right == null) {
+            return false;
+        }
+        if (left.variant() || right.variant()) {
+            return left.variant()
+                    && right.variant()
+                    && left.parentId().equals(right.parentId());
+        }
+        return !right.variant();
     }
 }

@@ -153,7 +153,7 @@ public final class WayfindingHudRenderer {
         // budget.
         int rightColumnWidth = crossDimension ? 50 : 28;
         int nameAvailable = (int) ((CHIP_WIDTH - 8 - rightColumnWidth) / TEXT_SCALE);
-        String label = truncate(font, WayfindingDisplay.chestLabel(target), nameAvailable);
+        String label = truncate(font, WayfindingDisplay.targetLabel(target), nameAvailable);
         drawScaled(graphics, font, label, x + 5, y + 3, textColor);
 
         // Missing-item icon strip under the label, capped to 4. Vanilla

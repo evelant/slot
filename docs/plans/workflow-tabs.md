@@ -1,18 +1,20 @@
 # Workflow Tabs Plan
 
-Last updated: 2026-05-19
+Last updated: 2026-05-20
 
 Status: core implementation and the first playtest polish pass have landed.
 Workflow tabs now support active-tab filtering, one-level variants, tab-local
 desired/wanted targets, accepted exact/tag inputs, accepted proximate substitute
-ghosts, compact nearby headers, two-row Recents, hidden noisy suggestion rows,
-search/keybind polish, shared tool/container/display-storage target resolution,
-and the adjacent junk/trash pressure-relief slice. Remaining follow-ups are
-recipe import/staging, destination highlighting/wayfinding polish for put-away,
-reorder UI, and tab duplication/rename polish. This supersedes Kit Rack / Kit
-prototype work as the task-workflow direction while reusing the current Kit,
-desired-count, wanted-count, gather, loadout, and storage code wherever it
-already fits.
+ghosts, compact nearby headers, two-row Recents, hidden Useful Now scoring,
+visible activation-scoped Put Away guidance, search/keybind polish, shared
+tool/container/display-storage target resolution, put-away destination
+highlighting/wayfinding, and the adjacent junk/trash pressure-relief slice.
+Workflow/variant reorder UI plus duplicate/rename polish has also landed on
+the current Kit-backed substrate. The remaining workflow-tab follow-up is a
+design-first EMI recipe import/staging pass before any implementation. This
+supersedes Kit Rack / Kit prototype work as the
+task-workflow direction while reusing the current Kit, desired-count,
+wanted-count, gather, loadout, and storage code wherever it already fits.
 
 ## Core Decision
 
@@ -38,8 +40,9 @@ A workflow tab adds task-local intent on top of `All`:
 
 When a workflow tab is active, missing tab targets use the same gather,
 wayfinding, storage-ghost, and gap chrome that desired/wanted counts already
-use. Carried items not relevant to `All` or the active tab get put-away
-guidance.
+use. Carried items that were present when the workflow was activated and are
+not relevant to `All` or the active tab get put-away guidance; later pickups do
+not become cleanup guidance unless the workflow is activated again.
 
 ## Current Landed Behavior
 
@@ -67,9 +70,16 @@ guidance.
 - Empty sections render as compact headers with `+x` nearby counts on the
   header. Clicking anywhere on a header with hidden nearby cards toggles the
   section reveal.
-- Useful Now and Put Away suggestion lanes are currently hidden in the rendered
-  wall while their projection/scoring code remains in place for later playtests.
-  Put-away card state and bulk deposit still use the same eligibility logic.
+- Useful Now scoring remains hidden in the rendered wall while its projection
+  code stays available for later playtests. The workflow Put Away strip is
+  visible and uses the same activation-snapshot eligibility as put-away card
+  state and bulk deposit.
+- Active-workflow put-away clutter now projects distinct wayfinding targets for
+  known chest/display destinations, with green put-away HUD/glow styling and
+  preserved acquisition highlighting when a destination is also a fetch target.
+- Workflow and variant context menus can move siblings left/right, duplicate
+  beside the source family with readable copy names, and reject sibling rename
+  collisions instead of allowing ambiguous visible names.
 - Two rows of Recents render above the wall. Search auto-commits after about two
   seconds idle, clears after the interface has been closed for about ten seconds,
   and can be cleared by right-clicking the search label. Text inputs suppress
@@ -127,7 +137,8 @@ The active tab shows:
 - nearby/proximate substitute ghosts that satisfy accepted exact/tag inputs
 - ordinary nearby/tracked storage ghosts only when search, storage x-ray, or a
   section-header reveal asks for them
-- carried items that are not relevant only when they have put-away card state
+- carried items that were present at activation and are not relevant, with
+  put-away card state
 
 The active tab does not change inventory authority. It changes what the wall
 prioritizes and what guidance is active.
@@ -277,10 +288,12 @@ the same server-authoritative storage path as current Kit gather.
 
 ### Put-Away Guidance
 
-Put-away guidance is the inverse of active-tab relevance.
+Put-away guidance is the inverse of active-tab relevance, scoped to the
+activation moment.
 
 A carried identity is eligible when:
 
+- it was present in carry when the workflow tab was activated
 - it is not needed by `All`
 - it is not needed by the active parent workflow tab, if a variant is active
 - it is not needed by the active workflow tab or variant
@@ -294,12 +307,13 @@ When eligible, SLOT should surface where it can go:
 - known tracked storage destination that requires walking there
 - no known home / needs manual storage choice
 
-Current UI hides the experimental Put Away suggestion row, but the projection
-and card state are still live: active-tab-irrelevant carried cards can remain
-visible with put-away border/chrome, and bulk deposit uses the same eligibility
-and protection logic. Put-away guidance should continue to use a distinct visual
-language from gather guidance, including a distinct chest world-highlight color.
-Acquisition and cleanup are opposite intents; they should not look identical.
+The workflow Put Away strip is visible because activation-scoped clutter is
+specific enough to be actionable. Active-tab-irrelevant carried cards also
+remain visible with put-away border/chrome, and bulk deposit uses the same
+activation-snapshot eligibility and protection logic. Put-away guidance should
+continue to use a distinct visual language from gather guidance, including a
+distinct chest world-highlight color. Acquisition and cleanup are opposite
+intents; they should not look identical.
 
 ## Bulk Hotkeys
 
@@ -309,9 +323,11 @@ almost every workflow and should not require finding a small UI button:
 - **Bulk gather active tab:** gather missing `All + parent + active tab`
   targets from proximate storage through the existing server-authoritative
   gather path.
-- **Bulk deposit active tab clutter:** deposit carried identities that are not
-  relevant to `All`, the active parent, or the active tab/variant. This is the
-  hotkey version of put-away guidance.
+- **Bulk deposit active tab clutter:** deposit carried identities from the
+  workflow activation snapshot that are not relevant to `All`, the active
+  parent, or the active tab/variant. This is the hotkey version of put-away
+  guidance; later pickups are not included until the workflow is activated
+  again.
 - **Trash hovered identity:** delete carried stacks matching the hovered item
   type, with undo, while marking that identity as junk for later pickup pressure
   relief.
@@ -372,6 +388,11 @@ Search is a temporary filter, not a sticky modal trap. Current behavior:
 
 The EMI recipe sidebar should feed workflow tabs instead of becoming a separate
 goal surface.
+
+This is a design/brainstorm follow-up before implementation. The current EMI
+recipe sidebar remains a transient visible-ingredient filter; do not revive
+recursive SLOT-side recipe goals or recipe explanation unless playtesting shows
+the transient sidebar is insufficient.
 
 High-value actions:
 
@@ -475,15 +496,17 @@ Acceptance:
 
 ### Slice 3: Put-Away Guidance And Deposit Wayfinding
 
-Status: put-away card state, protected bulk deposit, no-home card chrome,
-content-backed display-storage deposit, display-storage undo ids, active-chest
-range gating, and cross-loader put-away hotkey landed. The explicit Put Away
-suggestion row is currently hidden for playtesting. Destination
-highlighting/wayfinding polish remains follow-up work.
+Status: landed. Put-away card state, visible activation-scoped Put Away strip,
+protected bulk deposit, no-home card chrome, content-backed display-storage
+deposit, display-storage undo ids, active-chest range gating, cross-loader
+put-away hotkey, and destination highlighting / wayfinding are live. Routed
+put-away clutter can produce distinct "go here to put this away" wayfinding
+targets without changing deposit mechanics, while no-home activation clutter is
+still visible as "no learned destination" cleanup guidance.
 
 Goal: make cleanup as first-class as acquisition.
 
-- compute active-tab-irrelevant carried identities
+- compute active-tab-irrelevant carried identities from the activation snapshot
 - render put-away guidance on normal cards or in a compact guidance lane
 - route put-away actions through existing deposit planning
 - add a configurable bulk-deposit hotkey that deposits active-tab-irrelevant
@@ -494,8 +517,10 @@ Goal: make cleanup as first-class as acquisition.
 
 Acceptance:
 
-- carried items outside `All` + active tab show put-away guidance when a route
-  is known
+- carried items present at activation outside `All` + active tab show put-away
+  guidance when a route is known
+- carried items picked up after activation do not enter put-away guidance until
+  the workflow is activated again
 - no-home items are clearly marked instead of silently disappearing from
   guidance
 - put-away guidance respects existing protection and active target counts
@@ -513,11 +538,12 @@ Acceptance:
 
 ### Slice 4: Tab UI And Editing
 
-Status: core tab rendering, activation, variant display, visible create flow,
-membership/accepted-input menus, wider right-click menus, active-tab filtering,
-two-row Recents, search idle commit/clear, header reveal clicks, and
-main-inventory move keybind landed. Remaining editing polish is tracked as
-follow-up work in `current.md`.
+Status: landed. Core tab rendering, activation, variant display, visible create
+flow, membership/accepted-input menus, wider right-click menus, active-tab
+filtering, two-row Recents, search idle commit/clear, header reveal clicks,
+main-inventory move keybind, workflow/variant reorder controls, adjacent
+duplicate insertion, readable copy names, and sibling rename collision checks
+are live.
 
 Goal: replace Kit Rack interaction with visible workflow tabs.
 
@@ -540,23 +566,29 @@ Acceptance:
   mutation authority
 - editing an active tab updates guidance immediately
 
-### Slice 5: EMI Recipe Import And Staging
+### Slice 5: EMI Recipe Import And Staging Design
 
-Goal: make recipe workflows feed tabs with minimal ceremony.
+Goal: design how recipe workflows should feed tabs with minimal ceremony before
+implementing any import or staging path.
 
-- add current visible recipe ingredients to current tab
-- create a new tab from current visible recipe ingredients
-- set tab wanted/desired counts from recipe ratios
+- decide how current visible recipe ingredients become current-tab inputs
+- decide how "new tab from recipe" should name and seed a workflow
+- decide whether recipe ratios create tab wanted counts, tab desired counts, or
+  locate-only accepted inputs
 - preserve current EMI recipe sidebar behavior as the source of visible
   ingredients
-- add "stage for EMI" from carried providers into player main inventory
+- design "stage for EMI" from carried providers into player main inventory
 
 Acceptance:
 
-- importing a recipe activates guidance for missing ingredients
-- "want one of each" is available for locate-only workflows
-- staging does not move items to hotbar just because EMI needs main inventory
-- staging fails closed with a clear status when main inventory has no safe room
+- the design keeps EMI as the recipe explanation surface
+- the design avoids recursive SLOT-side recipe goals unless playtesting proves
+  transient recipe context is insufficient
+- the design specifies how importing a recipe activates guidance for missing
+  ingredients
+- the design preserves a locate-only "want one of each visible ingredient" flow
+- the design keeps staging out of the hotbar and fails closed with clear status
+  when main inventory has no safe room
 
 ### Slice 6: Retire Kit-Only UI And Docs
 

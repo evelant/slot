@@ -49,6 +49,7 @@ public enum WorkspaceActionId {
     SET_KIT_SLOT_IDENTITY("slot.workspace.set_kit_slot_identity", STRING, INTEGER, INTEGER, STRING, STRING, STRING),
     RENAME_KIT("slot.workspace.rename_kit", STRING, STRING),
     DUPLICATE_KIT("slot.workspace.duplicate_kit", STRING),
+    REORDER_KIT("slot.workspace.reorder_kit", STRING, INTEGER),
     SWAP_KIT_SLOTS("slot.workspace.swap_kit_slots", STRING, INTEGER, INTEGER, INTEGER),
     RETURN_HOTBAR_TO_HOME("slot.workspace.return_hotbar_to_home", INTEGER),
     ASSIGN_HOME_TO_FREE_HOTBAR("slot.workspace.assign_home_to_free_hotbar", STRING, STRING, STRING),

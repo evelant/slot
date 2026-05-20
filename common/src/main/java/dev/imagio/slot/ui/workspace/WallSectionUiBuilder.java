@@ -11,8 +11,7 @@ import java.util.Set;
 public final class WallSectionUiBuilder {
     public static final int CARD_GAP_PX = 2;
     private static final Set<String> HIDDEN_SUGGESTION_LANES = Set.of(
-            SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW,
-            SlotWorkspaceViewModel.ContextualSuggestionLane.PUT_AWAY);
+            SlotWorkspaceViewModel.ContextualSuggestionLane.USEFUL_NOW);
 
     private final WallSectionHeaderUiBuilder headerBuilder;
 

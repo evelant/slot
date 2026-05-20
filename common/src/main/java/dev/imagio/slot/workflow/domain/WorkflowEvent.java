@@ -2,6 +2,7 @@ package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.goal.GoalPlanState;
 
 import java.util.LinkedHashSet;
@@ -49,6 +50,7 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.ChestClusterRelabeled,
         WorkflowEvent.KitCreated,
         WorkflowEvent.KitUpdated,
+        WorkflowEvent.KitReordered,
         WorkflowEvent.KitDeleted,
         WorkflowEvent.KitActivated,
         WorkflowEvent.KitDeactivated,
@@ -379,16 +381,30 @@ public sealed interface WorkflowEvent permits
     record KitUpdated(KitDefinition kit) implements WorkflowEvent {
     }
 
+    record KitReordered(String kitId, int targetIndex) implements WorkflowEvent {
+        public KitReordered {
+            kitId = kitId == null ? "" : kitId;
+            targetIndex = Math.max(0, targetIndex);
+        }
+    }
+
     record KitDeleted(String kitId) implements WorkflowEvent {
         public KitDeleted {
             kitId = kitId == null ? "" : kitId;
         }
     }
 
-    record KitActivated(String kitId, int pageIndex) implements WorkflowEvent {
+    record KitActivated(String kitId, int pageIndex, Set<ItemIdentity> putAwayIdentities) implements WorkflowEvent {
+        public KitActivated(String kitId, int pageIndex) {
+            this(kitId, pageIndex, Set.of());
+        }
+
         public KitActivated {
             kitId = kitId == null ? "" : kitId;
             pageIndex = Math.max(0, pageIndex);
+            putAwayIdentities = kitId.isBlank()
+                    ? Set.of()
+                    : ItemIdentityCollections.normalizedSet(putAwayIdentities);
         }
     }
 

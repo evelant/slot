@@ -4,8 +4,10 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.ItemStackTags;
+import dev.imagio.slot.workflow.domain.KitActivation;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
@@ -18,6 +20,7 @@ import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import dev.imagio.slot.workflow.domain.WorkflowTabTargets;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
@@ -69,6 +72,10 @@ public final class WorkspaceChestCommandService {
 
         ToIntFunction<ItemIdentity> reservedCounts = reservedCountResolver(runtime);
         DepositPlanner.StackProtection acceptedInputProtection = acceptedInputProtection(runtime);
+        DepositPlanner.StackProtection workflowPutAwayProtection = activeWorkflowPutAwayProtection(runtime);
+        DepositPlanner.StackProtection stackProtection = combineStackProtection(
+                acceptedInputProtection,
+                workflowPutAwayProtection);
         DepositPlan plan = DepositPlanner.plan(
                 resolvedAuthority,
                 routing.affinityMap(),
@@ -77,7 +84,7 @@ public final class WorkspaceChestCommandService {
                 reservedCounts,
                 routing.liveChestContentPresence(),
                 routing.liveStorageAffinityEligibility(),
-                acceptedInputProtection
+                stackProtection
         );
         plan = withDisplayDepositAssignments(
                 player,
@@ -85,7 +92,7 @@ public final class WorkspaceChestCommandService {
                 plan,
                 displaySources,
                 reservedCounts,
-                acceptedInputProtection);
+                stackProtection);
         SlotCommon.LOGGER.info(
                 "[SLOT] deposit plan: assignments={} (one per stack with eligible learned affinity or matching contents)",
                 plan.assignments().size());
@@ -1117,6 +1124,32 @@ public final class WorkspaceChestCommandService {
             return null;
         }
         return (stack, identity) -> targets.acceptedInput(identity, ItemStackTags.itemTagIds(stack));
+    }
+
+    private static DepositPlanner.StackProtection activeWorkflowPutAwayProtection(WorkflowDomainRuntime runtime) {
+        WorkflowDomainSnapshot snapshot = runtime == null ? null : runtime.snapshot();
+        if (snapshot == null || snapshot.kitMap() == null) {
+            return null;
+        }
+        KitActivation activation = snapshot.kitMap().activation();
+        if (activation == null || !activation.isActive()) {
+            return null;
+        }
+        Set<ItemIdentity> putAwayIdentities = activation.putAwayIdentities();
+        return (stack, identity) -> !ItemIdentityCollections.contains(putAwayIdentities, identity);
+    }
+
+    private static DepositPlanner.StackProtection combineStackProtection(
+            DepositPlanner.StackProtection first,
+            DepositPlanner.StackProtection second
+    ) {
+        if (first == null) {
+            return second;
+        }
+        if (second == null) {
+            return first;
+        }
+        return (stack, identity) -> first.protects(stack, identity) || second.protects(stack, identity);
     }
 
     private static int totalCarriedCount(ServerPlayer player, ItemIdentity identity) {

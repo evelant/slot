@@ -603,6 +603,10 @@ final class ForgeWorkspaceSession {
                     stringArg(args, 0),
                     stringArg(args, 1));
             case DUPLICATE_KIT -> SlotWorkspaceCommandService.duplicateKit(runtime, stringArg(args, 0));
+            case REORDER_KIT -> SlotWorkspaceCommandService.reorderKit(
+                    runtime,
+                    stringArg(args, 0),
+                    integerArg(args, 1) == null ? -1 : integerArg(args, 1));
             case SWAP_KIT_SLOTS -> SlotWorkspaceCommandService.swapKitSlots(
                     runtime,
                     stringArg(args, 0),

@@ -109,7 +109,7 @@ public final class ForgeWayfindingHudRenderer {
 
         int rightColumnWidth = crossDimension ? 50 : 28;
         int nameAvailable = (int) ((CHIP_WIDTH - 8 - rightColumnWidth) / TEXT_SCALE);
-        drawScaled(graphics, font, truncate(font, WayfindingDisplay.chestLabel(target), nameAvailable),
+        drawScaled(graphics, font, truncate(font, WayfindingDisplay.targetLabel(target), nameAvailable),
                 x + 5, y + 3, TEXT_RGB);
 
         int iconX = x + 5;

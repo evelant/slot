@@ -45,7 +45,7 @@ public final class WorkspaceItemTooltipBuilder {
         addPutAwayLine(lines, item);
         addCarriedLine(lines, item);
         addStorageLine(lines, "Nearby stored", sum(item.presence()), item.presence());
-        addProximateRouteLine(lines, item, hasProximateDepositRoute || item.putAwayState().routed());
+        addProximateRouteLine(lines, item, hasProximateDepositRoute);
         addStorageLine(lines, "Stored elsewhere", sum(item.elsewhere()), item.elsewhere());
         addMissingTargetLine(lines, item);
         addContainerLine(lines, item);
@@ -90,9 +90,9 @@ public final class WorkspaceItemTooltipBuilder {
 
     private static void addPutAwayLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
         if (item.putAwayState().routed()) {
-            lines.add(Component.literal("Put away: learned route nearby"));
+            lines.add(Component.literal("Put away: destination known"));
         } else if (item.putAwayState().noRoute()) {
-            lines.add(Component.literal("Put away: no learned home nearby"));
+            lines.add(Component.literal("Put away: no learned destination"));
         }
     }
 

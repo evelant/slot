@@ -44,7 +44,7 @@ Sidecar product slice: workflows are now the task surface layered over the
 normal wall. `All` remains the global desired/wanted baseline; active workflows and
 one-level variants add local desired/wanted targets, implicit member targets,
 Belt/offhand pages, accepted inputs, gather targets, accepted-tag substitute
-ghosts, and routed put-away clutter. The code still uses `Kit*` names as the
+ghosts, and activation-scoped put-away clutter. The code still uses `Kit*` names as the
 transitional implementation
 substrate, but user-facing work should speak in workflows.
 
@@ -68,14 +68,24 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-20** — Active-workflow put-away destination wayfinding landed:
+  activation-time carried clutter now feeds a visible Put Away strip, no-home
+  card chrome, distinct chest/display wayfinding targets, green HUD/glow
+  styling and "Put away" labels, and bulk deposit ignores later pickups until
+  the workflow is activated again.
+- **2026-05-20** — Workflow editing polish landed: workflow and variant
+  context menus can move siblings left/right on both loaders, the shared
+  workflow event stream persists sibling reorder events, duplicates stay beside
+  the source family with readable copy names, and sibling rename collisions are
+  rejected instead of creating ambiguous visible workflow names.
 - **2026-05-19** — Workflow playtest polish landed: active workflows now keep
   all carried cards visible, reveal only intentful accepted-tag proximate
   substitutes by default, and leave unrelated storage ghosts behind `x`/header
   reveal; accepted-input menus can add or remove exact/tag rules with filtered
   material-specific tags and wider labels,
   section headers carry `+x` nearby counts and compact empty sections, Useful Now
-  and Put Away suggestion rows are hidden while live contextual observation,
-  expensive contextual scoring, and storage-ghost expansion are disabled for now,
+  suggestion rows are hidden while live contextual observation, expensive
+  contextual scoring, and storage-ghost expansion are disabled for now,
   Recents renders two rows, search
   idle-commits and later clears after close
   with right-click clear working on Forge, the default grave-accent key toggles
@@ -115,8 +125,8 @@ hold the rest.
   active-workflow-irrelevant carried items, marks items without a learned nearby home
   instead of dropping them silently, preserves routed clutter on normal wall
   cards, and adds an unbound cross-loader put-away hotkey that delegates to the
-  same protected deposit command as the button. The rendered row was hidden by
-  the 2026-05-19 playtest polish entry above.
+  same protected deposit command as the button. The rendered row later became
+  visible once guidance was scoped to activation-time clutter.
 - **2026-05-18** — Workflows can now accept exact items or deterministic
   item tags from the card right-click menu without creating wanted/desired
   targets; accepted inputs stay visible in active workflows, are omitted from Put
@@ -149,43 +159,19 @@ hold the rest.
 - **2026-05-14** — Quiet nearby ghosts landed for playtesting: default
   wall sections show carried cards first and collapse ordinary proximate
   storage ghosts behind a per-section nearby chip, while search,
-  desired/wanted/workflow-tab/goal intent and storage x-ray toggles reveal the
+  desired/wanted/workflow/goal intent and storage x-ray toggles reveal the
   hidden storage cards on demand. Follow-up fixes generalized observed
   storage menus beyond vanilla chests for TFC vessels, kept search
   keystrokes inside sidebar search without using Esc as search-clear,
   matched localized hover names in search, disabled affinity decay behind
   the existing kill switch, and added TFC/TFG display storage tracking for
   tool racks and placed items, with deposit limited to tool racks.
-- **2026-05-12** — Forge + NeoForge sidebar polish landed: Kits moved
-  from the bottom strip into a right-side vertical rack opened from the
-  `All` row, the Belt now mirrors vanilla with offhand-left layout,
-  active-chest controls hide when no chest is open, search query and wall
-  scroll persist across close/open, search clear moved off Esc so closing
-  stays consistent,
-  carried card chrome no longer uses unexplained dimming, Cloth Config
-  margin screens integrate with both mod menus, Forge shift-click keeps
-  SLOT deposit/take semantics inside container screens, and Forge sidebar
-  rendering isolates depth so host inventory item icons cannot float over
-  the Kit panel.
-- **2026-05-12** — EMI goal projection playtest stabilization moved goal plans
-  and producer recipe defaults into server workflow state, added EMI recipe
-  capture for producer choices, reused visible carried/storage authority to
-  resolve choice ingredients, omitted empty crafting slots, handled reusable
-  tools, restored non-item producer recursion, and added named synthetic fluid
-  display fallbacks.
+
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the
 2026-05-01 cursor + desired/wanted-counts batch live under [Queue](#queue)
-item 2; this section is the leftover pile.
-
-- **Workflow drag-edit doesn't auto-apply to the active belt.** Dragging
-  a home onto an *active* workflow's slot updates the workflow definition
-  but the belt isn't re-applied. Per
-  [`../design/kits.md § Edit a Kit`](../design/kits.md), the edit
-  should propagate immediately when the target page is the active
-  page. Scoped follow-up for the next person touching workflow
-  drag-to-edit.
+item 2. No standalone operational bugs are currently tracked here.
 
 ## Queue
 
@@ -241,12 +227,11 @@ track lands.
    regenerate vanilla/pack vocabulary and run `classify-runtime-pack` with the
    usable vocabulary.
 5. **Workflow follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
-   Core workflows, accepted inputs, compact nearby headers, hidden noisy suggestion
-   rows, search/keybind polish, and the shared display-storage/tool fix pass are
-   live. Remaining slices are recipe import/staging into current workflows,
-   destination highlighting/wayfinding polish for put-away, reorder UI for
-   workflows/variants, workflow duplicate/rename polish where the existing context-menu
-   editor is too rough.
+   Core workflows, accepted inputs, compact nearby headers, hidden Useful Now scoring,
+   visible activation-scoped Put Away guidance, search/keybind polish, and the shared display-storage/tool fix pass are
+   live. Put-away destination wayfinding and workflow/variant reorder plus
+   duplicate/rename polish have landed. Remaining follow-up: a design/brainstorm
+   pass for EMI recipe import/staging before implementation.
 6. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
    The landed Kit code remains the implementation substrate, but future
    user-facing workflow work should follow `workflow-tabs.md`.

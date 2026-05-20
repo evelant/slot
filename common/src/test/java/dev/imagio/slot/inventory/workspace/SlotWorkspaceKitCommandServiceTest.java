@@ -35,6 +35,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -114,6 +115,37 @@ class SlotWorkspaceKitCommandServiceTest {
     }
 
     @Test
+    void activateKitCapturesOnlyActivationTimePutAwayClutter() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setMember(kit.id(), ItemIdentity.of("minecraft:torch"), true);
+        InventoryAuthoritySnapshot authority = InventoryAuthorityFixtures.authority(
+                host(),
+                Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN,
+                        List.of(
+                                new InventoryStackSnapshot(0, new ItemStack("minecraft:torch", 16, 64), 16),
+                                new InventoryStackSnapshot(1, new ItemStack("minecraft:dirt", 32, 64), 32)),
+                        BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                        List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:iron_sword", 1, 1), 1))),
+                Map.of(BuiltinInventoryIds.PLAYER_MAIN, 25));
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.activateKit(
+                runtime,
+                authority,
+                ProtectionPolicy.allowAll(),
+                IDENTITY_RESOLVER,
+                new RecordingActionExecutor(),
+                kit.id()
+        );
+
+        assertTrue(outcome.success());
+        assertEquals(
+                Set.of(ItemIdentity.of("minecraft:dirt")),
+                runtime.kitWorkflow().activation().putAwayIdentities());
+    }
+
+    @Test
     void activateKitRejectsUnknownId() {
         WorkflowDomainRuntime runtime = runtime();
 
@@ -168,6 +200,29 @@ class SlotWorkspaceKitCommandServiceTest {
         WorkflowDomainRuntime runtime = runtime();
 
         WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.deleteKit(runtime, "missing");
+
+        assertFalse(outcome.success());
+        assertEquals("unknown_kit", outcome.diagnostics());
+    }
+
+    @Test
+    void reorderKitMovesWorkflow() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        KitDefinition combat = runtime.kitWorkflow().create("Combat");
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.reorderKit(runtime, combat.id(), 0);
+
+        assertTrue(outcome.success());
+        assertEquals("workflow moved", outcome.status());
+        assertEquals(List.of(combat.id(), mining.id()), kitIds(runtime.kitWorkflow().kits()));
+    }
+
+    @Test
+    void reorderKitRejectsUnknownWorkflow() {
+        WorkflowDomainRuntime runtime = runtime();
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.reorderKit(runtime, "missing", 0);
 
         assertFalse(outcome.success());
         assertEquals("unknown_kit", outcome.diagnostics());
@@ -518,6 +573,12 @@ class SlotWorkspaceKitCommandServiceTest {
 
     private static WorkflowDomainRuntime runtime() {
         return new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+    }
+
+    private static List<String> kitIds(List<KitDefinition> kits) {
+        return kits.stream()
+                .map(KitDefinition::id)
+                .toList();
     }
 
     private static InventoryAuthoritySnapshot carriedAuthority(String itemId, int count) {

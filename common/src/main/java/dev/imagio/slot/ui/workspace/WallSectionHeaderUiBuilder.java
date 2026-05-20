@@ -17,6 +17,10 @@ import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.TEXT;
 public final class WallSectionHeaderUiBuilder {
     public static final int HEADER_HEIGHT_PX = 9;
     public static final int COMPACT_HEADER_HEIGHT_PX = 6;
+    private static final int NEARBY_TOGGLE_BACKGROUND = 0x5024313D;
+    private static final int NEARBY_TOGGLE_BACKGROUND_EXPANDED = 0x66365743;
+    private static final String NEARBY_COLLAPSED_ICON = "\u25B8";
+    private static final String NEARBY_EXPANDED_ICON = "\u25BE";
 
     private final Context context;
 
@@ -85,7 +89,13 @@ public final class WallSectionHeaderUiBuilder {
             });
             header.addChild(nearbyToggle(island, normalizedNearbyCount, nearbyExpanded, compact));
         }
-        String countText = countText(island, visibleCount, totalCount, filtering, hasCarried);
+        String countText = countText(
+                island,
+                visibleCount,
+                totalCount,
+                filtering,
+                hasCarried,
+                normalizedNearbyCount > 0);
         if (!countText.isBlank()) {
             header.addChild(SlotUiElement.label(countText, countColor)
                     .layout(layout -> layout.heightPercent(100))
@@ -93,6 +103,7 @@ public final class WallSectionHeaderUiBuilder {
                             .color(countColor)
                             .shadow(false)
                             .fontSize(countFontSize)
+                            .adaptiveWidth(true)
                             .horizontal(SlotUiTextStyle.Horizontal.RIGHT)
                             .vertical(SlotUiTextStyle.Vertical.CENTER))
                     .allowHitTest(false));
@@ -116,7 +127,7 @@ public final class WallSectionHeaderUiBuilder {
             boolean expanded,
             boolean compact
     ) {
-        String label = (expanded ? "-" : "+") + count;
+        String label = nearbyToggleLabel(count, expanded);
         return SlotUiElement.label(label, ACCENT)
                 .allowHitTest(true)
                 .attach(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE, Boolean.TRUE)
@@ -124,13 +135,15 @@ public final class WallSectionHeaderUiBuilder {
                 .attach(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_COUNT, count)
                 .attach(WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_EXPANDED, expanded)
                 .tooltipLines(nearbyToggleTooltip(count, expanded))
+                .backgroundColor(expanded ? NEARBY_TOGGLE_BACKGROUND_EXPANDED : NEARBY_TOGGLE_BACKGROUND)
                 .layout(layout -> layout
-                        .width(Math.max(compact ? 10 : 14, label.length() * (compact ? 4 : 5)))
+                        .paddingHorizontal(compact ? 1 : 2)
                         .heightPercent(100))
                 .textStyle(style -> style
                         .color(ACCENT)
                         .shadow(false)
                         .fontSize(compact ? 5 : 6)
+                        .adaptiveWidth(true)
                         .horizontal(SlotUiTextStyle.Horizontal.RIGHT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER))
                 .on(SlotUiEventKind.CLICK, event -> {
@@ -140,6 +153,14 @@ public final class WallSectionHeaderUiBuilder {
                     event.stopPropagation();
                     context.toggleNearbySection(island);
                 });
+    }
+
+    private static String nearbyToggleLabel(int count, boolean expanded) {
+        int normalized = Math.max(0, count);
+        if (expanded) {
+            return NEARBY_EXPANDED_ICON + " " + WorkspaceCountFormat.compact(normalized);
+        }
+        return NEARBY_COLLAPSED_ICON + " +" + WorkspaceCountFormat.compact(normalized);
     }
 
     private static List<Component> nearbyToggleTooltip(int count, boolean expanded) {
@@ -153,13 +174,20 @@ public final class WallSectionHeaderUiBuilder {
             int visibleCount,
             int totalCount,
             boolean filtering,
-            boolean hasCarried
+            boolean hasCarried,
+            boolean hasNearbyToggle
     ) {
         if (filtering && visibleCount != totalCount) {
             return visibleCount + " / " + totalCount;
         }
         if (hasCarried) {
+            if (hasNearbyToggle) {
+                return island.carriedCount() + "\u25CF";
+            }
             return island.carriedCount() + "/" + totalCount + "\u25CF";
+        }
+        if (hasNearbyToggle) {
+            return "";
         }
         if (!filtering && totalCount <= 0) {
             return "";

@@ -1224,9 +1224,12 @@ public record SlotWorkspaceViewModel(
                 identity,
                 targetResolution);
         List<AtlasItem> workflowPutAwayItems = List.of();
+        PutAwayRouteProjection putAwayRoutes = PutAwayRouteProjection.empty();
         if (resolvedWorkflow.kitMap() != null && !resolvedWorkflow.kitMap().activeLineage().isEmpty()) {
             Map<String, AtlasIsland> islandsById = islandsById(layoutIslands);
-            Set<IdentityRef> putAwayRouted = depositableIdentities(
+            Set<ItemIdentity> activationPutAwayIdentities =
+                    resolvedWorkflow.kitMap().activation().putAwayIdentities();
+            Set<IdentityRef> proximatePutAwayRouted = depositableIdentities(
                     atlasItems,
                     claimedChestMap,
                     affinityMap,
@@ -1236,13 +1239,38 @@ public record SlotWorkspaceViewModel(
                     depositEligible,
                     liveChestContentPresence,
                     liveStorageAffinityEligibility);
+            putAwayRoutes = putAwayRouteProjection(
+                    atlasItems,
+                    triageItems,
+                    targetResolution,
+                    activationPutAwayIdentities,
+                    claimedChestMap,
+                    affinityMap,
+                    chestContentsResolver,
+                    trackedDisplayEntries);
+            Set<IdentityRef> putAwayRouted = unionIdentityRefs(
+                    proximatePutAwayRouted,
+                    putAwayRoutes.routedIdentities());
             workflowPutAwayItems = activeWorkflowPutAwayItems(
                     atlasItems,
                     triageItems,
                     targetResolution,
+                    activationPutAwayIdentities,
                     putAwayRouted);
-            atlasItems = filterForActiveWorkflowTab(atlasItems, targetResolution, putAwayRouted, searchQuery, islandsById);
-            triageItems = filterForActiveWorkflowTab(triageItems, targetResolution, Set.of(), searchQuery, islandsById);
+            atlasItems = filterForActiveWorkflowTab(
+                    atlasItems,
+                    targetResolution,
+                    activationPutAwayIdentities,
+                    putAwayRouted,
+                    searchQuery,
+                    islandsById);
+            triageItems = filterForActiveWorkflowTab(
+                    triageItems,
+                    targetResolution,
+                    activationPutAwayIdentities,
+                    putAwayRouted,
+                    searchQuery,
+                    islandsById);
         }
 
         List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(layoutIslands, atlasItems);
@@ -1271,6 +1299,7 @@ public record SlotWorkspaceViewModel(
                 wantedCounts,
                 targetResolution.desiredCounts(),
                 desiredFromWorkflowTabIdentities);
+        wayfindingTargets = mergeWayfindingTargets(wayfindingTargets, putAwayRoutes.targets());
         Set<IdentityRef> depositableIdentities = depositableIdentities(
                 atlasItems,
                 claimedChestMap,
@@ -1434,6 +1463,244 @@ public record SlotWorkspaceViewModel(
                 List.copyOf(fetchItems.values()));
     }
 
+    private static PutAwayRouteProjection putAwayRouteProjection(
+            List<AtlasItem> atlasItems,
+            List<AtlasItem> triageItems,
+            WorkflowTabTargets.Resolution targets,
+            Set<ItemIdentity> activationPutAwayIdentities,
+            ClaimedChestMap claimedChestMap,
+            ChestAffinityMap affinityMap,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries
+    ) {
+        if (targets == null || activationPutAwayIdentities == null || activationPutAwayIdentities.isEmpty()) {
+            return PutAwayRouteProjection.empty();
+        }
+        ArrayList<AtlasItem> candidates = new ArrayList<>();
+        collectPutAwayRouteCandidates(candidates, atlasItems, targets, activationPutAwayIdentities);
+        collectPutAwayRouteCandidates(candidates, triageItems, targets, activationPutAwayIdentities);
+        if (candidates.isEmpty()) {
+            return PutAwayRouteProjection.empty();
+        }
+
+        Set<String> claimedRouteIds = claimedStorageIds(claimedChestMap);
+        DepositPlanner.ChestContentPresence contentPresence = contentPresenceFromResolver(chestContentsResolver);
+        DepositPlanner.ChestEligibility chestEligibility = eligibilityFromResolver(chestContentsResolver);
+        LinkedHashMap<String, PutAwayRouteAccumulator> routesByStorage = new LinkedHashMap<>();
+        LinkedHashSet<IdentityRef> routedIdentities = new LinkedHashSet<>();
+        for (AtlasItem item : candidates) {
+            ItemIdentity identity = item.identity().toIdentity();
+            if (identity == null) {
+                continue;
+            }
+            boolean routed = false;
+            for (UUID storageId : DepositPlanner.rankChestsForIdentity(
+                    identity,
+                    claimedChestMap,
+                    affinityMap,
+                    claimedRouteIds,
+                    contentPresence,
+                    chestEligibility)) {
+                ClaimedChest chest = claimedChestMap == null ? null : claimedChestMap.chest(storageId);
+                if (chest == null || chest.anchors().isEmpty()) {
+                    continue;
+                }
+                ChestAnchor anchor = chest.anchors().iterator().next();
+                addPutAwayRoute(
+                        routesByStorage,
+                        storageId.toString(),
+                        anchor.dimensionId(),
+                        anchor.x(),
+                        anchor.y(),
+                        anchor.z(),
+                        identity,
+                        item.totalCount());
+                routed = true;
+            }
+            for (WorkspaceStorageIndex.StorageEntry entry : displayPutAwayRouteEntries(trackedDisplayEntries, identity)) {
+                StorageTargetRef target = entry.target();
+                addPutAwayRoute(
+                        routesByStorage,
+                        target.storageId(),
+                        target.dimensionId(),
+                        target.x(),
+                        target.y(),
+                        target.z(),
+                        identity,
+                        item.totalCount());
+                routed = true;
+            }
+            if (routed) {
+                routedIdentities.add(item.identity());
+            }
+        }
+        if (routesByStorage.isEmpty()) {
+            return PutAwayRouteProjection.empty();
+        }
+        ArrayList<WayfindingTarget> targetsOut = new ArrayList<>(routesByStorage.size());
+        for (PutAwayRouteAccumulator route : routesByStorage.values()) {
+            targetsOut.add(route.toTarget());
+        }
+        return new PutAwayRouteProjection(routedIdentities, List.copyOf(targetsOut));
+    }
+
+    private static void collectPutAwayRouteCandidates(
+            List<AtlasItem> output,
+            List<AtlasItem> items,
+            WorkflowTabTargets.Resolution targets,
+            Set<ItemIdentity> activationPutAwayIdentities
+    ) {
+        if (output == null || items == null || items.isEmpty() || targets == null) {
+            return;
+        }
+        for (AtlasItem item : items) {
+            if (activeWorkflowPutAwayCandidate(item, targets, activationPutAwayIdentities)) {
+                output.add(item);
+            }
+        }
+    }
+
+    private static boolean activeWorkflowPutAwayCandidate(
+            AtlasItem item,
+            WorkflowTabTargets.Resolution targets,
+            Set<ItemIdentity> activationPutAwayIdentities
+    ) {
+        if (item == null
+                || !item.carried()
+                || item.identity() == null
+                || targets == null
+                || activationPutAwayIdentities == null
+                || activationPutAwayIdentities.isEmpty()) {
+            return false;
+        }
+        if (protectedPutAwaySource(item.largestCarriedSourceId())) {
+            return false;
+        }
+        ItemIdentity identity = item.identity().toIdentity();
+        return identity != null
+                && ItemIdentityCollections.containsCanonical(activationPutAwayIdentities, identity)
+                && !targets.workflowRelevant(identity, ItemStackTags.itemTagIds(item.displayStack()));
+    }
+
+    private static Set<String> claimedStorageIds(ClaimedChestMap claimedChestMap) {
+        if (claimedChestMap == null || claimedChestMap.chests().isEmpty()) {
+            return Set.of();
+        }
+        LinkedHashSet<String> ids = new LinkedHashSet<>();
+        for (ClaimedChest chest : claimedChestMap.chests()) {
+            if (chest != null) {
+                ids.add(chest.storageId().toString());
+            }
+        }
+        return ids.isEmpty() ? Set.of() : Set.copyOf(ids);
+    }
+
+    private static List<WorkspaceStorageIndex.StorageEntry> displayPutAwayRouteEntries(
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries,
+            ItemIdentity identity
+    ) {
+        if (trackedDisplayEntries == null || trackedDisplayEntries.isEmpty() || identity == null) {
+            return List.of();
+        }
+        ArrayList<WorkspaceStorageIndex.StorageEntry> entries = new ArrayList<>();
+        for (WorkspaceStorageIndex.StorageEntry entry : trackedDisplayEntries) {
+            if (entry == null || entry.target() == null
+                    || !entry.target().displayTarget()
+                    || !entry.target().depositTarget()
+                    || entry.target().displayKind() == null
+                    || !entry.target().displayKind().trackedStorage()) {
+                continue;
+            }
+            if (displayEntryContainsMatchingContent(entry, identity)) {
+                entries.add(entry);
+            }
+        }
+        return entries.isEmpty() ? List.of() : List.copyOf(entries);
+    }
+
+    private static boolean displayEntryContainsMatchingContent(
+            WorkspaceStorageIndex.StorageEntry entry,
+            ItemIdentity identity
+    ) {
+        if (entry == null || identity == null || entry.snapshot() == null) {
+            return false;
+        }
+        for (ItemStack stack : entry.snapshot().contents()) {
+            if (stack != null && !stack.isEmpty()
+                    && ItemIdentityMatcher.matchesMovable(stack, identity)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void addPutAwayRoute(
+            Map<String, PutAwayRouteAccumulator> routesByStorage,
+            String storageId,
+            String dimensionId,
+            int worldX,
+            int worldY,
+            int worldZ,
+            ItemIdentity identity,
+            int count
+    ) {
+        if (routesByStorage == null || storageId == null || storageId.isBlank() || identity == null) {
+            return;
+        }
+        routesByStorage.computeIfAbsent(
+                        storageId,
+                        ignored -> new PutAwayRouteAccumulator(storageId, dimensionId, worldX, worldY, worldZ))
+                .add(identity, count);
+    }
+
+    private static List<WayfindingTarget> mergeWayfindingTargets(
+            List<WayfindingTarget> acquisitionTargets,
+            List<WayfindingTarget> putAwayTargets
+    ) {
+        if ((acquisitionTargets == null || acquisitionTargets.isEmpty())
+                && (putAwayTargets == null || putAwayTargets.isEmpty())) {
+            return List.of();
+        }
+        LinkedHashMap<String, WayfindingTargetAccumulator> merged = new LinkedHashMap<>();
+        mergeWayfindingTargetsInto(merged, acquisitionTargets);
+        mergeWayfindingTargetsInto(merged, putAwayTargets);
+        ArrayList<WayfindingTarget> out = new ArrayList<>(merged.size());
+        for (WayfindingTargetAccumulator accumulator : merged.values()) {
+            out.add(accumulator.toTarget());
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    private static void mergeWayfindingTargetsInto(
+            Map<String, WayfindingTargetAccumulator> merged,
+            List<WayfindingTarget> targets
+    ) {
+        if (merged == null || targets == null || targets.isEmpty()) {
+            return;
+        }
+        for (WayfindingTarget target : targets) {
+            if (target == null || target.storageId().isBlank()) {
+                continue;
+            }
+            merged.computeIfAbsent(target.storageId(), ignored -> new WayfindingTargetAccumulator(target))
+                    .add(target);
+        }
+    }
+
+    private static Set<IdentityRef> unionIdentityRefs(Set<IdentityRef> left, Set<IdentityRef> right) {
+        if ((left == null || left.isEmpty()) && (right == null || right.isEmpty())) {
+            return Set.of();
+        }
+        LinkedHashSet<IdentityRef> out = new LinkedHashSet<>();
+        if (left != null) {
+            out.addAll(left);
+        }
+        if (right != null) {
+            out.addAll(right);
+        }
+        return out.isEmpty() ? Set.of() : Set.copyOf(out);
+    }
+
     private static boolean hasFetchGap(AtlasItem item) {
         if (item == null) {
             return false;
@@ -1445,6 +1712,7 @@ public record SlotWorkspaceViewModel(
     private static ArrayList<AtlasItem> filterForActiveWorkflowTab(
             List<AtlasItem> items,
             WorkflowTabTargets.Resolution targets,
+            Set<ItemIdentity> activationPutAwayIdentities,
             Set<IdentityRef> routedPutAwayIdentities,
             String searchQuery,
             Map<String, AtlasIsland> islandsById
@@ -1466,9 +1734,7 @@ public record SlotWorkspaceViewModel(
             boolean workflowRelevant = targets.workflowRelevant(identity, itemTags);
             boolean storageGhost = !item.carried() && (item.proximateCount() > 0 || !item.elsewhere().isEmpty());
             boolean carried = item.carried();
-            boolean putAwayCandidate = item.carried()
-                    && !workflowRelevant
-                    && putAway.contains(item.identity());
+            boolean putAwayCandidate = activeWorkflowPutAwayCandidate(item, targets, activationPutAwayIdentities);
             boolean searchMatch = searchActive && WorkspaceSearchQuery.matchesItem(
                     normalizedSearch,
                     item,
@@ -1476,7 +1742,8 @@ public record SlotWorkspaceViewModel(
             if (identity != null && (carried || workflowRelevant || putAwayCandidate || storageGhost || searchMatch)) {
                 AtlasItem visibleItem = item.withAcceptedWorkflowInput(acceptedInput);
                 filtered.add(putAwayCandidate
-                        ? visibleItem.withPutAwayState(PutAwayState.ROUTED)
+                        ? visibleItem.withPutAwayState(
+                                putAway.contains(item.identity()) ? PutAwayState.ROUTED : PutAwayState.NO_ROUTE)
                         : visibleItem.withPutAwayState(PutAwayState.NONE));
             }
         }
@@ -1500,14 +1767,15 @@ public record SlotWorkspaceViewModel(
             List<AtlasItem> atlasItems,
             List<AtlasItem> triageItems,
             WorkflowTabTargets.Resolution targets,
+            Set<ItemIdentity> activationPutAwayIdentities,
             Set<IdentityRef> routedPutAwayIdentities
     ) {
-        if (targets == null) {
+        if (targets == null || activationPutAwayIdentities == null || activationPutAwayIdentities.isEmpty()) {
             return List.of();
         }
         ArrayList<AtlasItem> items = new ArrayList<>();
-        collectActiveWorkflowPutAwayItems(items, atlasItems, targets, routedPutAwayIdentities);
-        collectActiveWorkflowPutAwayItems(items, triageItems, targets, routedPutAwayIdentities);
+        collectActiveWorkflowPutAwayItems(items, atlasItems, targets, activationPutAwayIdentities, routedPutAwayIdentities);
+        collectActiveWorkflowPutAwayItems(items, triageItems, targets, activationPutAwayIdentities, routedPutAwayIdentities);
         return items.isEmpty() ? List.of() : List.copyOf(items);
     }
 
@@ -1515,6 +1783,7 @@ public record SlotWorkspaceViewModel(
             List<AtlasItem> output,
             List<AtlasItem> items,
             WorkflowTabTargets.Resolution targets,
+            Set<ItemIdentity> activationPutAwayIdentities,
             Set<IdentityRef> routedPutAwayIdentities
     ) {
         if (output == null || items == null || items.isEmpty() || targets == null) {
@@ -1522,14 +1791,7 @@ public record SlotWorkspaceViewModel(
         }
         Set<IdentityRef> routed = routedPutAwayIdentities == null ? Set.of() : routedPutAwayIdentities;
         for (AtlasItem item : items) {
-            if (item == null || !item.carried() || item.identity() == null) {
-                continue;
-            }
-            if (protectedPutAwaySource(item.largestCarriedSourceId())) {
-                continue;
-            }
-            ItemIdentity identity = item.identity().toIdentity();
-            if (identity == null || targets.workflowRelevant(identity, ItemStackTags.itemTagIds(item.displayStack()))) {
+            if (!activeWorkflowPutAwayCandidate(item, targets, activationPutAwayIdentities)) {
                 continue;
             }
             output.add(item.withPutAwayState(
@@ -2307,6 +2569,132 @@ public record SlotWorkspaceViewModel(
         private boolean kit;
         private boolean desired;
         private boolean wanted;
+    }
+
+    private record PutAwayRouteProjection(
+            Set<IdentityRef> routedIdentities,
+            List<WayfindingTarget> targets
+    ) {
+        private PutAwayRouteProjection {
+            routedIdentities = routedIdentities == null
+                    ? Set.of()
+                    : Collections.unmodifiableSet(new LinkedHashSet<>(routedIdentities));
+            targets = targets == null ? List.of() : List.copyOf(targets);
+        }
+
+        static PutAwayRouteProjection empty() {
+            return new PutAwayRouteProjection(Set.of(), List.of());
+        }
+    }
+
+    private static final class PutAwayRouteAccumulator {
+        private final String storageId;
+        private final String dimensionId;
+        private final int worldX;
+        private final int worldY;
+        private final int worldZ;
+        private final LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        private int totalCount;
+
+        private PutAwayRouteAccumulator(
+                String storageId,
+                String dimensionId,
+                int worldX,
+                int worldY,
+                int worldZ
+        ) {
+            this.storageId = storageId == null ? "" : storageId;
+            this.dimensionId = dimensionId == null ? "" : dimensionId;
+            this.worldX = worldX;
+            this.worldY = worldY;
+            this.worldZ = worldZ;
+        }
+
+        private void add(ItemIdentity identity, int count) {
+            if (identity == null) {
+                return;
+            }
+            identities.add(ItemIdentityCollections.key(identity));
+            totalCount += Math.max(0, count);
+        }
+
+        private WayfindingTarget toTarget() {
+            Set<ItemIdentity> putAway = Collections.unmodifiableSet(new LinkedHashSet<>(identities));
+            return new WayfindingTarget(
+                    storageId,
+                    dimensionId,
+                    worldX,
+                    worldY,
+                    worldZ,
+                    Set.of(),
+                    Set.of(),
+                    Set.of(),
+                    Set.of(),
+                    putAway,
+                    totalCount,
+                    WayfindingTarget.Scope.PUT_AWAY);
+        }
+    }
+
+    private static final class WayfindingTargetAccumulator {
+        private final String storageId;
+        private final String dimensionId;
+        private final int worldX;
+        private final int worldY;
+        private final int worldZ;
+        private final LinkedHashSet<ItemIdentity> missingIdentities = new LinkedHashSet<>();
+        private final LinkedHashSet<ItemIdentity> kitMissingIdentities = new LinkedHashSet<>();
+        private final LinkedHashSet<ItemIdentity> desiredMissingIdentities = new LinkedHashSet<>();
+        private final LinkedHashSet<ItemIdentity> wantedMissingIdentities = new LinkedHashSet<>();
+        private final LinkedHashSet<ItemIdentity> putAwayIdentities = new LinkedHashSet<>();
+        private int totalMissingCount;
+
+        private WayfindingTargetAccumulator(WayfindingTarget target) {
+            this.storageId = target == null ? "" : target.storageId();
+            this.dimensionId = target == null ? "" : target.dimensionId();
+            this.worldX = target == null ? 0 : target.worldX();
+            this.worldY = target == null ? 0 : target.worldY();
+            this.worldZ = target == null ? 0 : target.worldZ();
+        }
+
+        private void add(WayfindingTarget target) {
+            if (target == null) {
+                return;
+            }
+            addAll(missingIdentities, target.missingIdentities());
+            addAll(kitMissingIdentities, target.kitMissingIdentities());
+            addAll(desiredMissingIdentities, target.desiredMissingIdentities());
+            addAll(wantedMissingIdentities, target.wantedMissingIdentities());
+            addAll(putAwayIdentities, target.putAwayIdentities());
+            totalMissingCount += Math.max(0, target.totalMissingCount());
+        }
+
+        private WayfindingTarget toTarget() {
+            return new WayfindingTarget(
+                    storageId,
+                    dimensionId,
+                    worldX,
+                    worldY,
+                    worldZ,
+                    missingIdentities,
+                    kitMissingIdentities,
+                    desiredMissingIdentities,
+                    wantedMissingIdentities,
+                    putAwayIdentities,
+                    totalMissingCount,
+                    null);
+        }
+
+        private static void addAll(Set<ItemIdentity> out, Set<ItemIdentity> identities) {
+            if (out == null || identities == null || identities.isEmpty()) {
+                return;
+            }
+            for (ItemIdentity identity : identities) {
+                if (identity != null) {
+                    out.add(ItemIdentityCollections.key(identity));
+                }
+            }
+        }
     }
 
     /**

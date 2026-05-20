@@ -14,14 +14,18 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class WorkspaceUiSessionMemory {
     private static final Map<String, State> STATES = new ConcurrentHashMap<>();
     private static final String STORAGE_GHOST_SECTION_KEY = "workspace.storageGhostSections";
-    private static final long SEARCH_CLOSE_CLEAR_MILLIS = 10_000L;
+    static final long SEARCH_CLOSE_CLEAR_MILLIS = 6_000L;
 
     private WorkspaceUiSessionMemory() {
     }
 
     public static String searchQuery(String surfaceKey) {
+        return searchQuery(surfaceKey, System.currentTimeMillis());
+    }
+
+    static String searchQuery(String surfaceKey, long nowMillis) {
         State state = state(surfaceKey);
-        clearExpiredSearchQuery(state, System.currentTimeMillis());
+        clearExpiredSearchQuery(state, nowMillis);
         return state.searchQuery;
     }
 
@@ -32,7 +36,11 @@ public final class WorkspaceUiSessionMemory {
     }
 
     public static void markClosed(String surfaceKey) {
-        state(surfaceKey).searchClosedAtMillis = System.currentTimeMillis();
+        markClosed(surfaceKey, System.currentTimeMillis());
+    }
+
+    static void markClosed(String surfaceKey, long nowMillis) {
+        state(surfaceKey).searchClosedAtMillis = nowMillis;
     }
 
     public static float wallScroll(String surfaceKey) {

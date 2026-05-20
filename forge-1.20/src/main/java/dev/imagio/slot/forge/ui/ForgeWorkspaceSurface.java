@@ -2055,7 +2055,7 @@ public final class ForgeWorkspaceSurface {
         int labels = kit.kitId().equals(renamingKitId) || kit.kitId().equals(confirmDeleteKitId) ? 2 : 1;
         int buttons = kit.kitId().equals(renamingKitId) || kit.kitId().equals(confirmDeleteKitId)
                 ? 2
-                : 4 + (kit.variant() ? 0 : 1);
+                : 6 + (kit.variant() ? 0 : 1);
         SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178, menuHeight(6f, 4f, labels, buttons));
         panel.addChild(menuLabel(shorten(kit.name(), 30), WorkspaceUiPalette.ACCENT));
         if (kit.kitId().equals(renamingKitId)) {
@@ -2080,6 +2080,18 @@ public final class ForgeWorkspaceSurface {
                     true,
                     "Duplicate this workflow",
                     closeThen(() -> sendKitAction(WorkspaceActionId.DUPLICATE_KIT, "duplicating workflow", kit.kitId()))));
+            int siblingIndex = workflowSiblingIndex(kit);
+            int siblingCount = workflowSiblingCount(kit);
+            panel.addChild(menuButton(
+                    "Move left",
+                    siblingIndex > 0,
+                    "Already first",
+                    closeThen(() -> sendKitReorder(kit, siblingIndex - 1))));
+            panel.addChild(menuButton(
+                    "Move right",
+                    siblingIndex >= 0 && siblingIndex + 1 < siblingCount,
+                    "Already last",
+                    closeThen(() -> sendKitReorder(kit, siblingIndex + 1))));
             if (!kit.variant()) {
                 panel.addChild(menuButton(
                         "Create variant",
@@ -2101,6 +2113,63 @@ public final class ForgeWorkspaceSurface {
         }
         overlay.addChild(panel);
         return overlay;
+    }
+
+    private void sendKitReorder(SlotWorkspaceViewModel.KitCard kit, int targetIndex) {
+        if (kit == null || kit.kitId().isBlank()) {
+            setStatus("missing workflow");
+            return;
+        }
+        sendKitAction(
+                WorkspaceActionId.REORDER_KIT,
+                kit.variant() ? "moving workflow variant" : "moving workflow",
+                kit.kitId(),
+                Math.max(0, targetIndex));
+    }
+
+    private int workflowSiblingIndex(SlotWorkspaceViewModel.KitCard kit) {
+        if (kit == null) {
+            return -1;
+        }
+        int index = 0;
+        for (SlotWorkspaceViewModel.KitCard candidate : viewModel.kits()) {
+            if (!sameWorkflowSiblingGroup(kit, candidate)) {
+                continue;
+            }
+            if (kit.kitId().equals(candidate.kitId())) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+
+    private int workflowSiblingCount(SlotWorkspaceViewModel.KitCard kit) {
+        if (kit == null) {
+            return 0;
+        }
+        int count = 0;
+        for (SlotWorkspaceViewModel.KitCard candidate : viewModel.kits()) {
+            if (sameWorkflowSiblingGroup(kit, candidate)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static boolean sameWorkflowSiblingGroup(
+            SlotWorkspaceViewModel.KitCard left,
+            SlotWorkspaceViewModel.KitCard right
+    ) {
+        if (left == null || right == null) {
+            return false;
+        }
+        if (left.variant() || right.variant()) {
+            return left.variant()
+                    && right.variant()
+                    && left.parentId().equals(right.parentId());
+        }
+        return !right.variant();
     }
 
     private SlotUiElement chestContextOverlay() {

@@ -59,6 +59,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter setKitSlotIdentityEmitter;
     RPCEmitter renameKitEmitter;
     RPCEmitter duplicateKitEmitter;
+    RPCEmitter reorderKitEmitter;
     RPCEmitter swapKitSlotsEmitter;
     RPCEmitter returnHotbarToHomeEmitter;
     RPCEmitter assignHomeToFreeHotbarEmitter;
@@ -379,6 +380,11 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
         duplicateKitEmitter = add(WorkspaceActionId.DUPLICATE_KIT, RPCEventBuilder.simple(
                 String.class,
                 host.session::duplicateKit
+        ));
+        reorderKitEmitter = add(WorkspaceActionId.REORDER_KIT, RPCEventBuilder.simple(
+                String.class,
+                Integer.class,
+                host.session::reorderKit
         ));
         swapKitSlotsEmitter = add(WorkspaceActionId.SWAP_KIT_SLOTS, RPCEventBuilder.simple(
                 String.class,
@@ -760,6 +766,12 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     void sendDuplicateKit(String kitId) {
         boolean sent = send(WorkspaceActionId.DUPLICATE_KIT, kitId);
         host.localStatus.set(sent ? "duplicating workflow..." : "duplicate unavailable");
+        host.rebuild();
+    }
+
+    void sendReorderKit(String kitId, int targetIndex) {
+        boolean sent = send(WorkspaceActionId.REORDER_KIT, kitId, Math.max(0, targetIndex));
+        host.localStatus.set(sent ? "moving workflow..." : "move workflow unavailable");
         host.rebuild();
     }
 

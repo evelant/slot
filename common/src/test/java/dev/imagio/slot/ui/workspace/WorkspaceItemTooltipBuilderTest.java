@@ -117,6 +117,43 @@ class WorkspaceItemTooltipBuilderTest {
     }
 
     @Test
+    void tooltipDoesNotCallRemotePutAwayDestinationNearby() {
+        SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
+                identity("minecraft:dirt"),
+                new ItemStack("minecraft:dirt", 64, 64),
+                "Dirt",
+                64,
+                0,
+                "blocks",
+                false,
+                true,
+                true,
+                false,
+                0,
+                List.of(),
+                List.of(),
+                List.of(),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                0,
+                "player.main",
+                0,
+                64,
+                SlotWorkspaceViewModel.PutAwayState.ROUTED);
+
+        List<String> text = WorkspaceItemTooltipBuilder.slotLines(item).stream()
+                .map(Component::getString)
+                .toList();
+
+        assertTrue(text.contains("Put away: destination known"));
+        assertTrue(text.stream().noneMatch(line -> line.startsWith("Nearby route:")));
+    }
+
+    @Test
     void tooltipExplainsPutAwayItemsWithoutKnownHomes() {
         SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
                 identity("minecraft:dirt"),
@@ -149,7 +186,7 @@ class WorkspaceItemTooltipBuilderTest {
                 .map(Component::getString)
                 .toList();
 
-        assertTrue(text.contains("Put away: no learned home nearby"));
+        assertTrue(text.contains("Put away: no learned destination"));
     }
 
     @Test

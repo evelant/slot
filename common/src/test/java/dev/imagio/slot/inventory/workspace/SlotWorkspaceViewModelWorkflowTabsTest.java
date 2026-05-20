@@ -19,6 +19,8 @@ import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WallSectionVisibility;
 import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
+import dev.imagio.slot.workflow.domain.ChestAnchor;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.KitDefinition;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
@@ -74,7 +76,7 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         KitDefinition mining = runtime.kitWorkflow().create("Mining");
         runtime.kitWorkflow().setMember(mining.id(), ItemIdentity.of("minecraft:torch"), true);
-        runtime.kitWorkflow().activate(mining.id());
+        runtime.kitWorkflow().activate(mining.id(), 0, Set.of(ItemIdentity.of("minecraft:dirt")));
 
         SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
                 carried(
@@ -98,7 +100,7 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
                 .findFirst()
                 .orElseThrow();
         assertTrue(dirt.carried());
-        assertEquals(SlotWorkspaceViewModel.PutAwayState.NONE, dirt.putAwayState());
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NO_ROUTE, dirt.putAwayState());
 
         SlotWorkspaceViewModel.ContextualSuggestionLane putAway = viewModel.contextualSuggestionLanes().stream()
                 .filter(SlotWorkspaceViewModel.ContextualSuggestionLane::putAway)
@@ -109,6 +111,98 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
                 putAway.items().stream().map(item -> item.identity().itemId()).toList());
         assertTrue(putAway.items().get(0).putAwayState().noRoute());
         assertNotNull(viewModel.atlasItem(putAway.items().get(0).identity()));
+    }
+
+    @Test
+    void activeWorkflowPutAwayWayfindingPointsAtKnownDestination() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setMember(mining.id(), ItemIdentity.of("minecraft:torch"), true);
+        runtime.kitWorkflow().activate(mining.id(), 0, Set.of(ItemIdentity.of("minecraft:dirt")));
+        ClaimedChest chest = runtime.chestClaimWorkflow().claim(
+                Set.of(new ChestAnchor("minecraft:overworld", 12, 64, -5)),
+                0,
+                0,
+                "Blocks");
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(new InventoryStackSnapshot(0, new ItemStack("minecraft:dirt", 64, 64), 64)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                storageId -> chest.storageId().toString().equals(storageId)
+                        ? new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                                27,
+                                List.of(new ItemStack("minecraft:dirt", 32, 64)))
+                        : SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of());
+
+        assertEquals(1, viewModel.wayfindingTargets().size());
+        WayfindingTarget target = viewModel.wayfindingTargets().get(0);
+        assertEquals(chest.storageId().toString(), target.storageId());
+        assertEquals(WayfindingTarget.Scope.PUT_AWAY, target.scope());
+        assertTrue(target.putAwayIdentities().contains(ItemIdentity.of("minecraft:dirt")));
+        assertTrue(target.missingIdentities().contains(ItemIdentity.of("minecraft:dirt")));
+        assertEquals(64, target.totalMissingCount());
+        assertEquals(12, target.worldX());
+        assertEquals(64, target.worldY());
+        assertEquals(-5, target.worldZ());
+
+        SlotWorkspaceViewModel.AtlasItem dirt = viewModel.triageItems().stream()
+                .filter(item -> "minecraft:dirt".equals(item.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.ROUTED, dirt.putAwayState());
+
+        SlotWorkspaceViewModel.ContextualSuggestionLane putAway = viewModel.contextualSuggestionLanes().stream()
+                .filter(SlotWorkspaceViewModel.ContextualSuggestionLane::putAway)
+                .findFirst()
+                .orElseThrow();
+        assertEquals(List.of("minecraft:dirt"),
+                putAway.items().stream().map(item -> item.identity().itemId()).toList());
+        assertTrue(putAway.items().get(0).putAwayState().routed());
+    }
+
+    @Test
+    void activeWorkflowPutAwayIgnoresItemsPickedUpAfterActivation() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().setMember(mining.id(), ItemIdentity.of("minecraft:torch"), true);
+        runtime.kitWorkflow().activate(mining.id(), 0, Set.of(ItemIdentity.of("minecraft:dirt")));
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(
+                        new InventoryStackSnapshot(0, new ItemStack("minecraft:dirt", 32, 64), 32),
+                        new InventoryStackSnapshot(1, new ItemStack("minecraft:cobblestone", 64, 64), 64)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.AtlasItem dirt = viewModel.triageItems().stream()
+                .filter(item -> "minecraft:dirt".equals(item.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+        SlotWorkspaceViewModel.AtlasItem cobblestone = viewModel.triageItems().stream()
+                .filter(item -> "minecraft:cobblestone".equals(item.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NO_ROUTE, dirt.putAwayState());
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NONE, cobblestone.putAwayState());
+        List<String> putAwayIds = viewModel.contextualSuggestionLanes().stream()
+                .filter(SlotWorkspaceViewModel.ContextualSuggestionLane::putAway)
+                .flatMap(lane -> lane.items().stream())
+                .map(item -> item.identity().itemId())
+                .toList();
+        assertEquals(List.of("minecraft:dirt"), putAwayIds);
     }
 
     @Test
@@ -157,7 +251,7 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         KitDefinition mining = runtime.kitWorkflow().create("Mining");
         runtime.kitWorkflow().setMember(mining.id(), ItemIdentity.of("minecraft:torch"), true);
-        runtime.kitWorkflow().activate(mining.id());
+        runtime.kitWorkflow().activate(mining.id(), 0, Set.of(ItemIdentity.of("minecraft:iron_boots")));
 
         SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
                 carriedBySource(Map.of(
@@ -189,7 +283,7 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
                 smelting.id(),
                 WorkflowAcceptedInputRule.exact(ore),
                 true);
-        runtime.kitWorkflow().activate(smelting.id());
+        runtime.kitWorkflow().activate(smelting.id(), 0, Set.of(ItemIdentity.of("minecraft:dirt")));
 
         SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
                 carried(

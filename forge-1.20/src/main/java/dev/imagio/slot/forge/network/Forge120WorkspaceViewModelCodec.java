@@ -752,6 +752,7 @@ public final class Forge120WorkspaceViewModelCodec {
         tag.put("kitMissingIdentities", encodeIdentitySet(target.kitMissingIdentities()));
         tag.put("desiredMissingIdentities", encodeIdentitySet(target.desiredMissingIdentities()));
         tag.put("wantedMissingIdentities", encodeIdentitySet(target.wantedMissingIdentities()));
+        tag.put("putAwayIdentities", encodeIdentitySet(target.putAwayIdentities()));
         return tag;
     }
 
@@ -760,6 +761,7 @@ public final class Forge120WorkspaceViewModelCodec {
         LinkedHashSet<ItemIdentity> kitIdentities = decodeIdentitySet(tag, "kitMissingIdentities");
         LinkedHashSet<ItemIdentity> desiredIdentities = decodeIdentitySet(tag, "desiredMissingIdentities");
         LinkedHashSet<ItemIdentity> wantedIdentities = decodeIdentitySet(tag, "wantedMissingIdentities");
+        LinkedHashSet<ItemIdentity> putAwayIdentities = decodeIdentitySet(tag, "putAwayIdentities");
         WayfindingTarget.Scope scope;
         try {
             String raw = tag.getString("scope");
@@ -779,6 +781,7 @@ public final class Forge120WorkspaceViewModelCodec {
                 kitIdentities,
                 desiredIdentities,
                 wantedIdentities,
+                putAwayIdentities,
                 tag.getInt("totalMissingCount"),
                 scope
         );

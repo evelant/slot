@@ -4,10 +4,14 @@ import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.classification.DynamicHomeCohortPolicy;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
+import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
+import dev.imagio.slot.inventory.core.ItemStackTags;
+import dev.imagio.slot.inventory.query.CarriedIdentityCounts;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
@@ -21,6 +25,8 @@ import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.DesiredCountWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.KitDefinition;
+import dev.imagio.slot.workflow.domain.KitActivation;
+import dev.imagio.slot.workflow.domain.KitMap;
 import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.KitSnapshotSupport;
 import dev.imagio.slot.workflow.domain.LoadoutApplyExecutor;
@@ -33,6 +39,8 @@ import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeOrigin;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
+import dev.imagio.slot.workflow.domain.WorkflowTabTargets;
 import dev.imagio.slot.workflow.domain.undo.UndoContext;
 import dev.imagio.slot.workflow.domain.undo.UndoRecord;
 import net.minecraft.server.level.ServerPlayer;
@@ -41,6 +49,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -783,10 +792,17 @@ public final class SlotWorkspaceCommandService {
         if (kit == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
+        Set<ItemIdentity> activationPutAway = activationPutAwayIdentities(
+                runtime,
+                resolvedAuthority,
+                identityResolver,
+                kitId,
+                0);
         LoadoutApplyService.LoadoutApplyPlan plan = runtime.kitWorkflow().planActivate(
                 kitId,
                 0,
-                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                resolvedAuthority,
                 protectionPolicy == null ? ProtectionPolicy.allowAll() : protectionPolicy,
                 identityResolver
         );
@@ -794,6 +810,7 @@ public final class SlotWorkspaceCommandService {
         runtime.kitWorkflow().activate(
                 kitId,
                 0,
+                activationPutAway,
                 DomainEventMetadata.origin("slot_workspace.ldlib.kit_activate")
         );
         int satisfied = result.satisfiedTargets().size();
@@ -809,6 +826,62 @@ public final class SlotWorkspaceCommandService {
         }
         String status = missing == 0 ? "workflow activated" : "workflow activated (missing " + missing + ")";
         return WorkspaceCommandOutcome.accepted(status, diagnostics.toString());
+    }
+
+    private static Set<ItemIdentity> activationPutAwayIdentities(
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            String kitId,
+            int pageIndex
+    ) {
+        if (runtime == null || authority == null || kitId == null || kitId.isBlank()) {
+            return Set.of();
+        }
+        WorkflowDomainSnapshot snapshot = runtime.snapshot();
+        KitMap kitMap = snapshot.kitMap();
+        if (kitMap == null || kitMap.kit(kitId) == null) {
+            return Set.of();
+        }
+        KitMap activeKitMap = kitMap.withActivation(new KitActivation(kitId, pageIndex));
+        WorkflowTabTargets.Resolution targets = WorkflowTabTargets.resolve(
+                CarriedIdentityCounts.from(authority),
+                activeKitMap,
+                snapshot.playerDesiredCounts(),
+                snapshot.kitDesiredCounts(),
+                snapshot.playerWantedCounts(),
+                snapshot.kitWantedCounts());
+        LinkedHashSet<ItemIdentity> putAway = new LinkedHashSet<>();
+        Function<InventoryEntrySnapshot, ItemIdentity> resolver = identityResolver == null
+                ? entry -> entry == null ? null : ItemIdentityMatcher.create(entry.stack())
+                : identityResolver;
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            if (source == null || protectedPutAwaySource(source.id())) {
+                continue;
+            }
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry == null || !entry.present() || entry.stack() == null || entry.stack().isEmpty()) {
+                    continue;
+                }
+                ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(resolver.apply(entry));
+                if (identity == null) {
+                    continue;
+                }
+                if (!targets.workflowRelevant(identity, ItemStackTags.itemTagIds(entry.stack()))) {
+                    ItemIdentityCollections.add(putAway, identity);
+                }
+            }
+        }
+        return putAway.isEmpty() ? Set.of() : Set.copyOf(putAway);
+    }
+
+    private static boolean protectedPutAwaySource(String sourceId) {
+        if (sourceId == null || sourceId.isBlank()) {
+            return false;
+        }
+        return BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId)
+                || BuiltinInventoryIds.PLAYER_OFFHAND.equals(sourceId)
+                || BuiltinInventoryIds.PLAYER_ARMOR.equals(sourceId);
     }
 
     /**
@@ -1606,6 +1679,33 @@ public final class SlotWorkspaceCommandService {
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
+    }
+
+    public static WorkspaceCommandOutcome reorderKit(WorkflowDomainRuntime runtime, String kitId, int targetIndex) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        KitDefinition existing = runtime.kitWorkflow().kit(kitId);
+        if (existing == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        try {
+            boolean moved = runtime.kitWorkflow().reorder(
+                    kitId,
+                    targetIndex,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.kit_reorder")
+            );
+            if (!moved) {
+                return WorkspaceCommandOutcome.accepted("workflow order unchanged", existing.name());
+            }
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected(exception.getMessage());
+        }
+        SlotDebugLog.log("LDLib kit reordered {} -> {}", kitId, targetIndex);
+        return WorkspaceCommandOutcome.accepted("workflow moved", existing.name());
     }
 
     public static WorkspaceCommandOutcome deleteKit(WorkflowDomainRuntime runtime, String kitId) {

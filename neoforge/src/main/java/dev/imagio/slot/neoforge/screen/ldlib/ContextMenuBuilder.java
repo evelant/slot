@@ -643,13 +643,15 @@ final class ContextMenuBuilder {
                 .paddingAll(6)
                 .gapAll(4)
                 .flexDirection(FlexDirection.COLUMN));
-        int approxHeight = 80;
+        int siblingIndex = workflowSiblingIndex(card);
+        int siblingCount = workflowSiblingCount(card);
+        int approxHeight = 108;
         if (card.kitId().equals(host.renamingKitId)) {
             approxHeight = 70;
         } else if (card.kitId().equals(host.confirmDeleteKitId)) {
             approxHeight = 64;
         } else if (!card.variant()) {
-            approxHeight = 94;
+            approxHeight = 122;
         }
         anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180, approxHeight);
         menu.style(style -> style.zIndex(22));
@@ -670,6 +672,14 @@ final class ContextMenuBuilder {
             }));
             menu.addChild(menuButton("Duplicate", true, null, () -> {
                 host.rpc.sendDuplicateKit(card.kitId());
+                closeContextMenu();
+            }));
+            menu.addChild(menuButton("Move left", siblingIndex > 0, "first", () -> {
+                host.rpc.sendReorderKit(card.kitId(), siblingIndex - 1);
+                closeContextMenu();
+            }));
+            menu.addChild(menuButton("Move right", siblingIndex >= 0 && siblingIndex + 1 < siblingCount, "last", () -> {
+                host.rpc.sendReorderKit(card.kitId(), siblingIndex + 1);
                 closeContextMenu();
             }));
             if (!card.variant()) {
@@ -902,7 +912,7 @@ final class ContextMenuBuilder {
         nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
         nameInput.textFieldStyle(style -> style
                 .font(FONT_UI)
-                .placeholder(Component.literal("Kit name"))
+                .placeholder(Component.literal("Workflow name"))
                 .textColor(TEXT)
                 .cursorColor(ACCENT)
                 .textShadow(false)
@@ -1000,6 +1010,51 @@ final class ContextMenuBuilder {
         });
         row.addChildren(confirm, cancel);
         menu.addChild(row);
+    }
+
+    private int workflowSiblingIndex(SlotWorkspaceViewModel.KitCard card) {
+        if (card == null || host.viewModel == null) {
+            return -1;
+        }
+        int index = 0;
+        for (SlotWorkspaceViewModel.KitCard candidate : host.viewModel.kits()) {
+            if (!sameWorkflowSiblingGroup(card, candidate)) {
+                continue;
+            }
+            if (card.kitId().equals(candidate.kitId())) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+
+    private int workflowSiblingCount(SlotWorkspaceViewModel.KitCard card) {
+        if (card == null || host.viewModel == null) {
+            return 0;
+        }
+        int count = 0;
+        for (SlotWorkspaceViewModel.KitCard candidate : host.viewModel.kits()) {
+            if (sameWorkflowSiblingGroup(card, candidate)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static boolean sameWorkflowSiblingGroup(
+            SlotWorkspaceViewModel.KitCard left,
+            SlotWorkspaceViewModel.KitCard right
+    ) {
+        if (left == null || right == null) {
+            return false;
+        }
+        if (left.variant() || right.variant()) {
+            return left.variant()
+                    && right.variant()
+                    && left.parentId().equals(right.parentId());
+        }
+        return !right.variant();
     }
 
     Button menuButton(String text, boolean enabled, String disabledHint, Runnable onClick) {

@@ -1,5 +1,6 @@
 package dev.imagio.slot.ui.workspace;
 
+import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
@@ -77,5 +78,25 @@ class WayfindingDisplayTest {
                 WayfindingTarget.Scope.WANTED);
 
         assertEquals("Tool rack", WayfindingDisplay.chestLabel(target));
+    }
+
+    @Test
+    void putAwayOnlyTargetLabelNamesTheAction() {
+        WayfindingTarget target = new WayfindingTarget(
+                "abcd",
+                "minecraft:overworld",
+                4,
+                64,
+                0,
+                Set.of(),
+                Set.of(),
+                Set.of(),
+                Set.of(),
+                Set.of(ItemIdentity.of("minecraft:dirt")),
+                64,
+                WayfindingTarget.Scope.PUT_AWAY);
+
+        assertEquals("Put away: Chest #abcd", WayfindingDisplay.targetLabel(target));
+        assertEquals(WayfindingGlowMath.PUT_AWAY_RGB, WayfindingGlowMath.scopeRgb(target));
     }
 }

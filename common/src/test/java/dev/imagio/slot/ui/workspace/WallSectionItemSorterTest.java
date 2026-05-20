@@ -119,7 +119,7 @@ class WallSectionItemSorterTest {
         assertEquals(Boolean.FALSE, toggle.attachment(
                 WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_EXPANDED,
                 Boolean.class));
-        assertEquals(List.of("Building", "+1", "2/1\u25CF"), descendantText(header));
+        assertEquals(List.of("Building", "\u25B8 +1", "2\u25CF"), descendantText(header));
     }
 
     @Test
@@ -173,6 +173,7 @@ class WallSectionItemSorterTest {
         assertEquals(Boolean.TRUE, toggle.attachment(
                 WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_EXPANDED,
                 Boolean.class));
+        assertEquals(List.of("Building", "\u25BE 1", "2\u25CF"), descendantText(header));
     }
 
     @Test
@@ -184,7 +185,8 @@ class WallSectionItemSorterTest {
         SlotUiElement toggle = header.children().get(1);
 
         assertEquals(WallSectionHeaderUiBuilder.COMPACT_HEADER_HEIGHT_PX, header.layout().height());
-        assertEquals(List.of("+12"), descendantText(toggle));
+        assertEquals(List.of("\u25B8 +12"), descendantText(toggle));
+        assertTrue(toggle.textStyle().adaptiveWidth());
         SlotUiEvent headerClick = new SlotUiEvent(SlotUiEventKind.CLICK, 0, 1, 1, false);
         header.dispatch(headerClick);
         assertTrue(headerClick.propagationStopped());
@@ -195,6 +197,23 @@ class WallSectionItemSorterTest {
         toggle.dispatch(click);
         assertTrue(click.propagationStopped());
         assertEquals(island, context.toggled);
+    }
+
+    @Test
+    void expandedNearbyOnlySectionDoesNotRepeatNearbyCount() {
+        WallSectionUiBuilder builder = new WallSectionUiBuilder(new WallSectionHeaderUiBuilder(new HeaderContext()));
+        SlotWorkspaceViewModel.AtlasItem ghostTorch = item("minecraft:torch", false);
+
+        SlotUiElement section = builder.section(
+                island(0),
+                List.of(ghostTorch),
+                1,
+                false,
+                StorageGhostRevealMode.COLLAPSED,
+                true,
+                false);
+
+        assertEquals(List.of("Building", "\u25BE 1"), descendantText(section.children().get(0)));
     }
 
     @Test
