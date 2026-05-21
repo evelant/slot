@@ -29,10 +29,15 @@ scoring, and storage-ghost expansion disabled for now, and
 Forge key parity for inventory, workflow-page cycle, gather, unbound put-away,
 main-inventory move, wayfinding, Esc, wanted-count controls, and unbound hovered
 trash. Junk/trash pressure relief marks low-priority identities for 30 minutes,
-shows a card indicator, deletes carried matches with undo, and drops newly
-picked junk when carried storage is over 75% full. Card chrome is
-computed in common so counts, storage pips, route notches, right strips, and
-status rings follow one state grammar on Forge and NeoForge.
+shows a card indicator, deletes carried matches with undo, and trashes marked
+junk stacks before/after pickups when effective carried storage is over half
+full, excluding known specialist Sacks n' Such containers from general pressure,
+so a full inventory still gets a chance to make room before vanilla rejects
+pickup. Carried storage pressure reads are cached behind common
+carried-inventory revision signals emitted by both loaders and common mutation
+routes. Card chrome is computed in common so counts, storage pips, route
+notches, right strips, and status rings follow one state grammar on Forge and
+NeoForge.
 Modern drag/drop, richer LDLib2 card/tab affordances, and richer chest panels
 remain backend hooks, not common UI semantics.
 

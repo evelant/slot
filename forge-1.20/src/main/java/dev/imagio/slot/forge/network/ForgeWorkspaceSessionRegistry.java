@@ -130,7 +130,7 @@ public final class ForgeWorkspaceSessionRegistry {
                 continue;
             }
             ForgeWorkspaceSession session = session(player);
-            if (session == null || !session.dirty()) {
+            if (session == null || !session.shouldRefresh(player)) {
                 continue;
             }
             SlotForgeNetworking.sendViewToPlayer(player, session, false);

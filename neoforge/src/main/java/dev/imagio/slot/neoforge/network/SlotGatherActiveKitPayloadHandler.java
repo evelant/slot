@@ -85,7 +85,7 @@ public final class SlotGatherActiveKitPayloadHandler {
             );
             runtime.recordOutcome(outcome);
             if (outcome != null && outcome.successful()) {
-                NeoForgeCarriedActivityTracker.suppressNext(player);
+                NeoForgeCarriedActivityTracker.suppressOutcome(player, outcome);
             }
             return outcome;
         };

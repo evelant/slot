@@ -155,6 +155,28 @@ public interface CarriedProvider {
     int slotCount(Player player, String sourceId);
 
     /**
+     * Fast occupied-slot summary for this provider's carried sources. The
+     * default uses the read SPI, but providers with snapshot APIs should
+     * override this so hot pickup-pressure checks do not re-enumerate storage
+     * once per slot.
+     */
+    default CarriedSourceAccess.CarriedStoragePressure carriedStoragePressure(Player player) {
+        int capacity = 0;
+        int occupied = 0;
+        for (String sourceId : sourceIds(player)) {
+            int slotCount = slotCount(player, sourceId);
+            capacity += Math.max(0, slotCount);
+            for (int slot = 0; slot < slotCount; slot++) {
+                ItemStack stack = peek(player, sourceId, slot);
+                if (stack != null && !stack.isEmpty()) {
+                    occupied++;
+                }
+            }
+        }
+        return new CarriedSourceAccess.CarriedStoragePressure(capacity, occupied);
+    }
+
+    /**
      * Should {@link DefaultCarriedProviderIntegration} auto-generate a
      * {@code PlayerInventoryExtension} for this provider? Defaults to
      * {@code true} — minimal providers get snapshot + mutate routing for

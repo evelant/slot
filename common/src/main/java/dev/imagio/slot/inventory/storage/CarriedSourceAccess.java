@@ -1,6 +1,8 @@
 package dev.imagio.slot.inventory.storage;
 
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -34,6 +36,31 @@ public interface CarriedSourceAccess {
     record CarriedLocation(String sourceId, int slotIndex) {
         public CarriedLocation {
             sourceId = sourceId == null ? "" : sourceId;
+        }
+    }
+
+    record CarriedStoragePressure(int slotCapacity, int occupiedSlots) {
+        public CarriedStoragePressure {
+            slotCapacity = Math.max(0, slotCapacity);
+            occupiedSlots = Math.max(0, occupiedSlots);
+        }
+
+        public static CarriedStoragePressure empty() {
+            return new CarriedStoragePressure(0, 0);
+        }
+
+        public boolean isOverThreshold(int numerator, int denominator) {
+            return slotCapacity > 0
+                    && denominator > 0
+                    && occupiedSlots * denominator > slotCapacity * numerator;
+        }
+
+        public int slotsToFreeForThreshold(int numerator, int denominator) {
+            if (slotCapacity <= 0 || denominator <= 0) {
+                return 0;
+            }
+            int targetOccupied = Math.floorDiv(slotCapacity * numerator, denominator);
+            return Math.max(0, occupiedSlots - targetOccupied);
         }
     }
 
@@ -88,4 +115,31 @@ public interface CarriedSourceAccess {
      * every slot without dispatching reads themselves.
      */
     InventoryAuthoritySnapshot currentAuthority(ServerPlayer player);
+
+    /**
+     * Fast fullness summary over the same unified carried storage represented
+     * by {@link InventoryAuthoritySnapshot#carriedSources()}. Platform
+     * implementations may override this to avoid constructing a full authority
+     * snapshot on hot paths such as junk-pickup pressure relief.
+     */
+    default CarriedStoragePressure carriedStoragePressure(ServerPlayer player) {
+        InventoryAuthoritySnapshot authority = currentAuthority(player);
+        if (authority == null) {
+            return CarriedStoragePressure.empty();
+        }
+        int capacity = 0;
+        int occupied = 0;
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            if (source == null) {
+                continue;
+            }
+            capacity += Math.max(0, authority.slotCapacity(source.id()));
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry != null && entry.present()) {
+                    occupied++;
+                }
+            }
+        }
+        return new CarriedStoragePressure(capacity, occupied);
+    }
 }

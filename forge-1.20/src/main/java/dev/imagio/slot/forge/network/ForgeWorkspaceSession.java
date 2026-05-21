@@ -25,6 +25,7 @@ import dev.imagio.slot.inventory.integration.SophisticatedBackpackInventoryInteg
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
@@ -102,6 +103,8 @@ final class ForgeWorkspaceSession {
     private String diagnostics = "";
     private String searchQuery = "";
     private CompoundTag lastContentTag = new CompoundTag();
+    private long lastObservedWorkflowSequence = Long.MIN_VALUE;
+    private long lastObservedCarriedRevision = Long.MIN_VALUE;
     private AbstractContainerMenu observedMenu;
     private ContainerListener observedMenuListener;
     private final Map<Integer, ItemStackStructuralKey> observedSlotKeys = new HashMap<>();
@@ -164,6 +167,12 @@ final class ForgeWorkspaceSession {
         return dirty;
     }
 
+    boolean shouldRefresh(ServerPlayer player) {
+        return dirty
+                || currentWorkflowSequence() != lastObservedWorkflowSequence
+                || CarriedInventoryRevisions.revision(player) != lastObservedCarriedRevision;
+    }
+
     void clearDirty() {
         dirty = false;
     }
@@ -218,7 +227,11 @@ final class ForgeWorkspaceSession {
         }
         hotbarRecency.observe(projected);
 
+        long observedWorkflowSequence = currentWorkflowSequence();
+        long observedCarriedRevision = CarriedInventoryRevisions.revision(player);
         CompoundTag contentTag = Forge120WorkspaceViewModelCodec.encode(projected, false);
+        lastObservedWorkflowSequence = observedWorkflowSequence;
+        lastObservedCarriedRevision = observedCarriedRevision;
         if (!forceRevision && contentTag.equals(lastContentTag)) {
             return viewModel;
         }
@@ -228,6 +241,14 @@ final class ForgeWorkspaceSession {
         viewModel = projected.withRevision(revision);
         context = new WorkspaceActionSessionContext(context.sessionId(), context.menuContainerId(), revision);
         return viewModel;
+    }
+
+    private long currentWorkflowSequence() {
+        if (runtime == null) {
+            return 0L;
+        }
+        WorkflowDomainSnapshot snapshot = runtime.snapshot();
+        return snapshot == null ? 0L : snapshot.nextGlobalSequence();
     }
 
     WorkspaceCommandOutcome handleAction(ServerPlayer player, WorkspaceActionPacket packet) {
@@ -1250,7 +1271,7 @@ final class ForgeWorkspaceSession {
                 "forge_session",
                 outcome -> {
                     if (outcome != null && outcome.successful()) {
-                        ForgeCarriedActivityTracker.suppressNext(player);
+                        ForgeCarriedActivityTracker.suppressOutcome(player, outcome);
                     }
                 });
     }
@@ -1354,6 +1375,8 @@ final class ForgeWorkspaceSession {
                 || "took_all_partial".equals(status))) {
             return;
         }
+        ForgeCarriedActivityTracker.suppressNext(player);
+        ForgeCarriedActivityTracker.markDirty(player, "workspace_take");
         reapplyActiveKitFromCarry(player, runtime);
     }
 
@@ -1365,7 +1388,6 @@ final class ForgeWorkspaceSession {
         if (runtime == null || !runtime.kitWorkflow().activation().isActive()) {
             return;
         }
-        ForgeCarriedActivityTracker.suppressNext(player);
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
         SlotWorkspaceCommandService.reapplyActiveKit(
                 runtime,
@@ -1388,7 +1410,7 @@ final class ForgeWorkspaceSession {
             runtime.recordOutcome(outcome);
         }
         if (outcome != null && outcome.successful()) {
-            ForgeCarriedActivityTracker.suppressNext(player);
+            ForgeCarriedActivityTracker.suppressOutcome(player, outcome);
         }
     }
 

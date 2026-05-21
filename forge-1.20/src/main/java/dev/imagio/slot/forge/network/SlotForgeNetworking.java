@@ -464,7 +464,7 @@ public final class SlotForgeNetworking {
                 "forge_in_world",
                 actionOutcome -> {
                     if (actionOutcome != null && actionOutcome.successful()) {
-                        ForgeCarriedActivityTracker.suppressNext(player);
+                        ForgeCarriedActivityTracker.suppressOutcome(player, actionOutcome);
                     }
                 });
         ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);

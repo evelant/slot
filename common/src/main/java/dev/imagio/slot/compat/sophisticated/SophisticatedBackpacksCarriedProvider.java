@@ -116,6 +116,26 @@ public final class SophisticatedBackpacksCarriedProvider implements CarriedProvi
     }
 
     @Override
+    public CarriedSourceAccess.CarriedStoragePressure carriedStoragePressure(Player player) {
+        if (player == null || !SophisticatedBackpackSupport.isAvailable()) {
+            return CarriedSourceAccess.CarriedStoragePressure.empty();
+        }
+        int capacity = 0;
+        int occupied = 0;
+        for (SophisticatedBackpackSupport.BackpackInventorySnapshot snapshot :
+                SophisticatedBackpackSupport.readPlayerBackpacks(player, null)) {
+            if (snapshot == null) {
+                continue;
+            }
+            capacity += Math.max(0, snapshot.slotCount());
+            occupied += (int) snapshot.entries().stream()
+                    .filter(entry -> entry != null && entry.stack() != null && !entry.stack().isEmpty())
+                    .count();
+        }
+        return new CarriedSourceAccess.CarriedStoragePressure(capacity, occupied);
+    }
+
+    @Override
     public Optional<CarriedSourceAccess.CarriedLocation> findIdentity(Player player, ItemIdentity identity) {
         if (player == null || identity == null) {
             return Optional.empty();

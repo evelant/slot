@@ -1,6 +1,6 @@
 # Workflow Tabs Plan
 
-Last updated: 2026-05-20
+Last updated: 2026-05-21
 
 Status: core implementation and the first playtest polish pass have landed.
 Workflow tabs now support active-tab filtering, one-level variants, tab-local
@@ -10,8 +10,8 @@ visible activation-scoped Put Away guidance, search/keybind polish, shared
 tool/container/display-storage target resolution, put-away destination
 highlighting/wayfinding, and the adjacent junk/trash pressure-relief slice.
 Workflow/variant reorder UI plus duplicate/rename polish has also landed on
-the current Kit-backed substrate. The remaining workflow-tab follow-up is a
-design-first EMI recipe import/staging pass before any implementation. This
+the current Kit-backed substrate. The remaining workflow-tab follow-up is the
+EMI craft-run and staging implementation described below. This
 supersedes Kit Rack / Kit prototype work as the
 task-workflow direction while reusing the current Kit, desired-count,
 wanted-count, gather, loadout, and storage code wherever it already fits.
@@ -359,8 +359,9 @@ Workflow tabs must be cheap to create and modify:
 - add hovered item to active tab
 - add selected wall card to active tab from the right-click menu
 - add current search result to active tab
-- add visible EMI recipe ingredients to current tab
-- create new tab from visible EMI recipe ingredients
+- start a temporary craft run from the visible EMI recipe
+- add the visible EMI recipe to the current craft run
+- stage a selected craft-run recipe into player main inventory
 - set tab-local desired/wanted counts from card chrome or menu
 
 The old Kit Rack should not remain a hidden separate mode. Workflow tabs are
@@ -386,33 +387,209 @@ Search is a temporary filter, not a sticky modal trap. Current behavior:
 
 ## EMI Crafting Workflow
 
-The EMI recipe sidebar should feed workflow tabs instead of becoming a separate
-goal surface.
+The EMI recipe sidebar should feed temporary craft runs instead of directly
+mutating workflow tabs or becoming a separate recipe-goal surface.
 
-This is a design/brainstorm follow-up before implementation. The current EMI
-recipe sidebar remains a transient visible-ingredient filter; do not revive
-recursive SLOT-side recipe goals or recipe explanation unless playtesting shows
-the transient sidebar is insufficient.
+The current EMI recipe sidebar remains a transient visible-ingredient filter.
+EMI/JEI own recipe discovery, recipe alternatives, categories, and explanation;
+SLOT owns inventory/storage context, temporary craft intent, acquisition
+guidance, staging into player main inventory, and cleanup guidance. Do not
+revive recursive SLOT-side recipe goals or recipe explanation unless
+playtesting shows this craft-run model is insufficient.
 
-High-value actions:
+### Implementation Clarifications
 
-- `Add recipe to current tab`
-- `New tab from recipe`
-- `Want ingredients for 1 craft`
-- `Want ingredients for N crafts`
-- `Want one of each visible ingredient` for locate/guidance-only use
+These constraints are part of the first craft-run implementation, not polish:
 
-EMI-specific friction to address after tab import works:
+- initial implementation is EMI-first; common craft-run records should stay
+  recipe-viewer-neutral enough for a future JEI adapter, but no JEI behavior is
+  required until a focused JEI compat slice exists
+- craft runs replace the legacy EMI `SLOT goal` surface; remove or retire the
+  EMI recipe goal buttons, drag/drop target, goal-tab capture, and
+  `SlotEmiGoalAdapter` / loader-equivalent routes as part of this slice rather
+  than showing old goal creation beside craft-run actions
+- craft runs also replace the old recipe-goal data model; remove the dormant
+  goal projection, goal-tab UI, goal persistence, goal RPC, and workspace
+  view-model goal fields before considering Slice 5 complete
+- the one current craft run is server-owned, player-scoped, and non-persisted;
+  the client may display and edit it, but recipe-screen data is only player
+  intent
+- the current run survives closing the SLOT sidebar, switching normal workflow
+  tabs, closing/reopening EMI, and navigating among EMI recipes; it clears on
+  explicit `Finish` / `Cancel`, player logout, or server stop
+- common craft-run state must not contain `dev.emi.*`, JEI, screen, widget, or
+  loader objects
+- loader compat captures a recipe-viewer DTO and submits it as intent: selected
+  recipe key/index, recipe label/category when available, output display stack,
+  output identity or alternatives, output count per batch, input groups,
+  per-batch required counts, display labels/stacks, complete matching data when
+  available, and opaque/non-item diagnostics
+- separate matching data from display data: a UI may cap rendered alternatives,
+  but staging and `Use this` matching must use a complete matcher or fail
+  closed with an actionable diagnostic instead of treating a truncated display
+  list as complete
+- if EMI shows multiple visible recipes, actions target one explicitly selected
+  or hovered recipe; never serialize a whole visible page of alternatives into
+  one run entry
+- remaining count is output units, not batches; input requirements are computed
+  as `ceil(remainingOutput / outputCountPerBatch)` batches, and unknown output
+  count falls back to one output per batch with a diagnostic
+- when one acquisition delta matches multiple recipe entries, consume it in
+  stable visible run order; do not infer parent-child priority
+- acquisition progress listens to the same post-suppression carried-acquisition
+  activity stream that drives `Recent`; do not listen directly to platform
+  crafting-result events
 
-- **Stage for EMI:** move gathered ingredients from carried providers into
-  player main inventory slots EMI can consume from, without abusing the hotbar
-  as the staging area.
-- **Make room first:** if player main inventory is too full to stage recipe
-  inputs, suggest or perform put-away actions for active-tab-irrelevant carried
-  items before staging.
+### Craft Runs
 
-This remains source-aware and server-authoritative. SLOT should not pretend EMI
-can pull from carried providers that EMI cannot actually see.
+A craft run is a temporary player-authored session: "I am trying to obtain
+these recipe outputs right now." It is not a workflow tab, not an EMI favorite,
+not a saved recipe shortcut, and not a recursive planner.
+
+Rules:
+
+- the initial implementation has one current craft run, not multiple parked
+  runs
+- the current craft run contains a flat list of recipe entries
+- each recipe entry has a remaining output count, not a separate "done" state
+- recipe entries contribute ingredient pressure only while their remaining
+  output count is greater than zero
+- matching item-acquisition deltas decrement the remaining output count,
+  clamped at zero
+- acquiring more after the remaining count reaches zero does nothing
+- the player may adjust a recipe entry's remaining count at any time
+- the player may click `Done` / remove on any recipe entry at any time,
+  regardless of whether the remaining count is zero
+- closing or finishing the run clears its temporary pressure; no workflow
+  membership, accepted-input rule, desired count, or wanted count is written
+  unless the player explicitly performs a separate workflow edit
+
+The UI home is a **Current Craft Run** panel/bar under the workflow tabs, not a
+second tab row of independent craft runs. It appears when a run exists or when
+EMI/JEI has a visible recipe that can start one. Inside the panel, each recipe
+entry is a chip/card with remaining count, stage, count adjust, and remove
+controls. Clicking normal workflow tabs can still browse the workflow wall; the
+current run remains parked until the player cancels or finishes it. Multiple
+simultaneous craft runs are deferred until playtesting shows players need to
+juggle unrelated craft sessions, because acquisitions, staging, and put-away
+pressure need unambiguous attribution.
+
+Use acquired-item deltas as the primary progress signal, not crafting-result
+events. Players often obtain craft-run outputs from machines, chests,
+chute-fed buffers, storage terminals, world pickups, or other automation rather
+than by hand-crafting in a result slot. The progress rule is "the player
+obtained this output," not "the player clicked this recipe result."
+
+Only meaningful acquisitions should count:
+
+- count: world pickup, taking from chest/storage, taking machine output,
+  crafted output entering carried inventory, or other source-to-player
+  acquisition events
+- do not count: moving the same item between carried sources, staging into main
+  inventory, hotbar/backpack rearrangement, cursor reshuffle, SLOT internal
+  transfer, deposit, or put-away
+
+The run is flat on purpose. When the player opens an upstream recipe from EMI
+or from a missing card, SLOT should offer `Add to current run`, but it should
+not infer a parent-child edge. EMI exploration is nonlinear, and automatic
+linking would be wrong too often. SLOT can still aggregate all remaining run
+inputs and all remaining planned outputs to show useful net guidance without
+pretending to know the recipe tree.
+
+Remaining planned outputs may satisfy other run entries as "planned by this
+run" while their own remaining count is above zero. Once a recipe entry reaches
+zero remaining, that planned supply disappears from netting; from then on only
+live inventory/storage authority can satisfy downstream needs. This keeps
+planning context separate from inventory authority.
+
+Primary actions:
+
+- `Start run from recipe`
+- `Add recipe to current run`
+- `Set remaining count` / `Add N batches`
+- `Stage selected recipe`
+- `Done` / remove recipe entry
+- `Cancel run` / `Finish run`
+
+`Start run from recipe` and `Add recipe to current run` use the currently
+visible EMI recipe as the source of recipe entry outputs and input
+requirements. Multiple visible recipes should require an explicit selected
+recipe; do not silently add a whole page of alternatives unless the player
+asks for that.
+
+### Variant Ingredients
+
+Recipes with tag/list ingredients should not force concrete choices before the
+recipe enters the run. Store unresolved ingredient groups in the recipe entry
+and resolve them lazily from live inventory/storage when rendering guidance or
+staging.
+
+Do not build a SLOT-owned alternative browser. For unresolved groups with many
+possible matches, clicking the group should delegate to EMI/JEI's normal
+ingredient/tag page, the same way interacting with the ingredient in the recipe
+viewer does. SLOT's added affordance is run-scoped concretization:
+
+- when the player is hovering or viewing a concrete item in EMI/JEI, show a
+  `Use this` action if it satisfies any unresolved group in the current run
+- also provide a configurable hover hotkey that applies the hovered concrete
+  item to any unresolved group in the current run that it can satisfy
+- if the item can satisfy multiple unresolved groups, apply it to all compatible
+  groups by default unless playtesting shows this needs a chooser
+- chosen alternatives are run-scoped only; they do not become workflow accepted
+  inputs or saved preferences
+- if no choice has been made, staging may use any matching carried item by the
+  normal source priority rather than blocking on concretization
+
+### Staging
+
+`Stage selected recipe` moves already-gathered ingredients from carried sources
+into player main inventory slots that EMI/JEI and vanilla can actually consume
+from. Staging is source-aware and server-authoritative:
+
+- destination is player main inventory, not the hotbar as a fake staging lane
+- source may be any carried provider SLOT can authoritatively extract from
+- the server recomputes live sources and safe destinations before mutating
+- the client recipe entry is intent, not authority
+- staging only acts on the selected/current recipe entry, not the whole run
+- unresolved variant ingredients stage any matching carried item by the same
+  source priority used for normal carried extraction
+- staging keeps the UI simple: no preflight questionnaire, no modal choice
+  picker, and only a small status if nothing could be staged
+
+If player main inventory is too full to stage recipe inputs, surface `Make
+room` / put-away guidance for active-workflow-irrelevant carried items before
+staging. Do not pretend EMI can pull from carried providers that EMI cannot
+actually see.
+
+### Workflow Interaction
+
+Craft runs compose with the active workflow for guidance, but they do not
+pollute the workflow:
+
+- active workflow targets still protect their normal items
+- craft-run inputs and outputs suppress put-away while the run is active
+- craft-run missing items use the same gather/storage/wayfinding chrome as
+  other temporary acquisition pressure
+- finishing or canceling the run removes that temporary pressure
+- adding recipe ingredients, alternatives, or outputs to the workflow remains a
+  separate explicit workflow edit
+
+This distinction matters for one-off crafts such as a steel grindstone: the
+player can gather, stage, acquire, and clean up without leaving permanent
+recipe ingredients inside `Smithing`. Repeated processes such as steel smelting
+can still become real workflow tabs/variants through the normal workflow
+authoring tools.
+
+### Deferred Recipe Shortcuts
+
+Workflow-scoped recipe shortcuts / run presets are a plausible future feature,
+but they are deliberately out of the initial implementation. They are distinct
+from EMI/JEI favorites only if they behave as contextual workflow launchers:
+"inside this workflow, start this craft run again." If implemented later, store
+only enough to relaunch a run through the recipe viewer boundary, such as
+recipe id/source key, display name/output, default count, and run-scoped
+alternative choices. Do not turn workflows into recipe dashboards or duplicate
+EMI/JEI's global bookmark surface.
 
 ## Overflow / Junk Pressure Relief
 
@@ -428,8 +605,13 @@ Landed slice:
   unbound hovered-item hotkey
 - direct trash deletes carried stacks matching the hovered identity, records
   undo/redo, and marks the identity as junk
-- when carried storage is over 75% full, newly picked-up junk identities are
-  deleted before backpack reroute
+- when effective carried storage is over half full before or after a pickup,
+  marked junk stacks are deleted before backpack reroute, preferring the
+  just-picked stack when it is marked junk and voiding the incoming junk entity
+  if vanilla would otherwise have no room to pick it up; known specialist Sacks
+  n' Such containers do not count as general-purpose pressure capacity
+- carried storage pressure is cached against common per-player carried-inventory
+  revisions bumped by both loader mutation hooks and common mutation routes
 
 This is not an item-value heuristic and not a progression system. The player
 explicitly marks junk identities; SLOT uses them as pressure relief.
@@ -566,29 +748,219 @@ Acceptance:
   mutation authority
 - editing an active tab updates guidance immediately
 
-### Slice 5: EMI Recipe Import And Staging Design
+### Slice 5: EMI Craft Runs And Staging
 
-Goal: design how recipe workflows should feed tabs with minimal ceremony before
-implementing any import or staging path.
+Goal: implement temporary craft runs from the EMI recipe sidebar without
+polluting workflow tabs or reviving recursive SLOT-side recipe goals. This
+slice replaces the legacy EMI `SLOT goal` button / drag-drop / goal-tab capture
+surface and removes the old recipe-goal system instead of layering craft runs
+beside it.
 
-- decide how current visible recipe ingredients become current-tab inputs
-- decide how "new tab from recipe" should name and seed a workflow
-- decide whether recipe ratios create tab wanted counts, tab desired counts, or
-  locate-only accepted inputs
-- preserve current EMI recipe sidebar behavior as the source of visible
-  ingredients
-- design "stage for EMI" from carried providers into player main inventory
+#### Slice 5a: Common Craft-Run Model
+
+- add common craft-run records/state for a flat list of recipe entries
+- support one current craft run for the initial implementation; defer multiple
+  parked runs until acquisition and staging attribution have clear product
+  signal
+- keep the current run server-owned, player-scoped, non-persisted, and cleared
+  on finish/cancel, logout, or server stop
+- keep the run alive across sidebar close, EMI close/reopen, EMI recipe
+  navigation, and normal workflow tab switching
+- represent each entry by recipe/source key, selected recipe key/index, display
+  label/output, output identity or alternatives, output count per batch,
+  remaining output count, input groups, per-batch counts, and opaque/non-item
+  diagnostics
+- compute input requirements from output units:
+  `ceil(remainingOutput / outputCountPerBatch)` batches
+- keep craft-run state temporary and player-scoped; do not persist it as a
+  workflow tab, desired count, wanted count, accepted input, or recipe shortcut
+- aggregate remaining run inputs and remaining planned outputs so downstream
+  needs can show "planned by this run" without a parent-child tree
+- expose craft-run pressure through the normal workspace projection/chrome
+  rather than a separate recipe-goal wall
 
 Acceptance:
 
-- the design keeps EMI as the recipe explanation surface
-- the design avoids recursive SLOT-side recipe goals unless playtesting proves
-  transient recipe context is insufficient
-- the design specifies how importing a recipe activates guidance for missing
-  ingredients
-- the design preserves a locate-only "want one of each visible ingredient" flow
-- the design keeps staging out of the hotbar and fails closed with clear status
-  when main inventory has no safe room
+- starting a run from one recipe creates one recipe entry with the requested
+  remaining output count
+- adding another recipe appends a flat sibling entry, not a child
+- there is only one current run; starting a new run while one exists requires
+  replacing/canceling the current run or adding the visible recipe to it
+- closing/reopening EMI or switching workflow tabs does not lose the current
+  run
+- output counts from multi-output recipes scale input requirements by batch
+  count rather than by raw desired output count
+- decreasing an entry to zero removes its ingredient pressure but keeps the
+  entry visible until the player removes it
+- canceling/finishing the run clears all temporary pressure and leaves workflow
+  membership/accepted inputs/desired counts/wanted counts unchanged
+
+#### Slice 5b: EMI Sidebar Actions
+
+- keep `RecipeIngredientSidebarSpec` as the visible-recipe source boundary
+- add a sibling recipe-capture boundary for craft runs; do not overload the
+  existing sidebar projection DTO with output/batch/run state
+- add explicit actions for `Start run from recipe`, `Add recipe to current run`,
+  `Set remaining count` / `Add N batches`, and `Done` / remove
+- render a Current Craft Run panel/bar under the workflow tabs when a run exists
+  or EMI/JEI has a visible startable recipe
+- require an explicit selected recipe when EMI shows multiple visible recipes
+- keep loader-specific EMI/JEI objects out of common craft-run state
+- preserve current transient recipe sidebar behavior when no run is active
+- remove or retire legacy EMI goal buttons, generic drag/drop goal target, and
+  goal-tab capture from the live EMI surface
+
+Acceptance:
+
+- opening an EMI recipe still shows the filtered sidebar even before a run is
+  started
+- `Start run from recipe` creates temporary missing/gather guidance for the
+  visible recipe
+- `Add recipe to current run` adds another flat entry and recomputes net
+  guidance
+- `Done` removes only the selected recipe entry
+- no `SLOT goal` recipe button, goal drag/drop target, or goal-tab capture UI is
+  shown in EMI recipe screens after craft-run actions land
+
+#### Slice 5c: Variant Choice Concretization
+
+- keep unresolved tag/list ingredient groups inside craft-run recipe entries
+- do not expand large alternative lists into SLOT-owned chooser cards
+- delegate unresolved ingredient exploration to EMI/JEI's normal ingredient/tag
+  page
+- expose `Use this` when the hovered/viewed concrete EMI/JEI item satisfies an
+  unresolved group in the current run
+- add a configurable hover hotkey for the same `Use this` action
+- store concrete choices only in the current run
+- validate `Use this` through complete captured matching data or a
+  loader-compat matcher; if the group is opaque or matching data was truncated,
+  fail closed with a small status instead of guessing
+- display alternatives may be capped, but matching data used for staging and
+  hotkey concretization must not silently use that cap as the truth
+
+Acceptance:
+
+- adding a variant-heavy recipe to a run does not require choosing concrete
+  alternatives first
+- clicking an unresolved group opens the corresponding EMI/JEI ingredient/tag
+  view rather than a SLOT alternative browser
+- hovering a concrete satisfying item in EMI/JEI can apply it through both the
+  visible `Use this` action and the hotkey
+- chosen alternatives affect the current run only and do not mutate workflows
+
+#### Slice 5d: Acquisition Progress
+
+- wire meaningful acquired-item deltas into the craft-run service from the
+  post-suppression carried-acquisition activity stream
+- decrement matching recipe-entry remaining counts, clamped at zero
+- when one acquired stack matches multiple entries, consume the delta in stable
+  visible run order until it is exhausted
+- ignore internal moves, staging, hotbar/backpack rearrangement, cursor moves,
+  SLOT transfers, deposits, and put-away
+- do not auto-remove recipe entries when their remaining count reaches zero
+- do not use crafting-result events as the primary progress signal; they miss
+  machine, storage, automation, and pickup flows
+
+Acceptance:
+
+- taking a matching machine/chest/storage/world/crafted output decrements the
+  matching remaining count
+- duplicate matching output entries are decremented deterministically in visible
+  run order
+- moving a matching stack between carried sources does not decrement the count
+- staging a matching stack into main inventory does not decrement the count
+- acquiring extra output after the count reaches zero leaves it at zero
+- the player can raise the count again after it reaches zero
+
+#### Slice 5e: Stage Selected Recipe
+
+- implement server-authoritative staging from carried providers into player
+  main inventory
+- stage only the selected/current recipe entry
+- never use the hotbar as the staging area
+- recompute live carried sources and safe main-inventory destinations on the
+  server
+- compute deficits in recipe input order, first consuming matching stacks
+  already in player main inventory, then staging only the remaining needed
+  amounts from carried providers
+- for unresolved variant ingredients, stage any matching carried item by normal
+  source priority
+- route mutations through the normal transfer/executor boundary; do not mutate
+  vanilla inventory or provider slots directly from a UI/session handler
+- keep staging simple: no modal choice flow and no special preflight UI beyond
+  a small status when nothing stageable was moved
+- surface `Make room` guidance through the existing active-workflow put-away
+  path before staging when main inventory is too full
+
+Acceptance:
+
+- ingredients already in player main inventory are treated as ready for EMI
+- ingredients in backpacks/carried providers are marked stageable and can be
+  moved into safe main-inventory slots
+- unresolved variant ingredients can stage matching carried stacks without
+  requiring prior concretization
+- staging unavailable ingredients leaves them for normal gather/find guidance
+- staging with no matching carried inputs shows only a small `nothing stageable`
+  style status
+
+#### Slice 5f: Deferred Presets
+
+- leave workflow-scoped recipe shortcuts/run presets out of the initial
+  implementation
+- keep a future hook in the model only if it does not complicate the temporary
+  run path
+- revisit only after playtesting shows repeated craft runs need contextual
+  launchers beyond EMI/JEI favorites
+
+Acceptance:
+
+- initial craft-run implementation has no persistent recipe shortcut UI
+- workflows are not mutated by browsing or running EMI recipes
+- any later preset design remains a workflow-scoped launcher, not an EMI/JEI
+  favorite clone
+
+#### Slice 5g: Remove Legacy Recipe Goals
+
+- delete the old common recipe-goal model once craft-run state covers the live
+  recipe intent path: `GoalDescriptor`, `GoalPlanState`, goal projection
+  entries/requirements/choices/defaults, and the recursive
+  `GoalProjectionService`
+- remove `GoalWorkspaceClientState`, `GoalWorkspaceProjection`,
+  `GoalWorkspaceProjectionCache`, `GoalWorkspaceIntegration`, and
+  `GoalTabsUiBuilder`
+- remove goal plan and goal recipe-default persistence services, file-store
+  fields, codecs, and tests; no save migration or compatibility shim is needed
+  because the mod is unreleased and saves may change shape freely
+- remove NeoForge and Forge goal RPC payloads/handlers/messages, plus any
+  workspace session/controller calls that save, remove, hydrate, or select goal
+  tabs
+- remove EMI goal adapters, recipe decorators, recipe goal buttons, generic
+  goal drag/drop targets, and "SLOT goal" labels from both loader integrations
+- remove `goalPlans` and `goalRecipeDefaults` from workspace view-model records,
+  platform codecs, UI hydration paths, contextual suggestion scoring, and
+  debug/test fixtures
+- keep recipe-viewer integration routes that are still useful for craft runs,
+  such as opening recipes/uses or reading the hovered EMI item, but rename them
+  away from `Goal*` ownership while doing the cleanup
+- update `docs/status.md`, [ADR 0007](../decisions/0007-emi-recipe-sidebar.md),
+  and README references so they say the legacy goal system was removed and
+  craft runs are the active recipe-intent surface
+
+Acceptance:
+
+- grepping production code for old goal-system entrypoints shows no live
+  `GoalWorkspace*`, `GoalProjection*`, `GoalPlan*`, `SlotGoal*`, or
+  `SLOT goal` UI/RPC surface
+- workspace view-model snapshots and loader codecs no longer carry goal plan or
+  goal recipe-default fields
+- EMI recipe screens expose craft-run actions and the transient recipe sidebar,
+  not goal creation
+- contextual suggestions and put-away protection use workflows, wanted/desired
+  counts, recents, and craft-run pressure where applicable; they do not inspect
+  old goal plans
+- tests formerly covering recipe goals are deleted or replaced with craft-run
+  model/projection/staging/acquisition tests
+- docs no longer describe the old goal system as live or pending cleanup
 
 ### Slice 6: Retire Kit-Only UI And Docs
 

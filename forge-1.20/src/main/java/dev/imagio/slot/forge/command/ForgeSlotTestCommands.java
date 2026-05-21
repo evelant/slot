@@ -203,6 +203,7 @@ public final class ForgeSlotTestCommands {
         }
         InventoryGiveResult giveResult = giveStacksToPlayer(player, runtime, plan);
         ForgeCarriedActivityTracker.suppressNext(player);
+        ForgeCarriedActivityTracker.markDirty(player, "forge_test_populate");
         ChestPopulateResult chestResult = placeChests(player, runtime, plan);
 
         int finalIslands = islandsCreated;

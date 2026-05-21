@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-20
+Last updated: 2026-05-21
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -103,8 +103,11 @@ hold the rest.
   can mark/unmark junk or trash carried matching stacks, junk marks expire after
   30 minutes and show a small card indicator, direct trash records undo/redo and
   marks the identity as junk, a configurable unbound hovered-trash hotkey exists
-  on both loaders, and pickup routing deletes newly picked junk when carried
-  storage is over 75% full before backpack reroute.
+  on both loaders, and pickup routing trashes marked junk stacks before/after
+  pickup when effective carried storage is over half full before backpack
+  reroute, with pressure reads cached against shared carried-inventory revision
+  signals and known specialist Sacks n' Such containers excluded from general
+  pressure.
 - **2026-05-18** — Contextual suggestion scoring now treats pickup/storage-take
   events as context seeds rather than exact Useful Now self-suggestions,
   deduplicates lane cards by identity, suppresses exact-use cards that are
@@ -230,8 +233,10 @@ track lands.
    Core workflows, accepted inputs, compact nearby headers, hidden Useful Now scoring,
    visible activation-scoped Put Away guidance, search/keybind polish, and the shared display-storage/tool fix pass are
    live. Put-away destination wayfinding and workflow/variant reorder plus
-   duplicate/rename polish have landed. Remaining follow-up: a design/brainstorm
-   pass for EMI recipe import/staging before implementation.
+   duplicate/rename polish have landed. Remaining follow-up: implement the EMI
+   craft-run and staging plan in `workflow-tabs.md`, including removal of the
+   old recipe-goal system, starting from one temporary flat current craft run
+   before any persistent workflow-scoped recipe shortcuts.
 6. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
    The landed Kit code remains the implementation substrate, but future
    user-facing workflow work should follow `workflow-tabs.md`.

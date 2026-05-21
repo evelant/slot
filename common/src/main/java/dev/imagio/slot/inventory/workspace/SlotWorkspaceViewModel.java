@@ -2728,7 +2728,7 @@ public record SlotWorkspaceViewModel(
             return ItemStack.EMPTY;
         }
         ItemStack copy = stack.copy();
-        copy.setCount(Math.max(1, count));
+        copy.setCount(Math.max(1, Math.min(count, Math.max(1, copy.getMaxStackSize()))));
         return copy;
     }
 

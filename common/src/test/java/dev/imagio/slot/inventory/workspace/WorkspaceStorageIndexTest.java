@@ -217,6 +217,23 @@ class WorkspaceStorageIndexTest {
     }
 
     @Test
+    void rememberedLargeCountsSplitIntoLegalDisplayStacks() {
+        RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
+                StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                27,
+                Map.of(ItemIdentity.of("minecraft:redstone"), 130),
+                10L,
+                "test");
+
+        SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = remembered.toSnapshot();
+
+        assertEquals(List.of(64, 64, 2), snapshot.contents().stream().map(ItemStack::getCount).toList());
+        assertEquals(130, snapshot.contents().stream().mapToInt(ItemStack::getCount).sum());
+        assertTrue(snapshot.contents().stream()
+                .allMatch(stack -> stack.getCount() <= stack.getMaxStackSize()));
+    }
+
+    @Test
     void rememberedCountsNormalizeMovableIdentities() {
         RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
                 StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),

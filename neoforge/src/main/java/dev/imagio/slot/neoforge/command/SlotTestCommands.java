@@ -225,6 +225,7 @@ public final class SlotTestCommands {
         int backpacksGranted = ensureTopTierBackpacks(player);
         InventoryGiveResult giveResult = giveStacksToPlayer(player, runtime, plan);
         NeoForgeCarriedActivityTracker.suppressNext(player);
+        NeoForgeCarriedActivityTracker.markDirty(player, "neoforge_test_populate");
         ChestPlacementResult chestResult = placeChests(player, chestWorkflow, plan, random);
 
         int finalIslands = islandsCreated;

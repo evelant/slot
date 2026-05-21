@@ -55,5 +55,6 @@ public final class StorageAccessRegistry {
     public static synchronized void resetForTests() {
         carriedSourceAccess = null;
         worldStorageAccess = null;
+        CarriedInventoryRevisions.clear();
     }
 }

@@ -12,6 +12,7 @@ import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import dev.imagio.slot.inventory.storage.CarriedProvider;
 import dev.imagio.slot.inventory.storage.CarriedProviderRegistry;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
@@ -45,12 +46,18 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
         if (player == null || sourceId == null || amount <= 0) {
             return ItemStack.EMPTY;
         }
+        ItemStack extracted;
         if (isBuiltinLane(sourceId)) {
-            return builtinExtract(player, sourceId, slotIndex, amount, simulate);
+            extracted = builtinExtract(player, sourceId, slotIndex, amount, simulate);
+        } else {
+            extracted = CarriedProviderRegistry.forSource(sourceId)
+                    .map(provider -> provider.extract(player, sourceId, slotIndex, amount, simulate))
+                    .orElse(ItemStack.EMPTY);
         }
-        return CarriedProviderRegistry.forSource(sourceId)
-                .map(provider -> provider.extract(player, sourceId, slotIndex, amount, simulate))
-                .orElse(ItemStack.EMPTY);
+        if (!simulate && extracted != null && !extracted.isEmpty()) {
+            CarriedInventoryRevisions.markChanged(player, "carried_extract");
+        }
+        return extracted == null ? ItemStack.EMPTY : extracted;
     }
 
     @Override
@@ -61,9 +68,11 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
         if (simulate) {
             return simulateInsertBestFit(player, stack.copy());
         }
+        int originalCount = stack.getCount();
         ItemStack remaining = stack.copy();
         for (CarriedProvider provider : CarriedProviderRegistry.all()) {
             if (remaining.isEmpty()) {
+                CarriedInventoryRevisions.markChanged(player, "carried_insert_best_fit");
                 return ItemStack.EMPTY;
             }
             try {
@@ -81,11 +90,16 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
             }
         }
         if (remaining.isEmpty()) {
+            CarriedInventoryRevisions.markChanged(player, "carried_insert_best_fit");
             return ItemStack.EMPTY;
         }
         boolean added = player.getInventory().add(remaining);
         if (added && remaining.isEmpty()) {
+            CarriedInventoryRevisions.markChanged(player, "carried_insert_best_fit");
             return ItemStack.EMPTY;
+        }
+        if (remaining.getCount() < originalCount) {
+            CarriedInventoryRevisions.markChanged(player, "carried_insert_best_fit");
         }
         return remaining;
     }
@@ -95,6 +109,7 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
         if (player == null || stack == null || stack.isEmpty()) {
             return stack == null ? ItemStack.EMPTY : stack;
         }
+        int originalCount = stack.getCount();
         ItemStack remaining = stack.copy();
         for (CarriedProvider provider : CarriedProviderRegistry.all()) {
             if (remaining.isEmpty()) {
@@ -112,6 +127,9 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
                         remaining.getCount(),
                         failure.toString());
             }
+        }
+        if (!simulate && remaining.getCount() < originalCount) {
+            CarriedInventoryRevisions.markChanged(player, "carried_insert_providers");
         }
         return remaining;
     }
@@ -150,6 +168,49 @@ public final class ForgeCarriedSourceAccess implements CarriedSourceAccess {
             return InventoryAuthoritySnapshot.empty();
         }
         return InventoryAuthorityReadService.serverAuthority(player, host);
+    }
+
+    @Override
+    public CarriedSourceAccess.CarriedStoragePressure carriedStoragePressure(ServerPlayer player) {
+        if (player == null) {
+            return CarriedSourceAccess.CarriedStoragePressure.empty();
+        }
+        PressureCounter counter = new PressureCounter();
+        Inventory inventory = player.getInventory();
+        countSlots(counter, inventory.items, 9, 36);
+        countSlots(counter, inventory.items, 0, 9);
+        countSlots(counter, inventory.armor, 0, inventory.armor.size());
+        countSlots(counter, inventory.offhand, 0, inventory.offhand.size());
+        for (CarriedProvider provider : CarriedProviderRegistry.all()) {
+            CarriedSourceAccess.CarriedStoragePressure pressure = provider.carriedStoragePressure(player);
+            counter.capacity += pressure.slotCapacity();
+            counter.occupied += pressure.occupiedSlots();
+        }
+        return counter.snapshot();
+    }
+
+    private static void countSlots(PressureCounter counter, List<ItemStack> stacks, int startInclusive, int endExclusive) {
+        if (stacks == null) {
+            return;
+        }
+        int start = Math.max(0, startInclusive);
+        int end = Math.min(stacks.size(), Math.max(start, endExclusive));
+        counter.capacity += Math.max(0, end - start);
+        for (int index = start; index < end; index++) {
+            ItemStack stack = stacks.get(index);
+            if (stack != null && !stack.isEmpty()) {
+                counter.occupied++;
+            }
+        }
+    }
+
+    private static final class PressureCounter {
+        int capacity;
+        int occupied;
+
+        CarriedSourceAccess.CarriedStoragePressure snapshot() {
+            return new CarriedSourceAccess.CarriedStoragePressure(capacity, occupied);
+        }
     }
 
     private static boolean isBuiltinLane(String sourceId) {

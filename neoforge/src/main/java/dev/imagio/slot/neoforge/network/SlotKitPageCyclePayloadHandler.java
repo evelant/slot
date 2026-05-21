@@ -40,7 +40,7 @@ public final class SlotKitPageCyclePayloadHandler {
                     "in_world",
                     actionOutcome -> {
                         if (actionOutcome != null && actionOutcome.successful()) {
-                            NeoForgeCarriedActivityTracker.suppressNext(player);
+                            NeoForgeCarriedActivityTracker.suppressOutcome(player, actionOutcome);
                         }
                     }
             );

@@ -69,6 +69,28 @@ public final class SacksNSuchCarriedProvider implements CarriedProvider {
         return snapshot == null ? 0 : snapshot.slotCount();
     }
 
+    @Override
+    public CarriedSourceAccess.CarriedStoragePressure carriedStoragePressure(Player player) {
+        if (player == null || !SacksNSuchSupport.isAvailable()) {
+            return CarriedSourceAccess.CarriedStoragePressure.empty();
+        }
+        int capacity = 0;
+        int occupied = 0;
+        for (SacksNSuchSupport.ContainerSnapshot snapshot : SacksNSuchSupport.readPlayerContainers(player)) {
+            if (snapshot == null || !countsTowardGeneralPressure(snapshot.carrierStack())) {
+                continue;
+            }
+            int slotCount = snapshot.slotCount();
+            capacity += Math.max(0, slotCount);
+            for (int slot = 0; slot < slotCount; slot++) {
+                if (!SacksNSuchSupport.peek(snapshot, slot).isEmpty()) {
+                    occupied++;
+                }
+            }
+        }
+        return new CarriedSourceAccess.CarriedStoragePressure(capacity, occupied);
+    }
+
     public static Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> carriedContainerInfoByIdentity(
             Player player
     ) {
@@ -97,6 +119,21 @@ public final class SacksNSuchCarriedProvider implements CarriedProvider {
         byIdentity.forEach((identity, counts) ->
                 result.put(identity, new SlotWorkspaceViewModel.CarriedContainerInfo(counts[0], counts[1])));
         return result.isEmpty() ? Map.of() : Map.copyOf(result);
+    }
+
+    private static boolean countsTowardGeneralPressure(ItemStack carrierStack) {
+        String itemId = itemId(carrierStack);
+        return switch (itemId) {
+            case "sns:seed_pouch", "sns:ore_sack", "sns:lunchbox", "sns:quiver" -> false;
+            default -> true;
+        };
+    }
+
+    private static String itemId(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            return "";
+        }
+        return stack.getItem().builtInRegistryHolder().key().location().toString();
     }
 
     @Override

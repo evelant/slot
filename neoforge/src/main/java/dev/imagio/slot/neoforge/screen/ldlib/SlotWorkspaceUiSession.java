@@ -18,6 +18,7 @@ import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
 import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
+import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
@@ -59,6 +60,7 @@ import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
+import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -96,6 +98,8 @@ final class SlotWorkspaceUiSession {
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private CompoundTag lastContentTag = new CompoundTag();
     private CompoundTag lastViewTag;
+    private long lastObservedWorkflowSequence = Long.MIN_VALUE;
+    private long lastObservedCarriedRevision = Long.MIN_VALUE;
     private int lastStructuralMenuId = Integer.MIN_VALUE;
     private List<ItemStackStructuralKey> lastStructuralMenuKeys = List.of();
     private ItemStackStructuralKey lastStructuralCursorKey = ItemStackStructuralKey.EMPTY;
@@ -1942,6 +1946,7 @@ final class SlotWorkspaceUiSession {
                 : outcome;
         if (isCarryAcquisition(resolved)) {
             NeoForgeCarriedActivityTracker.suppressNext(serverPlayer);
+            NeoForgeCarriedActivityTracker.markDirty(serverPlayer, "workspace_take");
             reapplyActiveKitFromCarry(serverPlayer);
         }
         applyOutcome(serverPlayer, resolved);
@@ -2017,9 +2022,10 @@ final class SlotWorkspaceUiSession {
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel = resolveActiveChestPanel(
                 serverPlayer, runtime, claimedChestMap);
         clearSatisfiedWantedCounts(authority);
+        WorkflowDomainSnapshot snapshot = runtime.snapshot();
         SlotWorkspaceViewModel projected = SlotWorkspaceViewModel.project(
                 authority,
-                runtime.snapshot(),
+                snapshot,
                 status,
                 combinedDiagnostics,
                 0,
@@ -2054,9 +2060,10 @@ final class SlotWorkspaceUiSession {
         // new assignment.
         if (SlotWorkspaceCommandService.autoHomeTriageItems(runtime, projected, autoHomeAttempted)) {
             activeChestPanel = resolveActiveChestPanel(serverPlayer, runtime, claimedChestMap);
+            snapshot = runtime.snapshot();
             projected = SlotWorkspaceViewModel.project(
                     authority,
-                    runtime.snapshot(),
+                    snapshot,
                     status,
                     combinedDiagnostics,
                     0,
@@ -2081,7 +2088,11 @@ final class SlotWorkspaceUiSession {
             );
         }
         hotbarRecency.observe(projected);
+        long observedWorkflowSequence = currentWorkflowSequence(runtime);
+        long observedCarriedRevision = CarriedInventoryRevisions.revision(serverPlayer);
         CompoundTag nextContent = SlotWorkspaceViewModelCodec.encode(projected, serverPlayer.registryAccess(), false);
+        lastObservedWorkflowSequence = observedWorkflowSequence;
+        lastObservedCarriedRevision = observedCarriedRevision;
         if (!nextContent.equals(lastContentTag)) {
             lastContentTag = nextContent.copy();
             viewModel = projected.withRevision(nextRevision++);
@@ -2100,9 +2111,20 @@ final class SlotWorkspaceUiSession {
         ItemStackStructuralKey cursorKey = menu == null
                 ? ItemStackStructuralKey.EMPTY
                 : ItemStackStructuralKey.from(menu.getCarried());
-        return menuId != lastStructuralMenuId
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        return currentWorkflowSequence(runtime) != lastObservedWorkflowSequence
+                || CarriedInventoryRevisions.revision(serverPlayer) != lastObservedCarriedRevision
+                || menuId != lastStructuralMenuId
                 || !menuKeys.equals(lastStructuralMenuKeys)
                 || !cursorKey.equals(lastStructuralCursorKey);
+    }
+
+    private static long currentWorkflowSequence(WorkflowDomainRuntime runtime) {
+        if (runtime == null) {
+            return 0L;
+        }
+        WorkflowDomainSnapshot snapshot = runtime.snapshot();
+        return snapshot == null ? 0L : snapshot.nextGlobalSequence();
     }
 
     private void rememberStructuralState(ServerPlayer serverPlayer) {
@@ -2257,7 +2279,7 @@ final class SlotWorkspaceUiSession {
     private void recordOutcome(ServerPlayer serverPlayer, InventoryActionOutcome outcome) {
         workflowRuntime(serverPlayer).recordOutcome(outcome);
         if (outcome != null && outcome.successful()) {
-            NeoForgeCarriedActivityTracker.suppressNext(serverPlayer);
+            NeoForgeCarriedActivityTracker.suppressOutcome(serverPlayer, outcome);
         }
     }
 

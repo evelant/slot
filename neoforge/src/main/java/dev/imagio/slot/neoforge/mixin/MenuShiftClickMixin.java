@@ -1,6 +1,7 @@
 package dev.imagio.slot.neoforge.mixin;
 
 import dev.imagio.slot.inventory.storage.BackpackReroute;
+import dev.imagio.slot.neoforge.storage.NeoForgeCarriedActivityTracker;
 import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
@@ -91,6 +92,7 @@ public abstract class MenuShiftClickMixin {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
+        NeoForgeCarriedActivityTracker.markDirty(serverPlayer, "menu_quick_move");
         Inventory inv = serverPlayer.getInventory();
         for (int i = 0; i < 36; i++) {
             slot$routeIfGrew(serverPlayer, before[i], inv.items.get(i));

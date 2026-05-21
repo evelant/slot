@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.ItemStackStructuralKey;
+import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.integration.InventoryHostContext;
 import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
@@ -15,6 +16,8 @@ import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.session.CarriedAcquisitionActivityTracker;
+import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
+import dev.imagio.slot.workflow.domain.InventoryActivityEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -28,6 +31,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +55,31 @@ public final class ForgeCarriedActivityTracker {
         TRACKER.suppressNext(key(player));
     }
 
+    public static void suppressAcquired(ServerPlayer player, ItemStack stack, int count) {
+        if (stack == null || stack.isEmpty() || count <= 0) {
+            return;
+        }
+        TRACKER.suppressAcquired(key(player), ItemIdentityMatcher.create(stack), count);
+    }
+
+    public static void suppressAcquired(ServerPlayer player, Collection<InventoryActivityEvent> events) {
+        TRACKER.suppressAcquired(key(player), events);
+    }
+
+    public static void suppressOutcome(ServerPlayer player, InventoryActionOutcome outcome) {
+        if (outcome != null && outcome.successful()) {
+            suppressAcquired(player, outcome.activityEvents());
+        }
+    }
+
+    public static void markDirty(ServerPlayer player, String sessionId) {
+        if (player == null) {
+            return;
+        }
+        CarriedInventoryRevisions.markChanged(player, sessionId == null ? "" : sessionId);
+        DIRTY_PLAYERS.add(player.getUUID());
+    }
+
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || event.getServer() == null) {
@@ -66,6 +95,7 @@ public final class ForgeCarriedActivityTracker {
             if (player == null) {
                 detach(playerId);
                 TRACKER.forget(playerId.toString());
+                CarriedInventoryRevisions.forget(playerId);
                 continue;
             }
             observe(player, "menu_slot_changed");
@@ -84,6 +114,7 @@ public final class ForgeCarriedActivityTracker {
         if (event.getEntity() instanceof ServerPlayer player) {
             detach(player.getUUID());
             TRACKER.forget(key(player));
+            CarriedInventoryRevisions.forget(player);
         }
     }
 
@@ -111,6 +142,7 @@ public final class ForgeCarriedActivityTracker {
         }
         DIRTY_PLAYERS.clear();
         TRACKER.clear();
+        CarriedInventoryRevisions.clear();
     }
 
     private static void attach(ServerPlayer player, AbstractContainerMenu menu, String sessionId) {
@@ -128,6 +160,7 @@ public final class ForgeCarriedActivityTracker {
             @Override
             public void slotChanged(AbstractContainerMenu changedMenu, int slotIndex, ItemStack stack) {
                 if (changedMenu == menu && updateSlotKey(slotKeys, slotIndex, stack)) {
+                    CarriedInventoryRevisions.markChanged(playerId, "menu_slot_changed");
                     DIRTY_PLAYERS.add(playerId);
                 }
             }
@@ -140,6 +173,7 @@ public final class ForgeCarriedActivityTracker {
         ObservationHandle handle = new ObservationHandle(menu, listener, slotKeys);
         menu.addSlotListener(listener);
         HANDLES.put(playerId, handle);
+        CarriedInventoryRevisions.markChanged(playerId, sessionId);
         observe(player, sessionId);
         DIRTY_PLAYERS.remove(playerId);
     }

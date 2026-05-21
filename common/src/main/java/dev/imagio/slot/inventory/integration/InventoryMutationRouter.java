@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.InventoryToolActionId;
 import dev.imagio.slot.inventory.core.InventoryToolToggleId;
+import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import net.minecraft.world.item.ItemStack;
 
 public final class InventoryMutationRouter {
@@ -69,6 +70,9 @@ public final class InventoryMutationRouter {
 
         if (result != null && result.successful()) {
             SlotDiagnostics.mutationRouted(route, host, source, request, mode, result);
+            if (mode != InventoryMutationMode.SIMULATE && source.inCarriedPane()) {
+                CarriedInventoryRevisions.markChanged(request.player(), "inventory_mutation_router");
+            }
         } else {
             SlotDiagnostics.mutationRejected(route, host, source, request, mode, result);
         }

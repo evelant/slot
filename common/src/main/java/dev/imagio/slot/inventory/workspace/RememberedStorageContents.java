@@ -162,12 +162,20 @@ public record RememberedStorageContents(
             if (identity == null || count <= 0) {
                 continue;
             }
-            ItemStack stack = SlotWorkspaceViewModel.resolveGhostStack(identity, count);
-            if (stack.isEmpty()) {
+            ItemStack template = SlotWorkspaceViewModel.resolveGhostStack(identity, 1);
+            if (template.isEmpty()) {
                 continue;
             }
-            stacks.add(stack);
-            slotIndices.add(index++);
+            int maxStackSize = Math.max(1, template.getMaxStackSize());
+            int remaining = count;
+            while (remaining > 0) {
+                ItemStack stack = template.copy();
+                int chunk = Math.min(maxStackSize, remaining);
+                stack.setCount(chunk);
+                stacks.add(stack);
+                slotIndices.add(index++);
+                remaining -= chunk;
+            }
         }
         return new SlotWorkspaceViewModel.ChestContentsSnapshot(slotCapacity, stacks, slotIndices);
     }
