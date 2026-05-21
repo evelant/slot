@@ -123,9 +123,8 @@ final class DragDropWiring {
             if (item == null || item.displayStack().isEmpty()) {
                 return;
             }
-            boolean goalTooltipOnly = host.goalTabActive() && host.goalSuppressVanillaTooltip(item);
             boolean proximateDepositRoute = hasProximateDepositRoute(item);
-            ItemStack tooltipStack = goalTooltipOnly ? ItemStack.EMPTY : item.displayStack();
+            ItemStack tooltipStack = item.displayStack();
             List<Component> tooltipLines = suggestionLane != null
                     && SlotClientConfig.CLIENT.contextualSuggestionDebugTooltips.get()
                     ? WorkspaceFormat.atlasTooltipLines(
@@ -135,13 +134,9 @@ final class DragDropWiring {
                                     suggestionLane,
                                     true,
                                     proximateDepositRoute))
-                    : goalTooltipOnly
-                            ? host.goalTooltipLines(item)
-                            : host.goalTabActive()
-                                    ? WorkspaceFormat.atlasTooltipLines(item, host.goalTooltipLines(item))
-                                    : WorkspaceFormat.atlasTooltipLines(
-                                            item,
-                                            WorkspaceItemTooltipBuilder.slotLines(item, proximateDepositRoute));
+                    : WorkspaceFormat.atlasTooltipLines(
+                            item,
+                            WorkspaceItemTooltipBuilder.slotLines(item, proximateDepositRoute));
             event.hoverTooltips = new HoverTooltips(
                     tooltipLines,
                     tooltipStack.isEmpty() ? null : tooltipStack.getTooltipImage().orElse(null),
@@ -153,7 +148,6 @@ final class DragDropWiring {
 
     private boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
         return item != null
-                && !host.goalTabActive()
                 && host.viewModel.depositableIdentities().contains(item.identity());
     }
 

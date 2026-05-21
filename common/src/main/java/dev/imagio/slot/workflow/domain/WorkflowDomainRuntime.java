@@ -20,8 +20,7 @@ public final class WorkflowDomainRuntime {
     private final KitWorkflowDomainService kitWorkflow;
     private final DesiredCountWorkflowDomainService desiredCountWorkflow;
     private final WantedCountWorkflowDomainService wantedCountWorkflow;
-    private final GoalPlanWorkflowDomainService goalPlanWorkflow;
-    private final GoalRecipeDefaultWorkflowDomainService goalRecipeDefaultWorkflow;
+    private final CraftRunDomainService craftRunWorkflow;
     private final ContextualSuggestionDomainService contextualSuggestions;
     private final InventoryBrowsePreferencesStore browsePreferences;
     private final InventoryBrowseSessionStateStore browseSessionState;
@@ -42,8 +41,12 @@ public final class WorkflowDomainRuntime {
         this.kitWorkflow = new KitWorkflowDomainService(repository, this::requestSave);
         this.desiredCountWorkflow = new DesiredCountWorkflowDomainService(repository, this::requestSave);
         this.wantedCountWorkflow = new WantedCountWorkflowDomainService(repository, this::requestSave);
-        this.goalPlanWorkflow = new GoalPlanWorkflowDomainService(repository, this::requestSave);
-        this.goalRecipeDefaultWorkflow = new GoalRecipeDefaultWorkflowDomainService(repository, this::requestSave);
+        this.craftRunWorkflow = new CraftRunDomainService(
+                repository.craftRunState(),
+                state -> {
+                    repository.replaceCraftRunState(state);
+                    requestSave();
+                });
         this.contextualSuggestions = new ContextualSuggestionDomainService(repository, this::requestSave);
         this.undoStack = new UndoStack();
     }
@@ -76,12 +79,8 @@ public final class WorkflowDomainRuntime {
         return wantedCountWorkflow;
     }
 
-    public GoalRecipeDefaultWorkflowDomainService goalRecipeDefaultWorkflow() {
-        return goalRecipeDefaultWorkflow;
-    }
-
-    public GoalPlanWorkflowDomainService goalPlanWorkflow() {
-        return goalPlanWorkflow;
+    public CraftRunDomainService craftRunWorkflow() {
+        return craftRunWorkflow;
     }
 
     public ContextualSuggestionDomainService contextualSuggestions() {
@@ -205,6 +204,7 @@ public final class WorkflowDomainRuntime {
                 activityEvent,
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("activity.external")
         );
+        craftRunWorkflow.observeActivityRecord(record);
         contextualSuggestions.observeActivityRecord(record);
         requestSave();
         return true;
@@ -279,6 +279,7 @@ public final class WorkflowDomainRuntime {
                         activityEvent,
                         (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("activity.outcome")
                 );
+                craftRunWorkflow.observeActivityRecord(record);
                 contextualSuggestions.observeActivityRecord(record);
                 recorded = true;
             }

@@ -11,6 +11,8 @@ public interface WorkflowDomainStateRepository {
 
     ContextualSuggestionState contextualSuggestionState();
 
+    CraftRunState craftRunState();
+
     WorkflowEventRecord appendWorkflowEvent(WorkflowEvent event, DomainEventMetadata metadata);
 
     InventoryActivityRecord appendActivityEvent(InventoryActivityEvent event, DomainEventMetadata metadata);
@@ -18,6 +20,8 @@ public interface WorkflowDomainStateRepository {
     ContextualSignalRecord appendContextualSignal(ContextualSignalEvent event, DomainEventMetadata metadata);
 
     void replaceContextualSuggestionState(ContextualSuggestionState state);
+
+    void replaceCraftRunState(CraftRunState state);
 
     InventoryBrowsePreferencesStore browsePreferences();
 

@@ -8,6 +8,7 @@ import dev.imagio.slot.neoforge.network.SlotSidebarClosePayload;
 import dev.imagio.slot.neoforge.network.SlotSidebarOpenPayload;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarClientUi;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -107,6 +108,12 @@ public final class SlotContainerSidebar {
     public static void setRecipeSidebarSpec(Screen screen, RecipeIngredientSidebarSpec spec) {
         if (activeHostScreen == screen) {
             SlotSidebarClientUi.setRecipeSidebarSpec(spec);
+        }
+    }
+
+    public static void setCraftRunRecipeCaptures(Screen screen, List<CraftRunRecipeCapture> captures) {
+        if (activeHostScreen == screen) {
+            SlotSidebarClientUi.setCraftRunRecipeCaptures(captures);
         }
     }
 

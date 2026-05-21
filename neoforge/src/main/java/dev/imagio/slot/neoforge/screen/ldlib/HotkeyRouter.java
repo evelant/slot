@@ -35,7 +35,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleSetWantedHoverKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleTrashHoverKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMarkWantedKey, true);
-        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGoalRecipeKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleRecipeViewerKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGatherActiveKitKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleDepositPutAwayKey, true);
@@ -88,12 +88,6 @@ final class HotkeyRouter {
         if (digit < 1 || digit > 9) {
             return;
         }
-        if (host.goalTabActive()) {
-            event.stopPropagation();
-            host.localStatus.set("goal tab is browse only");
-            host.rebuild();
-            return;
-        }
         event.stopPropagation();
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
@@ -115,11 +109,6 @@ final class HotkeyRouter {
             return;
         }
         event.stopPropagation();
-        if (host.goalTabActive()) {
-            host.localStatus.set("goal tab is browse only");
-            host.rebuild();
-            return;
-        }
         host.searchController.confirmForHotbar();
         host.rpc.sendAssignToAutoHotbar(target);
     }
@@ -128,28 +117,26 @@ final class HotkeyRouter {
         if (isTextInputFocused() || host.searchController.modalActive() || Screen.hasControlDown()) {
             return;
         }
-        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
-                .matchesMoveToMainInventory(event.keyCode, event.scanCode)) {
+        boolean toBackpack = dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesMoveToBackpack(event.keyCode, event.scanCode);
+        boolean toMain = dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesMoveToMainInventory(event.keyCode, event.scanCode);
+        if (!toBackpack && !toMain) {
             return;
         }
         event.stopPropagation();
-        if (host.goalTabActive()) {
-            host.localStatus.set("goal tab is browse only");
-            host.rebuild();
-            return;
-        }
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
-            host.localStatus.set("hover an item to move between backpack and main inventory");
+            host.localStatus.set(toBackpack ? "hover an item to move to backpack" : "hover an item to move to main inventory");
             host.rebuild();
             return;
         }
         host.rpc.send(
-                WorkspaceActionId.MOVE_IDENTITY_BETWEEN_BACKPACK_AND_MAIN,
+                toBackpack ? WorkspaceActionId.MOVE_IDENTITY_TO_BACKPACK : WorkspaceActionId.MOVE_IDENTITY_TO_MAIN_INVENTORY,
                 target.identity().itemId(),
                 target.identity().comparisonMode(),
                 target.identity().componentFingerprint());
-        host.localStatus.set("moving between backpack and main inventory");
+        host.localStatus.set(toBackpack ? "moving to backpack" : "moving to main inventory");
         host.rebuild();
     }
 
@@ -175,7 +162,7 @@ final class HotkeyRouter {
         return focused != null && focused != host.root && focused instanceof TextField;
     }
 
-    void handleGoalRecipeKey(UIEvent event) {
+    void handleRecipeViewerKey(UIEvent event) {
         if (isTextInputFocused() || host.searchController.modalActive() || Screen.hasControlDown()) {
             return;
         }
@@ -212,11 +199,6 @@ final class HotkeyRouter {
             return;
         }
         markWantedKeyConsumed = true;
-        if (host.goalTabActive()) {
-            host.localStatus.set("goal tab is browse only");
-            host.rebuild();
-            return;
-        }
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
             host.localStatus.set("hover an item to mark wanted");
@@ -239,11 +221,6 @@ final class HotkeyRouter {
             return;
         }
         setWantedHoverKeyConsumed = true;
-        if (host.goalTabActive()) {
-            host.localStatus.set("goal tab is browse only");
-            host.rebuild();
-            return;
-        }
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
             host.localStatus.set("hover an item to mark wanted");
@@ -266,11 +243,6 @@ final class HotkeyRouter {
             return;
         }
         trashHoverKeyConsumed = true;
-        if (host.goalTabActive()) {
-            host.localStatus.set("goal tab is browse only");
-            host.rebuild();
-            return;
-        }
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
             host.localStatus.set("hover an item to trash");
@@ -310,12 +282,6 @@ final class HotkeyRouter {
                 .matchesGatherActiveKit(event.keyCode, event.scanCode)) {
             return;
         }
-        if (host.goalTabActive()) {
-            event.stopPropagation();
-            host.localStatus.set("goal tab is browse only");
-            host.rebuild();
-            return;
-        }
         if (!anyGatherableIdentity()) {
             host.localStatus.set("nothing to gather");
             host.rebuild();
@@ -323,7 +289,7 @@ final class HotkeyRouter {
         }
         event.stopPropagation();
         host.rpc.send(WorkspaceActionId.GATHER_ACTIVE_KIT);
-        host.localStatus.set("gathering desired items from nearby chests");
+        host.localStatus.set("gathering target items from nearby chests");
         host.rebuild();
     }
 
@@ -333,12 +299,6 @@ final class HotkeyRouter {
         }
         if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
                 .matchesDepositPutAway(event.keyCode, event.scanCode)) {
-            return;
-        }
-        if (host.goalTabActive()) {
-            event.stopPropagation();
-            host.localStatus.set("goal tab is browse only");
-            host.rebuild();
             return;
         }
         if (host.viewModel.depositableIdentities().isEmpty()) {

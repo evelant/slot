@@ -99,9 +99,7 @@ final class AtlasCardBuilder {
                 WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE,
                 SlotWorkspaceViewModel.ContextualSuggestionLane.class);
         host.drag.installAtlasHoverTooltip(button, item, suggestionLane);
-        if (!host.goalTabActive()) {
-            host.drag.installAtlasItemDragSource(button, item);
-        }
+        host.drag.installAtlasItemDragSource(button, item);
         installChestHoverPaint(button, item);
     }
 
@@ -182,7 +180,6 @@ final class AtlasCardBuilder {
 
     boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
         return item != null
-                && !host.goalTabActive()
                 && host.viewModel.depositableIdentities().contains(item.identity());
     }
 
@@ -191,19 +188,6 @@ final class AtlasCardBuilder {
         // Plain left-click pickup runs on UIEvents.CLICK (below), which
         // fires on mouseReleased only when no drag started.
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (host.goalTabActive()) {
-                event.stopPropagation();
-                if (event.button == 1 && Screen.hasShiftDown()) {
-                    host.localStatus.set("goal tab is browse only");
-                    host.rebuild();
-                } else if (event.button == 1 && !WorkspaceCursorState.isCarrying()) {
-                    host.menu.openContextMenuForAtlas(item, event.x, event.y);
-                } else if (WorkspaceCursorState.isCarrying()) {
-                    host.localStatus.set("goal tab is browse only");
-                    host.rebuild();
-                }
-                return;
-            }
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.pointerDown(
                     cardGestureContext(item, event.button, Screen.hasShiftDown(), Screen.hasControlDown()));
             if (dispatchCardGestureDecision(item, decision)) {
@@ -222,11 +206,6 @@ final class AtlasCardBuilder {
                 return;
             }
             event.stopPropagation();
-            if (host.goalTabActive()) {
-                host.localStatus.set(item.name() + " in active goal");
-                host.rebuild();
-                return;
-            }
             SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.click(
                     cardGestureContext(target, event.button, Screen.hasShiftDown(), Screen.hasControlDown()));
@@ -235,9 +214,6 @@ final class AtlasCardBuilder {
             }
         });
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (host.goalTabActive()) {
-                return;
-            }
             if (event.button == 1) {
                 if (WorkspaceCursorState.isCarrying()) {
                     return;
@@ -250,18 +226,6 @@ final class AtlasCardBuilder {
         float[] desiredScrollAccumulator = {0f};
         button.addEventListener(UIEvents.MOUSE_WHEEL, event -> {
             boolean wantedAdjustDown = dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.markWantedDown();
-            if (host.goalTabActive()) {
-                if (!Screen.hasControlDown() || WorkspaceCursorState.isCarrying()) {
-                    return;
-                }
-                float delta = event.deltaY != 0f ? event.deltaY : event.deltaX;
-                if (delta == 0f) {
-                    return;
-                }
-                event.stopPropagation();
-                host.adjustGoalTargetCount("", delta > 0f ? 1 : -1);
-                return;
-            }
             if (Screen.hasControlDown()) {
                 if (WorkspaceCursorState.isCarrying()) {
                     return;
@@ -453,9 +417,6 @@ final class AtlasCardBuilder {
             if (entry == null) {
                 return WayfindingDisplay.CardText.unavailable();
             }
-            if (entry.storageId() != null && entry.storageId().startsWith("goal:")) {
-                return new WayfindingDisplay.CardText(">", WorkspaceCountFormat.compact(entry.count()));
-            }
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.player == null || minecraft.level == null || host.viewModel == null) {
                 return WayfindingDisplay.CardText.unavailable();
@@ -483,26 +444,22 @@ final class AtlasCardBuilder {
                         true,
                         hasProximateDepositRoute(item));
             }
-            return host.goalTabActive()
-                    ? host.goalTooltipLines(item)
-                    : WorkspaceItemTooltipBuilder.slotLines(item, hasProximateDepositRoute(item));
+            return WorkspaceItemTooltipBuilder.slotLines(item, hasProximateDepositRoute(item));
         }
 
         @Override
         public boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
-            return host.goalChoiceInvolved(item);
+            return false;
         }
 
         @Override
         public boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
-            return host.goalChoiceCard(item);
+            return false;
         }
 
         @Override
         public boolean suppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
-            return host.recipeSidebarActive()
-                    ? host.recipeSuppressVanillaTooltip(item)
-                    : host.goalSuppressVanillaTooltip(item);
+            return host.recipeSidebarActive() && host.recipeSuppressVanillaTooltip(item);
         }
 
         @Override
@@ -532,7 +489,7 @@ final class AtlasCardBuilder {
 
         @Override
         public boolean gatherPreviewEligible(SlotWorkspaceViewModel.AtlasItem item) {
-            return !host.goalTabActive() && WorkspaceGatherUiSupport.isGatherableItem(item);
+            return WorkspaceGatherUiSupport.isGatherableItem(item);
         }
 
         @Override

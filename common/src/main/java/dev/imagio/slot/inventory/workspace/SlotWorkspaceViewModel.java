@@ -10,8 +10,6 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.ItemStackTags;
-import dev.imagio.slot.inventory.goal.GoalPlanState;
-import dev.imagio.slot.inventory.goal.GoalRecipeDefaults;
 import dev.imagio.slot.inventory.query.CarriedIdentityCounts;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
@@ -27,6 +25,7 @@ import dev.imagio.slot.workflow.domain.ChestClusterMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
+import dev.imagio.slot.workflow.domain.CraftRunState;
 import dev.imagio.slot.workflow.domain.KitActivation;
 import dev.imagio.slot.workflow.domain.KitDefinition;
 import dev.imagio.slot.workflow.domain.KitMap;
@@ -83,8 +82,7 @@ public record SlotWorkspaceViewModel(
         Set<IdentityRef> depositableIdentities,
         List<IdentityRef> recentIdentities,
         ActiveChestPanel activeChestPanel,
-        GoalRecipeDefaults goalRecipeDefaults,
-        List<GoalPlanState> goalPlans,
+        CraftRunState craftRun,
         List<ContextualSuggestionLane> contextualSuggestionLanes
 ) {
     public SlotWorkspaceViewModel {
@@ -110,8 +108,7 @@ public record SlotWorkspaceViewModel(
                 : Set.copyOf(new LinkedHashSet<>(depositableIdentities));
         recentIdentities = recentIdentities == null ? List.of() : List.copyOf(recentIdentities);
         activeChestPanel = activeChestPanel == null ? ActiveChestPanel.empty() : activeChestPanel;
-        goalRecipeDefaults = goalRecipeDefaults == null ? GoalRecipeDefaults.empty() : goalRecipeDefaults;
-        goalPlans = goalPlans == null ? List.of() : List.copyOf(goalPlans);
+        craftRun = craftRun == null ? CraftRunState.empty() : craftRun;
         contextualSuggestionLanes = contextualSuggestionLanes == null ? List.of() : List.copyOf(contextualSuggestionLanes);
     }
 
@@ -138,8 +135,7 @@ public record SlotWorkspaceViewModel(
             Set<IdentityRef> depositableIdentities,
             List<IdentityRef> recentIdentities,
             ActiveChestPanel activeChestPanel,
-            GoalRecipeDefaults goalRecipeDefaults,
-            List<GoalPlanState> goalPlans
+            List<ContextualSuggestionLane> contextualSuggestionLanes
     ) {
         this(
                 revision,
@@ -164,10 +160,8 @@ public record SlotWorkspaceViewModel(
                 depositableIdentities,
                 recentIdentities,
                 activeChestPanel,
-                goalRecipeDefaults,
-                goalPlans,
-                List.of()
-        );
+                CraftRunState.empty(),
+                contextualSuggestionLanes);
     }
 
     public SlotWorkspaceViewModel(
@@ -217,60 +211,6 @@ public record SlotWorkspaceViewModel(
                 depositableIdentities,
                 recentIdentities,
                 activeChestPanel,
-                GoalRecipeDefaults.empty(),
-                List.of()
-        );
-    }
-
-    public SlotWorkspaceViewModel(
-            long revision,
-            String status,
-            String diagnostics,
-            int pendingCount,
-            int selectedQuickAccessSlot,
-            int canvasWidth,
-            int canvasHeight,
-            int carriedFreeSlotCount,
-            int carriedSlotCapacity,
-            List<AtlasIsland> islands,
-            List<AtlasItem> atlasItems,
-            List<AtlasItem> triageItems,
-            List<ChestChip> chestChips,
-            List<ChestClusterDescriptor> chestClusters,
-            List<HotbarSlot> hotbarSlots,
-            OffhandSlot offhand,
-            List<KitCard> kits,
-            LootChestPanel lootChestPanel,
-            List<WayfindingTarget> wayfindingTargets,
-            Set<IdentityRef> depositableIdentities,
-            List<IdentityRef> recentIdentities,
-            ActiveChestPanel activeChestPanel,
-            GoalRecipeDefaults goalRecipeDefaults
-    ) {
-        this(
-                revision,
-                status,
-                diagnostics,
-                pendingCount,
-                selectedQuickAccessSlot,
-                canvasWidth,
-                canvasHeight,
-                carriedFreeSlotCount,
-                carriedSlotCapacity,
-                islands,
-                atlasItems,
-                triageItems,
-                chestChips,
-                chestClusters,
-                hotbarSlots,
-                offhand,
-                kits,
-                lootChestPanel,
-                wayfindingTargets,
-                depositableIdentities,
-                recentIdentities,
-                activeChestPanel,
-                goalRecipeDefaults,
                 List.of()
         );
     }
@@ -801,8 +741,7 @@ public record SlotWorkspaceViewModel(
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
         CarriedIdentityCounts carriedIdentityCounts = CarriedIdentityCounts.from(resolvedAuthority);
-        WorkflowTabTargets.Resolution targetResolution =
-                WorkflowTabTargets.resolve(carriedIdentityCounts, resolvedWorkflow);
+        WorkflowTabTargets.Resolution targetResolution = WorkflowTabTargets.resolve(carriedIdentityCounts, resolvedWorkflow);
         Map<ItemIdentity, Integer> wantedCounts = targetResolution.wantedCounts();
         RecentView recents = resolvedWorkflow.recents();
         VisualHomeMap visualHomeMap = resolvedWorkflow.visualHomeMap();
@@ -1357,8 +1296,7 @@ public record SlotWorkspaceViewModel(
                 depositableIdentities,
                 recentIdentitiesList,
                 activeChestPanel == null ? ActiveChestPanel.empty() : activeChestPanel,
-                new GoalRecipeDefaults(resolvedWorkflow.goalRecipeDefaults()),
-                resolvedWorkflow.goalPlans(),
+                resolvedWorkflow.craftRun(),
                 contextualSuggestionLanes
         );
     }
@@ -2715,10 +2653,6 @@ public record SlotWorkspaceViewModel(
         if (!stack.isEmpty()) {
             return stack;
         }
-        String fallbackItemId = syntheticGoalDisplayItem(identity.itemId());
-        if (!fallbackItemId.isBlank()) {
-            return resolveGhostStackItem(fallbackItemId);
-        }
         return ItemStack.EMPTY;
     }
 
@@ -2739,26 +2673,6 @@ public record SlotWorkspaceViewModel(
         } catch (RuntimeException | LinkageError ignored) {
             return ItemStack.EMPTY;
         }
-    }
-
-    private static String syntheticGoalDisplayItem(String itemId) {
-        if (itemId == null || !itemId.startsWith("slot:emi/")) {
-            return "";
-        }
-        String normalized = itemId.toLowerCase(Locale.ROOT);
-        if (normalized.contains("limewater")) {
-            return "minecraft:barrel";
-        }
-        if (normalized.contains("water")) {
-            return "minecraft:water_bucket";
-        }
-        if (normalized.contains("lava")) {
-            return "minecraft:lava_bucket";
-        }
-        if (normalized.contains("fluid") || normalized.contains("liquid")) {
-            return "minecraft:bucket";
-        }
-        return "";
     }
 
     public static ItemStack displayStackForIdentity(ItemIdentity identity) {
@@ -2854,8 +2768,7 @@ public record SlotWorkspaceViewModel(
                 depositableIdentities,
                 recentIdentities,
                 activeChestPanel,
-                goalRecipeDefaults,
-                goalPlans,
+                craftRun,
                 contextualSuggestionLanes
         );
     }
@@ -2884,8 +2797,7 @@ public record SlotWorkspaceViewModel(
                 depositableIdentities,
                 recentIdentities,
                 activeChestPanel,
-                goalRecipeDefaults,
-                goalPlans,
+                craftRun,
                 contextualSuggestionLanes
         );
     }

@@ -11,6 +11,7 @@ public record WorkflowDomainSnapshot(
         InventoryActivityStore.Snapshot activityEvents,
         InventoryBrowsePreferences browsePreferences,
         InventoryBrowseSessionState browseSessionState,
+        CraftRunState craftRun,
         ContextualSuggestionState contextualSuggestions
 ) {
     public WorkflowDomainSnapshot {
@@ -23,6 +24,7 @@ public record WorkflowDomainSnapshot(
         browseSessionState = browseSessionState == null
                 ? InventoryBrowseSessionState.defaults(browsePreferences)
                 : browseSessionState;
+        craftRun = craftRun == null ? CraftRunState.empty() : craftRun;
         contextualSuggestions = contextualSuggestions == null ? ContextualSuggestionState.empty() : contextualSuggestions;
     }
 
@@ -36,6 +38,7 @@ public record WorkflowDomainSnapshot(
                 InventoryActivityStore.Snapshot.empty(),
                 defaults,
                 InventoryBrowseSessionState.defaults(defaults),
+                CraftRunState.empty(),
                 ContextualSuggestionState.empty()
         );
     }
@@ -57,8 +60,45 @@ public record WorkflowDomainSnapshot(
                 activityEvents,
                 browsePreferences,
                 browseSessionState,
+                CraftRunState.empty(),
                 ContextualSuggestionState.empty()
         );
+    }
+
+    public WorkflowDomainSnapshot(
+            long nextGlobalSequence,
+            WorkflowProjection.Snapshot workflowProjection,
+            WorkflowEventStore.Snapshot workflowEvents,
+            ActivityProjection.Snapshot activityProjection,
+            InventoryActivityStore.Snapshot activityEvents,
+            InventoryBrowsePreferences browsePreferences,
+            InventoryBrowseSessionState browseSessionState,
+            ContextualSuggestionState contextualSuggestions
+    ) {
+        this(
+                nextGlobalSequence,
+                workflowProjection,
+                workflowEvents,
+                activityProjection,
+                activityEvents,
+                browsePreferences,
+                browseSessionState,
+                CraftRunState.empty(),
+                contextualSuggestions
+        );
+    }
+
+    public WorkflowDomainSnapshot withCraftRun(CraftRunState craftRun) {
+        return new WorkflowDomainSnapshot(
+                nextGlobalSequence,
+                workflowProjection,
+                workflowEvents,
+                activityProjection,
+                activityEvents,
+                browsePreferences,
+                browseSessionState,
+                craftRun,
+                contextualSuggestions);
     }
 
     public CollectionProjection collections() {
@@ -107,13 +147,5 @@ public record WorkflowDomainSnapshot(
 
     public java.util.Map<String, java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity, Integer>> kitWantedCounts() {
         return workflowProjection.kitWantedCounts();
-    }
-
-    public java.util.List<dev.imagio.slot.inventory.goal.GoalPlanState> goalPlans() {
-        return workflowProjection.goalPlans();
-    }
-
-    public java.util.Map<String, String> goalRecipeDefaults() {
-        return workflowProjection.goalRecipeDefaults();
     }
 }

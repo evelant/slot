@@ -76,10 +76,15 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter adjustWantedCountEmitter;
     RPCEmitter setJunkEmitter;
     RPCEmitter trashIdentityEmitter;
+    RPCEmitter craftRunStageEntryEmitter;
+    RPCEmitter craftRunAdjustEntryEmitter;
+    RPCEmitter craftRunSelectIngredientEmitter;
+    RPCEmitter craftRunRemoveEntryEmitter;
     RPCEmitter assignHomeToHotbarOnlyEmitter;
     RPCEmitter assignIdentityToAutoHotbarEmitter;
     RPCEmitter assignIdentityToHotbarSlotEmitter;
-    RPCEmitter moveIdentityBetweenBackpackAndMainEmitter;
+    RPCEmitter moveIdentityToMainInventoryEmitter;
+    RPCEmitter moveIdentityToBackpackEmitter;
     RPCEmitter depositHomeToLinkedChestEmitter;
     RPCEmitter depositOneHomeToLinkedChestEmitter;
     RPCEmitter depositItemsHomeToLinkedChestEmitter;
@@ -483,6 +488,27 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 host.session::trashIdentity
         ));
+        craftRunStageEntryEmitter = add(WorkspaceActionId.CRAFT_RUN_STAGE_ENTRY, RPCEventBuilder.simple(
+                String.class,
+                host.session::stageCraftRunEntry
+        ));
+        craftRunAdjustEntryEmitter = add(WorkspaceActionId.CRAFT_RUN_ADJUST_ENTRY, RPCEventBuilder.simple(
+                String.class,
+                Integer.class,
+                host.session::adjustCraftRunEntry
+        ));
+        craftRunSelectIngredientEmitter = add(WorkspaceActionId.CRAFT_RUN_SELECT_INGREDIENT, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                host.session::selectCraftRunIngredient
+        ));
+        craftRunRemoveEntryEmitter = add(WorkspaceActionId.CRAFT_RUN_REMOVE_ENTRY, RPCEventBuilder.simple(
+                String.class,
+                host.session::removeCraftRunEntry
+        ));
         assignHomeToHotbarOnlyEmitter = add(WorkspaceActionId.ASSIGN_HOME_TO_HOTBAR_ONLY, RPCEventBuilder.simple(
                 String.class,
                 String.class,
@@ -502,11 +528,17 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 Integer.class,
                 host.session::assignIdentityToHotbarSlot
         ));
-        moveIdentityBetweenBackpackAndMainEmitter = add(WorkspaceActionId.MOVE_IDENTITY_BETWEEN_BACKPACK_AND_MAIN, RPCEventBuilder.simple(
+        moveIdentityToMainInventoryEmitter = add(WorkspaceActionId.MOVE_IDENTITY_TO_MAIN_INVENTORY, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
-                host.session::moveIdentityBetweenBackpackAndMain
+                host.session::moveIdentityToMainInventory
+        ));
+        moveIdentityToBackpackEmitter = add(WorkspaceActionId.MOVE_IDENTITY_TO_BACKPACK, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                host.session::moveIdentityToBackpack
         ));
         depositHomeToLinkedChestEmitter = add(WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST, RPCEventBuilder.simple(
                 String.class,
@@ -1310,6 +1342,25 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 identity.comparisonMode(),
                 identity.componentFingerprint());
         host.localStatus.set(sent ? "trashing carried item" : "trash unavailable");
+        host.rebuild();
+    }
+
+    void sendSelectCraftRunIngredient(
+            String entryId,
+            String groupId,
+            SlotWorkspaceViewModel.IdentityRef identity
+    ) {
+        if (craftRunSelectIngredientEmitter == null || entryId == null || groupId == null || identity == null) {
+            return;
+        }
+        boolean sent = send(
+                WorkspaceActionId.CRAFT_RUN_SELECT_INGREDIENT,
+                entryId,
+                groupId,
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint());
+        host.localStatus.set(sent ? "recipe ingredient selected" : "ingredient selection unavailable");
         host.rebuild();
     }
 

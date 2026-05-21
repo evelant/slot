@@ -7,7 +7,12 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.forge.client.ForgeContainerSidebar;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackTags;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
+import dev.imagio.slot.workflow.domain.CraftRunAlternative;
+import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
@@ -77,6 +82,146 @@ final class SlotForgeEmiRecipeSidebarAdapter {
                 ingredients);
     }
 
+    static List<CraftRunRecipeCapture> craftRunRecipeCaptures(Screen screen) {
+        List<VisibleRecipe> recipes = visibleRecipeEntries(screen);
+        if (recipes.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<CraftRunRecipeCapture> captures = new ArrayList<>();
+        for (VisibleRecipe visible : recipes) {
+            CraftRunRecipeCapture capture = craftRunRecipeCapture(visible.recipe(), visible.index());
+            if (capture.active()) {
+                captures.add(capture);
+            }
+        }
+        return captures.isEmpty() ? List.of() : List.copyOf(captures);
+    }
+
+    static CraftRunRecipeCapture hoveredCraftRunRecipeCapture(Screen screen) {
+        List<VisibleRecipe> recipes = visibleRecipeEntries(screen);
+        if (recipes.isEmpty()) {
+            return CraftRunRecipeCapture.empty();
+        }
+        double mouseX = guiMouseX();
+        double mouseY = guiMouseY();
+        for (VisibleRecipe visible : recipes) {
+            if (groupContains(visible.group(), mouseX, mouseY)) {
+                CraftRunRecipeCapture capture = craftRunRecipeCapture(visible.recipe(), visible.index());
+                return capture.active() ? capture : CraftRunRecipeCapture.empty();
+            }
+        }
+        if (recipes.size() == 1) {
+            CraftRunRecipeCapture capture = craftRunRecipeCapture(recipes.get(0).recipe(), recipes.get(0).index());
+            return capture.active() ? capture : CraftRunRecipeCapture.empty();
+        }
+        return CraftRunRecipeCapture.empty();
+    }
+
+    private static CraftRunRecipeCapture craftRunRecipeCapture(EmiRecipe recipe, int recipeIndex) {
+        if (recipe == null) {
+            return CraftRunRecipeCapture.empty();
+        }
+        Output output = firstOutput(recipe);
+        if (output == null || output.identity() == null) {
+            return CraftRunRecipeCapture.empty();
+        }
+        String recipeId = recipeId(recipe);
+        ArrayList<CraftRunIngredientGroup> groups = new ArrayList<>();
+        ArrayList<String> diagnostics = new ArrayList<>();
+        List<EmiIngredient> inputs = recipe.getInputs();
+        if (inputs != null) {
+            for (int inputIndex = 0; inputIndex < inputs.size() && inputIndex < MAX_INPUTS_PER_RECIPE; inputIndex++) {
+                CraftRunIngredientGroup group = craftRunIngredient(inputs.get(inputIndex), recipe, recipeId, inputIndex);
+                if (group != null && group.resolvable()) {
+                    groups.add(group);
+                }
+            }
+            if (inputs.size() > MAX_INPUTS_PER_RECIPE) {
+                diagnostics.add("input_limit:" + inputs.size());
+            }
+        }
+        if (groups.isEmpty()) {
+            return CraftRunRecipeCapture.empty();
+        }
+        return new CraftRunRecipeCapture(
+                craftRunSourceKey(recipeId, recipeIndex, output, groups),
+                recipeId,
+                output.label(),
+                output.identity(),
+                output.label(),
+                output.count(),
+                output.count(),
+                groups,
+                diagnostics);
+    }
+
+    private static CraftRunIngredientGroup craftRunIngredient(
+            EmiIngredient input,
+            EmiRecipe recipe,
+            String recipeId,
+            int inputIndex
+    ) {
+        if (input == null || input.isEmpty()) {
+            return null;
+        }
+        int requiredCount = safeCount(input.getAmount());
+        ConsumptionClassification consumption = classifyInputConsumption(input, recipe);
+        LinkedHashMap<String, CraftRunAlternative> alternatives = new LinkedHashMap<>();
+        ArrayList<String> diagnostics = new ArrayList<>();
+        if (!consumption.diagnostic().isBlank()) {
+            diagnostics.add(consumption.diagnostic());
+        }
+        String firstNonItemLabel = "";
+        for (EmiStack emiStack : input.getEmiStacks()) {
+            if (emiStack == null || emiStack.isEmpty()) {
+                continue;
+            }
+            ItemStack stack = itemStack(emiStack);
+            if (stack == null || stack.isEmpty()) {
+                if (firstNonItemLabel.isBlank()) {
+                    firstNonItemLabel = nonItemAlternativeLabel(emiStack);
+                }
+                diagnostics.add("non_item_alternative");
+                continue;
+            }
+            ItemIdentity identity = ItemIdentityMatcher.create(stack);
+            alternatives.putIfAbsent(identityKey(identity), new CraftRunAlternative(identity, labelFor(emiStack, stack)));
+        }
+        String label = alternatives.isEmpty()
+                ? firstNonItemLabel.isBlank() ? "Ingredient " + (inputIndex + 1) : firstNonItemLabel
+                : alternatives.values().iterator().next().label();
+        return new CraftRunIngredientGroup(
+                sanitize(recipeId) + "/input_" + inputIndex,
+                label,
+                requiredCount,
+                consumption.consumed(),
+                List.copyOf(alternatives.values()),
+                diagnostics);
+    }
+
+    private static Output firstOutput(EmiRecipe recipe) {
+        List<EmiStack> outputs = recipe.getOutputs();
+        if (outputs == null || outputs.isEmpty()) {
+            return null;
+        }
+        for (EmiStack output : outputs) {
+            if (output == null || output.isEmpty()) {
+                continue;
+            }
+            ItemStack stack = itemStack(output);
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            ItemIdentity identity = ItemIdentityMatcher.create(stack);
+            int count = safeCount(output.getAmount());
+            if (count <= 0) {
+                count = Math.max(1, stack.getCount());
+            }
+            return new Output(identity, labelFor(output, stack), count);
+        }
+        return null;
+    }
+
     private static RecipeIngredientSidebarSpec.Ingredient ingredientSpec(
             EmiIngredient input,
             String recipeId,
@@ -120,6 +265,18 @@ final class SlotForgeEmiRecipeSidebarAdapter {
     }
 
     private static List<EmiRecipe> visibleRecipes(Screen screen) {
+        List<VisibleRecipe> entries = visibleRecipeEntries(screen);
+        if (entries.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<EmiRecipe> recipes = new ArrayList<>();
+        for (VisibleRecipe entry : entries) {
+            recipes.add(entry.recipe());
+        }
+        return List.copyOf(recipes);
+    }
+
+    private static List<VisibleRecipe> visibleRecipeEntries(Screen screen) {
         if (!isEmiRecipeScreen(screen)) {
             return List.of();
         }
@@ -127,14 +284,32 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         if (!(currentPage instanceof List<?> groups) || groups.isEmpty()) {
             return List.of();
         }
-        ArrayList<EmiRecipe> recipes = new ArrayList<>();
+        ArrayList<VisibleRecipe> recipes = new ArrayList<>();
+        int recipeIndex = 0;
         for (Object group : groups) {
             EmiRecipe recipe = emiRecipeField(group);
             if (recipe != null) {
-                recipes.add(recipe);
+                recipes.add(new VisibleRecipe(recipe, group, recipeIndex));
+                recipeIndex++;
             }
         }
         return List.copyOf(recipes);
+    }
+
+    private static boolean groupContains(Object group, double mouseX, double mouseY) {
+        if (group == null) {
+            return false;
+        }
+        int x = intField(group, "x", Integer.MIN_VALUE);
+        int y = intField(group, "y", Integer.MIN_VALUE);
+        int width = intField(group, "width", 0);
+        int height = intField(group, "height", 0);
+        return width > 0
+                && height > 0
+                && mouseX >= x
+                && mouseY >= y
+                && mouseX < x + width
+                && mouseY < y + height;
     }
 
     private static boolean isEmiRecipeScreen(Screen screen) {
@@ -160,12 +335,74 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         }
     }
 
+    private static int intField(Object target, String fieldName, int fallback) {
+        Object value = fieldValue(target, fieldName);
+        return value instanceof Number number ? number.intValue() : fallback;
+    }
+
+    private static double guiMouseX() {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.getWindow() == null || minecraft.mouseHandler == null) {
+            return 0;
+        }
+        return minecraft.mouseHandler.xpos()
+                * minecraft.getWindow().getGuiScaledWidth()
+                / minecraft.getWindow().getScreenWidth();
+    }
+
+    private static double guiMouseY() {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.getWindow() == null || minecraft.mouseHandler == null) {
+            return 0;
+        }
+        return minecraft.mouseHandler.ypos()
+                * minecraft.getWindow().getGuiScaledHeight()
+                / minecraft.getWindow().getScreenHeight();
+    }
+
     private static void logRecipeScreenReflectionFailure(Throwable error) {
         if (recipeScreenReflectionWarningLogged) {
             return;
         }
         recipeScreenReflectionWarningLogged = true;
         SlotCommon.LOGGER.warn("[SLOT][emi] cannot inspect EMI recipe screen for Forge recipe sidebar", error);
+    }
+
+    private static String craftRunSourceKey(
+            String recipeId,
+            int recipeIndex,
+            Output output,
+            List<CraftRunIngredientGroup> groups
+    ) {
+        StringBuilder sourceKey = new StringBuilder("emi:craft-run|r:")
+                .append(recipeId)
+                .append("|visible:")
+                .append(recipeIndex)
+                .append("|out:")
+                .append(output == null ? "" : identityKey(output.identity()))
+                .append("|inputs:")
+                .append(groups == null ? 0 : groups.size());
+        if (groups != null) {
+            for (CraftRunIngredientGroup group : groups) {
+                appendCraftRunGroupKey(sourceKey, group);
+            }
+        }
+        return sourceKey.toString();
+    }
+
+    private static void appendCraftRunGroupKey(StringBuilder sourceKey, CraftRunIngredientGroup group) {
+        if (sourceKey == null || group == null) {
+            return;
+        }
+        sourceKey.append("|g:")
+                .append(group.groupId())
+                .append("x")
+                .append(group.requiredCountPerBatch())
+                .append(group.consumed() ? "c" : "r");
+        for (CraftRunAlternative alternative : group.alternatives()) {
+            sourceKey.append(":")
+                    .append(alternative == null ? "opaque" : identityKey(alternative.identity()));
+        }
     }
 
     private static void appendIngredientKey(StringBuilder sourceKey, RecipeIngredientSidebarSpec.Ingredient ingredient) {
@@ -185,6 +422,158 @@ final class SlotForgeEmiRecipeSidebarAdapter {
             return stack == null ? ItemStack.EMPTY : stack;
         } catch (RuntimeException | LinkageError ignored) {
             return ItemStack.EMPTY;
+        }
+    }
+
+    private static ConsumptionClassification classifyInputConsumption(EmiIngredient input, EmiRecipe recipe) {
+        if (input == null || input.isEmpty()) {
+            return ConsumptionClassification.CONSUMED;
+        }
+        int requiredCount = safeCount(input.getAmount());
+        boolean sawConcreteItem = false;
+        boolean allRemaindersSelf = true;
+        boolean allReusableTools = true;
+        boolean allReusableMolds = true;
+        for (EmiStack emiStack : input.getEmiStacks()) {
+            if (emiStack == null || emiStack.isEmpty()) {
+                continue;
+            }
+            ItemStack stack = itemStack(emiStack);
+            if (stack == null || stack.isEmpty()) {
+                allRemaindersSelf = false;
+                allReusableTools = false;
+                allReusableMolds = false;
+                continue;
+            }
+            sawConcreteItem = true;
+            if (!remainderIsSelf(emiStack)) {
+                allRemaindersSelf = false;
+            }
+            allReusableTools = allReusableTools && reusableToolInput(requiredCount, stack);
+            allReusableMolds = allReusableMolds && reusableMoldInput(requiredCount, stack, recipe);
+        }
+        if (!sawConcreteItem) {
+            return ConsumptionClassification.CONSUMED;
+        }
+        if (allRemaindersSelf) {
+            return ConsumptionClassification.REMAINDER;
+        }
+        if (allReusableTools) {
+            return ConsumptionClassification.TOOL;
+        }
+        if (allReusableMolds) {
+            return ConsumptionClassification.MOLD;
+        }
+        if (listedAsCatalyst(input, recipe)) {
+            return ConsumptionClassification.CATALYST;
+        }
+        return ConsumptionClassification.CONSUMED;
+    }
+
+    private static boolean remainderIsSelf(EmiStack emiStack) {
+        try {
+            EmiStack remainder = emiStack.getRemainder();
+            return remainder != null && !remainder.isEmpty() && remainder.isEqual(emiStack);
+        } catch (RuntimeException | LinkageError ignored) {
+            return false;
+        }
+    }
+
+    private static boolean reusableToolInput(int requiredCount, ItemStack stack) {
+        return requiredCount == 1
+                && stack != null
+                && !stack.isEmpty()
+                && stack.getMaxStackSize() == 1
+                && (stack.isDamageableItem() || hasToolTag(stack) || itemPathLooksLikeReusableTool(stack));
+    }
+
+    private static boolean hasToolTag(ItemStack stack) {
+        for (String tag : ItemStackTags.itemTagIds(stack)) {
+            String normalized = tag == null ? "" : tag.toLowerCase(java.util.Locale.ROOT).trim();
+            int namespace = normalized.indexOf(':');
+            String path = namespace >= 0 ? normalized.substring(namespace + 1) : normalized;
+            if (path.equals("tools") || path.startsWith("tools/")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean itemPathLooksLikeReusableTool(ItemStack stack) {
+        ItemIdentity identity = ItemIdentityMatcher.itemOnly(stack);
+        String itemId = identity.itemId().toLowerCase(java.util.Locale.ROOT);
+        String path = itemId.contains(":") ? itemId.substring(itemId.indexOf(':') + 1) : itemId;
+        return path.contains("hammer")
+                || path.contains("wrench")
+                || path.contains("screwdriver")
+                || path.contains("wire_cutter")
+                || path.contains("saw")
+                || path.endsWith("/file")
+                || path.endsWith("_file");
+    }
+
+    private static boolean reusableMoldInput(int requiredCount, ItemStack stack, EmiRecipe recipe) {
+        return requiredCount == 1
+                && stack != null
+                && !stack.isEmpty()
+                && reusableMoldRecipe(recipe)
+                && looksLikeFiredOrMachineMold(stack);
+    }
+
+    private static boolean reusableMoldRecipe(EmiRecipe recipe) {
+        String category = recipeCategoryId(recipe).toLowerCase(java.util.Locale.ROOT);
+        return category.contains("casting")
+                || category.contains("molding")
+                || category.contains("mold")
+                || category.contains("extrud");
+    }
+
+    private static boolean looksLikeFiredOrMachineMold(ItemStack stack) {
+        ItemIdentity identity = ItemIdentityMatcher.itemOnly(stack);
+        String itemId = identity.itemId().toLowerCase(java.util.Locale.ROOT);
+        String path = itemId.contains(":") ? itemId.substring(itemId.indexOf(':') + 1) : itemId;
+        if (path.contains("unfired")) {
+            return false;
+        }
+        for (String tag : ItemStackTags.itemTagIds(stack)) {
+            String normalized = tag == null ? "" : tag.toLowerCase(java.util.Locale.ROOT).trim();
+            if (normalized.contains("fired_molds")
+                    || normalized.contains("casting_molds")
+                    || normalized.contains("extruder_molds")
+                    || normalized.endsWith(":molds")
+                    || normalized.endsWith("/molds")) {
+                return true;
+            }
+        }
+        return path.contains("mold");
+    }
+
+    private static boolean listedAsCatalyst(EmiIngredient input, EmiRecipe recipe) {
+        if (input == null || recipe == null) {
+            return false;
+        }
+        try {
+            List<EmiIngredient> catalysts = recipe.getCatalysts();
+            if (catalysts == null || catalysts.isEmpty()) {
+                return false;
+            }
+            for (EmiIngredient catalyst : catalysts) {
+                if (catalyst != null && EmiIngredient.areEqual(input, catalyst)) {
+                    return true;
+                }
+            }
+        } catch (RuntimeException | LinkageError ignored) {
+            return false;
+        }
+        return false;
+    }
+
+    private static String recipeCategoryId(EmiRecipe recipe) {
+        try {
+            ResourceLocation id = recipe == null || recipe.getCategory() == null ? null : recipe.getCategory().getId();
+            return id == null ? "" : id.toString();
+        } catch (RuntimeException | LinkageError ignored) {
+            return "";
         }
     }
 
@@ -253,5 +642,26 @@ final class SlotForgeEmiRecipeSidebarAdapter {
             }
         }
         return builder.length() == 0 ? "ingredient" : builder.toString();
+    }
+
+    private static String identityKey(ItemIdentity identity) {
+        if (identity == null) {
+            return "";
+        }
+        return identity.itemId() + "|" + identity.comparisonMode().name() + "|" + identity.componentFingerprint();
+    }
+
+    private record ConsumptionClassification(boolean consumed, String diagnostic) {
+        private static final ConsumptionClassification CONSUMED = new ConsumptionClassification(true, "");
+        private static final ConsumptionClassification REMAINDER = new ConsumptionClassification(false, "reusable_remainder");
+        private static final ConsumptionClassification TOOL = new ConsumptionClassification(false, "reusable_tool");
+        private static final ConsumptionClassification MOLD = new ConsumptionClassification(false, "reusable_mold");
+        private static final ConsumptionClassification CATALYST = new ConsumptionClassification(false, "reusable_catalyst");
+    }
+
+    private record VisibleRecipe(EmiRecipe recipe, Object group, int index) {
+    }
+
+    private record Output(ItemIdentity identity, String label, int count) {
     }
 }

@@ -5,6 +5,7 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.settings.KeyConflictContext;
+import net.neoforged.neoforge.client.settings.KeyModifier;
 import org.lwjgl.glfw.GLFW;
 
 public final class SlotAtlasKeyMappings {
@@ -156,6 +157,14 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    private static final KeyMapping ADD_VISIBLE_EMI_RECIPE = new KeyMapping(
+            "key.slot.add_visible_emi_recipe",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
     private static final KeyMapping TRASH_HOVER = new KeyMapping(
             "key.slot.trash_hovered_item",
             KeyConflictContext.GUI,
@@ -180,6 +189,14 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    private static final KeyMapping MOVE_TO_BACKPACK = new KeyMapping(
+            "key.slot.move_to_backpack",
+            KeyConflictContext.GUI,
+            KeyModifier.SHIFT,
+            InputConstants.Type.KEYSYM.getOrCreate(GLFW.GLFW_KEY_GRAVE_ACCENT),
+            CATEGORY
+    );
+
     private static boolean wayfindingHudEnabled = true;
 
     private SlotAtlasKeyMappings() {
@@ -200,9 +217,11 @@ public final class SlotAtlasKeyMappings {
         event.register(DEPOSIT_PUT_AWAY);
         event.register(MARK_WANTED);
         event.register(SET_WANTED_HOVER);
+        event.register(ADD_VISIBLE_EMI_RECIPE);
         event.register(TRASH_HOVER);
         event.register(STORAGE_XRAY);
         event.register(MOVE_TO_MAIN_INVENTORY);
+        event.register(MOVE_TO_BACKPACK);
     }
 
     public static KeyMapping gatherActiveKitMapping() {
@@ -227,6 +246,10 @@ public final class SlotAtlasKeyMappings {
 
     public static boolean matchesSetWantedHover(int keyCode, int scanCode) {
         return keyMatches(SET_WANTED_HOVER, keyCode, scanCode);
+    }
+
+    public static boolean matchesAddVisibleEmiRecipe(int keyCode, int scanCode) {
+        return keyMatches(ADD_VISIBLE_EMI_RECIPE, keyCode, scanCode);
     }
 
     public static boolean setWantedHoverDown() {
@@ -270,8 +293,14 @@ public final class SlotAtlasKeyMappings {
         return keyMatches(STORAGE_XRAY, keyCode, scanCode);
     }
 
+    public static boolean matchesMoveToBackpack(int keyCode, int scanCode) {
+        return keyMatches(MOVE_TO_BACKPACK, keyCode, scanCode)
+                && MOVE_TO_BACKPACK.getKeyModifier().isActive(MOVE_TO_BACKPACK.getKeyConflictContext());
+    }
+
     public static boolean matchesMoveToMainInventory(int keyCode, int scanCode) {
-        return keyMatches(MOVE_TO_MAIN_INVENTORY, keyCode, scanCode);
+        return keyMatches(MOVE_TO_MAIN_INVENTORY, keyCode, scanCode)
+                && !matchesMoveToBackpack(keyCode, scanCode);
     }
 
     public static String storageXrayKeyLabel() {

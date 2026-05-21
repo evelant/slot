@@ -24,7 +24,6 @@ public final class SlotNetworking {
         registrar.playToServer(SlotSidebarClosePayload.TYPE, SlotSidebarClosePayload.STREAM_CODEC, SlotSidebarClosePayloadHandler::handle);
         registrar.playToServer(SlotSetWantedCountPayload.TYPE, SlotSetWantedCountPayload.STREAM_CODEC, SlotSetWantedCountPayloadHandler::handle);
         registrar.playToServer(SlotTrashIdentityPayload.TYPE, SlotTrashIdentityPayload.STREAM_CODEC, SlotTrashIdentityPayloadHandler::handle);
-        registrar.playToServer(SlotGoalRecipeDefaultPayload.TYPE, SlotGoalRecipeDefaultPayload.STREAM_CODEC, SlotGoalRecipeDefaultPayloadHandler::handle);
-        registrar.playToServer(SlotGoalPlanPayload.TYPE, SlotGoalPlanPayload.STREAM_CODEC, SlotGoalPlanPayloadHandler::handle);
+        registrar.playToServer(SlotCraftRunRecipePayload.TYPE, SlotCraftRunRecipePayload.STREAM_CODEC, SlotCraftRunRecipePayloadHandler::handle);
     }
 }

@@ -105,9 +105,9 @@ Plans:
 - [docs/plans/retired/](docs/plans/retired/) — superseded directions
   (storage-areas: the explicit-named-areas direction; storage-prototype:
   the chest-link / chest-tile / storage-zone prototype that was
-  wholesale replaced by learned-storage; emi-goal-projections: the retired
-  SLOT-side recipe-goal direction replaced by transient EMI recipe sidebar
-  filtering).
+	  wholesale replaced by learned-storage; emi-goal-projections: the retired
+	  SLOT-side recipe-goal direction replaced by transient EMI recipe sidebar
+	  filtering plus craft runs).
 - [docs/plans/outdated/](docs/plans/outdated/) — old planning narratives that
   no longer describe current work.
 
@@ -128,8 +128,8 @@ Decisions (ADR-style):
   — SLOT adds a 1.20.1 Forge target through a SLOT-owned UI/platform SPI
   instead of backporting LDLib2.
 - [docs/decisions/0007-emi-recipe-sidebar.md](docs/decisions/0007-emi-recipe-sidebar.md)
-  — EMI recipe context uses the normal SLOT sidebar as a transient ingredient
-  filter instead of growing SLOT-side recipe goals.
+  — EMI recipe context uses the normal SLOT sidebar plus transient craft runs
+  instead of growing SLOT-side recipe goals.
 
 Research and assessments:
 

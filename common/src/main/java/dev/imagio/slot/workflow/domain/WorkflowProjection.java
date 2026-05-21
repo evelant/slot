@@ -3,7 +3,6 @@ package dev.imagio.slot.workflow.domain;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
-import dev.imagio.slot.inventory.goal.GoalPlanState;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -53,9 +52,6 @@ public final class WorkflowProjection {
         for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : current.kitWantedCounts().entrySet()) {
             kitWantedCounts.put(entry.getKey(), new LinkedHashMap<>(entry.getValue()));
         }
-        LinkedHashMap<String, GoalPlanState> goalPlans = indexGoalPlans(current.goalPlans());
-        LinkedHashMap<String, String> goalRecipeDefaults = new LinkedHashMap<>(current.goalRecipeDefaults());
-
         WorkflowEvent workflowEvent = record.event();
         if (workflowEvent instanceof WorkflowEvent.CollectionCreated event) {
                 if (!event.collectionId().isBlank() && !event.name().isBlank() && userCollections.stream().noneMatch(def -> def.id().equals(event.collectionId()))) {
@@ -478,26 +474,6 @@ public final class WorkflowProjection {
                     }
                 }
             }
-        else if (workflowEvent instanceof WorkflowEvent.GoalRecipeDefaultSet event) {
-                if (!event.outputItemId().isBlank()) {
-                    if (event.recipeId().isBlank()) {
-                        goalRecipeDefaults.remove(event.outputItemId());
-                    } else {
-                        goalRecipeDefaults.put(event.outputItemId(), event.recipeId());
-                    }
-                }
-            }
-        else if (workflowEvent instanceof WorkflowEvent.GoalPlanSaved event) {
-                if (event.goal() != null && !event.goal().goalId().isBlank()) {
-                    goalPlans.put(event.goal().goalId(), event.goal());
-                }
-            }
-        else if (workflowEvent instanceof WorkflowEvent.GoalPlanRemoved event) {
-                if (!event.goalId().isBlank()) {
-                    goalPlans.remove(event.goalId());
-                }
-            }
-
         LinkedHashMap<String, Map<ItemIdentity, Integer>> kitDesiredCountsCopy = new LinkedHashMap<>();
         for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : kitDesiredCounts.entrySet()) {
             kitDesiredCountsCopy.put(entry.getKey(), Map.copyOf(entry.getValue()));
@@ -522,23 +498,8 @@ public final class WorkflowProjection {
                 Map.copyOf(playerDesiredCounts),
                 Map.copyOf(kitDesiredCountsCopy),
                 Map.copyOf(playerWantedCounts),
-                Map.copyOf(kitWantedCountsCopy),
-                new ArrayList<>(goalPlans.values()),
-                Map.copyOf(goalRecipeDefaults)
+                Map.copyOf(kitWantedCountsCopy)
         );
-    }
-
-    private static LinkedHashMap<String, GoalPlanState> indexGoalPlans(List<GoalPlanState> source) {
-        LinkedHashMap<String, GoalPlanState> indexed = new LinkedHashMap<>();
-        if (source == null) {
-            return indexed;
-        }
-        for (GoalPlanState goal : source) {
-            if (goal != null && !goal.goalId().isBlank()) {
-                indexed.put(goal.goalId(), goal);
-            }
-        }
-        return indexed;
     }
 
     static void applyVisualHomeAssignment(
@@ -672,9 +633,7 @@ public final class WorkflowProjection {
             Map<ItemIdentity, Integer> playerDesiredCounts,
             Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
             Map<ItemIdentity, Integer> playerWantedCounts,
-            Map<String, Map<ItemIdentity, Integer>> kitWantedCounts,
-            List<GoalPlanState> goalPlans,
-            Map<String, String> goalRecipeDefaults
+            Map<String, Map<ItemIdentity, Integer>> kitWantedCounts
     ) {
         public Snapshot(
                 List<CollectionDefinition> userCollections,
@@ -709,50 +668,7 @@ public final class WorkflowProjection {
                     playerDesiredCounts,
                     kitDesiredCounts,
                     playerWantedCounts,
-                    Map.of(),
-                    List.of(),
                     Map.of()
-            );
-        }
-
-        public Snapshot(
-                List<CollectionDefinition> userCollections,
-                Map<ItemIdentity, Set<String>> memberships,
-                Map<String, List<QuickAccessLoadoutDefinition>> loadoutsByCollection,
-                Set<ItemIdentity> favoriteTags,
-                Set<ItemIdentity> junkTags,
-                ProtectionSnapshotPolicy protection,
-                Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
-                VisualHomeMap visualHomeMap,
-                ClaimedChestMap claimedChestMap,
-                ChestAffinityMap chestAffinityMap,
-                Map<String, String> clusterLabels,
-                KitMap kitMap,
-                Map<ItemIdentity, Integer> playerDesiredCounts,
-                Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
-                Map<ItemIdentity, Integer> playerWantedCounts,
-                List<GoalPlanState> goalPlans,
-                Map<String, String> goalRecipeDefaults
-        ) {
-            this(
-                    userCollections,
-                    memberships,
-                    loadoutsByCollection,
-                    favoriteTags,
-                    junkTags,
-                    protection,
-                    recentDismissedUpToByIdentity,
-                    visualHomeMap,
-                    claimedChestMap,
-                    chestAffinityMap,
-                    clusterLabels,
-                    kitMap,
-                    playerDesiredCounts,
-                    kitDesiredCounts,
-                    playerWantedCounts,
-                    Map.of(),
-                    goalPlans,
-                    goalRecipeDefaults
             );
         }
 
@@ -773,8 +689,6 @@ public final class WorkflowProjection {
             kitDesiredCounts = kitDesiredCounts == null ? Map.of() : Map.copyOf(kitDesiredCounts);
             playerWantedCounts = playerWantedCounts == null ? Map.of() : Map.copyOf(playerWantedCounts);
             kitWantedCounts = kitWantedCounts == null ? Map.of() : Map.copyOf(kitWantedCounts);
-            goalPlans = copyGoalPlans(goalPlans);
-            goalRecipeDefaults = copyRecipeDefaults(goalRecipeDefaults);
         }
 
         public static Snapshot empty() {
@@ -794,23 +708,8 @@ public final class WorkflowProjection {
                     Map.of(),
                     Map.of(),
                     Map.of(),
-                    Map.of(),
-                    List.of(),
                     Map.of()
             );
-        }
-
-        private static List<GoalPlanState> copyGoalPlans(List<GoalPlanState> source) {
-            if (source == null || source.isEmpty()) {
-                return List.of();
-            }
-            ArrayList<GoalPlanState> copy = new ArrayList<>(source.size());
-            for (GoalPlanState goal : source) {
-                if (goal != null && !goal.goalId().isBlank() && goal.descriptor() != null) {
-                    copy.add(goal);
-                }
-            }
-            return List.copyOf(copy);
         }
 
         public Set<String> collectionIds() {
@@ -846,18 +745,5 @@ public final class WorkflowProjection {
             return Map.copyOf(copied);
         }
 
-        private static Map<String, String> copyRecipeDefaults(Map<String, String> source) {
-            if (source == null || source.isEmpty()) {
-                return Map.of();
-            }
-            LinkedHashMap<String, String> copied = new LinkedHashMap<>();
-            source.forEach((outputItemId, recipeId) -> {
-                if (outputItemId != null && !outputItemId.isBlank()
-                        && recipeId != null && !recipeId.isBlank()) {
-                    copied.put(outputItemId.trim(), recipeId.trim());
-                }
-            });
-            return Map.copyOf(copied);
-        }
     }
 }

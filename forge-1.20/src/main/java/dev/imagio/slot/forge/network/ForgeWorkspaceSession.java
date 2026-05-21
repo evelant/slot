@@ -43,6 +43,7 @@ import dev.imagio.slot.inventory.workspace.WorkspaceBeltCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
+import dev.imagio.slot.inventory.workspace.WorkspaceCraftRunCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
@@ -248,7 +249,7 @@ final class ForgeWorkspaceSession {
             return 0L;
         }
         WorkflowDomainSnapshot snapshot = runtime.snapshot();
-        return snapshot == null ? 0L : snapshot.nextGlobalSequence();
+        return snapshot == null ? 0L : snapshot.nextGlobalSequence() * 31L + snapshot.craftRun().revision();
     }
 
     WorkspaceCommandOutcome handleAction(ServerPlayer player, WorkspaceActionPacket packet) {
@@ -381,6 +382,17 @@ final class ForgeWorkspaceSession {
                     player,
                     runtime,
                     identityArg(args, 0));
+            case CRAFT_RUN_STAGE_ENTRY -> stageCraftRunEntry(player, stringArg(args, 0));
+            case CRAFT_RUN_ADJUST_ENTRY -> adjustCraftRunEntry(
+                    stringArg(args, 0),
+                    integerArg(args, 1) == null ? 0 : integerArg(args, 1));
+            case CRAFT_RUN_SELECT_INGREDIENT -> selectCraftRunIngredient(
+                    stringArg(args, 0),
+                    stringArg(args, 1),
+                    identityArg(args, 2));
+            case CRAFT_RUN_REMOVE_ENTRY -> runtime != null && runtime.craftRunWorkflow().remove(stringArg(args, 0))
+                    ? WorkspaceCommandOutcome.accepted("craft_run_removed", "")
+                    : WorkspaceCommandOutcome.rejected("craft_run_entry_not_found");
             case DEPOSIT_HOME_TO_LINKED_CHEST -> WorkspaceChestCommandService.depositIdentityToLinkedChest(
                     player,
                     runtime,
@@ -684,9 +696,15 @@ final class ForgeWorkspaceSession {
                         identityArg(args, 0),
                         integerArg(args, 3));
             }
-            case MOVE_IDENTITY_BETWEEN_BACKPACK_AND_MAIN -> {
+            case MOVE_IDENTITY_TO_MAIN_INVENTORY -> {
                 refreshViewBeforeCommand(player);
-                yield moveIdentityBetweenBackpackAndMain(
+                yield moveIdentityToMainInventory(
+                        player,
+                        identityArg(args, 0));
+            }
+            case MOVE_IDENTITY_TO_BACKPACK -> {
+                refreshViewBeforeCommand(player);
+                yield moveIdentityToBackpack(
                         player,
                         identityArg(args, 0));
             }
@@ -695,6 +713,38 @@ final class ForgeWorkspaceSession {
             default -> WorkspaceCommandOutcome.rejected("forge_action_not_enabled:" + packet.action().wireId());
         };
         return applyOutcome(outcome);
+    }
+
+    private WorkspaceCommandOutcome stageCraftRunEntry(ServerPlayer player, String entryId) {
+        InventoryHostDescriptor host = resolveHost(player);
+        if (host == null) {
+            return WorkspaceCommandOutcome.rejected("host_resolution_failed");
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+        return WorkspaceCraftRunCommandService.stageEntry(
+                runtime,
+                authority,
+                entryId,
+                actionExecutor(runtime, host, player),
+                "slot_workspace.forge");
+    }
+
+    private WorkspaceCommandOutcome adjustCraftRunEntry(String entryId, int delta) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("runtime_unavailable");
+        }
+        return runtime.craftRunWorkflow().adjustRemainingOutput(entryId, delta)
+                ? WorkspaceCommandOutcome.accepted("craft_run_adjusted", "")
+                : WorkspaceCommandOutcome.rejected("craft_run_entry_not_found");
+    }
+
+    private WorkspaceCommandOutcome selectCraftRunIngredient(String entryId, String groupId, ItemIdentity identity) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("runtime_unavailable");
+        }
+        return runtime.craftRunWorkflow().selectIngredientAlternative(entryId, groupId, identity)
+                ? WorkspaceCommandOutcome.accepted("craft_run_ingredient_selected", "")
+                : WorkspaceCommandOutcome.rejected("craft_run_ingredient_not_found");
     }
 
     private SlotWorkspaceViewModel project(
@@ -1169,7 +1219,7 @@ final class ForgeWorkspaceSession {
         return outcome;
     }
 
-    private WorkspaceCommandOutcome moveIdentityBetweenBackpackAndMain(
+    private WorkspaceCommandOutcome moveIdentityToMainInventory(
             ServerPlayer player,
             ItemIdentity identity
     ) {
@@ -1178,7 +1228,35 @@ final class ForgeWorkspaceSession {
             return WorkspaceCommandOutcome.rejected("host_resolution_failed");
         }
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
-        return WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+        return WorkspaceBeltCommandService.moveIdentityToMainInventory(
+                player,
+                host,
+                authority,
+                StorageAccessRegistry.carriedSourceAccess(),
+                request -> {
+                    InventoryActionOutcome actionOutcome = InventoryActionExecutor.execute(
+                            host,
+                            player,
+                            request,
+                            ProtectionPolicy.allowAll()
+                    );
+                    recordOutcome(player, actionOutcome);
+                    return actionOutcome;
+                },
+                identity,
+                "slot_workspace.forge");
+    }
+
+    private WorkspaceCommandOutcome moveIdentityToBackpack(
+            ServerPlayer player,
+            ItemIdentity identity
+    ) {
+        InventoryHostDescriptor host = resolveHost(player);
+        if (host == null) {
+            return WorkspaceCommandOutcome.rejected("host_resolution_failed");
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+        return WorkspaceBeltCommandService.moveIdentityToBackpack(
                 player,
                 host,
                 authority,

@@ -114,13 +114,14 @@ public final class WorkflowTabTargets {
         if (snapshot == null) {
             return Resolution.empty();
         }
-        return resolve(
+        Resolution tabs = resolve(
                 carriedCounts,
                 snapshot.kitMap(),
                 snapshot.playerDesiredCounts(),
                 snapshot.kitDesiredCounts(),
                 snapshot.playerWantedCounts(),
                 snapshot.kitWantedCounts());
+        return CraftRunTargetOverlay.apply(tabs, snapshot.craftRun(), carriedCounts);
     }
 
     public static Resolution resolve(

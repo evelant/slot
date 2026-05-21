@@ -3,7 +3,6 @@ package dev.imagio.slot.workflow.domain;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
-import dev.imagio.slot.inventory.goal.GoalPlanState;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -58,10 +57,7 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.PlayerDesiredCountSet,
         WorkflowEvent.KitDesiredCountSet,
         WorkflowEvent.PlayerWantedCountSet,
-        WorkflowEvent.KitWantedCountSet,
-        WorkflowEvent.GoalPlanSaved,
-        WorkflowEvent.GoalPlanRemoved,
-        WorkflowEvent.GoalRecipeDefaultSet {
+        WorkflowEvent.KitWantedCountSet {
 
     record CollectionCreated(
             String collectionId,
@@ -467,28 +463,6 @@ public sealed interface WorkflowEvent permits
         public KitWantedCountSet {
             kitId = kitId == null ? "" : kitId;
             count = Math.max(0, count);
-        }
-    }
-
-    /**
-     * Player-scoped remembered producer recipe for a concrete output item id.
-     * The client still keeps a session-local copy for immediate feedback, but
-     * this event is the durable source used after reconnect. {@code recipeId}
-     * blank clears the default for the output.
-     */
-    record GoalRecipeDefaultSet(String outputItemId, String recipeId) implements WorkflowEvent {
-        public GoalRecipeDefaultSet {
-            outputItemId = outputItemId == null ? "" : outputItemId.trim();
-            recipeId = recipeId == null ? "" : recipeId.trim();
-        }
-    }
-
-    record GoalPlanSaved(GoalPlanState goal) implements WorkflowEvent {
-    }
-
-    record GoalPlanRemoved(String goalId) implements WorkflowEvent {
-        public GoalPlanRemoved {
-            goalId = goalId == null ? "" : goalId.trim();
         }
     }
 }

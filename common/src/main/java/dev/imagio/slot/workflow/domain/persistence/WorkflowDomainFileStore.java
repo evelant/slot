@@ -21,12 +21,6 @@ import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
-import dev.imagio.slot.inventory.goal.GoalChoiceResolution;
-import dev.imagio.slot.inventory.goal.GoalDescriptor;
-import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
-import dev.imagio.slot.inventory.goal.GoalPlanState;
-import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
-import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.workflow.domain.ActivityProjection;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestAffinity;
@@ -48,6 +42,10 @@ import dev.imagio.slot.workflow.domain.ContextualSignalEvent;
 import dev.imagio.slot.workflow.domain.ContextualSignalKind;
 import dev.imagio.slot.workflow.domain.ContextualSignalRecord;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionState;
+import dev.imagio.slot.workflow.domain.CraftRunAlternative;
+import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeEntry;
+import dev.imagio.slot.workflow.domain.CraftRunState;
 import dev.imagio.slot.workflow.domain.DomainEventEnvelope;
 import dev.imagio.slot.workflow.domain.DomainEventStreamKind;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
@@ -89,7 +87,7 @@ import java.util.UUID;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 11;
+    private static final int SCHEMA_VERSION = 12;
 
     private final Path statePath;
 
@@ -149,6 +147,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 .map(WorkflowDomainFileStore::encodeActivityRecord)
                 .filter(java.util.Objects::nonNull)
                 .toList();
+        state.craftRun = encodeCraftRun(snapshot.craftRun());
         state.contextualSuggestions = encodeContextualSuggestions(snapshot.contextualSuggestions());
 
         InventoryBrowsePreferences browsePreferences = snapshot.browsePreferences();
@@ -208,6 +207,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         listFrom(GSON.fromJson(json, ActivityEventData[].class));
                 case "contextualSuggestions" -> state.contextualSuggestions =
                         GSON.fromJson(json, ContextualSuggestionData.class);
+                case "craftRun" -> state.craftRun =
+                        GSON.fromJson(json, CraftRunData.class);
                 case "browsePreferences" -> state.browsePreferences =
                         GSON.fromJson(json, BrowsePreferencesData.class);
                 case "browseSession" -> state.browseSession =
@@ -305,6 +306,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 activityEvents,
                 browsePreferences,
                 browseSessionState,
+                decodeCraftRun(state.craftRun),
                 decodeContextualSuggestions(state.contextualSuggestions)
         );
     }
@@ -503,17 +505,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         kitWantedCounts.add(new KitWantedCountData(kitId, identity(identity), count))
                 )
         );
-        ArrayList<GoalRecipeDefaultData> goalRecipeDefaults = new ArrayList<>();
-        resolved.goalRecipeDefaults().forEach((outputItemId, recipeId) ->
-                goalRecipeDefaults.add(new GoalRecipeDefaultData(outputItemId, recipeId))
-        );
-        ArrayList<GoalPlanData> goalPlans = new ArrayList<>();
-        for (GoalPlanState goal : resolved.goalPlans()) {
-            GoalPlanData encoded = goalPlan(goal);
-            if (encoded != null) {
-                goalPlans.add(encoded);
-            }
-        }
         return new WorkflowCheckpointData(
                 collections,
                 memberships,
@@ -542,9 +533,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 playerDesiredCounts,
                 kitDesiredCounts,
                 playerWantedCounts,
-                kitWantedCounts,
-                goalPlans,
-                goalRecipeDefaults
+                kitWantedCounts
         );
     }
 
@@ -808,25 +797,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         LinkedHashMap<String, Map<ItemIdentity, Integer>> kitWantedCountsFrozen = new LinkedHashMap<>();
         kitWantedCounts.forEach((kitId, counts) -> kitWantedCountsFrozen.put(kitId, Map.copyOf(counts)));
 
-        LinkedHashMap<String, String> goalRecipeDefaults = new LinkedHashMap<>();
-        if (data.goalRecipeDefaults != null) {
-            for (GoalRecipeDefaultData defaultData : data.goalRecipeDefaults) {
-                if (defaultData == null || blank(defaultData.outputItemId) || blank(defaultData.recipeId)) {
-                    continue;
-                }
-                goalRecipeDefaults.put(defaultData.outputItemId.trim(), defaultData.recipeId.trim());
-            }
-        }
-        ArrayList<GoalPlanState> goalPlans = new ArrayList<>();
-        if (data.goalPlans != null) {
-            for (GoalPlanData goalData : data.goalPlans) {
-                GoalPlanState goal = decodeGoalPlan(goalData);
-                if (goal != null) {
-                    goalPlans.add(goal);
-                }
-            }
-        }
-
         return new WorkflowProjection.Snapshot(
                 collections,
                 memberships,
@@ -843,9 +813,145 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 playerDesiredCounts,
                 kitDesiredCountsFrozen,
                 playerWantedCounts,
-                kitWantedCountsFrozen,
-                goalPlans,
-                goalRecipeDefaults
+                kitWantedCountsFrozen
+        );
+    }
+
+    private static CraftRunData encodeCraftRun(CraftRunState state) {
+        CraftRunState resolved = state == null ? CraftRunState.empty() : state;
+        ArrayList<CraftRunEntryData> entries = new ArrayList<>();
+        for (CraftRunRecipeEntry entry : resolved.entries()) {
+            CraftRunEntryData encoded = encodeCraftRunEntry(entry);
+            if (encoded != null) {
+                entries.add(encoded);
+            }
+        }
+        return new CraftRunData(
+                resolved.revision(),
+                resolved.selectedEntryId(),
+                entries
+        );
+    }
+
+    private static CraftRunEntryData encodeCraftRunEntry(CraftRunRecipeEntry entry) {
+        if (entry == null || !entry.active()) {
+            return null;
+        }
+        ArrayList<CraftRunIngredientData> inputs = new ArrayList<>();
+        for (CraftRunIngredientGroup group : entry.inputs()) {
+            CraftRunIngredientData encoded = encodeCraftRunIngredient(group);
+            if (encoded != null) {
+                inputs.add(encoded);
+            }
+        }
+        return new CraftRunEntryData(
+                entry.entryId(),
+                entry.sequence(),
+                entry.sourceKey(),
+                entry.recipeId(),
+                entry.label(),
+                identity(entry.outputIdentity()),
+                entry.outputLabel(),
+                entry.outputCountPerBatch(),
+                entry.remainingOutputCount(),
+                inputs,
+                copyStringList(entry.diagnostics())
+        );
+    }
+
+    private static CraftRunIngredientData encodeCraftRunIngredient(CraftRunIngredientGroup group) {
+        if (group == null || !group.resolvable()) {
+            return null;
+        }
+        ArrayList<CraftRunAlternativeData> alternatives = new ArrayList<>();
+        for (CraftRunAlternative alternative : group.alternatives()) {
+            if (alternative != null && alternative.present()) {
+                alternatives.add(new CraftRunAlternativeData(
+                        identity(alternative.identity()),
+                        alternative.label()
+                ));
+            }
+        }
+        return new CraftRunIngredientData(
+                group.groupId(),
+                group.label(),
+                group.requiredCountPerBatch(),
+                group.consumed(),
+                identity(group.selectedAlternativeIdentity()),
+                alternatives,
+                copyStringList(group.diagnostics())
+        );
+    }
+
+    private static CraftRunState decodeCraftRun(CraftRunData data) {
+        if (data == null) {
+            return CraftRunState.empty();
+        }
+        ArrayList<CraftRunRecipeEntry> entries = new ArrayList<>();
+        if (data.entries != null) {
+            for (CraftRunEntryData entryData : data.entries) {
+                CraftRunRecipeEntry entry = decodeCraftRunEntry(entryData);
+                if (entry != null && entry.active()) {
+                    entries.add(entry);
+                }
+            }
+        }
+        return new CraftRunState(data.revision, nonNull(data.selectedEntryId), entries);
+    }
+
+    private static CraftRunRecipeEntry decodeCraftRunEntry(CraftRunEntryData data) {
+        if (data == null) {
+            return null;
+        }
+        ItemIdentity output = decodeIdentity(data.outputIdentity);
+        if (output == null) {
+            return null;
+        }
+        ArrayList<CraftRunIngredientGroup> inputs = new ArrayList<>();
+        if (data.inputs != null) {
+            for (CraftRunIngredientData inputData : data.inputs) {
+                CraftRunIngredientGroup group = decodeCraftRunIngredient(inputData);
+                if (group != null && group.resolvable()) {
+                    inputs.add(group);
+                }
+            }
+        }
+        return new CraftRunRecipeEntry(
+                data.entryId,
+                data.sequence,
+                data.sourceKey,
+                data.recipeId,
+                data.label,
+                output,
+                data.outputLabel,
+                data.outputCountPerBatch,
+                data.remainingOutputCount,
+                inputs,
+                copyStringList(data.diagnostics)
+        );
+    }
+
+    private static CraftRunIngredientGroup decodeCraftRunIngredient(CraftRunIngredientData data) {
+        if (data == null) {
+            return null;
+        }
+        ArrayList<CraftRunAlternative> alternatives = new ArrayList<>();
+        if (data.alternatives != null) {
+            for (CraftRunAlternativeData alternativeData : data.alternatives) {
+                ItemIdentity identity = decodeIdentity(alternativeData == null ? null : alternativeData.identity);
+                if (identity != null) {
+                    alternatives.add(new CraftRunAlternative(identity, alternativeData.label));
+                }
+            }
+        }
+        return new CraftRunIngredientGroup(
+                data.groupId,
+                data.label,
+                data.requiredCountPerBatch,
+                data.consumed == null || data.consumed,
+                decodeIdentity(data.selectedAlternativeIdentity),
+                alternatives,
+                copyStringList(data.diagnostics)
         );
     }
 
@@ -1245,19 +1351,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.identity = identity(event.identity());
                 data.count = event.count();
             }
-        else if (workflowEvent instanceof WorkflowEvent.GoalRecipeDefaultSet event) {
-                data.kind = "GoalRecipeDefaultSet";
-                data.outputItemId = event.outputItemId();
-                data.recipeId = event.recipeId();
-            }
-        else if (workflowEvent instanceof WorkflowEvent.GoalPlanSaved event) {
-                data.kind = "GoalPlanSaved";
-                data.goalPlan = goalPlan(event.goal());
-            }
-        else if (workflowEvent instanceof WorkflowEvent.GoalPlanRemoved event) {
-                data.kind = "GoalPlanRemoved";
-                data.goalId = event.goalId();
-            }
         return data;
     }
 
@@ -1377,13 +1470,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                     decodeIdentity(data.identity), Math.max(0, data.count));
             case "KitWantedCountSet" -> blank(data.kitId) ? null : new WorkflowEvent.KitWantedCountSet(
                     data.kitId, decodeIdentity(data.identity), Math.max(0, data.count));
-            case "GoalRecipeDefaultSet" -> new WorkflowEvent.GoalRecipeDefaultSet(
-                    nonNull(data.outputItemId), nonNull(data.recipeId));
-            case "GoalPlanSaved" -> {
-                GoalPlanState goal = decodeGoalPlan(data.goalPlan);
-                yield goal == null ? null : new WorkflowEvent.GoalPlanSaved(goal);
-            }
-            case "GoalPlanRemoved" -> blank(data.goalId) ? null : new WorkflowEvent.GoalPlanRemoved(data.goalId);
             default -> null;
         };
         return event == null ? null : new WorkflowEventRecord(envelope, event);
@@ -1851,268 +1937,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         return out.isEmpty() ? List.of() : List.copyOf(out);
     }
 
-    private static GoalPlanData goalPlan(GoalPlanState goal) {
-        if (goal == null || goal.descriptor() == null) {
-            return null;
-        }
-        return new GoalPlanData(
-                goal.goalId(),
-                goal.label(),
-                goal.targetCount(),
-                goalDescriptor(goal.descriptor()),
-                goalChoiceResolution(goal.choiceResolution())
-        );
-    }
-
-    private static GoalPlanState decodeGoalPlan(GoalPlanData data) {
-        if (data == null) {
-            return null;
-        }
-        GoalDescriptor descriptor = decodeGoalDescriptor(data.descriptor);
-        if (descriptor == null) {
-            return null;
-        }
-        return new GoalPlanState(
-                nonNull(data.goalId),
-                nonNull(data.label),
-                data.targetCount,
-                descriptor,
-                decodeGoalChoiceResolution(data.choiceResolution)
-        );
-    }
-
-    private static GoalDescriptorData goalDescriptor(GoalDescriptor descriptor) {
-        if (descriptor == null) {
-            return null;
-        }
-        return new GoalDescriptorData(
-                descriptor.goalId(),
-                descriptor.label(),
-                goalStacks(descriptor.targetOutputs()),
-                descriptor.targetCount(),
-                descriptor.focusedRecipeId(),
-                descriptor.focusedCategoryId(),
-                goalRecipes(descriptor.recipes())
-        );
-    }
-
-    private static GoalDescriptor decodeGoalDescriptor(GoalDescriptorData data) {
-        if (data == null) {
-            return null;
-        }
-        return new GoalDescriptor(
-                nonNull(data.goalId),
-                nonNull(data.label),
-                decodeGoalStacks(data.targetOutputs),
-                data.targetCount,
-                nonNull(data.focusedRecipeId),
-                nonNull(data.focusedCategoryId),
-                decodeGoalRecipes(data.recipes)
-        );
-    }
-
-    private static List<GoalRecipeData> goalRecipes(List<GoalRecipeDescriptor> recipes) {
-        if (recipes == null || recipes.isEmpty()) {
-            return List.of();
-        }
-        ArrayList<GoalRecipeData> encoded = new ArrayList<>(recipes.size());
-        for (GoalRecipeDescriptor recipe : recipes) {
-            GoalRecipeData data = goalRecipe(recipe);
-            if (data != null) {
-                encoded.add(data);
-            }
-        }
-        return List.copyOf(encoded);
-    }
-
-    private static List<GoalRecipeDescriptor> decodeGoalRecipes(List<GoalRecipeData> data) {
-        if (data == null || data.isEmpty()) {
-            return List.of();
-        }
-        ArrayList<GoalRecipeDescriptor> recipes = new ArrayList<>(data.size());
-        for (GoalRecipeData recipeData : data) {
-            GoalRecipeDescriptor recipe = decodeGoalRecipe(recipeData);
-            if (recipe != null) {
-                recipes.add(recipe);
-            }
-        }
-        return List.copyOf(recipes);
-    }
-
-    private static GoalRecipeData goalRecipe(GoalRecipeDescriptor recipe) {
-        if (recipe == null) {
-            return null;
-        }
-        return new GoalRecipeData(
-                recipe.recipeId(),
-                recipe.categoryId(),
-                recipe.supportsTree(),
-                goalStacks(recipe.outputs()),
-                goalIngredients(recipe.inputs()),
-                goalIngredients(recipe.catalysts()),
-                recipe.diagnostics()
-        );
-    }
-
-    private static GoalRecipeDescriptor decodeGoalRecipe(GoalRecipeData data) {
-        if (data == null) {
-            return null;
-        }
-        return new GoalRecipeDescriptor(
-                nonNull(data.recipeId),
-                nonNull(data.categoryId),
-                data.supportsTree,
-                decodeGoalStacks(data.outputs),
-                decodeGoalIngredients(data.inputs),
-                decodeGoalIngredients(data.catalysts),
-                copyStringList(data.diagnostics)
-        );
-    }
-
-    private static List<GoalIngredientData> goalIngredients(List<GoalIngredientDescriptor> ingredients) {
-        if (ingredients == null || ingredients.isEmpty()) {
-            return List.of();
-        }
-        ArrayList<GoalIngredientData> encoded = new ArrayList<>(ingredients.size());
-        for (GoalIngredientDescriptor ingredient : ingredients) {
-            GoalIngredientData data = goalIngredient(ingredient);
-            if (data != null) {
-                encoded.add(data);
-            }
-        }
-        return List.copyOf(encoded);
-    }
-
-    private static List<GoalIngredientDescriptor> decodeGoalIngredients(List<GoalIngredientData> data) {
-        if (data == null || data.isEmpty()) {
-            return List.of();
-        }
-        ArrayList<GoalIngredientDescriptor> ingredients = new ArrayList<>(data.size());
-        for (GoalIngredientData ingredientData : data) {
-            GoalIngredientDescriptor ingredient = decodeGoalIngredient(ingredientData);
-            if (ingredient != null) {
-                ingredients.add(ingredient);
-            }
-        }
-        return List.copyOf(ingredients);
-    }
-
-    private static GoalIngredientData goalIngredient(GoalIngredientDescriptor ingredient) {
-        if (ingredient == null) {
-            return null;
-        }
-        return new GoalIngredientData(
-                ingredient.ingredientId(),
-                ingredient.label(),
-                ingredient.quantity(),
-                ingredient.chance(),
-                ingredient.serializedIngredient(),
-                goalStacks(ingredient.alternatives()),
-                ingredient.choiceRequired(),
-                ingredient.consumed(),
-                ingredient.tagOrListLabel(),
-                ingredient.diagnostics()
-        );
-    }
-
-    private static GoalIngredientDescriptor decodeGoalIngredient(GoalIngredientData data) {
-        if (data == null) {
-            return null;
-        }
-        return new GoalIngredientDescriptor(
-                nonNull(data.ingredientId),
-                nonNull(data.label),
-                data.quantity,
-                data.chance,
-                nonNull(data.serializedIngredient),
-                decodeGoalStacks(data.alternatives),
-                data.choiceRequired,
-                data.consumed,
-                nonNull(data.tagOrListLabel),
-                copyStringList(data.diagnostics)
-        );
-    }
-
-    private static List<GoalStackData> goalStacks(List<GoalStackDescriptor> stacks) {
-        if (stacks == null || stacks.isEmpty()) {
-            return List.of();
-        }
-        ArrayList<GoalStackData> encoded = new ArrayList<>(stacks.size());
-        for (GoalStackDescriptor stack : stacks) {
-            GoalStackData data = goalStack(stack);
-            if (data != null) {
-                encoded.add(data);
-            }
-        }
-        return List.copyOf(encoded);
-    }
-
-    private static List<GoalStackDescriptor> decodeGoalStacks(List<GoalStackData> data) {
-        if (data == null || data.isEmpty()) {
-            return List.of();
-        }
-        ArrayList<GoalStackDescriptor> stacks = new ArrayList<>(data.size());
-        for (GoalStackData stackData : data) {
-            GoalStackDescriptor stack = decodeGoalStack(stackData);
-            if (stack != null) {
-                stacks.add(stack);
-            }
-        }
-        return List.copyOf(stacks);
-    }
-
-    private static GoalStackData goalStack(GoalStackDescriptor stack) {
-        if (stack == null || stack.identity() == null) {
-            return null;
-        }
-        return new GoalStackData(identity(stack.identity()), stack.displayName(), stack.count());
-    }
-
-    private static GoalStackDescriptor decodeGoalStack(GoalStackData data) {
-        if (data == null) {
-            return null;
-        }
-        ItemIdentity identity = decodeIdentity(data.identity);
-        return identity == null ? null : new GoalStackDescriptor(identity, nonNull(data.displayName), data.count);
-    }
-
-    private static GoalChoiceResolutionData goalChoiceResolution(GoalChoiceResolution resolution) {
-        GoalChoiceResolution resolved = resolution == null ? GoalChoiceResolution.empty() : resolution;
-        ArrayList<GoalChoiceData> choices = new ArrayList<>();
-        resolved.choicesByKey().forEach((choiceGroupId, identity) ->
-                choices.add(new GoalChoiceData(choiceGroupId, identity(identity)))
-        );
-        ArrayList<GoalRecipeChoiceData> recipeChoices = new ArrayList<>();
-        resolved.recipeChoicesByKey().forEach((choiceGroupId, recipeId) ->
-                recipeChoices.add(new GoalRecipeChoiceData(choiceGroupId, recipeId))
-        );
-        return new GoalChoiceResolutionData(choices, recipeChoices);
-    }
-
-    private static GoalChoiceResolution decodeGoalChoiceResolution(GoalChoiceResolutionData data) {
-        if (data == null) {
-            return GoalChoiceResolution.empty();
-        }
-        LinkedHashMap<String, ItemIdentity> choices = new LinkedHashMap<>();
-        if (data.choices != null) {
-            for (GoalChoiceData choice : data.choices) {
-                ItemIdentity identity = decodeIdentity(choice == null ? null : choice.identity);
-                if (choice != null && !blank(choice.choiceGroupId) && identity != null) {
-                    choices.put(choice.choiceGroupId.trim(), ItemIdentityCollections.key(identity));
-                }
-            }
-        }
-        LinkedHashMap<String, String> recipeChoices = new LinkedHashMap<>();
-        if (data.recipeChoices != null) {
-            for (GoalRecipeChoiceData choice : data.recipeChoices) {
-                if (choice != null && !blank(choice.choiceGroupId) && !blank(choice.recipeId)) {
-                    recipeChoices.put(choice.choiceGroupId.trim(), choice.recipeId.trim());
-                }
-            }
-        }
-        return new GoalChoiceResolution(choices, recipeChoices);
-    }
-
     private static List<String> copyStringList(List<String> source) {
         if (source == null || source.isEmpty()) {
             return List.of();
@@ -2475,6 +2299,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private List<WorkflowEventData> workflowEvents;
         private ActivityCheckpointData activityCheckpoint;
         private List<ActivityEventData> activityEvents;
+        private CraftRunData craftRun;
         private ContextualSuggestionData contextualSuggestions;
         private BrowsePreferencesData browsePreferences;
         private BrowseSessionData browseSession;
@@ -2487,6 +2312,45 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private List<LoadoutData> loadouts;
         private List<RecentData> recents;
         private ProtectionData protection;
+    }
+
+    private record CraftRunData(
+            int revision,
+            String selectedEntryId,
+            List<CraftRunEntryData> entries
+    ) {
+    }
+
+    private record CraftRunEntryData(
+            String entryId,
+            long sequence,
+            String sourceKey,
+            String recipeId,
+            String label,
+            IdentityData outputIdentity,
+            String outputLabel,
+            int outputCountPerBatch,
+            int remainingOutputCount,
+            List<CraftRunIngredientData> inputs,
+            List<String> diagnostics
+    ) {
+    }
+
+    private record CraftRunIngredientData(
+            String groupId,
+            String label,
+            int requiredCountPerBatch,
+            Boolean consumed,
+            IdentityData selectedAlternativeIdentity,
+            List<CraftRunAlternativeData> alternatives,
+            List<String> diagnostics
+    ) {
+    }
+
+    private record CraftRunAlternativeData(
+            IdentityData identity,
+            String label
+    ) {
     }
 
     private record WorkflowCheckpointData(
@@ -2507,9 +2371,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<PlayerDesiredCountData> playerDesiredCounts,
             List<KitDesiredCountData> kitDesiredCounts,
             List<PlayerWantedCountData> playerWantedCounts,
-            List<KitWantedCountData> kitWantedCounts,
-            List<GoalPlanData> goalPlans,
-            List<GoalRecipeDefaultData> goalRecipeDefaults
+            List<KitWantedCountData> kitWantedCounts
     ) {
     }
 
@@ -2523,69 +2385,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
     }
 
     private record KitWantedCountData(String kitId, IdentityData identity, int count) {
-    }
-
-    private record GoalRecipeDefaultData(String outputItemId, String recipeId) {
-    }
-
-    private record GoalPlanData(
-            String goalId,
-            String label,
-            int targetCount,
-            GoalDescriptorData descriptor,
-            GoalChoiceResolutionData choiceResolution
-    ) {
-    }
-
-    private record GoalDescriptorData(
-            String goalId,
-            String label,
-            List<GoalStackData> targetOutputs,
-            int targetCount,
-            String focusedRecipeId,
-            String focusedCategoryId,
-            List<GoalRecipeData> recipes
-    ) {
-    }
-
-    private record GoalRecipeData(
-            String recipeId,
-            String categoryId,
-            boolean supportsTree,
-            List<GoalStackData> outputs,
-            List<GoalIngredientData> inputs,
-            List<GoalIngredientData> catalysts,
-            List<String> diagnostics
-    ) {
-    }
-
-    private record GoalIngredientData(
-            String ingredientId,
-            String label,
-            int quantity,
-            double chance,
-            String serializedIngredient,
-            List<GoalStackData> alternatives,
-            boolean choiceRequired,
-            boolean consumed,
-            String tagOrListLabel,
-            List<String> diagnostics
-    ) {
-    }
-
-    private record GoalStackData(IdentityData identity, String displayName, int count) {
-    }
-
-    private record GoalChoiceResolutionData(
-            List<GoalChoiceData> choices,
-            List<GoalRecipeChoiceData> recipeChoices
-    ) {
-    }
-
-    private record GoalChoiceData(String choiceGroupId, IdentityData identity) {
-    }
-
-    private record GoalRecipeChoiceData(String choiceGroupId, String recipeId) {
     }
 
     private record KitDefinitionData(
@@ -2774,10 +2573,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private String kitId;
         private int pageIndex;
         private int count;
-        private String outputItemId;
-        private String recipeId;
-        private String goalId;
-        private GoalPlanData goalPlan;
         private int targetIndex;
         private KitDefinitionData kit;
         private List<IdentityData> putAwayIdentities;

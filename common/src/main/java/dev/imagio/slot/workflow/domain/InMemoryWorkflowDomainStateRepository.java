@@ -12,6 +12,7 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
     private WorkflowProjection.Snapshot workflowProjection;
     private ActivityProjection.Snapshot activityProjection;
     private ContextualSuggestionState contextualSuggestionState;
+    private CraftRunState craftRunState;
     private long nextGlobalSequence;
 
     public InMemoryWorkflowDomainStateRepository() {
@@ -36,6 +37,7 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
         this.workflowProjection = WorkflowProjection.Snapshot.empty();
         this.activityProjection = ActivityProjection.Snapshot.empty();
         this.contextualSuggestionState = ContextualSuggestionState.empty();
+        this.craftRunState = CraftRunState.empty();
         this.nextGlobalSequence = 1L;
     }
 
@@ -62,6 +64,11 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
     @Override
     public ContextualSuggestionState contextualSuggestionState() {
         return contextualSuggestionState;
+    }
+
+    @Override
+    public CraftRunState craftRunState() {
+        return craftRunState;
     }
 
     @Override
@@ -104,6 +111,11 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
     }
 
     @Override
+    public void replaceCraftRunState(CraftRunState state) {
+        craftRunState = state == null ? CraftRunState.empty() : state;
+    }
+
+    @Override
     public InventoryBrowsePreferencesStore browsePreferences() {
         return browsePreferences;
     }
@@ -123,6 +135,7 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
                 activityEvents.snapshot(),
                 browsePreferences.current(),
                 browseSessionState.current(),
+                craftRunState,
                 contextualSuggestionState
         );
     }
@@ -139,6 +152,7 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
                 workflowProjection.recentDismissedUpToByIdentity()
         );
         contextualSuggestionState = resolved.contextualSuggestions();
+        craftRunState = resolved.craftRun();
         browsePreferences.replaceWith(resolved.browsePreferences());
         browseSessionState.replaceWith(resolved.browseSessionState());
     }

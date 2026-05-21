@@ -272,9 +272,12 @@ public record RecipeIngredientSidebarSpec(
                     ingredient.requiredCount(),
                     false,
                     0,
+                    false,
+                    false,
                     "",
                     -1,
-                    0
+                    0,
+                    SlotWorkspaceViewModel.PutAwayState.NONE
             );
         }
 
@@ -305,9 +308,12 @@ public record RecipeIngredientSidebarSpec(
                     Math.max(1, requiredCount),
                     false,
                     existing.wantedCount(),
+                    existing.junk(),
+                    existing.acceptedWorkflowInput(),
                     existing.largestCarriedSourceId(),
                     existing.largestCarriedSlotIndex(),
-                    existing.largestCarriedSlotCount()
+                    existing.largestCarriedSlotCount(),
+                    existing.putAwayState()
             );
         }
 

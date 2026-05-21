@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-20. Operational handoff. Read after
+Last updated: 2026-05-21. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -23,19 +23,11 @@ cross-surface actions.
 Phase 2 has the production wall shell on both loaders: shared 24px item-card
 chrome, two-row Recents, vanilla-shaped Belt, active chest controls, workflow
 controls, accepted-input menus, compact nearby headers, remembered search/scroll,
-configurable sidebar margins, visible activation-scoped Put Away guidance,
-Useful Now scoring hidden, live contextual observation, expensive contextual
-scoring, and storage-ghost expansion disabled for now, and
-Forge key parity for inventory, workflow-page cycle, gather, unbound put-away,
-main-inventory move, wayfinding, Esc, wanted-count controls, and unbound hovered
-trash. Junk/trash pressure relief marks low-priority identities for 30 minutes,
-shows a card indicator, deletes carried matches with undo, and trashes marked
-junk stacks before/after pickups when effective carried storage is over half
-full, excluding known specialist Sacks n' Such containers from general pressure,
-so a full inventory still gets a chance to make room before vanilla rejects
-pickup. Carried storage pressure reads are cached behind common
-carried-inventory revision signals emitted by both loaders and common mutation
-routes. Card chrome is computed in common so counts, storage pips, route
+configurable sidebar margins, visible activation-scoped Put Away guidance, Forge
+key parity, and junk/trash pressure relief. Useful Now scoring is hidden while
+live contextual observation remains available; expensive contextual scoring and
+storage-ghost expansion are disabled for now. Carried storage pressure and card
+chrome are computed through common signals so counts, storage pips, route
 notches, right strips, and status rings follow one state grammar on Forge and
 NeoForge.
 Modern drag/drop, richer LDLib2 card/tab affordances, and richer chest panels
@@ -52,13 +44,23 @@ rich semantic text intact instead of reducing prompts to item ids or
 deterministic candidates.
 
 EMI recipe context now uses the normal SLOT sidebar as a transient recipe
-ingredient filter on both loaders. When EMI's recipe screen is open, SLOT
-renders into that screen while syncing through EMI's underlying handled menu;
-the wall shows only visible recipe ingredients, with carried/storage context
-and existing missing/craft target chrome. ADR
+ingredient filter plus one persisted current craft run on both loaders. When
+EMI's recipe screen is open, SLOT renders into that screen while syncing through EMI's
+underlying handled menu; the wall shows visible recipe ingredients, exposes
+per-visible-recipe `Add Recipe` actions, and renders tracked recipes as normal
+wall-list sections with output-icon headers and per-recipe stage/adjust/done
+controls.
+The fixed `Fetch` suggestion lane is hidden while those recipe sections are active.
+Count changes use recipe-output batches and raise same-list producer recipes to
+at least the output units required by other tracked recipes.
+Recipe inputs project as transient wanted-count pressure, so gather,
+wayfinding, and protection share the same target math as the highlighted card
+chrome, while the tracked recipe list itself survives logout/rejoin and server
+restart through workflow persistence. ADR
 [0007](decisions/0007-emi-recipe-sidebar.md) records the pivot away from the
 near-term recipe-goal surface; the old plan lives in
-[plans/retired/emi-goal-projections.md](plans/retired/emi-goal-projections.md).
+[plans/retired/emi-goal-projections.md](plans/retired/emi-goal-projections.md),
+and the legacy recipe-goal code/UI/RPC/persistence model has been removed.
 
 ### Production wall shape (post-list-view)
 
@@ -101,16 +103,14 @@ Tracked from [plans/current.md § Queue](plans/current.md). If you start this,
 write a fresh plan in `docs/plans/`; don't reopen the closed list-view plan.
 
 **Discovered LDLib2 bug** (worked around, **user filing upstream**):
-`ModularUI.calculateStyleAndLayout` checks width twice; keep root at
-`widthPercent(100)` so scrollers get bounded space.
+`ModularUI.calculateStyleAndLayout` checks width twice; keep root at `widthPercent(100)`.
 
 ## Project structure
 
-Top-level docs: see [../README.md](../README.md) for the full map. The
-near-term queue lives in [plans/current.md](plans/current.md); product direction
-in [product/direction.md](product/direction.md); current architecture in
-[architecture/overview.md](architecture/overview.md); shipped plan references in
-[plans/done/](plans/done/); superseded directions in [plans/retired/](plans/retired/).
+Top-level docs: see [../README.md](../README.md) for the full map,
+[plans/current.md](plans/current.md) for the queue, [product/direction.md](product/direction.md)
+for product direction, [architecture/overview.md](architecture/overview.md) for architecture, and
+[plans/done/](plans/done/) / [plans/retired/](plans/retired/) for shipped or superseded plans.
 
 Common module:
 
@@ -129,7 +129,7 @@ Common module:
 - `classification`: `FacetIndex`, layer bootstrap/load reports, runtime
   export formatting, dynamic home-cohort policy
 - `workflow/domain`: visual homes, claimed chests, chest affinity, chest
-  cluster map, workflows, recents, persistence
+  cluster map, workflows, recents, craft runs, persistence
 - `atlas`: pure helpers — `AtlasSearchIndex`, `AtlasRelevance` +
   contributors, `SectionOrdinal` (per-section ordinal lookups for
   drag-drop). Camera / layout / nudge / band / packer code retired

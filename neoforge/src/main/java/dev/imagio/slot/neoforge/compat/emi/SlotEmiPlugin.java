@@ -1,25 +1,17 @@
 package dev.imagio.slot.neoforge.compat.emi;
 
 import dev.emi.emi.api.EmiEntrypoint;
-import dev.emi.emi.api.EmiDragDropHandler;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
-import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.widget.Bounds;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemIdentity;
-import dev.imagio.slot.inventory.goal.GoalDescriptor;
-import dev.imagio.slot.inventory.goal.GoalProjectionEntry;
-import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.neoforge.network.SlotGoalPlanPayload;
-import dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController;
+import dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings;
 import dev.imagio.slot.neoforge.client.screen.SlotContainerSidebar;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import dev.imagio.slot.neoforge.network.SlotCraftRunRecipePayload;
+import dev.imagio.slot.ui.workspace.RecipeViewerIntegration;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -54,99 +46,21 @@ import net.neoforged.neoforge.network.PacketDistributor;
  */
 @EmiEntrypoint
 public final class SlotEmiPlugin implements EmiPlugin {
-    private static boolean recipeGoalButtonEventsRegistered;
+    private static boolean recipeScreenEventsRegistered;
 
     @Override
     public void register(EmiRegistry registry) {
         SlotContainerSidebar.registerSidebarHostResolver(SlotEmiRecipeSidebarAdapter::sidebarHost);
-        registerRecipeGoalButtonEvents();
-        GoalWorkspaceIntegration.registerDelegate(new GoalWorkspaceIntegration.Delegate() {
-            @Override
-            public boolean openRecipe(GoalDescriptor goal) {
-                return SlotEmiGoalAdapter.openRecipe(goal);
-            }
-
-            @Override
-            public boolean openRecipe(GoalDescriptor goal, GoalProjectionEntry entry) {
-                return SlotEmiGoalAdapter.openRecipe(goal, entry);
-            }
-
+        registerRecipeScreenEvents();
+        RecipeViewerIntegration.registerDelegate(new RecipeViewerIntegration.Delegate() {
             @Override
             public boolean openRecipe(ItemIdentity identity) {
-                return SlotEmiGoalAdapter.openRecipe(identity);
+                return SlotEmiRecipeViewerAdapter.openRecipe(identity);
             }
 
             @Override
             public boolean openUses(ItemIdentity identity) {
-                return SlotEmiGoalAdapter.openUses(identity);
-            }
-
-            @Override
-            public boolean openChoiceEditor(GoalDescriptor goal, String choiceGroupId) {
-                return SlotEmiGoalAdapter.openChoiceEditor(goal, choiceGroupId);
-            }
-
-            @Override
-            public boolean openChoiceEditor(GoalDescriptor goal, GoalProjectionEntry entry) {
-                return SlotEmiGoalAdapter.openChoiceEditor(goal, entry);
-            }
-
-            @Override
-            public boolean openWorkspace() {
-                SlotWorkspaceMountController.openSlotWorkspace();
-                return true;
-            }
-
-            @Override
-            public boolean persistGoal(GoalWorkspaceClientState.GoalTab goal) {
-                PacketDistributor.sendToServer(SlotGoalPlanPayload.save(GoalWorkspaceClientState.planState(goal)));
-                return true;
-            }
-
-            @Override
-            public boolean removePersistedGoal(String goalId) {
-                PacketDistributor.sendToServer(SlotGoalPlanPayload.remove(goalId));
-                return true;
-            }
-
-            @Override
-            public GoalDescriptor enrichVisibleAlternatives(GoalDescriptor goal, SlotWorkspaceViewModel source) {
-                return SlotEmiGoalAdapter.enrichVisibleAlternatives(goal, source);
-            }
-        });
-        registry.addRecipeDecorator((recipe, widgets) ->
-                SlotEmiGoalAdapter.decorateRecipe(recipe, widgets, SlotWorkspaceMountController::openSlotWorkspace));
-        registry.addGenericDragDropHandler(new EmiDragDropHandler<>() {
-            @Override
-            public boolean dropStack(Screen screen, EmiIngredient stack, int x, int y) {
-                Bounds bounds = goalDropBounds(screen);
-                if (!bounds.contains(x, y)) {
-                    return false;
-                }
-                Runnable openWorkspace = shouldOpenWorkspaceAfterDrop(screen)
-                        ? SlotWorkspaceMountController::openSlotWorkspace
-                        : null;
-                SlotEmiGoalAdapter.createGoalFromIngredient(stack, openWorkspace);
-                return true;
-            }
-
-            @Override
-            public void render(Screen screen, EmiIngredient dragged, GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-                Bounds bounds = goalDropBounds(screen);
-                boolean hovered = bounds.contains(mouseX, mouseY);
-                graphics.fill(
-                        bounds.x(),
-                        bounds.y(),
-                        bounds.x() + bounds.width(),
-                        bounds.y() + bounds.height(),
-                        hovered ? 0xAA2FB56D : 0x662FB56D);
-                graphics.drawString(
-                        Minecraft.getInstance().font,
-                        Component.literal("SLOT goal"),
-                        bounds.x() + 6,
-                        bounds.y() + 7,
-                        0xFFFFFFFF,
-                        true);
+                return SlotEmiRecipeViewerAdapter.openUses(identity);
             }
         });
         registry.addGenericExclusionArea((screen, consumer) -> {
@@ -159,50 +73,37 @@ public final class SlotEmiPlugin implements EmiPlugin {
                 consumer.accept(new Bounds(0, 0, screen.width, screen.height));
             }
         });
-        SlotCommon.LOGGER.info("[SLOT][emi] registered SLOT exclusion area provider and goal adapter");
+        SlotCommon.LOGGER.info("[SLOT][emi] registered SLOT exclusion area provider and craft-run recipe capture");
     }
 
-    private static void registerRecipeGoalButtonEvents() {
-        if (recipeGoalButtonEventsRegistered) {
+    private static void registerRecipeScreenEvents() {
+        if (recipeScreenEventsRegistered) {
             return;
         }
         NeoForge.EVENT_BUS.addListener(SlotEmiPlugin::onRecipeScreenRender);
-        NeoForge.EVENT_BUS.addListener(SlotEmiPlugin::onRecipeScreenMousePressed);
-        recipeGoalButtonEventsRegistered = true;
+        NeoForge.EVENT_BUS.addListener(SlotEmiPlugin::onRecipeScreenKeyPressed);
+        recipeScreenEventsRegistered = true;
     }
 
     private static void onRecipeScreenRender(ScreenEvent.Render.Post event) {
         SlotContainerSidebar.setRecipeSidebarSpec(
                 event.getScreen(),
                 SlotEmiRecipeSidebarAdapter.recipeSidebarSpec(event.getScreen()));
-        SlotEmiGoalAdapter.renderRecipeGoalButtons(
+        SlotContainerSidebar.setCraftRunRecipeCaptures(
                 event.getScreen(),
-                event.getGuiGraphics(),
-                event.getMouseX(),
-                event.getMouseY());
+                SlotEmiRecipeSidebarAdapter.craftRunRecipeCaptures(event.getScreen()));
     }
 
-    private static void onRecipeScreenMousePressed(ScreenEvent.MouseButtonPressed.Pre event) {
-        if (SlotEmiGoalAdapter.handleRecipeGoalButtonClick(
-                event.getScreen(),
-                event.getMouseX(),
-                event.getMouseY(),
-                event.getButton(),
-                SlotWorkspaceMountController::openSlotWorkspace)) {
-            event.setCanceled(true);
+    private static void onRecipeScreenKeyPressed(ScreenEvent.KeyPressed.Pre event) {
+        if (!SlotAtlasKeyMappings.matchesAddVisibleEmiRecipe(event.getKeyCode(), event.getScanCode())) {
+            return;
         }
-    }
-
-    private static Bounds goalDropBounds(Screen screen) {
-        int sidebarWidth = sidebarWidthFor(screen);
-        if (sidebarWidth > 0) {
-            return new Bounds(0, 0, sidebarWidth, screen.height);
+        CraftRunRecipeCapture capture = SlotEmiRecipeSidebarAdapter.hoveredCraftRunRecipeCapture(event.getScreen());
+        if (capture == null || !capture.active()) {
+            return;
         }
-        return new Bounds(8, 8, 96, 22);
-    }
-
-    private static boolean shouldOpenWorkspaceAfterDrop(Screen screen) {
-        return sidebarWidthFor(screen) <= 0 && !isSlotStandaloneScreen(screen);
+        PacketDistributor.sendToServer(SlotCraftRunRecipePayload.add(capture));
+        event.setCanceled(true);
     }
 
     private static int sidebarWidthFor(Screen screen) {

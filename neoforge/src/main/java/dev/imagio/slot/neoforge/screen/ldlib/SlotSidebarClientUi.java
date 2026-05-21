@@ -7,6 +7,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.mixin.ScreenInvoker;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.world.entity.player.Player;
@@ -15,6 +16,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import java.util.WeakHashMap;
 
@@ -147,6 +149,13 @@ public final class SlotSidebarClientUi {
         ActiveMount mount = activeMount;
         if (mount != null) {
             mount.controller.setRecipeSidebarSpec(spec);
+        }
+    }
+
+    public static void setCraftRunRecipeCaptures(List<CraftRunRecipeCapture> captures) {
+        ActiveMount mount = activeMount;
+        if (mount != null) {
+            mount.controller.setCraftRunRecipeCaptures(captures);
         }
     }
 

@@ -180,6 +180,23 @@ class WorkflowTabTargetsTest {
     }
 
     @Test
+    void craftRunInputsUseWantedTargetsInsteadOfDesiredTargets() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity coal = ItemIdentity.of("minecraft:coal");
+        runtime.craftRunWorkflow().add(capture("slot:recipe/torch", "minecraft:torch", coal, 3));
+
+        WorkflowTabTargets.Resolution targets = WorkflowTabTargets.resolve(
+                InventoryAuthoritySnapshot.empty(),
+                runtime.snapshot());
+
+        assertEquals(0, targets.desiredCount(coal));
+        assertFalse(targets.desiredFromWorkflowTab(coal));
+        assertEquals(3, targets.wantedCount(coal));
+        assertTrue(targets.workflowRelevant(coal));
+        assertTrue(targets.missingWorkflowIdentities().contains(coal));
+    }
+
+    @Test
     void variantsCannotHaveVariants() {
         WorkflowDomainRuntime runtime = runtime();
         KitDefinition parent = runtime.kitWorkflow().create("Smithing");
@@ -192,5 +209,29 @@ class WorkflowTabTargetsTest {
 
     private static WorkflowDomainRuntime runtime() {
         return new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+    }
+
+    private static CraftRunRecipeCapture capture(
+            String recipeId,
+            String outputItemId,
+            ItemIdentity input,
+            int remainingOutputCount
+    ) {
+        ItemIdentity output = ItemIdentity.of(outputItemId);
+        return new CraftRunRecipeCapture(
+                "emi:" + recipeId,
+                recipeId,
+                outputItemId,
+                output,
+                outputItemId,
+                1,
+                remainingOutputCount,
+                List.of(new CraftRunIngredientGroup(
+                        recipeId + "/input",
+                        input.itemId(),
+                        1,
+                        List.of(new CraftRunAlternative(input, input.itemId())),
+                        List.of())),
+                List.of());
     }
 }

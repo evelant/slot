@@ -21,6 +21,9 @@ import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.workflow.domain.CraftRunAlternative;
+import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import dev.imagio.slot.workflow.domain.KitDefinition;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
@@ -710,6 +713,36 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
     }
 
     @Test
+    void craftRunInputCardsRenderWantedCountsNotTabDesiredCounts() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity coal = ItemIdentity.of("minecraft:coal");
+        runtime.craftRunWorkflow().add(craftRunCapture("slot:recipe/torch", "minecraft:torch", coal, 3));
+
+        SlotWorkspaceViewModel.setGhostStackResolver(itemId -> new ItemStack(itemId, 1, 64));
+        try {
+            SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                    InventoryAuthoritySnapshot.empty(),
+                    runtime.snapshot(),
+                    "ready",
+                    "",
+                    0,
+                    0,
+                    1L);
+
+            SlotWorkspaceViewModel.AtlasItem coalCard = viewModel.atlasItems().stream()
+                    .filter(item -> "minecraft:coal".equals(item.identity().itemId()))
+                    .findFirst()
+                    .orElseThrow();
+
+            assertEquals(0, coalCard.desiredCount());
+            assertFalse(coalCard.desiredCountFromKit());
+            assertEquals(3, coalCard.wantedCount());
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
     void activeWorkflowTabKeepsUnrelatedNearbyGhostsForXrayReveal() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         KitDefinition mining = runtime.kitWorkflow().create("Mining");
@@ -765,6 +798,30 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
 
     private static InventoryAuthoritySnapshot carried(InventoryStackSnapshot... stacks) {
         return carriedBySource(Map.of(BuiltinInventoryIds.PLAYER_MAIN, List.of(stacks)));
+    }
+
+    private static CraftRunRecipeCapture craftRunCapture(
+            String recipeId,
+            String outputItemId,
+            ItemIdentity input,
+            int remainingOutputCount
+    ) {
+        ItemIdentity output = ItemIdentity.of(outputItemId);
+        return new CraftRunRecipeCapture(
+                "emi:" + recipeId,
+                recipeId,
+                outputItemId,
+                output,
+                outputItemId,
+                1,
+                remainingOutputCount,
+                List.of(new CraftRunIngredientGroup(
+                        recipeId + "/input",
+                        input.itemId(),
+                        1,
+                        List.of(new CraftRunAlternative(input, input.itemId())),
+                        List.of())),
+                List.of());
     }
 
     private static InventoryAuthoritySnapshot carriedBySource(

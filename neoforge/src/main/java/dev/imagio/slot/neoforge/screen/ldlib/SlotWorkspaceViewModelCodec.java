@@ -1,12 +1,6 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
-import dev.imagio.slot.inventory.goal.GoalChoiceResolution;
-import dev.imagio.slot.inventory.goal.GoalDescriptor;
-import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
-import dev.imagio.slot.inventory.goal.GoalPlanState;
-import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
-import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
@@ -15,6 +9,11 @@ import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
+import dev.imagio.slot.workflow.domain.CraftRunAlternative;
+import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeEntry;
+import dev.imagio.slot.workflow.domain.CraftRunState;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -124,8 +123,7 @@ public final class SlotWorkspaceViewModelCodec {
         tag.put("recentIdentities", recentTags);
 
         tag.put("activeChestPanel", encodeActiveChestPanel(viewModel.activeChestPanel()));
-        tag.put("goalRecipeDefaults", encodeGoalRecipeDefaults(viewModel.goalRecipeDefaults().recipeChoicesByOutputItemId()));
-        tag.put("goalPlans", encodeGoalPlans(viewModel.goalPlans()));
+        tag.put("craftRun", encodeCraftRunState(viewModel.craftRun()));
         return tag;
     }
 
@@ -257,9 +255,7 @@ public final class SlotWorkspaceViewModelCodec {
 
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel =
                 decodeActiveChestPanel(compoundTag.getCompound("activeChestPanel"));
-        dev.imagio.slot.inventory.goal.GoalRecipeDefaults goalRecipeDefaults =
-                new dev.imagio.slot.inventory.goal.GoalRecipeDefaults(decodeGoalRecipeDefaults(compoundTag));
-        List<GoalPlanState> goalPlans = decodeGoalPlans(compoundTag);
+        CraftRunState craftRun = decodeCraftRunState(compoundTag.getCompound("craftRun"));
 
         return new SlotWorkspaceViewModel(
                 compoundTag.getLong("revision"),
@@ -286,8 +282,7 @@ public final class SlotWorkspaceViewModelCodec {
                 depositableIdentities,
                 recentIdentities,
                 activeChestPanel,
-                goalRecipeDefaults,
-                goalPlans,
+                craftRun,
                 contextualSuggestionLanes
         );
     }
@@ -404,329 +399,182 @@ public final class SlotWorkspaceViewModelCodec {
         return result;
     }
 
-    private static ListTag encodeGoalRecipeDefaults(Map<String, String> defaults) {
-        ListTag tags = new ListTag();
-        if (defaults == null || defaults.isEmpty()) {
-            return tags;
-        }
-        defaults.forEach((outputItemId, recipeId) -> {
-            if (outputItemId == null || outputItemId.isBlank() || recipeId == null || recipeId.isBlank()) {
-                return;
-            }
-            CompoundTag tag = new CompoundTag();
-            tag.putString("outputItemId", outputItemId);
-            tag.putString("recipeId", recipeId);
-            tags.add(tag);
-        });
-        return tags;
-    }
-
-    private static Map<String, String> decodeGoalRecipeDefaults(CompoundTag compound) {
-        LinkedHashMap<String, String> defaults = new LinkedHashMap<>();
-        if (compound == null) {
-            return defaults;
-        }
-        ListTag tags = compound.getList("goalRecipeDefaults", Tag.TAG_COMPOUND);
-        for (int index = 0; index < tags.size(); index++) {
-            CompoundTag tag = tags.getCompound(index);
-            String outputItemId = tag.getString("outputItemId");
-            String recipeId = tag.getString("recipeId");
-            if (!outputItemId.isBlank() && !recipeId.isBlank()) {
-                defaults.put(outputItemId, recipeId);
-            }
-        }
-        return defaults;
-    }
-
-    private static ListTag encodeGoalPlans(List<GoalPlanState> goals) {
-        ListTag tags = new ListTag();
-        if (goals == null || goals.isEmpty()) {
-            return tags;
-        }
-        for (GoalPlanState goal : goals) {
-            CompoundTag tag = encodeGoalPlan(goal);
-            if (!tag.isEmpty()) {
-                tags.add(tag);
-            }
-        }
-        return tags;
-    }
-
-    private static List<GoalPlanState> decodeGoalPlans(CompoundTag compound) {
-        ArrayList<GoalPlanState> goals = new ArrayList<>();
-        if (compound == null) {
-            return goals;
-        }
-        ListTag tags = compound.getList("goalPlans", Tag.TAG_COMPOUND);
-        for (int index = 0; index < tags.size(); index++) {
-            GoalPlanState goal = decodeGoalPlan(tags.getCompound(index));
-            if (goal != null) {
-                goals.add(goal);
-            }
-        }
-        return List.copyOf(goals);
-    }
-
-    public static CompoundTag encodeGoalPlan(GoalPlanState goal) {
+    public static CompoundTag encodeCraftRunRecipeCapture(CraftRunRecipeCapture capture) {
         CompoundTag tag = new CompoundTag();
-        if (goal == null || goal.descriptor() == null) {
-            return tag;
+        CraftRunRecipeCapture resolved = capture == null ? CraftRunRecipeCapture.empty() : capture;
+        tag.putString("sourceKey", resolved.sourceKey());
+        tag.putString("recipeId", resolved.recipeId());
+        tag.putString("label", resolved.label());
+        if (resolved.outputIdentity() != null) {
+            tag.put("outputIdentity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(resolved.outputIdentity())));
         }
-        tag.putString("goalId", goal.goalId());
-        tag.putString("label", goal.label());
-        tag.putInt("targetCount", goal.targetCount());
-        tag.put("descriptor", encodeGoalDescriptor(goal.descriptor()));
-        tag.put("choiceResolution", encodeGoalChoiceResolution(goal.choiceResolution()));
+        tag.putString("outputLabel", resolved.outputLabel());
+        tag.putInt("outputCountPerBatch", resolved.outputCountPerBatch());
+        tag.putInt("remainingOutputCount", resolved.remainingOutputCount());
+        tag.put("inputs", encodeCraftRunIngredientGroups(resolved.inputs()));
+        tag.put("diagnostics", encodeStrings(resolved.diagnostics()));
         return tag;
     }
 
-    public static GoalPlanState decodeGoalPlan(CompoundTag tag) {
-        if (tag == null || !tag.contains("descriptor", Tag.TAG_COMPOUND)) {
-            return null;
-        }
-        GoalDescriptor descriptor = decodeGoalDescriptor(tag.getCompound("descriptor"));
-        if (descriptor == null) {
-            return null;
-        }
-        return new GoalPlanState(
-                tag.getString("goalId"),
-                tag.getString("label"),
-                tag.getInt("targetCount"),
-                descriptor,
-                decodeGoalChoiceResolution(tag.getCompound("choiceResolution"))
-        );
-    }
-
-    private static CompoundTag encodeGoalDescriptor(GoalDescriptor descriptor) {
-        CompoundTag tag = new CompoundTag();
-        if (descriptor == null) {
-            return tag;
-        }
-        tag.putString("goalId", descriptor.goalId());
-        tag.putString("label", descriptor.label());
-        tag.put("targetOutputs", encodeGoalStacks(descriptor.targetOutputs()));
-        tag.putInt("targetCount", descriptor.targetCount());
-        tag.putString("focusedRecipeId", descriptor.focusedRecipeId());
-        tag.putString("focusedCategoryId", descriptor.focusedCategoryId());
-        ListTag recipes = new ListTag();
-        for (GoalRecipeDescriptor recipe : descriptor.recipes()) {
-            recipes.add(encodeGoalRecipe(recipe));
-        }
-        tag.put("recipes", recipes);
-        return tag;
-    }
-
-    private static GoalDescriptor decodeGoalDescriptor(CompoundTag tag) {
+    public static CraftRunRecipeCapture decodeCraftRunRecipeCapture(CompoundTag tag) {
         if (tag == null) {
-            return null;
+            return CraftRunRecipeCapture.empty();
         }
-        ArrayList<GoalRecipeDescriptor> recipes = new ArrayList<>();
-        ListTag recipeTags = tag.getList("recipes", Tag.TAG_COMPOUND);
-        for (int index = 0; index < recipeTags.size(); index++) {
-            GoalRecipeDescriptor recipe = decodeGoalRecipe(recipeTags.getCompound(index));
-            if (recipe != null) {
-                recipes.add(recipe);
-            }
-        }
-        return new GoalDescriptor(
-                tag.getString("goalId"),
-                tag.getString("label"),
-                decodeGoalStacks(tag.getList("targetOutputs", Tag.TAG_COMPOUND)),
-                tag.getInt("targetCount"),
-                tag.getString("focusedRecipeId"),
-                tag.getString("focusedCategoryId"),
-                recipes
-        );
-    }
-
-    private static CompoundTag encodeGoalRecipe(GoalRecipeDescriptor recipe) {
-        CompoundTag tag = new CompoundTag();
-        if (recipe == null) {
-            return tag;
-        }
-        tag.putString("recipeId", recipe.recipeId());
-        tag.putString("categoryId", recipe.categoryId());
-        tag.putBoolean("supportsTree", recipe.supportsTree());
-        tag.put("outputs", encodeGoalStacks(recipe.outputs()));
-        tag.put("inputs", encodeGoalIngredients(recipe.inputs()));
-        tag.put("catalysts", encodeGoalIngredients(recipe.catalysts()));
-        tag.put("diagnostics", encodeStrings(recipe.diagnostics()));
-        return tag;
-    }
-
-    private static GoalRecipeDescriptor decodeGoalRecipe(CompoundTag tag) {
-        if (tag == null || tag.getString("recipeId").isBlank()) {
-            return null;
-        }
-        return new GoalRecipeDescriptor(
+        ItemIdentity outputIdentity = tag.contains("outputIdentity", Tag.TAG_COMPOUND)
+                ? decodeIdentity(tag.getCompound("outputIdentity")).toIdentity()
+                : null;
+        return new CraftRunRecipeCapture(
+                tag.getString("sourceKey"),
                 tag.getString("recipeId"),
-                tag.getString("categoryId"),
-                tag.getBoolean("supportsTree"),
-                decodeGoalStacks(tag.getList("outputs", Tag.TAG_COMPOUND)),
-                decodeGoalIngredients(tag.getList("inputs", Tag.TAG_COMPOUND)),
-                decodeGoalIngredients(tag.getList("catalysts", Tag.TAG_COMPOUND)),
-                decodeStrings(tag.getList("diagnostics", Tag.TAG_STRING))
-        );
-    }
-
-    private static ListTag encodeGoalIngredients(List<GoalIngredientDescriptor> ingredients) {
-        ListTag tags = new ListTag();
-        if (ingredients == null || ingredients.isEmpty()) {
-            return tags;
-        }
-        for (GoalIngredientDescriptor ingredient : ingredients) {
-            tags.add(encodeGoalIngredient(ingredient));
-        }
-        return tags;
-    }
-
-    private static List<GoalIngredientDescriptor> decodeGoalIngredients(ListTag tags) {
-        ArrayList<GoalIngredientDescriptor> ingredients = new ArrayList<>();
-        if (tags == null) {
-            return ingredients;
-        }
-        for (int index = 0; index < tags.size(); index++) {
-            GoalIngredientDescriptor ingredient = decodeGoalIngredient(tags.getCompound(index));
-            if (ingredient != null) {
-                ingredients.add(ingredient);
-            }
-        }
-        return List.copyOf(ingredients);
-    }
-
-    private static CompoundTag encodeGoalIngredient(GoalIngredientDescriptor ingredient) {
-        CompoundTag tag = new CompoundTag();
-        if (ingredient == null) {
-            return tag;
-        }
-        tag.putString("ingredientId", ingredient.ingredientId());
-        tag.putString("label", ingredient.label());
-        tag.putInt("quantity", ingredient.quantity());
-        tag.putDouble("chance", ingredient.chance());
-        tag.putString("serializedIngredient", ingredient.serializedIngredient());
-        tag.put("alternatives", encodeGoalStacks(ingredient.alternatives()));
-        tag.putBoolean("choiceRequired", ingredient.choiceRequired());
-        tag.putBoolean("consumed", ingredient.consumed());
-        tag.putString("tagOrListLabel", ingredient.tagOrListLabel());
-        tag.put("diagnostics", encodeStrings(ingredient.diagnostics()));
-        return tag;
-    }
-
-    private static GoalIngredientDescriptor decodeGoalIngredient(CompoundTag tag) {
-        if (tag == null || tag.getString("ingredientId").isBlank()) {
-            return null;
-        }
-        return new GoalIngredientDescriptor(
-                tag.getString("ingredientId"),
                 tag.getString("label"),
-                tag.getInt("quantity"),
-                tag.getDouble("chance"),
-                tag.getString("serializedIngredient"),
-                decodeGoalStacks(tag.getList("alternatives", Tag.TAG_COMPOUND)),
-                tag.getBoolean("choiceRequired"),
-                tag.getBoolean("consumed"),
-                tag.getString("tagOrListLabel"),
-                decodeStrings(tag.getList("diagnostics", Tag.TAG_STRING))
-        );
+                outputIdentity,
+                tag.getString("outputLabel"),
+                tag.getInt("outputCountPerBatch"),
+                tag.getInt("remainingOutputCount"),
+                decodeCraftRunIngredientGroups(tag.getList("inputs", Tag.TAG_COMPOUND)),
+                decodeStrings(tag.getList("diagnostics", Tag.TAG_STRING)));
     }
 
-    private static ListTag encodeGoalStacks(List<GoalStackDescriptor> stacks) {
+    public static CompoundTag encodeCraftRunState(CraftRunState state) {
+        CompoundTag tag = new CompoundTag();
+        CraftRunState resolved = state == null ? CraftRunState.empty() : state;
+        tag.putInt("revision", resolved.revision());
+        tag.putString("selectedEntryId", resolved.selectedEntryId());
+        ListTag entries = new ListTag();
+        for (CraftRunRecipeEntry entry : resolved.entries()) {
+            entries.add(encodeCraftRunRecipeEntry(entry));
+        }
+        tag.put("entries", entries);
+        return tag;
+    }
+
+    public static CraftRunState decodeCraftRunState(CompoundTag tag) {
+        if (tag == null) {
+            return CraftRunState.empty();
+        }
+        ArrayList<CraftRunRecipeEntry> entries = new ArrayList<>();
+        ListTag entryTags = tag.getList("entries", Tag.TAG_COMPOUND);
+        for (int index = 0; index < entryTags.size(); index++) {
+            entries.add(decodeCraftRunRecipeEntry(entryTags.getCompound(index)));
+        }
+        return new CraftRunState(tag.getInt("revision"), tag.getString("selectedEntryId"), entries);
+    }
+
+    private static CompoundTag encodeCraftRunRecipeEntry(CraftRunRecipeEntry entry) {
+        CompoundTag tag = new CompoundTag();
+        if (entry == null) {
+            return tag;
+        }
+        tag.putString("entryId", entry.entryId());
+        tag.putLong("sequence", entry.sequence());
+        tag.putString("sourceKey", entry.sourceKey());
+        tag.putString("recipeId", entry.recipeId());
+        tag.putString("label", entry.label());
+        if (entry.outputIdentity() != null) {
+            tag.put("outputIdentity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(entry.outputIdentity())));
+        }
+        tag.putString("outputLabel", entry.outputLabel());
+        tag.putInt("outputCountPerBatch", entry.outputCountPerBatch());
+        tag.putInt("remainingOutputCount", entry.remainingOutputCount());
+        tag.put("inputs", encodeCraftRunIngredientGroups(entry.inputs()));
+        tag.put("diagnostics", encodeStrings(entry.diagnostics()));
+        return tag;
+    }
+
+    private static CraftRunRecipeEntry decodeCraftRunRecipeEntry(CompoundTag tag) {
+        if (tag == null) {
+            return null;
+        }
+        ItemIdentity outputIdentity = tag.contains("outputIdentity", Tag.TAG_COMPOUND)
+                ? decodeIdentity(tag.getCompound("outputIdentity")).toIdentity()
+                : null;
+        return new CraftRunRecipeEntry(
+                tag.getString("entryId"),
+                tag.getLong("sequence"),
+                tag.getString("sourceKey"),
+                tag.getString("recipeId"),
+                tag.getString("label"),
+                outputIdentity,
+                tag.getString("outputLabel"),
+                tag.getInt("outputCountPerBatch"),
+                tag.getInt("remainingOutputCount"),
+                decodeCraftRunIngredientGroups(tag.getList("inputs", Tag.TAG_COMPOUND)),
+                decodeStrings(tag.getList("diagnostics", Tag.TAG_STRING)));
+    }
+
+    private static ListTag encodeCraftRunIngredientGroups(List<CraftRunIngredientGroup> groups) {
         ListTag tags = new ListTag();
-        if (stacks == null || stacks.isEmpty()) {
+        if (groups == null || groups.isEmpty()) {
             return tags;
         }
-        for (GoalStackDescriptor stack : stacks) {
-            CompoundTag tag = encodeGoalStack(stack);
-            if (!tag.isEmpty()) {
-                tags.add(tag);
+        for (CraftRunIngredientGroup group : groups) {
+            if (group != null) {
+                tags.add(encodeCraftRunIngredientGroup(group));
             }
         }
         return tags;
     }
 
-    private static List<GoalStackDescriptor> decodeGoalStacks(ListTag tags) {
-        ArrayList<GoalStackDescriptor> stacks = new ArrayList<>();
+    private static List<CraftRunIngredientGroup> decodeCraftRunIngredientGroups(ListTag tags) {
+        ArrayList<CraftRunIngredientGroup> groups = new ArrayList<>();
         if (tags == null) {
-            return stacks;
+            return groups;
         }
         for (int index = 0; index < tags.size(); index++) {
-            GoalStackDescriptor stack = decodeGoalStack(tags.getCompound(index));
-            if (stack != null) {
-                stacks.add(stack);
-            }
+            groups.add(decodeCraftRunIngredientGroup(tags.getCompound(index)));
         }
-        return List.copyOf(stacks);
+        return List.copyOf(groups);
     }
 
-    private static CompoundTag encodeGoalStack(GoalStackDescriptor stack) {
+    private static CompoundTag encodeCraftRunIngredientGroup(CraftRunIngredientGroup group) {
         CompoundTag tag = new CompoundTag();
-        if (stack == null || stack.identity() == null) {
-            return tag;
+        tag.putString("groupId", group.groupId());
+        tag.putString("label", group.label());
+        tag.putInt("requiredCountPerBatch", group.requiredCountPerBatch());
+        tag.putBoolean("consumed", group.consumed());
+        if (group.selectedAlternativeIdentity() != null) {
+            tag.put(
+                    "selectedAlternativeIdentity",
+                    encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(group.selectedAlternativeIdentity())));
         }
-        tag.put("identity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(stack.identity())));
-        tag.putString("displayName", stack.displayName());
-        tag.putInt("count", stack.count());
+        ListTag alternatives = new ListTag();
+        for (CraftRunAlternative alternative : group.alternatives()) {
+            if (alternative == null || alternative.identity() == null) {
+                continue;
+            }
+            CompoundTag alternativeTag = new CompoundTag();
+            alternativeTag.put("identity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(alternative.identity())));
+            alternativeTag.putString("label", alternative.label());
+            alternatives.add(alternativeTag);
+        }
+        tag.put("alternatives", alternatives);
+        tag.put("diagnostics", encodeStrings(group.diagnostics()));
         return tag;
     }
 
-    private static GoalStackDescriptor decodeGoalStack(CompoundTag tag) {
-        if (tag == null || !tag.contains("identity", Tag.TAG_COMPOUND)) {
+    private static CraftRunIngredientGroup decodeCraftRunIngredientGroup(CompoundTag tag) {
+        if (tag == null) {
             return null;
         }
-        ItemIdentity identity = decodeIdentity(tag.getCompound("identity")).toIdentity();
-        return identity == null ? null : new GoalStackDescriptor(identity, tag.getString("displayName"), tag.getInt("count"));
-    }
-
-    private static CompoundTag encodeGoalChoiceResolution(GoalChoiceResolution resolution) {
-        GoalChoiceResolution resolved = resolution == null ? GoalChoiceResolution.empty() : resolution;
-        CompoundTag tag = new CompoundTag();
-        ListTag choices = new ListTag();
-        resolved.choicesByKey().forEach((choiceGroupId, identity) -> {
-            if (identity == null) {
-                return;
-            }
-            CompoundTag choiceTag = new CompoundTag();
-            choiceTag.putString("choiceGroupId", choiceGroupId);
-            choiceTag.put("identity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(identity)));
-            choices.add(choiceTag);
-        });
-        tag.put("choices", choices);
-        ListTag recipeChoices = new ListTag();
-        resolved.recipeChoicesByKey().forEach((choiceGroupId, recipeId) -> {
-            CompoundTag choiceTag = new CompoundTag();
-            choiceTag.putString("choiceGroupId", choiceGroupId);
-            choiceTag.putString("recipeId", recipeId);
-            recipeChoices.add(choiceTag);
-        });
-        tag.put("recipeChoices", recipeChoices);
-        return tag;
-    }
-
-    private static GoalChoiceResolution decodeGoalChoiceResolution(CompoundTag tag) {
-        if (tag == null) {
-            return GoalChoiceResolution.empty();
-        }
-        LinkedHashMap<String, ItemIdentity> choices = new LinkedHashMap<>();
-        ListTag choiceTags = tag.getList("choices", Tag.TAG_COMPOUND);
-        for (int index = 0; index < choiceTags.size(); index++) {
-            CompoundTag choiceTag = choiceTags.getCompound(index);
-            ItemIdentity identity = decodeIdentity(choiceTag.getCompound("identity")).toIdentity();
-            String choiceGroupId = choiceTag.getString("choiceGroupId");
-            if (!choiceGroupId.isBlank() && identity != null) {
-                choices.put(choiceGroupId, identity);
+        ArrayList<CraftRunAlternative> alternatives = new ArrayList<>();
+        ListTag alternativeTags = tag.getList("alternatives", Tag.TAG_COMPOUND);
+        for (int index = 0; index < alternativeTags.size(); index++) {
+            CompoundTag alternativeTag = alternativeTags.getCompound(index);
+            ItemIdentity identity = decodeIdentity(alternativeTag.getCompound("identity")).toIdentity();
+            if (identity != null) {
+                alternatives.add(new CraftRunAlternative(identity, alternativeTag.getString("label")));
             }
         }
-        LinkedHashMap<String, String> recipeChoices = new LinkedHashMap<>();
-        ListTag recipeChoiceTags = tag.getList("recipeChoices", Tag.TAG_COMPOUND);
-        for (int index = 0; index < recipeChoiceTags.size(); index++) {
-            CompoundTag choiceTag = recipeChoiceTags.getCompound(index);
-            String choiceGroupId = choiceTag.getString("choiceGroupId");
-            String recipeId = choiceTag.getString("recipeId");
-            if (!choiceGroupId.isBlank() && !recipeId.isBlank()) {
-                recipeChoices.put(choiceGroupId, recipeId);
-            }
-        }
-        return new GoalChoiceResolution(choices, recipeChoices);
+        return new CraftRunIngredientGroup(
+                tag.getString("groupId"),
+                tag.getString("label"),
+                tag.getInt("requiredCountPerBatch"),
+                !tag.contains("consumed") || tag.getBoolean("consumed"),
+                tag.contains("selectedAlternativeIdentity", Tag.TAG_COMPOUND)
+                        ? decodeIdentity(tag.getCompound("selectedAlternativeIdentity")).toIdentity()
+                        : null,
+                alternatives,
+                decodeStrings(tag.getList("diagnostics", Tag.TAG_STRING)));
     }
 
     private static ListTag encodeStrings(List<String> values) {

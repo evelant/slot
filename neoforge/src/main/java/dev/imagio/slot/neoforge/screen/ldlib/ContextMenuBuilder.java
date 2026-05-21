@@ -15,10 +15,13 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.TextField;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.core.ItemStackTags;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
+import dev.imagio.slot.ui.workspace.CraftRunIngredientChoiceRef;
+import dev.imagio.slot.workflow.domain.CraftRunAlternative;
+import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputOptions;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
@@ -39,6 +42,7 @@ final class ContextMenuBuilder {
     private static final int ITEM_CONTEXT_MENU_TEXT_MARGIN = 14;
     private static final int ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR = 4;
     private static final int ACCEPTED_INPUT_IDENTIFIER_MAX_CHARS = 88;
+    private static final int CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES = 12;
     private static final int POPOVER_MARGIN = 4;
     private static final int MENU_LABEL_HEIGHT = 12;
     private static final int MENU_BUTTON_HEIGHT = 14;
@@ -57,6 +61,7 @@ final class ContextMenuBuilder {
             return;
         }
         host.contextMenuAtlasIdentity = item.identity();
+        host.contextMenuAtlasItemSnapshot = item;
         host.contextMenuHotbarIndex = -1;
         host.contextMenuScreenX = screenX;
         host.contextMenuScreenY = screenY;
@@ -69,6 +74,7 @@ final class ContextMenuBuilder {
         }
         host.contextMenuHotbarIndex = slot.hotbarIndex();
         host.contextMenuAtlasIdentity = null;
+        host.contextMenuAtlasItemSnapshot = null;
         host.contextMenuKitId = null;
         host.contextMenuScreenX = screenX;
         host.contextMenuScreenY = screenY;
@@ -81,6 +87,7 @@ final class ContextMenuBuilder {
         }
         host.contextMenuKitId = kitId;
         host.contextMenuAtlasIdentity = null;
+        host.contextMenuAtlasItemSnapshot = null;
         host.contextMenuHotbarIndex = -1;
         host.renamingKitId = null;
         host.renameKitDraft = "";
@@ -96,6 +103,7 @@ final class ContextMenuBuilder {
         }
         host.contextMenuChestStorageId = storageId;
         host.contextMenuAtlasIdentity = null;
+        host.contextMenuAtlasItemSnapshot = null;
         host.contextMenuHotbarIndex = -1;
         host.contextMenuKitId = null;
         host.renamingChestStorageId = null;
@@ -107,6 +115,7 @@ final class ContextMenuBuilder {
 
     void closeContextMenu() {
         host.contextMenuAtlasIdentity = null;
+        host.contextMenuAtlasItemSnapshot = null;
         host.contextMenuHotbarIndex = -1;
         host.contextMenuKitId = null;
         host.contextMenuChestStorageId = null;
@@ -122,12 +131,23 @@ final class ContextMenuBuilder {
 
     UIElement contextMenuOverlay() {
         if (host.contextMenuAtlasIdentity != null) {
-            SlotWorkspaceViewModel.AtlasItem item = host.currentAtlasItem(host.contextMenuAtlasIdentity);
+            SlotWorkspaceViewModel.AtlasItem liveItem = host.currentAtlasItem(host.contextMenuAtlasIdentity);
+            SlotWorkspaceViewModel.AtlasItem item = liveItem;
+            if (item == null
+                    && host.contextMenuAtlasItemSnapshot != null
+                    && host.contextMenuAtlasIdentity.equals(host.contextMenuAtlasItemSnapshot.identity())) {
+                item = host.contextMenuAtlasItemSnapshot;
+            }
             if (item == null) {
                 host.contextMenuAtlasIdentity = null;
+                host.contextMenuAtlasItemSnapshot = null;
                 return null;
             }
-            return buildAtlasContextMenu(item);
+            boolean syntheticCraftRunItem = liveItem == null
+                    && CraftRunIngredientChoiceRef.forItem(host.viewModel.craftRun(), item) != null;
+            return host.recipeSidebarActive() || syntheticCraftRunItem
+                    ? buildRecipeAtlasContextMenu(item)
+                    : buildAtlasContextMenu(item);
         }
         if (host.contextMenuHotbarIndex >= 0 && host.contextMenuHotbarIndex < host.viewModel.hotbarSlots().size()) {
             SlotWorkspaceViewModel.HotbarSlot slot = host.viewModel.hotbarSlots().get(host.contextMenuHotbarIndex);
@@ -183,9 +203,6 @@ final class ContextMenuBuilder {
     UIElement buildAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
         if (host.recipeSidebarActive()) {
             return buildRecipeAtlasContextMenu(item);
-        }
-        if (host.goalTabActive()) {
-            return buildGoalAtlasContextMenu(item);
         }
         SlotWorkspaceViewModel.KitCard activeTab = host.viewModel.activeKit();
         List<WorkflowAcceptedInputRule> acceptedInputRules = activeTab == null
@@ -439,6 +456,23 @@ final class ContextMenuBuilder {
     }
 
     private UIElement buildRecipeAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
+        CraftRunIngredientChoiceRef choiceRef = CraftRunIngredientChoiceRef.forItem(host.viewModel.craftRun(), item);
+        CraftRunIngredientGroup choiceGroup = choiceRef == null ? null : choiceRef.group(host.viewModel.craftRun());
+        int choiceButtons = craftRunChoiceMenuButtons(choiceGroup);
+        int choiceLabels = choiceGroup == null ? 0 : 1
+                + (choiceGroup.alternatives().size() > CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES ? 1 : 0);
+        int buttons = 3 + choiceButtons;
+        if (item.ghost()) {
+            buttons++;
+        }
+        int freeHotbarIndex = host.firstFreeHotbarIndex();
+        if (item.carried() && freeHotbarIndex >= 0) {
+            buttons++;
+        }
+        if (item.carried() && host.atlasItemHasDepositTarget(item)) {
+            buttons++;
+        }
+        int approxHeight = menuHeight(4, 2, 1 + choiceLabels, buttons, 0, 0);
         UIElement catcher = contextMenuCatcher(this::closeContextMenu);
         UIElement menu = panel(GLASS).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -446,12 +480,13 @@ final class ContextMenuBuilder {
                 .paddingAll(4)
                 .gapAll(2)
                 .flexDirection(FlexDirection.COLUMN));
-        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180, 120);
+        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180, approxHeight);
         menu.style(style -> style.zIndex(22));
         menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
         menu.addChild(label(shorten(item.name(), 22), ACCENT)
                 .layout(layout -> layout.widthPercent(100).height(12)));
+        appendCraftRunChoiceMenu(menu, choiceRef, choiceGroup);
 
         if (item.ghost()) {
             menu.addChild(menuButton(
@@ -464,7 +499,6 @@ final class ContextMenuBuilder {
                     }));
         }
 
-        int freeHotbarIndex = host.firstFreeHotbarIndex();
         if (item.carried() && freeHotbarIndex >= 0) {
             menu.addChild(menuButton(
                     "Send to hotbar",
@@ -489,18 +523,20 @@ final class ContextMenuBuilder {
             ));
         }
 
+        boolean recipeViewerItem = item.identity() != null
+                && !CraftRunIngredientChoiceRef.isPlaceholder(item.identity().toIdentity());
         menu.addChild(menuButton(
                 "Open recipe in EMI",
-                true,
-                null,
+                recipeViewerItem,
+                "choose a concrete ingredient",
                 () -> {
                     host.openRecipe(item);
                     closeContextMenu();
                 }));
         menu.addChild(menuButton(
                 "Open uses in EMI",
-                true,
-                null,
+                recipeViewerItem,
+                "choose a concrete ingredient",
                 () -> {
                     host.openUses(item);
                     closeContextMenu();
@@ -514,87 +550,49 @@ final class ContextMenuBuilder {
         return wrapper;
     }
 
-    private UIElement buildGoalAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
-        boolean hasChoiceControls = host.goalHasChoiceControls(item);
-        List<GoalStackDescriptor> alternatives = hasChoiceControls ? host.goalChoiceAlternatives(item) : List.of();
-        boolean hasManualChoice = hasChoiceControls && host.goalHasManualChoice(item);
-        int alternativeCount = Math.min(8, alternatives.size());
-        int labelCount = 1 + (hasChoiceControls && !alternatives.isEmpty() ? 1 : 0);
-        int buttonCount = 3;
-        if (hasChoiceControls) {
-            buttonCount += alternativeCount + 1 + (hasManualChoice ? 1 : 0);
+    private static int craftRunChoiceMenuButtons(CraftRunIngredientGroup group) {
+        if (group == null || group.alternatives().size() <= 1) {
+            return 0;
         }
-        UIElement catcher = contextMenuCatcher(this::closeContextMenu);
-        UIElement menu = panel(GLASS).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .width(164)
-                .paddingAll(4)
-                .gapAll(2)
-                .flexDirection(FlexDirection.COLUMN));
-        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180,
-                menuHeight(4, 2, labelCount, buttonCount, 0, 0));
-        menu.style(style -> style.zIndex(22));
-        menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+        return Math.min(CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES, group.alternatives().size());
+    }
 
-        menu.addChild(label(shorten(item.name(), 22), ACCENT)
+    private void appendCraftRunChoiceMenu(
+            UIElement menu,
+            CraftRunIngredientChoiceRef choiceRef,
+            CraftRunIngredientGroup group
+    ) {
+        if (menu == null || choiceRef == null || group == null || group.alternatives().size() <= 1) {
+            return;
+        }
+        menu.addChild(label("Choose ingredient", MUTED)
                 .layout(layout -> layout.widthPercent(100).height(12)));
-        menu.addChild(menuButton(
-                "Open recipe in EMI",
-                true,
-                null,
-                () -> {
-                    host.openGoalRecipe(item);
-                    closeContextMenu();
-                }));
-        menu.addChild(menuButton(
-                "Open uses in EMI",
-                true,
-                null,
-                () -> {
-                    host.openGoalUses(item);
-                    closeContextMenu();
-                }));
-        if (hasChoiceControls) {
-            if (!alternatives.isEmpty()) {
-                menu.addChild(label("Use ingredient", MUTED)
-                        .layout(layout -> layout.widthPercent(100).height(10)));
-                for (GoalStackDescriptor alternative : alternatives.stream().limit(8).toList()) {
-                    menu.addChild(menuButton(
-                            shorten(alternative.displayName(), 24),
-                            true,
-                            null,
-                            () -> {
-                                host.chooseGoalAlternative(item, alternative);
-                                closeContextMenu();
-                            }));
-                }
+        int count = 0;
+        for (CraftRunAlternative alternative : group.alternatives()) {
+            if (alternative == null || alternative.identity() == null) {
+                continue;
             }
+            if (count >= CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES) {
+                break;
+            }
+            count++;
+            SlotWorkspaceViewModel.IdentityRef identity = SlotWorkspaceViewModel.IdentityRef.from(alternative.identity());
+            boolean selected = group.selectedAlternativeIdentity() != null
+                    && ItemIdentityMatcher.matchesMovable(group.selectedAlternativeIdentity(), alternative.identity());
             menu.addChild(menuButton(
-                    alternatives.isEmpty() ? "Choose recipe in EMI" : "Browse in EMI",
+                    (selected ? "Selected: " : "Use ") + shorten(alternative.label(), 18),
                     true,
                     null,
                     () -> {
-                        host.openGoalChoiceEditor(item);
+                        host.rpc.sendSelectCraftRunIngredient(choiceRef.entryId(), choiceRef.groupId(), identity);
                         closeContextMenu();
                     }));
-            if (hasManualChoice) {
-                menu.addChild(menuButton(
-                        "Clear manual choice",
-                        true,
-                        null,
-                        () -> {
-                            host.clearGoalChoice(item);
-                            closeContextMenu();
-                        }));
-            }
         }
-        menu.addChild(menuButton("Close", true, null, this::closeContextMenu));
-
-        UIElement wrapper = new UIElement().layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).right(0).top(0).bottom(0));
-        wrapper.addChildren(catcher, menu);
-        return wrapper;
+        int hidden = group.alternatives().size() - count;
+        if (hidden > 0) {
+            menu.addChild(label("+" + hidden + " more variants in EMI", MUTED)
+                    .layout(layout -> layout.widthPercent(100).height(12)));
+        }
     }
 
     UIElement buildHotbarContextMenu(SlotWorkspaceViewModel.HotbarSlot slot) {

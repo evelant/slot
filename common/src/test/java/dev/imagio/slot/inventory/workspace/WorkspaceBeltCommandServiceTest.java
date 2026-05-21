@@ -409,7 +409,7 @@ class WorkspaceBeltCommandServiceTest {
     }
 
     @Test
-    void moveIdentityBetweenBackpackAndMainPullsProviderStackToMainFirst() {
+    void moveIdentityToMainInventoryPullsProviderStackToMainFirst() {
         InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty());
         InventorySourceDescriptor backpack = carriedSource(
                 "sophisticatedbackpacks:carried/abc",
@@ -428,7 +428,7 @@ class WorkspaceBeltCommandServiceTest {
         );
         AtomicReference<InventoryActionRequest> requestRef = new AtomicReference<>();
 
-        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityToMainInventory(
                 new ServerPlayer(),
                 host,
                 authority,
@@ -454,7 +454,7 @@ class WorkspaceBeltCommandServiceTest {
     }
 
     @Test
-    void moveIdentityBetweenBackpackAndMainPushesMainStackToProviderWhenNoProviderCopyExists() {
+    void moveIdentityToBackpackPushesMainStackToProvider() {
         InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty());
         InventorySourceDescriptor backpack = carriedSource(
                 "sophisticatedbackpacks:carried/abc",
@@ -473,7 +473,7 @@ class WorkspaceBeltCommandServiceTest {
         );
         AtomicReference<InventoryActionRequest> requestRef = new AtomicReference<>();
 
-        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityToBackpack(
                 new ServerPlayer(),
                 host,
                 authority,
@@ -499,7 +499,7 @@ class WorkspaceBeltCommandServiceTest {
     }
 
     @Test
-    void moveIdentityBetweenBackpackAndMainMovesHotbarStackToMainWhenNoProviderCopyExists() {
+    void moveIdentityToMainInventoryMovesHotbarStackToMain() {
         InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty());
         InventorySourceDescriptor hotbar = BuiltinInventoryDescriptors.quickAccessLane0Source(InventoryTopologyDescriptor.empty());
         InventoryHostDescriptor host = host(main, hotbar);
@@ -513,7 +513,7 @@ class WorkspaceBeltCommandServiceTest {
         );
         AtomicReference<InventoryActionRequest> requestRef = new AtomicReference<>();
 
-        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityToMainInventory(
                 new ServerPlayer(),
                 host,
                 authority,

@@ -5,7 +5,6 @@ import dev.imagio.slot.forge.SlotForge;
 import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -16,6 +15,7 @@ import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.client.settings.KeyConflictContext;
+import net.minecraftforge.client.settings.KeyModifier;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -104,6 +104,14 @@ public final class ForgeWorkspaceClient {
             CATEGORY
     );
 
+    public static final KeyMapping ADD_VISIBLE_EMI_RECIPE = new KeyMapping(
+            "key.slot.add_visible_emi_recipe",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
     public static final KeyMapping TRASH_HOVER = new KeyMapping(
             "key.slot.trash_hovered_item",
             KeyConflictContext.GUI,
@@ -125,6 +133,14 @@ public final class ForgeWorkspaceClient {
             KeyConflictContext.GUI,
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_GRAVE_ACCENT,
+            CATEGORY
+    );
+
+    public static final KeyMapping MOVE_TO_BACKPACK = new KeyMapping(
+            "key.slot.move_to_backpack",
+            KeyConflictContext.GUI,
+            KeyModifier.SHIFT,
+            InputConstants.Type.KEYSYM.getOrCreate(GLFW.GLFW_KEY_GRAVE_ACCENT),
             CATEGORY
     );
 
@@ -165,6 +181,10 @@ public final class ForgeWorkspaceClient {
         return SET_WANTED_HOVER.matches(keyCode, scanCode);
     }
 
+    public static boolean matchesAddVisibleEmiRecipe(int keyCode, int scanCode) {
+        return ADD_VISIBLE_EMI_RECIPE.matches(keyCode, scanCode);
+    }
+
     public static boolean setWantedHoverDown() {
         return SET_WANTED_HOVER.isDown() || keyPhysicallyDown(SET_WANTED_HOVER);
     }
@@ -182,7 +202,12 @@ public final class ForgeWorkspaceClient {
     }
 
     public static boolean matchesMoveToMainInventory(int keyCode, int scanCode) {
-        return MOVE_TO_MAIN_INVENTORY.matches(keyCode, scanCode);
+        return MOVE_TO_MAIN_INVENTORY.matches(keyCode, scanCode) && !matchesMoveToBackpack(keyCode, scanCode);
+    }
+
+    public static boolean matchesMoveToBackpack(int keyCode, int scanCode) {
+        return MOVE_TO_BACKPACK.matches(keyCode, scanCode)
+                && MOVE_TO_BACKPACK.getKeyModifier().isActive(MOVE_TO_BACKPACK.getKeyConflictContext());
     }
 
     public static boolean markWantedDown() {
@@ -266,9 +291,11 @@ public final class ForgeWorkspaceClient {
             event.register(TOGGLE_WAYFINDING_HUD);
             event.register(MARK_WANTED);
             event.register(SET_WANTED_HOVER);
+            event.register(ADD_VISIBLE_EMI_RECIPE);
             event.register(TRASH_HOVER);
             event.register(STORAGE_XRAY);
             event.register(MOVE_TO_MAIN_INVENTORY);
+            event.register(MOVE_TO_BACKPACK);
         }
     }
 
@@ -369,7 +396,6 @@ public final class ForgeWorkspaceClient {
         public static void onClientLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
             ForgeContainerSidebar.clearClientState();
             ForgeWorkspaceViewModelClientCache.clear();
-            GoalWorkspaceClientState.clear();
         }
     }
 }

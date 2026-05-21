@@ -28,14 +28,15 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Server-side "gather desired carried items from nearby chests" action shared
+ * Server-side "gather target-count carried items from nearby chests" action shared
  * by every loader/transport.
  *
  * <p>Resolves missing identities as the union of player-global desired counts,
  * player-global wanted counts, and, when a kit is active, active kit-page
- * slots and kit-scoped desired counts. Each missing identity walks proximate
- * claimed chests in affinity-score order until the gap closes or no chest can
- * provide another matching stack.
+ * slots and kit-scoped desired counts, plus transient craft-run wanted
+ * pressure. Each missing identity walks proximate claimed chests in
+ * affinity-score order until the gap closes or no chest can provide another
+ * matching stack.
  */
 public final class KitGatherService {
     public record Outcome(
@@ -146,7 +147,7 @@ public final class KitGatherService {
             }
         }
         SlotCommon.LOGGER.info(
-                "[SLOT] gather desired items: activeKit={} targets={} identitiesPulled={} totalItems={} unreachable={}",
+                "[SLOT] gather target items: activeKit={} targets={} identitiesPulled={} totalItems={} unreachable={}",
                 activation.isActive() ? activation.kitId() : "<none>",
                 targets.size(),
                 identitiesPulled,

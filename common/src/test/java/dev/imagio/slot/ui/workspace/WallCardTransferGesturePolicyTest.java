@@ -111,6 +111,19 @@ class WallCardTransferGesturePolicyTest {
     }
 
     @Test
+    void shiftRightClickCarriedWithUnsatisfiedWantedTargetTakesGapFromNearbyChest() {
+        var decision = WallCardTransferGesturePolicy.pointerDown(context(
+                item(true, true, true, 16, 0, 32),
+                1,
+                true,
+                false,
+                null,
+                false));
+
+        assertEquals(TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY, decision.action());
+    }
+
+    @Test
     void shiftRightClickCarriedDepositsStackToLinkedChest() {
         var decision = WallCardTransferGesturePolicy.pointerDown(context(carriedItem(), 1, true, false, null, false));
 
@@ -271,15 +284,26 @@ class WallCardTransferGesturePolicyTest {
     }
 
     private static SlotWorkspaceViewModel.AtlasItem item(boolean carried, boolean proximate, boolean includePresence) {
+        return item(carried, proximate, includePresence, 16, 0, 0);
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem item(
+            boolean carried,
+            boolean proximate,
+            boolean includePresence,
+            int totalCount,
+            int desiredCount,
+            int wantedCount
+    ) {
         SlotWorkspaceViewModel.IdentityRef identity = new SlotWorkspaceViewModel.IdentityRef(
                 "minecraft:stone",
                 ItemComparisonMode.ITEM_ID.name(),
                 "");
         return new SlotWorkspaceViewModel.AtlasItem(
                 identity,
-                new ItemStack("minecraft:stone", 16, 64),
+                new ItemStack("minecraft:stone", totalCount, 64),
                 "Stone",
-                16,
+                totalCount,
                 0,
                 "building",
                 false,
@@ -296,10 +320,14 @@ class WallCardTransferGesturePolicyTest {
                 0,
                 0,
                 false,
-                0,
+                desiredCount,
+                false,
+                wantedCount,
+                false,
                 false,
                 "",
                 0,
-                16);
+                totalCount,
+                SlotWorkspaceViewModel.PutAwayState.NONE);
     }
 }

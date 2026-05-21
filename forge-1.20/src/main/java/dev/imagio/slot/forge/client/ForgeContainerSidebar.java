@@ -6,6 +6,7 @@ import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
 import dev.imagio.slot.forge.config.SlotForgeClientConfig;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.MultiLineEditBox;
 import net.minecraft.client.gui.components.events.ContainerEventHandler;
@@ -71,6 +72,12 @@ public final class ForgeContainerSidebar {
     public static void setRecipeSidebarSpec(Screen screen, RecipeIngredientSidebarSpec spec) {
         if (screen == activeHostScreen && activeSurface != null) {
             activeSurface.setRecipeSidebarSpec(spec);
+        }
+    }
+
+    public static void setCraftRunRecipeCaptures(Screen screen, List<CraftRunRecipeCapture> captures) {
+        if (screen == activeHostScreen && activeSurface != null) {
+            activeSurface.setCraftRunRecipeCaptures(captures);
         }
     }
 

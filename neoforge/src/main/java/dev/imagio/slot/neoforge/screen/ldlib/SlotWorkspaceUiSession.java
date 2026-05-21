@@ -40,6 +40,7 @@ import dev.imagio.slot.inventory.workspace.WorkspaceBeltCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
+import dev.imagio.slot.inventory.workspace.WorkspaceCraftRunCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
@@ -468,6 +469,72 @@ final class SlotWorkspaceUiSession {
         if (player instanceof ServerPlayer serverPlayer) {
             broadcast(serverPlayer);
         }
+    }
+
+    void stageCraftRunEntry(String entryId) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        applyOutcome(serverPlayer, WorkspaceCraftRunCommandService.stageEntry(
+                workflowRuntime(serverPlayer),
+                authority,
+                entryId,
+                request -> {
+                    InventoryActionOutcome outcome = InventoryActionExecutor.execute(
+                            host,
+                            serverPlayer,
+                            request,
+                            ProtectionPolicy.allowAll());
+                    recordOutcome(serverPlayer, outcome);
+                    return outcome;
+                },
+                "slot_workspace.neoforge"));
+    }
+
+    void adjustCraftRunEntry(String entryId, Integer delta) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        boolean changed = workflowRuntime(serverPlayer)
+                .craftRunWorkflow()
+                .adjustRemainingOutput(entryId, delta == null ? 0 : delta);
+        applyOutcome(serverPlayer, changed
+                ? WorkspaceCommandOutcome.accepted("craft_run_adjusted", "")
+                : WorkspaceCommandOutcome.rejected("craft_run_entry_not_found"));
+    }
+
+    void selectCraftRunIngredient(
+            String entryId,
+            String groupId,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        boolean changed = workflowRuntime(serverPlayer)
+                .craftRunWorkflow()
+                .selectIngredientAlternative(entryId, groupId, identity(itemId, comparisonMode, componentFingerprint));
+        applyOutcome(serverPlayer, changed
+                ? WorkspaceCommandOutcome.accepted("craft_run_ingredient_selected", "")
+                : WorkspaceCommandOutcome.rejected("craft_run_ingredient_not_found"));
+    }
+
+    void removeCraftRunEntry(String entryId) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        boolean changed = workflowRuntime(serverPlayer).craftRunWorkflow().remove(entryId);
+        applyOutcome(serverPlayer, changed
+                ? WorkspaceCommandOutcome.accepted("craft_run_removed", "")
+                : WorkspaceCommandOutcome.rejected("craft_run_entry_not_found"));
     }
 
     /**
@@ -1524,7 +1591,7 @@ final class SlotWorkspaceUiSession {
                 targetHotbarIndex -> assignIdentityToHotbarIndex(serverPlayer, identity, targetHotbarIndex)));
     }
 
-    void moveIdentityBetweenBackpackAndMain(
+    void moveIdentityToMainInventory(
             String itemId,
             String comparisonMode,
             String componentFingerprint
@@ -1554,7 +1621,47 @@ final class SlotWorkspaceUiSession {
             recordOutcome(serverPlayer, outcome);
             return outcome;
         };
-        applyOutcome(serverPlayer, WorkspaceBeltCommandService.moveIdentityBetweenBackpackAndMain(
+        applyOutcome(serverPlayer, WorkspaceBeltCommandService.moveIdentityToMainInventory(
+                serverPlayer,
+                host,
+                authority,
+                StorageAccessRegistry.carriedSourceAccess(),
+                actionExecutor,
+                identity,
+                "slot_workspace.ldlib"));
+    }
+
+    void moveIdentityToBackpack(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        refreshServerView(serverPlayer);
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor = request -> {
+            InventoryActionOutcome outcome = InventoryActionExecutor.execute(
+                    host,
+                    serverPlayer,
+                    request,
+                    ProtectionPolicy.allowAll()
+            );
+            recordOutcome(serverPlayer, outcome);
+            return outcome;
+        };
+        applyOutcome(serverPlayer, WorkspaceBeltCommandService.moveIdentityToBackpack(
                 serverPlayer,
                 host,
                 authority,
@@ -2124,7 +2231,7 @@ final class SlotWorkspaceUiSession {
             return 0L;
         }
         WorkflowDomainSnapshot snapshot = runtime.snapshot();
-        return snapshot == null ? 0L : snapshot.nextGlobalSequence();
+        return snapshot == null ? 0L : snapshot.nextGlobalSequence() * 31L + snapshot.craftRun().revision();
     }
 
     private void rememberStructuralState(ServerPlayer serverPlayer) {
@@ -2344,6 +2451,20 @@ final class SlotWorkspaceUiSession {
             return first + "  " + second;
         }
         return hasFirst ? first : hasSecond ? second : "";
+    }
+
+    private static ItemIdentity identity(String itemId, String comparisonMode, String componentFingerprint) {
+        if (itemId == null || itemId.isBlank()) {
+            return null;
+        }
+        ItemComparisonMode mode = ItemComparisonMode.ITEM_ID;
+        if (comparisonMode != null) {
+            try {
+                mode = ItemComparisonMode.valueOf(comparisonMode);
+            } catch (IllegalArgumentException ignored) {
+            }
+        }
+        return new ItemIdentity(itemId, mode, componentFingerprint == null ? "" : componentFingerprint);
     }
 
     /**

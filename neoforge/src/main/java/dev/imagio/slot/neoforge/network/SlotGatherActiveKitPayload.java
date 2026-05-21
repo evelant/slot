@@ -6,7 +6,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 
 /**
- * Client -> server "gather desired items from nearby chests". Carries no
+ * Client -> server "gather target-count items from nearby chests". Carries no
  * fields; desired counts, active kit needs, and proximate chests are
  * resolved server-side from the player's runtime state.
  *

@@ -9,8 +9,6 @@ import dev.imagio.slot.forge.network.ForgeWorkspaceOpenMessage;
 import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
 import dev.imagio.slot.inventory.core.ItemIdentity;
-import dev.imagio.slot.inventory.goal.GoalProjectionEntry;
-import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.ItemStackTags;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
@@ -22,15 +20,13 @@ import dev.imagio.slot.ui.spi.SlotUiEventKind;
 import dev.imagio.slot.ui.spi.SlotUiLayout;
 import dev.imagio.slot.ui.spi.SlotUiTextStyle;
 import dev.imagio.slot.ui.workspace.ActiveChestStripUiBuilder;
-import dev.imagio.slot.ui.workspace.GoalTabsUiBuilder;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceProjection;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceProjectionCache;
+import dev.imagio.slot.ui.workspace.CraftRunIngredientChoiceRef;
+import dev.imagio.slot.ui.workspace.CraftRunUiBuilder;
 import dev.imagio.slot.ui.workspace.HotbarBeltUiBuilder;
 import dev.imagio.slot.ui.workspace.KitRackUiBuilder;
 import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
+import dev.imagio.slot.ui.workspace.RecipeViewerIntegration;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
@@ -49,6 +45,9 @@ import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.workflow.domain.CraftRunAlternative;
+import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputOptions;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import net.minecraft.client.Minecraft;
@@ -81,6 +80,7 @@ public final class ForgeWorkspaceSurface {
     private static final int RECENT_REHOME_CAPACITY = 6;
     private static final int RECENT_REHOME_MAX_DISPLAYED = 3;
     private static final int REHOME_MENU_MAX_DISPLAYED = 8;
+    private static final int CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES = 12;
     private static final int WHEEL_ACCUMULATOR_MAX_IDENTITIES = 64;
     private static final float ITEM_CONTEXT_MENU_MIN_WIDTH = 174f;
     private static final float ITEM_CONTEXT_MENU_MAX_WIDTH = 480f;
@@ -105,13 +105,13 @@ public final class ForgeWorkspaceSurface {
             new LinkedHashMap<>();
     private final ShiftClickTransferState shiftClickTransferState = new ShiftClickTransferState();
     private final WheelTransferBatcher wheelTransferBatcher = new WheelTransferBatcher();
-    private final GoalWorkspaceProjectionCache goalProjectionCache = new GoalWorkspaceProjectionCache();
     private final ArrayDeque<String> recentRehomeIslandIds = new ArrayDeque<>();
     private final Map<SlotWorkspaceViewModel.IdentityRef, Float> wheelAccumulatorByIdentity = new LinkedHashMap<>();
     private RecipeIngredientSidebarSpec recipeSidebarSpec = RecipeIngredientSidebarSpec.empty();
     private RecipeIngredientSidebarSpec.Projection recipeSidebarProjection;
     private long recipeSidebarProjectionRevision = Long.MIN_VALUE;
     private String recipeSidebarProjectionKey = "";
+    private List<CraftRunRecipeCapture> craftRunRecipeCaptures = List.of();
 
     private ForgeSlotUiTree tree;
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
@@ -126,9 +126,9 @@ public final class ForgeWorkspaceSurface {
     private String status;
     private boolean openSessionRequested;
     private boolean rebuildRequested = true;
-    private int appliedGoalStateRevision = GoalWorkspaceClientState.revision();
     private boolean kitRackOpen;
     private SlotWorkspaceViewModel.IdentityRef contextMenuIdentity;
+    private SlotWorkspaceViewModel.AtlasItem contextMenuItemSnapshot;
     private String contextMenuIslandId;
     private String contextMenuKitId;
     private String contextMenuChestStorageId;
@@ -189,6 +189,41 @@ public final class ForgeWorkspaceSurface {
         rebuildRequested = true;
     }
 
+    public void setCraftRunRecipeCaptures(List<CraftRunRecipeCapture> captures) {
+        List<CraftRunRecipeCapture> next = activeCraftRunRecipeCaptures(captures);
+        if (craftRunRecipeCaptureKey(craftRunRecipeCaptures).equals(craftRunRecipeCaptureKey(next))) {
+            return;
+        }
+        craftRunRecipeCaptures = next;
+        rebuildRequested = true;
+    }
+
+    private static List<CraftRunRecipeCapture> activeCraftRunRecipeCaptures(List<CraftRunRecipeCapture> captures) {
+        if (captures == null || captures.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<CraftRunRecipeCapture> active = new ArrayList<>();
+        for (CraftRunRecipeCapture capture : captures) {
+            if (capture != null && capture.active()) {
+                active.add(capture);
+            }
+        }
+        return active.isEmpty() ? List.of() : List.copyOf(active);
+    }
+
+    private static String craftRunRecipeCaptureKey(List<CraftRunRecipeCapture> captures) {
+        if (captures == null || captures.isEmpty()) {
+            return "";
+        }
+        StringBuilder key = new StringBuilder();
+        for (CraftRunRecipeCapture capture : captures) {
+            if (capture != null && capture.active()) {
+                key.append('|').append(capture.sourceKey());
+            }
+        }
+        return key.toString();
+    }
+
     public void openSessionIfNeeded() {
         if (openSessionRequested) {
             return;
@@ -229,7 +264,6 @@ public final class ForgeWorkspaceSurface {
         openSessionIfNeeded();
         flushWheelTransferBatch();
         autoConfirmSearchIfIdle();
-        applyGoalStateIfChanged();
         boolean pointerActive = tree != null && tree.hasActivePointerGesture();
         if (!pointerActive) {
             applySyncedViewIfAvailable();
@@ -286,10 +320,10 @@ public final class ForgeWorkspaceSurface {
         boolean hadActivePointerGesture = tree.hasActivePointerGesture();
         SlotWorkspaceViewModel.AtlasIsland releaseIsland = sectionAt(mouseX, mouseY);
         boolean handled = tree.mouseReleased(mouseX, mouseY, button, Screen.hasShiftDown());
-        if (!goalTabActive() && completePendingHomeDrag(releaseIsland)) {
+        if (completePendingHomeDrag(releaseIsland)) {
             return true;
         }
-        if (!goalTabActive() && !hadActivePointerGesture && button == 0 && isCursorCarrying()
+        if (!hadActivePointerGesture && button == 0 && isCursorCarrying()
                 && assignCursorHomeToSection(releaseIsland)) {
             return true;
         }
@@ -364,7 +398,7 @@ public final class ForgeWorkspaceSurface {
         if (handleStorageXrayKey(keyCode, scanCode)) {
             return true;
         }
-        if (handleGoalRecipeKey(keyCode)) {
+        if (handleRecipeViewerKey(keyCode)) {
             return true;
         }
         if (keyCode == GLFW.GLFW_KEY_ESCAPE && isCursorCarrying()) {
@@ -409,7 +443,7 @@ public final class ForgeWorkspaceSurface {
         return true;
     }
 
-    private boolean handleGoalRecipeKey(int keyCode) {
+    private boolean handleRecipeViewerKey(int keyCode) {
         if (searchActive || wantsKeyboardInput() || Screen.hasControlDown()) {
             return false;
         }
@@ -443,10 +477,6 @@ public final class ForgeWorkspaceSurface {
             return true;
         }
         markWantedKeyConsumed = true;
-        if (goalTabActive()) {
-            setStatus("goal tab is browse only");
-            return true;
-        }
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
         if (identity == null || !byIdentity.containsKey(identity)) {
             setStatus("hover an item to mark wanted");
@@ -467,10 +497,6 @@ public final class ForgeWorkspaceSurface {
             return true;
         }
         setWantedHoverKeyConsumed = true;
-        if (goalTabActive()) {
-            setStatus("goal tab is browse only");
-            return true;
-        }
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
         SlotWorkspaceViewModel.AtlasItem item = identity == null ? null : byIdentity.get(identity);
         if (identity == null || item == null) {
@@ -496,10 +522,6 @@ public final class ForgeWorkspaceSurface {
             return true;
         }
         trashHoverKeyConsumed = true;
-        if (goalTabActive()) {
-            setStatus("goal tab is browse only");
-            return true;
-        }
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
         if (identity == null || !byIdentity.containsKey(identity)) {
             setStatus("hover an item to trash");
@@ -534,10 +556,6 @@ public final class ForgeWorkspaceSurface {
         if (identity == null || !byIdentity.containsKey(identity)) {
             return false;
         }
-        if (goalTabActive()) {
-            setStatus("goal tab is browse only");
-            return true;
-        }
         applySearchDecision(WorkspaceSearchInputPolicy.confirmForHotbar(searchActive, searchQuery));
         sendIdentityToAutoHotbar(identity);
         return true;
@@ -547,22 +565,20 @@ public final class ForgeWorkspaceSurface {
         if (searchActive || wantsKeyboardInput() || editorOpen() || Screen.hasControlDown()) {
             return false;
         }
-        if (!ForgeWorkspaceClient.matchesMoveToMainInventory(keyCode, scanCode)) {
+        boolean toBackpack = ForgeWorkspaceClient.matchesMoveToBackpack(keyCode, scanCode);
+        boolean toMain = ForgeWorkspaceClient.matchesMoveToMainInventory(keyCode, scanCode);
+        if (!toBackpack && !toMain) {
             return false;
         }
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
         if (identity == null || !byIdentity.containsKey(identity)) {
-            setStatus("hover an item to move between backpack and main inventory");
-            return true;
-        }
-        if (goalTabActive()) {
-            setStatus("goal tab is browse only");
+            setStatus(toBackpack ? "hover an item to move to backpack" : "hover an item to move to main inventory");
             return true;
         }
         sendIdentityRefAction(
-                WorkspaceActionId.MOVE_IDENTITY_BETWEEN_BACKPACK_AND_MAIN,
+                toBackpack ? WorkspaceActionId.MOVE_IDENTITY_TO_BACKPACK : WorkspaceActionId.MOVE_IDENTITY_TO_MAIN_INVENTORY,
                 identity,
-                "moving between backpack and main inventory");
+                toBackpack ? "moving to backpack" : "moving to main inventory");
         return true;
     }
 
@@ -601,26 +617,16 @@ public final class ForgeWorkspaceSurface {
     }
 
     private boolean gatherActiveKitFromKey() {
-        if (goalTabActive()) {
-            status = "goal tab is browse only";
-            rebuildRequested = true;
-            return true;
-        }
         if (!anyGatherableIdentity()) {
             status = "nothing to gather";
             rebuildRequested = true;
             return true;
         }
-        sendAction(WorkspaceActionId.GATHER_ACTIVE_KIT, "gathering desired items from nearby chests");
+        sendAction(WorkspaceActionId.GATHER_ACTIVE_KIT, "gathering target items from nearby chests");
         return true;
     }
 
     private boolean depositPutAwayFromKey() {
-        if (goalTabActive()) {
-            status = "goal tab is browse only";
-            rebuildRequested = true;
-            return true;
-        }
         if (viewModel.depositableIdentities().isEmpty()) {
             status = "nothing to put away";
             rebuildRequested = true;
@@ -682,9 +688,6 @@ public final class ForgeWorkspaceSurface {
     private void applyViewModel(SlotWorkspaceViewModel synced) {
         viewModel = synced == null ? SlotWorkspaceViewModel.empty() : synced;
         recipeSidebarProjection = null;
-        if (GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(viewModel.goalPlans())) {
-            appliedGoalStateRevision = GoalWorkspaceClientState.revision();
-        }
         recents.clear();
         recents.addAll(viewModel.recentIdentities());
         hotbarSlots.clear();
@@ -701,12 +704,6 @@ public final class ForgeWorkspaceSurface {
         if (recipe != null) {
             islands.addAll(recipe.islands());
             items.addAll(recipe.atlasItems());
-        } else if (goalTabActive()) {
-            GoalWorkspaceProjection goal = goalProjection();
-            if (goal != null) {
-                islands.addAll(goal.islands());
-                items.addAll(goal.atlasItems());
-            }
         } else {
             islands.addAll(viewModel.islands());
             items.addAll(viewModel.atlasItems());
@@ -714,35 +711,19 @@ public final class ForgeWorkspaceSurface {
         for (SlotWorkspaceViewModel.AtlasItem item : items) {
             byIdentity.put(item.identity(), item);
         }
-        if (!goalTabActive()) {
-            for (SlotWorkspaceViewModel.AtlasItem item : viewModel.triageItems()) {
-                byIdentity.putIfAbsent(item.identity(), item);
+        for (SlotWorkspaceViewModel.AtlasItem item : viewModel.triageItems()) {
+            byIdentity.putIfAbsent(item.identity(), item);
+        }
+        for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : viewModel.contextualSuggestionLanes()) {
+            if (lane == null) {
+                continue;
             }
-            for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : viewModel.contextualSuggestionLanes()) {
-                if (lane == null) {
-                    continue;
-                }
-                for (SlotWorkspaceViewModel.AtlasItem item : lane.items()) {
-                    if (item != null) {
-                        byIdentity.putIfAbsent(item.identity(), item);
-                    }
+            for (SlotWorkspaceViewModel.AtlasItem item : lane.items()) {
+                if (item != null) {
+                    byIdentity.putIfAbsent(item.identity(), item);
                 }
             }
         }
-    }
-
-    private void applyGoalStateIfChanged() {
-        int nextRevision = GoalWorkspaceClientState.revision();
-        if (nextRevision == appliedGoalStateRevision) {
-            return;
-        }
-        appliedGoalStateRevision = nextRevision;
-        refreshPresentedItems();
-        rebuildRequested = true;
-    }
-
-    private GoalWorkspaceProjection goalProjection() {
-        return goalProjectionCache.get(viewModel);
     }
 
     private boolean recipeSidebarActive() {
@@ -763,10 +744,6 @@ public final class ForgeWorkspaceSurface {
             recipeSidebarProjectionKey = key;
         }
         return recipeSidebarProjection;
-    }
-
-    private boolean goalTabActive() {
-        return !recipeSidebarActive() && GoalWorkspaceClientState.hasActiveGoal();
     }
 
     private int workspaceWidth() {
@@ -924,7 +901,7 @@ public final class ForgeWorkspaceSurface {
                 column.addChild(activeChestStrip);
             }
         }
-        column.addChild(goalTabs(sidebarMode));
+        column.addChild(workflowTabs(sidebarMode));
         column.addChild(recents(sidebarMode));
         SlotUiElement suggestions = contextualSuggestions(sidebarMode);
         if (suggestions != null) {
@@ -940,7 +917,7 @@ public final class ForgeWorkspaceSurface {
         return column;
     }
 
-    private SlotUiElement goalTabs(boolean sidebarMode) {
+    private SlotUiElement workflowTabs(boolean sidebarMode) {
         int workflowTabsHeight = WorkflowTabsUiBuilder.height(viewModel);
         SlotUiElement stack = SlotUiElement.element()
                 .layout(layout -> {
@@ -965,10 +942,6 @@ public final class ForgeWorkspaceSurface {
                         .cluster(viewModel, kitRackOpen, true)
                         .layout(layout -> layout.height(KitRackUiBuilder.CLUSTER_HEIGHT_PX)));
         stack.addChild(workflowRow);
-        if (!GoalWorkspaceClientState.goalTabs().isEmpty()) {
-            stack.addChild(new GoalTabsUiBuilder(new GoalTabsContext()).tabs()
-                    .layout(layout -> layout.widthPercent(100).height(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX)));
-        }
         return stack;
     }
 
@@ -1122,7 +1095,7 @@ public final class ForgeWorkspaceSurface {
                         rebuildRequested = true;
                         return;
                     }
-                    sendAction(WorkspaceActionId.GATHER_ACTIVE_KIT, "gathering desired items from nearby chests");
+                    sendAction(WorkspaceActionId.GATHER_ACTIVE_KIT, "gathering target items from nearby chests");
                 });
     }
 
@@ -1186,7 +1159,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement contextualSuggestions(boolean sidebarMode) {
-        if (goalTabActive() || recipeSidebarActive()) {
+        if (recipeSidebarActive()) {
             return null;
         }
         boolean filtering = !normalizedSearchQuery().isBlank();
@@ -1201,8 +1174,11 @@ public final class ForgeWorkspaceSurface {
                     }
                     layout.gapAll(4)
                             .flexDirection(SlotUiLayout.FlexDirection.COLUMN);
-                });
+        });
         for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : viewModel.contextualSuggestionLanes()) {
+            if (hideFetchLaneForCraftRun(lane)) {
+                continue;
+            }
             SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
             if (WallSectionUiBuilder.shouldRenderSuggestionLane(visibleLane)) {
                 lanes.addChild(enrichSection(sectionBuilder.suggestionLane(visibleLane)));
@@ -1318,7 +1294,7 @@ public final class ForgeWorkspaceSurface {
                     filtering,
                     storageGhostSectionExpanded(island.islandId()),
                     storageGhostRevealMode,
-                    goalTabActive(),
+                    false,
                     !activeWorkflowTab()).hasVisibleContent()) {
                 entries.add(island);
             }
@@ -1382,6 +1358,15 @@ public final class ForgeWorkspaceSurface {
         WallSectionHeaderUiBuilder headerBuilder = new WallSectionHeaderUiBuilder(new HeaderContext());
         WallSectionUiBuilder sectionBuilder = new WallSectionUiBuilder(headerBuilder);
         boolean filtering = !normalizedSearchQuery().isBlank();
+        CraftRunUiBuilder craftRun = new CraftRunUiBuilder(new CraftRunContext());
+        if (recipeSidebarActive()) {
+            for (SlotUiElement visibleRecipeAction : craftRun.visibleRecipeActions()) {
+                content.addChild(enrichSection(visibleRecipeAction));
+            }
+        }
+        for (SlotUiElement section : craftRun.entrySections(craftRunItems())) {
+            content.addChild(enrichSection(section));
+        }
         for (SlotWorkspaceViewModel.AtlasIsland island : islands) {
             List<SlotWorkspaceViewModel.AtlasItem> islandItems = items.stream()
                     .filter(item -> island.islandId().equals(item.islandId()))
@@ -1398,12 +1383,27 @@ public final class ForgeWorkspaceSurface {
                                 filtering,
                                 storageGhostRevealMode,
                                 storageGhostSectionExpanded(island.islandId()),
-                                goalTabActive(),
+                                false,
                                 !activeWorkflowTab())));
             }
         }
         viewport.addChild(content);
         return viewport;
+    }
+
+    private List<SlotWorkspaceViewModel.AtlasItem> craftRunItems() {
+        ArrayList<SlotWorkspaceViewModel.AtlasItem> craftItems = new ArrayList<>();
+        craftItems.addAll(viewModel.atlasItems());
+        craftItems.addAll(viewModel.triageItems());
+        return craftItems.isEmpty() ? List.of() : List.copyOf(craftItems);
+    }
+
+    private boolean hideFetchLaneForCraftRun(SlotWorkspaceViewModel.ContextualSuggestionLane lane) {
+        return lane != null
+                && lane.fetch()
+                && viewModel != null
+                && viewModel.craftRun() != null
+                && viewModel.craftRun().active();
     }
 
     private SlotWorkspaceViewModel.ContextualSuggestionLane visibleSuggestionLane(
@@ -1437,12 +1437,12 @@ public final class ForgeWorkspaceSurface {
                 filtering,
                 storageGhostSectionExpanded(island.islandId()),
                 storageGhostRevealMode,
-                goalTabActive(),
+                false,
                 !activeWorkflowTab()).hasVisibleContent();
     }
 
     private boolean activeWorkflowTab() {
-        return !goalTabActive() && viewModel.activeKit() != null;
+        return viewModel.activeKit() != null;
     }
 
     private void enrichRecentCards(SlotUiElement root) {
@@ -1605,16 +1605,21 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement itemContextOverlay() {
-        SlotWorkspaceViewModel.AtlasItem item = byIdentity.get(contextMenuIdentity);
+        SlotWorkspaceViewModel.AtlasItem liveItem = byIdentity.get(contextMenuIdentity);
+        SlotWorkspaceViewModel.AtlasItem item = liveItem != null
+                ? liveItem
+                : contextMenuItemSnapshot != null && contextMenuIdentity.equals(contextMenuItemSnapshot.identity())
+                ? contextMenuItemSnapshot
+                : null;
         if (item == null) {
             contextMenuIdentity = null;
+            contextMenuItemSnapshot = null;
             return null;
         }
-        if (recipeSidebarActive()) {
+        boolean syntheticCraftRunItem = liveItem == null
+                && CraftRunIngredientChoiceRef.forItem(viewModel.craftRun(), item) != null;
+        if (recipeSidebarActive() || syntheticCraftRunItem) {
             return recipeItemContextOverlay(item);
-        }
-        if (goalTabActive()) {
-            return goalItemContextOverlay(item);
         }
         SlotWorkspaceViewModel.KitCard activeTab = viewModel.activeKit();
         List<WorkflowAcceptedInputRule> acceptedInputRules = activeTab == null
@@ -1841,13 +1846,19 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement recipeItemContextOverlay(SlotWorkspaceViewModel.AtlasItem item) {
+        CraftRunIngredientChoiceRef choiceRef = CraftRunIngredientChoiceRef.forItem(viewModel.craftRun(), item);
+        CraftRunIngredientGroup choiceGroup = choiceRef == null ? null : choiceRef.group(viewModel.craftRun());
+        int choiceButtons = craftRunChoiceMenuButtons(choiceGroup);
+        int choiceLabels = choiceGroup == null ? 0 : 1
+                + (choiceGroup.alternatives().size() > CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES ? 1 : 0);
         SlotUiElement overlay = overlayRoot();
         SlotUiElement panel = overlayPanel(
                 contextMenuX,
                 contextMenuY,
                 174,
-                menuHeight(6f, 4f, 1, 5 + (item.ghost() ? 1 : 0)));
+                menuHeight(6f, 4f, 1 + choiceLabels, 5 + (item.ghost() ? 1 : 0) + choiceButtons));
         panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.ACCENT));
+        appendCraftRunChoiceMenu(panel, choiceRef, choiceGroup);
         if (item.ghost()) {
             panel.addChild(menuButton(
                     "Take stack",
@@ -1874,24 +1885,73 @@ public final class ForgeWorkspaceSurface {
                         WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST,
                         item.identity(),
                         "depositing " + item.name()))));
+        boolean recipeViewerItem = item.identity() != null
+                && !CraftRunIngredientChoiceRef.isPlaceholder(item.identity().toIdentity());
         panel.addChild(menuButton(
                 "Open recipe in EMI",
-                true,
-                "Delegate recipe details to EMI",
+                recipeViewerItem,
+                recipeViewerItem ? "Delegate recipe details to EMI" : "Choose a concrete ingredient first",
                 closeThen(() -> openRecipe(item))));
         panel.addChild(menuButton(
                 "Open uses in EMI",
-                true,
-                "Delegate usage details to EMI",
+                recipeViewerItem,
+                recipeViewerItem ? "Delegate usage details to EMI" : "Choose a concrete ingredient first",
                 closeThen(() -> openUses(item))));
         panel.addChild(menuButton("Close", true, "Close", this::closeOverlays));
         overlay.addChild(panel);
         return overlay;
     }
 
+    private static int craftRunChoiceMenuButtons(CraftRunIngredientGroup group) {
+        if (group == null || group.alternatives().size() <= 1) {
+            return 0;
+        }
+        return Math.min(CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES, group.alternatives().size());
+    }
+
+    private void appendCraftRunChoiceMenu(
+            SlotUiElement panel,
+            CraftRunIngredientChoiceRef choiceRef,
+            CraftRunIngredientGroup group
+    ) {
+        if (panel == null || choiceRef == null || group == null || group.alternatives().size() <= 1) {
+            return;
+        }
+        panel.addChild(menuLabel("Choose ingredient", WorkspaceUiPalette.MUTED));
+        int count = 0;
+        for (CraftRunAlternative alternative : group.alternatives()) {
+            if (alternative == null || alternative.identity() == null) {
+                continue;
+            }
+            if (count >= CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES) {
+                break;
+            }
+            count++;
+            SlotWorkspaceViewModel.IdentityRef identity = SlotWorkspaceViewModel.IdentityRef.from(alternative.identity());
+            boolean selected = group.selectedAlternativeIdentity() != null
+                    && ItemIdentityMatcher.matchesMovable(group.selectedAlternativeIdentity(), alternative.identity());
+            panel.addChild(menuButton(
+                    (selected ? "Selected: " : "Use ") + shorten(alternative.label(), 22),
+                    true,
+                    "Use this variant for this recipe ingredient",
+                    closeThen(() -> sendAction(
+                            WorkspaceActionId.CRAFT_RUN_SELECT_INGREDIENT,
+                            "selected recipe ingredient",
+                            choiceRef.entryId(),
+                            choiceRef.groupId(),
+                            identity.itemId(),
+                            identity.comparisonMode(),
+                            identity.componentFingerprint()))));
+        }
+        int hidden = group.alternatives().size() - count;
+        if (hidden > 0) {
+            panel.addChild(menuLabel("+" + hidden + " more variants in EMI", WorkspaceUiPalette.MUTED));
+        }
+    }
+
     private SlotUiElement islandOrderOverlay() {
         SlotWorkspaceViewModel.AtlasIsland island = island(contextMenuIslandId);
-        if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER || goalTabActive()) {
+        if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
             closeOverlayState();
             return null;
         }
@@ -1938,65 +1998,6 @@ public final class ForgeWorkspaceSurface {
                 sourceIndex < lastIndex,
                 "Already at the bottom",
                 closeThen(() -> sendSectionReorderToIndex(island, lastIndex))));
-        panel.addChild(menuButton("Close", true, "Close", this::closeOverlays));
-        overlay.addChild(panel);
-        return overlay;
-    }
-
-    private SlotUiElement goalItemContextOverlay(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceProjection goal = goalProjection();
-        List<GoalStackDescriptor> alternatives = goal != null && goal.hasChoiceControls(item)
-                ? goal.choiceAlternatives(item)
-                : List.of();
-        boolean hasChoiceControls = goal != null && goal.hasChoiceControls(item);
-        boolean hasManualChoice = hasChoiceControls && goal.hasManualChoice(item);
-        int alternativeCount = Math.min(8, alternatives.size());
-        int labelCount = 1 + (hasChoiceControls && !alternatives.isEmpty() ? 1 : 0);
-        int buttonCount = 3;
-        if (hasChoiceControls) {
-            buttonCount += alternativeCount + 1 + (hasManualChoice ? 1 : 0);
-        }
-        SlotUiElement overlay = overlayRoot();
-        SlotUiElement panel = overlayPanel(
-                contextMenuX,
-                contextMenuY,
-                178,
-                menuHeight(6f, 4f, labelCount, buttonCount));
-        panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.ACCENT));
-        panel.addChild(menuButton(
-                "Open recipe in EMI",
-                true,
-                "Delegate recipe details to EMI",
-                closeThen(() -> openGoalRecipe(item))));
-        panel.addChild(menuButton(
-                "Open uses in EMI",
-                true,
-                "Delegate usage details to EMI",
-                closeThen(() -> openGoalUses(item))));
-        if (hasChoiceControls) {
-            if (!alternatives.isEmpty()) {
-                panel.addChild(menuLabel("Use ingredient", WorkspaceUiPalette.MUTED));
-                for (GoalStackDescriptor alternative : alternatives.stream().limit(8).toList()) {
-                    panel.addChild(menuButton(
-                            shorten(alternative.displayName(), 26),
-                            true,
-                            "Use this item for the recipe alternative",
-                            closeThen(() -> chooseGoalAlternative(item, alternative))));
-                }
-            }
-            panel.addChild(menuButton(
-                    alternatives.isEmpty() ? "Choose recipe in EMI" : "Browse in EMI",
-                    true,
-                    "Delegate this recipe alternative to EMI",
-                    closeThen(() -> openGoalChoiceEditor(item))));
-            if (goal.hasManualChoice(item)) {
-                panel.addChild(menuButton(
-                        "Clear manual choice",
-                        true,
-                        "Clear this manual recipe alternative",
-                        closeThen(() -> clearGoalChoice(item))));
-            }
-        }
         panel.addChild(menuButton("Close", true, "Close", this::closeOverlays));
         overlay.addChild(panel);
         return overlay;
@@ -2357,6 +2358,7 @@ public final class ForgeWorkspaceSurface {
     private SlotUiElement enrichSection(SlotUiElement section) {
         SlotUiElement header = null;
         ArrayList<SlotUiElement> grids = new ArrayList<>();
+        ArrayList<SlotUiElement> craftRunGrids = new ArrayList<>();
         ArrayList<SlotUiElement> suggestionGrids = new ArrayList<>();
         SlotWorkspaceViewModel.AtlasIsland island = null;
         for (SlotUiElement child : section.children()) {
@@ -2375,12 +2377,25 @@ public final class ForgeWorkspaceSurface {
             if (child.hasAttachment(WorkspaceUiAttachments.WALL_SUGGESTION_GRID)) {
                 suggestionGrids.add(child);
             }
+            if (child.hasAttachment(WorkspaceUiAttachments.WALL_CRAFT_RUN_GRID)) {
+                craftRunGrids.add(child);
+            }
         }
         installSectionHomeTarget(header, island);
-        if (grids.isEmpty() && suggestionGrids.isEmpty()) {
+        if (grids.isEmpty() && suggestionGrids.isEmpty() && craftRunGrids.isEmpty()) {
             return section;
         }
         WallCardUiBuilder cardBuilder = new WallCardUiBuilder(new CardContext());
+        for (SlotUiElement grid : craftRunGrids) {
+            List<?> gridItems = grid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
+            if (gridItems != null) {
+                for (Object gridItem : gridItems) {
+                    if (gridItem instanceof SlotWorkspaceViewModel.AtlasItem item) {
+                        grid.addChild(enrichCard(cardBuilder.card(item), item));
+                    }
+                }
+            }
+        }
         for (SlotUiElement grid : suggestionGrids) {
             SlotWorkspaceViewModel.ContextualSuggestionLane lane = grid.attachment(
                     WorkspaceUiAttachments.CONTEXTUAL_SUGGESTION_LANE,
@@ -2416,18 +2431,6 @@ public final class ForgeWorkspaceSurface {
 
     private SlotUiElement enrichCard(SlotUiElement card, SlotWorkspaceViewModel.AtlasItem item) {
         card.on(SlotUiEventKind.MOUSE_DOWN, event -> {
-            if (goalTabActive()) {
-                event.stopPropagation();
-                SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
-                if (event.button() == 1 && event.shiftDown()) {
-                    setStatus("goal tab is browse only");
-                } else if (event.button() == 1 && !isCursorCarrying()) {
-                    openItemContextMenu(target, event.x(), event.y());
-                } else if (isCursorCarrying()) {
-                    setStatus("goal tab is browse only");
-                }
-                return;
-            }
             if (event.button() == 0) {
                 beginHomeDragCandidate(freshItem(item));
                 event.stopPropagation();
@@ -2455,11 +2458,6 @@ public final class ForgeWorkspaceSurface {
                 return;
             }
             event.stopPropagation();
-            if (goalTabActive()) {
-                SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
-                setStatus((target == null ? "goal card" : target.name()) + " in active goal");
-                return;
-            }
             SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.click(
                     cardGestureContext(target, event.button(), event.shiftDown()));
@@ -2468,18 +2466,6 @@ public final class ForgeWorkspaceSurface {
         card.on(SlotUiEventKind.MOUSE_WHEEL, event -> {
             boolean controlDown = event.controlDown() || Screen.hasControlDown();
             boolean wantedAdjustDown = ForgeWorkspaceClient.markWantedDown();
-            if (goalTabActive()) {
-                if (!controlDown || isCursorCarrying()) {
-                    return;
-                }
-                float delta = event.wheelDelta();
-                if (delta == 0f) {
-                    return;
-                }
-                event.stopPropagation();
-                adjustGoalTargetCount("", delta > 0f ? 1 : -1);
-                return;
-            }
             if (!event.shiftDown() && !controlDown && !wantedAdjustDown) {
                 return;
             }
@@ -2517,9 +2503,6 @@ public final class ForgeWorkspaceSurface {
             SlotWorkspaceViewModel.AtlasIsland island
     ) {
         if (target == null || island == null || island.kind() == VisualAtlasIslandKind.TRIAGE) {
-            return;
-        }
-        if (goalTabActive()) {
             return;
         }
         target.on(SlotUiEventKind.MOUSE_DOWN, event -> {
@@ -2599,9 +2582,6 @@ public final class ForgeWorkspaceSurface {
     }
 
     private boolean anyGatherableIdentity() {
-        if (goalTabActive()) {
-            return false;
-        }
         for (SlotWorkspaceViewModel.AtlasItem item : items) {
             if (WorkspaceGatherUiSupport.isGatherableItem(item)) {
                 return true;
@@ -2625,6 +2605,7 @@ public final class ForgeWorkspaceSurface {
             return;
         }
         contextMenuIdentity = item.identity();
+        contextMenuItemSnapshot = item;
         contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuChestStorageId = null;
@@ -2648,6 +2629,7 @@ public final class ForgeWorkspaceSurface {
         }
         contextMenuKitId = kitId;
         contextMenuIdentity = null;
+        contextMenuItemSnapshot = null;
         contextMenuIslandId = null;
         contextMenuChestStorageId = null;
         contextMenuX = screenX;
@@ -2670,6 +2652,7 @@ public final class ForgeWorkspaceSurface {
         }
         contextMenuChestStorageId = storageId;
         contextMenuIdentity = null;
+        contextMenuItemSnapshot = null;
         contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuX = screenX;
@@ -2690,10 +2673,6 @@ public final class ForgeWorkspaceSurface {
             float screenX,
             float screenY
     ) {
-        if (goalTabActive()) {
-            setStatus("goal tab is browse only");
-            return;
-        }
         if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
             setStatus("section cannot be reordered");
             return;
@@ -2716,6 +2695,7 @@ public final class ForgeWorkspaceSurface {
                 ? Integer.toString(item.desiredCount())
                 : "";
         contextMenuIdentity = null;
+        contextMenuItemSnapshot = null;
         contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuChestStorageId = null;
@@ -2734,6 +2714,7 @@ public final class ForgeWorkspaceSurface {
         islandEditX = screenX;
         islandEditY = screenY;
         contextMenuIdentity = null;
+        contextMenuItemSnapshot = null;
         contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuChestStorageId = null;
@@ -2918,6 +2899,7 @@ public final class ForgeWorkspaceSurface {
 
     private void closeOverlayState() {
         contextMenuIdentity = null;
+        contextMenuItemSnapshot = null;
         contextMenuIslandId = null;
         contextMenuKitId = null;
         contextMenuChestStorageId = null;
@@ -3045,10 +3027,6 @@ public final class ForgeWorkspaceSurface {
     }
 
     private void handleHotbarKey(int hotbarIndex) {
-        if (goalTabActive()) {
-            setStatus("goal tab is browse only");
-            return;
-        }
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
         if (identity == null) {
             applySearchDecision(WorkspaceSearchInputPolicy.confirmForHotbar(searchActive, searchQuery));
@@ -3183,13 +3161,11 @@ public final class ForgeWorkspaceSurface {
     }
 
     private void selectAllTab() {
-        GoalWorkspaceClientState.selectAll();
         refreshPresentedItems();
         setStatus("showing all items");
     }
 
     private void selectAllWorkflowTab() {
-        GoalWorkspaceClientState.selectAll();
         if (viewModel.activeKit() != null) {
             sendKitAction(WorkspaceActionId.DEACTIVATE_KIT, "showing All");
         } else {
@@ -3203,133 +3179,30 @@ public final class ForgeWorkspaceSurface {
             selectAllWorkflowTab();
             return;
         }
-        GoalWorkspaceClientState.selectAll();
         SlotWorkspaceViewModel.KitCard tab = viewModel.kit(kitId);
         sendKitAction(WorkspaceActionId.ACTIVATE_KIT, "showing " + (tab == null ? "workflow" : tab.name()), kitId);
     }
 
-    private void selectGoalTab(String goalId) {
-        if (!GoalWorkspaceClientState.selectGoal(goalId)) {
-            setStatus("goal tab no longer exists");
-            return;
-        }
-        refreshPresentedItems();
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        setStatus("showing " + (active == null ? "goal" : active.label()));
-    }
-
-    private void removeGoalTab(String goalId) {
-        if (!GoalWorkspaceClientState.removeGoal(goalId)) {
-            setStatus("goal tab no longer exists");
-            return;
-        }
-        GoalWorkspaceIntegration.removePersistedGoal(goalId);
-        refreshPresentedItems();
-        setStatus(goalTabActive() ? "removed goal" : "showing all items");
-    }
-
-    private void adjustGoalTargetCount(String goalId, int delta) {
-        if (!GoalWorkspaceClientState.adjustTargetCount(goalId, delta)) {
-            return;
-        }
-        refreshPresentedItems();
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        GoalWorkspaceIntegration.persistGoal(active);
-        setStatus(active == null ? "updated goal" : active.label() + " x" + active.targetCount());
-    }
-
-    private void openGoalRecipe(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        GoalProjectionEntry entry = goalEntry(item);
-        if (active == null) {
-            setStatus("no active goal");
-        } else if (GoalWorkspaceIntegration.openRecipe(active.descriptor(), entry)) {
-            setStatus("opened recipe in EMI");
-        } else {
-            setStatus("EMI recipe display unavailable");
-        }
-    }
-
     private void openRecipe(SlotWorkspaceViewModel.AtlasItem item) {
-        if (goalTabActive()) {
-            openGoalRecipe(item);
-            return;
-        }
         ItemIdentity identity = item == null ? null : item.identity().toIdentity();
         if (identity == null) {
             setStatus("item unavailable");
-        } else if (GoalWorkspaceIntegration.openRecipe(identity)) {
+        } else if (RecipeViewerIntegration.openRecipe(identity)) {
             setStatus("opened recipe in EMI");
         } else {
             setStatus("EMI recipe display unavailable");
-        }
-    }
-
-    private void openGoalUses(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceProjection goal = goalProjection();
-        ItemIdentity identity = goal == null ? (item == null ? null : item.identity().toIdentity()) : goal.delegationIdentity(item);
-        if (identity == null) {
-            setStatus("item unavailable");
-        } else if (GoalWorkspaceIntegration.openUses(identity)) {
-            setStatus("opened uses in EMI");
-        } else {
-            setStatus("EMI usage display unavailable");
         }
     }
 
     private void openUses(SlotWorkspaceViewModel.AtlasItem item) {
-        openGoalUses(item);
-    }
-
-    private void openGoalChoiceEditor(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        String choiceGroupId = goalChoiceGroupId(item);
-        GoalProjectionEntry entry = goalEntry(item);
-        if (active == null || choiceGroupId.isBlank()) {
-            setStatus("goal choice unavailable");
-        } else if (GoalWorkspaceIntegration.openChoiceEditor(active.descriptor(), entry)) {
-            setStatus("choose recipe in EMI");
+        ItemIdentity identity = item == null ? null : item.identity().toIdentity();
+        if (identity == null) {
+            setStatus("item unavailable");
+        } else if (RecipeViewerIntegration.openUses(identity)) {
+            setStatus("opened uses in EMI");
         } else {
-            setStatus("EMI choice display unavailable");
+            setStatus("EMI usage display unavailable");
         }
-    }
-
-    private void clearGoalChoice(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        String choiceGroupId = goalChoiceGroupId(item);
-        if (active == null || choiceGroupId.isBlank()) {
-            setStatus("goal choice unavailable");
-        } else if (GoalWorkspaceClientState.clearManualChoice(active.goalId(), choiceGroupId)) {
-            setStatus("cleared goal choice");
-            GoalWorkspaceIntegration.persistGoal(GoalWorkspaceClientState.goalTab(active.goalId()));
-        } else {
-            setStatus("no manual choice to clear");
-        }
-        refreshPresentedItems();
-    }
-
-    private void chooseGoalAlternative(SlotWorkspaceViewModel.AtlasItem item, GoalStackDescriptor alternative) {
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        String choiceGroupId = goalChoiceGroupId(item);
-        if (active == null || choiceGroupId.isBlank() || alternative == null) {
-            setStatus("goal choice unavailable");
-        } else if (GoalWorkspaceClientState.setManualChoice(active.goalId(), choiceGroupId, alternative.identity())) {
-            setStatus("using " + alternative.displayName());
-            GoalWorkspaceIntegration.persistGoal(GoalWorkspaceClientState.goalTab(active.goalId()));
-        } else {
-            setStatus("could not update goal choice");
-        }
-        refreshPresentedItems();
-    }
-
-    private String goalChoiceGroupId(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalProjectionEntry entry = goalEntry(item);
-        return entry == null ? "" : entry.choiceGroupId();
-    }
-
-    private GoalProjectionEntry goalEntry(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal == null ? null : goal.entry(item);
     }
 
     private WallCardTransferGesturePolicy.Context cardGestureContext(
@@ -3663,52 +3536,6 @@ public final class ForgeWorkspaceSurface {
         SIDEBAR
     }
 
-    private final class GoalTabsContext implements GoalTabsUiBuilder.Context {
-        @Override
-        public boolean goalActive() {
-            return goalTabActive();
-        }
-
-        @Override
-        public List<GoalTabsUiBuilder.GoalTab> goalTabs() {
-            ArrayList<GoalTabsUiBuilder.GoalTab> tabs = new ArrayList<>();
-            for (GoalWorkspaceClientState.GoalTab tab : GoalWorkspaceClientState.goalTabs()) {
-                String status = "";
-                if (tab.active()) {
-                    GoalWorkspaceProjection projection = goalProjection();
-                    status = projection == null ? "" : projection.projection().status().name();
-                }
-                tabs.add(new GoalTabsUiBuilder.GoalTab(
-                        tab.goalId(),
-                        tab.label(),
-                        tab.targetCount(),
-                        status,
-                        tab.active()));
-            }
-            return List.copyOf(tabs);
-        }
-
-        @Override
-        public void selectAll() {
-            selectAllTab();
-        }
-
-        @Override
-        public void selectGoal(String goalId) {
-            selectGoalTab(goalId);
-        }
-
-        @Override
-        public void removeGoal(String goalId) {
-            removeGoalTab(goalId);
-        }
-
-        @Override
-        public void adjustGoalTargetCount(String goalId, int delta) {
-            ForgeWorkspaceSurface.this.adjustGoalTargetCount(goalId, delta);
-        }
-    }
-
     private final class WorkflowTabsContext implements WorkflowTabsUiBuilder.Context {
         @Override
         public void selectAll() {
@@ -3728,6 +3555,40 @@ public final class ForgeWorkspaceSurface {
         @Override
         public void openTabMenu(String kitId, float screenX, float screenY) {
             ForgeWorkspaceSurface.this.openKitContextMenu(kitId, screenX, screenY);
+        }
+    }
+
+    private final class CraftRunContext implements CraftRunUiBuilder.Context {
+        @Override
+        public dev.imagio.slot.workflow.domain.CraftRunState craftRun() {
+            return viewModel.craftRun();
+        }
+
+        @Override
+        public List<CraftRunRecipeCapture> visibleRecipes() {
+            return craftRunRecipeCaptures == null ? List.of() : craftRunRecipeCaptures;
+        }
+
+        @Override
+        public void addVisibleRecipe(CraftRunRecipeCapture capture) {
+            boolean sent = SlotForgeNetworking.addCraftRunRecipe(capture);
+            setStatus(sent ? "added recipe" : "failed to add recipe");
+            rebuildRequested = true;
+        }
+
+        @Override
+        public void stageEntry(String entryId) {
+            sendAction(WorkspaceActionId.CRAFT_RUN_STAGE_ENTRY, "staging craft ingredients", entryId);
+        }
+
+        @Override
+        public void adjustEntry(String entryId, int delta) {
+            sendAction(WorkspaceActionId.CRAFT_RUN_ADJUST_ENTRY, "adjusting recipe", entryId, delta);
+        }
+
+        @Override
+        public void removeEntry(String entryId) {
+            sendAction(WorkspaceActionId.CRAFT_RUN_REMOVE_ENTRY, "removed craft recipe", entryId);
         }
     }
 
@@ -3765,10 +3626,6 @@ public final class ForgeWorkspaceSurface {
     private final class HeaderContext implements WallSectionHeaderUiBuilder.Context {
         @Override
         public void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island, float screenX, float screenY) {
-            if (goalTabActive()) {
-                setStatus("goal tab is browse only");
-                return;
-            }
             ForgeWorkspaceSurface.this.beginIslandEdit(island, screenX, screenY);
         }
 
@@ -3945,9 +3802,6 @@ public final class ForgeWorkspaceSurface {
             if (entry == null) {
                 return WayfindingDisplay.CardText.unavailable();
             }
-            if (entry.storageId() != null && entry.storageId().startsWith("goal:")) {
-                return new WayfindingDisplay.CardText(">", WorkspaceCountFormat.compact(entry.count()));
-            }
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.player == null || minecraft.level == null) {
                 return WayfindingDisplay.CardText.unavailable();
@@ -3969,7 +3823,6 @@ public final class ForgeWorkspaceSurface {
             if (recipe != null) {
                 return recipe.tooltipLines(item);
             }
-            GoalWorkspaceProjection goal = goalProjection();
             if (SlotForgeClientConfig.contextualSuggestionDebugTooltips() && suggestionLane != null) {
                 return WorkspaceItemTooltipBuilder.slotLines(
                         item,
@@ -3977,27 +3830,17 @@ public final class ForgeWorkspaceSurface {
                         true,
                         hasProximateDepositRoute(item));
             }
-            return goal == null
-                    ? WorkspaceItemTooltipBuilder.slotLines(item, hasProximateDepositRoute(item))
-                    : goal.tooltipLines(item);
+            return WorkspaceItemTooltipBuilder.slotLines(item, hasProximateDepositRoute(item));
         }
 
         @Override
         public boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
-            if (recipeSidebarActive()) {
-                return false;
-            }
-            GoalWorkspaceProjection goal = goalProjection();
-            return goal != null && goal.choiceInvolved(item);
+            return false;
         }
 
         @Override
         public boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
-            if (recipeSidebarActive()) {
-                return false;
-            }
-            GoalWorkspaceProjection goal = goalProjection();
-            return goal != null && goal.choiceCard(item);
+            return false;
         }
 
         @Override
@@ -4006,8 +3849,7 @@ public final class ForgeWorkspaceSurface {
             if (recipe != null) {
                 return recipe.suppressVanillaTooltip(item);
             }
-            GoalWorkspaceProjection goal = goalProjection();
-            return goal != null && goal.suppressVanillaTooltip(item);
+            return false;
         }
 
         @Override
@@ -4023,7 +3865,6 @@ public final class ForgeWorkspaceSurface {
         @Override
         public boolean hasProximateDepositRoute(SlotWorkspaceViewModel.AtlasItem item) {
             return item != null
-                    && !goalTabActive()
                     && viewModel.depositableIdentities().contains(item.identity());
         }
 

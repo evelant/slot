@@ -87,7 +87,7 @@ final class TocPanelBuilder {
                 filtering,
                 host.storageGhostSectionExpanded(island.islandId()),
                 host.storageGhostRevealMode,
-                host.goalTabActive(),
+                false,
                 !host.activeWorkflowTab());
     }
 

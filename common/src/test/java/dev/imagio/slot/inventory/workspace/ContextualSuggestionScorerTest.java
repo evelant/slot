@@ -3,18 +3,16 @@ package dev.imagio.slot.inventory.workspace;
 import dev.imagio.slot.classification.FacetIndex;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
-import dev.imagio.slot.inventory.goal.GoalDescriptor;
-import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
-import dev.imagio.slot.inventory.goal.GoalPlanState;
-import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
-import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.workflow.domain.ContextualSignalEvent;
 import dev.imagio.slot.workflow.domain.ContextualSignalKind;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionState;
+import dev.imagio.slot.workflow.domain.CraftRunAlternative;
+import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeEntry;
+import dev.imagio.slot.workflow.domain.CraftRunState;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
-import dev.imagio.slot.workflow.domain.WorkflowProjection;
 import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
 
@@ -1100,7 +1098,7 @@ class ContextualSuggestionScorerTest {
     }
 
     @Test
-    void putAwayExcludesProtectedTargetsAndGoalRelevantItems() {
+    void putAwayExcludesProtectedTargetsAndCraftRunItems() {
         FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
         SlotWorkspaceViewModel.AtlasItem hotbarDecor = item(
                 "minecraft:flower_pot",
@@ -1120,21 +1118,23 @@ class ContextualSuggestionScorerTest {
                 0,
                 false,
                 4);
-        SlotWorkspaceViewModel.AtlasItem goalOre = item(
+        SlotWorkspaceViewModel.AtlasItem craftRunOre = item(
                 "minecraft:iron_ore",
                 true,
                 BuiltinInventoryIds.PLAYER_MAIN);
 
         WorkflowDomainSnapshot snapshot = new WorkflowDomainSnapshot(
                 1L,
-                workflowWithGoals(List.of(goal("minecraft:iron_ore"))),
                 null,
                 null,
                 null,
                 null,
+                null,
+                null,
+                craftRun("minecraft:iron_ore"),
                 null);
         List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
-                List.of(hotbarDecor, desiredDecor, wantedDecor, goalOre),
+                List.of(hotbarDecor, desiredDecor, wantedDecor, craftRunOre),
                 snapshot,
                 index,
                 1,
@@ -1148,7 +1148,7 @@ class ContextualSuggestionScorerTest {
     @Test
     void putAwayAlwaysIncludesDesiredCountExcess() {
         FacetIndex index = FacetIndex.load(new StringReader(facetLayer()));
-        SlotWorkspaceViewModel.AtlasItem excessGoalItem = item(
+        SlotWorkspaceViewModel.AtlasItem excessCraftRunItem = item(
                 "minecraft:iron_ore",
                 true,
                 BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
@@ -1160,14 +1160,16 @@ class ContextualSuggestionScorerTest {
 
         WorkflowDomainSnapshot snapshot = new WorkflowDomainSnapshot(
                 1L,
-                workflowWithGoals(List.of(goal("minecraft:iron_ore"))),
                 null,
                 null,
                 null,
                 null,
+                null,
+                null,
+                craftRun("minecraft:iron_ore"),
                 null);
         List<SlotWorkspaceViewModel.ContextualSuggestionLane> lanes = ContextualSuggestionScorer.lanes(
-                List.of(excessGoalItem),
+                List.of(excessCraftRunItem),
                 snapshot,
                 index,
                 12,
@@ -1399,47 +1401,26 @@ class ContextualSuggestionScorerTest {
                 1);
     }
 
-    private static GoalPlanState goal(String itemId) {
-        GoalStackDescriptor output = GoalStackDescriptor.of(itemId, 1);
-        GoalRecipeDescriptor recipe = new GoalRecipeDescriptor(
-                "recipe",
-                "crafting",
-                true,
-                List.of(output),
-                List.of(GoalIngredientDescriptor.concrete("input", output, 1)),
-                List.of(),
-                List.of());
-        GoalDescriptor descriptor = new GoalDescriptor(
-                "goal",
-                "Goal",
-                List.of(output),
+    private static CraftRunState craftRun(String itemId) {
+        ItemIdentity identity = ItemIdentity.of(itemId);
+        CraftRunRecipeEntry entry = new CraftRunRecipeEntry(
+                "craft-run-test",
                 1,
-                "recipe",
-                "crafting",
-                List.of(recipe));
-        return new GoalPlanState("goal", "Goal", 1, descriptor, null);
-    }
-
-    private static WorkflowProjection.Snapshot workflowWithGoals(List<GoalPlanState> goals) {
-        WorkflowProjection.Snapshot empty = WorkflowProjection.Snapshot.empty();
-        return new WorkflowProjection.Snapshot(
-                empty.userCollections(),
-                empty.memberships(),
-                empty.loadoutsByCollection(),
-                empty.favoriteTags(),
-                empty.junkTags(),
-                empty.protection(),
-                empty.recentDismissedUpToByIdentity(),
-                empty.visualHomeMap(),
-                empty.claimedChestMap(),
-                empty.chestAffinityMap(),
-                empty.clusterLabels(),
-                empty.kitMap(),
-                empty.playerDesiredCounts(),
-                empty.kitDesiredCounts(),
-                empty.playerWantedCounts(),
-                goals,
-                empty.goalRecipeDefaults());
+                "test:recipe",
+                "test:recipe",
+                "Craft run",
+                identity,
+                itemId,
+                1,
+                1,
+                List.of(new CraftRunIngredientGroup(
+                        "input",
+                        itemId,
+                        1,
+                        List.of(new CraftRunAlternative(identity, itemId)),
+                        List.of())),
+                List.of());
+        return new CraftRunState(1, entry.entryId(), List.of(entry));
     }
 
     private static String facetLayer() {

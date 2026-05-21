@@ -6,11 +6,11 @@ import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public final class SlotGoalPlanPayloadHandler {
-    private SlotGoalPlanPayloadHandler() {
+public final class SlotCraftRunRecipePayloadHandler {
+    private SlotCraftRunRecipePayloadHandler() {
     }
 
-    public static void handle(SlotGoalPlanPayload payload, IPayloadContext context) {
+    public static void handle(SlotCraftRunRecipePayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
             if (!(context.player() instanceof ServerPlayer player) || payload == null) {
                 return;
@@ -19,14 +19,11 @@ public final class SlotGoalPlanPayloadHandler {
             if (runtime == null) {
                 return;
             }
-            boolean changed = SlotGoalPlanPayload.ACTION_REMOVE.equals(payload.action())
-                    ? runtime.goalPlanWorkflow().remove(payload.goalId())
-                    : runtime.goalPlanWorkflow().save(payload.goal());
+            boolean changed = runtime.craftRunWorkflow().add(payload.capture());
             SlotDebugLog.log(
-                    "[goal] persisted goal plan action={} goal={} changed={}",
-                    payload.action(),
-                    payload.goalId(),
-                    changed);
+                    "[craft-run] add visible EMI recipe changed={} player={}",
+                    changed,
+                    player.getGameProfile().getName());
         });
     }
 }

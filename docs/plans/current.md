@@ -26,14 +26,23 @@ migrating richer modern-only affordances without reintroducing backend-specific
 semantics.
 
 Sidecar product slice: EMI recipe context now uses the normal sidebar as a
-transient visible-ingredient filter, per
+transient visible-ingredient filter plus one persisted server-owned current
+craft run, per
 [`0007`](../decisions/0007-emi-recipe-sidebar.md). When EMI's recipe screen is
 open, SLOT renders the sidebar into that screen while syncing through EMI's
-underlying handled menu; the wall shows only visible recipe ingredients and
-reuses normal carried/storage/missing-card chrome. The earlier recipe-goal plan
-is retired at [`retired/emi-goal-projections.md`](retired/emi-goal-projections.md);
-do not grow the goal system unless playtesting proves transient recipe context
-is insufficient.
+underlying handled menu; the wall shows visible recipe ingredients, exposes an
+`Add Recipe` action for each visible recipe, renders tracked recipes as normal
+wall-list sections with compact output-icon headers and per-recipe stage/adjust/done
+controls, hides the fixed `Fetch` suggestion lane while recipes are tracked,
+raises same-list producer recipe counts to the output units required by other
+tracked recipes, and
+projects recipe inputs as transient wanted-count pressure so
+gather/storage/wayfinding match the highlighted chrome. The tracked recipe list
+survives logout/rejoin and server restart through workflow persistence. The earlier
+recipe-goal plan is retired at [`retired/emi-goal-projections.md`](retired/emi-goal-projections.md),
+and the old recipe-goal code/UI/RPC/persistence surface has been removed; do not
+grow a recursive goal planner unless playtesting proves transient recipe context
+plus craft runs are insufficient.
 
 Previously active
 [`single-column-workspace.md`](single-column-workspace.md) is paused
@@ -68,6 +77,17 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-21** — EMI craft runs landed on both loaders: recipe screens still
+  mount the filtered SLOT sidebar, can add visible or hovered EMI recipes to a
+  persisted server-owned recipe list, show per-recipe sections directly in the
+  wall list, project recipe inputs as transient wanted-count pressure for shared
+  gather/storage/wayfinding behavior, clamp count controls to recipe output
+  batches, raise same-list producer recipe counts from downstream input needs,
+  stage selected recipe inputs from carried providers into player main inventory
+  through the shared transfer executor, decrement remaining output from
+  meaningful acquisition activity, survive logout/rejoin and server restart,
+  and no longer expose the legacy `SLOT goal` button/drop target/goal-tab UI or
+  recipe-goal model, RPC, codec, and persistence fields.
 - **2026-05-20** — Active-workflow put-away destination wayfinding landed:
   activation-time carried clutter now feeds a visible Put Away strip, no-home
   card chrome, distinct chest/display wayfinding targets, green HUD/glow
@@ -88,8 +108,9 @@ hold the rest.
   contextual scoring, and storage-ghost expansion are disabled for now,
   Recents renders two rows, search
   idle-commits and later clears after close
-  with right-click clear working on Forge, the default grave-accent key toggles
-  hovered identities between backpack/hotbar and main inventory, and the shared
+  with right-click clear working on Forge, grave accent moves hovered identities
+  to main inventory, Shift+grave moves hovered identities to backpack storage,
+  and the shared
   target/display-storage fixes stabilized damaged tools, baskets/sacks, tool
   racks, bulk deposit, undo, and TFC startup.
 - **2026-05-19** — Item-card chrome now has a shared common grammar:
@@ -159,17 +180,6 @@ hold the rest.
   prototype: common signals, bounded aggregates, and learned event associations
   feed Useful Now and Put Away while carried state stays eligibility/action
   state; both loaders render the lanes above the wall with debug score terms.
-- **2026-05-14** — Quiet nearby ghosts landed for playtesting: default
-  wall sections show carried cards first and collapse ordinary proximate
-  storage ghosts behind a per-section nearby chip, while search,
-  desired/wanted/workflow/goal intent and storage x-ray toggles reveal the
-  hidden storage cards on demand. Follow-up fixes generalized observed
-  storage menus beyond vanilla chests for TFC vessels, kept search
-  keystrokes inside sidebar search without using Esc as search-clear,
-  matched localized hover names in search, disabled affinity decay behind
-  the existing kill switch, and added TFC/TFG display storage tracking for
-  tool racks and placed items, with deposit limited to tool racks.
-
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the
@@ -181,15 +191,16 @@ item 2. No standalone operational bugs are currently tracked here.
 Roughly ordered by playtest signal. Pull from the top when the active
 track lands.
 
-1. **EMI recipe sidebar playtest validation.** Validate the new transient
-   sidebar filter against real recipes before adding more chrome: open recipes
-   from vanilla inventory, chest/crafting/machine screens, and both loaders;
-   confirm the sidebar mounts on EMI's recipe screen and returns to normal on
-   close; verify duplicate inputs aggregate into the existing missing/craft
-   state; verify tag/list ingredients show the visible alternative when one is
-   present and a useful missing card otherwise; confirm tracked/proximate
-   storage pips survive the projection; and check EMI exclusion bounds/search
-   focus do not overlap or trap keys.
+1. **EMI craft-run playtest validation.** Validate the transient sidebar +
+   persisted tracked-recipe list against real recipes before adding more chrome:
+   open
+   recipes from vanilla inventory, chest/crafting/machine screens, and both
+   loaders; confirm the sidebar mounts on EMI's recipe screen and returns to
+   normal on close; verify add/stage/adjust/remove actions; verify
+   duplicate inputs, tag/list ingredients, tracked/proximate storage pips, and
+   acquisition-count decrementing; check that staging moves only selected-entry
+   deficits into player main inventory; and decide from playtest whether the
+   deferred hovered `Use this` concretization/hotkey is actually needed.
 
 2. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
    Active-scope desired counts, player wanted counts, unified gap chrome,
@@ -233,10 +244,10 @@ track lands.
    Core workflows, accepted inputs, compact nearby headers, hidden Useful Now scoring,
    visible activation-scoped Put Away guidance, search/keybind polish, and the shared display-storage/tool fix pass are
    live. Put-away destination wayfinding and workflow/variant reorder plus
-   duplicate/rename polish have landed. Remaining follow-up: implement the EMI
-   craft-run and staging plan in `workflow-tabs.md`, including removal of the
-   old recipe-goal system, starting from one temporary flat current craft run
-   before any persistent workflow-scoped recipe shortcuts.
+   duplicate/rename polish have landed. EMI craft runs and recipe-goal removal
+   have landed; remaining workflow follow-ups are the deferred hovered `Use this`
+   concretization/hotkey if playtesting asks for it, and later Kit-name cleanup
+   without changing the current Kit-backed implementation substrate.
 6. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
    The landed Kit code remains the implementation substrate, but future
    user-facing workflow work should follow `workflow-tabs.md`.

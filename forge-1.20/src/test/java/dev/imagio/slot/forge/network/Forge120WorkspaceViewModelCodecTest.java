@@ -2,10 +2,10 @@ package dev.imagio.slot.forge.network;
 
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
-import dev.imagio.slot.inventory.goal.GoalRecipeDefaults;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+import dev.imagio.slot.workflow.domain.CraftRunState;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.Bootstrap;
@@ -289,8 +289,7 @@ class Forge120WorkspaceViewModelCodecTest {
                 Set.of(stone),
                 List.of(),
                 SlotWorkspaceViewModel.ActiveChestPanel.empty(),
-                GoalRecipeDefaults.empty(),
-                List.of(),
+                CraftRunState.empty(),
                 contextualSuggestionLanes);
     }
 

@@ -426,8 +426,7 @@ class SlotWorkspaceLdlibModelTest {
                 viewModel.depositableIdentities(),
                 viewModel.recentIdentities(),
                 viewModel.activeChestPanel(),
-                viewModel.goalRecipeDefaults(),
-                viewModel.goalPlans(),
+                viewModel.craftRun(),
                 List.of(lane));
     }
 

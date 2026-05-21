@@ -4,10 +4,6 @@ import dev.imagio.slot.classification.FacetIndex;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
-import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
-import dev.imagio.slot.inventory.goal.GoalPlanState;
-import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
-import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.workflow.domain.ContextualItemAggregate;
 import dev.imagio.slot.workflow.domain.ContextualAssociationHint;
 import dev.imagio.slot.workflow.domain.ContextualAssociationSet;
@@ -17,6 +13,9 @@ import dev.imagio.slot.workflow.domain.ContextualSignalEvent;
 import dev.imagio.slot.workflow.domain.ContextualSignalKind;
 import dev.imagio.slot.workflow.domain.ContextualSignalRecord;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionState;
+import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeEntry;
+import dev.imagio.slot.workflow.domain.CraftRunState;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 
 import java.util.ArrayList;
@@ -104,7 +103,7 @@ public final class ContextualSuggestionScorer {
         WorkflowDomainSnapshot snapshot = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
         FacetIndex index = facetIndex == null ? FacetIndex.empty() : facetIndex;
         ContextualSuggestionState state = snapshot.contextualSuggestions();
-        Set<ItemIdentity> goalIdentities = goalIdentities(snapshot.goalPlans());
+        Set<ItemIdentity> craftRunIdentities = craftRunIdentities(snapshot.craftRun());
         double pressure = carriedSlotCapacity <= 0
                 ? 0D
                 : Math.max(0D, Math.min(1D, (carriedSlotCapacity - carriedFreeSlotCount) / (double) carriedSlotCapacity));
@@ -138,7 +137,7 @@ public final class ContextualSuggestionScorer {
             }
             RelevanceBreakdown cleanupRelevance = scoringContext.contextBreakdown(vector, identity);
             PutAwayScoreInputs putAwayInputs = putAwayInputs(
-                    item, vector, cleanupRelevance, state, index, pressure, goalIdentities, currentGameTick);
+                    item, vector, cleanupRelevance, state, index, pressure, craftRunIdentities, currentGameTick);
             double putAwayScore = putAwayInputs.score();
             if (putAwayScore >= PUT_AWAY_THRESHOLD) {
                 putAway.add(new ScoredItem(
@@ -222,7 +221,7 @@ public final class ContextualSuggestionScorer {
             ContextualSuggestionState state,
             FacetIndex index,
             double pressure,
-            Set<ItemIdentity> goalIdentities,
+            Set<ItemIdentity> craftRunIdentities,
             long currentGameTick
     ) {
         if (!item.carried()) {
@@ -233,7 +232,7 @@ public final class ContextualSuggestionScorer {
             return PutAwayScoreInputs.ineligible();
         }
         ItemIdentity identity = item.identity().toIdentity();
-        if (!desiredExcess && ItemIdentityCollections.contains(goalIdentities, identity)) {
+        if (!desiredExcess && ItemIdentityCollections.contains(craftRunIdentities, identity)) {
             return PutAwayScoreInputs.ineligible();
         }
         if (!desiredExcess && protectedSource(item.largestCarriedSourceId())) {
@@ -1379,48 +1378,28 @@ public final class ContextualSuggestionScorer {
         }
     }
 
-    private static Set<ItemIdentity> goalIdentities(List<GoalPlanState> goals) {
-        if (goals == null || goals.isEmpty()) {
+    private static Set<ItemIdentity> craftRunIdentities(CraftRunState craftRun) {
+        if (craftRun == null || !craftRun.active()) {
             return Set.of();
         }
         LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
-        for (GoalPlanState goal : goals) {
-            if (goal == null || goal.descriptor() == null) {
+        for (CraftRunRecipeEntry entry : craftRun.entries()) {
+            if (entry == null || !entry.active()) {
                 continue;
             }
-            addStacks(identities, goal.descriptor().targetOutputs());
-            for (GoalRecipeDescriptor recipe : goal.descriptor().recipes()) {
-                if (recipe == null) {
+            ItemIdentityCollections.add(identities, entry.outputIdentity());
+            for (CraftRunIngredientGroup group : entry.inputs()) {
+                if (group == null) {
                     continue;
                 }
-                addStacks(identities, recipe.outputs());
-                addIngredients(identities, recipe.inputs());
-                addIngredients(identities, recipe.catalysts());
+                group.selectedOrAllAlternatives().forEach(alternative -> {
+                    if (alternative != null && alternative.identity() != null) {
+                        ItemIdentityCollections.add(identities, alternative.identity());
+                    }
+                });
             }
         }
         return identities.isEmpty() ? Set.of() : Set.copyOf(identities);
-    }
-
-    private static void addIngredients(Set<ItemIdentity> identities, List<GoalIngredientDescriptor> ingredients) {
-        if (ingredients == null) {
-            return;
-        }
-        for (GoalIngredientDescriptor ingredient : ingredients) {
-            if (ingredient != null) {
-                addStacks(identities, ingredient.alternatives());
-            }
-        }
-    }
-
-    private static void addStacks(Set<ItemIdentity> identities, List<GoalStackDescriptor> stacks) {
-        if (stacks == null) {
-            return;
-        }
-        for (GoalStackDescriptor stack : stacks) {
-            if (stack != null && stack.identity() != null) {
-                ItemIdentityCollections.add(identities, stack.identity());
-            }
-        }
     }
 
     private record ScoredItem(

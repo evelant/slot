@@ -134,6 +134,9 @@ public final class WallCardTransferGesturePolicy {
             return Decision.status("nearby chest data missing");
         }
         if (item.carried()) {
+            if (hasUnsatisfiedCarriedTarget(item) && proximateChestCount(item) > 0) {
+                return Decision.action(Action.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY);
+            }
             if (!hasDepositTarget(context)) {
                 return Decision.status("no nearby chest to push " + item.name());
             }
@@ -146,6 +149,14 @@ public final class WallCardTransferGesturePolicy {
             return Decision.action(Action.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY);
         }
         return Decision.status("no nearby chest has " + item.name());
+    }
+
+    private static boolean hasUnsatisfiedCarriedTarget(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || !item.carried()) {
+            return false;
+        }
+        int target = Math.max(Math.max(0, item.desiredCount()), Math.max(0, item.wantedCount()));
+        return target > Math.max(0, item.totalCount());
     }
 
     public enum Action {

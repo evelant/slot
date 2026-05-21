@@ -11,9 +11,9 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
+import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.imagio.slot.ui.spi.SlotUiElement;
-import dev.imagio.slot.ui.workspace.GoalTabsUiBuilder;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
+import dev.imagio.slot.ui.workspace.CraftRunUiBuilder;
 import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
@@ -22,6 +22,8 @@ import dev.imagio.slot.ui.workspace.WorkflowTabsUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.neoforge.network.SlotCraftRunRecipePayload;
+import net.neoforged.neoforge.network.PacketDistributor;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 
@@ -186,20 +188,16 @@ final class ListWallPanelBuilder {
             panel.addChild(topRow);
         }
         int workflowTabsHeight = WorkflowTabsUiBuilder.height(host.viewModel);
-        UIElement goalRow = new UIElement().layout(layout -> layout
+        UIElement workflowRow = new UIElement().layout(layout -> layout
                 .widthPercent(100)
                 .height(Math.max(workflowTabsHeight, BELT_SLOT_SIZE))
                 .gapAll(SECTION_GAP_PX)
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
-        goalRow.addChild(tabsRenderer.render(new WorkflowTabsUiBuilder(new WorkflowTabsContext()).tabs(host.viewModel))
+        workflowRow.addChild(tabsRenderer.render(new WorkflowTabsUiBuilder(new WorkflowTabsContext()).tabs(host.viewModel))
                 .layout(layout -> layout.flex(1).height(workflowTabsHeight)));
-        goalRow.addChild(host.kit.kitCluster());
-        panel.addChild(goalRow);
-        if (!GoalWorkspaceClientState.goalTabs().isEmpty()) {
-            panel.addChild(tabsRenderer.render(new GoalTabsUiBuilder(new GoalTabsContext()).tabs())
-                    .layout(layout -> layout.widthPercent(100).height(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX)));
-        }
+        workflowRow.addChild(host.kit.kitCluster());
+        panel.addChild(workflowRow);
         // Active-chest control strip — only when the host screen is a
         // chest screen. Shows above the recents strip so the chest
         // controls stay close to the action row, with recents (which is
@@ -217,8 +215,11 @@ final class ListWallPanelBuilder {
             panel.addChild(recentsStrip);
         }
         boolean filtering = !host.searchController.normalizedQuery().isBlank();
-        if (!host.goalTabActive() && !host.recipeSidebarActive()) {
+        if (!host.recipeSidebarActive()) {
             for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : host.viewModel.contextualSuggestionLanes()) {
+                if (hideFetchLaneForCraftRun(lane)) {
+                    continue;
+                }
                 SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
                 if (WallSectionUiBuilder.shouldRenderSuggestionLane(visibleLane)) {
                     panel.addChild(sectionRenderer.render(sectionBuilder.suggestionLane(visibleLane)));
@@ -282,6 +283,17 @@ final class ListWallPanelBuilder {
     void buildSections(ScrollerView scroller) {
         boolean filtering = !host.searchController.normalizedQuery().isBlank();
         boolean anyVisibleSection = false;
+        CraftRunUiBuilder craftRun = new CraftRunUiBuilder(new CraftRunContext());
+        if (host.recipeSidebarActive()) {
+            for (SlotUiElement visibleRecipeAction : craftRun.visibleRecipeActions()) {
+                scroller.addScrollViewChild(sectionRenderer.render(visibleRecipeAction));
+                anyVisibleSection = true;
+            }
+        }
+        for (SlotUiElement section : craftRun.entrySections(craftRunItems())) {
+            scroller.addScrollViewChild(sectionRenderer.render(section));
+            anyVisibleSection = true;
+        }
         for (SlotWorkspaceViewModel.AtlasIsland island : host.currentIslands()) {
             if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
                 continue;
@@ -301,6 +313,21 @@ final class ListWallPanelBuilder {
             empty.setAllowHitTest(false);
             scroller.addScrollViewChild(empty);
         }
+    }
+
+    private List<SlotWorkspaceViewModel.AtlasItem> craftRunItems() {
+        ArrayList<SlotWorkspaceViewModel.AtlasItem> items = new ArrayList<>();
+        items.addAll(host.viewModel.atlasItems());
+        items.addAll(host.viewModel.triageItems());
+        return items.isEmpty() ? List.of() : List.copyOf(items);
+    }
+
+    private boolean hideFetchLaneForCraftRun(SlotWorkspaceViewModel.ContextualSuggestionLane lane) {
+        return lane != null
+                && lane.fetch()
+                && host.viewModel != null
+                && host.viewModel.craftRun() != null
+                && host.viewModel.craftRun().active();
     }
 
     private SlotWorkspaceViewModel.ContextualSuggestionLane visibleSuggestionLane(
@@ -358,7 +385,7 @@ final class ListWallPanelBuilder {
                 filtering,
                 host.storageGhostRevealMode,
                 host.storageGhostSectionExpanded(island.islandId()),
-                host.goalTabActive(),
+                false,
                 !host.activeWorkflowTab()));
     }
 
@@ -372,7 +399,7 @@ final class ListWallPanelBuilder {
                 filtering,
                 host.storageGhostSectionExpanded(island.islandId()),
                 host.storageGhostRevealMode,
-                host.goalTabActive(),
+                false,
                 !host.activeWorkflowTab()).hasVisibleContent();
     }
 
@@ -393,6 +420,18 @@ final class ListWallPanelBuilder {
             }
             return;
         }
+        if (model.hasAttachment(WorkspaceUiAttachments.WALL_CRAFT_RUN_GRID)) {
+            List<?> cards = model.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
+            if (cards != null) {
+                for (Object cardObject : cards) {
+                    if (cardObject instanceof SlotWorkspaceViewModel.AtlasItem item) {
+                        Button card = host.atlasCard.atlasCardButton(item);
+                        element.addChild(card);
+                    }
+                }
+            }
+            return;
+        }
         if (model.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_GRID)) {
             SlotWorkspaceViewModel.AtlasIsland island = model.attachment(
                     WorkspaceUiAttachments.ATLAS_ISLAND,
@@ -401,9 +440,7 @@ final class ListWallPanelBuilder {
             if (island == null) {
                 return;
             }
-            if (!host.goalTabActive()) {
-                host.drag.installSectionDropTarget(element, island);
-            }
+            host.drag.installSectionDropTarget(element, island);
             List<?> cards = model.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
             if (cards != null) {
                 for (Object cardObject : cards) {
@@ -425,12 +462,10 @@ final class ListWallPanelBuilder {
         if (island == null || !(element instanceof Button header)) {
             return;
         }
-        if (!host.goalTabActive() && island.kind() == VisualAtlasIslandKind.PLAYER) {
+        if (island.kind() == VisualAtlasIslandKind.PLAYER) {
             host.drag.installSectionHeaderDragSource(header, island);
         }
-        if (!host.goalTabActive()) {
-            host.drag.installSectionHeaderDropTarget(header, island);
-        }
+        host.drag.installSectionHeaderDropTarget(header, island);
     }
 
     private final class WallSectionHeaderContext implements WallSectionHeaderUiBuilder.Context {
@@ -440,11 +475,6 @@ final class ListWallPanelBuilder {
                 float screenX,
                 float screenY
         ) {
-            if (host.goalTabActive()) {
-                host.localStatus.set("goal tab is browse only");
-                host.rebuild();
-                return;
-            }
             host.menu.beginIslandEdit(island, screenX, screenY);
         }
 
@@ -457,52 +487,6 @@ final class ListWallPanelBuilder {
                 return;
             }
             host.toggleStorageGhostSection(island.islandId());
-        }
-    }
-
-    private final class GoalTabsContext implements GoalTabsUiBuilder.Context {
-        @Override
-        public boolean goalActive() {
-            return host.goalTabActive();
-        }
-
-        @Override
-        public List<GoalTabsUiBuilder.GoalTab> goalTabs() {
-            ArrayList<GoalTabsUiBuilder.GoalTab> tabs = new ArrayList<>();
-            for (GoalWorkspaceClientState.GoalTab tab : GoalWorkspaceClientState.goalTabs()) {
-                String status = "";
-                if (tab.active()) {
-                    var projection = host.goalProjection();
-                    status = projection == null ? "" : projection.projection().status().name();
-                }
-                tabs.add(new GoalTabsUiBuilder.GoalTab(
-                        tab.goalId(),
-                        tab.label(),
-                        tab.targetCount(),
-                        status,
-                        tab.active()));
-            }
-            return List.copyOf(tabs);
-        }
-
-        @Override
-        public void selectAll() {
-            host.selectAllTab();
-        }
-
-        @Override
-        public void selectGoal(String goalId) {
-            host.selectGoalTab(goalId);
-        }
-
-        @Override
-        public void removeGoal(String goalId) {
-            host.removeGoalTab(goalId);
-        }
-
-        @Override
-        public void adjustGoalTargetCount(String goalId, int delta) {
-            host.adjustGoalTargetCount(goalId, delta);
         }
     }
 
@@ -525,6 +509,41 @@ final class ListWallPanelBuilder {
         @Override
         public void openTabMenu(String kitId, float screenX, float screenY) {
             host.menu.openContextMenuForKit(kitId, screenX, screenY);
+        }
+    }
+
+    private final class CraftRunContext implements CraftRunUiBuilder.Context {
+        @Override
+        public dev.imagio.slot.workflow.domain.CraftRunState craftRun() {
+            return host.viewModel.craftRun();
+        }
+
+        @Override
+        public List<dev.imagio.slot.workflow.domain.CraftRunRecipeCapture> visibleRecipes() {
+            return host.craftRunRecipeCaptures();
+        }
+
+        @Override
+        public void addVisibleRecipe(dev.imagio.slot.workflow.domain.CraftRunRecipeCapture capture) {
+            PacketDistributor.sendToServer(SlotCraftRunRecipePayload.add(capture));
+            host.localStatus.set("added recipe");
+            host.rebuild();
+        }
+
+        @Override
+        public void stageEntry(String entryId) {
+            host.rpc.send(WorkspaceActionId.CRAFT_RUN_STAGE_ENTRY, entryId);
+            host.localStatus.set("staging craft ingredients");
+        }
+
+        @Override
+        public void adjustEntry(String entryId, int delta) {
+            host.rpc.send(WorkspaceActionId.CRAFT_RUN_ADJUST_ENTRY, entryId, delta);
+        }
+
+        @Override
+        public void removeEntry(String entryId) {
+            host.rpc.send(WorkspaceActionId.CRAFT_RUN_REMOVE_ENTRY, entryId);
         }
     }
 }

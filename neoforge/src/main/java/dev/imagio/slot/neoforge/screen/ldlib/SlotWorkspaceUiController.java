@@ -18,20 +18,16 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
-import dev.imagio.slot.inventory.goal.GoalProjectionEntry;
-import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceProjection;
-import dev.imagio.slot.ui.workspace.GoalWorkspaceProjectionCache;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
+import dev.imagio.slot.ui.workspace.RecipeViewerIntegration;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WheelTransferBatcher;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
@@ -91,6 +87,7 @@ final class SlotWorkspaceUiController {
     final List<Observable.Subscription> wallContentSubscriptions = new ArrayList<>();
     final Map<Integer, UIElement> hotbarSlotElements = new HashMap<>();
     SlotWorkspaceViewModel.IdentityRef contextMenuAtlasIdentity;
+    SlotWorkspaceViewModel.AtlasItem contextMenuAtlasItemSnapshot;
     int contextMenuHotbarIndex = -1;
     String contextMenuKitId;
     String contextMenuChestStorageId;
@@ -107,11 +104,11 @@ final class SlotWorkspaceUiController {
     float contextMenuScreenX;
     float contextMenuScreenY;
     final ArrayDeque<String> recentRehomeIslandIds = new ArrayDeque<>();
-    final GoalWorkspaceProjectionCache goalProjectionCache = new GoalWorkspaceProjectionCache();
     private RecipeIngredientSidebarSpec recipeSidebarSpec = RecipeIngredientSidebarSpec.empty();
     private RecipeIngredientSidebarSpec.Projection recipeSidebarProjection;
     private long recipeSidebarProjectionRevision = Long.MIN_VALUE;
     private String recipeSidebarProjectionKey = "";
+    private List<CraftRunRecipeCapture> craftRunRecipeCaptures = List.of();
     static final int RECENT_REHOME_MAX_DISPLAYED = 3;
     static final int RECENT_REHOME_CAPACITY = 6;
     String editingIslandId = null;
@@ -189,7 +186,6 @@ final class SlotWorkspaceUiController {
     // the UI dirty; flushRebuildIfPending() in the per-frame tick
     // collapses any number of requests into one actual rebuild per frame.
     boolean rebuildPending;
-    int appliedGoalStateRevision = GoalWorkspaceClientState.revision();
     SlotWorkspaceViewModel.IdentityRef hoveredChestCellIdentity;
     String hoveredChestCellStorageId;
     private float pendingWallScrollRestore = Float.NaN;
@@ -210,9 +206,6 @@ final class SlotWorkspaceUiController {
         this.player = player;
         this.sidebarMode = sidebarMode;
         this.viewModel = session.viewModel();
-        if (GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(viewModel.goalPlans())) {
-            appliedGoalStateRevision = GoalWorkspaceClientState.revision();
-        }
         // Root is transparent so the vanilla screen backdrop (dimmed
         // world / panorama) shows through everywhere we don't explicitly
         // paint a panel. Same idea as the vanilla inventory: chrome is
@@ -358,9 +351,6 @@ final class SlotWorkspaceUiController {
                     session.acceptRemoteView(tag);
                     viewModel = session.viewModel();
                     recipeSidebarProjection = null;
-                    if (GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(viewModel.goalPlans())) {
-                        appliedGoalStateRevision = GoalWorkspaceClientState.revision();
-                    }
                     dev.imagio.slot.neoforge.client.SlotClientWorkspaceCache.update(viewModel);
                     localStatus.set(recipeSidebarActive() ? recipeSidebarSpec.label() : "");
                     rebuild();
@@ -409,6 +399,45 @@ final class SlotWorkspaceUiController {
         }
         storageGhostRevealMode = mode;
         rebuild();
+    }
+
+    void setCraftRunRecipeCaptures(List<CraftRunRecipeCapture> captures) {
+        List<CraftRunRecipeCapture> next = activeCraftRunRecipeCaptures(captures);
+        if (craftRunRecipeCaptureKey(craftRunRecipeCaptures).equals(craftRunRecipeCaptureKey(next))) {
+            return;
+        }
+        craftRunRecipeCaptures = next;
+        rebuild();
+    }
+
+    List<CraftRunRecipeCapture> craftRunRecipeCaptures() {
+        return craftRunRecipeCaptures == null ? List.of() : craftRunRecipeCaptures;
+    }
+
+    private static List<CraftRunRecipeCapture> activeCraftRunRecipeCaptures(List<CraftRunRecipeCapture> captures) {
+        if (captures == null || captures.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<CraftRunRecipeCapture> active = new ArrayList<>();
+        for (CraftRunRecipeCapture capture : captures) {
+            if (capture != null && capture.active()) {
+                active.add(capture);
+            }
+        }
+        return active.isEmpty() ? List.of() : List.copyOf(active);
+    }
+
+    private static String craftRunRecipeCaptureKey(List<CraftRunRecipeCapture> captures) {
+        if (captures == null || captures.isEmpty()) {
+            return "";
+        }
+        StringBuilder key = new StringBuilder();
+        for (CraftRunRecipeCapture capture : captures) {
+            if (capture != null && capture.active()) {
+                key.append('|').append(capture.sourceKey());
+            }
+        }
+        return key.toString();
     }
 
     void toggleStorageGhostRevealMode(StorageGhostRevealMode requestedMode) {
@@ -472,19 +501,9 @@ final class SlotWorkspaceUiController {
     }
 
     void flushRebuildIfPending() {
-        applyGoalStateIfChanged();
         if (rebuildPending) {
             rebuildNow();
         }
-    }
-
-    private void applyGoalStateIfChanged() {
-        int nextRevision = GoalWorkspaceClientState.revision();
-        if (nextRevision == appliedGoalStateRevision) {
-            return;
-        }
-        appliedGoalStateRevision = nextRevision;
-        rebuild();
     }
 
     void rebuildNow() {
@@ -864,16 +883,8 @@ final class SlotWorkspaceUiController {
         return recipeSidebarProjection;
     }
 
-    boolean goalTabActive() {
-        return !recipeSidebarActive() && GoalWorkspaceClientState.hasActiveGoal();
-    }
-
     boolean activeWorkflowTab() {
-        return !goalTabActive() && viewModel.activeKit() != null;
-    }
-
-    GoalWorkspaceProjection goalProjection() {
-        return goalProjectionCache.get(viewModel);
+        return viewModel.activeKit() != null;
     }
 
     List<SlotWorkspaceViewModel.AtlasIsland> currentIslands() {
@@ -881,8 +892,7 @@ final class SlotWorkspaceUiController {
         if (recipe != null) {
             return recipe.islands();
         }
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal == null ? viewModel.islands() : goal.islands();
+        return viewModel.islands();
     }
 
     SlotWorkspaceViewModel.AtlasIsland currentIsland(String islandId) {
@@ -902,8 +912,7 @@ final class SlotWorkspaceUiController {
         if (recipe != null) {
             return recipe.atlasItems();
         }
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal == null ? viewModel.atlasItems() : goal.atlasItems();
+        return viewModel.atlasItems();
     }
 
     SlotWorkspaceViewModel.AtlasItem currentAtlasItem(SlotWorkspaceViewModel.IdentityRef identity) {
@@ -914,42 +923,7 @@ final class SlotWorkspaceUiController {
         if (recipe != null) {
             return recipe.atlasItem(identity);
         }
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal == null ? viewModel.atlasItem(identity) : goal.atlasItem(identity);
-    }
-
-    boolean goalChoiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
-        if (recipeSidebarActive()) {
-            return false;
-        }
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal != null && goal.choiceInvolved(item);
-    }
-
-    boolean goalChoiceCard(SlotWorkspaceViewModel.AtlasItem item) {
-        if (recipeSidebarActive()) {
-            return false;
-        }
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal != null && goal.choiceCard(item);
-    }
-
-    boolean goalSuppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
-        if (recipeSidebarActive()) {
-            return false;
-        }
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal != null && goal.suppressVanillaTooltip(item);
-    }
-
-    List<Component> goalTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
-        if (recipeSidebarActive()) {
-            return dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder.slotLines(item);
-        }
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal == null
-                ? dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder.slotLines(item)
-                : goal.tooltipLines(item);
+        return viewModel.atlasItem(identity);
     }
 
     boolean recipeSuppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
@@ -964,26 +938,12 @@ final class SlotWorkspaceUiController {
                 : recipe.tooltipLines(item);
     }
 
-    String goalChoiceGroupId(SlotWorkspaceViewModel.AtlasItem item) {
-        if (recipeSidebarActive()) {
-            return "";
-        }
-        GoalWorkspaceProjection goal = goalProjection();
-        if (goal == null) {
-            return "";
-        }
-        GoalProjectionEntry entry = goal.entry(item);
-        return entry == null ? "" : entry.choiceGroupId();
-    }
-
     void selectAllTab() {
-        GoalWorkspaceClientState.selectAll();
         localStatus.set("showing all items");
         rebuild();
     }
 
     void selectAllWorkflowTab() {
-        GoalWorkspaceClientState.selectAll();
         if (viewModel != null && viewModel.activeKit() != null) {
             rpc.sendDeactivateKit();
             localStatus.set("showing All");
@@ -998,150 +958,34 @@ final class SlotWorkspaceUiController {
             selectAllWorkflowTab();
             return;
         }
-        GoalWorkspaceClientState.selectAll();
         SlotWorkspaceViewModel.KitCard tab = viewModel == null ? null : viewModel.kit(kitId);
         rpc.sendActivateKit(kitId);
         localStatus.set("showing " + (tab == null ? "workflow" : tab.name()));
         rebuild();
     }
 
-    void selectGoalTab(String goalId) {
-        if (!GoalWorkspaceClientState.selectGoal(goalId)) {
-            localStatus.set("goal tab no longer exists");
-            rebuild();
-            return;
-        }
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        localStatus.set("showing " + (active == null ? "goal" : active.label()));
-        rebuild();
-    }
-
-    void removeGoalTab(String goalId) {
-        if (!GoalWorkspaceClientState.removeGoal(goalId)) {
-            localStatus.set("goal tab no longer exists");
-            return;
-        }
-        GoalWorkspaceIntegration.removePersistedGoal(goalId);
-        localStatus.set(GoalWorkspaceClientState.hasActiveGoal() ? "removed goal" : "showing all items");
-        rebuild();
-    }
-
-    void adjustGoalTargetCount(String goalId, int delta) {
-        if (!GoalWorkspaceClientState.adjustTargetCount(goalId, delta)) {
-            return;
-        }
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        GoalWorkspaceIntegration.persistGoal(active);
-        localStatus.set(active == null ? "updated goal" : active.label() + " x" + active.targetCount());
-        rebuild();
-    }
-
-    void openGoalRecipe(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        GoalProjectionEntry entry = goalEntry(item);
-        if (active == null) {
-            localStatus.set("no active goal");
-        } else if (GoalWorkspaceIntegration.openRecipe(active.descriptor(), entry)) {
-            localStatus.set("opened recipe in EMI");
-        } else {
-            localStatus.set("EMI recipe display unavailable");
-        }
-        rebuild();
-    }
-
     void openRecipe(SlotWorkspaceViewModel.AtlasItem item) {
-        if (goalTabActive()) {
-            openGoalRecipe(item);
-            return;
-        }
         ItemIdentity identity = item == null ? null : item.identity().toIdentity();
         if (identity == null) {
             localStatus.set("item unavailable");
-        } else if (GoalWorkspaceIntegration.openRecipe(identity)) {
+        } else if (RecipeViewerIntegration.openRecipe(identity)) {
             localStatus.set("opened recipe in EMI");
         } else {
             localStatus.set("EMI recipe display unavailable");
-        }
-        rebuild();
-    }
-
-    void openGoalUses(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceProjection goal = goalProjection();
-        ItemIdentity identity = goal == null ? (item == null ? null : item.identity().toIdentity()) : goal.delegationIdentity(item);
-        if (identity == null) {
-            localStatus.set("item unavailable");
-        } else if (GoalWorkspaceIntegration.openUses(identity)) {
-            localStatus.set("opened uses in EMI");
-        } else {
-            localStatus.set("EMI usage display unavailable");
         }
         rebuild();
     }
 
     void openUses(SlotWorkspaceViewModel.AtlasItem item) {
-        openGoalUses(item);
-    }
-
-    void openGoalChoiceEditor(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        String choiceGroupId = goalChoiceGroupId(item);
-        GoalProjectionEntry entry = goalEntry(item);
-        if (active == null || choiceGroupId.isBlank()) {
-            localStatus.set("goal choice unavailable");
-        } else if (GoalWorkspaceIntegration.openChoiceEditor(active.descriptor(), entry)) {
-            localStatus.set("choose recipe in EMI");
+        ItemIdentity identity = item == null ? null : item.identity().toIdentity();
+        if (identity == null) {
+            localStatus.set("item unavailable");
+        } else if (RecipeViewerIntegration.openUses(identity)) {
+            localStatus.set("opened uses in EMI");
         } else {
-            localStatus.set("EMI choice display unavailable");
+            localStatus.set("EMI usage display unavailable");
         }
         rebuild();
-    }
-
-    void clearGoalChoice(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        String choiceGroupId = goalChoiceGroupId(item);
-        if (active == null || choiceGroupId.isBlank()) {
-            localStatus.set("goal choice unavailable");
-        } else if (GoalWorkspaceClientState.clearManualChoice(active.goalId(), choiceGroupId)) {
-            localStatus.set("cleared goal choice");
-            GoalWorkspaceIntegration.persistGoal(GoalWorkspaceClientState.goalTab(active.goalId()));
-        } else {
-            localStatus.set("no manual choice to clear");
-        }
-        rebuild();
-    }
-
-    void chooseGoalAlternative(SlotWorkspaceViewModel.AtlasItem item, GoalStackDescriptor alternative) {
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        String choiceGroupId = goalChoiceGroupId(item);
-        if (active == null || choiceGroupId.isBlank() || alternative == null) {
-            localStatus.set("goal choice unavailable");
-        } else if (GoalWorkspaceClientState.setManualChoice(active.goalId(), choiceGroupId, alternative.identity())) {
-            localStatus.set("using " + alternative.displayName());
-            GoalWorkspaceIntegration.persistGoal(GoalWorkspaceClientState.goalTab(active.goalId()));
-        } else {
-            localStatus.set("could not update goal choice");
-        }
-        rebuild();
-    }
-
-    List<GoalStackDescriptor> goalChoiceAlternatives(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal == null ? List.of() : goal.choiceAlternatives(item);
-    }
-
-    boolean goalHasManualChoice(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal != null && goal.hasManualChoice(item);
-    }
-
-    boolean goalHasChoiceControls(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal != null && goal.hasChoiceControls(item);
-    }
-
-    private GoalProjectionEntry goalEntry(SlotWorkspaceViewModel.AtlasItem item) {
-        GoalWorkspaceProjection goal = goalProjection();
-        return goal == null ? null : goal.entry(item);
     }
 
     /**

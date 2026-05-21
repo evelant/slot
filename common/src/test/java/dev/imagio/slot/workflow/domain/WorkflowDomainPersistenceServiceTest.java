@@ -13,12 +13,6 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSubjectRef;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
-import dev.imagio.slot.inventory.goal.GoalChoiceResolution;
-import dev.imagio.slot.inventory.goal.GoalDescriptor;
-import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
-import dev.imagio.slot.inventory.goal.GoalPlanState;
-import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
-import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.workflow.domain.persistence.WorkflowDomainFileStore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -42,8 +36,6 @@ class WorkflowDomainPersistenceServiceTest {
         runtime.collectionWorkflow().toggleCollectionMembership(ItemIdentity.of("minecraft:torch"), exploration.id());
         // Player-scoped desired counts (collection-scoped variant retired).
         runtime.desiredCountWorkflow().setPlayer(ItemIdentity.of("minecraft:torch"), 32);
-        runtime.goalRecipeDefaultWorkflow().set("tfc:glue", "toomanyrecipeviewers:/tfc/barrel/glue");
-        runtime.goalPlanWorkflow().save(goalPlan());
         QuickAccessLoadoutDefinition loadout = runtime.collectionWorkflow().createLoadout(
                 exploration.id(),
                 "Mining",
@@ -122,12 +114,66 @@ class WorkflowDomainPersistenceServiceTest {
         );
         assertTrue(restored.workflowProjection().protection().protects(ItemIdentity.of("minecraft:shield"), null));
         assertTrue(restored.workflowProjection().protection().protectsPortableContainers());
-        assertEquals(
-                "toomanyrecipeviewers:/tfc/barrel/glue",
-                restored.workflowProjection().goalRecipeDefaults().get("tfc:glue")
+    }
+
+    @Test
+    void filePersistenceRoundTripsCraftRunState(@TempDir Path tempDir) throws Exception {
+        Path statePath = tempDir.resolve("workflow-craft-run.json");
+        WorkflowDomainPersistenceService service = new WorkflowDomainPersistenceService(
+                new WorkflowDomainFileStore(statePath)
         );
-        assertEquals(1, restored.workflowProjection().goalPlans().size());
-        assertEquals("emi:slot:recipe/press", restored.workflowProjection().goalPlans().get(0).goalId());
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(repository, service);
+
+        assertTrue(runtime.craftRunWorkflow().add(craftRunRecipe(
+                "minecraft:torch",
+                4,
+                4,
+                "minecraft:coal",
+                1
+        )));
+        String entryId = runtime.snapshot().craftRun().entries().get(0).entryId();
+        assertTrue(runtime.savePending());
+
+        runtime.recordActivityEvent(new InventoryActivityEvent(
+                InventoryActivityKind.ACQUIRED,
+                InventoryActivityProducer.WORLD_PICKUP,
+                InventoryActivityConfidence.OBSERVED,
+                ItemIdentity.of("minecraft:torch"),
+                1,
+                null,
+                null,
+                "",
+                "",
+                List.of(),
+                ""
+        ));
+        assertEquals(3, runtime.snapshot().craftRun().entry(entryId).remainingOutputCount());
+        assertTrue(runtime.flushPendingSave());
+
+        String saved = Files.readString(statePath);
+        assertTrue(saved.contains("\"craftRun\""));
+
+        InMemoryWorkflowDomainStateRepository restored = new InMemoryWorkflowDomainStateRepository();
+        service.loadInto(restored);
+        WorkflowDomainRuntime restoredRuntime = new WorkflowDomainRuntime(restored, service);
+
+        CraftRunState restoredRun = restoredRuntime.snapshot().craftRun();
+        assertEquals(1, restoredRun.entries().size());
+        CraftRunRecipeEntry restoredEntry = restoredRun.entries().get(0);
+        assertEquals(entryId, restoredEntry.entryId());
+        assertEquals(3, restoredEntry.remainingOutputCount());
+        assertEquals(ItemIdentity.of("minecraft:torch"), restoredEntry.outputIdentity());
+        assertEquals(1, restoredEntry.inputs().size());
+
+        assertTrue(restoredRuntime.craftRunWorkflow().add(craftRunRecipe(
+                "minecraft:stick",
+                4,
+                4,
+                "minecraft:planks",
+                2
+        )));
+        assertEquals("craft-run-2", restoredRuntime.snapshot().craftRun().entries().get(1).entryId());
     }
 
     @Test
@@ -221,38 +267,30 @@ class WorkflowDomainPersistenceServiceTest {
         }
     }
 
-    private static GoalPlanState goalPlan() {
-        ItemIdentity output = ItemIdentity.of("tfc:glue");
-        GoalStackDescriptor outputStack = new GoalStackDescriptor(output, "Glue", 1);
-        GoalDescriptor descriptor = new GoalDescriptor(
-                "emi:slot:recipe/press",
-                "Glue",
-                List.of(outputStack),
-                1,
-                "slot:recipe/press",
-                "slot:test",
-                List.of(new GoalRecipeDescriptor(
-                        "slot:recipe/press",
-                        "slot:test",
-                        true,
-                        List.of(outputStack),
-                        List.of(GoalIngredientDescriptor.choice(
-                                "input",
-                                "#item:forge:tools/wire_cutters",
-                                1,
-                                "#item:forge:tools/wire_cutters",
-                                List.of(GoalStackDescriptor.of("tfc:metal/tool/copper_wire_cutter", "Copper Wire Cutter", 1))
-                        )),
-                        List.of(),
+    private static CraftRunRecipeCapture craftRunRecipe(
+            String outputId,
+            int outputCountPerBatch,
+            int remainingOutputCount,
+            String inputId,
+            int requiredCountPerBatch
+    ) {
+        return new CraftRunRecipeCapture(
+                "emi:test/" + outputId,
+                "test:" + outputId.replace(':', '/'),
+                outputId,
+                ItemIdentity.of(outputId),
+                outputId,
+                outputCountPerBatch,
+                remainingOutputCount,
+                List.of(new CraftRunIngredientGroup(
+                        "input:0",
+                        inputId,
+                        requiredCountPerBatch,
+                        List.of(new CraftRunAlternative(ItemIdentity.of(inputId), inputId)),
                         List.of()
-                ))
-        );
-        return new GoalPlanState(
-                descriptor.goalId(),
-                descriptor.label(),
-                descriptor.targetCount(),
-                descriptor,
-                GoalChoiceResolution.empty()
+                )),
+                List.of()
         );
     }
+
 }

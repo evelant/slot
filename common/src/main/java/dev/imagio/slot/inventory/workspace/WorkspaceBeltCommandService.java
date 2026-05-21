@@ -483,7 +483,7 @@ public final class WorkspaceBeltCommandService {
         return WorkspaceCommandOutcome.rejected(execution.feedback().diagnostics());
     }
 
-    public static WorkspaceCommandOutcome moveIdentityBetweenBackpackAndMain(
+    public static WorkspaceCommandOutcome moveIdentityToMainInventory(
             ServerPlayer player,
             InventoryHostDescriptor host,
             InventoryAuthoritySnapshot authority,
@@ -549,13 +549,86 @@ public final class WorkspaceBeltCommandService {
                 authority,
                 identity,
                 WorkspaceBeltCommandService::extractableMainSource);
-        if (mainEntry.isEmpty()) {
-            return WorkspaceCommandOutcome.rejected(CARRIED_IDENTITY_NOT_FOUND);
+        if (mainEntry.isPresent()) {
+            return new WorkspaceCommandOutcome(true, "already_in_main_inventory", "already in main inventory");
+        }
+        return WorkspaceCommandOutcome.rejected(CARRIED_IDENTITY_NOT_FOUND);
+    }
+
+    public static WorkspaceCommandOutcome moveIdentityToBackpack(
+            ServerPlayer player,
+            InventoryHostDescriptor host,
+            InventoryAuthoritySnapshot authority,
+            CarriedSourceAccess carried,
+            Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor,
+            ItemIdentity identity,
+            String originPrefix
+    ) {
+        if (player == null) {
+            return WorkspaceCommandOutcome.rejected("missing_player");
+        }
+        if (host == null || authority == null || actionExecutor == null) {
+            return WorkspaceCommandOutcome.rejected("host_resolution_failed");
+        }
+        if (carried == null) {
+            return WorkspaceCommandOutcome.rejected("carried_source_access_unavailable");
+        }
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
 
+        Optional<LocatedCarriedEntry> mainEntry = findIdentityInAuthority(
+                authority,
+                identity,
+                WorkspaceBeltCommandService::extractableMainSource);
+        if (mainEntry.isPresent()) {
+            return moveLocatedEntryToBackpack(
+                    player,
+                    host,
+                    authority,
+                    carried,
+                    actionExecutor,
+                    mainEntry.get(),
+                    originPrefix);
+        }
+
+        Optional<LocatedCarriedEntry> hotbarEntry = findIdentityInAuthority(
+                authority,
+                identity,
+                WorkspaceBeltCommandService::extractableQuickAccessSource);
+        if (hotbarEntry.isPresent()) {
+            return moveLocatedEntryToBackpack(
+                    player,
+                    host,
+                    authority,
+                    carried,
+                    actionExecutor,
+                    hotbarEntry.get(),
+                    originPrefix);
+        }
+
+        Optional<LocatedCarriedEntry> backpackEntry = findIdentityInAuthority(
+                authority,
+                identity,
+                WorkspaceBeltCommandService::extractableProviderSource);
+        if (backpackEntry.isPresent()) {
+            return new WorkspaceCommandOutcome(true, "already_in_backpack", "already in backpack");
+        }
+        return WorkspaceCommandOutcome.rejected(CARRIED_IDENTITY_NOT_FOUND);
+    }
+
+    private static WorkspaceCommandOutcome moveLocatedEntryToBackpack(
+            ServerPlayer player,
+            InventoryHostDescriptor host,
+            InventoryAuthoritySnapshot authority,
+            CarriedSourceAccess carried,
+            Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor,
+            LocatedCarriedEntry entry,
+            String originPrefix
+    ) {
         List<InventorySourceDescriptor> providerDestinations = providerDestinationSources(
                 authority,
-                mainEntry.get().sourceId());
+                entry.sourceId());
         if (providerDestinations.isEmpty()) {
             return WorkspaceCommandOutcome.rejected("no_backpack_storage_available");
         }
@@ -568,7 +641,7 @@ public final class WorkspaceBeltCommandService {
                     authority,
                     carried,
                     actionExecutor,
-                    mainEntry.get(),
+                    entry,
                     new InventoryActionTarget.SourceTarget(destination.id()),
                     "moved_to_backpack",
                     "moved to backpack",
