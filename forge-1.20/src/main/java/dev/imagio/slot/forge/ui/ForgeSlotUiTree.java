@@ -1,6 +1,6 @@
 package dev.imagio.slot.forge.ui;
 
-import dev.imagio.slot.platform.SlotResourceAccess;
+import dev.imagio.slot.forge.client.ForgeSlotUiFonts;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEvent;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
@@ -49,8 +49,6 @@ public final class ForgeSlotUiTree {
     private static final int ROW_DIM = 0x7C24313D;
     private static final int ROW_HOVER = 0xEC334354;
     private static final int SELECTED = 0xF0507E6B;
-    private static final ResourceLocation SLOT_UI_FONT = SlotResourceAccess.current().id("slot", "slot_ui");
-
     private final Minecraft minecraft;
     private final Font font;
     private final TaffyTree taffy = new TaffyTree();
@@ -810,7 +808,7 @@ public final class ForgeSlotUiTree {
 
     private static Component uiText(String text) {
         return Component.literal(text == null ? "" : text)
-                .withStyle(style -> style.withFont(SLOT_UI_FONT));
+                .withStyle(style -> style.withFont(ForgeSlotUiFonts.uiFont()));
     }
 
     private boolean measuresText(SlotUiElement model) {

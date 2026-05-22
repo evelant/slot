@@ -214,7 +214,7 @@ final class StoragePanelBuilder {
         input.layout(layout -> layout.widthPercent(100).height(HEADER_HEIGHT));
         input.style(style -> style.backgroundTexture(rect(0xC60D1318)));
         input.textFieldStyle(style -> style
-                .font(FONT_UI)
+                .font(fontUi())
                 .placeholder(net.minecraft.network.chat.Component.literal(descriptor.label()))
                 .textColor(TEXT)
                 .cursorColor(ACCENT)

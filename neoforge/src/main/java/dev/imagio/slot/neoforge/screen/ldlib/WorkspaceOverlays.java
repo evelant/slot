@@ -251,7 +251,7 @@ final class WorkspaceOverlays {
     private void applyStorageXrayButtonStyle(Button button, StorageGhostRevealMode mode) {
         applyButtonColors(button, true, storageXrayButtonColor(mode));
         button.textStyle(style -> style
-                .font(FONT_UI)
+                .font(fontUi())
                 .textColor(storageXrayTextColor(mode))
                 .fontSize(7)
                 .textShadow(false)

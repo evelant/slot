@@ -5,7 +5,6 @@ import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
-import dev.imagio.slot.platform.SlotResourceAccess;
 import dev.imagio.slot.ui.workspace.WayfindingDisplay;
 import dev.imagio.slot.ui.workspace.WayfindingGlowMath;
 import net.minecraft.client.Minecraft;
@@ -13,7 +12,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.RenderGuiEvent;
 
@@ -34,7 +32,6 @@ public final class ForgeWayfindingHudRenderer {
     private static final int TEXT_RGB = 0xE8EEF2;
     private static final int MUTED_RGB = 0xA0AAB3;
     private static final int ACCENT_RGB = 0x7AC7A7;
-    private static final ResourceLocation SLOT_UI_FONT = SlotResourceAccess.current().id("slot", "slot_ui");
 
     private ForgeWayfindingHudRenderer() {
     }
@@ -191,7 +188,7 @@ public final class ForgeWayfindingHudRenderer {
 
     private static Component uiText(String text) {
         return Component.literal(text == null ? "" : text)
-                .withStyle(style -> style.withFont(SLOT_UI_FONT));
+                .withStyle(style -> style.withFont(ForgeSlotUiFonts.uiFont()));
     }
 
     private static int withAlpha(int rgb, int alpha) {

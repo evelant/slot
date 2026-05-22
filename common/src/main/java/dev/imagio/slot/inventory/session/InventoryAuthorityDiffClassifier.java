@@ -4,6 +4,7 @@ import dev.imagio.slot.inventory.core.InventoryPaneMembership;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.query.CursorStateSnapshot;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
@@ -83,6 +84,13 @@ public final class InventoryAuthorityDiffClassifier {
                 if (identity != null) {
                     counts.merge(identity, Math.max(0, entry.count()), Integer::sum);
                 }
+            }
+        }
+        CursorStateSnapshot cursor = authority.cursorState();
+        if (cursor != null && cursor.present()) {
+            ItemIdentity identity = ItemIdentityMatcher.create(cursor.stack());
+            if (identity != null) {
+                counts.merge(identity, Math.max(0, cursor.stack().getCount()), Integer::sum);
             }
         }
         return Map.copyOf(counts);

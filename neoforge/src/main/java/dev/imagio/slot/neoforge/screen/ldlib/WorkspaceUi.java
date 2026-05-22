@@ -2,7 +2,7 @@ package dev.imagio.slot.neoforge.screen.ldlib;
 
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.compactCount;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.ACCENT;
-import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.FONT_UI;
+import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.fontUi;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.GHOST_ICON_ALPHA_TINT;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.MUTED;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.PANEL_ALT;
@@ -93,7 +93,7 @@ final class WorkspaceUi {
             style.hoverTexture(rect(active ? hoverColor(color) : color));
             style.pressedTexture(rect(active ? SELECTED : color));
         });
-        button.textStyle(style -> style.font(FONT_UI).textColor(active ? TEXT : MUTED).textShadow(false).fontSize(8));
+        button.textStyle(style -> style.font(fontUi()).textColor(active ? TEXT : MUTED).textShadow(false).fontSize(8));
     }
 
     static int hoverColor(int color) {
@@ -113,7 +113,7 @@ final class WorkspaceUi {
         Label label = new Label();
         label.setText(textComponent(text));
         label.textStyle(style -> style
-                .font(FONT_UI)
+                .font(fontUi())
                 .textColor(color)
                 .fontSize(8)
                 .textShadow(false)
@@ -125,7 +125,7 @@ final class WorkspaceUi {
 
     static Component textComponent(String text) {
         return Component.literal(text == null ? "" : text)
-                .withStyle(style -> style.withFont(FONT_UI));
+                .withStyle(style -> style.withFont(fontUi()));
     }
 
     static Label wrappedLabel(String text, int color) {

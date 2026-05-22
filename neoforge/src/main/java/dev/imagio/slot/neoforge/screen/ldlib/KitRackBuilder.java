@@ -264,7 +264,7 @@ final class KitRackBuilder {
                 .baseTexture(rect(baseColor))
                 .hoverTexture(rect(hoverColor))
                 .pressedTexture(rect(pressedColor)));
-        button.textStyle(style -> style.font(FONT_UI).textColor(TEXT).textShadow(false).fontSize(8));
+        button.textStyle(style -> style.font(fontUi()).textColor(TEXT).textShadow(false).fontSize(8));
         button.layout(layout -> layout
                 .width(KIT_CARD_WIDTH)
                 .height(kitCardHeight(card.pageCount()))

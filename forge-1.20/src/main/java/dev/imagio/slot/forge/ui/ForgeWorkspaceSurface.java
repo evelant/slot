@@ -3776,7 +3776,8 @@ public final class ForgeWorkspaceSurface {
     private final class RecentsContext implements RecentsStripUiBuilder.Context {
         @Override
         public SlotWorkspaceViewModel.AtlasItem atlasItem(SlotWorkspaceViewModel.IdentityRef identity) {
-            return byIdentity.get(identity);
+            SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItem(identity);
+            return item == null ? cursorRecentItem(identity) : item;
         }
 
         @Override
@@ -3789,6 +3790,28 @@ public final class ForgeWorkspaceSurface {
             if (item != null && item.identity().equals(hoveredIdentity)) {
                 hoveredIdentity = null;
             }
+        }
+
+        private SlotWorkspaceViewModel.AtlasItem cursorRecentItem(SlotWorkspaceViewModel.IdentityRef identity) {
+            SlotWorkspaceViewModel.IdentityRef cursor = cursorIdentity();
+            if (identity == null || cursor == null || !identity.equals(cursor)) {
+                return null;
+            }
+            ItemStack stack = cursorStack();
+            if (stack.isEmpty()) {
+                return null;
+            }
+            return new SlotWorkspaceViewModel.AtlasItem(
+                    identity,
+                    stack,
+                    stack.getHoverName().getString(),
+                    stack.getCount(),
+                    0,
+                    "",
+                    true,
+                    false,
+                    true,
+                    List.of());
         }
     }
 

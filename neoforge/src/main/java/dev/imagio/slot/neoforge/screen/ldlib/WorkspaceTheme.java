@@ -1,6 +1,11 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
+import com.mojang.blaze3d.font.GlyphProvider;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.tysontheember.emberstextapi.sdf.SDFProviderRegistry;
+
+import java.util.List;
 
 final class WorkspaceTheme {
     private WorkspaceTheme() {
@@ -8,6 +13,14 @@ final class WorkspaceTheme {
 
     static final ResourceLocation FONT_UI =
             ResourceLocation.fromNamespaceAndPath("slot", "slot_ui");
+
+    static ResourceLocation fontUi() {
+        // Embers skips SDF providers when FreeType is unavailable; use vanilla
+        // text instead of routing SLOT labels to the missing-glyph font set.
+        List<GlyphProvider> providers = SDFProviderRegistry.getProvidersForFont(FONT_UI);
+        return providers == null || providers.isEmpty() ? Minecraft.DEFAULT_FONT : FONT_UI;
+    }
+
     static final int BACKGROUND = 0x96060A0E;
     static final int PANEL = 0xC8162029;
     static final int PANEL_ALT = 0xD01E2933;

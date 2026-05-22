@@ -5,6 +5,9 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 /**
  * Pinned MRU strip that lives above the wall scroller and outside it.
@@ -36,7 +39,8 @@ final class RecentsStripBuilder {
     private final class RecentsContext implements RecentsStripUiBuilder.Context {
         @Override
         public SlotWorkspaceViewModel.AtlasItem atlasItem(SlotWorkspaceViewModel.IdentityRef identity) {
-            return host.viewModel.atlasItem(identity);
+            SlotWorkspaceViewModel.AtlasItem item = host.viewModel.atlasItem(identity);
+            return item == null ? cursorRecentItem(identity) : item;
         }
 
         @Override
@@ -49,6 +53,28 @@ final class RecentsStripBuilder {
             if (item != null && item.identity().equals(host.hoveredAtlasIdentity)) {
                 host.hoveredAtlasIdentity = null;
             }
+        }
+
+        private SlotWorkspaceViewModel.AtlasItem cursorRecentItem(SlotWorkspaceViewModel.IdentityRef identity) {
+            SlotWorkspaceViewModel.IdentityRef cursorIdentity = WorkspaceCursorState.carriedIdentity();
+            if (identity == null || cursorIdentity == null || !identity.equals(cursorIdentity)) {
+                return null;
+            }
+            ItemStack stack = WorkspaceCursorState.carriedStack();
+            if (stack.isEmpty()) {
+                return null;
+            }
+            return new SlotWorkspaceViewModel.AtlasItem(
+                    identity,
+                    stack,
+                    stack.getHoverName().getString(),
+                    stack.getCount(),
+                    0,
+                    "",
+                    true,
+                    false,
+                    true,
+                    List.of());
         }
     }
 }

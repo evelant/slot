@@ -172,7 +172,7 @@ final class LdlibSlotUiRenderer {
 
     private void applyTextStyle(Label label, SlotUiTextStyle textStyle) {
         label.textStyle(style -> style
-                .font(WorkspaceTheme.FONT_UI)
+                .font(WorkspaceTheme.fontUi())
                 .textColor(textStyle.color())
                 .fontSize(textStyle.fontSize())
                 .textShadow(textStyle.shadow())
@@ -183,12 +183,12 @@ final class LdlibSlotUiRenderer {
 
     private static Component textComponent(String text) {
         return Component.literal(text == null ? "" : text)
-                .withStyle(style -> style.withFont(WorkspaceTheme.FONT_UI));
+                .withStyle(style -> style.withFont(WorkspaceTheme.fontUi()));
     }
 
     private void applyTextStyle(Button button, SlotUiTextStyle textStyle) {
         button.textStyle(style -> style
-                .font(WorkspaceTheme.FONT_UI)
+                .font(WorkspaceTheme.fontUi())
                 .textColor(textStyle.color())
                 .fontSize(textStyle.fontSize())
                 .textShadow(textStyle.shadow())

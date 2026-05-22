@@ -71,10 +71,14 @@ public final class NeoForgeCarriedActivityTracker {
             return;
         }
         TRACKER.suppressAcquired(key(player), ItemIdentityMatcher.create(stack), count);
+        markDirty(player, "suppress_acquired");
     }
 
     public static void suppressAcquired(ServerPlayer player, Collection<InventoryActivityEvent> events) {
         TRACKER.suppressAcquired(key(player), events);
+        if (events != null && !events.isEmpty()) {
+            markDirty(player, "suppress_acquired");
+        }
     }
 
     public static void suppressOutcome(ServerPlayer player, InventoryActionOutcome outcome) {

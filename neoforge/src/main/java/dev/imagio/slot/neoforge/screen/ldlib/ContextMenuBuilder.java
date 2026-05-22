@@ -786,7 +786,7 @@ final class ContextMenuBuilder {
         nameInput.layout(layout -> layout.widthPercent(100).height(18));
         nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
         nameInput.textFieldStyle(style -> style
-                .font(FONT_UI)
+                .font(fontUi())
                 .placeholder(Component.literal("Chest name"))
                 .textColor(TEXT)
                 .cursorColor(ACCENT)
@@ -870,7 +870,7 @@ final class ContextMenuBuilder {
         input.layout(layout -> layout.widthPercent(100).height(18));
         input.style(style -> style.backgroundTexture(rect(0xC60D1318)));
         input.textFieldStyle(style -> style
-                .font(FONT_UI)
+                .font(fontUi())
                 .placeholder(Component.literal("count (0 = clear)"))
                 .textColor(TEXT)
                 .cursorColor(ACCENT)
@@ -950,7 +950,7 @@ final class ContextMenuBuilder {
         nameInput.layout(layout -> layout.widthPercent(100).height(18));
         nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
         nameInput.textFieldStyle(style -> style
-                .font(FONT_UI)
+                .font(fontUi())
                 .placeholder(Component.literal("Workflow name"))
                 .textColor(TEXT)
                 .cursorColor(ACCENT)
@@ -1201,7 +1201,7 @@ final class ContextMenuBuilder {
         nameInput.layout(layout -> layout.widthPercent(100).height(20));
         nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
         nameInput.textFieldStyle(style -> style
-                .font(FONT_UI)
+                .font(fontUi())
                 .placeholder(Component.literal("Island name"))
                 .textColor(TEXT)
                 .cursorColor(ACCENT)
@@ -1400,7 +1400,7 @@ final class ContextMenuBuilder {
         nameInput.layout(layout -> layout.widthPercent(100).height(20));
         nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
         nameInput.textFieldStyle(style -> style
-                .font(FONT_UI)
+                .font(fontUi())
                 .placeholder(Component.literal("Island name"))
                 .textColor(TEXT)
                 .cursorColor(ACCENT)
