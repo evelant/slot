@@ -1187,7 +1187,10 @@ public record SlotWorkspaceViewModel(
                     claimedChestMap,
                     affinityMap,
                     chestContentsResolver,
-                    trackedDisplayEntries);
+                    trackedDisplayEntries,
+                    proximate,
+                    liveChestContentPresence,
+                    liveStorageAffinityEligibility);
             Set<IdentityRef> putAwayRouted = unionIdentityRefs(
                     proximatePutAwayRouted,
                     putAwayRoutes.routedIdentities());
@@ -1410,7 +1413,10 @@ public record SlotWorkspaceViewModel(
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap affinityMap,
             Function<String, ChestContentsSnapshot> chestContentsResolver,
-            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries,
+            Set<String> liveObservedStorageIds,
+            DepositPlanner.ChestContentPresence liveChestContentPresence,
+            DepositPlanner.ChestEligibility liveStorageAffinityEligibility
     ) {
         if (targets == null || activationPutAwayIdentities == null || activationPutAwayIdentities.isEmpty()) {
             return PutAwayRouteProjection.empty();
@@ -1423,8 +1429,27 @@ public record SlotWorkspaceViewModel(
         }
 
         Set<String> claimedRouteIds = claimedStorageIds(claimedChestMap);
-        DepositPlanner.ChestContentPresence contentPresence = contentPresenceFromResolver(chestContentsResolver);
-        DepositPlanner.ChestEligibility chestEligibility = eligibilityFromResolver(chestContentsResolver);
+        Set<String> liveObserved = liveObservedStorageIds == null ? Set.of() : liveObservedStorageIds;
+        DepositPlanner.ChestContentPresence fallbackContentPresence = contentPresenceFromResolver(chestContentsResolver);
+        DepositPlanner.ChestEligibility fallbackChestEligibility = eligibilityFromResolver(chestContentsResolver);
+        DepositPlanner.ChestContentPresence contentPresence = (chest, identity) -> {
+            if (chest == null) {
+                return false;
+            }
+            if (liveChestContentPresence != null && liveObserved.contains(chest.storageId().toString())) {
+                return liveChestContentPresence.contains(chest, identity);
+            }
+            return fallbackContentPresence.contains(chest, identity);
+        };
+        DepositPlanner.ChestEligibility chestEligibility = chest -> {
+            if (chest == null) {
+                return false;
+            }
+            if (liveStorageAffinityEligibility != null && liveObserved.contains(chest.storageId().toString())) {
+                return liveStorageAffinityEligibility.isEligible(chest);
+            }
+            return fallbackChestEligibility.isEligible(chest);
+        };
         LinkedHashMap<String, PutAwayRouteAccumulator> routesByStorage = new LinkedHashMap<>();
         LinkedHashSet<IdentityRef> routedIdentities = new LinkedHashSet<>();
         for (AtlasItem item : candidates) {

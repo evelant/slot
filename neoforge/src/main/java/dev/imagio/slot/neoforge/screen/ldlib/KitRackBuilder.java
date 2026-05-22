@@ -48,9 +48,8 @@ final class KitRackBuilder {
 
     UIElement kitCluster() {
         // Fixed-width container with right-aligned children so changes to the kit
-        // toggle's label (kit name / page indicator) grow LEFT into the cluster's own
-        // whitespace instead of pushing the hotbar. Sized to fit the widest reasonable
-        // label ("longname 3/3") plus the page-cycle button without truncation.
+        // toggle's label grow LEFT into the cluster's own whitespace instead of
+        // pushing the hotbar.
         UIElement cluster = new UIElement().layout(layout -> layout
                 .width(KIT_CLUSTER_WIDTH)
                 .height(BELT_SLOT_SIZE)
@@ -71,10 +70,7 @@ final class KitRackBuilder {
         SlotWorkspaceViewModel.KitCard activeCard = host.viewModel.activeKit();
         String label;
         if (activeCard != null) {
-            String suffix = activeCard.pageCount() > 1
-                    ? " " + (activeCard.activePageIndex() + 1) + "/" + activeCard.pageCount()
-                    : "";
-            label = shorten(activeCard.name(), 10) + suffix;
+            label = shorten(activeCard.name(), 12);
         } else {
             label = "Workflows";
         }
@@ -311,27 +307,9 @@ final class KitRackBuilder {
                 .textAlignHorizontal(Horizontal.LEFT)
                 .textAlignVertical(Vertical.CENTER));
         name.setAllowHitTest(false);
-        int aggregateSlots = 0;
-        int aggregateReady = 0;
-        for (SlotWorkspaceViewModel.KitPageView page : card.pages()) {
-            aggregateSlots += page.slotCount();
-            aggregateReady += page.readyCount();
-        }
-        final int totalSlots = aggregateSlots;
-        final int totalReady = aggregateReady;
-        Label readiness = label(totalReady + "/" + totalSlots,
-                totalReady == totalSlots ? ACCENT : WARNING);
-        readiness.layout(layout -> layout.width(26).height(10));
-        readiness.textStyle(style -> style
-                .textColor(totalReady == totalSlots ? ACCENT : WARNING)
-                .textShadow(false)
-                .fontSize(8)
-                .textAlignHorizontal(Horizontal.RIGHT)
-                .textAlignVertical(Vertical.CENTER));
-        readiness.setAllowHitTest(false);
         // Delete moved to the right-click menu with confirm to prevent
         // fat-finger loss of a 10-minute kit setup.
-        row.addChildren(name, readiness);
+        row.addChild(name);
         return row;
     }
 

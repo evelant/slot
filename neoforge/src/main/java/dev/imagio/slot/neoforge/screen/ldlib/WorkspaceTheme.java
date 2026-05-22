@@ -99,10 +99,8 @@ final class WorkspaceTheme {
     static final float CARRIED_FIT_PADDING_PX = 72f;
     static final int BELT_HEIGHT = 24;
     static final int BELT_SLOT_SIZE = 20;
-    // Fixed-width holding area for the Kit toggle + page cycle button. Wide enough
-    // for "Longname 3/3" (≈10 name chars + " N/M" + padding) plus the ">" cycle
-    // button. Changes to the kit label grow LEFT inside this slot instead of
-    // shoving the hotbar.
+    // Fixed-width holding area for the Kit toggle + page cycle button. Changes to
+    // the kit label grow LEFT inside this slot instead of shoving the hotbar.
     static final int KIT_CLUSTER_WIDTH = 130;
     static final int BELT_DIVIDER_HEIGHT = 16;
     static final int TRIAGE_PANEL_WIDTH = 100;

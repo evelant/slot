@@ -121,18 +121,7 @@ public final class ItemIdentityMatcher {
         if (normalized.isBlank()) {
             return false;
         }
-        Set<String> keys = topLevelFingerprintKeys(normalized);
-        if (keys.isEmpty()) {
-            return false;
-        }
-        boolean hasMovableKey = false;
-        for (String key : keys) {
-            if (!isMovableConditionKey(key) && !isToolStateKey(key)) {
-                return false;
-            }
-            hasMovableKey = true;
-        }
-        return hasMovableKey;
+        return conditionOnlySegments(normalized);
     }
 
     private static String stableSelectorFingerprint(String itemId, String fingerprint) {
@@ -165,6 +154,21 @@ public final class ItemIdentityMatcher {
             String value = selectorValue(segment, selectorKey);
             if (!value.isBlank()) {
                 return value;
+            }
+            value = fingerprintSegmentValue(segment);
+            if (!value.isBlank()) {
+                value = stripOuter(value, '{', '}');
+                value = stripOuter(value, '[', ']');
+                String nested = topLevelSelectorValue(value, selectorKey);
+                if (!nested.isBlank()) {
+                    return nested;
+                }
+            }
+            for (String nestedBody : nestedFingerprintBodies(value.isBlank() ? segment : value)) {
+                String nested = topLevelSelectorValue(nestedBody, selectorKey);
+                if (!nested.isBlank()) {
+                    return nested;
+                }
             }
         }
         return "";
@@ -259,7 +263,9 @@ public final class ItemIdentityMatcher {
                 || key.equals("inventory")
                 || key.equals("container")
                 || key.equals("minecraft:container")
-                || key.equals("minecraft:bundle_contents");
+                || key.equals("minecraft:bundle_contents")
+                || key.equals("tfc:food")
+                || key.equals("tfc:heat");
     }
 
     private static boolean isToolStateKey(String key) {
@@ -338,6 +344,40 @@ public final class ItemIdentityMatcher {
         return segments.isEmpty() ? List.of() : List.copyOf(segments);
     }
 
+    private static boolean conditionOnlySegments(String value) {
+        if (value == null || value.isBlank()) {
+            return false;
+        }
+        boolean hasMovableKey = false;
+        for (String segment : topLevelFingerprintSegments(value)) {
+            String key = leadingFingerprintKey(segment);
+            if (key.isBlank()) {
+                return false;
+            }
+            if (isMovableConditionKey(key) || isToolStateKey(key)) {
+                hasMovableKey = true;
+                continue;
+            }
+            if (!isConditionWrapperKey(key)) {
+                return false;
+            }
+            String nested = fingerprintSegmentValue(segment);
+            nested = stripOuter(nested, '{', '}');
+            nested = stripOuter(nested, '[', ']');
+            if (!conditionOnlySegments(nested)) {
+                return false;
+            }
+            hasMovableKey = true;
+        }
+        return hasMovableKey;
+    }
+
+    private static boolean isConditionWrapperKey(String key) {
+        return key.equals("forgecaps")
+                || key.equals("forge_caps")
+                || key.equals("minecraft:custom_data");
+    }
+
     private static void addFingerprintSegment(List<String> segments, String segment) {
         String normalized = segment == null ? "" : segment.strip();
         if (!normalized.isBlank()) {
@@ -356,22 +396,95 @@ public final class ItemIdentityMatcher {
         if (value == null || value.isBlank()) {
             return "";
         }
+        int nestedStart = firstNestedStart(value, 0);
         int arrow = value.indexOf("=>");
-        if (arrow > 0) {
+        if (arrow > 0 && beforeNested(arrow, nestedStart)) {
             return value.substring(0, arrow);
         }
         int equals = value.indexOf('=');
-        if (equals > 0) {
+        if (equals > 0 && beforeNested(equals, nestedStart)) {
             return value.substring(0, equals);
         }
         int colon = value.indexOf(':');
-        if (colon <= 0) {
+        if (colon <= 0 || !beforeNested(colon, nestedStart)) {
             return "";
         }
-        if (!value.startsWith("minecraft:")) {
-            return value.substring(0, colon);
-        }
         int secondColon = value.indexOf(':', colon + 1);
-        return secondColon > 0 ? value.substring(0, secondColon) : value.substring(0, colon);
+        if (secondColon > 0 && beforeNested(secondColon, nestedStart)) {
+            return value.substring(0, secondColon);
+        }
+        return value.substring(0, colon);
+    }
+
+    private static String fingerprintSegmentValue(String segment) {
+        String normalized = segment == null ? "" : segment.strip();
+        if (normalized.isBlank()) {
+            return "";
+        }
+        int nestedStart = firstNestedStart(normalized, 0);
+        int arrow = normalized.indexOf("=>");
+        if (arrow > 0 && beforeNested(arrow, nestedStart)) {
+            return normalized.substring(arrow + 2).strip();
+        }
+        int equals = normalized.indexOf('=');
+        if (equals > 0 && beforeNested(equals, nestedStart)) {
+            return normalized.substring(equals + 1).strip();
+        }
+        String key = leadingFingerprintKey(normalized);
+        if (key.isBlank()) {
+            return "";
+        }
+        String colonPrefix = key + ":";
+        return normalized.startsWith(colonPrefix)
+                ? normalized.substring(colonPrefix.length()).strip()
+                : "";
+    }
+
+    private static boolean beforeNested(int index, int nestedStart) {
+        return index >= 0 && (nestedStart < 0 || index < nestedStart);
+    }
+
+    private static List<String> nestedFingerprintBodies(String value) {
+        if (value == null || value.isBlank()) {
+            return List.of();
+        }
+        ArrayList<String> bodies = new ArrayList<>();
+        int start = -1;
+        char expectedClose = 0;
+        int depth = 0;
+        for (int index = 0; index < value.length(); index++) {
+            char c = value.charAt(index);
+            if (start < 0) {
+                if (c == '{' || c == '[') {
+                    start = index + 1;
+                    expectedClose = c == '{' ? '}' : ']';
+                    depth = 1;
+                }
+                continue;
+            }
+            if ((expectedClose == '}' && c == '{') || (expectedClose == ']' && c == '[')) {
+                depth++;
+            } else if (c == expectedClose) {
+                depth--;
+                if (depth == 0) {
+                    addFingerprintSegment(bodies, value.substring(start, index));
+                    start = -1;
+                    expectedClose = 0;
+                }
+            }
+        }
+        return bodies.isEmpty() ? List.of() : List.copyOf(bodies);
+    }
+
+    private static int firstNestedStart(String value, int start) {
+        int curly = value.indexOf('{', Math.max(0, start));
+        int square = value.indexOf('[', Math.max(0, start));
+        if (curly < 0) {
+            return square;
+        }
+        if (square < 0) {
+            return curly;
+        }
+        return Math.min(curly, square);
     }
 }

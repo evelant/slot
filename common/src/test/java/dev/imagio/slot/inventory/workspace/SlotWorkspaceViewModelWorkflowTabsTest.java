@@ -617,6 +617,138 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
     }
 
     @Test
+    void activeWorkflowPatchouliDesiredCountIsSatisfiedByNestedCustomDataCarriedCopy() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition exploring = runtime.kitWorkflow().create("Exploring");
+        runtime.kitWorkflow().activate(exploring.id());
+        WorkspaceCommandOutcome desired = SlotWorkspaceCommandService.setPlayerDesiredCount(
+                runtime,
+                "patchouli:guide_book",
+                "ITEM_ID_AND_COMPONENTS",
+                "{\"patchouli:book\":\"tfc:field_guide\"}",
+                1);
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(new InventoryStackSnapshot(
+                        0,
+                        new ItemStack(
+                                "patchouli:guide_book",
+                                "{minecraft:custom_data=>CustomData[{display:{Name:\"TerraFirmaGreg Guide\"},\"patchouli:book\":\"tfc:field_guide\"}]}",
+                                1,
+                                1),
+                        1)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.AtlasItem guide = viewModel.triageItems().stream()
+                .filter(candidate -> "patchouli:guide_book".equals(candidate.identity().itemId()))
+                .findFirst()
+                .orElseThrow();
+        SlotWorkspaceViewModel.ContextualSuggestionLane fetch = fetchLane(viewModel);
+        List<String> fetchItemIds = fetch == null
+                ? List.of()
+                : fetch.items().stream().map(item -> item.identity().itemId()).toList();
+
+        assertTrue(desired.success());
+        assertTrue(guide.carried());
+        assertFalse(guide.ghost());
+        assertEquals(ItemIdentity.exact("patchouli:guide_book", "patchouli:book=tfc:field_guide"),
+                guide.identity().toIdentity());
+        assertEquals(1, guide.desiredCount());
+        assertFalse(fetchItemIds.contains("patchouli:guide_book"));
+    }
+
+    @Test
+    void activeWorkflowPutAwayMatchesTfcFoodAcrossVesselPreservedState() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition fieldwork = runtime.kitWorkflow().create("Fieldwork");
+        runtime.kitWorkflow().activate(fieldwork.id(), 0, Set.of(ItemIdentity.exact(
+                "tfc:food/banana",
+                "{tfc:food=>Food[creationDate=200,rotten=false,traits=[preserved]]}")));
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(new InventoryStackSnapshot(
+                        0,
+                        new ItemStack(
+                                "tfc:food/banana",
+                                "{tfc:food=>Food[creationDate=100,rotten=false,traits=[]]}",
+                                4,
+                                32),
+                        4)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L);
+
+        SlotWorkspaceViewModel.ContextualSuggestionLane putAway = viewModel.contextualSuggestionLanes().stream()
+                .filter(SlotWorkspaceViewModel.ContextualSuggestionLane::putAway)
+                .findFirst()
+                .orElseThrow();
+
+        assertEquals(List.of("tfc:food/banana"),
+                putAway.items().stream().map(item -> item.identity().itemId()).toList());
+        assertEquals(ItemIdentity.of("tfc:food/banana"), putAway.items().getFirst().identity().toIdentity());
+        assertEquals(SlotWorkspaceViewModel.PutAwayState.NO_ROUTE, putAway.items().getFirst().putAwayState());
+    }
+
+    @Test
+    void sealedLiveStorageContentsKeepPutAwayVisibleWithoutRoute() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().activate(mining.id(), 0, Set.of(ItemIdentity.of("minecraft:dirt")));
+        ClaimedChest chest = runtime.chestClaimWorkflow().claim(
+                Set.of(new ChestAnchor("minecraft:overworld", 12, 64, -5)),
+                0,
+                0,
+                "Food Vessel");
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried(new InventoryStackSnapshot(0, new ItemStack("minecraft:dirt", 64, 64), 64)),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                storageId -> chest.storageId().toString().equals(storageId)
+                        ? new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                                9,
+                                List.of(new ItemStack("minecraft:dirt", 32, 64)))
+                        : SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(chest.storageId().toString()),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                List.of(),
+                Set.of(chest.storageId().toString()),
+                List.of(),
+                List.of(),
+                Set.of(),
+                (claimed, identity) -> false,
+                claimed -> false);
+
+        SlotWorkspaceViewModel.ContextualSuggestionLane putAway = viewModel.contextualSuggestionLanes().stream()
+                .filter(SlotWorkspaceViewModel.ContextualSuggestionLane::putAway)
+                .findFirst()
+                .orElseThrow();
+
+        assertEquals(List.of("minecraft:dirt"),
+                putAway.items().stream().map(item -> item.identity().itemId()).toList());
+        assertTrue(putAway.items().getFirst().putAwayState().noRoute());
+        assertTrue(viewModel.wayfindingTargets().isEmpty());
+    }
+
+    @Test
     void workflowStorageContainerWithContentsSatisfiesItemOnlyTarget() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         ItemIdentity basket = ItemIdentity.of("sns:straw_basket");

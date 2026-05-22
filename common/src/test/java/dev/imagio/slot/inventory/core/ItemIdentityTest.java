@@ -84,6 +84,44 @@ class ItemIdentityTest {
     }
 
     @Test
+    void patchouliGuideBookSelectorCanLiveInsideCustomData() {
+        ItemIdentity guide = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "patchouli:guide_book",
+                "{minecraft:custom_data=>{display:{Name:\"TerraFirmaGreg Guide\"},\"patchouli:book\":\"tfc:field_guide\"}}",
+                1,
+                1));
+        ItemIdentity otherGuide = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "patchouli:guide_book",
+                "{minecraft:custom_data=>{\"patchouli:book\":\"ae2:guide\"}}",
+                1,
+                1));
+
+        assertEquals(ItemIdentity.exact("patchouli:guide_book", "patchouli:book=tfc:field_guide"), guide);
+        assertFalse(ItemIdentityMatcher.matchesMovable(guide, otherGuide));
+    }
+
+    @Test
+    void patchouliGuideBookSelectorCanLiveInsideComponentValueWrappers() {
+        ItemIdentity guide = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "patchouli:guide_book",
+                "{minecraft:custom_data=>CustomData[{display:{Name:\"TerraFirmaGreg Guide\"},\"patchouli:book\":\"tfc:field_guide\"}]}",
+                1,
+                1));
+        ItemIdentity desired = ItemIdentity.exact(
+                "patchouli:guide_book",
+                "{\"patchouli:book\":\"tfc:field_guide\"}");
+        ItemIdentity otherGuide = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "patchouli:guide_book",
+                "{minecraft:custom_data=>Optional[{\"patchouli:book\":\"ae2:guide\"}]}",
+                1,
+                1));
+
+        assertEquals(ItemIdentity.exact("patchouli:guide_book", "patchouli:book=tfc:field_guide"), guide);
+        assertTrue(ItemIdentityMatcher.matchesMovable(guide, desired));
+        assertFalse(ItemIdentityMatcher.matchesMovable(guide, otherGuide));
+    }
+
+    @Test
     void damageOnlyExactIdentitiesNormalizeAsMovableCondition() {
         assertTrue(ItemIdentityMatcher.matchesMovable(
                 ItemIdentity.exact("grapplemod:longfallboots", "{Damage:12}"),
@@ -91,6 +129,31 @@ class ItemIdentityTest {
         assertTrue(ItemIdentityMatcher.matchesMovable(
                 ItemIdentity.exact("minecraft:diamond_pickaxe", "{minecraft:damage=>12}"),
                 ItemIdentity.of("minecraft:diamond_pickaxe")));
+    }
+
+    @Test
+    void tfcFoodStateCreatesItemOnlyMovableIdentities() {
+        assertEquals(
+                ItemIdentity.of("tfc:food/banana"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "tfc:food/banana",
+                        "{tfc:food=>Food[creationDate=100,rotten=false,traits=[]]}",
+                        4,
+                        32)));
+        assertEquals(
+                ItemIdentity.of("tfc:food/banana"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "tfc:food/banana",
+                        "{tfc:food=>Food[creationDate=200,rotten=false,traits=[preserved]]}",
+                        4,
+                        32)));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact(
+                        "tfc:food/banana",
+                        "{ForgeCaps:{\"tfc:food\":{creationDate:200,traits:[\"tfc:preserved\"]}}}"),
+                ItemIdentity.exact(
+                        "tfc:food/banana",
+                        "{ForgeCaps:{\"tfc:food\":{creationDate:100,traits:[]}}}")));
     }
 
     @Test

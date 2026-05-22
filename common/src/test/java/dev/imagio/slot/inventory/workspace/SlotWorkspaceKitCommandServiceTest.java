@@ -15,6 +15,7 @@ import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventoryStackSnapshot;
 import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.PlayerRuntimeStateDescriptor;
 import dev.imagio.slot.inventory.core.ServerMenuRef;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
@@ -142,6 +143,38 @@ class SlotWorkspaceKitCommandServiceTest {
         assertTrue(outcome.success());
         assertEquals(
                 Set.of(ItemIdentity.of("minecraft:dirt")),
+                runtime.kitWorkflow().activation().putAwayIdentities());
+    }
+
+    @Test
+    void activateKitCapturesTfcFoodPutAwayAsMovableItemIdentity() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Fieldwork");
+        runtime.kitWorkflow().setMember(kit.id(), ItemIdentity.of("minecraft:torch"), true);
+        InventoryAuthoritySnapshot authority = InventoryAuthorityFixtures.authority(
+                host(),
+                Map.of(BuiltinInventoryIds.PLAYER_MAIN, List.of(new InventoryStackSnapshot(
+                        1,
+                        new ItemStack(
+                                "tfc:food/banana",
+                                "{tfc:food=>Food[creationDate=100,rotten=false,traits=[]]}",
+                                4,
+                                32),
+                        4))),
+                Map.of(BuiltinInventoryIds.PLAYER_MAIN, 25));
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.activateKit(
+                runtime,
+                authority,
+                ProtectionPolicy.allowAll(),
+                entry -> entry == null ? null : ItemIdentityMatcher.create(entry.stack()),
+                new RecordingActionExecutor(),
+                kit.id()
+        );
+
+        assertTrue(outcome.success());
+        assertEquals(
+                Set.of(ItemIdentity.of("tfc:food/banana")),
                 runtime.kitWorkflow().activation().putAwayIdentities());
     }
 
