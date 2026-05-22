@@ -9,6 +9,7 @@ import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
@@ -175,20 +176,27 @@ public final class ChestDepositObserver {
             if (storageId == null) {
                 return;
             }
+            ClaimedChest claimed = chestService.chest(storageId);
             long tick = level.getGameTime();
-            int seeded = ChestContentAffinitySeeder.seedInitialContents(
-                    chestService,
-                    storageId,
-                    session.snapshot,
-                    tick);
-            for (Map.Entry<ItemIdentity, Integer> entry : deposits.entrySet()) {
-                chestService.recordDeposit(storageId, entry.getKey(), entry.getValue(), tick);
+            int seeded = 0;
+            if (claimed != null && claimed.role().learnsAffinity()) {
+                seeded = ChestContentAffinitySeeder.seedInitialContents(
+                        chestService,
+                        storageId,
+                        session.snapshot,
+                        tick);
+                for (Map.Entry<ItemIdentity, Integer> entry : deposits.entrySet()) {
+                    chestService.recordDeposit(storageId, entry.getKey(), entry.getValue(), tick);
+                }
             }
-            observeRememberedContents(
-                    level, chestService, storageId, anchor, session.pos, menu, session.storageSlots, "container_close_deposit");
+            if (claimed == null || claimed.role().visibleToWorkspace()) {
+                observeRememberedContents(
+                        level, chestService, storageId, anchor, session.pos, menu, session.storageSlots, "container_close_deposit");
+            }
             SlotCommon.LOGGER.info(
-                    "[SLOT] auto-claim observed deposits player={} pos={} storage={} identities={} seeded={}",
-                    player.getScoreboardName(), session.pos, storageId, deposits.size(), seeded
+                    "[SLOT] auto-claim observed deposits player={} pos={} storage={} role={} identities={} seeded={}",
+                    player.getScoreboardName(), session.pos, storageId,
+                    claimed == null ? ChestRole.STORAGE : claimed.role(), deposits.size(), seeded
             );
             return;
         }
@@ -197,8 +205,10 @@ public final class ChestDepositObserver {
         UUID memoryStorageId = stampedStorageId != null
                 ? stampedStorageId
                 : trackedChest == null ? null : trackedChest.storageId();
-        observeRememberedContents(
-                level, chestService, memoryStorageId, anchor, session.pos, menu, session.storageSlots, "container_close");
+        if (trackedChest == null || trackedChest.role().visibleToWorkspace()) {
+            observeRememberedContents(
+                    level, chestService, memoryStorageId, anchor, session.pos, menu, session.storageSlots, "container_close");
+        }
 
         // Recents filter: takes from a CLAIMED (tracked) chest don't
         // belong in the player's "where did the thing I just grabbed
@@ -208,6 +218,11 @@ public final class ChestDepositObserver {
         // Loot/world pickups + crafting outputs aren't routed through
         // here, so they keep populating recents normally.
         if (!takes.isEmpty() && trackedChest != null) {
+            chestService.recordPossibleRehomeTake(
+                    trackedChest.storageId(),
+                    takes,
+                    ChestDepositObservationSupport.currentIdentities(menu, session.storageSlots),
+                    level.getGameTime());
             for (ItemIdentity identity : takes.keySet()) {
                 runtime.dismissRecent(identity);
             }

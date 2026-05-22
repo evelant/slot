@@ -71,6 +71,9 @@ public final class ChestContentAffinitySeeder {
                 || chestService.chest(storageId) == null) {
             return 0;
         }
+        if (!chestService.chest(storageId).role().learnsAffinity()) {
+            return 0;
+        }
         if (!StorageAffinityPolicy.isEligibleSlotCount(slotCount)) {
             return 0;
         }

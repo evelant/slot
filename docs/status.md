@@ -21,17 +21,21 @@ desired-count, chest, deposit/take, cursor, active-workflow gather, and
 cross-surface actions.
 
 Phase 2 has the production wall shell on both loaders: shared 24px item-card
-chrome, two-row Recents, vanilla-shaped Belt, active chest controls, workflow
-controls, accepted-input menus, compact nearby headers, remembered search/scroll,
-configurable sidebar margins, visible activation-scoped Put Away guidance, Forge
-key parity, and junk/trash pressure relief. Useful Now scoring is hidden while
-live contextual observation remains available; expensive contextual scoring and
-storage-ghost expansion are disabled for now. Carried storage pressure and card
-chrome are computed through common signals so counts, storage pips, route
-notches, right strips, and status rings follow one state grammar on Forge and
-NeoForge.
-Modern drag/drop, richer LDLib2 card/tab affordances, and richer chest panels
-remain backend hooks, not common UI semantics.
+chrome, two-row Recents, vanilla-shaped Belt, active chest role controls,
+workflow controls, accepted-input menus, compact nearby headers, remembered
+search/scroll, configurable sidebar margins, visible activation-scoped Put Away
+guidance, Forge key parity, and junk/trash pressure relief. Useful Now scoring
+is hidden while live contextual observation remains available; expensive
+contextual scoring and storage-ghost expansion are disabled for now. Carried
+storage pressure and card chrome are computed through common signals so counts,
+storage pips, route notches, right strips, and status rings follow one grammar
+on Forge and NeoForge. Modern drag/drop, richer LDLib2 card/tab affordances, and
+richer chest panels remain backend hooks, not common UI semantics.
+
+Learned storage now gates each claimed chest through `Storage`, `Buffer`, or
+`Ignore`; see ADR [0008](decisions/0008-chest-roles-and-affinity-correction.md).
+Only `Storage` learns affinity and accepts quick/bulk deposit; `Buffer` stays
+visible/pullable, and `Ignore` is hidden from SLOT storage projection.
 
 Classification has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar/static enrichment, runtime export, rich facet-evidence
@@ -40,27 +44,18 @@ datapack output, and runtime inspect/rehome diagnostics. Pre-LLM code gathers
 and formats evidence; the LLM owns vocabulary and item-facet decisions, with
 review/watchlist flags kept advisory. `organization_group` can materialize
 direct wall-home sections; `mod_subsystem` stays semantic/query evidence. Keep
-rich semantic text intact instead of reducing prompts to item ids or
-deterministic candidates.
+rich semantic text intact instead of reducing prompts to item ids.
 
 EMI recipe context now uses the normal SLOT sidebar as a transient recipe
-ingredient filter plus one persisted current craft run on both loaders. When
-EMI's recipe screen is open, SLOT renders into that screen while syncing through EMI's
-underlying handled menu; the wall shows visible recipe ingredients, exposes
-per-visible-recipe `Add Recipe` actions, and renders tracked recipes as normal
-wall-list sections with output-icon headers and per-recipe stage/adjust/done
-controls.
-The fixed `Fetch` suggestion lane is hidden while those recipe sections are active.
-Count changes use recipe-output batches and raise same-list producer recipes to
-at least the output units required by other tracked recipes.
-Recipe inputs project as transient wanted-count pressure, so gather,
-wayfinding, and protection share the same target math as the highlighted card
-chrome, while the tracked recipe list itself survives logout/rejoin and server
-restart through workflow persistence. ADR
-[0007](decisions/0007-emi-recipe-sidebar.md) records the pivot away from the
-near-term recipe-goal surface; the old plan lives in
+ingredient filter plus one persisted current craft run on both loaders. It
+renders visible ingredients and tracked recipe sections in the normal wall,
+projects recipe inputs as transient wanted-count pressure for gather/storage/
+wayfinding, stages selected deficits through the shared transfer executor, and
+survives logout/rejoin through workflow persistence. ADR
+[0007](decisions/0007-emi-recipe-sidebar.md) records the pivot; the old
+recipe-goal plan lives in
 [plans/retired/emi-goal-projections.md](plans/retired/emi-goal-projections.md),
-and the legacy recipe-goal code/UI/RPC/persistence model has been removed.
+and the legacy code/UI/RPC/persistence model has been removed.
 
 ### Production wall shape (post-list-view)
 
@@ -83,11 +78,8 @@ Cross-surface drag from a wall card to a vanilla menu slot remains wired.
 Shift-click in sidebar/container mode now stays on SLOT's semantic path:
 carried cards deposit to proximate chests by learned affinity or existing
 contents, falling back to the currently open external chest when needed;
-external ghost cards take from proximate storage. Direction B (vanilla
-cursor → wall card), wider host coverage past plain chests, hard-custom
-screens (AE2 / RS), mod-observer transparency, and EMI exclusion area
-registration were considered but **dropped from the plan** — spin a fresh
-plan if any gain playtest signal.
+external ghost cards take from proximate storage. Dropped sidebar expansion
+items need fresh plans if playtesting revives them.
 
 Server-side: `SlotSidebarUiHandle` per-player, attaches the
 sidebar's `ModularUI` to `player.containerMenu` via LDLib2's

@@ -3,6 +3,7 @@ package dev.imagio.slot.workflow.domain;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Objects;
@@ -13,14 +14,16 @@ import java.util.UUID;
  * Per-player workflow service for claimed chests + their learned affinity.
  *
  * <p>Replaces the old explicit-claim / chest-link / storage-area trio with
- * a single surface: chests are auto-claimed on first deposit, and routing
- * reads {@link ChestAffinityMap}. There is no longer an "area" concept.
+ * a single surface: chests are auto-claimed on first deposit, role-gated by
+ * {@link ChestRole}, and routing reads {@link ChestAffinityMap}. There is no
+ * longer an "area" concept.
  *
  * <p>See docs/plans/learned-storage.md.
  */
 public final class ChestClaimWorkflowDomainService {
     private final WorkflowDomainStateRepository repository;
     private final Runnable mutationObserver;
+    private final Map<ItemIdentity, PendingRehomeOrigin> pendingRehomeOrigins = new LinkedHashMap<>();
 
     public ChestClaimWorkflowDomainService(WorkflowDomainStateRepository repository) {
         this(repository, () -> {
@@ -113,6 +116,30 @@ public final class ChestClaimWorkflowDomainService {
         );
         mutationObserver.run();
         return claimedChestMap().chest(storageId);
+    }
+
+    public boolean setRole(UUID storageId, ChestRole role) {
+        if (storageId == null) {
+            return false;
+        }
+        ClaimedChest existing = claimedChestMap().chest(storageId);
+        if (existing == null) {
+            return false;
+        }
+        ChestRole next = role == null ? ChestRole.STORAGE : role;
+        if (existing.role() == next) {
+            return true;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.ClaimedChestRoleChanged(storageId, next),
+                DomainEventMetadata.origin("workflow.storage.chest.role_changed")
+        );
+        if (!next.learnsAffinity()) {
+            pendingRehomeOrigins.entrySet().removeIf(entry ->
+                    entry.getValue() != null && storageId.equals(entry.getValue().storageId()));
+        }
+        mutationObserver.run();
+        return true;
     }
 
     /**
@@ -275,10 +302,15 @@ public final class ChestClaimWorkflowDomainService {
             return;
         }
         ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(identity);
+        ClaimedChest destination = claimedChestMap().chest(storageId);
+        if (destination == null || !destination.role().learnsAffinity()) {
+            return;
+        }
         repository.appendWorkflowEvent(
                 new WorkflowEvent.ChestDepositObserved(storageId, normalized, count, tick),
                 resolveMetadata(metadata, "workflow.storage.chest.deposit_observed")
         );
+        applyPendingRehome(storageId, normalized);
         repository.appendContextualSignal(
                 new ContextualSignalEvent(
                         ContextualSignalKind.ITEM_DEPOSITED_TO_STORAGE,
@@ -292,6 +324,69 @@ public final class ChestClaimWorkflowDomainService {
                 resolveMetadata(metadata, "contextual.storage.deposit_observed")
         );
         mutationObserver.run();
+    }
+
+    public void recordPossibleRehomeTake(
+            UUID storageId,
+            Map<ItemIdentity, Integer> takes,
+            Set<ItemIdentity> identitiesStillPresent,
+            long tick
+    ) {
+        if (storageId == null || takes == null || takes.isEmpty()) {
+            return;
+        }
+        ClaimedChest origin = claimedChestMap().chest(storageId);
+        if (origin == null || !origin.role().learnsAffinity()) {
+            return;
+        }
+        Set<ItemIdentity> present = identitiesStillPresent == null ? Set.of() : identitiesStillPresent;
+        for (Map.Entry<ItemIdentity, Integer> entry : takes.entrySet()) {
+            if (entry == null || entry.getKey() == null || entry.getValue() == null || entry.getValue() <= 0) {
+                continue;
+            }
+            ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(entry.getKey());
+            if (chestAffinityMap().score(storageId, normalized) <= 0) {
+                continue;
+            }
+            if (containsIdentity(present, normalized)) {
+                PendingRehomeOrigin pending = pendingRehomeOrigins.get(normalized);
+                if (pending != null && storageId.equals(pending.storageId())) {
+                    pendingRehomeOrigins.remove(normalized);
+                }
+                continue;
+            }
+            pendingRehomeOrigins.put(normalized, new PendingRehomeOrigin(storageId, tick));
+        }
+    }
+
+    private void applyPendingRehome(UUID destinationStorageId, ItemIdentity identity) {
+        PendingRehomeOrigin pending = pendingRehomeOrigins.remove(identity);
+        if (pending == null || pending.storageId() == null || pending.storageId().equals(destinationStorageId)) {
+            return;
+        }
+        ClaimedChest origin = claimedChestMap().chest(pending.storageId());
+        if (origin == null || !origin.role().learnsAffinity()) {
+            return;
+        }
+        if (chestAffinityMap().score(pending.storageId(), identity) <= 0) {
+            return;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.ChestAffinityForgotten(pending.storageId(), identity),
+                DomainEventMetadata.origin("workflow.storage.chest.rehome_on_move")
+        );
+    }
+
+    private static boolean containsIdentity(Set<ItemIdentity> identities, ItemIdentity identity) {
+        if (identities == null || identities.isEmpty() || identity == null) {
+            return false;
+        }
+        for (ItemIdentity candidate : identities) {
+            if (identity.equals(ItemIdentityMatcher.normalizeMovable(candidate))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** Forget affinity[storageId, identity]. */
@@ -330,23 +425,10 @@ public final class ChestClaimWorkflowDomainService {
         return true;
     }
 
-    /** Forget all affinity for this chest. */
-    public boolean forgetChestAffinity(UUID storageId) {
-        if (storageId == null) {
-            return false;
-        }
-        if (chestAffinityMap().forChest(storageId).isEmpty()) {
-            return false;
-        }
-        repository.appendWorkflowEvent(
-                new WorkflowEvent.ChestAffinityCleared(storageId),
-                DomainEventMetadata.origin("workflow.storage.chest.forget_chest_affinity")
-        );
-        mutationObserver.run();
-        return true;
-    }
-
     private static DomainEventMetadata resolveMetadata(DomainEventMetadata metadata, String origin) {
         return (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin(origin);
+    }
+
+    private record PendingRehomeOrigin(UUID storageId, long tick) {
     }
 }

@@ -60,10 +60,21 @@ public record CraftRunRecipeEntry(
     }
 
     public boolean active() {
-        return outputIdentity != null && remainingOutputCount > 0 && !inputs.isEmpty();
+        return outputIdentity != null && !inputs.isEmpty();
+    }
+
+    public boolean pending() {
+        return active() && remainingOutputCount > 0;
+    }
+
+    public boolean complete() {
+        return active() && remainingOutputCount <= 0;
     }
 
     public int remainingBatches() {
+        if (remainingOutputCount <= 0) {
+            return 0;
+        }
         return Math.max(1, (remainingOutputCount + outputCountPerBatch - 1) / outputCountPerBatch);
     }
 

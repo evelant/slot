@@ -351,6 +351,17 @@ public final class WorkflowProjection {
                     }
                 }
             }
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestRoleChanged event) {
+                if (event.storageId() != null) {
+                    ClaimedChest existing = claimedChests.get(event.storageId());
+                    if (existing != null) {
+                        claimedChests.put(event.storageId(), existing.withRole(event.role()));
+                        if (!event.role().learnsAffinity()) {
+                            affinity.remove(event.storageId());
+                        }
+                    }
+                }
+            }
         else if (workflowEvent instanceof WorkflowEvent.ClaimedChestDeleted event) {
                 if (event.storageId() != null) {
                     claimedChests.remove(event.storageId());
@@ -359,7 +370,8 @@ public final class WorkflowProjection {
             }
         else if (workflowEvent instanceof WorkflowEvent.ChestDepositObserved event) {
                 if (event.storageId() != null && event.identity() != null
-                        && claimedChests.containsKey(event.storageId())) {
+                        && claimedChests.containsKey(event.storageId())
+                        && claimedChests.get(event.storageId()).role().learnsAffinity()) {
                     affinity = copyAffinity(new ChestAffinityMap(affinity)
                             .recordDeposit(event.storageId(), event.identity(), event.tick())
                             .entries());
@@ -370,11 +382,6 @@ public final class WorkflowProjection {
                     affinity = copyAffinity(new ChestAffinityMap(affinity)
                             .forget(event.storageId(), event.identity())
                             .entries());
-                }
-            }
-        else if (workflowEvent instanceof WorkflowEvent.ChestAffinityCleared event) {
-                if (event.storageId() != null) {
-                    affinity.remove(event.storageId());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.ChestClusterRelabeled event) {

@@ -212,6 +212,7 @@ final class ContextMenuBuilder {
         int freeHotbarIndex = host.firstFreeHotbarIndex();
         boolean canSendToHotbar = item.carried() && freeHotbarIndex >= 0;
         boolean canDeposit = item.carried() && host.atlasItemHasDepositTarget(item);
+        String activeAffinityStorageId = activeChestAffinityStorageId(item);
         List<SlotWorkspaceViewModel.AtlasIsland> recent = host.recentRehomeTargets(item);
         boolean editingDesiredCount = item.identity().equals(host.editingDesiredCountIdentity);
         UIElement catcher = contextMenuCatcher(this::closeContextMenu);
@@ -232,6 +233,7 @@ final class ContextMenuBuilder {
                         acceptedInputRules,
                         canSendToHotbar,
                         canDeposit,
+                        !activeAffinityStorageId.isBlank(),
                         recent.size(),
                         editingDesiredCount));
         menu.style(style -> style.zIndex(22));
@@ -283,11 +285,23 @@ final class ContextMenuBuilder {
 
         if (canDeposit) {
             menu.addChild(menuButton(
-                    "Deposit to linked chest",
+                    "Deposit to chest",
                     true,
                     null,
                     () -> {
                         host.rpc.sendDepositHomeToLinkedChest(item);
+                        closeContextMenu();
+                    }
+            ));
+        }
+
+        if (!activeAffinityStorageId.isBlank()) {
+            menu.addChild(menuButton(
+                    "Don't auto-deposit here",
+                    true,
+                    null,
+                    () -> {
+                        host.rpc.sendForgetItemAffinity(activeAffinityStorageId, item.identity());
                         closeContextMenu();
                     }
             ));
@@ -395,6 +409,7 @@ final class ContextMenuBuilder {
             List<WorkflowAcceptedInputRule> acceptedInputRules,
             boolean canSendToHotbar,
             boolean canDeposit,
+            boolean canForgetActiveChestAffinity,
             int recentTargetCount,
             boolean editingDesiredCount
     ) {
@@ -407,6 +422,9 @@ final class ContextMenuBuilder {
             buttons++;
         }
         if (canDeposit) {
+            buttons++;
+        }
+        if (canForgetActiveChestAffinity) {
             buttons++;
         }
         int customRows = editingDesiredCount ? 2 : 0;
@@ -455,6 +473,17 @@ final class ContextMenuBuilder {
         return null;
     }
 
+    private String activeChestAffinityStorageId(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || item.identity() == null || host.viewModel == null) {
+            return "";
+        }
+        SlotWorkspaceViewModel.ActiveChestPanel panel = host.viewModel.activeChestPanel();
+        if (panel == null || !panel.isClaimed() || !panel.hasAffinity(item.identity())) {
+            return "";
+        }
+        return panel.storageId();
+    }
+
     private UIElement buildRecipeAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
         CraftRunIngredientChoiceRef choiceRef = CraftRunIngredientChoiceRef.forItem(host.viewModel.craftRun(), item);
         CraftRunIngredientGroup choiceGroup = choiceRef == null ? null : choiceRef.group(host.viewModel.craftRun());
@@ -470,6 +499,10 @@ final class ContextMenuBuilder {
             buttons++;
         }
         if (item.carried() && host.atlasItemHasDepositTarget(item)) {
+            buttons++;
+        }
+        String activeAffinityStorageId = activeChestAffinityStorageId(item);
+        if (!activeAffinityStorageId.isBlank()) {
             buttons++;
         }
         int approxHeight = menuHeight(4, 2, 1 + choiceLabels, buttons, 0, 0);
@@ -513,11 +546,23 @@ final class ContextMenuBuilder {
 
         if (item.carried() && host.atlasItemHasDepositTarget(item)) {
             menu.addChild(menuButton(
-                    "Deposit to linked chest",
+                    "Deposit to chest",
                     true,
                     null,
                     () -> {
                         host.rpc.sendDepositHomeToLinkedChest(item);
+                        closeContextMenu();
+                    }
+            ));
+        }
+
+        if (!activeAffinityStorageId.isBlank()) {
+            menu.addChild(menuButton(
+                    "Don't auto-deposit here",
+                    true,
+                    null,
+                    () -> {
+                        host.rpc.sendForgetItemAffinity(activeAffinityStorageId, item.identity());
                         closeContextMenu();
                     }
             ));
@@ -707,7 +752,7 @@ final class ContextMenuBuilder {
                 .paddingAll(6)
                 .gapAll(4)
                 .flexDirection(FlexDirection.COLUMN));
-        int approxHeight = chip.storageId().equals(host.renamingChestStorageId) ? 70 : 64;
+        int approxHeight = chip.storageId().equals(host.renamingChestStorageId) ? 70 : 50;
         anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180, approxHeight);
         menu.style(style -> style.zIndex(22));
         menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
@@ -724,11 +769,7 @@ final class ContextMenuBuilder {
                 host.renameChestDraft = chip.label();
                 host.rebuild();
             }));
-            menu.addChild(menuButton("Forget chest", true, null, () -> {
-                host.rpc.sendForgetChest(chip.storageId());
-                host.localStatus.set("forgot " + (chip.label().isBlank() ? "chest" : chip.label()));
-                closeContextMenu();
-            }));
+            menu.addChild(menuButton("Close", true, null, this::closeContextMenu));
         }
 
         UIElement wrapper = new UIElement().layout(layout -> layout

@@ -9,7 +9,8 @@ public record ClaimedChest(
         Set<ChestAnchor> anchors,
         int atlasX,
         int atlasY,
-        String label
+        String label,
+        ChestRole role
 ) {
     public ClaimedChest {
         if (storageId == null) {
@@ -20,13 +21,24 @@ public record ClaimedChest(
             throw new IllegalArgumentException("anchors must not be empty");
         }
         label = label == null ? "" : label.trim();
+        role = role == null ? ChestRole.STORAGE : role;
+    }
+
+    public ClaimedChest(
+            UUID storageId,
+            Set<ChestAnchor> anchors,
+            int atlasX,
+            int atlasY,
+            String label
+    ) {
+        this(storageId, anchors, atlasX, atlasY, label, ChestRole.STORAGE);
     }
 
     public ClaimedChest withAtlasPosition(int atlasX, int atlasY) {
         if (this.atlasX == atlasX && this.atlasY == atlasY) {
             return this;
         }
-        return new ClaimedChest(storageId, anchors, atlasX, atlasY, label);
+        return new ClaimedChest(storageId, anchors, atlasX, atlasY, label, role);
     }
 
     public ClaimedChest withAnchors(Set<ChestAnchor> nextAnchors) {
@@ -34,7 +46,7 @@ public record ClaimedChest(
         if (copied.equals(anchors)) {
             return this;
         }
-        return new ClaimedChest(storageId, copied, atlasX, atlasY, label);
+        return new ClaimedChest(storageId, copied, atlasX, atlasY, label, role);
     }
 
     public ClaimedChest withLabel(String nextLabel) {
@@ -42,7 +54,15 @@ public record ClaimedChest(
         if (normalized.equals(label)) {
             return this;
         }
-        return new ClaimedChest(storageId, anchors, atlasX, atlasY, normalized);
+        return new ClaimedChest(storageId, anchors, atlasX, atlasY, normalized, role);
+    }
+
+    public ClaimedChest withRole(ChestRole nextRole) {
+        ChestRole normalized = nextRole == null ? ChestRole.STORAGE : nextRole;
+        if (normalized == role) {
+            return this;
+        }
+        return new ClaimedChest(storageId, anchors, atlasX, atlasY, label, normalized);
     }
 
     public boolean hasAnchor(ChestAnchor anchor) {

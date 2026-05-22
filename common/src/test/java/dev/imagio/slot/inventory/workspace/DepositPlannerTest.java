@@ -10,6 +10,7 @@ import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
 import dev.imagio.slot.workflow.domain.ChestAffinity;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import net.minecraft.world.item.ItemStack;
@@ -137,6 +138,36 @@ class DepositPlannerTest {
                 (chest, identity) -> chest.storageId().equals(CHEST_A)
                         && identity.equals(ItemIdentity.of("minecraft:redstone")),
                 chest -> false
+        );
+
+        assertTrue(plan.isEmpty());
+    }
+
+    @Test
+    void bufferChestsDoNotRouteDepositsByAffinityOrContents() {
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:redstone", 16),
+                affinity(CHEST_A, "minecraft:redstone", 5),
+                claimedMapWithRole(ChestRole.BUFFER, CHEST_A),
+                Set.of(CHEST_A.toString()),
+                null,
+                (chest, identity) -> chest.storageId().equals(CHEST_A)
+                        && identity.equals(ItemIdentity.of("minecraft:redstone"))
+        );
+
+        assertTrue(plan.isEmpty());
+    }
+
+    @Test
+    void ignoreChestsDoNotRouteDepositsByAffinityOrContents() {
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:redstone", 16),
+                affinity(CHEST_A, "minecraft:redstone", 5),
+                claimedMapWithRole(ChestRole.IGNORE, CHEST_A),
+                Set.of(CHEST_A.toString()),
+                null,
+                (chest, identity) -> chest.storageId().equals(CHEST_A)
+                        && identity.equals(ItemIdentity.of("minecraft:redstone"))
         );
 
         assertTrue(plan.isEmpty());
@@ -334,6 +365,18 @@ class DepositPlannerTest {
         assertTrue(plan.isEmpty());
     }
 
+    @Test
+    void bufferChestsRemainVisibleForTakeRanking() {
+        List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
+                ItemIdentity.of("minecraft:redstone"),
+                claimedMapWithRole(ChestRole.BUFFER, CHEST_A),
+                affinity(CHEST_A, "minecraft:redstone", 5),
+                Set.of(CHEST_A.toString())
+        );
+
+        assertEquals(List.of(CHEST_A), ranked.stream().map(ClaimedChest::storageId).toList());
+    }
+
     private static ChestAffinityMap affinity(UUID storageId, String itemId, int score) {
         ItemIdentity identity = ItemIdentity.of(itemId);
         return new ChestAffinityMap(Map.of(storageId,
@@ -341,12 +384,17 @@ class DepositPlannerTest {
     }
 
     private static ClaimedChestMap claimedMap(UUID... storageIds) {
+        return claimedMapWithRole(ChestRole.STORAGE, storageIds);
+    }
+
+    private static ClaimedChestMap claimedMapWithRole(ChestRole role, UUID... storageIds) {
         java.util.ArrayList<ClaimedChest> chests = new java.util.ArrayList<>();
         for (UUID id : storageIds) {
             chests.add(new ClaimedChest(
                     id,
                     Set.of(new ChestAnchor("minecraft:overworld", 0, 64, 0)),
-                    0, 0, ""));
+                    0, 0, "",
+                    role));
         }
         return new ClaimedChestMap(chests);
     }

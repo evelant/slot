@@ -21,6 +21,7 @@ import dev.imagio.slot.ui.workspace.WallSectionVisibility;
 import dev.imagio.slot.ui.workspace.WorkflowTabsUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeEntry;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.neoforge.network.SlotCraftRunRecipePayload;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -534,6 +535,11 @@ final class ListWallPanelBuilder {
         public void stageEntry(String entryId) {
             host.rpc.send(WorkspaceActionId.CRAFT_RUN_STAGE_ENTRY, entryId);
             host.localStatus.set("staging craft ingredients");
+        }
+
+        @Override
+        public void openRecipe(CraftRunRecipeEntry entry) {
+            host.openRecipe(entry == null ? null : entry.outputIdentity());
         }
 
         @Override

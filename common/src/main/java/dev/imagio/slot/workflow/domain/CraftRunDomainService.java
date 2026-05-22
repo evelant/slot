@@ -73,6 +73,10 @@ public final class CraftRunDomainService {
                 entries.add(entry);
                 continue;
             }
+            if (entry.complete() && delta < 0) {
+                entries.add(entry);
+                continue;
+            }
             int next = Math.max(entry.outputCountPerBatch(), entry.remainingOutputCount() + delta);
             if (next != entry.remainingOutputCount()) {
                 changed = true;
@@ -131,9 +135,7 @@ public final class CraftRunDomainService {
             remainingEventCount -= decrement;
             int nextRemaining = entry.remainingOutputCount() - decrement;
             changed = changed || decrement > 0;
-            if (nextRemaining > 0) {
-                entries.add(entry.withRemainingOutputCount(nextRemaining));
-            }
+            entries.add(entry.withRemainingOutputCount(nextRemaining));
         }
         if (!changed) {
             return false;
@@ -208,7 +210,7 @@ public final class CraftRunDomainService {
         int reusableRequired = 0;
         for (CraftRunRecipeEntry consumer : entries) {
             if (consumer == null
-                    || !consumer.active()
+                    || !consumer.pending()
                     || consumer.entryId().equals(producer.entryId())
                     || consumer.inputs().isEmpty()) {
                 continue;

@@ -41,7 +41,8 @@ public final class WorkspaceChestProjectionSupport {
         long radiusSquared = (long) radiusBlocks * radiusBlocks;
         LinkedHashSet<String> result = new LinkedHashSet<>();
         for (ClaimedChest chest : map.chests()) {
-            if (chest != null && isWithin(chest, dimension, playerPos, radiusSquared)) {
+            if (chest != null && chest.role().visibleToWorkspace()
+                    && isWithin(chest, dimension, playerPos, radiusSquared)) {
                 result.add(chest.storageId().toString());
             }
         }

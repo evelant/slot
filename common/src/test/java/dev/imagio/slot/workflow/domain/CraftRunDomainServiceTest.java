@@ -55,7 +55,28 @@ class CraftRunDomainServiceTest {
                 activity(InventoryActivityKind.ACQUIRED, "minecraft:torch", 8)
         ));
 
-        assertFalse(service.state().active());
+        assertTrue(service.state().active());
+        assertEquals(1, service.state().entries().size());
+        assertEquals(0, service.state().selectedEntry().remainingOutputCount());
+        assertTrue(service.state().selectedEntry().complete());
+    }
+
+    @Test
+    void completedOutputCanBeRaisedAgainFromHeaderControls() {
+        CraftRunDomainService service = new CraftRunDomainService();
+        service.add(capture("slot:recipe/torch", "minecraft:torch", "minecraft:coal", 4));
+        String entryId = service.state().selectedEntryId();
+
+        service.observeActivityRecord(new InventoryActivityRecord(
+                envelope(1),
+                activity(InventoryActivityKind.ACQUIRED, "minecraft:torch", 4)
+        ));
+
+        assertFalse(service.adjustRemainingOutput(entryId, -1));
+        assertEquals(0, service.state().entry(entryId).remainingOutputCount());
+
+        assertTrue(service.adjustRemainingOutput(entryId, 4));
+        assertEquals(4, service.state().entry(entryId).remainingOutputCount());
     }
 
     @Test
@@ -287,6 +308,28 @@ class CraftRunDomainServiceTest {
                 CarriedIdentityCounts.empty());
 
         assertEquals(1, targets.wantedCount(hammer));
+    }
+
+    @Test
+    void completedRecipesStayRelevantButStopWantedPressure() {
+        ItemIdentity coal = ItemIdentity.of("minecraft:coal");
+        CraftRunDomainService service = new CraftRunDomainService();
+        service.add(capture("slot:recipe/torch", "minecraft:torch", coal.itemId(), 3));
+
+        service.observeActivityRecord(new InventoryActivityRecord(
+                envelope(1),
+                activity(InventoryActivityKind.ACQUIRED, "minecraft:torch", 3)
+        ));
+
+        WorkflowTabTargets.Resolution targets = CraftRunTargetOverlay.apply(
+                WorkflowTabTargets.Resolution.empty(),
+                service.state(),
+                CarriedIdentityCounts.empty());
+
+        assertTrue(service.state().active());
+        assertEquals(0, targets.wantedCount(coal));
+        assertFalse(targets.missingWorkflowIdentities().contains(coal));
+        assertTrue(targets.workflowRelevant(ItemIdentity.of("minecraft:torch")));
     }
 
     @Test

@@ -867,6 +867,9 @@ public final class WorkspaceChestCommandService {
         if (claimedChestMap.chest(fallbackChest.storageId()) == null) {
             return List.of();
         }
+        if (!fallbackChest.role().visibleToWorkspace()) {
+            return List.of();
+        }
         if (!WorkspaceChestProjectionSupport.isProximate(player, fallbackChest)) {
             return List.of();
         }

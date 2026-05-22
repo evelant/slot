@@ -56,6 +56,7 @@ import dev.imagio.slot.neoforge.storage.NeoForgeCarriedActivityTracker;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
@@ -580,52 +581,46 @@ final class SlotWorkspaceUiSession {
         broadcast(serverPlayer);
     }
 
-    void forgetChest(String storageId) {
-        if (!(player instanceof ServerPlayer serverPlayer)) {
+    void setChestRoleAtPos(String dimensionId, Integer x, Integer y, Integer z, String roleName) {
+        if (!(player instanceof ServerPlayer serverPlayer)
+                || dimensionId == null || dimensionId.isBlank()
+                || x == null || y == null || z == null) {
+            reject("invalid_chest_role_request");
             return;
         }
-        refreshServerView(serverPlayer);
-        // Capture anchors BEFORE the workflow service deletes the chest;
-        // afterwards the chest record is gone and we can't find its
-        // world positions to clear the stale BE storage-id attachment.
-        // Without this clear, a forgotten chest still shows up as
-        // "claimed" via {@link ChestStorageIds#read} on the next
-        // deposit, blocking re-claim — the bug where forgetting a
-        // chest meant losing it permanently until block-break.
-        java.util.List<BlockPos> anchorPositions = anchorPositionsForChest(serverPlayer, storageId);
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.forgetChest(
-                workflowRuntime(serverPlayer),
-                storageId
-        ));
         ServerLevel level = serverPlayer.serverLevel();
-        for (BlockPos pos : anchorPositions) {
-            ChestStorageIds.clear(level, pos);
+        if (!level.dimension().location().toString().equals(dimensionId)) {
+            reject("dimension_mismatch");
+            return;
         }
-    }
-
-    private java.util.List<BlockPos> anchorPositionsForChest(ServerPlayer serverPlayer, String storageId) {
-        if (storageId == null || storageId.isBlank()) {
-            return java.util.List.of();
+        BlockPos pos = new BlockPos(x, y, z);
+        if (!ChestStorageAnchors.isClaimable(level, pos)) {
+            reject("not_claimable");
+            return;
         }
-        UUID uuid;
-        try {
-            uuid = UUID.fromString(storageId);
-        } catch (IllegalArgumentException ignored) {
-            return java.util.List.of();
+        ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, pos);
+        if (anchor == null) {
+            reject("anchor_resolution_failed");
+            return;
         }
-        ClaimedChest existing = workflowRuntime(serverPlayer).chestClaimWorkflow()
-                .claimedChestMap().chest(uuid);
-        if (existing == null) {
-            return java.util.List.of();
+        ChestRole role = ChestRole.parse(roleName);
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        ClaimedChest existing = runtime.chestClaimWorkflow().chestByAnchor(anchor);
+        UUID storageId = existing == null
+                ? role == ChestRole.IGNORE ? null : ChestDepositObserver.resolveOrCreateClaim(
+                        runtime.chestClaimWorkflow(), level, pos, anchor)
+                : existing.storageId();
+        if (storageId == null) {
+            status = "chest_role_set";
+            diagnostics = ChestRole.IGNORE.name();
+            broadcast(serverPlayer);
+            return;
         }
-        String currentDimension = serverPlayer.serverLevel().dimension().location().toString();
-        java.util.ArrayList<BlockPos> positions = new java.util.ArrayList<>();
-        existing.anchors().forEach(anchor -> {
-            if (currentDimension.equals(anchor.dimensionId())) {
-                positions.add(new BlockPos(anchor.x(), anchor.y(), anchor.z()));
-            }
-        });
-        return positions;
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setChestRole(runtime, storageId, role);
+        if (outcome.success() && role == ChestRole.STORAGE) {
+            seedClaimedChestContents(serverPlayer, storageId);
+        }
+        applyOutcome(serverPlayer, outcome);
     }
 
     void forgetItemAffinity(String storageId, String itemId, String comparisonMode, String componentFingerprint) {

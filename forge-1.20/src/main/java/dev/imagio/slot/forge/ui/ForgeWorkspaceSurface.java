@@ -45,9 +45,11 @@ import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.CraftRunAlternative;
 import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
 import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeEntry;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputOptions;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 import net.minecraft.client.Minecraft;
@@ -1626,13 +1628,15 @@ public final class ForgeWorkspaceSurface {
                 ? List.of()
                 : acceptedInputOptions(item);
         List<SlotWorkspaceViewModel.AtlasIsland> rehomeTargets = rehomeMenuTargets(item);
+        String activeAffinityStorageId = activeChestAffinityStorageId(item);
         float menuWidth = itemContextMenuWidth(item, activeTab, acceptedInputRules);
         SlotUiElement overlay = overlayRoot();
         SlotUiElement panel = overlayPanel(
                 contextMenuX,
                 contextMenuY,
                 menuWidth,
-                itemContextMenuHeight(item, activeTab, acceptedInputRules, rehomeTargets.size()),
+                itemContextMenuHeight(item, activeTab, acceptedInputRules,
+                        rehomeTargets.size(), !activeAffinityStorageId.isBlank()),
                 2f,
                 3f,
                 3f,
@@ -1705,6 +1709,19 @@ public final class ForgeWorkspaceSurface {
                         WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST,
                         item.identity(),
                         "depositing " + item.name()))));
+        if (!activeAffinityStorageId.isBlank()) {
+            panel.addChild(menuButton(
+                    "Don't auto-deposit here",
+                    true,
+                    "Stop quick-store from routing this item to the open chest",
+                    closeThen(() -> sendAction(
+                            WorkspaceActionId.FORGET_ITEM_AFFINITY,
+                            "forgetting chest route",
+                            activeAffinityStorageId,
+                            item.identity().itemId(),
+                            item.identity().comparisonMode(),
+                            item.identity().componentFingerprint()))));
+        }
         panel.addChild(menuButton(
                 item.junk() ? "Unmark junk" : "Mark as junk",
                 true,
@@ -1810,7 +1827,8 @@ public final class ForgeWorkspaceSurface {
             SlotWorkspaceViewModel.AtlasItem item,
             SlotWorkspaceViewModel.KitCard activeTab,
             List<WorkflowAcceptedInputRule> acceptedInputRules,
-            int rehomeTargetCount
+            int rehomeTargetCount,
+            boolean canForgetActiveChestAffinity
     ) {
         int labels = 2 + (rehomeTargetCount <= 0 ? 1 : 0);
         int buttons = 6 + Math.max(0, rehomeTargetCount);
@@ -1821,6 +1839,9 @@ public final class ForgeWorkspaceSurface {
             buttons++;
         }
         if (item != null && item.desiredCount() > 0 && !item.desiredCountFromKit()) {
+            buttons++;
+        }
+        if (canForgetActiveChestAffinity) {
             buttons++;
         }
         return menuHeight(3f, 3f, labels, buttons);
@@ -1845,18 +1866,32 @@ public final class ForgeWorkspaceSurface {
         return null;
     }
 
+    private String activeChestAffinityStorageId(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || item.identity() == null || viewModel == null) {
+            return "";
+        }
+        SlotWorkspaceViewModel.ActiveChestPanel panel = viewModel.activeChestPanel();
+        if (panel == null || !panel.isClaimed() || !panel.hasAffinity(item.identity())) {
+            return "";
+        }
+        return panel.storageId();
+    }
+
     private SlotUiElement recipeItemContextOverlay(SlotWorkspaceViewModel.AtlasItem item) {
         CraftRunIngredientChoiceRef choiceRef = CraftRunIngredientChoiceRef.forItem(viewModel.craftRun(), item);
         CraftRunIngredientGroup choiceGroup = choiceRef == null ? null : choiceRef.group(viewModel.craftRun());
         int choiceButtons = craftRunChoiceMenuButtons(choiceGroup);
         int choiceLabels = choiceGroup == null ? 0 : 1
                 + (choiceGroup.alternatives().size() > CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES ? 1 : 0);
+        String activeAffinityStorageId = activeChestAffinityStorageId(item);
+        int activeAffinityButton = activeAffinityStorageId.isBlank() ? 0 : 1;
         SlotUiElement overlay = overlayRoot();
         SlotUiElement panel = overlayPanel(
                 contextMenuX,
                 contextMenuY,
                 174,
-                menuHeight(6f, 4f, 1 + choiceLabels, 5 + (item.ghost() ? 1 : 0) + choiceButtons));
+                menuHeight(6f, 4f, 1 + choiceLabels,
+                        5 + (item.ghost() ? 1 : 0) + choiceButtons + activeAffinityButton));
         panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.ACCENT));
         appendCraftRunChoiceMenu(panel, choiceRef, choiceGroup);
         if (item.ghost()) {
@@ -1885,6 +1920,19 @@ public final class ForgeWorkspaceSurface {
                         WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST,
                         item.identity(),
                         "depositing " + item.name()))));
+        if (!activeAffinityStorageId.isBlank()) {
+            panel.addChild(menuButton(
+                    "Don't auto-deposit here",
+                    true,
+                    "Stop quick-store from routing this item to the open chest",
+                    closeThen(() -> sendAction(
+                            WorkspaceActionId.FORGET_ITEM_AFFINITY,
+                            "forgetting chest route",
+                            activeAffinityStorageId,
+                            item.identity().itemId(),
+                            item.identity().comparisonMode(),
+                            item.identity().componentFingerprint()))));
+        }
         boolean recipeViewerItem = item.identity() != null
                 && !CraftRunIngredientChoiceRef.isPlaceholder(item.identity().toIdentity());
         panel.addChild(menuButton(
@@ -2185,7 +2233,7 @@ public final class ForgeWorkspaceSurface {
                 contextMenuX,
                 contextMenuY,
                 178,
-                menuHeight(6f, 4f, renaming ? 2 : 1, renaming ? 2 : 3));
+                menuHeight(6f, 4f, renaming ? 2 : 1, 2));
         String label = chip.label().isBlank() ? "Chest" : chip.label();
         panel.addChild(menuLabel(shorten(label, 30), WorkspaceUiPalette.ACCENT));
         if (renaming) {
@@ -2194,11 +2242,6 @@ public final class ForgeWorkspaceSurface {
             panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
         } else {
             panel.addChild(menuButton("Rename...", true, "Rename this chest", () -> beginChestRenameEdit(chip)));
-            panel.addChild(menuButton(
-                    "Forget chest",
-                    true,
-                    "Forget this claimed chest",
-                    closeThen(() -> sendAction(WorkspaceActionId.FORGET_CHEST, "forgetting chest", chip.storageId()))));
             panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
         }
         overlay.addChild(panel);
@@ -3184,7 +3227,10 @@ public final class ForgeWorkspaceSurface {
     }
 
     private void openRecipe(SlotWorkspaceViewModel.AtlasItem item) {
-        ItemIdentity identity = item == null ? null : item.identity().toIdentity();
+        openRecipe(item == null ? null : item.identity().toIdentity());
+    }
+
+    private void openRecipe(ItemIdentity identity) {
         if (identity == null) {
             setStatus("item unavailable");
         } else if (RecipeViewerIntegration.openRecipe(identity)) {
@@ -3582,6 +3628,11 @@ public final class ForgeWorkspaceSurface {
         }
 
         @Override
+        public void openRecipe(CraftRunRecipeEntry entry) {
+            ForgeWorkspaceSurface.this.openRecipe(entry == null ? null : entry.outputIdentity());
+        }
+
+        @Override
         public void adjustEntry(String entryId, int delta) {
             sendAction(WorkspaceActionId.CRAFT_RUN_ADJUST_ENTRY, "adjusting recipe", entryId, delta);
         }
@@ -3594,27 +3645,23 @@ public final class ForgeWorkspaceSurface {
 
     private final class ActiveChestContext implements ActiveChestStripUiBuilder.Context {
         @Override
-        public void claimChestAt(SlotWorkspaceViewModel.ActiveChestPanel panel) {
+        public void setChestRoleAt(SlotWorkspaceViewModel.ActiveChestPanel panel, ChestRole role) {
             if (panel == null || !panel.isPresent()) {
-                setStatus("no active chest to claim");
+                setStatus("no active chest");
+                return;
+            }
+            if (role == null) {
+                setStatus("missing chest role");
                 return;
             }
             sendAction(
-                    WorkspaceActionId.CLAIM_CHEST_AT_POS,
-                    "claiming chest",
+                    WorkspaceActionId.SET_CHEST_ROLE_AT_POS,
+                    "chest role: " + role.displayLabel(),
                     panel.dimensionId(),
                     panel.posX(),
                     panel.posY(),
-                    panel.posZ());
-        }
-
-        @Override
-        public void forgetChest(String storageId) {
-            if (storageId == null || storageId.isBlank()) {
-                setStatus("no claimed chest to forget");
-                return;
-            }
-            sendAction(WorkspaceActionId.FORGET_CHEST, "forgetting chest", storageId);
+                    panel.posZ(),
+                    role.name());
         }
 
         @Override

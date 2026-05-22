@@ -5,6 +5,7 @@ import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
 import dev.imagio.slot.ui.spi.SlotUiLayout;
 import dev.imagio.slot.ui.spi.SlotUiTextStyle;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import net.minecraft.network.chat.Component;
 
 import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.ACCENT;
@@ -29,51 +30,22 @@ public final class ActiveChestStripUiBuilder {
         if (panel == null || !panel.isPresent()) {
             return null;
         }
-        return panel.isClaimed() ? claimedStrip(panel) : unclaimedStrip(panel);
+        return roleStrip(panel);
     }
 
-    private SlotUiElement claimedStrip(SlotWorkspaceViewModel.ActiveChestPanel panel) {
+    private SlotUiElement roleStrip(SlotWorkspaceViewModel.ActiveChestPanel panel) {
         SlotUiElement strip = baseStrip(panel);
-        strip.addChild(SlotUiElement.label(claimedDisplayLabel(panel), TEXT)
+        int labelColor = panel.role() == ChestRole.IGNORE ? MUTED : TEXT;
+        strip.addChild(SlotUiElement.label(displayLabel(panel), labelColor)
                 .layout(layout -> layout.flex(1).heightPercent(100))
                 .textStyle(style -> style
-                        .color(TEXT)
+                        .color(labelColor)
                         .fontSize(7)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
-        if (!panel.storageId().isBlank()) {
-            strip.addChild(SlotUiElement.button("Forget", true, 0xC83B4A56)
-                    .tooltip(Component.literal("Forget this claimed chest"))
-                    .layout(layout -> layout.width(48).height(STRIP_HEIGHT_PX - 2))
-                    .textStyle(style -> style
-                            .color(TEXT)
-                            .fontSize(7)
-                            .horizontal(SlotUiTextStyle.Horizontal.CENTER)
-                            .vertical(SlotUiTextStyle.Vertical.CENTER))
-                    .on(SlotUiEventKind.CLICK, event -> {
-                        if (event.button() != 0) {
-                            return;
-                        }
-                        event.stopPropagation();
-                        context.forgetChest(panel.storageId());
-                    }));
-        }
-        return strip;
-    }
-
-    private SlotUiElement unclaimedStrip(SlotWorkspaceViewModel.ActiveChestPanel panel) {
-        SlotUiElement strip = baseStrip(panel);
-        strip.addChild(SlotUiElement.label("Unclaimed chest", MUTED)
-                .layout(layout -> layout.flex(1).heightPercent(100))
-                .textStyle(style -> style
-                        .color(MUTED)
-                        .fontSize(7)
-                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
-                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
-        strip.addChild(SlotUiElement.button("Claim", true, ACCENT)
-                .tooltip(Component.literal(
-                        "Track this chest. SLOT will learn its contents and route compatible deposits here."))
-                .layout(layout -> layout.width(48).height(STRIP_HEIGHT_PX - 2))
+        strip.addChild(SlotUiElement.button(panel.role().displayLabel(), true, roleColor(panel.role()))
+                .tooltip(Component.literal(roleTooltip(panel.role())))
+                .layout(layout -> layout.width(58).height(STRIP_HEIGHT_PX - 2))
                 .textStyle(style -> style
                         .color(TEXT)
                         .fontSize(7)
@@ -84,7 +56,7 @@ public final class ActiveChestStripUiBuilder {
                         return;
                     }
                     event.stopPropagation();
-                    context.claimChestAt(panel);
+                    context.setChestRoleAt(panel, panel.nextRole());
                 }));
         return strip;
     }
@@ -108,7 +80,10 @@ public final class ActiveChestStripUiBuilder {
                 });
     }
 
-    private static String claimedDisplayLabel(SlotWorkspaceViewModel.ActiveChestPanel panel) {
+    private static String displayLabel(SlotWorkspaceViewModel.ActiveChestPanel panel) {
+        if (!panel.isClaimed()) {
+            return "Chest";
+        }
         String chest = panel.label().isBlank() ? "Chest" : panel.label();
         if (panel.clusterLabel().isBlank()) {
             return chest;
@@ -116,11 +91,24 @@ public final class ActiveChestStripUiBuilder {
         return panel.clusterLabel() + " / " + chest;
     }
 
-    public interface Context {
-        void claimChestAt(SlotWorkspaceViewModel.ActiveChestPanel panel);
+    private static int roleColor(ChestRole role) {
+        return switch (role == null ? ChestRole.IGNORE : role) {
+            case STORAGE -> ACCENT;
+            case BUFFER -> 0xC8758B6B;
+            case IGNORE -> 0xC83B4A56;
+        };
+    }
 
-        default void forgetChest(String storageId) {
-        }
+    private static String roleTooltip(ChestRole role) {
+        return switch (role == null ? ChestRole.IGNORE : role) {
+            case STORAGE -> "Storage: visible, searchable, learns homes, and accepts quick store. Click for Buffer.";
+            case BUFFER -> "Buffer: visible and searchable, but never learns homes or accepts quick store. Click for Ignore.";
+            case IGNORE -> "Ignore: hidden from SLOT storage and routing. Click for Storage.";
+        };
+    }
+
+    public interface Context {
+        void setChestRoleAt(SlotWorkspaceViewModel.ActiveChestPanel panel, ChestRole role);
 
         default void openChestMenu(String storageId, float screenX, float screenY) {
         }

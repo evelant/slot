@@ -4,6 +4,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEvent;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,7 +24,7 @@ class ActiveChestStripUiBuilderTest {
     }
 
     @Test
-    void unclaimedPanelRendersClaimAction() {
+    void unclaimedPanelRendersIgnoreRoleAndCyclesToStorage() {
         RecordingContext context = new RecordingContext();
         SlotWorkspaceViewModel.ActiveChestPanel panel = new SlotWorkspaceViewModel.ActiveChestPanel(
                 "",
@@ -37,13 +38,15 @@ class ActiveChestStripUiBuilderTest {
                 "minecraft:overworld");
 
         SlotUiElement strip = new ActiveChestStripUiBuilder(context).strip(panel);
+        assertEquals("Ignore", strip.children().get(1).text());
         strip.children().get(1).dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
 
         assertTrue(strip.hasAttachment(WorkspaceUiAttachments.ACTIVE_CHEST_STRIP));
         assertSame(panel, strip.attachment(
                 WorkspaceUiAttachments.ACTIVE_CHEST_STRIP,
                 SlotWorkspaceViewModel.ActiveChestPanel.class));
-        assertSame(panel, context.claimedPanel);
+        assertSame(panel, context.rolePanel);
+        assertEquals(ChestRole.STORAGE, context.role);
     }
 
     @Test
@@ -66,7 +69,7 @@ class ActiveChestStripUiBuilderTest {
     }
 
     @Test
-    void claimedPanelRendersForgetAction() {
+    void claimedPanelCyclesStorageToBuffer() {
         RecordingContext context = new RecordingContext();
         SlotWorkspaceViewModel.ActiveChestPanel panel = new SlotWorkspaceViewModel.ActiveChestPanel(
                 "storage-1",
@@ -80,23 +83,21 @@ class ActiveChestStripUiBuilderTest {
                 "minecraft:overworld");
 
         SlotUiElement strip = new ActiveChestStripUiBuilder(context).strip(panel);
+        assertEquals("Storage", strip.children().get(1).text());
         strip.children().get(1).dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
 
-        assertEquals("storage-1", context.forgottenStorageId);
+        assertSame(panel, context.rolePanel);
+        assertEquals(ChestRole.BUFFER, context.role);
     }
 
     private static final class RecordingContext implements ActiveChestStripUiBuilder.Context {
-        SlotWorkspaceViewModel.ActiveChestPanel claimedPanel;
-        String forgottenStorageId;
+        SlotWorkspaceViewModel.ActiveChestPanel rolePanel;
+        ChestRole role;
 
         @Override
-        public void claimChestAt(SlotWorkspaceViewModel.ActiveChestPanel panel) {
-            claimedPanel = panel;
-        }
-
-        @Override
-        public void forgetChest(String storageId) {
-            forgottenStorageId = storageId;
+        public void setChestRoleAt(SlotWorkspaceViewModel.ActiveChestPanel panel, ChestRole role) {
+            rolePanel = panel;
+            this.role = role;
         }
     }
 }

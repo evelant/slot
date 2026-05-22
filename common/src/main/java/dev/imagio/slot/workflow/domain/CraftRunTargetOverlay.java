@@ -33,6 +33,9 @@ public final class CraftRunTargetOverlay {
                 continue;
             }
             ItemIdentityCollections.add(relevant, entry.outputIdentity());
+            if (!entry.pending()) {
+                continue;
+            }
             int batches = entry.remainingBatches();
             for (CraftRunIngredientGroup group : entry.inputs()) {
                 ItemIdentity selected = pressureIdentity(group, carried);

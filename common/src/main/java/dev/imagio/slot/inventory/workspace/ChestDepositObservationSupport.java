@@ -11,8 +11,10 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Shared chest-menu close diffing for learned storage affinity.
@@ -65,6 +67,25 @@ public final class ChestDepositObservationSupport {
             contents.add(new WorldStorageAccess.SlotContent(i, stack.copy()));
         }
         return List.copyOf(contents);
+    }
+
+    public static Set<ItemIdentity> currentIdentities(
+            AbstractContainerMenu menu,
+            List<Integer> menuSlots
+    ) {
+        if (menu == null || menuSlots == null || menuSlots.isEmpty()) {
+            return Set.of();
+        }
+        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        for (int i = 0; i < menuSlots.size(); i++) {
+            Slot slot = safeSlot(menu, menuSlots.get(i));
+            ItemStack stack = slot == null ? ItemStack.EMPTY : slot.getItem();
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            identities.add(ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack)));
+        }
+        return identities.isEmpty() ? Set.of() : Set.copyOf(identities);
     }
 
     public static Observation observe(ItemStack[] initial, Container current, int slotCount) {

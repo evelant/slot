@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
@@ -141,6 +142,12 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putInt("posY", panel.posY());
         tag.putInt("posZ", panel.posZ());
         tag.putString("dimensionId", panel.dimensionId());
+        tag.putString("role", panel.role().name());
+        ListTag affinityTags = new ListTag();
+        for (SlotWorkspaceViewModel.IdentityRef identity : panel.affinityIdentities()) {
+            affinityTags.add(encodeIdentity(identity));
+        }
+        tag.put("affinityIdentities", affinityTags);
         return tag;
     }
 
@@ -151,6 +158,11 @@ public final class SlotWorkspaceViewModelCodec {
         if (tag == null || tag.getString("dimensionId").isBlank()) {
             return SlotWorkspaceViewModel.ActiveChestPanel.empty();
         }
+        ArrayList<SlotWorkspaceViewModel.IdentityRef> affinityIdentities = new ArrayList<>();
+        ListTag affinityTags = tag.getList("affinityIdentities", Tag.TAG_COMPOUND);
+        for (int index = 0; index < affinityTags.size(); index++) {
+            affinityIdentities.add(decodeIdentity(affinityTags.getCompound(index)));
+        }
         return new SlotWorkspaceViewModel.ActiveChestPanel(
                 tag.getString("storageId"),
                 tag.getString("label"),
@@ -160,7 +172,9 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getInt("posX"),
                 tag.getInt("posY"),
                 tag.getInt("posZ"),
-                tag.getString("dimensionId")
+                tag.getString("dimensionId"),
+                ChestRole.parse(tag.getString("role")),
+                affinityIdentities
         );
     }
 

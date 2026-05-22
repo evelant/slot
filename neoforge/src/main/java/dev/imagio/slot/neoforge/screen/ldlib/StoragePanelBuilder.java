@@ -288,11 +288,9 @@ final class StoragePanelBuilder {
     }
 
     /**
-     * Right-click on a chest chip → open the chest context menu (Rename
-     * + Forget). Replaces the prior "right-click instantly forgets"
-     * gesture, which was a one-click destructive action with no
-     * confirmation, no rename surface, and no tooltip. The context menu
-     * pattern matches the kit chip's right-click flow.
+     * Right-click on a chest chip opens the small management menu. The
+     * active-chest strip owns role changes; chips stay a lightweight
+     * awareness and rename surface.
      */
     private void installChipContextMenu(UIElement chip, SlotWorkspaceViewModel.ChestChip target) {
         String storageId = target.storageId();

@@ -274,7 +274,7 @@ Current state:
   `KitRackUiBuilder` / `ActiveChestStripUiBuilder`. It covers section layout,
   card width/search
   chrome, Recents icon layout, hotbar/offhand slot chrome, kit summary /
-  page / gather controls, chest claim/forget, text/count layout, click vs
+  page / gather controls, chest role controls, text/count layout, click vs
   mouse-down event separation, edit actions, section grid drop targets, a
   shared fallback atlas-card body (item icon, count badge, chest-presence
   pips, desired marker, wayfinding strip), and backend-owned modern

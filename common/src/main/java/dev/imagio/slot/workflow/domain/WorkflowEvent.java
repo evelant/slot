@@ -42,10 +42,10 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.ClaimedChestMoved,
         WorkflowEvent.ClaimedChestAnchorsChanged,
         WorkflowEvent.ClaimedChestRelabeled,
+        WorkflowEvent.ClaimedChestRoleChanged,
         WorkflowEvent.ClaimedChestDeleted,
         WorkflowEvent.ChestDepositObserved,
         WorkflowEvent.ChestAffinityForgotten,
-        WorkflowEvent.ChestAffinityCleared,
         WorkflowEvent.ChestClusterRelabeled,
         WorkflowEvent.KitCreated,
         WorkflowEvent.KitUpdated,
@@ -319,6 +319,15 @@ public sealed interface WorkflowEvent permits
         }
     }
 
+    record ClaimedChestRoleChanged(
+            UUID storageId,
+            ChestRole role
+    ) implements WorkflowEvent {
+        public ClaimedChestRoleChanged {
+            role = role == null ? ChestRole.STORAGE : role;
+        }
+    }
+
     record ClaimedChestDeleted(
             UUID storageId
     ) implements WorkflowEvent {
@@ -346,12 +355,6 @@ public sealed interface WorkflowEvent permits
     record ChestAffinityForgotten(
             UUID storageId,
             ItemIdentity identity
-    ) implements WorkflowEvent {
-    }
-
-    /** Forget all affinity for this chest. Used on chest delete and on player "Forget chest". */
-    record ChestAffinityCleared(
-            UUID storageId
     ) implements WorkflowEvent {
     }
 

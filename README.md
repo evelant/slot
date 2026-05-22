@@ -130,6 +130,8 @@ Decisions (ADR-style):
 - [docs/decisions/0007-emi-recipe-sidebar.md](docs/decisions/0007-emi-recipe-sidebar.md)
   — EMI recipe context uses the normal SLOT sidebar plus transient craft runs
   instead of growing SLOT-side recipe goals.
+- [docs/decisions/0008-chest-roles-and-affinity-correction.md](docs/decisions/0008-chest-roles-and-affinity-correction.md)
+  — chest roles gate learned storage affinity and quick-deposit participation.
 
 Research and assessments:
 

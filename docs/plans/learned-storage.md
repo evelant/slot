@@ -1,6 +1,19 @@
 # Learned Storage — Design Sketch
 
-Last updated: 2026-04-30
+Last updated: 2026-05-21
+
+> **Affinity-role follow-up LANDED 2026-05-21.** ADR
+> [0008](../decisions/0008-chest-roles-and-affinity-correction.md)
+> replaces the old claim/forget control with one active-chest role
+> button: `Storage -> Buffer -> Ignore -> Storage`. Freshly opened
+> unclaimed chests display as `Ignore`; first player deposit still
+> auto-claims as `Storage`. Only `Storage` learns affinity or accepts
+> quick/bulk deposit. `Buffer` remains visible/searchable/pullable but
+> is not a deposit target. `Ignore` is hidden from SLOT storage
+> projection. Machine/vessel deny tags cover station-like hosts, item
+> context menus can clear one active-chest affinity bond, and moving the
+> last known stack from one storage chest to another clears the old
+> origin affinity.
 
 > **Bug track LANDED 2026-04-30.** All 14 original UX bugs that
 > playtesting surfaced shipped, plus a follow-on batch of 9 bugs from
@@ -12,11 +25,11 @@ Last updated: 2026-04-30
 >   `ChestStorageAnchors.isClaimable` accepts; V hotkey is
 >   context-sensitive (opens the chest's vanilla GUI when a loot panel
 >   is showing); drag carried items onto the loot panel auto-claims and
->   deposits in one gesture; forget clears the BE storage-id attachment
->   so re-claim works.
-> - **Forget gesture.** Replaced with a right-click context menu
->   carrying `Rename…` and `Forget chest`; forget pushes a reversible
->   record onto the existing undo stack.
+>   deposits in one gesture. The active role button is now the normal
+>   way to hide or re-enable a claimed chest.
+> - **Chest correction.** The current correction path is the active role
+>   button plus per-item `Don't auto-deposit here` from the item context
+>   menu while that chest is open.
 > - **Layout.** Triage carries a 120 px soft floor; the chest locator
 >   (renamed from "Search matches") docks top-left under the search
 >   input; all four left-column panels now compose into a single
@@ -115,9 +128,8 @@ Last updated: 2026-04-30
 > The two compose: affinity drives routing; proximate-ghosts make
 > reachable storage visible without inventing a new surface.
 >
-> Per AGENTS.md, when this lands the old artifacts are deleted in
-> the same change — no migration, no dual-write, no
-> soft-deprecation.
+> Per AGENTS.md, the original landing deleted old link/area artifacts
+> in the same change — no migration, no dual-write, no soft-deprecation.
 
 ## Why this exists
 
@@ -156,43 +168,44 @@ chest *wants* iron, currently empty of it" for (2).
 replaces ChestLinkMap and the explicit-claim and explicit-area-assign
 gestures.
 
-- Every player-initiated deposit of item X into storage-affinity-
-  eligible chest C raises `affinity[C, X]` by one increment. Eligibility
-  defaults to at least 6 storage slots; `slot:no_storage_affinity`
-  denies a block, and `slot:storage_affinity_allowed` admits a small
-  but deliberate storage block.
+- Every player-initiated deposit of item X into a `Storage` chest C
+  raises `affinity[C, X]` by one increment. Eligibility still defaults
+  to at least 6 storage slots; `slot:no_storage_affinity` denies a
+  block, and `slot:storage_affinity_allowed` admits a small but
+  deliberate storage block.
+- Chest role gates participation:
+  `Storage` is visible, learns affinity, and accepts quick/bulk deposit;
+  `Buffer` is visible/searchable/pullable but never learns or accepts
+  quick deposit; `Ignore` is hidden from SLOT storage projection.
 - Affinity decay exists in code but is disabled for current playtests;
   re-enable only after the decay rate is tunable and validated.
-- Affinity is *not* recorded if the player takes the item back out
-  within a short window (default 30 s), or if they undo the deposit.
-  This is the accidental-placement guard.
-- Current contents of an eligible chest also count as routing evidence:
+- Reorganization is treated as intent: if the player empties an identity
+  from one `Storage` chest and next deposits that identity into a
+  different `Storage` chest, the old origin affinity is cleared.
+- Current contents of a `Storage` chest also count as routing evidence:
   if a chest has 12 iron in it right now, deposit may route iron there
-  regardless of history. Contents of tiny stations or deny-tagged
-  processors do not create storage affinity.
+  regardless of history. `Buffer` contents remain visible/pullable but
+  are never deposit-routing evidence.
 
 Routing reads from `affinity[C, X]`. Discoverability reads from it
 too (ghost-slot "wants").
 
 ## Auto-claim
 
-A storage-affinity-eligible chest becomes part of the workspace the
-first time the player **deposits** into it (not on open, not on take).
-This naturally filters dungeon and structure chests, since the player
-only loots those, and it filters station inputs like cooling barrels
-or machine slots whose deposits are workflow steps rather than storage
-intent. A "Forget chest" gesture on the chest tile removes it from the
-workspace and clears its affinity.
-
-Open question: do we need a stronger threshold (N deposits, or
-deposit + open-twice) before claiming? Probably not; one deposit is
-already a strong intent signal, and Forget is cheap.
+A storage-affinity-eligible chest becomes part of the workspace as
+`Storage` the first time the player **deposits** into it (not on open,
+not on take). A newly opened chest that has not been deposited into is
+shown as `Ignore` in the active strip so the player can explicitly opt
+it into storage if needed. Feeder crates, hoppers, and machine buffers
+should usually be set to `Buffer`; stations and vessels should be
+denied by storage-affinity tags and can still be forced to `Ignore` if
+they slip through.
 
 ## Auto-clustered areas
 
 Chests cluster into named regions purely from spatial proximity
 (connected components within ~16 blocks of each other in the same
-dimension, threshold TBD). Cluster names default to a stable ordinal
+dimension). Cluster names default to a stable ordinal
 ("Storage Area 1", "Storage Area 2", …) assigned in cluster-creation
 order; the player can rename. World coordinates aren't meaningful UI
 for the player so we don't surface them in the default name. Ordinals
@@ -213,23 +226,19 @@ For each carried item the player wants to deposit:
 
 1. Restrict to **proximate** chests (already gated by
    `ChestProximityResolver`).
-2. Restrict to storage-affinity-eligible targets. Normal Minecraft
-   shift-click/machine insertion can still move items into stations;
-   SLOT just does not remember those moves as homes.
+2. Restrict to chests whose role is `Storage`. Normal Minecraft
+   shift-click/machine insertion can still move items into stations or
+   buffers; SLOT just does not remember those moves as homes or choose
+   them as quick-deposit targets.
 3. Among those, find chests with `affinity[C, X] > 0` or matching live
    contents.
-4. If exactly one chest has clearly the highest affinity (e.g.
-   2× the runner-up), prefer it; deposit until full, then spill to
-   the next-highest, etc.
-5. If no proximate eligible chest has affinity or matching live
+4. Rank by affinity score first, then content-only evidence, then
+   stable storage id. Deposit until full, then spill to the next
+   candidate.
+5. If no proximate `Storage` chest has affinity or matching live
    contents for X, the item stays in carry. Surface it as a "needs a
    home" hint (Triage already handles unhomed items; reuse that
    surface).
-
-Open question: when many chests have similar affinity (e.g. four
-chests all hold building blocks), should deposit consolidate
-into one or split across all? Recommendation: prefer one, spill
-when full. Splitting feels random in practice.
 
 ## Hover and cross-highlighting
 
@@ -307,11 +316,11 @@ per proximate chest. Each chip:
 
 - Chest name (default `Chest #abcd`, renamable)
 - Slot fullness summary (e.g., `16/27`)
-- Forget on hover/right-click
-- Drag target (deposit routes by eligible affinity or existing matching contents)
+- Role-visible participation (`Storage` and `Buffer`; `Ignore` is hidden)
+- Drag target only when the chip is `Storage`
 
 Chips do **not** render the chest grid. Contents surface as ghosts on
-islands; the chip is awareness + drag target + forget handle. The
+islands; the chip is awareness plus a role-gated action target. The
 chest's actual slot grid is a *detail surface* opened only on demand
 (right-click chest in world, or a "show contents" action on the chip
 if needed). The default workspace never has a chest grid visible.
@@ -339,14 +348,14 @@ spacebar to zoom) carry over.
 LOD already drives detail surfacing on zoom; explicit "click for
 details" is unnecessary because spacebar zoom is the existing gesture.
 
-### Forget gestures
+### Correction gestures
 
-- **Forget chest** on a chest chip → chest leaves the workspace.
-  Affinity for that chest is cleared.
-- **Forget item** on a ghost (right-click → menu? gesture TBD) →
-  resets `affinity[C, X]` to 0 across all proximate chests for that
-  item, OR for a specific chest if the player drilled into the
-  per-chest breakdown. Use case: chest repurposed.
+- **Chest role button** in the active chest strip → cycles
+  `Storage -> Buffer -> Ignore -> Storage`. Setting a chest to
+  `Buffer` or `Ignore` clears its learned affinity.
+- **Don't auto-deposit here** on an item while an active chest has
+  affinity for it → clears only `affinity[C, X]`. Use case: one item
+  was temporarily staged in the wrong storage chest.
 
 ### Cluster rename
 
@@ -383,11 +392,14 @@ deposits into it (consistent with the auto-claim trigger above).
 Two distinct mental models:
 - *Storage chests* — your organised storage, surfaced as ghosts on
   islands.
+- *Buffer chests* — visible process/staging storage, searchable and
+  pullable but not quick-deposit homes.
 - *Loot chests* — random world chests you encounter, surfaced as a
   Triage-style overlay only while open.
 
 A chest moves from "loot chest" to "storage chest" the moment the
-player deposits into it (auto-claim).
+player deposits into it (auto-claim), unless the player changes its
+role afterward.
 
 ## Search behaviour
 
@@ -453,54 +465,22 @@ here to keep the model coherent:
 - Implicit defaults from item type (tool=1, food=16, blocks=64)
   cover 90% of cases; scroll-wheel on a slot overrides.
 
-## What gets deleted (per AGENTS.md no-migration rule)
+## Landed shape
 
-When this lands, the same change removes:
+The old link/area/chest-tile model is gone. Live storage state is:
 
-- `ChestLink`, `ChestLinkMap`, `ChestLinkWorkflowDomainService`
-- `WorkflowEvent.ChestLinkCreated`, `ChestLinkRemoved`
-- `linkedIslandIds` field on `ClaimedChestTile` and codec entries
-- The Link button + popover (`ContextMenuBuilder.beginChestLinkEdit`,
-  `chestLinkPopover`)
-- `WorkflowEvent.StorageAreaCreated/Renamed/Recolored/Moved/Deleted`
-  (replaced by cluster derivation + rename)
-- `StorageArea`, `StorageAreaMap`, `StorageAreaWorkflowDomainService`
-  (becomes derived state)
-- The right-click-in-world claim flow (`ChestClaimButtonController`)
-  and the dedicated claim RPC; auto-claim happens on deposit
-- Explicit `areaId` on chest tile; replaced by derived cluster id
-- `/slot test populate`'s area-creation pass
-- `/slot test clear`'s area-deletion pass (just added — would have
-  to come back out)
-- `StoragePanelBuilder` storage strip + tab chips. Replaced by the
-  proximate chest panel (chest chips, no grid).
-- The chest-tile-as-primary-surface rendering in `IslandChestBuilder`
-  (`chestTilePanelInFlow`, `chestTilePanelCompact`). Chest grids
-  become a detail/edit surface only — opened via right-click chest
-  in world, not rendered in the workspace by default.
-- Drag-island-to-chest-tile / drag-chest-cell-to-island handlers,
-  since neither tile nor cell render by default. Replaced by
-  drag-card-to-ghost / drag-card-to-chest-chip.
+- `ClaimedChest` plus `ChestRole`
+- `ChestAffinityMap`
+- derived `ChestClusterMap`
+- proximate and elsewhere content projections
+- loot-chest overlay while an unclaimed chest is open
+- active-chest role button
+- per-item active-chest affinity correction
 
-What gets added:
-
-- `WorkflowEvent.ChestDeposit{Recorded,Forgotten}` (or just record
-  via a per-chest affinity projection input)
-- `ChestAffinityMap` projection
-- Affinity-driven deposit routing in `DepositPlanner`
-- Cluster derivation helper (pure function over chest world coords)
-- *Proximate-chest ghost projection*: walk the proximate chest set,
-  union their contents into per-identity counts, emit as ghost
-  `AtlasItem` records (faded, count badge, "in chest" pip).
-  Re-uses the rendering pipeline we just retired for homed-but-not-
-  carried items, with a different upstream driver.
-- Proximate chest panel (left side, above Triage): chip per chest
-  with name + slot summary + forget.
-- Loot-chest Triage-style overlay (transient, lives only while a
-  loot chest is open).
-- Search-as-find: temporary ghosts for non-proximate matches
-  instead of zoom-to-result.
-- Forget-chest (chip) and forget-item (ghost) gestures.
+Routing is implemented in `DepositPlanner`; observation and first-deposit
+claiming live in the loader deposit observers; persistence lives in
+`WorkflowDomainFileStore`. The UI no longer renders chest grids as the primary
+workspace surface.
 
 ## Edge cases / open questions
 
@@ -511,10 +491,9 @@ What gets added:
   then learned affinity make future deposits route. Deposits into
   station-sized inventories still perform the vanilla/station action
   but do not bootstrap persistent storage memory.
-- **Decay rate.** TBD. Probably play-time-based, not wall-clock,
-  so a player who shelves the mod for a month doesn't lose state.
-- **Take-window for accidental-placement guard.** 30 s as a
-  starting point. Tune from playtest.
+- **Decay rate.** The code still has a lazy decay implementation, but
+  playtesting rejected decay as the main correction mechanism. Keep it
+  disabled unless a future design gives the player clear control.
 - **Cluster threshold distance.** 16 blocks as a starting point;
   generous enough that a base feels like one cluster.
 - **Multi-stack split policy.** Prefer single chest, spill on
@@ -540,8 +519,9 @@ What gets added:
 - **Loot vs storage chest ambiguity.** A chest *could* be both —
   player loots a dungeon chest, then deposits something into it
   intending to use it. Auto-claim on first deposit handles this:
-  one deposit moves the chest from loot to storage. There is no
-  "in between" state.
+  one deposit moves the chest from loot to `Storage`. The player can
+  then cycle it to `Buffer` or `Ignore` if it was actually a process
+  chest.
 - **Loot chest opened from a remote source** (e.g., Refined Storage
   remote-access mods). The loot panel should fire on the chest
   GUI open event regardless of how it was opened, since the player
@@ -552,49 +532,15 @@ What gets added:
   *contents of carried containers* — only loose carried items.
   Already the existing rule, no change.
 
-## Phasing
-
-Not required (per the no-migration rule we can swap in one change),
-but a sensible bite size for playtest signal:
-
-1. **Proximate-chest ghosts.** Re-enable the ghost-rendering path
-   we just disabled, with a new driver: identities that are present
-   in any proximate chest, count = sum across proximate chests.
-   This is a tiny diff to `groupedAtlasEntries` (swap the second
-   loop's source) and reuses existing render paths. Provides
-   immediate "where can I grab iron from" signal without changing
-   the data model.
-2. **Proximate chest panel + delete strip.** Replace the storage
-   strip with the chest-chip panel (no grid). Delete chest-tile
-   primary rendering. Chest grid only opens on demand.
-3. **Affinity events + projection + decay + take-window guard.**
-   Observation-only — routing still uses links if both exist. Tune
-   decay rate and take-window from playtest data.
-4. **Switch deposit routing to affinity.** Delete links and popover.
-5. **Auto-claim + auto-cluster.** Delete explicit claim flow and
-   explicit area-assignment events. Add forget-chest gesture.
-6. **Search-as-find.** Replace zoom-to-result with non-proximate
-   ghost overlay.
-7. **Loot-chest panel.** Triage-style transient overlay for chests
-   the player hasn't deposited into.
-8. **Kit ghost markers.** Surface kit-needed items as temporary
-   ghosts during activation.
-
-Step 1 alone is single-session reversible — same low-risk
-experiment shape as the ghost-removal we just landed. If
-proximate-chest ghosts feel right, the rest layers on. Steps 4–5
-are each one PR; the others fit comfortably alongside them.
-
 ## Risks
 
-- **Decay tuning.** Too fast → chests stop claiming items the
-  player still wants there. Too slow → repurposed chests cling to
-  old affinity. Forget gesture is the escape hatch; tune from
-  playtest.
+- **Role friction.** The role button is intentionally manual. If
+  players still fight feeder/buffer setups, improve the tooltip or
+  placement before reintroducing automatic feeder detection.
 - **Cluster instability.** Adding a chest that bridges two
   clusters merges them, which renames the visual area. Mitigated
   by leaving rename intact; clusters are visual only.
 - **"My deposit went to the wrong chest."** With links the player
-  could verify intent; with affinity they can't. Surface the
-  routing decision in the post-deposit status line ("deposited X
-  to chest Y") and rely on undo for the recovery path.
+  could verify intent; with affinity they can't. The role button,
+  per-item affinity correction, rehome-on-move, post-deposit status,
+  and undo are the recovery path.

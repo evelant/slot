@@ -131,21 +131,28 @@ public final class CraftRunUiBuilder {
         ItemStack output = outputStack(entry);
         if (!output.isEmpty()) {
             header.addChild(SlotUiElement.itemIcon(output, 12, true)
+                    .allowHitTest(true)
                     .renderVanillaCount(true)
-                    .tooltipStack(output));
+                    .tooltipStack(output)
+                    .on(SlotUiEventKind.CLICK, event -> openRecipe(entry, event)));
         }
         header.addChild(SlotUiElement.label(entryText(entry), WorkspaceUiPalette.TEXT)
-                .allowHitTest(false)
+                .allowHitTest(true)
+                .tooltip(Component.literal("Open recipe in EMI"))
                 .layout(layout -> layout.flex(1).heightPercent(100))
                 .textStyle(style -> style
-                        .color(WorkspaceUiPalette.TEXT)
+                        .color(entry != null && entry.complete() ? WorkspaceUiPalette.ACCENT : WorkspaceUiPalette.TEXT)
                         .fontSize(6.5f)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
-                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+                        .vertical(SlotUiTextStyle.Vertical.CENTER))
+                .on(SlotUiEventKind.CLICK, event -> openRecipe(entry, event)));
         header.addChild(button(
                 "Stage",
                 "Stage missing ingredients into main inventory",
-                () -> context.stageEntry(entryId),
+                () -> {
+                    context.stageEntry(entryId);
+                    context.openRecipe(entry);
+                },
                 31,
                 WorkspaceUiPalette.ROW_DIM));
         header.addChild(button("-", "Reduce remaining output count", () ->
@@ -155,6 +162,14 @@ public final class CraftRunUiBuilder {
         header.addChild(button("Done", "Remove this recipe from the list", () ->
                 context.removeEntry(entryId), 27, WorkspaceUiPalette.ROW_DIM));
         return header;
+    }
+
+    private void openRecipe(CraftRunRecipeEntry entry, dev.imagio.slot.ui.spi.SlotUiEvent event) {
+        if (event.button() != 0) {
+            return;
+        }
+        event.stopPropagation();
+        context.openRecipe(entry);
     }
 
     private static SlotUiElement button(String text, String tooltip, Runnable action, int width, int color) {
@@ -411,6 +426,9 @@ public final class CraftRunUiBuilder {
         if (label.length() > 20) {
             label = label.substring(0, 19) + ".";
         }
+        if (entry != null && entry.complete()) {
+            return label + " done";
+        }
         return label + " x" + Math.max(1, entry == null ? 1 : entry.remainingOutputCount());
     }
 
@@ -471,6 +489,8 @@ public final class CraftRunUiBuilder {
         void addVisibleRecipe(CraftRunRecipeCapture capture);
 
         void stageEntry(String entryId);
+
+        void openRecipe(CraftRunRecipeEntry entry);
 
         void adjustEntry(String entryId, int delta);
 

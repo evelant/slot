@@ -58,6 +58,7 @@ import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
@@ -529,13 +530,19 @@ final class ForgeWorkspaceSession {
                         stringArg(args, 0),
                         stringArg(args, 1));
             }
-            case FORGET_CHEST -> forgetChest(player, stringArg(args, 0));
             case CLAIM_CHEST_AT_POS -> claimChestAtPos(
                     player,
                     stringArg(args, 0),
                     integerArg(args, 1),
                     integerArg(args, 2),
                     integerArg(args, 3));
+            case SET_CHEST_ROLE_AT_POS -> setChestRoleAtPos(
+                    player,
+                    stringArg(args, 0),
+                    integerArg(args, 1),
+                    integerArg(args, 2),
+                    integerArg(args, 3),
+                    stringArg(args, 4));
             case RENAME_CLUSTER -> SlotWorkspaceCommandService.relabelCluster(
                     runtime,
                     stringArg(args, 0),
@@ -935,43 +942,45 @@ final class ForgeWorkspaceSession {
         return WorkspaceCommandOutcome.accepted("chest_claimed", storageId.toString());
     }
 
-    private WorkspaceCommandOutcome forgetChest(ServerPlayer player, String storageId) {
-        List<BlockPos> anchorPositions = anchorPositionsForChest(player, storageId);
-        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.forgetChest(runtime, storageId);
-        if (!outcome.success()) {
-            return outcome;
+    private WorkspaceCommandOutcome setChestRoleAtPos(
+            ServerPlayer player,
+            String dimensionId,
+            Integer x,
+            Integer y,
+            Integer z,
+            String roleName
+    ) {
+        if (player == null || runtime == null
+                || dimensionId == null || dimensionId.isBlank()
+                || x == null || y == null || z == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_role_request");
         }
-        if (player != null) {
-            ServerLevel level = player.serverLevel();
-            for (BlockPos pos : anchorPositions) {
-                ForgeChestStorageIds.clear(level, pos);
-            }
+        ServerLevel level = player.serverLevel();
+        if (!level.dimension().location().toString().equals(dimensionId)) {
+            return WorkspaceCommandOutcome.rejected("dimension_mismatch");
+        }
+        BlockPos pos = new BlockPos(x, y, z);
+        if (!ForgeChestStorageAnchors.isClaimable(level, pos)) {
+            return WorkspaceCommandOutcome.rejected("not_claimable");
+        }
+        ChestAnchor anchor = ForgeChestStorageAnchors.toAnchor(level, pos);
+        if (anchor == null) {
+            return WorkspaceCommandOutcome.rejected("anchor_resolution_failed");
+        }
+        ChestRole role = ChestRole.parse(roleName);
+        ClaimedChest existing = runtime.chestClaimWorkflow().chestByAnchor(anchor);
+        UUID storageId = existing == null
+                ? role == ChestRole.IGNORE ? null : ForgeChestDepositObserver.resolveOrCreateClaim(
+                        runtime.chestClaimWorkflow(), level, pos, anchor)
+                : existing.storageId();
+        if (storageId == null) {
+            return WorkspaceCommandOutcome.accepted("chest_role_set", ChestRole.IGNORE.name());
+        }
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setChestRole(runtime, storageId, role);
+        if (outcome.success() && role == ChestRole.STORAGE) {
+            seedClaimedChestContents(player, storageId);
         }
         return outcome;
-    }
-
-    private List<BlockPos> anchorPositionsForChest(ServerPlayer player, String storageId) {
-        if (player == null || runtime == null || storageId == null || storageId.isBlank()) {
-            return List.of();
-        }
-        UUID uuid;
-        try {
-            uuid = UUID.fromString(storageId);
-        } catch (IllegalArgumentException ignored) {
-            return List.of();
-        }
-        ClaimedChest existing = runtime.chestClaimWorkflow().claimedChestMap().chest(uuid);
-        if (existing == null) {
-            return List.of();
-        }
-        String dimensionId = player.serverLevel().dimension().location().toString();
-        ArrayList<BlockPos> positions = new ArrayList<>(existing.anchors().size());
-        for (ChestAnchor anchor : existing.anchors()) {
-            if (anchor != null && dimensionId.equals(anchor.dimensionId())) {
-                positions.add(new BlockPos(anchor.x(), anchor.y(), anchor.z()));
-            }
-        }
-        return List.copyOf(positions);
     }
 
     private SlotWorkspaceViewModel.ActiveChestPanel resolveActiveChestPanel(

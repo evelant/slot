@@ -10,6 +10,7 @@ import dev.imagio.slot.ui.action.WorkspaceActionCatalog;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.imagio.slot.ui.action.WorkspaceActionValidation;
 import dev.imagio.slot.ui.action.WorkspaceActionValidator;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.WorkflowAcceptedInputRule;
 
 import java.util.EnumMap;
@@ -26,7 +27,6 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter reorderIslandEmitter;
     RPCEmitter moveChestEmitter;
     RPCEmitter relabelChestEmitter;
-    RPCEmitter forgetChestEmitter;
     RPCEmitter forgetItemAffinityEmitter;
     RPCEmitter depositEmitter;
     RPCEmitter gatherActiveKitEmitter;
@@ -99,6 +99,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter dropCursorIntoChestEmitter;
     RPCEmitter dropCursorAtHotbarEmitter;
     RPCEmitter claimChestAtPosEmitter;
+    RPCEmitter setChestRoleAtPosEmitter;
 
     WorkspaceRpcDispatcher(SlotWorkspaceUiController host) {
         this.host = host;
@@ -198,16 +199,20 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 host.session::relabelChest
         ));
-        forgetChestEmitter = add(WorkspaceActionId.FORGET_CHEST, RPCEventBuilder.simple(
-                String.class,
-                host.session::forgetChest
-        ));
         claimChestAtPosEmitter = add(WorkspaceActionId.CLAIM_CHEST_AT_POS, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 Integer.class,
                 Integer.class,
                 host.session::claimChestAtPos
+        ));
+        setChestRoleAtPosEmitter = add(WorkspaceActionId.SET_CHEST_ROLE_AT_POS, RPCEventBuilder.simple(
+                String.class,
+                Integer.class,
+                Integer.class,
+                Integer.class,
+                String.class,
+                host.session::setChestRoleAtPos
         ));
         forgetItemAffinityEmitter = add(WorkspaceActionId.FORGET_ITEM_AFFINITY, RPCEventBuilder.simple(
                 String.class,
@@ -1439,12 +1444,13 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
         host.rebuild();
     }
 
-    void sendForgetChest(String storageId) {
-        if (storageId == null || storageId.isBlank()) {
+    void sendSetChestRoleAt(SlotWorkspaceViewModel.ActiveChestPanel panel, ChestRole role) {
+        if (panel == null || !panel.isPresent() || role == null) {
             return;
         }
-        boolean sent = send(WorkspaceActionId.FORGET_CHEST, storageId);
-        host.localStatus.set(sent ? "chest forgotten" : "forget unavailable");
+        boolean sent = send(WorkspaceActionId.SET_CHEST_ROLE_AT_POS,
+                panel.dimensionId(), panel.posX(), panel.posY(), panel.posZ(), role.name());
+        host.localStatus.set(sent ? "chest role: " + role.displayLabel() : "role unavailable");
         host.rebuild();
     }
 

@@ -33,6 +33,7 @@ import dev.imagio.slot.workflow.domain.LoadoutApplyExecutor;
 import dev.imagio.slot.workflow.domain.LoadoutApplyResult;
 import dev.imagio.slot.workflow.domain.LoadoutApplyService;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
@@ -486,76 +487,20 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted("chest renamed", normalized.isBlank() ? storageId : normalized);
     }
 
-    /** Forget every affinity bond for this chest (player "Forget chest" gesture). */
-    public static WorkspaceCommandOutcome forgetChest(
+    public static WorkspaceCommandOutcome setChestRole(
             WorkflowDomainRuntime runtime,
-            String storageId
+            UUID storageId,
+            ChestRole role
     ) {
-        if (storageId == null || storageId.isBlank()) {
-            return WorkspaceCommandOutcome.rejected("invalid_chest_forget");
+        if (runtime == null || storageId == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_role_request");
         }
-        UUID uuid;
-        try {
-            uuid = UUID.fromString(storageId);
-        } catch (IllegalArgumentException exception) {
-            return WorkspaceCommandOutcome.rejected("invalid_chest_storage_id");
+        ChestRole next = role == null ? ChestRole.STORAGE : role;
+        boolean changed = runtime.chestClaimWorkflow().setRole(storageId, next);
+        if (!changed) {
+            return WorkspaceCommandOutcome.rejected("chest_role_rejected");
         }
-        // Snapshot the chest record + every affinity bond BEFORE we delete
-        // them, so the undo lambda can rebuild both. Without this the
-        // forget gesture is a one-way trapdoor — discoverable accidents
-        // (right-click a chip) would lose the player's accumulated
-        // affinity history with no recovery short of redepositing every
-        // identity.
-        dev.imagio.slot.workflow.domain.ClaimedChest claimBefore =
-                runtime.chestClaimWorkflow().claimedChestMap().chest(uuid);
-        java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity,
-                dev.imagio.slot.workflow.domain.ChestAffinity> affinityBefore = new java.util.LinkedHashMap<>(
-                runtime.chestClaimWorkflow().chestAffinityMap().forChest(uuid));
-        boolean cleared = runtime.chestClaimWorkflow().forgetChestAffinity(uuid);
-        boolean deleted = runtime.chestClaimWorkflow().deleteChest(uuid);
-        if (!cleared && !deleted) {
-            return WorkspaceCommandOutcome.rejected("chest_forget_rejected");
-        }
-        runtime.undoStack().record(
-                "forget chest",
-                ctx -> reapplyForgetChest(ctx.runtime(), uuid),
-                ctx -> reinstateChest(ctx.runtime(), claimBefore, affinityBefore)
-        );
-        SlotDebugLog.log("LDLib chest forgotten {}", storageId);
-        return WorkspaceCommandOutcome.accepted("chest forgotten", storageId);
-    }
-
-    private static void reapplyForgetChest(WorkflowDomainRuntime runtime, UUID storageId) {
-        runtime.chestClaimWorkflow().forgetChestAffinity(storageId);
-        runtime.chestClaimWorkflow().deleteChest(storageId);
-    }
-
-    private static void reinstateChest(
-            WorkflowDomainRuntime runtime,
-            dev.imagio.slot.workflow.domain.ClaimedChest claim,
-            java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity,
-                    dev.imagio.slot.workflow.domain.ChestAffinity> affinity
-    ) {
-        if (claim == null) {
-            return;
-        }
-        runtime.chestClaimWorkflow().claimWithId(
-                claim.storageId(),
-                claim.anchors(),
-                claim.atlasX(),
-                claim.atlasY(),
-                claim.label()
-        );
-        for (java.util.Map.Entry<dev.imagio.slot.inventory.core.ItemIdentity,
-                dev.imagio.slot.workflow.domain.ChestAffinity> entry : affinity.entrySet()) {
-            dev.imagio.slot.workflow.domain.ChestAffinity bond = entry.getValue();
-            runtime.chestClaimWorkflow().recordDeposit(
-                    claim.storageId(),
-                    entry.getKey(),
-                    bond.score(),
-                    bond.lastTouchedTick()
-            );
-        }
+        return WorkspaceCommandOutcome.accepted("chest_role_set", next.name());
     }
 
     /** Forget affinity[storageId, identity]. Targeted "this chest doesn't hold X anymore". */

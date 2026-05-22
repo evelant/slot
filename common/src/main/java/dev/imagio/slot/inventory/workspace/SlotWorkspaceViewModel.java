@@ -22,6 +22,7 @@ import dev.imagio.slot.inventory.triage.TriageIslandRef;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClusterMap;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
@@ -1526,7 +1527,7 @@ public record SlotWorkspaceViewModel(
         }
         LinkedHashSet<String> ids = new LinkedHashSet<>();
         for (ClaimedChest chest : claimedChestMap.chests()) {
-            if (chest != null) {
+            if (chest != null && chest.role().quickDepositTarget()) {
                 ids.add(chest.storageId().toString());
             }
         }
@@ -2000,6 +2001,9 @@ public record SlotWorkspaceViewModel(
             if (chest == null || identity == null) {
                 return false;
             }
+            if (!chest.role().quickDepositTarget()) {
+                return false;
+            }
             ChestContentsSnapshot snapshot = chestContentsResolver.apply(chest.storageId().toString());
             if (snapshot == null || snapshot.contents().isEmpty()
                     || !StorageAffinityPolicy.isEligibleSlotCount(snapshot.slotCount())) {
@@ -2026,7 +2030,9 @@ public record SlotWorkspaceViewModel(
                 return false;
             }
             ChestContentsSnapshot snapshot = chestContentsResolver.apply(chest.storageId().toString());
-            return snapshot != null && StorageAffinityPolicy.isEligibleSlotCount(snapshot.slotCount());
+            return snapshot != null
+                    && chest.role().quickDepositTarget()
+                    && StorageAffinityPolicy.isEligibleSlotCount(snapshot.slotCount());
         };
     }
 
@@ -2377,7 +2383,7 @@ public record SlotWorkspaceViewModel(
         ArrayList<WayfindingTarget> targets = new ArrayList<>();
         if (hasClaimedChests) {
             for (ClaimedChest chest : claimedChestMap.chests()) {
-                if (chest == null || chest.anchors().isEmpty()) {
+                if (chest == null || chest.anchors().isEmpty() || !chest.role().visibleToWorkspace()) {
                     continue;
                 }
                 String storageId = chest.storageId().toString();
@@ -2861,6 +2867,9 @@ public record SlotWorkspaceViewModel(
         if (hasChests) {
             for (ClaimedChest chest : map.chests()) {
                 if (chest == null) {
+                    continue;
+                }
+                if (!chest.role().visibleToWorkspace()) {
                     continue;
                 }
                 ChestAnchor primary = chest.anchors().iterator().next();
@@ -3928,11 +3937,10 @@ public record SlotWorkspaceViewModel(
 
     /**
      * Per-frame snapshot of the chest the player currently has open as
-     * the host of the SLOT sidebar. Drives the chest-control strip that
-     * shows above the wall — rename / forget gestures + a claim button
-     * for unclaimed chests. {@link #isPresent()} guards rendering;
-     * {@link #isClaimed()} switches the strip between claim and manage
-     * affordances.
+     * the host of the SLOT sidebar. Drives the chest-role strip that
+     * shows above the wall. {@link #isPresent()} guards rendering;
+     * unclaimed active chests surface as {@link ChestRole#IGNORE} until
+     * the player deposits into them or explicitly cycles the role.
      */
     public record ActiveChestPanel(
             String storageId,
@@ -3943,7 +3951,9 @@ public record SlotWorkspaceViewModel(
             int posX,
             int posY,
             int posZ,
-            String dimensionId
+            String dimensionId,
+            ChestRole role,
+            List<IdentityRef> affinityIdentities
     ) {
         public ActiveChestPanel {
             storageId = storageId == null ? "" : storageId;
@@ -3951,10 +3961,28 @@ public record SlotWorkspaceViewModel(
             clusterId = clusterId == null ? "" : clusterId;
             clusterLabel = clusterLabel == null ? "" : clusterLabel;
             dimensionId = dimensionId == null ? "" : dimensionId;
+            role = role == null ? ChestRole.IGNORE : role;
+            affinityIdentities = affinityIdentities == null ? List.of() : List.copyOf(affinityIdentities);
+        }
+
+        public ActiveChestPanel(
+                String storageId,
+                String label,
+                String clusterId,
+                String clusterLabel,
+                int swatchColor,
+                int posX,
+                int posY,
+                int posZ,
+                String dimensionId
+        ) {
+            this(storageId, label, clusterId, clusterLabel, swatchColor, posX, posY, posZ,
+                    dimensionId, storageId == null || storageId.isBlank() ? ChestRole.IGNORE : ChestRole.STORAGE,
+                    List.of());
         }
 
         public static ActiveChestPanel empty() {
-            return new ActiveChestPanel("", "", "", "", 0, 0, 0, 0, "");
+            return new ActiveChestPanel("", "", "", "", 0, 0, 0, 0, "", ChestRole.IGNORE, List.of());
         }
 
         public boolean isPresent() {
@@ -3963,6 +3991,17 @@ public record SlotWorkspaceViewModel(
 
         public boolean isClaimed() {
             return !storageId.isBlank();
+        }
+
+        public ChestRole nextRole() {
+            return role.next();
+        }
+
+        public boolean hasAffinity(IdentityRef identity) {
+            if (identity == null || affinityIdentities.isEmpty()) {
+                return false;
+            }
+            return affinityIdentities.contains(identity);
         }
     }
 
@@ -4312,6 +4351,9 @@ public record SlotWorkspaceViewModel(
                     if (chest == null) {
                         continue;
                     }
+                    if (!chest.role().visibleToWorkspace()) {
+                        continue;
+                    }
                     String storageId = chest.storageId().toString();
                     if (!proximate.contains(storageId)) {
                         continue;
@@ -4439,6 +4481,9 @@ public record SlotWorkspaceViewModel(
             if (hasChests) {
                 for (ClaimedChest chest : map.chests()) {
                     if (chest == null) {
+                        continue;
+                    }
+                    if (!chest.role().visibleToWorkspace()) {
                         continue;
                     }
                     String storageId = chest.storageId().toString();

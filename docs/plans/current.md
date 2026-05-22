@@ -57,19 +57,10 @@ ghosts, and activation-scoped put-away clutter. The code still uses `Kit*` names
 transitional implementation
 substrate, but user-facing work should speak in workflows.
 
-**Recently shipped, no further plan:**
-
-- **[`done/list-view.md`](done/list-view.md) — replace 2D atlas with
-  sectioned vertical list.** Closed 2026-05-05 with Phase 3b
-  deferred as a separate experiment and the remaining sidebar/mod-compat
-  expansion dropped pending playtest signal.
-- **[`done/cursor-pickup.md`](done/cursor-pickup.md) — vanilla
-  cursor semantics on wall cards.** Closed 2026-05-05 with Phase D
-  dropped; eager extract, universal cancel, smart-deposit, and virtual
-  cursor retirement are shipped.
-
-Verified for the current cross-loader slice:
-`./gradlew :common:test :neoforge:test :forge-1.20:test :forge-1.20:compileJava :forge-1.20:compileSharedProbeJava`.
+Recently shipped, no further plan: [`done/list-view.md`](done/list-view.md)
+and [`done/cursor-pickup.md`](done/cursor-pickup.md). Verified for the current
+cross-loader slice: `./gradlew :common:test :neoforge:test :forge-1.20:test
+:forge-1.20:compileJava :forge-1.20:compileSharedProbeJava`.
 
 ## Recent landings
 
@@ -77,6 +68,13 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-21** — Chest affinity roles landed on both loaders: active chests
+  cycle through `Storage`, `Buffer`, and `Ignore`; only `Storage` learns
+  affinity and accepts quick/bulk deposit, `Buffer` remains visible/pullable,
+  `Ignore` is hidden, station deny tags cover TFC forge/crucible/alloying
+  cases, item menus can clear one active-chest affinity bond, and
+  move-to-new-storage rehomes clear the emptied origin bond. ADR
+  [`0008`](../decisions/0008-chest-roles-and-affinity-correction.md) records it.
 - **2026-05-21** — EMI craft runs landed on both loaders: recipe screens still
   mount the filtered SLOT sidebar, can add visible or hovered EMI recipes to a
   persisted server-owned recipe list, show per-recipe sections directly in the
@@ -218,8 +216,8 @@ track lands.
    ordinals across split / merge (today, single-chest churn keeps
    chips stable but multi-chest topology changes can renumber
    labels); per-row "→ suggested home" preview on the loot-chest
-   panel; atlas-deposit take-back guard (only revisit if playtest
-   shows stuck affinity).
+   panel; role UX validation against real feeder / machine-buffer
+   builds.
 4. **Classification LLM-authoring validation**
    ([classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
    The current contract is: gather/format evidence, let the LLM decide

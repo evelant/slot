@@ -1388,6 +1388,9 @@ public final class ContextualSuggestionScorer {
                 continue;
             }
             ItemIdentityCollections.add(identities, entry.outputIdentity());
+            if (!entry.pending()) {
+                continue;
+            }
             for (CraftRunIngredientGroup group : entry.inputs()) {
                 if (group == null) {
                     continue;

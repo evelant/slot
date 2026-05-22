@@ -130,6 +130,9 @@ public final class WorkspaceStorageIndex {
             if (chest == null) {
                 continue;
             }
+            if (!chest.role().visibleToWorkspace()) {
+                continue;
+            }
             String storageId = chest.storageId().toString();
             boolean proximateTarget = proximate.contains(storageId);
             if (proximateTarget) {
@@ -218,8 +221,9 @@ public final class WorkspaceStorageIndex {
             return null;
         }
         boolean takeTarget = StorageMutationProbe.canExtractAny(server, worldStorage, target, snapshot);
-        boolean depositTarget = !hasCarriedProbe(authority)
-                || canInsertAnyCarried(server, worldStorage, target, authority);
+        boolean depositTarget = chest.role().quickDepositTarget()
+                && (!hasCarriedProbe(authority)
+                || canInsertAnyCarried(server, worldStorage, target, authority));
         StorageTargetRef ref = StorageTargetRef.claimed(
                 chest,
                 true,

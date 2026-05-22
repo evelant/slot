@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClusterMap;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
@@ -9,6 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 
+import java.util.ArrayList;
 import java.util.function.BiFunction;
 
 /**
@@ -38,7 +40,9 @@ public final class ActiveChestPanelProjectionSupport {
             return new SlotWorkspaceViewModel.ActiveChestPanel(
                     "", "", "", "", 0,
                     activeChestPos.getX(), activeChestPos.getY(), activeChestPos.getZ(),
-                    dimensionId
+                    dimensionId,
+                    ChestRole.IGNORE,
+                    java.util.List.of()
             );
         }
 
@@ -68,7 +72,26 @@ public final class ActiveChestPanelProjectionSupport {
                 clusterLabel,
                 0,
                 activeChestPos.getX(), activeChestPos.getY(), activeChestPos.getZ(),
-                dimensionId
+                dimensionId,
+                claim.role(),
+                affinityIdentities(runtime, claim)
         );
+    }
+
+    private static java.util.List<SlotWorkspaceViewModel.IdentityRef> affinityIdentities(
+            WorkflowDomainRuntime runtime,
+            ClaimedChest claim
+    ) {
+        if (runtime == null || claim == null) {
+            return java.util.List.of();
+        }
+        ArrayList<SlotWorkspaceViewModel.IdentityRef> identities = new ArrayList<>();
+        for (dev.imagio.slot.inventory.core.ItemIdentity identity :
+                runtime.snapshot().chestAffinityMap().forChest(claim.storageId()).keySet()) {
+            if (identity != null) {
+                identities.add(SlotWorkspaceViewModel.IdentityRef.from(identity));
+            }
+        }
+        return identities.isEmpty() ? java.util.List.of() : java.util.List.copyOf(identities);
     }
 }

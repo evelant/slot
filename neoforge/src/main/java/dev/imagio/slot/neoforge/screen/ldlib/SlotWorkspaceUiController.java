@@ -965,7 +965,10 @@ final class SlotWorkspaceUiController {
     }
 
     void openRecipe(SlotWorkspaceViewModel.AtlasItem item) {
-        ItemIdentity identity = item == null ? null : item.identity().toIdentity();
+        openRecipe(item == null ? null : item.identity().toIdentity());
+    }
+
+    void openRecipe(ItemIdentity identity) {
         if (identity == null) {
             localStatus.set("item unavailable");
         } else if (RecipeViewerIntegration.openRecipe(identity)) {

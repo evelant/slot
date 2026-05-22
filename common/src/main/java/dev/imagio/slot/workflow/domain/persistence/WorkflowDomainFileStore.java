@@ -25,6 +25,7 @@ import dev.imagio.slot.workflow.domain.ActivityProjection;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestAffinity;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
+import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.KitActivation;
@@ -1272,6 +1273,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
                 data.label = event.label();
             }
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestRoleChanged event) {
+                data.kind = "ClaimedChestRoleChanged";
+                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
+                data.name = event.role().name();
+            }
         else if (workflowEvent instanceof WorkflowEvent.ClaimedChestDeleted event) {
                 data.kind = "ClaimedChestDeleted";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
@@ -1287,10 +1293,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kind = "ChestAffinityForgotten";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
                 data.identity = identity(event.identity());
-            }
-        else if (workflowEvent instanceof WorkflowEvent.ChestAffinityCleared event) {
-                data.kind = "ChestAffinityCleared";
-                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
             }
         else if (workflowEvent instanceof WorkflowEvent.ChestClusterRelabeled event) {
                 data.kind = "ChestClusterRelabeled";
@@ -1419,6 +1421,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 UUID storageId = parseUuid(data.storageId);
                 yield storageId == null ? null : new WorkflowEvent.ClaimedChestRelabeled(storageId, nonNull(data.label));
             }
+            case "ClaimedChestRoleChanged" -> {
+                UUID storageId = parseUuid(data.storageId);
+                yield storageId == null ? null
+                        : new WorkflowEvent.ClaimedChestRoleChanged(storageId, ChestRole.parse(data.name));
+            }
             case "ClaimedChestDeleted" -> {
                 UUID storageId = parseUuid(data.storageId);
                 yield storageId == null ? null : new WorkflowEvent.ClaimedChestDeleted(storageId);
@@ -1434,10 +1441,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 ItemIdentity identity = decodeIdentity(data.identity);
                 yield storageId == null || identity == null ? null
                         : new WorkflowEvent.ChestAffinityForgotten(storageId, identity);
-            }
-            case "ChestAffinityCleared" -> {
-                UUID storageId = parseUuid(data.storageId);
-                yield storageId == null ? null : new WorkflowEvent.ChestAffinityCleared(storageId);
             }
             case "ChestClusterRelabeled" -> {
                 String clusterId = data.collectionId == null ? "" : data.collectionId;
@@ -1996,7 +1999,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 anchors,
                 chest.atlasX(),
                 chest.atlasY(),
-                chest.label()
+                chest.label(),
+                chest.role().name()
         );
     }
 
@@ -2020,7 +2024,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         if (anchors.isEmpty()) {
             return null;
         }
-        return new ClaimedChest(storageId, anchors, data.atlasX, data.atlasY, nonNull(data.label));
+        return new ClaimedChest(storageId, anchors, data.atlasX, data.atlasY,
+                nonNull(data.label), ChestRole.parse(data.role));
     }
 
     private static ChestAnchorData chestAnchor(ChestAnchor anchor) {
@@ -2423,7 +2428,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<ChestAnchorData> anchors,
             int atlasX,
             int atlasY,
-            String label
+            String label,
+            String role
     ) {
     }
 

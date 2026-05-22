@@ -65,6 +65,9 @@ public record CraftRunIngredientGroup(
     }
 
     public int requiredForBatches(int batches) {
+        if (batches <= 0) {
+            return 0;
+        }
         long required = consumed ? (long) requiredCountPerBatch * Math.max(1, batches) : 1L;
         return required >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) Math.max(1L, required);
     }

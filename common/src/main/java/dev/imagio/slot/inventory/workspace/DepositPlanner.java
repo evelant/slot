@@ -271,6 +271,9 @@ public final class DepositPlanner {
             if (chest == null) {
                 continue;
             }
+            if (!chest.role().quickDepositTarget()) {
+                continue;
+            }
             UUID storageUuid = chest.storageId();
             if (!proximate.contains(storageUuid.toString())) {
                 continue;
@@ -369,6 +372,9 @@ public final class DepositPlanner {
         ArrayList<ClaimedChest> ranked = new ArrayList<>();
         for (ClaimedChest chest : claimedChestMap.chests()) {
             if (chest == null) {
+                continue;
+            }
+            if (!chest.role().visibleToWorkspace()) {
                 continue;
             }
             if (!proximate.contains(chest.storageId().toString())) {
