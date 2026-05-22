@@ -65,6 +65,8 @@ final class SlotWorkspaceUiController {
     final boolean sidebarMode;
     final UIElement root;
     final UIElement content;
+    final UIElement sidebarFrame;
+    final UIElement craftRunPanelSlot;
     UIElement popoverSlot;
 
     SlotWorkspaceViewModel viewModel;
@@ -160,14 +162,8 @@ final class SlotWorkspaceUiController {
     final ActiveChestStripBuilder activeChestStrip = new ActiveChestStripBuilder(this);
     ScrollerView wallScroller;
     /**
-     * Persistent root-level container for the kit rack overlay. Lives
-     * outside the centered content wrapper so it spans the full screen
-     * width when the rack is open. Empty when the rack is closed.
-     */
-    /**
-     * Persistent root-level container for the belt (hotbar). Spans the
-     * full screen width regardless of the centered content cap, so it
-     * always covers the vanilla hotbar in sidebar mode.
+     * Persistent container for the belt (hotbar). Standalone mounts it at
+     * root level; sidebar mode mounts it inside the left sidebar frame.
      */
     UIElement beltSlot;
     UIElement wallPanelElement;
@@ -231,11 +227,6 @@ final class SlotWorkspaceUiController {
                     .gapAll(0)
                     .alignItems(sidebarMode ? AlignItems.FLEX_START : AlignItems.CENTER)
                     .flexDirection(FlexDirection.COLUMN);
-            if (sidebarMode) {
-                layout.positionType(TaffyPosition.ABSOLUTE)
-                        .left(dev.imagio.slot.neoforge.config.SlotClientConfig.CLIENT.sidebarLeftMargin.get())
-                        .top(dev.imagio.slot.neoforge.config.SlotClientConfig.CLIENT.sidebarTopMargin.get());
-            }
         });
         if (sidebarMode) {
             this.root.setAllowHitTest(false);
@@ -252,11 +243,30 @@ final class SlotWorkspaceUiController {
         if (!sidebarMode) {
             this.content.layout(layout -> layout.marginHorizontalAuto());
         }
-        // Belt is pinned full-width at the bottom of root, outside the
-        // content wrapper. The kit rack lives beside the wall scroller.
+        // Standalone keeps the belt as a root-level footer. Sidebar mode
+        // frames content + belt together so the left rail keeps its own
+        // configured margins while floating panels use screen coordinates.
         this.beltSlot = new UIElement().layout(layout -> layout
                 .widthPercent(100)
                 .flexDirection(FlexDirection.COLUMN));
+        if (sidebarMode) {
+            this.sidebarFrame = new UIElement().layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(dev.imagio.slot.neoforge.config.SlotClientConfig.CLIENT.sidebarLeftMargin.get())
+                    .top(dev.imagio.slot.neoforge.config.SlotClientConfig.CLIENT.sidebarTopMargin.get())
+                    .bottom(dev.imagio.slot.neoforge.config.SlotClientConfig.CLIENT.sidebarBottomMargin.get())
+                    .width(contentWidth())
+                    .flexDirection(FlexDirection.COLUMN));
+            this.sidebarFrame.setAllowHitTest(false);
+            this.sidebarFrame.addChildren(content, beltSlot);
+        } else {
+            this.sidebarFrame = null;
+        }
+        this.craftRunPanelSlot = new UIElement().layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(0).right(0).top(0).bottom(0));
+        this.craftRunPanelSlot.style(style -> style.zIndex(20));
+        this.craftRunPanelSlot.setAllowHitTest(false);
         // Popovers (context menus, island edit, create-island) render
         // here — at root level with absolute fill — so their full-screen
         // dismiss catcher actually covers the full screen instead of
@@ -295,11 +305,14 @@ final class SlotWorkspaceUiController {
         // chrome the mouse is over. Added once during create() because
         // its TICK + MOUSE_MOVE listeners on root persist across rebuilds;
         // recreating it on every rebuildNow() would leak handlers.
-        // Order: invisible sync binding, centered content (flex 1),
-        // optional kit rack (full-width), belt (full-width), cursor
-        // overlay (abs, on top of everything). The flex-column flow
-        // gives content the leftover height above the bottom slots.
-        root.addChildren(syncBinding(), content, beltSlot, popoverSlot);
+        // Order: invisible sync binding, workspace frame/content, floating
+        // craft-run panel, and popovers. The flex-column flow gives content
+        // the leftover height above the bottom slots.
+        if (sidebarMode) {
+            root.addChildren(syncBinding(), sidebarFrame, craftRunPanelSlot, popoverSlot);
+        } else {
+            root.addChildren(syncBinding(), content, beltSlot, craftRunPanelSlot, popoverSlot);
+        }
         root.addEventListener(UIEvents.REMOVED, event -> markSurfaceClosed());
         // Bubble-phase universal handlers for the real menu cursor:
         // rows 1 (right-click cancel) + 8 (left-click smart-deposit) of
@@ -533,13 +546,18 @@ final class SlotWorkspaceUiController {
             listWall.wallPanel();
         }
         content.layout(layout -> layout.width(contentWidth()));
-        // Belt + kit rack are root-level siblings of `content` so they
-        // span the full screen width (covering the vanilla hotbar in
-        // sidebar mode); they're rebuilt each refresh because the kit
-        // rack visibility flips and the belt's hotbar slot subtree
+        if (sidebarFrame != null) {
+            sidebarFrame.layout(layout -> layout.width(contentWidth()));
+        }
+        // The belt is rebuilt each refresh because its hotbar slot subtree
         // depends on view-model state.
         beltSlot.clearAllChildren();
         beltSlot.addChild(belt.overlay());
+        craftRunPanelSlot.clearAllChildren();
+        UIElement craftRunPanel = listWall.craftRunPanel();
+        if (craftRunPanel != null) {
+            craftRunPanelSlot.addChild(craftRunPanel);
+        }
         content.markTaffyStyleDirty();
     }
 
@@ -929,6 +947,11 @@ final class SlotWorkspaceUiController {
     boolean recipeSuppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
         RecipeIngredientSidebarSpec.Projection recipe = recipeProjection();
         return recipe != null && recipe.suppressVanillaTooltip(item);
+    }
+
+    boolean craftRunPanelVisible() {
+        return (viewModel != null && viewModel.craftRun() != null && viewModel.craftRun().active())
+                || !craftRunRecipeCaptures().isEmpty();
     }
 
     List<Component> recipeTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {

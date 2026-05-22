@@ -10,6 +10,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.imagio.slot.ui.spi.SlotUiElement;
@@ -103,6 +104,43 @@ final class ListWallPanelBuilder {
                 .flexDirection(FlexDirection.COLUMN));
         body.addChild(wallPanel());
         return body;
+    }
+
+    UIElement craftRunPanel() {
+        CraftRunUiBuilder craftRun = new CraftRunUiBuilder(new CraftRunContext());
+        List<SlotUiElement> rows = craftRun.panelRows(craftRunItems());
+        if (rows.isEmpty()) {
+            return null;
+        }
+        UIElement panel = panel(PANEL).layout(layout -> layout
+                .positionType(dev.vfyjxf.taffy.style.TaffyPosition.ABSOLUTE)
+                .right(SlotClientConfig.CLIENT.craftRunRightMargin.get())
+                .top(SlotClientConfig.CLIENT.craftRunTopMargin.get())
+                .bottom(SlotClientConfig.CLIENT.craftRunBottomMargin.get())
+                .width(CraftRunUiBuilder.PANEL_WIDTH_PX)
+                .paddingAll(5)
+                .gapAll(4)
+                .flexDirection(FlexDirection.COLUMN));
+        panel.style(style -> style.zIndex(22));
+        panel.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+        panel.addChild(label("Crafting", ACCENT).layout(layout -> layout
+                .widthPercent(100)
+                .height(12)));
+
+        ScrollerView scroller = new ScrollerView();
+        scroller.layout(layout -> layout
+                .widthPercent(100)
+                .flex(1)
+                .paddingAll(3)
+                .gapAll(SECTION_GAP_PX)
+                .flexDirection(FlexDirection.COLUMN));
+        scroller.scrollerStyle(style -> style.minScrollPixel(20f).maxScrollPixel(50f));
+        scroller.style(style -> style.backgroundTexture(rect(0xA810171D)).zIndex(0));
+        for (SlotUiElement row : rows) {
+            scroller.addScrollViewChild(sectionRenderer.render(row));
+        }
+        panel.addChild(scroller);
+        return panel;
     }
 
     UIElement wallPanel() {
@@ -284,17 +322,6 @@ final class ListWallPanelBuilder {
     void buildSections(ScrollerView scroller) {
         boolean filtering = !host.searchController.normalizedQuery().isBlank();
         boolean anyVisibleSection = false;
-        CraftRunUiBuilder craftRun = new CraftRunUiBuilder(new CraftRunContext());
-        if (host.recipeSidebarActive()) {
-            for (SlotUiElement visibleRecipeAction : craftRun.visibleRecipeActions()) {
-                scroller.addScrollViewChild(sectionRenderer.render(visibleRecipeAction));
-                anyVisibleSection = true;
-            }
-        }
-        for (SlotUiElement section : craftRun.entrySections(craftRunItems())) {
-            scroller.addScrollViewChild(sectionRenderer.render(section));
-            anyVisibleSection = true;
-        }
         for (SlotWorkspaceViewModel.AtlasIsland island : host.currentIslands()) {
             if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
                 continue;

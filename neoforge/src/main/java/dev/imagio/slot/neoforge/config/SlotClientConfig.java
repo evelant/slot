@@ -24,6 +24,9 @@ public final class SlotClientConfig {
         public final ModConfigSpec.IntValue sidebarLeftMargin;
         public final ModConfigSpec.IntValue sidebarTopMargin;
         public final ModConfigSpec.IntValue sidebarBottomMargin;
+        public final ModConfigSpec.IntValue craftRunRightMargin;
+        public final ModConfigSpec.IntValue craftRunTopMargin;
+        public final ModConfigSpec.IntValue craftRunBottomMargin;
 
         private Client(ModConfigSpec.Builder builder) {
             builder.comment("Client-side SLOT settings").push("client");
@@ -67,6 +70,21 @@ public final class SlotClientConfig {
                     .translation("slot.config.sidebar_bottom_margin")
                     .comment("Screen-pixel gap below the SLOT sidebar. Increase this when recipe viewer controls sit at the bottom-left edge.")
                     .defineInRange("sidebarBottomMargin", 0, 0, 400);
+
+            craftRunRightMargin = builder
+                    .translation("slot.config.craft_run_right_margin")
+                    .comment("Screen-pixel gap between the right edge and the floating SLOT crafting run panel.")
+                    .defineInRange("craftRunRightMargin", 0, 0, 400);
+
+            craftRunTopMargin = builder
+                    .translation("slot.config.craft_run_top_margin")
+                    .comment("Screen-pixel gap above the floating SLOT crafting run panel.")
+                    .defineInRange("craftRunTopMargin", 0, 0, 400);
+
+            craftRunBottomMargin = builder
+                    .translation("slot.config.craft_run_bottom_margin")
+                    .comment("Screen-pixel gap below the floating SLOT crafting run panel.")
+                    .defineInRange("craftRunBottomMargin", 0, 0, 400);
 
             builder.pop();
         }

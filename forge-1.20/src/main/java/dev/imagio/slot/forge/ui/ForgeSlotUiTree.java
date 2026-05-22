@@ -44,6 +44,7 @@ import java.util.Map;
 
 public final class ForgeSlotUiTree {
     public static final String SCROLL_VIEWPORT = "slot.forge.scroll_viewport";
+    public static final String PRIMARY_SCROLL_VIEWPORT_ID = "slot.forge.primary_scroll_viewport";
     public static final String ICON = "slot.forge.icon";
     private static final int ROW = 0xEC24313D;
     private static final int ROW_DIM = 0x7C24313D;
@@ -758,6 +759,10 @@ public final class ForgeSlotUiTree {
     }
 
     private Node firstScrollableNode() {
+        Node primary = nodeByElementId(PRIMARY_SCROLL_VIEWPORT_ID);
+        if (primary != null && primary.scrollable()) {
+            return primary;
+        }
         for (Node node : nodes.values()) {
             if (node.scrollable()) {
                 return node;

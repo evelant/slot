@@ -854,9 +854,25 @@ public final class ForgeWorkspaceSurface {
                 sidebarRail.addChild(spacer(1, bottomMargin));
             }
             root.addChild(sidebarRail);
+            addCraftRunPanel(root);
             return root;
         }
-        return workspaceColumn(false);
+        SlotUiElement root = SlotUiElement.element()
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .heightPercent(100)
+                        .alignItems(SlotUiLayout.AlignItems.CENTER)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
+        root.addChild(workspaceColumn(false));
+        addCraftRunPanel(root);
+        return root;
+    }
+
+    private void addCraftRunPanel(SlotUiElement root) {
+        SlotUiElement panel = craftRunPanel();
+        if (root != null && panel != null) {
+            root.addChild(panel);
+        }
     }
 
     private SlotUiElement workspaceColumn(boolean sidebarMode) {
@@ -1345,6 +1361,7 @@ public final class ForgeWorkspaceSurface {
 
     private SlotUiElement wallViewport(boolean sidebarMode) {
         SlotUiElement viewport = SlotUiElement.panel(0xB810171D)
+                .id(ForgeSlotUiTree.PRIMARY_SCROLL_VIEWPORT_ID)
                 .attach(ForgeSlotUiTree.SCROLL_VIEWPORT, Boolean.TRUE)
                 .layout(layout -> {
                     layout.widthPercent(100)
@@ -1360,15 +1377,6 @@ public final class ForgeWorkspaceSurface {
         WallSectionHeaderUiBuilder headerBuilder = new WallSectionHeaderUiBuilder(new HeaderContext());
         WallSectionUiBuilder sectionBuilder = new WallSectionUiBuilder(headerBuilder);
         boolean filtering = !normalizedSearchQuery().isBlank();
-        CraftRunUiBuilder craftRun = new CraftRunUiBuilder(new CraftRunContext());
-        if (recipeSidebarActive()) {
-            for (SlotUiElement visibleRecipeAction : craftRun.visibleRecipeActions()) {
-                content.addChild(enrichSection(visibleRecipeAction));
-            }
-        }
-        for (SlotUiElement section : craftRun.entrySections(craftRunItems())) {
-            content.addChild(enrichSection(section));
-        }
         for (SlotWorkspaceViewModel.AtlasIsland island : islands) {
             List<SlotWorkspaceViewModel.AtlasItem> islandItems = items.stream()
                     .filter(item -> island.islandId().equals(item.islandId()))
@@ -1393,6 +1401,49 @@ public final class ForgeWorkspaceSurface {
         return viewport;
     }
 
+    private SlotUiElement craftRunPanel() {
+        CraftRunUiBuilder craftRun = new CraftRunUiBuilder(new CraftRunContext());
+        List<SlotUiElement> rows = craftRun.panelRows(craftRunItems());
+        if (rows.isEmpty()) {
+            return null;
+        }
+        int top = SlotForgeClientConfig.craftRunTopMargin();
+        int bottom = SlotForgeClientConfig.craftRunBottomMargin();
+        SlotUiElement panel = SlotUiElement.panel(PANEL)
+                .zIndex(20)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .right(SlotForgeClientConfig.craftRunRightMargin())
+                        .top(top)
+                        .width(CraftRunUiBuilder.PANEL_WIDTH_PX)
+                        .height(Math.max(1, viewportHeight - top - bottom))
+                        .paddingAll(5)
+                        .gapAll(4)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN))
+                .on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation(), true);
+        panel.addChild(SlotUiElement.label("Crafting", WorkspaceUiPalette.ACCENT)
+                .layout(layout -> layout.widthPercent(100).height(12))
+                .textStyle(style -> style
+                        .color(WorkspaceUiPalette.ACCENT)
+                        .fontSize(8)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        SlotUiElement content = SlotUiElement.panel(0xA810171D)
+                .id("slot.forge.craft_run_scroll")
+                .attach(ForgeSlotUiTree.SCROLL_VIEWPORT, Boolean.TRUE)
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .flex(1)
+                        .paddingAll(3)
+                        .gapAll(4)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
+        for (SlotUiElement row : rows) {
+            content.addChild(enrichSection(row));
+        }
+        panel.addChild(content);
+        return panel;
+    }
+
     private List<SlotWorkspaceViewModel.AtlasItem> craftRunItems() {
         ArrayList<SlotWorkspaceViewModel.AtlasItem> craftItems = new ArrayList<>();
         craftItems.addAll(viewModel.atlasItems());
@@ -1406,6 +1457,28 @@ public final class ForgeWorkspaceSurface {
                 && viewModel != null
                 && viewModel.craftRun() != null
                 && viewModel.craftRun().active();
+    }
+
+    public boolean craftRunPanelVisible() {
+        return (viewModel != null && viewModel.craftRun() != null && viewModel.craftRun().active())
+                || (craftRunRecipeCaptures != null && !craftRunRecipeCaptures.isEmpty());
+    }
+
+    public CraftRunPanelBounds craftRunPanelBounds(int screenWidth, int screenHeight) {
+        if (!craftRunPanelVisible()) {
+            return null;
+        }
+        int width = CraftRunUiBuilder.PANEL_WIDTH_PX;
+        int height = Math.max(1, screenHeight - SlotForgeClientConfig.craftRunTopMargin()
+                - SlotForgeClientConfig.craftRunBottomMargin());
+        return new CraftRunPanelBounds(
+                Math.max(0, screenWidth - SlotForgeClientConfig.craftRunRightMargin() - width),
+                SlotForgeClientConfig.craftRunTopMargin(),
+                width,
+                height);
+    }
+
+    public record CraftRunPanelBounds(int x, int y, int width, int height) {
     }
 
     private SlotWorkspaceViewModel.ContextualSuggestionLane visibleSuggestionLane(

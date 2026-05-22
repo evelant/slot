@@ -172,15 +172,14 @@ public final class ForgeChestDepositObserver {
                     level, chestService, memoryStorageId, anchor, session.pos, menu, session.storageSlots, "container_close");
         }
 
-        if (!takes.isEmpty() && trackedChest != null) {
+        // Rehome bookkeeping is independent of Recents: taking anything from a
+        // chest is still a carried acquisition and should remain visible there.
+        if (!takes.isEmpty() && trackedChest != null && trackedChest.role().learnsAffinity()) {
             chestService.recordPossibleRehomeTake(
                     trackedChest.storageId(),
                     takes,
                     ChestDepositObservationSupport.currentIdentities(menu, session.storageSlots),
                     level.getGameTime());
-            for (ItemIdentity identity : takes.keySet()) {
-                runtime.dismissRecent(identity);
-            }
         }
     }
 

@@ -37,43 +37,59 @@ public final class InventoryAuthorityDiffClassifier {
         Function<InventoryEntrySnapshot, ItemIdentity> resolvedIdentityResolver = identityResolver == null
                 ? entry -> entry == null || !entry.present() ? null : ItemIdentityMatcher.create(entry.stack())
                 : identityResolver;
-        Map<ItemIdentity, Integer> before = carriedCounts(previous, resolvedIdentityResolver);
-        Map<ItemIdentity, Integer> after = carriedCounts(current, resolvedIdentityResolver);
-        return after.entrySet().stream()
+        Map<ItemIdentity, Integer> beforeCarried = sourceCounts(previous, resolvedIdentityResolver, true);
+        Map<ItemIdentity, Integer> afterCarried = sourceCounts(current, resolvedIdentityResolver, true);
+        Map<ItemIdentity, Integer> beforeNonCarried = sourceCounts(previous, resolvedIdentityResolver, false);
+        Map<ItemIdentity, Integer> afterNonCarried = sourceCounts(current, resolvedIdentityResolver, false);
+        Map<ItemIdentity, Integer> beforeCursor = cursorCounts(previous);
+        Map<ItemIdentity, Integer> afterCursor = cursorCounts(current);
+        LinkedHashMap<ItemIdentity, Integer> acquisitions = new LinkedHashMap<>();
+        for (ItemIdentity identity : afterCarried.keySet()) {
+            int carriedGain = positiveDelta(beforeCarried, afterCarried, identity);
+            int cursorLoss = positiveDelta(afterCursor, beforeCursor, identity);
+            int count = Math.max(0, carriedGain - cursorLoss);
+            if (count > 0) {
+                acquisitions.merge(identity, count, Integer::sum);
+            }
+        }
+        for (ItemIdentity identity : afterCursor.keySet()) {
+            int cursorGain = positiveDelta(beforeCursor, afterCursor, identity);
+            int nonCarriedLoss = positiveDelta(afterNonCarried, beforeNonCarried, identity);
+            int count = Math.min(cursorGain, nonCarriedLoss);
+            if (count > 0) {
+                acquisitions.merge(identity, count, Integer::sum);
+            }
+        }
+        return acquisitions.entrySet().stream()
                 .filter(entry -> entry.getKey() != null)
-                .map(entry -> {
-                    int delta = entry.getValue() - before.getOrDefault(entry.getKey(), 0);
-                    if (delta <= 0) {
-                        return null;
-                    }
-                    return new InventoryActivityEvent(
-                            InventoryActivityKind.ACQUIRED,
-                            InventoryActivityProducer.AUTHORITY_DIFF,
-                            InventoryActivityConfidence.OBSERVED,
-                            entry.getKey(),
-                            delta,
-                            null,
-                            null,
-                            "",
-                            "",
-                            List.of(),
-                            "authority_diff_gain"
-                    );
-                })
-                .filter(java.util.Objects::nonNull)
+                .filter(entry -> entry.getValue() > 0)
+                .map(entry -> new InventoryActivityEvent(
+                        InventoryActivityKind.ACQUIRED,
+                        InventoryActivityProducer.AUTHORITY_DIFF,
+                        InventoryActivityConfidence.OBSERVED,
+                        entry.getKey(),
+                        entry.getValue(),
+                        null,
+                        null,
+                        "",
+                        "",
+                        List.of(),
+                        "authority_diff_gain"
+                ))
                 .toList();
     }
 
-    private static Map<ItemIdentity, Integer> carriedCounts(
+    private static Map<ItemIdentity, Integer> sourceCounts(
             InventoryAuthoritySnapshot authority,
-            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            boolean carried
     ) {
         LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
         if (authority == null || authority.host() == null || identityResolver == null) {
             return counts;
         }
-        for (InventorySourceDescriptor source : authority.sourcesInPane(InventoryPaneMembership.CARRIED)) {
-            if (source == null) {
+        for (InventorySourceDescriptor source : authority.sourceDescriptors()) {
+            if (source == null || (source.paneMembership() == InventoryPaneMembership.CARRIED) != carried) {
                 continue;
             }
             for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
@@ -86,6 +102,14 @@ public final class InventoryAuthorityDiffClassifier {
                 }
             }
         }
+        return Map.copyOf(counts);
+    }
+
+    private static Map<ItemIdentity, Integer> cursorCounts(InventoryAuthoritySnapshot authority) {
+        LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
+        if (authority == null) {
+            return counts;
+        }
         CursorStateSnapshot cursor = authority.cursorState();
         if (cursor != null && cursor.present()) {
             ItemIdentity identity = ItemIdentityMatcher.create(cursor.stack());
@@ -94,5 +118,16 @@ public final class InventoryAuthorityDiffClassifier {
             }
         }
         return Map.copyOf(counts);
+    }
+
+    private static int positiveDelta(
+            Map<ItemIdentity, Integer> before,
+            Map<ItemIdentity, Integer> after,
+            ItemIdentity identity
+    ) {
+        if (identity == null) {
+            return 0;
+        }
+        return Math.max(0, after.getOrDefault(identity, 0) - before.getOrDefault(identity, 0));
     }
 }

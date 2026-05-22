@@ -1120,11 +1120,11 @@ final class ContextMenuBuilder {
 
     void anchorPopover(UIElement menu, float screenX, float screenY, int width, int approxHeight) {
         // Popovers mount in the root-level popoverSlot which fills the
-        // entire screen. In sidebar mode the root itself is inset by the
-        // configured margins, so convert the screen click into root-local
-        // coordinates before clamping.
-        int originX = host.sidebarMode ? SlotClientConfig.CLIENT.sidebarLeftMargin.get() : 0;
-        int originY = host.sidebarMode ? SlotClientConfig.CLIENT.sidebarTopMargin.get() : 0;
+        // entire screen, so incoming screen coordinates are already in
+        // the popover slot's coordinate space. Sidebar mode still clamps
+        // against the configured bottom gap.
+        int originX = 0;
+        int originY = 0;
         int bottomInset = host.sidebarMode ? SlotClientConfig.CLIENT.sidebarBottomMargin.get() : 0;
         int screenWidth = Minecraft.getInstance().getWindow().getGuiScaledWidth();
         int screenHeight = Minecraft.getInstance().getWindow().getGuiScaledHeight();

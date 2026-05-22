@@ -65,8 +65,9 @@ public final class SlotSidebarClientUi {
     /**
      * Mount a sidebar workspace as a child widget of the host screen.
      *
-     * <p>The widget renders at screen origin {@code (0, 0)} with the
-     * given sidebar bounds; LDLib2's {@code ScreenMixin} +
+     * <p>The widget renders with the given screen bounds; the controller
+     * applies configured sidebar margins inside that full-screen root so
+     * floating panels can live outside the left sidebar. LDLib2's {@code ScreenMixin} +
      * {@code ContainerEventHandlerMixin} pump tick / removed /
      * keyPressed / mouseDragged / mouseMoved by walking
      * {@code screen.children()} for {@code IModularUIHolder}.
@@ -143,6 +144,11 @@ public final class SlotSidebarClientUi {
 
     public static boolean isActive() {
         return activeMount != null;
+    }
+
+    public static boolean craftRunPanelVisible() {
+        ActiveMount mount = activeMount;
+        return mount != null && mount.controller.craftRunPanelVisible();
     }
 
     public static void setRecipeSidebarSpec(RecipeIngredientSidebarSpec spec) {

@@ -63,6 +63,13 @@ public final class ForgeContainerSidebar {
         return SlotForgeClientConfig.sidebarLeftMargin() + contentWidth;
     }
 
+    public static ForgeWorkspaceSurface.CraftRunPanelBounds activeCraftRunPanelBounds(Screen screen) {
+        if (screen != activeHostScreen || activeSurface == null) {
+            return null;
+        }
+        return activeSurface.craftRunPanelBounds(screen.width, screen.height);
+    }
+
     public static void registerSidebarHostResolver(SidebarHostResolver resolver) {
         if (resolver != null && !SIDEBAR_HOST_RESOLVERS.contains(resolver)) {
             SIDEBAR_HOST_RESOLVERS.add(resolver);
@@ -193,7 +200,7 @@ public final class ForgeContainerSidebar {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
             return;
         }
-        if (!insideSidebar(event.getMouseX(), event.getMouseY())) {
+        if (!insideInteractiveSurface(event.getMouseX(), event.getMouseY())) {
             return;
         }
         if (activeSurface.mouseClicked(event.getMouseX(), event.getMouseY(), event.getButton())) {
@@ -206,7 +213,7 @@ public final class ForgeContainerSidebar {
             return;
         }
         boolean handled = activeSurface.mouseReleased(event.getMouseX(), event.getMouseY(), event.getButton());
-        if (insideSidebar(event.getMouseX(), event.getMouseY()) && handled) {
+        if (insideInteractiveSurface(event.getMouseX(), event.getMouseY()) && handled) {
             event.setCanceled(true);
         }
     }
@@ -215,7 +222,7 @@ public final class ForgeContainerSidebar {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
             return;
         }
-        if (!insideSidebar(event.getMouseX(), event.getMouseY())) {
+        if (!insideInteractiveSurface(event.getMouseX(), event.getMouseY())) {
             return;
         }
         if (activeSurface.mouseScrolled(event.getMouseX(), event.getMouseY(), event.getScrollDelta())) {
@@ -284,6 +291,18 @@ public final class ForgeContainerSidebar {
         int right = left + activeSurface.contentWidth();
         int bottom = activeHostScreen.height - SlotForgeClientConfig.sidebarBottomMargin();
         return mouseX >= left && mouseX < right && mouseY >= top && mouseY < bottom;
+    }
+
+    private static boolean insideInteractiveSurface(double mouseX, double mouseY) {
+        if (insideSidebar(mouseX, mouseY)) {
+            return true;
+        }
+        ForgeWorkspaceSurface.CraftRunPanelBounds bounds = activeCraftRunPanelBounds(activeHostScreen);
+        return bounds != null
+                && mouseX >= bounds.x()
+                && mouseX < bounds.x() + bounds.width()
+                && mouseY >= bounds.y()
+                && mouseY < bounds.y() + bounds.height();
     }
 
     private static void release() {

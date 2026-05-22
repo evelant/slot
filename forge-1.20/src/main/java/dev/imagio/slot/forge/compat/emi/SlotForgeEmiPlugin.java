@@ -9,6 +9,7 @@ import dev.imagio.slot.forge.client.ForgeContainerSidebar;
 import dev.imagio.slot.forge.client.ForgeWorkspaceClient;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
+import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.ui.workspace.RecipeViewerIntegration;
 import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
@@ -47,6 +48,10 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
             int sidebarWidth = sidebarWidthFor(screen);
             if (sidebarWidth > 0) {
                 consumer.accept(new Bounds(0, 0, sidebarWidth, screen.height));
+                ForgeWorkspaceSurface.CraftRunPanelBounds craftRun = ForgeContainerSidebar.activeCraftRunPanelBounds(screen);
+                if (craftRun != null) {
+                    consumer.accept(new Bounds(craftRun.x(), craftRun.y(), craftRun.width(), craftRun.height()));
+                }
                 return;
             }
             if (isSlotStandaloneScreen(screen)) {

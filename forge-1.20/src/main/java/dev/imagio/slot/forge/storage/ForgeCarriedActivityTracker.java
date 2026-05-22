@@ -16,8 +16,11 @@ import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.session.CarriedAcquisitionActivityTracker;
+import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
+import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.workflow.domain.InventoryActivityEvent;
+import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -73,6 +76,21 @@ public final class ForgeCarriedActivityTracker {
     public static void suppressOutcome(ServerPlayer player, InventoryActionOutcome outcome) {
         if (outcome != null && outcome.successful()) {
             suppressAcquired(player, outcome.activityEvents());
+        }
+    }
+
+    public static void recordExternalSlotPickup(ServerPlayer player, ItemStack stack, int count, String sessionId) {
+        if (player == null || stack == null || stack.isEmpty() || count <= 0) {
+            return;
+        }
+        if (InventoryAcquisitionActivityRecorder.recordStackAcquired(
+                ForgePlayerWorkflowRuntimeService.runtime(player),
+                stack,
+                count,
+                InventoryActivityProducer.EXTERNAL_WITHDRAWAL,
+                InventoryActivityConfidence.OBSERVED,
+                sessionId == null ? "menu_pickup_external_slot" : sessionId)) {
+            suppressAcquired(player, stack, count);
         }
     }
 

@@ -210,22 +210,14 @@ public final class ChestDepositObserver {
                     level, chestService, memoryStorageId, anchor, session.pos, menu, session.storageSlots, "container_close");
         }
 
-        // Recents filter: takes from a CLAIMED (tracked) chest don't
-        // belong in the player's "where did the thing I just grabbed
-        // end up?" strip — the chest is part of their organised
-        // storage, not a discovery. Dismiss those identities so the
-        // ACQUIRED events from the authority diff don't surface them.
-        // Loot/world pickups + crafting outputs aren't routed through
-        // here, so they keep populating recents normally.
-        if (!takes.isEmpty() && trackedChest != null) {
+        // Rehome bookkeeping is independent of Recents: taking anything from a
+        // chest is still a carried acquisition and should remain visible there.
+        if (!takes.isEmpty() && trackedChest != null && trackedChest.role().learnsAffinity()) {
             chestService.recordPossibleRehomeTake(
                     trackedChest.storageId(),
                     takes,
                     ChestDepositObservationSupport.currentIdentities(menu, session.storageSlots),
                     level.getGameTime());
-            for (ItemIdentity identity : takes.keySet()) {
-                runtime.dismissRecent(identity);
-            }
         }
 
         // Loot chest summary: player took items from a chest with no

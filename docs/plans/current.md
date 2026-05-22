@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-21
+Last updated: 2026-05-22
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -21,7 +21,7 @@ the direct Taffy/GuiGraphics `G` screen plus mounted sidebar. The latest
 UI parity pass aligned both loaders on right-side workflows, vanilla-shaped
 Belt, shared item-card state chrome, accepted-input menus, remembered
 search/scroll, two-row Recents, compact section headers, and configurable
-sidebar margins. NeoForge remains the semantic oracle; the next risk is
+sidebar/craft-run panel margins. NeoForge remains the semantic oracle; the next risk is
 migrating richer modern-only affordances without reintroducing backend-specific
 semantics.
 
@@ -31,14 +31,13 @@ craft run, per
 [`0007`](../decisions/0007-emi-recipe-sidebar.md). When EMI's recipe screen is
 open, SLOT renders the sidebar into that screen while syncing through EMI's
 underlying handled menu; the wall shows visible recipe ingredients, exposes an
-`Add Recipe` action for each visible recipe, renders tracked recipes as normal
-wall-list sections with compact output-icon headers and per-recipe stage/adjust/done
-controls, hides the fixed `Fetch` suggestion lane while recipes are tracked,
-raises same-list producer recipe counts to the output units required by other
-tracked recipes, and
-projects recipe inputs as transient wanted-count pressure so
-gather/storage/wayfinding match the highlighted chrome. The tracked recipe list
-survives logout/rejoin and server restart through workflow persistence. The earlier
+`Add Recipe` action for each visible recipe in a separate right-side craft-run
+panel, renders tracked recipes in that panel with compact output-icon headers and
+per-recipe stage/adjust/done controls, hides the fixed `Fetch` suggestion lane
+while recipes are tracked, raises same-list producer recipe counts to the output
+units required by other tracked recipes, and projects recipe inputs as transient
+wanted-count pressure so gather/storage/wayfinding match the highlighted chrome.
+The tracked recipe list survives logout/rejoin and server restart through workflow persistence. The earlier
 recipe-goal plan is retired at [`retired/emi-goal-projections.md`](retired/emi-goal-projections.md),
 and the old recipe-goal code/UI/RPC/persistence surface has been removed; do not
 grow a recursive goal planner unless playtesting proves transient recipe context
@@ -68,6 +67,9 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-22** — EMI craft-run rows moved out of the top of the wall into a
+  separate right-side panel on both loaders, with client-configurable
+  top/right/bottom margins and EMI exclusion bounds for the new panel.
 - **2026-05-21** — Chest affinity roles landed on both loaders: active chests
   cycle through `Storage`, `Buffer`, and `Ignore`; only `Storage` learns
   affinity and accepts quick/bulk deposit, `Buffer` remains visible/pullable,
@@ -77,8 +79,8 @@ hold the rest.
   [`0008`](../decisions/0008-chest-roles-and-affinity-correction.md) records it.
 - **2026-05-21** — EMI craft runs landed on both loaders: recipe screens still
   mount the filtered SLOT sidebar, can add visible or hovered EMI recipes to a
-  persisted server-owned recipe list, show per-recipe sections directly in the
-  wall list, project recipe inputs as transient wanted-count pressure for shared
+  persisted server-owned recipe list, show per-recipe sections, project recipe
+  inputs as transient wanted-count pressure for shared
   gather/storage/wayfinding behavior, clamp count controls to recipe output
   batches, raise same-list producer recipe counts from downstream input needs,
   stage selected recipe inputs from carried providers into player main inventory
@@ -174,10 +176,6 @@ hold the rest.
   context, missing ingredients reuse the existing craft-target state, EMI
   remains the recipe explanation surface, and the old recipe-goal plan moved to
   `retired/` with ADR 0007 recording the pivot.
-- **2026-05-15** — Contextual suggestion lanes landed as a first playable
-  prototype: common signals, bounded aggregates, and learned event associations
-  feed Useful Now and Put Away while carried state stays eligibility/action
-  state; both loaders render the lanes above the wall with debug score terms.
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the
@@ -190,7 +188,7 @@ Roughly ordered by playtest signal. Pull from the top when the active
 track lands.
 
 1. **EMI craft-run playtest validation.** Validate the transient sidebar +
-   persisted tracked-recipe list against real recipes before adding more chrome:
+   right-side tracked-recipe panel against real recipes before adding more chrome:
    open
    recipes from vanilla inventory, chest/crafting/machine screens, and both
    loaders; confirm the sidebar mounts on EMI's recipe screen and returns to

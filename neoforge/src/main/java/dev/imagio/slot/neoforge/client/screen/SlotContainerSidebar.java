@@ -7,6 +7,7 @@ import dev.imagio.slot.neoforge.mixin.AbstractContainerScreenAccessor;
 import dev.imagio.slot.neoforge.network.SlotSidebarClosePayload;
 import dev.imagio.slot.neoforge.network.SlotSidebarOpenPayload;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarClientUi;
+import dev.imagio.slot.ui.workspace.CraftRunUiBuilder;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.Minecraft;
@@ -99,6 +100,26 @@ public final class SlotContainerSidebar {
         return activeHostScreen == null ? 0 : activeSidebarWidth;
     }
 
+    public record ScreenBounds(int x, int y, int width, int height) {
+    }
+
+    public static ScreenBounds activeCraftRunPanelBounds(Screen screen) {
+        if (screen == null || activeHostScreen != screen || !SlotSidebarClientUi.craftRunPanelVisible()) {
+            return null;
+        }
+        int width = CraftRunUiBuilder.PANEL_WIDTH_PX;
+        int height = Math.max(
+                1,
+                screen.height
+                        - SlotClientConfig.CLIENT.craftRunTopMargin.get()
+                        - SlotClientConfig.CLIENT.craftRunBottomMargin.get());
+        return new ScreenBounds(
+                Math.max(0, screen.width - SlotClientConfig.CLIENT.craftRunRightMargin.get() - width),
+                SlotClientConfig.CLIENT.craftRunTopMargin.get(),
+                width,
+                height);
+    }
+
     public static void registerSidebarHostResolver(SidebarHostResolver resolver) {
         if (resolver != null && !SIDEBAR_HOST_RESOLVERS.contains(resolver)) {
             SIDEBAR_HOST_RESOLVERS.add(resolver);
@@ -167,12 +188,6 @@ public final class SlotContainerSidebar {
         }
 
         int sidebarContentWidth = sidebarContentWidthFor();
-        int sidebarContentHeight = Math.max(
-                1,
-                renderScreen.height
-                        - SlotClientConfig.CLIENT.sidebarTopMargin.get()
-                        - SlotClientConfig.CLIENT.sidebarBottomMargin.get());
-
         // The host stays in its native centered position. Earlier
         // iterations tried to shift it right (mutate leftPos / re-init
         // with a virtual screen width) so the SLOT sidebar wouldn't
@@ -186,8 +201,8 @@ public final class SlotContainerSidebar {
                 minecraft.player,
                 renderScreen,
                 host.menu(),
-                sidebarContentWidth,
-                sidebarContentHeight);
+                renderScreen.width,
+                renderScreen.height);
         if (!mounted) {
             return;
         }

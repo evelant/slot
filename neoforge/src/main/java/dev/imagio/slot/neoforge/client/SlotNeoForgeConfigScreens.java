@@ -61,6 +61,24 @@ public final class SlotNeoForgeConfigScreens {
                 "slot.config.sidebar_bottom_margin.tooltip",
                 SlotClientConfig.CLIENT.sidebarBottomMargin
         ));
+        category.addEntry(intMarginEntry(
+                entries,
+                "slot.config.craft_run_right_margin",
+                "slot.config.craft_run_right_margin.tooltip",
+                SlotClientConfig.CLIENT.craftRunRightMargin
+        ));
+        category.addEntry(intMarginEntry(
+                entries,
+                "slot.config.craft_run_top_margin",
+                "slot.config.craft_run_top_margin.tooltip",
+                SlotClientConfig.CLIENT.craftRunTopMargin
+        ));
+        category.addEntry(intMarginEntry(
+                entries,
+                "slot.config.craft_run_bottom_margin",
+                "slot.config.craft_run_bottom_margin.tooltip",
+                SlotClientConfig.CLIENT.craftRunBottomMargin
+        ));
 
         return builder.build();
     }

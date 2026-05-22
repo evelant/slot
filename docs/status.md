@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-21. Operational handoff. Read after
+Last updated: 2026-05-22. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -23,7 +23,7 @@ cross-surface actions.
 Phase 2 has the production wall shell on both loaders: shared 24px item-card
 chrome, two-row Recents, vanilla-shaped Belt, active chest role controls,
 workflow controls, accepted-input menus, compact nearby headers, remembered
-search/scroll, configurable sidebar margins, visible activation-scoped Put Away
+search/scroll, configurable sidebar and craft-run panel margins, visible activation-scoped Put Away
 guidance, Forge key parity, and junk/trash pressure relief. Useful Now scoring
 is hidden while live contextual observation remains available; expensive
 contextual scoring and storage-ghost expansion are disabled for now. Carried
@@ -48,10 +48,11 @@ rich semantic text intact instead of reducing prompts to item ids.
 
 EMI recipe context now uses the normal SLOT sidebar as a transient recipe
 ingredient filter plus one persisted current craft run on both loaders. It
-renders visible ingredients and tracked recipe sections in the normal wall,
-projects recipe inputs as transient wanted-count pressure for gather/storage/
-wayfinding, stages selected deficits through the shared transfer executor, and
-survives logout/rejoin through workflow persistence. ADR
+renders visible ingredients in the normal wall, keeps the tracked recipe list in
+a separate right-side craft-run panel with client-configurable margins, projects
+recipe inputs as transient wanted-count pressure for gather/storage/wayfinding,
+stages selected deficits through the shared transfer executor, and survives
+logout/rejoin through workflow persistence. ADR
 [0007](decisions/0007-emi-recipe-sidebar.md) records the pivot; the old
 recipe-goal plan lives in
 [plans/retired/emi-goal-projections.md](plans/retired/emi-goal-projections.md),
@@ -147,8 +148,7 @@ NeoForge module:
   `WorldStorageAccess`.
 - `neoforge/triage`: signal extractor + classifier glue
 - `neoforge/workflow`: per-player runtime lifecycle
-- `neoforge/config`: dedicated-test-instance config defaults plus client
-  sidebar margins surfaced through the NeoForge config screen hook
+- `neoforge/config`: dedicated-test-instance config defaults plus client UI margins
 
 Forge 1.20 module:
 
@@ -157,7 +157,7 @@ Forge 1.20 module:
   `SimpleChannel` action transport, workflow persistence, session-backed
   projection, carried/world storage accessors, guarded
   transfer/hotbar/workflow/desired/wanted/chest/cursor/gather/wayfinding
-  actions, measured shared-card badges, sidebar margin config/depth fixes,
+  actions, measured shared-card badges, sidebar/craft-run margin config/depth fixes,
   `/slot test` and
   classification commands, and the Phase 0.5 `compileSharedProbeJava`
   shared-source compile gate.
@@ -198,8 +198,12 @@ Now a sectioned vertical scroll list of single-LOD cards. The
 to minimize churn — see list-view.md § Naming. **Section** —
 player-facing organizational block (the new presentation of an
 "island"). **Home** — stable section + ordinal owned by one item
-identity. **Recents** — two-row pinned strip of recently picked-up identities
-above the wall. **Workflow** — player-authored task view layered on top of
+identity. **Recents** — two-row pinned strip of the most recently acquired
+identities into carried inventory. It is not a discovery filter: world pickups,
+chest/storage takes, machine outputs, crafting results, trades, and rewards
+count when they enter carried storage; moves wholly inside carried storage
+(main, hotbar, offhand, armor, Curios/backpacks, or other carried providers)
+do not. **Workflow** — player-authored task view layered on top of
 `All`; workflow membership behaves as an implicit active wanted-one target, accepted
 inputs make exact/tag matches relevant without target pressure, workflows can have
 one level of variants, and optional Belt/offhand pages reuse the older Kit

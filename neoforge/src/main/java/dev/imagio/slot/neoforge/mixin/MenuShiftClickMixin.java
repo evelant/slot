@@ -58,15 +58,16 @@ public abstract class MenuShiftClickMixin {
     @Unique
     private static final ThreadLocal<ItemStack[]> slot$preClickSnapshot = new ThreadLocal<>();
 
+    @Unique
+    private static final ThreadLocal<ItemStack> slot$externalPickupSource = new ThreadLocal<>();
+
     @Inject(method = "clicked", at = @At("HEAD"))
     private void slot$snapshotBeforeShiftClick(int slotId, int dragType, ClickType clickType, Player player,
                                                 CallbackInfo ci) {
         // Always clear first so an exception-skipped previous RETURN
         // can't bleed a stale snapshot into the current click.
         slot$preClickSnapshot.set(null);
-        if (clickType != ClickType.QUICK_MOVE) {
-            return;
-        }
+        slot$externalPickupSource.set(null);
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
@@ -78,12 +79,33 @@ public abstract class MenuShiftClickMixin {
             // Player → player internal move; respect placement intent.
             return;
         }
-        slot$preClickSnapshot.set(slot$captureVanillaLanes(serverPlayer));
+        if (clickType == ClickType.QUICK_MOVE) {
+            slot$preClickSnapshot.set(slot$captureVanillaLanes(serverPlayer));
+            return;
+        }
+        if (clickType != ClickType.PICKUP) {
+            return;
+        }
+        ItemStack cursor = ((AbstractContainerMenu) (Object) this).getCarried();
+        if (cursor != null && !cursor.isEmpty()) {
+            return;
+        }
+        ItemStack source = sourceSlot.getItem();
+        if (!source.isEmpty()) {
+            slot$externalPickupSource.set(source.copy());
+        }
     }
 
     @Inject(method = "clicked", at = @At("RETURN"))
     private void slot$routeNewlyArrivedItems(int slotId, int dragType, ClickType clickType, Player player,
                                               CallbackInfo ci) {
+        ItemStack externalPickupSource = slot$externalPickupSource.get();
+        if (externalPickupSource != null) {
+            slot$externalPickupSource.set(null);
+            if (player instanceof ServerPlayer serverPlayer) {
+                slot$recordExternalPickup(serverPlayer, externalPickupSource);
+            }
+        }
         ItemStack[] before = slot$preClickSnapshot.get();
         if (before == null) {
             return;
@@ -98,6 +120,22 @@ public abstract class MenuShiftClickMixin {
             slot$routeIfGrew(serverPlayer, before[i], inv.items.get(i));
         }
         slot$routeIfGrew(serverPlayer, before[36], inv.offhand.get(0));
+    }
+
+    @Unique
+    private void slot$recordExternalPickup(ServerPlayer player, ItemStack source) {
+        ItemStack cursor = ((AbstractContainerMenu) (Object) this).getCarried();
+        if (source == null || source.isEmpty() || cursor == null || cursor.isEmpty()) {
+            return;
+        }
+        if (!ItemStack.isSameItemSameComponents(source, cursor)) {
+            return;
+        }
+        NeoForgeCarriedActivityTracker.recordExternalSlotPickup(
+                player,
+                cursor,
+                Math.min(source.getCount(), cursor.getCount()),
+                "menu_pickup_external_slot");
     }
 
     @Unique

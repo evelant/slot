@@ -27,6 +27,18 @@ public final class SlotForgeClientConfig {
         return CLIENT.sidebarBottomMargin.get();
     }
 
+    public static int craftRunRightMargin() {
+        return CLIENT.craftRunRightMargin.get();
+    }
+
+    public static int craftRunTopMargin() {
+        return CLIENT.craftRunTopMargin.get();
+    }
+
+    public static int craftRunBottomMargin() {
+        return CLIENT.craftRunBottomMargin.get();
+    }
+
     public static boolean contextualSuggestionDebugTooltips() {
         return CLIENT.contextualSuggestionDebugTooltips.get();
     }
@@ -36,6 +48,9 @@ public final class SlotForgeClientConfig {
         public final ForgeConfigSpec.IntValue sidebarLeftMargin;
         public final ForgeConfigSpec.IntValue sidebarTopMargin;
         public final ForgeConfigSpec.IntValue sidebarBottomMargin;
+        public final ForgeConfigSpec.IntValue craftRunRightMargin;
+        public final ForgeConfigSpec.IntValue craftRunTopMargin;
+        public final ForgeConfigSpec.IntValue craftRunBottomMargin;
 
         private Client(ForgeConfigSpec.Builder builder) {
             builder.comment("Client-side SLOT settings").push("client");
@@ -59,6 +74,21 @@ public final class SlotForgeClientConfig {
                     .translation("slot.config.sidebar_bottom_margin")
                     .comment("Screen-pixel gap below the SLOT sidebar. Increase this when recipe viewer controls sit at the bottom-left edge.")
                     .defineInRange("sidebarBottomMargin", 0, 0, 400);
+
+            craftRunRightMargin = builder
+                    .translation("slot.config.craft_run_right_margin")
+                    .comment("Screen-pixel gap between the right edge and the floating SLOT crafting run panel.")
+                    .defineInRange("craftRunRightMargin", 0, 0, 400);
+
+            craftRunTopMargin = builder
+                    .translation("slot.config.craft_run_top_margin")
+                    .comment("Screen-pixel gap above the floating SLOT crafting run panel.")
+                    .defineInRange("craftRunTopMargin", 0, 0, 400);
+
+            craftRunBottomMargin = builder
+                    .translation("slot.config.craft_run_bottom_margin")
+                    .comment("Screen-pixel gap below the floating SLOT crafting run panel.")
+                    .defineInRange("craftRunBottomMargin", 0, 0, 400);
 
             builder.pop();
         }

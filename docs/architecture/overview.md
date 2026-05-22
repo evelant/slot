@@ -356,7 +356,17 @@ The logs feed two read models:
 Important current rules:
 
 - favorites and junk are first-class tags, not synthetic built-in collections
-- recents are derived from activity, not from rebuilding baseline state
+- recents are derived from carried-acquisition activity, not from rebuilding
+  baseline state
+- recents mean "most recently acquired into carried inventory": count an
+  identity when it enters carried storage from outside carried storage (world
+  pickup, chest/storage take, machine/output slot, crafting result, trade,
+  reward, etc.)
+- do not record Recents for rearranging the same identity wholly inside carried
+  storage, including main inventory, hotbar, offhand, armor, Curios, backpacks,
+  sacks, or other carried providers
+- source semantics do not filter acquisitions out of Recents; a chest take is a
+  recent carried acquisition even if that chest is organized storage
 - dismissing a recent records the highest seen activity sequence for that
   identity so a later acquisition can surface again
 

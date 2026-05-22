@@ -89,11 +89,16 @@ class CarriedAcquisitionActivityTrackerTest {
         String key = "player-1";
         ItemIdentity mold = ItemIdentity.of("tfc:ceramic_mold");
 
-        tracker.observe(key, authority(Map.of()), runtime, CarriedAcquisitionActivityTrackerTest::identity, "seed");
+        tracker.observe(
+                key,
+                authority(Map.of(), Map.of("tfc:ceramic_mold", 1), ItemStack.EMPTY),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "seed");
 
         int recorded = tracker.observe(
                 key,
-                authority(Map.of(), new ItemStack("tfc:ceramic_mold", 1, 1)),
+                authority(Map.of(), Map.of(), new ItemStack("tfc:ceramic_mold", 1, 1)),
                 runtime,
                 CarriedAcquisitionActivityTrackerTest::identity,
                 "menu_slot_changed");
@@ -101,6 +106,25 @@ class CarriedAcquisitionActivityTrackerTest {
         assertEquals(1, recorded);
         assertEquals(List.of(mold), runtime.activityProjection().recents().visibleItems());
         assertEquals(1, runtime.activityProjection().recents().countsByIdentity().get(mold));
+    }
+
+    @Test
+    void cursorGainWithoutExternalLossDoesNotCountAsAcquisition() {
+        CarriedAcquisitionActivityTracker tracker = new CarriedAcquisitionActivityTracker();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        String key = "player-1";
+
+        tracker.observe(key, authority(Map.of()), runtime, CarriedAcquisitionActivityTrackerTest::identity, "seed");
+
+        int recorded = tracker.observe(
+                key,
+                authority(Map.of(), new ItemStack("tfc:tongs", 1, 1)),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "menu_slot_changed");
+
+        assertEquals(0, recorded);
+        assertEquals(List.of(), runtime.activityProjection().recents().visibleItems());
     }
 
     @Test
@@ -125,6 +149,32 @@ class CarriedAcquisitionActivityTrackerTest {
 
         assertEquals(0, recorded);
         assertEquals(List.of(), runtime.activityProjection().recents().visibleItems());
+    }
+
+    @Test
+    void quickMoveFromExternalSlotCountsAsCarriedAcquisition() {
+        CarriedAcquisitionActivityTracker tracker = new CarriedAcquisitionActivityTracker();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        String key = "player-1";
+        ItemIdentity bloom = ItemIdentity.of("tfcorewashing:refined_iron_bloom");
+
+        tracker.observe(
+                key,
+                authority(Map.of(), Map.of("tfcorewashing:refined_iron_bloom", 3), ItemStack.EMPTY),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "seed");
+
+        int recorded = tracker.observe(
+                key,
+                authority(Map.of("tfcorewashing:refined_iron_bloom", 3), Map.of(), ItemStack.EMPTY),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "menu_quick_move");
+
+        assertEquals(1, recorded);
+        assertEquals(List.of(bloom), runtime.activityProjection().recents().visibleItems());
+        assertEquals(3, runtime.activityProjection().recents().countsByIdentity().get(bloom));
     }
 
     @Test
@@ -178,10 +228,24 @@ class CarriedAcquisitionActivityTrackerTest {
     }
 
     private static InventoryAuthoritySnapshot authority(Map<String, Integer> countsByItemId, ItemStack cursorStack) {
+        return authority(countsByItemId, Map.of(), cursorStack);
+    }
+
+    private static InventoryAuthoritySnapshot authority(
+            Map<String, Integer> countsByItemId,
+            Map<String, Integer> externalCountsByItemId,
+            ItemStack cursorStack
+    ) {
         InventorySourceDescriptor source = InventorySourceDescriptor.builder("player.main")
                 .domain(InventorySourceDomain.PLAYER)
                 .role(InventorySourceRole.MAIN)
                 .paneMembership(InventoryPaneMembership.CARRIED)
+                .logicalSlotCount(27)
+                .build();
+        InventorySourceDescriptor externalSource = InventorySourceDescriptor.builder("host.storage")
+                .domain(InventorySourceDomain.HOST_STORAGE)
+                .role(InventorySourceRole.PRIMARY_STORAGE)
+                .paneMembership(InventoryPaneMembership.EXTERNAL)
                 .logicalSlotCount(27)
                 .build();
         InventoryHostDescriptor host = new InventoryHostDescriptor(
@@ -194,25 +258,34 @@ class CarriedAcquisitionActivityTrackerTest {
                 null,
                 List.of(),
                 null,
-                List.of(source),
+                List.of(source, externalSource),
                 List.of(),
                 List.of(),
                 List.of(),
                 null,
                 "");
+        Map<String, InventorySourceSnapshot> sourcesById = new LinkedHashMap<>();
+        sourcesById.put(source.id(), new InventorySourceSnapshot(source.id(), 27, entries(source.id(), countsByItemId), ""));
+        sourcesById.put(
+                externalSource.id(),
+                new InventorySourceSnapshot(externalSource.id(), 27, entries(externalSource.id(), externalCountsByItemId), ""));
+        return new InventoryAuthoritySnapshot(
+                host,
+                sourcesById,
+                new CursorStateSnapshot(cursorStack, ""));
+    }
+
+    private static List<InventoryEntrySnapshot> entries(String sourceId, Map<String, Integer> countsByItemId) {
         ArrayList<InventoryEntrySnapshot> entries = new ArrayList<>();
         int slot = 0;
         for (Map.Entry<String, Integer> entry : new LinkedHashMap<>(countsByItemId).entrySet()) {
             entries.add(new InventoryEntrySnapshot(
-                    InventoryEntryKey.slot("player.main", slot++),
+                    InventoryEntryKey.slot(sourceId, slot++),
                     new ItemStack(entry.getKey(), entry.getValue(), 64),
                     entry.getValue(),
                     ""));
         }
-        return new InventoryAuthoritySnapshot(
-                host,
-                Map.of("player.main", new InventorySourceSnapshot("player.main", 27, entries, "")),
-                new CursorStateSnapshot(cursorStack, ""));
+        return entries;
     }
 
     private static final class TestMenu extends AbstractContainerMenu {
