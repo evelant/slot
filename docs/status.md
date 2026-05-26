@@ -51,7 +51,8 @@ ingredient filter plus one persisted current craft run on both loaders. It
 renders visible ingredients in the normal wall, keeps the tracked recipe list in
 a separate right-side craft-run panel with client-configurable margins, projects
 recipe inputs as transient wanted-count pressure for gather/storage/wayfinding,
-stages selected deficits through the shared transfer executor, and survives
+keeps EMI recipe screens clear of the floating Recents strip when they would
+overlap, stages selected deficits through the shared transfer executor, and survives
 logout/rejoin through workflow persistence. ADR
 [0007](decisions/0007-emi-recipe-sidebar.md) records the pivot; the old
 recipe-goal plan lives in

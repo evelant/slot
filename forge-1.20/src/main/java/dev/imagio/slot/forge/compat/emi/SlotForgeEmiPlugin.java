@@ -7,10 +7,12 @@ import dev.emi.emi.api.widget.Bounds;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.forge.client.ForgeContainerSidebar;
 import dev.imagio.slot.forge.client.ForgeWorkspaceClient;
+import dev.imagio.slot.forge.config.SlotForgeClientConfig;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
 import dev.imagio.slot.ui.workspace.RecipeViewerIntegration;
 import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.gui.screens.Screen;
@@ -52,11 +54,15 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
                 if (craftRun != null) {
                     consumer.accept(new Bounds(craftRun.x(), craftRun.y(), craftRun.width(), craftRun.height()));
                 }
-                ForgeWorkspaceSurface.RecentsPanelBounds recents = ForgeContainerSidebar.activeRecentsPanelBounds(screen);
+                Bounds recents = recentsExclusionBounds(screen);
                 if (recents != null) {
-                    consumer.accept(new Bounds(recents.x(), recents.y(), recents.width(), recents.height()));
+                    consumer.accept(recents);
                 }
                 return;
+            }
+            Bounds recents = recentsExclusionBounds(screen);
+            if (recents != null) {
+                consumer.accept(recents);
             }
             if (isSlotStandaloneScreen(screen)) {
                 consumer.accept(new Bounds(0, 0, screen.width, screen.height));
@@ -70,8 +76,18 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
             return;
         }
         MinecraftForge.EVENT_BUS.addListener(SlotForgeEmiPlugin::onRecipeScreenRender);
+        MinecraftForge.EVENT_BUS.addListener(SlotForgeEmiPlugin::onRecipeScreenInit);
         MinecraftForge.EVENT_BUS.addListener(SlotForgeEmiPlugin::onRecipeScreenKeyPressed);
         recipeScreenEventsRegistered = true;
+    }
+
+    private static void onRecipeScreenInit(ScreenEvent.Init.Post event) {
+        Bounds recents = recentsExclusionBounds(event.getScreen());
+        if (recents != null) {
+            SlotForgeEmiRecipeSidebarAdapter.constrainRecipeScreenBelowRecents(
+                    event.getScreen(),
+                    recents.y() + recents.height());
+        }
     }
 
     private static void onRecipeScreenRender(ScreenEvent.Render.Post event) {
@@ -100,6 +116,24 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
         return ForgeContainerSidebar.activeHostScreen() == screen
                 ? ForgeContainerSidebar.activeSidebarWidth()
                 : 0;
+    }
+
+    private static Bounds recentsExclusionBounds(Screen screen) {
+        if (screen == null) {
+            return null;
+        }
+        ForgeWorkspaceSurface.RecentsPanelBounds active = ForgeContainerSidebar.activeRecentsPanelBounds(screen);
+        if (active != null) {
+            return new Bounds(active.x(), active.y(), active.width(), active.height());
+        }
+        if (!SlotForgeEmiRecipeSidebarAdapter.hasSidebarHost(screen)) {
+            return null;
+        }
+        return new Bounds(
+                RecentsStripUiBuilder.floatingLeft(screen.width, SlotForgeClientConfig.recentsHorizontalOffset()),
+                RecentsStripUiBuilder.floatingTop(SlotForgeClientConfig.recentsTopOffset()),
+                RecentsStripUiBuilder.STRIP_WIDTH_PX,
+                RecentsStripUiBuilder.STRIP_HEIGHT_PX);
     }
 
     private static boolean isSlotStandaloneScreen(Screen screen) {

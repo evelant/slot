@@ -8,7 +8,9 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings;
 import dev.imagio.slot.neoforge.client.screen.SlotContainerSidebar;
+import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.network.SlotCraftRunRecipePayload;
+import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
 import dev.imagio.slot.ui.workspace.RecipeViewerIntegration;
 import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.gui.screens.Screen;
@@ -71,11 +73,15 @@ public final class SlotEmiPlugin implements EmiPlugin {
                 if (craftRun != null) {
                     consumer.accept(new Bounds(craftRun.x(), craftRun.y(), craftRun.width(), craftRun.height()));
                 }
-                SlotContainerSidebar.ScreenBounds recents = SlotContainerSidebar.activeRecentsPanelBounds(screen);
+                Bounds recents = recentsExclusionBounds(screen);
                 if (recents != null) {
-                    consumer.accept(new Bounds(recents.x(), recents.y(), recents.width(), recents.height()));
+                    consumer.accept(recents);
                 }
                 return;
+            }
+            Bounds recents = recentsExclusionBounds(screen);
+            if (recents != null) {
+                consumer.accept(recents);
             }
             if (isSlotStandaloneScreen(screen)) {
                 consumer.accept(new Bounds(0, 0, screen.width, screen.height));
@@ -89,8 +95,18 @@ public final class SlotEmiPlugin implements EmiPlugin {
             return;
         }
         NeoForge.EVENT_BUS.addListener(SlotEmiPlugin::onRecipeScreenRender);
+        NeoForge.EVENT_BUS.addListener(SlotEmiPlugin::onRecipeScreenInit);
         NeoForge.EVENT_BUS.addListener(SlotEmiPlugin::onRecipeScreenKeyPressed);
         recipeScreenEventsRegistered = true;
+    }
+
+    private static void onRecipeScreenInit(ScreenEvent.Init.Post event) {
+        Bounds recents = recentsExclusionBounds(event.getScreen());
+        if (recents != null) {
+            SlotEmiRecipeSidebarAdapter.constrainRecipeScreenBelowRecents(
+                    event.getScreen(),
+                    recents.y() + recents.height());
+        }
     }
 
     private static void onRecipeScreenRender(ScreenEvent.Render.Post event) {
@@ -118,6 +134,29 @@ public final class SlotEmiPlugin implements EmiPlugin {
         return SlotContainerSidebar.activeHostScreen() == screen
                 ? SlotContainerSidebar.activeSidebarWidth()
                 : 0;
+    }
+
+    private static Bounds recentsExclusionBounds(Screen screen) {
+        if (screen == null) {
+            return null;
+        }
+        if (!SlotClientConfig.CLIENT.slotEnabled.get()) {
+            return null;
+        }
+        SlotContainerSidebar.ScreenBounds active = SlotContainerSidebar.activeRecentsPanelBounds(screen);
+        if (active != null) {
+            return new Bounds(active.x(), active.y(), active.width(), active.height());
+        }
+        if (!SlotEmiRecipeSidebarAdapter.hasSidebarHost(screen)) {
+            return null;
+        }
+        return new Bounds(
+                RecentsStripUiBuilder.floatingLeft(
+                        screen.width,
+                        SlotClientConfig.CLIENT.recentsHorizontalOffset.get()),
+                RecentsStripUiBuilder.floatingTop(SlotClientConfig.CLIENT.recentsTopOffset.get()),
+                RecentsStripUiBuilder.STRIP_WIDTH_PX,
+                RecentsStripUiBuilder.STRIP_HEIGHT_PX);
     }
 
     /**

@@ -69,7 +69,8 @@ hold the rest.
 
 - **2026-05-26** — Recents moved out of the wall header into a three-row
   floating center-top panel on both loaders, with client-configurable
-  horizontal/top offsets and EMI sidebar exclusion bounds.
+  horizontal/top offsets, early EMI exclusion bounds, and recipe-screen
+  overlap avoidance.
 - **2026-05-22** — EMI craft-run rows moved out of the top of the wall into a
   separate right-side panel on both loaders, with client-configurable
   top/right/bottom margins and EMI exclusion bounds for the new panel.

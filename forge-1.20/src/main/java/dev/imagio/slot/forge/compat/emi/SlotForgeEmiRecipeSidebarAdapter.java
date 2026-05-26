@@ -20,6 +20,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -27,6 +28,9 @@ import java.util.List;
 final class SlotForgeEmiRecipeSidebarAdapter {
     private static final int MAX_INPUTS_PER_RECIPE = 128;
     private static final int MAX_ALTERNATIVES_PER_INPUT = 128;
+    private static final int RECIPE_TAB_OVERHANG_PX = 24;
+    private static final int RECENTS_RECIPE_GAP_PX = 4;
+    private static final int RECIPE_BOTTOM_MARGIN_PX = 4;
     private static final String EMI_RECIPE_SCREEN = "dev.emi.emi.screen.RecipeScreen";
     private static boolean recipeScreenReflectionWarningLogged;
 
@@ -42,6 +46,40 @@ final class SlotForgeEmiRecipeSidebarAdapter {
             return new ForgeContainerSidebar.SidebarHost(screen, containerScreen);
         }
         return null;
+    }
+
+    static boolean hasSidebarHost(Screen screen) {
+        ForgeContainerSidebar.SidebarHost host = sidebarHost(screen);
+        return host != null && !host.menuScreen().getClass().getName().startsWith("dev.imagio.slot.");
+    }
+
+    static void constrainRecipeScreenBelowRecents(Screen screen, int recentsBottom) {
+        if (!isEmiRecipeScreen(screen)) {
+            return;
+        }
+        int currentY = intField(screen, "y", Integer.MIN_VALUE);
+        int currentHeight = intField(screen, "backgroundHeight", -1);
+        if (currentY == Integer.MIN_VALUE || currentHeight <= 0) {
+            return;
+        }
+        int requiredY = recentsBottom + RECENTS_RECIPE_GAP_PX + RECIPE_TAB_OVERHANG_PX;
+        if (currentY >= requiredY) {
+            return;
+        }
+        int availableHeight = screen.height - requiredY - RECIPE_BOTTOM_MARGIN_PX;
+        if (availableHeight <= 0) {
+            return;
+        }
+        int newHeight = Math.min(currentHeight, availableHeight);
+        if (!setRecipeScreenBounds(screen, requiredY, newHeight)) {
+            return;
+        }
+        rebakeRecipeTabs(screen, newHeight);
+        invokeSetPage(
+                screen,
+                intField(screen, "tabPage", 0),
+                intField(screen, "tab", 0),
+                intField(screen, "page", 0));
     }
 
     static RecipeIngredientSidebarSpec recipeSidebarSpec(Screen screen) {
@@ -338,6 +376,51 @@ final class SlotForgeEmiRecipeSidebarAdapter {
     private static int intField(Object target, String fieldName, int fallback) {
         Object value = fieldValue(target, fieldName);
         return value instanceof Number number ? number.intValue() : fallback;
+    }
+
+    private static boolean setRecipeScreenBounds(Object target, int y, int height) {
+        try {
+            Field yField = target.getClass().getDeclaredField("y");
+            Field heightField = target.getClass().getDeclaredField("backgroundHeight");
+            yField.setAccessible(true);
+            heightField.setAccessible(true);
+            yField.setInt(target, y);
+            heightField.setInt(target, height);
+            return true;
+        } catch (ReflectiveOperationException | RuntimeException error) {
+            logRecipeScreenReflectionFailure(error);
+            return false;
+        }
+    }
+
+    private static void rebakeRecipeTabs(Object screen, int backgroundHeight) {
+        Object value = fieldValue(screen, "tabs");
+        if (!(value instanceof List<?> tabs)) {
+            return;
+        }
+        for (Object tab : tabs) {
+            if (tab == null) {
+                continue;
+            }
+            try {
+                Method method = tab.getClass().getDeclaredMethod("bakePages", int.class);
+                method.setAccessible(true);
+                method.invoke(tab, backgroundHeight);
+            } catch (ReflectiveOperationException | RuntimeException error) {
+                logRecipeScreenReflectionFailure(error);
+                return;
+            }
+        }
+    }
+
+    private static void invokeSetPage(Object screen, int tabPage, int tab, int page) {
+        try {
+            Method method = screen.getClass().getDeclaredMethod("setPage", int.class, int.class, int.class);
+            method.setAccessible(true);
+            method.invoke(screen, tabPage, tab, page);
+        } catch (ReflectiveOperationException | RuntimeException error) {
+            logRecipeScreenReflectionFailure(error);
+        }
     }
 
     private static double guiMouseX() {
