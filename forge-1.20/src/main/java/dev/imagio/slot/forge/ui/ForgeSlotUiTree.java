@@ -317,7 +317,7 @@ public final class ForgeSlotUiTree {
         return node;
     }
 
-    private TaffyStyle styleFor(SlotUiElement model) {
+    static TaffyStyle styleFor(SlotUiElement model) {
         SlotUiLayout layout = model.layout();
         TaffyStyle style = new TaffyStyle();
         style.display = TaffyDisplay.FLEX;
@@ -334,6 +334,7 @@ public final class ForgeSlotUiTree {
             style.flexGrow = layout.flex();
             style.flexShrink = 1f;
             style.flexBasis = TaffyDimension.ZERO;
+            style.minSize = TaffySize.of(TaffyDimension.ZERO, TaffyDimension.ZERO);
         }
         style.padding = paddingFor(layout);
         if (layout.hasGapAll()) {
@@ -362,7 +363,7 @@ public final class ForgeSlotUiTree {
         return style;
     }
 
-    private TaffyRect<LengthPercentage> paddingFor(SlotUiLayout layout) {
+    private static TaffyRect<LengthPercentage> paddingFor(SlotUiLayout layout) {
         float left = 0f;
         float right = 0f;
         float top = 0f;
@@ -389,7 +390,7 @@ public final class ForgeSlotUiTree {
                 LengthPercentage.length(bottom));
     }
 
-    private TaffyRect<LengthPercentageAuto> insetFor(SlotUiLayout layout) {
+    private static TaffyRect<LengthPercentageAuto> insetFor(SlotUiLayout layout) {
         LengthPercentageAuto left = LengthPercentageAuto.AUTO;
         LengthPercentageAuto right = LengthPercentageAuto.AUTO;
         LengthPercentageAuto top = LengthPercentageAuto.AUTO;
@@ -463,9 +464,15 @@ public final class ForgeSlotUiTree {
         if (text == null || text.isBlank()) {
             return;
         }
+        if (width <= 0f || height <= 0f) {
+            return;
+        }
         SlotUiTextStyle style = node.model.textStyle();
-        Component component = uiText(text);
         float scale = textScale(style);
+        Component component = uiText(truncateText(text, width, scale));
+        if (component.getString().isBlank()) {
+            return;
+        }
         int textWidth = Math.round(font.width(component) * scale);
         int textHeight = Math.round(font.lineHeight * scale);
         float drawX = x;
@@ -490,6 +497,25 @@ public final class ForgeSlotUiTree {
         graphics.pose().scale(scale, scale, 1f);
         graphics.drawString(font, component, 0, 0, style.color(), style.shadow());
         graphics.pose().popPose();
+    }
+
+    private String truncateText(String text, float width, float scale) {
+        if (text == null || text.isBlank()) {
+            return "";
+        }
+        Component component = uiText(text);
+        if (font.width(component) * scale <= width) {
+            return text;
+        }
+        String suffix = "...";
+        if (font.width(uiText(suffix)) * scale > width) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder(text);
+        while (!builder.isEmpty() && font.width(uiText(builder + suffix)) * scale > width) {
+            builder.deleteCharAt(builder.length() - 1);
+        }
+        return builder.isEmpty() ? suffix : builder + suffix;
     }
 
     private void renderItem(GuiGraphics graphics, Node node, float x, float y, float width, float height) {

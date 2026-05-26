@@ -1,14 +1,12 @@
 package dev.imagio.slot.forge.network;
 
+import dev.imagio.slot.forge.test.MinecraftTestBootstrap;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.workflow.domain.CraftRunState;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.Bootstrap;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,13 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class Forge120WorkspaceViewModelCodecTest {
     @BeforeAll
     static void bootstrapMinecraft() throws ReflectiveOperationException {
-        SharedConstants.tryDetectVersion();
-        // Plain JUnit does not have Forge's network event bus bootstrapped, so
-        // avoid Bootstrap.bootStrap() and initialise just the vanilla registries.
-        java.lang.reflect.Field bootstrapped = Bootstrap.class.getDeclaredField("isBootstrapped");
-        bootstrapped.setAccessible(true);
-        bootstrapped.setBoolean(null, true);
-        BuiltInRegistries.bootStrap();
+        MinecraftTestBootstrap.bootstrapVanillaRegistries();
     }
 
     @Test
