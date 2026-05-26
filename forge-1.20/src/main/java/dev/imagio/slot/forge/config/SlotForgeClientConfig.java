@@ -1,5 +1,6 @@
 package dev.imagio.slot.forge.config;
 
+import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class SlotForgeClientConfig {
@@ -27,6 +28,14 @@ public final class SlotForgeClientConfig {
         return CLIENT.sidebarBottomMargin.get();
     }
 
+    public static int recentsHorizontalOffset() {
+        return CLIENT.recentsHorizontalOffset.get();
+    }
+
+    public static int recentsTopOffset() {
+        return CLIENT.recentsTopOffset.get();
+    }
+
     public static int craftRunRightMargin() {
         return CLIENT.craftRunRightMargin.get();
     }
@@ -48,6 +57,8 @@ public final class SlotForgeClientConfig {
         public final ForgeConfigSpec.IntValue sidebarLeftMargin;
         public final ForgeConfigSpec.IntValue sidebarTopMargin;
         public final ForgeConfigSpec.IntValue sidebarBottomMargin;
+        public final ForgeConfigSpec.IntValue recentsHorizontalOffset;
+        public final ForgeConfigSpec.IntValue recentsTopOffset;
         public final ForgeConfigSpec.IntValue craftRunRightMargin;
         public final ForgeConfigSpec.IntValue craftRunTopMargin;
         public final ForgeConfigSpec.IntValue craftRunBottomMargin;
@@ -74,6 +85,24 @@ public final class SlotForgeClientConfig {
                     .translation("slot.config.sidebar_bottom_margin")
                     .comment("Screen-pixel gap below the SLOT sidebar. Increase this when recipe viewer controls sit at the bottom-left edge.")
                     .defineInRange("sidebarBottomMargin", 0, 0, 400);
+
+            recentsHorizontalOffset = builder
+                    .translation("slot.config.recents_horizontal_offset")
+                    .comment("Screen-pixel offset from centered placement for the floating SLOT Recent strip. Negative moves left; positive moves right.")
+                    .defineInRange(
+                            "recentsHorizontalOffset",
+                            RecentsStripUiBuilder.DEFAULT_HORIZONTAL_OFFSET_PX,
+                            -400,
+                            400);
+
+            recentsTopOffset = builder
+                    .translation("slot.config.recents_top_offset")
+                    .comment("Screen-pixel gap above the floating SLOT Recent strip.")
+                    .defineInRange(
+                            "recentsTopOffset",
+                            RecentsStripUiBuilder.DEFAULT_TOP_OFFSET_PX,
+                            0,
+                            400);
 
             craftRunRightMargin = builder
                     .translation("slot.config.craft_run_right_margin")

@@ -2,9 +2,11 @@ package dev.imagio.slot.neoforge.screen.ldlib;
 
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -27,6 +29,24 @@ final class RecentsStripBuilder {
 
     UIElement overlay() {
         return renderer.render(builder.overlay(host.viewModel.recentIdentities()));
+    }
+
+    UIElement floatingOverlay() {
+        UIElement strip = overlay();
+        strip.layout(layout -> layout
+                .positionType(dev.vfyjxf.taffy.style.TaffyPosition.ABSOLUTE)
+                .left(RecentsStripUiBuilder.floatingLeft(screenWidth(),
+                        SlotClientConfig.CLIENT.recentsHorizontalOffset.get()))
+                .top(RecentsStripUiBuilder.floatingTop(SlotClientConfig.CLIENT.recentsTopOffset.get()))
+                .width(RecentsStripUiBuilder.STRIP_WIDTH_PX)
+                .height(RecentsStripUiBuilder.STRIP_HEIGHT_PX));
+        strip.style(style -> style.zIndex(18));
+        return strip;
+    }
+
+    private static int screenWidth() {
+        Minecraft minecraft = Minecraft.getInstance();
+        return minecraft == null ? RecentsStripUiBuilder.STRIP_WIDTH_PX : minecraft.getWindow().getGuiScaledWidth();
     }
 
     private void installRecentsInteractions(SlotUiElement model, UIElement element) {

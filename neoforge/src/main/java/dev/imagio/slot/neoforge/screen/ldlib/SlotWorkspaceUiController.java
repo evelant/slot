@@ -66,6 +66,7 @@ final class SlotWorkspaceUiController {
     final UIElement root;
     final UIElement content;
     final UIElement sidebarFrame;
+    final UIElement recentsPanelSlot;
     final UIElement craftRunPanelSlot;
     UIElement popoverSlot;
 
@@ -262,6 +263,11 @@ final class SlotWorkspaceUiController {
         } else {
             this.sidebarFrame = null;
         }
+        this.recentsPanelSlot = new UIElement().layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(0).right(0).top(0).bottom(0));
+        this.recentsPanelSlot.style(style -> style.zIndex(18));
+        this.recentsPanelSlot.setAllowHitTest(false);
         this.craftRunPanelSlot = new UIElement().layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(0).right(0).top(0).bottom(0));
@@ -306,12 +312,12 @@ final class SlotWorkspaceUiController {
         // its TICK + MOUSE_MOVE listeners on root persist across rebuilds;
         // recreating it on every rebuildNow() would leak handlers.
         // Order: invisible sync binding, workspace frame/content, floating
-        // craft-run panel, and popovers. The flex-column flow gives content
-        // the leftover height above the bottom slots.
+        // recents, floating craft-run panel, and popovers. The flex-column
+        // flow gives content the leftover height above the bottom slots.
         if (sidebarMode) {
-            root.addChildren(syncBinding(), sidebarFrame, craftRunPanelSlot, popoverSlot);
+            root.addChildren(syncBinding(), sidebarFrame, recentsPanelSlot, craftRunPanelSlot, popoverSlot);
         } else {
-            root.addChildren(syncBinding(), content, beltSlot, craftRunPanelSlot, popoverSlot);
+            root.addChildren(syncBinding(), content, beltSlot, recentsPanelSlot, craftRunPanelSlot, popoverSlot);
         }
         root.addEventListener(UIEvents.REMOVED, event -> markSurfaceClosed());
         // Bubble-phase universal handlers for the real menu cursor:
@@ -553,6 +559,8 @@ final class SlotWorkspaceUiController {
         // depends on view-model state.
         beltSlot.clearAllChildren();
         beltSlot.addChild(belt.overlay());
+        recentsPanelSlot.clearAllChildren();
+        recentsPanelSlot.addChild(recentsStrip.floatingOverlay());
         craftRunPanelSlot.clearAllChildren();
         UIElement craftRunPanel = listWall.craftRunPanel();
         if (craftRunPanel != null) {

@@ -1,12 +1,12 @@
 # Workflow Tabs Plan
 
-Last updated: 2026-05-21
+Last updated: 2026-05-26
 
 Status: core implementation, the first playtest polish pass, and the EMI-first
 craft-run/staging slice have landed.
 Workflow tabs now support active-tab filtering, one-level variants, tab-local
 desired/wanted targets, accepted exact/tag inputs, accepted proximate substitute
-ghosts, compact nearby headers, two-row Recents, hidden Useful Now scoring,
+ghosts, compact nearby headers, three-row floating Recents, hidden Useful Now scoring,
 visible activation-scoped Put Away guidance, search/keybind polish, shared
 tool/container/display-storage target resolution, put-away destination
 highlighting/wayfinding, and the adjacent junk/trash pressure-relief slice.
@@ -747,7 +747,7 @@ Acceptance:
 
 Status: landed. Core tab rendering, activation, variant display, visible create
 flow, membership/accepted-input menus, wider right-click menus, active-tab
-filtering, two-row Recents, search idle commit/clear, header reveal clicks,
+filtering, three-row floating Recents, search idle commit/clear, header reveal clicks,
 main-inventory move keybind, workflow/variant reorder controls, adjacent
 duplicate insertion, readable copy names, and sibling rename collision checks
 are live.

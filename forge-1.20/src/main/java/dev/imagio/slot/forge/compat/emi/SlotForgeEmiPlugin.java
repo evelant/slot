@@ -52,6 +52,10 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
                 if (craftRun != null) {
                     consumer.accept(new Bounds(craftRun.x(), craftRun.y(), craftRun.width(), craftRun.height()));
                 }
+                ForgeWorkspaceSurface.RecentsPanelBounds recents = ForgeContainerSidebar.activeRecentsPanelBounds(screen);
+                if (recents != null) {
+                    consumer.accept(new Bounds(recents.x(), recents.y(), recents.width(), recents.height()));
+                }
                 return;
             }
             if (isSlotStandaloneScreen(screen)) {

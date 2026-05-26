@@ -238,20 +238,11 @@ final class ListWallPanelBuilder {
         workflowRow.addChild(host.kit.kitCluster());
         panel.addChild(workflowRow);
         // Active-chest control strip — only when the host screen is a
-        // chest screen. Shows above the recents strip so the chest
-        // controls stay close to the action row, with recents (which is
-        // navigation, not a per-host action) just below.
+        // chest screen. Recents now floats at root level because it is
+        // navigation, not a per-host wall action.
         UIElement activeChest = host.activeChestStrip.overlay();
         if (activeChest != null) {
             panel.addChild(activeChest);
-        }
-        // Recents strip stays pinned below the top row and outside the
-        // wall scroller — "where did the thing I just grabbed end up?"
-        // doesn't follow the scroll position. See
-        // docs/plans/single-column-workspace.md Phase 3.
-        UIElement recentsStrip = host.recentsStrip.overlay();
-        if (recentsStrip != null) {
-            panel.addChild(recentsStrip);
         }
         boolean filtering = !host.searchController.normalizedQuery().isBlank();
         if (!host.recipeSidebarActive()) {

@@ -1,6 +1,7 @@
 package dev.imagio.slot.neoforge.client;
 
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
+import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
 import me.shedaniel.clothconfig2.api.AbstractConfigListEntry;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
@@ -15,6 +16,8 @@ public final class SlotNeoForgeConfigScreens {
     private static final int DEFAULT_MARGIN = 0;
     private static final int MIN_MARGIN = 0;
     private static final int MAX_MARGIN = 400;
+    private static final int MIN_CENTER_OFFSET = -400;
+    private static final int MAX_CENTER_OFFSET = 400;
 
     private SlotNeoForgeConfigScreens() {
     }
@@ -61,6 +64,24 @@ public final class SlotNeoForgeConfigScreens {
                 "slot.config.sidebar_bottom_margin.tooltip",
                 SlotClientConfig.CLIENT.sidebarBottomMargin
         ));
+        category.addEntry(intEntry(
+                entries,
+                "slot.config.recents_horizontal_offset",
+                "slot.config.recents_horizontal_offset.tooltip",
+                SlotClientConfig.CLIENT.recentsHorizontalOffset,
+                RecentsStripUiBuilder.DEFAULT_HORIZONTAL_OFFSET_PX,
+                MIN_CENTER_OFFSET,
+                MAX_CENTER_OFFSET
+        ));
+        category.addEntry(intEntry(
+                entries,
+                "slot.config.recents_top_offset",
+                "slot.config.recents_top_offset.tooltip",
+                SlotClientConfig.CLIENT.recentsTopOffset,
+                RecentsStripUiBuilder.DEFAULT_TOP_OFFSET_PX,
+                MIN_MARGIN,
+                MAX_MARGIN
+        ));
         category.addEntry(intMarginEntry(
                 entries,
                 "slot.config.craft_run_right_margin",
@@ -89,10 +110,22 @@ public final class SlotNeoForgeConfigScreens {
             String tooltipKey,
             ModConfigSpec.IntValue value
     ) {
+        return intEntry(entries, labelKey, tooltipKey, value, DEFAULT_MARGIN, MIN_MARGIN, MAX_MARGIN);
+    }
+
+    private static AbstractConfigListEntry<?> intEntry(
+            ConfigEntryBuilder entries,
+            String labelKey,
+            String tooltipKey,
+            ModConfigSpec.IntValue value,
+            int defaultValue,
+            int min,
+            int max
+    ) {
         return entries.startIntField(Component.translatable(labelKey), value.get())
-                .setDefaultValue(DEFAULT_MARGIN)
-                .setMin(MIN_MARGIN)
-                .setMax(MAX_MARGIN)
+                .setDefaultValue(defaultValue)
+                .setMin(min)
+                .setMax(max)
                 .setTooltip(Component.translatable(tooltipKey))
                 .setSaveConsumer(next -> {
                     value.set(next);

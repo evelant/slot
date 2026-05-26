@@ -8,6 +8,7 @@ import dev.imagio.slot.neoforge.network.SlotSidebarClosePayload;
 import dev.imagio.slot.neoforge.network.SlotSidebarOpenPayload;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarClientUi;
 import dev.imagio.slot.ui.workspace.CraftRunUiBuilder;
+import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.Minecraft;
@@ -118,6 +119,19 @@ public final class SlotContainerSidebar {
                 SlotClientConfig.CLIENT.craftRunTopMargin.get(),
                 width,
                 height);
+    }
+
+    public static ScreenBounds activeRecentsPanelBounds(Screen screen) {
+        if (screen == null || activeHostScreen != screen) {
+            return null;
+        }
+        return new ScreenBounds(
+                RecentsStripUiBuilder.floatingLeft(
+                        screen.width,
+                        SlotClientConfig.CLIENT.recentsHorizontalOffset.get()),
+                RecentsStripUiBuilder.floatingTop(SlotClientConfig.CLIENT.recentsTopOffset.get()),
+                RecentsStripUiBuilder.STRIP_WIDTH_PX,
+                RecentsStripUiBuilder.STRIP_HEIGHT_PX);
     }
 
     public static void registerSidebarHostResolver(SidebarHostResolver resolver) {

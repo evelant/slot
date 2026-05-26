@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-22. Operational handoff. Read after
+Last updated: 2026-05-26. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -21,7 +21,7 @@ desired-count, chest, deposit/take, cursor, active-workflow gather, and
 cross-surface actions.
 
 Phase 2 has the production wall shell on both loaders: shared 24px item-card
-chrome, two-row Recents, vanilla-shaped Belt, active chest role controls,
+chrome, three-row floating Recents, vanilla-shaped Belt, active chest role controls,
 workflow controls, accepted-input menus, compact nearby headers, remembered
 search/scroll, configurable sidebar and craft-run panel margins, visible activation-scoped Put Away
 guidance, Forge key parity, and junk/trash pressure relief. Useful Now scoring
@@ -198,12 +198,13 @@ Now a sectioned vertical scroll list of single-LOD cards. The
 to minimize churn — see list-view.md § Naming. **Section** —
 player-facing organizational block (the new presentation of an
 "island"). **Home** — stable section + ordinal owned by one item
-identity. **Recents** — two-row pinned strip of the most recently acquired
-identities into carried inventory. It is not a discovery filter: world pickups,
-chest/storage takes, machine outputs, crafting results, trades, and rewards
-count when they enter carried storage; moves wholly inside carried storage
-(main, hotbar, offhand, armor, Curios/backpacks, or other carried providers)
-do not. **Workflow** — player-authored task view layered on top of
+identity. **Recents** — three-row floating center-top strip of the most
+recently acquired identities into carried inventory, with
+client-configurable screen offsets. It is not a discovery filter: world
+pickups, chest/storage takes, machine outputs, crafting results, trades, and
+rewards count when they enter carried storage; moves wholly inside carried
+storage (main, hotbar, offhand, armor, Curios/backpacks, or other carried
+providers) do not. **Workflow** — player-authored task view layered on top of
 `All`; workflow membership behaves as an implicit active wanted-one target, accepted
 inputs make exact/tag matches relevant without target pressure, workflows can have
 one level of variants, and optional Belt/offhand pages reuse the older Kit

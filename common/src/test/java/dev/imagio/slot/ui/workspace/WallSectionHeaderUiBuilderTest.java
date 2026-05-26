@@ -4,6 +4,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEvent;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
+import dev.imagio.slot.ui.spi.SlotUiLayout;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
@@ -607,9 +608,32 @@ class WallSectionHeaderUiBuilderTest {
 
         assertTrue(strip.hasAttachment(WorkspaceUiAttachments.RECENTS_STRIP));
         assertEquals(2, strip.children().size());
-        assertEquals("Recent", strip.children().get(0).text());
+        SlotUiElement label = strip.children().get(0);
+        assertEquals("Recent", label.text());
+        assertEquals(SlotUiLayout.PositionType.ABSOLUTE, label.layout().positionType());
+        assertEquals(RecentsStripUiBuilder.PADDING_PX + 1, label.layout().left());
         SlotUiElement grid = strip.children().get(1);
         assertEquals("nothing yet", grid.children().get(0).text());
+    }
+
+    @Test
+    void recentsStripUsesThreeRowsAndFixedFloatingSize() {
+        RecordingRecentsContext context = new RecordingRecentsContext();
+
+        SlotUiElement strip = new RecentsStripUiBuilder(context).overlay(java.util.List.of());
+
+        assertEquals(3, RecentsStripUiBuilder.MAX_ROWS);
+        assertEquals(24, RecentsStripUiBuilder.MAX_ICONS);
+        assertEquals(RecentsStripUiBuilder.STRIP_WIDTH_PX, strip.layout().width());
+        assertEquals(RecentsStripUiBuilder.STRIP_HEIGHT_PX, strip.layout().height());
+        assertEquals(
+                RecentsStripUiBuilder.GRID_WIDTH_PX + RecentsStripUiBuilder.PADDING_PX * 2,
+                RecentsStripUiBuilder.STRIP_WIDTH_PX);
+        assertEquals(
+                RecentsStripUiBuilder.CARD_SIZE_PX * 3
+                        + RecentsStripUiBuilder.GAP_PX * 2
+                        + RecentsStripUiBuilder.PADDING_PX * 2,
+                RecentsStripUiBuilder.STRIP_HEIGHT_PX);
     }
 
     @Test

@@ -120,6 +120,7 @@ public final class ForgeWorkspaceSurface {
     private SlotWorkspaceViewModel.OffhandSlot offhand = SlotWorkspaceViewModel.OffhandSlot.empty();
     private SlotWorkspaceViewModel.IdentityRef hoveredIdentity;
     private String searchQuery = "";
+    private int viewportWidth = 320;
     private int viewportHeight = 240;
     private String lastSentSearchQuery = "";
     private boolean searchActive;
@@ -763,6 +764,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     private void rememberViewport(int width, int height) {
+        viewportWidth = Math.max(1, width);
         viewportHeight = Math.max(1, height);
     }
 
@@ -854,6 +856,7 @@ public final class ForgeWorkspaceSurface {
                 sidebarRail.addChild(spacer(1, bottomMargin));
             }
             root.addChild(sidebarRail);
+            addFloatingRecents(root);
             addCraftRunPanel(root);
             return root;
         }
@@ -864,8 +867,16 @@ public final class ForgeWorkspaceSurface {
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
         root.addChild(workspaceColumn(false));
+        addFloatingRecents(root);
         addCraftRunPanel(root);
         return root;
+    }
+
+    private void addFloatingRecents(SlotUiElement root) {
+        SlotUiElement panel = floatingRecents();
+        if (root != null && panel != null) {
+            root.addChild(panel);
+        }
     }
 
     private void addCraftRunPanel(SlotUiElement root) {
@@ -920,7 +931,6 @@ public final class ForgeWorkspaceSurface {
             }
         }
         column.addChild(workflowTabs(sidebarMode));
-        column.addChild(recents(sidebarMode));
         SlotUiElement suggestions = contextualSuggestions(sidebarMode);
         if (suggestions != null) {
             column.addChild(suggestions);
@@ -1165,15 +1175,18 @@ public final class ForgeWorkspaceSurface {
                 .addChild(rack);
     }
 
-    private SlotUiElement recents(boolean sidebarMode) {
+    private SlotUiElement floatingRecents() {
         SlotUiElement strip = new RecentsStripUiBuilder(new RecentsContext()).overlay(recents);
         enrichRecentCards(strip);
-        if (sidebarMode) {
-            return strip;
-        }
-        return SlotUiElement.element()
-                .layout(layout -> layout.width(workspaceWidth()))
-                .addChild(strip);
+        return strip.zIndex(18)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(RecentsStripUiBuilder.floatingLeft(
+                                viewportWidth,
+                                SlotForgeClientConfig.recentsHorizontalOffset()))
+                        .top(RecentsStripUiBuilder.floatingTop(SlotForgeClientConfig.recentsTopOffset()))
+                        .width(RecentsStripUiBuilder.STRIP_WIDTH_PX)
+                        .height(RecentsStripUiBuilder.STRIP_HEIGHT_PX));
     }
 
     private SlotUiElement contextualSuggestions(boolean sidebarMode) {
@@ -1479,6 +1492,17 @@ public final class ForgeWorkspaceSurface {
     }
 
     public record CraftRunPanelBounds(int x, int y, int width, int height) {
+    }
+
+    public RecentsPanelBounds recentsPanelBounds(int screenWidth) {
+        return new RecentsPanelBounds(
+                RecentsStripUiBuilder.floatingLeft(screenWidth, SlotForgeClientConfig.recentsHorizontalOffset()),
+                RecentsStripUiBuilder.floatingTop(SlotForgeClientConfig.recentsTopOffset()),
+                RecentsStripUiBuilder.STRIP_WIDTH_PX,
+                RecentsStripUiBuilder.STRIP_HEIGHT_PX);
+    }
+
+    public record RecentsPanelBounds(int x, int y, int width, int height) {
     }
 
     private SlotWorkspaceViewModel.ContextualSuggestionLane visibleSuggestionLane(

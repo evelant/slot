@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-22
+Last updated: 2026-05-26
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -20,7 +20,7 @@ metadata/transfer/hotbar/workflow/chest/cursor/gather/wayfinding actions, and
 the direct Taffy/GuiGraphics `G` screen plus mounted sidebar. The latest
 UI parity pass aligned both loaders on right-side workflows, vanilla-shaped
 Belt, shared item-card state chrome, accepted-input menus, remembered
-search/scroll, two-row Recents, compact section headers, and configurable
+search/scroll, three-row floating Recents, compact section headers, and configurable
 sidebar/craft-run panel margins. NeoForge remains the semantic oracle; the next risk is
 migrating richer modern-only affordances without reintroducing backend-specific
 semantics.
@@ -67,6 +67,9 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-26** — Recents moved out of the wall header into a three-row
+  floating center-top panel on both loaders, with client-configurable
+  horizontal/top offsets and EMI sidebar exclusion bounds.
 - **2026-05-22** — EMI craft-run rows moved out of the top of the wall into a
   separate right-side panel on both loaders, with client-configurable
   top/right/bottom margins and EMI exclusion bounds for the new panel.
@@ -106,9 +109,8 @@ hold the rest.
   section headers carry `+x` nearby counts and compact empty sections, Useful Now
   suggestion rows are hidden while live contextual observation, expensive
   contextual scoring, and storage-ghost expansion are disabled for now,
-  Recents renders two rows, search
-  idle-commits and later clears after close
-  with right-click clear working on Forge, grave accent moves hovered identities
+  search idle-commits and later clears after close with right-click clear
+  working on Forge, grave accent moves hovered identities
   to main inventory, Shift+grave moves hovered identities to backpack storage,
   and the shared
   target/display-storage fixes stabilized damaged tools, baskets/sacks, tool
@@ -129,53 +131,7 @@ hold the rest.
   reroute, with pressure reads cached against shared carried-inventory revision
   signals and known specialist Sacks n' Such containers excluded from general
   pressure.
-- **2026-05-18** — Contextual suggestion scoring now treats pickup/storage-take
-  events as context seeds rather than exact Useful Now self-suggestions,
-  deduplicates lane cards by identity, suppresses exact-use cards that are
-  already visible in quick access/equipment, ignores non-tool item-destroyed
-  events as usefulness evidence, caps desired-count excess to two Put Away
-  cards, and requires fresh/repeated deposit history when no storage route is
-  visible.
-- **2026-05-18** — Workflows landed on the existing Kit substrate: `All`
-  targets are inherited by active workflows, parent + variant targets compose as
-  floors, workflow membership creates an implicit wanted-one target, active-workflow
-  wanted counts clear on deactivation, gather/protection/wayfinding use the
-  shared workflow resolver, the wall keeps carried cards and filters non-carried
-  cards to active-workflow relevance while keeping routed put-away clutter visible,
-  both loaders render visible workflows
-  with one-level variants, and card/workflow menus can add/remove workflow members or
-  create variants.
-- **2026-05-18** — Workflow cleanup guidance added Put Away projection for
-  active-workflow-irrelevant carried items, marks items without a learned nearby home
-  instead of dropping them silently, preserves routed clutter on normal wall
-  cards, and adds an unbound cross-loader put-away hotkey that delegates to the
-  same protected deposit command as the button. The rendered row later became
-  visible once guidance was scoped to activation-time clutter.
-- **2026-05-18** — Workflows can now accept exact items or deterministic
-  item tags from the card right-click menu without creating wanted/desired
-  targets; accepted inputs stay visible in active workflows, are omitted from Put
-  Away, persist through workflow state/view-model codecs, and are protected
-  from bulk put-away deposit.
-- **2026-05-18** — Workflow target cleanup now canonicalizes desired and
-  wanted tool/storage-container identities through the shared target resolver,
-  uses that resolver for bulk-deposit reservation, keeps damaged carried tools
-  and NBT-bearing baskets/sacks from becoming stuck craft targets, limits
-  automatic tool-rack deposits to racks with matching visible contents,
-  preserves display target ids for deposit undo, keeps active-chest deposit
-  fallback behind the shared proximity gate, and syncs TFC display blocks after
-  SLOT mutates them.
-- **2026-05-17** — Contextual suggestion signal tuning continued: passive
-  acquisitions/internal moves no longer train Useful Now, broad station/use
-  signatures no longer replay weak associations, place/use/consume events
-  avoid exact self-promotion loops, Put Away requires route or deposit evidence,
-  nearby storage ghosts reserve Useful Now slots, and `/slot debug contextual`
-  dumps event history plus score breakdowns for playtest debugging.
-- **2026-05-16** — EMI recipe screens now show the normal SLOT sidebar filtered
-  to the visible recipe ingredients on NeoForge and Forge. The projection is
-  transient, not a goal: present ingredients keep their normal section/storage
-  context, missing ingredients reuse the existing craft-target state, EMI
-  remains the recipe explanation surface, and the old recipe-goal plan moved to
-  `retired/` with ADR 0007 recording the pivot.
+
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the

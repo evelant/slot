@@ -70,6 +70,13 @@ public final class ForgeContainerSidebar {
         return activeSurface.craftRunPanelBounds(screen.width, screen.height);
     }
 
+    public static ForgeWorkspaceSurface.RecentsPanelBounds activeRecentsPanelBounds(Screen screen) {
+        if (screen != activeHostScreen || activeSurface == null) {
+            return null;
+        }
+        return activeSurface.recentsPanelBounds(screen.width);
+    }
+
     public static void registerSidebarHostResolver(SidebarHostResolver resolver) {
         if (resolver != null && !SIDEBAR_HOST_RESOLVERS.contains(resolver)) {
             SIDEBAR_HOST_RESOLVERS.add(resolver);
@@ -295,6 +302,14 @@ public final class ForgeContainerSidebar {
 
     private static boolean insideInteractiveSurface(double mouseX, double mouseY) {
         if (insideSidebar(mouseX, mouseY)) {
+            return true;
+        }
+        ForgeWorkspaceSurface.RecentsPanelBounds recentsBounds = activeRecentsPanelBounds(activeHostScreen);
+        if (recentsBounds != null
+                && mouseX >= recentsBounds.x()
+                && mouseX < recentsBounds.x() + recentsBounds.width()
+                && mouseY >= recentsBounds.y()
+                && mouseY < recentsBounds.y() + recentsBounds.height()) {
             return true;
         }
         ForgeWorkspaceSurface.CraftRunPanelBounds bounds = activeCraftRunPanelBounds(activeHostScreen);

@@ -14,11 +14,20 @@ public final class RecentsStripUiBuilder {
     public static final int CARD_SIZE_PX = WallCardUiBuilder.CARD_CELL_PX;
     public static final int GAP_PX = 2;
     public static final int PADDING_PX = 3;
-    public static final int MAX_ROWS = 2;
+    public static final int MAX_ROWS = 3;
     public static final int MAX_CARDS_PER_ROW = 8;
     public static final int MAX_CARDS = MAX_ROWS * MAX_CARDS_PER_ROW;
     public static final int MAX_ICONS = MAX_CARDS;
-    public static final int STRIP_HEIGHT_PX = CARD_SIZE_PX * MAX_ROWS + GAP_PX + PADDING_PX * 2;
+    public static final int LABEL_WIDTH_PX = 28;
+    public static final int LABEL_HEIGHT_PX = 7;
+    public static final int GRID_WIDTH_PX =
+            CARD_SIZE_PX * MAX_CARDS_PER_ROW + GAP_PX * (MAX_CARDS_PER_ROW - 1);
+    public static final int GRID_HEIGHT_PX =
+            CARD_SIZE_PX * MAX_ROWS + GAP_PX * (MAX_ROWS - 1);
+    public static final int STRIP_WIDTH_PX = GRID_WIDTH_PX + PADDING_PX * 2;
+    public static final int STRIP_HEIGHT_PX = GRID_HEIGHT_PX + PADDING_PX * 2;
+    public static final int DEFAULT_HORIZONTAL_OFFSET_PX = 0;
+    public static final int DEFAULT_TOP_OFFSET_PX = 8;
 
     private static final int STRIP_BACKGROUND = 0xB810171D;
 
@@ -37,7 +46,7 @@ public final class RecentsStripUiBuilder {
                 .zIndex(1)
                 .attach(WorkspaceUiAttachments.RECENTS_STRIP, Boolean.TRUE)
                 .layout(layout -> layout
-                        .widthPercent(100)
+                        .width(STRIP_WIDTH_PX)
                         .height(STRIP_HEIGHT_PX)
                         .paddingHorizontal(PADDING_PX)
                         .paddingVertical(PADDING_PX)
@@ -47,19 +56,24 @@ public final class RecentsStripUiBuilder {
         strip.on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation());
 
         strip.addChild(SlotUiElement.label("Recent", MUTED)
-                .layout(layout -> layout.height(CARD_SIZE_PX * MAX_ROWS + GAP_PX).paddingRight(2))
+                .zIndex(4)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(PADDING_PX + 1)
+                        .top(0)
+                        .width(LABEL_WIDTH_PX)
+                        .height(LABEL_HEIGHT_PX))
                 .textStyle(style -> style
                         .color(MUTED)
                         .shadow(false)
-                        .fontSize(6)
-                        .adaptiveWidth(true)
+                        .fontSize(5)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
 
         SlotUiElement grid = SlotUiElement.element()
                 .layout(layout -> layout
-                        .flex(1)
-                        .height(CARD_SIZE_PX * MAX_ROWS + GAP_PX)
+                        .width(GRID_WIDTH_PX)
+                        .height(GRID_HEIGHT_PX)
                         .gapAll(GAP_PX)
                         .flexWrap(SlotUiLayout.FlexWrap.WRAP)
                         .alignItems(SlotUiLayout.AlignItems.FLEX_START)
@@ -90,6 +104,16 @@ public final class RecentsStripUiBuilder {
                             .vertical(SlotUiTextStyle.Vertical.CENTER)));
         }
         return strip;
+    }
+
+    public static int floatingLeft(int screenWidth, int horizontalOffset) {
+        int maxLeft = Math.max(0, screenWidth - STRIP_WIDTH_PX);
+        int centered = Math.round((screenWidth - STRIP_WIDTH_PX) / 2.0f) + horizontalOffset;
+        return Math.max(0, Math.min(maxLeft, centered));
+    }
+
+    public static int floatingTop(int topOffset) {
+        return Math.max(0, topOffset);
     }
 
     private SlotUiElement recentCard(SlotWorkspaceViewModel.AtlasItem item) {

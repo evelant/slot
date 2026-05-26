@@ -71,6 +71,10 @@ public final class SlotEmiPlugin implements EmiPlugin {
                 if (craftRun != null) {
                     consumer.accept(new Bounds(craftRun.x(), craftRun.y(), craftRun.width(), craftRun.height()));
                 }
+                SlotContainerSidebar.ScreenBounds recents = SlotContainerSidebar.activeRecentsPanelBounds(screen);
+                if (recents != null) {
+                    consumer.accept(new Bounds(recents.x(), recents.y(), recents.width(), recents.height()));
+                }
                 return;
             }
             if (isSlotStandaloneScreen(screen)) {
