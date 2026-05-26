@@ -226,11 +226,13 @@ final class AtlasCardBuilder {
         float[] desiredScrollAccumulator = {0f};
         button.addEventListener(UIEvents.MOUSE_WHEEL, event -> {
             boolean wantedAdjustDown = dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.markWantedDown();
-            if (Screen.hasControlDown()) {
+            boolean shiftDown = Screen.hasShiftDown();
+            boolean controlDown = Screen.hasControlDown();
+            if (controlDown) {
                 if (WorkspaceCursorState.isCarrying()) {
                     return;
                 }
-            } else if (!wantedAdjustDown && (!Screen.hasShiftDown() || WorkspaceCursorState.isCarrying())) {
+            } else if (!wantedAdjustDown && (!shiftDown || WorkspaceCursorState.isCarrying())) {
                 return;
             }
             float delta = event.deltaY != 0f ? event.deltaY : event.deltaX;
@@ -238,7 +240,7 @@ final class AtlasCardBuilder {
                 return;
             }
             event.stopPropagation();
-            float[] accumulator = (Screen.hasControlDown() || wantedAdjustDown)
+            float[] accumulator = (controlDown || wantedAdjustDown)
                     ? desiredScrollAccumulator
                     : scrollAccumulator;
             accumulator[0] += delta;
@@ -247,13 +249,13 @@ final class AtlasCardBuilder {
                 return;
             }
             accumulator[0] -= steps;
-            SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+            SlotWorkspaceViewModel.AtlasItem target = wheelTarget(item, delta, shiftDown, controlDown, wantedAdjustDown);
             if (host.recipeSidebarActive() && wantedAdjustDown) {
                 host.rpc.sendSetWantedCount(target.identity(), recipeWantedTargetCount(target, steps));
                 return;
             }
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.wheel(
-                    cardGestureContext(target, 0, Screen.hasShiftDown(), Screen.hasControlDown(), wantedAdjustDown),
+                    cardGestureContext(target, 0, shiftDown, controlDown, wantedAdjustDown),
                     steps);
             dispatchCardGestureDecision(target, decision);
         });
@@ -276,6 +278,25 @@ final class AtlasCardBuilder {
         }
         SlotWorkspaceViewModel.AtlasItem fresh = host.currentAtlasItem(item.identity());
         return fresh != null ? fresh : item;
+    }
+
+    private SlotWorkspaceViewModel.AtlasItem wheelTarget(
+            SlotWorkspaceViewModel.AtlasItem item,
+            float delta,
+            boolean shiftDown,
+            boolean controlDown,
+            boolean wantedAdjustDown
+    ) {
+        SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+        if (delta <= 0f || !shiftDown || controlDown || wantedAdjustDown) {
+            return target;
+        }
+        SlotWorkspaceViewModel.IdentityRef locked = host.shiftClickTransferState.takeIdentity(true);
+        if (locked == null) {
+            return target;
+        }
+        SlotWorkspaceViewModel.AtlasItem freshLocked = host.currentAtlasItem(locked);
+        return freshLocked == null ? target : freshLocked;
     }
 
     private WallCardTransferGesturePolicy.Context cardGestureContext(

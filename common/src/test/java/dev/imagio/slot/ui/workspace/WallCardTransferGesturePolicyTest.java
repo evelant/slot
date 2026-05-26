@@ -147,6 +147,37 @@ class WallCardTransferGesturePolicyTest {
     }
 
     @Test
+    void shiftClickTakeStateRecordsCountedWheelTakes() {
+        ShiftClickTransferState state = new ShiftClickTransferState();
+        SlotWorkspaceViewModel.AtlasItem item = ghostItem();
+
+        state.record(
+                WallCardTransferGesturePolicy.Decision.action(TAKE_ITEMS_BY_IDENTITY, 3),
+                item.identity(),
+                true);
+
+        assertEquals(item.identity(), state.takeIdentity(true));
+        assertEquals(true, state.continuingTake(item.identity(), true));
+    }
+
+    @Test
+    void shiftClickTakeStateResetsOnCountedDeposit() {
+        ShiftClickTransferState state = new ShiftClickTransferState();
+        SlotWorkspaceViewModel.AtlasItem item = ghostItem();
+        state.record(
+                WallCardTransferGesturePolicy.Decision.action(TAKE_ITEMS_BY_IDENTITY, 3),
+                item.identity(),
+                true);
+
+        state.record(
+                WallCardTransferGesturePolicy.Decision.action(DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, 1),
+                item.identity(),
+                true);
+
+        assertEquals(null, state.takeIdentity(true));
+    }
+
+    @Test
     void shiftRightClickCarriedWithoutNearbyChestReportsStatus() {
         var decision = WallCardTransferGesturePolicy.pointerDown(new WallCardTransferGesturePolicy.Context(
                 carriedItem(), 1, true, false, null, false, false, 9, false));

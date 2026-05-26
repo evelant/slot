@@ -6,7 +6,6 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.WithinIslandOrdering;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.inventory.workspace.WorkspaceItemTargets;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,7 +14,7 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
- * Wall sections intentionally ignore stored home ordinals for in-section
+ * Wall sections intentionally ignore volatile card state for in-section
  * presentation. Home assignment decides which section an item belongs to;
  * facet-backed ordering decides where it reads inside that section.
  */
@@ -24,46 +23,21 @@ public final class WallSectionItemSorter {
     private WallSectionItemSorter() {
     }
 
-    public record Groups(
-            List<SlotWorkspaceViewModel.AtlasItem> carried,
-            List<SlotWorkspaceViewModel.AtlasItem> ghosts
-    ) {
-        public Groups {
-            carried = carried == null ? List.of() : List.copyOf(carried);
-            ghosts = ghosts == null ? List.of() : List.copyOf(ghosts);
-        }
-
-        public boolean isEmpty() {
-            return carried.isEmpty() && ghosts.isEmpty();
-        }
-
-        public int size() {
-            return carried.size() + ghosts.size();
-        }
-    }
-
-    public static Groups groupAndSort(List<SlotWorkspaceViewModel.AtlasItem> items) {
+    public static List<SlotWorkspaceViewModel.AtlasItem> sort(List<SlotWorkspaceViewModel.AtlasItem> items) {
         if (items == null || items.isEmpty()) {
-            return new Groups(List.of(), List.of());
+            return List.of();
         }
         FacetIndex index = FacetIndexHolder.get();
-        ArrayList<SortEntry> carried = new ArrayList<>();
-        ArrayList<SortEntry> ghosts = new ArrayList<>();
+        ArrayList<SortEntry> entries = new ArrayList<>();
         int ordinal = 0;
         for (SlotWorkspaceViewModel.AtlasItem item : items) {
             if (item == null) {
                 continue;
             }
-            SortEntry entry = new SortEntry(item, descriptor(index, item), ordinal++);
-            if (item.carried()) {
-                carried.add(entry);
-            } else {
-                ghosts.add(entry);
-            }
+            entries.add(new SortEntry(item, descriptor(index, item), ordinal++));
         }
-        carried.sort(ENTRY_COMPARATOR);
-        ghosts.sort(GHOST_COMPARATOR);
-        return new Groups(itemsOf(carried), itemsOf(ghosts));
+        entries.sort(ENTRY_COMPARATOR);
+        return itemsOf(entries);
     }
 
     private static List<SlotWorkspaceViewModel.AtlasItem> itemsOf(List<SortEntry> entries) {
@@ -83,23 +57,6 @@ public final class WallSectionItemSorter {
             .thenComparing(SortEntry::itemId)
             .thenComparingInt(entry -> entry.item().firstSlotIndex())
             .thenComparingInt(SortEntry::ordinal);
-
-    private static final Comparator<SortEntry> GHOST_COMPARATOR = Comparator
-            .comparingInt(WallSectionItemSorter::ghostIntentRank)
-            .thenComparing(ENTRY_COMPARATOR);
-
-    private static int ghostIntentRank(SortEntry entry) {
-        if (entry == null || entry.item() == null) {
-            return 1;
-        }
-        WorkspaceItemTargets targets = WorkspaceItemTargets.from(entry.item());
-        int carriedCount = entry.item().carried() ? entry.item().totalCount() : 0;
-        return targets.hasAnyGap(carriedCount)
-                || entry.item().kitNeeded()
-                || (entry.item().acceptedWorkflowInput() && entry.item().proximateCount() > 0)
-                ? 0
-                : 1;
-    }
 
     private static IslandSignalDescriptor descriptor(
             FacetIndex index,

@@ -27,7 +27,7 @@ class WallSectionItemSorterTest {
     }
 
     @Test
-    void sectionSplitsCarriedBandBeforeGhostBandAndFacetSortsWithinEachBand() {
+    void sectionUsesOneStableGridAndFacetSortsWithoutGhostCarriedBands() {
         FacetIndexHolder.install(FacetIndex.load(new StringReader(facetLayer())));
         WallSectionUiBuilder builder = new WallSectionUiBuilder(new WallSectionHeaderUiBuilder(new HeaderContext()));
         SlotWorkspaceViewModel.AtlasItem carriedBlack = item("minecraft:black_wool", true);
@@ -51,47 +51,55 @@ class WallSectionItemSorterTest {
                 false,
                 false);
 
-        assertEquals(3, section.children().size());
-        SlotUiElement carriedGrid = section.children().get(1);
-        SlotUiElement ghostGrid = section.children().get(2);
-        assertTrue(carriedGrid.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_GRID));
-        assertTrue(ghostGrid.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_GRID));
-        List<?> carried = carriedGrid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
-        List<?> ghosts = ghostGrid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
-        assertEquals(List.of(carriedWhite, carriedBlack), carried);
-        assertEquals(List.of(ghostGray), ghosts);
-        assertSame(island, carriedGrid.attachment(
-                WorkspaceUiAttachments.ATLAS_ISLAND,
-                SlotWorkspaceViewModel.AtlasIsland.class));
-        assertSame(island, ghostGrid.attachment(
+        assertEquals(2, section.children().size());
+        SlotUiElement grid = section.children().get(1);
+        assertTrue(grid.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_GRID));
+        assertEquals(List.of(carriedWhite, ghostGray, carriedBlack),
+                grid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class));
+        assertSame(island, grid.attachment(
                 WorkspaceUiAttachments.ATLAS_ISLAND,
                 SlotWorkspaceViewModel.AtlasIsland.class));
     }
 
     @Test
-    void ghostsWithDesiredCountsSortBeforeOtherGhosts() {
+    void desiredCountDoesNotPromoteGhostAheadOfStablePosition() {
         SlotWorkspaceViewModel.AtlasItem ordinaryGhost = item("minecraft:apple", false, 0);
         SlotWorkspaceViewModel.AtlasItem desiredGhost = item("minecraft:zinc_ingot", false, 12);
 
-        WallSectionItemSorter.Groups groups = WallSectionItemSorter.groupAndSort(List.of(
+        List<SlotWorkspaceViewModel.AtlasItem> items = WallSectionItemSorter.sort(List.of(
                 ordinaryGhost,
                 desiredGhost
         ));
 
-        assertEquals(List.of(desiredGhost, ordinaryGhost), groups.ghosts());
+        assertEquals(List.of(ordinaryGhost, desiredGhost), items);
     }
 
     @Test
-    void ghostsWithWantedCountsSortBeforeOtherGhosts() {
+    void wantedCountDoesNotPromoteGhostAheadOfStablePosition() {
         SlotWorkspaceViewModel.AtlasItem ordinaryGhost = item("minecraft:apple", false, 0, 0);
         SlotWorkspaceViewModel.AtlasItem wantedGhost = item("minecraft:zinc_ingot", false, 0, 1);
 
-        WallSectionItemSorter.Groups groups = WallSectionItemSorter.groupAndSort(List.of(
+        List<SlotWorkspaceViewModel.AtlasItem> items = WallSectionItemSorter.sort(List.of(
                 ordinaryGhost,
                 wantedGhost
         ));
 
-        assertEquals(List.of(wantedGhost, ordinaryGhost), groups.ghosts());
+        assertEquals(List.of(ordinaryGhost, wantedGhost), items);
+    }
+
+    @Test
+    void acquiringGhostKeepsIdentityInTheSameRelativePosition() {
+        SlotWorkspaceViewModel.AtlasItem carriedApple = item("minecraft:apple", true);
+        SlotWorkspaceViewModel.AtlasItem ghostIron = item("minecraft:iron_ingot", false);
+        SlotWorkspaceViewModel.AtlasItem carriedZinc = item("minecraft:zinc_ingot", true);
+        SlotWorkspaceViewModel.AtlasItem acquiredIron = item("minecraft:iron_ingot", true);
+
+        assertEquals(
+                List.of("minecraft:apple", "minecraft:iron_ingot", "minecraft:zinc_ingot"),
+                identities(WallSectionItemSorter.sort(List.of(carriedZinc, ghostIron, carriedApple))));
+        assertEquals(
+                List.of("minecraft:apple", "minecraft:iron_ingot", "minecraft:zinc_ingot"),
+                identities(WallSectionItemSorter.sort(List.of(carriedZinc, acquiredIron, carriedApple))));
     }
 
     @Test
@@ -165,11 +173,11 @@ class WallSectionItemSorterTest {
                 true,
                 false);
 
-        assertEquals(3, section.children().size());
+        assertEquals(2, section.children().size());
         SlotUiElement header = section.children().get(0);
         SlotUiElement toggle = header.children().get(1);
-        SlotUiElement ghostGrid = section.children().get(2);
-        assertEquals(List.of(ghostTorch), ghostGrid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class));
+        SlotUiElement grid = section.children().get(1);
+        assertEquals(List.of(carriedStone, ghostTorch), grid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class));
         assertEquals(Boolean.TRUE, toggle.attachment(
                 WorkspaceUiAttachments.WALL_SECTION_NEARBY_TOGGLE_EXPANDED,
                 Boolean.class));
@@ -296,10 +304,44 @@ class WallSectionItemSorterTest {
     }
 
     @Test
+    void proximateXrayRevealsPreviouslyHiddenGhostInStablePosition() {
+        WallSectionUiBuilder builder = new WallSectionUiBuilder(new WallSectionHeaderUiBuilder(new HeaderContext()));
+        SlotWorkspaceViewModel.AtlasItem carriedApple = item("minecraft:apple", true);
+        SlotWorkspaceViewModel.AtlasItem carriedZinc = item("minecraft:zinc_ingot", true);
+        SlotWorkspaceViewModel.AtlasItem hiddenIron = item("minecraft:iron_ingot", false);
+
+        SlotUiElement collapsed = builder.section(
+                island(),
+                List.of(carriedZinc, hiddenIron, carriedApple),
+                3,
+                false,
+                StorageGhostRevealMode.COLLAPSED,
+                false,
+                false);
+        assertEquals(List.of(carriedApple, carriedZinc), collapsed.children().get(1).attachment(
+                WorkspaceUiAttachments.ATLAS_ITEMS,
+                List.class));
+
+        SlotUiElement xray = builder.section(
+                island(),
+                List.of(carriedZinc, hiddenIron, carriedApple),
+                3,
+                false,
+                StorageGhostRevealMode.PROXIMATE,
+                false,
+                false);
+        assertEquals(List.of(carriedApple, hiddenIron, carriedZinc), xray.children().get(1).attachment(
+                WorkspaceUiAttachments.ATLAS_ITEMS,
+                List.class));
+    }
+
+    @Test
     void trackedXrayRevealsElsewhereOnlyGhosts() {
         WallSectionUiBuilder builder = new WallSectionUiBuilder(new WallSectionHeaderUiBuilder(new HeaderContext()));
+        SlotWorkspaceViewModel.AtlasItem carriedApple = item("minecraft:apple", true);
+        SlotWorkspaceViewModel.AtlasItem carriedZinc = item("minecraft:zinc_ingot", true);
         SlotWorkspaceViewModel.AtlasItem remoteGhost = item(
-                "minecraft:redstone",
+                "minecraft:iron_ingot",
                 false,
                 0,
                 0,
@@ -307,24 +349,27 @@ class WallSectionItemSorterTest {
 
         SlotUiElement collapsed = builder.section(
                 island(),
-                List.of(remoteGhost),
-                1,
+                List.of(carriedZinc, remoteGhost, carriedApple),
+                3,
                 false,
                 StorageGhostRevealMode.COLLAPSED,
                 false,
                 false);
-        assertEquals(1, collapsed.children().size());
-        assertEquals(WallSectionHeaderUiBuilder.COMPACT_HEADER_HEIGHT_PX, collapsed.children().get(0).layout().height());
+        assertEquals(List.of(carriedApple, carriedZinc), collapsed.children().get(1).attachment(
+                WorkspaceUiAttachments.ATLAS_ITEMS,
+                List.class));
 
         SlotUiElement xray = builder.section(
                 island(),
-                List.of(remoteGhost),
-                1,
+                List.of(carriedZinc, remoteGhost, carriedApple),
+                3,
                 false,
                 StorageGhostRevealMode.TRACKED,
                 false,
                 false);
-        assertEquals(List.of(remoteGhost), xray.children().get(1).attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class));
+        assertEquals(List.of(carriedApple, remoteGhost, carriedZinc), xray.children().get(1).attachment(
+                WorkspaceUiAttachments.ATLAS_ITEMS,
+                List.class));
     }
 
     private static SlotWorkspaceViewModel.AtlasItem item(String itemId, boolean carried) {
@@ -415,6 +460,14 @@ class WallSectionItemSorterTest {
         java.util.ArrayList<String> text = new java.util.ArrayList<>();
         collectText(root, text);
         return text;
+    }
+
+    private static List<String> identities(List<SlotWorkspaceViewModel.AtlasItem> items) {
+        java.util.ArrayList<String> ids = new java.util.ArrayList<>();
+        for (SlotWorkspaceViewModel.AtlasItem item : items) {
+            ids.add(item.identity().itemId());
+        }
+        return ids;
     }
 
     private static void collectText(SlotUiElement element, java.util.ArrayList<String> text) {

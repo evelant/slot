@@ -27,6 +27,11 @@ public final class ShiftClickTransferState {
         return takeIdentity.equals(identity);
     }
 
+    public SlotWorkspaceViewModel.IdentityRef takeIdentity(boolean shiftDown) {
+        observeShiftDown(shiftDown);
+        return shiftDown ? takeIdentity : null;
+    }
+
     public void record(
             WallCardTransferGesturePolicy.Decision decision,
             SlotWorkspaceViewModel.IdentityRef identity,
@@ -37,8 +42,9 @@ public final class ShiftClickTransferState {
             return;
         }
         switch (decision.action()) {
-            case TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY, TAKE_STACK_BY_IDENTITY -> takeIdentity = identity;
-            case DEPOSIT_HOME_TO_LINKED_CHEST, CROSS_SURFACE_QUICK_MOVE -> reset();
+            case TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY, TAKE_STACK_BY_IDENTITY, TAKE_ITEMS_BY_IDENTITY ->
+                    takeIdentity = identity;
+            case DEPOSIT_HOME_TO_LINKED_CHEST, DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, CROSS_SURFACE_QUICK_MOVE -> reset();
             default -> {
             }
         }

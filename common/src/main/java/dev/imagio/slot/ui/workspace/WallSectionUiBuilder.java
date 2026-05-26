@@ -75,7 +75,7 @@ public final class WallSectionUiBuilder {
                 revealMode,
                 forceRevealGhosts,
                 allowCollapsedNearbyToggle);
-        WallSectionItemSorter.Groups cards = WallSectionItemSorter.groupAndSort(visibility.visibleCards());
+        List<SlotWorkspaceViewModel.AtlasItem> cards = WallSectionItemSorter.sort(visibility.visibleCards());
         int headerTotalCount = headerTotalCount(totalCards, filtering, cards.size());
         boolean compactHeader = cards.isEmpty();
         SlotUiElement section = SlotUiElement.element()
@@ -96,12 +96,7 @@ public final class WallSectionUiBuilder {
         if (cards.isEmpty()) {
             return section;
         }
-        if (!cards.carried().isEmpty()) {
-            section.addChild(grid(island, cards.carried()));
-        }
-        if (!cards.ghosts().isEmpty()) {
-            section.addChild(grid(island, cards.ghosts()));
-        }
+        section.addChild(grid(island, cards));
         return section;
     }
 

@@ -2617,7 +2617,8 @@ public final class ForgeWorkspaceSurface {
                 return;
             }
             event.stopPropagation();
-            SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+            SlotWorkspaceViewModel.AtlasItem target =
+                    wheelTarget(item, delta, event.shiftDown(), controlDown, wantedAdjustDown);
             int steps = wheelSteps(target == null ? null : target.identity(), delta, controlDown || wantedAdjustDown);
             if (steps == 0) {
                 return;
@@ -2660,6 +2661,25 @@ public final class ForgeWorkspaceSurface {
         }
         SlotWorkspaceViewModel.AtlasItem fresh = byIdentity.get(item.identity());
         return fresh == null ? item : fresh;
+    }
+
+    private SlotWorkspaceViewModel.AtlasItem wheelTarget(
+            SlotWorkspaceViewModel.AtlasItem item,
+            float delta,
+            boolean shiftDown,
+            boolean controlDown,
+            boolean wantedAdjustDown
+    ) {
+        SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+        if (delta <= 0f || !shiftDown || controlDown || wantedAdjustDown) {
+            return target;
+        }
+        SlotWorkspaceViewModel.IdentityRef locked = shiftClickTransferState.takeIdentity(true);
+        if (locked == null) {
+            return target;
+        }
+        SlotWorkspaceViewModel.AtlasItem freshLocked = byIdentity.get(locked);
+        return freshLocked == null ? target : freshLocked;
     }
 
     private void beginHomeDragCandidate(SlotWorkspaceViewModel.AtlasItem item) {
