@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ChestClaimWorkflowDomainServiceTest {
     private static final UUID CHEST_A = UUID.fromString("00000000-0000-0000-0000-000000000001");
@@ -53,6 +54,22 @@ class ChestClaimWorkflowDomainServiceTest {
 
         assertEquals(1, service.chestAffinityMap().score(CHEST_A, REDSTONE));
         assertEquals(1, service.chestAffinityMap().score(CHEST_B, REDSTONE));
+    }
+
+    @Test
+    void removingLastBrokenAnchorDeletesChestAndAffinity() {
+        ChestClaimWorkflowDomainService service = service();
+        ChestAnchor first = anchor(0);
+        ChestAnchor second = anchor(1);
+        service.claimWithId(CHEST_A, Set.of(first, second), 0, 0, "");
+        service.recordDeposit(CHEST_A, REDSTONE, 1, 100L);
+
+        assertEquals(1, service.chestAffinityMap().score(CHEST_A, REDSTONE));
+        assertEquals(CHEST_A, service.removeAnchor(CHEST_A, first).storageId());
+        assertEquals(Set.of(second), service.chest(CHEST_A).anchors());
+        assertNull(service.removeAnchor(CHEST_A, second));
+        assertNull(service.chest(CHEST_A));
+        assertEquals(0, service.chestAffinityMap().score(CHEST_A, REDSTONE));
     }
 
     private static ChestClaimWorkflowDomainService service() {

@@ -858,6 +858,7 @@ public final class ForgeWorkspaceSurface {
             root.addChild(sidebarRail);
             addFloatingRecents(root);
             addCraftRunPanel(root);
+            addActiveOverlay(root);
             return root;
         }
         SlotUiElement root = SlotUiElement.element()
@@ -869,6 +870,7 @@ public final class ForgeWorkspaceSurface {
         root.addChild(workspaceColumn(false));
         addFloatingRecents(root);
         addCraftRunPanel(root);
+        addActiveOverlay(root);
         return root;
     }
 
@@ -883,6 +885,13 @@ public final class ForgeWorkspaceSurface {
         SlotUiElement panel = craftRunPanel();
         if (root != null && panel != null) {
             root.addChild(panel);
+        }
+    }
+
+    private void addActiveOverlay(SlotUiElement root) {
+        SlotUiElement overlay = activeOverlay();
+        if (root != null && overlay != null) {
+            root.addChild(overlay);
         }
     }
 
@@ -938,10 +947,6 @@ public final class ForgeWorkspaceSurface {
         column.addChild(wallArea(sidebarMode));
         column.addChild(statusRow(sidebarMode));
         column.addChild(hotbar(sidebarMode));
-        SlotUiElement overlay = activeOverlay();
-        if (overlay != null) {
-            column.addChild(overlay);
-        }
         return column;
     }
 
@@ -1505,6 +1510,15 @@ public final class ForgeWorkspaceSurface {
     public record RecentsPanelBounds(int x, int y, int width, int height) {
     }
 
+    public boolean hasActiveOverlay() {
+        return editingDesiredCountIdentity != null
+                || editingIslandId != null
+                || contextMenuKitId != null
+                || contextMenuChestStorageId != null
+                || contextMenuIslandId != null
+                || contextMenuIdentity != null;
+    }
+
     private SlotWorkspaceViewModel.ContextualSuggestionLane visibleSuggestionLane(
             SlotWorkspaceViewModel.ContextualSuggestionLane lane,
             boolean filtering
@@ -1646,13 +1660,16 @@ public final class ForgeWorkspaceSurface {
             float gap,
             boolean clampToWorkspace
     ) {
-        float originX = popoverOriginX();
-        float x = Math.max(POPOVER_SCREEN_MARGIN, screenX - originX);
+        float minX = POPOVER_SCREEN_MARGIN;
+        float maxX = Math.max(POPOVER_SCREEN_MARGIN, viewportWidth - width - POPOVER_SCREEN_MARGIN);
+        float x = Math.max(minX, screenX);
         if (mode == Mode.SIDEBAR && clampToWorkspace) {
-            float maxX = Math.max(POPOVER_SCREEN_MARGIN, workspaceWidth() - width - POPOVER_SCREEN_MARGIN);
-            x = Math.min(x, maxX);
+            minX = SlotForgeClientConfig.sidebarLeftMargin() + POPOVER_SCREEN_MARGIN;
+            maxX = Math.max(minX,
+                    SlotForgeClientConfig.sidebarLeftMargin() + workspaceWidth() - width - POPOVER_SCREEN_MARGIN);
+            x = Math.max(minX, screenX);
         }
-        float panelX = x;
+        float panelX = Math.min(x, maxX);
         float panelY = anchoredPopoverY(screenY, approximateHeight);
         return SlotUiElement.panel(0xF00B1117)
                 .zIndex(501)
@@ -1669,18 +1686,10 @@ public final class ForgeWorkspaceSurface {
     }
 
     private float anchoredPopoverY(float screenY, float approximateHeight) {
-        float y = screenY - popoverOriginY() - POPOVER_SCREEN_MARGIN;
-        float availableHeight = Math.max(1f, viewportHeight - popoverOriginY() - popoverBottomInset());
+        float y = screenY - POPOVER_SCREEN_MARGIN;
+        float availableHeight = Math.max(1f, viewportHeight - popoverBottomInset());
         float maxY = availableHeight - Math.max(0f, approximateHeight) - POPOVER_SCREEN_MARGIN;
         return Math.max(POPOVER_TOP_MARGIN, Math.min(y, Math.max(POPOVER_TOP_MARGIN, maxY)));
-    }
-
-    private float popoverOriginX() {
-        return mode == Mode.SIDEBAR ? SlotForgeClientConfig.sidebarLeftMargin() : 0f;
-    }
-
-    private float popoverOriginY() {
-        return mode == Mode.SIDEBAR ? SlotForgeClientConfig.sidebarTopMargin() : 0f;
     }
 
     private float popoverBottomInset() {

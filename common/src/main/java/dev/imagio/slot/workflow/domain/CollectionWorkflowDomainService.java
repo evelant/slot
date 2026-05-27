@@ -7,7 +7,6 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -440,25 +439,11 @@ public final class CollectionWorkflowDomainService {
         if (liveJunk.isEmpty()) {
             return false;
         }
-        Map<ItemIdentity, Long> latestMarkedAt = new LinkedHashMap<>();
-        for (WorkflowEventRecord record : repository.workflowEvents().records()) {
-            if (record == null || record.event() == null || record.envelope() == null) {
-                continue;
-            }
-            long occurredAt = record.envelope().occurredAtEpochMillis();
-            if (record.event() instanceof WorkflowEvent.JunkMarked event && event.identity() != null) {
-                latestMarkedAt.put(ItemIdentityCollections.key(event.identity()), occurredAt);
-            } else if (record.event() instanceof WorkflowEvent.JunkUnmarked event && event.identity() != null) {
-                ItemIdentityCollections.removeMatching(latestMarkedAt, event.identity());
-            }
-        }
+        Map<ItemIdentity, Long> markedAtByIdentity = repository.workflowProjection().junkMarkedAtEpochMillis();
         boolean changed = false;
         for (ItemIdentity identity : liveJunk) {
-            Long markedAt = latestMarkedAt.get(identity);
-            if (markedAt == null || markedAt <= 0L) {
-                continue;
-            }
-            if (nowEpochMillis - markedAt >= JUNK_MARK_TTL_MILLIS) {
+            Long markedAt = ItemIdentityCollections.findCanonical(markedAtByIdentity, identity);
+            if (markedAt == null || markedAt <= 0L || nowEpochMillis - markedAt >= JUNK_MARK_TTL_MILLIS) {
                 repository.appendWorkflowEvent(
                         new WorkflowEvent.JunkUnmarked(identity),
                         DomainEventMetadata.origin("workflow.junk.expire")

@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -38,13 +37,12 @@ public final class ChestStorageBreakListener {
         if (storageId.isEmpty()) {
             return;
         }
+        ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, pos);
         Player player = event.getPlayer();
-        if (!(player instanceof ServerPlayer serverPlayer)) {
-            return;
+        if (player instanceof ServerPlayer serverPlayer) {
+            SlotPlayerWorkflowRuntimeService.removeBrokenStorageAnchor(serverPlayer, storageId.get(), anchor);
+        } else {
+            SlotPlayerWorkflowRuntimeService.removeBrokenStorageAnchor(level.getServer(), storageId.get(), anchor);
         }
-        ChestAnchor anchor = ChestStorageAnchors.toAnchor((Level) level, pos);
-        SlotPlayerWorkflowRuntimeService.runtime(serverPlayer)
-                .chestClaimWorkflow()
-                .removeAnchor(storageId.get(), anchor);
     }
 }

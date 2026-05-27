@@ -2,7 +2,9 @@ package dev.imagio.slot.neoforge.workflow;
 
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.workspace.ChestClaimPersistenceReconciliation;
+import dev.imagio.slot.inventory.workspace.ClaimedStorageBreakCleanup;
 import dev.imagio.slot.neoforge.storage.ChestStorageIds;
+import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistenceService;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
@@ -54,6 +56,39 @@ public final class SlotPlayerWorkflowRuntimeService {
             RUNTIMES.put(key, created);
             return created;
         }
+    }
+
+    public static int removeBrokenStorageAnchor(ServerPlayer player, UUID storageId, ChestAnchor anchor) {
+        if (player == null) {
+            return 0;
+        }
+        runtime(player);
+        return removeBrokenStorageAnchor(player.serverLevel().getServer(), storageId, anchor);
+    }
+
+    public static int removeBrokenStorageAnchor(MinecraftServer server, UUID storageId, ChestAnchor anchor) {
+        if (server == null || storageId == null || anchor == null) {
+            return 0;
+        }
+        Path root = worldRoot(server);
+        List<WorkflowDomainRuntime> runtimes = new ArrayList<>();
+        synchronized (RUNTIMES) {
+            for (Map.Entry<RuntimeKey, WorkflowDomainRuntime> entry : RUNTIMES.entrySet()) {
+                if (entry.getKey().worldRoot().equals(root) && entry.getValue() != null) {
+                    runtimes.add(entry.getValue());
+                }
+            }
+        }
+        int changed = 0;
+        for (WorkflowDomainRuntime runtime : runtimes) {
+            if (ClaimedStorageBreakCleanup.removeBrokenAnchor(server, runtime, storageId, anchor)) {
+                changed++;
+            }
+        }
+        if (changed == 0) {
+            ClaimedStorageBreakCleanup.forgetRememberedContents(server, storageId);
+        }
+        return changed;
     }
 
     private static WorkflowDomainRuntime createRuntime(ServerPlayer player) {
@@ -126,10 +161,16 @@ public final class SlotPlayerWorkflowRuntimeService {
     }
 
     private static Path path(MinecraftServer server, UUID playerId) {
-        return server.getWorldPath(LevelResource.ROOT)
+        return worldRoot(server)
                 .resolve("slot")
                 .resolve("workflow")
                 .resolve((playerId == null ? "unknown" : playerId.toString()) + ".json");
+    }
+
+    private static Path worldRoot(MinecraftServer server) {
+        return server == null
+                ? Path.of(".").toAbsolutePath().normalize()
+                : server.getWorldPath(LevelResource.ROOT).toAbsolutePath().normalize();
     }
 
     private record RuntimeKey(
@@ -138,8 +179,7 @@ public final class SlotPlayerWorkflowRuntimeService {
     ) {
         private static RuntimeKey of(ServerPlayer player) {
             MinecraftServer server = player.serverLevel().getServer();
-            Path root = server == null ? Path.of(".") : server.getWorldPath(LevelResource.ROOT);
-            return new RuntimeKey(root.toAbsolutePath().normalize(), player.getUUID());
+            return new RuntimeKey(SlotPlayerWorkflowRuntimeService.worldRoot(server), player.getUUID());
         }
     }
 }

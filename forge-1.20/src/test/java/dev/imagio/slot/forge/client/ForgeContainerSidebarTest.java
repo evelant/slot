@@ -1,5 +1,6 @@
 package dev.imagio.slot.forge.client;
 
+import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.events.ContainerEventHandler;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -53,6 +54,54 @@ class ForgeContainerSidebarTest {
         assertNotNull(annotation);
         assertEquals(EventPriority.HIGHEST, annotation.priority());
         assertTrue(annotation.receiveCanceled());
+    }
+
+    @Test
+    void activeOverlayMakesWholeScreenInteractiveForContextMenus() {
+        assertTrue(ForgeContainerSidebar.insideInteractiveSurface(
+                500,
+                120,
+                true,
+                8,
+                12,
+                268,
+                220,
+                new ForgeWorkspaceSurface.RecentsPanelBounds(160, 4, 120, 72),
+                new ForgeWorkspaceSurface.CraftRunPanelBounds(410, 20, 140, 180)));
+    }
+
+    @Test
+    void inactiveOverlayStillLimitsSidebarInputToVisibleSlotSurfaces() {
+        assertFalse(ForgeContainerSidebar.insideInteractiveSurface(
+                350,
+                120,
+                false,
+                8,
+                12,
+                268,
+                220,
+                new ForgeWorkspaceSurface.RecentsPanelBounds(160, 4, 120, 72),
+                new ForgeWorkspaceSurface.CraftRunPanelBounds(410, 20, 140, 180)));
+        assertTrue(ForgeContainerSidebar.insideInteractiveSurface(
+                40,
+                80,
+                false,
+                8,
+                12,
+                268,
+                220,
+                null,
+                null));
+        assertTrue(ForgeContainerSidebar.insideInteractiveSurface(
+                170,
+                20,
+                false,
+                8,
+                12,
+                268,
+                220,
+                new ForgeWorkspaceSurface.RecentsPanelBounds(160, 4, 120, 72),
+                null));
     }
 
     private static final class FocusableWidget implements GuiEventListener {

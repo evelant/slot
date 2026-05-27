@@ -88,7 +88,7 @@ import java.util.UUID;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 12;
+    private static final int SCHEMA_VERSION = 13;
 
     private final Path statePath;
 
@@ -512,6 +512,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 loadouts,
                 resolved.favoriteTags().stream().map(WorkflowDomainFileStore::identity).toList(),
                 resolved.junkTags().stream().map(WorkflowDomainFileStore::identity).toList(),
+                resolved.junkMarkedAtEpochMillis().entrySet().stream()
+                        .map(entry -> new JunkMarkData(identity(entry.getKey()), entry.getValue()))
+                        .toList(),
                 new ProtectionData(
                         resolved.protection().protectedIdentities().stream().map(WorkflowDomainFileStore::identity).toList(),
                         resolved.protection().protectedTargets().stream().map(WorkflowDomainFileStore::target).toList(),
@@ -604,6 +607,20 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 ItemIdentity identity = decodeIdentity(identityData);
                 if (identity != null) {
                     ItemIdentityCollections.add(junkTags, identity);
+                }
+            }
+        }
+        LinkedHashMap<ItemIdentity, Long> junkMarkedAt = new LinkedHashMap<>();
+        // Schema <13 had junk tags without their mark time. Those cannot honor
+        // the 30-minute expiry contract, so Snapshot drops them during decode.
+        if (data.junkMarkedAt != null) {
+            for (JunkMarkData mark : data.junkMarkedAt) {
+                ItemIdentity identity = decodeIdentity(mark == null ? null : mark.identity);
+                if (identity != null && mark.markedAtEpochMillis > 0L) {
+                    junkMarkedAt.merge(
+                            ItemIdentityCollections.key(identity),
+                            mark.markedAtEpochMillis,
+                            Math::max);
                 }
             }
         }
@@ -804,6 +821,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 loadouts,
                 favoriteTags,
                 junkTags,
+                junkMarkedAt,
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 recentDismissals,
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
@@ -2364,6 +2382,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<LoadoutData> loadouts,
             List<IdentityData> favoriteTags,
             List<IdentityData> junkTags,
+            List<JunkMarkData> junkMarkedAt,
             ProtectionData protection,
             List<RecentDismissalData> recentDismissals,
             List<VisualIslandData> visualIslands,
@@ -2630,6 +2649,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
     }
 
     private record RecentDismissalData(IdentityData identity, long dismissedUpToSequence) {
+    }
+
+    private record JunkMarkData(IdentityData identity, long markedAtEpochMillis) {
     }
 
     private record VisualIslandData(

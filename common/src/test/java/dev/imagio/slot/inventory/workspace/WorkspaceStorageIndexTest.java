@@ -31,6 +31,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WorkspaceStorageIndexTest {
@@ -206,7 +207,7 @@ class WorkspaceStorageIndexTest {
                 null,
                 claimedMap(CHEST_A),
                 new FakeWorldStorage(),
-                Set.of(CHEST_A.toString()),
+                Set.of(),
                 List.of(),
                 Map.of(CHEST_A.toString(), remembered));
 
@@ -214,6 +215,29 @@ class WorkspaceStorageIndexTest {
         assertFalse(index.liveChestContentPresence().contains(
                 claimed(CHEST_A),
                 ItemIdentity.of("minecraft:redstone")));
+    }
+
+    @Test
+    void proximateInaccessibleClaimedStorageDoesNotUseRememberedContents() {
+        RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
+                StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                27,
+                Map.of(ItemIdentity.of("minecraft:redstone"), 8),
+                10L,
+                "test");
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                new FakeWorldStorage(),
+                Set.of(CHEST_A.toString()),
+                List.of(),
+                Map.of(CHEST_A.toString(), remembered));
+
+        assertTrue(index.contents(CHEST_A.toString()).contents().isEmpty());
+        assertFalse(index.rememberedWorldCountsByIdentity().containsKey(ItemIdentity.of("minecraft:redstone")));
+        assertNull(index.target(CHEST_A.toString()));
     }
 
     @Test

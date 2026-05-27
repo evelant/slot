@@ -141,6 +141,10 @@ public final class WorkspaceStorageIndex {
                     entries.put(storageId, live);
                     continue;
                 }
+                if (memory != null) {
+                    memory.forget(storageId);
+                }
+                continue;
             }
             RememberedStorageContents rememberedContents = rememberedById.get(storageId);
             if (rememberedContents != null) {

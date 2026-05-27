@@ -31,6 +31,7 @@ public final class WorkflowProjection {
         LinkedHashMap<String, List<QuickAccessLoadoutDefinition>> loadoutsByCollection = new LinkedHashMap<>(current.loadoutsByCollection());
         LinkedHashSet<ItemIdentity> favorites = new LinkedHashSet<>(current.favoriteTags());
         LinkedHashSet<ItemIdentity> junk = new LinkedHashSet<>(current.junkTags());
+        LinkedHashMap<ItemIdentity, Long> junkMarkedAt = new LinkedHashMap<>(current.junkMarkedAtEpochMillis());
         LinkedHashSet<ItemIdentity> protectedIdentities = new LinkedHashSet<>(current.protection().protectedIdentities());
         LinkedHashSet<InventoryActionTarget> protectedTargets = new LinkedHashSet<>(current.protection().protectedTargets());
         boolean protectPortableContainers = current.protection().protectPortableContainers();
@@ -151,13 +152,17 @@ public final class WorkflowProjection {
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.JunkMarked event) {
-                if (event.identity() != null) {
-                    ItemIdentityCollections.add(junk, event.identity());
+                if (event.identity() != null && record.envelope().occurredAtEpochMillis() > 0L) {
+                    ItemIdentity identity = ItemIdentityCollections.key(event.identity());
+                    ItemIdentityCollections.add(junk, identity);
+                    ItemIdentityCollections.removeMatching(junkMarkedAt, identity);
+                    junkMarkedAt.put(identity, record.envelope().occurredAtEpochMillis());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.JunkUnmarked event) {
                 if (event.identity() != null) {
                     ItemIdentityCollections.removeMatching(junk, event.identity());
+                    ItemIdentityCollections.removeMatching(junkMarkedAt, event.identity());
                 }
             }
         else if (workflowEvent instanceof WorkflowEvent.ProtectedIdentityMarked event) {
@@ -495,6 +500,7 @@ public final class WorkflowProjection {
                 loadoutsByCollection,
                 favorites,
                 junk,
+                junkMarkedAt,
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 recentDismissals,
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
@@ -630,6 +636,7 @@ public final class WorkflowProjection {
             Map<String, List<QuickAccessLoadoutDefinition>> loadoutsByCollection,
             Set<ItemIdentity> favoriteTags,
             Set<ItemIdentity> junkTags,
+            Map<ItemIdentity, Long> junkMarkedAtEpochMillis,
             ProtectionSnapshotPolicy protection,
             Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
             VisualHomeMap visualHomeMap,
@@ -665,6 +672,7 @@ public final class WorkflowProjection {
                     loadoutsByCollection,
                     favoriteTags,
                     junkTags,
+                    Map.of(),
                     protection,
                     recentDismissedUpToByIdentity,
                     visualHomeMap,
@@ -684,7 +692,12 @@ public final class WorkflowProjection {
             memberships = CollectionProjection.copyMemberships(memberships);
             loadoutsByCollection = CollectionProjection.copyLoadouts(loadoutsByCollection);
             favoriteTags = ItemIdentityCollections.normalizedSet(favoriteTags);
-            junkTags = ItemIdentityCollections.normalizedSet(junkTags);
+            Set<ItemIdentity> normalizedJunkTags = ItemIdentityCollections.normalizedSet(junkTags);
+            Map<ItemIdentity, Long> normalizedJunkMarkedAt = copyJunkMarkedAt(
+                    normalizedJunkTags,
+                    junkMarkedAtEpochMillis);
+            junkTags = junkTagsWithTimestamps(normalizedJunkTags, normalizedJunkMarkedAt);
+            junkMarkedAtEpochMillis = copyJunkMarkedAt(junkTags, normalizedJunkMarkedAt);
             protection = protection == null ? new ProtectionSnapshotPolicy(Set.of(), Set.of(), false) : protection;
             recentDismissedUpToByIdentity = copyRecentDismissals(recentDismissedUpToByIdentity);
             visualHomeMap = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
@@ -705,6 +718,7 @@ public final class WorkflowProjection {
                     Map.of(),
                     Set.of(),
                     Set.of(),
+                    Map.of(),
                     new ProtectionSnapshotPolicy(Set.of(), Set.of(), false),
                     Map.of(),
                     VisualHomeMap.empty(),
@@ -750,6 +764,42 @@ public final class WorkflowProjection {
                 }
             });
             return Map.copyOf(copied);
+        }
+
+        private static Map<ItemIdentity, Long> copyJunkMarkedAt(
+                Set<ItemIdentity> junkTags,
+                Map<ItemIdentity, Long> source
+        ) {
+            if (junkTags == null || junkTags.isEmpty() || source == null || source.isEmpty()) {
+                return Map.of();
+            }
+            LinkedHashMap<ItemIdentity, Long> copied = new LinkedHashMap<>();
+            source.forEach((identity, value) -> {
+                if (identity != null
+                        && value != null
+                        && value > 0L
+                        && ItemIdentityCollections.containsCanonical(junkTags, identity)) {
+                    copied.merge(ItemIdentityCollections.key(identity), value, Math::max);
+                }
+            });
+            return copied.isEmpty() ? Map.of() : Map.copyOf(copied);
+        }
+
+        private static Set<ItemIdentity> junkTagsWithTimestamps(
+                Set<ItemIdentity> junkTags,
+                Map<ItemIdentity, Long> junkMarkedAtEpochMillis
+        ) {
+            if (junkTags == null || junkTags.isEmpty()
+                    || junkMarkedAtEpochMillis == null || junkMarkedAtEpochMillis.isEmpty()) {
+                return Set.of();
+            }
+            LinkedHashSet<ItemIdentity> retained = new LinkedHashSet<>();
+            for (ItemIdentity identity : junkTags) {
+                if (identity != null && ItemIdentityCollections.findCanonical(junkMarkedAtEpochMillis, identity) != null) {
+                    ItemIdentityCollections.add(retained, identity);
+                }
+            }
+            return retained.isEmpty() ? Set.of() : Set.copyOf(retained);
         }
 
     }

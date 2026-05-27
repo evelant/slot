@@ -89,7 +89,26 @@ class CollectionWorkflowDomainServiceTest {
         assertTrue(workflow.setJunk(identity, true));
         assertTrue(repository.workflowProjection().junkTags().contains(identity));
         long markedAt = repository.workflowEvents().records().get(0).envelope().occurredAtEpochMillis();
+        assertEquals(markedAt, repository.workflowProjection().junkMarkedAtEpochMillis().get(identity));
 
+        assertFalse(workflow.expireJunkTags(markedAt + CollectionWorkflowDomainService.JUNK_MARK_TTL_MILLIS - 1));
+        assertTrue(repository.workflowProjection().junkTags().contains(identity));
+        assertTrue(workflow.expireJunkTags(markedAt + CollectionWorkflowDomainService.JUNK_MARK_TTL_MILLIS));
+        assertFalse(repository.workflowProjection().junkTags().contains(identity));
+    }
+
+    @Test
+    void junkMarksExpireAfterWorkflowEventsAreCompacted() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        CollectionWorkflowDomainService workflow = new CollectionWorkflowDomainService(repository);
+        ItemIdentity identity = ItemIdentity.of("minecraft:rotten_flesh");
+
+        assertTrue(workflow.setJunk(identity, true));
+        Long markedAt = repository.workflowProjection().junkMarkedAtEpochMillis().get(identity);
+        assertNotNull(markedAt);
+        repository.compactWorkflowEvents();
+
+        assertEquals(0, repository.workflowEvents().records().size());
         assertFalse(workflow.expireJunkTags(markedAt + CollectionWorkflowDomainService.JUNK_MARK_TTL_MILLIS - 1));
         assertTrue(repository.workflowProjection().junkTags().contains(identity));
         assertTrue(workflow.expireJunkTags(markedAt + CollectionWorkflowDomainService.JUNK_MARK_TTL_MILLIS));

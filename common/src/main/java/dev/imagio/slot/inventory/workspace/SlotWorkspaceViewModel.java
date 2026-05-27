@@ -745,6 +745,8 @@ public record SlotWorkspaceViewModel(
         WorkflowTabTargets.Resolution targetResolution = WorkflowTabTargets.resolve(carriedIdentityCounts, resolvedWorkflow);
         Map<ItemIdentity, Integer> wantedCounts = targetResolution.wantedCounts();
         RecentView recents = resolvedWorkflow.recents();
+        List<ItemIdentity> visibleRecentItems = recents == null ? List.of() : recents.visibleItems();
+        Set<ItemIdentity> recentIdentities = ItemIdentityCollections.normalizedSet(visibleRecentItems);
         VisualHomeMap visualHomeMap = resolvedWorkflow.visualHomeMap();
         ClaimedChestMap claimedChestMap = resolvedWorkflow.claimedChestMap();
         // Decay the affinity map at projection time so downstream
@@ -929,6 +931,13 @@ public record SlotWorkspaceViewModel(
             accumulators.add(AtlasItemAccumulator.ghost(identity, stack, total));
             ItemIdentityCollections.add(ghostIdentities, identity);
         }
+        addRecentGhostAccumulators(
+                accumulators,
+                ghostIdentities,
+                visibleRecentItems,
+                resolvedAuthority,
+                ghosts,
+                elsewhereGhosts);
 
         accumulators.sort(Comparator
                 .comparing((AtlasItemAccumulator a) -> {
@@ -948,7 +957,6 @@ public record SlotWorkspaceViewModel(
         ArrayList<AtlasIsland> layoutIslands = new ArrayList<>(SlotWorkspaceAtlasLayout.baseIslands(visualHomeMap));
         ArrayList<AtlasItem> atlasItems = new ArrayList<>();
         ArrayList<AtlasItem> triageItems = new ArrayList<>();
-        Set<ItemIdentity> recentIdentities = ItemIdentityCollections.normalizedSet(recents.visibleItems());
         Set<ItemIdentity> junkTags = ItemIdentityCollections.normalizedSet(
                 resolvedWorkflow.workflowProjection().junkTags());
         List<TriageIslandRef> triageIslandRefs = triageIslandRefs(visualHomeMap);
@@ -993,6 +1001,7 @@ public record SlotWorkspaceViewModel(
                 int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
                 if (ghostOnly) {
                     boolean intentGhost = kitNeeded || desiredCount > 0 || wantedCount > 0;
+                    boolean recentGhost = ItemIdentityCollections.containsCanonical(recentIdentities, accumulator.identity());
                     if (proximateCount > 0) {
                         // Nearby claimed-chest contents can be the first time
                         // SLOT sees an identity on an existing world. Queue
@@ -1012,6 +1021,34 @@ public record SlotWorkspaceViewModel(
                                 false,
                                 true,
                                 proximateCount,
+                                chipSuggestions,
+                                presence,
+                                elsewhere,
+                                isContainer,
+                                containerFree,
+                                containerCapacity,
+                                kitNeeded,
+                                desiredCount,
+                                desiredCountFromKit,
+                                wantedCount,
+                                junk,
+                                accumulator.largestCarriedSourceId(),
+                                accumulator.largestCarriedSlotIndex(),
+                                accumulator.largestCarriedSlotCount()
+                        ));
+                    } else if (recentGhost) {
+                        triageItems.add(new AtlasItem(
+                                IdentityRef.from(accumulator.identity()),
+                                accumulator.displayStack(),
+                                accumulator.name(),
+                                accumulator.totalCount(),
+                                accumulator.firstSlotIndex(),
+                                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                                true,
+                                false,
+                                false,
+                                true,
+                                0,
                                 chipSuggestions,
                                 presence,
                                 elsewhere,
@@ -3075,6 +3112,80 @@ public record SlotWorkspaceViewModel(
             }
         }
         return new ArrayList<>(byIdentity.values());
+    }
+
+    private static void addRecentGhostAccumulators(
+            List<AtlasItemAccumulator> accumulators,
+            Set<ItemIdentity> existingIdentities,
+            List<ItemIdentity> recentItems,
+            InventoryAuthoritySnapshot authority,
+            ProximateGhostProjection ghosts,
+            ElsewhereGhostProjection elsewhereGhosts
+    ) {
+        if (accumulators == null || recentItems == null || recentItems.isEmpty()) {
+            return;
+        }
+        Set<ItemIdentity> existing = existingIdentities == null ? new LinkedHashSet<>() : existingIdentities;
+        for (ItemIdentity identity : recentItems) {
+            if (identity == null || ItemIdentityCollections.containsCanonical(existing, identity)) {
+                continue;
+            }
+            ItemStack stack = recentDisplayStack(identity, authority, ghosts, elsewhereGhosts);
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            ItemIdentity key = ItemIdentityCollections.key(identity);
+            accumulators.add(AtlasItemAccumulator.ghost(key, stack, 0));
+            ItemIdentityCollections.add(existing, key);
+        }
+    }
+
+    private static ItemStack recentDisplayStack(
+            ItemIdentity identity,
+            InventoryAuthoritySnapshot authority,
+            ProximateGhostProjection ghosts,
+            ElsewhereGhostProjection elsewhereGhosts
+    ) {
+        ItemStack stack = displayStackFromAuthority(authority, identity);
+        if (stack != null && !stack.isEmpty()) {
+            return stack;
+        }
+        stack = displayStackFromMap(ghosts == null ? null : ghosts.displayStackByIdentity(), identity);
+        if (stack != null && !stack.isEmpty()) {
+            return stack;
+        }
+        stack = displayStackFromMap(elsewhereGhosts == null ? null : elsewhereGhosts.displayStackByIdentity(), identity);
+        if (stack != null && !stack.isEmpty()) {
+            return stack;
+        }
+        return resolveGhostStack(identity);
+    }
+
+    private static ItemStack displayStackFromAuthority(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
+        if (authority == null || identity == null) {
+            return ItemStack.EMPTY;
+        }
+        ItemIdentity target = ItemIdentityCollections.key(identity);
+        for (InventorySourceDescriptor source : authority.sourceDescriptors()) {
+            if (source == null) {
+                continue;
+            }
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry == null || !entry.present() || entry.stack() == null || entry.stack().isEmpty()) {
+                    continue;
+                }
+                ItemIdentity entryIdentity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(entry.stack()));
+                if (ItemIdentityMatcher.matchesMovable(entryIdentity, target)) {
+                    return entry.stack().copy();
+                }
+            }
+        }
+        return ItemStack.EMPTY;
+    }
+
+    private static ItemStack displayStackFromMap(Map<ItemIdentity, ItemStack> stacks, ItemIdentity identity) {
+        ItemStack stack = ItemIdentityCollections.find(stacks, identity);
+        return stack == null ? ItemStack.EMPTY : stack.copy();
     }
 
     private static java.util.function.Function<String, ItemStack> ghostStackResolver = identity -> ItemStack.EMPTY;

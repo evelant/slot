@@ -193,6 +193,10 @@ class WorkflowDomainPersistenceServiceTest {
                 ItemIdentity.of("minecraft:iron_ingot")
         );
         runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:iron_ingot"), island.id(), 0);
+        ItemIdentity junk = ItemIdentity.of("minecraft:cobblestone");
+        assertTrue(runtime.collectionWorkflow().setJunk(junk, true));
+        Long junkMarkedAt = repository.workflowProjection().junkMarkedAtEpochMillis().get(junk);
+        assertNotNull(junkMarkedAt);
         runtime.flushPendingSave();
 
         assertEquals(0, repository.workflowEvents().snapshot().records().size());
@@ -203,6 +207,13 @@ class WorkflowDomainPersistenceServiceTest {
         service.loadInto(restored);
         assertEquals(0, restored.workflowEvents().snapshot().records().size());
         assertNotNull(restored.workflowProjection().visualHomeMap().assignment(ItemIdentity.of("minecraft:iron_ingot")));
+        assertTrue(restored.workflowProjection().junkTags().contains(junk));
+        assertEquals(junkMarkedAt, restored.workflowProjection().junkMarkedAtEpochMillis().get(junk));
+
+        WorkflowDomainRuntime restoredRuntime = new WorkflowDomainRuntime(restored, service);
+        assertTrue(restoredRuntime.collectionWorkflow().expireJunkTags(
+                junkMarkedAt + CollectionWorkflowDomainService.JUNK_MARK_TTL_MILLIS));
+        assertFalse(restored.workflowProjection().junkTags().contains(junk));
     }
 
     @Test

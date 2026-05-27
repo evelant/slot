@@ -158,7 +158,8 @@ Forge 1.20 module:
   `SimpleChannel` action transport, workflow persistence, session-backed
   projection, carried/world storage accessors, guarded
   transfer/hotbar/workflow/desired/wanted/chest/cursor/gather/wayfinding
-  actions, measured shared-card badges, sidebar/craft-run margin config/depth fixes,
+  actions, chest `storage_id` break cleanup, measured shared-card badges,
+  sidebar/craft-run margin config/depth fixes,
   `/slot test` and
   classification commands, and the Phase 0.5 `compileSharedProbeJava`
   shared-source compile gate.

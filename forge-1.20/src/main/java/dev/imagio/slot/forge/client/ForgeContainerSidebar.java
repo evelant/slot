@@ -289,7 +289,7 @@ public final class ForgeContainerSidebar {
         return false;
     }
 
-    private static boolean insideSidebar(double mouseX, double mouseY) {
+    private static boolean insideInteractiveSurface(double mouseX, double mouseY) {
         if (activeHostScreen == null || activeSurface == null) {
             return false;
         }
@@ -297,22 +297,50 @@ public final class ForgeContainerSidebar {
         int top = SlotForgeClientConfig.sidebarTopMargin();
         int right = left + activeSurface.contentWidth();
         int bottom = activeHostScreen.height - SlotForgeClientConfig.sidebarBottomMargin();
-        return mouseX >= left && mouseX < right && mouseY >= top && mouseY < bottom;
+        return insideInteractiveSurface(
+                mouseX,
+                mouseY,
+                activeSurface.hasActiveOverlay(),
+                left,
+                top,
+                right,
+                bottom,
+                activeRecentsPanelBounds(activeHostScreen),
+                activeCraftRunPanelBounds(activeHostScreen));
     }
 
-    private static boolean insideInteractiveSurface(double mouseX, double mouseY) {
-        if (insideSidebar(mouseX, mouseY)) {
+    static boolean insideInteractiveSurface(
+            double mouseX,
+            double mouseY,
+            boolean overlayActive,
+            int sidebarLeft,
+            int sidebarTop,
+            int sidebarRight,
+            int sidebarBottom,
+            ForgeWorkspaceSurface.RecentsPanelBounds recentsBounds,
+            ForgeWorkspaceSurface.CraftRunPanelBounds craftRunBounds
+    ) {
+        if (overlayActive) {
             return true;
         }
-        ForgeWorkspaceSurface.RecentsPanelBounds recentsBounds = activeRecentsPanelBounds(activeHostScreen);
-        if (recentsBounds != null
-                && mouseX >= recentsBounds.x()
-                && mouseX < recentsBounds.x() + recentsBounds.width()
-                && mouseY >= recentsBounds.y()
-                && mouseY < recentsBounds.y() + recentsBounds.height()) {
+        if (mouseX >= sidebarLeft && mouseX < sidebarRight && mouseY >= sidebarTop && mouseY < sidebarBottom) {
             return true;
         }
-        ForgeWorkspaceSurface.CraftRunPanelBounds bounds = activeCraftRunPanelBounds(activeHostScreen);
+        if (contains(recentsBounds, mouseX, mouseY)) {
+            return true;
+        }
+        return contains(craftRunBounds, mouseX, mouseY);
+    }
+
+    private static boolean contains(ForgeWorkspaceSurface.RecentsPanelBounds bounds, double mouseX, double mouseY) {
+        return bounds != null
+                && mouseX >= bounds.x()
+                && mouseX < bounds.x() + bounds.width()
+                && mouseY >= bounds.y()
+                && mouseY < bounds.y() + bounds.height();
+    }
+
+    private static boolean contains(ForgeWorkspaceSurface.CraftRunPanelBounds bounds, double mouseX, double mouseY) {
         return bounds != null
                 && mouseX >= bounds.x()
                 && mouseX < bounds.x() + bounds.width()

@@ -226,6 +226,14 @@ public final class ChestClaimWorkflowDomainService {
     }
 
     public ClaimedChest removeAnchor(UUID storageId, ChestAnchor anchor) {
+        return removeAnchor(
+                storageId,
+                anchor,
+                DomainEventMetadata.origin("workflow.storage.chest.anchors")
+        );
+    }
+
+    public ClaimedChest removeAnchor(UUID storageId, ChestAnchor anchor, DomainEventMetadata metadata) {
         if (storageId == null || anchor == null) {
             return null;
         }
@@ -235,7 +243,11 @@ public final class ChestClaimWorkflowDomainService {
         }
         LinkedHashSet<ChestAnchor> remaining = new LinkedHashSet<>(existing.anchors());
         remaining.remove(anchor);
-        return updateAnchors(storageId, remaining);
+        if (remaining.isEmpty()) {
+            deleteChest(storageId, resolveMetadata(metadata, "workflow.storage.chest.anchors"));
+            return null;
+        }
+        return updateAnchors(storageId, remaining, metadata);
     }
 
     public ClaimedChest relabelChest(UUID storageId, String label) {
