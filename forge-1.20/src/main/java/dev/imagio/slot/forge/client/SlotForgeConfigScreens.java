@@ -84,21 +84,21 @@ public final class SlotForgeConfigScreens {
         ));
         category.addEntry(intMarginEntry(
                 entries,
-                "slot.config.craft_run_right_margin",
-                "slot.config.craft_run_right_margin.tooltip",
-                SlotForgeClientConfig.CLIENT.craftRunRightMargin
+                "slot.config.task_panel_right_margin",
+                "slot.config.task_panel_right_margin.tooltip",
+                SlotForgeClientConfig.CLIENT.taskPanelRightMargin
         ));
         category.addEntry(intMarginEntry(
                 entries,
-                "slot.config.craft_run_top_margin",
-                "slot.config.craft_run_top_margin.tooltip",
-                SlotForgeClientConfig.CLIENT.craftRunTopMargin
+                "slot.config.task_panel_top_margin",
+                "slot.config.task_panel_top_margin.tooltip",
+                SlotForgeClientConfig.CLIENT.taskPanelTopMargin
         ));
         category.addEntry(intMarginEntry(
                 entries,
-                "slot.config.craft_run_bottom_margin",
-                "slot.config.craft_run_bottom_margin.tooltip",
-                SlotForgeClientConfig.CLIENT.craftRunBottomMargin
+                "slot.config.task_panel_bottom_margin",
+                "slot.config.task_panel_bottom_margin.tooltip",
+                SlotForgeClientConfig.CLIENT.taskPanelBottomMargin
         ));
 
         return builder.build();

@@ -19,6 +19,7 @@ import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionVisibility;
+import dev.imagio.slot.ui.workspace.WorkspaceTaskPanelUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkflowTabsUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
@@ -106,26 +107,28 @@ final class ListWallPanelBuilder {
         return body;
     }
 
-    UIElement craftRunPanel() {
-        CraftRunUiBuilder craftRun = new CraftRunUiBuilder(new CraftRunContext());
-        List<SlotUiElement> rows = craftRun.panelRows(craftRunItems());
+    UIElement taskPanel() {
+        List<SlotUiElement> suggestionRows = contextualSuggestionRows();
+        List<SlotUiElement> craftRows = new CraftRunUiBuilder(new CraftRunContext()).panelRows(craftRunItems());
+        List<SlotUiElement> rows = taskPanelRows(suggestionRows, craftRows);
         if (rows.isEmpty()) {
             return null;
         }
         UIElement panel = panel(PANEL).layout(layout -> layout
                 .positionType(dev.vfyjxf.taffy.style.TaffyPosition.ABSOLUTE)
-                .right(SlotClientConfig.CLIENT.craftRunRightMargin.get())
-                .top(SlotClientConfig.CLIENT.craftRunTopMargin.get())
-                .bottom(SlotClientConfig.CLIENT.craftRunBottomMargin.get())
-                .width(CraftRunUiBuilder.PANEL_WIDTH_PX)
+                .right(SlotClientConfig.CLIENT.taskPanelRightMargin.get())
+                .top(SlotClientConfig.CLIENT.taskPanelTopMargin.get())
+                .bottom(SlotClientConfig.CLIENT.taskPanelBottomMargin.get())
+                .width(WorkspaceTaskPanelUiBuilder.PANEL_WIDTH_PX)
                 .paddingAll(5)
                 .gapAll(4)
                 .flexDirection(FlexDirection.COLUMN));
         panel.style(style -> style.zIndex(22));
         panel.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
-        panel.addChild(label("Crafting", ACCENT).layout(layout -> layout
-                .widthPercent(100)
-                .height(12)));
+        panel.addChild(label(WorkspaceTaskPanelUiBuilder.title(!suggestionRows.isEmpty(), !craftRows.isEmpty()), ACCENT)
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .height(12)));
 
         ScrollerView scroller = new ScrollerView();
         scroller.layout(layout -> layout
@@ -141,6 +144,10 @@ final class ListWallPanelBuilder {
         }
         panel.addChild(scroller);
         return panel;
+    }
+
+    boolean taskPanelVisible() {
+        return contextualSuggestionRowsVisible() || craftRunRowsVisible();
     }
 
     UIElement wallPanel() {
@@ -244,18 +251,6 @@ final class ListWallPanelBuilder {
         if (activeChest != null) {
             panel.addChild(activeChest);
         }
-        boolean filtering = !host.searchController.normalizedQuery().isBlank();
-        if (!host.recipeSidebarActive()) {
-            for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : host.viewModel.contextualSuggestionLanes()) {
-                if (hideFetchLaneForCraftRun(lane)) {
-                    continue;
-                }
-                SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
-                if (WallSectionUiBuilder.shouldRenderSuggestionLane(visibleLane)) {
-                    panel.addChild(sectionRenderer.render(sectionBuilder.suggestionLane(visibleLane)));
-                }
-            }
-        }
         // Mid section: TOC sliver glued to the left edge of the wall
         // scroller (fixed CARDS_PER_ROW-derived width). The wall is the
         // primary surface; the sliver is a thin navigation strip and
@@ -339,6 +334,57 @@ final class ListWallPanelBuilder {
         items.addAll(host.viewModel.atlasItems());
         items.addAll(host.viewModel.triageItems());
         return items.isEmpty() ? List.of() : List.copyOf(items);
+    }
+
+    private List<SlotUiElement> contextualSuggestionRows() {
+        if (host.recipeSidebarActive()) {
+            return List.of();
+        }
+        boolean filtering = !host.searchController.normalizedQuery().isBlank();
+        ArrayList<SlotUiElement> rows = new ArrayList<>();
+        for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : host.viewModel.contextualSuggestionLanes()) {
+            if (hideFetchLaneForCraftRun(lane)) {
+                continue;
+            }
+            SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
+            if (WallSectionUiBuilder.shouldRenderSuggestionLane(visibleLane)) {
+                rows.add(sectionBuilder.suggestionLane(visibleLane));
+            }
+        }
+        return rows.isEmpty() ? List.of() : List.copyOf(rows);
+    }
+
+    private boolean contextualSuggestionRowsVisible() {
+        if (host.recipeSidebarActive()) {
+            return false;
+        }
+        boolean filtering = !host.searchController.normalizedQuery().isBlank();
+        for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : host.viewModel.contextualSuggestionLanes()) {
+            if (hideFetchLaneForCraftRun(lane)) {
+                continue;
+            }
+            if (WallSectionUiBuilder.shouldRenderSuggestionLane(visibleSuggestionLane(lane, filtering))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean craftRunRowsVisible() {
+        return (host.viewModel != null
+                && host.viewModel.craftRun() != null
+                && host.viewModel.craftRun().active())
+                || !host.craftRunRecipeCaptures().isEmpty();
+    }
+
+    private static List<SlotUiElement> taskPanelRows(
+            List<SlotUiElement> suggestionRows,
+            List<SlotUiElement> craftRows
+    ) {
+        ArrayList<SlotUiElement> rows = new ArrayList<>();
+        rows.addAll(suggestionRows == null ? List.of() : suggestionRows);
+        rows.addAll(craftRows == null ? List.of() : craftRows);
+        return rows.isEmpty() ? List.of() : List.copyOf(rows);
     }
 
     private boolean hideFetchLaneForCraftRun(SlotWorkspaceViewModel.ContextualSuggestionLane lane) {

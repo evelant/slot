@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Set;
 
 public final class CraftRunUiBuilder {
-    public static final int PANEL_WIDTH_PX = 188;
-
     private static final int ROW_GAP_PX = 3;
     private static final int ACTION_ROW_HEIGHT_PX = 16;
     private static final int ENTRY_HEADER_HEIGHT_PX = 15;

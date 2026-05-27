@@ -50,9 +50,9 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
             int sidebarWidth = sidebarWidthFor(screen);
             if (sidebarWidth > 0) {
                 consumer.accept(new Bounds(0, 0, sidebarWidth, screen.height));
-                ForgeWorkspaceSurface.CraftRunPanelBounds craftRun = ForgeContainerSidebar.activeCraftRunPanelBounds(screen);
-                if (craftRun != null) {
-                    consumer.accept(new Bounds(craftRun.x(), craftRun.y(), craftRun.width(), craftRun.height()));
+                ForgeWorkspaceSurface.TaskPanelBounds taskPanel = ForgeContainerSidebar.activeTaskPanelBounds(screen);
+                if (taskPanel != null) {
+                    consumer.accept(new Bounds(taskPanel.x(), taskPanel.y(), taskPanel.width(), taskPanel.height()));
                 }
                 Bounds recents = recentsExclusionBounds(screen);
                 if (recents != null) {

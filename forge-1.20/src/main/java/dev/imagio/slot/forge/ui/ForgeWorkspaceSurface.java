@@ -37,6 +37,7 @@ import dev.imagio.slot.ui.workspace.WallSectionVisibility;
 import dev.imagio.slot.ui.workspace.WayfindingDisplay;
 import dev.imagio.slot.ui.workspace.WheelTransferBatcher;
 import dev.imagio.slot.ui.workspace.WorkflowTabsUiBuilder;
+import dev.imagio.slot.ui.workspace.WorkspaceTaskPanelUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.imagio.slot.ui.workspace.WorkspaceCountFormat;
 import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
@@ -857,7 +858,7 @@ public final class ForgeWorkspaceSurface {
             }
             root.addChild(sidebarRail);
             addFloatingRecents(root);
-            addCraftRunPanel(root);
+            addTaskPanel(root);
             addActiveOverlay(root);
             return root;
         }
@@ -869,7 +870,7 @@ public final class ForgeWorkspaceSurface {
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
         root.addChild(workspaceColumn(false));
         addFloatingRecents(root);
-        addCraftRunPanel(root);
+        addTaskPanel(root);
         addActiveOverlay(root);
         return root;
     }
@@ -881,8 +882,8 @@ public final class ForgeWorkspaceSurface {
         }
     }
 
-    private void addCraftRunPanel(SlotUiElement root) {
-        SlotUiElement panel = craftRunPanel();
+    private void addTaskPanel(SlotUiElement root) {
+        SlotUiElement panel = taskPanel();
         if (root != null && panel != null) {
             root.addChild(panel);
         }
@@ -940,10 +941,6 @@ public final class ForgeWorkspaceSurface {
             }
         }
         column.addChild(workflowTabs(sidebarMode));
-        SlotUiElement suggestions = contextualSuggestions(sidebarMode);
-        if (suggestions != null) {
-            column.addChild(suggestions);
-        }
         column.addChild(wallArea(sidebarMode));
         column.addChild(statusRow(sidebarMode));
         column.addChild(hotbar(sidebarMode));
@@ -1194,33 +1191,40 @@ public final class ForgeWorkspaceSurface {
                         .height(RecentsStripUiBuilder.STRIP_HEIGHT_PX));
     }
 
-    private SlotUiElement contextualSuggestions(boolean sidebarMode) {
+    private List<SlotUiElement> contextualSuggestionRows() {
         if (recipeSidebarActive()) {
-            return null;
+            return List.of();
         }
         boolean filtering = !normalizedSearchQuery().isBlank();
         WallSectionHeaderUiBuilder headerBuilder = new WallSectionHeaderUiBuilder(new HeaderContext());
         WallSectionUiBuilder sectionBuilder = new WallSectionUiBuilder(headerBuilder);
-        SlotUiElement lanes = SlotUiElement.element()
-                .layout(layout -> {
-                    if (sidebarMode) {
-                        layout.widthPercent(100);
-                    } else {
-                        layout.width(workspaceWidth());
-                    }
-                    layout.gapAll(4)
-                            .flexDirection(SlotUiLayout.FlexDirection.COLUMN);
-        });
+        ArrayList<SlotUiElement> rows = new ArrayList<>();
         for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : viewModel.contextualSuggestionLanes()) {
             if (hideFetchLaneForCraftRun(lane)) {
                 continue;
             }
             SlotWorkspaceViewModel.ContextualSuggestionLane visibleLane = visibleSuggestionLane(lane, filtering);
             if (WallSectionUiBuilder.shouldRenderSuggestionLane(visibleLane)) {
-                lanes.addChild(enrichSection(sectionBuilder.suggestionLane(visibleLane)));
+                rows.add(sectionBuilder.suggestionLane(visibleLane));
             }
         }
-        return lanes.children().isEmpty() ? null : lanes;
+        return rows.isEmpty() ? List.of() : List.copyOf(rows);
+    }
+
+    private boolean contextualSuggestionRowsVisible() {
+        if (recipeSidebarActive()) {
+            return false;
+        }
+        boolean filtering = !normalizedSearchQuery().isBlank();
+        for (SlotWorkspaceViewModel.ContextualSuggestionLane lane : viewModel.contextualSuggestionLanes()) {
+            if (hideFetchLaneForCraftRun(lane)) {
+                continue;
+            }
+            if (WallSectionUiBuilder.shouldRenderSuggestionLane(visibleSuggestionLane(lane, filtering))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private SlotUiElement wallArea(boolean sidebarMode) {
@@ -1419,27 +1423,30 @@ public final class ForgeWorkspaceSurface {
         return viewport;
     }
 
-    private SlotUiElement craftRunPanel() {
-        CraftRunUiBuilder craftRun = new CraftRunUiBuilder(new CraftRunContext());
-        List<SlotUiElement> rows = craftRun.panelRows(craftRunItems());
+    private SlotUiElement taskPanel() {
+        List<SlotUiElement> suggestionRows = contextualSuggestionRows();
+        List<SlotUiElement> craftRows = new CraftRunUiBuilder(new CraftRunContext()).panelRows(craftRunItems());
+        List<SlotUiElement> rows = taskPanelRows(suggestionRows, craftRows);
         if (rows.isEmpty()) {
             return null;
         }
-        int top = SlotForgeClientConfig.craftRunTopMargin();
-        int bottom = SlotForgeClientConfig.craftRunBottomMargin();
+        int top = SlotForgeClientConfig.taskPanelTopMargin();
+        int bottom = SlotForgeClientConfig.taskPanelBottomMargin();
         SlotUiElement panel = SlotUiElement.panel(PANEL)
                 .zIndex(20)
                 .layout(layout -> layout
                         .positionType(SlotUiLayout.PositionType.ABSOLUTE)
-                        .right(SlotForgeClientConfig.craftRunRightMargin())
+                        .right(SlotForgeClientConfig.taskPanelRightMargin())
                         .top(top)
-                        .width(CraftRunUiBuilder.PANEL_WIDTH_PX)
+                        .width(WorkspaceTaskPanelUiBuilder.PANEL_WIDTH_PX)
                         .height(Math.max(1, viewportHeight - top - bottom))
                         .paddingAll(5)
                         .gapAll(4)
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN))
                 .on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation(), true);
-        panel.addChild(SlotUiElement.label("Crafting", WorkspaceUiPalette.ACCENT)
+        panel.addChild(SlotUiElement.label(
+                        WorkspaceTaskPanelUiBuilder.title(!suggestionRows.isEmpty(), !craftRows.isEmpty()),
+                        WorkspaceUiPalette.ACCENT)
                 .layout(layout -> layout.widthPercent(100).height(12))
                 .textStyle(style -> style
                         .color(WorkspaceUiPalette.ACCENT)
@@ -1447,7 +1454,7 @@ public final class ForgeWorkspaceSurface {
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
         SlotUiElement content = SlotUiElement.panel(0xA810171D)
-                .id("slot.forge.craft_run_scroll")
+                .id("slot.forge.task_panel_scroll")
                 .attach(ForgeSlotUiTree.SCROLL_VIEWPORT, Boolean.TRUE)
                 .layout(layout -> layout
                         .widthPercent(100)
@@ -1460,6 +1467,16 @@ public final class ForgeWorkspaceSurface {
         }
         panel.addChild(content);
         return panel;
+    }
+
+    private static List<SlotUiElement> taskPanelRows(
+            List<SlotUiElement> suggestionRows,
+            List<SlotUiElement> craftRows
+    ) {
+        ArrayList<SlotUiElement> rows = new ArrayList<>();
+        rows.addAll(suggestionRows == null ? List.of() : suggestionRows);
+        rows.addAll(craftRows == null ? List.of() : craftRows);
+        return rows.isEmpty() ? List.of() : List.copyOf(rows);
     }
 
     private List<SlotWorkspaceViewModel.AtlasItem> craftRunItems() {
@@ -1477,26 +1494,27 @@ public final class ForgeWorkspaceSurface {
                 && viewModel.craftRun().active();
     }
 
-    public boolean craftRunPanelVisible() {
-        return (viewModel != null && viewModel.craftRun() != null && viewModel.craftRun().active())
+    public boolean taskPanelVisible() {
+        return contextualSuggestionRowsVisible()
+                || (viewModel != null && viewModel.craftRun() != null && viewModel.craftRun().active())
                 || (craftRunRecipeCaptures != null && !craftRunRecipeCaptures.isEmpty());
     }
 
-    public CraftRunPanelBounds craftRunPanelBounds(int screenWidth, int screenHeight) {
-        if (!craftRunPanelVisible()) {
+    public TaskPanelBounds taskPanelBounds(int screenWidth, int screenHeight) {
+        if (!taskPanelVisible()) {
             return null;
         }
-        int width = CraftRunUiBuilder.PANEL_WIDTH_PX;
-        int height = Math.max(1, screenHeight - SlotForgeClientConfig.craftRunTopMargin()
-                - SlotForgeClientConfig.craftRunBottomMargin());
-        return new CraftRunPanelBounds(
-                Math.max(0, screenWidth - SlotForgeClientConfig.craftRunRightMargin() - width),
-                SlotForgeClientConfig.craftRunTopMargin(),
+        int width = WorkspaceTaskPanelUiBuilder.PANEL_WIDTH_PX;
+        int height = Math.max(1, screenHeight - SlotForgeClientConfig.taskPanelTopMargin()
+                - SlotForgeClientConfig.taskPanelBottomMargin());
+        return new TaskPanelBounds(
+                Math.max(0, screenWidth - SlotForgeClientConfig.taskPanelRightMargin() - width),
+                SlotForgeClientConfig.taskPanelTopMargin(),
                 width,
                 height);
     }
 
-    public record CraftRunPanelBounds(int x, int y, int width, int height) {
+    public record TaskPanelBounds(int x, int y, int width, int height) {
     }
 
     public RecentsPanelBounds recentsPanelBounds(int screenWidth) {

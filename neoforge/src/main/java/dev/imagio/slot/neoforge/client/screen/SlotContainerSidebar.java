@@ -7,8 +7,8 @@ import dev.imagio.slot.neoforge.mixin.AbstractContainerScreenAccessor;
 import dev.imagio.slot.neoforge.network.SlotSidebarClosePayload;
 import dev.imagio.slot.neoforge.network.SlotSidebarOpenPayload;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarClientUi;
-import dev.imagio.slot.ui.workspace.CraftRunUiBuilder;
 import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
+import dev.imagio.slot.ui.workspace.WorkspaceTaskPanelUiBuilder;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.Minecraft;
@@ -104,19 +104,19 @@ public final class SlotContainerSidebar {
     public record ScreenBounds(int x, int y, int width, int height) {
     }
 
-    public static ScreenBounds activeCraftRunPanelBounds(Screen screen) {
-        if (screen == null || activeHostScreen != screen || !SlotSidebarClientUi.craftRunPanelVisible()) {
+    public static ScreenBounds activeTaskPanelBounds(Screen screen) {
+        if (screen == null || activeHostScreen != screen || !SlotSidebarClientUi.taskPanelVisible()) {
             return null;
         }
-        int width = CraftRunUiBuilder.PANEL_WIDTH_PX;
+        int width = WorkspaceTaskPanelUiBuilder.PANEL_WIDTH_PX;
         int height = Math.max(
                 1,
                 screen.height
-                        - SlotClientConfig.CLIENT.craftRunTopMargin.get()
-                        - SlotClientConfig.CLIENT.craftRunBottomMargin.get());
+                        - SlotClientConfig.CLIENT.taskPanelTopMargin.get()
+                        - SlotClientConfig.CLIENT.taskPanelBottomMargin.get());
         return new ScreenBounds(
-                Math.max(0, screen.width - SlotClientConfig.CLIENT.craftRunRightMargin.get() - width),
-                SlotClientConfig.CLIENT.craftRunTopMargin.get(),
+                Math.max(0, screen.width - SlotClientConfig.CLIENT.taskPanelRightMargin.get() - width),
+                SlotClientConfig.CLIENT.taskPanelTopMargin.get(),
                 width,
                 height);
     }

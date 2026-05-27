@@ -67,7 +67,7 @@ final class SlotWorkspaceUiController {
     final UIElement content;
     final UIElement sidebarFrame;
     final UIElement recentsPanelSlot;
-    final UIElement craftRunPanelSlot;
+    final UIElement taskPanelSlot;
     UIElement popoverSlot;
 
     SlotWorkspaceViewModel viewModel;
@@ -268,11 +268,11 @@ final class SlotWorkspaceUiController {
                 .left(0).right(0).top(0).bottom(0));
         this.recentsPanelSlot.style(style -> style.zIndex(18));
         this.recentsPanelSlot.setAllowHitTest(false);
-        this.craftRunPanelSlot = new UIElement().layout(layout -> layout
+        this.taskPanelSlot = new UIElement().layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(0).right(0).top(0).bottom(0));
-        this.craftRunPanelSlot.style(style -> style.zIndex(20));
-        this.craftRunPanelSlot.setAllowHitTest(false);
+        this.taskPanelSlot.style(style -> style.zIndex(20));
+        this.taskPanelSlot.setAllowHitTest(false);
         // Popovers (context menus, island edit, create-island) render
         // here — at root level with absolute fill — so their full-screen
         // dismiss catcher actually covers the full screen instead of
@@ -312,12 +312,12 @@ final class SlotWorkspaceUiController {
         // its TICK + MOUSE_MOVE listeners on root persist across rebuilds;
         // recreating it on every rebuildNow() would leak handlers.
         // Order: invisible sync binding, workspace frame/content, floating
-        // recents, floating craft-run panel, and popovers. The flex-column
+        // recents, floating task panel, and popovers. The flex-column
         // flow gives content the leftover height above the bottom slots.
         if (sidebarMode) {
-            root.addChildren(syncBinding(), sidebarFrame, recentsPanelSlot, craftRunPanelSlot, popoverSlot);
+            root.addChildren(syncBinding(), sidebarFrame, recentsPanelSlot, taskPanelSlot, popoverSlot);
         } else {
-            root.addChildren(syncBinding(), content, beltSlot, recentsPanelSlot, craftRunPanelSlot, popoverSlot);
+            root.addChildren(syncBinding(), content, beltSlot, recentsPanelSlot, taskPanelSlot, popoverSlot);
         }
         root.addEventListener(UIEvents.REMOVED, event -> markSurfaceClosed());
         // Bubble-phase universal handlers for the real menu cursor:
@@ -561,10 +561,10 @@ final class SlotWorkspaceUiController {
         beltSlot.addChild(belt.overlay());
         recentsPanelSlot.clearAllChildren();
         recentsPanelSlot.addChild(recentsStrip.floatingOverlay());
-        craftRunPanelSlot.clearAllChildren();
-        UIElement craftRunPanel = listWall.craftRunPanel();
-        if (craftRunPanel != null) {
-            craftRunPanelSlot.addChild(craftRunPanel);
+        taskPanelSlot.clearAllChildren();
+        UIElement taskPanel = listWall.taskPanel();
+        if (taskPanel != null) {
+            taskPanelSlot.addChild(taskPanel);
         }
         content.markTaffyStyleDirty();
     }
@@ -957,9 +957,8 @@ final class SlotWorkspaceUiController {
         return recipe != null && recipe.suppressVanillaTooltip(item);
     }
 
-    boolean craftRunPanelVisible() {
-        return (viewModel != null && viewModel.craftRun() != null && viewModel.craftRun().active())
-                || !craftRunRecipeCaptures().isEmpty();
+    boolean taskPanelVisible() {
+        return listWall.taskPanelVisible();
     }
 
     List<Component> recipeTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {

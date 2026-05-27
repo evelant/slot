@@ -1,29 +1,26 @@
 # SLOT Project Status
 
-Last updated: 2026-05-26. Operational handoff. Read after
-[../README.md](../README.md). For active work + queue see
-[plans/current.md](plans/current.md); for architecture see
-[architecture/overview.md](architecture/overview.md).
+Last updated: 2026-05-27. Operational handoff. Read after [../README.md](../README.md).
+For active work + queue see [plans/current.md](plans/current.md); for architecture see [architecture/overview.md](architecture/overview.md).
 
 ## Active
 
-Cross-loader support is the active track. SLOT keeps the modern
-Minecraft 1.21.1 NeoForge + LDLib2 build and adds a Minecraft 1.20.1
-Forge target through [plans/cross-loader-refactor.md](plans/cross-loader-refactor.md)
-and ADR [0006](decisions/0006-cross-loader-legacy-forge.md). The spike
-is deleted; production Forge renders direct Taffy on vanilla `Screen`,
-and `:forge-1.20:compileSharedProbeJava` compiles the whole common tree
-against Forge 1.20.1 / Java 17 with real platform adapters.
+Cross-loader support is the active track. SLOT keeps the modern Minecraft
+1.21.1 NeoForge + LDLib2 build and adds a Minecraft 1.20.1 Forge target
+through [plans/cross-loader-refactor.md](plans/cross-loader-refactor.md)
+and ADR [0006](decisions/0006-cross-loader-legacy-forge.md). The spike is
+deleted; production Forge renders direct Taffy on vanilla `Screen`, and
+`:forge-1.20:compileSharedProbeJava` compiles the whole common tree against
+Forge 1.20.1 / Java 17 with real platform adapters.
 
 Phase 1 has shared action transport, Forge runtime, session-backed projection,
 and common-service routing for metadata, transfer, hotbar, workflows,
-desired-count, chest, deposit/take, cursor, active-workflow gather, and
-cross-surface actions.
+desired-count, chest, deposit/take, cursor, gather, and cross-surface actions.
 
 Phase 2 has the production wall shell on both loaders: shared 24px item-card
 chrome, three-row floating Recents, vanilla-shaped Belt, active chest role controls,
 workflow controls, accepted-input menus, compact nearby headers, remembered
-search/scroll, configurable sidebar and craft-run panel margins, visible activation-scoped Put Away
+search/scroll, configurable sidebar and task panel margins, right-side Fetch/Put Away
 guidance, Forge key parity, and junk/trash pressure relief. Useful Now scoring
 is hidden while live contextual observation remains available; expensive
 contextual scoring and storage-ghost expansion are disabled for now. Carried
@@ -32,10 +29,9 @@ storage pips, route notches, right strips, and status rings follow one grammar
 on Forge and NeoForge. Modern drag/drop, richer LDLib2 card/tab affordances, and
 richer chest panels remain backend hooks, not common UI semantics.
 
-Learned storage now gates each claimed chest through `Storage`, `Buffer`, or
+Learned storage gates each claimed chest through `Storage`, `Buffer`, or
 `Ignore`; see ADR [0008](decisions/0008-chest-roles-and-affinity-correction.md).
-Only `Storage` learns affinity and accepts quick/bulk deposit; `Buffer` stays
-visible/pullable, and `Ignore` is hidden from SLOT storage projection.
+Only `Storage` learns affinity and accepts quick/bulk deposit; `Buffer` stays visible/pullable, and `Ignore` is hidden from SLOT storage projection.
 
 Classification has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar/static enrichment, runtime export, rich facet-evidence
@@ -47,12 +43,11 @@ direct wall-home sections; `mod_subsystem` stays semantic/query evidence. Keep
 rich semantic text intact instead of reducing prompts to item ids.
 
 EMI recipe context now uses the normal SLOT sidebar as a transient recipe
-ingredient filter plus one persisted current craft run on both loaders. It
-renders visible ingredients in the normal wall, keeps the tracked recipe list in
-a separate right-side craft-run panel with client-configurable margins, projects
-recipe inputs as transient wanted-count pressure for gather/storage/wayfinding,
-keeps EMI recipe screens clear of the floating Recents strip when they would
-overlap, stages selected deficits through the shared transfer executor, and survives
+ingredient filter plus one persisted current craft run on both loaders. Visible
+ingredients render in the wall; the tracked recipe list lives in the right-side
+task panel; recipe inputs project as transient wanted-count pressure for
+gather/storage/wayfinding; EMI recipe screens avoid floating Recents; selected
+deficits stage through the shared transfer executor; and the run survives
 logout/rejoin through workflow persistence. ADR
 [0007](decisions/0007-emi-recipe-sidebar.md) records the pivot; the old
 recipe-goal plan lives in
@@ -62,10 +57,9 @@ and the legacy code/UI/RPC/persistence model has been removed.
 ### Production wall shape (post-list-view)
 
 The 2D pan/zoom atlas is gone. The wall is a single-LOD sectioned
-vertical scroll list (`ListWallPanelBuilder`, `AtlasCardBuilder`
-rewritten) with a docked TOC tab strip (`TocPanelBuilder`). Plan
-archived in [plans/done/list-view.md](plans/done/list-view.md);
-sidebar embed sub-plan in
+vertical scroll list (`ListWallPanelBuilder`, `AtlasCardBuilder` rewritten)
+with a docked TOC tab strip (`TocPanelBuilder`). Plan archived in
+[plans/done/list-view.md](plans/done/list-view.md); sidebar embed sub-plan in
 [plans/done/list-view-phase-3a.md](plans/done/list-view-phase-3a.md).
 
 The workspace mounts in two surfaces with the **same widget tree**:
@@ -103,8 +97,7 @@ write a fresh plan in `docs/plans/`; don't reopen the closed list-view plan.
 
 Top-level docs: see [../README.md](../README.md) for the full map,
 [plans/current.md](plans/current.md) for the queue, [product/direction.md](product/direction.md)
-for product direction, [architecture/overview.md](architecture/overview.md) for architecture, and
-[plans/done/](plans/done/) / [plans/retired/](plans/retired/) for shipped or superseded plans.
+for product direction, [architecture/overview.md](architecture/overview.md) for architecture, and [plans/done/](plans/done/) / [plans/retired/](plans/retired/) for shipped or superseded plans.
 
 Common module:
 
@@ -159,14 +152,13 @@ Forge 1.20 module:
   projection, carried/world storage accessors, guarded
   transfer/hotbar/workflow/desired/wanted/chest/cursor/gather/wayfinding
   actions, chest `storage_id` break cleanup, measured shared-card badges,
-  sidebar/craft-run margin config/depth fixes,
+  sidebar/task-panel margin config/depth fixes,
   `/slot test` and
   classification commands, and the Phase 0.5 `compileSharedProbeJava`
   shared-source compile gate.
 
 Reference code (read-only): `reference/LDLib2`, `InventoryEssentials`,
-`TrashSlot`, `Applied-Energistics-2`, `SophisticatedBackpacks`,
-`SophisticatedCore`, `Toms-Storage`, `emi`.
+`TrashSlot`, `Applied-Energistics-2`, `SophisticatedBackpacks`, `SophisticatedCore`, `Toms-Storage`, `emi`.
 
 ## Concept → Code Map
 

@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-26
+Last updated: 2026-05-27
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -21,7 +21,7 @@ the direct Taffy/GuiGraphics `G` screen plus mounted sidebar. The latest
 UI parity pass aligned both loaders on right-side workflows, vanilla-shaped
 Belt, shared item-card state chrome, accepted-input menus, remembered
 search/scroll, three-row floating Recents, compact section headers, and configurable
-sidebar/craft-run panel margins. NeoForge remains the semantic oracle; the next risk is
+sidebar/task panel margins. NeoForge remains the semantic oracle; the next risk is
 migrating richer modern-only affordances without reintroducing backend-specific
 semantics.
 
@@ -31,9 +31,9 @@ craft run, per
 [`0007`](../decisions/0007-emi-recipe-sidebar.md). When EMI's recipe screen is
 open, SLOT renders the sidebar into that screen while syncing through EMI's
 underlying handled menu; the wall shows visible recipe ingredients, exposes an
-`Add Recipe` action for each visible recipe in a separate right-side craft-run
-panel, renders tracked recipes in that panel with compact output-icon headers and
-per-recipe stage/adjust/done controls, hides the fixed `Fetch` suggestion lane
+`Add Recipe` action for each visible recipe in the right-side task panel,
+renders tracked recipes in that panel with compact output-icon headers and
+per-recipe stage/adjust/done controls, hides the `Fetch` task lane
 while recipes are tracked, raises same-list producer recipe counts to the output
 units required by other tracked recipes, and projects recipe inputs as transient
 wanted-count pressure so gather/storage/wayfinding match the highlighted chrome.
@@ -67,6 +67,10 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-27** — Fetch and Put Away moved out of the wall flow into the
+  right-side task panel on both loaders, sharing its client-configurable margins,
+  EMI exclusion bounds, and sidebar hit region so dynamic task rows no longer
+  push wall cards under the cursor.
 - **2026-05-26** — Recents moved out of the wall header into a three-row
   floating center-top panel on both loaders, with client-configurable
   horizontal/top offsets, early EMI exclusion bounds, and recipe-screen
@@ -102,37 +106,6 @@ hold the rest.
   workflow event stream persists sibling reorder events, duplicates stay beside
   the source family with readable copy names, and sibling rename collisions are
   rejected instead of creating ambiguous visible workflow names.
-- **2026-05-19** — Workflow playtest polish landed: active workflows now keep
-  all carried cards visible, reveal only intentful accepted-tag proximate
-  substitutes by default, and leave unrelated storage ghosts behind `x`/header
-  reveal; accepted-input menus can add or remove exact/tag rules with filtered
-  material-specific tags and wider labels,
-  section headers carry `+x` nearby counts and compact empty sections, Useful Now
-  suggestion rows are hidden while live contextual observation, expensive
-  contextual scoring, and storage-ghost expansion are disabled for now,
-  search idle-commits and later clears after close with right-click clear
-  working on Forge, grave accent moves hovered identities
-  to main inventory, Shift+grave moves hovered identities to backpack storage,
-  and the shared
-  target/display-storage fixes stabilized damaged tools, baskets/sacks, tool
-  racks, bulk deposit, undo, and TFC startup.
-- **2026-05-19** — Item-card chrome now has a shared common grammar:
-  `24px` cells, measured 1px-padded top storage pips, route-only notches,
-  have/target bottom badges colored by target source, right-side wayfinding or
-  `need N`, and one precedence-ordered status ring. NeoForge now renders that
-  common tree instead of replacing card chrome, and Forge fixed its Taffy
-  inset/padding order plus tiny-text placement/SDF settings so badges no longer
-  overlap or render through the wrong edge.
-- **2026-05-19** — Junk/trash pressure relief landed: item-card context menus
-  can mark/unmark junk or trash carried matching stacks, junk marks expire after
-  30 minutes and show a small card indicator, direct trash records undo/redo and
-  marks the identity as junk, a configurable unbound hovered-trash hotkey exists
-  on both loaders, and pickup routing trashes marked junk stacks before/after
-  pickup when effective carried storage is over half full before backpack
-  reroute, with pressure reads cached against shared carried-inventory revision
-  signals and known specialist Sacks n' Such containers excluded from general
-  pressure.
-
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the
@@ -145,7 +118,7 @@ Roughly ordered by playtest signal. Pull from the top when the active
 track lands.
 
 1. **EMI craft-run playtest validation.** Validate the transient sidebar +
-   right-side tracked-recipe panel against real recipes before adding more chrome:
+   right-side task panel against real recipes before adding more chrome:
    open
    recipes from vanilla inventory, chest/crafting/machine screens, and both
    loaders; confirm the sidebar mounts on EMI's recipe screen and returns to
@@ -195,7 +168,7 @@ track lands.
    usable vocabulary.
 5. **Workflow follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
    Core workflows, accepted inputs, compact nearby headers, hidden Useful Now scoring,
-   visible activation-scoped Put Away guidance, search/keybind polish, and the shared display-storage/tool fix pass are
+   right-side activation-scoped Put Away guidance, search/keybind polish, and the shared display-storage/tool fix pass are
    live. Put-away destination wayfinding and workflow/variant reorder plus
    duplicate/rename polish have landed. EMI craft runs and recipe-goal removal
    have landed; remaining workflow follow-ups are the deferred hovered `Use this`

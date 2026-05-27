@@ -67,7 +67,7 @@ class ForgeContainerSidebarTest {
                 268,
                 220,
                 new ForgeWorkspaceSurface.RecentsPanelBounds(160, 4, 120, 72),
-                new ForgeWorkspaceSurface.CraftRunPanelBounds(410, 20, 140, 180)));
+                new ForgeWorkspaceSurface.TaskPanelBounds(410, 20, 140, 180)));
     }
 
     @Test
@@ -81,7 +81,7 @@ class ForgeContainerSidebarTest {
                 268,
                 220,
                 new ForgeWorkspaceSurface.RecentsPanelBounds(160, 4, 120, 72),
-                new ForgeWorkspaceSurface.CraftRunPanelBounds(410, 20, 140, 180)));
+                new ForgeWorkspaceSurface.TaskPanelBounds(410, 20, 140, 180)));
         assertTrue(ForgeContainerSidebar.insideInteractiveSurface(
                 40,
                 80,
@@ -102,6 +102,16 @@ class ForgeContainerSidebarTest {
                 220,
                 new ForgeWorkspaceSurface.RecentsPanelBounds(160, 4, 120, 72),
                 null));
+        assertTrue(ForgeContainerSidebar.insideInteractiveSurface(
+                420,
+                40,
+                false,
+                8,
+                12,
+                268,
+                220,
+                null,
+                new ForgeWorkspaceSurface.TaskPanelBounds(410, 20, 140, 180)));
     }
 
     private static final class FocusableWidget implements GuiEventListener {

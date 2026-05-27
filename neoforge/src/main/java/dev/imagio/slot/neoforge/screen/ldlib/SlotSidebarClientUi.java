@@ -146,9 +146,9 @@ public final class SlotSidebarClientUi {
         return activeMount != null;
     }
 
-    public static boolean craftRunPanelVisible() {
+    public static boolean taskPanelVisible() {
         ActiveMount mount = activeMount;
-        return mount != null && mount.controller.craftRunPanelVisible();
+        return mount != null && mount.controller.taskPanelVisible();
     }
 
     public static void setRecipeSidebarSpec(RecipeIngredientSidebarSpec spec) {

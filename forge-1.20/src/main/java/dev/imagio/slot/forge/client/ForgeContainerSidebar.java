@@ -63,11 +63,11 @@ public final class ForgeContainerSidebar {
         return SlotForgeClientConfig.sidebarLeftMargin() + contentWidth;
     }
 
-    public static ForgeWorkspaceSurface.CraftRunPanelBounds activeCraftRunPanelBounds(Screen screen) {
+    public static ForgeWorkspaceSurface.TaskPanelBounds activeTaskPanelBounds(Screen screen) {
         if (screen != activeHostScreen || activeSurface == null) {
             return null;
         }
-        return activeSurface.craftRunPanelBounds(screen.width, screen.height);
+        return activeSurface.taskPanelBounds(screen.width, screen.height);
     }
 
     public static ForgeWorkspaceSurface.RecentsPanelBounds activeRecentsPanelBounds(Screen screen) {
@@ -306,7 +306,7 @@ public final class ForgeContainerSidebar {
                 right,
                 bottom,
                 activeRecentsPanelBounds(activeHostScreen),
-                activeCraftRunPanelBounds(activeHostScreen));
+                activeTaskPanelBounds(activeHostScreen));
     }
 
     static boolean insideInteractiveSurface(
@@ -318,7 +318,7 @@ public final class ForgeContainerSidebar {
             int sidebarRight,
             int sidebarBottom,
             ForgeWorkspaceSurface.RecentsPanelBounds recentsBounds,
-            ForgeWorkspaceSurface.CraftRunPanelBounds craftRunBounds
+            ForgeWorkspaceSurface.TaskPanelBounds taskPanelBounds
     ) {
         if (overlayActive) {
             return true;
@@ -329,7 +329,7 @@ public final class ForgeContainerSidebar {
         if (contains(recentsBounds, mouseX, mouseY)) {
             return true;
         }
-        return contains(craftRunBounds, mouseX, mouseY);
+        return contains(taskPanelBounds, mouseX, mouseY);
     }
 
     private static boolean contains(ForgeWorkspaceSurface.RecentsPanelBounds bounds, double mouseX, double mouseY) {
@@ -340,7 +340,7 @@ public final class ForgeContainerSidebar {
                 && mouseY < bounds.y() + bounds.height();
     }
 
-    private static boolean contains(ForgeWorkspaceSurface.CraftRunPanelBounds bounds, double mouseX, double mouseY) {
+    private static boolean contains(ForgeWorkspaceSurface.TaskPanelBounds bounds, double mouseX, double mouseY) {
         return bounds != null
                 && mouseX >= bounds.x()
                 && mouseX < bounds.x() + bounds.width()
