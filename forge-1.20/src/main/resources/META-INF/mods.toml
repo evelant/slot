@@ -27,13 +27,6 @@ description='''${mod_description}'''
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="emberstextapi"
-    mandatory=true
-    versionRange="[2.9,)"
-    ordering="BEFORE"
-    side="CLIENT"
-
-[[dependencies.${mod_id}]]
     modId="cloth_config"
     mandatory=true
     versionRange="[${cloth_config_forge_version},12)"

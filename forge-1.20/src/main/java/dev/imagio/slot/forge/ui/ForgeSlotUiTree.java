@@ -1,6 +1,5 @@
 package dev.imagio.slot.forge.ui;
 
-import dev.imagio.slot.forge.client.ForgeSlotUiFonts;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEvent;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
@@ -839,7 +838,7 @@ public final class ForgeSlotUiTree {
 
     private static Component uiText(String text) {
         return Component.literal(text == null ? "" : text)
-                .withStyle(style -> style.withFont(ForgeSlotUiFonts.uiFont()));
+                .withStyle(style -> style.withFont(Minecraft.DEFAULT_FONT));
     }
 
     private boolean measuresText(SlotUiElement model) {

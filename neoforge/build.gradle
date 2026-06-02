@@ -55,7 +55,6 @@ dependencies {
     annotationProcessor "io.github.llamalad7:mixinextras-common:${mixinextras_version}"
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
     implementation "com.lowdragmc.ldlib2:ldlib2-neoforge-${minecraft_version}:${ldlib2_version}:all"
-    implementation "maven.modrinth:embers-text-api:${emberstextapi_version}+neoforge-${minecraft_version}"
     implementation "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_neoforge_version}"
 
     testImplementation platform("org.junit:junit-bom:${junit_version}")

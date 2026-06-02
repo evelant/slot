@@ -67,6 +67,13 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-06-02** — Workspace projection now runs through a common
+  per-session projection cache on both Forge and NeoForge: unchanged structural
+  inputs reuse the projected view, status/diagnostics/selected-slot changes
+  apply as a cheap frame overlay, view sends compare a structural content
+  fingerprint before packet encoding, identity normalization is memoized across
+  projection misses, and claimed-chest proximity changes participate in passive
+  refresh invalidation.
 - **2026-05-27** — Fetch and Put Away moved out of the wall flow into the
   right-side task panel on both loaders, sharing its client-configurable margins,
   EMI exclusion bounds, and sidebar hit region so dynamic task rows no longer
@@ -75,37 +82,6 @@ hold the rest.
   floating center-top panel on both loaders, with client-configurable
   horizontal/top offsets, early EMI exclusion bounds, and recipe-screen
   overlap avoidance.
-- **2026-05-22** — EMI craft-run rows moved out of the top of the wall into a
-  separate right-side panel on both loaders, with client-configurable
-  top/right/bottom margins and EMI exclusion bounds for the new panel.
-- **2026-05-21** — Chest affinity roles landed on both loaders: active chests
-  cycle through `Storage`, `Buffer`, and `Ignore`; only `Storage` learns
-  affinity and accepts quick/bulk deposit, `Buffer` remains visible/pullable,
-  `Ignore` is hidden, station deny tags cover TFC forge/crucible/alloying
-  cases, item menus can clear one active-chest affinity bond, and
-  move-to-new-storage rehomes clear the emptied origin bond. ADR
-  [`0008`](../decisions/0008-chest-roles-and-affinity-correction.md) records it.
-- **2026-05-21** — EMI craft runs landed on both loaders: recipe screens still
-  mount the filtered SLOT sidebar, can add visible or hovered EMI recipes to a
-  persisted server-owned recipe list, show per-recipe sections, project recipe
-  inputs as transient wanted-count pressure for shared
-  gather/storage/wayfinding behavior, clamp count controls to recipe output
-  batches, raise same-list producer recipe counts from downstream input needs,
-  stage selected recipe inputs from carried providers into player main inventory
-  through the shared transfer executor, decrement remaining output from
-  meaningful acquisition activity, survive logout/rejoin and server restart,
-  and no longer expose the legacy `SLOT goal` button/drop target/goal-tab UI or
-  recipe-goal model, RPC, codec, and persistence fields.
-- **2026-05-20** — Active-workflow put-away destination wayfinding landed:
-  activation-time carried clutter now feeds a visible Put Away strip, no-home
-  card chrome, distinct chest/display wayfinding targets, green HUD/glow
-  styling and "Put away" labels, and bulk deposit ignores later pickups until
-  the workflow is activated again.
-- **2026-05-20** — Workflow editing polish landed: workflow and variant
-  context menus can move siblings left/right on both loaders, the shared
-  workflow event stream persists sibling reorder events, duplicates stay beside
-  the source family with readable copy names, and sibling rename collisions are
-  rejected instead of creating ambiguous visible workflow names.
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the
@@ -181,12 +157,12 @@ track lands.
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
-8. **Workspace projection caching.** `SlotWorkspaceViewModel`
-   re-projects carried / proximate / elsewhere / workflow-needed identities
-   every server tick while open. Add cache invalidators for inventory
-   deltas, chest content, workflow changes, and chest-proximity movement;
-   the main win is server CPU, with log-spam reduction as a side
-   benefit.
+8. **Workspace projection slice extraction follow-up.** The shared
+   session cache, content fingerprint, identity memo, and claimed-chest
+   proximity invalidator are live on both loaders. Profile the next
+   shift-scroll / storage-heavy capture and split any remaining hot
+   `SlotWorkspaceViewModel` sections into independently cached slices
+   instead of adding loader-side special cases.
 
 ## Deferred experiments
 

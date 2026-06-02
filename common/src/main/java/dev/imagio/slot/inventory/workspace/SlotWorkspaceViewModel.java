@@ -939,20 +939,7 @@ public record SlotWorkspaceViewModel(
                 ghosts,
                 elsewhereGhosts);
 
-        accumulators.sort(Comparator
-                .comparing((AtlasItemAccumulator a) -> {
-                    VisualHomeAssignment hm = visualHomeMap.assignment(a.identity());
-                    return hm == null ? "" : hm.islandId();
-                })
-                .thenComparingInt(a -> {
-                    VisualHomeAssignment hm = visualHomeMap.assignment(a.identity());
-                    return hm == null
-                            ? recentRankByIdentity.getOrDefault(a.identity(), Integer.MAX_VALUE)
-                            : hm.ordinal();
-                })
-                .thenComparing(a -> a.name().toLowerCase(Locale.ROOT))
-                .thenComparing(a -> a.identity().itemId())
-                .thenComparingInt(AtlasItemAccumulator::firstSlotIndex));
+        sortAccumulators(accumulators, visualHomeMap, recentRankByIdentity);
 
         ArrayList<AtlasIsland> layoutIslands = new ArrayList<>(SlotWorkspaceAtlasLayout.baseIslands(visualHomeMap));
         ArrayList<AtlasItem> atlasItems = new ArrayList<>();
@@ -968,7 +955,7 @@ public record SlotWorkspaceViewModel(
                 : cohortPolicy.organizationGroupQualifier();
 
         for (AtlasItemAccumulator accumulator : accumulators) {
-            VisualHomeAssignment assignment = visualHomeMap.assignment(accumulator.identity());
+            VisualHomeAssignment assignment = assignmentFor(visualHomeMap, accumulator.identity());
             List<ChestPresenceEntry> presence = ghosts.presenceByIdentity().getOrDefault(accumulator.identity(), List.of());
             List<ChestPresenceEntry> elsewhere = elsewherePresence.getOrDefault(accumulator.identity(), List.of());
             boolean ghostOnly = !accumulator.carried();
@@ -1193,7 +1180,7 @@ public record SlotWorkspaceViewModel(
         }
 
         triageItems.sort(Comparator
-                .comparingInt((AtlasItem item) -> recentRankByIdentity.getOrDefault(item.identity().toIdentity(), Integer.MAX_VALUE))
+                .comparingInt((AtlasItem item) -> recentRank(recentRankByIdentity, item.identity().toIdentity()))
                 .thenComparing(item -> item.name().toLowerCase(Locale.ROOT))
                 .thenComparing(item -> item.identity().itemId()));
 
@@ -2870,6 +2857,70 @@ public record SlotWorkspaceViewModel(
         );
     }
 
+    public SlotWorkspaceViewModel withFrame(
+            long nextRevision,
+            String nextStatus,
+            String nextDiagnostics,
+            int nextPendingCount,
+            int nextSelectedQuickAccessSlot
+    ) {
+        return new SlotWorkspaceViewModel(
+                nextRevision,
+                nextStatus,
+                nextDiagnostics,
+                nextPendingCount,
+                nextSelectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlotsWithSelection(hotbarSlots, nextSelectedQuickAccessSlot),
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                craftRun,
+                contextualSuggestionLanes
+        );
+    }
+
+    private static List<HotbarSlot> hotbarSlotsWithSelection(List<HotbarSlot> slots, int selectedQuickAccessSlot) {
+        if (slots == null || slots.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<HotbarSlot> updated = new ArrayList<>(slots.size());
+        boolean changed = false;
+        for (HotbarSlot slot : slots) {
+            if (slot == null) {
+                continue;
+            }
+            boolean selected = slot.hotbarIndex() == selectedQuickAccessSlot;
+            if (slot.selected() == selected) {
+                updated.add(slot);
+            } else {
+                updated.add(new HotbarSlot(
+                        slot.hotbarIndex(),
+                        selected,
+                        slot.occupied(),
+                        slot.displayStack(),
+                        slot.count()));
+                changed = true;
+            }
+        }
+        if (!changed && updated.size() == slots.size()) {
+            return slots;
+        }
+        return updated.isEmpty() ? List.of() : List.copyOf(updated);
+    }
+
     public record CarriedContainerInfo(int freeSlots, int slotCapacity) {
         public CarriedContainerInfo {
             freeSlots = Math.max(0, freeSlots);
@@ -3114,6 +3165,39 @@ public record SlotWorkspaceViewModel(
         return new ArrayList<>(byIdentity.values());
     }
 
+    private static void sortAccumulators(
+            List<AtlasItemAccumulator> accumulators,
+            VisualHomeMap visualHomeMap,
+            Map<ItemIdentity, Integer> recentRankByIdentity
+    ) {
+        if (accumulators == null || accumulators.size() < 2) {
+            return;
+        }
+        ArrayList<AtlasAccumulatorSortKey> keys = new ArrayList<>(accumulators.size());
+        for (AtlasItemAccumulator accumulator : accumulators) {
+            VisualHomeAssignment assignment = assignmentFor(visualHomeMap, accumulator.identity());
+            int ordinal = assignment == null
+                    ? recentRankByIdentity.getOrDefault(accumulator.identity(), Integer.MAX_VALUE)
+                    : assignment.ordinal();
+            keys.add(new AtlasAccumulatorSortKey(
+                    accumulator,
+                    assignment == null ? "" : assignment.islandId(),
+                    ordinal,
+                    accumulator.name().toLowerCase(Locale.ROOT),
+                    accumulator.identity().itemId(),
+                    accumulator.firstSlotIndex()));
+        }
+        keys.sort(Comparator
+                .comparing(AtlasAccumulatorSortKey::islandId)
+                .thenComparingInt(AtlasAccumulatorSortKey::ordinal)
+                .thenComparing(AtlasAccumulatorSortKey::name)
+                .thenComparing(AtlasAccumulatorSortKey::itemId)
+                .thenComparingInt(AtlasAccumulatorSortKey::firstSlotIndex));
+        for (int index = 0; index < keys.size(); index++) {
+            accumulators.set(index, keys.get(index).accumulator());
+        }
+    }
+
     private static void addRecentGhostAccumulators(
             List<AtlasItemAccumulator> accumulators,
             Set<ItemIdentity> existingIdentities,
@@ -3126,11 +3210,15 @@ public record SlotWorkspaceViewModel(
             return;
         }
         Set<ItemIdentity> existing = existingIdentities == null ? new LinkedHashSet<>() : existingIdentities;
+        Map<ItemIdentity, ItemStack> authorityDisplayStacks = null;
         for (ItemIdentity identity : recentItems) {
             if (identity == null || ItemIdentityCollections.containsCanonical(existing, identity)) {
                 continue;
             }
-            ItemStack stack = recentDisplayStack(identity, authority, ghosts, elsewhereGhosts);
+            if (authorityDisplayStacks == null) {
+                authorityDisplayStacks = displayStacksByIdentity(authority);
+            }
+            ItemStack stack = recentDisplayStack(identity, authorityDisplayStacks, ghosts, elsewhereGhosts);
             if (stack == null || stack.isEmpty()) {
                 continue;
             }
@@ -3142,11 +3230,11 @@ public record SlotWorkspaceViewModel(
 
     private static ItemStack recentDisplayStack(
             ItemIdentity identity,
-            InventoryAuthoritySnapshot authority,
+            Map<ItemIdentity, ItemStack> authorityDisplayStacks,
             ProximateGhostProjection ghosts,
             ElsewhereGhostProjection elsewhereGhosts
     ) {
-        ItemStack stack = displayStackFromAuthority(authority, identity);
+        ItemStack stack = displayStackFromMap(authorityDisplayStacks, identity);
         if (stack != null && !stack.isEmpty()) {
             return stack;
         }
@@ -3161,11 +3249,11 @@ public record SlotWorkspaceViewModel(
         return resolveGhostStack(identity);
     }
 
-    private static ItemStack displayStackFromAuthority(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
-        if (authority == null || identity == null) {
-            return ItemStack.EMPTY;
+    private static Map<ItemIdentity, ItemStack> displayStacksByIdentity(InventoryAuthoritySnapshot authority) {
+        if (authority == null) {
+            return Map.of();
         }
-        ItemIdentity target = ItemIdentityCollections.key(identity);
+        LinkedHashMap<ItemIdentity, ItemStack> stacks = new LinkedHashMap<>();
         for (InventorySourceDescriptor source : authority.sourceDescriptors()) {
             if (source == null) {
                 continue;
@@ -3174,17 +3262,15 @@ public record SlotWorkspaceViewModel(
                 if (entry == null || !entry.present() || entry.stack() == null || entry.stack().isEmpty()) {
                     continue;
                 }
-                ItemIdentity entryIdentity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(entry.stack()));
-                if (ItemIdentityMatcher.matchesMovable(entryIdentity, target)) {
-                    return entry.stack().copy();
-                }
+                ItemIdentity entryIdentity = ItemIdentityCollections.key(ItemIdentityMatcher.create(entry.stack()));
+                stacks.putIfAbsent(entryIdentity, entry.stack().copy());
             }
         }
-        return ItemStack.EMPTY;
+        return stacks.isEmpty() ? Map.of() : Map.copyOf(stacks);
     }
 
     private static ItemStack displayStackFromMap(Map<ItemIdentity, ItemStack> stacks, ItemIdentity identity) {
-        ItemStack stack = ItemIdentityCollections.find(stacks, identity);
+        ItemStack stack = ItemIdentityCollections.findCanonical(stacks, identity);
         return stack == null ? ItemStack.EMPTY : stack.copy();
     }
 
@@ -3198,9 +3284,27 @@ public record SlotWorkspaceViewModel(
         LinkedHashMap<ItemIdentity, Integer> ranks = new LinkedHashMap<>();
         List<ItemIdentity> visible = recentView == null ? List.of() : recentView.visibleItems();
         for (int index = 0; index < visible.size(); index++) {
-            ranks.put(visible.get(index), index);
+            ItemIdentity identity = visible.get(index);
+            if (identity != null) {
+                ranks.putIfAbsent(ItemIdentityCollections.key(identity), index);
+            }
         }
         return Map.copyOf(ranks);
+    }
+
+    private static VisualHomeAssignment assignmentFor(VisualHomeMap visualHomeMap, ItemIdentity identity) {
+        if (visualHomeMap == null || identity == null) {
+            return null;
+        }
+        VisualHomeAssignment assignment = visualHomeMap.assignments().get(identity);
+        return assignment == null ? visualHomeMap.assignment(identity) : assignment;
+    }
+
+    private static int recentRank(Map<ItemIdentity, Integer> ranks, ItemIdentity identity) {
+        if (ranks == null || ranks.isEmpty() || identity == null) {
+            return Integer.MAX_VALUE;
+        }
+        return ranks.getOrDefault(ItemIdentityCollections.key(identity), Integer.MAX_VALUE);
     }
 
     private static List<TriageIslandRef> triageIslandRefs(VisualHomeMap visualHomeMap) {
@@ -4448,6 +4552,21 @@ public record SlotWorkspaceViewModel(
 
         private boolean carried() {
             return carried;
+        }
+    }
+
+    private record AtlasAccumulatorSortKey(
+            AtlasItemAccumulator accumulator,
+            String islandId,
+            int ordinal,
+            String name,
+            String itemId,
+            int firstSlotIndex
+    ) {
+        private AtlasAccumulatorSortKey {
+            islandId = islandId == null ? "" : islandId;
+            name = name == null ? "" : name;
+            itemId = itemId == null ? "" : itemId;
         }
     }
 

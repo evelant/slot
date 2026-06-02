@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-27. Operational handoff. Read after [../README.md](../README.md).
+Last updated: 2026-06-02. Operational handoff. Read after [../README.md](../README.md).
 For active work + queue see [plans/current.md](plans/current.md); for architecture see [architecture/overview.md](architecture/overview.md).
 
 ## Active
@@ -28,6 +28,15 @@ storage pressure and card chrome are computed through common signals so counts,
 storage pips, route notches, right strips, and status rings follow one grammar
 on Forge and NeoForge. Modern drag/drop, richer LDLib2 card/tab affordances, and
 richer chest panels remain backend hooks, not common UI semantics.
+
+Workspace projection now has a shared common session cache used by both loaders:
+structural hits reuse the projected view, status/diagnostics/selected-slot
+changes apply as a cheap frame overlay, content fingerprints replace
+encode-before-skip checks, identity normalization is memoized across projection
+misses, and claimed-chest proximity participates in passive refresh invalidation.
+Further optimization should split remaining hot `SlotWorkspaceViewModel`
+sections into independently cached slices rather than adding loader-specific
+shortcuts.
 
 Learned storage gates each claimed chest through `Storage`, `Buffer`, or
 `Ignore`; see ADR [0008](decisions/0008-chest-roles-and-affinity-correction.md).

@@ -188,7 +188,7 @@ public final class ForgeWayfindingHudRenderer {
 
     private static Component uiText(String text) {
         return Component.literal(text == null ? "" : text)
-                .withStyle(style -> style.withFont(ForgeSlotUiFonts.uiFont()));
+                .withStyle(style -> style.withFont(Minecraft.DEFAULT_FONT));
     }
 
     private static int withAlpha(int rgb, int alpha) {

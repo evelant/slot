@@ -57,8 +57,8 @@ final class WorkspaceFormat {
         // Quantize to 0.5 screen-px steps. LDLib's TextElement runs a full
         // formattedLines recompute whenever fontSize changes, so a fully
         // continuous font size thrashes layout every zoom frame. Half-px
-        // keeps MSDF's sub-pixel crispness at small sizes while cutting
-        // recompute frequency in half vs. continuous.
+        // steps keep zooming text stable while cutting recompute frequency
+        // in half vs. continuous.
         float clamped = Math.max(3f, screenPx);
         return Math.round(clamped * 2f) / 2f;
     }

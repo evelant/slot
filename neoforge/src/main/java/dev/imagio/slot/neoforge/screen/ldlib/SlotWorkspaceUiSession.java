@@ -43,6 +43,9 @@ import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import dev.imagio.slot.inventory.workspace.WorkspaceCraftRunCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionRequest;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionResult;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionSessionCache;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageRoutingContext;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
@@ -97,11 +100,14 @@ final class SlotWorkspaceUiSession {
     private final Player player;
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
     private final HotbarSlotRecencyTracker hotbarRecency = new HotbarSlotRecencyTracker();
+    private final WorkspaceProjectionSessionCache projectionCache = new WorkspaceProjectionSessionCache();
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
-    private CompoundTag lastContentTag = new CompoundTag();
+    private String lastContentFingerprint = "";
     private CompoundTag lastViewTag;
     private long lastObservedWorkflowSequence = Long.MIN_VALUE;
     private long lastObservedCarriedRevision = Long.MIN_VALUE;
+    private Set<String> lastObservedProximateStorageIds = Set.of();
+    private Set<String> lastObservedContextualStorageIds = Set.of();
     private int lastStructuralMenuId = Integer.MIN_VALUE;
     private List<ItemStackStructuralKey> lastStructuralMenuKeys = List.of();
     private ItemStackStructuralKey lastStructuralCursorKey = ItemStackStructuralKey.EMPTY;
@@ -2112,6 +2118,8 @@ final class SlotWorkspaceUiSession {
         ClaimedChestMap claimedChestMap = storageContext.claimedChestMap();
         Set<String> proximateIds = storageContext.proximateStorageIds();
         Set<String> contextualSuggestionStorageIds = storageContext.contextualSuggestionStorageIds();
+        lastObservedProximateStorageIds = Set.copyOf(proximateIds);
+        lastObservedContextualStorageIds = Set.copyOf(contextualSuggestionStorageIds);
         List<WorldDisplayStorageSource> displaySources = storageContext.displaySources();
         WorkspaceStorageIndex storageIndex = storageContext.storageIndex();
         Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver =
@@ -2125,7 +2133,7 @@ final class SlotWorkspaceUiSession {
                 serverPlayer, runtime, claimedChestMap);
         clearSatisfiedWantedCounts(authority);
         WorkflowDomainSnapshot snapshot = runtime.snapshot();
-        SlotWorkspaceViewModel projected = SlotWorkspaceViewModel.project(
+        WorkspaceProjectionResult projection = projectionCache.project(new WorkspaceProjectionRequest(
                 authority,
                 snapshot,
                 status,
@@ -2147,9 +2155,11 @@ final class SlotWorkspaceUiSession {
                 displaySources,
                 storageIndex.trackedDisplayEntries(),
                 storageIndex.liveDepositStorageIds(),
+                storageIndex,
                 storageContext.liveChestContentPresence(),
                 storageContext.liveStorageAffinityEligibility()
-        );
+        ));
+        SlotWorkspaceViewModel projected = projection.viewModel();
         // Pickup-time auto-home: at most one carried-but-unassigned
         // identity per refresh gets routed via its top chip suggestion
         // (or Misc when none fires). Throttled to one per refresh
@@ -2161,9 +2171,10 @@ final class SlotWorkspaceUiSession {
         // the freshly-mutated snapshot so the broadcast reflects the
         // new assignment.
         if (SlotWorkspaceCommandService.autoHomeTriageItems(runtime, projected, autoHomeAttempted)) {
+            projectionCache.clear();
             activeChestPanel = resolveActiveChestPanel(serverPlayer, runtime, claimedChestMap);
             snapshot = runtime.snapshot();
-            projected = SlotWorkspaceViewModel.project(
+            projection = projectionCache.project(new WorkspaceProjectionRequest(
                     authority,
                     snapshot,
                     status,
@@ -2185,18 +2196,19 @@ final class SlotWorkspaceUiSession {
                     displaySources,
                     storageIndex.trackedDisplayEntries(),
                     storageIndex.liveDepositStorageIds(),
+                    storageIndex,
                     storageContext.liveChestContentPresence(),
                     storageContext.liveStorageAffinityEligibility()
-            );
+            ));
+            projected = projection.viewModel();
         }
         hotbarRecency.observe(projected);
         long observedWorkflowSequence = currentWorkflowSequence(runtime);
         long observedCarriedRevision = CarriedInventoryRevisions.revision(serverPlayer);
-        CompoundTag nextContent = SlotWorkspaceViewModelCodec.encode(projected, serverPlayer.registryAccess(), false);
         lastObservedWorkflowSequence = observedWorkflowSequence;
         lastObservedCarriedRevision = observedCarriedRevision;
-        if (!nextContent.equals(lastContentTag)) {
-            lastContentTag = nextContent.copy();
+        if (!projection.contentFingerprint().equals(lastContentFingerprint)) {
+            lastContentFingerprint = projection.contentFingerprint();
             viewModel = projected.withRevision(nextRevision++);
             lastViewTag = SlotWorkspaceViewModelCodec.encode(viewModel, serverPlayer.registryAccess());
         }
@@ -2218,7 +2230,8 @@ final class SlotWorkspaceUiSession {
                 || CarriedInventoryRevisions.revision(serverPlayer) != lastObservedCarriedRevision
                 || menuId != lastStructuralMenuId
                 || !menuKeys.equals(lastStructuralMenuKeys)
-                || !cursorKey.equals(lastStructuralCursorKey);
+                || !cursorKey.equals(lastStructuralCursorKey)
+                || storageProximityChanged(serverPlayer, runtime);
     }
 
     private static long currentWorkflowSequence(WorkflowDomainRuntime runtime) {
@@ -2227,6 +2240,23 @@ final class SlotWorkspaceUiSession {
         }
         WorkflowDomainSnapshot snapshot = runtime.snapshot();
         return snapshot == null ? 0L : snapshot.nextGlobalSequence() * 31L + snapshot.craftRun().revision();
+    }
+
+    private boolean storageProximityChanged(ServerPlayer serverPlayer, WorkflowDomainRuntime runtime) {
+        if (serverPlayer == null || runtime == null) {
+            return false;
+        }
+        WorkflowDomainSnapshot snapshot = runtime.snapshot();
+        ClaimedChestMap claimedChestMap = snapshot == null ? ClaimedChestMap.empty() : snapshot.claimedChestMap();
+        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(serverPlayer, claimedChestMap);
+        if (!proximate.equals(lastObservedProximateStorageIds)) {
+            return true;
+        }
+        Set<String> contextual = WorkspaceChestProjectionSupport.proximateStorageIds(
+                serverPlayer,
+                claimedChestMap,
+                WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
+        return !contextual.equals(lastObservedContextualStorageIds);
     }
 
     private void rememberStructuralState(ServerPlayer serverPlayer) {

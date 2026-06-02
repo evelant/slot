@@ -46,6 +46,9 @@ import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import dev.imagio.slot.inventory.workspace.WorkspaceCraftRunCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionRequest;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionResult;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionSessionCache;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageRoutingContext;
@@ -65,7 +68,6 @@ import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -97,6 +99,7 @@ final class ForgeWorkspaceSession {
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
     private final Set<ItemIdentity> autoHomeAttempted = new HashSet<>();
     private final HotbarSlotRecencyTracker hotbarRecency = new HotbarSlotRecencyTracker();
+    private final WorkspaceProjectionSessionCache projectionCache = new WorkspaceProjectionSessionCache();
     private WorkspaceActionSessionContext context;
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private WorkspaceCursorCommandService.CursorOrigin cursorOrigin;
@@ -104,9 +107,11 @@ final class ForgeWorkspaceSession {
     private String status = "ready";
     private String diagnostics = "";
     private String searchQuery = "";
-    private CompoundTag lastContentTag = new CompoundTag();
+    private String lastContentFingerprint = "";
     private long lastObservedWorkflowSequence = Long.MIN_VALUE;
     private long lastObservedCarriedRevision = Long.MIN_VALUE;
+    private Set<String> lastObservedProximateStorageIds = Set.of();
+    private Set<String> lastObservedContextualStorageIds = Set.of();
     private AbstractContainerMenu observedMenu;
     private ContainerListener observedMenuListener;
     private final Map<Integer, ItemStackStructuralKey> observedSlotKeys = new HashMap<>();
@@ -172,7 +177,8 @@ final class ForgeWorkspaceSession {
     boolean shouldRefresh(ServerPlayer player) {
         return dirty
                 || currentWorkflowSequence() != lastObservedWorkflowSequence
-                || CarriedInventoryRevisions.revision(player) != lastObservedCarriedRevision;
+                || CarriedInventoryRevisions.revision(player) != lastObservedCarriedRevision
+                || storageProximityChanged(player);
     }
 
     void clearDirty() {
@@ -223,22 +229,26 @@ final class ForgeWorkspaceSession {
                     DomainEventMetadata.origin("contextual.forge.station_context"));
         }
 
-        SlotWorkspaceViewModel projected = project(authority, selected, combinedDiagnostics, gameTime, player);
+        WorkspaceProjectionResult projection = projectionCache.project(
+                projectionRequest(authority, selected, combinedDiagnostics, gameTime, player));
+        SlotWorkspaceViewModel projected = projection.viewModel();
         if (SlotWorkspaceCommandService.autoHomeTriageItems(runtime, projected, autoHomeAttempted)) {
-            projected = project(authority, selected, combinedDiagnostics, gameTime, player);
+            projectionCache.clear();
+            projection = projectionCache.project(
+                    projectionRequest(authority, selected, combinedDiagnostics, gameTime, player));
+            projected = projection.viewModel();
         }
         hotbarRecency.observe(projected);
 
         long observedWorkflowSequence = currentWorkflowSequence();
         long observedCarriedRevision = CarriedInventoryRevisions.revision(player);
-        CompoundTag contentTag = Forge120WorkspaceViewModelCodec.encode(projected, false);
         lastObservedWorkflowSequence = observedWorkflowSequence;
         lastObservedCarriedRevision = observedCarriedRevision;
-        if (!forceRevision && contentTag.equals(lastContentTag)) {
+        if (!forceRevision && projection.contentFingerprint().equals(lastContentFingerprint)) {
             return viewModel;
         }
 
-        lastContentTag = contentTag.copy();
+        lastContentFingerprint = projection.contentFingerprint();
         long revision = nextRevision++;
         viewModel = projected.withRevision(revision);
         context = new WorkspaceActionSessionContext(context.sessionId(), context.menuContainerId(), revision);
@@ -754,7 +764,7 @@ final class ForgeWorkspaceSession {
                 : WorkspaceCommandOutcome.rejected("craft_run_ingredient_not_found");
     }
 
-    private SlotWorkspaceViewModel project(
+    private WorkspaceProjectionRequest projectionRequest(
             InventoryAuthoritySnapshot authority,
             int selected,
             String combinedDiagnostics,
@@ -774,9 +784,11 @@ final class ForgeWorkspaceSession {
         List<WorldDisplayStorageSource> displaySources = storageContext.displaySources();
         Set<String> proximateIds = storageContext.proximateStorageIds();
         Set<String> contextualSuggestionStorageIds = storageContext.contextualSuggestionStorageIds();
+        lastObservedProximateStorageIds = Set.copyOf(proximateIds);
+        lastObservedContextualStorageIds = Set.copyOf(contextualSuggestionStorageIds);
         WorkspaceStorageIndex storageIndex = storageContext.storageIndex();
         clearSatisfiedWantedCounts(authority);
-        return SlotWorkspaceViewModel.project(
+        return new WorkspaceProjectionRequest(
                 authority,
                 snapshot,
                 status,
@@ -798,9 +810,27 @@ final class ForgeWorkspaceSession {
                 displaySources,
                 storageIndex.trackedDisplayEntries(),
                 storageIndex.liveDepositStorageIds(),
+                storageIndex,
                 storageContext.liveChestContentPresence(),
                 storageContext.liveStorageAffinityEligibility()
         );
+    }
+
+    private boolean storageProximityChanged(ServerPlayer player) {
+        if (player == null || runtime == null) {
+            return false;
+        }
+        WorkflowDomainSnapshot snapshot = runtime.snapshot();
+        ClaimedChestMap claimedChestMap = snapshot == null ? ClaimedChestMap.empty() : snapshot.claimedChestMap();
+        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
+        if (!proximate.equals(lastObservedProximateStorageIds)) {
+            return true;
+        }
+        Set<String> contextual = WorkspaceChestProjectionSupport.proximateStorageIds(
+                player,
+                claimedChestMap,
+                WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
+        return !contextual.equals(lastObservedContextualStorageIds);
     }
 
     private static Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> carriedContainerInfoResolver(

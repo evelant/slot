@@ -4,12 +4,17 @@ import dev.imagio.slot.platform.SlotStackAccess;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public final class ItemIdentityMatcher {
+    private static final ThreadLocal<Memo> ACTIVE_MEMO = new ThreadLocal<>();
+
     private ItemIdentityMatcher() {
     }
 
@@ -17,6 +22,14 @@ public final class ItemIdentityMatcher {
         if (stack == null || stack.isEmpty()) {
             throw new IllegalArgumentException("stack must not be empty");
         }
+        Memo memo = ACTIVE_MEMO.get();
+        if (memo != null) {
+            return memo.create(stack, () -> createUncached(stack));
+        }
+        return createUncached(stack);
+    }
+
+    private static ItemIdentity createUncached(ItemStack stack) {
         String itemId = resolveItemId(stack);
         if (usesItemOnlyMovableIdentityWithoutFingerprint(stack)) {
             return ItemIdentity.of(itemId);
@@ -58,6 +71,14 @@ public final class ItemIdentityMatcher {
         if (identity == null || identity.comparisonMode() != ItemComparisonMode.ITEM_ID_AND_COMPONENTS) {
             return identity;
         }
+        Memo memo = ACTIVE_MEMO.get();
+        if (memo != null) {
+            return memo.normalize(identity, () -> normalizeMovableUncached(identity));
+        }
+        return normalizeMovableUncached(identity);
+    }
+
+    private static ItemIdentity normalizeMovableUncached(ItemIdentity identity) {
         String selectorFingerprint = stableSelectorFingerprint(identity.itemId(), identity.componentFingerprint());
         if (!selectorFingerprint.isBlank()) {
             return ItemIdentity.exact(identity.itemId(), selectorFingerprint);
@@ -65,6 +86,104 @@ public final class ItemIdentityMatcher {
         return hasMovableConditionOnlyFingerprint(identity.componentFingerprint())
                 ? ItemIdentity.of(identity.itemId())
                 : identity;
+    }
+
+    public static <T> T withMemo(Memo memo, Supplier<T> supplier) {
+        if (memo == null || supplier == null) {
+            return supplier == null ? null : supplier.get();
+        }
+        Memo previous = ACTIVE_MEMO.get();
+        ACTIVE_MEMO.set(memo);
+        try {
+            return supplier.get();
+        } finally {
+            if (previous == null) {
+                ACTIVE_MEMO.remove();
+            } else {
+                ACTIVE_MEMO.set(previous);
+            }
+        }
+    }
+
+    public static final class Memo {
+        private static final int MAX_ENTRIES = 4096;
+
+        private final Map<CreateKey, ItemIdentity> createCache = new LinkedHashMap<>();
+        private final Map<ItemIdentity, ItemIdentity> normalizeCache = new LinkedHashMap<>();
+        private long createHits;
+        private long createMisses;
+        private long normalizeHits;
+        private long normalizeMisses;
+
+        private ItemIdentity create(ItemStack stack, Supplier<ItemIdentity> factory) {
+            CreateKey key = CreateKey.from(stack);
+            ItemIdentity cached = createCache.get(key);
+            if (cached != null) {
+                createHits++;
+                return cached;
+            }
+            createMisses++;
+            ItemIdentity created = factory.get();
+            putBounded(createCache, key, created);
+            return created;
+        }
+
+        private ItemIdentity normalize(ItemIdentity identity, Supplier<ItemIdentity> factory) {
+            ItemIdentity cached = normalizeCache.get(identity);
+            if (cached != null) {
+                normalizeHits++;
+                return cached;
+            }
+            normalizeMisses++;
+            ItemIdentity normalized = factory.get();
+            putBounded(normalizeCache, identity, normalized);
+            return normalized;
+        }
+
+        public MemoStats stats() {
+            return new MemoStats(createHits, createMisses, normalizeHits, normalizeMisses);
+        }
+
+        private static <K> void putBounded(Map<K, ItemIdentity> cache, K key, ItemIdentity value) {
+            if (cache == null || key == null || value == null) {
+                return;
+            }
+            if (cache.size() >= MAX_ENTRIES) {
+                cache.clear();
+            }
+            cache.put(key, value);
+        }
+    }
+
+    public record MemoStats(
+            long createHits,
+            long createMisses,
+            long normalizeHits,
+            long normalizeMisses
+    ) {
+    }
+
+    private record CreateKey(
+            String itemId,
+            String componentFingerprint,
+            boolean stackable,
+            boolean damageable,
+            Set<String> tags
+    ) {
+        private CreateKey {
+            itemId = itemId == null ? "" : itemId;
+            componentFingerprint = componentFingerprint == null ? "" : componentFingerprint;
+            tags = tags == null ? Set.of() : Set.copyOf(tags);
+        }
+
+        static CreateKey from(ItemStack stack) {
+            return new CreateKey(
+                    resolveItemId(stack),
+                    resolveComponentFingerprint(stack),
+                    ItemIdentityMatcher.stackable(stack),
+                    SlotStackAccess.current().damageable(stack),
+                    ItemStackTags.itemTagIds(stack));
+        }
     }
 
     public static boolean matchesMovable(ItemIdentity left, ItemIdentity right) {

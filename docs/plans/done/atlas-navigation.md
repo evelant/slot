@@ -8,8 +8,7 @@ navigation arrows, grid snap, presence pip, LOD tuning, integer font
 snap, etc.). Landing points and current tuning live in
 [../status.md](../status.md) under "Atlas navigation + QoL landing
 points." This plan stays here as the historical spec for the original
-four slices. Next focus: integrate embers-text-api for crisp MSDF
-glyphs at any atlas scale.
+four slices.
 
 This plan extends the atlas UI that landed under
 [atlas-prototype.md](atlas-prototype.md) and the hover-trail vocabulary
