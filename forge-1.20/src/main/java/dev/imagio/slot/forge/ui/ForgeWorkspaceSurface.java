@@ -128,6 +128,8 @@ public final class ForgeWorkspaceSurface {
     private long lastSearchInputMillis = System.currentTimeMillis();
     private long appliedRevision = -1L;
     private String status;
+    private SlotUiElement statusLabel;
+    private boolean flushingWheelTransfer;
     private boolean openSessionRequested;
     private boolean rebuildRequested = true;
     private boolean kitRackOpen;
@@ -242,6 +244,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     public void closeSession() {
+        flushWheelTransferBatch();
         WorkspaceUiSessionMemory.markClosed(surfaceMemoryKey());
         if (!openSessionRequested) {
             return;
@@ -252,7 +255,8 @@ public final class ForgeWorkspaceSurface {
 
     public void tick(int width, int height) {
         rememberViewport(width, height);
-        shiftClickTransferState.observeShiftDown(Screen.hasShiftDown());
+        boolean shiftDown = Screen.hasShiftDown();
+        shiftClickTransferState.observeShiftDown(shiftDown);
         if (!ForgeWorkspaceClient.markWantedDown()) {
             markWantedKeyConsumed = false;
         }
@@ -266,7 +270,7 @@ public final class ForgeWorkspaceSurface {
             storageXrayKeyConsumed = false;
         }
         openSessionIfNeeded();
-        flushWheelTransferBatch();
+        flushWheelTransferBatch(shiftDown);
         autoConfirmSearchIfIdle();
         boolean pointerActive = tree != null && tree.hasActivePointerGesture();
         if (!pointerActive) {
@@ -1604,6 +1608,13 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement statusRow(boolean sidebarMode) {
+        statusLabel = SlotUiElement.label(status, WorkspaceUiPalette.MUTED)
+                .layout(layout -> layout.flex(1).heightPercent(100))
+                .textStyle(style -> style
+                        .color(WorkspaceUiPalette.MUTED)
+                        .fontSize(6)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER));
         return SlotUiElement.panel(PANEL)
                 .layout(layout -> {
                     if (sidebarMode) {
@@ -1614,13 +1625,7 @@ public final class ForgeWorkspaceSurface {
                     layout.alignItems(SlotUiLayout.AlignItems.CENTER)
                             .flexDirection(SlotUiLayout.FlexDirection.ROW);
                 })
-                .addChild(SlotUiElement.label(status, WorkspaceUiPalette.MUTED)
-                        .layout(layout -> layout.flex(1).heightPercent(100))
-                        .textStyle(style -> style
-                                .color(WorkspaceUiPalette.MUTED)
-                                .fontSize(6)
-                                .horizontal(SlotUiTextStyle.Horizontal.LEFT)
-                                .vertical(SlotUiTextStyle.Vertical.CENTER)));
+                .addChild(statusLabel);
     }
 
     private SlotUiElement activeOverlay() {
@@ -3225,9 +3230,18 @@ public final class ForgeWorkspaceSurface {
     }
 
     private void sendAction(WorkspaceActionId action, String sentStatus, Object... args) {
+        if (!flushingWheelTransfer) {
+            flushWheelTransferBatch();
+        }
         boolean sent = actionChannel.send(action, args);
         status = sent ? sentStatus : "failed to send " + action.name().toLowerCase();
-        rebuildRequested = true;
+        if (flushingWheelTransfer) {
+            if (statusLabel != null) {
+                statusLabel.text(status);
+            }
+        } else {
+            rebuildRequested = true;
+        }
     }
 
     private void sendSectionReorderAround(
@@ -3344,6 +3358,9 @@ public final class ForgeWorkspaceSurface {
 
     private void setStatus(String nextStatus) {
         status = nextStatus == null || nextStatus.isBlank() ? "ready" : nextStatus;
+        if (statusLabel != null) {
+            statusLabel.text(status);
+        }
         rebuildRequested = true;
     }
 
@@ -3579,19 +3596,34 @@ public final class ForgeWorkspaceSurface {
             return;
         }
         flushWheelTransfer(wheelTransferBatcher.enqueue(action, item.identity(), count, sentStatus));
-        status = sentStatus == null ? "" : sentStatus;
-        rebuildRequested = true;
+        setWheelStatus(sentStatus);
     }
 
     private void flushWheelTransferBatch() {
         flushWheelTransfer(wheelTransferBatcher.flush());
     }
 
+    private void flushWheelTransferBatch(boolean shiftDown) {
+        flushWheelTransfer(shiftDown ? wheelTransferBatcher.flushIfIdle() : wheelTransferBatcher.flush());
+    }
+
     private void flushWheelTransfer(WheelTransferBatcher.Pending pending) {
         if (pending == null || pending.identity() == null || pending.count() <= 0) {
             return;
         }
-        sendIdentityRefAction(pending.action(), pending.identity(), pending.status(), pending.count());
+        flushingWheelTransfer = true;
+        try {
+            sendIdentityRefAction(pending.action(), pending.identity(), pending.status(), pending.count());
+        } finally {
+            flushingWheelTransfer = false;
+        }
+    }
+
+    private void setWheelStatus(String nextStatus) {
+        status = nextStatus == null ? "" : nextStatus;
+        if (statusLabel != null) {
+            statusLabel.text(status);
+        }
     }
 
     private void sendIdentityRefAction(

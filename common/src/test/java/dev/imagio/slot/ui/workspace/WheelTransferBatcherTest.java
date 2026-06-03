@@ -41,6 +41,34 @@ class WheelTransferBatcherTest {
         assertEquals(WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, batcher.flush().action());
     }
 
+    @Test
+    void idleFlushWaitsForQuietTicks() {
+        WheelTransferBatcher batcher = new WheelTransferBatcher(2);
+        SlotWorkspaceViewModel.IdentityRef stone = identity("minecraft:stone");
+
+        assertNull(batcher.enqueue(WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY, stone, 1, "taking Stone"));
+        assertNull(batcher.flushIfIdle());
+
+        WheelTransferBatcher.Pending pending = batcher.flushIfIdle();
+        assertEquals(WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY, pending.action());
+        assertEquals(1, pending.count());
+        assertNull(batcher.flushIfIdle());
+    }
+
+    @Test
+    void enqueueResetsIdleFlushWindow() {
+        WheelTransferBatcher batcher = new WheelTransferBatcher(2);
+        SlotWorkspaceViewModel.IdentityRef stone = identity("minecraft:stone");
+
+        assertNull(batcher.enqueue(WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY, stone, 1, "taking Stone"));
+        assertNull(batcher.flushIfIdle());
+        assertNull(batcher.enqueue(WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY, stone, 2, "taking Stone"));
+        assertNull(batcher.flushIfIdle());
+
+        WheelTransferBatcher.Pending pending = batcher.flushIfIdle();
+        assertEquals(3, pending.count());
+    }
+
     private static SlotWorkspaceViewModel.IdentityRef identity(String itemId) {
         return new SlotWorkspaceViewModel.IdentityRef(itemId, ItemComparisonMode.ITEM_ID.name(), "");
     }

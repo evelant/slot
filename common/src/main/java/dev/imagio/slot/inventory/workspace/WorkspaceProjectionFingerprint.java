@@ -1,17 +1,21 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
+import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
+import dev.imagio.slot.inventory.storage.WorldStorageAccess;
+import dev.imagio.slot.inventory.triage.ChipSuggestion;
+import dev.imagio.slot.inventory.triage.LearnedAdjacencyKey;
+import dev.imagio.slot.inventory.triage.LearnedIslandRule;
 import dev.imagio.slot.platform.SlotStackAccess;
+import dev.imagio.slot.workflow.domain.CraftRunState;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import net.minecraft.world.item.ItemStack;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.RecordComponent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -24,8 +28,8 @@ final class WorkspaceProjectionFingerprint {
     }
 
     static String contentKey(SlotWorkspaceViewModel viewModel) {
-        Fingerprinter out = new Fingerprinter();
-        out.appendValue(viewModel == null ? SlotWorkspaceViewModel.empty() : viewModel, "revision");
+        HashSink out = new HashSink();
+        appendViewModel(out, viewModel == null ? SlotWorkspaceViewModel.empty() : viewModel);
         return out.toString();
     }
 
@@ -37,100 +41,93 @@ final class WorkspaceProjectionFingerprint {
                         0L, null, null, null, null, null, null, null, null, null)
                 : request;
         return ItemIdentityMatcher.withMemo(memo, () -> {
-            Fingerprinter out = new Fingerprinter();
+            HashSink out = new HashSink();
             appendAuthority(out, resolved.authority());
             appendWorkflow(out, resolved.workflow());
-            out.appendText("search=").appendText(resolved.searchQuery()).separator();
-            out.appendText("tickBucket=").appendLong(resolved.currentTick() / 20L).separator();
-            out.appendText("activeChest=").appendValue(resolved.activeChestPanel()).separator();
-            out.appendText("lootChest=").appendValue(resolved.lootChestSource()).separator();
-            out.appendText("proximate=").appendValue(resolved.proximateStorageIds()).separator();
-            out.appendText("contextualStorage=").appendValue(resolved.contextualSuggestionStorageIds()).separator();
-            out.appendText("displaySources=").appendValue(resolved.worldDisplaySources()).separator();
-            out.appendText("contextualDisplays=").appendValue(resolved.contextualSuggestionDisplaySources()).separator();
-            out.appendText("trackedDisplays=").appendValue(resolved.trackedDisplayStorageEntries()).separator();
-            out.appendText("depositEligible=").appendValue(resolved.depositEligibleStorageIds()).separator();
+            out.appendText(resolved.searchQuery());
+            out.appendLong(resolved.currentTick() / 20L);
+            out.appendObject(resolved.activeChestPanel());
+            out.appendObject(resolved.lootChestSource());
+            out.appendObject(resolved.proximateStorageIds());
+            out.appendObject(resolved.contextualSuggestionStorageIds());
+            out.appendObject(resolved.depositEligibleStorageIds());
             appendStorageIndex(out, resolved.storageIndex());
-            out.appendText("learnedRules=")
-                    .appendValue(resolved.learnedRules() == null ? List.of() : resolved.learnedRules().allRules())
-                    .separator();
+            out.appendObject(resolved.learnedRules() == null ? List.of() : resolved.learnedRules().allRules());
             return out.toString();
         });
     }
 
-    private static void appendAuthority(Fingerprinter out, InventoryAuthoritySnapshot authority) {
+    private static void appendAuthority(HashSink out, InventoryAuthoritySnapshot authority) {
         InventoryAuthoritySnapshot resolved = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
-        out.appendText("authority{");
-        out.appendText("sources=");
+        out.appendText("authority");
         List<InventorySourceDescriptor> descriptors = new ArrayList<>(resolved.sourceDescriptors());
         descriptors.sort(Comparator.comparing(InventorySourceDescriptor::id));
+        out.appendInt(descriptors.size());
         for (InventorySourceDescriptor descriptor : descriptors) {
             if (descriptor == null) {
+                out.appendNull();
                 continue;
             }
-            out.appendText("[")
-                    .appendText(descriptor.id()).separator()
-                    .appendText(descriptor.label().getString()).separator()
-                    .appendText(String.valueOf(descriptor.domain())).separator()
-                    .appendText(String.valueOf(descriptor.role())).separator()
-                    .appendText(descriptor.laneId()).separator()
-                    .appendText(descriptor.groupId()).separator()
-                    .appendInt(descriptor.logicalSlotCount()).separator()
-                    .appendText(String.valueOf(descriptor.bindingRoute())).separator()
-                    .appendText(String.valueOf(descriptor.actionRoute())).separator()
-                    .appendText(String.valueOf(descriptor.paneMembership())).separator()
-                    .appendInt(descriptor.stableOrder())
-                    .appendText("]");
+            out.appendText(descriptor.id());
+            out.appendText(descriptor.label().getString());
+            out.appendObject(descriptor.domain());
+            out.appendObject(descriptor.role());
+            out.appendText(descriptor.laneId());
+            out.appendText(descriptor.groupId());
+            out.appendInt(descriptor.logicalSlotCount());
+            out.appendObject(descriptor.bindingRoute());
+            out.appendObject(descriptor.actionRoute());
+            out.appendObject(descriptor.paneMembership());
+            out.appendInt(descriptor.stableOrder());
         }
-        out.separator().appendText("snapshots=");
+
         List<InventorySourceSnapshot> snapshots = new ArrayList<>(resolved.sourcesById().values());
         snapshots.sort(Comparator.comparing(InventorySourceSnapshot::sourceId));
+        out.appendInt(snapshots.size());
         for (InventorySourceSnapshot snapshot : snapshots) {
             if (snapshot == null) {
+                out.appendNull();
                 continue;
             }
-            out.appendText("[")
-                    .appendText(snapshot.sourceId()).separator()
-                    .appendInt(snapshot.slotCapacity()).separator()
-                    .appendText(snapshot.diagnostics()).separator();
+            out.appendText(snapshot.sourceId());
+            out.appendInt(snapshot.slotCapacity());
+            out.appendText(snapshot.diagnostics());
             List<InventoryEntrySnapshot> entries = new ArrayList<>(snapshot.entries());
             entries.sort(Comparator.comparing(entry -> entry == null ? "" : entry.entryKey().stableKey()));
+            out.appendInt(entries.size());
             for (InventoryEntrySnapshot entry : entries) {
                 appendEntry(out, entry);
             }
-            out.appendText("]");
         }
-        out.separator().appendText("cursor=").appendValue(resolved.cursorState());
-        out.appendText("}");
+        out.appendObject(resolved.cursorState().diagnostics());
+        out.appendStack(resolved.cursorState().stack());
     }
 
-    private static void appendEntry(Fingerprinter out, InventoryEntrySnapshot entry) {
+    private static void appendEntry(HashSink out, InventoryEntrySnapshot entry) {
         if (entry == null) {
-            out.appendText("null-entry;");
+            out.appendNull();
             return;
         }
-        out.appendText("{")
-                .appendText(entry.entryKey().stableKey()).separator()
-                .appendInt(entry.count()).separator()
-                .appendText(entry.diagnostics()).separator()
-                .appendStack(entry.stack())
-                .appendText("}");
+        out.appendText(entry.entryKey().stableKey());
+        out.appendInt(entry.count());
+        out.appendText(entry.diagnostics());
+        out.appendStack(entry.stack());
     }
 
-    private static void appendWorkflow(Fingerprinter out, WorkflowDomainSnapshot workflow) {
+    private static void appendWorkflow(HashSink out, WorkflowDomainSnapshot workflow) {
         WorkflowDomainSnapshot resolved = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
-        out.appendText("workflow{")
-                .appendLong(resolved.nextGlobalSequence()).separator()
-                .appendValue(resolved.workflowProjection()).separator()
-                .appendValue(resolved.activityProjection()).separator()
-                .appendValue(resolved.browsePreferences()).separator()
-                .appendValue(resolved.browseSessionState()).separator()
-                .appendValue(resolved.craftRun()).separator()
-                .appendValue(resolved.contextualSuggestions())
-                .appendText("}");
+        out.appendText("workflow");
+        out.appendLong(resolved.nextGlobalSequence());
+        out.appendInt(resolved.craftRun().revision());
+        out.appendObject(resolved.workflowProjection());
+        out.appendObject(resolved.activityProjection());
+        out.appendObject(resolved.browsePreferences());
+        out.appendObject(resolved.browseSessionState());
+        out.appendObject(resolved.craftRun());
+        out.appendObject(resolved.contextualSuggestions());
     }
 
-    private static void appendStorageIndex(Fingerprinter out, WorkspaceStorageIndex index) {
+    private static void appendStorageIndex(HashSink out, WorkspaceStorageIndex index) {
         WorkspaceStorageIndex resolved = index == null ? WorkspaceStorageIndex.empty() : index;
         ArrayList<WorkspaceStorageIndex.StorageEntry> entries = new ArrayList<>(resolved.entries());
         entries.sort(Comparator.comparing(entry -> {
@@ -139,158 +136,521 @@ final class WorkspaceProjectionFingerprint {
             }
             return entry.target().storageId();
         }));
-        out.appendText("storageIndex{")
-                .appendLong(resolved.memoryRevision()).separator()
-                .appendValue(resolved.displaySources()).separator()
-                .appendValue(entries).separator()
-                .appendValue(resolved.liveDepositStorageIds())
-                .appendText("}");
+        out.appendText("storageIndex");
+        out.appendLong(resolved.memoryRevision());
+        out.appendObject(resolved.displaySources());
+        out.appendObject(entries);
+        out.appendObject(resolved.liveDepositStorageIds());
     }
 
-    private static final class Fingerprinter {
-        private final StringBuilder builder = new StringBuilder(4096);
+    private static void appendViewModel(HashSink out, SlotWorkspaceViewModel viewModel) {
+        out.appendText("viewModel");
+        out.appendText(viewModel.status());
+        out.appendText(viewModel.diagnostics());
+        out.appendInt(viewModel.pendingCount());
+        out.appendInt(viewModel.selectedQuickAccessSlot());
+        out.appendInt(viewModel.canvasWidth());
+        out.appendInt(viewModel.canvasHeight());
+        out.appendInt(viewModel.carriedFreeSlotCount());
+        out.appendInt(viewModel.carriedSlotCapacity());
+        out.appendObject(viewModel.islands());
+        out.appendObject(viewModel.atlasItems());
+        out.appendObject(viewModel.triageItems());
+        out.appendObject(viewModel.chestChips());
+        out.appendObject(viewModel.chestClusters());
+        out.appendObject(viewModel.hotbarSlots());
+        out.appendObject(viewModel.offhand());
+        out.appendObject(viewModel.kits());
+        out.appendObject(viewModel.lootChestPanel());
+        out.appendObject(viewModel.wayfindingTargets());
+        out.appendObject(viewModel.depositableIdentities());
+        out.appendObject(viewModel.recentIdentities());
+        out.appendObject(viewModel.activeChestPanel());
+        out.appendObject(viewModel.craftRun());
+        out.appendObject(viewModel.contextualSuggestionLanes());
+    }
 
-        private Fingerprinter appendValue(Object value) {
-            return appendValue(value, "");
-        }
+    private static final class HashSink {
+        private static final long OFFSET = 0xcbf29ce484222325L;
+        private static final long PRIME = 0x100000001b3L;
 
-        private Fingerprinter appendValue(Object value, String skippedRecordComponent) {
+        private long hash = OFFSET;
+
+        private void appendObject(Object value) {
             if (value == null) {
-                return appendText("<null>");
+                appendNull();
+            } else if (value instanceof String string) {
+                appendText(string);
+            } else if (value instanceof Integer integer) {
+                appendInt(integer);
+            } else if (value instanceof Long longValue) {
+                appendLong(longValue);
+            } else if (value instanceof Boolean bool) {
+                appendBoolean(bool);
+            } else if (value instanceof Double doubleValue) {
+                appendLong(Double.doubleToLongBits(doubleValue));
+            } else if (value instanceof Float floatValue) {
+                appendInt(Float.floatToIntBits(floatValue));
+            } else if (value instanceof Number number) {
+                appendLong(number.longValue());
+            } else if (value instanceof Enum<?> enumValue) {
+                appendText(enumValue.getDeclaringClass().getName());
+                appendText(enumValue.name());
+            } else if (value instanceof ItemStack stack) {
+                appendStack(stack);
+            } else if (value instanceof ItemIdentity identity) {
+                appendIdentity(identity);
+            } else if (value instanceof Collection<?> collection) {
+                appendCollection(collection);
+            } else if (value instanceof Set<?> set) {
+                appendSet(set);
+            } else if (value instanceof Map<?, ?> map) {
+                appendMap(map);
+            } else if (value instanceof SlotWorkspaceViewModel.IdentityRef ref) {
+                appendIdentityRef(ref);
+            } else if (value instanceof SlotWorkspaceViewModel.AtlasIsland island) {
+                appendAtlasIsland(island);
+            } else if (value instanceof SlotWorkspaceViewModel.ContextualSuggestionLane lane) {
+                appendContextualLane(lane);
+            } else if (value instanceof SlotWorkspaceViewModel.ContextualSuggestionDebugInfo info) {
+                appendContextualDebug(info);
+            } else if (value instanceof SlotWorkspaceViewModel.AtlasItem item) {
+                appendAtlasItem(item);
+            } else if (value instanceof SlotWorkspaceViewModel.ChestPresenceEntry presence) {
+                appendChestPresence(presence);
+            } else if (value instanceof SlotWorkspaceViewModel.ChestChip chip) {
+                appendChestChip(chip);
+            } else if (value instanceof SlotWorkspaceViewModel.ChestContentSummary summary) {
+                appendChestContentSummary(summary);
+            } else if (value instanceof SlotWorkspaceViewModel.ChestClusterDescriptor cluster) {
+                appendChestCluster(cluster);
+            } else if (value instanceof SlotWorkspaceViewModel.LootChestSource source) {
+                appendLootChestSource(source);
+            } else if (value instanceof SlotWorkspaceViewModel.LootChestPanel panel) {
+                appendLootChestPanel(panel);
+            } else if (value instanceof SlotWorkspaceViewModel.ActiveChestPanel panel) {
+                appendActiveChestPanel(panel);
+            } else if (value instanceof SlotWorkspaceViewModel.ChestContentsSnapshot snapshot) {
+                appendChestSnapshot(snapshot);
+            } else if (value instanceof SlotWorkspaceViewModel.HotbarSlot slot) {
+                appendHotbarSlot(slot);
+            } else if (value instanceof SlotWorkspaceViewModel.KitCard kit) {
+                appendKitCard(kit);
+            } else if (value instanceof SlotWorkspaceViewModel.KitBringItem bring) {
+                appendKitBring(bring);
+            } else if (value instanceof SlotWorkspaceViewModel.KitPageView page) {
+                appendKitPage(page);
+            } else if (value instanceof SlotWorkspaceViewModel.KitSlotState slot) {
+                appendKitSlot(slot);
+            } else if (value instanceof SlotWorkspaceViewModel.OffhandSlot offhand) {
+                appendOffhand(offhand);
+            } else if (value instanceof WayfindingTarget target) {
+                appendWayfindingTarget(target);
+            } else if (value instanceof WorldDisplayStorageSource source) {
+                appendDisplaySource(source);
+            } else if (value instanceof WorldStorageAccess.SlotContent content) {
+                appendSlotContent(content);
+            } else if (value instanceof StorageTargetRef target) {
+                appendStorageTarget(target);
+            } else if (value instanceof WorkspaceStorageIndex.StorageEntry entry) {
+                appendStorageEntry(entry);
+            } else if (value instanceof ChipSuggestion suggestion) {
+                appendChipSuggestion(suggestion);
+            } else if (value instanceof LearnedIslandRule rule) {
+                appendLearnedRule(rule);
+            } else if (value instanceof LearnedAdjacencyKey key) {
+                appendLearnedAdjacency(key);
+            } else if (value instanceof CraftRunState craftRun) {
+                appendInt(craftRun.revision());
+                appendText(craftRun.selectedEntryId());
+                appendObject(craftRun.entries());
+            } else {
+                appendText(value.getClass().getName());
+                appendInt(value.hashCode());
             }
-            if (value instanceof String string) {
-                return appendText("s:").appendText(string);
-            }
-            if (value instanceof Number number) {
-                return appendText("n:").appendText(number.toString());
-            }
-            if (value instanceof Boolean bool) {
-                return appendText("b:").appendText(Boolean.toString(bool));
-            }
-            if (value instanceof Enum<?> enumValue) {
-                return appendText("e:").appendText(enumValue.getDeclaringClass().getName())
-                        .appendText("#").appendText(enumValue.name());
-            }
-            if (value instanceof ItemStack stack) {
-                return appendStack(stack);
-            }
-            if (value instanceof Map<?, ?> map) {
-                return appendMap(map);
-            }
-            if (value instanceof Set<?> set) {
-                return appendSet(set);
-            }
-            if (value instanceof Collection<?> collection) {
-                return appendCollection(collection);
-            }
-            if (value.getClass().isArray()) {
-                return appendArray(value);
-            }
-            if (value.getClass().isRecord()) {
-                return appendRecord(value, skippedRecordComponent);
-            }
-            return appendText("o:").appendText(value.getClass().getName()).appendText(":").appendText(String.valueOf(value));
         }
 
-        private Fingerprinter appendRecord(Object value, String skippedRecordComponent) {
-            appendText("r:").appendText(value.getClass().getName()).appendText("{");
-            for (RecordComponent component : value.getClass().getRecordComponents()) {
-                if (component == null || component.getName().equals(skippedRecordComponent)) {
-                    continue;
-                }
-                appendText(component.getName()).appendText("=");
-                try {
-                    appendValue(component.getAccessor().invoke(value));
-                } catch (ReflectiveOperationException | RuntimeException exception) {
-                    appendText("<unreadable:").appendText(component.getName()).appendText(">");
-                }
-                separator();
+        private void appendCollection(Collection<?> collection) {
+            if (collection instanceof Set<?> set) {
+                appendSet(set);
+                return;
             }
-            return appendText("}");
-        }
-
-        private Fingerprinter appendCollection(Collection<?> collection) {
-            appendText("c[");
+            appendText("list");
+            appendInt(collection.size());
             for (Object item : collection) {
-                appendValue(item).separator();
+                appendObject(item);
             }
-            return appendText("]");
         }
 
-        private Fingerprinter appendSet(Set<?> set) {
-            ArrayList<String> values = new ArrayList<>();
+        private void appendSet(Set<?> set) {
+            appendText("set");
+            ArrayList<Long> hashes = new ArrayList<>(set.size());
             for (Object item : set) {
-                values.add(new Fingerprinter().appendValue(item).toString());
+                HashSink nested = new HashSink();
+                nested.appendObject(item);
+                hashes.add(nested.hash);
             }
-            values.sort(String::compareTo);
-            appendText("set[");
-            for (String value : values) {
-                appendText(value).separator();
+            hashes.sort(Long::compareUnsigned);
+            appendInt(hashes.size());
+            for (Long value : hashes) {
+                appendLong(value == null ? 0L : value);
             }
-            return appendText("]");
         }
 
-        private Fingerprinter appendMap(Map<?, ?> map) {
-            ArrayList<String> values = new ArrayList<>();
+        private void appendMap(Map<?, ?> map) {
+            appendText("map");
+            ArrayList<Long> hashes = new ArrayList<>(map.size());
             for (Map.Entry<?, ?> entry : map.entrySet()) {
-                Fingerprinter nested = new Fingerprinter();
-                nested.appendValue(entry.getKey()).appendText("=>").appendValue(entry.getValue());
-                values.add(nested.toString());
+                HashSink nested = new HashSink();
+                nested.appendObject(entry.getKey());
+                nested.appendObject(entry.getValue());
+                hashes.add(nested.hash);
             }
-            values.sort(String::compareTo);
-            appendText("map[");
-            for (String value : values) {
-                appendText(value).separator();
+            hashes.sort(Long::compareUnsigned);
+            appendInt(hashes.size());
+            for (Long value : hashes) {
+                appendLong(value == null ? 0L : value);
             }
-            return appendText("]");
         }
 
-        private Fingerprinter appendArray(Object array) {
-            appendText("a[");
-            int length = Array.getLength(array);
-            for (int index = 0; index < length; index++) {
-                appendValue(Array.get(array, index)).separator();
-            }
-            return appendText("]");
+        private void appendIdentity(ItemIdentity identity) {
+            appendText(identity.itemId());
+            appendObject(identity.comparisonMode());
+            appendText(identity.componentFingerprint());
         }
 
-        private Fingerprinter appendStack(ItemStack stack) {
+        private void appendIdentityRef(SlotWorkspaceViewModel.IdentityRef ref) {
+            appendText(ref.itemId());
+            appendText(ref.comparisonMode());
+            appendText(ref.componentFingerprint());
+        }
+
+        private void appendAtlasIsland(SlotWorkspaceViewModel.AtlasIsland island) {
+            appendText(island.islandId());
+            appendText(island.label());
+            appendObject(island.kind());
+            appendLong(Double.doubleToLongBits(island.x()));
+            appendLong(Double.doubleToLongBits(island.y()));
+            appendInt(island.color());
+            appendInt(island.itemCount());
+            appendInt(island.carriedCount());
+        }
+
+        private void appendContextualLane(SlotWorkspaceViewModel.ContextualSuggestionLane lane) {
+            appendText(lane.id());
+            appendText(lane.label());
+            appendObject(lane.items());
+            appendText(lane.placeholderText());
+            appendObject(lane.debugInfo());
+        }
+
+        private void appendContextualDebug(SlotWorkspaceViewModel.ContextualSuggestionDebugInfo info) {
+            appendObject(info.identity());
+            appendLong(Double.doubleToLongBits(info.score()));
+            appendLong(Double.doubleToLongBits(info.relevance()));
+            appendObject(info.reasons());
+        }
+
+        private void appendAtlasItem(SlotWorkspaceViewModel.AtlasItem item) {
+            appendObject(item.identity());
+            appendStack(item.displayStack());
+            appendText(item.name());
+            appendInt(item.totalCount());
+            appendInt(item.firstSlotIndex());
+            appendText(item.islandId());
+            appendBoolean(item.recent());
+            appendBoolean(item.playerPlaced());
+            appendBoolean(item.carried());
+            appendBoolean(item.ghost());
+            appendInt(item.proximateCount());
+            appendObject(item.chipSuggestions());
+            appendObject(item.presence());
+            appendObject(item.elsewhere());
+            appendBoolean(item.isCarriedContainer());
+            appendInt(item.containerFreeSlotCount());
+            appendInt(item.containerSlotCapacity());
+            appendBoolean(item.kitNeeded());
+            appendInt(item.desiredCount());
+            appendBoolean(item.desiredCountFromKit());
+            appendInt(item.wantedCount());
+            appendBoolean(item.junk());
+            appendBoolean(item.acceptedWorkflowInput());
+            appendText(item.largestCarriedSourceId());
+            appendInt(item.largestCarriedSlotIndex());
+            appendInt(item.largestCarriedSlotCount());
+            appendObject(item.putAwayState());
+        }
+
+        private void appendChestPresence(SlotWorkspaceViewModel.ChestPresenceEntry presence) {
+            appendText(presence.storageId());
+            appendText(presence.label());
+            appendInt(presence.count());
+        }
+
+        private void appendChestChip(SlotWorkspaceViewModel.ChestChip chip) {
+            appendText(chip.storageId());
+            appendText(chip.dimensionId());
+            appendText(chip.label());
+            appendInt(chip.anchorCount());
+            appendInt(chip.slotCapacity());
+            appendInt(chip.filledSlots());
+            appendBoolean(chip.proximate());
+            appendInt(chip.affinityIdentities());
+            appendInt(chip.worldX());
+            appendInt(chip.worldY());
+            appendInt(chip.worldZ());
+            appendText(chip.clusterId());
+            appendObject(chip.contents());
+        }
+
+        private void appendChestContentSummary(SlotWorkspaceViewModel.ChestContentSummary summary) {
+            appendText(summary.itemId());
+            appendText(summary.componentFingerprint());
+            appendText(summary.name());
+            appendStack(summary.displayStack());
+            appendInt(summary.count());
+        }
+
+        private void appendChestCluster(SlotWorkspaceViewModel.ChestClusterDescriptor cluster) {
+            appendText(cluster.clusterId());
+            appendText(cluster.label());
+            appendInt(cluster.ordinal());
+        }
+
+        private void appendLootChestSource(SlotWorkspaceViewModel.LootChestSource source) {
+            appendInt(source.chestX());
+            appendInt(source.chestY());
+            appendInt(source.chestZ());
+            appendText(source.dimensionId());
+            appendText(source.label());
+            appendObject(source.contents());
+        }
+
+        private void appendLootChestPanel(SlotWorkspaceViewModel.LootChestPanel panel) {
+            appendInt(panel.chestX());
+            appendInt(panel.chestY());
+            appendInt(panel.chestZ());
+            appendText(panel.dimensionId());
+            appendText(panel.label());
+            appendObject(panel.items());
+        }
+
+        private void appendActiveChestPanel(SlotWorkspaceViewModel.ActiveChestPanel panel) {
+            appendText(panel.storageId());
+            appendText(panel.label());
+            appendText(panel.clusterId());
+            appendText(panel.clusterLabel());
+            appendInt(panel.swatchColor());
+            appendInt(panel.posX());
+            appendInt(panel.posY());
+            appendInt(panel.posZ());
+            appendText(panel.dimensionId());
+            appendObject(panel.role());
+            appendObject(panel.affinityIdentities());
+        }
+
+        private void appendChestSnapshot(SlotWorkspaceViewModel.ChestContentsSnapshot snapshot) {
+            appendInt(snapshot.slotCount());
+            appendObject(snapshot.slotIndices());
+            appendObject(snapshot.contents());
+        }
+
+        private void appendHotbarSlot(SlotWorkspaceViewModel.HotbarSlot slot) {
+            appendInt(slot.hotbarIndex());
+            appendBoolean(slot.selected());
+            appendBoolean(slot.occupied());
+            appendStack(slot.displayStack());
+            appendInt(slot.count());
+        }
+
+        private void appendKitCard(SlotWorkspaceViewModel.KitCard kit) {
+            appendText(kit.kitId());
+            appendText(kit.name());
+            appendText(kit.parentId());
+            appendInt(kit.pageCount());
+            appendInt(kit.activePageIndex());
+            appendBoolean(kit.active());
+            appendBoolean(kit.variant());
+            appendInt(kit.memberCount());
+            appendObject(kit.members());
+            appendObject(kit.acceptedInputs());
+            appendInt(kit.slotCount());
+            appendInt(kit.readyCount());
+            appendInt(kit.carriedSlotCount());
+            appendInt(kit.carriedSlotCapacity());
+            appendInt(kit.bringSlotCount());
+            appendInt(kit.bringReadyCount());
+            appendObject(kit.slots());
+            appendObject(kit.pages());
+            appendObject(kit.bring());
+        }
+
+        private void appendKitBring(SlotWorkspaceViewModel.KitBringItem bring) {
+            appendObject(bring.identity());
+            appendBoolean(bring.ready());
+            appendStack(bring.displayStack());
+            appendText(bring.name());
+            appendInt(bring.presentCount());
+            appendInt(bring.targetCount());
+        }
+
+        private void appendKitPage(SlotWorkspaceViewModel.KitPageView page) {
+            appendInt(page.pageIndex());
+            appendInt(page.slotCount());
+            appendInt(page.readyCount());
+            appendObject(page.slots());
+        }
+
+        private void appendKitSlot(SlotWorkspaceViewModel.KitSlotState slot) {
+            appendInt(slot.slotIndex());
+            appendBoolean(slot.filled());
+            appendBoolean(slot.ready());
+            appendObject(slot.identity());
+            appendStack(slot.displayStack());
+            appendText(slot.name());
+        }
+
+        private void appendOffhand(SlotWorkspaceViewModel.OffhandSlot offhand) {
+            appendBoolean(offhand.occupied());
+            appendStack(offhand.displayStack());
+            appendInt(offhand.count());
+        }
+
+        private void appendWayfindingTarget(WayfindingTarget target) {
+            appendText(target.storageId());
+            appendText(target.dimensionId());
+            appendInt(target.worldX());
+            appendInt(target.worldY());
+            appendInt(target.worldZ());
+            appendObject(target.missingIdentities());
+            appendObject(target.kitMissingIdentities());
+            appendObject(target.desiredMissingIdentities());
+            appendObject(target.wantedMissingIdentities());
+            appendObject(target.putAwayIdentities());
+            appendInt(target.totalMissingCount());
+            appendObject(target.scope());
+        }
+
+        private void appendDisplaySource(WorldDisplayStorageSource source) {
+            appendText(source.storageId());
+            appendObject(source.kind());
+            appendText(source.label());
+            appendText(source.dimensionId());
+            appendInt(source.x());
+            appendInt(source.y());
+            appendInt(source.z());
+            appendInt(source.slotCount());
+            appendObject(source.contents());
+        }
+
+        private void appendSlotContent(WorldStorageAccess.SlotContent content) {
+            appendInt(content.slotIndex());
+            appendStack(content.stack());
+        }
+
+        private void appendStorageTarget(StorageTargetRef target) {
+            appendText(target.storageId());
+            appendText(target.targetKind());
+            appendText(target.label());
+            appendText(target.dimensionId());
+            appendInt(target.x());
+            appendInt(target.y());
+            appendInt(target.z());
+            appendBoolean(target.liveReadable());
+            appendBoolean(target.depositTarget());
+            appendBoolean(target.takeTarget());
+            appendBoolean(target.remembered());
+            appendBoolean(target.proximate());
+        }
+
+        private void appendStorageEntry(WorkspaceStorageIndex.StorageEntry entry) {
+            appendObject(entry.target());
+            appendObject(entry.snapshot());
+            appendObject(entry.countsByIdentity());
+            appendBoolean(entry.live());
+            appendBoolean(entry.remembered());
+        }
+
+        private void appendChipSuggestion(ChipSuggestion suggestion) {
+            appendObject(suggestion.kind());
+            appendObject(suggestion.template());
+            appendText(suggestion.islandId());
+            appendText(suggestion.label());
+            appendInt(suggestion.color());
+            appendObject(suggestion.iconIdentity());
+        }
+
+        private void appendLearnedRule(LearnedIslandRule rule) {
+            appendObject(rule.adjacency());
+            appendText(rule.islandId());
+            appendObject(rule.confirmingIdentities());
+            appendLong(rule.lastConfirmedAtEpochMillis());
+        }
+
+        private void appendLearnedAdjacency(LearnedAdjacencyKey key) {
+            appendObject(key.kind());
+            appendText(key.value());
+        }
+
+        private void appendStack(ItemStack stack) {
             if (stack == null || stack.isEmpty()) {
-                return appendText("stack:<empty>");
+                appendText("empty-stack");
+                return;
             }
-            appendText("stack{")
-                    .appendText(SlotStackAccess.current().itemId(stack)).separator()
-                    .appendInt(stack.getCount()).separator()
-                    .appendInt(stack.getMaxStackSize()).separator()
-                    .appendText(SlotStackAccess.current().dataFingerprint(stack)).separator()
-                    .appendText(stack.getHoverName().getString())
-                    .appendText("}");
-            return this;
+            appendText(SlotStackAccess.current().itemId(stack));
+            appendInt(stack.getCount());
+            appendInt(stack.getMaxStackSize());
+            appendText(SlotStackAccess.current().dataFingerprint(stack));
+            appendText(stack.getHoverName().getString());
         }
 
-        private Fingerprinter appendText(String value) {
-            builder.append(value == null ? "" : value.replace("\\", "\\\\").replace("|", "\\|"));
-            return this;
+        private void appendNull() {
+            appendLong(0x9e3779b97f4a7c15L);
         }
 
-        private Fingerprinter appendInt(int value) {
-            builder.append(value);
-            return this;
+        private void appendBoolean(boolean value) {
+            appendLong(value ? 0x9e3779b97f4a7c15L : 0xbf58476d1ce4e5b9L);
         }
 
-        private Fingerprinter appendLong(long value) {
-            builder.append(value);
-            return this;
+        private void appendInt(int value) {
+            appendLong(value);
         }
 
-        private Fingerprinter separator() {
-            builder.append('|');
-            return this;
+        private void appendLong(long value) {
+            mix(value);
+            mix(value >>> 32);
+        }
+
+        private void appendText(String value) {
+            String text = value == null ? "" : value;
+            appendInt(text.length());
+            for (int index = 0; index < text.length(); index++) {
+                mix(text.charAt(index));
+            }
+        }
+
+        private void mix(long value) {
+            hash ^= value & 0xffL;
+            hash *= PRIME;
+            hash ^= (value >>> 8) & 0xffL;
+            hash *= PRIME;
+            hash ^= (value >>> 16) & 0xffL;
+            hash *= PRIME;
+            hash ^= (value >>> 24) & 0xffL;
+            hash *= PRIME;
+            hash ^= (value >>> 32) & 0xffL;
+            hash *= PRIME;
+            hash ^= (value >>> 40) & 0xffL;
+            hash *= PRIME;
+            hash ^= (value >>> 48) & 0xffL;
+            hash *= PRIME;
+            hash ^= (value >>> 56) & 0xffL;
+            hash *= PRIME;
         }
 
         @Override
         public String toString() {
-            return builder.toString();
+            return Long.toUnsignedString(hash, 16);
         }
     }
 }

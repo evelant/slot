@@ -11,10 +11,22 @@ import java.util.Objects;
  * preserves "N wheel steps" as one counted intent instead of N packets.
  */
 public final class WheelTransferBatcher {
+    static final int DEFAULT_IDLE_FLUSH_TICKS = 2;
+
+    private final int idleFlushTicks;
     private WorkspaceActionId action;
     private SlotWorkspaceViewModel.IdentityRef identity;
     private int count;
     private String status;
+    private int ticksUntilFlush;
+
+    public WheelTransferBatcher() {
+        this(DEFAULT_IDLE_FLUSH_TICKS);
+    }
+
+    WheelTransferBatcher(int idleFlushTicks) {
+        this.idleFlushTicks = Math.max(1, idleFlushTicks);
+    }
 
     public Pending enqueue(
             WorkspaceActionId nextAction,
@@ -27,18 +39,21 @@ public final class WheelTransferBatcher {
             return null;
         }
         if (action == null || sameBatch(nextAction, nextIdentity)) {
-            action = nextAction;
-            identity = nextIdentity;
-            count = saturatingAdd(count, resolvedCount);
-            status = nextStatus == null ? "" : nextStatus;
+            accept(nextAction, nextIdentity, resolvedCount, nextStatus);
             return null;
         }
         Pending flushed = flush();
-        action = nextAction;
-        identity = nextIdentity;
-        count = resolvedCount;
-        status = nextStatus == null ? "" : nextStatus;
+        accept(nextAction, nextIdentity, resolvedCount, nextStatus);
         return flushed;
+    }
+
+    public Pending flushIfIdle() {
+        if (action == null || identity == null || count <= 0) {
+            clear();
+            return null;
+        }
+        ticksUntilFlush--;
+        return ticksUntilFlush <= 0 ? flush() : null;
     }
 
     public Pending flush() {
@@ -49,6 +64,19 @@ public final class WheelTransferBatcher {
         Pending pending = new Pending(action, identity, count, status);
         clear();
         return pending;
+    }
+
+    private void accept(
+            WorkspaceActionId nextAction,
+            SlotWorkspaceViewModel.IdentityRef nextIdentity,
+            int nextCount,
+            String nextStatus
+    ) {
+        action = nextAction;
+        identity = nextIdentity;
+        count = saturatingAdd(count, nextCount);
+        status = nextStatus == null ? "" : nextStatus;
+        ticksUntilFlush = idleFlushTicks;
     }
 
     private boolean sameBatch(WorkspaceActionId nextAction, SlotWorkspaceViewModel.IdentityRef nextIdentity) {
@@ -67,6 +95,7 @@ public final class WheelTransferBatcher {
         identity = null;
         count = 0;
         status = "";
+        ticksUntilFlush = 0;
     }
 
     public record Pending(

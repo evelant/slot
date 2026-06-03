@@ -50,12 +50,13 @@ final class HotkeyRouter {
         }, true);
         host.root.addEventListener(UIEvents.CHAR_TYPED, host.searchController::handleCharTyped, true);
         host.root.addEventListener(UIEvents.TICK, event -> {
-            host.flushWheelTransferBatch();
+            boolean shiftDown = Screen.hasShiftDown();
+            host.tickWheelTransferBatch(shiftDown);
+            host.shiftClickTransferState.observeShiftDown(shiftDown);
             host.flushRebuildIfPending();
             host.applyPendingWallScrollRestore();
         });
         host.root.addEventListener(UIEvents.TICK, event -> host.searchController.tickIdleTimer());
-        host.root.addEventListener(UIEvents.TICK, event -> host.shiftClickTransferState.observeShiftDown(Screen.hasShiftDown()));
         host.root.addEventListener(UIEvents.TICK, event -> {
             if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.markWantedDown()) {
                 markWantedKeyConsumed = false;

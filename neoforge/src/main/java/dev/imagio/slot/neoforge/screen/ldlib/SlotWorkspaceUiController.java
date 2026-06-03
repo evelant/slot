@@ -187,6 +187,7 @@ final class SlotWorkspaceUiController {
     String hoveredChestCellStorageId;
     private float pendingWallScrollRestore = Float.NaN;
     private boolean pendingWallScrollRestoreActive;
+    private boolean flushingWheelTransfer;
     // Set by drop targets that handle a ChestStackDrag for something OTHER
     // than "take the item into inventory" (e.g. island assign-home is a
     // pure metadata op — item stays in the chest). The chest cell's
@@ -343,6 +344,7 @@ final class SlotWorkspaceUiController {
     }
 
     void markSurfaceClosed() {
+        flushWheelTransferBatch();
         WorkspaceUiSessionMemory.markClosed(surfaceMemoryKey());
     }
 
@@ -503,19 +505,34 @@ final class SlotWorkspaceUiController {
         flushWheelTransfer(wheelTransferBatcher.flush());
     }
 
+    void tickWheelTransferBatch(boolean shiftDown) {
+        flushWheelTransfer(shiftDown ? wheelTransferBatcher.flushIfIdle() : wheelTransferBatcher.flush());
+    }
+
+    void flushWheelTransferBeforeAction() {
+        if (!flushingWheelTransfer) {
+            flushWheelTransferBatch();
+        }
+    }
+
     private void flushWheelTransfer(WheelTransferBatcher.Pending pending) {
         if (pending == null || pending.identity() == null || pending.count() <= 0) {
             return;
         }
-        boolean sent = rpc.send(
-                pending.action(),
-                pending.identity().itemId(),
-                pending.identity().comparisonMode(),
-                pending.identity().componentFingerprint(),
-                pending.count());
-        localStatus.set(sent ? pending.status() : "transfer unavailable");
-        if (!sent) {
-            rebuild();
+        flushingWheelTransfer = true;
+        try {
+            boolean sent = rpc.send(
+                    pending.action(),
+                    pending.identity().itemId(),
+                    pending.identity().comparisonMode(),
+                    pending.identity().componentFingerprint(),
+                    pending.count());
+            localStatus.set(sent ? pending.status() : "transfer unavailable");
+            if (!sent) {
+                rebuild();
+            }
+        } finally {
+            flushingWheelTransfer = false;
         }
     }
 

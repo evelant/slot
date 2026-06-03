@@ -131,6 +131,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
 
     @Override
     public boolean send(WorkspaceActionId action, Object... arguments) {
+        host.flushWheelTransferBeforeAction();
         WorkspaceActionValidation validation = WorkspaceActionValidator.validate(action, arguments);
         if (!validation.valid()) {
             host.localStatus.set("action rejected: " + validation.diagnostics());
