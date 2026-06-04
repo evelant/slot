@@ -821,6 +821,8 @@ public record SlotWorkspaceViewModel(
                 targetResolution.desiredCounts());
         Set<ItemIdentity> desiredFromWorkflowTabIdentities =
                 ItemIdentityCollections.normalizedSet(targetResolution.desiredFromWorkflowTab());
+        Set<ItemIdentity> junkTags = ItemIdentityCollections.normalizedSet(
+                resolvedWorkflow.workflowProjection().junkTags());
 
         // Synthesize ghost accumulators for identities present only in
         // proximate chests (homed-but-not-carried). Carried identities use
@@ -938,14 +940,19 @@ public record SlotWorkspaceViewModel(
                 resolvedAuthority,
                 ghosts,
                 elsewhereGhosts);
+        addJunkGhostAccumulators(
+                accumulators,
+                ghostIdentities,
+                junkTags,
+                resolvedAuthority,
+                ghosts,
+                elsewhereGhosts);
 
         sortAccumulators(accumulators, visualHomeMap, recentRankByIdentity);
 
         ArrayList<AtlasIsland> layoutIslands = new ArrayList<>(SlotWorkspaceAtlasLayout.baseIslands(visualHomeMap));
         ArrayList<AtlasItem> atlasItems = new ArrayList<>();
         ArrayList<AtlasItem> triageItems = new ArrayList<>();
-        Set<ItemIdentity> junkTags = ItemIdentityCollections.normalizedSet(
-                resolvedWorkflow.workflowProjection().junkTags());
         List<TriageIslandRef> triageIslandRefs = triageIslandRefs(visualHomeMap);
         LearnedIslandRuleStore resolvedLearnedRules = learnedRules == null ? new LearnedIslandRuleStore() : learnedRules;
         DynamicHomeCohortPolicy cohortPolicy = signalExtractor == null ? null : DynamicHomeCohortPolicy.current();
@@ -989,7 +996,35 @@ public record SlotWorkspaceViewModel(
                 if (ghostOnly) {
                     boolean intentGhost = kitNeeded || desiredCount > 0 || wantedCount > 0;
                     boolean recentGhost = ItemIdentityCollections.containsCanonical(recentIdentities, accumulator.identity());
-                    if (proximateCount > 0) {
+                    if (junk && ensureMiscIsland(layoutIslands)) {
+                        atlasItems.add(new AtlasItem(
+                                IdentityRef.from(accumulator.identity()),
+                                accumulator.displayStack(),
+                                accumulator.name(),
+                                accumulator.totalCount(),
+                                accumulator.firstSlotIndex(),
+                                SlotWorkspaceAtlasLayout.ISLAND_MISC,
+                                ItemIdentityCollections.containsCanonical(recentIdentities, accumulator.identity()),
+                                false,
+                                false,
+                                true,
+                                proximateCount,
+                                chipSuggestions,
+                                presence,
+                                elsewhere,
+                                isContainer,
+                                containerFree,
+                                containerCapacity,
+                                kitNeeded,
+                                desiredCount,
+                                desiredCountFromKit,
+                                wantedCount,
+                                true,
+                                accumulator.largestCarriedSourceId(),
+                                accumulator.largestCarriedSlotIndex(),
+                                accumulator.largestCarriedSlotCount()
+                        ));
+                    } else if (proximateCount > 0) {
                         // Nearby claimed-chest contents can be the first time
                         // SLOT sees an identity on an existing world. Queue
                         // them for the same common auto-home pass as carried
@@ -1119,6 +1154,35 @@ public record SlotWorkspaceViewModel(
             int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
             if (SlotWorkspaceAtlasLayout.island(layoutIslands, islandId) == null) {
                 if (ghostOnly) {
+                    if (junk && ensureMiscIsland(layoutIslands)) {
+                        atlasItems.add(new AtlasItem(
+                                IdentityRef.from(accumulator.identity()),
+                                accumulator.displayStack(),
+                                accumulator.name(),
+                                accumulator.totalCount(),
+                                accumulator.firstSlotIndex(),
+                                SlotWorkspaceAtlasLayout.ISLAND_MISC,
+                                ItemIdentityCollections.containsCanonical(recentIdentities, accumulator.identity()),
+                                false,
+                                false,
+                                true,
+                                proximateCount,
+                                List.of(),
+                                presence,
+                                elsewhere,
+                                isContainer,
+                                containerFree,
+                                containerCapacity,
+                                kitNeeded,
+                                desiredCount,
+                                desiredCountFromKit,
+                                wantedCount,
+                                true,
+                                accumulator.largestCarriedSourceId(),
+                                accumulator.largestCarriedSlotIndex(),
+                                accumulator.largestCarriedSlotCount()
+                        ));
+                    }
                     continue;
                 }
                 triageItems.add(new AtlasItem(
@@ -1727,7 +1791,8 @@ public record SlotWorkspaceViewModel(
                     normalizedSearch,
                     item,
                     islandsById == null ? null : islandsById.get(item.islandId()));
-            if (identity != null && (carried || workflowRelevant || putAwayCandidate || storageGhost || searchMatch)) {
+            if (identity != null
+                    && (carried || workflowRelevant || putAwayCandidate || storageGhost || searchMatch || item.junk())) {
                 AtlasItem visibleItem = item.withAcceptedWorkflowInput(acceptedInput);
                 filtered.add(putAwayCandidate
                         ? visibleItem.withPutAwayState(
@@ -3212,6 +3277,36 @@ public record SlotWorkspaceViewModel(
         Set<ItemIdentity> existing = existingIdentities == null ? new LinkedHashSet<>() : existingIdentities;
         Map<ItemIdentity, ItemStack> authorityDisplayStacks = null;
         for (ItemIdentity identity : recentItems) {
+            if (identity == null || ItemIdentityCollections.containsCanonical(existing, identity)) {
+                continue;
+            }
+            if (authorityDisplayStacks == null) {
+                authorityDisplayStacks = displayStacksByIdentity(authority);
+            }
+            ItemStack stack = recentDisplayStack(identity, authorityDisplayStacks, ghosts, elsewhereGhosts);
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            ItemIdentity key = ItemIdentityCollections.key(identity);
+            accumulators.add(AtlasItemAccumulator.ghost(key, stack, 0));
+            ItemIdentityCollections.add(existing, key);
+        }
+    }
+
+    private static void addJunkGhostAccumulators(
+            List<AtlasItemAccumulator> accumulators,
+            Set<ItemIdentity> existingIdentities,
+            Set<ItemIdentity> junkTags,
+            InventoryAuthoritySnapshot authority,
+            ProximateGhostProjection ghosts,
+            ElsewhereGhostProjection elsewhereGhosts
+    ) {
+        if (accumulators == null || junkTags == null || junkTags.isEmpty()) {
+            return;
+        }
+        Set<ItemIdentity> existing = existingIdentities == null ? new LinkedHashSet<>() : existingIdentities;
+        Map<ItemIdentity, ItemStack> authorityDisplayStacks = null;
+        for (ItemIdentity identity : junkTags) {
             if (identity == null || ItemIdentityCollections.containsCanonical(existing, identity)) {
                 continue;
             }

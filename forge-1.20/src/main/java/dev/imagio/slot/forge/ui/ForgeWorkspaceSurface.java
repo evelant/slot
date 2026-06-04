@@ -40,6 +40,7 @@ import dev.imagio.slot.ui.workspace.WorkflowTabsUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceTaskPanelUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.imagio.slot.ui.workspace.WorkspaceCountFormat;
+import dev.imagio.slot.ui.workspace.WorkspaceHelpContent;
 import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceSearchInputPolicy;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
@@ -145,6 +146,9 @@ public final class ForgeWorkspaceSurface {
     private String renameChestDraft = "";
     private float contextMenuX;
     private float contextMenuY;
+    private boolean helpPopoverOpen;
+    private float helpPopoverX;
+    private float helpPopoverY;
     private String editingIslandId;
     private String islandLabelDraft = "";
     private float islandEditX;
@@ -358,6 +362,12 @@ public final class ForgeWorkspaceSurface {
     public boolean keyPressed(int keyCode, int scanCode, boolean hostTextInputFocused) {
         if (hostTextInputFocused && !wantsKeyboardInput()) {
             return false;
+        }
+        if (helpPopoverOpen) {
+            if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
+                closeOverlays();
+            }
+            return true;
         }
         if (handleEditorKey(keyCode)) {
             return true;
@@ -649,6 +659,9 @@ public final class ForgeWorkspaceSurface {
     }
 
     public boolean charTyped(char codePoint, boolean hostTextInputFocused) {
+        if (helpPopoverOpen) {
+            return true;
+        }
         if (handleEditorChar(codePoint)) {
             return true;
         }
@@ -1062,6 +1075,7 @@ public final class ForgeWorkspaceSurface {
                         .fontSize(7)
                         .horizontal(SlotUiTextStyle.Horizontal.CENTER)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        row.addChild(helpButton());
         row.addChild(storageXrayToggleButton("N", StorageGhostRevealMode.PROXIMATE));
         row.addChild(storageXrayToggleButton("T", StorageGhostRevealMode.TRACKED));
         row.addChild(gatherButton());
@@ -1078,6 +1092,24 @@ public final class ForgeWorkspaceSurface {
                     }
                     event.stopPropagation();
                     clearSearchFromPointer();
+                });
+    }
+
+    private SlotUiElement helpButton() {
+        return SlotUiElement.button("?", true, WorkspaceUiPalette.ROW_DIM)
+                .tooltip(Component.literal("SLOT help"))
+                .layout(layout -> layout.width(16).height(16))
+                .textStyle(style -> style
+                        .color(WorkspaceUiPalette.TEXT)
+                        .fontSize(8)
+                        .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER))
+                .on(SlotUiEventKind.CLICK, event -> {
+                    if (event.button() != 0) {
+                        return;
+                    }
+                    event.stopPropagation();
+                    openHelpPopover(event.x(), event.y());
                 });
     }
 
@@ -1533,7 +1565,8 @@ public final class ForgeWorkspaceSurface {
     }
 
     public boolean hasActiveOverlay() {
-        return editingDesiredCountIdentity != null
+        return helpPopoverOpen
+                || editingDesiredCountIdentity != null
                 || editingIslandId != null
                 || contextMenuKitId != null
                 || contextMenuChestStorageId != null
@@ -1629,6 +1662,9 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement activeOverlay() {
+        if (helpPopoverOpen) {
+            return helpOverlay();
+        }
         if (editingDesiredCountIdentity != null) {
             return desiredCountOverlay();
         }
@@ -1733,6 +1769,75 @@ public final class ForgeWorkspaceSurface {
                 + Math.max(0, buttons) * MENU_BUTTON_HEIGHT
                 + Math.max(0, customRows) * MENU_CUSTOM_ROW_HEIGHT
                 + (rows - 1) * gap;
+    }
+
+    private SlotUiElement helpOverlay() {
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(
+                helpPopoverX,
+                helpPopoverY,
+                WorkspaceHelpContent.POPOVER_WIDTH_PX,
+                WorkspaceHelpContent.POPOVER_HEIGHT_PX,
+                6f,
+                6f,
+                2f,
+                false);
+        panel.addChild(helpTitle("SLOT basics"));
+        panel.addChild(helpSection("Gestures"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.gestures()) {
+            panel.addChild(helpLine(line));
+        }
+        panel.addChild(helpSection("Terms"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.terms()) {
+            panel.addChild(helpLine(line));
+        }
+        overlay.addChild(panel);
+        return overlay;
+    }
+
+    private SlotUiElement helpTitle(String text) {
+        return SlotUiElement.label(text, WorkspaceUiPalette.ACCENT)
+                .layout(layout -> layout.widthPercent(100).height(12))
+                .textStyle(style -> style
+                        .color(WorkspaceUiPalette.ACCENT)
+                        .fontSize(8)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER));
+    }
+
+    private SlotUiElement helpSection(String text) {
+        return SlotUiElement.label(text, WorkspaceUiPalette.MUTED)
+                .layout(layout -> layout.widthPercent(100).height(9))
+                .textStyle(style -> style
+                        .color(WorkspaceUiPalette.MUTED)
+                        .fontSize(6)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER));
+    }
+
+    private SlotUiElement helpLine(WorkspaceHelpContent.Line line) {
+        SlotUiElement row = SlotUiElement.element()
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .height(10)
+                        .gapAll(4)
+                        .alignItems(SlotUiLayout.AlignItems.CENTER)
+                        .flexDirection(SlotUiLayout.FlexDirection.ROW));
+        row.addChild(SlotUiElement.label(line.key(), WorkspaceUiPalette.ACCENT)
+                .layout(layout -> layout.width(WorkspaceHelpContent.KEY_WIDTH_PX).height(10))
+                .textStyle(style -> style
+                        .color(WorkspaceUiPalette.ACCENT)
+                        .fontSize(6)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        row.addChild(SlotUiElement.label(line.text(), WorkspaceUiPalette.TEXT)
+                .layout(layout -> layout.flex(1).height(10))
+                .textStyle(style -> style
+                        .color(WorkspaceUiPalette.TEXT)
+                        .fontSize(6)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        return row;
     }
 
     private SlotUiElement itemContextOverlay() {
@@ -2814,6 +2919,15 @@ public final class ForgeWorkspaceSurface {
         rebuildRequested = true;
     }
 
+    private void openHelpPopover(float screenX, float screenY) {
+        closeOverlayState();
+        helpPopoverOpen = true;
+        helpPopoverX = screenX;
+        helpPopoverY = screenY;
+        status = "SLOT help";
+        rebuildRequested = true;
+    }
+
     private void openKitContextMenu(String kitId, float screenX, float screenY) {
         if (kitId == null || kitId.isBlank()) {
             setStatus("missing workflow");
@@ -3090,6 +3204,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     private void closeOverlayState() {
+        helpPopoverOpen = false;
         contextMenuIdentity = null;
         contextMenuItemSnapshot = null;
         contextMenuIslandId = null;

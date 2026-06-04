@@ -297,6 +297,10 @@ final class ListWallPanelBuilder {
         if (createPopover != null) {
             host.popoverSlot.addChild(createPopover);
         }
+        UIElement helpPopover = host.overlays.helpPopover();
+        if (helpPopover != null) {
+            host.popoverSlot.addChild(helpPopover);
+        }
     }
 
 

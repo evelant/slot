@@ -91,7 +91,7 @@ public final class WallSectionVisibility {
             StorageGhostRevealMode mode,
             boolean forceRevealGhosts
     ) {
-        if (forceRevealGhosts || filtering || isIntentGhost(item)) {
+        if (forceRevealGhosts || filtering || item.junk() || isIntentGhost(item)) {
             return true;
         }
         if (isProximateGhost(item)) {

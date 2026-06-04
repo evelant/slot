@@ -22,6 +22,8 @@ import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WorkspaceTrashCommandServiceTest {
     @BeforeEach
@@ -32,6 +34,35 @@ class WorkspaceTrashCommandServiceTest {
     @AfterEach
     void cleanupStorageAccess() {
         StorageAccessRegistry.resetForTests();
+    }
+
+    @Test
+    void directTrashDoesNotMarkIdentityAsJunk() {
+        ServerPlayer player = new ServerPlayer();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null);
+        ItemIdentity cobblestone = ItemIdentity.of("minecraft:cobblestone");
+
+        FakeCarriedSourceAccess carried = new FakeCarriedSourceAccess();
+        carried.put(BuiltinInventoryIds.PLAYER_MAIN, 0, stack("minecraft:cobblestone", 12));
+        StorageAccessRegistry.installCarriedSourceAccess(carried);
+        StorageAccessRegistry.installWorldStorageAccess(new NoOpWorldStorageAccess());
+
+        WorkspaceCommandOutcome trash =
+                WorkspaceTrashCommandService.trashCarriedIdentity(player, runtime, cobblestone);
+
+        assertTrue(trash.success(), trash.diagnostics());
+        assertEquals(0, carried.peek(BuiltinInventoryIds.PLAYER_MAIN, 0).getCount());
+        assertFalse(runtime.collectionWorkflow().isJunk(cobblestone));
+
+        WorkspaceCommandOutcome undo = SlotWorkspaceCommandService.performUndo(runtime);
+        assertTrue(undo.success(), undo.diagnostics());
+        assertFalse(runtime.collectionWorkflow().isJunk(cobblestone));
+
+        WorkspaceCommandOutcome redo = SlotWorkspaceCommandService.performRedo(runtime);
+        assertTrue(redo.success(), redo.diagnostics());
+        assertFalse(runtime.collectionWorkflow().isJunk(cobblestone));
     }
 
     @Test
@@ -328,6 +359,20 @@ class WorkspaceTrashCommandServiceTest {
 
         @Override
         public ItemStack insertBestFit(ServerPlayer player, ItemStack stack, boolean simulate) {
+            if (stack == null || stack.isEmpty()) {
+                return ItemStack.EMPTY;
+            }
+            Map<Integer, ItemStack> source =
+                    contents.computeIfAbsent(BuiltinInventoryIds.PLAYER_MAIN, key -> new LinkedHashMap<>());
+            for (int slot = 0; slot < 36; slot++) {
+                ItemStack current = source.getOrDefault(slot, ItemStack.EMPTY);
+                if (current.isEmpty()) {
+                    if (!simulate) {
+                        source.put(slot, stack.copy());
+                    }
+                    return ItemStack.EMPTY;
+                }
+            }
             return stack;
         }
 

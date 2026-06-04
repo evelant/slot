@@ -117,6 +117,38 @@ class SlotWorkspaceViewModelWorkflowTabsTest {
     }
 
     @Test
+    void activeWorkflowKeepsJunkGhostsVisibleForUnmarking() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().activate(mining.id());
+        ItemIdentity rottenFlesh = ItemIdentity.of("minecraft:rotten_flesh");
+        runtime.collectionWorkflow().setJunk(rottenFlesh, true);
+
+        SlotWorkspaceViewModel.setGhostStackResolver(itemId -> new ItemStack(itemId, 1, 64));
+        try {
+            SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                    InventoryAuthoritySnapshot.empty(),
+                    runtime.snapshot(),
+                    "ready",
+                    "",
+                    0,
+                    0,
+                    1L);
+
+            SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItem(
+                    SlotWorkspaceViewModel.IdentityRef.from(rottenFlesh));
+
+            assertNotNull(item);
+            assertTrue(item.ghost());
+            assertFalse(item.carried());
+            assertTrue(item.junk());
+            assertEquals(SlotWorkspaceAtlasLayout.ISLAND_MISC, item.islandId());
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
     void activeWorkflowPutAwayWayfindingPointsAtKnownDestination() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         KitDefinition mining = runtime.kitWorkflow().create("Mining");

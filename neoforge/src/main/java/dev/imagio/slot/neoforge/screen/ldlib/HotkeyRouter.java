@@ -26,6 +26,7 @@ final class HotkeyRouter {
         host.root.setEnforceFocus(event -> {
         });
         host.root.addEventListener(UIEvents.MUI_CHANGED, event -> host.root.focus());
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleHelpDismissKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, host.searchController::handleKeyDown, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCursorCancelKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleFocusHoveredItemKey, true);
@@ -44,6 +45,10 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleOpenVanillaKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleRelevanceDebugOverlayKey, true);
         host.root.addEventListener(UIEvents.CHAR_TYPED, event -> {
+            if (host.helpPopoverOpen) {
+                event.stopPropagation();
+                return;
+            }
             if (event.codePoint >= '1' && event.codePoint <= '9') {
                 event.stopPropagation();
             }
@@ -71,6 +76,17 @@ final class HotkeyRouter {
                 storageXrayKeyConsumed = false;
             }
         });
+    }
+
+    void handleHelpDismissKey(UIEvent event) {
+        if (!host.helpPopoverOpen) {
+            return;
+        }
+        event.stopPropagation();
+        if (event.keyCode == GLFW.GLFW_KEY_ESCAPE) {
+            host.helpPopoverOpen = false;
+            host.rebuild();
+        }
     }
 
     void handleCursorCancelKey(UIEvent event) {

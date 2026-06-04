@@ -106,6 +106,9 @@ final class SlotWorkspaceUiController {
     String renameChestDraft = "";
     float contextMenuScreenX;
     float contextMenuScreenY;
+    boolean helpPopoverOpen;
+    float helpPopoverScreenX;
+    float helpPopoverScreenY;
     final ArrayDeque<String> recentRehomeIslandIds = new ArrayDeque<>();
     private RecipeIngredientSidebarSpec recipeSidebarSpec = RecipeIngredientSidebarSpec.empty();
     private RecipeIngredientSidebarSpec.Projection recipeSidebarProjection;

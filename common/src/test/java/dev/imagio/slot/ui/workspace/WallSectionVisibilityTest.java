@@ -127,6 +127,23 @@ class WallSectionVisibilityTest {
     }
 
     @Test
+    void collapsedWallRevealsJunkGhostsWithoutStorageXray() {
+        SlotWorkspaceViewModel.AtlasItem ghost = junkGhost("minecraft:rotten_flesh");
+
+        WallSectionVisibility.Result result = WallSectionVisibility.classify(
+                List.of(ghost),
+                false,
+                false,
+                StorageGhostRevealMode.COLLAPSED,
+                false,
+                false);
+
+        assertTrue(result.hasVisibleContent());
+        assertFalse(result.showNearbyToggle());
+        assertEquals(List.of(ghost), result.visibleCards());
+    }
+
+    @Test
     void usefulNowSuggestionLaneStaysHiddenButPutAwayLaneRenders() {
         SlotWorkspaceViewModel.AtlasItem item = proximateGhost("minecraft:dirt");
 
@@ -155,10 +172,23 @@ class WallSectionVisibilityTest {
                 8)));
     }
 
+    private static SlotWorkspaceViewModel.AtlasItem junkGhost(String itemId) {
+        return ghost(itemId, 0, List.of(), true);
+    }
+
     private static SlotWorkspaceViewModel.AtlasItem ghost(
             String itemId,
             int proximateCount,
             List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere
+    ) {
+        return ghost(itemId, proximateCount, elsewhere, false);
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem ghost(
+            String itemId,
+            int proximateCount,
+            List<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere,
+            boolean junk
     ) {
         ItemIdentity identity = ItemIdentity.of(itemId);
         return new SlotWorkspaceViewModel.AtlasItem(
@@ -183,6 +213,7 @@ class WallSectionVisibilityTest {
                 0,
                 false,
                 0,
+                junk,
                 "",
                 -1,
                 0);

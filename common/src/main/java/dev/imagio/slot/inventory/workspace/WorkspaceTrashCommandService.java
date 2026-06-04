@@ -95,8 +95,6 @@ public final class WorkspaceTrashCommandService {
             return WorkspaceCommandOutcome.rejected("carried_storage_unavailable");
         }
 
-        runtime.collectionWorkflow().expireJunkTags();
-        boolean wasJunk = runtime.collectionWorkflow().isJunk(identity);
         ExtractedBatch trashed;
         try {
             trashed = extractMatching(carried, player, identity, Integer.MAX_VALUE, false);
@@ -112,13 +110,9 @@ public final class WorkspaceTrashCommandService {
             return WorkspaceCommandOutcome.rejected("no_matching_carried_items");
         }
 
-        runtime.collectionWorkflow().setJunk(
-                identity,
-                true,
-                DomainEventMetadata.origin("slot_workspace.trash.mark_junk"));
         recordTrashActivity(runtime, identity, trashed.count(), InventoryActivityProducer.ROUTER_ACTION, true);
         CarriedInventoryRevisions.markChanged(player, "direct_trash");
-        recordUndo(player, runtime, identity, trashed, wasJunk);
+        recordUndo(player, runtime, identity, trashed);
         return WorkspaceCommandOutcome.accepted("trashed", identity.itemId() + " count=" + trashed.count());
     }
 
@@ -367,8 +361,7 @@ public final class WorkspaceTrashCommandService {
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
             ItemIdentity identity,
-            ExtractedBatch trashed,
-            boolean wasJunk
+            ExtractedBatch trashed
     ) {
         List<ItemStack> restoreStacks = trashed.stacks();
         int count = trashed.count();
@@ -376,7 +369,6 @@ public final class WorkspaceTrashCommandService {
                 "trash item",
                 ctx -> {
                     restoreTrashedStacks(player, restoreStacks);
-                    restoreJunkState(ctx.runtime(), identity, wasJunk);
                 },
                 ctx -> {
                     CarriedSourceAccess carried = carriedAccessOrNull();
@@ -386,26 +378,8 @@ public final class WorkspaceTrashCommandService {
                             CarriedInventoryRevisions.markChanged(player, "trash_redo");
                         }
                     }
-                    if (ctx.runtime() != null) {
-                        ctx.runtime().collectionWorkflow().setJunk(
-                                identity,
-                                true,
-                                DomainEventMetadata.origin("slot_workspace.trash.redo_mark_junk"));
-                    }
                 }
         );
-    }
-
-    private static void restoreJunkState(WorkflowDomainRuntime runtime, ItemIdentity identity, boolean wasJunk) {
-        if (runtime == null || identity == null) {
-            return;
-        }
-        runtime.collectionWorkflow().setJunk(
-                identity,
-                wasJunk,
-                DomainEventMetadata.origin(wasJunk
-                        ? "slot_workspace.trash.undo_restore_junk"
-                        : "slot_workspace.trash.undo_clear_junk"));
     }
 
     private static void restoreTrashedStacks(ServerPlayer player, List<ItemStack> stacks) {

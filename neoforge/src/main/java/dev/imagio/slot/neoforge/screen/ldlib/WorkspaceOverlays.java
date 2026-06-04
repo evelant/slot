@@ -16,6 +16,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
+import dev.imagio.slot.ui.workspace.WorkspaceHelpContent;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
@@ -40,7 +41,7 @@ final class WorkspaceOverlays {
         // always visible; deposit only reveals itself when a claimed
         // chest is proximate (TICK-poll pattern).
         UIElement overlay = new UIElement().layout(layout -> layout
-                .gapAll(6)
+                .gapAll(3)
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
         overlay.style(style -> style.zIndex(11));
@@ -157,6 +158,7 @@ final class WorkspaceOverlays {
 
         Button nearbyXrayButton = storageXrayToggleButton("N", StorageGhostRevealMode.PROXIMATE);
         Button trackedXrayButton = storageXrayToggleButton("T", StorageGhostRevealMode.TRACKED);
+        Button helpButton = helpButton();
 
         // HISTORY is a counter-clockwise curved arrow (classic undo);
         // ROTATION is a clockwise curved arrow (matches redo convention).
@@ -217,6 +219,7 @@ final class WorkspaceOverlays {
                         "Disable SLOT — vanilla inventory opens until re-enabled from the vanilla screen."));
 
         overlay.addChildren(
+                helpButton,
                 nearbyXrayButton,
                 trackedXrayButton,
                 gatherButton,
@@ -226,6 +229,133 @@ final class WorkspaceOverlays {
                 vanillaButton,
                 disableButton);
         return overlay;
+    }
+
+    private Button helpButton() {
+        Button button = button("?", true, GLASS);
+        button.layout(layout -> layout.width(12).height(16));
+        button.textStyle(style -> style
+                .font(fontUi())
+                .textColor(TEXT)
+                .fontSize(8)
+                .textShadow(false)
+                .textAlignHorizontal(Horizontal.CENTER)
+                .textAlignVertical(Vertical.CENTER));
+        button.setOnClick(event -> {
+            event.stopPropagation();
+            openHelpPopover(event.x, event.y);
+        });
+        host.installTextTooltip(button, Component.literal("SLOT help"));
+        return button;
+    }
+
+    private void openHelpPopover(float screenX, float screenY) {
+        host.menu.closeContextMenu();
+        host.editingIslandId = null;
+        host.islandLabelDraft = "";
+        host.pendingCreateIdentity = null;
+        host.pendingCreateLabel = "";
+        host.pendingCreateFocusPending = false;
+        host.helpPopoverOpen = true;
+        host.helpPopoverScreenX = screenX;
+        host.helpPopoverScreenY = screenY;
+        host.localStatus.set("SLOT help");
+        host.rebuild();
+    }
+
+    private void closeHelpPopover() {
+        host.helpPopoverOpen = false;
+        host.rebuild();
+    }
+
+    UIElement helpPopover() {
+        if (!host.helpPopoverOpen) {
+            return null;
+        }
+        UIElement catcher = host.menu.contextMenuCatcher(this::closeHelpPopover);
+        UIElement panel = panel(GLASS).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .width(WorkspaceHelpContent.POPOVER_WIDTH_PX)
+                .paddingAll(6)
+                .gapAll(2)
+                .flexDirection(FlexDirection.COLUMN));
+        host.menu.anchorPopover(
+                panel,
+                host.helpPopoverScreenX,
+                host.helpPopoverScreenY,
+                WorkspaceHelpContent.POPOVER_WIDTH_PX,
+                WorkspaceHelpContent.POPOVER_HEIGHT_PX);
+        panel.style(style -> style.zIndex(22));
+        panel.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+        panel.addChild(helpTitle("SLOT basics"));
+        panel.addChild(helpSection("Gestures"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.gestures()) {
+            panel.addChild(helpLine(line));
+        }
+        panel.addChild(helpSection("Terms"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.terms()) {
+            panel.addChild(helpLine(line));
+        }
+        UIElement wrapper = new UIElement().layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(0).right(0).top(0).bottom(0));
+        wrapper.addChildren(catcher, panel);
+        return wrapper;
+    }
+
+    private Label helpTitle(String text) {
+        Label label = label(text, ACCENT);
+        label.layout(layout -> layout.widthPercent(100).height(12));
+        label.textStyle(style -> style
+                .font(fontUi())
+                .textColor(ACCENT)
+                .fontSize(8)
+                .textShadow(false)
+                .textAlignHorizontal(Horizontal.LEFT)
+                .textAlignVertical(Vertical.CENTER));
+        return label;
+    }
+
+    private Label helpSection(String text) {
+        Label label = label(text, MUTED);
+        label.layout(layout -> layout.widthPercent(100).height(9));
+        label.textStyle(style -> style
+                .font(fontUi())
+                .textColor(MUTED)
+                .fontSize(6)
+                .textShadow(false)
+                .textAlignHorizontal(Horizontal.LEFT)
+                .textAlignVertical(Vertical.CENTER));
+        return label;
+    }
+
+    private UIElement helpLine(WorkspaceHelpContent.Line line) {
+        UIElement row = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .height(10)
+                .gapAll(4)
+                .alignItems(AlignItems.CENTER)
+                .flexDirection(FlexDirection.ROW));
+        Label key = label(line.key(), ACCENT);
+        key.layout(layout -> layout.width(WorkspaceHelpContent.KEY_WIDTH_PX).height(10));
+        key.textStyle(style -> style
+                .font(fontUi())
+                .textColor(ACCENT)
+                .fontSize(6)
+                .textShadow(false)
+                .textAlignHorizontal(Horizontal.LEFT)
+                .textAlignVertical(Vertical.CENTER));
+        Label text = label(line.text(), TEXT);
+        text.layout(layout -> layout.flex(1).height(10));
+        text.textStyle(style -> style
+                .font(fontUi())
+                .textColor(TEXT)
+                .fontSize(6)
+                .textShadow(false)
+                .textAlignHorizontal(Horizontal.LEFT)
+                .textAlignVertical(Vertical.CENTER));
+        row.addChildren(key, text);
+        return row;
     }
 
     private Button storageXrayToggleButton(String label, StorageGhostRevealMode mode) {

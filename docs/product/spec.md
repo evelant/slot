@@ -194,6 +194,7 @@ Ghost cards must reveal when there is active intent:
 - the section's nearby chip is expanded for the current client session
 - search matches the ghost
 - a Kit, desired count, wanted count, or goal tab needs the item
+- the item is marked as junk, so the player can unmark it
 - the player enables storage x-ray reveal
 
 Storage x-ray is a session-local browse toggle, not a persisted organization
@@ -373,6 +374,9 @@ Sort and restack operations:
 Trash and void actions require explicit player intent.
 
 Trash should be recoverable where promised.
+Deleting or trashing an item must not mark that identity as junk. Junk is an
+explicit player tag that only controls pressure-relief cleanup and unmarking
+visibility.
 Void must never trigger from passive browsing.
 If SLOT promises restore/undo for trash or overflow flows, that state must be
 grounded in recorded cleanup activity rather than inferred only from current
