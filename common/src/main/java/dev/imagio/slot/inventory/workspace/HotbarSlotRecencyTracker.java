@@ -4,7 +4,9 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -16,31 +18,53 @@ import java.util.Objects;
  * as stale just because this UI did not place them.
  */
 public final class HotbarSlotRecencyTracker {
-    private final Map<Integer, Long> placementSequence = new HashMap<>();
+    private final Map<Integer, Long> recencySequence = new HashMap<>();
     private final Map<Integer, String> fingerprints = new HashMap<>();
     private long nextSequence = 1L;
 
-    public Map<Integer, Long> placementSequence() {
-        return Map.copyOf(placementSequence);
+    public synchronized Map<Integer, Long> recencySequence() {
+        return Map.copyOf(recencySequence);
     }
 
     public void observe(SlotWorkspaceViewModel viewModel) {
         if (viewModel == null) {
             return;
         }
+        ArrayList<ObservedHotbarSlot> observed = new ArrayList<>(viewModel.hotbarSlots().size());
         for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
             if (slot == null) {
                 continue;
             }
-            int index = slot.hotbarIndex();
-            if (!slot.occupied()) {
-                placementSequence.remove(index);
-                fingerprints.remove(index);
+            observed.add(new ObservedHotbarSlot(
+                    slot.hotbarIndex(),
+                    slot.selected(),
+                    slot.occupied(),
+                    slot.displayStack(),
+                    slot.count()));
+        }
+        observeHotbarSlots(observed);
+    }
+
+    public synchronized void observeHotbarSlots(List<ObservedHotbarSlot> slots) {
+        if (slots == null) {
+            return;
+        }
+        for (ObservedHotbarSlot slot : slots) {
+            if (slot == null) {
                 continue;
             }
-            String fingerprint = fingerprint(slot);
+            int index = slot.hotbarIndex();
+            if (index < 0 || index >= 9) {
+                continue;
+            }
+            String fingerprint = slot.occupied() ? fingerprint(slot.displayStack(), slot.count()) : "";
+            boolean knownSlot = fingerprints.containsKey(index);
             String previous = fingerprints.put(index, fingerprint);
-            if (!Objects.equals(previous, fingerprint) || !placementSequence.containsKey(index)) {
+            if (!slot.occupied()) {
+                recencySequence.remove(index);
+                continue;
+            }
+            if (knownSlot && !Objects.equals(previous, fingerprint)) {
                 record(index);
             }
             if (slot.selected()) {
@@ -49,7 +73,11 @@ public final class HotbarSlotRecencyTracker {
         }
     }
 
-    public void recordPlacementOnSuccess(int hotbarIndex, WorkspaceCommandOutcome outcome) {
+    public synchronized void recordUse(int hotbarIndex) {
+        record(hotbarIndex);
+    }
+
+    public synchronized void recordPlacementOnSuccess(int hotbarIndex, WorkspaceCommandOutcome outcome) {
         if (outcome == null || !outcome.success()) {
             return;
         }
@@ -60,11 +88,10 @@ public final class HotbarSlotRecencyTracker {
         if (hotbarIndex < 0 || hotbarIndex >= 9) {
             return;
         }
-        placementSequence.put(hotbarIndex, nextSequence++);
+        recencySequence.put(hotbarIndex, nextSequence++);
     }
 
-    private static String fingerprint(SlotWorkspaceViewModel.HotbarSlot slot) {
-        ItemStack stack = slot.displayStack();
+    private static String fingerprint(ItemStack stack, int count) {
         if (stack == null || stack.isEmpty()) {
             return "";
         }
@@ -72,6 +99,20 @@ public final class HotbarSlotRecencyTracker {
         return identity.itemId()
                 + "|" + identity.comparisonMode()
                 + "|" + identity.componentFingerprint()
-                + "|" + slot.count();
+                + "|" + Math.max(0, count);
+    }
+
+    public record ObservedHotbarSlot(
+            int hotbarIndex,
+            boolean selected,
+            boolean occupied,
+            ItemStack displayStack,
+            int count
+    ) {
+        public ObservedHotbarSlot {
+            displayStack = displayStack == null ? ItemStack.EMPTY : displayStack.copy();
+            count = Math.max(0, count);
+            occupied = occupied && !displayStack.isEmpty();
+        }
     }
 }

@@ -4,6 +4,7 @@ import dev.imagio.slot.forge.SlotForge;
 import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyRegistry;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import net.minecraft.core.BlockPos;
@@ -145,10 +146,13 @@ public final class ForgeWorldItemUseObserver {
             String action,
             String targetKey
     ) {
-        if (!ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
+        if (!(playerEntity instanceof ServerPlayer player) || stack == null || stack.isEmpty()) {
             return;
         }
-        if (!(playerEntity instanceof ServerPlayer player) || stack == null || stack.isEmpty()) {
+        if (hand == InteractionHand.MAIN_HAND) {
+            HotbarSlotRecencyRegistry.recordMainHandUse(player);
+        }
+        if (!ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
             return;
         }
         if (stack.getItem() instanceof BlockItem && action != null && action.startsWith("right_click")) {

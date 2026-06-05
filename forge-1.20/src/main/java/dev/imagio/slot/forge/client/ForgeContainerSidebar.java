@@ -95,6 +95,12 @@ public final class ForgeContainerSidebar {
         }
     }
 
+    public static boolean capturesTextInput(Screen screen) {
+        return screen == activeHostScreen
+                && activeSurface != null
+                && activeSurface.capturesTextInput();
+    }
+
     public static void clearClientState() {
         release();
         bypassNextInventorySidebar = false;

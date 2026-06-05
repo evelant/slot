@@ -73,6 +73,10 @@ public final class ForgeWorkspaceScreen extends Screen {
         return super.charTyped(codePoint, modifiers);
     }
 
+    public boolean slotTextInputCapturesKeyboard() {
+        return surface.capturesTextInput();
+    }
+
     @Override
     public void removed() {
         surface.closeSession();

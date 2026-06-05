@@ -6,9 +6,11 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.*;
 
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
+import com.lowdragmc.lowdraglib2.gui.ui.data.ScrollerMode;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
+import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.atlas.AtlasSearchIndex;
@@ -276,6 +278,7 @@ final class WorkspaceOverlays {
         UIElement panel = panel(GLASS).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .width(WorkspaceHelpContent.POPOVER_WIDTH_PX)
+                .height(WorkspaceHelpContent.POPOVER_HEIGHT_PX)
                 .paddingAll(6)
                 .gapAll(2)
                 .flexDirection(FlexDirection.COLUMN));
@@ -288,19 +291,53 @@ final class WorkspaceOverlays {
         panel.style(style -> style.zIndex(22));
         panel.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
         panel.addChild(helpTitle("SLOT basics"));
-        panel.addChild(helpSection("Gestures"));
+        ScrollerView content = helpContentScroller();
+        content.addScrollViewChild(helpSection("Mouse"));
         for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.gestures()) {
-            panel.addChild(helpLine(line));
+            content.addScrollViewChild(helpLine(line));
         }
-        panel.addChild(helpSection("Terms"));
+        content.addScrollViewChild(helpSection("Keyboard"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.keys()) {
+            content.addScrollViewChild(helpLine(line));
+        }
+        content.addScrollViewChild(helpSection("Cards / ghosts"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.ghosts()) {
+            content.addScrollViewChild(helpLine(line));
+        }
+        content.addScrollViewChild(helpSection("Markers"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.markers()) {
+            content.addScrollViewChild(helpLine(line));
+        }
+        content.addScrollViewChild(helpSection("Chest roles"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.storageRoles()) {
+            content.addScrollViewChild(helpLine(line));
+        }
+        content.addScrollViewChild(helpSection("Terms"));
         for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.terms()) {
-            panel.addChild(helpLine(line));
+            content.addScrollViewChild(helpLine(line));
         }
+        panel.addChild(content);
         UIElement wrapper = new UIElement().layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(0).right(0).top(0).bottom(0));
         wrapper.addChildren(catcher, panel);
         return wrapper;
+    }
+
+    private ScrollerView helpContentScroller() {
+        ScrollerView scroller = new ScrollerView();
+        scroller.layout(layout -> layout
+                .widthPercent(100)
+                .flex(1));
+        scroller.scrollerStyle(style -> style
+                .mode(ScrollerMode.VERTICAL)
+                .minScrollPixel(24f)
+                .maxScrollPixel(64f));
+        scroller.viewContainer(view -> view.layout(layout -> layout
+                .gapAll(2)
+                .alignItems(AlignItems.FLEX_START)
+                .flexDirection(FlexDirection.COLUMN)));
+        return scroller;
     }
 
     private Label helpTitle(String text) {
@@ -332,29 +369,34 @@ final class WorkspaceOverlays {
     private UIElement helpLine(WorkspaceHelpContent.Line line) {
         UIElement row = new UIElement().layout(layout -> layout
                 .widthPercent(100)
-                .height(10)
-                .gapAll(4)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
+                .height(line.heightPx())
+                .paddingVertical(WorkspaceHelpContent.HELP_ROW_PADDING_VERTICAL_PX)
+                .gapAll(WorkspaceHelpContent.HELP_ROW_GAP_PX)
+                .flexDirection(FlexDirection.COLUMN));
         Label key = label(line.key(), ACCENT);
-        key.layout(layout -> layout.width(WorkspaceHelpContent.KEY_WIDTH_PX).height(10));
+        key.layout(layout -> layout.widthPercent(100).height(WorkspaceHelpContent.HELP_LABEL_HEIGHT_PX));
         key.textStyle(style -> style
                 .font(fontUi())
                 .textColor(ACCENT)
-                .fontSize(6)
+                .fontSize(6.5f)
                 .textShadow(false)
                 .textAlignHorizontal(Horizontal.LEFT)
                 .textAlignVertical(Vertical.CENTER));
-        Label text = label(line.text(), TEXT);
-        text.layout(layout -> layout.flex(1).height(10));
-        text.textStyle(style -> style
-                .font(fontUi())
-                .textColor(TEXT)
-                .fontSize(6)
-                .textShadow(false)
-                .textAlignHorizontal(Horizontal.LEFT)
-                .textAlignVertical(Vertical.CENTER));
-        row.addChildren(key, text);
+        row.addChild(key);
+        for (String description : line.descriptions()) {
+            Label text = label(description, TEXT);
+            text.layout(layout -> layout
+                    .widthPercent(100)
+                    .height(WorkspaceHelpContent.HELP_DESCRIPTION_HEIGHT_PX));
+            text.textStyle(style -> style
+                    .font(fontUi())
+                    .textColor(TEXT)
+                    .fontSize(5.5f)
+                    .textShadow(false)
+                    .textAlignHorizontal(Horizontal.LEFT)
+                    .textAlignVertical(Vertical.CENTER));
+            row.addChild(text);
+        }
         return row;
     }
 

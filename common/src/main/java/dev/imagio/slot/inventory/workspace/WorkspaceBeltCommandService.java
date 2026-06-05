@@ -171,7 +171,7 @@ public final class WorkspaceBeltCommandService {
     public static WorkspaceCommandOutcome assignIdentityToAutoHotbar(
             SlotWorkspaceViewModel viewModel,
             ItemIdentity identity,
-            Map<Integer, Long> hotbarPlacementSequence,
+            Map<Integer, Long> hotbarRecencySequence,
             IntFunction<WorkspaceCommandOutcome> hotbarAssigner
     ) {
         if (identity == null) {
@@ -183,7 +183,7 @@ public final class WorkspaceBeltCommandService {
         int targetHotbarIndex = firstPartialFreeOrOldestHotbarSlot(
                 viewModel,
                 identity,
-                hotbarPlacementSequence);
+                hotbarRecencySequence);
         if (targetHotbarIndex < 0) {
             return new WorkspaceCommandOutcome(
                     false,
@@ -304,7 +304,7 @@ public final class WorkspaceBeltCommandService {
     public static int firstPartialFreeOrOldestHotbarSlot(
             SlotWorkspaceViewModel viewModel,
             ItemIdentity identity,
-            Map<Integer, Long> hotbarPlacementSequence
+            Map<Integer, Long> hotbarRecencySequence
     ) {
         int partialOrFree = firstPartialOrFreeHotbarSlot(viewModel, identity);
         if (partialOrFree >= 0) {
@@ -322,9 +322,9 @@ public final class WorkspaceBeltCommandService {
                 continue;
             }
             ItemStack stack = slot.displayStack();
-            long sequence = hotbarPlacementSequence == null
-                    ? Long.MAX_VALUE
-                    : hotbarPlacementSequence.getOrDefault(slot.hotbarIndex(), Long.MAX_VALUE);
+            long sequence = hotbarRecencySequence == null
+                    ? Long.MIN_VALUE
+                    : hotbarRecencySequence.getOrDefault(slot.hotbarIndex(), Long.MIN_VALUE);
             if (selectedAnyIndex < 0
                     || sequence < selectedAnySequence
                     || (sequence == selectedAnySequence && slot.hotbarIndex() < selectedAnyIndex)) {

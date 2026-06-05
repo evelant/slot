@@ -30,7 +30,7 @@ import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
-import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyTracker;
+import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyRegistry;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.workspace.ActiveChestPanelProjectionSupport;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
@@ -98,7 +98,6 @@ final class ForgeWorkspaceSession {
     private final WorkflowDomainRuntime runtime;
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
     private final Set<ItemIdentity> autoHomeAttempted = new HashSet<>();
-    private final HotbarSlotRecencyTracker hotbarRecency = new HotbarSlotRecencyTracker();
     private final WorkspaceProjectionSessionCache projectionCache = new WorkspaceProjectionSessionCache();
     private WorkspaceActionSessionContext context;
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
@@ -238,7 +237,7 @@ final class ForgeWorkspaceSession {
                     projectionRequest(authority, selected, combinedDiagnostics, gameTime, player));
             projected = projection.viewModel();
         }
-        hotbarRecency.observe(projected);
+        HotbarSlotRecencyRegistry.observe(player, projected);
 
         long observedWorkflowSequence = currentWorkflowSequence();
         long observedCarriedRevision = CarriedInventoryRevisions.revision(player);
@@ -1185,7 +1184,7 @@ final class ForgeWorkspaceSession {
         return WorkspaceBeltCommandService.assignIdentityToAutoHotbar(
                 viewModel,
                 identity,
-                hotbarRecency.placementSequence(),
+                HotbarSlotRecencyRegistry.recencySequence(player),
                 targetHotbarIndex -> assignIdentityToHotbarIndex(player, identity, targetHotbarIndex));
     }
 
@@ -1222,7 +1221,7 @@ final class ForgeWorkspaceSession {
                     hotbarBefore,
                     hotbarAfter,
                     "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
-            recordHotbarPlacementOnSuccess(hotbarIndex, outcome);
+            recordHotbarPlacementOnSuccess(player, hotbarIndex, outcome);
         }
         return outcome;
     }
@@ -1329,8 +1328,11 @@ final class ForgeWorkspaceSession {
                 || "took_partial".equals(outcome.status());
     }
 
-    private void recordHotbarPlacementOnSuccess(int hotbarIndex, WorkspaceCommandOutcome outcome) {
-        hotbarRecency.recordPlacementOnSuccess(hotbarIndex, outcome);
+    private void recordHotbarPlacementOnSuccess(ServerPlayer player, int hotbarIndex, WorkspaceCommandOutcome outcome) {
+        HotbarSlotRecencyRegistry.recordPlacementOnSuccess(
+                player,
+                hotbarIndex,
+                outcome);
     }
 
     private WorkspaceCommandOutcome moveHotbarToAtlas(

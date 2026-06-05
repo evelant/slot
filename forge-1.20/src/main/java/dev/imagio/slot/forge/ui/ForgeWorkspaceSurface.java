@@ -680,6 +680,10 @@ public final class ForgeWorkspaceSurface {
                 || renamingChestStorageId != null;
     }
 
+    public boolean capturesTextInput() {
+        return wantsKeyboardInput();
+    }
+
     private String openedStatus() {
         if (mode == Mode.SIDEBAR) {
             return "opened chest sidebar";
@@ -1782,17 +1786,47 @@ public final class ForgeWorkspaceSurface {
                 6f,
                 2f,
                 false);
+        panel.layout(layout -> layout.height(WorkspaceHelpContent.POPOVER_HEIGHT_PX));
         panel.addChild(helpTitle("SLOT basics"));
-        panel.addChild(helpSection("Gestures"));
+        SlotUiElement content = helpContentScroller();
+        content.addChild(helpSection("Mouse"));
         for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.gestures()) {
-            panel.addChild(helpLine(line));
+            content.addChild(helpLine(line));
         }
-        panel.addChild(helpSection("Terms"));
+        content.addChild(helpSection("Keyboard"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.keys()) {
+            content.addChild(helpLine(line));
+        }
+        content.addChild(helpSection("Cards / ghosts"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.ghosts()) {
+            content.addChild(helpLine(line));
+        }
+        content.addChild(helpSection("Markers"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.markers()) {
+            content.addChild(helpLine(line));
+        }
+        content.addChild(helpSection("Chest roles"));
+        for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.storageRoles()) {
+            content.addChild(helpLine(line));
+        }
+        content.addChild(helpSection("Terms"));
         for (WorkspaceHelpContent.Line line : WorkspaceHelpContent.terms()) {
-            panel.addChild(helpLine(line));
+            content.addChild(helpLine(line));
         }
+        panel.addChild(content);
         overlay.addChild(panel);
         return overlay;
+    }
+
+    private SlotUiElement helpContentScroller() {
+        return SlotUiElement.panel(0x00000000)
+                .id("slot.forge.help_scroll")
+                .attach(ForgeSlotUiTree.SCROLL_VIEWPORT, Boolean.TRUE)
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .flex(1)
+                        .gapAll(2)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
     }
 
     private SlotUiElement helpTitle(String text) {
@@ -1819,24 +1853,30 @@ public final class ForgeWorkspaceSurface {
         SlotUiElement row = SlotUiElement.element()
                 .layout(layout -> layout
                         .widthPercent(100)
-                        .height(10)
-                        .gapAll(4)
-                        .alignItems(SlotUiLayout.AlignItems.CENTER)
-                        .flexDirection(SlotUiLayout.FlexDirection.ROW));
+                        .height(line.heightPx())
+                        .paddingVertical(WorkspaceHelpContent.HELP_ROW_PADDING_VERTICAL_PX)
+                        .gapAll(WorkspaceHelpContent.HELP_ROW_GAP_PX)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
         row.addChild(SlotUiElement.label(line.key(), WorkspaceUiPalette.ACCENT)
-                .layout(layout -> layout.width(WorkspaceHelpContent.KEY_WIDTH_PX).height(10))
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .height(WorkspaceHelpContent.HELP_LABEL_HEIGHT_PX))
                 .textStyle(style -> style
                         .color(WorkspaceUiPalette.ACCENT)
-                        .fontSize(6)
+                        .fontSize(6.5f)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
-        row.addChild(SlotUiElement.label(line.text(), WorkspaceUiPalette.TEXT)
-                .layout(layout -> layout.flex(1).height(10))
-                .textStyle(style -> style
-                        .color(WorkspaceUiPalette.TEXT)
-                        .fontSize(6)
-                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
-                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        for (String description : line.descriptions()) {
+            row.addChild(SlotUiElement.label(description, WorkspaceUiPalette.TEXT)
+                    .layout(layout -> layout
+                            .widthPercent(100)
+                            .height(WorkspaceHelpContent.HELP_DESCRIPTION_HEIGHT_PX))
+                    .textStyle(style -> style
+                            .color(WorkspaceUiPalette.TEXT)
+                            .fontSize(5.5f)
+                            .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                            .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        }
         return row;
     }
 

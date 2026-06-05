@@ -6,7 +6,9 @@
   "mixins": [
     "MenuShiftClickMixin"
   ],
-  "client": [],
+  "client": [
+    "compat.SlotForgeEmiScreenManagerMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

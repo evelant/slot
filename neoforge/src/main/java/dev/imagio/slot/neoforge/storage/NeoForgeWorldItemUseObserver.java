@@ -2,6 +2,7 @@ package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyRegistry;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
@@ -151,10 +152,13 @@ public final class NeoForgeWorldItemUseObserver {
             String action,
             String targetKey
     ) {
-        if (!ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
+        if (!(playerEntity instanceof ServerPlayer player) || stack == null || stack.isEmpty()) {
             return;
         }
-        if (!(playerEntity instanceof ServerPlayer player) || stack == null || stack.isEmpty()) {
+        if (hand == InteractionHand.MAIN_HAND) {
+            HotbarSlotRecencyRegistry.recordMainHandUse(player);
+        }
+        if (!ContextualSuggestionFeatureFlags.LIVE_OBSERVATION_ENABLED) {
             return;
         }
         if (stack.getItem() instanceof BlockItem && action != null && action.startsWith("right_click")) {

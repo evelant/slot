@@ -28,7 +28,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.workspace.ActiveChestPanelProjectionSupport;
 import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
-import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyTracker;
+import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyRegistry;
 import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
@@ -99,7 +99,6 @@ final class SlotWorkspaceUiSession {
 
     private final Player player;
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
-    private final HotbarSlotRecencyTracker hotbarRecency = new HotbarSlotRecencyTracker();
     private final WorkspaceProjectionSessionCache projectionCache = new WorkspaceProjectionSessionCache();
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private String lastContentFingerprint = "";
@@ -1476,7 +1475,7 @@ final class SlotWorkspaceUiSession {
                         hotbarBefore,
                         hotbarAfter,
                         "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
-                recordHotbarPlacementOnSuccess(hotbarIndex, outcome);
+                recordHotbarPlacementOnSuccess(serverPlayer, hotbarIndex, outcome);
             }
             return outcome;
         }
@@ -1499,7 +1498,7 @@ final class SlotWorkspaceUiSession {
                         hotbarBefore,
                         hotbarAfter,
                         "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
-                recordHotbarPlacementOnSuccess(hotbarIndex, WorkspaceCommandOutcome.accepted("assigned", ""));
+                recordHotbarPlacementOnSuccess(serverPlayer, hotbarIndex, WorkspaceCommandOutcome.accepted("assigned", ""));
                 return WorkspaceCommandOutcome.accepted(
                         "assigned_to_hotbar_" + (hotbarIndex + 1),
                         "moved to hotbar " + (hotbarIndex + 1));
@@ -1514,7 +1513,7 @@ final class SlotWorkspaceUiSession {
                             hotbarBefore,
                             hotbarAfter,
                             "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
-                    recordHotbarPlacementOnSuccess(hotbarIndex, outcome);
+                    recordHotbarPlacementOnSuccess(serverPlayer, hotbarIndex, outcome);
                 }
                 return outcome;
             }
@@ -1533,7 +1532,7 @@ final class SlotWorkspaceUiSession {
                     hotbarBefore,
                     hotbarAfter,
                     "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
-            recordHotbarPlacementOnSuccess(hotbarIndex, outcome);
+            recordHotbarPlacementOnSuccess(serverPlayer, hotbarIndex, outcome);
         }
         return outcome;
     }
@@ -1588,7 +1587,7 @@ final class SlotWorkspaceUiSession {
         applyOutcome(serverPlayer, WorkspaceBeltCommandService.assignIdentityToAutoHotbar(
                 viewModel,
                 identity,
-                hotbarRecency.placementSequence(),
+                HotbarSlotRecencyRegistry.recencySequence(serverPlayer),
                 targetHotbarIndex -> assignIdentityToHotbarIndex(serverPlayer, identity, targetHotbarIndex)));
     }
 
@@ -1672,8 +1671,8 @@ final class SlotWorkspaceUiSession {
                 "slot_workspace.ldlib"));
     }
 
-    private void recordHotbarPlacementOnSuccess(int hotbarIndex, WorkspaceCommandOutcome outcome) {
-        hotbarRecency.recordPlacementOnSuccess(hotbarIndex, outcome);
+    private void recordHotbarPlacementOnSuccess(ServerPlayer serverPlayer, int hotbarIndex, WorkspaceCommandOutcome outcome) {
+        HotbarSlotRecencyRegistry.recordPlacementOnSuccess(serverPlayer, hotbarIndex, outcome);
     }
 
     private static boolean tookStackForHotbar(WorkspaceCommandOutcome outcome) {
@@ -2202,7 +2201,7 @@ final class SlotWorkspaceUiSession {
             ));
             projected = projection.viewModel();
         }
-        hotbarRecency.observe(projected);
+        HotbarSlotRecencyRegistry.observe(serverPlayer, projected);
         long observedWorkflowSequence = currentWorkflowSequence(runtime);
         long observedCarriedRevision = CarriedInventoryRevisions.revision(serverPlayer);
         lastObservedWorkflowSequence = observedWorkflowSequence;

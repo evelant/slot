@@ -296,6 +296,9 @@ final class SlotWorkspaceUiController {
 
     ModularUI create() {
         rpc.register();
+        if (player.level().isClientSide()) {
+            SlotWorkspaceTextInputCapture.register(this);
+        }
         hotkeys.installBeltHotkeys();
         // Passive status-line tracer: every actual change flows through
         // localStatus.set(...) (Observable.set short-circuits no-ops),
@@ -347,26 +350,21 @@ final class SlotWorkspaceUiController {
     }
 
     void markSurfaceClosed() {
+        SlotWorkspaceTextInputCapture.unregister(this);
         flushWheelTransferBatch();
         WorkspaceUiSessionMemory.markClosed(surfaceMemoryKey());
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    boolean capturesTextInput() {
+        return searchController.modalActive()
+                || hotkeys.isTextInputFocused()
+                || editingIslandId != null
+                || editingClusterId != null
+                || editingDesiredCountIdentity != null
+                || renamingKitId != null
+                || renamingChestStorageId != null
+                || pendingCreateIdentity != null;
+    }
 
     UIElement syncBinding() {
         BindableValue<Tag> binding = new BindableValue<>();

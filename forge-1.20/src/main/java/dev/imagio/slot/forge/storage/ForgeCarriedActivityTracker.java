@@ -18,6 +18,7 @@ import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.session.CarriedAcquisitionActivityTracker;
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
+import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyRegistry;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.workflow.domain.InventoryActivityEvent;
 import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
@@ -118,6 +119,7 @@ public final class ForgeCarriedActivityTracker {
                 detach(playerId);
                 TRACKER.forget(playerId.toString());
                 CarriedInventoryRevisions.forget(playerId);
+                HotbarSlotRecencyRegistry.forget(playerId);
                 continue;
             }
             observe(player, "menu_slot_changed");
@@ -137,6 +139,7 @@ public final class ForgeCarriedActivityTracker {
             detach(player.getUUID());
             TRACKER.forget(key(player));
             CarriedInventoryRevisions.forget(player);
+            HotbarSlotRecencyRegistry.forget(player);
         }
     }
 
@@ -165,6 +168,7 @@ public final class ForgeCarriedActivityTracker {
         DIRTY_PLAYERS.clear();
         TRACKER.clear();
         CarriedInventoryRevisions.clear();
+        HotbarSlotRecencyRegistry.clear();
     }
 
     private static void attach(ServerPlayer player, AbstractContainerMenu menu, String sessionId) {
@@ -212,6 +216,7 @@ public final class ForgeCarriedActivityTracker {
     }
 
     private static void observe(ServerPlayer player, String sessionId) {
+        HotbarSlotRecencyRegistry.observePlayerHotbar(player);
         InventoryHostDescriptor host = resolveHost(player);
         if (host == null) {
             return;
