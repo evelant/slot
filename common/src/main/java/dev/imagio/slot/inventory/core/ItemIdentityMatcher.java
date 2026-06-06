@@ -35,12 +35,12 @@ public final class ItemIdentityMatcher {
             return ItemIdentity.of(itemId);
         }
         String components = resolveComponentFingerprint(stack);
+        if (hasToolStateFingerprint(components) || hasMovableConditionOnlyFingerprint(components)) {
+            return ItemIdentity.of(itemId);
+        }
         String selectorFingerprint = stableSelectorFingerprint(itemId, components);
         if (!selectorFingerprint.isBlank()) {
             return ItemIdentity.exact(itemId, selectorFingerprint);
-        }
-        if (hasToolStateFingerprint(components) || hasMovableConditionOnlyFingerprint(components)) {
-            return ItemIdentity.of(itemId);
         }
         if (!stackable(stack) || !components.isBlank()) {
             return ItemIdentity.exact(itemId, components);
@@ -79,12 +79,15 @@ public final class ItemIdentityMatcher {
     }
 
     private static ItemIdentity normalizeMovableUncached(ItemIdentity identity) {
-        String selectorFingerprint = stableSelectorFingerprint(identity.itemId(), identity.componentFingerprint());
-        if (!selectorFingerprint.isBlank()) {
-            return ItemIdentity.exact(identity.itemId(), selectorFingerprint);
-        }
         return hasMovableConditionOnlyFingerprint(identity.componentFingerprint())
                 ? ItemIdentity.of(identity.itemId())
+                : normalizeSelectorIdentity(identity);
+    }
+
+    private static ItemIdentity normalizeSelectorIdentity(ItemIdentity identity) {
+        String selectorFingerprint = stableSelectorFingerprint(identity.itemId(), identity.componentFingerprint());
+        return !selectorFingerprint.isBlank()
+                ? ItemIdentity.exact(identity.itemId(), selectorFingerprint)
                 : identity;
     }
 
@@ -220,8 +223,10 @@ public final class ItemIdentityMatcher {
         if (stack == null || stack.isEmpty()) {
             return false;
         }
+        String components = resolveComponentFingerprint(stack);
         return usesItemOnlyMovableIdentityWithoutFingerprint(stack)
-                || hasToolStateFingerprint(resolveComponentFingerprint(stack));
+                || hasToolStateFingerprint(components)
+                || hasMovableConditionOnlyFingerprint(components);
     }
 
     private static boolean usesItemOnlyMovableIdentityWithoutFingerprint(ItemStack stack) {
@@ -380,9 +385,27 @@ public final class ItemIdentityMatcher {
                 || key.equals("hideflags")
                 || key.equals("minecraft:hide_additional_tooltip")
                 || key.equals("inventory")
+                || key.equals("items")
                 || key.equals("container")
                 || key.equals("minecraft:container")
                 || key.equals("minecraft:bundle_contents")
+                || key.equals("selectedslot")
+                || key.equals("selected_slot")
+                || key.equals("isopen")
+                || key.equals("is_open")
+                || key.equals("isclosed")
+                || key.equals("is_closed")
+                || key.equals("energy")
+                || key.equals("forge_energy")
+                || key.equals("minecraft:energy")
+                || key.equals("lunchboxuuid")
+                || key.equals("lunchbox_uuid")
+                || key.equals("lunchboxtype")
+                || key.equals("lunchbox_type")
+                || key.equals("lunchboxeatslot")
+                || key.equals("lunchbox_eat_slot")
+                || key.equals("eatslot")
+                || key.equals("eat_slot")
                 || key.equals("tfc:food")
                 || key.equals("tfc:heat");
     }
@@ -483,6 +506,10 @@ public final class ItemIdentityMatcher {
             String nested = fingerprintSegmentValue(segment);
             nested = stripOuter(nested, '{', '}');
             nested = stripOuter(nested, '[', ']');
+            if (nested.isBlank()) {
+                hasMovableKey = true;
+                continue;
+            }
             if (!conditionOnlySegments(nested)) {
                 return false;
             }

@@ -145,6 +145,7 @@ public final class ForgeWorkspaceClient {
     );
 
     private static boolean wayfindingHudEnabled = true;
+    private static boolean quickHotbarTabDown;
 
     private ForgeWorkspaceClient() {
     }
@@ -316,6 +317,7 @@ public final class ForgeWorkspaceClient {
                 wayfindingHudEnabled = !wayfindingHudEnabled;
             }
             Minecraft minecraft = Minecraft.getInstance();
+            handleQuickHotbarSwapShortcut(minecraft);
             while (CYCLE_KIT_PAGE.consumeClick()) {
                 if (minecraft == null || minecraft.screen != null) {
                     continue;
@@ -338,6 +340,18 @@ public final class ForgeWorkspaceClient {
             ForgeHoveredWantedHotkey.onClientTick();
             ForgeHoveredTrashHotkey.onClientTick();
             ForgeContainerSidebar.onClientTick();
+        }
+
+        private static void handleQuickHotbarSwapShortcut(Minecraft minecraft) {
+            Screen current = minecraft == null ? null : minecraft.screen;
+            boolean tabDown = minecraft != null
+                    && minecraft.player != null
+                    && minecraft.getWindow() != null
+                    && InputConstants.isKeyDown(minecraft.getWindow().getWindow(), GLFW.GLFW_KEY_TAB);
+            if (current == null && tabDown && !quickHotbarTabDown) {
+                SlotForgeNetworking.quickHotbarSwap(Screen.hasShiftDown() ? -1 : 1);
+            }
+            quickHotbarTabDown = tabDown;
         }
 
         @SubscribeEvent

@@ -39,6 +39,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.workspace.KitPageCycleService;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
+import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
 import dev.imagio.slot.inventory.workspace.WorkspaceBeltCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
@@ -797,7 +798,7 @@ final class ForgeWorkspaceSession {
                 0,
                 learnedRules,
                 Forge120IslandSignalExtractor::extract,
-                storageIndex.contentsResolver(),
+                storageIndex.liveContentsResolver(),
                 proximateIds,
                 carriedContainerInfoResolver(player),
                 lootChestSource,
@@ -807,7 +808,7 @@ final class ForgeWorkspaceSession {
                 displaySources,
                 contextualSuggestionStorageIds,
                 displaySources,
-                storageIndex.trackedDisplayEntries(),
+                storageIndex.liveTrackedDisplayEntries(),
                 storageIndex.liveDepositStorageIds(),
                 storageIndex,
                 storageContext.liveChestContentPresence(),
@@ -1185,7 +1186,26 @@ final class ForgeWorkspaceSession {
                 viewModel,
                 identity,
                 HotbarSlotRecencyRegistry.recencySequence(player),
-                targetHotbarIndex -> assignIdentityToHotbarIndex(player, identity, targetHotbarIndex));
+                targetHotbarIndex -> assignIdentityToHotbarIndexAndRecordQuickSwap(player, identity, targetHotbarIndex));
+    }
+
+    private WorkspaceCommandOutcome assignIdentityToHotbarIndexAndRecordQuickSwap(
+            ServerPlayer player,
+            ItemIdentity identity,
+            int hotbarIndex
+    ) {
+        ItemStack hotbarBefore = WorkspaceHotbarSlotReverser.peekSlot(player, hotbarIndex);
+        WorkspaceCommandOutcome outcome = assignIdentityToHotbarIndex(player, identity, hotbarIndex);
+        if (outcome.success()) {
+            ItemStack hotbarAfter = WorkspaceHotbarSlotReverser.peekSlot(player, hotbarIndex);
+            QuickHotbarSwapHistory.recordSwap(
+                    player,
+                    hotbarIndex,
+                    hotbarBefore,
+                    hotbarAfter,
+                    "quick hotbar " + (hotbarIndex + 1));
+        }
+        return outcome;
     }
 
     private WorkspaceCommandOutcome assignIdentityToHotbarIndex(

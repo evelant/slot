@@ -41,6 +41,22 @@ class RecentAndProtectionDomainTest {
     }
 
     @Test
+    void recentViewKeepsOnlyDisplayCapacityMostRecentIdentities() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        for (int index = 0; index < RecentView.MAX_IDENTITIES + 5; index++) {
+            runtime.recordActivityEvent(activity(
+                    InventoryActivityProducer.WORLD_PICKUP,
+                    ItemIdentity.of("mod:item_" + index),
+                    1));
+        }
+
+        java.util.List<ItemIdentity> visible = runtime.activityProjection().recents().visibleItems();
+        assertEquals(RecentView.MAX_IDENTITIES, visible.size());
+        assertEquals(ItemIdentity.of("mod:item_" + (RecentView.MAX_IDENTITIES + 4)), visible.get(0));
+        assertFalse(runtime.activityProjection().recents().countsByIdentity().containsKey(ItemIdentity.of("mod:item_0")));
+    }
+
+    @Test
     void protectionPolicyBlocksConfiguredIdentitiesAndTargets() {
         ItemIdentity shield = ItemIdentity.of("minecraft:shield");
         InventoryActionTarget target = new InventoryActionTarget.EquipmentTarget("equipment.offhand", 0);

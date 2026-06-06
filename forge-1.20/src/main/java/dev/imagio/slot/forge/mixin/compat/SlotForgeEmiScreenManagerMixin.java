@@ -1,7 +1,6 @@
 package dev.imagio.slot.forge.mixin.compat;
 
-import dev.imagio.slot.forge.client.ForgeSlotTextInputCapture;
-import org.lwjgl.glfw.GLFW;
+import dev.imagio.slot.forge.client.ForgeSlotTextInputKeyGuard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,16 +17,8 @@ public abstract class SlotForgeEmiScreenManagerMixin {
             int modifiers,
             CallbackInfoReturnable<Boolean> cir
     ) {
-        if (ForgeSlotTextInputCapture.isActive() && isPlainTextKey(keyCode, modifiers)) {
+        if (ForgeSlotTextInputKeyGuard.shouldLetSlotOwnKey(keyCode, modifiers)) {
             cir.setReturnValue(false);
         }
-    }
-
-    private static boolean isPlainTextKey(int keyCode, int modifiers) {
-        int passthroughModifiers = GLFW.GLFW_MOD_CONTROL | GLFW.GLFW_MOD_ALT | GLFW.GLFW_MOD_SUPER;
-        if ((modifiers & passthroughModifiers) != 0) {
-            return false;
-        }
-        return keyCode >= GLFW.GLFW_KEY_SPACE && keyCode <= GLFW.GLFW_KEY_WORLD_2;
     }
 }

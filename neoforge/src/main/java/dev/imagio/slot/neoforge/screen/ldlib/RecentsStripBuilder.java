@@ -13,8 +13,7 @@ import java.util.List;
 
 /**
  * Pinned MRU strip that lives above the wall scroller and outside it.
- * Recents render as normal atlas cards so the same card shortcuts work
- * there; Shift+Tab handles the explicit scroll-to-home gesture.
+ * Recents render as normal atlas cards so the same card shortcuts work there.
  */
 final class RecentsStripBuilder {
     private final SlotWorkspaceUiController host;

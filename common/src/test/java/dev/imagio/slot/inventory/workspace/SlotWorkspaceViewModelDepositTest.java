@@ -42,6 +42,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SlotWorkspaceViewModelDepositTest {
@@ -251,7 +252,7 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     @Test
-    void trackedWorldDisplayStorageProjectsLikeChestPresence() {
+    void rememberedTrackedWorldDisplayStorageDoesNotProjectAsAvailableStock() {
         SlotWorkspaceViewModel.setGhostStackResolver(id -> new ItemStack(id, 1, 64));
         try {
             WorldStorageAccess.Target.Display target = new WorldStorageAccess.Target.Display(
@@ -285,7 +286,7 @@ class SlotWorkspaceViewModelDepositTest {
                     1L,
                     null,
                     null,
-                    index.contentsResolver(),
+                    index.liveContentsResolver(),
                     Set.of(),
                     null,
                     null,
@@ -295,22 +296,13 @@ class SlotWorkspaceViewModelDepositTest {
                     index.displaySources(),
                     Set.of(),
                     index.displaySources(),
-                    index.trackedDisplayEntries());
+                    index.liveTrackedDisplayEntries());
 
-            SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItems().stream()
-                    .filter(candidate -> REDSTONE.equals(candidate.identity().toIdentity()))
-                    .findFirst()
-                    .orElseThrow();
             SlotWorkspaceViewModel.ChestChip chip = viewModel.chestChip(target.storageId());
 
-            assertTrue(item.ghost());
-            assertEquals(0, item.proximateCount());
-            assertEquals(target.storageId(), item.elsewhere().get(0).storageId());
-            assertEquals("Placed item @ 3,64,0 — overworld", item.elsewhere().get(0).label());
-            assertEquals(target.storageId(), chip.storageId());
-            assertFalse(chip.proximate());
-            assertEquals(1, chip.contents().get(0).count());
-            assertEquals("minecraft:redstone", chip.contents().get(0).itemId());
+            assertTrue(viewModel.atlasItems().stream()
+                    .noneMatch(candidate -> REDSTONE.equals(candidate.identity().toIdentity())));
+            assertNull(chip);
         } finally {
             SlotWorkspaceViewModel.setGhostStackResolver(null);
         }

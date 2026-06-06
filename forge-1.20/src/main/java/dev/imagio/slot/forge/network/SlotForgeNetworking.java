@@ -13,6 +13,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.workspace.KitPageCycleService;
+import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
@@ -35,7 +36,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public final class SlotForgeNetworking {
-    private static final String PROTOCOL_VERSION = "4";
+    private static final String PROTOCOL_VERSION = "5";
     private static SimpleChannel channel;
 
     private SlotForgeNetworking() {
@@ -99,6 +100,11 @@ public final class SlotForgeNetworking {
                 .encoder(ForgeCraftRunRecipeMessage::encode)
                 .decoder(ForgeCraftRunRecipeMessage::decode)
                 .consumerMainThread(SlotForgeNetworking::handleCraftRunRecipe)
+                .add();
+        channel.messageBuilder(ForgeQuickHotbarSwapMessage.class, 12, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ForgeQuickHotbarSwapMessage::encode)
+                .decoder(ForgeQuickHotbarSwapMessage::decode)
+                .consumerMainThread(SlotForgeNetworking::handleQuickHotbarSwap)
                 .add();
     }
 
@@ -182,6 +188,20 @@ public final class SlotForgeNetworking {
             return true;
         } catch (RuntimeException exception) {
             SlotCommon.LOGGER.warn("Failed to send Forge kit page cycle packet", exception);
+            return false;
+        }
+    }
+
+    public static boolean quickHotbarSwap(int direction) {
+        if (channel == null) {
+            SlotCommon.LOGGER.warn("Cannot quick hotbar swap before network channel registration");
+            return false;
+        }
+        try {
+            channel.sendToServer(new ForgeQuickHotbarSwapMessage(direction));
+            return true;
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn("Failed to send Forge quick hotbar swap packet", exception);
             return false;
         }
     }
@@ -529,6 +549,30 @@ public final class SlotForgeNetworking {
                 "[SLOT] Forge craft-run recipe: player={} changed={}",
                 playerName(player),
                 changed);
+    }
+
+    private static void handleQuickHotbarSwap(
+            ForgeQuickHotbarSwapMessage message,
+            Supplier<NetworkEvent.Context> contextSupplier
+    ) {
+        ServerPlayer player = contextSupplier.get().getSender();
+        if (player == null || message == null) {
+            return;
+        }
+        int direction = Integer.signum(message.direction());
+        WorkspaceCommandOutcome outcome = direction >= 0
+                ? QuickHotbarSwapHistory.redo(player)
+                : QuickHotbarSwapHistory.undo(player);
+        ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);
+        if (session != null) {
+            sendViewToPlayer(player, session, true);
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] Forge quick hotbar swap {}: player={} status={} diagnostics={}",
+                direction >= 0 ? "redo" : "undo",
+                playerName(player),
+                outcome.status(),
+                outcome.diagnostics());
     }
 
     static void sendViewToPlayer(ServerPlayer player, ForgeWorkspaceSession session, boolean logViewSend) {

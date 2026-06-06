@@ -199,12 +199,13 @@ Ghost cards must reveal when there is active intent:
 
 Storage x-ray is a session-local browse toggle, not a persisted organization
 state. Pressing the x-ray key toggles all proximate storage ghosts; pressing
-Shift with the same key toggles all tracked claimed-storage ghosts. Enabling
-one x-ray mode replaces the other, and pressing the active mode again returns
-to the default carried-first view. Tiny UI indicators mirror the two toggles
-so the mode is discoverable without requiring key memory. X-ray does not grant
-remote mutation authority: non-proximate tracked ghosts are for quick
-inspection and wayfinding only.
+Shift with the same key toggles live tracked-storage ghosts from currently
+readable storage. Enabling one x-ray mode replaces the other, and pressing the
+active mode again returns to the default carried-first view. Tiny UI indicators
+mirror the two toggles so the mode is discoverable without requiring key memory.
+X-ray and search must not present remembered-only observations as available
+stock; stale remembered contents are historical evidence, not inventory
+authority.
 
 Supported placed item displays participate in SLOT's tracked storage display
 model. TFC / TFG tool racks and TFC placed-item blocks surface contents with
@@ -280,6 +281,11 @@ Recent visibility and dismissal rules:
 
 - Recent is driven by recorded acquisition activity, not by rebuilding current
   contents alone
+- portable containers use movable item identity for Recent; internal contents,
+  charge, UUID, open state, or other volatile container state must not surface
+  as new acquisitions
+- Recent retains only the newest strip-capacity identities; older Recent
+  identities are cleanup history, not active UI state
 - dismissing Recent for one identity hides activity seen up to the latest
   dismissed event for that identity
 - a later acquisition of that identity must surface again

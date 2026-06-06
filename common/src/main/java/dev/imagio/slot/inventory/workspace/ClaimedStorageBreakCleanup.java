@@ -30,7 +30,7 @@ public final class ClaimedStorageBreakCleanup {
                 anchor,
                 DomainEventMetadata.origin("workflow.storage.chest.break"));
         boolean removed = after == null || !after.anchors().contains(anchor);
-        if (removed && runtime.chestClaimWorkflow().chest(storageId) == null) {
+        if (removed) {
             forgetRememberedContents(server, storageId);
         }
         return removed;

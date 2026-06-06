@@ -29,7 +29,6 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleHelpDismissKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, host.searchController::handleKeyDown, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCursorCancelKey, true);
-        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleFocusHoveredItemKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleAutoHotbarKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMoveToMainInventoryKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
@@ -155,19 +154,6 @@ final class HotkeyRouter {
                 target.identity().componentFingerprint());
         host.localStatus.set(toBackpack ? "moving to backpack" : "moving to main inventory");
         host.rebuild();
-    }
-
-    void handleFocusHoveredItemKey(UIEvent event) {
-        if (event.keyCode != GLFW.GLFW_KEY_TAB || !Screen.hasShiftDown()
-                || isTextInputFocused() || Screen.hasControlDown()) {
-            return;
-        }
-        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
-        if (target == null) {
-            return;
-        }
-        event.stopPropagation();
-        host.focusWallItem(target);
     }
 
     boolean isTextInputFocused() {

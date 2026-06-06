@@ -17,6 +17,7 @@ import dev.imagio.slot.inventory.session.CarriedAcquisitionActivityTracker;
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyRegistry;
+import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.InventoryActivityEvent;
@@ -127,6 +128,7 @@ public final class NeoForgeCarriedActivityTracker {
                 TRACKER.forget(playerId.toString());
                 CarriedInventoryRevisions.forget(playerId);
                 HotbarSlotRecencyRegistry.forget(playerId);
+                QuickHotbarSwapHistory.forget(playerId);
                 continue;
             }
             observe(player, "menu_slot_changed");
@@ -145,6 +147,7 @@ public final class NeoForgeCarriedActivityTracker {
             TRACKER.forget(key(player));
             CarriedInventoryRevisions.forget(player);
             HotbarSlotRecencyRegistry.forget(player);
+            QuickHotbarSwapHistory.forget(player);
         }
     }
 
@@ -171,6 +174,7 @@ public final class NeoForgeCarriedActivityTracker {
         TRACKER.clear();
         CarriedInventoryRevisions.clear();
         HotbarSlotRecencyRegistry.clear();
+        QuickHotbarSwapHistory.clear();
     }
 
     private static void attach(ServerPlayer player, AbstractContainerMenu menu, String sessionId) {

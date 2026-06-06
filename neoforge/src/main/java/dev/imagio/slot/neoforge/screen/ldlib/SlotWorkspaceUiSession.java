@@ -32,6 +32,7 @@ import dev.imagio.slot.inventory.workspace.HotbarSlotRecencyRegistry;
 import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
+import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceTransferRequestFactory;
@@ -1588,7 +1589,26 @@ final class SlotWorkspaceUiSession {
                 viewModel,
                 identity,
                 HotbarSlotRecencyRegistry.recencySequence(serverPlayer),
-                targetHotbarIndex -> assignIdentityToHotbarIndex(serverPlayer, identity, targetHotbarIndex)));
+                targetHotbarIndex -> assignIdentityToHotbarIndexAndRecordQuickSwap(serverPlayer, identity, targetHotbarIndex)));
+    }
+
+    private WorkspaceCommandOutcome assignIdentityToHotbarIndexAndRecordQuickSwap(
+            ServerPlayer serverPlayer,
+            ItemIdentity identity,
+            int hotbarIndex
+    ) {
+        ItemStack hotbarBefore = WorkspaceHotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
+        WorkspaceCommandOutcome outcome = assignIdentityToHotbarIndex(serverPlayer, identity, hotbarIndex);
+        if (outcome.success()) {
+            ItemStack hotbarAfter = WorkspaceHotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
+            QuickHotbarSwapHistory.recordSwap(
+                    serverPlayer,
+                    hotbarIndex,
+                    hotbarBefore,
+                    hotbarAfter,
+                    "quick hotbar " + (hotbarIndex + 1));
+        }
+        return outcome;
     }
 
     void moveIdentityToMainInventory(
@@ -2122,7 +2142,7 @@ final class SlotWorkspaceUiSession {
         List<WorldDisplayStorageSource> displaySources = storageContext.displaySources();
         WorkspaceStorageIndex storageIndex = storageContext.storageIndex();
         Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver =
-                storageIndex.contentsResolver();
+                storageIndex.liveContentsResolver();
         Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerInfo =
                 SophisticatedBackpackInventoryIntegrationProvider.carriedContainerInfoByIdentity(serverPlayer);
         Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver =
@@ -2152,7 +2172,7 @@ final class SlotWorkspaceUiSession {
                 displaySources,
                 contextualSuggestionStorageIds,
                 displaySources,
-                storageIndex.trackedDisplayEntries(),
+                storageIndex.liveTrackedDisplayEntries(),
                 storageIndex.liveDepositStorageIds(),
                 storageIndex,
                 storageContext.liveChestContentPresence(),
@@ -2193,7 +2213,7 @@ final class SlotWorkspaceUiSession {
                     displaySources,
                     contextualSuggestionStorageIds,
                     displaySources,
-                    storageIndex.trackedDisplayEntries(),
+                    storageIndex.liveTrackedDisplayEntries(),
                     storageIndex.liveDepositStorageIds(),
                     storageIndex,
                     storageContext.liveChestContentPresence(),

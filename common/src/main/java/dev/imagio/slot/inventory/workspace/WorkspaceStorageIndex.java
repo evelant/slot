@@ -289,12 +289,26 @@ public final class WorkspaceStorageIndex {
         return this::contents;
     }
 
+    public Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> liveContentsResolver() {
+        return this::liveContents;
+    }
+
     public SlotWorkspaceViewModel.ChestContentsSnapshot contents(String storageId) {
         if (storageId == null || storageId.isBlank()) {
             return SlotWorkspaceViewModel.ChestContentsSnapshot.empty();
         }
         StorageEntry entry = entriesByStorageId.get(storageId);
         return entry == null ? SlotWorkspaceViewModel.ChestContentsSnapshot.empty() : entry.snapshot();
+    }
+
+    public SlotWorkspaceViewModel.ChestContentsSnapshot liveContents(String storageId) {
+        if (storageId == null || storageId.isBlank()) {
+            return SlotWorkspaceViewModel.ChestContentsSnapshot.empty();
+        }
+        StorageEntry entry = entriesByStorageId.get(storageId);
+        return entry == null || !entry.live()
+                ? SlotWorkspaceViewModel.ChestContentsSnapshot.empty()
+                : entry.snapshot();
     }
 
     public StorageTargetRef target(String storageId) {
@@ -317,6 +331,16 @@ public final class WorkspaceStorageIndex {
                 continue;
             }
             if (entry.target().displayKind() != null && entry.target().displayKind().trackedStorage()) {
+                out.add(entry);
+            }
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    public List<StorageEntry> liveTrackedDisplayEntries() {
+        ArrayList<StorageEntry> out = new ArrayList<>();
+        for (StorageEntry entry : trackedDisplayEntries()) {
+            if (entry.live()) {
                 out.add(entry);
             }
         }

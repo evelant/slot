@@ -194,6 +194,29 @@ class WorkspaceStorageIndexTest {
     }
 
     @Test
+    void liveContentsResolverDoesNotExposeRememberedOnlyStorage() {
+        RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
+                StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                27,
+                Map.of(ItemIdentity.of("minecraft:dirt"), 99),
+                10L,
+                "test");
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(),
+                Map.of(CHEST_A.toString(), remembered));
+
+        assertEquals("minecraft:dirt", index.contents(CHEST_A.toString()).contents().get(0).itemId());
+        assertTrue(index.liveContents(CHEST_A.toString()).contents().isEmpty());
+        assertTrue(index.liveContentsResolver().apply(CHEST_A.toString()).contents().isEmpty());
+    }
+
+    @Test
     void rememberedOnlyContentsDoNotAuthorizeDepositRouting() {
         RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
                 StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
@@ -321,6 +344,7 @@ class WorkspaceStorageIndexTest {
         assertEquals(target.storageId(), index.trackedDisplayEntries().get(0).target().storageId());
         assertFalse(index.trackedDisplayEntries().get(0).target().depositTarget());
         assertTrue(index.trackedDisplayEntries().get(0).target().takeTarget());
+        assertTrue(index.liveTrackedDisplayEntries().isEmpty());
     }
 
     @Test

@@ -8,6 +8,7 @@ import dev.imagio.slot.inventory.core.InventorySourceDomain;
 import dev.imagio.slot.inventory.core.InventorySourceRole;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.PortableContainerClassifiers;
 import dev.imagio.slot.inventory.core.ServerMenuRef;
 import dev.imagio.slot.inventory.query.CursorStateSnapshot;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
@@ -178,6 +179,31 @@ class CarriedAcquisitionActivityTrackerTest {
     }
 
     @Test
+    void volatilePortableContainerStateDoesNotCountAsRepeatedAcquisition() {
+        PortableContainerClassifiers.register(stack -> "tfclunchbox:electric_lunchbox".equals(stack.itemId()));
+        CarriedAcquisitionActivityTracker tracker = new CarriedAcquisitionActivityTracker();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        String key = "player-1";
+
+        tracker.observe(
+                key,
+                authority(List.of(electricLunchbox(1200, "first", "minecraft:apple"))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "seed");
+
+        int recorded = tracker.observe(
+                key,
+                authority(List.of(electricLunchbox(400, "second", "minecraft:carrot"))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "menu_slot_changed");
+
+        assertEquals(0, recorded);
+        assertEquals(List.of(), runtime.activityProjection().recents().visibleItems());
+    }
+
+    @Test
     void unchangedObserveClearsPendingSuppressionBeforeLaterVanillaPickup() {
         CarriedAcquisitionActivityTracker tracker = new CarriedAcquisitionActivityTracker();
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
@@ -227,6 +253,10 @@ class CarriedAcquisitionActivityTrackerTest {
         return authority(countsByItemId, ItemStack.EMPTY);
     }
 
+    private static InventoryAuthoritySnapshot authority(List<ItemStack> carriedStacks) {
+        return authority(carriedStacks, List.of(), ItemStack.EMPTY);
+    }
+
     private static InventoryAuthoritySnapshot authority(Map<String, Integer> countsByItemId, ItemStack cursorStack) {
         return authority(countsByItemId, Map.of(), cursorStack);
     }
@@ -234,6 +264,14 @@ class CarriedAcquisitionActivityTrackerTest {
     private static InventoryAuthoritySnapshot authority(
             Map<String, Integer> countsByItemId,
             Map<String, Integer> externalCountsByItemId,
+            ItemStack cursorStack
+    ) {
+        return authority(stacks(countsByItemId), stacks(externalCountsByItemId), cursorStack);
+    }
+
+    private static InventoryAuthoritySnapshot authority(
+            List<ItemStack> carriedStacks,
+            List<ItemStack> externalStacks,
             ItemStack cursorStack
     ) {
         InventorySourceDescriptor source = InventorySourceDescriptor.builder("player.main")
@@ -265,27 +303,45 @@ class CarriedAcquisitionActivityTrackerTest {
                 null,
                 "");
         Map<String, InventorySourceSnapshot> sourcesById = new LinkedHashMap<>();
-        sourcesById.put(source.id(), new InventorySourceSnapshot(source.id(), 27, entries(source.id(), countsByItemId), ""));
+        sourcesById.put(source.id(), new InventorySourceSnapshot(source.id(), 27, entries(source.id(), carriedStacks), ""));
         sourcesById.put(
                 externalSource.id(),
-                new InventorySourceSnapshot(externalSource.id(), 27, entries(externalSource.id(), externalCountsByItemId), ""));
+                new InventorySourceSnapshot(externalSource.id(), 27, entries(externalSource.id(), externalStacks), ""));
         return new InventoryAuthoritySnapshot(
                 host,
                 sourcesById,
                 new CursorStateSnapshot(cursorStack, ""));
     }
 
-    private static List<InventoryEntrySnapshot> entries(String sourceId, Map<String, Integer> countsByItemId) {
+    private static List<ItemStack> stacks(Map<String, Integer> countsByItemId) {
+        return new LinkedHashMap<>(countsByItemId).entrySet().stream()
+                .map(entry -> new ItemStack(entry.getKey(), entry.getValue(), 64))
+                .toList();
+    }
+
+    private static List<InventoryEntrySnapshot> entries(String sourceId, List<ItemStack> stacks) {
         ArrayList<InventoryEntrySnapshot> entries = new ArrayList<>();
         int slot = 0;
-        for (Map.Entry<String, Integer> entry : new LinkedHashMap<>(countsByItemId).entrySet()) {
+        for (ItemStack stack : stacks) {
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
             entries.add(new InventoryEntrySnapshot(
                     InventoryEntryKey.slot(sourceId, slot++),
-                    new ItemStack(entry.getKey(), entry.getValue(), 64),
-                    entry.getValue(),
+                    stack.copy(),
+                    stack.getCount(),
                     ""));
         }
         return entries;
+    }
+
+    private static ItemStack electricLunchbox(int energy, String uuid, String firstItemId) {
+        return new ItemStack(
+                "tfclunchbox:electric_lunchbox",
+                "{Energy:%d,LunchboxUUID:\"%s\",Items:[{Slot:0b,id:\"%s\",Count:1b}],ForgeCaps:{}}"
+                        .formatted(energy, uuid, firstItemId),
+                1,
+                1);
     }
 
     private static final class TestMenu extends AbstractContainerMenu {

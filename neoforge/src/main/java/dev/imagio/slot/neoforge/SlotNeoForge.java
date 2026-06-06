@@ -21,6 +21,7 @@ import dev.imagio.slot.neoforge.storage.ChestDepositObserver;
 import dev.imagio.slot.neoforge.storage.ChestStorageBreakListener;
 import dev.imagio.slot.neoforge.storage.NeoForgeCarriedActivityTracker;
 import dev.imagio.slot.neoforge.storage.NeoForgeCarriedSourceAccess;
+import dev.imagio.slot.neoforge.storage.NeoForgePortableContainerClassifiers;
 import dev.imagio.slot.neoforge.storage.NeoForgeWorldItemUseObserver;
 import dev.imagio.slot.neoforge.storage.NeoForgeWorldStorageAccess;
 import dev.imagio.slot.neoforge.storage.SlotAttachmentTypes;
@@ -38,6 +39,7 @@ public final class SlotNeoForge {
         SlotResourceAccess.install(new NeoForgeResourceAccess());
         SlotStackAccess.install(new NeoForgeStackAccess());
         SlotCommon.init();
+        NeoForgePortableContainerClassifiers.register();
 
         container.registerConfig(ModConfig.Type.CLIENT, SlotClientConfig.CLIENT_SPEC);
         SlotWorkspaceViewModel.setGhostStackResolver(GhostAtlasStackFactory::resolve);

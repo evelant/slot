@@ -47,6 +47,7 @@ public final class ChestClaimPersistenceReconciliation {
                         chest.storageId(),
                         DomainEventMetadata.origin("workflow.storage.chest.reconcile.delete")
                 );
+                ClaimedStorageBreakCleanup.forgetRememberedContents(server, chest.storageId());
                 deletedChests++;
                 removedAnchors += result.removedAnchors();
                 continue;
@@ -57,6 +58,7 @@ public final class ChestClaimPersistenceReconciliation {
                         result.remainingAnchors(),
                         DomainEventMetadata.origin("workflow.storage.chest.reconcile.anchors")
                 );
+                ClaimedStorageBreakCleanup.forgetRememberedContents(server, chest.storageId());
                 removedAnchors += result.removedAnchors();
             }
         }

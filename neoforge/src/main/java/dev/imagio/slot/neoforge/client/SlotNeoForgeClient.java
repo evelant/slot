@@ -1,5 +1,6 @@
 package dev.imagio.slot.neoforge.client;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings;
 import dev.imagio.slot.neoforge.client.input.SlotHoveredTrashHotkey;
@@ -13,6 +14,7 @@ import dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController;
 import dev.imagio.slot.neoforge.network.SlotDepositPutAwayPayload;
 import dev.imagio.slot.neoforge.network.SlotGatherActiveKitPayload;
 import dev.imagio.slot.neoforge.network.SlotKitPageCyclePayload;
+import dev.imagio.slot.neoforge.network.SlotQuickHotbarSwapPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.neoforged.bus.api.IEventBus;
@@ -22,10 +24,12 @@ import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.lwjgl.glfw.GLFW;
 
 public final class SlotNeoForgeClient {
     private static boolean setupListenerRegistered;
     private static boolean runtimeInitialized;
+    private static boolean quickHotbarTabDown;
 
     private SlotNeoForgeClient() {
     }
@@ -65,6 +69,7 @@ public final class SlotNeoForgeClient {
         // path for the no-screen case (the screen path drives RPC).
         Minecraft client = Minecraft.getInstance();
         Screen current = client == null ? null : client.screen;
+        handleQuickHotbarSwapShortcut(client, current);
         while (SlotAtlasKeyMappings.cycleKitPageMapping().consumeClick()) {
             if (current != null) {
                 continue;
@@ -88,5 +93,16 @@ public final class SlotNeoForgeClient {
             }
             PacketDistributor.sendToServer(new SlotDepositPutAwayPayload());
         }
+    }
+
+    private static void handleQuickHotbarSwapShortcut(Minecraft client, Screen current) {
+        boolean tabDown = client != null
+                && client.player != null
+                && client.getWindow() != null
+                && InputConstants.isKeyDown(client.getWindow().getWindow(), GLFW.GLFW_KEY_TAB);
+        if (current == null && tabDown && !quickHotbarTabDown) {
+            PacketDistributor.sendToServer(new SlotQuickHotbarSwapPayload(Screen.hasShiftDown() ? -1 : 1));
+        }
+        quickHotbarTabDown = tabDown;
     }
 }

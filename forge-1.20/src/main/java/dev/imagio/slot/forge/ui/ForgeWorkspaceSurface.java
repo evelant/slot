@@ -395,9 +395,6 @@ public final class ForgeWorkspaceSurface {
                 return true;
             }
         }
-        if (handleFocusHoveredItemKey(keyCode)) {
-            return true;
-        }
         if (handleAutoHotbarKey(keyCode)) {
             return true;
         }
@@ -597,18 +594,6 @@ public final class ForgeWorkspaceSurface {
                 toBackpack ? WorkspaceActionId.MOVE_IDENTITY_TO_BACKPACK : WorkspaceActionId.MOVE_IDENTITY_TO_MAIN_INVENTORY,
                 identity,
                 toBackpack ? "moving to backpack" : "moving to main inventory");
-        return true;
-    }
-
-    private boolean handleFocusHoveredItemKey(int keyCode) {
-        if (keyCode != GLFW.GLFW_KEY_TAB || !Screen.hasShiftDown() || editorOpen() || Screen.hasControlDown()) {
-            return false;
-        }
-        SlotWorkspaceViewModel.AtlasItem item = hoveredIdentity == null ? null : byIdentity.get(hoveredIdentity);
-        if (item == null) {
-            return false;
-        }
-        focusWallItem(item);
         return true;
     }
 
@@ -3500,15 +3485,6 @@ public final class ForgeWorkspaceSurface {
                 identity.itemId(),
                 identity.comparisonMode(),
                 identity.componentFingerprint());
-    }
-
-    private void focusWallItem(SlotWorkspaceViewModel.AtlasItem item) {
-        hoveredIdentity = item == null ? null : item.identity();
-        if (item != null && tree != null) {
-            tree.scrollToElementId(item.islandId());
-            rememberWallScroll();
-        }
-        setStatus(item == null ? "ready" : item.name());
     }
 
     private void setStatus(String nextStatus) {

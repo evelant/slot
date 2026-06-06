@@ -11,6 +11,7 @@ import dev.imagio.slot.forge.compat.toolbelt.ToolBeltInventoryIntegrationProvide
 import dev.imagio.slot.forge.classification.Forge120ClassificationLayerReloadListener;
 import dev.imagio.slot.forge.config.SlotForgeClientConfig;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
+import dev.imagio.slot.forge.storage.ForgePortableContainerClassifiers;
 import dev.imagio.slot.forge.storage.ForgeSlotPickupRouter;
 import dev.imagio.slot.inventory.integration.InventoryIntegrationRegistry;
 import dev.imagio.slot.inventory.storage.CarriedProviderRegistry;
@@ -36,6 +37,7 @@ public final class SlotForge {
         CarriedProviderRegistry.register(new ToolBeltCarriedProvider());
         SlotForgeNetworking.register();
         SlotCommon.init();
+        ForgePortableContainerClassifiers.register();
         InventoryIntegrationRegistry.register(new SacksNSuchInventoryIntegrationProvider());
         InventoryIntegrationRegistry.register(new ToolBeltInventoryIntegrationProvider());
         Forge120ClassificationLayerReloadListener.init();

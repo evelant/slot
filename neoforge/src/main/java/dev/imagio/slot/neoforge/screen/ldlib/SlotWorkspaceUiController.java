@@ -853,41 +853,6 @@ final class SlotWorkspaceUiController {
         return hoveredAtlasItem();
     }
 
-    void focusWallItem(SlotWorkspaceViewModel.AtlasItem item) {
-        hoveredAtlasIdentity = item == null ? null : item.identity();
-        if (item != null) {
-            scrollWallToIsland(item.islandId());
-            localStatus.set(item.name());
-        } else {
-            localStatus.set("");
-        }
-        rebuild();
-    }
-
-    void scrollWallToIsland(String islandId) {
-        if (wallScroller == null || islandId == null || islandId.isBlank()) {
-            return;
-        }
-        UIElement section = null;
-        for (UIElement child : wallScroller.viewContainer.getChildren()) {
-            if (islandId.equals(child.getId())) {
-                section = child;
-                break;
-            }
-        }
-        if (section == null) {
-            return;
-        }
-        float containerScreenY = wallScroller.viewContainer.getPositionY();
-        float sectionLogicalY = section.getPositionY() - containerScreenY;
-        float containerHeight = wallScroller.getContainerHeight();
-        float viewportHeight = wallScroller.getSizeHeight();
-        float maxScroll = Math.max(1f, containerHeight - viewportHeight);
-        float normalized = Math.max(0f, Math.min(1f, sectionLogicalY / maxScroll));
-        wallScroller.verticalScroller.setValue(normalized);
-        rememberWallScroll(normalized);
-    }
-
     SlotWorkspaceViewModel.IdentityRef currentMapFocusIdentity() {
         if (hoveredAtlasIdentity != null && currentAtlasItem(hoveredAtlasIdentity) != null) {
             return hoveredAtlasIdentity;

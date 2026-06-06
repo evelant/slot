@@ -12,9 +12,19 @@ public record RecentView(
         Map<ItemIdentity, Integer> countsByIdentity,
         Map<ItemIdentity, Long> latestSequenceByIdentity
 ) {
+    public static final int MAX_IDENTITIES = 24;
+
     public RecentView {
-        countsByIdentity = sanitizeCounts(countsByIdentity);
-        latestSequenceByIdentity = sanitizeSequences(latestSequenceByIdentity);
+        LinkedHashMap<ItemIdentity, Integer> counts = sanitizeCounts(countsByIdentity);
+        LinkedHashMap<ItemIdentity, Long> sequences = sanitizeSequences(latestSequenceByIdentity);
+        while (counts.size() > MAX_IDENTITIES) {
+            ItemIdentity oldest = counts.keySet().iterator().next();
+            counts.remove(oldest);
+            sequences.remove(oldest);
+        }
+        sequences.keySet().removeIf(identity -> !counts.containsKey(identity));
+        countsByIdentity = counts.isEmpty() ? Map.of() : java.util.Collections.unmodifiableMap(counts);
+        latestSequenceByIdentity = sequences.isEmpty() ? Map.of() : java.util.Collections.unmodifiableMap(sequences);
     }
 
     public static RecentView empty() {
@@ -27,9 +37,9 @@ public record RecentView(
         return List.copyOf(identities);
     }
 
-    private static Map<ItemIdentity, Integer> sanitizeCounts(Map<ItemIdentity, Integer> source) {
+    private static LinkedHashMap<ItemIdentity, Integer> sanitizeCounts(Map<ItemIdentity, Integer> source) {
         if (source == null || source.isEmpty()) {
-            return Map.of();
+            return new LinkedHashMap<>();
         }
         LinkedHashMap<ItemIdentity, Integer> copied = new LinkedHashMap<>();
         source.forEach((identity, count) -> {
@@ -37,12 +47,12 @@ public record RecentView(
                 ItemIdentityCollections.mergePositive(copied, identity, count);
             }
         });
-        return java.util.Collections.unmodifiableMap(copied);
+        return copied;
     }
 
-    private static Map<ItemIdentity, Long> sanitizeSequences(Map<ItemIdentity, Long> source) {
+    private static LinkedHashMap<ItemIdentity, Long> sanitizeSequences(Map<ItemIdentity, Long> source) {
         if (source == null || source.isEmpty()) {
-            return Map.of();
+            return new LinkedHashMap<>();
         }
         LinkedHashMap<ItemIdentity, Long> copied = new LinkedHashMap<>();
         source.forEach((identity, sequence) -> {
@@ -51,6 +61,6 @@ public record RecentView(
                 copied.merge(key, sequence, Math::max);
             }
         });
-        return java.util.Collections.unmodifiableMap(copied);
+        return copied;
     }
 }

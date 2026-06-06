@@ -262,6 +262,48 @@ class ItemIdentityTest {
     }
 
     @Test
+    void registeredPortableContainerIgnoresLunchboxEnergyAndContentsState() {
+        PortableContainerClassifiers.register(stack -> "tfclunchbox:electric_lunchbox".equals(stack.itemId()));
+
+        ItemIdentity charged = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "tfclunchbox:electric_lunchbox",
+                "{Energy:1200,LunchboxUUID:\"first\",Items:[{Slot:0b,id:\"minecraft:apple\",Count:2b}],IsOpen:1b,ForgeCaps:{}}",
+                1,
+                1));
+        ItemIdentity drained = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "tfclunchbox:electric_lunchbox",
+                "{Energy:400,LunchboxUUID:\"second\",Items:[{Slot:0b,id:\"minecraft:carrot\",Count:1b}],IsOpen:0b,ForgeCaps:{}}",
+                1,
+                1));
+
+        assertEquals(ItemIdentity.of("tfclunchbox:electric_lunchbox"), charged);
+        assertEquals(charged, drained);
+        assertTrue(ItemIdentityMatcher.matchesMovable(charged, drained));
+    }
+
+    @Test
+    void persistedPortableContainerStateNormalizesWithoutLiveStackCapability() {
+        ItemIdentity first = ItemIdentity.exact(
+                "tfclunchbox:electric_lunchbox",
+                "{Energy:1200,LunchboxUUID:\"first\",Items:[{Slot:0b,id:\"minecraft:apple\",Count:2b}],IsOpen:1b,ForgeCaps:{}}");
+        ItemIdentity second = ItemIdentity.exact(
+                "tfclunchbox:electric_lunchbox",
+                "{Energy:400,LunchboxUUID:\"second\",Items:[{Slot:0b,id:\"minecraft:carrot\",Count:1b}],IsOpen:0b,ForgeCaps:{}}");
+
+        assertEquals(ItemIdentity.of("tfclunchbox:electric_lunchbox"), ItemIdentityMatcher.normalizeMovable(first));
+        assertEquals(ItemIdentityMatcher.normalizeMovable(first), ItemIdentityMatcher.normalizeMovable(second));
+    }
+
+    @Test
+    void poweredModeDataDoesNotNormalizeAsPortableContainerState() {
+        ItemIdentity configured = ItemIdentity.exact(
+                "mod:configurable_gadget",
+                "{Energy:1200,Mode:\"wide\"}");
+
+        assertEquals(configured, ItemIdentityMatcher.normalizeMovable(configured));
+    }
+
+    @Test
     void itemOnlyIgnoresVolatileComponentData() {
         assertEquals(
                 ItemIdentity.of("tfc:metal/ingot/brass"),
