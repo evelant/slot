@@ -2,29 +2,20 @@ package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
-import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
-import dev.imagio.slot.inventory.integration.InventoryHostContext;
-import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
-import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
-import dev.imagio.slot.inventory.integration.InventoryHostResolver;
-import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
-import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
+import dev.imagio.slot.inventory.storage.CarriedSourceAuthoritySnapshots;
 import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import dev.imagio.slot.inventory.storage.CarriedProvider;
 import dev.imagio.slot.inventory.storage.CarriedProviderRegistry;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -193,11 +184,9 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
 
     @Override
     public InventoryAuthoritySnapshot currentAuthority(ServerPlayer player) {
-        InventoryHostDescriptor host = resolveHost(player);
-        if (host == null) {
-            return InventoryAuthoritySnapshot.empty();
-        }
-        return InventoryAuthorityReadService.serverAuthority(player, host);
+        return CarriedSourceAuthoritySnapshots.currentAuthority(
+                player,
+                NeoForgeCarriedSourceAccess.class.getName());
     }
 
     @Override
@@ -385,23 +374,4 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
         return remaining;
     }
 
-    private static InventoryHostDescriptor resolveHost(ServerPlayer player) {
-        AbstractContainerMenu menu = player.containerMenu;
-        if (menu == null) {
-            return null;
-        }
-        return InventoryHostResolver.resolve(new InventoryHostContext(
-                menu,
-                player.getInventory(),
-                Component.literal("SLOT CarriedSourceAccess"),
-                NeoForgeCarriedSourceAccess.class.getName(),
-                new InventoryHostObservationHints(
-                        InventoryHostFamilyHint.CARRIED_ONLY,
-                        InventorySlotOwnershipPosture.SLOT_OWNED,
-                        true,
-                        true,
-                        Map.of("carriedSourceAccess", "true")
-                )
-        ));
-    }
 }

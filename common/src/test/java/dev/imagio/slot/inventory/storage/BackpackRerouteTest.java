@@ -52,6 +52,29 @@ class BackpackRerouteTest {
     }
 
     @Test
+    void successfulPickupRerouteShrinksExactArrivedStackNotItemOnlySameItem() {
+        ServerPlayer player = new ServerPlayer();
+        ItemStack emptyDrum = stack("gtceu:steel_drum", 1, 1);
+        ItemStack filledDrum = stack(
+                "gtceu:steel_drum",
+                "{Fluid:{FluidName:\"minecraft:water\",Amount:16000}}",
+                1,
+                1);
+        player.getInventory().items.set(9, emptyDrum.copy());
+        player.getInventory().items.set(10, filledDrum.copy());
+
+        CarriedProviderRegistry.register(new CountingProvider());
+        StorageAccessRegistry.installCarriedSourceAccess(new FakeCarriedSourceAccess(ItemStack.EMPTY));
+        StorageAccessRegistry.installWorldStorageAccess(new NoOpWorldStorageAccess());
+
+        int routed = BackpackReroute.routeToBackpack(player, filledDrum, 1);
+
+        assertEquals(1, routed);
+        assertEquals(1, player.getInventory().items.get(9).getCount());
+        assertEquals(0, player.getInventory().items.get(10).getCount());
+    }
+
+    @Test
     void failedPickupRerouteStillBuildsProviderDiagnostics() {
         ServerPlayer player = new ServerPlayer();
         player.getInventory().items.set(9, stack("minecraft:oak_log", 32));
@@ -74,6 +97,14 @@ class BackpackRerouteTest {
 
     private static ItemStack stack(String itemId, int count) {
         return new ItemStack(itemId, count, 64);
+    }
+
+    private static ItemStack stack(String itemId, int count, int maxStackSize) {
+        return new ItemStack(itemId, count, maxStackSize);
+    }
+
+    private static ItemStack stack(String itemId, String componentFingerprint, int count, int maxStackSize) {
+        return new ItemStack(itemId, componentFingerprint, count, maxStackSize);
     }
 
     private static final class FakeCarriedSourceAccess implements CarriedSourceAccess {
@@ -111,7 +142,8 @@ class BackpackRerouteTest {
                 return ItemStack.EMPTY;
             }
             int take = Math.min(amount, current.getCount());
-            ItemStack extracted = new ItemStack(current.itemId(), take, current.getMaxStackSize());
+            ItemStack extracted = current.copy();
+            extracted.setCount(take);
             if (!simulate) {
                 current.shrink(take);
             }

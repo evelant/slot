@@ -44,6 +44,7 @@ import java.util.Map;
 public final class ForgeSlotUiTree {
     public static final String SCROLL_VIEWPORT = "slot.forge.scroll_viewport";
     public static final String PRIMARY_SCROLL_VIEWPORT_ID = "slot.forge.primary_scroll_viewport";
+    public static final String TASK_PANEL_SCROLL_VIEWPORT_ID = "slot.forge.task_panel_scroll";
     public static final String ICON = "slot.forge.icon";
     private static final int ROW = 0xEC24313D;
     private static final int ROW_DIM = 0x7C24313D;
@@ -100,13 +101,18 @@ public final class ForgeSlotUiTree {
         return node == null ? 0f : node.scrollY;
     }
 
+    public float scrollY(String elementId) {
+        Node node = scrollableNodeByElementId(elementId);
+        return node == null ? 0f : node.scrollY;
+    }
+
     public float maxScrollY() {
         Node node = firstScrollableNode();
-        if (node == null) {
-            return 0f;
-        }
-        Layout layout = taffy.getLayout(node.id);
-        return Math.max(0f, node.contentHeight - layout.size().height);
+        return maxScrollY(node);
+    }
+
+    public float maxScrollY(String elementId) {
+        return maxScrollY(scrollableNodeByElementId(elementId));
     }
 
     public void setScrollY(float scrollY) {
@@ -114,7 +120,15 @@ public final class ForgeSlotUiTree {
         if (node == null) {
             return;
         }
-        node.scrollY = clamp(scrollY, 0f, maxScrollY());
+        node.scrollY = clamp(scrollY, 0f, maxScrollY(node));
+    }
+
+    public void setScrollY(String elementId, float scrollY) {
+        Node node = scrollableNodeByElementId(elementId);
+        if (node == null) {
+            return;
+        }
+        node.scrollY = clamp(scrollY, 0f, maxScrollY(node));
     }
 
     public void scrollToFraction(float fraction) {
@@ -123,7 +137,7 @@ public final class ForgeSlotUiTree {
             return;
         }
         Layout layout = taffy.getLayout(node.id);
-        float max = Math.max(0f, node.contentHeight - layout.size().height);
+        float max = maxScrollY(node);
         node.scrollY = clamp(max * clamp(fraction, 0f, 1f), 0f, max);
     }
 
@@ -794,6 +808,19 @@ public final class ForgeSlotUiTree {
             }
         }
         return null;
+    }
+
+    private Node scrollableNodeByElementId(String elementId) {
+        Node node = nodeByElementId(elementId);
+        return node != null && node.scrollable() ? node : null;
+    }
+
+    private float maxScrollY(Node node) {
+        if (node == null) {
+            return 0f;
+        }
+        Layout layout = taffy.getLayout(node.id);
+        return Math.max(0f, node.contentHeight - layout.size().height);
     }
 
     private Node nodeByElementId(String elementId) {

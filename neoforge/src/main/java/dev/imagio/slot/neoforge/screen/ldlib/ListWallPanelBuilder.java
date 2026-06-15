@@ -130,6 +130,9 @@ final class ListWallPanelBuilder {
                         .widthPercent(100)
                         .height(12)));
 
+        float scrollValue = host.taskPanelScroller == null
+                ? host.taskPanelScrollValue
+                : host.taskPanelScroller.verticalScroller.getValue();
         ScrollerView scroller = new ScrollerView();
         scroller.layout(layout -> layout
                 .widthPercent(100)
@@ -139,9 +142,13 @@ final class ListWallPanelBuilder {
                 .flexDirection(FlexDirection.COLUMN));
         scroller.scrollerStyle(style -> style.minScrollPixel(20f).maxScrollPixel(50f));
         scroller.style(style -> style.backgroundTexture(rect(0xA810171D)).zIndex(0));
+        scroller.verticalScroller.registerValueListener(value ->
+                host.taskPanelScrollValue = value == null ? 0f : value);
         for (SlotUiElement row : rows) {
             scroller.addScrollViewChild(sectionRenderer.render(row));
         }
+        host.taskPanelScroller = scroller;
+        scroller.verticalScroller.setValue(scrollValue);
         panel.addChild(scroller);
         return panel;
     }

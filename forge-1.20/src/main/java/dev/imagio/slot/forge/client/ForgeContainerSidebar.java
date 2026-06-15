@@ -101,6 +101,16 @@ public final class ForgeContainerSidebar {
                 && activeSurface.capturesTextInput();
     }
 
+    /**
+     * Used by keyboard/EMI hooks that run before or outside the normal
+     * screen-event path. The mounted SLOT surface is the text authority here.
+     */
+    public static boolean capturesTextInput() {
+        return activeHostScreen != null
+                && activeSurface != null
+                && activeSurface.capturesTextInput();
+    }
+
     public static void clearClientState() {
         release();
         bypassNextInventorySidebar = false;

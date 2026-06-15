@@ -2142,7 +2142,7 @@ final class SlotWorkspaceUiSession {
         List<WorldDisplayStorageSource> displaySources = storageContext.displaySources();
         WorkspaceStorageIndex storageIndex = storageContext.storageIndex();
         Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver =
-                storageIndex.liveContentsResolver();
+                storageIndex.contentsResolver();
         Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerInfo =
                 SophisticatedBackpackInventoryIntegrationProvider.carriedContainerInfoByIdentity(serverPlayer);
         Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver =

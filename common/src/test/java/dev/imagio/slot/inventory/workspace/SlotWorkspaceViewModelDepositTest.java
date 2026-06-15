@@ -309,6 +309,65 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     @Test
+    void rememberedClaimedChestProjectsAsElsewhereSearchGuidanceWithoutDepositAuthority() {
+        SlotWorkspaceViewModel.setGhostStackResolver(id -> new ItemStack(id, 1, 64));
+        try {
+            RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
+                    StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                    27,
+                    Map.of(REDSTONE, 8),
+                    10L,
+                    "test");
+            WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                    null,
+                    InventoryAuthoritySnapshot.empty(),
+                    claimedMap(CHEST_A),
+                    null,
+                    Set.of(),
+                    List.of(),
+                    Map.of(CHEST_A.toString(), remembered));
+
+            SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                    InventoryAuthoritySnapshot.empty(),
+                    workflow(homeMap(REDSTONE), claimedMap(CHEST_A), ChestAffinityMap.empty()),
+                    "ready",
+                    "",
+                    0,
+                    0,
+                    1L,
+                    null,
+                    null,
+                    index.contentsResolver(),
+                    Set.of(),
+                    null,
+                    null,
+                    "redstone",
+                    0L,
+                    SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                    index.displaySources(),
+                    Set.of(),
+                    index.displaySources(),
+                    index.liveTrackedDisplayEntries(),
+                    index.liveDepositStorageIds(),
+                    index.liveChestContentPresence(),
+                    index.liveStorageAffinityEligibility());
+
+            SlotWorkspaceViewModel.AtlasItem redstone = viewModel.atlasItems().stream()
+                    .filter(candidate -> REDSTONE.equals(candidate.identity().toIdentity()))
+                    .findFirst()
+                    .orElseThrow();
+
+            assertFalse(redstone.carried());
+            assertEquals(0, redstone.proximateCount());
+            assertEquals(1, redstone.elsewhere().size());
+            assertEquals(8, redstone.elsewhere().get(0).count());
+            assertFalse(viewModel.depositableIdentities().contains(SlotWorkspaceViewModel.IdentityRef.from(REDSTONE)));
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
     void chestContentSummariesNormalizeMovableContainers() {
         SlotWorkspaceViewModel viewModel = project(
                 InventoryAuthoritySnapshot.empty(),
@@ -430,12 +489,16 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     private static ClaimedChestMap claimedMap(UUID storageId) {
-        return new ClaimedChestMap(List.of(new ClaimedChest(
+        return new ClaimedChestMap(List.of(claimed(storageId)));
+    }
+
+    private static ClaimedChest claimed(UUID storageId) {
+        return new ClaimedChest(
                 storageId,
                 Set.of(new ChestAnchor("minecraft:overworld", 0, 64, 0)),
                 0,
                 0,
-                "")));
+                "");
     }
 
     private static SlotWorkspaceViewModel.ChestContentsSnapshot snapshotOf(ItemStack... contents) {

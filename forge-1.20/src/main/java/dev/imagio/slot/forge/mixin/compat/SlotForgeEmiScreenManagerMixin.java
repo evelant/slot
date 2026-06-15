@@ -18,7 +18,10 @@ public abstract class SlotForgeEmiScreenManagerMixin {
             CallbackInfoReturnable<Boolean> cir
     ) {
         if (ForgeSlotTextInputKeyGuard.shouldLetSlotOwnKey(keyCode, modifiers)) {
-            cir.setReturnValue(false);
+            // EMI recipe screens continue into hovered-widget shortcut checks
+            // when the manager reports "unhandled"; consume the key for EMI
+            // while GLFW still delivers the text char to SLOT.
+            cir.setReturnValue(true);
         }
     }
 }

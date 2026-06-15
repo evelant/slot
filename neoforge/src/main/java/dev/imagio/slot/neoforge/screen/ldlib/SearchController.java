@@ -45,6 +45,10 @@ final class SearchController {
         return searchModalActive;
     }
 
+    boolean capturesTextInput() {
+        return searchModalActive || !searchQuery.isBlank();
+    }
+
     String buffer() {
         return searchBuffer;
     }
@@ -94,6 +98,13 @@ final class SearchController {
                 && !searchModalActive) {
             event.stopPropagation();
             openModal();
+            return;
+        }
+        if (decision.handled()
+                && decision.action() == WorkspaceSearchInputPolicy.Action.APPEND
+                && !searchModalActive) {
+            event.stopPropagation();
+            openModal(decision.query());
             return;
         }
         if (!searchModalActive) {
@@ -179,13 +190,18 @@ final class SearchController {
     }
 
     private void openModal() {
+        openModal("");
+    }
+
+    private void openModal(String initialQuery) {
         searchModalActive = true;
-        searchBuffer = "";
+        searchBuffer = WorkspaceSearchQuery.cleanInput(initialQuery);
         searchInteractionDisablesAutoDismiss = false;
         searchMatches = List.of();
         searchMatchIndex = 0;
         touchSearchInput();
-        setSearchQuery("");
+        setSearchQuery(searchBuffer);
+        recomputeMatches();
         setScreenClosesOnEsc(true);
         host.rebuild();
     }

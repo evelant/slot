@@ -203,9 +203,9 @@ Shift with the same key toggles live tracked-storage ghosts from currently
 readable storage. Enabling one x-ray mode replaces the other, and pressing the
 active mode again returns to the default carried-first view. Tiny UI indicators
 mirror the two toggles so the mode is discoverable without requiring key memory.
-X-ray and search must not present remembered-only observations as available
-stock; stale remembered contents are historical evidence, not inventory
-authority.
+X-ray and search may use remembered claimed-storage contents as elsewhere
+guidance, but must not present remembered-only observations as available stock
+or mutation authority.
 
 Supported placed item displays participate in SLOT's tracked storage display
 model. TFC / TFG tool racks and TFC placed-item blocks surface contents with

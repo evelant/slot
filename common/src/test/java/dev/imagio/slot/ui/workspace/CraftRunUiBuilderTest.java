@@ -44,6 +44,31 @@ class CraftRunUiBuilderTest {
     }
 
     @Test
+    void entryHeaderStartsWithRemainingOutputCount() {
+        TestContext context = new TestContext(state(entry(3)));
+        SlotWorkspaceViewModel.setGhostStackResolver(itemId -> new ItemStack(itemId, 1, 64));
+        try {
+            SlotUiElement section = new CraftRunUiBuilder(context).entrySections(List.of()).get(0);
+            SlotUiElement title = section.children().get(0).children().get(1);
+
+            assertEquals("x3 Torch", title.text());
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
+    void visibleRecipeActionStartsWithRemainingOutputCount() {
+        TestContext context = new TestContext(
+                CraftRunState.empty(),
+                List.of(capture("Visible Torch Recipe", 12)));
+
+        SlotUiElement row = new CraftRunUiBuilder(context).visibleRecipeActions().get(0);
+
+        assertTrue(row.children().get(0).text().startsWith("x12 Visible Torch Recipe"));
+    }
+
+    @Test
     void completedEntryStaysVisibleWithDoneHeaderStyle() {
         TestContext context = new TestContext(state(entry(0)));
         SlotWorkspaceViewModel.setGhostStackResolver(itemId -> new ItemStack(itemId, 1, 64));
@@ -88,13 +113,37 @@ class CraftRunUiBuilderTest {
                 List.of());
     }
 
+    private static CraftRunRecipeCapture capture(String label, int remainingOutputCount) {
+        return new CraftRunRecipeCapture(
+                "emi:test/" + remainingOutputCount,
+                "emi:slot/test",
+                label,
+                ItemIdentity.of("minecraft:torch"),
+                label,
+                4,
+                remainingOutputCount,
+                List.of(new CraftRunIngredientGroup(
+                        "coal",
+                        "Coal",
+                        1,
+                        List.of(new CraftRunAlternative(ItemIdentity.of("minecraft:coal"), "Coal")),
+                        List.of())),
+                List.of());
+    }
+
     private static final class TestContext implements CraftRunUiBuilder.Context {
         private final CraftRunState state;
+        private final List<CraftRunRecipeCapture> visibleRecipes;
         private final ArrayList<String> stagedEntries = new ArrayList<>();
         private final ArrayList<ItemIdentity> openedRecipes = new ArrayList<>();
 
         private TestContext(CraftRunState state) {
+            this(state, List.of());
+        }
+
+        private TestContext(CraftRunState state, List<CraftRunRecipeCapture> visibleRecipes) {
             this.state = state;
+            this.visibleRecipes = visibleRecipes == null ? List.of() : List.copyOf(visibleRecipes);
         }
 
         @Override
@@ -104,7 +153,7 @@ class CraftRunUiBuilderTest {
 
         @Override
         public List<CraftRunRecipeCapture> visibleRecipes() {
-            return List.of();
+            return visibleRecipes;
         }
 
         @Override

@@ -440,7 +440,7 @@ public final class CraftRunUiBuilder {
         if (entry != null && entry.complete()) {
             return label + " done";
         }
-        return label + " x" + Math.max(1, entry == null ? 1 : entry.remainingOutputCount());
+        return outputCountPrefix(entry == null ? 1 : entry.remainingOutputCount()) + label;
     }
 
     private static int activeRecipeCount(List<CraftRunRecipeCapture> captures) {
@@ -458,7 +458,7 @@ public final class CraftRunUiBuilder {
         if (label == null || label.isBlank()) {
             label = "Recipe";
         }
-        String text = label + " x" + Math.max(1, capture == null ? 1 : capture.remainingOutputCount());
+        String text = outputCountPrefix(capture == null ? 1 : capture.remainingOutputCount()) + label;
         if (includeIngredients) {
             String ingredients = ingredientSummary(capture);
             if (!ingredients.isBlank()) {
@@ -469,6 +469,10 @@ public final class CraftRunUiBuilder {
             text = text.substring(0, 45) + ".";
         }
         return text;
+    }
+
+    private static String outputCountPrefix(int count) {
+        return "x" + Math.max(1, count) + " ";
     }
 
     private static String ingredientSummary(CraftRunRecipeCapture capture) {

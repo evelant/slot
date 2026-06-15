@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.lwjgl.glfw.GLFW;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
@@ -54,6 +55,15 @@ class ForgeContainerSidebarTest {
         assertNotNull(annotation);
         assertEquals(EventPriority.HIGHEST, annotation.priority());
         assertTrue(annotation.receiveCanceled());
+    }
+
+    @Test
+    void emiTextGuardTreatsLettersButNotHotbarDigitsAsPlainTextKeys() {
+        assertTrue(ForgeSlotTextInputKeyGuard.isPlainTextKey(GLFW.GLFW_KEY_R, 0));
+        assertTrue(ForgeSlotTextInputKeyGuard.isPlainTextKey(GLFW.GLFW_KEY_U, 0));
+        assertFalse(ForgeSlotTextInputKeyGuard.isPlainTextKey(GLFW.GLFW_KEY_1, 0));
+        assertFalse(ForgeSlotTextInputKeyGuard.isPlainTextKey(GLFW.GLFW_KEY_KP_1, 0));
+        assertFalse(ForgeSlotTextInputKeyGuard.isPlainTextKey(GLFW.GLFW_KEY_R, GLFW.GLFW_MOD_CONTROL));
     }
 
     @Test

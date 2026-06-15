@@ -165,6 +165,8 @@ final class SlotWorkspaceUiController {
     final RecentsStripBuilder recentsStrip = new RecentsStripBuilder(this);
     final ActiveChestStripBuilder activeChestStrip = new ActiveChestStripBuilder(this);
     ScrollerView wallScroller;
+    ScrollerView taskPanelScroller;
+    float taskPanelScrollValue;
     /**
      * Persistent container for the belt (hotbar). Standalone mounts it at
      * root level; sidebar mode mounts it inside the left sidebar frame.
@@ -356,7 +358,7 @@ final class SlotWorkspaceUiController {
     }
 
     boolean capturesTextInput() {
-        return searchController.modalActive()
+        return searchController.capturesTextInput()
                 || hotkeys.isTextInputFocused()
                 || editingIslandId != null
                 || editingClusterId != null

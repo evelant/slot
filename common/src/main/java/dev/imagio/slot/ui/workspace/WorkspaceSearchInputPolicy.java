@@ -18,7 +18,10 @@ public final class WorkspaceSearchInputPolicy {
         if (codePoint == '/' && !active && !textInputFocused) {
             return Decision.handled(Action.OPEN, true, "");
         }
-        if (!active) {
+        if (!active && textInputFocused) {
+            return Decision.unhandled(false, cleanQuery);
+        }
+        if (!active && cleanQuery.isBlank()) {
             return Decision.unhandled(active, cleanQuery);
         }
         if (codePoint == '/') {

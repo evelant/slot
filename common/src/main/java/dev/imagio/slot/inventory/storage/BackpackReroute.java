@@ -100,7 +100,7 @@ public final class BackpackReroute {
         }
 
         ItemIdentity identity = ItemIdentityMatcher.create(template);
-        int unshrunk = shrinkVanillaLanes(carried, player, identity, absorbed);
+        int unshrunk = shrinkVanillaLanes(carried, player, template, absorbed);
         CarriedInventoryRevisions.markChanged(player, "pickup_reroute");
         if (unshrunk > 0) {
             SlotCommon.LOGGER.warn(
@@ -124,26 +124,26 @@ public final class BackpackReroute {
     private static int shrinkVanillaLanes(
             CarriedSourceAccess carried,
             ServerPlayer player,
-            ItemIdentity identity,
+            ItemStack template,
             int count
     ) {
         int remaining = count;
-        remaining = shrinkBuiltinLane(carried, player, identity, BuiltinInventoryIds.PLAYER_MAIN, 27, remaining);
+        remaining = shrinkBuiltinLane(carried, player, template, BuiltinInventoryIds.PLAYER_MAIN, 27, remaining);
         remaining = shrinkBuiltinLane(
                 carried,
                 player,
-                identity,
+                template,
                 BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
                 9,
                 remaining);
-        remaining = shrinkBuiltinLane(carried, player, identity, BuiltinInventoryIds.PLAYER_OFFHAND, 1, remaining);
+        remaining = shrinkBuiltinLane(carried, player, template, BuiltinInventoryIds.PLAYER_OFFHAND, 1, remaining);
         return remaining;
     }
 
     private static int shrinkBuiltinLane(
             CarriedSourceAccess carried,
             ServerPlayer player,
-            ItemIdentity identity,
+            ItemStack template,
             String sourceId,
             int slotCount,
             int count
@@ -151,7 +151,7 @@ public final class BackpackReroute {
         int remaining = count;
         for (int slot = 0; slot < slotCount && remaining > 0; slot++) {
             ItemStack current = carried.peek(player, sourceId, slot);
-            if (!ItemIdentityMatcher.matchesMovable(current, identity)) {
+            if (!ItemStackEquivalence.sameItemAndData(current, template)) {
                 continue;
             }
             ItemStack taken = carried.extract(player, sourceId, slot, remaining, false);

@@ -15,6 +15,10 @@ public final class SlotWorkspaceTextInputKeyGuard {
         if ((modifiers & passthroughModifiers) != 0) {
             return false;
         }
+        if ((keyCode >= GLFW.GLFW_KEY_0 && keyCode <= GLFW.GLFW_KEY_9)
+                || (keyCode >= GLFW.GLFW_KEY_KP_0 && keyCode <= GLFW.GLFW_KEY_KP_9)) {
+            return false;
+        }
         return keyCode >= GLFW.GLFW_KEY_SPACE && keyCode <= GLFW.GLFW_KEY_WORLD_2;
     }
 }

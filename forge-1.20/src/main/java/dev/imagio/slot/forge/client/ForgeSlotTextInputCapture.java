@@ -14,6 +14,7 @@ public final class ForgeSlotTextInputCapture {
         if (screen instanceof ForgeWorkspaceScreen workspace && workspace.slotTextInputCapturesKeyboard()) {
             return true;
         }
-        return ForgeContainerSidebar.capturesTextInput(screen);
+        return ForgeContainerSidebar.capturesTextInput(screen)
+                || ForgeContainerSidebar.capturesTextInput();
     }
 }

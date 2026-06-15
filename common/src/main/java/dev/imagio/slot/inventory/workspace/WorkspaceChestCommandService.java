@@ -55,9 +55,7 @@ public final class WorkspaceChestCommandService {
         if (player == null || runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_deposit_context");
         }
-        InventoryAuthoritySnapshot resolvedAuthority = authority == null
-                ? InventoryAuthoritySnapshot.empty()
-                : authority;
+        InventoryAuthoritySnapshot resolvedAuthority = depositAuthority(player, authority);
         WorkspaceStorageRoutingContext routing =
                 WorkspaceStorageRoutingContext.build(player, runtime, resolvedAuthority);
         ClaimedChestMap claimedChestMap = routing.claimedChestMap();
@@ -122,6 +120,25 @@ public final class WorkspaceChestCommandService {
         return WorkspaceCommandOutcome.accepted(
                 "deposited_partial",
                 "deposited=" + outcome.deposited() + " failed=" + outcome.failed());
+    }
+
+    private static InventoryAuthoritySnapshot depositAuthority(
+            ServerPlayer player,
+            InventoryAuthoritySnapshot fallback
+    ) {
+        InventoryAuthoritySnapshot resolved = fallback == null
+                ? InventoryAuthoritySnapshot.empty()
+                : fallback;
+        if (player == null || !StorageAccessRegistry.isInstalled()) {
+            return resolved;
+        }
+        InventoryAuthoritySnapshot carriedAuthority =
+                StorageAccessRegistry.carriedSourceAccess().currentAuthority(player);
+        return hasDeclaredCarriedSources(carriedAuthority) ? carriedAuthority : resolved;
+    }
+
+    private static boolean hasDeclaredCarriedSources(InventoryAuthoritySnapshot authority) {
+        return authority != null && !authority.carriedSources().isEmpty();
     }
 
     public static WorkspaceCommandOutcome takeAllFromChest(

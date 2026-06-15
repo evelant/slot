@@ -303,7 +303,8 @@ public final class ForgeWorkspaceSurface {
     public void rebuild(int width, int height) {
         rememberViewport(width, height);
         rebuildRequested = false;
-        float scrollY = tree == null ? 0f : tree.scrollY();
+        float wallScrollY = tree == null ? 0f : tree.scrollY(ForgeSlotUiTree.PRIMARY_SCROLL_VIEWPORT_ID);
+        float taskPanelScrollY = tree == null ? 0f : tree.scrollY(ForgeSlotUiTree.TASK_PANEL_SCROLL_VIEWPORT_ID);
         if (tree == null) {
             requestWallScrollRestore(WorkspaceUiSessionMemory.wallScroll(surfaceMemoryKey()));
         }
@@ -312,8 +313,9 @@ public final class ForgeWorkspaceSurface {
         if (pendingWallScrollRestoreActive) {
             applyPendingWallScrollRestore();
         } else {
-            tree.setScrollY(scrollY);
+            tree.setScrollY(ForgeSlotUiTree.PRIMARY_SCROLL_VIEWPORT_ID, wallScrollY);
         }
+        tree.setScrollY(ForgeSlotUiTree.TASK_PANEL_SCROLL_VIEWPORT_ID, taskPanelScrollY);
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
@@ -666,7 +668,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     public boolean capturesTextInput() {
-        return wantsKeyboardInput();
+        return wantsKeyboardInput() || !searchQuery.isBlank();
     }
 
     private String openedStatus() {
@@ -812,10 +814,13 @@ public final class ForgeWorkspaceSurface {
 
     private void rememberWallScroll() {
         if (tree != null) {
-            if (pendingWallScrollRestoreActive && tree.maxScrollY() <= 0f) {
+            if (pendingWallScrollRestoreActive
+                    && tree.maxScrollY(ForgeSlotUiTree.PRIMARY_SCROLL_VIEWPORT_ID) <= 0f) {
                 return;
             }
-            WorkspaceUiSessionMemory.setWallScroll(surfaceMemoryKey(), tree.scrollY());
+            WorkspaceUiSessionMemory.setWallScroll(
+                    surfaceMemoryKey(),
+                    tree.scrollY(ForgeSlotUiTree.PRIMARY_SCROLL_VIEWPORT_ID));
         }
     }
 
@@ -828,8 +833,8 @@ public final class ForgeWorkspaceSurface {
         if (!pendingWallScrollRestoreActive || tree == null) {
             return;
         }
-        tree.setScrollY(pendingWallScrollRestore);
-        if (tree.maxScrollY() > 0f || appliedRevision >= 0L) {
+        tree.setScrollY(ForgeSlotUiTree.PRIMARY_SCROLL_VIEWPORT_ID, pendingWallScrollRestore);
+        if (tree.maxScrollY(ForgeSlotUiTree.PRIMARY_SCROLL_VIEWPORT_ID) > 0f || appliedRevision >= 0L) {
             pendingWallScrollRestoreActive = false;
         }
     }
@@ -1479,7 +1484,7 @@ public final class ForgeWorkspaceSurface {
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
         SlotUiElement content = SlotUiElement.panel(0xA810171D)
-                .id("slot.forge.task_panel_scroll")
+                .id(ForgeSlotUiTree.TASK_PANEL_SCROLL_VIEWPORT_ID)
                 .attach(ForgeSlotUiTree.SCROLL_VIEWPORT, Boolean.TRUE)
                 .layout(layout -> layout
                         .widthPercent(100)

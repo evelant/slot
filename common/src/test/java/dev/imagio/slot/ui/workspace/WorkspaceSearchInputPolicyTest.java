@@ -19,13 +19,18 @@ class WorkspaceSearchInputPolicyTest {
     }
 
     @Test
-    void printableCharactersOnlyAppendWhileSearchIsActive() {
-        WorkspaceSearchInputPolicy.Decision inactive =
+    void printableCharactersAppendWhileSearchIsActiveOrQueryIsVisible() {
+        WorkspaceSearchInputPolicy.Decision inactiveEmpty =
                 WorkspaceSearchInputPolicy.charTyped(false, "", 'a', false);
+        WorkspaceSearchInputPolicy.Decision inactiveWithQuery =
+                WorkspaceSearchInputPolicy.charTyped(false, "ax", 'e', false);
         WorkspaceSearchInputPolicy.Decision active =
                 WorkspaceSearchInputPolicy.charTyped(true, "ax", 'e', false);
 
-        assertFalse(inactive.handled());
+        assertFalse(inactiveEmpty.handled());
+        assertTrue(inactiveWithQuery.handled());
+        assertTrue(inactiveWithQuery.active());
+        assertEquals("axe", inactiveWithQuery.query());
         assertEquals("axe", active.query());
     }
 
@@ -33,11 +38,27 @@ class WorkspaceSearchInputPolicyTest {
     void digitsAreConsumedButNotAppendedWhileSearchIsActive() {
         WorkspaceSearchInputPolicy.Decision decision =
                 WorkspaceSearchInputPolicy.charTyped(true, "axe", '3', false);
+        WorkspaceSearchInputPolicy.Decision inactive =
+                WorkspaceSearchInputPolicy.charTyped(false, "axe", '3', false);
 
         assertTrue(decision.handled());
         assertTrue(decision.active());
         assertEquals("axe", decision.query());
         assertEquals(WorkspaceSearchInputPolicy.Action.IGNORE_DIGIT, decision.action());
+        assertTrue(inactive.handled());
+        assertTrue(inactive.active());
+        assertEquals("axe", inactive.query());
+        assertEquals(WorkspaceSearchInputPolicy.Action.IGNORE_DIGIT, inactive.action());
+    }
+
+    @Test
+    void visibleQueryDoesNotStealHostTextInputFocus() {
+        WorkspaceSearchInputPolicy.Decision decision =
+                WorkspaceSearchInputPolicy.charTyped(false, "axe", 'r', true);
+
+        assertFalse(decision.handled());
+        assertFalse(decision.active());
+        assertEquals("axe", decision.query());
     }
 
     @Test

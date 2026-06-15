@@ -798,7 +798,7 @@ final class ForgeWorkspaceSession {
                 0,
                 learnedRules,
                 Forge120IslandSignalExtractor::extract,
-                storageIndex.liveContentsResolver(),
+                storageIndex.contentsResolver(),
                 proximateIds,
                 carriedContainerInfoResolver(player),
                 lootChestSource,
