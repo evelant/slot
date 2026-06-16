@@ -27,6 +27,9 @@ public final class CraftRunTargetOverlay {
         LinkedHashSet<ItemIdentity> relevant = new LinkedHashSet<>(resolved.workflowRelevantIdentities());
         LinkedHashSet<ItemIdentity> missing = new LinkedHashSet<>(resolved.missingWorkflowIdentities());
         LinkedHashMap<ItemIdentity, Integer> beltRequirements = new LinkedHashMap<>(resolved.beltPageRequirements());
+        LinkedHashMap<ItemIdentity, Integer> consumedRequirements = new LinkedHashMap<>();
+        LinkedHashMap<ItemIdentity, Integer> reusableRequirements = new LinkedHashMap<>();
+        LinkedHashSet<ItemIdentity> requirementOrder = new LinkedHashSet<>();
 
         for (CraftRunRecipeEntry entry : craftRun.entries()) {
             if (entry == null || !entry.active()) {
@@ -50,11 +53,26 @@ public final class CraftRunTargetOverlay {
                     continue;
                 }
                 int target = group.requiredForBatches(batches);
-                mergeWanted(wanted, selected, target, group.consumed());
+                mergeRequirement(
+                        requirementOrder,
+                        consumedRequirements,
+                        reusableRequirements,
+                        selected,
+                        target,
+                        group.consumed());
                 ItemIdentityCollections.add(relevant, selected);
-                if (carried.count(selected) < target) {
-                    ItemIdentityCollections.add(missing, selected);
-                }
+            }
+        }
+        for (ItemIdentity identity : requirementOrder) {
+            int target = saturatedAdd(
+                    consumedRequirements.getOrDefault(identity, 0),
+                    reusableRequirements.getOrDefault(identity, 0));
+            if (target <= 0) {
+                continue;
+            }
+            ItemIdentityCollections.mergePositive(wanted, identity, target);
+            if (carried.count(identity) < ItemIdentityCollections.count(wanted, identity)) {
+                ItemIdentityCollections.add(missing, identity);
             }
         }
         return new WorkflowTabTargets.Resolution(
@@ -90,19 +108,28 @@ public final class CraftRunTargetOverlay {
         return null;
     }
 
-    private static void mergeWanted(
-            LinkedHashMap<ItemIdentity, Integer> wanted,
+    private static void mergeRequirement(
+            LinkedHashSet<ItemIdentity> requirementOrder,
+            LinkedHashMap<ItemIdentity, Integer> consumedRequirements,
+            LinkedHashMap<ItemIdentity, Integer> reusableRequirements,
             ItemIdentity identity,
             int target,
             boolean consumed
     ) {
-        if (consumed) {
-            ItemIdentityCollections.mergePositive(wanted, identity, target);
+        ItemIdentity key = ItemIdentityCollections.key(identity);
+        if (key == null || target <= 0) {
             return;
         }
-        ItemIdentity key = ItemIdentityCollections.key(identity);
-        if (key != null && target > 0) {
-            wanted.merge(key, target, Math::max);
+        requirementOrder.add(key);
+        if (consumed) {
+            ItemIdentityCollections.mergeCount(consumedRequirements, key, target);
+            return;
         }
+        reusableRequirements.merge(key, target, Math::max);
+    }
+
+    private static int saturatedAdd(int left, int right) {
+        long sum = (long) Math.max(0, left) + Math.max(0, right);
+        return sum >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) sum;
     }
 }

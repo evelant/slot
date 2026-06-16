@@ -19,23 +19,23 @@ class WorkspaceSearchInputPolicyTest {
     }
 
     @Test
-    void printableCharactersAppendWhileSearchIsActiveOrQueryIsVisible() {
+    void printableCharactersAppendOnlyWhileSearchIsActive() {
         WorkspaceSearchInputPolicy.Decision inactiveEmpty =
                 WorkspaceSearchInputPolicy.charTyped(false, "", 'a', false);
         WorkspaceSearchInputPolicy.Decision inactiveWithQuery =
-                WorkspaceSearchInputPolicy.charTyped(false, "ax", 'e', false);
+                WorkspaceSearchInputPolicy.charTyped(false, "ax", 'w', false);
         WorkspaceSearchInputPolicy.Decision active =
                 WorkspaceSearchInputPolicy.charTyped(true, "ax", 'e', false);
 
         assertFalse(inactiveEmpty.handled());
-        assertTrue(inactiveWithQuery.handled());
-        assertTrue(inactiveWithQuery.active());
-        assertEquals("axe", inactiveWithQuery.query());
+        assertFalse(inactiveWithQuery.handled());
+        assertFalse(inactiveWithQuery.active());
+        assertEquals("ax", inactiveWithQuery.query());
         assertEquals("axe", active.query());
     }
 
     @Test
-    void digitsAreConsumedButNotAppendedWhileSearchIsActive() {
+    void digitsAreConsumedButNotAppendedOnlyWhileSearchIsActive() {
         WorkspaceSearchInputPolicy.Decision decision =
                 WorkspaceSearchInputPolicy.charTyped(true, "axe", '3', false);
         WorkspaceSearchInputPolicy.Decision inactive =
@@ -45,10 +45,10 @@ class WorkspaceSearchInputPolicyTest {
         assertTrue(decision.active());
         assertEquals("axe", decision.query());
         assertEquals(WorkspaceSearchInputPolicy.Action.IGNORE_DIGIT, decision.action());
-        assertTrue(inactive.handled());
-        assertTrue(inactive.active());
+        assertFalse(inactive.handled());
+        assertFalse(inactive.active());
         assertEquals("axe", inactive.query());
-        assertEquals(WorkspaceSearchInputPolicy.Action.IGNORE_DIGIT, inactive.action());
+        assertEquals(WorkspaceSearchInputPolicy.Action.NONE, inactive.action());
     }
 
     @Test

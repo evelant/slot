@@ -671,6 +671,35 @@ public final class ForgeWorkspaceSurface {
         return wantsKeyboardInput() || !searchQuery.isBlank();
     }
 
+    public TextInputDebugState textInputDebugState() {
+        return new TextInputDebugState(
+                searchActive,
+                !searchQuery.isBlank(),
+                searchQuery.length(),
+                editorOpen(),
+                wantsKeyboardInput(),
+                capturesTextInput());
+    }
+
+    public record TextInputDebugState(
+            boolean searchActive,
+            boolean queryPresent,
+            int queryLength,
+            boolean editorOpen,
+            boolean wantsKeyboardInput,
+            boolean capturesTextInput
+    ) {
+        public String compact() {
+            return "surface{searchActive=" + searchActive
+                    + ",queryPresent=" + queryPresent
+                    + ",queryLength=" + queryLength
+                    + ",editorOpen=" + editorOpen
+                    + ",wantsKeyboardInput=" + wantsKeyboardInput
+                    + ",capturesTextInput=" + capturesTextInput
+                    + "}";
+        }
+    }
+
     private String openedStatus() {
         if (mode == Mode.SIDEBAR) {
             return "opened chest sidebar";

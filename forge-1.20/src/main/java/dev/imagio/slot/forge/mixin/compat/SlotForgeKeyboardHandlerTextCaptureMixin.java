@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = KeyboardHandler.class, priority = 2000)
 public abstract class SlotForgeKeyboardHandlerTextCaptureMixin {
-    @Inject(method = "keyPress(JIIII)V", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "keyPress(JIIII)V", at = @At("HEAD"), cancellable = true, require = 0)
     private void slot$letSlotTextCaptureOwnPlainKeys(
             long windowPointer,
             int key,
@@ -19,8 +19,18 @@ public abstract class SlotForgeKeyboardHandlerTextCaptureMixin {
             int modifiers,
             CallbackInfo info
     ) {
-        if ((action == GLFW.GLFW_PRESS || action == GLFW.GLFW_REPEAT)
-                && ForgeSlotTextInputKeyGuard.shouldLetSlotOwnKey(key, modifiers)) {
+        if (action != GLFW.GLFW_PRESS && action != GLFW.GLFW_REPEAT) {
+            return;
+        }
+        ForgeSlotTextInputKeyGuard.Decision decision = ForgeSlotTextInputKeyGuard.decide(key, modifiers);
+        ForgeSlotTextInputKeyGuard.logDiagnostic(
+                "KeyboardHandler.keyPress",
+                key,
+                scanCode,
+                action,
+                modifiers,
+                decision);
+        if (decision.slotOwnsKey()) {
             info.cancel();
         }
     }

@@ -102,9 +102,19 @@ dependencies {
 // build/libs has Taffy inside it.
 tasks.named('jar') {
     archiveClassifier = 'slim'
+    manifest {
+        attributes([
+                'MixinConfigs': 'slot.forge.client.mixins.json'
+        ])
+    }
 }
 tasks.named('jarJar') {
     archiveClassifier = ''
+    manifest {
+        attributes([
+                'MixinConfigs': 'slot.forge.client.mixins.json'
+        ])
+    }
 }
 
 tasks.named('compileSharedProbeJava') {

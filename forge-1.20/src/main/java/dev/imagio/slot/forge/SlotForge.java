@@ -43,5 +43,8 @@ public final class SlotForge {
         Forge120ClassificationLayerReloadListener.init();
         ForgeSlotPickupRouter.init();
         SlotCommon.LOGGER.info("SLOT (forge-1.20) loaded");
+        SlotCommon.LOGGER.info(
+                "[SLOT][forge-text-capture] boot marker=forge-text-capture-v2 diagnosticsEnabled={} jarHint=forge-1.20",
+                Boolean.parseBoolean(System.getProperty("slot.forgeTextCaptureDiagnostics", "true")));
     }
 }

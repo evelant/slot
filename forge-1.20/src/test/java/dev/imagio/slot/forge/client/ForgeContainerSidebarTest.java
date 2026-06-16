@@ -67,6 +67,43 @@ class ForgeContainerSidebarTest {
     }
 
     @Test
+    void emiTextGuardOnlyTargetsRecipeViewerLetters() {
+        assertTrue(ForgeSlotTextInputKeyGuard.isRecipeViewerTextKey(GLFW.GLFW_KEY_R));
+        assertTrue(ForgeSlotTextInputKeyGuard.isRecipeViewerTextKey(GLFW.GLFW_KEY_U));
+        assertFalse(ForgeSlotTextInputKeyGuard.isRecipeViewerTextKey(GLFW.GLFW_KEY_A));
+        assertFalse(ForgeSlotTextInputKeyGuard.isRecipeViewerTextKey(GLFW.GLFW_KEY_ENTER));
+        assertFalse(ForgeSlotTextInputKeyGuard.isRecipeViewerTextKey(GLFW.GLFW_KEY_BACKSLASH));
+    }
+
+    @Test
+    void emiTextGuardRequiresActiveSearchNotOnlyRememberedQuery() {
+        ForgeWorkspaceSurface.TextInputDebugState submittedQuery =
+                new ForgeWorkspaceSurface.TextInputDebugState(false, true, 3, false, false, true);
+        ForgeSlotTextInputCapture.CaptureDebugState submittedCapture = captureState(submittedQuery);
+
+        assertTrue(submittedCapture.active());
+        assertFalse(submittedCapture.searchActive());
+        assertFalse(ForgeSlotTextInputKeyGuard.shouldOwnRecipeViewerTextKey(
+                GLFW.GLFW_KEY_R,
+                true,
+                submittedCapture));
+
+        ForgeWorkspaceSurface.TextInputDebugState activeSearch =
+                new ForgeWorkspaceSurface.TextInputDebugState(true, true, 3, false, true, true);
+        ForgeSlotTextInputCapture.CaptureDebugState activeCapture = captureState(activeSearch);
+
+        assertTrue(activeCapture.searchActive());
+        assertTrue(ForgeSlotTextInputKeyGuard.shouldOwnRecipeViewerTextKey(
+                GLFW.GLFW_KEY_R,
+                true,
+                activeCapture));
+        assertFalse(ForgeSlotTextInputKeyGuard.shouldOwnRecipeViewerTextKey(
+                GLFW.GLFW_KEY_A,
+                true,
+                activeCapture));
+    }
+
+    @Test
     void activeOverlayMakesWholeScreenInteractiveForContextMenus() {
         assertTrue(ForgeContainerSidebar.insideInteractiveSurface(
                 500,
@@ -122,6 +159,24 @@ class ForgeContainerSidebarTest {
                 220,
                 null,
                 new ForgeWorkspaceSurface.TaskPanelBounds(410, 20, 140, 180)));
+    }
+
+    private static ForgeSlotTextInputCapture.CaptureDebugState captureState(
+            ForgeWorkspaceSurface.TextInputDebugState surfaceState
+    ) {
+        ForgeContainerSidebar.TextInputCaptureDebugState sidebarState =
+                new ForgeContainerSidebar.TextInputCaptureDebugState(
+                        true,
+                        "net.minecraft.client.gui.screens.inventory.InventoryScreen",
+                        true,
+                        true,
+                        surfaceState);
+        return new ForgeSlotTextInputCapture.CaptureDebugState(
+                "net.minecraft.client.gui.screens.inventory.InventoryScreen",
+                false,
+                null,
+                sidebarState,
+                sidebarState.capturesTextInput());
     }
 
     private static final class FocusableWidget implements GuiEventListener {

@@ -77,6 +77,10 @@ public final class ForgeWorkspaceScreen extends Screen {
         return surface.capturesTextInput();
     }
 
+    public ForgeWorkspaceSurface.TextInputDebugState slotTextInputDebugState() {
+        return surface.textInputDebugState();
+    }
+
     @Override
     public void removed() {
         surface.closeSession();

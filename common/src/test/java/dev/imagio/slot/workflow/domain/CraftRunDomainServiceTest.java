@@ -285,6 +285,33 @@ class CraftRunDomainServiceTest {
     }
 
     @Test
+    void consumedInputsAggregateAcrossTrackedRecipes() {
+        ItemIdentity coal = ItemIdentity.of("minecraft:coal");
+        CraftRunDomainService service = new CraftRunDomainService();
+
+        service.add(capture(
+                "slot:recipe/torch",
+                "minecraft:torch",
+                4,
+                4,
+                ingredient("slot:recipe/torch/coal", coal.itemId(), 1)));
+        service.add(capture(
+                "slot:recipe/campfire",
+                "minecraft:campfire",
+                1,
+                1,
+                ingredient("slot:recipe/campfire/coal", coal.itemId(), 2)));
+
+        WorkflowTabTargets.Resolution targets = CraftRunTargetOverlay.apply(
+                WorkflowTabTargets.Resolution.empty(),
+                service.state(),
+                new CarriedIdentityCounts(Map.of(coal, 2)));
+
+        assertEquals(3, targets.wantedCount(coal));
+        assertTrue(targets.missingWorkflowIdentities().contains(coal));
+    }
+
+    @Test
     void reusableInputsDoNotScaleWantedPressureAcrossRecipes() {
         ItemIdentity hammer = ItemIdentity.of("mod:hammer");
         CraftRunDomainService service = new CraftRunDomainService();

@@ -111,6 +111,44 @@ public final class ForgeContainerSidebar {
                 && activeSurface.capturesTextInput();
     }
 
+    public static TextInputCaptureDebugState textInputCaptureDebugState(Screen screen) {
+        return new TextInputCaptureDebugState(
+                activeHostScreen != null,
+                screenClass(activeHostScreen),
+                activeHostScreen != null && screen == activeHostScreen,
+                activeSurface != null,
+                activeSurface == null ? null : activeSurface.textInputDebugState());
+    }
+
+    public record TextInputCaptureDebugState(
+            boolean hostMounted,
+            String activeHostScreenClass,
+            boolean currentScreenMatchesHost,
+            boolean surfacePresent,
+            ForgeWorkspaceSurface.TextInputDebugState surfaceState
+    ) {
+        public boolean capturesTextInput() {
+            return hostMounted && surfaceState != null && surfaceState.capturesTextInput();
+        }
+
+        public boolean searchActive() {
+            return hostMounted && surfaceState != null && surfaceState.searchActive();
+        }
+
+        public String compact() {
+            return "sidebar{hostMounted=" + hostMounted
+                    + ",activeHost=" + activeHostScreenClass
+                    + ",currentScreenMatchesHost=" + currentScreenMatchesHost
+                    + ",surfacePresent=" + surfacePresent
+                    + ",surface=" + (surfaceState == null ? "null" : surfaceState.compact())
+                    + "}";
+        }
+    }
+
+    private static String screenClass(Screen screen) {
+        return screen == null ? "null" : screen.getClass().getName();
+    }
+
     public static void clearClientState() {
         release();
         bypassNextInventorySidebar = false;

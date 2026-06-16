@@ -396,6 +396,15 @@ public final class ForgeWorkspaceClient {
 
         @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
         public static void onKeyPressed(ScreenEvent.KeyPressed.Pre event) {
+            ForgeSlotTextInputKeyGuard.Decision decision =
+                    ForgeSlotTextInputKeyGuard.decide(event.getKeyCode(), event.getModifiers());
+            ForgeSlotTextInputKeyGuard.logDiagnostic(
+                    "ScreenEvent.KeyPressed.Pre",
+                    event.getKeyCode(),
+                    event.getScanCode(),
+                    -1,
+                    event.getModifiers(),
+                    decision);
             ForgeHoveredWantedHotkey.onKeyPressed(event);
             ForgeHoveredTrashHotkey.onKeyPressed(event);
             ForgeContainerSidebar.onKeyPressed(event);
