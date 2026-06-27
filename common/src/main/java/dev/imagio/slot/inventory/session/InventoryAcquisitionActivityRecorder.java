@@ -46,7 +46,21 @@ public final class InventoryAcquisitionActivityRecorder {
         if (runtime == null || identity == null || count <= 0) {
             return false;
         }
-        return runtime.recordActivityEvent(new InventoryActivityEvent(
+        InventoryActivityEvent event = acquiredEvent(identity, count, producer, confidence, diagnostics);
+        return event != null && runtime.recordActivityEvent(event);
+    }
+
+    public static InventoryActivityEvent acquiredEvent(
+            ItemIdentity identity,
+            int count,
+            InventoryActivityProducer producer,
+            InventoryActivityConfidence confidence,
+            String diagnostics
+    ) {
+        if (identity == null || count <= 0) {
+            return null;
+        }
+        return new InventoryActivityEvent(
                 InventoryActivityKind.ACQUIRED,
                 producer == null ? InventoryActivityProducer.UNKNOWN_EXTERNAL : producer,
                 confidence == null ? InventoryActivityConfidence.OBSERVED : confidence,
@@ -58,6 +72,6 @@ public final class InventoryAcquisitionActivityRecorder {
                 "",
                 List.of(),
                 diagnostics == null ? "" : diagnostics
-        ));
+        );
     }
 }

@@ -18,6 +18,7 @@ import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
+import dev.imagio.slot.workflow.domain.InventoryActivityEvent;
 import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
@@ -151,17 +152,20 @@ public final class WorkspaceChestCommandService {
             return WorkspaceCommandOutcome.rejected(resolved.outcome());
         }
         TakeAllExecutor.TakeAllOutcome outcome = TakeAllExecutor.execute(player, resolved.chest());
-        recordTakeRecords(player, runtime, outcome.records(), "take_all_from_chest");
+        List<InventoryActivityEvent> activityEvents =
+                recordTakeRecords(player, runtime, outcome.records(), "take_all_from_chest");
         observeTakeRecords(player, runtime.chestClaimWorkflow().claimedChestMap(), outcome.records(), "slot.take_all");
         if (outcome.movedStacks() == 0 && outcome.leftoverSlots() == 0) {
             return WorkspaceCommandOutcome.accepted("nothing_to_take", "");
         }
         if (outcome.leftoverSlots() == 0) {
-            return WorkspaceCommandOutcome.accepted("took_all", "moved=" + outcome.movedStacks());
+            return WorkspaceCommandOutcome.accepted("took_all", "moved=" + outcome.movedStacks())
+                    .withActivityEvents(activityEvents);
         }
         return WorkspaceCommandOutcome.accepted(
                 "took_all_partial",
-                "moved=" + outcome.movedStacks() + " leftover_slots=" + outcome.leftoverSlots());
+                "moved=" + outcome.movedStacks() + " leftover_slots=" + outcome.leftoverSlots())
+                .withActivityEvents(activityEvents);
     }
 
     public static WorkspaceCommandOutcome depositCarriedToChest(
@@ -413,17 +417,20 @@ public final class WorkspaceChestCommandService {
         if (!outcome.tookAnything()) {
             return WorkspaceCommandOutcome.accepted("nothing_to_take", "");
         }
-        recordTakeRecord(player, runtime, outcome.record(), "take_from_chest");
+        InventoryActivityEvent activityEvent = recordTakeRecord(player, runtime, outcome.record(), "take_from_chest");
         observeTakeRecord(player, runtime.chestClaimWorkflow().claimedChestMap(), outcome.record(), "slot.take");
         if (one) {
-            return WorkspaceCommandOutcome.accepted("took_one", "moved=" + outcome.moved());
+            return WorkspaceCommandOutcome.accepted("took_one", "moved=" + outcome.moved())
+                    .withActivityEvents(activityEvents(activityEvent));
         }
         if (outcome.partial()) {
             return WorkspaceCommandOutcome.accepted(
                     "took_partial",
-                    "moved=" + outcome.moved() + " leftover=" + outcome.leftover());
+                    "moved=" + outcome.moved() + " leftover=" + outcome.leftover())
+                    .withActivityEvents(activityEvents(activityEvent));
         }
-        return WorkspaceCommandOutcome.accepted("took_stack", "moved=" + outcome.moved());
+        return WorkspaceCommandOutcome.accepted("took_stack", "moved=" + outcome.moved())
+                .withActivityEvents(activityEvents(activityEvent));
     }
 
     public static WorkspaceCommandOutcome takeByIdentity(
@@ -521,12 +528,19 @@ public final class WorkspaceChestCommandService {
             }
         }
         if (moved > 0) {
+            List<InventoryActivityEvent> activityEvents;
             if (recordUndo) {
-                recordTakeRecords(player, runtime, records, "take_by_identity");
+                activityEvents = recordTakeRecords(player, runtime, records, "take_by_identity");
             } else {
+                ArrayList<InventoryActivityEvent> recorded = new ArrayList<>();
                 for (TakeAllExecutor.TakeRecord record : records) {
-                    recordAcquisition(runtime, record.identity(), record.count(), "take_by_identity");
+                    InventoryActivityEvent activityEvent =
+                            recordAcquisition(runtime, record.identity(), record.count(), "take_by_identity");
+                    if (activityEvent != null) {
+                        recorded.add(activityEvent);
+                    }
                 }
+                activityEvents = List.copyOf(recorded);
             }
             observeTakeRecords(player, claimedChestMap, records, "slot.take_by_identity");
             String status = one
@@ -535,7 +549,8 @@ public final class WorkspaceChestCommandService {
             String diagnostics = "moved=" + moved
                     + (singleSlotOnly ? "" : " requested=" + requested)
                     + (stoppedByPartial ? " carry_full=true" : "");
-            return WorkspaceCommandOutcome.accepted(status, diagnostics);
+            return WorkspaceCommandOutcome.accepted(status, diagnostics)
+                    .withActivityEvents(activityEvents);
         }
         return foundMatchButCouldNotInsert
                 ? WorkspaceCommandOutcome.rejected("carry_full")
@@ -1034,48 +1049,61 @@ public final class WorkspaceChestCommandService {
         );
     }
 
-    static void recordTakeRecords(
+    static List<InventoryActivityEvent> recordTakeRecords(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
             List<TakeAllExecutor.TakeRecord> records,
             String diagnostics
     ) {
         if (records == null || records.isEmpty()) {
-            return;
+            return List.of();
         }
+        ArrayList<InventoryActivityEvent> activityEvents = new ArrayList<>();
         for (TakeAllExecutor.TakeRecord record : records) {
-            recordTakeRecord(player, runtime, record, diagnostics);
+            InventoryActivityEvent activityEvent = recordTakeRecord(player, runtime, record, diagnostics);
+            if (activityEvent != null) {
+                activityEvents.add(activityEvent);
+            }
         }
+        return List.copyOf(activityEvents);
     }
 
-    static void recordTakeRecord(
+    static InventoryActivityEvent recordTakeRecord(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
             TakeAllExecutor.TakeRecord record,
             String diagnostics
     ) {
         if (record == null) {
-            return;
+            return null;
         }
-        recordAcquisition(runtime, record.identity(), record.count(), diagnostics);
+        InventoryActivityEvent activityEvent = recordAcquisition(runtime, record.identity(), record.count(), diagnostics);
         recordChestTransferUndo(
                 player, runtime, record.storageId(), record.identity(), record.count(),
                 ChestTransferDirection.TAKE);
+        return activityEvent;
     }
 
-    private static void recordAcquisition(
+    private static InventoryActivityEvent recordAcquisition(
             WorkflowDomainRuntime runtime,
             ItemIdentity identity,
             int count,
             String diagnostics
     ) {
-        InventoryAcquisitionActivityRecorder.recordIdentityAcquired(
-                runtime,
+        InventoryActivityEvent event = InventoryAcquisitionActivityRecorder.acquiredEvent(
                 identity,
                 count,
                 InventoryActivityProducer.EXTERNAL_WITHDRAWAL,
                 InventoryActivityConfidence.AUTHORITATIVE,
                 diagnostics);
+        if (runtime == null || event == null) {
+            return null;
+        }
+        return runtime.recordActivityEvent(event) ? event : null;
+    }
+
+    private static List<InventoryActivityEvent> activityEvents(InventoryActivityEvent event) {
+        return event == null ? List.of() : List.of(event);
     }
 
     private static void recordChestTransferUndo(

@@ -204,6 +204,98 @@ class CarriedAcquisitionActivityTrackerTest {
     }
 
     @Test
+    void gregTechBatteryChargeChurnDoesNotCountAsRepeatedAcquisition() {
+        CarriedAcquisitionActivityTracker tracker = new CarriedAcquisitionActivityTracker();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        String key = "player-1";
+
+        tracker.observe(
+                key,
+                authority(List.of(gregTechBattery(400))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "seed");
+
+        int recorded = tracker.observe(
+                key,
+                authority(List.of(gregTechBattery(1200))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "menu_slot_changed");
+
+        assertEquals(0, recorded);
+        assertEquals(List.of(), runtime.activityProjection().recents().visibleItems());
+    }
+
+    @Test
+    void movableEquivalentIdentityShapeChangeDoesNotPinRecentsAheadOfLaterAcquisitions() {
+        CarriedAcquisitionActivityTracker tracker = new CarriedAcquisitionActivityTracker();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        String key = "player-1";
+        ItemIdentity diamond = ItemIdentity.of("minecraft:diamond");
+
+        tracker.observe(
+                key,
+                authority(List.of(gregTechBattery(400))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::mixedGregTechIdentity,
+                "seed");
+
+        int rechargeRecorded = tracker.observe(
+                key,
+                authority(List.of(new ItemStack("gtceu:lithium_battery", 1, 1))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::mixedGregTechIdentity,
+                "recharge");
+
+        int pickupRecorded = tracker.observe(
+                key,
+                authority(List.of(new ItemStack("gtceu:lithium_battery", 1, 1), new ItemStack("minecraft:diamond", 1, 64))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::mixedGregTechIdentity,
+                "menu_slot_changed");
+
+        assertEquals(0, rechargeRecorded);
+        assertEquals(1, pickupRecorded);
+        assertEquals(List.of(diamond), runtime.activityProjection().recents().visibleItems());
+    }
+
+    @Test
+    void gregTechFluidContainerContentsCountAsNewAcquisitions() {
+        PortableContainerClassifiers.register(stack -> "gtceu:steel_drum".equals(stack.itemId()));
+        CarriedAcquisitionActivityTracker tracker = new CarriedAcquisitionActivityTracker();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        String key = "player-1";
+        ItemIdentity waterDrum = ItemIdentity.exact("gtceu:steel_drum", "fluid=minecraft:water");
+        ItemIdentity lavaDrum = ItemIdentity.exact("gtceu:steel_drum", "fluid=minecraft:lava");
+
+        tracker.observe(
+                key,
+                authority(List.of(new ItemStack("gtceu:steel_drum", 1, 1))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "seed_empty");
+
+        int waterRecorded = tracker.observe(
+                key,
+                authority(List.of(gregTechFluidDrum("minecraft:water", 16000))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "menu_slot_changed");
+
+        int lavaRecorded = tracker.observe(
+                key,
+                authority(List.of(gregTechFluidDrum("minecraft:lava", 16000))),
+                runtime,
+                CarriedAcquisitionActivityTrackerTest::identity,
+                "menu_slot_changed");
+
+        assertEquals(1, waterRecorded);
+        assertEquals(1, lavaRecorded);
+        assertEquals(List.of(lavaDrum, waterDrum), runtime.activityProjection().recents().visibleItems());
+    }
+
+    @Test
     void unchangedObserveClearsPendingSuppressionBeforeLaterVanillaPickup() {
         CarriedAcquisitionActivityTracker tracker = new CarriedAcquisitionActivityTracker();
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
@@ -247,6 +339,17 @@ class CarriedAcquisitionActivityTrackerTest {
 
     private static ItemIdentity identity(InventoryEntrySnapshot entry) {
         return entry == null || !entry.present() ? null : ItemIdentityMatcher.create(entry.stack());
+    }
+
+    private static ItemIdentity mixedGregTechIdentity(InventoryEntrySnapshot entry) {
+        if (entry == null || !entry.present()) {
+            return null;
+        }
+        ItemStack stack = entry.stack();
+        if ("gtceu:lithium_battery".equals(stack.itemId()) && !stack.componentFingerprint().isBlank()) {
+            return ItemIdentity.exact(stack.itemId(), stack.componentFingerprint());
+        }
+        return ItemIdentity.of(stack.itemId());
     }
 
     private static InventoryAuthoritySnapshot authority(Map<String, Integer> countsByItemId) {
@@ -340,6 +443,22 @@ class CarriedAcquisitionActivityTrackerTest {
                 "tfclunchbox:electric_lunchbox",
                 "{Energy:%d,LunchboxUUID:\"%s\",Items:[{Slot:0b,id:\"%s\",Count:1b}],ForgeCaps:{}}"
                         .formatted(energy, uuid, firstItemId),
+                1,
+                1);
+    }
+
+    private static ItemStack gregTechBattery(int charge) {
+        return new ItemStack(
+                "gtceu:lithium_battery",
+                "{Charge:%dL,MaxCharge:10000L}".formatted(charge),
+                1,
+                1);
+    }
+
+    private static ItemStack gregTechFluidDrum(String fluidId, int amount) {
+        return new ItemStack(
+                "gtceu:steel_drum",
+                "{Fluid:{FluidName:\"%s\",Amount:%d}}".formatted(fluidId, amount),
                 1,
                 1);
     }

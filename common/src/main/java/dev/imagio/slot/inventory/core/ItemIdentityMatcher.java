@@ -31,16 +31,16 @@ public final class ItemIdentityMatcher {
 
     private static ItemIdentity createUncached(ItemStack stack) {
         String itemId = resolveItemId(stack);
-        if (usesItemOnlyMovableIdentityWithoutFingerprint(stack)) {
-            return ItemIdentity.of(itemId);
-        }
         String components = resolveComponentFingerprint(stack);
-        if (hasToolStateFingerprint(components) || hasMovableConditionOnlyFingerprint(components)) {
-            return ItemIdentity.of(itemId);
-        }
         String selectorFingerprint = stableSelectorFingerprint(itemId, components);
         if (!selectorFingerprint.isBlank()) {
             return ItemIdentity.exact(itemId, selectorFingerprint);
+        }
+        if (usesItemOnlyMovableIdentityWithoutFingerprint(stack)) {
+            return ItemIdentity.of(itemId);
+        }
+        if (hasToolStateFingerprint(components) || hasMovableConditionOnlyFingerprint(components)) {
+            return ItemIdentity.of(itemId);
         }
         if (!stackable(stack) || !components.isBlank()) {
             return ItemIdentity.exact(itemId, components);
@@ -224,9 +224,10 @@ public final class ItemIdentityMatcher {
             return false;
         }
         String components = resolveComponentFingerprint(stack);
-        return usesItemOnlyMovableIdentityWithoutFingerprint(stack)
+        return stableSelectorFingerprint(resolveItemId(stack), components).isBlank()
+                && (usesItemOnlyMovableIdentityWithoutFingerprint(stack)
                 || hasToolStateFingerprint(components)
-                || hasMovableConditionOnlyFingerprint(components);
+                || hasMovableConditionOnlyFingerprint(components));
     }
 
     private static boolean usesItemOnlyMovableIdentityWithoutFingerprint(ItemStack stack) {
@@ -267,7 +268,86 @@ public final class ItemIdentityMatcher {
         if (!patchouliBook.isBlank()) {
             return "patchouli:book=" + patchouliBook;
         }
+        String fluid = fluidSelectorFingerprint(normalized, false);
+        if (!fluid.isBlank()) {
+            return fluid;
+        }
         return "";
+    }
+
+    private static String fluidSelectorFingerprint(String value, boolean fluidContext) {
+        if (value == null || value.isBlank()) {
+            return "";
+        }
+        for (String segment : topLevelFingerprintSegments(value)) {
+            String fluidName = cleanFluidSelectorValue(selectorValue(segment, "fluidname"));
+            if (!fluidName.isBlank()) {
+                return "fluid=" + fluidName;
+            }
+            if (fluidContext) {
+                String id = cleanFluidSelectorValue(selectorValue(segment, "id"));
+                if (!id.isBlank()) {
+                    return "fluid=" + id;
+                }
+                String name = cleanFluidSelectorValue(selectorValue(segment, "name"));
+                if (!name.isBlank()) {
+                    return "fluid=" + name;
+                }
+            }
+
+            String key = leadingFingerprintKey(segment);
+            String nested = fingerprintSegmentValue(segment);
+            boolean nestedFluidContext = fluidContext || isFluidSelectorKey(key);
+            if (nestedFluidContext) {
+                String direct = cleanFluidSelectorValue(selectorValue(segment, key));
+                if (!direct.isBlank()) {
+                    return "fluid=" + direct;
+                }
+            }
+
+            nested = stripOuter(nested, '{', '}');
+            nested = stripOuter(nested, '[', ']');
+            if (!nested.isBlank()) {
+                String nestedFluid = fluidSelectorFingerprint(nested, nestedFluidContext);
+                if (!nestedFluid.isBlank()) {
+                    return nestedFluid;
+                }
+            }
+            for (String nestedBody : nestedFingerprintBodies(nested.isBlank() ? segment : nested)) {
+                String nestedFluid = fluidSelectorFingerprint(nestedBody, nestedFluidContext);
+                if (!nestedFluid.isBlank()) {
+                    return nestedFluid;
+                }
+            }
+        }
+        return "";
+    }
+
+    private static boolean isFluidSelectorKey(String key) {
+        return key.equals("fluid")
+                || key.equals("tfc:fluid")
+                || key.equals("minecraft:fluid")
+                || key.equals("fluidstack")
+                || key.equals("fluid_stack")
+                || key.equals("containedfluid")
+                || key.equals("contained_fluid")
+                || key.equals("stored")
+                || key.equals("tank");
+    }
+
+    private static String cleanFluidSelectorValue(String value) {
+        String resolved = value == null ? "" : value.strip();
+        resolved = stripOuter(resolved, '{', '}');
+        resolved = stripOuter(resolved, '[', ']');
+        if (resolved.isBlank()
+                || resolved.indexOf(',') >= 0
+                || resolved.indexOf('{') >= 0
+                || resolved.indexOf('}') >= 0
+                || resolved.indexOf('[') >= 0
+                || resolved.indexOf(']') >= 0) {
+            return "";
+        }
+        return resolved;
     }
 
     private static String topLevelSelectorValue(String normalized, String selectorKey) {
@@ -398,6 +478,14 @@ public final class ItemIdentityMatcher {
                 || key.equals("energy")
                 || key.equals("forge_energy")
                 || key.equals("minecraft:energy")
+                || key.equals("charge")
+                || key.equals("gtceu:charge")
+                || key.equals("maxcharge")
+                || key.equals("max_charge")
+                || key.equals("gtceu:max_charge")
+                || key.equals("infinite")
+                || key.equals("dischargemode")
+                || key.equals("discharge_mode")
                 || key.equals("lunchboxuuid")
                 || key.equals("lunchbox_uuid")
                 || key.equals("lunchboxtype")
@@ -510,12 +598,32 @@ public final class ItemIdentityMatcher {
                 hasMovableKey = true;
                 continue;
             }
-            if (!conditionOnlySegments(nested)) {
+            if (!conditionOnlySegments(nested) && !conditionOnlyNestedBodies(nested)) {
                 return false;
             }
             hasMovableKey = true;
         }
         return hasMovableKey;
+    }
+
+    private static boolean conditionOnlyNestedBodies(String value) {
+        List<String> bodies = nestedFingerprintBodies(value);
+        if (bodies.isEmpty()) {
+            return false;
+        }
+        boolean sawBody = false;
+        for (String body : bodies) {
+            String nested = stripOuter(body, '{', '}');
+            nested = stripOuter(nested, '[', ']');
+            if (nested.isBlank()) {
+                continue;
+            }
+            sawBody = true;
+            if (!conditionOnlySegments(nested)) {
+                return false;
+            }
+        }
+        return sawBody;
     }
 
     private static boolean isConditionWrapperKey(String key) {

@@ -1510,12 +1510,16 @@ final class ForgeWorkspaceSession {
         if (!("took_one".equals(status)
                 || "took_stack".equals(status)
                 || "took_partial".equals(status)
+                || "took_items".equals(status)
                 || "took_all".equals(status)
                 || "took_all_partial".equals(status))) {
             return;
         }
-        ForgeCarriedActivityTracker.suppressNext(player);
-        ForgeCarriedActivityTracker.markDirty(player, "workspace_take");
+        if (outcome.activityEvents().isEmpty()) {
+            ForgeCarriedActivityTracker.markDirty(player, "workspace_take");
+        } else {
+            ForgeCarriedActivityTracker.suppressAcquired(player, outcome.activityEvents());
+        }
         reapplyActiveKitFromCarry(player, runtime);
     }
 

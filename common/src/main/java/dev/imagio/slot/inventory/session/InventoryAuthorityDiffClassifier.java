@@ -3,6 +3,7 @@ package dev.imagio.slot.inventory.session;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.CursorStateSnapshot;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
@@ -98,7 +99,7 @@ public final class InventoryAuthorityDiffClassifier {
                 }
                 ItemIdentity identity = identityResolver.apply(entry);
                 if (identity != null) {
-                    counts.merge(identity, Math.max(0, entry.count()), Integer::sum);
+                    ItemIdentityCollections.mergeCount(counts, identity, Math.max(0, entry.count()));
                 }
             }
         }
@@ -114,7 +115,7 @@ public final class InventoryAuthorityDiffClassifier {
         if (cursor != null && cursor.present()) {
             ItemIdentity identity = ItemIdentityMatcher.create(cursor.stack());
             if (identity != null) {
-                counts.merge(identity, Math.max(0, cursor.stack().getCount()), Integer::sum);
+                ItemIdentityCollections.mergeCount(counts, identity, Math.max(0, cursor.stack().getCount()));
             }
         }
         return Map.copyOf(counts);

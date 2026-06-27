@@ -157,6 +157,126 @@ class ItemIdentityTest {
     }
 
     @Test
+    void gregTechElectricChargeStateCreatesItemOnlyMovableIdentities() {
+        ItemIdentity lowCharge = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "gtceu:lithium_battery",
+                "{Charge:400L}",
+                1,
+                1));
+        ItemIdentity highCharge = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "gtceu:lithium_battery",
+                "{Charge:1200L,MaxCharge:10000L}",
+                1,
+                1));
+        ItemIdentity dischargeMode = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "gtceu:lithium_battery",
+                "{Charge:1200L,DischargeMode:1b}",
+                1,
+                1));
+        ItemIdentity infinite = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "gtceu:zero_point_module",
+                "{Infinite:1b}",
+                1,
+                1));
+
+        assertEquals(ItemIdentity.of("gtceu:lithium_battery"), lowCharge);
+        assertEquals(lowCharge, highCharge);
+        assertEquals(lowCharge, dischargeMode);
+        assertEquals(ItemIdentity.of("gtceu:zero_point_module"), infinite);
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact("gtceu:lithium_battery", "{Charge:200L}"),
+                ItemIdentity.exact("gtceu:lithium_battery", "{Charge:1800L,MaxCharge:10000L}")));
+    }
+
+    @Test
+    void gregTechElectricChargeInsideCustomDataWrapperNormalizesAsConditionOnly() {
+        assertEquals(
+                ItemIdentity.of("gtceu:lithium_battery"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "gtceu:lithium_battery",
+                        "{minecraft:custom_data=>CustomData[{Charge:400L,MaxCharge:10000L}]}",
+                        1,
+                        1)));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact(
+                        "gtceu:lithium_battery",
+                        "{minecraft:custom_data=>CustomData[{Charge:400L}]}"),
+                ItemIdentity.exact(
+                        "gtceu:lithium_battery",
+                        "{minecraft:custom_data=>CustomData[{Charge:1200L}]}")));
+    }
+
+    @Test
+    void gregTechFluidContainersPreserveFluidContentsBeforePortableContainerNormalization() {
+        PortableContainerClassifiers.register(stack -> "gtceu:steel_drum".equals(stack.itemId())
+                || "gtceu:basic_super_tank".equals(stack.itemId()));
+
+        ItemIdentity emptyDrum = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "gtceu:steel_drum",
+                1,
+                1));
+        ItemIdentity waterDrum = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "gtceu:steel_drum",
+                "{Fluid:{FluidName:\"minecraft:water\",Amount:16000}}",
+                1,
+                1));
+        ItemIdentity lessWaterDrum = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "gtceu:steel_drum",
+                "{Fluid:{FluidName:\"minecraft:water\",Amount:1000}}",
+                1,
+                1));
+        ItemIdentity lavaDrum = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "gtceu:steel_drum",
+                "{Fluid:{FluidName:\"minecraft:lava\",Amount:16000}}",
+                1,
+                1));
+        ItemIdentity oilTank = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "gtceu:basic_super_tank",
+                "{stored:{FluidName:\"gtceu:raw_oil\",Amount:2147483647},storedAmount:5000000000L}",
+                1,
+                1));
+
+        assertEquals(ItemIdentity.of("gtceu:steel_drum"), emptyDrum);
+        assertEquals(ItemIdentity.exact("gtceu:steel_drum", "fluid=minecraft:water"), waterDrum);
+        assertEquals(waterDrum, lessWaterDrum);
+        assertEquals(ItemIdentity.exact("gtceu:steel_drum", "fluid=minecraft:lava"), lavaDrum);
+        assertEquals(ItemIdentity.exact("gtceu:basic_super_tank", "fluid=gtceu:raw_oil"), oilTank);
+        assertFalse(ItemIdentityMatcher.matchesMovable(waterDrum, lavaDrum));
+        assertFalse(ItemIdentityMatcher.usesItemOnlyMovableIdentity(new net.minecraft.world.item.ItemStack(
+                "gtceu:steel_drum",
+                "{Fluid:{FluidName:\"minecraft:water\",Amount:16000}}",
+                1,
+                1)));
+    }
+
+    @Test
+    void gregTechFluidContainersInsideCustomDataWrapperPreserveFluidContents() {
+        PortableContainerClassifiers.register(stack -> "gtceu:basic_super_tank".equals(stack.itemId()));
+
+        assertEquals(
+                ItemIdentity.exact("gtceu:basic_super_tank", "fluid=minecraft:water"),
+                ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                        "gtceu:basic_super_tank",
+                        "{minecraft:custom_data=>CustomData[{Fluid:{FluidName:\"minecraft:water\",Amount:16000}}]}",
+                        1,
+                        1)));
+        assertTrue(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact(
+                        "gtceu:basic_super_tank",
+                        "{minecraft:custom_data=>CustomData[{Fluid:{FluidName:\"minecraft:water\",Amount:16000}}]}"),
+                ItemIdentity.exact(
+                        "gtceu:basic_super_tank",
+                        "{minecraft:custom_data=>CustomData[{Fluid:{FluidName:\"minecraft:water\",Amount:1000}}]}")));
+        assertFalse(ItemIdentityMatcher.matchesMovable(
+                ItemIdentity.exact(
+                        "gtceu:basic_super_tank",
+                        "{minecraft:custom_data=>CustomData[{Fluid:{FluidName:\"minecraft:water\",Amount:16000}}]}"),
+                ItemIdentity.exact(
+                        "gtceu:basic_super_tank",
+                        "{minecraft:custom_data=>CustomData[{Fluid:{FluidName:\"minecraft:lava\",Amount:16000}}]}")));
+    }
+
+    @Test
     void mixedToolConditionFingerprintsNormalizeAsMovableCondition() {
         assertTrue(ItemIdentityMatcher.matchesMovable(
                 ItemIdentity.exact(
@@ -299,8 +419,16 @@ class ItemIdentityTest {
         ItemIdentity configured = ItemIdentity.exact(
                 "mod:configurable_gadget",
                 "{Energy:1200,Mode:\"wide\"}");
+        ItemIdentity chargedMode = ItemIdentity.exact(
+                "mod:configurable_gadget",
+                "{Charge:1200,Mode:\"wide\"}");
+        ItemIdentity customDataMode = ItemIdentity.exact(
+                "mod:configurable_gadget",
+                "{minecraft:custom_data=>CustomData[{Charge:1200,Mode:\"wide\"}]}");
 
         assertEquals(configured, ItemIdentityMatcher.normalizeMovable(configured));
+        assertEquals(chargedMode, ItemIdentityMatcher.normalizeMovable(chargedMode));
+        assertEquals(customDataMode, ItemIdentityMatcher.normalizeMovable(customDataMode));
     }
 
     @Test

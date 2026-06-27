@@ -2072,8 +2072,11 @@ final class SlotWorkspaceUiSession {
                 ? WorkspaceCommandOutcome.rejected("take_command_failed")
                 : outcome;
         if (isCarryAcquisition(resolved)) {
-            NeoForgeCarriedActivityTracker.suppressNext(serverPlayer);
-            NeoForgeCarriedActivityTracker.markDirty(serverPlayer, "workspace_take");
+            if (resolved.activityEvents().isEmpty()) {
+                NeoForgeCarriedActivityTracker.markDirty(serverPlayer, "workspace_take");
+            } else {
+                NeoForgeCarriedActivityTracker.suppressAcquired(serverPlayer, resolved.activityEvents());
+            }
             reapplyActiveKitFromCarry(serverPlayer);
         }
         applyOutcome(serverPlayer, resolved);
@@ -2101,7 +2104,7 @@ final class SlotWorkspaceUiSession {
             return false;
         }
         return switch (outcome.status()) {
-            case "took_one", "took_stack", "took_partial", "took_all", "took_all_partial" -> true;
+            case "took_one", "took_stack", "took_partial", "took_items", "took_all", "took_all_partial" -> true;
             default -> false;
         };
     }
