@@ -29,10 +29,14 @@ In no particular order
 3. Automatically categorizes all carried items in a list, customizable cateogories, and helpful indicator borders/corners/counts to see at a glance what you have or don't have and how much
 4. Can show items in the list as "ghosts" if you're not carrying them but have them stored somewhere, along with guidance to where they're stored
 5. Remembers where you put items even if removed so they later get put back in the same place
-6. EMI integration -- add recipes to the sidebar, slot counts the total amounts needed and helps you find them in chests
+6. EMI integration
+   1. Add recipes to the sidebar
+   2. Slot counts the total amounts needed and helps you find them in chests. 
+   3. Counts against ALL stored and carried inventory to figure out how many you need to craft or collect
+   4. Press r or u while hovering an item to bring up EMI for it, great for adding more recipes for sub-ingredients to your crafting plan
 7. Sophisticated backpacks integration - automatically puts picked up items in backpack before main inventory for convenience
 8. Chest finder -- when you need an item a hud arrow points to where the chest is and the chest is outlined in world
-9. Auto-take -- when you need items press one button to fetch any of the items from nearby chests. No long distance teleportation, just removes the need to spend time manually picking through chests.
+9.  Auto-take -- when you need items press one button to fetch any of the items from nearby chests. No long distance teleportation, just removes the need to spend time manually picking through chests.
 10. Auto-deposit -- press one button to deposit everything you're carrying into nearby chests but _only if it already lives there_ as a remembered home.
 11. Desired vs Wanted counts -- set a count of an item to always keep on hand, or a temporary count to show the chest finder for the item until you go pick it up
 12. Shortcuts
