@@ -2,18 +2,58 @@
 
 SLOT means `Significantly Less Organizational Tedium`.
 
-SLOT is an experimental Minecraft inventory overhaul for modded survival play.
-The goal is to reduce inventory-management friction so players can focus on the
-game instead of on shuffling stacks between isolated grids.
+An experimental minecraft inventory overhaul. It reduces tedious tasks without cheating. 
+The goal is to let the player spend more time playing the game and less time shuffling things
+around in various inventories, especially in big complex modpacks.
 
-SLOT is not remote storage, infinite inventory, a logistics network, or
-autocrafting. The design target is a better way to browse, understand, and act
-on the inventories the player is already carrying or has actually opened.
+Current targets: 1.20.1 forge. Also contains code for 1.21.1 neoforge but that has not been tested recently since I've been playing TerraFirmaGreg on 1.20.1.
 
-Current targets: modern Minecraft `1.21.1`, Java `21`, NeoForge + LDLib2;
-legacy Minecraft `1.20.1`, Java `17`, Forge `47.x` in progress via the
-cross-loader plan. Optional integrations where available — especially EMI,
-Tom's Storage, and Sophisticated Backpacks.
+# Disclaimer
+
+I made this for my own personal use/enjoyment. It is rough. It is unfinished. I designed and architected everything, codex wrote the code, so if you don't want to read it or dislike AI you don't have to use this. Likely unsuitable for anything but personal or tiny servers. Use at your own risk.
+
+
+That being said, I am daily driving this on my own TerraFirmaGreg server and it works great for me.
+
+# Screenshot
+
+![screenshot](https://github.com/evelant/slot/blob/main/image.png?raw=true)
+
+
+# Features
+
+In no particular order
+
+1. Track inventory in all your chests, search them, see how many you have
+2. Show all of your carried inventories (incl sophisticated backpacks) and treat them as one seamless container
+3. Automatically categorizes all carried items in a list, customizable cateogories, and helpful indicator borders/corners/counts to see at a glance what you have or don't have and how much
+4. Can show items in the list as "ghosts" if you're not carrying them but have them stored somewhere, along with guidance to where they're stored
+5. Remembers where you put items even if removed so they later get put back in the same place
+6. EMI integration -- add recipes to the sidebar, slot counts the total amounts needed and helps you find them in chests
+7. Sophisticated backpacks integration - automatically puts picked up items in backpack before main inventory for convenience
+8. Chest finder -- when you need an item a hud arrow points to where the chest is and the chest is outlined in world
+9. Auto-take -- when you need items press one button to fetch any of the items from nearby chests. No long distance teleportation, just removes the need to spend time manually picking through chests.
+10. Auto-deposit -- press one button to deposit everything you're carrying into nearby chests but _only if it already lives there_ as a remembered home.
+11. Desired vs Wanted counts -- set a count of an item to always keep on hand, or a temporary count to show the chest finder for the item until you go pick it up
+12. Shortcuts
+    1.  Shift+rightclick to take/put a stack in a nearby storage (if item lives there)
+    2.  Shift+scroll to take/put one at a time nearby storage
+    3.  Leftclick - pickup to cursor, drop on a different section of the list to move it there
+    4.  ` (grave/tilde) - move hovered item from backpack to main inventory
+    5.  tab - move hovered item to hotbar, evicting least recently used item back to inventory
+    6.  ctrl+scroll - set desired (always carry) count on hovered item
+    7.  alt+scroll - set wanted count on hovered item (show as ghost in inventory with guidance to chest until you pick up that amount)
+13. Workflows and loadouts (rough/wip) -- define different sets of items so you can easily swap between different tasks that require different tools and equipment
+14. Other stuff I probably forgot, it does a lot!
+
+# Compiling and using
+
+1. Have JDK installed
+2. Clone repo
+3. `./gradlew build` in slot directory
+4. Grab the jar you need, either forge-1.20/build/libs/slot-forge-1.20.1....jar or neoforge/build/libs/....jar for 1.21
+
+# Likely outdated LLM docs and design brainstorms below
 
 ## Start Here
 
