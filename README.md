@@ -44,7 +44,12 @@ In no particular order
     6.  ctrl+scroll - set desired (always carry) count on hovered item
     7.  alt+scroll - set wanted count on hovered item (show as ghost in inventory with guidance to chest until you pick up that amount)
 13. Workflows and loadouts (rough/wip) -- define different sets of items so you can easily swap between different tasks that require different tools and equipment
-14. Other stuff I probably forgot, it does a lot!
+14. Recents list -- shows the last 24 item types you picked up or put down
+15. Trash items -- instantly delete all of a particular item type you're carrying (good for junk)
+16. Mark as junk -- If inventory is above 75% full, items marked as junk will be voided when picked up
+17. Undo/Redo (buggy/rough) -- z to undo last action (incl trash), y to redo. Currently buggy, but at least works to undo accidental trashing.
+18. Mod settings page for configuring some UI offsets so that it doesn't get in the way of other mods (particularly EMI)
+19. Other stuff I probably forgot, it does a lot!
 
 # Compiling and using
 
