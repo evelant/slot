@@ -821,7 +821,12 @@ public final class ForgeWorkspaceSurface {
             return;
         }
         storageGhostRevealMode = mode;
+        actionChannel.send(WorkspaceActionId.SET_REMOTE_STORAGE_DETAIL, remoteStorageDetailIntent(mode));
         rebuildRequested = true;
+    }
+
+    private static String remoteStorageDetailIntent(StorageGhostRevealMode mode) {
+        return mode == StorageGhostRevealMode.TRACKED ? "TRACKED_XRAY" : "INTENT_ONLY";
     }
 
     private void toggleStorageGhostRevealMode(StorageGhostRevealMode requestedMode) {

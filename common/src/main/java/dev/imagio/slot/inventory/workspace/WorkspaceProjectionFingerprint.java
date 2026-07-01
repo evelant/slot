@@ -33,18 +33,31 @@ final class WorkspaceProjectionFingerprint {
         return out.toString();
     }
 
+    static WorkspaceViewSliceKeys sliceKeys(SlotWorkspaceViewModel viewModel) {
+        SlotWorkspaceViewModel resolved = viewModel == null ? SlotWorkspaceViewModel.empty() : viewModel;
+        return new WorkspaceViewSliceKeys(
+                sliceKey("frame", out -> appendFrame(out, resolved)),
+                sliceKey("wall", out -> appendWall(out, resolved)),
+                sliceKey("storage", out -> appendStorage(out, resolved)),
+                sliceKey("hotbar", out -> appendHotbar(out, resolved)),
+                sliceKey("workflow", out -> appendWorkflowSlice(out, resolved)),
+                sliceKey("panels", out -> appendPanels(out, resolved)),
+                sliceKey("contextual", out -> appendContextual(out, resolved)));
+    }
+
     static String inputKey(WorkspaceProjectionRequest request, ItemIdentityMatcher.Memo memo) {
         WorkspaceProjectionRequest resolved = request == null
                 ? new WorkspaceProjectionRequest(
                         null, null, "ready", "", 0, -1, 0,
                         null, null, null, null, null, null, "",
-                        0L, null, null, null, null, null, null, null, null, null)
+                        null, 0L, null, null, null, null, null, null, null, null, null)
                 : request;
         return ItemIdentityMatcher.withMemo(memo, () -> {
             HashSink out = new HashSink();
             appendAuthority(out, resolved.authority());
             appendWorkflow(out, resolved.workflow());
             out.appendText(resolved.searchQuery());
+            out.appendObject(resolved.remoteStorageDetailIntent());
             out.appendLong(resolved.currentTick() / 20L);
             out.appendObject(resolved.activeChestPanel());
             out.appendObject(resolved.lootChestSource());
@@ -145,10 +158,34 @@ final class WorkspaceProjectionFingerprint {
 
     private static void appendViewModel(HashSink out, SlotWorkspaceViewModel viewModel) {
         out.appendText("viewModel");
+        appendFrame(out, viewModel);
+        appendWall(out, viewModel);
+        appendStorage(out, viewModel);
+        appendHotbar(out, viewModel);
+        appendWorkflowSlice(out, viewModel);
+        appendPanels(out, viewModel);
+        appendContextual(out, viewModel);
+    }
+
+    private static String sliceKey(String label, HashAppender appender) {
+        HashSink out = new HashSink();
+        out.appendText(label);
+        if (appender != null) {
+            appender.append(out);
+        }
+        return out.toString();
+    }
+
+    private static void appendFrame(HashSink out, SlotWorkspaceViewModel viewModel) {
+        out.appendText("frame");
         out.appendText(viewModel.status());
         out.appendText(viewModel.diagnostics());
         out.appendInt(viewModel.pendingCount());
         out.appendInt(viewModel.selectedQuickAccessSlot());
+    }
+
+    private static void appendWall(HashSink out, SlotWorkspaceViewModel viewModel) {
+        out.appendText("wall");
         out.appendInt(viewModel.canvasWidth());
         out.appendInt(viewModel.canvasHeight());
         out.appendInt(viewModel.carriedFreeSlotCount());
@@ -156,18 +193,43 @@ final class WorkspaceProjectionFingerprint {
         out.appendObject(viewModel.islands());
         out.appendObject(viewModel.atlasItems());
         out.appendObject(viewModel.triageItems());
+    }
+
+    private static void appendStorage(HashSink out, SlotWorkspaceViewModel viewModel) {
+        out.appendText("storage");
         out.appendObject(viewModel.chestChips());
         out.appendObject(viewModel.chestClusters());
-        out.appendObject(viewModel.hotbarSlots());
-        out.appendObject(viewModel.offhand());
-        out.appendObject(viewModel.kits());
-        out.appendObject(viewModel.lootChestPanel());
         out.appendObject(viewModel.wayfindingTargets());
         out.appendObject(viewModel.depositableIdentities());
+    }
+
+    private static void appendHotbar(HashSink out, SlotWorkspaceViewModel viewModel) {
+        out.appendText("hotbar");
+        out.appendObject(viewModel.hotbarSlots());
+        out.appendObject(viewModel.offhand());
         out.appendObject(viewModel.recentIdentities());
-        out.appendObject(viewModel.activeChestPanel());
+    }
+
+    private static void appendWorkflowSlice(HashSink out, SlotWorkspaceViewModel viewModel) {
+        out.appendText("workflow");
+        out.appendObject(viewModel.kits());
         out.appendObject(viewModel.craftRun());
+    }
+
+    private static void appendPanels(HashSink out, SlotWorkspaceViewModel viewModel) {
+        out.appendText("panels");
+        out.appendObject(viewModel.lootChestPanel());
+        out.appendObject(viewModel.activeChestPanel());
+    }
+
+    private static void appendContextual(HashSink out, SlotWorkspaceViewModel viewModel) {
+        out.appendText("contextual");
         out.appendObject(viewModel.contextualSuggestionLanes());
+    }
+
+    @FunctionalInterface
+    private interface HashAppender {
+        void append(HashSink out);
     }
 
     private static final class HashSink {

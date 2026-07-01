@@ -23,7 +23,9 @@ import dev.imagio.slot.ui.action.WorkspaceActionSessionValidator;
 import dev.imagio.slot.ui.action.WorkspaceActionValidation;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionTiming;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraftforge.network.NetworkDirection;
@@ -37,6 +39,7 @@ import java.util.function.Supplier;
 
 public final class SlotForgeNetworking {
     private static final String PROTOCOL_VERSION = "5";
+    private static final long SLOW_REFRESH_NANOS = 75_000_000L;
     private static SimpleChannel channel;
 
     private SlotForgeNetworking() {
@@ -590,10 +593,23 @@ public final class SlotForgeNetworking {
                     session.context().sessionId(),
                     session.context().menuContainerId(),
                     viewModel.revision());
+            Forge120WorkspaceViewModelCodec.EncodedSliceCache sliceCache = session.encodedSliceCache();
+            long encodeStart = System.nanoTime();
+            CompoundTag encodedView = Forge120WorkspaceViewModelCodec.encode(viewModel, sliceCache);
+            long encodeNanos = System.nanoTime() - encodeStart;
+            Forge120WorkspaceViewModelCodec.SliceStats sliceStats = sliceCache.lastStats();
+            int payloadBytes = encodedView.sizeInBytes();
             ForgeWorkspaceViewModelMessage message = new ForgeWorkspaceViewModelMessage(
                     viewEnvelope,
-                    viewModel);
+                    viewModel,
+                    encodedView);
+            long sendStart = System.nanoTime();
             channel.send(PacketDistributor.PLAYER.with(() -> player), message);
+            long sendNanos = System.nanoTime() - sendStart;
+            ForgeWorkspaceSession.RefreshTiming timing = session.lastRefreshTiming();
+            if (logViewSend || slowRefresh(timing, encodeNanos, sendNanos)) {
+                logRefreshTiming(player, viewEnvelope, viewModel, timing, encodeNanos, sendNanos, payloadBytes, sliceStats);
+            }
             if (logViewSend) {
                 SlotCommon.LOGGER.info(
                         "Sent Forge workspace view: player={} session={} menu={} revision={} items={} sections={}",
@@ -607,6 +623,90 @@ public final class SlotForgeNetworking {
         } catch (RuntimeException exception) {
             SlotCommon.LOGGER.warn("Failed to send Forge workspace view model", exception);
         }
+    }
+
+    private static boolean slowRefresh(
+            ForgeWorkspaceSession.RefreshTiming timing,
+            long encodeNanos,
+            long sendNanos
+    ) {
+        long refreshNanos = timing == null ? 0L : timing.totalNanos();
+        return refreshNanos + Math.max(0L, encodeNanos) + Math.max(0L, sendNanos) >= SLOW_REFRESH_NANOS;
+    }
+
+    private static void logRefreshTiming(
+            ServerPlayer player,
+            WorkspaceActionEnvelope envelope,
+            SlotWorkspaceViewModel viewModel,
+            ForgeWorkspaceSession.RefreshTiming timing,
+            long encodeNanos,
+            long sendNanos,
+            int payloadBytes,
+            Forge120WorkspaceViewModelCodec.SliceStats sliceStats
+    ) {
+        ForgeWorkspaceSession.RefreshTiming resolved =
+                timing == null ? ForgeWorkspaceSession.RefreshTiming.empty() : timing;
+        WorkspaceProjectionTiming projectionTiming = resolved.projectionTiming();
+        Forge120WorkspaceViewModelCodec.SliceStats resolvedSliceStats =
+                sliceStats == null ? Forge120WorkspaceViewModelCodec.SliceStats.empty() : sliceStats;
+        SlotCommon.LOGGER.info(
+                "[SLOT] Forge workspace refresh player={} session={} rev={} changed={} autoHome={} "
+                        + "ms[authority={},request={},storageIndex={},inputKey={},projectMiss={},contentKey={},encode={},send={},total={}] "
+                        + "counts[carriedEntries={},atlasItems={},triageItems={},storageEntries={},trackedDisplay={},wayfinding={},chestChips={},contentSummaries={},payloadBytes={}] "
+                        + "cache[hit={},hits={},misses={},memoCreate={}/{}/size={},memoNormalize={}/{}/size={},memoEvictions={}/{},slices={}/{}]",
+                playerName(player),
+                envelope.sessionId(),
+                envelope.viewRevision(),
+                resolved.contentChanged(),
+                resolved.autoHomeReprojected(),
+                ms(resolved.authorityReadNanos()),
+                ms(resolved.requestSetupNanos()),
+                ms(resolved.storageIndexNanos()),
+                ms(projectionTiming.inputKeyNanos()),
+                ms(projectionTiming.projectNanos()),
+                ms(projectionTiming.contentKeyNanos()),
+                ms(encodeNanos),
+                ms(sendNanos),
+                ms(resolved.totalNanos() + encodeNanos + sendNanos),
+                resolved.carriedEntryCount(),
+                viewModel.atlasItems().size(),
+                viewModel.triageItems().size(),
+                resolved.storageEntryCount(),
+                resolved.trackedDisplayEntryCount(),
+                viewModel.wayfindingTargets().size(),
+                viewModel.chestChips().size(),
+                contentSummaryCount(viewModel),
+                Math.max(0, payloadBytes),
+                resolved.structuralCacheHit(),
+                resolved.structuralHits(),
+                resolved.structuralMisses(),
+                resolved.memoCreateHits(),
+                resolved.memoCreateMisses(),
+                resolved.memoCreateCacheSize(),
+                resolved.memoNormalizeHits(),
+                resolved.memoNormalizeMisses(),
+                resolved.memoNormalizeCacheSize(),
+                resolved.memoCreateEvictions(),
+                resolved.memoNormalizeEvictions(),
+                resolvedSliceStats.encodedSlices(),
+                resolvedSliceStats.reusedSlices());
+    }
+
+    private static double ms(long nanos) {
+        return WorkspaceProjectionTiming.millis(nanos);
+    }
+
+    private static int contentSummaryCount(SlotWorkspaceViewModel viewModel) {
+        if (viewModel == null || viewModel.chestChips().isEmpty()) {
+            return 0;
+        }
+        int count = 0;
+        for (SlotWorkspaceViewModel.ChestChip chip : viewModel.chestChips()) {
+            if (chip != null) {
+                count += chip.contents().size();
+            }
+        }
+        return count;
     }
 
     private static String playerName(ServerPlayer player) {

@@ -34,6 +34,7 @@ public record WorkspaceProjectionRequest(
         Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> carriedContainerInfoResolver,
         SlotWorkspaceViewModel.LootChestSource lootChestSource,
         String searchQuery,
+        RemoteStorageDetailIntent remoteStorageDetailIntent,
         long currentTick,
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel,
         List<WorldDisplayStorageSource> worldDisplaySources,
@@ -67,6 +68,7 @@ public record WorkspaceProjectionRequest(
                 : List.copyOf(trackedDisplayStorageEntries);
         depositEligibleStorageIds = depositEligibleStorageIds == null ? Set.of() : Set.copyOf(depositEligibleStorageIds);
         storageIndex = storageIndex == null ? WorkspaceStorageIndex.empty() : storageIndex;
+        remoteStorageDetailIntent = RemoteStorageDetailIntent.effective(remoteStorageDetailIntent, searchQuery);
     }
 
     WorkspaceProjectionFrame frame() {
@@ -90,6 +92,7 @@ public record WorkspaceProjectionRequest(
                 carriedContainerInfoResolver,
                 lootChestSource,
                 searchQuery,
+                remoteStorageDetailIntent,
                 currentTick,
                 activeChestPanel,
                 worldDisplaySources,

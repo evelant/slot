@@ -4,6 +4,7 @@ import dev.imagio.slot.platform.SlotStackAccess;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -117,6 +118,8 @@ public final class ItemIdentityMatcher {
         private long createMisses;
         private long normalizeHits;
         private long normalizeMisses;
+        private long createEvictions;
+        private long normalizeEvictions;
 
         private ItemIdentity create(ItemStack stack, Supplier<ItemIdentity> factory) {
             CreateKey key = CreateKey.from(stack);
@@ -127,7 +130,7 @@ public final class ItemIdentityMatcher {
             }
             createMisses++;
             ItemIdentity created = factory.get();
-            putBounded(createCache, key, created);
+            createEvictions += putBounded(createCache, key, created);
             return created;
         }
 
@@ -139,22 +142,37 @@ public final class ItemIdentityMatcher {
             }
             normalizeMisses++;
             ItemIdentity normalized = factory.get();
-            putBounded(normalizeCache, identity, normalized);
+            normalizeEvictions += putBounded(normalizeCache, identity, normalized);
             return normalized;
         }
 
         public MemoStats stats() {
-            return new MemoStats(createHits, createMisses, normalizeHits, normalizeMisses);
+            return new MemoStats(
+                    createHits,
+                    createMisses,
+                    normalizeHits,
+                    normalizeMisses,
+                    createCache.size(),
+                    normalizeCache.size(),
+                    createEvictions,
+                    normalizeEvictions);
         }
 
-        private static <K> void putBounded(Map<K, ItemIdentity> cache, K key, ItemIdentity value) {
+        private static <K> int putBounded(Map<K, ItemIdentity> cache, K key, ItemIdentity value) {
             if (cache == null || key == null || value == null) {
-                return;
+                return 0;
             }
+            int evictions = 0;
             if (cache.size() >= MAX_ENTRIES) {
-                cache.clear();
+                Iterator<K> iterator = cache.keySet().iterator();
+                if (iterator.hasNext()) {
+                    iterator.next();
+                    iterator.remove();
+                    evictions++;
+                }
             }
             cache.put(key, value);
+            return evictions;
         }
     }
 
@@ -162,8 +180,15 @@ public final class ItemIdentityMatcher {
             long createHits,
             long createMisses,
             long normalizeHits,
-            long normalizeMisses
+            long normalizeMisses,
+            int createCacheSize,
+            int normalizeCacheSize,
+            long createEvictions,
+            long normalizeEvictions
     ) {
+        public static MemoStats empty() {
+            return new MemoStats(0L, 0L, 0L, 0L, 0, 0, 0L, 0L);
+        }
     }
 
     private record CreateKey(

@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+import dev.imagio.slot.inventory.workspace.WorkspaceViewSliceKeys;
 import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
@@ -44,19 +45,131 @@ public final class SlotWorkspaceViewModelCodec {
             HolderLookup.Provider provider,
             boolean includeRevision
     ) {
+        return encode(viewModel, provider, includeRevision, null);
+    }
+
+    public static CompoundTag encode(
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider,
+            EncodedSliceCache cache
+    ) {
+        return encode(viewModel, provider, true, cache);
+    }
+
+    public static CompoundTag encode(
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider,
+            boolean includeRevision,
+            EncodedSliceCache cache
+    ) {
+        SlotWorkspaceViewModel resolved = viewModel == null ? SlotWorkspaceViewModel.empty() : viewModel;
+        if (cache == null) {
+            return encodeFresh(resolved, provider, includeRevision);
+        }
+        WorkspaceViewSliceKeys keys = WorkspaceViewSliceKeys.from(resolved);
+        CompoundTag tag = new CompoundTag();
+        if (includeRevision) {
+            tag.putLong("revision", resolved.revision());
+        }
+        CompoundTag previousTag = cache.lastTag;
+        WorkspaceViewSliceKeys previousKeys = cache.lastKeys;
+        if (previousTag == null || previousKeys == null) {
+            writeAllSlices(tag, resolved, provider);
+            cache.store(keys, tag, new SliceStats(7, 0));
+            return tag;
+        }
+        int encoded = 0;
+        int reused = 0;
+        if (copyOrWrite(tag, previousTag, previousKeys.frame(), keys.frame(), () -> writeFrame(tag, resolved),
+                "status", "diagnostics", "pendingCount", "selectedQuickAccessSlot")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.wall(), keys.wall(), () -> writeWall(tag, resolved, provider),
+                "canvasWidth", "canvasHeight", "carriedFreeSlotCount", "carriedSlotCapacity",
+                "islands", "atlasItems", "triageItems")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.storage(), keys.storage(), () -> writeStorage(tag, resolved, provider),
+                "chestChips", "chestClusters", "wayfindingTargets", "depositableIdentities")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.hotbar(), keys.hotbar(), () -> writeHotbar(tag, resolved, provider),
+                "recentIdentities", "hotbarSlots", "offhand")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.workflow(), keys.workflow(), () -> writeWorkflow(tag, resolved, provider),
+                "kits", "craftRun")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.panels(), keys.panels(), () -> writePanels(tag, resolved, provider),
+                "lootChestPanel", "activeChestPanel")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.contextual(), keys.contextual(), () -> writeContextual(tag, resolved, provider),
+                "contextualSuggestionLanes")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        cache.store(keys, tag, new SliceStats(encoded, reused));
+        return tag;
+    }
+
+    private static CompoundTag encodeFresh(
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider,
+            boolean includeRevision
+    ) {
         CompoundTag tag = new CompoundTag();
         if (includeRevision) {
             tag.putLong("revision", viewModel.revision());
         }
+        writeAllSlices(tag, viewModel, provider);
+        return tag;
+    }
+
+    private static void writeAllSlices(
+            CompoundTag tag,
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider
+    ) {
+        writeFrame(tag, viewModel);
+        writeWall(tag, viewModel, provider);
+        writeStorage(tag, viewModel, provider);
+        writeHotbar(tag, viewModel, provider);
+        writeWorkflow(tag, viewModel, provider);
+        writePanels(tag, viewModel, provider);
+        writeContextual(tag, viewModel, provider);
+    }
+
+    private static void writeFrame(CompoundTag tag, SlotWorkspaceViewModel viewModel) {
         tag.putString("status", viewModel.status());
         tag.putString("diagnostics", viewModel.diagnostics());
         tag.putInt("pendingCount", viewModel.pendingCount());
         tag.putInt("selectedQuickAccessSlot", viewModel.selectedQuickAccessSlot());
+    }
+
+    private static void writeWall(
+            CompoundTag tag,
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider
+    ) {
         tag.putInt("canvasWidth", viewModel.canvasWidth());
         tag.putInt("canvasHeight", viewModel.canvasHeight());
         tag.putInt("carriedFreeSlotCount", viewModel.carriedFreeSlotCount());
         tag.putInt("carriedSlotCapacity", viewModel.carriedSlotCapacity());
-
         ListTag islandTags = new ListTag();
         for (SlotWorkspaceViewModel.AtlasIsland island : viewModel.islands()) {
             islandTags.add(encodeIsland(island));
@@ -74,8 +187,13 @@ public final class SlotWorkspaceViewModelCodec {
             triageTags.add(encodeItem(triageItem, provider));
         }
         tag.put("triageItems", triageTags);
-        tag.put("contextualSuggestionLanes", encodeSuggestionLanes(viewModel.contextualSuggestionLanes(), provider));
+    }
 
+    private static void writeStorage(
+            CompoundTag tag,
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider
+    ) {
         ListTag chipTags = new ListTag();
         for (SlotWorkspaceViewModel.ChestChip chip : viewModel.chestChips()) {
             CompoundTag chipTag = encodeChestChip(chip);
@@ -90,21 +208,6 @@ public final class SlotWorkspaceViewModelCodec {
         }
         tag.put("chestClusters", clusterTags);
 
-        tag.put("lootChestPanel", encodeLootChestPanel(viewModel.lootChestPanel(), provider));
-
-        ListTag hotbarTags = new ListTag();
-        for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
-            hotbarTags.add(encodeHotbar(slot, provider));
-        }
-        tag.put("hotbarSlots", hotbarTags);
-        tag.put("offhand", encodeOffhand(viewModel.offhand(), provider));
-
-        ListTag kitTags = new ListTag();
-        for (SlotWorkspaceViewModel.KitCard card : viewModel.kits()) {
-            kitTags.add(encodeKitCard(card, provider));
-        }
-        tag.put("kits", kitTags);
-
         ListTag wayfindingTags = new ListTag();
         for (WayfindingTarget target : viewModel.wayfindingTargets()) {
             wayfindingTags.add(encodeWayfindingTarget(target));
@@ -116,16 +219,118 @@ public final class SlotWorkspaceViewModelCodec {
             depositableTags.add(encodeIdentity(ref));
         }
         tag.put("depositableIdentities", depositableTags);
+    }
 
+    private static void writeHotbar(
+            CompoundTag tag,
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider
+    ) {
         ListTag recentTags = new ListTag();
         for (SlotWorkspaceViewModel.IdentityRef ref : viewModel.recentIdentities()) {
             recentTags.add(encodeIdentity(ref));
         }
         tag.put("recentIdentities", recentTags);
 
-        tag.put("activeChestPanel", encodeActiveChestPanel(viewModel.activeChestPanel()));
+        ListTag hotbarTags = new ListTag();
+        for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
+            hotbarTags.add(encodeHotbar(slot, provider));
+        }
+        tag.put("hotbarSlots", hotbarTags);
+        tag.put("offhand", encodeOffhand(viewModel.offhand(), provider));
+    }
+
+    private static void writeWorkflow(
+            CompoundTag tag,
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider
+    ) {
+        ListTag kitTags = new ListTag();
+        for (SlotWorkspaceViewModel.KitCard card : viewModel.kits()) {
+            kitTags.add(encodeKitCard(card, provider));
+        }
+        tag.put("kits", kitTags);
         tag.put("craftRun", encodeCraftRunState(viewModel.craftRun()));
-        return tag;
+    }
+
+    private static void writePanels(
+            CompoundTag tag,
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider
+    ) {
+        tag.put("lootChestPanel", encodeLootChestPanel(viewModel.lootChestPanel(), provider));
+        tag.put("activeChestPanel", encodeActiveChestPanel(viewModel.activeChestPanel()));
+    }
+
+    private static void writeContextual(
+            CompoundTag tag,
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider
+    ) {
+        tag.put("contextualSuggestionLanes", encodeSuggestionLanes(viewModel.contextualSuggestionLanes(), provider));
+    }
+
+    private static boolean copyOrWrite(
+            CompoundTag target,
+            CompoundTag previous,
+            String previousKey,
+            String currentKey,
+            SliceWriter writer,
+            String... topLevelKeys
+    ) {
+        if (previousKey != null && previousKey.equals(currentKey) && copyKeys(previous, target, topLevelKeys)) {
+            return true;
+        }
+        writer.write();
+        return false;
+    }
+
+    private static boolean copyKeys(CompoundTag source, CompoundTag target, String... keys) {
+        if (source == null || target == null || keys == null) {
+            return false;
+        }
+        for (String key : keys) {
+            if (key == null || !source.contains(key) || source.get(key) == null) {
+                return false;
+            }
+        }
+        for (String key : keys) {
+            target.put(key, source.get(key).copy());
+        }
+        return true;
+    }
+
+    @FunctionalInterface
+    private interface SliceWriter {
+        void write();
+    }
+
+    public static final class EncodedSliceCache {
+        private CompoundTag lastTag;
+        private WorkspaceViewSliceKeys lastKeys;
+        private SliceStats lastStats = SliceStats.empty();
+
+        public SliceStats lastStats() {
+            return lastStats;
+        }
+
+        public void clear() {
+            lastTag = null;
+            lastKeys = null;
+            lastStats = SliceStats.empty();
+        }
+
+        private void store(WorkspaceViewSliceKeys keys, CompoundTag tag, SliceStats stats) {
+            lastKeys = keys;
+            lastTag = tag == null ? null : tag.copy();
+            lastStats = stats == null ? SliceStats.empty() : stats;
+        }
+    }
+
+    public record SliceStats(int encodedSlices, int reusedSlices) {
+        public static SliceStats empty() {
+            return new SliceStats(0, 0);
+        }
     }
 
     private static CompoundTag encodeActiveChestPanel(SlotWorkspaceViewModel.ActiveChestPanel panel) {

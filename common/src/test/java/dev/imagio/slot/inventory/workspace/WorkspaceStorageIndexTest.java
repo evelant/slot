@@ -77,6 +77,135 @@ class WorkspaceStorageIndexTest {
     }
 
     @Test
+    void sessionCacheReusesLiveSnapshotAndRecomputesDepositOverlayByCarriedSummary() {
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 27, List.of(content(0, stack("minecraft:redstone", 16))));
+        WorkspaceStorageIndexCache cache = new WorkspaceStorageIndexCache();
+
+        WorkspaceStorageIndex first = cache.buildForTesting(
+                null,
+                authority("minecraft:redstone", 1),
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(),
+                Map.of(),
+                0L,
+                0L);
+
+        assertTrue(first.liveDepositStorageIds().contains(CHEST_A.toString()));
+        assertEquals(1, world.enumerateCalls(CHEST_A));
+        assertEquals(1, world.insertCalls(CHEST_A));
+
+        WorkspaceStorageIndex second = cache.buildForTesting(
+                null,
+                authority("minecraft:redstone", 1),
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(),
+                Map.of(),
+                0L,
+                5L);
+
+        assertEquals(1, second.contents(CHEST_A.toString()).contents().size());
+        assertTrue(cache.diagnostics().indexHit());
+        assertTrue(cache.diagnostics().liveSnapshotHit());
+        assertTrue(cache.diagnostics().depositOverlayHit());
+        assertEquals(1, world.enumerateCalls(CHEST_A));
+        assertEquals(1, world.insertCalls(CHEST_A));
+
+        cache.buildForTesting(
+                null,
+                authority("minecraft:dirt", 1),
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(),
+                Map.of(),
+                0L,
+                5L);
+
+        assertFalse(cache.diagnostics().indexHit());
+        assertTrue(cache.diagnostics().liveSnapshotHit());
+        assertFalse(cache.diagnostics().depositOverlayHit());
+        assertEquals(1, world.enumerateCalls(CHEST_A));
+        assertEquals(2, world.insertCalls(CHEST_A));
+
+        cache.buildForTesting(
+                null,
+                authority("minecraft:dirt", 1),
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(),
+                Map.of(),
+                0L,
+                10L);
+
+        assertFalse(cache.diagnostics().liveSnapshotHit());
+        assertEquals(2, world.enumerateCalls(CHEST_A));
+    }
+
+    @Test
+    void sessionCacheInvalidatesRememberedLayerWhenMemoryRevisionChanges() {
+        RememberedStorageContents firstMemory = RememberedStorageContents.fromCounts(
+                StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                27,
+                Map.of(ItemIdentity.of("minecraft:dirt"), 99),
+                10L,
+                "test");
+        RememberedStorageContents secondMemory = RememberedStorageContents.fromCounts(
+                StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                27,
+                Map.of(ItemIdentity.of("minecraft:stone"), 4),
+                20L,
+                "test");
+        WorkspaceStorageIndexCache cache = new WorkspaceStorageIndexCache();
+
+        WorkspaceStorageIndex first = cache.buildForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(),
+                Map.of(CHEST_A.toString(), firstMemory),
+                1L,
+                0L);
+
+        assertEquals("minecraft:dirt", first.contents(CHEST_A.toString()).contents().get(0).itemId());
+
+        WorkspaceStorageIndex second = cache.buildForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(),
+                Map.of(CHEST_A.toString(), firstMemory),
+                1L,
+                0L);
+
+        assertTrue(cache.diagnostics().indexHit());
+        assertEquals("minecraft:dirt", second.contents(CHEST_A.toString()).contents().get(0).itemId());
+
+        WorkspaceStorageIndex third = cache.buildForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(),
+                Map.of(CHEST_A.toString(), secondMemory),
+                2L,
+                0L);
+
+        assertFalse(cache.diagnostics().rememberedHit());
+        assertEquals("minecraft:stone", third.contents(CHEST_A.toString()).contents().get(0).itemId());
+    }
+
+    @Test
     void smallLiveStationContentsDoNotAuthorizeStorageAffinity() {
         FakeWorldStorage world = new FakeWorldStorage()
                 .put(CHEST_A, 1, List.of(content(0, stack("tfc:hot_metal_part", 1))));
@@ -427,6 +556,7 @@ class WorkspaceStorageIndexTest {
         private final Map<UUID, List<SlotContent>> contents = new LinkedHashMap<>();
         private final Map<UUID, Integer> slots = new LinkedHashMap<>();
         private final Map<UUID, Integer> enumerateCalls = new LinkedHashMap<>();
+        private final Map<UUID, Integer> insertCalls = new LinkedHashMap<>();
         private final Set<UUID> readOnly = new LinkedHashSet<>();
 
         FakeWorldStorage put(UUID storageId, int slotCount, List<SlotContent> slotContents) {
@@ -446,11 +576,18 @@ class WorkspaceStorageIndexTest {
             return enumerateCalls.getOrDefault(storageId, 0);
         }
 
+        int insertCalls(UUID storageId) {
+            return insertCalls.getOrDefault(storageId, 0);
+        }
+
         @Override
         public ItemStack insert(MinecraftServer server, Target target, ItemStack stack, boolean simulate) {
             UUID storageId = storageId(target);
             if (stack == null || stack.isEmpty()) {
                 return ItemStack.EMPTY;
+            }
+            if (storageId != null) {
+                insertCalls.merge(storageId, 1, Integer::sum);
             }
             return storageId != null && !readOnly.contains(storageId) ? ItemStack.EMPTY : stack;
         }

@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+import dev.imagio.slot.inventory.workspace.WorkspaceViewSliceKeys;
 import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
@@ -35,15 +36,110 @@ public final class Forge120WorkspaceViewModelCodec {
     }
 
     public static CompoundTag encode(SlotWorkspaceViewModel viewModel, boolean includeRevision) {
+        return encode(viewModel, includeRevision, null);
+    }
+
+    public static CompoundTag encode(SlotWorkspaceViewModel viewModel, EncodedSliceCache cache) {
+        return encode(viewModel, true, cache);
+    }
+
+    public static CompoundTag encode(
+            SlotWorkspaceViewModel viewModel,
+            boolean includeRevision,
+            EncodedSliceCache cache
+    ) {
         SlotWorkspaceViewModel resolved = viewModel == null ? SlotWorkspaceViewModel.empty() : viewModel;
+        if (cache == null) {
+            return encodeFresh(resolved, includeRevision);
+        }
+        WorkspaceViewSliceKeys keys = WorkspaceViewSliceKeys.from(resolved);
         CompoundTag tag = new CompoundTag();
         if (includeRevision) {
             tag.putLong("revision", resolved.revision());
         }
+        CompoundTag previousTag = cache.lastTag;
+        WorkspaceViewSliceKeys previousKeys = cache.lastKeys;
+        if (previousTag == null || previousKeys == null) {
+            writeAllSlices(tag, resolved);
+            cache.store(keys, tag, new SliceStats(7, 0));
+            return tag;
+        }
+        int encoded = 0;
+        int reused = 0;
+        if (copyOrWrite(tag, previousTag, previousKeys.frame(), keys.frame(), () -> writeFrame(tag, resolved),
+                "status", "diagnostics", "pendingCount", "selectedQuickAccessSlot")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.wall(), keys.wall(), () -> writeWall(tag, resolved),
+                "canvasWidth", "canvasHeight", "carriedFreeSlotCount", "carriedSlotCapacity",
+                "islands", "atlasItems", "triageItems")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.storage(), keys.storage(), () -> writeStorage(tag, resolved),
+                "chestChips", "chestClusters", "wayfindingTargets", "depositableIdentities")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.hotbar(), keys.hotbar(), () -> writeHotbar(tag, resolved),
+                "recentIdentities", "hotbarSlots", "offhand")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.workflow(), keys.workflow(), () -> writeWorkflow(tag, resolved),
+                "kits", "craftRun")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.panels(), keys.panels(), () -> writePanels(tag, resolved),
+                "lootChestPanel", "activeChestPanel")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        if (copyOrWrite(tag, previousTag, previousKeys.contextual(), keys.contextual(), () -> writeContextual(tag, resolved),
+                "contextualSuggestionLanes")) {
+            reused++;
+        } else {
+            encoded++;
+        }
+        cache.store(keys, tag, new SliceStats(encoded, reused));
+        return tag;
+    }
+
+    private static CompoundTag encodeFresh(SlotWorkspaceViewModel resolved, boolean includeRevision) {
+        CompoundTag tag = new CompoundTag();
+        if (includeRevision) {
+            tag.putLong("revision", resolved.revision());
+        }
+        writeAllSlices(tag, resolved);
+        return tag;
+    }
+
+    private static void writeAllSlices(CompoundTag tag, SlotWorkspaceViewModel resolved) {
+        writeFrame(tag, resolved);
+        writeWall(tag, resolved);
+        writeStorage(tag, resolved);
+        writeHotbar(tag, resolved);
+        writeWorkflow(tag, resolved);
+        writePanels(tag, resolved);
+        writeContextual(tag, resolved);
+    }
+
+    private static void writeFrame(CompoundTag tag, SlotWorkspaceViewModel resolved) {
         tag.putString("status", resolved.status());
         tag.putString("diagnostics", resolved.diagnostics());
         tag.putInt("pendingCount", resolved.pendingCount());
         tag.putInt("selectedQuickAccessSlot", resolved.selectedQuickAccessSlot());
+    }
+
+    private static void writeWall(CompoundTag tag, SlotWorkspaceViewModel resolved) {
         tag.putInt("canvasWidth", resolved.canvasWidth());
         tag.putInt("canvasHeight", resolved.canvasHeight());
         tag.putInt("carriedFreeSlotCount", resolved.carriedFreeSlotCount());
@@ -66,8 +162,9 @@ public final class Forge120WorkspaceViewModelCodec {
             triageItems.add(encodeItem(item));
         }
         tag.put("triageItems", triageItems);
-        tag.put("contextualSuggestionLanes", encodeSuggestionLanes(resolved.contextualSuggestionLanes()));
+    }
 
+    private static void writeStorage(CompoundTag tag, SlotWorkspaceViewModel resolved) {
         ListTag chestChips = new ListTag();
         for (SlotWorkspaceViewModel.ChestChip chip : resolved.chestChips()) {
             CompoundTag chipTag = encodeChestChip(chip);
@@ -82,8 +179,20 @@ public final class Forge120WorkspaceViewModelCodec {
         }
         tag.put("chestClusters", chestClusters);
 
-        tag.put("lootChestPanel", encodeLootChestPanel(resolved.lootChestPanel()));
+        ListTag wayfindingTargets = new ListTag();
+        for (WayfindingTarget target : resolved.wayfindingTargets()) {
+            wayfindingTargets.add(encodeWayfindingTarget(target));
+        }
+        tag.put("wayfindingTargets", wayfindingTargets);
 
+        ListTag depositableIdentities = new ListTag();
+        for (SlotWorkspaceViewModel.IdentityRef identity : resolved.depositableIdentities()) {
+            depositableIdentities.add(encodeIdentity(identity));
+        }
+        tag.put("depositableIdentities", depositableIdentities);
+    }
+
+    private static void writeHotbar(CompoundTag tag, SlotWorkspaceViewModel resolved) {
         ListTag recents = new ListTag();
         for (SlotWorkspaceViewModel.IdentityRef identity : resolved.recentIdentities()) {
             recents.add(encodeIdentity(identity));
@@ -96,28 +205,87 @@ public final class Forge120WorkspaceViewModelCodec {
         }
         tag.put("hotbarSlots", hotbar);
         tag.put("offhand", encodeOffhand(resolved.offhand()));
+    }
 
+    private static void writeWorkflow(CompoundTag tag, SlotWorkspaceViewModel resolved) {
         ListTag kits = new ListTag();
         for (SlotWorkspaceViewModel.KitCard card : resolved.kits()) {
             kits.add(encodeKitCard(card));
         }
         tag.put("kits", kits);
-
-        ListTag wayfindingTargets = new ListTag();
-        for (WayfindingTarget target : resolved.wayfindingTargets()) {
-            wayfindingTargets.add(encodeWayfindingTarget(target));
-        }
-        tag.put("wayfindingTargets", wayfindingTargets);
-
-        ListTag depositableIdentities = new ListTag();
-        for (SlotWorkspaceViewModel.IdentityRef identity : resolved.depositableIdentities()) {
-            depositableIdentities.add(encodeIdentity(identity));
-        }
-        tag.put("depositableIdentities", depositableIdentities);
-
-        tag.put("activeChestPanel", encodeActiveChestPanel(resolved.activeChestPanel()));
         tag.put("craftRun", encodeCraftRunState(resolved.craftRun()));
-        return tag;
+    }
+
+    private static void writePanels(CompoundTag tag, SlotWorkspaceViewModel resolved) {
+        tag.put("lootChestPanel", encodeLootChestPanel(resolved.lootChestPanel()));
+        tag.put("activeChestPanel", encodeActiveChestPanel(resolved.activeChestPanel()));
+    }
+
+    private static void writeContextual(CompoundTag tag, SlotWorkspaceViewModel resolved) {
+        tag.put("contextualSuggestionLanes", encodeSuggestionLanes(resolved.contextualSuggestionLanes()));
+    }
+
+    private static boolean copyOrWrite(
+            CompoundTag target,
+            CompoundTag previous,
+            String previousKey,
+            String currentKey,
+            SliceWriter writer,
+            String... topLevelKeys
+    ) {
+        if (previousKey != null && previousKey.equals(currentKey) && copyKeys(previous, target, topLevelKeys)) {
+            return true;
+        }
+        writer.write();
+        return false;
+    }
+
+    private static boolean copyKeys(CompoundTag source, CompoundTag target, String... keys) {
+        if (source == null || target == null || keys == null) {
+            return false;
+        }
+        for (String key : keys) {
+            if (key == null || !source.contains(key) || source.get(key) == null) {
+                return false;
+            }
+        }
+        for (String key : keys) {
+            target.put(key, source.get(key).copy());
+        }
+        return true;
+    }
+
+    @FunctionalInterface
+    private interface SliceWriter {
+        void write();
+    }
+
+    public static final class EncodedSliceCache {
+        private CompoundTag lastTag;
+        private WorkspaceViewSliceKeys lastKeys;
+        private SliceStats lastStats = SliceStats.empty();
+
+        public SliceStats lastStats() {
+            return lastStats;
+        }
+
+        public void clear() {
+            lastTag = null;
+            lastKeys = null;
+            lastStats = SliceStats.empty();
+        }
+
+        private void store(WorkspaceViewSliceKeys keys, CompoundTag tag, SliceStats stats) {
+            lastKeys = keys;
+            lastTag = tag == null ? null : tag.copy();
+            lastStats = stats == null ? SliceStats.empty() : stats;
+        }
+    }
+
+    public record SliceStats(int encodedSlices, int reusedSlices) {
+        public static SliceStats empty() {
+            return new SliceStats(0, 0);
+        }
     }
 
     public static SlotWorkspaceViewModel decode(Tag tag) {

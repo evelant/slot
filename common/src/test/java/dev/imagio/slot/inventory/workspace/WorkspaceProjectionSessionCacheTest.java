@@ -115,6 +115,7 @@ class WorkspaceProjectionSessionCacheTest {
                 null,
                 null,
                 searchQuery,
+                null,
                 0L,
                 SlotWorkspaceViewModel.ActiveChestPanel.empty(),
                 List.of(),

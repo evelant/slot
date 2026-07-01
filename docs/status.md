@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-06-02. Operational handoff. Read after [../README.md](../README.md).
+Last updated: 2026-07-01. Operational handoff. Read after [../README.md](../README.md).
 For active work + queue see [plans/current.md](plans/current.md); for architecture see [architecture/overview.md](architecture/overview.md).
 
 ## Active
@@ -14,29 +14,24 @@ deleted; production Forge renders direct Taffy on vanilla `Screen`, and
 Forge 1.20.1 / Java 17 with real platform adapters.
 
 Phase 1 has shared action transport, Forge runtime, session-backed projection,
-and common-service routing for metadata, transfer, hotbar, workflows,
-desired-count, chest, deposit/take, cursor, gather, and cross-surface actions.
+and common-service routing for metadata, transfer, hotbar, workflows, chests,
+deposit/take, cursor, gather, and cross-surface actions.
 
 Phase 2 has the production wall shell on both loaders: shared 24px item-card
 chrome, three-row floating Recents, vanilla-shaped Belt, active chest role controls,
 workflow controls, accepted-input menus, compact nearby headers, remembered
-search/scroll, configurable sidebar and task panel margins, right-side Fetch/Put Away
-guidance, Forge key parity, and junk/trash pressure relief. Useful Now scoring
-is hidden while live contextual observation remains available; expensive
-contextual scoring and storage-ghost expansion are disabled for now. Carried
-storage pressure and card chrome are computed through common signals so counts,
-storage pips, route notches, right strips, and status rings follow one grammar
-on Forge and NeoForge. Modern drag/drop, richer LDLib2 card/tab affordances, and
-richer chest panels remain backend hooks, not common UI semantics.
+search/scroll, configurable sidebar and task panel margins, right-side Fetch/Put
+Away guidance, Forge key parity, and junk/trash pressure relief. Useful Now
+scoring is hidden while live contextual observation remains available. Carried
+storage pressure and card chrome use common signals so counts, storage pips,
+route notches, right strips, and status rings follow one grammar on both loaders.
 
-Workspace projection now has a shared common session cache used by both loaders:
-structural hits reuse the projected view, status/diagnostics/selected-slot
-changes apply as a cheap frame overlay, content fingerprints replace
-encode-before-skip checks, identity normalization is memoized across projection
-misses, and claimed-chest proximity participates in passive refresh invalidation.
-Further optimization should split remaining hot `SlotWorkspaceViewModel`
-sections into independently cached slices rather than adding loader-specific
-shortcuts.
+Workspace projection now has a shared common session cache, slow-refresh phase
+timings, a per-refresh identity context, indexed wayfinding matching, layered
+storage-index caching, remote-storage detail intents, sliced view-model encoding,
+and bounded identity-memo eviction diagnostics. Claimed-chest proximity
+participates in passive refresh invalidation; TerraFirmaGreg profile validation
+remains in [plans/workspace-performance.md](plans/workspace-performance.md).
 
 Learned storage gates each claimed chest through `Storage`, `Buffer`, or
 `Ignore`; see ADR [0008](decisions/0008-chest-roles-and-affinity-correction.md).
@@ -219,13 +214,10 @@ active-workflow wanted counts stay visible until the workflow deactivates. **Aut
 truth about slot contents (kernel owns it; UI never invents).
 **Projection** — derived read model built from authority for a surface.
 
-Expanded definitions in the linked design / architecture docs.
-
 ## Verification commands
 
 ```bash
-./gradlew :common:compileJava :neoforge:compileJava
-./gradlew :forge-1.20:compileSharedProbeJava
+./gradlew :common:compileJava :neoforge:compileJava :forge-1.20:compileSharedProbeJava
 ./gradlew :common:test :neoforge:test
 ```
 
@@ -252,7 +244,5 @@ bun test
 Use local reference source first when available, then current docs/APIs. LDLib2:
 <https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/>,
 <https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/ui/agent_guide/>,
-<https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/ui/preliminary/data_bindings/>,
-<https://low-drag-mc.github.io/LowDragMC-Doc/ldlib2/sync/rpc_packet/>. Use
-Context7 / DeepWiki / upstream docs for NeoForge / Minecraft / LDLib2 APIs
-instead of guessing.
+data bindings, and RPC packet docs. Use Context7 / DeepWiki / upstream docs
+for NeoForge / Minecraft / LDLib2 APIs instead of guessing.

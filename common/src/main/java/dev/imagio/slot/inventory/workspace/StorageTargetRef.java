@@ -198,6 +198,22 @@ public record StorageTargetRef(
         return targetKind.startsWith(KIND_DISPLAY_PREFIX);
     }
 
+    public StorageTargetRef withDepositTarget(boolean depositTarget) {
+        return new StorageTargetRef(
+                storageId,
+                targetKind,
+                label,
+                dimensionId,
+                x,
+                y,
+                z,
+                liveReadable,
+                depositTarget,
+                takeTarget,
+                remembered,
+                proximate);
+    }
+
     public WorldDisplayStorageKind displayKind() {
         if (!displayTarget()) {
             return null;

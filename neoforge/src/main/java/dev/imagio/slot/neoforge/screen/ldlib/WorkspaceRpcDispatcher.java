@@ -36,6 +36,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter lootChestOpenVanillaEmitter;
     RPCEmitter lootChestClaimAndDepositEmitter;
     RPCEmitter setSearchQueryEmitter;
+    RPCEmitter setRemoteStorageDetailEmitter;
     RPCEmitter renameClusterEmitter;
     RPCEmitter renameIslandEmitter;
     RPCEmitter recolorIslandEmitter;
@@ -266,6 +267,10 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
         setSearchQueryEmitter = add(WorkspaceActionId.SET_SEARCH_QUERY, RPCEventBuilder.simple(
                 String.class,
                 host.session::setSearchQuery
+        ));
+        setRemoteStorageDetailEmitter = add(WorkspaceActionId.SET_REMOTE_STORAGE_DETAIL, RPCEventBuilder.simple(
+                String.class,
+                host.session::setRemoteStorageDetailIntent
         ));
         renameClusterEmitter = add(WorkspaceActionId.RENAME_CLUSTER, RPCEventBuilder.simple(
                 String.class,
@@ -736,6 +741,13 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
             return;
         }
         send(WorkspaceActionId.SET_SEARCH_QUERY, query == null ? "" : query);
+    }
+
+    void sendRemoteStorageDetailIntent(String intent) {
+        if (setRemoteStorageDetailEmitter == null) {
+            return;
+        }
+        send(WorkspaceActionId.SET_REMOTE_STORAGE_DETAIL, intent == null ? "" : intent);
     }
 
     void sendLootChestClaimAndDeposit(

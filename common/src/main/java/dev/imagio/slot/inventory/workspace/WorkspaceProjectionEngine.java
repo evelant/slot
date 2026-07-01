@@ -11,7 +11,7 @@ public final class WorkspaceProjectionEngine {
                 ? new WorkspaceProjectionRequest(
                         null, null, "ready", "", 0, -1, 0,
                         null, null, null, null, null, null, "",
-                        0L, null, null, null, null, null, null, null, null, null)
+                        null, 0L, null, null, null, null, null, null, null, null, null)
                 : request;
         return ItemIdentityMatcher.withMemo(identityMemo, () -> SlotWorkspaceViewModel.project(
                 resolved.authority(),
@@ -36,6 +36,7 @@ public final class WorkspaceProjectionEngine {
                 resolved.trackedDisplayStorageEntries(),
                 resolved.depositEligibleStorageIds(),
                 resolved.liveChestContentPresence(),
-                resolved.liveStorageAffinityEligibility()));
+                resolved.liveStorageAffinityEligibility(),
+                resolved.remoteStorageDetailIntent()));
     }
 }

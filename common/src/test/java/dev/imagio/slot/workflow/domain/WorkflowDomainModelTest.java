@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class WorkflowDomainModelTest {
     @Test
@@ -56,5 +57,40 @@ class WorkflowDomainModelTest {
 
         assertEquals(hammer, map.assignments().keySet().iterator().next());
         assertEquals("tools", map.assignment(toolStateHammer).islandId());
+    }
+
+    @Test
+    void broadVisualHomeAssignmentsApplyToSpecificFluidVariantsOnlyInThatDirection() {
+        ItemIdentity flask = ItemIdentity.of("waterflasks:iron_flask");
+        ItemIdentity waterFlask = ItemIdentity.exact("waterflasks:iron_flask", "fluid=minecraft:water");
+        ItemIdentity lavaFlask = ItemIdentity.exact("waterflasks:iron_flask", "fluid=minecraft:lava");
+        VisualAtlasIsland hydration = new VisualAtlasIsland(
+                "hydration",
+                "Hydration",
+                VisualAtlasIslandKind.PLAYER,
+                0,
+                0,
+                0xFFFFFF,
+                null);
+        VisualHomeMap broadMap = new VisualHomeMap(
+                List.of(hydration),
+                Map.of(flask, new VisualHomeAssignment(
+                        flask,
+                        hydration.id(),
+                        0,
+                        VisualHomeOrigin.PLAYER_PLACED,
+                        false)));
+        VisualHomeMap waterMap = new VisualHomeMap(
+                List.of(hydration),
+                Map.of(waterFlask, new VisualHomeAssignment(
+                        waterFlask,
+                        hydration.id(),
+                        0,
+                        VisualHomeOrigin.PLAYER_PLACED,
+                        false)));
+
+        assertEquals(hydration.id(), broadMap.assignment(waterFlask).islandId());
+        assertNull(waterMap.assignment(flask));
+        assertNull(waterMap.assignment(lavaFlask));
     }
 }

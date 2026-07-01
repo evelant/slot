@@ -7,13 +7,22 @@ import net.minecraft.network.FriendlyByteBuf;
 
 public record ForgeWorkspaceViewModelMessage(
         WorkspaceActionEnvelope envelope,
-        SlotWorkspaceViewModel viewModel
+        SlotWorkspaceViewModel viewModel,
+        CompoundTag encodedView
 ) {
     public ForgeWorkspaceViewModelMessage {
         if (envelope == null) {
             throw new IllegalArgumentException("envelope must not be null");
         }
         viewModel = viewModel == null ? SlotWorkspaceViewModel.empty() : viewModel;
+        encodedView = encodedView == null ? null : encodedView.copy();
+    }
+
+    public ForgeWorkspaceViewModelMessage(
+            WorkspaceActionEnvelope envelope,
+            SlotWorkspaceViewModel viewModel
+    ) {
+        this(envelope, viewModel, null);
     }
 
     static void encode(ForgeWorkspaceViewModelMessage message, FriendlyByteBuf buffer) {
@@ -21,7 +30,10 @@ public record ForgeWorkspaceViewModelMessage(
         buffer.writeUtf(envelope.sessionId());
         buffer.writeInt(envelope.menuContainerId());
         buffer.writeLong(envelope.viewRevision());
-        buffer.writeNbt(Forge120WorkspaceViewModelCodec.encode(message.viewModel()));
+        CompoundTag tag = message.encodedView() == null
+                ? Forge120WorkspaceViewModelCodec.encode(message.viewModel())
+                : message.encodedView();
+        buffer.writeNbt(tag);
     }
 
     static ForgeWorkspaceViewModelMessage decode(FriendlyByteBuf buffer) {
@@ -30,6 +42,6 @@ public record ForgeWorkspaceViewModelMessage(
                 buffer.readInt(),
                 buffer.readLong());
         CompoundTag tag = buffer.readNbt();
-        return new ForgeWorkspaceViewModelMessage(envelope, Forge120WorkspaceViewModelCodec.decode(tag));
+        return new ForgeWorkspaceViewModelMessage(envelope, Forge120WorkspaceViewModelCodec.decode(tag), tag);
     }
 }

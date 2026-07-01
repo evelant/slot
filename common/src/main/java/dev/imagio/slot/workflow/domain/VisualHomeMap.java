@@ -1,5 +1,6 @@
 package dev.imagio.slot.workflow.domain;
 
+import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
@@ -43,7 +44,13 @@ public record VisualHomeMap(
     }
 
     public VisualHomeAssignment assignment(ItemIdentity identity) {
-        return ItemIdentityCollections.findCanonical(assignments, identity);
+        VisualHomeAssignment exact = ItemIdentityCollections.findCanonical(assignments, identity);
+        if (exact != null
+                || identity == null
+                || identity.comparisonMode() == ItemComparisonMode.ITEM_ID) {
+            return exact;
+        }
+        return assignments.get(ItemIdentity.of(identity.itemId()));
     }
 
     public boolean templateDismissed(String templateId) {

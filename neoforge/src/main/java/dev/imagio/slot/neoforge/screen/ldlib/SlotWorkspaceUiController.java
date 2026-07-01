@@ -422,7 +422,12 @@ final class SlotWorkspaceUiController {
             return;
         }
         storageGhostRevealMode = mode;
+        rpc.sendRemoteStorageDetailIntent(remoteStorageDetailIntent(mode));
         rebuild();
+    }
+
+    private static String remoteStorageDetailIntent(StorageGhostRevealMode mode) {
+        return mode == StorageGhostRevealMode.TRACKED ? "TRACKED_XRAY" : "INTENT_ONLY";
     }
 
     void setCraftRunRecipeCaptures(List<CraftRunRecipeCapture> captures) {

@@ -50,6 +50,49 @@ class ItemIdentityTest {
     }
 
     @Test
+    void memoEvictsEldestEntriesInsteadOfClearingAllCachedIdentities() {
+        ItemIdentityMatcher.Memo memo = new ItemIdentityMatcher.Memo();
+
+        for (int i = 0; i < 4_097; i++) {
+            int index = i;
+            ItemIdentityMatcher.withMemo(memo, () -> ItemIdentityMatcher.create(
+                    new net.minecraft.world.item.ItemStack(
+                            "mod:component_sensitive_item",
+                            "{Unique:" + index + "}",
+                            1,
+                            64)));
+        }
+        for (int i = 0; i < 4_097; i++) {
+            int index = i;
+            ItemIdentityMatcher.withMemo(memo, () -> ItemIdentityMatcher.normalizeMovable(
+                    ItemIdentity.exact("minecraft:diamond_pickaxe", "{Damage:" + index + "}")));
+        }
+
+        ItemIdentityMatcher.MemoStats stats = memo.stats();
+        assertEquals(4_097, stats.createMisses());
+        assertEquals(4_096, stats.createCacheSize());
+        assertEquals(1, stats.createEvictions());
+        assertEquals(4_097, stats.normalizeMisses());
+        assertEquals(4_096, stats.normalizeCacheSize());
+        assertEquals(1, stats.normalizeEvictions());
+
+        ItemIdentityMatcher.withMemo(memo, () -> ItemIdentityMatcher.create(
+                new net.minecraft.world.item.ItemStack(
+                        "mod:component_sensitive_item",
+                        "{Unique:4096}",
+                        1,
+                        64)));
+        ItemIdentityMatcher.withMemo(memo, () -> ItemIdentityMatcher.normalizeMovable(
+                ItemIdentity.exact("minecraft:diamond_pickaxe", "{Damage:4096}")));
+
+        ItemIdentityMatcher.MemoStats afterHit = memo.stats();
+        assertEquals(1, afterHit.createHits());
+        assertEquals(1, afterHit.normalizeHits());
+        assertEquals(4_096, afterHit.createCacheSize());
+        assertEquals(4_096, afterHit.normalizeCacheSize());
+    }
+
+    @Test
     void exactComponentIdentitiesRemainExactWithoutAStackPolicySignal() {
         assertFalse(ItemIdentityMatcher.matchesMovable(
                 ItemIdentity.exact("grapplemod:grapplinghook", "{Damage:7,hookState:\"attached\"}"),
@@ -245,6 +288,42 @@ class ItemIdentityTest {
         assertFalse(ItemIdentityMatcher.usesItemOnlyMovableIdentity(new net.minecraft.world.item.ItemStack(
                 "gtceu:steel_drum",
                 "{Fluid:{FluidName:\"minecraft:water\",Amount:16000}}",
+                1,
+                1)));
+    }
+
+    @Test
+    void forgeFluidHandlerItemStackContainersPreserveFluidContentsBeforePortableContainerNormalization() {
+        PortableContainerClassifiers.register(stack -> "waterflasks:iron_flask".equals(stack.itemId()));
+
+        ItemIdentity emptyFlask = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "waterflasks:iron_flask",
+                1,
+                1));
+        ItemIdentity waterFlask = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "waterflasks:iron_flask",
+                "{Fluid:{FluidName:\"minecraft:water\",Amount:2000}}",
+                1,
+                1));
+        ItemIdentity lessWaterFlask = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "waterflasks:iron_flask",
+                "{Fluid:{FluidName:\"minecraft:water\",Amount:100}}",
+                1,
+                1));
+        ItemIdentity lavaFlask = ItemIdentityMatcher.create(new net.minecraft.world.item.ItemStack(
+                "waterflasks:iron_flask",
+                "{Fluid:{FluidName:\"minecraft:lava\",Amount:2000}}",
+                1,
+                1));
+
+        assertEquals(ItemIdentity.of("waterflasks:iron_flask"), emptyFlask);
+        assertEquals(ItemIdentity.exact("waterflasks:iron_flask", "fluid=minecraft:water"), waterFlask);
+        assertEquals(waterFlask, lessWaterFlask);
+        assertEquals(ItemIdentity.exact("waterflasks:iron_flask", "fluid=minecraft:lava"), lavaFlask);
+        assertFalse(ItemIdentityMatcher.matchesMovable(waterFlask, lavaFlask));
+        assertFalse(ItemIdentityMatcher.usesItemOnlyMovableIdentity(new net.minecraft.world.item.ItemStack(
+                "waterflasks:iron_flask",
+                "{Fluid:{FluidName:\"minecraft:water\",Amount:2000}}",
                 1,
                 1)));
     }

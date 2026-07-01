@@ -145,9 +145,13 @@ Plans:
   — proposed UI slice for surfacing carried-inventory capacity
   without per-bag routing controls. Not yet active.
 - [docs/plans/workspace-performance.md](docs/plans/workspace-performance.md)
-  — proposed late-game storage-heavy performance plan for projection timing,
-  identity reuse, wayfinding/storage indexing, remote ghost gating, and sliced
-  view-model sends.
+  — late-game storage-heavy performance implementation plan and pending
+  TerraFirmaGreg profile checklist for projection timing, identity reuse,
+  wayfinding/storage indexing, remote ghost gating, and sliced view-model sends.
+- [docs/plans/workspace-incremental-projection.md](docs/plans/workspace-incremental-projection.md)
+  — follow-up plan for replacing whole-model workspace refreshes with typed
+  invalidations, projection slices, local identity/storage facts, and delta
+  view sends.
 - [docs/plans/done/](docs/plans/done/) — shipped plans preserved as
   design refs. Currently: `atlas-prototype`, `atlas-navigation`,
   `atlas-nudge-layout`, `core-workflow-ux`, `cursor-pickup`,

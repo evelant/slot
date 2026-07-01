@@ -42,7 +42,7 @@ public final class WorkspaceStorageIndex {
     private final List<WorldDisplayStorageSource> displaySources;
     private final long memoryRevision;
 
-    private WorkspaceStorageIndex(
+    WorkspaceStorageIndex(
             Map<String, StorageEntry> entriesByStorageId,
             Map<ItemIdentity, Integer> carriedCountsByIdentity,
             List<WorldDisplayStorageSource> displaySources,
@@ -199,6 +199,18 @@ public final class WorkspaceStorageIndex {
             WorkspaceStorageMemoryStore memory,
             long tick
     ) {
+        StorageEntry base = liveClaimedBaseEntry(server, worldStorage, chest, proximate, memory, tick);
+        return applyDepositOverlay(server, authority, worldStorage, chest, base);
+    }
+
+    static StorageEntry liveClaimedBaseEntry(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            ClaimedChest chest,
+            boolean proximate,
+            WorkspaceStorageMemoryStore memory,
+            long tick
+    ) {
         if (worldStorage == null || chest == null) {
             return null;
         }
@@ -225,20 +237,38 @@ public final class WorkspaceStorageIndex {
             return null;
         }
         boolean takeTarget = StorageMutationProbe.canExtractAny(server, worldStorage, target, snapshot);
-        boolean depositTarget = chest.role().quickDepositTarget()
-                && (!hasCarriedProbe(authority)
-                || canInsertAnyCarried(server, worldStorage, target, authority));
         StorageTargetRef ref = StorageTargetRef.claimed(
                 chest,
                 true,
                 false,
                 proximate,
-                depositTarget,
+                false,
                 takeTarget);
         if (memory != null) {
             memory.observeSnapshot(ref, snapshot, tick, "workspace_index_live_read", false);
         }
         return new StorageEntry(ref, snapshot, countsFromSnapshot(snapshot), true, false);
+    }
+
+    static StorageEntry applyDepositOverlay(
+            MinecraftServer server,
+            InventoryAuthoritySnapshot authority,
+            WorldStorageAccess worldStorage,
+            ClaimedChest chest,
+            StorageEntry base
+    ) {
+        if (base == null || base.target() == null || chest == null) {
+            return base;
+        }
+        boolean depositTarget = chest.role().quickDepositTarget()
+                && (!hasCarriedProbe(authority)
+                || canInsertAnyCarried(server, worldStorage, new WorldStorageAccess.Target.Chest(chest), authority));
+        return new StorageEntry(
+                base.target().withDepositTarget(depositTarget),
+                base.snapshot(),
+                base.countsByIdentity(),
+                base.live(),
+                base.remembered());
     }
 
     private static SlotWorkspaceViewModel.ChestContentsSnapshot readSnapshot(
@@ -262,7 +292,7 @@ public final class WorkspaceStorageIndex {
         return new SlotWorkspaceViewModel.ChestContentsSnapshot(slots, stacks, slotIndices);
     }
 
-    private static StorageEntry rememberedEntry(RememberedStorageContents remembered, boolean proximate) {
+    static StorageEntry rememberedEntry(RememberedStorageContents remembered, boolean proximate) {
         SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = remembered.toSnapshot();
         return new StorageEntry(
                 remembered.targetRef(false, proximate),
@@ -272,7 +302,7 @@ public final class WorkspaceStorageIndex {
                 true);
     }
 
-    private static SlotWorkspaceViewModel.ChestContentsSnapshot snapshotFromDisplay(WorldDisplayStorageSource source) {
+    static SlotWorkspaceViewModel.ChestContentsSnapshot snapshotFromDisplay(WorldDisplayStorageSource source) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         ArrayList<Integer> indices = new ArrayList<>();
         for (WorldStorageAccess.SlotContent content : source.contents()) {
@@ -440,7 +470,7 @@ public final class WorkspaceStorageIndex {
         return chest -> chest != null && eligibleByChest.getOrDefault(chest.storageId(), false);
     }
 
-    private static boolean hasCarriedProbe(InventoryAuthoritySnapshot authority) {
+    static boolean hasCarriedProbe(InventoryAuthoritySnapshot authority) {
         if (authority == null) {
             return false;
         }
@@ -454,7 +484,7 @@ public final class WorkspaceStorageIndex {
         return false;
     }
 
-    private static boolean canInsertAnyCarried(
+    static boolean canInsertAnyCarried(
             MinecraftServer server,
             WorldStorageAccess worldStorage,
             WorldStorageAccess.Target target,
@@ -486,7 +516,7 @@ public final class WorkspaceStorageIndex {
                 : carriedSources.stream().map(source -> source.id()).toList();
     }
 
-    private static Map<ItemIdentity, Integer> carriedCounts(InventoryAuthoritySnapshot authority) {
+    static Map<ItemIdentity, Integer> carriedCounts(InventoryAuthoritySnapshot authority) {
         if (authority == null) {
             return Map.of();
         }
@@ -503,7 +533,7 @@ public final class WorkspaceStorageIndex {
         return Map.copyOf(counts);
     }
 
-    private static Map<ItemIdentity, Integer> countsFromSnapshot(
+    static Map<ItemIdentity, Integer> countsFromSnapshot(
             SlotWorkspaceViewModel.ChestContentsSnapshot snapshot
     ) {
         if (snapshot == null || snapshot.contents().isEmpty()) {
@@ -519,7 +549,7 @@ public final class WorkspaceStorageIndex {
         return Map.copyOf(counts);
     }
 
-    private static boolean isTrackedDisplayMemory(RememberedStorageContents remembered) {
+    static boolean isTrackedDisplayMemory(RememberedStorageContents remembered) {
         if (remembered == null) {
             return false;
         }
@@ -542,7 +572,7 @@ public final class WorkspaceStorageIndex {
         }
     }
 
-    private static String safeMessage(RuntimeException exception) {
+    static String safeMessage(RuntimeException exception) {
         if (exception == null || exception.getMessage() == null || exception.getMessage().isBlank()) {
             return "runtime_exception";
         }

@@ -739,9 +739,65 @@ public record SlotWorkspaceViewModel(
             DepositPlanner.ChestContentPresence liveChestContentPresence,
             DepositPlanner.ChestEligibility liveStorageAffinityEligibility
         ) {
+        return project(
+                authority,
+                workflow,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                revision,
+                learnedRules,
+                signalExtractor,
+                chestContentsResolver,
+                proximateStorageIds,
+                carriedContainerInfoResolver,
+                lootChestSource,
+                searchQuery,
+                currentTick,
+                activeChestPanel,
+                worldDisplaySources,
+                contextualSuggestionStorageIds,
+                contextualSuggestionDisplaySources,
+                trackedDisplayStorageEntries,
+                depositEligibleStorageIds,
+                liveChestContentPresence,
+                liveStorageAffinityEligibility,
+                null);
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            LootChestSource lootChestSource,
+            String searchQuery,
+            long currentTick,
+            ActiveChestPanel activeChestPanel,
+            List<WorldDisplayStorageSource> worldDisplaySources,
+            Set<String> contextualSuggestionStorageIds,
+            List<WorldDisplayStorageSource> contextualSuggestionDisplaySources,
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries,
+            Set<String> depositEligibleStorageIds,
+            DepositPlanner.ChestContentPresence liveChestContentPresence,
+            DepositPlanner.ChestEligibility liveStorageAffinityEligibility,
+            RemoteStorageDetailIntent remoteStorageDetailIntent
+        ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
-        CarriedIdentityCounts carriedIdentityCounts = CarriedIdentityCounts.from(resolvedAuthority);
+        RemoteStorageDetailIntent remoteIntent =
+                RemoteStorageDetailIntent.effective(remoteStorageDetailIntent, searchQuery);
+        ProjectionIdentityContext identityContext = ProjectionIdentityContext.from(resolvedAuthority);
+        CarriedIdentityCounts carriedIdentityCounts = identityContext.carriedCounts();
         WorkflowTabTargets.Resolution targetResolution = WorkflowTabTargets.resolve(carriedIdentityCounts, resolvedWorkflow);
         Map<ItemIdentity, Integer> wantedCounts = targetResolution.wantedCounts();
         RecentView recents = resolvedWorkflow.recents();
@@ -770,14 +826,13 @@ public record SlotWorkspaceViewModel(
                                 && entry.target().displayKind() != null
                                 && entry.target().displayKind().trackedStorage())
                         .toList();
-        int[] carriedCounts = countCarriedFreeSlotsAndCapacity(resolvedAuthority);
-        int carriedFreeSlotCount = carriedCounts[0];
-        int carriedSlotCapacity = carriedCounts[1];
+        int carriedFreeSlotCount = identityContext.carriedFreeSlotCount();
+        int carriedSlotCapacity = identityContext.carriedSlotCapacity();
         Function<ItemIdentity, CarriedContainerInfo> containerResolver = carriedContainerInfoResolver == null
                 ? identity -> null
                 : carriedContainerInfoResolver;
 
-        List<AtlasItemAccumulator> accumulators = groupedAtlasEntries(resolvedAuthority);
+        List<AtlasItemAccumulator> accumulators = groupedAtlasEntries(identityContext);
         Map<ItemIdentity, Integer> recentRankByIdentity = recentRankByIdentity(recents);
 
         // Build proximate-chest ghost projection: union all stacks across
@@ -801,13 +856,6 @@ public record SlotWorkspaceViewModel(
                         visualHomeMap,
                         contextualSuggestionDisplays)
                 : ProximateGhostProjection.empty();
-        // Search-as-find: collect non-proximate chest stocks too, with the
-        // dimension noted in the label. Hover/zoom on a search hit reveals
-        // "Storage Area 2 — nether". See docs/plans/learned-storage.md.
-        ElsewhereGhostProjection elsewhereGhosts = ElsewhereGhostProjection.build(
-                claimedChestMap, chestContentsResolver, proximate, trackedDisplayEntries);
-        Map<ItemIdentity, List<ChestPresenceEntry>> elsewherePresence = elsewhereGhosts.presenceByIdentity();
-
         // Kit ghost markers: when a kit is active, every needed-but-not-
         // carried identity (page slots + bring list) is flagged as kit-needed
         // so the atlas card highlights it. Items the player has never seen
@@ -823,6 +871,25 @@ public record SlotWorkspaceViewModel(
                 ItemIdentityCollections.normalizedSet(targetResolution.desiredFromWorkflowTab());
         Set<ItemIdentity> junkTags = ItemIdentityCollections.normalizedSet(
                 resolvedWorkflow.workflowProjection().junkTags());
+        Set<ItemIdentity> remoteIntentIdentities = remoteIntentIdentities(
+                kitNeededIdentities,
+                activeDesiredCounts.keySet(),
+                wantedCounts.keySet(),
+                recentIdentities,
+                junkTags);
+        // Search-as-find and tracked x-ray can request broad remote detail.
+        // Normal collapsed mode only keeps remote presence for active intent
+        // identities so large storage systems do not synthesize every distant
+        // ghost on each ordinary refresh.
+        ElsewhereGhostProjection elsewhereGhosts = ElsewhereGhostProjection.build(
+                claimedChestMap,
+                chestContentsResolver,
+                proximate,
+                trackedDisplayEntries,
+                remoteIntent,
+                searchQuery,
+                remoteIntentIdentities);
+        Map<ItemIdentity, List<ChestPresenceEntry>> elsewherePresence = elsewhereGhosts.presenceByIdentity();
 
         // Synthesize ghost accumulators for identities present only in
         // proximate chests (homed-but-not-carried). Carried identities use
@@ -937,14 +1004,14 @@ public record SlotWorkspaceViewModel(
                 accumulators,
                 ghostIdentities,
                 visibleRecentItems,
-                resolvedAuthority,
+                identityContext,
                 ghosts,
                 elsewhereGhosts);
         addJunkGhostAccumulators(
                 accumulators,
                 ghostIdentities,
                 junkTags,
-                resolvedAuthority,
+                identityContext,
                 ghosts,
                 elsewhereGhosts);
 
@@ -2004,6 +2071,34 @@ public record SlotWorkspaceViewModel(
         return active.isEmpty() ? Map.of() : Collections.unmodifiableMap(active);
     }
 
+    private static Set<ItemIdentity> remoteIntentIdentities(
+            Collection<ItemIdentity> kitNeeded,
+            Collection<ItemIdentity> desired,
+            Collection<ItemIdentity> wanted,
+            Collection<ItemIdentity> recent,
+            Collection<ItemIdentity> junk
+    ) {
+        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        addRemoteIntentIdentities(identities, kitNeeded);
+        addRemoteIntentIdentities(identities, desired);
+        addRemoteIntentIdentities(identities, wanted);
+        addRemoteIntentIdentities(identities, recent);
+        addRemoteIntentIdentities(identities, junk);
+        return identities.isEmpty() ? Set.of() : Set.copyOf(identities);
+    }
+
+    private static void addRemoteIntentIdentities(
+            Set<ItemIdentity> identities,
+            Collection<ItemIdentity> source
+    ) {
+        if (identities == null || source == null || source.isEmpty()) {
+            return;
+        }
+        for (ItemIdentity identity : source) {
+            ItemIdentityCollections.add(identities, identity);
+        }
+    }
+
     /**
      * Items the player must keep in carry: at least one of each active
      * kit-page slot identity, plus the resolved desired count (kit
@@ -2497,6 +2592,7 @@ public record SlotWorkspaceViewModel(
         if (missingSources.isEmpty()) {
             return List.of();
         }
+        WayfindingNeedIndex needIndex = WayfindingNeedIndex.from(missingSources);
         ArrayList<WayfindingTarget> targets = new ArrayList<>();
         if (hasClaimedChests) {
             for (ClaimedChest chest : claimedChestMap.chests()) {
@@ -2513,7 +2609,7 @@ public record SlotWorkspaceViewModel(
                         primary.y(),
                         primary.z(),
                         snapshot,
-                        missingSources);
+                        needIndex);
                 if (target != null) {
                     targets.add(target);
                 }
@@ -2539,7 +2635,7 @@ public record SlotWorkspaceViewModel(
                         targetRef.y(),
                         targetRef.z(),
                         snapshot,
-                        missingSources);
+                        needIndex);
                 if (target != null) {
                     targets.add(target);
                 }
@@ -2555,13 +2651,13 @@ public record SlotWorkspaceViewModel(
             int worldY,
             int worldZ,
             ChestContentsSnapshot snapshot,
-            Map<ItemIdentity, WayfindingNeedSources> missingSources
+            WayfindingNeedIndex needIndex
     ) {
         if (storageId == null || storageId.isBlank()
                 || snapshot == null
                 || snapshot.contents().isEmpty()
-                || missingSources == null
-                || missingSources.isEmpty()) {
+                || needIndex == null
+                || needIndex.isEmpty()) {
             return null;
         }
         LinkedHashSet<ItemIdentity> matched = new LinkedHashSet<>();
@@ -2575,25 +2671,12 @@ public record SlotWorkspaceViewModel(
                 if (storedIdentity == null) {
                     continue;
                 }
-                for (Map.Entry<ItemIdentity, WayfindingNeedSources> entry : missingSources.entrySet()) {
-                    ItemIdentity needed = entry.getKey();
-                    if (!ItemIdentityMatcher.matchesMovable(storedIdentity, needed)) {
-                        continue;
-                    }
-                    WayfindingNeedSources sources = entry.getValue();
-                    matched.add(needed);
-                    if (sources.kit) {
-                        kitMatched.add(needed);
-                    }
-                    if (sources.desired) {
-                        desiredMatched.add(needed);
-                    }
-                    if (sources.wanted) {
-                        wantedMatched.add(needed);
-                    }
-                    totalMissingCount += Math.max(0, stored.getValue() == null ? 0 : stored.getValue());
-                    break;
+                WayfindingNeedMatch match = needIndex.match(storedIdentity);
+                if (match == null) {
+                    continue;
                 }
+                addWayfindingMatch(match, matched, kitMatched, desiredMatched, wantedMatched);
+                totalMissingCount += Math.max(0, stored.getValue() == null ? 0 : stored.getValue());
             }
             if (matched.isEmpty()) {
                 return null;
@@ -2616,25 +2699,12 @@ public record SlotWorkspaceViewModel(
             if (stack == null || stack.isEmpty()) {
                 continue;
             }
-            for (Map.Entry<ItemIdentity, WayfindingNeedSources> entry : missingSources.entrySet()) {
-                ItemIdentity needed = entry.getKey();
-                if (!ItemIdentityMatcher.matchesMovable(stack, needed)) {
-                    continue;
-                }
-                WayfindingNeedSources sources = entry.getValue();
-                matched.add(needed);
-                if (sources.kit) {
-                    kitMatched.add(needed);
-                }
-                if (sources.desired) {
-                    desiredMatched.add(needed);
-                }
-                if (sources.wanted) {
-                    wantedMatched.add(needed);
-                }
-                totalMissingCount += stack.getCount();
-                break;
+            WayfindingNeedMatch match = needIndex.match(ItemIdentityMatcher.create(stack));
+            if (match == null) {
+                continue;
             }
+            addWayfindingMatch(match, matched, kitMatched, desiredMatched, wantedMatched);
+            totalMissingCount += stack.getCount();
         }
         if (matched.isEmpty()) {
             return null;
@@ -2652,6 +2722,30 @@ public record SlotWorkspaceViewModel(
                 totalMissingCount,
                 wayfindingScope(kitMatched, desiredMatched, wantedMatched)
         );
+    }
+
+    private static void addWayfindingMatch(
+            WayfindingNeedMatch match,
+            Set<ItemIdentity> matched,
+            Set<ItemIdentity> kitMatched,
+            Set<ItemIdentity> desiredMatched,
+            Set<ItemIdentity> wantedMatched
+    ) {
+        if (match == null || match.identity() == null || match.sources() == null) {
+            return;
+        }
+        ItemIdentity needed = match.identity();
+        WayfindingNeedSources sources = match.sources();
+        matched.add(needed);
+        if (sources.kit) {
+            kitMatched.add(needed);
+        }
+        if (sources.desired) {
+            desiredMatched.add(needed);
+        }
+        if (sources.wanted) {
+            wantedMatched.add(needed);
+        }
     }
 
     private static WayfindingTarget.Scope wayfindingScope(
@@ -2673,6 +2767,64 @@ public record SlotWorkspaceViewModel(
         private boolean kit;
         private boolean desired;
         private boolean wanted;
+    }
+
+    private record WayfindingNeedIndex(
+            Map<ItemIdentity, WayfindingNeedSources> byCanonicalIdentity,
+            Map<String, List<WayfindingNeedMatch>> byItemId
+    ) {
+        private WayfindingNeedIndex {
+            byCanonicalIdentity = byCanonicalIdentity == null ? Map.of() : Map.copyOf(byCanonicalIdentity);
+            byItemId = byItemId == null ? Map.of() : Map.copyOf(byItemId);
+        }
+
+        static WayfindingNeedIndex from(Map<ItemIdentity, WayfindingNeedSources> sources) {
+            if (sources == null || sources.isEmpty()) {
+                return new WayfindingNeedIndex(Map.of(), Map.of());
+            }
+            LinkedHashMap<ItemIdentity, WayfindingNeedSources> canonical = new LinkedHashMap<>();
+            LinkedHashMap<String, List<WayfindingNeedMatch>> byItem = new LinkedHashMap<>();
+            for (Map.Entry<ItemIdentity, WayfindingNeedSources> entry : sources.entrySet()) {
+                ItemIdentity identity = ItemIdentityCollections.key(entry.getKey());
+                WayfindingNeedSources needSources = entry.getValue();
+                if (identity == null || needSources == null) {
+                    continue;
+                }
+                canonical.put(identity, needSources);
+                byItem.computeIfAbsent(identity.itemId(), ignored -> new ArrayList<>())
+                        .add(new WayfindingNeedMatch(identity, needSources));
+            }
+            LinkedHashMap<String, List<WayfindingNeedMatch>> immutableByItem = new LinkedHashMap<>();
+            for (Map.Entry<String, List<WayfindingNeedMatch>> entry : byItem.entrySet()) {
+                immutableByItem.put(entry.getKey(), List.copyOf(entry.getValue()));
+            }
+            return new WayfindingNeedIndex(canonical, immutableByItem);
+        }
+
+        boolean isEmpty() {
+            return byCanonicalIdentity.isEmpty();
+        }
+
+        WayfindingNeedMatch match(ItemIdentity storedIdentity) {
+            if (storedIdentity == null || byCanonicalIdentity.isEmpty()) {
+                return null;
+            }
+            ItemIdentity canonical = ItemIdentityCollections.key(storedIdentity);
+            WayfindingNeedSources direct = byCanonicalIdentity.get(canonical);
+            if (direct != null) {
+                return new WayfindingNeedMatch(canonical, direct);
+            }
+            List<WayfindingNeedMatch> candidates = byItemId.getOrDefault(storedIdentity.itemId(), List.of());
+            for (WayfindingNeedMatch candidate : candidates) {
+                if (candidate != null && ItemIdentityMatcher.matchesMovable(storedIdentity, candidate.identity())) {
+                    return candidate;
+                }
+            }
+            return null;
+        }
+    }
+
+    private record WayfindingNeedMatch(ItemIdentity identity, WayfindingNeedSources sources) {
     }
 
     private record PutAwayRouteProjection(
@@ -3295,15 +3447,25 @@ public record SlotWorkspaceViewModel(
         return SlotWorkspaceAtlasLayout.island(islands, islandId);
     }
 
-    private static List<AtlasItemAccumulator> groupedAtlasEntries(InventoryAuthoritySnapshot authority) {
+    private static List<AtlasItemAccumulator> groupedAtlasEntries(ProjectionIdentityContext identityContext) {
+        ProjectionIdentityContext context = identityContext == null
+                ? ProjectionIdentityContext.empty()
+                : identityContext;
+        InventoryAuthoritySnapshot authority = context.authority();
         LinkedHashMap<ItemIdentity, AtlasItemAccumulator> byIdentity = new LinkedHashMap<>();
         for (InventorySourceDescriptor source : authority.carriedSources()) {
             for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
                 if (entry == null || !entry.present()) {
                     continue;
                 }
-                ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(entry.stack()));
-                byIdentity.computeIfAbsent(identity, ignored -> new AtlasItemAccumulator(identity, entry)).add(entry);
+                ItemIdentity identity = context.movableIdentity(entry);
+                if (identity == null) {
+                    identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(entry.stack()));
+                }
+                ItemIdentity accumulatorIdentity = identity;
+                byIdentity
+                        .computeIfAbsent(accumulatorIdentity, ignored -> new AtlasItemAccumulator(accumulatorIdentity, entry))
+                        .add(entry);
             }
         }
         return new ArrayList<>(byIdentity.values());
@@ -3346,7 +3508,7 @@ public record SlotWorkspaceViewModel(
             List<AtlasItemAccumulator> accumulators,
             Set<ItemIdentity> existingIdentities,
             List<ItemIdentity> recentItems,
-            InventoryAuthoritySnapshot authority,
+            ProjectionIdentityContext identityContext,
             ProximateGhostProjection ghosts,
             ElsewhereGhostProjection elsewhereGhosts
     ) {
@@ -3360,7 +3522,9 @@ public record SlotWorkspaceViewModel(
                 continue;
             }
             if (authorityDisplayStacks == null) {
-                authorityDisplayStacks = displayStacksByIdentity(authority);
+                authorityDisplayStacks = identityContext == null
+                        ? Map.of()
+                        : identityContext.displayStacksByIdentity();
             }
             ItemStack stack = recentDisplayStack(identity, authorityDisplayStacks, ghosts, elsewhereGhosts);
             if (stack == null || stack.isEmpty()) {
@@ -3376,7 +3540,7 @@ public record SlotWorkspaceViewModel(
             List<AtlasItemAccumulator> accumulators,
             Set<ItemIdentity> existingIdentities,
             Set<ItemIdentity> junkTags,
-            InventoryAuthoritySnapshot authority,
+            ProjectionIdentityContext identityContext,
             ProximateGhostProjection ghosts,
             ElsewhereGhostProjection elsewhereGhosts
     ) {
@@ -3390,7 +3554,9 @@ public record SlotWorkspaceViewModel(
                 continue;
             }
             if (authorityDisplayStacks == null) {
-                authorityDisplayStacks = displayStacksByIdentity(authority);
+                authorityDisplayStacks = identityContext == null
+                        ? Map.of()
+                        : identityContext.displayStacksByIdentity();
             }
             ItemStack stack = recentDisplayStack(identity, authorityDisplayStacks, ghosts, elsewhereGhosts);
             if (stack == null || stack.isEmpty()) {
@@ -3421,26 +3587,6 @@ public record SlotWorkspaceViewModel(
             return stack;
         }
         return resolveGhostStack(identity);
-    }
-
-    private static Map<ItemIdentity, ItemStack> displayStacksByIdentity(InventoryAuthoritySnapshot authority) {
-        if (authority == null) {
-            return Map.of();
-        }
-        LinkedHashMap<ItemIdentity, ItemStack> stacks = new LinkedHashMap<>();
-        for (InventorySourceDescriptor source : authority.sourceDescriptors()) {
-            if (source == null) {
-                continue;
-            }
-            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
-                if (entry == null || !entry.present() || entry.stack() == null || entry.stack().isEmpty()) {
-                    continue;
-                }
-                ItemIdentity entryIdentity = ItemIdentityCollections.key(ItemIdentityMatcher.create(entry.stack()));
-                stacks.putIfAbsent(entryIdentity, entry.stack().copy());
-            }
-        }
-        return stacks.isEmpty() ? Map.of() : Map.copyOf(stacks);
     }
 
     private static ItemStack displayStackFromMap(Map<ItemIdentity, ItemStack> stacks, ItemIdentity identity) {
@@ -4905,11 +5051,23 @@ public record SlotWorkspaceViewModel(
                 ClaimedChestMap map,
                 Function<String, ChestContentsSnapshot> chestContentsResolver,
                 Set<String> proximate,
-                List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries
+                List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries,
+                RemoteStorageDetailIntent detailIntent,
+                String searchQuery,
+                Set<ItemIdentity> intentIdentities
         ) {
             boolean hasChests = map != null && !map.chests().isEmpty() && chestContentsResolver != null;
             boolean hasDisplays = trackedDisplayEntries != null && !trackedDisplayEntries.isEmpty();
             if (!hasChests && !hasDisplays) {
+                return empty();
+            }
+            RemoteStorageDetailIntent intent = detailIntent == null
+                    ? RemoteStorageDetailIntent.INTENT_ONLY
+                    : detailIntent;
+            Set<ItemIdentity> allowedIdentities = intentIdentities == null ? Set.of() : intentIdentities;
+            String normalizedSearch = WorkspaceSearchQuery.normalized(searchQuery);
+            if (intent == RemoteStorageDetailIntent.NONE
+                    || (intent == RemoteStorageDetailIntent.INTENT_ONLY && allowedIdentities.isEmpty())) {
                 return empty();
             }
             Set<String> proximateIds = proximate == null ? Set.of() : proximate;
@@ -4941,7 +5099,15 @@ public record SlotWorkspaceViewModel(
                             : shortDimension(chest.anchors().iterator().next().dimensionId());
                     String label = dimension.isBlank() ? baseLabel : baseLabel + " — " + dimension;
                     labelByStorage.put(storageId, label);
-                    addElsewhereSnapshot(perStorage, displayStacks, totals, storageId, snapshot);
+                    addElsewhereSnapshot(
+                            perStorage,
+                            displayStacks,
+                            totals,
+                            storageId,
+                            snapshot,
+                            intent,
+                            normalizedSearch,
+                            allowedIdentities);
                 }
             }
             if (hasDisplays) {
@@ -4962,7 +5128,15 @@ public record SlotWorkspaceViewModel(
                     String dimension = shortDimension(target.dimensionId());
                     String label = dimension.isBlank() ? baseLabel : baseLabel + " — " + dimension;
                     labelByStorage.put(target.storageId(), label);
-                    addElsewhereSnapshot(perStorage, displayStacks, totals, target.storageId(), snapshot);
+                    addElsewhereSnapshot(
+                            perStorage,
+                            displayStacks,
+                            totals,
+                            target.storageId(),
+                            snapshot,
+                            intent,
+                            normalizedSearch,
+                            allowedIdentities);
                 }
             }
             if (perStorage.isEmpty()) {
@@ -4996,7 +5170,10 @@ public record SlotWorkspaceViewModel(
                 LinkedHashMap<ItemIdentity, ItemStack> displayStacks,
                 LinkedHashMap<ItemIdentity, Integer> totals,
                 String storageId,
-                ChestContentsSnapshot snapshot
+                ChestContentsSnapshot snapshot,
+                RemoteStorageDetailIntent intent,
+                String normalizedSearch,
+                Set<ItemIdentity> allowedIdentities
         ) {
             if (storageId == null || storageId.isBlank() || snapshot == null || snapshot.contents().isEmpty()) {
                 return;
@@ -5016,13 +5193,16 @@ public record SlotWorkspaceViewModel(
                     if (identity == null || count <= 0) {
                         continue;
                     }
-                    perStorage
-                            .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
-                            .computeIfAbsent(storageId, ignored -> new int[]{0})[0] += count;
                     ItemStack display = ItemIdentityCollections.findCanonical(displayByIdentity, identity);
                     if (display == null || display.isEmpty()) {
                         display = resolveGhostStack(identity, 1);
                     }
+                    if (!includeElsewhereIdentity(identity, display, intent, normalizedSearch, allowedIdentities)) {
+                        continue;
+                    }
+                    perStorage
+                            .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
+                            .computeIfAbsent(storageId, ignored -> new int[]{0})[0] += count;
                     if (display != null && !display.isEmpty()) {
                         displayStacks.putIfAbsent(identity, display.copy());
                     }
@@ -5036,12 +5216,38 @@ public record SlotWorkspaceViewModel(
                     continue;
                 }
                 ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
+                if (!includeElsewhereIdentity(identity, stack, intent, normalizedSearch, allowedIdentities)) {
+                    continue;
+                }
                 perStorage
                         .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
                         .computeIfAbsent(storageId, ignored -> new int[]{0})[0] += stack.getCount();
                 displayStacks.putIfAbsent(identity, stack.copy());
                 totals.merge(identity, stack.getCount(), Integer::sum);
             }
+        }
+
+        private static boolean includeElsewhereIdentity(
+                ItemIdentity identity,
+                ItemStack displayStack,
+                RemoteStorageDetailIntent intent,
+                String normalizedSearch,
+                Set<ItemIdentity> allowedIdentities
+        ) {
+            if (identity == null) {
+                return false;
+            }
+            RemoteStorageDetailIntent resolved = intent == null ? RemoteStorageDetailIntent.INTENT_ONLY : intent;
+            if (resolved.includesAllRemote()) {
+                return true;
+            }
+            if (ItemIdentityCollections.containsCanonical(allowedIdentities, identity)) {
+                return true;
+            }
+            return resolved.includesSearchMatches()
+                    && normalizedSearch != null
+                    && !normalizedSearch.isBlank()
+                    && WorkspaceSearchQuery.matchesIdentityStack(normalizedSearch, identity, displayStack);
         }
 
         private static String autoLabelForChest(ClaimedChest chest) {

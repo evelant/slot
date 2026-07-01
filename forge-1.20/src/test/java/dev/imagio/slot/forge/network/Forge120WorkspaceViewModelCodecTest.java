@@ -7,6 +7,7 @@ import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.workflow.domain.CraftRunState;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.junit.jupiter.api.BeforeAll;
@@ -207,6 +208,35 @@ class Forge120WorkspaceViewModelCodecTest {
         assertNotEquals(
                 Forge120WorkspaceViewModelCodec.encode(first),
                 Forge120WorkspaceViewModelCodec.encode(second));
+    }
+
+    @Test
+    void slicedEncodingReusesUnchangedTopLevelSlices() {
+        SlotWorkspaceViewModel.IdentityRef stone = identity("minecraft:stone");
+        ItemIdentity stoneIdentity = ItemIdentity.of("minecraft:stone");
+        SlotWorkspaceViewModel first = minimalView(1, stone, stoneIdentity);
+        Forge120WorkspaceViewModelCodec.EncodedSliceCache cache =
+                new Forge120WorkspaceViewModelCodec.EncodedSliceCache();
+
+        CompoundTag firstCached = Forge120WorkspaceViewModelCodec.encode(first, cache);
+
+        assertEquals(Forge120WorkspaceViewModelCodec.encode(first), firstCached);
+        assertEquals(7, cache.lastStats().encodedSlices());
+        assertEquals(0, cache.lastStats().reusedSlices());
+
+        SlotWorkspaceViewModel revisionOnly = first.withRevision(2);
+        CompoundTag revisionCached = Forge120WorkspaceViewModelCodec.encode(revisionOnly, cache);
+
+        assertEquals(Forge120WorkspaceViewModelCodec.encode(revisionOnly), revisionCached);
+        assertEquals(0, cache.lastStats().encodedSlices());
+        assertEquals(7, cache.lastStats().reusedSlices());
+
+        SlotWorkspaceViewModel statusOnly = first.withFrame(3, "busy", "still-testing", 0, 0);
+        CompoundTag statusCached = Forge120WorkspaceViewModelCodec.encode(statusOnly, cache);
+
+        assertEquals(Forge120WorkspaceViewModelCodec.encode(statusOnly), statusCached);
+        assertEquals(2, cache.lastStats().encodedSlices());
+        assertEquals(5, cache.lastStats().reusedSlices());
     }
 
     @Test

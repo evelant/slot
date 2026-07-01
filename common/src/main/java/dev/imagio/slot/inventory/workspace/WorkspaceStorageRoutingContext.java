@@ -48,6 +48,15 @@ public record WorkspaceStorageRoutingContext(
             WorkflowDomainRuntime runtime,
             InventoryAuthoritySnapshot authority
     ) {
+        return build(player, runtime, authority, null);
+    }
+
+    public static WorkspaceStorageRoutingContext build(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            WorkspaceStorageIndexCache storageIndexCache
+    ) {
         WorkflowDomainSnapshot snapshot = runtime == null ? WorkflowDomainSnapshot.empty() : runtime.snapshot();
         ClaimedChestMap claimedChestMap = runtime == null
                 ? snapshot.claimedChestMap()
@@ -64,14 +73,26 @@ public record WorkspaceStorageRoutingContext(
                 WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
         List<WorldDisplayStorageSource> displaySources =
                 WorkspaceChestProjectionSupport.proximateDisplaySources(player, worldStorage);
-        WorkspaceStorageIndex storageIndex = WorkspaceStorageIndex.build(
-                server,
-                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
-                snapshot,
-                worldStorage,
-                proximate,
-                displaySources,
-                tick);
+        InventoryAuthoritySnapshot resolvedAuthority = authority == null
+                ? InventoryAuthoritySnapshot.empty()
+                : authority;
+        WorkspaceStorageIndex storageIndex = storageIndexCache == null
+                ? WorkspaceStorageIndex.build(
+                        server,
+                        resolvedAuthority,
+                        snapshot,
+                        worldStorage,
+                        proximate,
+                        displaySources,
+                        tick)
+                : storageIndexCache.build(
+                        server,
+                        resolvedAuthority,
+                        snapshot,
+                        worldStorage,
+                        proximate,
+                        displaySources,
+                        tick);
         return new WorkspaceStorageRoutingContext(
                 claimedChestMap,
                 proximate,

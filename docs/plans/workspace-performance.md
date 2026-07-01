@@ -2,9 +2,15 @@
 
 Last updated: 2026-07-01
 
-Status: proposed. Storage-heavy late-game performance roadmap, written after
-Forge 1.20.1 spark captures of mining pickup and bulk carried-to-storage
-deposit flows in TerraFirmaGreg.
+Status: implementation landed on 2026-07-01; TerraFirmaGreg manual/profile
+validation remains pending. This roadmap was written after Forge 1.20.1 spark
+captures of mining pickup and bulk carried-to-storage deposit flows in
+TerraFirmaGreg.
+
+Follow-up: [workspace-incremental-projection.md](workspace-incremental-projection.md)
+tracks the larger architecture step of replacing whole-model refreshes with
+typed invalidations, projection slices, identity/storage-local facts, and delta
+view sends.
 
 For the current operational baseline, see [../status.md](../status.md). This
 plan expands the workspace projection follow-up in [current.md](current.md).
@@ -84,7 +90,7 @@ Regression tests that must stay in the gate:
 ./gradlew :common:test --tests dev.imagio.slot.inventory.session.CarriedAcquisitionActivityTrackerTest
 ```
 
-## Slice 0 - Phase Timings
+## Slice 0 - Phase Timings (landed 2026-07-01)
 
 Add lightweight timing around the server refresh path before changing behavior.
 
@@ -110,7 +116,7 @@ Exit criteria:
 - The log distinguishes storage index time from view-model projection time.
 - No behavior or serialization changes.
 
-## Slice 1 - Shared Per-Refresh Identity Snapshot
+## Slice 1 - Shared Per-Refresh Identity Snapshot (landed 2026-07-01)
 
 Introduce a common `AuthorityIdentityIndex` or `ProjectionIdentityContext`
 built once per authority snapshot under the existing `ItemIdentityMatcher.Memo`.
@@ -127,8 +133,8 @@ It should expose:
 Use it first in `SlotWorkspaceViewModel.project(...)` to replace repeated
 scans in carried counts, grouped atlas entries, recent/junk display lookup,
 content summaries where the source is authority-backed, and hotbar recency.
-Then pass it to wanted clearing and activity diffing where the caller already
-has the same authority snapshot.
+Wanted clearing and activity diffing remain candidates for a later pass when
+their callers already have the same authority snapshot.
 
 Exit criteria:
 
@@ -137,7 +143,7 @@ Exit criteria:
 - The timing log shows fewer identity misses and less selector parsing during
   repeated deposits.
 
-## Slice 2 - Wayfinding Matching Index
+## Slice 2 - Wayfinding Matching Index (landed 2026-07-01)
 
 `wayfindingTargetForStorage(...)` currently checks every stored identity against
 every missing kit / desired / wanted identity. Late-game tracked storage makes
@@ -160,7 +166,7 @@ Exit criteria:
   fluid-container and battery-equivalent identities.
 - Storage-heavy profiles no longer show wayfinding as a top projection cost.
 
-## Slice 3 - Storage Routing / Index Cache
+## Slice 3 - Storage Routing / Index Cache (landed 2026-07-01)
 
 Build a session-level cache for read-only storage index pieces.
 
@@ -190,7 +196,7 @@ Exit criteria:
 - Storage memory revision changes invalidate remembered entries correctly.
 - Quick-deposit eligibility changes when carried contents change.
 
-## Slice 4 - Remote / Tracked Ghost Gating
+## Slice 4 - Remote / Tracked Ghost Gating (landed 2026-07-01)
 
 `ElsewhereGhostProjection.build(...)` currently runs unconditionally because
 tracked-storage x-ray and search need remote-only identities already present in
@@ -215,7 +221,7 @@ Exit criteria:
 - Tests cover collapsed hidden remote ghosts, search reveal, tracked x-ray
   reveal, wanted/desired remote ghosts, and fluid-container distinctness.
 
-## Slice 5 - Projection Fingerprint And Send Slices
+## Slice 5 - Projection Fingerprint And Send Slices (landed 2026-07-01)
 
 The current content key hashes the full view model and Forge sends the full NBT
 model whenever the revision advances. Keep exact stack fingerprints, but split
@@ -239,15 +245,15 @@ Exit criteria:
 - Any stack data change still invalidates the slice containing that stack.
 - Forge and NeoForge codecs stay symmetric.
 
-## Slice 6 - Memo Boundaries And Eviction
+## Slice 6 - Memo Boundaries And Eviction (landed 2026-07-01)
 
-`ItemIdentityMatcher.Memo` currently clears the whole cache after 4096 entries.
-Large modpacks can churn through that quickly.
+`ItemIdentityMatcher.Memo` now evicts the eldest cached identity when a cache
+reaches 4096 entries instead of clearing the whole cache. Large modpacks can
+still churn through the bound, so the slow-refresh logs include cache sizes and
+eviction counts.
 
-Investigate after slices 1-5:
+Rules for future memo work:
 
-- replace clear-all with bounded eldest-entry eviction
-- include memo stats in slow-refresh timing logs
 - avoid global cross-tick identity caches unless the key contains exact item id,
   exact data fingerprint, stackability, damageability, and tag inputs
 
@@ -264,6 +270,7 @@ Focused tests:
 ```bash
 ./gradlew :common:test --tests dev.imagio.slot.inventory.core.ItemIdentityTest
 ./gradlew :common:test --tests dev.imagio.slot.inventory.session.CarriedAcquisitionActivityTrackerTest
+./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModelDepositTest
 ./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.WorkspaceProjectionSessionCacheTest
 ./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.WorkspaceStorageIndexTest
 ./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.WayfindingTargetTest
@@ -289,3 +296,5 @@ Manual/profile checks:
 - Test Sophisticated Backpacks and any other provider-backed carried storage.
 - Test search, tracked x-ray, wanted/desired, Recents, junk, wayfinding, and
   quick-deposit in a large tracked-storage area.
+
+Manual/profile status: pending after the 2026-07-01 implementation pass.

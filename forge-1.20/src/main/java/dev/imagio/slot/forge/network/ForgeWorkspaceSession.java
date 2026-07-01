@@ -12,6 +12,7 @@ import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemStackStructuralKey;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
@@ -40,6 +41,7 @@ import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.workspace.KitPageCycleService;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
+import dev.imagio.slot.inventory.workspace.RemoteStorageDetailIntent;
 import dev.imagio.slot.inventory.workspace.WorkspaceBeltCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
@@ -50,8 +52,10 @@ import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionRequest;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionResult;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionSessionCache;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionTiming;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndexCache;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageRoutingContext;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
@@ -100,6 +104,10 @@ final class ForgeWorkspaceSession {
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
     private final Set<ItemIdentity> autoHomeAttempted = new HashSet<>();
     private final WorkspaceProjectionSessionCache projectionCache = new WorkspaceProjectionSessionCache();
+    private final WorkspaceStorageIndexCache storageIndexCache = new WorkspaceStorageIndexCache();
+    private final Forge120WorkspaceViewModelCodec.EncodedSliceCache encodedSliceCache =
+            new Forge120WorkspaceViewModelCodec.EncodedSliceCache();
+    private RefreshTiming lastRefreshTiming = RefreshTiming.empty();
     private WorkspaceActionSessionContext context;
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private WorkspaceCursorCommandService.CursorOrigin cursorOrigin;
@@ -107,6 +115,7 @@ final class ForgeWorkspaceSession {
     private String status = "ready";
     private String diagnostics = "";
     private String searchQuery = "";
+    private RemoteStorageDetailIntent remoteStorageDetailIntent = RemoteStorageDetailIntent.INTENT_ONLY;
     private String lastContentFingerprint = "";
     private long lastObservedWorkflowSequence = Long.MIN_VALUE;
     private long lastObservedCarriedRevision = Long.MIN_VALUE;
@@ -189,6 +198,14 @@ final class ForgeWorkspaceSession {
         return viewModel;
     }
 
+    RefreshTiming lastRefreshTiming() {
+        return lastRefreshTiming;
+    }
+
+    Forge120WorkspaceViewModelCodec.EncodedSliceCache encodedSliceCache() {
+        return encodedSliceCache;
+    }
+
     private void seedObservedSlotKeys(AbstractContainerMenu menu) {
         observedSlotKeys.clear();
         if (menu == null) {
@@ -213,10 +230,13 @@ final class ForgeWorkspaceSession {
     }
 
     SlotWorkspaceViewModel project(ServerPlayer player, boolean forceRevision) {
+        long totalStart = System.nanoTime();
+        long authorityStart = System.nanoTime();
         InventoryHostDescriptor host = resolveHost(player);
         InventoryAuthoritySnapshot authority = host == null || player == null
                 ? InventoryAuthoritySnapshot.empty()
                 : InventoryAuthorityReadService.serverAuthority(player, host);
+        long authorityNanos = System.nanoTime() - authorityStart;
         String hostDiagnostics = host == null ? "host_resolution_failed" : "";
         String combinedDiagnostics = combineDiagnostics(hostDiagnostics, diagnostics);
         int selected = player == null ? -1 : player.getInventory().selected;
@@ -229,21 +249,48 @@ final class ForgeWorkspaceSession {
                     DomainEventMetadata.origin("contextual.forge.station_context"));
         }
 
-        WorkspaceProjectionResult projection = projectionCache.project(
-                projectionRequest(authority, selected, combinedDiagnostics, gameTime, player));
+        ProjectionRequestBuild requestBuild = projectionRequest(authority, selected, combinedDiagnostics, gameTime, player);
+        long requestSetupNanos = requestBuild.requestSetupNanos();
+        long storageIndexNanos = requestBuild.storageIndexNanos();
+        long projectionStart = System.nanoTime();
+        WorkspaceProjectionResult projection = projectionCache.project(requestBuild.request());
+        long projectionCallNanos = System.nanoTime() - projectionStart;
         SlotWorkspaceViewModel projected = projection.viewModel();
+        boolean autoHomeReprojected = false;
         if (SlotWorkspaceCommandService.autoHomeTriageItems(runtime, projected, autoHomeAttempted)) {
+            autoHomeReprojected = true;
             projectionCache.clear();
-            projection = projectionCache.project(
-                    projectionRequest(authority, selected, combinedDiagnostics, gameTime, player));
+            ProjectionRequestBuild reprojectRequest =
+                    projectionRequest(authority, selected, combinedDiagnostics, gameTime, player);
+            requestSetupNanos += reprojectRequest.requestSetupNanos();
+            storageIndexNanos += reprojectRequest.storageIndexNanos();
+            projectionStart = System.nanoTime();
+            projection = projectionCache.project(reprojectRequest.request());
+            projectionCallNanos += System.nanoTime() - projectionStart;
+            requestBuild = reprojectRequest;
             projected = projection.viewModel();
         }
+        long hotbarStart = System.nanoTime();
         HotbarSlotRecencyRegistry.observe(player, projected);
+        long hotbarObserveNanos = System.nanoTime() - hotbarStart;
 
         long observedWorkflowSequence = currentWorkflowSequence();
         long observedCarriedRevision = CarriedInventoryRevisions.revision(player);
         lastObservedWorkflowSequence = observedWorkflowSequence;
         lastObservedCarriedRevision = observedCarriedRevision;
+        boolean contentChanged = forceRevision || !projection.contentFingerprint().equals(lastContentFingerprint);
+        lastRefreshTiming = RefreshTiming.from(
+                authorityNanos,
+                requestSetupNanos,
+                storageIndexNanos,
+                projectionCallNanos,
+                hotbarObserveNanos,
+                System.nanoTime() - totalStart,
+                contentChanged,
+                autoHomeReprojected,
+                authority,
+                requestBuild,
+                projection);
         if (!forceRevision && projection.contentFingerprint().equals(lastContentFingerprint)) {
             return viewModel;
         }
@@ -292,6 +339,14 @@ final class ForgeWorkspaceSession {
                 }
                 searchQuery = query;
                 yield WorkspaceCommandOutcome.accepted("search updated", searchQuery.isBlank() ? "" : "query=" + searchQuery);
+            }
+            case SET_REMOTE_STORAGE_DETAIL -> {
+                RemoteStorageDetailIntent intent = RemoteStorageDetailIntent.parse(stringArg(args, 0));
+                if (intent == remoteStorageDetailIntent) {
+                    yield WorkspaceCommandOutcome.accepted("remote storage detail unchanged", intent.name());
+                }
+                remoteStorageDetailIntent = intent;
+                yield WorkspaceCommandOutcome.accepted("remote storage detail updated", intent.name());
             }
             case DEPOSIT -> {
                 InventoryHostDescriptor host = resolveHost(player);
@@ -764,19 +819,22 @@ final class ForgeWorkspaceSession {
                 : WorkspaceCommandOutcome.rejected("craft_run_ingredient_not_found");
     }
 
-    private WorkspaceProjectionRequest projectionRequest(
+    private ProjectionRequestBuild projectionRequest(
             InventoryAuthoritySnapshot authority,
             int selected,
             String combinedDiagnostics,
             long gameTime,
             ServerPlayer player
     ) {
+        long setupStart = System.nanoTime();
         if (runtime != null) {
             runtime.collectionWorkflow().expireJunkTags();
         }
         WorkflowDomainSnapshot snapshot = runtime == null ? null : runtime.snapshot();
+        long storageStart = System.nanoTime();
         WorkspaceStorageRoutingContext storageContext =
-                WorkspaceStorageRoutingContext.build(player, runtime, authority);
+                WorkspaceStorageRoutingContext.build(player, runtime, authority, storageIndexCache);
+        long storageNanos = System.nanoTime() - storageStart;
         ClaimedChestMap claimedChestMap = storageContext.claimedChestMap();
         SlotWorkspaceViewModel.LootChestSource lootChestSource = resolveLootChestSource(player, claimedChestMap);
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel =
@@ -788,7 +846,9 @@ final class ForgeWorkspaceSession {
         lastObservedContextualStorageIds = Set.copyOf(contextualSuggestionStorageIds);
         WorkspaceStorageIndex storageIndex = storageContext.storageIndex();
         clearSatisfiedWantedCounts(authority);
-        return new WorkspaceProjectionRequest(
+        List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries = storageIndex.liveTrackedDisplayEntries();
+        Set<String> liveDepositStorageIds = storageIndex.liveDepositStorageIds();
+        WorkspaceProjectionRequest request = new WorkspaceProjectionRequest(
                 authority,
                 snapshot,
                 status,
@@ -803,17 +863,25 @@ final class ForgeWorkspaceSession {
                 carriedContainerInfoResolver(player),
                 lootChestSource,
                 searchQuery,
+                remoteStorageDetailIntent,
                 gameTime,
                 activeChestPanel,
                 displaySources,
                 contextualSuggestionStorageIds,
                 displaySources,
-                storageIndex.liveTrackedDisplayEntries(),
-                storageIndex.liveDepositStorageIds(),
+                trackedDisplayEntries,
+                liveDepositStorageIds,
                 storageIndex,
                 storageContext.liveChestContentPresence(),
                 storageContext.liveStorageAffinityEligibility()
         );
+        return new ProjectionRequestBuild(
+                request,
+                storageNanos,
+                System.nanoTime() - setupStart,
+                storageIndex.entries().size(),
+                trackedDisplayEntries.size(),
+                liveDepositStorageIds.size());
     }
 
     private boolean storageProximityChanged(ServerPlayer player) {
@@ -1655,5 +1723,161 @@ final class ForgeWorkspaceSession {
                     : null;
             default -> null;
         };
+    }
+
+    record ProjectionRequestBuild(
+            WorkspaceProjectionRequest request,
+            long storageIndexNanos,
+            long requestSetupNanos,
+            int storageEntryCount,
+            int trackedDisplayEntryCount,
+            int liveDepositStorageCount
+    ) {
+        ProjectionRequestBuild {
+            request = request == null
+                    ? new WorkspaceProjectionRequest(
+                            null, null, "ready", "", 0, -1, 0,
+                            null, null, null, null, null, null, "",
+                            null, 0L, null, null, null, null, null, null, null, null, null)
+                    : request;
+            storageIndexNanos = Math.max(0L, storageIndexNanos);
+            requestSetupNanos = Math.max(0L, requestSetupNanos);
+            storageEntryCount = Math.max(0, storageEntryCount);
+            trackedDisplayEntryCount = Math.max(0, trackedDisplayEntryCount);
+            liveDepositStorageCount = Math.max(0, liveDepositStorageCount);
+        }
+    }
+
+    record RefreshTiming(
+            long authorityReadNanos,
+            long requestSetupNanos,
+            long storageIndexNanos,
+            long projectionCallNanos,
+            long hotbarObserveNanos,
+            long totalNanos,
+            boolean contentChanged,
+            boolean autoHomeReprojected,
+            int carriedEntryCount,
+            int presentEntryCount,
+            int storageEntryCount,
+            int trackedDisplayEntryCount,
+            int liveDepositStorageCount,
+            boolean structuralCacheHit,
+            long structuralHits,
+            long structuralMisses,
+            long memoCreateHits,
+            long memoCreateMisses,
+            long memoNormalizeHits,
+            long memoNormalizeMisses,
+            int memoCreateCacheSize,
+            int memoNormalizeCacheSize,
+            long memoCreateEvictions,
+            long memoNormalizeEvictions,
+            WorkspaceProjectionTiming projectionTiming
+    ) {
+        RefreshTiming {
+            authorityReadNanos = Math.max(0L, authorityReadNanos);
+            requestSetupNanos = Math.max(0L, requestSetupNanos);
+            storageIndexNanos = Math.max(0L, storageIndexNanos);
+            projectionCallNanos = Math.max(0L, projectionCallNanos);
+            hotbarObserveNanos = Math.max(0L, hotbarObserveNanos);
+            totalNanos = Math.max(0L, totalNanos);
+            carriedEntryCount = Math.max(0, carriedEntryCount);
+            presentEntryCount = Math.max(0, presentEntryCount);
+            storageEntryCount = Math.max(0, storageEntryCount);
+            trackedDisplayEntryCount = Math.max(0, trackedDisplayEntryCount);
+            liveDepositStorageCount = Math.max(0, liveDepositStorageCount);
+            projectionTiming = projectionTiming == null ? WorkspaceProjectionTiming.empty() : projectionTiming;
+        }
+
+        static RefreshTiming empty() {
+            return new RefreshTiming(
+                    0L, 0L, 0L, 0L, 0L, 0L,
+                    false, false, 0, 0, 0, 0, 0,
+                    false, 0L, 0L, 0L, 0L, 0L, 0L,
+                    0, 0, 0L, 0L,
+                    WorkspaceProjectionTiming.empty());
+        }
+
+        static RefreshTiming from(
+                long authorityReadNanos,
+                long requestSetupNanos,
+                long storageIndexNanos,
+                long projectionCallNanos,
+                long hotbarObserveNanos,
+                long totalNanos,
+                boolean contentChanged,
+                boolean autoHomeReprojected,
+                InventoryAuthoritySnapshot authority,
+                ProjectionRequestBuild requestBuild,
+                WorkspaceProjectionResult projection
+        ) {
+            WorkspaceProjectionSessionCache.Diagnostics diagnostics = projection == null ? null : projection.diagnostics();
+            ItemIdentityMatcher.MemoStats memo = diagnostics == null
+                    ? ItemIdentityMatcher.MemoStats.empty()
+                    : diagnostics.identityMemoStats();
+            return new RefreshTiming(
+                    authorityReadNanos,
+                    requestSetupNanos,
+                    storageIndexNanos,
+                    projectionCallNanos,
+                    hotbarObserveNanos,
+                    totalNanos,
+                    contentChanged,
+                    autoHomeReprojected,
+                    carriedEntryCount(authority),
+                    presentEntryCount(authority),
+                    requestBuild == null ? 0 : requestBuild.storageEntryCount(),
+                    requestBuild == null ? 0 : requestBuild.trackedDisplayEntryCount(),
+                    requestBuild == null ? 0 : requestBuild.liveDepositStorageCount(),
+                    diagnostics != null && diagnostics.structuralCacheHit(),
+                    diagnostics == null ? 0L : diagnostics.structuralHits(),
+                    diagnostics == null ? 0L : diagnostics.structuralMisses(),
+                    memo.createHits(),
+                    memo.createMisses(),
+                    memo.normalizeHits(),
+                    memo.normalizeMisses(),
+                    memo.createCacheSize(),
+                    memo.normalizeCacheSize(),
+                    memo.createEvictions(),
+                    memo.normalizeEvictions(),
+                    diagnostics == null ? WorkspaceProjectionTiming.empty() : diagnostics.timing());
+        }
+
+        private static int carriedEntryCount(InventoryAuthoritySnapshot authority) {
+            if (authority == null) {
+                return 0;
+            }
+            int count = 0;
+            for (InventorySourceDescriptor source : authority.carriedSources()) {
+                if (source == null) {
+                    continue;
+                }
+                for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                    if (entry != null && entry.present()) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        private static int presentEntryCount(InventoryAuthoritySnapshot authority) {
+            if (authority == null) {
+                return 0;
+            }
+            int count = 0;
+            for (InventorySourceDescriptor source : authority.sourceDescriptors()) {
+                if (source == null) {
+                    continue;
+                }
+                for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                    if (entry != null && entry.present()) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }

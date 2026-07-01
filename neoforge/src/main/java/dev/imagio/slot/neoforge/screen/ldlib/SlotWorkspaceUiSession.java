@@ -33,6 +33,7 @@ import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
+import dev.imagio.slot.inventory.workspace.RemoteStorageDetailIntent;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceTransferRequestFactory;
@@ -47,7 +48,9 @@ import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionRequest;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionResult;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionSessionCache;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionTiming;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndexCache;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageRoutingContext;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
@@ -97,10 +100,14 @@ final class SlotWorkspaceUiSession {
     static final int TARGET_MAIN_SOURCE = 1;
     static final int TARGET_MAIN_SLOT = 2;
     static final int TARGET_HOTBAR_SLOT = 3;
+    private static final long SLOW_REFRESH_NANOS = 75_000_000L;
 
     private final Player player;
     private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
     private final WorkspaceProjectionSessionCache projectionCache = new WorkspaceProjectionSessionCache();
+    private final WorkspaceStorageIndexCache storageIndexCache = new WorkspaceStorageIndexCache();
+    private final SlotWorkspaceViewModelCodec.EncodedSliceCache encodedSliceCache =
+            new SlotWorkspaceViewModelCodec.EncodedSliceCache();
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private String lastContentFingerprint = "";
     private CompoundTag lastViewTag;
@@ -135,6 +142,7 @@ final class SlotWorkspaceUiSession {
      * ghosts only when the player is searching.
      */
     private String searchQuery = "";
+    private RemoteStorageDetailIntent remoteStorageDetailIntent = RemoteStorageDetailIntent.INTENT_ONLY;
 
     /**
      * Origin stamp for the current cursor stack. Set whenever a SLOT-
@@ -473,6 +481,17 @@ final class SlotWorkspaceUiSession {
             return;
         }
         searchQuery = normalized;
+        if (player instanceof ServerPlayer serverPlayer) {
+            broadcast(serverPlayer);
+        }
+    }
+
+    void setRemoteStorageDetailIntent(String value) {
+        RemoteStorageDetailIntent intent = RemoteStorageDetailIntent.parse(value);
+        if (intent == remoteStorageDetailIntent) {
+            return;
+        }
+        remoteStorageDetailIntent = intent;
         if (player instanceof ServerPlayer serverPlayer) {
             broadcast(serverPlayer);
         }
@@ -2118,10 +2137,13 @@ final class SlotWorkspaceUiSession {
     }
 
     private void refreshServerView(ServerPlayer serverPlayer) {
+        long totalStart = System.nanoTime();
+        long authorityStart = System.nanoTime();
         InventoryHostDescriptor host = resolveHost(serverPlayer);
         InventoryAuthoritySnapshot authority = host == null
                 ? InventoryAuthoritySnapshot.empty()
                 : InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        long authorityNanos = System.nanoTime() - authorityStart;
         String hostDiagnostics = host == null ? "host_resolution_failed" : "";
         String combinedDiagnostics = combineDiagnostics(hostDiagnostics, diagnostics);
         int selected = serverPlayer.getInventory().selected;
@@ -2135,8 +2157,11 @@ final class SlotWorkspaceUiSession {
                     gameTime,
                     DomainEventMetadata.origin("contextual.neoforge.station_context"));
         }
+        long setupStart = System.nanoTime();
+        long storageStart = System.nanoTime();
         WorkspaceStorageRoutingContext storageContext =
-                WorkspaceStorageRoutingContext.build(serverPlayer, runtime, authority);
+                WorkspaceStorageRoutingContext.build(serverPlayer, runtime, authority, storageIndexCache);
+        long storageIndexNanos = System.nanoTime() - storageStart;
         ClaimedChestMap claimedChestMap = storageContext.claimedChestMap();
         Set<String> proximateIds = storageContext.proximateStorageIds();
         Set<String> contextualSuggestionStorageIds = storageContext.contextualSuggestionStorageIds();
@@ -2155,7 +2180,9 @@ final class SlotWorkspaceUiSession {
                 serverPlayer, runtime, claimedChestMap);
         clearSatisfiedWantedCounts(authority);
         WorkflowDomainSnapshot snapshot = runtime.snapshot();
-        WorkspaceProjectionResult projection = projectionCache.project(new WorkspaceProjectionRequest(
+        List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries = storageIndex.liveTrackedDisplayEntries();
+        Set<String> liveDepositStorageIds = storageIndex.liveDepositStorageIds();
+        WorkspaceProjectionRequest request = new WorkspaceProjectionRequest(
                 authority,
                 snapshot,
                 status,
@@ -2170,17 +2197,22 @@ final class SlotWorkspaceUiSession {
                 containerResolver,
                 lootChestSource,
                 searchQuery,
+                remoteStorageDetailIntent,
                 gameTime,
                 activeChestPanel,
                 displaySources,
                 contextualSuggestionStorageIds,
                 displaySources,
-                storageIndex.liveTrackedDisplayEntries(),
-                storageIndex.liveDepositStorageIds(),
+                trackedDisplayEntries,
+                liveDepositStorageIds,
                 storageIndex,
                 storageContext.liveChestContentPresence(),
                 storageContext.liveStorageAffinityEligibility()
-        ));
+        );
+        long requestSetupNanos = System.nanoTime() - setupStart;
+        long projectionStart = System.nanoTime();
+        WorkspaceProjectionResult projection = projectionCache.project(request);
+        long projectionCallNanos = System.nanoTime() - projectionStart;
         SlotWorkspaceViewModel projected = projection.viewModel();
         // Pickup-time auto-home: at most one carried-but-unassigned
         // identity per refresh gets routed via its top chip suggestion
@@ -2192,11 +2224,14 @@ final class SlotWorkspaceUiSession {
         // chip away at the remaining triage list. Re-projects against
         // the freshly-mutated snapshot so the broadcast reflects the
         // new assignment.
+        boolean autoHomeReprojected = false;
         if (SlotWorkspaceCommandService.autoHomeTriageItems(runtime, projected, autoHomeAttempted)) {
+            autoHomeReprojected = true;
             projectionCache.clear();
             activeChestPanel = resolveActiveChestPanel(serverPlayer, runtime, claimedChestMap);
             snapshot = runtime.snapshot();
-            projection = projectionCache.project(new WorkspaceProjectionRequest(
+            long reprojectSetupStart = System.nanoTime();
+            WorkspaceProjectionRequest reprojectRequest = new WorkspaceProjectionRequest(
                     authority,
                     snapshot,
                     status,
@@ -2211,30 +2246,176 @@ final class SlotWorkspaceUiSession {
                     containerResolver,
                     lootChestSource,
                     searchQuery,
+                    remoteStorageDetailIntent,
                     gameTime,
                     activeChestPanel,
                     displaySources,
                     contextualSuggestionStorageIds,
                     displaySources,
-                    storageIndex.liveTrackedDisplayEntries(),
-                    storageIndex.liveDepositStorageIds(),
+                    trackedDisplayEntries,
+                    liveDepositStorageIds,
                     storageIndex,
                     storageContext.liveChestContentPresence(),
                     storageContext.liveStorageAffinityEligibility()
-            ));
+            );
+            requestSetupNanos += System.nanoTime() - reprojectSetupStart;
+            projectionStart = System.nanoTime();
+            projection = projectionCache.project(reprojectRequest);
+            projectionCallNanos += System.nanoTime() - projectionStart;
             projected = projection.viewModel();
         }
+        long hotbarStart = System.nanoTime();
         HotbarSlotRecencyRegistry.observe(serverPlayer, projected);
+        long hotbarObserveNanos = System.nanoTime() - hotbarStart;
         long observedWorkflowSequence = currentWorkflowSequence(runtime);
         long observedCarriedRevision = CarriedInventoryRevisions.revision(serverPlayer);
         lastObservedWorkflowSequence = observedWorkflowSequence;
         lastObservedCarriedRevision = observedCarriedRevision;
+        long encodeNanos = 0L;
+        int payloadBytes = lastViewTag == null ? 0 : lastViewTag.sizeInBytes();
+        SlotWorkspaceViewModelCodec.SliceStats sliceStats = encodedSliceCache.lastStats();
+        boolean contentChanged = !projection.contentFingerprint().equals(lastContentFingerprint);
         if (!projection.contentFingerprint().equals(lastContentFingerprint)) {
             lastContentFingerprint = projection.contentFingerprint();
             viewModel = projected.withRevision(nextRevision++);
-            lastViewTag = SlotWorkspaceViewModelCodec.encode(viewModel, serverPlayer.registryAccess());
+            long encodeStart = System.nanoTime();
+            lastViewTag = SlotWorkspaceViewModelCodec.encode(
+                    viewModel,
+                    serverPlayer.registryAccess(),
+                    encodedSliceCache);
+            encodeNanos = System.nanoTime() - encodeStart;
+            sliceStats = encodedSliceCache.lastStats();
+            payloadBytes = lastViewTag.sizeInBytes();
+        }
+        long totalNanos = System.nanoTime() - totalStart;
+        if (SlotDebugLog.enabled() || totalNanos >= SLOW_REFRESH_NANOS) {
+            logRefreshTiming(
+                    serverPlayer,
+                    projection,
+                    authorityNanos,
+                    requestSetupNanos,
+                    storageIndexNanos,
+                    projectionCallNanos,
+                    hotbarObserveNanos,
+                    encodeNanos,
+                    totalNanos,
+                    contentChanged,
+                    autoHomeReprojected,
+                    authority,
+                    storageIndex.entries().size(),
+                    trackedDisplayEntries.size(),
+                    liveDepositStorageIds.size(),
+                    payloadBytes,
+                    sliceStats);
         }
         rememberStructuralState(serverPlayer);
+    }
+
+    private static void logRefreshTiming(
+            ServerPlayer serverPlayer,
+            WorkspaceProjectionResult projection,
+            long authorityNanos,
+            long requestSetupNanos,
+            long storageIndexNanos,
+            long projectionCallNanos,
+            long hotbarObserveNanos,
+            long encodeNanos,
+            long totalNanos,
+            boolean contentChanged,
+            boolean autoHomeReprojected,
+            InventoryAuthoritySnapshot authority,
+            int storageEntryCount,
+            int trackedDisplayEntryCount,
+            int liveDepositStorageCount,
+            int payloadBytes,
+            SlotWorkspaceViewModelCodec.SliceStats sliceStats
+    ) {
+        SlotWorkspaceViewModel viewModel = projection == null ? SlotWorkspaceViewModel.empty() : projection.viewModel();
+        WorkspaceProjectionSessionCache.Diagnostics diagnostics = projection == null ? null : projection.diagnostics();
+        WorkspaceProjectionTiming projectionTiming = diagnostics == null
+                ? WorkspaceProjectionTiming.empty()
+                : diagnostics.timing();
+        ItemIdentityMatcher.MemoStats memo = diagnostics == null
+                ? ItemIdentityMatcher.MemoStats.empty()
+                : diagnostics.identityMemoStats();
+        SlotWorkspaceViewModelCodec.SliceStats resolvedSliceStats =
+                sliceStats == null ? SlotWorkspaceViewModelCodec.SliceStats.empty() : sliceStats;
+        dev.imagio.slot.SlotCommon.LOGGER.info(
+                "[SLOT] NeoForge workspace refresh player={} rev={} changed={} autoHome={} "
+                        + "ms[authority={},request={},storageIndex={},inputKey={},projectMiss={},contentKey={},encode={},send={},total={}] "
+                        + "counts[carriedEntries={},atlasItems={},triageItems={},storageEntries={},trackedDisplay={},liveDeposit={},wayfinding={},chestChips={},contentSummaries={},payloadBytes={}] "
+                        + "cache[hit={},hits={},misses={},memoCreate={}/{}/size={},memoNormalize={}/{}/size={},memoEvictions={}/{},slices={}/{}]",
+                serverPlayer == null ? "<unknown>" : serverPlayer.getGameProfile().getName(),
+                viewModel.revision(),
+                contentChanged,
+                autoHomeReprojected,
+                ms(authorityNanos),
+                ms(requestSetupNanos),
+                ms(storageIndexNanos),
+                ms(projectionTiming.inputKeyNanos()),
+                ms(projectionTiming.projectNanos()),
+                ms(projectionTiming.contentKeyNanos()),
+                ms(encodeNanos),
+                0.0D,
+                ms(totalNanos),
+                carriedEntryCount(authority),
+                viewModel.atlasItems().size(),
+                viewModel.triageItems().size(),
+                Math.max(0, storageEntryCount),
+                Math.max(0, trackedDisplayEntryCount),
+                Math.max(0, liveDepositStorageCount),
+                viewModel.wayfindingTargets().size(),
+                viewModel.chestChips().size(),
+                contentSummaryCount(viewModel),
+                Math.max(0, payloadBytes),
+                diagnostics != null && diagnostics.structuralCacheHit(),
+                diagnostics == null ? 0L : diagnostics.structuralHits(),
+                diagnostics == null ? 0L : diagnostics.structuralMisses(),
+                memo.createHits(),
+                memo.createMisses(),
+                memo.createCacheSize(),
+                memo.normalizeHits(),
+                memo.normalizeMisses(),
+                memo.normalizeCacheSize(),
+                memo.createEvictions(),
+                memo.normalizeEvictions(),
+                resolvedSliceStats.encodedSlices(),
+                resolvedSliceStats.reusedSlices());
+    }
+
+    private static double ms(long nanos) {
+        return WorkspaceProjectionTiming.millis(nanos);
+    }
+
+    private static int carriedEntryCount(InventoryAuthoritySnapshot authority) {
+        if (authority == null) {
+            return 0;
+        }
+        int count = 0;
+        for (dev.imagio.slot.inventory.core.InventorySourceDescriptor source : authority.carriedSources()) {
+            if (source == null) {
+                continue;
+            }
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry != null && entry.present()) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    private static int contentSummaryCount(SlotWorkspaceViewModel viewModel) {
+        if (viewModel == null || viewModel.chestChips().isEmpty()) {
+            return 0;
+        }
+        int count = 0;
+        for (SlotWorkspaceViewModel.ChestChip chip : viewModel.chestChips()) {
+            if (chip != null) {
+                count += chip.contents().size();
+            }
+        }
+        return count;
     }
 
     private boolean shouldRefreshServerView(ServerPlayer serverPlayer) {

@@ -4,6 +4,7 @@ import dev.imagio.slot.inventory.core.BuiltinInventoryDescriptors;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.HostInstanceKey;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.InventoryStackSnapshot;
 import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
@@ -35,6 +36,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -47,8 +49,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SlotWorkspaceViewModelDepositTest {
     private static final UUID CHEST_A = UUID.fromString("00000000-0000-0000-0000-000000000101");
+    private static final String TEST_BACKPACK_SOURCE = "test:backpack";
     private static final ItemIdentity REDSTONE = ItemIdentity.of("minecraft:redstone");
     private static final ItemIdentity STEEL_SAW = ItemIdentity.of("tfc:metal/saw/steel");
+    private static final ItemIdentity IRON_FLASK = ItemIdentity.of("waterflasks:iron_flask");
+    private static final ItemIdentity WATER_IRON_FLASK =
+            ItemIdentity.exact("waterflasks:iron_flask", "fluid=minecraft:water");
 
     @Test
     void depositableIdentitiesIncludeExistingProximateContentsWithoutAffinity() {
@@ -368,6 +374,158 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     @Test
+    void rememberedRemoteStorageOnlyProjectsWhenRequestedByIntent() {
+        SlotWorkspaceViewModel.setGhostStackResolver(id -> new ItemStack(id, 1, 64));
+        try {
+            RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
+                    StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                    27,
+                    Map.of(REDSTONE, 8),
+                    10L,
+                    "test");
+            WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                    null,
+                    InventoryAuthoritySnapshot.empty(),
+                    claimedMap(CHEST_A),
+                    null,
+                    Set.of(),
+                    List.of(),
+                    Map.of(CHEST_A.toString(), remembered));
+
+            SlotWorkspaceViewModel collapsed = SlotWorkspaceViewModel.project(
+                    InventoryAuthoritySnapshot.empty(),
+                    workflow(homeMap(REDSTONE), claimedMap(CHEST_A), ChestAffinityMap.empty()),
+                    "ready",
+                    "",
+                    0,
+                    0,
+                    1L,
+                    null,
+                    null,
+                    index.contentsResolver(),
+                    Set.of(),
+                    null,
+                    null,
+                    "",
+                    0L,
+                    SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                    index.displaySources(),
+                    Set.of(),
+                    index.displaySources(),
+                    index.liveTrackedDisplayEntries(),
+                    index.liveDepositStorageIds(),
+                    index.liveChestContentPresence(),
+                    index.liveStorageAffinityEligibility(),
+                    RemoteStorageDetailIntent.INTENT_ONLY);
+
+            SlotWorkspaceViewModel expanded = SlotWorkspaceViewModel.project(
+                    InventoryAuthoritySnapshot.empty(),
+                    workflow(homeMap(REDSTONE), claimedMap(CHEST_A), ChestAffinityMap.empty()),
+                    "ready",
+                    "",
+                    0,
+                    0,
+                    1L,
+                    null,
+                    null,
+                    index.contentsResolver(),
+                    Set.of(),
+                    null,
+                    null,
+                    "",
+                    0L,
+                    SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                    index.displaySources(),
+                    Set.of(),
+                    index.displaySources(),
+                    index.liveTrackedDisplayEntries(),
+                    index.liveDepositStorageIds(),
+                    index.liveChestContentPresence(),
+                    index.liveStorageAffinityEligibility(),
+                    RemoteStorageDetailIntent.TRACKED_XRAY);
+
+            assertTrue(collapsed.atlasItems().stream()
+                    .noneMatch(candidate -> REDSTONE.equals(candidate.identity().toIdentity())));
+
+            SlotWorkspaceViewModel.AtlasItem redstone = expanded.atlasItems().stream()
+                    .filter(candidate -> REDSTONE.equals(candidate.identity().toIdentity()))
+                    .findFirst()
+                    .orElseThrow();
+
+            assertTrue(redstone.ghost());
+            assertEquals(1, redstone.elsewhere().size());
+            assertEquals(8, redstone.elsewhere().get(0).count());
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
+    void rememberedRemoteWantedStorageProjectsInCollapsedIntentMode() {
+        SlotWorkspaceViewModel.setGhostStackResolver(id -> new ItemStack(id, 1, 64));
+        try {
+            RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
+                    StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                    27,
+                    Map.of(REDSTONE, 8),
+                    10L,
+                    "test");
+            WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                    null,
+                    InventoryAuthoritySnapshot.empty(),
+                    claimedMap(CHEST_A),
+                    null,
+                    Set.of(),
+                    List.of(),
+                    Map.of(CHEST_A.toString(), remembered));
+
+            SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                    InventoryAuthoritySnapshot.empty(),
+                    workflow(
+                            homeMap(REDSTONE),
+                            claimedMap(CHEST_A),
+                            ChestAffinityMap.empty(),
+                            Map.of(),
+                            Map.of(REDSTONE, 1)),
+                    "ready",
+                    "",
+                    0,
+                    0,
+                    1L,
+                    null,
+                    null,
+                    index.contentsResolver(),
+                    Set.of(),
+                    null,
+                    null,
+                    "",
+                    0L,
+                    SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                    index.displaySources(),
+                    Set.of(),
+                    index.displaySources(),
+                    index.liveTrackedDisplayEntries(),
+                    index.liveDepositStorageIds(),
+                    index.liveChestContentPresence(),
+                    index.liveStorageAffinityEligibility(),
+                    RemoteStorageDetailIntent.INTENT_ONLY);
+
+            SlotWorkspaceViewModel.AtlasItem redstone = viewModel.atlasItems().stream()
+                    .filter(candidate -> REDSTONE.equals(candidate.identity().toIdentity()))
+                    .findFirst()
+                    .orElseThrow();
+
+            assertTrue(redstone.ghost());
+            assertEquals(1, redstone.elsewhere().size());
+            assertEquals(8, redstone.elsewhere().get(0).count());
+            assertTrue(viewModel.wayfindingTargets().stream()
+                    .anyMatch(target -> target.storageId().equals(CHEST_A.toString())));
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
     void chestContentSummariesNormalizeMovableContainers() {
         SlotWorkspaceViewModel viewModel = project(
                 InventoryAuthoritySnapshot.empty(),
@@ -394,6 +552,32 @@ class SlotWorkspaceViewModelDepositTest {
         assertEquals("sns:straw_basket", chip.contents().get(0).itemId());
         assertEquals("", chip.contents().get(0).componentFingerprint());
         assertEquals(2, chip.contents().get(0).count());
+    }
+
+    @Test
+    void broadFlaskHomeKeepsFilledWaterFlasksCarriedAndSearchableAcrossCarriedSources() {
+        SlotWorkspaceViewModel viewModel = project(
+                carriedWaterFlasksAcrossMainAndBackpack(),
+                workflow(homeMap(IRON_FLASK), ClaimedChestMap.empty(), ChestAffinityMap.empty()),
+                storageId -> SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of()
+        );
+
+        SlotWorkspaceViewModel.AtlasItem waterFlasks = viewModel.atlasItems().stream()
+                .filter(candidate -> WATER_IRON_FLASK.equals(candidate.identity().toIdentity()))
+                .findFirst()
+                .orElseThrow();
+
+        assertEquals("materials", waterFlasks.islandId());
+        assertTrue(waterFlasks.carried());
+        assertEquals(4, waterFlasks.totalCount());
+        assertEquals("Water Iron Flask", waterFlasks.name());
+        assertTrue(WorkspaceSearchQuery.matchesItem(
+                "water",
+                waterFlasks,
+                viewModel.island(waterFlasks.islandId())));
+        assertTrue(viewModel.triageItems().stream()
+                .noneMatch(candidate -> WATER_IRON_FLASK.equals(candidate.identity().toIdentity())));
     }
 
     @Test
@@ -444,10 +628,35 @@ class SlotWorkspaceViewModelDepositTest {
                 Map.of());
     }
 
+    private static InventoryAuthoritySnapshot carriedWaterFlasksAcrossMainAndBackpack() {
+        return InventoryAuthorityFixtures.authority(
+                hostWithBackpack(),
+                Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN,
+                        List.of(
+                                new InventoryStackSnapshot(0, waterIronFlask(2000), 1),
+                                new InventoryStackSnapshot(1, waterIronFlask(1900), 1)),
+                        TEST_BACKPACK_SOURCE,
+                        List.of(
+                                new InventoryStackSnapshot(0, waterIronFlask(1800), 1),
+                                new InventoryStackSnapshot(1, waterIronFlask(1700), 1))),
+                Map.of(TEST_BACKPACK_SOURCE, 9));
+    }
+
     private static WorkflowDomainSnapshot workflow(
             VisualHomeMap homeMap,
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap affinityMap
+    ) {
+        return workflow(homeMap, claimedChestMap, affinityMap, Map.of(), Map.of());
+    }
+
+    private static WorkflowDomainSnapshot workflow(
+            VisualHomeMap homeMap,
+            ClaimedChestMap claimedChestMap,
+            ChestAffinityMap affinityMap,
+            Map<ItemIdentity, Integer> playerDesiredCounts,
+            Map<ItemIdentity, Integer> playerWantedCounts
     ) {
         WorkflowProjection.Snapshot projection = new WorkflowProjection.Snapshot(
                 List.of(),
@@ -462,9 +671,9 @@ class SlotWorkspaceViewModelDepositTest {
                 affinityMap,
                 Map.of(),
                 KitMap.empty(),
+                playerDesiredCounts,
                 Map.of(),
-                Map.of(),
-                Map.of()
+                playerWantedCounts
         );
         return new WorkflowDomainSnapshot(1L, projection, null, null, null, null, null);
     }
@@ -514,6 +723,15 @@ class SlotWorkspaceViewModelDepositTest {
         return new ItemStack(itemId, count, 64);
     }
 
+    private static ItemStack waterIronFlask(int amount) {
+        return new ItemStack(
+                "waterflasks:iron_flask",
+                "{Fluid:{FluidName:\"minecraft:water\",Amount:" + amount + "}}",
+                1,
+                1)
+                .setHoverName(Component.literal("Water Iron Flask"));
+    }
+
     private static InventoryHostDescriptor host() {
         TestMenu menu = new TestMenu();
         return new InventoryHostDescriptor(
@@ -532,6 +750,41 @@ class SlotWorkspaceViewModelDepositTest {
                 List.of(),
                 InventoryHostObservationHints.defaults(),
                 ""
+        );
+    }
+
+    private static InventoryHostDescriptor hostWithBackpack() {
+        InventoryHostDescriptor base = host();
+        ArrayList<InventorySourceDescriptor> sources = new ArrayList<>(base.sourceDescriptors());
+        sources.add(InventorySourceDescriptor.builder(TEST_BACKPACK_SOURCE)
+                .label(Component.literal("Test Backpack"))
+                .domain(dev.imagio.slot.inventory.core.InventorySourceDomain.PLAYER_EXTENSION)
+                .role(dev.imagio.slot.inventory.core.InventorySourceRole.PROVIDER_DEFINED)
+                .logicalSlotCount(9)
+                .bindingRoute(dev.imagio.slot.inventory.core.InventoryBindingRoute.PROVIDER)
+                .capabilities(Set.of(
+                        dev.imagio.slot.inventory.core.InventoryCapability.INSERT,
+                        dev.imagio.slot.inventory.core.InventoryCapability.EXTRACT))
+                .actionRoute(dev.imagio.slot.inventory.core.InventoryActionRoute.PROVIDER_MUTATION)
+                .paneMembership(dev.imagio.slot.inventory.core.InventoryPaneMembership.CARRIED)
+                .stableOrder(15)
+                .build());
+        return new InventoryHostDescriptor(
+                base.hostId(),
+                base.serverMenuRef(),
+                base.screenClassName(),
+                base.title(),
+                base.menu(),
+                base.topology(),
+                base.hostSession(),
+                base.playerExtensions(),
+                base.playerRuntimeState(),
+                sources,
+                base.quickAccessLanes(),
+                base.equipmentGroups(),
+                base.toolDescriptors(),
+                base.observationHints(),
+                base.diagnostics()
         );
     }
 

@@ -24,17 +24,21 @@ public final class WorkspaceProjectionSessionCache {
     }
 
     public WorkspaceProjectionResult project(WorkspaceProjectionRequest request) {
+        long totalStart = System.nanoTime();
         WorkspaceProjectionRequest resolved = request == null
                 ? new WorkspaceProjectionRequest(
                         null, null, "ready", "", 0, -1, 0,
                         null, null, null, null, null, null, "",
-                        0L, null, null, null, null, null, null, null, null, null)
+                        null, 0L, null, null, null, null, null, null, null, null, null)
                 : request;
         projectionCount++;
         WorkspaceProjectionFrame frame = resolved.frame();
+        long inputStart = System.nanoTime();
         String structuralKey = WorkspaceProjectionFingerprint.inputKey(resolved, identityMemo);
+        long inputNanos = System.nanoTime() - inputStart;
         boolean structuralHit = lastStructuralView != null && structuralKey.equals(lastStructuralKey);
         SlotWorkspaceViewModel projected;
+        long projectNanos = 0L;
         if (structuralHit) {
             structuralHits++;
             projected = lastStructuralView.withFrame(
@@ -45,12 +49,14 @@ public final class WorkspaceProjectionSessionCache {
                     frame.selectedQuickAccessSlot());
         } else {
             structuralMisses++;
+            long projectStart = System.nanoTime();
             projected = engine.project(resolved.withFrame(new WorkspaceProjectionFrame(
                     frame.status(),
                     frame.diagnostics(),
                     frame.pendingCount(),
                     frame.selectedQuickAccessSlot(),
                     0L)), identityMemo);
+            projectNanos = System.nanoTime() - projectStart;
             lastStructuralKey = structuralKey;
             lastStructuralView = projected.withFrame(
                     0L,
@@ -60,13 +66,24 @@ public final class WorkspaceProjectionSessionCache {
                     frame.selectedQuickAccessSlot());
         }
 
-        String contentFingerprint = structuralHit && frame.equals(lastFrame) && lastView != null
-                ? lastContentFingerprint
-                : WorkspaceProjectionFingerprint.contentKey(projected);
+        long contentNanos = 0L;
+        String contentFingerprint;
+        if (structuralHit && frame.equals(lastFrame) && lastView != null) {
+            contentFingerprint = lastContentFingerprint;
+        } else {
+            long contentStart = System.nanoTime();
+            contentFingerprint = WorkspaceProjectionFingerprint.contentKey(projected);
+            contentNanos = System.nanoTime() - contentStart;
+        }
         lastFrame = frame;
         lastView = projected;
         lastContentFingerprint = contentFingerprint;
-        return new WorkspaceProjectionResult(projected, contentFingerprint, diagnostics(structuralHit));
+        WorkspaceProjectionTiming timing = new WorkspaceProjectionTiming(
+                inputNanos,
+                projectNanos,
+                contentNanos,
+                System.nanoTime() - totalStart);
+        return new WorkspaceProjectionResult(projected, contentFingerprint, diagnostics(structuralHit, timing));
     }
 
     public void clear() {
@@ -78,16 +95,21 @@ public final class WorkspaceProjectionSessionCache {
     }
 
     public Diagnostics diagnostics() {
-        return diagnostics(lastStructuralView != null && lastView != null);
+        return diagnostics(lastStructuralView != null && lastView != null, WorkspaceProjectionTiming.empty());
     }
 
     private Diagnostics diagnostics(boolean structuralHit) {
+        return diagnostics(structuralHit, WorkspaceProjectionTiming.empty());
+    }
+
+    private Diagnostics diagnostics(boolean structuralHit, WorkspaceProjectionTiming timing) {
         return new Diagnostics(
                 projectionCount,
                 structuralHits,
                 structuralMisses,
                 structuralHit,
-                identityMemo.stats());
+                identityMemo.stats(),
+                timing);
     }
 
     public record Diagnostics(
@@ -95,10 +117,17 @@ public final class WorkspaceProjectionSessionCache {
             long structuralHits,
             long structuralMisses,
             boolean structuralCacheHit,
-            ItemIdentityMatcher.MemoStats identityMemoStats
+            ItemIdentityMatcher.MemoStats identityMemoStats,
+            WorkspaceProjectionTiming timing
     ) {
         static Diagnostics empty() {
-            return new Diagnostics(0L, 0L, 0L, false, new ItemIdentityMatcher.MemoStats(0L, 0L, 0L, 0L));
+            return new Diagnostics(
+                    0L,
+                    0L,
+                    0L,
+                    false,
+                    ItemIdentityMatcher.MemoStats.empty(),
+                    WorkspaceProjectionTiming.empty());
         }
     }
 }
