@@ -45,6 +45,11 @@ public final class InMemoryInventoryActivityStore implements InventoryActivitySt
     }
 
     @Override
+    public long nextStreamSequence() {
+        return nextStreamSequence;
+    }
+
+    @Override
     public Snapshot snapshot() {
         return new Snapshot(maxEvents, nextStreamSequence, records());
     }

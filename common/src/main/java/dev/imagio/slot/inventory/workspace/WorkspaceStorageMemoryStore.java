@@ -38,6 +38,7 @@ public final class WorkspaceStorageMemoryStore {
 
     private final Path statePath;
     private boolean loaded;
+    private boolean dirty;
     private long revision;
     private LinkedHashMap<String, RememberedStorageContents> contentsByStorageId = new LinkedHashMap<>();
 
@@ -62,8 +63,13 @@ public final class WorkspaceStorageMemoryStore {
         return STORES.computeIfAbsent(path.toAbsolutePath().normalize(), WorkspaceStorageMemoryStore::new);
     }
 
-    public static void clearCachedStoresForTests() {
+    public static void clearCachedStores() {
+        STORES.values().forEach(WorkspaceStorageMemoryStore::flush);
         STORES.clear();
+    }
+
+    public static void clearCachedStoresForTests() {
+        clearCachedStores();
     }
 
     public synchronized long revision() {
@@ -106,22 +112,44 @@ public final class WorkspaceStorageMemoryStore {
             long tick,
             String source
     ) {
+        return observeSnapshot(target, snapshot, tick, source, true);
+    }
+
+    synchronized boolean observeSnapshot(
+            StorageTargetRef target,
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot,
+            long tick,
+            String source,
+            boolean persist
+    ) {
         RememberedStorageContents remembered = RememberedStorageContents.fromSnapshot(target, snapshot, tick, source);
-        return observe(remembered);
+        return observe(remembered, persist);
     }
 
     public synchronized boolean observe(RememberedStorageContents remembered) {
+        return observe(remembered, true);
+    }
+
+    synchronized boolean observe(RememberedStorageContents remembered, boolean persist) {
         ensureLoaded();
         if (remembered == null) {
             return false;
         }
         RememberedStorageContents previous = contentsByStorageId.get(remembered.storageId());
         if (remembered.sameObservation(previous)) {
+            if (persist) {
+                flush();
+            }
             return false;
         }
         contentsByStorageId.put(remembered.storageId(), remembered);
         revision++;
-        save();
+        if (persist) {
+            save();
+            dirty = false;
+        } else {
+            dirty = true;
+        }
         return true;
     }
 
@@ -135,6 +163,7 @@ public final class WorkspaceStorageMemoryStore {
         }
         revision++;
         save();
+        dirty = false;
         return true;
     }
 
@@ -241,6 +270,15 @@ public final class WorkspaceStorageMemoryStore {
             revision = 0L;
             contentsByStorageId = new LinkedHashMap<>();
         }
+    }
+
+    public synchronized void flush() {
+        ensureLoaded();
+        if (!dirty) {
+            return;
+        }
+        save();
+        dirty = false;
     }
 
     private void save() {

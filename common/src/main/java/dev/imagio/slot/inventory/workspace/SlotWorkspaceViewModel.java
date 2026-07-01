@@ -2123,6 +2123,9 @@ public record SlotWorkspaceViewModel(
                     || !StorageAffinityPolicy.isEligibleSlotCount(snapshot.slotCount())) {
                 return false;
             }
+            if (!snapshot.countsByIdentity().isEmpty()) {
+                return ItemIdentityCollections.contains(snapshot.countsByIdentity().keySet(), identity);
+            }
             for (ItemStack stack : snapshot.contents()) {
                 if (stack != null && !stack.isEmpty()
                         && ItemIdentityMatcher.matchesMovable(stack, identity)) {
@@ -2566,6 +2569,49 @@ public record SlotWorkspaceViewModel(
         LinkedHashSet<ItemIdentity> desiredMatched = new LinkedHashSet<>();
         LinkedHashSet<ItemIdentity> wantedMatched = new LinkedHashSet<>();
         int totalMissingCount = 0;
+        if (!snapshot.countsByIdentity().isEmpty()) {
+            for (Map.Entry<ItemIdentity, Integer> stored : snapshot.countsByIdentity().entrySet()) {
+                ItemIdentity storedIdentity = stored.getKey();
+                if (storedIdentity == null) {
+                    continue;
+                }
+                for (Map.Entry<ItemIdentity, WayfindingNeedSources> entry : missingSources.entrySet()) {
+                    ItemIdentity needed = entry.getKey();
+                    if (!ItemIdentityMatcher.matchesMovable(storedIdentity, needed)) {
+                        continue;
+                    }
+                    WayfindingNeedSources sources = entry.getValue();
+                    matched.add(needed);
+                    if (sources.kit) {
+                        kitMatched.add(needed);
+                    }
+                    if (sources.desired) {
+                        desiredMatched.add(needed);
+                    }
+                    if (sources.wanted) {
+                        wantedMatched.add(needed);
+                    }
+                    totalMissingCount += Math.max(0, stored.getValue() == null ? 0 : stored.getValue());
+                    break;
+                }
+            }
+            if (matched.isEmpty()) {
+                return null;
+            }
+            return new WayfindingTarget(
+                    storageId,
+                    dimensionId,
+                    worldX,
+                    worldY,
+                    worldZ,
+                    matched,
+                    kitMatched,
+                    desiredMatched,
+                    wantedMatched,
+                    totalMissingCount,
+                    wayfindingScope(kitMatched, desiredMatched, wantedMatched)
+            );
+        }
         for (ItemStack stack : snapshot.contents()) {
             if (stack == null || stack.isEmpty()) {
                 continue;
@@ -3144,6 +3190,39 @@ public record SlotWorkspaceViewModel(
     private static List<ChestContentSummary> contentSummaries(ChestContentsSnapshot snapshot) {
         if (snapshot == null || snapshot.contents().isEmpty()) {
             return List.of();
+        }
+        if (!snapshot.countsByIdentity().isEmpty()) {
+            LinkedHashMap<ItemIdentity, ItemStack> displayByIdentity = new LinkedHashMap<>();
+            for (ItemStack stack : snapshot.contents()) {
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
+                displayByIdentity.putIfAbsent(ItemIdentityCollections.key(identity), stack.copy());
+            }
+            ArrayList<ChestContentSummary> summaries = new ArrayList<>();
+            for (Map.Entry<ItemIdentity, Integer> entry : snapshot.countsByIdentity().entrySet()) {
+                ItemIdentity identity = entry.getKey();
+                int count = entry.getValue() == null ? 0 : entry.getValue();
+                if (identity == null || count <= 0) {
+                    continue;
+                }
+                ItemStack display = ItemIdentityCollections.findCanonical(displayByIdentity, identity);
+                if (display == null || display.isEmpty()) {
+                    display = resolveGhostStack(identity, 1);
+                }
+                if (display == null || display.isEmpty()) {
+                    continue;
+                }
+                summaries.add(new ChestContentSummary(
+                        identity.itemId(),
+                        identity.componentFingerprint(),
+                        display.getHoverName().getString(),
+                        display.copy(),
+                        count
+                ));
+            }
+            return summaries.isEmpty() ? List.of() : List.copyOf(summaries);
         }
         // Roll up slot-by-slot contents into per-identity summaries. Storage
         // chips use this to count matches without re-walking the target.
@@ -4340,7 +4419,12 @@ public record SlotWorkspaceViewModel(
         }
     }
 
-    public record ChestContentsSnapshot(int slotCount, List<ItemStack> contents, List<Integer> slotIndices) {
+    public record ChestContentsSnapshot(
+            int slotCount,
+            List<ItemStack> contents,
+            List<Integer> slotIndices,
+            Map<ItemIdentity, Integer> countsByIdentity
+    ) {
         public ChestContentsSnapshot {
             slotCount = Math.max(0, slotCount);
             List<ItemStack> source = contents == null ? List.of() : contents;
@@ -4356,6 +4440,11 @@ public record SlotWorkspaceViewModel(
                 indexCopy.add(Math.max(0, idx));
             }
             slotIndices = List.copyOf(indexCopy);
+            countsByIdentity = countsByIdentity == null ? Map.of() : Map.copyOf(countsByIdentity);
+        }
+
+        public ChestContentsSnapshot(int slotCount, List<ItemStack> contents, List<Integer> slotIndices) {
+            this(slotCount, contents, slotIndices, Map.of());
         }
 
         public ChestContentsSnapshot(int slotCount, List<ItemStack> contents) {
@@ -4852,7 +4941,7 @@ public record SlotWorkspaceViewModel(
                             : shortDimension(chest.anchors().iterator().next().dimensionId());
                     String label = dimension.isBlank() ? baseLabel : baseLabel + " — " + dimension;
                     labelByStorage.put(storageId, label);
-                    addElsewhereStacks(perStorage, displayStacks, totals, storageId, snapshot.contents());
+                    addElsewhereSnapshot(perStorage, displayStacks, totals, storageId, snapshot);
                 }
             }
             if (hasDisplays) {
@@ -4873,7 +4962,7 @@ public record SlotWorkspaceViewModel(
                     String dimension = shortDimension(target.dimensionId());
                     String label = dimension.isBlank() ? baseLabel : baseLabel + " — " + dimension;
                     labelByStorage.put(target.storageId(), label);
-                    addElsewhereStacks(perStorage, displayStacks, totals, target.storageId(), snapshot.contents());
+                    addElsewhereSnapshot(perStorage, displayStacks, totals, target.storageId(), snapshot);
                 }
             }
             if (perStorage.isEmpty()) {
@@ -4902,16 +4991,46 @@ public record SlotWorkspaceViewModel(
             );
         }
 
-        private static void addElsewhereStacks(
+        private static void addElsewhereSnapshot(
                 LinkedHashMap<ItemIdentity, LinkedHashMap<String, int[]>> perStorage,
                 LinkedHashMap<ItemIdentity, ItemStack> displayStacks,
                 LinkedHashMap<ItemIdentity, Integer> totals,
                 String storageId,
-                List<ItemStack> stacks
+                ChestContentsSnapshot snapshot
         ) {
-            if (storageId == null || storageId.isBlank() || stacks == null || stacks.isEmpty()) {
+            if (storageId == null || storageId.isBlank() || snapshot == null || snapshot.contents().isEmpty()) {
                 return;
             }
+            if (!snapshot.countsByIdentity().isEmpty()) {
+                LinkedHashMap<ItemIdentity, ItemStack> displayByIdentity = new LinkedHashMap<>();
+                for (ItemStack stack : snapshot.contents()) {
+                    if (stack == null || stack.isEmpty()) {
+                        continue;
+                    }
+                    ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
+                    displayByIdentity.putIfAbsent(ItemIdentityCollections.key(identity), stack.copy());
+                }
+                for (Map.Entry<ItemIdentity, Integer> entry : snapshot.countsByIdentity().entrySet()) {
+                    ItemIdentity identity = entry.getKey();
+                    int count = entry.getValue() == null ? 0 : entry.getValue();
+                    if (identity == null || count <= 0) {
+                        continue;
+                    }
+                    perStorage
+                            .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
+                            .computeIfAbsent(storageId, ignored -> new int[]{0})[0] += count;
+                    ItemStack display = ItemIdentityCollections.findCanonical(displayByIdentity, identity);
+                    if (display == null || display.isEmpty()) {
+                        display = resolveGhostStack(identity, 1);
+                    }
+                    if (display != null && !display.isEmpty()) {
+                        displayStacks.putIfAbsent(identity, display.copy());
+                    }
+                    totals.merge(identity, count, Integer::sum);
+                }
+                return;
+            }
+            List<ItemStack> stacks = snapshot.contents();
             for (ItemStack stack : stacks) {
                 if (stack == null || stack.isEmpty()) {
                     continue;

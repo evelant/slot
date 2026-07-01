@@ -1,6 +1,7 @@
 package dev.imagio.slot.forge.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
 import dev.imagio.slot.forge.config.SlotForgeClientConfig;
@@ -14,14 +15,21 @@ import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraftforge.client.event.ScreenEvent;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class ForgeContainerSidebar {
+    private static final String SLOT_CLASS_PREFIX = "dev.imagio.slot.";
+    private static final String AD_ASTRA_PLANETS_SCREEN = "earth.terrarium.adastra.client.screens.PlanetsScreen";
+    private static final String AD_ASTRA_PLANETS_MENU = "earth.terrarium.adastra.common.menus.PlanetsMenu";
     private static final List<SidebarHostResolver> SIDEBAR_HOST_RESOLVERS = new CopyOnWriteArrayList<>();
+    private static final Set<String> LOGGED_UNSUPPORTED_HOSTS = ConcurrentHashMap.newKeySet();
     private static Screen activeHostScreen;
     private static ForgeWorkspaceSurface activeSurface;
     private static boolean bypassNextInventorySidebar;
@@ -164,6 +172,14 @@ public final class ForgeContainerSidebar {
         minecraft.setScreen(new InventoryScreen(minecraft.player));
     }
 
+    public static boolean hideActiveSurfaceUntilNextOpen() {
+        if (activeHostScreen == null || activeSurface == null) {
+            return false;
+        }
+        release();
+        return true;
+    }
+
     public static void onScreenInit(ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof ForgeWorkspaceScreen) {
             return;
@@ -217,7 +233,69 @@ public final class ForgeContainerSidebar {
         if (screen == null) {
             return false;
         }
-        return !screen.getClass().getName().startsWith("dev.imagio.slot.");
+        AbstractContainerMenu menu = screen.getMenu();
+        String screenClassName = screen.getClass().getName();
+        String menuClassName = className(menu);
+        int menuSlotCount = menu == null ? -1 : menu.slots.size();
+        SidebarEligibility eligibility = sidebarEligibility(screenClassName, menuClassName, menuSlotCount);
+        if (!eligibility.allowed()) {
+            logSkippedSidebarHost(eligibility, screenClassName, menuClassName, menuSlotCount);
+        }
+        return eligibility.allowed();
+    }
+
+    static boolean canUseBackingContainerDescriptor(String screenClassName, String menuClassName, int menuSlotCount) {
+        return sidebarEligibility(screenClassName, menuClassName, menuSlotCount).allowed();
+    }
+
+    private static SidebarEligibility sidebarEligibility(String screenClassName, String menuClassName, int menuSlotCount) {
+        if (screenClassName == null || screenClassName.isBlank()) {
+            return SidebarEligibility.deny("missing_screen_class");
+        }
+        if (screenClassName.startsWith(SLOT_CLASS_PREFIX)) {
+            return SidebarEligibility.deny("slot_screen");
+        }
+        if (AD_ASTRA_PLANETS_SCREEN.equals(screenClassName) || AD_ASTRA_PLANETS_MENU.equals(menuClassName)) {
+            return SidebarEligibility.deny("ad_astra_planets_travel_screen");
+        }
+        if (menuClassName == null || menuClassName.isBlank()) {
+            return SidebarEligibility.deny("missing_menu_class");
+        }
+        if (menuSlotCount <= 0) {
+            return SidebarEligibility.deny("slotless_menu");
+        }
+        return SidebarEligibility.allow();
+    }
+
+    private static String className(Object value) {
+        return value == null ? null : value.getClass().getName();
+    }
+
+    private static void logSkippedSidebarHost(
+            SidebarEligibility eligibility,
+            String screenClassName,
+            String menuClassName,
+            int menuSlotCount
+    ) {
+        String key = eligibility.reason() + "|" + screenClassName + "|" + menuClassName + "|" + menuSlotCount;
+        if (LOGGED_UNSUPPORTED_HOSTS.add(key)) {
+            SlotDebugLog.log(
+                    "Forge sidebar not mounted: reason={} screen={} menu={} slots={}",
+                    eligibility.reason(),
+                    screenClassName,
+                    menuClassName == null ? "null" : menuClassName,
+                    menuSlotCount);
+        }
+    }
+
+    private record SidebarEligibility(boolean allowed, String reason) {
+        private static SidebarEligibility allow() {
+            return new SidebarEligibility(true, "allowed");
+        }
+
+        private static SidebarEligibility deny(String reason) {
+            return new SidebarEligibility(false, reason);
+        }
     }
 
     static int menuContainerId(AbstractContainerScreen<?> screen) {
@@ -295,7 +373,10 @@ public final class ForgeContainerSidebar {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
             return;
         }
-        if (event.isCanceled() && event.getKeyCode() != GLFW.GLFW_KEY_TAB) {
+        if (ForgeWorkspaceClient.shouldSkipCanceledScreenKeyPress(
+                event.isCanceled(),
+                event.getKeyCode(),
+                ForgeWorkspaceClient.matchesOpenVanilla(event.getKeyCode(), event.getScanCode()))) {
             return;
         }
         boolean hostTextInputFocused = hostTextInputFocused(event.getScreen());

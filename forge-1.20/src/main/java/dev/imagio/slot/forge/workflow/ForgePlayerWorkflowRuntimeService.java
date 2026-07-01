@@ -5,6 +5,7 @@ import dev.imagio.slot.forge.SlotForge;
 import dev.imagio.slot.forge.storage.ForgeChestStorageIds;
 import dev.imagio.slot.inventory.workspace.ChestClaimPersistenceReconciliation;
 import dev.imagio.slot.inventory.workspace.ClaimedStorageBreakCleanup;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistenceService;
@@ -132,6 +133,7 @@ public final class ForgePlayerWorkflowRuntimeService {
             }
             RUNTIMES.clear();
             lastPendingSaveFlushTick = -1L;
+            WorkspaceStorageMemoryStore.clearCachedStores();
         }
     }
 

@@ -2,6 +2,7 @@ package dev.imagio.slot.forge.compat.tfc;
 
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.compat.tfc.TfcDisplayStorageIds;
+import dev.imagio.slot.debug.BoundedDiagnosticThrottle;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
@@ -27,7 +28,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 /**
@@ -38,7 +38,9 @@ import java.util.stream.Collectors;
  */
 public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.Delegate {
     private static final long DIAGNOSTIC_LOG_INTERVAL_NANOS = 5_000_000_000L;
-    private static final Map<String, Long> LAST_DIAGNOSTIC_LOG_NANOS = new ConcurrentHashMap<>();
+    private static final int DIAGNOSTIC_LOG_KEY_LIMIT = 2_048;
+    private static final BoundedDiagnosticThrottle DIAGNOSTIC_LOG_THROTTLE =
+            new BoundedDiagnosticThrottle(DIAGNOSTIC_LOG_INTERVAL_NANOS, DIAGNOSTIC_LOG_KEY_LIMIT);
 
     @SuppressWarnings("removal")
     private static final ResourceLocation TFC_TOOL_RACKS_ID = new ResourceLocation("tfc", "tool_racks");
@@ -643,12 +645,9 @@ public final class TfcWorldDisplayStorageDelegate implements WorldStorageAccess.
         if (!SlotDebugLog.enabled()) {
             return;
         }
-        long now = System.nanoTime();
-        Long previous = LAST_DIAGNOSTIC_LOG_NANOS.get(key);
-        if (previous != null && now - previous < DIAGNOSTIC_LOG_INTERVAL_NANOS) {
+        if (!DIAGNOSTIC_LOG_THROTTLE.shouldEmit(key, System.nanoTime())) {
             return;
         }
-        LAST_DIAGNOSTIC_LOG_NANOS.put(key, now);
         SlotDebugLog.log(message, args);
     }
 

@@ -58,6 +58,50 @@ class ForgeContainerSidebarTest {
     }
 
     @Test
+    void canceledScreenKeyPressStillAllowsEscapeKeys() {
+        assertFalse(ForgeWorkspaceClient.shouldSkipCanceledScreenKeyPress(
+                true,
+                GLFW.GLFW_KEY_V,
+                true));
+        assertFalse(ForgeWorkspaceClient.shouldSkipCanceledScreenKeyPress(
+                true,
+                GLFW.GLFW_KEY_TAB,
+                false));
+        assertTrue(ForgeWorkspaceClient.shouldSkipCanceledScreenKeyPress(
+                true,
+                GLFW.GLFW_KEY_V,
+                false));
+    }
+
+    @Test
+    void ordinarySlottedContainerCanHostSidebar() {
+        assertTrue(ForgeContainerSidebar.canUseBackingContainerDescriptor(
+                "net.minecraft.client.gui.screens.inventory.ContainerScreen",
+                "net.minecraft.world.inventory.ChestMenu",
+                63));
+    }
+
+    @Test
+    void slotlessContainerScreenDoesNotHostSidebar() {
+        assertFalse(ForgeContainerSidebar.canUseBackingContainerDescriptor(
+                "example.client.screen.TravelMapScreen",
+                "example.common.menu.TravelMapMenu",
+                0));
+    }
+
+    @Test
+    void adAstraPlanetTravelScreenDoesNotHostSidebar() {
+        assertFalse(ForgeContainerSidebar.canUseBackingContainerDescriptor(
+                "earth.terrarium.adastra.client.screens.PlanetsScreen",
+                "example.common.menu.SlottedMenu",
+                9));
+        assertFalse(ForgeContainerSidebar.canUseBackingContainerDescriptor(
+                "example.client.screen.WrappedPlanetsScreen",
+                "earth.terrarium.adastra.common.menus.PlanetsMenu",
+                9));
+    }
+
+    @Test
     void emiTextGuardTreatsLettersButNotHotbarDigitsAsPlainTextKeys() {
         assertTrue(ForgeSlotTextInputKeyGuard.isPlainTextKey(GLFW.GLFW_KEY_R, 0));
         assertTrue(ForgeSlotTextInputKeyGuard.isPlainTextKey(GLFW.GLFW_KEY_U, 0));

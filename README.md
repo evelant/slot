@@ -144,6 +144,10 @@ Plans:
 - [docs/plans/inventory-fullness.md](docs/plans/inventory-fullness.md)
   — proposed UI slice for surfacing carried-inventory capacity
   without per-bag routing controls. Not yet active.
+- [docs/plans/workspace-performance.md](docs/plans/workspace-performance.md)
+  — proposed late-game storage-heavy performance plan for projection timing,
+  identity reuse, wayfinding/storage indexing, remote ghost gating, and sliced
+  view-model sends.
 - [docs/plans/done/](docs/plans/done/) — shipped plans preserved as
   design refs. Currently: `atlas-prototype`, `atlas-navigation`,
   `atlas-nudge-layout`, `core-workflow-ux`, `cursor-pickup`,

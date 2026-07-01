@@ -448,7 +448,7 @@ public final class ForgeWorkspaceSurface {
 
     private boolean openVanillaInventory() {
         if (mode == Mode.SIDEBAR) {
-            return false;
+            return ForgeContainerSidebar.hideActiveSurfaceUntilNextOpen();
         }
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft == null || minecraft.player == null) {

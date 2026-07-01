@@ -1,25 +1,41 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.HostInstanceKey;
+import dev.imagio.slot.inventory.core.InventoryActionRoute;
+import dev.imagio.slot.inventory.core.InventoryBindingRoute;
+import dev.imagio.slot.inventory.core.InventoryCapability;
+import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.InventoryPaneMembership;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.query.InventoryEntryKey;
+import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -93,7 +109,7 @@ class WorkspaceTrashCommandServiceTest {
         assertEquals(0, carried.peek(BuiltinInventoryIds.PLAYER_MAIN, 0).getCount());
         assertEquals(0, carried.peek("test:provider/main", 0).getCount());
         assertEquals(1, carried.providerExtractCalls);
-        assertEquals(0, carried.currentAuthorityCalls);
+        assertEquals(1, carried.currentAuthorityCalls);
         assertEquals(1, carried.pressureCalls);
     }
 
@@ -154,7 +170,7 @@ class WorkspaceTrashCommandServiceTest {
         assertEquals(1, carried.peek(BuiltinInventoryIds.PLAYER_MAIN, 0).getCount());
         assertEquals(0, carried.peek("test:provider/main", 0).getCount());
         assertEquals(1, carried.providerExtractCalls);
-        assertEquals(0, carried.currentAuthorityCalls);
+        assertEquals(1, carried.currentAuthorityCalls);
         assertEquals(1, carried.pressureCalls);
     }
 
@@ -247,7 +263,7 @@ class WorkspaceTrashCommandServiceTest {
         assertEquals(0, result.incomingTrashed());
         assertEquals(0, carried.peek("test:provider/main", 0).getCount());
         assertEquals(1, carried.providerExtractCalls);
-        assertEquals(0, carried.currentAuthorityCalls);
+        assertEquals(1, carried.currentAuthorityCalls);
         assertEquals(1, carried.pressureCalls);
     }
 
@@ -276,6 +292,72 @@ class WorkspaceTrashCommandServiceTest {
         assertEquals(64, result.incomingTrashed());
         assertEquals(0, carried.providerExtractCalls);
         assertEquals(0, carried.currentAuthorityCalls);
+        assertEquals(1, carried.pressureCalls);
+    }
+
+    @Test
+    void prePickupOverflowVoidsIncomingJunkWithoutSweepingCarriedStorage() {
+        ServerPlayer player = new ServerPlayer();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null);
+        ItemIdentity looseRock = ItemIdentity.of("tfc:rock/loose/dolomite");
+        runtime.collectionWorkflow().setJunk(looseRock, true);
+
+        FakeCarriedSourceAccess carried = new FakeCarriedSourceAccess();
+        carried.put("test:provider/main", 0, stack("minecraft:dirt", 3));
+        carried.pressure = new CarriedSourceAccess.CarriedStoragePressure(100, 76);
+        StorageAccessRegistry.installCarriedSourceAccess(carried);
+        StorageAccessRegistry.installWorldStorageAccess(new NoOpWorldStorageAccess());
+
+        WorkspaceTrashCommandService.PickupOverflowTrashResult result =
+                WorkspaceTrashCommandService.trashOverflowBeforePickup(
+                        player,
+                        runtime,
+                        stack("tfc:rock/loose/dolomite", 32),
+                        32);
+
+        assertEquals(0, result.carriedTrashed());
+        assertEquals(32, result.incomingTrashed());
+        assertEquals(3, carried.peek("test:provider/main", 0).getCount());
+        assertEquals(0, carried.providerExtractCalls);
+        assertEquals(0, carried.findAllMatchingCalls);
+        assertEquals(0, carried.currentAuthorityCalls);
+        assertEquals(1, carried.pressureCalls);
+    }
+
+    @Test
+    void prePickupOverflowSweepsExistingJunkWithOneAuthorityPassAcrossTags() {
+        ServerPlayer player = new ServerPlayer();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null);
+        runtime.collectionWorkflow().setJunk(ItemIdentity.of("minecraft:dirt"), true);
+        runtime.collectionWorkflow().setJunk(ItemIdentity.of("minecraft:gravel"), true);
+
+        FakeCarriedSourceAccess carried = new FakeCarriedSourceAccess();
+        carried.put("test:provider/main", 0, stack("minecraft:dirt", 3));
+        carried.put("test:provider/main", 1, stack("minecraft:gravel", 2));
+        carried.put("test:provider/main", 2, stack("minecraft:stone", 5));
+        carried.pressure = new CarriedSourceAccess.CarriedStoragePressure(100, 76);
+        StorageAccessRegistry.installCarriedSourceAccess(carried);
+        StorageAccessRegistry.installWorldStorageAccess(new NoOpWorldStorageAccess());
+
+        WorkspaceTrashCommandService.PickupOverflowTrashResult result =
+                WorkspaceTrashCommandService.trashOverflowBeforePickup(
+                        player,
+                        runtime,
+                        stack("minecraft:stone", 1),
+                        1);
+
+        assertEquals(5, result.carriedTrashed());
+        assertEquals(0, result.incomingTrashed());
+        assertEquals(0, carried.peek("test:provider/main", 0).getCount());
+        assertEquals(0, carried.peek("test:provider/main", 1).getCount());
+        assertEquals(5, carried.peek("test:provider/main", 2).getCount());
+        assertEquals(2, carried.providerExtractCalls);
+        assertEquals(0, carried.findAllMatchingCalls);
+        assertEquals(1, carried.currentAuthorityCalls);
         assertEquals(1, carried.pressureCalls);
     }
 
@@ -321,6 +403,7 @@ class WorkspaceTrashCommandServiceTest {
         CarriedSourceAccess.CarriedStoragePressure pressure = CarriedSourceAccess.CarriedStoragePressure.empty();
         int providerExtractCalls;
         int currentAuthorityCalls;
+        int findAllMatchingCalls;
         int pressureCalls;
 
         void put(String sourceId, int slotIndex, ItemStack stack) {
@@ -388,6 +471,7 @@ class WorkspaceTrashCommandServiceTest {
 
         @Override
         public List<CarriedLocation> findAllMatching(ServerPlayer player, ItemIdentity identity) {
+            findAllMatchingCalls++;
             return contents.entrySet().stream()
                     .flatMap(source -> source.getValue().entrySet().stream()
                             .filter(entry -> ItemIdentityMatcher.matchesMovable(entry.getValue(), identity))
@@ -398,13 +482,102 @@ class WorkspaceTrashCommandServiceTest {
         @Override
         public InventoryAuthoritySnapshot currentAuthority(ServerPlayer player) {
             currentAuthorityCalls++;
-            return InventoryAuthoritySnapshot.empty();
+            ArrayList<InventorySourceDescriptor> descriptors = new ArrayList<>();
+            LinkedHashMap<String, InventorySourceSnapshot> snapshots = new LinkedHashMap<>();
+            for (Map.Entry<String, Map<Integer, ItemStack>> source : contents.entrySet()) {
+                String sourceId = source.getKey();
+                descriptors.add(sourceDescriptor(sourceId));
+                ArrayList<InventoryEntrySnapshot> entries = new ArrayList<>();
+                int slotCapacity = 0;
+                for (Map.Entry<Integer, ItemStack> entry : source.getValue().entrySet()) {
+                    int slot = Math.max(0, entry.getKey());
+                    slotCapacity = Math.max(slotCapacity, slot + 1);
+                    ItemStack stack = entry.getValue();
+                    if (stack == null || stack.isEmpty()) {
+                        continue;
+                    }
+                    entries.add(new InventoryEntrySnapshot(
+                            InventoryEntryKey.slot(sourceId, slot),
+                            stack,
+                            stack.getCount(),
+                            ""));
+                }
+                snapshots.put(sourceId, new InventorySourceSnapshot(
+                        sourceId,
+                        slotCapacity,
+                        entries,
+                        ""));
+            }
+            descriptors.sort(Comparator.comparingInt(InventorySourceDescriptor::stableOrder));
+            AbstractContainerMenu menu = player == null || player.containerMenu == null
+                    ? new TestMenu(0)
+                    : player.containerMenu;
+            InventoryHostDescriptor host = new InventoryHostDescriptor(
+                    HostInstanceKey.empty(),
+                    InventoryHostDescriptor.serverMenuRef(menu),
+                    "test",
+                    Component.literal("test"),
+                    menu,
+                    null,
+                    null,
+                    List.of(),
+                    null,
+                    descriptors,
+                    List.of(),
+                    List.of(),
+                    List.of(),
+                    null,
+                    "");
+            return new InventoryAuthoritySnapshot(host, snapshots, null);
         }
 
         @Override
         public CarriedSourceAccess.CarriedStoragePressure carriedStoragePressure(ServerPlayer player) {
             pressureCalls++;
             return pressure;
+        }
+
+        private static InventorySourceDescriptor sourceDescriptor(String sourceId) {
+            boolean provider = !BuiltinInventoryIds.PLAYER_MAIN.equals(sourceId)
+                    && !BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId)
+                    && !BuiltinInventoryIds.PLAYER_OFFHAND.equals(sourceId)
+                    && !BuiltinInventoryIds.PLAYER_ARMOR.equals(sourceId);
+            return InventorySourceDescriptor.builder(sourceId)
+                    .label(Component.literal(sourceId))
+                    .logicalSlotCount(1)
+                    .bindingRoute(provider ? InventoryBindingRoute.PROVIDER : InventoryBindingRoute.PLAYER)
+                    .capabilities(Set.of(InventoryCapability.INSERT, InventoryCapability.EXTRACT))
+                    .actionRoute(provider ? InventoryActionRoute.PROVIDER_MUTATION : InventoryActionRoute.PLAYER_MUTATION)
+                    .paneMembership(InventoryPaneMembership.CARRIED)
+                    .stableOrder(stableOrder(sourceId))
+                    .build();
+        }
+
+        private static int stableOrder(String sourceId) {
+            if (BuiltinInventoryIds.PLAYER_MAIN.equals(sourceId)) {
+                return 100;
+            }
+            if (BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId)) {
+                return 110;
+            }
+            if (BuiltinInventoryIds.PLAYER_ARMOR.equals(sourceId)) {
+                return 120;
+            }
+            if (BuiltinInventoryIds.PLAYER_OFFHAND.equals(sourceId)) {
+                return 130;
+            }
+            return 15;
+        }
+    }
+
+    private static final class TestMenu extends AbstractContainerMenu {
+        TestMenu(int containerId) {
+            super(null, containerId);
+        }
+
+        @Override
+        public boolean stillValid(Player player) {
+            return true;
         }
     }
 

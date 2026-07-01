@@ -151,7 +151,11 @@ public final class ForgeWorkspaceClient {
     }
 
     public static boolean matchesOpenVanilla(int keyCode, int scanCode) {
-        return OPEN_VANILLA_INVENTORY.matches(keyCode, scanCode);
+        return OPEN_VANILLA_INVENTORY.isActiveAndMatches(InputConstants.getKey(keyCode, scanCode));
+    }
+
+    static boolean shouldSkipCanceledScreenKeyPress(boolean eventCanceled, int keyCode, boolean openVanillaKey) {
+        return eventCanceled && keyCode != GLFW.GLFW_KEY_TAB && !openVanillaKey;
     }
 
     public static boolean matchesCycleKitPage(int keyCode, int scanCode) {
@@ -407,6 +411,12 @@ public final class ForgeWorkspaceClient {
                     decision);
             ForgeHoveredWantedHotkey.onKeyPressed(event);
             ForgeHoveredTrashHotkey.onKeyPressed(event);
+            if (shouldSkipCanceledScreenKeyPress(
+                    event.isCanceled(),
+                    event.getKeyCode(),
+                    ForgeWorkspaceClient.matchesOpenVanilla(event.getKeyCode(), event.getScanCode()))) {
+                return;
+            }
             ForgeContainerSidebar.onKeyPressed(event);
         }
 

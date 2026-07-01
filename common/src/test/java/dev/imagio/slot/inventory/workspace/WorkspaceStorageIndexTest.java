@@ -67,6 +67,9 @@ class WorkspaceStorageIndexTest {
 
         assertEquals(1, world.enumerateCalls(CHEST_A));
         assertEquals(16, index.contents(CHEST_A.toString()).contents().get(0).getCount());
+        assertEquals(16, index.contents(CHEST_A.toString())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
         assertTrue(index.liveChestContentPresence().contains(
                 claimed(CHEST_A),
                 ItemIdentity.of("minecraft:redstone")));
@@ -264,7 +267,7 @@ class WorkspaceStorageIndexTest {
     }
 
     @Test
-    void rememberedLargeCountsSplitIntoLegalDisplayStacks() {
+    void rememberedLargeCountsStaySummarizedForProjection() {
         RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
                 StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
                 27,
@@ -274,8 +277,9 @@ class WorkspaceStorageIndexTest {
 
         SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = remembered.toSnapshot();
 
-        assertEquals(List.of(64, 64, 2), snapshot.contents().stream().map(ItemStack::getCount).toList());
-        assertEquals(130, snapshot.contents().stream().mapToInt(ItemStack::getCount).sum());
+        assertEquals(List.of(64), snapshot.contents().stream().map(ItemStack::getCount).toList());
+        assertEquals(130, snapshot.countsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(1, snapshot.contents().size());
         assertTrue(snapshot.contents().stream()
                 .allMatch(stack -> stack.getCount() <= stack.getMaxStackSize()));
     }

@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-27
+Last updated: 2026-07-01
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -157,12 +157,15 @@ track lands.
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
-8. **Workspace projection slice extraction follow-up.** The shared
+8. **Workspace performance follow-up**
+   ([workspace-performance.md](workspace-performance.md)). The shared
    session cache, content fingerprint, identity memo, and claimed-chest
-   proximity invalidator are live on both loaders. Profile the next
-   shift-scroll / storage-heavy capture and split any remaining hot
-   `SlotWorkspaceViewModel` sections into independently cached slices
-   instead of adding loader-side special cases.
+   proximity invalidator are live on both loaders, but late-game
+   storage-heavy Forge profiles still show projection, identity scans,
+   wayfinding, storage index build, content hashing, and full view-model
+   encode/send on the interaction path. Work this plan in slices: timing
+   first, then shared per-refresh identity indexing, wayfinding/storage
+   cache boundaries, remote ghost gating, and sliced sends.
 
 ## Deferred experiments
 

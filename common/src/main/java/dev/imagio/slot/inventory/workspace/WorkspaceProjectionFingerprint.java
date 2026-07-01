@@ -453,6 +453,7 @@ final class WorkspaceProjectionFingerprint {
             appendInt(snapshot.slotCount());
             appendObject(snapshot.slotIndices());
             appendObject(snapshot.contents());
+            appendObject(snapshot.countsByIdentity());
         }
 
         private void appendHotbarSlot(SlotWorkspaceViewModel.HotbarSlot slot) {
@@ -566,7 +567,9 @@ final class WorkspaceProjectionFingerprint {
         private void appendStorageEntry(WorkspaceStorageIndex.StorageEntry entry) {
             appendObject(entry.target());
             appendObject(entry.snapshot());
-            appendObject(entry.countsByIdentity());
+            if (entry.snapshot().countsByIdentity().isEmpty()) {
+                appendObject(entry.countsByIdentity());
+            }
             appendBoolean(entry.live());
             appendBoolean(entry.remembered());
         }

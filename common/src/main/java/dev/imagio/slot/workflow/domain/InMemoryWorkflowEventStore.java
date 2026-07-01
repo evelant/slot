@@ -33,6 +33,11 @@ public final class InMemoryWorkflowEventStore implements WorkflowEventStore {
     }
 
     @Override
+    public long nextStreamSequence() {
+        return nextStreamSequence;
+    }
+
+    @Override
     public Snapshot snapshot() {
         return new Snapshot(nextStreamSequence, records());
     }

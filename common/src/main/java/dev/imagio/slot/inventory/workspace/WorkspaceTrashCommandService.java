@@ -4,9 +4,12 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.action.InventoryActionKind;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
@@ -249,9 +252,10 @@ public final class WorkspaceTrashCommandService {
     /**
      * Run pressure relief before vanilla tries to insert an item entity. This
      * covers the full-inventory edge where the post-pickup hook never fires
-     * because vanilla cannot pick up even one item. Existing carried junk is
-     * swept first; if carried storage is already under pressure and the
-     * incoming stack is itself junk, the caller may void that incoming entity.
+     * because vanilla cannot pick up even one item. If carried storage is
+     * already under pressure and the incoming stack is itself junk, the caller
+     * may void that incoming entity without scanning carried storage. Existing
+     * carried junk is swept only when the incoming pickup should still proceed.
      */
     public static PickupOverflowTrashResult trashOverflowBeforePickup(
             ServerPlayer player,
@@ -308,6 +312,22 @@ public final class WorkspaceTrashCommandService {
                 return PickupOverflowTrashResult.empty();
             }
 
+            boolean incomingJunk = incomingJunkCandidate && !incomingProtected;
+            if (incomingJunk) {
+                recordTrashActivity(
+                        runtime,
+                        identity,
+                        incomingCount,
+                        InventoryActivityProducer.WORLD_PICKUP,
+                        false);
+                SlotDebugLog.verboseLog(
+                        "junk overflow pre voided incoming junk without carried sweep item={} count={} slotsToFree={}",
+                        identity.itemId(),
+                        incomingCount,
+                        slotsToFree);
+                return new PickupOverflowTrashResult(0, incomingCount);
+            }
+
             ExtractedBatch sweptTrash = sweepJunkStacks(
                     carried,
                     player,
@@ -319,24 +339,14 @@ public final class WorkspaceTrashCommandService {
                 CarriedInventoryRevisions.markChanged(player, "junk_overflow_pre_pickup_sweep");
             }
 
-            boolean incomingJunk = incomingJunkCandidate && !incomingProtected;
-            int incomingTrashed = incomingJunk ? incomingCount : 0;
-            if (incomingTrashed > 0) {
-                recordTrashActivity(
-                        runtime,
-                        identity,
-                        incomingTrashed,
-                        InventoryActivityProducer.WORLD_PICKUP,
-                        false);
-            }
-            if (sweptTrash.count() > 0 || incomingTrashed > 0) {
+            if (sweptTrash.count() > 0) {
                 SlotDebugLog.log(
                         "junk overflow pre result triggerItem={} incomingCount={} carriedTrashed={} sweptFreedSlots={} incomingTrashed={}",
                         identity.itemId(),
                         incomingCount,
                         sweptTrash.count(),
                         sweptTrash.freedSlots(),
-                        incomingTrashed);
+                        0);
             } else {
                 SlotDebugLog.verboseLog(
                         "junk overflow pre result triggerItem={} incomingCount={} carriedTrashed={} sweptFreedSlots={} incomingTrashed={}",
@@ -344,9 +354,9 @@ public final class WorkspaceTrashCommandService {
                         incomingCount,
                         sweptTrash.count(),
                         sweptTrash.freedSlots(),
-                        incomingTrashed);
+                        0);
             }
-            return new PickupOverflowTrashResult(sweptTrash.count(), incomingTrashed);
+            return new PickupOverflowTrashResult(sweptTrash.count(), 0);
         } catch (RuntimeException exception) {
             SlotCommon.LOGGER.warn(
                     "[SLOT] skipped pre-pickup junk overflow trash: carried access failed item={} count={} error={}",
@@ -488,6 +498,10 @@ public final class WorkspaceTrashCommandService {
         }
         ArrayList<TrashCandidate> candidates = new ArrayList<>();
         HashSet<String> seenLocations = new HashSet<>();
+        Set<ItemIdentity> canonicalJunkTags = ItemIdentityCollections.normalizedSet(junkTags);
+        if (canonicalJunkTags.isEmpty()) {
+            return ExtractedBatch.empty();
+        }
         int requestedTags = 0;
         int protectedTags = 0;
         int rawLocations = 0;
@@ -500,36 +514,45 @@ public final class WorkspaceTrashCommandService {
             requestedTags++;
             if (runtime.protection().protects(junkIdentity, InventoryActionKind.TRASH)) {
                 protectedTags++;
+            }
+        }
+        InventoryAuthoritySnapshot authority = carried.currentAuthority(player);
+        if (authority == null || authority.host() == null) {
+            SlotDebugLog.verboseLog(
+                    "junk overflow sweep skipped reason=carried_authority_unavailable requestedTags={} maxSlotsToFree={}",
+                    requestedTags,
+                    maxSlotsToFree);
+            return ExtractedBatch.empty();
+        }
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            if (source == null || !sourceEligibleForOverflowTrash(source.id())) {
                 continue;
             }
-            for (CarriedSourceAccess.CarriedLocation location : carried.findAllMatching(player, junkIdentity)) {
-                if (location == null) {
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry == null || !entry.present() || !entry.slotBacked()) {
                     continue;
                 }
                 rawLocations++;
-                String key = location.sourceId() + "#" + location.slotIndex();
+                String key = entry.sourceId() + "#" + entry.slotIndex();
                 if (!seenLocations.add(key)) {
                     duplicateLocations++;
                     continue;
                 }
-                ItemStack stack = carried.peek(player, location.sourceId(), location.slotIndex());
-                if (stack == null || stack.isEmpty()) {
+                ItemStack stack = entry.stack();
+                ItemIdentity liveIdentity = ItemIdentityMatcher.create(stack);
+                if (!ItemIdentityCollections.containsCanonical(canonicalJunkTags, liveIdentity)) {
                     continue;
                 }
-                ItemIdentity liveIdentity = ItemIdentityMatcher.create(stack);
-                if (!ItemIdentityCollections.contains(junkTags, liveIdentity)
-                        || runtime.protection().protects(liveIdentity, InventoryActionKind.TRASH)) {
-                    if (runtime.protection().protects(liveIdentity, InventoryActionKind.TRASH)) {
-                        protectedLiveMatches++;
-                    }
+                if (runtime.protection().protects(liveIdentity, InventoryActionKind.TRASH)) {
+                    protectedLiveMatches++;
                     continue;
                 }
                 candidates.add(new TrashCandidate(
-                        location.sourceId(),
-                        location.slotIndex(),
+                        entry.sourceId(),
+                        entry.slotIndex(),
                         liveIdentity,
-                        stack.getCount(),
-                        sourceOrder(location.sourceId())));
+                        Math.max(0, entry.count()),
+                        source.stableOrder()));
             }
         }
         SlotDebugLog.verboseLog(
@@ -547,6 +570,13 @@ public final class WorkspaceTrashCommandService {
                 .thenComparing(TrashCandidate::sourceId)
                 .thenComparingInt(TrashCandidate::slotIndex));
         return extractFullStacks(carried, player, candidates, maxSlotsToFree);
+    }
+
+    private static boolean sourceEligibleForOverflowTrash(String sourceId) {
+        if (sourceId == null || sourceId.isBlank()) {
+            return false;
+        }
+        return !BuiltinInventoryIds.PLAYER_ARMOR.equals(sourceId);
     }
 
     private static ExtractedBatch extractFullStacks(

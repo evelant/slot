@@ -174,7 +174,7 @@ public final class WorkspaceStorageIndex {
                     true,
                     false));
             if (memory != null && source.kind().trackedStorage()) {
-                memory.observeSnapshot(ref, snapshot, tick, "workspace_index_display_live_read");
+                memory.observeSnapshot(ref, snapshot, tick, "workspace_index_display_live_read", false);
             }
         }
 
@@ -236,7 +236,7 @@ public final class WorkspaceStorageIndex {
                 depositTarget,
                 takeTarget);
         if (memory != null) {
-            memory.observeSnapshot(ref, snapshot, tick, "workspace_index_live_read");
+            memory.observeSnapshot(ref, snapshot, tick, "workspace_index_live_read", false);
         }
         return new StorageEntry(ref, snapshot, countsFromSnapshot(snapshot), true, false);
     }
@@ -559,6 +559,13 @@ public final class WorkspaceStorageIndex {
         public StorageEntry {
             snapshot = snapshot == null ? SlotWorkspaceViewModel.ChestContentsSnapshot.empty() : snapshot;
             countsByIdentity = countsByIdentity == null ? Map.of() : Map.copyOf(countsByIdentity);
+            if (snapshot.countsByIdentity().isEmpty() && !countsByIdentity.isEmpty()) {
+                snapshot = new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                        snapshot.slotCount(),
+                        snapshot.contents(),
+                        snapshot.slotIndices(),
+                        countsByIdentity);
+            }
         }
     }
 }

@@ -9,6 +9,8 @@ public interface InventoryActivityStore {
 
     List<InventoryActivityRecord> records();
 
+    long nextStreamSequence();
+
     Snapshot snapshot();
 
     void replaceWith(Snapshot snapshot);

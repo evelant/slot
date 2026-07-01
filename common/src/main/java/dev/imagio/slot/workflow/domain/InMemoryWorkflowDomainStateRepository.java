@@ -160,8 +160,8 @@ public final class InMemoryWorkflowDomainStateRepository implements WorkflowDoma
     private DomainEventEnvelope nextEnvelope(DomainEventStreamKind streamKind, DomainEventMetadata metadata) {
         DomainEventMetadata resolved = metadata == null ? DomainEventMetadata.origin("") : metadata;
         long streamSequence = switch (streamKind) {
-            case WORKFLOW -> workflowEvents.snapshot().nextStreamSequence();
-            case ACTIVITY -> activityEvents.snapshot().nextStreamSequence();
+            case WORKFLOW -> workflowEvents.nextStreamSequence();
+            case ACTIVITY -> activityEvents.nextStreamSequence();
             case CONTEXTUAL -> contextualSuggestionState.nextStreamSequence();
         };
         return new DomainEventEnvelope(

@@ -3,6 +3,7 @@ package dev.imagio.slot.neoforge.workflow;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.workspace.ChestClaimPersistenceReconciliation;
 import dev.imagio.slot.inventory.workspace.ClaimedStorageBreakCleanup;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.neoforge.storage.ChestStorageIds;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
@@ -137,6 +138,7 @@ public final class SlotPlayerWorkflowRuntimeService {
             }
             RUNTIMES.clear();
             lastPendingSaveFlushTick = -1L;
+            WorkspaceStorageMemoryStore.clearCachedStores();
         }
     }
 

@@ -1491,11 +1491,16 @@ public final class SlotWorkspaceCommandService {
         if (runtime == null) {
             return;
         }
-        for (Map.Entry<ItemIdentity, Integer> entry : runtime.wantedCountWorkflow().allPlayer().entrySet()) {
+        Map<ItemIdentity, Integer> playerWantedCounts = runtime.wantedCountWorkflow().allPlayer();
+        if (playerWantedCounts.isEmpty()) {
+            return;
+        }
+        CarriedIdentityCounts carriedCounts = CarriedIdentityCounts.from(authority);
+        for (Map.Entry<ItemIdentity, Integer> entry : playerWantedCounts.entrySet()) {
             ItemIdentity identity = entry.getKey();
             Integer target = entry.getValue();
             if (identity == null || target == null || target <= 0
-                    || SlotWorkspaceViewModel.carriedMovableCount(authority, identity) >= target) {
+                    || carriedCounts.count(identity) >= target) {
                 runtime.wantedCountWorkflow().clearPlayer(identity);
             }
         }

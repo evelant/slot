@@ -166,18 +166,16 @@ public record RememberedStorageContents(
             if (template.isEmpty()) {
                 continue;
             }
-            int maxStackSize = Math.max(1, template.getMaxStackSize());
-            int remaining = count;
-            while (remaining > 0) {
-                ItemStack stack = template.copy();
-                int chunk = Math.min(maxStackSize, remaining);
-                stack.setCount(chunk);
-                stacks.add(stack);
-                slotIndices.add(index++);
-                remaining -= chunk;
-            }
+            ItemStack stack = template.copy();
+            stack.setCount(Math.min(count, Math.max(1, stack.getMaxStackSize())));
+            stacks.add(stack);
+            slotIndices.add(index++);
         }
-        return new SlotWorkspaceViewModel.ChestContentsSnapshot(slotCapacity, stacks, slotIndices);
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                slotCapacity,
+                stacks,
+                slotIndices,
+                countsByIdentity);
     }
 
     private boolean depositCapability() {
