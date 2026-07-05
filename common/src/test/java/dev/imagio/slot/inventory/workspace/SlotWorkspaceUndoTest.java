@@ -1,10 +1,13 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import org.junit.jupiter.api.Test;
+
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -23,6 +26,7 @@ class SlotWorkspaceUndoTest {
         WorkspaceCommandOutcome rename = SlotWorkspaceCommandService.renameIsland(
                 runtime, island.id(), "Renamed");
         assertTrue(rename.success());
+        assertSectionMetadataInvalidation(rename, island.id(), "island_label_changed");
         assertEquals("Renamed", runtime.visualAtlasWorkflow().visualHomeMap().island(island.id()).label());
         assertTrue(runtime.undoStack().canUndo());
 
@@ -46,6 +50,7 @@ class SlotWorkspaceUndoTest {
 
         WorkspaceCommandOutcome delete = SlotWorkspaceCommandService.deleteIsland(runtime, islandId);
         assertTrue(delete.success());
+        assertSectionMetadataInvalidation(delete, islandId, "island_deleted");
         assertNull(runtime.visualAtlasWorkflow().visualHomeMap().island(islandId));
 
         SlotWorkspaceCommandService.performUndo(runtime);
@@ -71,6 +76,7 @@ class SlotWorkspaceUndoTest {
         WorkspaceCommandOutcome delete = SlotWorkspaceCommandService.deleteIsland(runtime, island.id());
 
         assertTrue(delete.success());
+        assertSectionRemovedInvalidation(delete, apple, island.id(), "island_deleted");
         assertNull(runtime.visualAtlasWorkflow().visualHomeMap().island(island.id()));
         assertNull(runtime.visualAtlasWorkflow().visualHomeMap().assignment(apple));
 
@@ -90,7 +96,8 @@ class SlotWorkspaceUndoTest {
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
                 "Painted", 0, 0, 0xFFAA0000, null);
 
-        SlotWorkspaceCommandService.recolorIsland(runtime, island.id(), 0xFF00AA00);
+        WorkspaceCommandOutcome recolor = SlotWorkspaceCommandService.recolorIsland(runtime, island.id(), 0xFF00AA00);
+        assertSectionMetadataInvalidation(recolor, island.id(), "island_color_changed");
         assertEquals(0xFF00AA00, runtime.visualAtlasWorkflow().visualHomeMap().island(island.id()).color());
 
         SlotWorkspaceCommandService.performUndo(runtime);
@@ -98,6 +105,50 @@ class SlotWorkspaceUndoTest {
 
         SlotWorkspaceCommandService.performRedo(runtime);
         assertEquals(0xFF00AA00, runtime.visualAtlasWorkflow().visualHomeMap().island(island.id()).color());
+    }
+
+    @Test
+    void setIslandIconEmitsSectionMetadataInvalidation() {
+        WorkflowDomainRuntime runtime = runtime();
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Iconic", 0, 0, 0xFFAA0000, null);
+
+        WorkspaceCommandOutcome icon = SlotWorkspaceCommandService.setIslandIcon(
+                runtime,
+                island.id(),
+                "minecraft:apple",
+                "ITEM_ID",
+                "");
+
+        assertTrue(icon.success(), icon.diagnostics());
+        assertSectionMetadataInvalidation(icon, island.id(), "island_icon_changed");
+        assertEquals(ItemIdentity.of("minecraft:apple"),
+                runtime.visualAtlasWorkflow().visualHomeMap().island(island.id()).iconIdentity());
+    }
+
+    @Test
+    void reorderIslandEmitsSectionMetadataInvalidation() {
+        WorkflowDomainRuntime runtime = runtime();
+        VisualAtlasIsland first = runtime.visualAtlasWorkflow().createIsland(
+                "First", 0, 0, 0xFFAA0000, null);
+        runtime.visualAtlasWorkflow().createIsland(
+                "Second", 20, 0, 0xFF00AA00, null);
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                -1,
+                0);
+
+        WorkspaceCommandOutcome reorder = SlotWorkspaceCommandService.reorderIsland(
+                runtime,
+                viewModel,
+                first.id(),
+                1);
+
+        assertSectionMetadataInvalidation(reorder, first.id(), "island_reordered");
     }
 
     @Test
@@ -137,5 +188,42 @@ class SlotWorkspaceUndoTest {
 
     private static WorkflowDomainRuntime runtime() {
         return new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+    }
+
+    private static void assertSectionMetadataInvalidation(
+            WorkspaceCommandOutcome outcome,
+            String sectionId,
+            String diagnostics
+    ) {
+        assertTrue(outcome.success(), outcome.diagnostics());
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.COMMAND_OUTCOME, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().isEmpty());
+        assertTrue(invalidation.storageIds().isEmpty());
+        assertEquals(Set.of(sectionId), invalidation.sectionIds());
+        assertEquals(Set.of(WorkspaceProjectionSlice.SECTION, WorkspaceProjectionSlice.FRAME), invalidation.slices());
+        assertEquals(diagnostics, invalidation.diagnostics());
+    }
+
+    private static void assertSectionRemovedInvalidation(
+            WorkspaceCommandOutcome outcome,
+            ItemIdentity identity,
+            String sectionId,
+            String diagnostics
+    ) {
+        assertTrue(outcome.success(), outcome.diagnostics());
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.COMMAND_OUTCOME, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertEquals(Set.of(identity), invalidation.identities());
+        assertTrue(invalidation.storageIds().isEmpty());
+        assertEquals(Set.of(sectionId, SlotWorkspaceAtlasLayout.ISLAND_TRIAGE), invalidation.sectionIds());
+        assertEquals(
+                Set.of(WorkspaceProjectionSlice.CARD, WorkspaceProjectionSlice.SECTION, WorkspaceProjectionSlice.FRAME),
+                invalidation.slices());
+        assertEquals(diagnostics, invalidation.diagnostics());
     }
 }

@@ -42,9 +42,10 @@ public final class ShiftClickTransferState {
             return;
         }
         switch (decision.action()) {
-            case TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY, TAKE_STACK_BY_IDENTITY, TAKE_ITEMS_BY_IDENTITY ->
+            case TAKE_ONE_BY_IDENTITY, TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY, TAKE_STACK_BY_IDENTITY, TAKE_ITEMS_BY_IDENTITY ->
                     takeIdentity = identity;
-            case DEPOSIT_HOME_TO_LINKED_CHEST, DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, CROSS_SURFACE_QUICK_MOVE -> reset();
+            case DEPOSIT_ONE_HOME_TO_LINKED_CHEST, DEPOSIT_HOME_TO_LINKED_CHEST,
+                    DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, CROSS_SURFACE_QUICK_MOVE -> reset();
             default -> {
             }
         }

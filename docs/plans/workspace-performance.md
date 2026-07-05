@@ -1,16 +1,15 @@
 # Workspace Performance Plan
 
-Last updated: 2026-07-01
+Last updated: 2026-07-02
 
 Status: implementation landed on 2026-07-01; TerraFirmaGreg manual/profile
 validation remains pending. This roadmap was written after Forge 1.20.1 spark
 captures of mining pickup and bulk carried-to-storage deposit flows in
 TerraFirmaGreg.
 
-Follow-up: [workspace-incremental-projection.md](workspace-incremental-projection.md)
-tracks the larger architecture step of replacing whole-model refreshes with
-typed invalidations, projection slices, identity/storage-local facts, and delta
-view sends.
+Follow-up [workspace-incremental-projection.md](done/workspace-incremental-projection.md)
+landed the larger architecture step: typed invalidations, projection slices,
+identity/storage-local facts, and delta view sends.
 
 For the current operational baseline, see [../status.md](../status.md). This
 plan expands the workspace projection follow-up in [current.md](current.md).

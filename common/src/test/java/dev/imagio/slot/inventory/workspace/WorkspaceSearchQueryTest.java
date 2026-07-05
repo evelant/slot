@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -65,6 +66,25 @@ class WorkspaceSearchQueryTest {
                 "copper",
                 ItemIdentity.of("minecraft:stone"),
                 new ItemStack("minecraft:stone", 1, 64)));
+    }
+
+    @Test
+    void nonBlankQueryPromotesIntentToRemoteSearch() {
+        assertEquals(
+                RemoteStorageDetailIntent.SEARCH,
+                RemoteStorageDetailIntent.effective(RemoteStorageDetailIntent.INTENT_ONLY, "stone"));
+        assertEquals(
+                RemoteStorageDetailIntent.SEARCH,
+                RemoteStorageDetailIntent.effective(RemoteStorageDetailIntent.NONE, "stone"));
+        assertEquals(
+                RemoteStorageDetailIntent.SEARCH,
+                RemoteStorageDetailIntent.effective(RemoteStorageDetailIntent.SEARCH, "stone"));
+        assertEquals(
+                RemoteStorageDetailIntent.TRACKED_XRAY,
+                RemoteStorageDetailIntent.effective(RemoteStorageDetailIntent.TRACKED_XRAY, "stone"));
+        assertEquals(
+                RemoteStorageDetailIntent.INTENT_ONLY,
+                RemoteStorageDetailIntent.effective(RemoteStorageDetailIntent.INTENT_ONLY, ""));
     }
 
     private static SlotWorkspaceViewModel.AtlasItem item(String itemId, String name, String islandId) {

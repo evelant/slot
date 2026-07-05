@@ -14,16 +14,27 @@ public record WorkspaceCommandOutcome(
         boolean success,
         String status,
         String diagnostics,
-        List<InventoryActivityEvent> activityEvents
+        List<InventoryActivityEvent> activityEvents,
+        List<WorkspaceInvalidation> invalidations
 ) {
     public WorkspaceCommandOutcome {
         status = status == null ? "" : status;
         diagnostics = diagnostics == null ? "" : diagnostics;
         activityEvents = activityEvents == null ? List.of() : List.copyOf(activityEvents);
+        invalidations = invalidations == null ? List.of() : List.copyOf(invalidations);
     }
 
     public WorkspaceCommandOutcome(boolean success, String status, String diagnostics) {
         this(success, status, diagnostics, List.of());
+    }
+
+    public WorkspaceCommandOutcome(
+            boolean success,
+            String status,
+            String diagnostics,
+            List<InventoryActivityEvent> activityEvents
+    ) {
+        this(success, status, diagnostics, activityEvents, List.of());
     }
 
     public static WorkspaceCommandOutcome accepted(String status, String diagnostics) {
@@ -31,7 +42,11 @@ public record WorkspaceCommandOutcome(
     }
 
     public WorkspaceCommandOutcome withActivityEvents(List<InventoryActivityEvent> events) {
-        return new WorkspaceCommandOutcome(success, status, diagnostics, events);
+        return new WorkspaceCommandOutcome(success, status, diagnostics, events, invalidations);
+    }
+
+    public WorkspaceCommandOutcome withInvalidations(List<WorkspaceInvalidation> invalidations) {
+        return new WorkspaceCommandOutcome(success, status, diagnostics, activityEvents, invalidations);
     }
 
     public static WorkspaceCommandOutcome rejected(String diagnostics) {

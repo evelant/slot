@@ -53,6 +53,44 @@ class WorkspaceTrashCommandServiceTest {
     }
 
     @Test
+    void setJunkEmitsLocalizedIdentityInvalidationWhenTagChanges() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null);
+        ItemIdentity cobblestone = ItemIdentity.of("minecraft:cobblestone");
+
+        WorkspaceCommandOutcome mark = WorkspaceTrashCommandService.setJunk(runtime, cobblestone, true);
+        assertTrue(mark.success(), mark.diagnostics());
+        assertTrue(runtime.collectionWorkflow().isJunk(cobblestone));
+        assertJunkTagInvalidation(mark, cobblestone);
+
+        WorkspaceCommandOutcome unmark = WorkspaceTrashCommandService.setJunk(runtime, cobblestone, false);
+        assertTrue(unmark.success(), unmark.diagnostics());
+        assertFalse(runtime.collectionWorkflow().isJunk(cobblestone));
+        assertJunkTagInvalidation(unmark, cobblestone);
+    }
+
+    @Test
+    void setJunkEmitsFrameInvalidationWhenTagIsUnchanged() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null);
+        ItemIdentity cobblestone = ItemIdentity.of("minecraft:cobblestone");
+
+        WorkspaceCommandOutcome outcome = WorkspaceTrashCommandService.setJunk(runtime, cobblestone, false);
+
+        assertTrue(outcome.success(), outcome.diagnostics());
+        assertFalse(runtime.collectionWorkflow().isJunk(cobblestone));
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.COMMAND_OUTCOME, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().isEmpty());
+        assertEquals(Set.of(WorkspaceProjectionSlice.FRAME), invalidation.slices());
+        assertEquals("junk_tag_unchanged", invalidation.diagnostics());
+    }
+
+    @Test
     void directTrashDoesNotMarkIdentityAsJunk() {
         ServerPlayer player = new ServerPlayer();
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
@@ -71,6 +109,23 @@ class WorkspaceTrashCommandServiceTest {
         assertTrue(trash.success(), trash.diagnostics());
         assertEquals(0, carried.peek(BuiltinInventoryIds.PLAYER_MAIN, 0).getCount());
         assertFalse(runtime.collectionWorkflow().isJunk(cobblestone));
+        assertEquals(1, trash.invalidations().size());
+        WorkspaceInvalidation invalidation = trash.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.CARRIED_REVISION_CHANGED, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().contains(cobblestone));
+        assertEquals(
+                Set.of(
+                        WorkspaceProjectionSlice.CARD,
+                        WorkspaceProjectionSlice.SECTION,
+                        WorkspaceProjectionSlice.WAYFINDING,
+                        WorkspaceProjectionSlice.DEPOSITABILITY,
+                        WorkspaceProjectionSlice.HOTBAR,
+                        WorkspaceProjectionSlice.WORKFLOW,
+                        WorkspaceProjectionSlice.CONTEXTUAL,
+                        WorkspaceProjectionSlice.FRAME),
+                invalidation.slices());
+        assertEquals("direct_trash", invalidation.diagnostics());
 
         WorkspaceCommandOutcome undo = SlotWorkspaceCommandService.performUndo(runtime);
         assertTrue(undo.success(), undo.diagnostics());
@@ -389,6 +444,18 @@ class WorkspaceTrashCommandServiceTest {
 
     private static ItemStack stack(String itemId, int count) {
         return new ItemStack(itemId, count, 64);
+    }
+
+    private static void assertJunkTagInvalidation(WorkspaceCommandOutcome outcome, ItemIdentity identity) {
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().contains(identity));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.CARD));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.SECTION));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.WORKFLOW));
+        assertEquals("junk_tag_changed", invalidation.diagnostics());
     }
 
     private static void fillBuiltinPickupPressure(FakeCarriedSourceAccess carried) {

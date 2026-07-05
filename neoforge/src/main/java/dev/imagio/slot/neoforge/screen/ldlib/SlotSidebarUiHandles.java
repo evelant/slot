@@ -2,6 +2,7 @@ package dev.imagio.slot.neoforge.screen.ldlib;
 
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -75,6 +76,18 @@ public final class SlotSidebarUiHandles {
             return handle.currentViewModel();
         }
         return LAST_VIEW_MODELS.get(player.getUUID());
+    }
+
+    public static boolean applyExternalOutcome(ServerPlayer player, WorkspaceCommandOutcome outcome) {
+        if (player == null) {
+            return false;
+        }
+        SlotSidebarUiHandle handle = HANDLES.get(player.getUUID());
+        if (handle == null || handle.isDisposed()) {
+            return false;
+        }
+        handle.applyExternalOutcome(outcome);
+        return true;
     }
 
     private static void rememberLastViewModel(UUID playerId, SlotSidebarUiHandle handle) {

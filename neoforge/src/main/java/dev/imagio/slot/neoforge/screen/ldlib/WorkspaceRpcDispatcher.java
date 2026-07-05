@@ -37,6 +37,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter lootChestClaimAndDepositEmitter;
     RPCEmitter setSearchQueryEmitter;
     RPCEmitter setRemoteStorageDetailEmitter;
+    RPCEmitter setRecipeIngredientFilterEmitter;
     RPCEmitter renameClusterEmitter;
     RPCEmitter renameIslandEmitter;
     RPCEmitter recolorIslandEmitter;
@@ -271,6 +272,10 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
         setRemoteStorageDetailEmitter = add(WorkspaceActionId.SET_REMOTE_STORAGE_DETAIL, RPCEventBuilder.simple(
                 String.class,
                 host.session::setRemoteStorageDetailIntent
+        ));
+        setRecipeIngredientFilterEmitter = add(WorkspaceActionId.SET_RECIPE_INGREDIENT_FILTER, RPCEventBuilder.simple(
+                String.class,
+                host.session::setRecipeIngredientFilter
         ));
         renameClusterEmitter = add(WorkspaceActionId.RENAME_CLUSTER, RPCEventBuilder.simple(
                 String.class,
@@ -748,6 +753,13 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
             return;
         }
         send(WorkspaceActionId.SET_REMOTE_STORAGE_DETAIL, intent == null ? "" : intent);
+    }
+
+    void sendRecipeIngredientFilter(String payload) {
+        if (setRecipeIngredientFilterEmitter == null) {
+            return;
+        }
+        send(WorkspaceActionId.SET_RECIPE_INGREDIENT_FILTER, payload == null ? "" : payload);
     }
 
     void sendLootChestClaimAndDeposit(

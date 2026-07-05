@@ -189,11 +189,14 @@ public final class ForgeWorkspaceSurface {
     public void setRecipeSidebarSpec(RecipeIngredientSidebarSpec spec) {
         RecipeIngredientSidebarSpec next = spec == null ? RecipeIngredientSidebarSpec.empty() : spec;
         String currentKey = recipeSidebarSpec == null ? "" : recipeSidebarSpec.sourceKey();
-        if (currentKey.equals(next.sourceKey())) {
+        String currentPayload = recipeSidebarSpec == null ? "" : recipeSidebarSpec.remoteDetailIdentityPayload();
+        String nextPayload = next.remoteDetailIdentityPayload();
+        if (currentKey.equals(next.sourceKey()) && currentPayload.equals(nextPayload)) {
             return;
         }
         recipeSidebarSpec = next;
         recipeSidebarProjection = null;
+        actionChannel.send(WorkspaceActionId.SET_RECIPE_INGREDIENT_FILTER, nextPayload);
         status = next.active() ? next.label() : openedStatus();
         refreshPresentedItems();
         rebuildRequested = true;
@@ -403,6 +406,9 @@ public final class ForgeWorkspaceSurface {
         if (handleMoveToMainInventoryKey(keyCode, scanCode)) {
             return true;
         }
+        if (handleCardTransferShortcutKey(keyCode, scanCode)) {
+            return true;
+        }
         if (handleSetWantedHoverKey(keyCode, scanCode)) {
             return true;
         }
@@ -597,6 +603,26 @@ public final class ForgeWorkspaceSurface {
                 identity,
                 toBackpack ? "moving to backpack" : "moving to main inventory");
         return true;
+    }
+
+    private boolean handleCardTransferShortcutKey(int keyCode, int scanCode) {
+        if (searchActive || wantsKeyboardInput() || editorOpen()) {
+            return false;
+        }
+        WallCardTransferGesturePolicy.KeyboardShortcut shortcut =
+                ForgeWorkspaceClient.hoveredCardShortcut(keyCode, scanCode);
+        if (shortcut == null) {
+            return false;
+        }
+        SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
+        SlotWorkspaceViewModel.AtlasItem item = identity == null ? null : byIdentity.get(identity);
+        if (item == null) {
+            return false;
+        }
+        WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                cardGestureContext(item, 0, Screen.hasShiftDown(), Screen.hasControlDown()),
+                shortcut);
+        return dispatchCardGestureDecision(item, decision, false, false);
     }
 
     private static boolean isAltKey(int keyCode) {
@@ -3312,13 +3338,8 @@ public final class ForgeWorkspaceSurface {
         if (searchQuery.equals(lastSentSearchQuery)) {
             return;
         }
-        boolean sent = actionChannel.send(WorkspaceActionId.SET_SEARCH_QUERY, searchQuery);
-        if (sent) {
-            lastSentSearchQuery = searchQuery;
-        } else {
-            status = "failed to sync search query";
-        }
-        rebuildRequested = true;
+        lastSentSearchQuery = searchQuery;
+        actionChannel.send(WorkspaceActionId.SET_SEARCH_QUERY, searchQuery);
     }
 
     private void setSearchQuery(String value) {
@@ -3676,6 +3697,15 @@ public final class ForgeWorkspaceSurface {
             SlotWorkspaceViewModel.AtlasItem item,
             WallCardTransferGesturePolicy.Decision decision
     ) {
+        return dispatchCardGestureDecision(item, decision, true, true);
+    }
+
+    private boolean dispatchCardGestureDecision(
+            SlotWorkspaceViewModel.AtlasItem item,
+            WallCardTransferGesturePolicy.Decision decision,
+            boolean batchCountedTransfers,
+            boolean recordShiftSequence
+    ) {
         if (decision == null || !decision.handled()) {
             return false;
         }
@@ -3704,24 +3734,52 @@ public final class ForgeWorkspaceSurface {
                     WorkspaceActionId.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY,
                     item,
                     "taking " + item.name());
+            case TAKE_ONE_BY_IDENTITY -> sendIdentityAction(
+                    WorkspaceActionId.TAKE_ONE_BY_IDENTITY,
+                    item,
+                    "taking one " + item.name());
             case TAKE_STACK_BY_IDENTITY -> sendIdentityAction(
                     WorkspaceActionId.TAKE_STACK_BY_IDENTITY,
                     item,
                     "taking " + item.name());
-            case TAKE_ITEMS_BY_IDENTITY -> enqueueWheelTransfer(
-                    WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY,
+            case TAKE_ITEMS_BY_IDENTITY -> {
+                if (batchCountedTransfers) {
+                    enqueueWheelTransfer(
+                            WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY,
+                            item,
+                            "taking " + item.name(),
+                            count);
+                } else {
+                    sendIdentityAction(
+                            WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY,
+                            item,
+                            "taking " + item.name(),
+                            count);
+                }
+            }
+            case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> sendIdentityAction(
+                    WorkspaceActionId.DEPOSIT_ONE_HOME_TO_LINKED_CHEST,
                     item,
-                    "taking " + item.name(),
-                    count);
+                    "depositing one " + item.name());
             case DEPOSIT_HOME_TO_LINKED_CHEST -> sendIdentityAction(
                     WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST,
                     item,
                     "depositing " + item.name());
-            case DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST -> enqueueWheelTransfer(
-                    WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST,
-                    item,
-                    "depositing " + item.name(),
-                    count);
+            case DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST -> {
+                if (batchCountedTransfers) {
+                    enqueueWheelTransfer(
+                            WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST,
+                            item,
+                            "depositing " + item.name(),
+                            count);
+                } else {
+                    sendIdentityAction(
+                            WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST,
+                            item,
+                            "depositing " + item.name(),
+                            count);
+                }
+            }
             case CROSS_SURFACE_QUICK_MOVE -> sendIdentityAction(
                     WorkspaceActionId.CROSS_SURFACE_QUICK_MOVE_ATLAS,
                     item,
@@ -3738,7 +3796,9 @@ public final class ForgeWorkspaceSurface {
                     "wanted count updated",
                     count);
         }
-        shiftClickTransferState.record(decision, item == null ? null : item.identity(), Screen.hasShiftDown());
+        if (recordShiftSequence) {
+            shiftClickTransferState.record(decision, item == null ? null : item.identity(), Screen.hasShiftDown());
+        }
         return true;
     }
 

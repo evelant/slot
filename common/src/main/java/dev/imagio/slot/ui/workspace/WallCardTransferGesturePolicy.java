@@ -9,6 +9,8 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
  */
 public final class WallCardTransferGesturePolicy {
     public static final int PICKUP_MAX = Integer.MAX_VALUE;
+    public static final int FIVE_STACK_SHORTCUT_STACKS = 5;
+    public static final int TRANSFER_ALL_REQUEST_COUNT = Integer.MAX_VALUE - 1;
 
     private WallCardTransferGesturePolicy() {
     }
@@ -100,6 +102,83 @@ public final class WallCardTransferGesturePolicy {
         return Decision.action(Action.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, magnitude);
     }
 
+    public static Decision keyboardShortcut(Context context, KeyboardShortcut shortcut) {
+        if (context == null || context.item() == null || shortcut == null) {
+            return Decision.none();
+        }
+        if (context.cursorCarrying()) {
+            return Decision.status("return cursor first");
+        }
+        SlotWorkspaceViewModel.AtlasItem item = context.item();
+        return switch (shortcut) {
+            case TAKE_ONE -> takeItemsDecision(context, 1, Action.TAKE_ONE_BY_IDENTITY);
+            case TAKE_STACK -> takeItemsDecision(context, 0, Action.TAKE_STACK_BY_IDENTITY);
+            case TAKE_ALL -> takeItemsDecision(context, TRANSFER_ALL_REQUEST_COUNT, Action.TAKE_ITEMS_BY_IDENTITY);
+            case TAKE_FIVE_STACKS -> takeItemsDecision(
+                    context,
+                    stackCount(item, FIVE_STACK_SHORTCUT_STACKS),
+                    Action.TAKE_ITEMS_BY_IDENTITY);
+            case PUT_ONE -> depositItemsDecision(context, 1, Action.DEPOSIT_ONE_HOME_TO_LINKED_CHEST);
+            case PUT_STACK -> depositItemsDecision(
+                    context,
+                    stackCount(item, 1),
+                    Action.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST);
+            case PUT_ALL -> depositItemsDecision(
+                    context,
+                    TRANSFER_ALL_REQUEST_COUNT,
+                    Action.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST);
+            case PUT_FIVE_STACKS -> depositItemsDecision(
+                    context,
+                    stackCount(item, FIVE_STACK_SHORTCUT_STACKS),
+                    Action.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST);
+        };
+    }
+
+    private static Decision takeItemsDecision(Context context, int count, Action action) {
+        SlotWorkspaceViewModel.AtlasItem item = context.item();
+        if (missingProximatePresence(item)) {
+            return Decision.status("nearby chest data missing");
+        }
+        if (proximateChestCount(item) <= 0) {
+            return Decision.status("no nearby chest has " + item.name());
+        }
+        if (!item.carried() && context.carriedFreeSlotCount() == 0) {
+            return Decision.status("carry full - drop something first");
+        }
+        return switch (action) {
+            case TAKE_ONE_BY_IDENTITY, TAKE_STACK_BY_IDENTITY -> Decision.action(action);
+            case TAKE_ITEMS_BY_IDENTITY -> Decision.action(action, count);
+            default -> Decision.none();
+        };
+    }
+
+    private static Decision depositItemsDecision(Context context, int count, Action action) {
+        SlotWorkspaceViewModel.AtlasItem item = context.item();
+        if (!item.carried()) {
+            return Decision.status(item.name() + " not carried");
+        }
+        if (!hasDepositTarget(context)) {
+            return Decision.status("no nearby chest to push " + item.name());
+        }
+        return switch (action) {
+            case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> Decision.action(action);
+            case DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST -> Decision.action(action, count);
+            default -> Decision.none();
+        };
+    }
+
+    private static int stackCount(SlotWorkspaceViewModel.AtlasItem item, int stacks) {
+        if (item == null || item.displayStack() == null) {
+            return Math.max(1, stacks) * 64;
+        }
+        int maxStackSize = Math.max(1, item.displayStack().getMaxStackSize());
+        int stackCount = Math.max(1, stacks);
+        if (Integer.MAX_VALUE / stackCount < maxStackSize) {
+            return TRANSFER_ALL_REQUEST_COUNT;
+        }
+        return maxStackSize * stackCount;
+    }
+
     public static int proximateChestCount(SlotWorkspaceViewModel.AtlasItem item) {
         if (item == null) {
             return 0;
@@ -166,14 +245,27 @@ public final class WallCardTransferGesturePolicy {
         CURSOR_CANCEL,
         CURSOR_SMART_DEPOSIT,
         CURSOR_CANCEL_THEN_PICKUP_TO_CURSOR,
+        TAKE_ONE_BY_IDENTITY,
         TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY,
         TAKE_STACK_BY_IDENTITY,
         TAKE_ITEMS_BY_IDENTITY,
+        DEPOSIT_ONE_HOME_TO_LINKED_CHEST,
         DEPOSIT_HOME_TO_LINKED_CHEST,
         DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST,
         CROSS_SURFACE_QUICK_MOVE,
         ADJUST_PLAYER_DESIRED_COUNT,
         ADJUST_WANTED_COUNT
+    }
+
+    public enum KeyboardShortcut {
+        TAKE_STACK,
+        PUT_STACK,
+        TAKE_ONE,
+        PUT_ONE,
+        TAKE_ALL,
+        PUT_ALL,
+        TAKE_FIVE_STACKS,
+        PUT_FIVE_STACKS
     }
 
     public record Decision(Action action, int count, String status) {

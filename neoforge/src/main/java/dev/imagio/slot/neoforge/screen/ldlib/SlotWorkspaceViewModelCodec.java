@@ -7,6 +7,9 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.inventory.workspace.WorkspaceViewSliceKeys;
+import dev.imagio.slot.inventory.workspace.WorkspaceViewTransferMode;
+import dev.imagio.slot.inventory.workspace.WorkspaceViewTransferPlan;
+import dev.imagio.slot.inventory.workspace.WorkspaceViewTransferSlice;
 import dev.imagio.slot.workflow.domain.ChestRole;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
@@ -23,6 +26,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +37,11 @@ import java.util.Map;
  * does not depend on {@code net.minecraft.nbt} types.
  */
 public final class SlotWorkspaceViewModelCodec {
+    private static final String TRANSFER_MODE = "__slotViewMode";
+    private static final String TRANSFER_BASE_REVISION = "__slotBaseRevision";
+    private static final String TRANSFER_REVISION = "__slotRevision";
+    private static final String TRANSFER_SLICES = "__slotSlices";
+
     private SlotWorkspaceViewModelCodec() {
     }
 
@@ -127,6 +136,93 @@ public final class SlotWorkspaceViewModelCodec {
         return tag;
     }
 
+    public static CompoundTag encodeTransfer(
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider,
+            EncodedSliceCache cache,
+            boolean forceFull
+    ) {
+        SlotWorkspaceViewModel resolved = viewModel == null ? SlotWorkspaceViewModel.empty() : viewModel;
+        if (cache == null) {
+            CompoundTag full = encodeFresh(resolved, provider, true);
+            markTransfer(full, WorkspaceViewTransferPlan.full(resolved.revision()));
+            return full;
+        }
+        WorkspaceViewSliceKeys previousKeys = cache.lastKeys;
+        CompoundTag previousTag = cache.lastTag;
+        long previousRevision = cache.lastRevision;
+        WorkspaceViewSliceKeys keys = WorkspaceViewSliceKeys.from(resolved);
+        WorkspaceViewTransferPlan plan = WorkspaceViewTransferPlan.from(
+                previousRevision,
+                previousKeys,
+                resolved.revision(),
+                keys,
+                forceFull || previousTag == null);
+        if (plan.mode() == WorkspaceViewTransferMode.FULL_SNAPSHOT) {
+            CompoundTag full = encodeFresh(resolved, provider, true);
+            cache.store(keys, full, new SliceStats(7, 0));
+            CompoundTag transfer = full.copy();
+            markTransfer(transfer, plan);
+            return transfer;
+        }
+
+        CompoundTag delta = new CompoundTag();
+        markTransfer(delta, plan);
+        CompoundTag merged = previousTag.copy();
+        merged.putLong("revision", resolved.revision());
+        int encoded = 0;
+        for (WorkspaceViewTransferSlice slice : plan.slices()) {
+            writeSlice(delta, resolved, provider, slice);
+            copyKeys(delta, merged, keysForSlice(slice));
+            encoded++;
+        }
+        cache.store(keys, merged, new SliceStats(encoded, 7 - encoded));
+        return delta;
+    }
+
+    public static TransferApplyResult applyTransfer(
+            HolderLookup.Provider provider,
+            CompoundTag previousFullTag,
+            Tag transferTag
+    ) {
+        if (!(transferTag instanceof CompoundTag transfer)) {
+            return TransferApplyResult.failed("missing_transfer_tag", true);
+        }
+        WorkspaceViewTransferMode mode = transferMode(transfer);
+        if (mode == WorkspaceViewTransferMode.FULL_SNAPSHOT) {
+            CompoundTag full = transfer.copy();
+            return TransferApplyResult.applied(full, decode(provider, full));
+        }
+        if (previousFullTag == null) {
+            return TransferApplyResult.failed("missing_delta_base", true);
+        }
+        long expectedBase = transfer.getLong(TRANSFER_BASE_REVISION);
+        long actualBase = previousFullTag.getLong("revision");
+        if (expectedBase != actualBase) {
+            long transferRevision = transfer.getLong(TRANSFER_REVISION);
+            if (actualBase >= transferRevision) {
+                CompoundTag full = previousFullTag.copy();
+                return TransferApplyResult.applied(full, decode(provider, full));
+            }
+            return TransferApplyResult.failed(
+                    "delta_base_mismatch:expected=" + expectedBase + ":actual=" + actualBase,
+                    true);
+        }
+        EnumSet<WorkspaceViewTransferSlice> slices = transferSlices(transfer);
+        if (slices.isEmpty()) {
+            return TransferApplyResult.failed("delta_has_no_slices", true);
+        }
+        CompoundTag merged = previousFullTag.copy();
+        merged.putLong("revision", transfer.getLong(TRANSFER_REVISION));
+        for (WorkspaceViewTransferSlice slice : slices) {
+            String[] keys = keysForSlice(slice);
+            if (!copyKeys(transfer, merged, keys)) {
+                return TransferApplyResult.failed("delta_missing_slice:" + slice.name(), true);
+            }
+        }
+        return TransferApplyResult.applied(merged, decode(provider, merged));
+    }
+
     private static CompoundTag encodeFresh(
             SlotWorkspaceViewModel viewModel,
             HolderLookup.Provider provider,
@@ -152,6 +248,23 @@ public final class SlotWorkspaceViewModelCodec {
         writeWorkflow(tag, viewModel, provider);
         writePanels(tag, viewModel, provider);
         writeContextual(tag, viewModel, provider);
+    }
+
+    private static void writeSlice(
+            CompoundTag tag,
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider,
+            WorkspaceViewTransferSlice slice
+    ) {
+        switch (slice) {
+            case FRAME -> writeFrame(tag, viewModel);
+            case WALL -> writeWall(tag, viewModel, provider);
+            case STORAGE -> writeStorage(tag, viewModel, provider);
+            case HOTBAR -> writeHotbar(tag, viewModel, provider);
+            case WORKFLOW -> writeWorkflow(tag, viewModel, provider);
+            case PANELS -> writePanels(tag, viewModel, provider);
+            case CONTEXTUAL -> writeContextual(tag, viewModel, provider);
+        }
     }
 
     private static void writeFrame(CompoundTag tag, SlotWorkspaceViewModel viewModel) {
@@ -290,14 +403,117 @@ public final class SlotWorkspaceViewModelCodec {
             return false;
         }
         for (String key : keys) {
-            if (key == null || !source.contains(key) || source.get(key) == null) {
+            if (!hasKnownKey(source, key)) {
                 return false;
             }
         }
         for (String key : keys) {
-            target.put(key, source.get(key).copy());
+            copyKnownKey(source, target, key);
         }
         return true;
+    }
+
+    private static boolean hasKnownKey(CompoundTag source, String key) {
+        if (source == null || key == null) {
+            return false;
+        }
+        return switch (key) {
+            case "status", "diagnostics" -> source.contains(key, Tag.TAG_STRING);
+            case "pendingCount", "selectedQuickAccessSlot", "canvasWidth", "canvasHeight",
+                    "carriedFreeSlotCount", "carriedSlotCapacity" -> source.contains(key, Tag.TAG_INT);
+            case "islands", "atlasItems", "triageItems", "chestChips", "chestClusters",
+                    "wayfindingTargets", "depositableIdentities", "recentIdentities", "hotbarSlots",
+                    "kits", "contextualSuggestionLanes" -> source.contains(key, Tag.TAG_LIST);
+            case "offhand", "craftRun", "lootChestPanel", "activeChestPanel" ->
+                    source.contains(key, Tag.TAG_COMPOUND);
+            default -> false;
+        };
+    }
+
+    private static void copyKnownKey(CompoundTag source, CompoundTag target, String key) {
+        switch (key) {
+            case "status", "diagnostics" -> target.putString(key, source.getString(key));
+            case "pendingCount", "selectedQuickAccessSlot", "canvasWidth", "canvasHeight",
+                    "carriedFreeSlotCount", "carriedSlotCapacity" -> target.putInt(key, source.getInt(key));
+            case "islands", "atlasItems", "triageItems", "chestChips", "chestClusters",
+                    "wayfindingTargets", "depositableIdentities", "recentIdentities", "hotbarSlots",
+                    "kits", "contextualSuggestionLanes" -> target.put(key, source.getList(key, Tag.TAG_COMPOUND).copy());
+            case "offhand", "craftRun", "lootChestPanel", "activeChestPanel" ->
+                    target.put(key, source.getCompound(key).copy());
+            default -> {
+            }
+        }
+    }
+
+    private static void markTransfer(CompoundTag tag, WorkspaceViewTransferPlan plan) {
+        WorkspaceViewTransferPlan resolved = plan == null
+                ? WorkspaceViewTransferPlan.full(tag == null ? 0L : tag.getLong("revision"))
+                : plan;
+        tag.putString(TRANSFER_MODE, resolved.mode().name());
+        tag.putLong(TRANSFER_BASE_REVISION, resolved.baseRevision());
+        tag.putLong(TRANSFER_REVISION, resolved.revision());
+        tag.putString(TRANSFER_SLICES, sliceList(resolved.slices()));
+    }
+
+    private static WorkspaceViewTransferMode transferMode(CompoundTag tag) {
+        if (tag == null || !tag.contains(TRANSFER_MODE)) {
+            return WorkspaceViewTransferMode.FULL_SNAPSHOT;
+        }
+        try {
+            return WorkspaceViewTransferMode.valueOf(tag.getString(TRANSFER_MODE));
+        } catch (IllegalArgumentException ignored) {
+            return WorkspaceViewTransferMode.FULL_SNAPSHOT;
+        }
+    }
+
+    private static String sliceList(EnumSet<WorkspaceViewTransferSlice> slices) {
+        if (slices == null || slices.isEmpty()) {
+            return "";
+        }
+        StringBuilder out = new StringBuilder();
+        for (WorkspaceViewTransferSlice slice : slices) {
+            if (!out.isEmpty()) {
+                out.append(',');
+            }
+            out.append(slice.name());
+        }
+        return out.toString();
+    }
+
+    private static EnumSet<WorkspaceViewTransferSlice> transferSlices(CompoundTag tag) {
+        EnumSet<WorkspaceViewTransferSlice> slices = EnumSet.noneOf(WorkspaceViewTransferSlice.class);
+        if (tag == null) {
+            return slices;
+        }
+        String raw = tag.getString(TRANSFER_SLICES);
+        if (raw == null || raw.isBlank()) {
+            return slices;
+        }
+        for (String part : raw.split(",")) {
+            if (part == null || part.isBlank()) {
+                continue;
+            }
+            try {
+                slices.add(WorkspaceViewTransferSlice.valueOf(part.trim()));
+            } catch (IllegalArgumentException ignored) {
+                return EnumSet.noneOf(WorkspaceViewTransferSlice.class);
+            }
+        }
+        return slices;
+    }
+
+    private static String[] keysForSlice(WorkspaceViewTransferSlice slice) {
+        return switch (slice) {
+            case FRAME -> new String[]{"status", "diagnostics", "pendingCount", "selectedQuickAccessSlot"};
+            case WALL -> new String[]{
+                    "canvasWidth", "canvasHeight", "carriedFreeSlotCount", "carriedSlotCapacity",
+                    "islands", "atlasItems", "triageItems"};
+            case STORAGE -> new String[]{"chestChips", "chestClusters", "wayfindingTargets", "depositableIdentities"};
+            case HOTBAR -> new String[]{"recentIdentities", "hotbarSlots", "offhand"};
+            case WORKFLOW -> new String[]{"kits", "craftRun"};
+            case PANELS -> new String[]{"lootChestPanel", "activeChestPanel"};
+            case CONTEXTUAL -> new String[]{"contextualSuggestionLanes"};
+        };
     }
 
     @FunctionalInterface
@@ -308,6 +524,7 @@ public final class SlotWorkspaceViewModelCodec {
     public static final class EncodedSliceCache {
         private CompoundTag lastTag;
         private WorkspaceViewSliceKeys lastKeys;
+        private long lastRevision;
         private SliceStats lastStats = SliceStats.empty();
 
         public SliceStats lastStats() {
@@ -317,12 +534,14 @@ public final class SlotWorkspaceViewModelCodec {
         public void clear() {
             lastTag = null;
             lastKeys = null;
+            lastRevision = 0L;
             lastStats = SliceStats.empty();
         }
 
         private void store(WorkspaceViewSliceKeys keys, CompoundTag tag, SliceStats stats) {
             lastKeys = keys;
             lastTag = tag == null ? null : tag.copy();
+            lastRevision = tag == null ? 0L : Math.max(0L, tag.getLong("revision"));
             lastStats = stats == null ? SliceStats.empty() : stats;
         }
     }
@@ -330,6 +549,38 @@ public final class SlotWorkspaceViewModelCodec {
     public record SliceStats(int encodedSlices, int reusedSlices) {
         public static SliceStats empty() {
             return new SliceStats(0, 0);
+        }
+    }
+
+    public record TransferApplyResult(
+            boolean applied,
+            boolean requiresFullSnapshot,
+            CompoundTag fullTag,
+            SlotWorkspaceViewModel viewModel,
+            String diagnostics
+    ) {
+        private static TransferApplyResult applied(CompoundTag fullTag, SlotWorkspaceViewModel viewModel) {
+            return new TransferApplyResult(
+                    true,
+                    false,
+                    fullTag == null ? null : fullTag.copy(),
+                    viewModel,
+                    "");
+        }
+
+        private static TransferApplyResult failed(String diagnostics, boolean requiresFullSnapshot) {
+            return new TransferApplyResult(
+                    false,
+                    requiresFullSnapshot,
+                    null,
+                    SlotWorkspaceViewModel.empty(),
+                    diagnostics);
+        }
+
+        public TransferApplyResult {
+            fullTag = fullTag == null ? null : fullTag.copy();
+            viewModel = viewModel == null ? SlotWorkspaceViewModel.empty() : viewModel;
+            diagnostics = diagnostics == null ? "" : diagnostics;
         }
     }
 

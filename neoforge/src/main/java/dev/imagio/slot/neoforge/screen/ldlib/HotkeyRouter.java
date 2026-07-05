@@ -7,6 +7,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.action.WorkspaceActionId;
 import dev.imagio.slot.ui.workspace.StorageGhostRevealMode;
+import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import net.minecraft.client.gui.screens.Screen;
 import org.lwjgl.glfw.GLFW;
@@ -31,6 +32,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCursorCancelKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleAutoHotbarKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMoveToMainInventoryKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCardTransferShortcutKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleSetWantedHoverKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleTrashHoverKey, true);
@@ -154,6 +156,104 @@ final class HotkeyRouter {
                 target.identity().componentFingerprint());
         host.localStatus.set(toBackpack ? "moving to backpack" : "moving to main inventory");
         host.rebuild();
+    }
+
+    void handleCardTransferShortcutKey(UIEvent event) {
+        if (isTextInputFocused() || host.searchController.modalActive()) {
+            return;
+        }
+        WallCardTransferGesturePolicy.KeyboardShortcut shortcut =
+                dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                        .hoveredCardShortcut(event.keyCode, event.scanCode);
+        if (shortcut == null) {
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
+        if (target == null) {
+            return;
+        }
+        WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                cardGestureContext(target),
+                shortcut);
+        if (dispatchCardTransferShortcut(target, decision)) {
+            event.stopPropagation();
+        }
+    }
+
+    private WallCardTransferGesturePolicy.Context cardGestureContext(SlotWorkspaceViewModel.AtlasItem item) {
+        int freeSlots = host.viewModel == null ? 0 : host.viewModel.carriedFreeSlotCount();
+        return new WallCardTransferGesturePolicy.Context(
+                item,
+                0,
+                Screen.hasShiftDown(),
+                Screen.hasControlDown(),
+                WorkspaceCursorState.carriedIdentity(),
+                WorkspaceCursorState.isCarrying(),
+                SlotSidebarClientUi.isActive(),
+                freeSlots,
+                host.anyChestProximate(),
+                host.activeChestOpen(),
+                false,
+                false);
+    }
+
+    private boolean dispatchCardTransferShortcut(
+            SlotWorkspaceViewModel.AtlasItem item,
+            WallCardTransferGesturePolicy.Decision decision
+    ) {
+        if (decision == null || !decision.handled()) {
+            return false;
+        }
+        int count = decision.count();
+        switch (decision.action()) {
+            case NONE -> {
+                return false;
+            }
+            case STATUS -> {
+                host.localStatus.set(decision.status());
+                host.rebuild();
+            }
+            case TAKE_ONE_BY_IDENTITY -> host.rpc.sendTakeOneByIdentity(item.identity());
+            case TAKE_STACK_BY_IDENTITY -> host.rpc.sendTakeStackByIdentity(item.identity());
+            case TAKE_ITEMS_BY_IDENTITY -> sendIdentityCount(
+                    WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY,
+                    item,
+                    "taking " + item.name(),
+                    count);
+            case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> host.rpc.sendDepositOneHomeToLinkedChest(item);
+            case DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST -> sendIdentityCount(
+                    WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST,
+                    item,
+                    "depositing " + item.name(),
+                    count);
+            default -> {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void sendIdentityCount(
+            WorkspaceActionId action,
+            SlotWorkspaceViewModel.AtlasItem item,
+            String status,
+            int count
+    ) {
+        if (item == null || item.identity() == null) {
+            host.localStatus.set("missing item identity");
+            host.rebuild();
+            return;
+        }
+        boolean sent = host.rpc.send(
+                action,
+                item.identity().itemId(),
+                item.identity().comparisonMode(),
+                item.identity().componentFingerprint(),
+                count);
+        host.localStatus.set(sent ? status : "transfer unavailable");
+        if (!sent) {
+            host.rebuild();
+        }
     }
 
     boolean isTextInputFocused() {

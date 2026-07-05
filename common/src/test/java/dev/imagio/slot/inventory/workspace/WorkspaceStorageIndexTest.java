@@ -326,6 +326,88 @@ class WorkspaceStorageIndexTest {
     }
 
     @Test
+    void trackedStoragePollUpdatesRememberedContentsWithinBudget() {
+        UUID chestC = UUID.fromString("00000000-0000-0000-0000-000000000503");
+        Path statePath = tempDir.resolve("tracked-poll-memory.json");
+        WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);
+        store.observe(
+                StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                27,
+                List.of(content(0, stack("minecraft:dirt", 9))),
+                1L,
+                "seed");
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 27, List.of(content(0, stack("minecraft:stone", 3))))
+                .put(CHEST_B, 27, List.of(content(1, stack("minecraft:redstone", 5))))
+                .put(chestC, 27, List.of(content(2, stack("minecraft:diamond", 1))));
+        WorkspaceStorageIndexCache cache = new WorkspaceStorageIndexCache();
+
+        WorkspaceStorageIndex first = cache.buildWithMemoryForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A, CHEST_B, chestC),
+                world,
+                Set.of(),
+                List.of(),
+                store,
+                20L);
+
+        assertEquals(3, cache.diagnostics().trackedStoragePoll().candidates());
+        assertEquals(2, cache.diagnostics().trackedStoragePoll().checked());
+        assertEquals(2, cache.diagnostics().trackedStoragePoll().changed());
+        assertEquals("minecraft:stone", first.contents(CHEST_A.toString()).contents().get(0).itemId());
+        assertEquals("minecraft:redstone", first.contents(CHEST_B.toString()).contents().get(0).itemId());
+        assertEquals(1, world.enumerateCalls(CHEST_A));
+        assertEquals(1, world.enumerateCalls(CHEST_B));
+        assertEquals(0, world.enumerateCalls(chestC));
+        WorkspaceStorageMemoryStore beforeFlush = new WorkspaceStorageMemoryStore(statePath);
+        assertEquals(
+                9,
+                beforeFlush.remembered(CHEST_A.toString()).countsByIdentity().get(ItemIdentity.of("minecraft:dirt")));
+        assertNull(beforeFlush.remembered(CHEST_B.toString()));
+        store.flush();
+        WorkspaceStorageMemoryStore afterFlush = new WorkspaceStorageMemoryStore(statePath);
+        assertEquals(
+                3,
+                afterFlush.remembered(CHEST_A.toString()).countsByIdentity().get(ItemIdentity.of("minecraft:stone")));
+        assertEquals(
+                5,
+                afterFlush.remembered(CHEST_B.toString()).countsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+
+        cache.buildWithMemoryForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A, CHEST_B, chestC),
+                world,
+                Set.of(),
+                List.of(),
+                store,
+                25L);
+
+        assertEquals(0, cache.diagnostics().trackedStoragePoll().checked());
+        assertEquals(1, world.enumerateCalls(CHEST_A));
+        assertEquals(1, world.enumerateCalls(CHEST_B));
+        assertEquals(0, world.enumerateCalls(chestC));
+
+        WorkspaceStorageIndex second = cache.buildWithMemoryForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A, CHEST_B, chestC),
+                world,
+                Set.of(),
+                List.of(),
+                store,
+                40L);
+
+        assertEquals(2, cache.diagnostics().trackedStoragePoll().checked());
+        assertEquals(1, cache.diagnostics().trackedStoragePoll().changed());
+        assertEquals("minecraft:diamond", second.contents(chestC.toString()).contents().get(0).itemId());
+        assertEquals(2, world.enumerateCalls(CHEST_A));
+        assertEquals(1, world.enumerateCalls(CHEST_B));
+        assertEquals(1, world.enumerateCalls(chestC));
+    }
+
+    @Test
     void liveContentsResolverDoesNotExposeRememberedOnlyStorage() {
         RememberedStorageContents remembered = RememberedStorageContents.fromCounts(
                 StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),

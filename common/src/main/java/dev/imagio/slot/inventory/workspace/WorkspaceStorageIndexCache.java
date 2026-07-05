@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.workspace;
 
+import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
@@ -27,6 +28,8 @@ import java.util.UUID;
  */
 public final class WorkspaceStorageIndexCache {
     private static final long LIVE_BUCKET_TICKS = 10L;
+    private static final long TRACKED_POLL_BUCKET_TICKS = 20L;
+    private static final int TRACKED_POLL_BUDGET = 2;
 
     private Layer<RememberedKey> rememberedLayer = Layer.empty();
     private DisplayLayer displayLayer = DisplayLayer.empty();
@@ -34,6 +37,8 @@ public final class WorkspaceStorageIndexCache {
     private Layer<DepositOverlayKey> depositOverlayLayer = Layer.empty();
     private IndexKey lastIndexKey;
     private WorkspaceStorageIndex lastIndex;
+    private long lastTrackedPollBucket = -1L;
+    private int trackedPollCursor;
     private long hits;
     private long misses;
     private Diagnostics diagnostics = Diagnostics.empty();
@@ -48,6 +53,15 @@ public final class WorkspaceStorageIndexCache {
             long tick
     ) {
         WorkspaceStorageMemoryStore memory = WorkspaceStorageMemoryStore.forServer(server);
+        ClaimedChestMap claimedChestMap = workflow == null ? ClaimedChestMap.empty() : workflow.claimedChestMap();
+        Set<String> proximate = proximateStorageIds == null ? Set.of() : Set.copyOf(proximateStorageIds);
+        PollDiagnostics poll = pollTrackedStorageChanges(
+                memory,
+                server,
+                worldStorage,
+                claimedChestMap,
+                proximate,
+                tick);
         Map<String, RememberedStorageContents> remembered = memory == null
                 ? Map.of()
                 : memory.rememberedContents();
@@ -55,14 +69,15 @@ public final class WorkspaceStorageIndexCache {
         return buildInternal(
                 server,
                 authority,
-                workflow == null ? ClaimedChestMap.empty() : workflow.claimedChestMap(),
+                claimedChestMap,
                 worldStorage,
-                proximateStorageIds,
+                proximate,
                 displaySources,
                 memory,
                 remembered,
                 revision,
-                tick);
+                tick,
+                poll);
     }
 
     WorkspaceStorageIndex buildForTesting(
@@ -86,7 +101,45 @@ public final class WorkspaceStorageIndexCache {
                 null,
                 remembered,
                 memoryRevision,
+                tick,
+                PollDiagnostics.empty());
+    }
+
+    WorkspaceStorageIndex buildWithMemoryForTesting(
+            MinecraftServer server,
+            InventoryAuthoritySnapshot authority,
+            ClaimedChestMap claimedChestMap,
+            WorldStorageAccess worldStorage,
+            Set<String> proximateStorageIds,
+            List<WorldDisplayStorageSource> displaySources,
+            WorkspaceStorageMemoryStore memory,
+            long tick
+    ) {
+        Set<String> proximate = proximateStorageIds == null ? Set.of() : Set.copyOf(proximateStorageIds);
+        ClaimedChestMap resolvedMap = claimedChestMap == null ? ClaimedChestMap.empty() : claimedChestMap;
+        PollDiagnostics poll = pollTrackedStorageChanges(
+                memory,
+                server,
+                worldStorage,
+                resolvedMap,
+                proximate,
                 tick);
+        Map<String, RememberedStorageContents> remembered = memory == null
+                ? Map.of()
+                : memory.rememberedContents();
+        long revision = memory == null ? 0L : memory.revision();
+        return buildInternal(
+                server,
+                authority,
+                resolvedMap,
+                worldStorage,
+                proximate,
+                displaySources,
+                memory,
+                remembered,
+                revision,
+                tick,
+                poll);
     }
 
     public Diagnostics diagnostics() {
@@ -100,6 +153,8 @@ public final class WorkspaceStorageIndexCache {
         depositOverlayLayer = Layer.empty();
         lastIndexKey = null;
         lastIndex = null;
+        lastTrackedPollBucket = -1L;
+        trackedPollCursor = 0;
         hits = 0L;
         misses = 0L;
         diagnostics = Diagnostics.empty();
@@ -115,7 +170,8 @@ public final class WorkspaceStorageIndexCache {
             WorkspaceStorageMemoryStore memory,
             Map<String, RememberedStorageContents> remembered,
             long memoryRevision,
-            long tick
+            long tick,
+            PollDiagnostics pollDiagnostics
     ) {
         ClaimedChestMap resolvedMap = claimedChestMap == null ? ClaimedChestMap.empty() : claimedChestMap;
         InventoryAuthoritySnapshot resolvedAuthority = authority == null
@@ -180,7 +236,8 @@ public final class WorkspaceStorageIndexCache {
                     liveSnapshotHit,
                     depositOverlayHit,
                     hits,
-                    misses);
+                    misses,
+                    pollDiagnostics);
             return lastIndex;
         }
 
@@ -202,8 +259,80 @@ public final class WorkspaceStorageIndexCache {
                 liveSnapshotHit,
                 depositOverlayHit,
                 hits,
-                misses);
+                misses,
+                pollDiagnostics);
         return lastIndex;
+    }
+
+    private PollDiagnostics pollTrackedStorageChanges(
+            WorkspaceStorageMemoryStore memory,
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            ClaimedChestMap claimedChestMap,
+            Set<String> proximate,
+            long tick
+    ) {
+        if (memory == null || worldStorage == null || claimedChestMap == null || claimedChestMap.chests().isEmpty()) {
+            return PollDiagnostics.empty();
+        }
+        ArrayList<ClaimedChest> candidates = new ArrayList<>();
+        for (ClaimedChest chest : claimedChestMap.chests()) {
+            if (chest == null || !chest.role().visibleToWorkspace()) {
+                continue;
+            }
+            String storageId = chest.storageId().toString();
+            if (proximate != null && proximate.contains(storageId)) {
+                continue;
+            }
+            candidates.add(chest);
+        }
+        if (candidates.isEmpty()) {
+            trackedPollCursor = 0;
+            return PollDiagnostics.empty();
+        }
+        long bucket = Math.max(0L, tick) / TRACKED_POLL_BUCKET_TICKS;
+        if (bucket == lastTrackedPollBucket) {
+            return new PollDiagnostics(candidates.size(), 0, 0, 0);
+        }
+        lastTrackedPollBucket = bucket;
+        int budget = Math.min(TRACKED_POLL_BUDGET, candidates.size());
+        int start = Math.floorMod(trackedPollCursor, candidates.size());
+        int checked = 0;
+        int changed = 0;
+        int failed = 0;
+        for (int offset = 0; offset < budget; offset++) {
+            ClaimedChest chest = candidates.get((start + offset) % candidates.size());
+            if (chest == null) {
+                continue;
+            }
+            checked++;
+            WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+            try {
+                if (!worldStorage.isAccessible(server, target)) {
+                    continue;
+                }
+                StorageTargetRef ref = StorageTargetRef.claimed(chest, true, false, false);
+                if (WorkspaceStorageMemoryStore.observeLiveTarget(
+                        memory,
+                        server,
+                        worldStorage,
+                        ref,
+                        target,
+                        tick,
+                        "workspace_index_tracked_poll",
+                        false)) {
+                    changed++;
+                }
+            } catch (RuntimeException exception) {
+                failed++;
+                SlotCommon.LOGGER.warn(
+                        "[SLOT] tracked storage poll failed for {}: {}",
+                        chest.storageId(),
+                        WorkspaceStorageIndex.safeMessage(exception));
+            }
+        }
+        trackedPollCursor = (start + budget) % candidates.size();
+        return new PollDiagnostics(candidates.size(), checked, changed, failed);
     }
 
     private static Map<String, WorkspaceStorageIndex.StorageEntry> buildRememberedEntries(
@@ -549,10 +678,33 @@ public final class WorkspaceStorageIndexCache {
             boolean liveSnapshotHit,
             boolean depositOverlayHit,
             long hits,
-            long misses
+            long misses,
+            PollDiagnostics trackedStoragePoll
     ) {
+        public Diagnostics {
+            trackedStoragePoll = trackedStoragePoll == null ? PollDiagnostics.empty() : trackedStoragePoll;
+        }
+
         public static Diagnostics empty() {
-            return new Diagnostics(false, false, false, false, false, 0L, 0L);
+            return new Diagnostics(false, false, false, false, false, 0L, 0L, PollDiagnostics.empty());
+        }
+    }
+
+    public record PollDiagnostics(
+            int candidates,
+            int checked,
+            int changed,
+            int failed
+    ) {
+        public PollDiagnostics {
+            candidates = Math.max(0, candidates);
+            checked = Math.max(0, checked);
+            changed = Math.max(0, changed);
+            failed = Math.max(0, failed);
+        }
+
+        public static PollDiagnostics empty() {
+            return new PollDiagnostics(0, 0, 0, 0);
         }
     }
 }

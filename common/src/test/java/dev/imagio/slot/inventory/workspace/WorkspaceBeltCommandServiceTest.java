@@ -382,6 +382,10 @@ class WorkspaceBeltCommandServiceTest {
         assertTrue(outcome.success());
         assertEquals(InventoryActionKind.ASSIGN, requestRef.get().kind());
         assertEquals("test.assign_identity_to_hotbar_swap", requestRef.get().origin());
+        assertCarriedInvalidation(
+                outcome,
+                Set.of(ItemIdentity.of("minecraft:barrel"), ItemIdentity.of("minecraft:stone")),
+                "assigned_to_hotbar");
     }
 
     @Test
@@ -487,6 +491,7 @@ class WorkspaceBeltCommandServiceTest {
 
         assertTrue(outcome.success());
         assertEquals("moved_to_main_inventory", outcome.status());
+        assertCarriedInvalidation(outcome, Set.of(ItemIdentity.of("minecraft:oak_log")), "test.move_identity_to_main");
         InventoryActionRequest request = requestRef.get();
         assertEquals("test.move_identity_to_main", request.origin());
         InventoryActionTarget.SourceSlotTarget source =
@@ -532,6 +537,7 @@ class WorkspaceBeltCommandServiceTest {
 
         assertTrue(outcome.success());
         assertEquals("moved_to_backpack", outcome.status());
+        assertCarriedInvalidation(outcome, Set.of(ItemIdentity.of("minecraft:oak_log")), "test.move_identity_to_backpack");
         InventoryActionRequest request = requestRef.get();
         assertEquals("test.move_identity_to_backpack", request.origin());
         InventoryActionTarget.SourceSlotTarget source =
@@ -577,6 +583,66 @@ class WorkspaceBeltCommandServiceTest {
         InventoryActionTarget.SourceTarget destination =
                 (InventoryActionTarget.SourceTarget) requestRef.get().secondaryTarget();
         assertEquals(BuiltinInventoryIds.PLAYER_MAIN, destination.sourceId());
+    }
+
+    @Test
+    void moveIdentityToMainInventoryAlreadyThereIsFrameOnly() {
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty());
+        InventoryHostDescriptor host = host(main);
+        InventoryAuthoritySnapshot authority = InventoryAuthorityFixtures.authority(
+                host,
+                Map.of(BuiltinInventoryIds.PLAYER_MAIN, List.of(new InventoryStackSnapshot(
+                        5,
+                        new ItemStack("minecraft:oak_log", 8, 64),
+                        8))),
+                Map.of(BuiltinInventoryIds.PLAYER_MAIN, 27)
+        );
+        AtomicInteger dispatched = new AtomicInteger();
+
+        WorkspaceCommandOutcome outcome = WorkspaceBeltCommandService.moveIdentityToMainInventory(
+                new ServerPlayer(),
+                host,
+                authority,
+                ThrowingCarriedSourceAccess.INSTANCE,
+                request -> {
+                    dispatched.incrementAndGet();
+                    return accepted(host, request);
+                },
+                ItemIdentity.of("minecraft:oak_log"),
+                "test");
+
+        assertTrue(outcome.success());
+        assertEquals("already_in_main_inventory", outcome.status());
+        assertEquals(0, dispatched.get());
+        assertFrameOnlyInvalidation(outcome, "already_in_main_inventory");
+    }
+
+    private static void assertCarriedInvalidation(
+            WorkspaceCommandOutcome outcome,
+            Set<ItemIdentity> identities,
+            String diagnostics
+    ) {
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.CARRIED_REVISION_CHANGED, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertEquals(identities, invalidation.identities());
+        assertEquals(Set.of(), invalidation.storageIds());
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.CARD));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.HOTBAR));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.FRAME));
+        assertEquals(diagnostics, invalidation.diagnostics());
+    }
+
+    private static void assertFrameOnlyInvalidation(WorkspaceCommandOutcome outcome, String diagnostics) {
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.COMMAND_OUTCOME, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertEquals(Set.of(), invalidation.identities());
+        assertEquals(Set.of(), invalidation.storageIds());
+        assertEquals(Set.of(WorkspaceProjectionSlice.FRAME), invalidation.slices());
+        assertEquals(diagnostics, invalidation.diagnostics());
     }
 
     private static SlotWorkspaceViewModel viewModel(SlotWorkspaceViewModel.HotbarSlot... occupied) {

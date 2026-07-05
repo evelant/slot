@@ -361,12 +361,14 @@ final class AtlasCardBuilder {
                         count <= 0 ? WallCardTransferGesturePolicy.PICKUP_MAX : count);
             }
             case TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY -> host.rpc.sendTakeDesiredGapOrStackByIdentity(item.identity());
+            case TAKE_ONE_BY_IDENTITY -> host.rpc.sendTakeOneByIdentity(item.identity());
             case TAKE_STACK_BY_IDENTITY -> host.rpc.sendTakeStackByIdentity(item.identity());
             case TAKE_ITEMS_BY_IDENTITY -> host.enqueueWheelTransfer(
                     WorkspaceActionId.TAKE_ITEMS_BY_IDENTITY,
                     item.identity(),
                     count,
                     "taking " + item.name());
+            case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> host.rpc.sendDepositOneHomeToLinkedChest(item);
             case DEPOSIT_HOME_TO_LINKED_CHEST -> host.rpc.sendDepositHomeToLinkedChest(item);
             case DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST -> host.enqueueWheelTransfer(
                     WorkspaceActionId.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST,

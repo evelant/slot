@@ -27,6 +27,7 @@ public enum WorkspaceActionId {
     LOOT_CHEST_CLAIM_AND_DEPOSIT("slot.workspace.loot_chest_claim_and_deposit", STRING, INTEGER, INTEGER, INTEGER, STRING, STRING, STRING),
     SET_SEARCH_QUERY("slot.workspace.set_search_query", STRING),
     SET_REMOTE_STORAGE_DETAIL("slot.workspace.set_remote_storage_detail", STRING),
+    SET_RECIPE_INGREDIENT_FILTER("slot.workspace.set_recipe_ingredient_filter", STRING),
     RENAME_CLUSTER("slot.workspace.rename_cluster", STRING, STRING),
     RENAME_ISLAND("slot.workspace.rename_island", STRING, STRING),
     RECOLOR_ISLAND("slot.workspace.recolor_island", STRING, INTEGER),

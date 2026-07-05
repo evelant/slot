@@ -25,6 +25,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collection;
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -71,9 +72,20 @@ public final class WorkspaceTrashCommandService {
                 changed,
                 runtime.workflowProjection().junkTags().size());
         if (!changed) {
-            return WorkspaceCommandOutcome.accepted("junk unchanged", identity.itemId());
+            return WorkspaceCommandOutcome.accepted("junk unchanged", identity.itemId())
+                    .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                            WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                            "junk_tag_unchanged")));
         }
-        return WorkspaceCommandOutcome.accepted(marked ? "junk marked" : "junk unmarked", identity.itemId());
+        return WorkspaceCommandOutcome.accepted(marked ? "junk marked" : "junk unmarked", identity.itemId())
+                .withInvalidations(List.of(WorkspaceInvalidation.localizedIdentity(
+                        WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                        identity,
+                        EnumSet.of(
+                                WorkspaceProjectionSlice.CARD,
+                                WorkspaceProjectionSlice.SECTION,
+                                WorkspaceProjectionSlice.WORKFLOW),
+                        "junk_tag_changed")));
     }
 
     public static WorkspaceCommandOutcome trashCarriedIdentity(
@@ -116,7 +128,20 @@ public final class WorkspaceTrashCommandService {
         recordTrashActivity(runtime, identity, trashed.count(), InventoryActivityProducer.ROUTER_ACTION, true);
         CarriedInventoryRevisions.markChanged(player, "direct_trash");
         recordUndo(player, runtime, identity, trashed);
-        return WorkspaceCommandOutcome.accepted("trashed", identity.itemId() + " count=" + trashed.count());
+        return WorkspaceCommandOutcome.accepted("trashed", identity.itemId() + " count=" + trashed.count())
+                .withInvalidations(List.of(WorkspaceInvalidation.localizedIdentity(
+                        WorkspaceInvalidation.Reason.CARRIED_REVISION_CHANGED,
+                        ItemIdentityMatcher.normalizeMovable(identity),
+                        EnumSet.of(
+                                WorkspaceProjectionSlice.CARD,
+                                WorkspaceProjectionSlice.SECTION,
+                                WorkspaceProjectionSlice.WAYFINDING,
+                                WorkspaceProjectionSlice.DEPOSITABILITY,
+                                WorkspaceProjectionSlice.HOTBAR,
+                                WorkspaceProjectionSlice.WORKFLOW,
+                                WorkspaceProjectionSlice.CONTEXTUAL,
+                                WorkspaceProjectionSlice.FRAME),
+                        "direct_trash")));
     }
 
     /**

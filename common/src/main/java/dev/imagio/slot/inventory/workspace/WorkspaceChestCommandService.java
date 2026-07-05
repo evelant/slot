@@ -29,6 +29,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.EnumSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -110,17 +111,22 @@ public final class WorkspaceChestCommandService {
                     "nothing_to_deposit",
                     plan.assignments().isEmpty()
                             ? "no carried stack has eligible learned affinity or matching contents with a proximate chest"
-                            : "all candidate chests rejected the items");
+                            : "all candidate chests rejected the items")
+                    .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                            WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                            "nothing_to_deposit")));
         }
         if (outcome.deposited() > 0 && outcome.failed() == 0) {
-            return WorkspaceCommandOutcome.accepted("deposited", "deposited=" + outcome.deposited());
+            return WorkspaceCommandOutcome.accepted("deposited", "deposited=" + outcome.deposited())
+                    .withInvalidations(depositRecordInvalidations(outcome.records(), "deposit_records"));
         }
         if (outcome.deposited() == 0) {
             return WorkspaceCommandOutcome.rejected("deposit_failed=" + outcome.failed());
         }
         return WorkspaceCommandOutcome.accepted(
                 "deposited_partial",
-                "deposited=" + outcome.deposited() + " failed=" + outcome.failed());
+                "deposited=" + outcome.deposited() + " failed=" + outcome.failed())
+                .withInvalidations(depositRecordInvalidations(outcome.records(), "deposit_records_partial"));
     }
 
     private static InventoryAuthoritySnapshot depositAuthority(
@@ -156,16 +162,21 @@ public final class WorkspaceChestCommandService {
                 recordTakeRecords(player, runtime, outcome.records(), "take_all_from_chest");
         observeTakeRecords(player, runtime.chestClaimWorkflow().claimedChestMap(), outcome.records(), "slot.take_all");
         if (outcome.movedStacks() == 0 && outcome.leftoverSlots() == 0) {
-            return WorkspaceCommandOutcome.accepted("nothing_to_take", "");
+            return WorkspaceCommandOutcome.accepted("nothing_to_take", "")
+                    .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                            WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                            "nothing_to_take")));
         }
         if (outcome.leftoverSlots() == 0) {
             return WorkspaceCommandOutcome.accepted("took_all", "moved=" + outcome.movedStacks())
-                    .withActivityEvents(activityEvents);
+                    .withActivityEvents(activityEvents)
+                    .withInvalidations(takeRecordInvalidations(outcome.records(), "take_all_records"));
         }
         return WorkspaceCommandOutcome.accepted(
                 "took_all_partial",
                 "moved=" + outcome.movedStacks() + " leftover_slots=" + outcome.leftoverSlots())
-                .withActivityEvents(activityEvents);
+                .withActivityEvents(activityEvents)
+                .withInvalidations(takeRecordInvalidations(outcome.records(), "take_all_records_partial"));
     }
 
     public static WorkspaceCommandOutcome depositCarriedToChest(
@@ -390,9 +401,11 @@ public final class WorkspaceChestCommandService {
         if (depositedCount < requested || outcome.failed() > 0) {
             return WorkspaceCommandOutcome.accepted(
                     "deposited_partial",
-                    "deposited=" + depositedCount + " requested=" + requested + " failed=" + outcome.failed());
+                    "deposited=" + depositedCount + " requested=" + requested + " failed=" + outcome.failed())
+                    .withInvalidations(depositRecordInvalidations(outcome.records(), "deposit_identity_records_partial"));
         }
-        return WorkspaceCommandOutcome.accepted("deposited_stack", "deposited=" + depositedCount);
+        return WorkspaceCommandOutcome.accepted("deposited_stack", "deposited=" + depositedCount)
+                .withInvalidations(depositRecordInvalidations(outcome.records(), "deposit_identity_records"));
     }
 
     public static WorkspaceCommandOutcome takeFromChest(
@@ -415,22 +428,30 @@ public final class WorkspaceChestCommandService {
                 ? TakeAllExecutor.takeSingleItem(player, resolved.chest(), slotIndex)
                 : TakeAllExecutor.takeSingleStack(player, resolved.chest(), slotIndex);
         if (!outcome.tookAnything()) {
-            return WorkspaceCommandOutcome.accepted("nothing_to_take", "");
+            return WorkspaceCommandOutcome.accepted("nothing_to_take", "")
+                    .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                            WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                            "nothing_to_take")));
         }
         InventoryActivityEvent activityEvent = recordTakeRecord(player, runtime, outcome.record(), "take_from_chest");
         observeTakeRecord(player, runtime.chestClaimWorkflow().claimedChestMap(), outcome.record(), "slot.take");
         if (one) {
             return WorkspaceCommandOutcome.accepted("took_one", "moved=" + outcome.moved())
-                    .withActivityEvents(activityEvents(activityEvent));
+                    .withActivityEvents(activityEvents(activityEvent))
+                    .withInvalidations(takeRecordInvalidations(takeRecordList(outcome.record()), "take_one_record"));
         }
         if (outcome.partial()) {
             return WorkspaceCommandOutcome.accepted(
                     "took_partial",
                     "moved=" + outcome.moved() + " leftover=" + outcome.leftover())
-                    .withActivityEvents(activityEvents(activityEvent));
+                    .withActivityEvents(activityEvents(activityEvent))
+                    .withInvalidations(takeRecordInvalidations(
+                            takeRecordList(outcome.record()),
+                            "take_stack_record_partial"));
         }
         return WorkspaceCommandOutcome.accepted("took_stack", "moved=" + outcome.moved())
-                .withActivityEvents(activityEvents(activityEvent));
+                .withActivityEvents(activityEvents(activityEvent))
+                .withInvalidations(takeRecordInvalidations(takeRecordList(outcome.record()), "take_stack_record"));
     }
 
     public static WorkspaceCommandOutcome takeByIdentity(
@@ -550,11 +571,15 @@ public final class WorkspaceChestCommandService {
                     + (singleSlotOnly ? "" : " requested=" + requested)
                     + (stoppedByPartial ? " carry_full=true" : "");
             return WorkspaceCommandOutcome.accepted(status, diagnostics)
-                    .withActivityEvents(activityEvents);
+                    .withActivityEvents(activityEvents)
+                    .withInvalidations(takeRecordInvalidations(records, "take_by_identity_records"));
         }
         return foundMatchButCouldNotInsert
                 ? WorkspaceCommandOutcome.rejected("carry_full")
-                : WorkspaceCommandOutcome.accepted("nothing_to_take", "no_matching_proximate_chest");
+                : WorkspaceCommandOutcome.accepted("nothing_to_take", "no_matching_proximate_chest")
+                        .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                                WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                                "no_matching_proximate_chest")));
     }
 
     /**
@@ -1009,7 +1034,104 @@ public final class WorkspaceChestCommandService {
                         ChestTransferDirection.DEPOSIT);
             }
         }
-        return WorkspaceCommandOutcome.accepted("deposited_stack", "deposited to " + chestLabel(chest));
+        return WorkspaceCommandOutcome.accepted("deposited_stack", "deposited to " + chestLabel(chest))
+                .withInvalidations(depositRecordInvalidations(
+                        depositRecordList(outcome.record()),
+                        "deposit_single_record"));
+    }
+
+    static List<WorkspaceInvalidation> depositRecordInvalidations(
+            List<DepositExecutor.DepositRecord> records,
+            String diagnostics
+    ) {
+        if (records == null || records.isEmpty()) {
+            return List.of(chestTransferInvalidation(Set.of(), Set.of(), missingRecordDiagnostics(diagnostics)));
+        }
+        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        LinkedHashSet<String> storageIds = new LinkedHashSet<>();
+        for (DepositExecutor.DepositRecord record : records) {
+            if (record == null || record.count() <= 0) {
+                continue;
+            }
+            ItemIdentityCollections.add(identities, record.identity());
+            if (!record.storageId().isBlank()) {
+                storageIds.add(record.storageId());
+            }
+        }
+        return List.of(chestTransferInvalidation(identities, storageIds, diagnostics));
+    }
+
+    static List<WorkspaceInvalidation> takeRecordInvalidations(
+            List<TakeAllExecutor.TakeRecord> records,
+            String diagnostics
+    ) {
+        if (records == null || records.isEmpty()) {
+            return List.of(chestTransferInvalidation(Set.of(), Set.of(), missingRecordDiagnostics(diagnostics)));
+        }
+        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        LinkedHashSet<String> storageIds = new LinkedHashSet<>();
+        for (TakeAllExecutor.TakeRecord record : records) {
+            if (record == null || record.count() <= 0) {
+                continue;
+            }
+            ItemIdentityCollections.add(identities, record.identity());
+            if (!record.storageId().isBlank()) {
+                storageIds.add(record.storageId());
+            }
+        }
+        return List.of(chestTransferInvalidation(identities, storageIds, diagnostics));
+    }
+
+    private static WorkspaceInvalidation chestTransferInvalidation(
+            Collection<ItemIdentity> identities,
+            Collection<String> storageIds,
+            String diagnostics
+    ) {
+        Set<ItemIdentity> resolvedIdentities = identities == null || identities.isEmpty()
+                ? Set.of()
+                : Set.copyOf(identities);
+        Set<String> resolvedStorageIds = storageIds == null || storageIds.isEmpty()
+                ? Set.of()
+                : Set.copyOf(storageIds);
+        boolean hasRecords = !resolvedIdentities.isEmpty() && !resolvedStorageIds.isEmpty();
+        return new WorkspaceInvalidation(
+                WorkspaceInvalidation.Reason.MENU_SLOT_CHANGED,
+                resolvedIdentities,
+                resolvedStorageIds,
+                Set.of(),
+                hasRecords ? chestTransferSlices() : WorkspaceProjectionSlice.all(),
+                !hasRecords,
+                hasRecords ? diagnostics : missingRecordDiagnostics(diagnostics));
+    }
+
+    private static EnumSet<WorkspaceProjectionSlice> chestTransferSlices() {
+        return EnumSet.of(
+                WorkspaceProjectionSlice.CARD,
+                WorkspaceProjectionSlice.SECTION,
+                WorkspaceProjectionSlice.STORAGE,
+                WorkspaceProjectionSlice.WAYFINDING,
+                WorkspaceProjectionSlice.DEPOSITABILITY,
+                WorkspaceProjectionSlice.WORKFLOW,
+                WorkspaceProjectionSlice.HOTBAR,
+                WorkspaceProjectionSlice.FRAME,
+                WorkspaceProjectionSlice.REMOTE_SEARCH);
+    }
+
+    private static String missingRecordDiagnostics(String diagnostics) {
+        if (diagnostics == null || diagnostics.isBlank()) {
+            return "missing_chest_transfer_records";
+        }
+        return diagnostics.endsWith("_missing_chest_transfer_records")
+                ? diagnostics
+                : diagnostics + "_missing_chest_transfer_records";
+    }
+
+    private static List<DepositExecutor.DepositRecord> depositRecordList(DepositExecutor.DepositRecord record) {
+        return record == null ? List.of() : List.of(record);
+    }
+
+    private static List<TakeAllExecutor.TakeRecord> takeRecordList(TakeAllExecutor.TakeRecord record) {
+        return record == null ? List.of() : List.of(record);
     }
 
     private static void recordDepositUndo(

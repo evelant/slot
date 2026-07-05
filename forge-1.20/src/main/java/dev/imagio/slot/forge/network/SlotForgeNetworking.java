@@ -16,6 +16,7 @@ import dev.imagio.slot.inventory.workspace.KitPageCycleService;
 import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
+import dev.imagio.slot.inventory.workspace.WorkspaceCraftRunCommandService;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.action.WorkspaceActionPacket;
 import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
@@ -295,7 +296,20 @@ public final class SlotForgeNetworking {
             ForgeWorkspaceViewModelMessage message,
             Supplier<NetworkEvent.Context> contextSupplier
     ) {
-        ForgeWorkspaceViewModelClientCache.update(message.envelope(), message.viewModel());
+        ForgeWorkspaceViewModelClientCache.UpdateResult result =
+                ForgeWorkspaceViewModelClientCache.update(message.envelope(), message.encodedView());
+        if (!result.applied() && result.requiresFullSnapshot()) {
+            SlotCommon.LOGGER.info(
+                    "Requesting Forge workspace full snapshot after delta rejection: session={} menu={} revision={} diagnostics={}",
+                    message.envelope().sessionId(),
+                    message.envelope().menuContainerId(),
+                    message.envelope().viewRevision(),
+                    result.diagnostics());
+            openWorkspaceSession(new ForgeWorkspaceOpenMessage(new WorkspaceActionEnvelope(
+                    message.envelope().sessionId(),
+                    message.envelope().menuContainerId(),
+                    ForgeWorkspaceViewModelClientCache.latest().revision())));
+        }
     }
 
     private static void handleWorkspaceClose(
@@ -543,15 +557,19 @@ public final class SlotForgeNetworking {
         if (player == null || message == null) {
             return;
         }
-        boolean changed = ForgePlayerWorkflowRuntimeService.runtime(player).craftRunWorkflow().add(message.capture());
+        WorkspaceCommandOutcome outcome = WorkspaceCraftRunCommandService.addRecipe(
+                ForgePlayerWorkflowRuntimeService.runtime(player),
+                message.capture());
         ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);
         if (session != null) {
+            session.applyExternalOutcome(outcome);
             sendViewToPlayer(player, session, true);
         }
         SlotCommon.LOGGER.info(
-                "[SLOT] Forge craft-run recipe: player={} changed={}",
+                "[SLOT] Forge craft-run recipe: player={} status={} diagnostics={}",
                 playerName(player),
-                changed);
+                outcome.status(),
+                outcome.diagnostics());
     }
 
     private static void handleQuickHotbarSwap(
@@ -595,7 +613,7 @@ public final class SlotForgeNetworking {
                     viewModel.revision());
             Forge120WorkspaceViewModelCodec.EncodedSliceCache sliceCache = session.encodedSliceCache();
             long encodeStart = System.nanoTime();
-            CompoundTag encodedView = Forge120WorkspaceViewModelCodec.encode(viewModel, sliceCache);
+            CompoundTag encodedView = Forge120WorkspaceViewModelCodec.encodeTransfer(viewModel, sliceCache, false);
             long encodeNanos = System.nanoTime() - encodeStart;
             Forge120WorkspaceViewModelCodec.SliceStats sliceStats = sliceCache.lastStats();
             int payloadBytes = encodedView.sizeInBytes();
@@ -653,7 +671,9 @@ public final class SlotForgeNetworking {
                 "[SLOT] Forge workspace refresh player={} session={} rev={} changed={} autoHome={} "
                         + "ms[authority={},request={},storageIndex={},inputKey={},projectMiss={},contentKey={},encode={},send={},total={}] "
                         + "counts[carriedEntries={},atlasItems={},triageItems={},storageEntries={},trackedDisplay={},wayfinding={},chestChips={},contentSummaries={},payloadBytes={}] "
-                        + "cache[hit={},hits={},misses={},memoCreate={}/{}/size={},memoNormalize={}/{}/size={},memoEvictions={}/{},slices={}/{}]",
+                        + "cache[hit={},hits={},misses={},memoCreate={}/{}/size={},memoNormalize={}/{}/size={},memoEvictions={}/{},slices={}/{},projectionSlices={}/{},cards={}/{}/removed={},storageChips={}/{}/removed={},edges={}/{}/removed={},depositability={}/{}] "
+                        + "poll[trackedCandidates={},checked={},changed={},failed={}] "
+                        + "invalidation[{},fallback={},facts={}/{}]",
                 playerName(player),
                 envelope.sessionId(),
                 envelope.viewRevision(),
@@ -689,7 +709,28 @@ public final class SlotForgeNetworking {
                 resolved.memoCreateEvictions(),
                 resolved.memoNormalizeEvictions(),
                 resolvedSliceStats.encodedSlices(),
-                resolvedSliceStats.reusedSlices());
+                resolvedSliceStats.reusedSlices(),
+                resolved.projectionSliceStats().rebuiltSlices(),
+                resolved.projectionSliceStats().reusedSlices(),
+                resolved.cardProjectionStats().rebuiltCards(),
+                resolved.cardProjectionStats().reusedCards(),
+                resolved.cardProjectionStats().removedCards(),
+                resolved.storageProjectionStats().rebuiltStorageChips(),
+                resolved.storageProjectionStats().reusedStorageChips(),
+                resolved.storageProjectionStats().removedStorageChips(),
+                resolved.edgeProjectionStats().rebuiltWayfindingTargets(),
+                resolved.edgeProjectionStats().reusedWayfindingTargets(),
+                resolved.edgeProjectionStats().removedWayfindingTargets(),
+                resolved.edgeProjectionStats().rebuiltDepositabilitySets(),
+                resolved.edgeProjectionStats().reusedDepositabilitySets(),
+                resolved.trackedPollCandidates(),
+                resolved.trackedPollChecked(),
+                resolved.trackedPollChanged(),
+                resolved.trackedPollFailed(),
+                resolved.invalidations().compactSummary(),
+                resolved.fullProjectionReason(),
+                resolved.projectionFactsUpdated(),
+                resolved.projectionFactsReused());
     }
 
     private static double ms(long nanos) {

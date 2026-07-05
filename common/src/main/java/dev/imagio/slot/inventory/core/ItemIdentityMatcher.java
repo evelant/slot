@@ -25,25 +25,29 @@ public final class ItemIdentityMatcher {
         }
         Memo memo = ACTIVE_MEMO.get();
         if (memo != null) {
-            return memo.create(stack, () -> createUncached(stack));
+            return memo.create(stack);
         }
         return createUncached(stack);
     }
 
     private static ItemIdentity createUncached(ItemStack stack) {
-        String itemId = resolveItemId(stack);
-        String components = resolveComponentFingerprint(stack);
+        return createFromKey(stack, CreateKey.from(stack));
+    }
+
+    private static ItemIdentity createFromKey(ItemStack stack, CreateKey key) {
+        String itemId = key.itemId();
+        String components = key.componentFingerprint();
         String selectorFingerprint = stableSelectorFingerprint(itemId, components);
         if (!selectorFingerprint.isBlank()) {
             return ItemIdentity.exact(itemId, selectorFingerprint);
         }
-        if (usesItemOnlyMovableIdentityWithoutFingerprint(stack)) {
+        if (usesItemOnlyMovableIdentityWithoutFingerprint(stack, key.damageable())) {
             return ItemIdentity.of(itemId);
         }
         if (hasToolStateFingerprint(components) || hasMovableConditionOnlyFingerprint(components)) {
             return ItemIdentity.of(itemId);
         }
-        if (!stackable(stack) || !components.isBlank()) {
+        if (!key.stackable() || !components.isBlank()) {
             return ItemIdentity.exact(itemId, components);
         }
         return ItemIdentity.of(itemId);
@@ -121,7 +125,7 @@ public final class ItemIdentityMatcher {
         private long createEvictions;
         private long normalizeEvictions;
 
-        private ItemIdentity create(ItemStack stack, Supplier<ItemIdentity> factory) {
+        private ItemIdentity create(ItemStack stack) {
             CreateKey key = CreateKey.from(stack);
             ItemIdentity cached = createCache.get(key);
             if (cached != null) {
@@ -129,7 +133,7 @@ public final class ItemIdentityMatcher {
                 return cached;
             }
             createMisses++;
-            ItemIdentity created = factory.get();
+            ItemIdentity created = createFromKey(stack, key);
             createEvictions += putBounded(createCache, key, created);
             return created;
         }
@@ -195,13 +199,11 @@ public final class ItemIdentityMatcher {
             String itemId,
             String componentFingerprint,
             boolean stackable,
-            boolean damageable,
-            Set<String> tags
+            boolean damageable
     ) {
         private CreateKey {
             itemId = itemId == null ? "" : itemId;
             componentFingerprint = componentFingerprint == null ? "" : componentFingerprint;
-            tags = tags == null ? Set.of() : Set.copyOf(tags);
         }
 
         static CreateKey from(ItemStack stack) {
@@ -209,8 +211,7 @@ public final class ItemIdentityMatcher {
                     resolveItemId(stack),
                     resolveComponentFingerprint(stack),
                     ItemIdentityMatcher.stackable(stack),
-                    SlotStackAccess.current().damageable(stack),
-                    ItemStackTags.itemTagIds(stack));
+                    SlotStackAccess.current().damageable(stack));
         }
     }
 
@@ -250,13 +251,13 @@ public final class ItemIdentityMatcher {
         }
         String components = resolveComponentFingerprint(stack);
         return stableSelectorFingerprint(resolveItemId(stack), components).isBlank()
-                && (usesItemOnlyMovableIdentityWithoutFingerprint(stack)
+                && (usesItemOnlyMovableIdentityWithoutFingerprint(stack, SlotStackAccess.current().damageable(stack))
                 || hasToolStateFingerprint(components)
                 || hasMovableConditionOnlyFingerprint(components));
     }
 
-    private static boolean usesItemOnlyMovableIdentityWithoutFingerprint(ItemStack stack) {
-        return SlotStackAccess.current().damageable(stack)
+    private static boolean usesItemOnlyMovableIdentityWithoutFingerprint(ItemStack stack, boolean damageable) {
+        return damageable
                 || hasMovableToolTag(stack)
                 || PortableContainerClassifiers.isPortableContainer(stack);
     }

@@ -763,7 +763,49 @@ public record SlotWorkspaceViewModel(
                 depositEligibleStorageIds,
                 liveChestContentPresence,
                 liveStorageAffinityEligibility,
+                null,
+                Set.of(),
                 null);
+    }
+
+    static SlotWorkspaceViewModel project(
+            WorkspaceProjectionRequest request,
+            WorkspaceProjectionStore store
+    ) {
+        WorkspaceProjectionRequest resolved = request == null
+                ? new WorkspaceProjectionRequest(
+                        null, null, "ready", "", 0, -1, 0,
+                        null, null, null, null, null, null, "",
+                        null, 0L, null, null, null, null, null, null, null, null, null)
+                : request;
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        return project(
+                resolved.authority(),
+                resolved.workflow(),
+                resolved.status(),
+                resolved.diagnostics(),
+                resolved.pendingCount(),
+                resolved.selectedQuickAccessSlot(),
+                resolved.revision(),
+                resolved.learnedRules(),
+                resolved.signalExtractor(),
+                resolved.chestContentsResolver(),
+                resolved.proximateStorageIds(),
+                resolved.carriedContainerInfoResolver(),
+                resolved.lootChestSource(),
+                resolved.searchQuery(),
+                resolved.currentTick(),
+                resolved.activeChestPanel(),
+                resolved.worldDisplaySources(),
+                resolved.contextualSuggestionStorageIds(),
+                resolved.contextualSuggestionDisplaySources(),
+                resolved.trackedDisplayStorageEntries(),
+                resolved.depositEligibleStorageIds(),
+                resolved.liveChestContentPresence(),
+                resolved.liveStorageAffinityEligibility(),
+                resolved.remoteStorageDetailIntent(),
+                resolved.remoteDetailIdentities(),
+                resolvedStore.identityContext());
     }
 
     public static SlotWorkspaceViewModel project(
@@ -792,11 +834,71 @@ public record SlotWorkspaceViewModel(
             DepositPlanner.ChestEligibility liveStorageAffinityEligibility,
             RemoteStorageDetailIntent remoteStorageDetailIntent
         ) {
+        return project(
+                authority,
+                workflow,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                revision,
+                learnedRules,
+                signalExtractor,
+                chestContentsResolver,
+                proximateStorageIds,
+                carriedContainerInfoResolver,
+                lootChestSource,
+                searchQuery,
+                currentTick,
+                activeChestPanel,
+                worldDisplaySources,
+                contextualSuggestionStorageIds,
+                contextualSuggestionDisplaySources,
+                trackedDisplayStorageEntries,
+                depositEligibleStorageIds,
+                liveChestContentPresence,
+                liveStorageAffinityEligibility,
+                remoteStorageDetailIntent,
+                Set.of(),
+                null);
+    }
+
+    private static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            LootChestSource lootChestSource,
+            String searchQuery,
+            long currentTick,
+            ActiveChestPanel activeChestPanel,
+            List<WorldDisplayStorageSource> worldDisplaySources,
+            Set<String> contextualSuggestionStorageIds,
+            List<WorldDisplayStorageSource> contextualSuggestionDisplaySources,
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries,
+            Set<String> depositEligibleStorageIds,
+            DepositPlanner.ChestContentPresence liveChestContentPresence,
+            DepositPlanner.ChestEligibility liveStorageAffinityEligibility,
+            RemoteStorageDetailIntent remoteStorageDetailIntent,
+            Set<ItemIdentity> remoteDetailIdentities,
+            ProjectionIdentityContext suppliedIdentityContext
+        ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
         RemoteStorageDetailIntent remoteIntent =
                 RemoteStorageDetailIntent.effective(remoteStorageDetailIntent, searchQuery);
-        ProjectionIdentityContext identityContext = ProjectionIdentityContext.from(resolvedAuthority);
+        String serverProjectionSearchQuery = remoteIntent == RemoteStorageDetailIntent.SEARCH ? searchQuery : "";
+        ProjectionIdentityContext identityContext = suppliedIdentityContext == null
+                ? ProjectionIdentityContext.from(resolvedAuthority)
+                : suppliedIdentityContext;
         CarriedIdentityCounts carriedIdentityCounts = identityContext.carriedCounts();
         WorkflowTabTargets.Resolution targetResolution = WorkflowTabTargets.resolve(carriedIdentityCounts, resolvedWorkflow);
         Map<ItemIdentity, Integer> wantedCounts = targetResolution.wantedCounts();
@@ -871,12 +973,15 @@ public record SlotWorkspaceViewModel(
                 ItemIdentityCollections.normalizedSet(targetResolution.desiredFromWorkflowTab());
         Set<ItemIdentity> junkTags = ItemIdentityCollections.normalizedSet(
                 resolvedWorkflow.workflowProjection().junkTags());
+        Set<ItemIdentity> requestedRemoteDetailIdentities =
+                ItemIdentityCollections.normalizedSet(remoteDetailIdentities);
         Set<ItemIdentity> remoteIntentIdentities = remoteIntentIdentities(
                 kitNeededIdentities,
                 activeDesiredCounts.keySet(),
                 wantedCounts.keySet(),
                 recentIdentities,
-                junkTags);
+                junkTags,
+                requestedRemoteDetailIdentities);
         // Search-as-find and tracked x-ray can request broad remote detail.
         // Normal collapsed mode only keeps remote presence for active intent
         // identities so large storage systems do not synthesize every distant
@@ -887,7 +992,7 @@ public record SlotWorkspaceViewModel(
                 proximate,
                 trackedDisplayEntries,
                 remoteIntent,
-                searchQuery,
+                serverProjectionSearchQuery,
                 remoteIntentIdentities);
         Map<ItemIdentity, List<ChestPresenceEntry>> elsewherePresence = elsewhereGhosts.presenceByIdentity();
 
@@ -1040,6 +1145,8 @@ public record SlotWorkspaceViewModel(
             boolean desiredCountFromKit = targetResolution.desiredFromWorkflowTab(accumulator.identity());
             int wantedCount = targetResolution.wantedCount(accumulator.identity());
             boolean junk = ItemIdentityCollections.containsCanonical(junkTags, accumulator.identity());
+            boolean remoteDetailGhost =
+                    ItemIdentityCollections.containsCanonical(requestedRemoteDetailIdentities, accumulator.identity());
 
             if (assignment == null) {
                 List<ChipSuggestion> chipSuggestions = List.of();
@@ -1061,7 +1168,7 @@ public record SlotWorkspaceViewModel(
                 int containerFree = isContainer ? containerInfo.freeSlots() : 0;
                 int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
                 if (ghostOnly) {
-                    boolean intentGhost = kitNeeded || desiredCount > 0 || wantedCount > 0;
+                    boolean intentGhost = kitNeeded || desiredCount > 0 || wantedCount > 0 || remoteDetailGhost;
                     boolean recentGhost = ItemIdentityCollections.containsCanonical(recentIdentities, accumulator.identity());
                     if (junk && ensureMiscIsland(layoutIslands)) {
                         atlasItems.add(new AtlasItem(
@@ -1221,7 +1328,8 @@ public record SlotWorkspaceViewModel(
             int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
             if (SlotWorkspaceAtlasLayout.island(layoutIslands, islandId) == null) {
                 if (ghostOnly) {
-                    if (junk && ensureMiscIsland(layoutIslands)) {
+                    boolean intentGhost = kitNeeded || desiredCount > 0 || wantedCount > 0 || remoteDetailGhost;
+                    if ((junk || intentGhost) && ensureMiscIsland(layoutIslands)) {
                         atlasItems.add(new AtlasItem(
                                 IdentityRef.from(accumulator.identity()),
                                 accumulator.displayStack(),
@@ -1244,7 +1352,7 @@ public record SlotWorkspaceViewModel(
                                 desiredCount,
                                 desiredCountFromKit,
                                 wantedCount,
-                                true,
+                                junk,
                                 accumulator.largestCarriedSourceId(),
                                 accumulator.largestCarriedSlotIndex(),
                                 accumulator.largestCarriedSlotCount()
@@ -1360,14 +1468,14 @@ public record SlotWorkspaceViewModel(
                     targetResolution,
                     activationPutAwayIdentities,
                     putAwayRouted,
-                    searchQuery,
+                    serverProjectionSearchQuery,
                     islandsById);
             triageItems = filterForActiveWorkflowTab(
                     triageItems,
                     targetResolution,
                     activationPutAwayIdentities,
                     putAwayRouted,
-                    searchQuery,
+                    serverProjectionSearchQuery,
                     islandsById);
         }
 
@@ -1514,6 +1622,54 @@ public record SlotWorkspaceViewModel(
             }
         } else {
             lanes.addAll(scored);
+        }
+        return lanes.isEmpty() ? List.of() : List.copyOf(lanes);
+    }
+
+    static List<ContextualSuggestionLane> projectSimpleFetchLanes(
+            List<AtlasItem> atlasItems,
+            List<AtlasItem> triageItems
+    ) {
+        ArrayList<AtlasItem> candidates = new ArrayList<>(
+                (atlasItems == null ? 0 : atlasItems.size())
+                        + (triageItems == null ? 0 : triageItems.size()));
+        if (atlasItems != null) {
+            candidates.addAll(atlasItems);
+        }
+        if (triageItems != null) {
+            candidates.addAll(triageItems);
+        }
+        ContextualSuggestionLane fetch = fetchLane(candidates);
+        return fetch.displayable() ? List.of(fetch) : List.of();
+    }
+
+    static List<ContextualSuggestionLane> projectSimpleWorkflowLanes(
+            List<AtlasItem> atlasItems,
+            List<AtlasItem> triageItems
+    ) {
+        ArrayList<AtlasItem> candidates = new ArrayList<>(
+                (atlasItems == null ? 0 : atlasItems.size())
+                        + (triageItems == null ? 0 : triageItems.size()));
+        if (atlasItems != null) {
+            candidates.addAll(atlasItems);
+        }
+        if (triageItems != null) {
+            candidates.addAll(triageItems);
+        }
+        ArrayList<ContextualSuggestionLane> lanes = new ArrayList<>(2);
+        ContextualSuggestionLane fetch = fetchLane(candidates);
+        if (fetch.displayable()) {
+            lanes.add(fetch);
+        }
+        ArrayList<AtlasItem> putAway = new ArrayList<>();
+        for (AtlasItem candidate : candidates) {
+            if (candidate != null && candidate.putAwayState().active()) {
+                putAway.add(candidate);
+            }
+        }
+        ContextualSuggestionLane workflowPutAway = workflowPutAwayLane(putAway);
+        if (workflowPutAway.displayable()) {
+            lanes.add(workflowPutAway);
         }
         return lanes.isEmpty() ? List.of() : List.copyOf(lanes);
     }
@@ -2076,7 +2232,8 @@ public record SlotWorkspaceViewModel(
             Collection<ItemIdentity> desired,
             Collection<ItemIdentity> wanted,
             Collection<ItemIdentity> recent,
-            Collection<ItemIdentity> junk
+            Collection<ItemIdentity> junk,
+            Collection<ItemIdentity> remoteDetail
     ) {
         LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
         addRemoteIntentIdentities(identities, kitNeeded);
@@ -2084,6 +2241,7 @@ public record SlotWorkspaceViewModel(
         addRemoteIntentIdentities(identities, wanted);
         addRemoteIntentIdentities(identities, recent);
         addRemoteIntentIdentities(identities, junk);
+        addRemoteIntentIdentities(identities, remoteDetail);
         return identities.isEmpty() ? Set.of() : Set.copyOf(identities);
     }
 
@@ -2499,6 +2657,18 @@ public record SlotWorkspaceViewModel(
             ));
         }
         return List.copyOf(result);
+    }
+
+    static List<KitCard> projectSimpleKitCards(
+            WorkspaceProjectionStore store,
+            WorkflowDomainSnapshot workflow
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
+        return kitCards(
+                resolvedStore.identityContext().carriedCounts(),
+                resolvedWorkflow.kitMap(),
+                resolvedWorkflow.kitDesiredCounts());
     }
 
     private static KitDefinition pageOwner(KitMap kitMap, KitDefinition kit) {
@@ -3155,6 +3325,331 @@ public record SlotWorkspaceViewModel(
         );
     }
 
+    public SlotWorkspaceViewModel withCards(
+            List<AtlasItem> nextAtlasItems,
+            List<AtlasItem> nextTriageItems
+    ) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                nextAtlasItems,
+                nextTriageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                craftRun,
+                contextualSuggestionLanes
+        );
+    }
+
+    public SlotWorkspaceViewModel withWallCardsAndCarriedStats(
+            int nextCarriedFreeSlotCount,
+            int nextCarriedSlotCapacity,
+            List<AtlasItem> nextAtlasItems,
+            List<AtlasItem> nextTriageItems
+    ) {
+        return withWallCardsCarriedStatsAndIslands(
+                nextCarriedFreeSlotCount,
+                nextCarriedSlotCapacity,
+                islands,
+                nextAtlasItems,
+                nextTriageItems);
+    }
+
+    public SlotWorkspaceViewModel withWallCardsCarriedStatsAndIslands(
+            int nextCarriedFreeSlotCount,
+            int nextCarriedSlotCapacity,
+            List<AtlasIsland> nextIslands,
+            List<AtlasItem> nextAtlasItems,
+            List<AtlasItem> nextTriageItems
+    ) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                nextCarriedFreeSlotCount,
+                nextCarriedSlotCapacity,
+                nextIslands,
+                nextAtlasItems,
+                nextTriageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                craftRun,
+                contextualSuggestionLanes
+        );
+    }
+
+    public SlotWorkspaceViewModel withChestChips(List<ChestChip> nextChestChips) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                nextChestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                craftRun,
+                contextualSuggestionLanes
+        );
+    }
+
+    public SlotWorkspaceViewModel withChestChipsAndClusters(
+            List<ChestChip> nextChestChips,
+            List<ChestClusterDescriptor> nextChestClusters
+    ) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                nextChestChips,
+                nextChestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                craftRun,
+                contextualSuggestionLanes
+        );
+    }
+
+    public SlotWorkspaceViewModel withStorageEdges(
+            List<WayfindingTarget> nextWayfindingTargets,
+            Set<IdentityRef> nextDepositableIdentities
+    ) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                nextWayfindingTargets,
+                nextDepositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                craftRun,
+                contextualSuggestionLanes
+        );
+    }
+
+    public SlotWorkspaceViewModel withHotbar(
+            List<HotbarSlot> nextHotbarSlots,
+            OffhandSlot nextOffhand,
+            List<IdentityRef> nextRecentIdentities
+    ) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                nextHotbarSlots,
+                nextOffhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                nextRecentIdentities,
+                activeChestPanel,
+                craftRun,
+                contextualSuggestionLanes
+        );
+    }
+
+    public SlotWorkspaceViewModel withContextualSuggestionLanes(
+            List<ContextualSuggestionLane> nextContextualSuggestionLanes
+    ) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                craftRun,
+                nextContextualSuggestionLanes
+        );
+    }
+
+    public SlotWorkspaceViewModel withKits(List<KitCard> nextKits) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                nextKits == null ? List.of() : nextKits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                craftRun,
+                contextualSuggestionLanes
+        );
+    }
+
+    public SlotWorkspaceViewModel withActiveChestPanel(ActiveChestPanel nextActiveChestPanel) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                nextActiveChestPanel == null ? ActiveChestPanel.empty() : nextActiveChestPanel,
+                craftRun,
+                contextualSuggestionLanes
+        );
+    }
+
+    public SlotWorkspaceViewModel withCraftRun(CraftRunState nextCraftRun) {
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                nextCraftRun == null ? CraftRunState.empty() : nextCraftRun,
+                contextualSuggestionLanes
+        );
+    }
+
     private static List<HotbarSlot> hotbarSlotsWithSelection(List<HotbarSlot> slots, int selectedQuickAccessSlot) {
         if (slots == null || slots.isEmpty()) {
             return List.of();
@@ -3639,6 +4134,938 @@ public record SlotWorkspaceViewModel(
             refs.add(new TriageIslandRef(island.id(), island.label(), island.color(), island.iconIdentity()));
         }
         return List.copyOf(refs);
+    }
+
+    static List<HotbarSlot> projectHotbarSlots(
+            InventoryAuthoritySnapshot authority,
+            int selectedQuickAccessSlot
+    ) {
+        return hotbarSlots(
+                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                selectedQuickAccessSlot);
+    }
+
+    static OffhandSlot projectOffhand(InventoryAuthoritySnapshot authority) {
+        return OffhandSlot.from(authority == null ? InventoryAuthoritySnapshot.empty() : authority);
+    }
+
+    static List<IdentityRef> projectRecentIdentityRefs(WorkflowDomainSnapshot workflow) {
+        WorkflowDomainSnapshot resolved = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
+        return recentIdentityRefs(resolved.recents());
+    }
+
+    static AtlasItem projectSimpleCarriedCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity
+    ) {
+        return projectSimpleCarriedCard(store, identity, VisualHomeMap.empty(), List.of());
+    }
+
+    static AtlasItem projectSimpleCarriedCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands
+    ) {
+        return projectSimpleCarriedCard(store, identity, visualHomeMap, islands, null);
+    }
+
+    static AtlasItem projectSimpleCarriedCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver
+    ) {
+        return projectSimpleCarriedCard(store, identity, visualHomeMap, islands, carriedContainerInfoResolver, false);
+    }
+
+    static AtlasItem projectSimpleCarriedCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            boolean includeProximatePresence
+    ) {
+        return projectSimpleCarriedCard(
+                store,
+                identity,
+                visualHomeMap,
+                islands,
+                carriedContainerInfoResolver,
+                includeProximatePresence,
+                true);
+    }
+
+    static AtlasItem projectSimpleCarriedCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            boolean includeProximatePresence,
+            boolean includeRemotePresence
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        WorkspaceProjectionStore.CarriedIdentityFact carried =
+                ItemIdentityCollections.find(resolvedStore.carriedIdentities(), identity);
+        if (carried == null || carried.totalCount() <= 0 || carried.identity() == null) {
+            return null;
+        }
+        WorkspaceProjectionStore.SourceEntryFact first = null;
+        WorkspaceProjectionStore.SourceEntryFact largest = null;
+        for (WorkspaceProjectionStore.SourceEntryFact fact : resolvedStore.sourceEntries().values()) {
+            if (fact == null || !ItemIdentityMatcher.matchesMovable(fact.movableIdentity(), carried.identity())) {
+                continue;
+            }
+            if (first == null) {
+                first = fact;
+            }
+            if (largest == null || fact.count() > largest.count()) {
+                largest = fact;
+            }
+        }
+        if (first == null) {
+            return null;
+        }
+        WorkspaceProjectionStore.SourceEntryFact largestFact = largest == null ? first : largest;
+        ItemStack displayStack = first.displayStack();
+        if (displayStack == null || displayStack.isEmpty()) {
+            displayStack = carried.representativeDisplayStack();
+        }
+        if (displayStack == null || displayStack.isEmpty()) {
+            return null;
+        }
+        WorkspaceProjectionStore.SourceSlotKey firstSlot = first.sourceSlot();
+        WorkspaceProjectionStore.SourceSlotKey largestSlot = largestFact.sourceSlot();
+        String largestSourceId = largestSlot == null ? "" : largestSlot.sourceId();
+        int largestSlotIndex = largestSlot == null ? -1 : largestSlot.slotIndex();
+        WorkspaceProjectionStore.TargetFact target =
+                ItemIdentityCollections.find(resolvedStore.targetFacts(), carried.identity());
+        List<ChestPresenceEntry> presence = includeProximatePresence
+                ? simpleProximatePresence(resolvedStore, carried.identity())
+                : List.of();
+        int proximateTotal = simplePresenceTotal(presence);
+        List<ChestPresenceEntry> elsewhere = includeRemotePresence
+                ? simpleRemotePresence(resolvedStore, carried.identity())
+                : List.of();
+        int desiredCount = target == null ? 0 : target.desiredCount();
+        boolean desiredFromWorkflowTab = target != null && target.desiredCountFromWorkflowTab();
+        int wantedCount = target == null ? 0 : target.wantedCount();
+        boolean kitNeeded = target != null && target.kitNeeded() && carried.totalCount() <= 0;
+        boolean junk = target != null && target.junk();
+        boolean acceptedWorkflowInput = target != null && target.acceptedWorkflowInput();
+        VisualHomeMap homes = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
+        VisualHomeAssignment assignment = assignmentFor(homes, carried.identity());
+        boolean homed = assignment != null
+                && SlotWorkspaceAtlasLayout.island(islands, assignment.islandId()) != null;
+        String islandId = homed ? assignment.islandId() : SlotWorkspaceAtlasLayout.ISLAND_TRIAGE;
+        boolean playerPlaced = homed
+                && assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED;
+        Function<ItemIdentity, CarriedContainerInfo> containerResolver = carriedContainerInfoResolver == null
+                ? ignored -> null
+                : carriedContainerInfoResolver;
+        CarriedContainerInfo containerInfo = containerResolver.apply(carried.identity());
+        boolean isContainer = containerInfo != null;
+        int containerFree = isContainer ? containerInfo.freeSlots() : 0;
+        int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
+        return new AtlasItem(
+                IdentityRef.from(carried.identity()),
+                displayStack,
+                displayStack.getHoverName().getString(),
+                carried.totalCount(),
+                firstSlot == null ? 0 : firstSlot.slotIndex(),
+                islandId,
+                false,
+                playerPlaced,
+                true,
+                false,
+                proximateTotal,
+                List.of(),
+                presence,
+                elsewhere,
+                isContainer,
+                containerFree,
+                containerCapacity,
+                kitNeeded,
+                desiredCount,
+                desiredFromWorkflowTab,
+                wantedCount,
+                junk,
+                acceptedWorkflowInput,
+                largestSourceId,
+                largestSlotIndex,
+                largestFact.count(),
+                PutAwayState.NONE);
+    }
+
+    static AtlasItem projectSimpleTargetGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands
+    ) {
+        return projectSimpleTargetGhostCard(store, identity, visualHomeMap, islands, null);
+    }
+
+    static AtlasItem projectSimpleTargetGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver
+    ) {
+        return projectSimpleTargetGhostCard(store, identity, visualHomeMap, islands, carriedContainerInfoResolver, false);
+    }
+
+    static AtlasItem projectSimpleTargetGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            boolean includeProximatePresence
+    ) {
+        return projectSimpleTargetGhostCard(
+                store,
+                identity,
+                visualHomeMap,
+                islands,
+                carriedContainerInfoResolver,
+                includeProximatePresence,
+                false);
+    }
+
+    static AtlasItem projectSimpleCraftRunTargetGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            boolean includeProximatePresence
+    ) {
+        return projectSimpleTargetGhostCard(
+                store,
+                identity,
+                visualHomeMap,
+                islands,
+                carriedContainerInfoResolver,
+                includeProximatePresence,
+                true);
+    }
+
+    static AtlasItem projectSimpleWorkflowTargetGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            boolean includeProximatePresence
+    ) {
+        return projectSimpleTargetGhostCard(
+                store,
+                identity,
+                visualHomeMap,
+                islands,
+                carriedContainerInfoResolver,
+                includeProximatePresence,
+                true,
+                true,
+                true);
+    }
+
+    static AtlasItem projectSimpleProximateStorageGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        ItemIdentity key = ItemIdentityCollections.key(identity);
+        if (key == null) {
+            return null;
+        }
+        List<ChestPresenceEntry> presence = simpleProximatePresence(resolvedStore, key);
+        int proximateTotal = simplePresenceTotal(presence);
+        if (proximateTotal <= 0) {
+            return null;
+        }
+        WorkspaceProjectionStore.TargetFact target =
+                ItemIdentityCollections.find(resolvedStore.targetFacts(), key);
+        ItemStack displayStack = simpleProximateDisplayStack(resolvedStore, key);
+        if (displayStack == null || displayStack.isEmpty()) {
+            return null;
+        }
+        VisualHomeMap homes = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
+        VisualHomeAssignment assignment = assignmentFor(homes, key);
+        String islandId = SlotWorkspaceAtlasLayout.ISLAND_TRIAGE;
+        boolean playerPlaced = false;
+        if (assignment != null) {
+            if (SlotWorkspaceAtlasLayout.island(islands, assignment.islandId()) == null) {
+                return null;
+            }
+            islandId = assignment.islandId();
+            playerPlaced = assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED;
+        }
+        Function<ItemIdentity, CarriedContainerInfo> containerResolver = carriedContainerInfoResolver == null
+                ? ignored -> null
+                : carriedContainerInfoResolver;
+        CarriedContainerInfo containerInfo = containerResolver.apply(key);
+        boolean isContainer = containerInfo != null;
+        int containerFree = isContainer ? containerInfo.freeSlots() : 0;
+        int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
+        return new AtlasItem(
+                IdentityRef.from(key),
+                displayStack,
+                displayStack.getHoverName().getString(),
+                proximateTotal,
+                0,
+                islandId,
+                false,
+                playerPlaced,
+                false,
+                true,
+                proximateTotal,
+                List.of(),
+                presence,
+                List.of(),
+                isContainer,
+                containerFree,
+                containerCapacity,
+                false,
+                0,
+                false,
+                0,
+                false,
+                target != null && target.acceptedWorkflowInput(),
+                "",
+                -1,
+                0,
+                PutAwayState.NONE);
+    }
+
+    private static AtlasItem projectSimpleTargetGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            boolean includeProximatePresence,
+            boolean allowKitNeeded
+    ) {
+        return projectSimpleTargetGhostCard(
+                store,
+                identity,
+                visualHomeMap,
+                islands,
+                carriedContainerInfoResolver,
+                includeProximatePresence,
+                allowKitNeeded,
+                false,
+                false);
+    }
+
+    private static AtlasItem projectSimpleTargetGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            boolean includeProximatePresence,
+            boolean allowKitNeeded,
+            boolean allowDesiredFromWorkflowTab,
+            boolean allowAcceptedWorkflowInput
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        WorkspaceProjectionStore.TargetFact target =
+                ItemIdentityCollections.find(resolvedStore.targetFacts(), identity);
+        if (target == null
+                || target.identity() == null
+                || (!allowKitNeeded && target.kitNeeded())
+                || (!allowDesiredFromWorkflowTab && target.desiredCountFromWorkflowTab())
+                || target.junk()
+                || (!allowAcceptedWorkflowInput && target.acceptedWorkflowInput())
+                || (target.desiredCount() <= 0
+                        && target.wantedCount() <= 0
+                        && !(allowKitNeeded && target.kitNeeded()))) {
+            return null;
+        }
+        List<ChestPresenceEntry> presence = includeProximatePresence
+                ? simpleProximatePresence(resolvedStore, target.identity())
+                : List.of();
+        int proximateTotal = simplePresenceTotal(presence);
+        List<ChestPresenceEntry> elsewhere = simpleRemotePresence(resolvedStore, target.identity());
+        int remoteTotal = simplePresenceTotal(elsewhere);
+        ItemStack displayStack = includeProximatePresence
+                ? simpleProximateDisplayStack(resolvedStore, target.identity())
+                : ItemStack.EMPTY;
+        if (displayStack == null || displayStack.isEmpty()) {
+            displayStack = simpleRemoteDisplayStack(resolvedStore, target.identity());
+        }
+        if (displayStack == null || displayStack.isEmpty()) {
+            displayStack = resolveGhostStack(target.identity(), 1);
+        }
+        if (displayStack == null || displayStack.isEmpty()) {
+            return null;
+        }
+        VisualHomeMap homes = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
+        VisualHomeAssignment assignment = assignmentFor(homes, target.identity());
+        if (assignment != null && SlotWorkspaceAtlasLayout.island(islands, assignment.islandId()) == null) {
+            return null;
+        }
+        String islandId = assignment == null
+                ? (proximateTotal > 0 ? SlotWorkspaceAtlasLayout.ISLAND_TRIAGE : SlotWorkspaceAtlasLayout.ISLAND_MISC)
+                : assignment.islandId();
+        boolean playerPlaced = assignment != null
+                && assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED;
+        Function<ItemIdentity, CarriedContainerInfo> containerResolver = carriedContainerInfoResolver == null
+                ? ignored -> null
+                : carriedContainerInfoResolver;
+        CarriedContainerInfo containerInfo = containerResolver.apply(target.identity());
+        boolean isContainer = containerInfo != null;
+        int containerFree = isContainer ? containerInfo.freeSlots() : 0;
+        int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
+        return new AtlasItem(
+                IdentityRef.from(target.identity()),
+                displayStack,
+                displayStack.getHoverName().getString(),
+                proximateTotal > 0 ? proximateTotal : remoteTotal,
+                0,
+                islandId,
+                false,
+                playerPlaced,
+                false,
+                true,
+                proximateTotal,
+                List.of(),
+                presence,
+                elsewhere,
+                isContainer,
+                containerFree,
+                containerCapacity,
+                allowKitNeeded && target.kitNeeded(),
+                target.desiredCount(),
+                allowDesiredFromWorkflowTab && target.desiredCountFromWorkflowTab(),
+                target.wantedCount(),
+                false,
+                allowAcceptedWorkflowInput && target.acceptedWorkflowInput(),
+                "",
+                -1,
+                0,
+                PutAwayState.NONE);
+    }
+
+    static AtlasItem projectSimpleRemoteStorageGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver
+    ) {
+        return projectSimpleRemoteStorageGhostCard(
+                store,
+                identity,
+                visualHomeMap,
+                islands,
+                carriedContainerInfoResolver,
+                null);
+    }
+
+    private static AtlasItem projectSimpleRemoteStorageGhostCard(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            Set<String> storageIds
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        ItemIdentity key = ItemIdentityCollections.key(identity);
+        if (key == null) {
+            return null;
+        }
+        List<ChestPresenceEntry> elsewhere = simpleRemotePresence(resolvedStore, key, storageIds);
+        int remoteTotal = simplePresenceTotal(elsewhere);
+        if (remoteTotal <= 0) {
+            return null;
+        }
+        VisualHomeMap homes = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
+        VisualHomeAssignment assignment = assignmentFor(homes, key);
+        if (assignment == null || SlotWorkspaceAtlasLayout.island(islands, assignment.islandId()) == null) {
+            return null;
+        }
+        ItemStack displayStack = simpleRemoteDisplayStack(resolvedStore, key, storageIds);
+        if (displayStack == null || displayStack.isEmpty()) {
+            return null;
+        }
+        Function<ItemIdentity, CarriedContainerInfo> containerResolver = carriedContainerInfoResolver == null
+                ? ignored -> null
+                : carriedContainerInfoResolver;
+        CarriedContainerInfo containerInfo = containerResolver.apply(key);
+        boolean isContainer = containerInfo != null;
+        int containerFree = isContainer ? containerInfo.freeSlots() : 0;
+        int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
+        return new AtlasItem(
+                IdentityRef.from(key),
+                displayStack,
+                displayStack.getHoverName().getString(),
+                remoteTotal,
+                0,
+                assignment.islandId(),
+                false,
+                assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED,
+                false,
+                true,
+                0,
+                List.of(),
+                List.of(),
+                elsewhere,
+                isContainer,
+                containerFree,
+                containerCapacity,
+                false,
+                0,
+                false,
+                0,
+                false,
+                "",
+                -1,
+                0);
+    }
+
+    static List<AtlasItem> projectSimpleRemoteSearchGhostCards(
+            WorkspaceProjectionStore store,
+            String searchQuery,
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries,
+            VisualHomeMap visualHomeMap,
+            List<AtlasIsland> islands,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        String normalizedSearch = WorkspaceSearchQuery.normalized(searchQuery);
+        Set<String> storageIds = trackedDisplayStorageIds(trackedDisplayStorageEntries);
+        if (normalizedSearch.isBlank() || resolvedStore.storagePresence().isEmpty() || storageIds.isEmpty()) {
+            return List.of();
+        }
+        LinkedHashSet<ItemIdentity> matchingIdentities = new LinkedHashSet<>();
+        for (WorkspaceProjectionStore.StoragePresenceFact presence : resolvedStore.storagePresence().values()) {
+            if (presence == null
+                    || presence.key() == null
+                    || presence.key().identity() == null
+                    || presence.count() <= 0) {
+                continue;
+            }
+            if (!storageIds.contains(presence.key().storageId())) {
+                continue;
+            }
+            WorkspaceProjectionStore.StorageMetaFact meta =
+                    resolvedStore.storageMeta().get(presence.key().storageId());
+            if (meta == null || meta.proximate()) {
+                continue;
+            }
+            ItemIdentity identity = presence.key().identity();
+            ItemStack displayStack = presence.representativeDisplayStack();
+            if (displayStack == null || displayStack.isEmpty()) {
+                displayStack = simpleRemoteDisplayStack(resolvedStore, identity, storageIds);
+            }
+            if (WorkspaceSearchQuery.matchesIdentityStack(normalizedSearch, identity, displayStack)) {
+                ItemIdentityCollections.add(matchingIdentities, identity);
+            }
+        }
+        if (matchingIdentities.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<AtlasItem> cards = new ArrayList<>();
+        for (ItemIdentity identity : matchingIdentities) {
+            AtlasItem card = projectSimpleRemoteStorageGhostCard(
+                    resolvedStore,
+                    identity,
+                    visualHomeMap,
+                    islands,
+                    carriedContainerInfoResolver,
+                    storageIds);
+            if (card != null) {
+                cards.add(card);
+            }
+        }
+        return cards.isEmpty() ? List.of() : List.copyOf(cards);
+    }
+
+    private static Set<String> trackedDisplayStorageIds(
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries
+    ) {
+        if (trackedDisplayStorageEntries == null || trackedDisplayStorageEntries.isEmpty()) {
+            return Set.of();
+        }
+        LinkedHashSet<String> storageIds = new LinkedHashSet<>();
+        for (WorkspaceStorageIndex.StorageEntry entry : trackedDisplayStorageEntries) {
+            if (entry == null || entry.target() == null || entry.target().storageId().isBlank()) {
+                continue;
+            }
+            storageIds.add(entry.target().storageId());
+        }
+        return storageIds.isEmpty() ? Set.of() : Set.copyOf(storageIds);
+    }
+
+    static List<WayfindingTarget> projectSimpleWayfindingTargets(
+            WorkspaceProjectionStore store
+    ) {
+        return projectSimpleWayfindingTargets(store, false);
+    }
+
+    static List<WayfindingTarget> projectSimpleWorkflowWayfindingTargets(
+            WorkspaceProjectionStore store
+    ) {
+        return projectSimpleWayfindingTargets(store, true);
+    }
+
+    private static List<WayfindingTarget> projectSimpleWayfindingTargets(
+            WorkspaceProjectionStore store,
+            boolean allowWorkflowTargets
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        if (resolvedStore.storagePresence().isEmpty() || resolvedStore.targetFacts().isEmpty()) {
+            return List.of();
+        }
+        LinkedHashMap<String, SimpleWayfindingAccumulator> byStorage = new LinkedHashMap<>();
+        for (WorkspaceProjectionStore.StoragePresenceFact presence : resolvedStore.storagePresence().values()) {
+            if (presence == null
+                    || presence.key() == null
+                    || presence.key().identity() == null
+                    || presence.count() <= 0) {
+                continue;
+            }
+            WorkspaceProjectionStore.StorageMetaFact meta =
+                    resolvedStore.storageMeta().get(presence.key().storageId());
+            if (meta == null) {
+                continue;
+            }
+            WorkspaceProjectionStore.TargetFact target =
+                    ItemIdentityCollections.find(resolvedStore.targetFacts(), presence.key().identity());
+            int carriedCount = simpleCarriedCount(resolvedStore, target == null ? null : target.identity());
+            if (!simpleTargetFact(target, allowWorkflowTargets, carriedCount)) {
+                continue;
+            }
+            byStorage
+                    .computeIfAbsent(meta.storageId(), ignored -> new SimpleWayfindingAccumulator(meta))
+                    .add(target.identity(), target, presence.count(), carriedCount, allowWorkflowTargets);
+        }
+        if (byStorage.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<WayfindingTarget> out = new ArrayList<>(byStorage.size());
+        for (SimpleWayfindingAccumulator accumulator : byStorage.values()) {
+            WayfindingTarget target = accumulator.toTarget();
+            if (target != null) {
+                out.add(target);
+            }
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    private static boolean simpleTargetFact(WorkspaceProjectionStore.TargetFact target) {
+        return simpleTargetFact(target, false);
+    }
+
+    private static boolean simpleTargetFact(
+            WorkspaceProjectionStore.TargetFact target,
+            boolean allowWorkflowTargets
+    ) {
+        return simpleTargetFact(target, allowWorkflowTargets, 0);
+    }
+
+    private static boolean simpleTargetFact(
+            WorkspaceProjectionStore.TargetFact target,
+            boolean allowWorkflowTargets,
+            int carriedCount
+    ) {
+        return target != null
+                && target.identity() != null
+                && (allowWorkflowTargets || !target.kitNeeded())
+                && (allowWorkflowTargets || !target.desiredCountFromWorkflowTab())
+                && !target.junk()
+                && (simpleMissing(target.desiredCount(), carriedCount)
+                        || simpleMissing(target.wantedCount(), carriedCount)
+                        || (allowWorkflowTargets && target.kitNeeded()));
+    }
+
+    private static boolean simpleMissing(int targetCount, int carriedCount) {
+        return targetCount > 0 && Math.max(0, carriedCount) < targetCount;
+    }
+
+    private static int simpleCarriedCount(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        WorkspaceProjectionStore.CarriedIdentityFact carried =
+                ItemIdentityCollections.find(resolvedStore.carriedIdentities(), identity);
+        return carried == null ? 0 : carried.totalCount();
+    }
+
+    private static List<ChestPresenceEntry> simpleProximatePresence(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity
+    ) {
+        return simplePresence(store, identity, true);
+    }
+
+    private static List<ChestPresenceEntry> simpleRemotePresence(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity
+    ) {
+        return simpleRemotePresence(store, identity, null);
+    }
+
+    private static List<ChestPresenceEntry> simpleRemotePresence(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            Set<String> storageIds
+    ) {
+        return simplePresence(store, identity, false, storageIds);
+    }
+
+    private static List<ChestPresenceEntry> simplePresence(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            boolean proximate
+    ) {
+        return simplePresence(store, identity, proximate, null);
+    }
+
+    private static List<ChestPresenceEntry> simplePresence(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            boolean proximate,
+            Set<String> storageIds
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        if (identity == null || resolvedStore.storagePresence().isEmpty()) {
+            return List.of();
+        }
+        ArrayList<ChestPresenceEntry> entries = new ArrayList<>();
+        for (WorkspaceProjectionStore.StoragePresenceFact presence : resolvedStore.storagePresence().values()) {
+            if (presence == null
+                    || presence.key() == null
+                    || presence.count() <= 0
+                    || !ItemIdentityMatcher.matchesMovable(presence.key().identity(), identity)) {
+                continue;
+            }
+            if (storageIds != null && !storageIds.contains(presence.key().storageId())) {
+                continue;
+            }
+            WorkspaceProjectionStore.StorageMetaFact meta =
+                    resolvedStore.storageMeta().get(presence.key().storageId());
+            if (meta == null || meta.proximate() != proximate) {
+                continue;
+            }
+            String baseLabel = meta.label().isBlank() ? meta.storageId() : meta.label();
+            String dimension = proximate ? "" : simpleShortDimension(meta.dimensionId());
+            String label = dimension.isBlank() ? baseLabel : baseLabel + " — " + dimension;
+            entries.add(new ChestPresenceEntry(meta.storageId(), label, presence.count()));
+        }
+        if (entries.isEmpty()) {
+            return List.of();
+        }
+        entries.sort(Comparator.<ChestPresenceEntry>comparingInt(ChestPresenceEntry::count).reversed()
+                .thenComparing(ChestPresenceEntry::label, String.CASE_INSENSITIVE_ORDER));
+        return List.copyOf(entries);
+    }
+
+    private static int simplePresenceTotal(List<ChestPresenceEntry> presence) {
+        if (presence == null || presence.isEmpty()) {
+            return 0;
+        }
+        int total = 0;
+        for (ChestPresenceEntry entry : presence) {
+            if (entry != null) {
+                total += Math.max(0, entry.count());
+            }
+        }
+        return total;
+    }
+
+    private static ItemStack simpleProximateDisplayStack(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity
+    ) {
+        return simpleStorageDisplayStack(store, identity, true);
+    }
+
+    private static ItemStack simpleRemoteDisplayStack(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity
+    ) {
+        return simpleRemoteDisplayStack(store, identity, null);
+    }
+
+    private static ItemStack simpleRemoteDisplayStack(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            Set<String> storageIds
+    ) {
+        return simpleStorageDisplayStack(store, identity, false, storageIds);
+    }
+
+    private static ItemStack simpleStorageDisplayStack(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            boolean proximate
+    ) {
+        return simpleStorageDisplayStack(store, identity, proximate, null);
+    }
+
+    private static ItemStack simpleStorageDisplayStack(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity,
+            boolean proximate,
+            Set<String> storageIds
+    ) {
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        if (identity == null || resolvedStore.storagePresence().isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        for (WorkspaceProjectionStore.StoragePresenceFact presence : resolvedStore.storagePresence().values()) {
+            if (presence == null
+                    || presence.key() == null
+                    || presence.count() <= 0
+                    || !ItemIdentityMatcher.matchesMovable(presence.key().identity(), identity)) {
+                continue;
+            }
+            if (storageIds != null && !storageIds.contains(presence.key().storageId())) {
+                continue;
+            }
+            WorkspaceProjectionStore.StorageMetaFact meta =
+                    resolvedStore.storageMeta().get(presence.key().storageId());
+            if (meta == null || meta.proximate() != proximate) {
+                continue;
+            }
+            ItemStack stack = presence.representativeDisplayStack();
+            if (stack != null && !stack.isEmpty()) {
+                return stack.copy();
+            }
+        }
+        return ItemStack.EMPTY;
+    }
+
+    private static String simpleShortDimension(String dimensionId) {
+        if (dimensionId == null) {
+            return "";
+        }
+        int colon = dimensionId.indexOf(':');
+        String tail = colon < 0 ? dimensionId : dimensionId.substring(colon + 1);
+        return tail.startsWith("the_") ? tail.substring(4) : tail;
+    }
+
+    private static final class SimpleWayfindingAccumulator {
+        private final WorkspaceProjectionStore.StorageMetaFact meta;
+        private final LinkedHashSet<ItemIdentity> matched = new LinkedHashSet<>();
+        private final LinkedHashSet<ItemIdentity> kit = new LinkedHashSet<>();
+        private final LinkedHashSet<ItemIdentity> desired = new LinkedHashSet<>();
+        private final LinkedHashSet<ItemIdentity> wanted = new LinkedHashSet<>();
+        private int total;
+
+        private SimpleWayfindingAccumulator(WorkspaceProjectionStore.StorageMetaFact meta) {
+            this.meta = meta;
+        }
+
+        private void add(
+                ItemIdentity identity,
+                WorkspaceProjectionStore.TargetFact target,
+                int count,
+                int carriedCount,
+                boolean allowWorkflowTargets
+        ) {
+            if (identity == null || target == null || count <= 0) {
+                return;
+            }
+            boolean kitMissing = allowWorkflowTargets && target.kitNeeded();
+            boolean desiredMissing = simpleMissing(target.desiredCount(), carriedCount);
+            boolean wantedMissing = simpleMissing(target.wantedCount(), carriedCount);
+            if (!kitMissing && !desiredMissing && !wantedMissing) {
+                return;
+            }
+            ItemIdentity key = ItemIdentityCollections.key(identity);
+            matched.add(key);
+            if (kitMissing || (allowWorkflowTargets && target.desiredCountFromWorkflowTab() && desiredMissing)) {
+                kit.add(key);
+            }
+            if (desiredMissing) {
+                desired.add(key);
+            }
+            if (wantedMissing) {
+                wanted.add(key);
+            }
+            total += Math.max(0, count);
+        }
+
+        private WayfindingTarget toTarget() {
+            if (meta == null || matched.isEmpty()) {
+                return null;
+            }
+            WayfindingTarget.Scope scope = !kit.isEmpty()
+                    ? WayfindingTarget.Scope.KIT
+                    : desired.isEmpty() && !wanted.isEmpty()
+                    ? WayfindingTarget.Scope.WANTED
+                    : WayfindingTarget.Scope.PLAYER;
+            return new WayfindingTarget(
+                    meta.storageId(),
+                    meta.dimensionId(),
+                    meta.x(),
+                    meta.y(),
+                    meta.z(),
+                    matched,
+                    kit,
+                    desired,
+                    wanted,
+                    total,
+                    scope);
+        }
+    }
+
+    static List<AtlasIsland> projectIslandsWithCarriedCounts(
+            List<AtlasIsland> islands,
+            List<AtlasItem> atlasItems
+    ) {
+        return withCarriedCounts(islands, atlasItems);
+    }
+
+    static ChestChip projectSimpleStorageChip(
+            WorkspaceProjectionStore store,
+            String storageId
+    ) {
+        if (storageId == null || storageId.isBlank()) {
+            return null;
+        }
+        WorkspaceProjectionStore resolvedStore = store == null ? WorkspaceProjectionStore.empty() : store;
+        WorkspaceProjectionStore.StorageMetaFact meta = resolvedStore.storageMeta().get(storageId);
+        if (meta == null) {
+            return null;
+        }
+        WorkspaceProjectionStore.StorageContentsFact contents = resolvedStore.storageContents().get(storageId);
+        ChestContentsSnapshot snapshot = contents == null
+                ? ChestContentsSnapshot.empty()
+                : new ChestContentsSnapshot(
+                        contents.slotCount(),
+                        contents.slotSummaries(),
+                        List.of());
+        String label = meta.label().isBlank() ? meta.storageId() : meta.label();
+        return new ChestChip(
+                meta.storageId(),
+                meta.dimensionId(),
+                label,
+                1,
+                snapshot.slotCount(),
+                filledSlotCount(snapshot),
+                meta.proximate(),
+                0,
+                meta.x(),
+                meta.y(),
+                meta.z(),
+                "",
+                contentSummaries(snapshot));
     }
 
     private static List<HotbarSlot> hotbarSlots(InventoryAuthoritySnapshot authority, int selectedQuickAccessSlot) {

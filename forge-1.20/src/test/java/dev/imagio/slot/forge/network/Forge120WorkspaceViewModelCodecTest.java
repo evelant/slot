@@ -240,6 +240,94 @@ class Forge120WorkspaceViewModelCodecTest {
     }
 
     @Test
+    void transferEncodingSendsFullSnapshotThenDelta() {
+        SlotWorkspaceViewModel.IdentityRef stone = identity("minecraft:stone");
+        ItemIdentity stoneIdentity = ItemIdentity.of("minecraft:stone");
+        SlotWorkspaceViewModel first = minimalView(1, stone, stoneIdentity);
+        Forge120WorkspaceViewModelCodec.EncodedSliceCache cache =
+                new Forge120WorkspaceViewModelCodec.EncodedSliceCache();
+
+        CompoundTag full = Forge120WorkspaceViewModelCodec.encodeTransfer(first, cache, false);
+
+        assertEquals("FULL_SNAPSHOT", full.getString("__slotViewMode"));
+        assertTrue(full.contains("atlasItems"));
+        Forge120WorkspaceViewModelCodec.TransferApplyResult appliedFull =
+                Forge120WorkspaceViewModelCodec.applyTransfer(null, full);
+        assertTrue(appliedFull.applied());
+        assertEquals(1, appliedFull.viewModel().revision());
+
+        SlotWorkspaceViewModel statusOnly = first.withFrame(2, "busy", "delta-test", 0, 0);
+        CompoundTag delta = Forge120WorkspaceViewModelCodec.encodeTransfer(statusOnly, cache, false);
+
+        assertEquals("DELTA", delta.getString("__slotViewMode"));
+        assertEquals(1L, delta.getLong("__slotBaseRevision"));
+        assertEquals(2L, delta.getLong("__slotRevision"));
+        assertTrue(delta.contains("status"));
+        assertFalse(delta.contains("atlasItems"));
+        assertTrue(delta.sizeInBytes() < full.sizeInBytes());
+
+        Forge120WorkspaceViewModelCodec.TransferApplyResult appliedDelta =
+                Forge120WorkspaceViewModelCodec.applyTransfer(appliedFull.fullTag(), delta);
+
+        assertTrue(appliedDelta.applied());
+        assertEquals(2, appliedDelta.viewModel().revision());
+        assertEquals("busy", appliedDelta.viewModel().status());
+        assertEquals(1, appliedDelta.viewModel().atlasItems().size());
+        assertEquals(Items.STONE, appliedDelta.viewModel().atlasItems().get(0).displayStack().getItem());
+    }
+
+    @Test
+    void transferDeltaIsIdempotentWhenAlreadyApplied() {
+        SlotWorkspaceViewModel.IdentityRef stone = identity("minecraft:stone");
+        ItemIdentity stoneIdentity = ItemIdentity.of("minecraft:stone");
+        SlotWorkspaceViewModel first = minimalView(1, stone, stoneIdentity);
+        Forge120WorkspaceViewModelCodec.EncodedSliceCache cache =
+                new Forge120WorkspaceViewModelCodec.EncodedSliceCache();
+        CompoundTag full = Forge120WorkspaceViewModelCodec.encodeTransfer(first, cache, false);
+        Forge120WorkspaceViewModelCodec.TransferApplyResult appliedFull =
+                Forge120WorkspaceViewModelCodec.applyTransfer(null, full);
+        CompoundTag delta = Forge120WorkspaceViewModelCodec.encodeTransfer(
+                first.withFrame(2, "busy", "delta-test", 0, 0),
+                cache,
+                false);
+        Forge120WorkspaceViewModelCodec.TransferApplyResult appliedDelta =
+                Forge120WorkspaceViewModelCodec.applyTransfer(appliedFull.fullTag(), delta);
+
+        Forge120WorkspaceViewModelCodec.TransferApplyResult repeated =
+                Forge120WorkspaceViewModelCodec.applyTransfer(appliedDelta.fullTag(), delta);
+
+        assertTrue(repeated.applied());
+        assertEquals(2, repeated.viewModel().revision());
+        assertEquals("busy", repeated.viewModel().status());
+    }
+
+    @Test
+    void transferDeltaRejectsMissingBase() {
+        SlotWorkspaceViewModel.IdentityRef stone = identity("minecraft:stone");
+        ItemIdentity stoneIdentity = ItemIdentity.of("minecraft:stone");
+        SlotWorkspaceViewModel first = minimalView(1, stone, stoneIdentity);
+        Forge120WorkspaceViewModelCodec.EncodedSliceCache cache =
+                new Forge120WorkspaceViewModelCodec.EncodedSliceCache();
+        Forge120WorkspaceViewModelCodec.encodeTransfer(first, cache, false);
+        CompoundTag delta = Forge120WorkspaceViewModelCodec.encodeTransfer(
+                first.withFrame(2, "busy", "delta-test", 0, 0),
+                cache,
+                false);
+
+        Forge120WorkspaceViewModelCodec.TransferApplyResult missing =
+                Forge120WorkspaceViewModelCodec.applyTransfer(null, delta);
+        Forge120WorkspaceViewModelCodec.TransferApplyResult wrongBase =
+                Forge120WorkspaceViewModelCodec.applyTransfer(
+                        Forge120WorkspaceViewModelCodec.encode(first.withRevision(0)),
+                        delta);
+
+        assertFalse(missing.applied());
+        assertTrue(missing.requiresFullSnapshot());
+        assertFalse(wrongBase.applied());
+        assertTrue(wrongBase.requiresFullSnapshot());
+    }
+
+    @Test
     void contextualSuggestionPlaceholderRoundTripsThroughForgeViewModelCodec() {
         SlotWorkspaceViewModel.IdentityRef stone = identity("minecraft:stone");
         SlotWorkspaceViewModel original = minimalView(

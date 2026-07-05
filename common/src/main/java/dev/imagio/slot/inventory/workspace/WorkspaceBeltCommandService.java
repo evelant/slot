@@ -16,6 +16,7 @@ import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceRole;
 import dev.imagio.slot.inventory.core.InventoryToolActionId;
 import dev.imagio.slot.inventory.core.InventoryToolToggleId;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
@@ -32,9 +33,12 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Comparator;
+import java.util.EnumSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.IntFunction;
@@ -383,9 +387,10 @@ public final class WorkspaceBeltCommandService {
         String sourceId = located.sourceId();
         int slotIndex = located.slotIndex();
         if (BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId) && slotIndex == hotbarIndex) {
-            return WorkspaceCommandOutcome.accepted(
+            return frameOnlyAccepted(
                     "assigned_to_hotbar_" + (hotbarIndex + 1),
-                    "already in hotbar " + (hotbarIndex + 1));
+                    "already in hotbar " + (hotbarIndex + 1),
+                    "already_in_hotbar");
         }
 
         InventoryActionTarget sourceTarget = sourceTarget(host, sourceId, slotIndex);
@@ -405,15 +410,17 @@ public final class WorkspaceBeltCommandService {
 
         Integer stagingSlot = null;
         InventoryEntrySnapshot targetEntry = InventoryAuthorityReadService.entrySnapshot(authority, hotbarTarget);
+        ItemIdentity targetIdentity = null;
         if (targetEntry != null && targetEntry.present()) {
-            ItemIdentity targetIdentity = ItemIdentityMatcher.create(targetEntry.stack());
+            targetIdentity = ItemIdentityMatcher.create(targetEntry.stack());
             boolean sameIdentity = ItemIdentityMatcher.matchesMovable(targetIdentity, sourceIdentity);
             boolean canMergeMore = sameIdentity && targetEntry.count() < targetEntry.stack().getMaxStackSize();
             if (!canMergeMore) {
                 if (sameIdentity) {
-                    return WorkspaceCommandOutcome.accepted(
+                    return frameOnlyAccepted(
                             "assigned_to_hotbar_" + (hotbarIndex + 1),
-                            "already in hotbar " + (hotbarIndex + 1));
+                            "already in hotbar " + (hotbarIndex + 1),
+                            "already_in_hotbar");
                 }
                 if (canAssignDirectly(host, sourceId)) {
                     WorkspaceTransferExecution directAssign = executeAssignRequest(
@@ -426,10 +433,13 @@ public final class WorkspaceBeltCommandService {
                             sourceStack,
                             sourceEntry.count());
                     if (directAssign.appliedCompletely()) {
-                        return new WorkspaceCommandOutcome(
-                                true,
-                                "assigned_to_hotbar_" + (hotbarIndex + 1),
-                                "moved to hotbar " + (hotbarIndex + 1));
+                        return withCarriedIdentityInvalidation(
+                                WorkspaceCommandOutcome.accepted(
+                                        "assigned_to_hotbar_" + (hotbarIndex + 1),
+                                        "moved to hotbar " + (hotbarIndex + 1)),
+                                "assigned_to_hotbar",
+                                sourceIdentity,
+                                targetIdentity);
                     }
                     return WorkspaceCommandOutcome.rejected(directAssign.feedback().diagnostics());
                 }
@@ -464,10 +474,13 @@ public final class WorkspaceBeltCommandService {
                 sourceStack,
                 sourceEntry.count());
         if (execution.appliedCompletely()) {
-            return new WorkspaceCommandOutcome(
-                    true,
-                    "assigned_to_hotbar_" + (hotbarIndex + 1),
-                    "moved to hotbar " + (hotbarIndex + 1));
+            return withCarriedIdentityInvalidation(
+                    WorkspaceCommandOutcome.accepted(
+                            "assigned_to_hotbar_" + (hotbarIndex + 1),
+                            "moved to hotbar " + (hotbarIndex + 1)),
+                    "assigned_to_hotbar",
+                    sourceIdentity,
+                    targetIdentity);
         }
         if (stagingSlot != null) {
             executeTransferRequest(
@@ -550,7 +563,10 @@ public final class WorkspaceBeltCommandService {
                 identity,
                 WorkspaceBeltCommandService::extractableMainSource);
         if (mainEntry.isPresent()) {
-            return new WorkspaceCommandOutcome(true, "already_in_main_inventory", "already in main inventory");
+            return frameOnlyAccepted(
+                    "already_in_main_inventory",
+                    "already in main inventory",
+                    "already_in_main_inventory");
         }
         return WorkspaceCommandOutcome.rejected(CARRIED_IDENTITY_NOT_FOUND);
     }
@@ -612,7 +628,10 @@ public final class WorkspaceBeltCommandService {
                 identity,
                 WorkspaceBeltCommandService::extractableProviderSource);
         if (backpackEntry.isPresent()) {
-            return new WorkspaceCommandOutcome(true, "already_in_backpack", "already in backpack");
+            return frameOnlyAccepted(
+                    "already_in_backpack",
+                    "already in backpack",
+                    "already_in_backpack");
         }
         return WorkspaceCommandOutcome.rejected(CARRIED_IDENTITY_NOT_FOUND);
     }
@@ -697,12 +716,78 @@ public final class WorkspaceBeltCommandService {
                 sourceStack,
                 sourceEntry.count());
         if (execution.appliedCompletely()) {
-            return new WorkspaceCommandOutcome(true, fullStatus, fullDiagnostics);
+            return withCarriedIdentityInvalidation(
+                    WorkspaceCommandOutcome.accepted(fullStatus, fullDiagnostics),
+                    origin,
+                    sourceIdentity);
         }
         if ("partial transfer applied".equals(execution.feedback().status())) {
-            return new WorkspaceCommandOutcome(true, partialStatus, partialDiagnostics);
+            return withCarriedIdentityInvalidation(
+                    WorkspaceCommandOutcome.accepted(partialStatus, partialDiagnostics),
+                    origin,
+                    sourceIdentity);
         }
         return WorkspaceCommandOutcome.rejected(execution.feedback().diagnostics());
+    }
+
+    private static WorkspaceCommandOutcome frameOnlyAccepted(
+            String status,
+            String diagnostics,
+            String invalidationDiagnostics
+    ) {
+        return WorkspaceCommandOutcome.accepted(status, diagnostics)
+                .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                        WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                        invalidationDiagnostics)));
+    }
+
+    public static WorkspaceCommandOutcome withCarriedIdentityInvalidation(
+            WorkspaceCommandOutcome outcome,
+            String diagnostics,
+            ItemIdentity... identities
+    ) {
+        WorkspaceCommandOutcome resolved = outcome == null
+                ? WorkspaceCommandOutcome.rejected("null_belt_outcome")
+                : outcome;
+        if (!resolved.success()) {
+            return resolved;
+        }
+        return resolved.withInvalidations(carriedIdentityInvalidations(diagnostics, identities));
+    }
+
+    public static List<WorkspaceInvalidation> carriedIdentityInvalidations(
+            String diagnostics,
+            ItemIdentity... identities
+    ) {
+        LinkedHashSet<ItemIdentity> affected = new LinkedHashSet<>();
+        if (identities != null) {
+            for (ItemIdentity identity : identities) {
+                ItemIdentityCollections.add(affected, identity);
+            }
+        }
+        if (affected.isEmpty()) {
+            return List.of(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.CARRIED_REVISION_CHANGED,
+                    diagnostics == null || diagnostics.isBlank()
+                            ? "belt_move_missing_identity"
+                            : diagnostics + "_missing_identity"));
+        }
+        return List.of(new WorkspaceInvalidation(
+                WorkspaceInvalidation.Reason.CARRIED_REVISION_CHANGED,
+                Set.copyOf(affected),
+                Set.of(),
+                Set.of(),
+                EnumSet.of(
+                        WorkspaceProjectionSlice.CARD,
+                        WorkspaceProjectionSlice.SECTION,
+                        WorkspaceProjectionSlice.WAYFINDING,
+                        WorkspaceProjectionSlice.DEPOSITABILITY,
+                        WorkspaceProjectionSlice.WORKFLOW,
+                        WorkspaceProjectionSlice.CONTEXTUAL,
+                        WorkspaceProjectionSlice.HOTBAR,
+                        WorkspaceProjectionSlice.FRAME),
+                false,
+                diagnostics));
     }
 
     static Optional<LocatedCarriedEntry> findIdentityInAuthority(

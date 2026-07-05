@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-07-01
+Last updated: 2026-07-02
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -74,6 +74,14 @@ hold the rest.
   reuse, and bounded identity-memo eviction diagnostics. TerraFirmaGreg
   manual/profile validation remains pending in
   [`workspace-performance.md`](workspace-performance.md).
+- **2026-07-02** — Incremental workspace projection shipped and moved to
+  [`done/workspace-incremental-projection.md`](done/workspace-incremental-projection.md):
+  typed invalidations, projection fact stores/slices, rendered local card/chip/
+  edge/workflow/panel branches, revisioned delta transfer, and Forge/NeoForge
+  dirty-check integration now cover the common event matrix with full-oracle
+  parity tests; complex put-away/craft-run/wayfinding cases still fail closed,
+  and TerraFirmaGreg profile validation remains in
+  [`workspace-performance.md`](workspace-performance.md).
 
 ## Known issues
 
@@ -83,20 +91,9 @@ item 2. No standalone operational bugs are currently tracked here.
 
 ## Queue
 
-Roughly ordered by playtest signal. Pull from the top when the active
-track lands.
+Roughly ordered by playtest signal. Pull from the top when the active track lands.
 
-1. **Incremental workspace projection**
-   ([workspace-incremental-projection.md](workspace-incremental-projection.md)).
-   Normal play profiles show the first workspace-performance pass helped, but
-   ordinary carried/storage changes still flow through a mostly whole-model
-   projection path. The follow-up plan promotes encoded slices into projection
-   slices, introduces typed invalidations with affected identities/storage ids,
-   keeps full projection as the oracle/fallback, and aims to make item/storage
-   changes update only local cards, sections, chips, wayfinding, and task
-   pressure.
-
-2. **EMI craft-run playtest validation.** Validate the transient sidebar +
+1. **EMI craft-run playtest validation.** Validate the transient sidebar +
    right-side task panel against real recipes before adding more chrome:
    open
    recipes from vanilla inventory, chest/crafting/machine screens, and both
@@ -107,7 +104,7 @@ track lands.
    deficits into player main inventory; and decide from playtest whether the
    deferred hovered `Use this` concretization/hotkey is actually needed.
 
-3. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
+2. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
    Active-scope desired counts, player wanted counts, unified gap chrome,
    gather for wanted/desired gaps, and the basic right-click desired-count
    editor are live. Remaining work: dedupe nearby chest identities that are
@@ -118,14 +115,14 @@ track lands.
    shift-click-take auto-deposit of excess, and eventually throttle stable
    deposit logs.
 
-4. **Learned-storage residual polish**
+3. **Learned-storage residual polish**
    ([learned-storage.md](learned-storage.md)). Sticky cluster
    ordinals across split / merge (today, single-chest churn keeps
    chips stable but multi-chest topology changes can renumber
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; role UX validation against real feeder / machine-buffer
    builds.
-5. **Classification LLM-authoring validation**
+4. **Classification LLM-authoring validation**
    ([classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
    The current contract is: gather/format evidence, let the LLM decide
    vocabulary, feed that vocabulary back into later vocabulary rounds, let the
@@ -145,7 +142,7 @@ track lands.
    obvious latest location instead of scattered stale directories. Then
    regenerate vanilla/pack vocabulary and run `classify-runtime-pack` with the
    usable vocabulary.
-6. **Workflow follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
+5. **Workflow follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
    Core workflows, accepted inputs, compact nearby headers, hidden Useful Now scoring,
    right-side activation-scoped Put Away guidance, search/keybind polish, and the shared display-storage/tool fix pass are
    live. Put-away destination wayfinding and workflow/variant reorder plus
@@ -153,14 +150,14 @@ track lands.
    have landed; remaining workflow follow-ups are the deferred hovered `Use this`
    concretization/hotkey if playtesting asks for it, and later Kit-name cleanup
    without changing the current Kit-backed implementation substrate.
-7. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
+6. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
    The landed Kit code remains the implementation substrate, but future
    user-facing workflow work should follow `workflow-tabs.md`.
-8. **Single-column workspace width pass**
+7. **Single-column workspace width pass**
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
-9. **Workspace performance validation**
+8. **Workspace performance validation**
    ([workspace-performance.md](workspace-performance.md)). The implementation
    has landed in common plus both adapters: timing instrumentation, shared
    per-refresh identity indexing, indexed wayfinding, layered storage-index

@@ -42,6 +42,6 @@ public record ForgeWorkspaceViewModelMessage(
                 buffer.readInt(),
                 buffer.readLong());
         CompoundTag tag = buffer.readNbt();
-        return new ForgeWorkspaceViewModelMessage(envelope, Forge120WorkspaceViewModelCodec.decode(tag), tag);
+        return new ForgeWorkspaceViewModelMessage(envelope, SlotWorkspaceViewModel.empty(), tag);
     }
 }

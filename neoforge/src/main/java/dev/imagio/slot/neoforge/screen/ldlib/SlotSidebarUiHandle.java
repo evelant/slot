@@ -4,6 +4,7 @@ import com.lowdragmc.lowdraglib2.gui.holder.IModularUIHolderMenu;
 import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
@@ -62,6 +63,12 @@ public final class SlotSidebarUiHandle {
 
     public SlotWorkspaceViewModel currentViewModel() {
         return session.currentViewModel();
+    }
+
+    void applyExternalOutcome(WorkspaceCommandOutcome outcome) {
+        if (!disposed) {
+            session.applyExternalOutcome(player, outcome);
+        }
     }
 
     private void attachToHostMenu() {

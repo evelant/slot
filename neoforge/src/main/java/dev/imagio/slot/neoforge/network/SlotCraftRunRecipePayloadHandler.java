@@ -1,6 +1,9 @@
 package dev.imagio.slot.neoforge.network;
 
 import dev.imagio.slot.SlotDebugLog;
+import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
+import dev.imagio.slot.inventory.workspace.WorkspaceCraftRunCommandService;
+import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarUiHandles;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,10 +22,12 @@ public final class SlotCraftRunRecipePayloadHandler {
             if (runtime == null) {
                 return;
             }
-            boolean changed = runtime.craftRunWorkflow().add(payload.capture());
+            WorkspaceCommandOutcome outcome = WorkspaceCraftRunCommandService.addRecipe(runtime, payload.capture());
+            boolean broadcast = SlotSidebarUiHandles.applyExternalOutcome(player, outcome);
             SlotDebugLog.log(
-                    "[craft-run] add visible EMI recipe changed={} player={}",
-                    changed,
+                    "[craft-run] add visible EMI recipe status={} broadcast={} player={}",
+                    outcome.status(),
+                    broadcast,
                     player.getGameProfile().getName());
         });
     }

@@ -870,11 +870,14 @@ final class SlotWorkspaceUiController {
     void setRecipeSidebarSpec(RecipeIngredientSidebarSpec spec) {
         RecipeIngredientSidebarSpec next = spec == null ? RecipeIngredientSidebarSpec.empty() : spec;
         String currentKey = recipeSidebarSpec == null ? "" : recipeSidebarSpec.sourceKey();
-        if (currentKey.equals(next.sourceKey())) {
+        String currentPayload = recipeSidebarSpec == null ? "" : recipeSidebarSpec.remoteDetailIdentityPayload();
+        String nextPayload = next.remoteDetailIdentityPayload();
+        if (currentKey.equals(next.sourceKey()) && currentPayload.equals(nextPayload)) {
             return;
         }
         recipeSidebarSpec = next;
         recipeSidebarProjection = null;
+        rpc.sendRecipeIngredientFilter(nextPayload);
         localStatus.set(next.active() ? next.label() : "");
         rebuild();
     }

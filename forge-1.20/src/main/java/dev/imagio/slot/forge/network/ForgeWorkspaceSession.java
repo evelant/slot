@@ -41,6 +41,7 @@ import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.workspace.KitPageCycleService;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
+import dev.imagio.slot.inventory.workspace.RemoteDetailIdentityPayload;
 import dev.imagio.slot.inventory.workspace.RemoteStorageDetailIntent;
 import dev.imagio.slot.inventory.workspace.WorkspaceBeltCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
@@ -48,18 +49,28 @@ import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import dev.imagio.slot.inventory.workspace.WorkspaceCraftRunCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
+import dev.imagio.slot.inventory.workspace.WorkspaceCardProjectionStats;
+import dev.imagio.slot.inventory.workspace.WorkspaceEdgeProjectionStats;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
+import dev.imagio.slot.inventory.workspace.WorkspaceAuthorityInvalidations;
+import dev.imagio.slot.inventory.workspace.WorkspaceInvalidation;
+import dev.imagio.slot.inventory.workspace.WorkspaceInvalidationSummary;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionRequest;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionResult;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice;
+import dev.imagio.slot.inventory.workspace.WorkspaceProjectionSliceStats;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionSessionCache;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionTiming;
+import dev.imagio.slot.inventory.workspace.WorkspaceProximityInvalidations;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
+import dev.imagio.slot.inventory.workspace.WorkspaceStorageProjectionStats;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndexCache;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageRoutingContext;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
+import dev.imagio.slot.inventory.workspace.WorkspaceWorkflowInvalidations;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.action.WorkspaceActionPacket;
 import dev.imagio.slot.workflow.domain.ContextualSuggestionFeatureFlags;
@@ -107,6 +118,7 @@ final class ForgeWorkspaceSession {
     private final WorkspaceStorageIndexCache storageIndexCache = new WorkspaceStorageIndexCache();
     private final Forge120WorkspaceViewModelCodec.EncodedSliceCache encodedSliceCache =
             new Forge120WorkspaceViewModelCodec.EncodedSliceCache();
+    private final List<WorkspaceInvalidation> pendingInvalidations = new ArrayList<>();
     private RefreshTiming lastRefreshTiming = RefreshTiming.empty();
     private WorkspaceActionSessionContext context;
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
@@ -116,9 +128,12 @@ final class ForgeWorkspaceSession {
     private String diagnostics = "";
     private String searchQuery = "";
     private RemoteStorageDetailIntent remoteStorageDetailIntent = RemoteStorageDetailIntent.INTENT_ONLY;
+    private Set<ItemIdentity> remoteRecipeIngredientIdentities = Set.of();
     private String lastContentFingerprint = "";
     private long lastObservedWorkflowSequence = Long.MIN_VALUE;
     private long lastObservedCarriedRevision = Long.MIN_VALUE;
+    private InventoryAuthoritySnapshot lastProjectedAuthority;
+    private WorkflowDomainSnapshot lastProjectedWorkflowSnapshot;
     private Set<String> lastObservedProximateStorageIds = Set.of();
     private Set<String> lastObservedContextualStorageIds = Set.of();
     private AbstractContainerMenu observedMenu;
@@ -128,6 +143,7 @@ final class ForgeWorkspaceSession {
 
     ForgeWorkspaceSession(WorkspaceActionEnvelope envelope, int menuContainerId, WorkflowDomainRuntime runtime) {
         this.context = new WorkspaceActionSessionContext(envelope.sessionId(), menuContainerId, envelope.viewRevision());
+        this.nextRevision = Math.max(1L, envelope.viewRevision() + 1L);
         this.runtime = runtime;
     }
 
@@ -147,7 +163,7 @@ final class ForgeWorkspaceSession {
             @Override
             public void slotChanged(AbstractContainerMenu changedMenu, int slotIndex, ItemStack stack) {
                 if (changedMenu == observedMenu && updateObservedSlotKey(slotIndex, stack)) {
-                    markDirty();
+                    markDirty(menuSlotInvalidation(stack));
                 }
             }
 
@@ -176,7 +192,14 @@ final class ForgeWorkspaceSession {
     }
 
     void markDirty() {
+        markDirty(WorkspaceInvalidation.full(
+                WorkspaceInvalidation.Reason.UNKNOWN,
+                "forge_session_mark_dirty"));
+    }
+
+    private void markDirty(WorkspaceInvalidation invalidation) {
         dirty = true;
+        queueInvalidation(invalidation);
     }
 
     boolean dirty() {
@@ -184,10 +207,25 @@ final class ForgeWorkspaceSession {
     }
 
     boolean shouldRefresh(ServerPlayer player) {
-        return dirty
-                || currentWorkflowSequence() != lastObservedWorkflowSequence
-                || CarriedInventoryRevisions.revision(player) != lastObservedCarriedRevision
-                || storageProximityChanged(player);
+        boolean refresh = dirty;
+        if (currentWorkflowSequence() != lastObservedWorkflowSequence) {
+            queueInvalidation(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                    "workflow_sequence_changed_not_localized"));
+            refresh = true;
+        }
+        if (CarriedInventoryRevisions.revision(player) != lastObservedCarriedRevision) {
+            queueInvalidation(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.CARRIED_REVISION_CHANGED,
+                    "carried_revision_changed_not_localized"));
+            refresh = true;
+        }
+        WorkspaceInvalidation proximityInvalidation = storageProximityInvalidation(player);
+        if (proximityInvalidation != null) {
+            queueInvalidation(proximityInvalidation);
+            refresh = true;
+        }
+        return refresh;
     }
 
     void clearDirty() {
@@ -250,10 +288,19 @@ final class ForgeWorkspaceSession {
         }
 
         ProjectionRequestBuild requestBuild = projectionRequest(authority, selected, combinedDiagnostics, gameTime, player);
+        List<WorkspaceInvalidation> projectionInvalidations = prepareProjectionInvalidations(
+                drainInvalidations(),
+                authority,
+                requestBuild.request().workflow());
+        if (forceRevision && projectionInvalidations.isEmpty()) {
+            projectionInvalidations = List.of(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.SESSION_OPEN,
+                    lastContentFingerprint.isBlank() ? "forge_session_open" : "forge_forced_view_send"));
+        }
         long requestSetupNanos = requestBuild.requestSetupNanos();
         long storageIndexNanos = requestBuild.storageIndexNanos();
         long projectionStart = System.nanoTime();
-        WorkspaceProjectionResult projection = projectionCache.project(requestBuild.request());
+        WorkspaceProjectionResult projection = projectionCache.project(requestBuild.request(), projectionInvalidations);
         long projectionCallNanos = System.nanoTime() - projectionStart;
         SlotWorkspaceViewModel projected = projection.viewModel();
         boolean autoHomeReprojected = false;
@@ -265,7 +312,11 @@ final class ForgeWorkspaceSession {
             requestSetupNanos += reprojectRequest.requestSetupNanos();
             storageIndexNanos += reprojectRequest.storageIndexNanos();
             projectionStart = System.nanoTime();
-            projection = projectionCache.project(reprojectRequest.request());
+            projection = projectionCache.project(
+                    reprojectRequest.request(),
+                    WorkspaceInvalidation.full(
+                            WorkspaceInvalidation.Reason.AUTO_HOME_REPROJECTED,
+                            "auto_home_mutated_workflow"));
             projectionCallNanos += System.nanoTime() - projectionStart;
             requestBuild = reprojectRequest;
             projected = projection.viewModel();
@@ -278,6 +329,8 @@ final class ForgeWorkspaceSession {
         long observedCarriedRevision = CarriedInventoryRevisions.revision(player);
         lastObservedWorkflowSequence = observedWorkflowSequence;
         lastObservedCarriedRevision = observedCarriedRevision;
+        lastProjectedAuthority = authority;
+        lastProjectedWorkflowSnapshot = requestBuild.request().workflow();
         boolean contentChanged = forceRevision || !projection.contentFingerprint().equals(lastContentFingerprint);
         lastRefreshTiming = RefreshTiming.from(
                 authorityNanos,
@@ -335,18 +388,65 @@ final class ForgeWorkspaceSession {
             case SET_SEARCH_QUERY -> {
                 String query = WorkspaceSearchQuery.cleanInput(stringArg(args, 0));
                 if (query.equals(searchQuery)) {
-                    yield WorkspaceCommandOutcome.accepted("ready", diagnostics);
+                    yield WorkspaceCommandOutcome.accepted("ready", diagnostics)
+                            .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                                    WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                                    "search_query_unchanged")));
                 }
+                String previousQuery = searchQuery;
                 searchQuery = query;
-                yield WorkspaceCommandOutcome.accepted("search updated", searchQuery.isBlank() ? "" : "query=" + searchQuery);
+                yield WorkspaceCommandOutcome.accepted(
+                                "search updated",
+                                searchQuery.isBlank() ? "" : "query=" + searchQuery)
+                        .withInvalidations(List.of(searchQueryInvalidation(previousQuery, searchQuery)));
             }
             case SET_REMOTE_STORAGE_DETAIL -> {
                 RemoteStorageDetailIntent intent = RemoteStorageDetailIntent.parse(stringArg(args, 0));
                 if (intent == remoteStorageDetailIntent) {
-                    yield WorkspaceCommandOutcome.accepted("remote storage detail unchanged", intent.name());
+                    yield WorkspaceCommandOutcome.accepted("remote storage detail unchanged", intent.name())
+                            .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                                    WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                                    "remote_storage_detail_unchanged")));
                 }
                 remoteStorageDetailIntent = intent;
-                yield WorkspaceCommandOutcome.accepted("remote storage detail updated", intent.name());
+                yield WorkspaceCommandOutcome.accepted("remote storage detail updated", intent.name())
+                        .withInvalidations(List.of(new WorkspaceInvalidation(
+                                WorkspaceInvalidation.Reason.REMOTE_STORAGE_DETAIL_CHANGED,
+                                java.util.Set.of(),
+                                java.util.Set.of(),
+                                java.util.Set.of(),
+                                java.util.EnumSet.of(
+                                        WorkspaceProjectionSlice.CARD,
+                                        WorkspaceProjectionSlice.SECTION,
+                                        WorkspaceProjectionSlice.FRAME),
+                                false,
+                                "remote_detail_changed")));
+            }
+            case SET_RECIPE_INGREDIENT_FILTER -> {
+                Set<ItemIdentity> identities = RemoteDetailIdentityPayload.decode(stringArg(args, 0));
+                if (identities.equals(remoteRecipeIngredientIdentities)) {
+                    yield WorkspaceCommandOutcome.accepted("recipe ingredient filter unchanged", "")
+                            .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                                    WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                                    "recipe_ingredient_detail_unchanged")));
+                }
+                remoteRecipeIngredientIdentities = identities;
+                yield WorkspaceCommandOutcome.accepted(
+                                "recipe ingredient filter updated",
+                                identities.isEmpty() ? "" : "identities=" + identities.size())
+                        .withInvalidations(List.of(new WorkspaceInvalidation(
+                                WorkspaceInvalidation.Reason.REMOTE_STORAGE_DETAIL_CHANGED,
+                                identities,
+                                java.util.Set.of(),
+                                java.util.Set.of(),
+                                java.util.EnumSet.of(
+                                        WorkspaceProjectionSlice.CARD,
+                                        WorkspaceProjectionSlice.SECTION,
+                                        WorkspaceProjectionSlice.FRAME),
+                                true,
+                                identities.isEmpty()
+                                        ? "recipe_ingredient_detail_cleared"
+                                        : "recipe_ingredient_detail_changed")));
             }
             case DEPOSIT -> {
                 InventoryHostDescriptor host = resolveHost(player);
@@ -456,9 +556,7 @@ final class ForgeWorkspaceSession {
                     stringArg(args, 0),
                     stringArg(args, 1),
                     identityArg(args, 2));
-            case CRAFT_RUN_REMOVE_ENTRY -> runtime != null && runtime.craftRunWorkflow().remove(stringArg(args, 0))
-                    ? WorkspaceCommandOutcome.accepted("craft_run_removed", "")
-                    : WorkspaceCommandOutcome.rejected("craft_run_entry_not_found");
+            case CRAFT_RUN_REMOVE_ENTRY -> WorkspaceCraftRunCommandService.removeEntry(runtime, stringArg(args, 0));
             case DEPOSIT_HOME_TO_LINKED_CHEST -> WorkspaceChestCommandService.depositIdentityToLinkedChest(
                     player,
                     runtime,
@@ -650,10 +748,7 @@ final class ForgeWorkspaceSession {
                         stringArg(args, 1),
                         integerArg(args, 2));
             }
-            case SAVE_KIT -> {
-                refreshViewBeforeCommand(player);
-                yield saveBeltAsKit(player, stringArg(args, 0));
-            }
+            case SAVE_KIT -> saveBeltAsKit(player, stringArg(args, 0));
             case CREATE_WORKFLOW_TAB -> SlotWorkspaceCommandService.createWorkflowTab(
                     runtime,
                     stringArg(args, 0));
@@ -661,16 +756,10 @@ final class ForgeWorkspaceSession {
                     runtime,
                     stringArg(args, 0),
                     stringArg(args, 1));
-            case ACTIVATE_KIT -> {
-                refreshViewBeforeCommand(player);
-                yield activateKit(player, stringArg(args, 0));
-            }
+            case ACTIVATE_KIT -> activateKit(player, stringArg(args, 0));
             case DEACTIVATE_KIT -> SlotWorkspaceCommandService.deactivateKit(runtime);
             case DELETE_KIT -> SlotWorkspaceCommandService.deleteKit(runtime, stringArg(args, 0));
-            case SWITCH_KIT_PAGE -> {
-                refreshViewBeforeCommand(player);
-                yield switchKitPage(player, integerArg(args, 0));
-            }
+            case SWITCH_KIT_PAGE -> switchKitPage(player, integerArg(args, 0));
             case ADD_KIT_PAGE -> SlotWorkspaceCommandService.addKitPage(runtime, stringArg(args, 0));
             case REMOVE_KIT_PAGE -> SlotWorkspaceCommandService.removeKitPage(
                     runtime,
@@ -692,17 +781,14 @@ final class ForgeWorkspaceSession {
                     stringArg(args, 4),
                     stringArg(args, 5),
                     integerArg(args, 6) == null ? 0 : integerArg(args, 6));
-            case SET_KIT_SLOT_IDENTITY -> {
-                refreshViewBeforeCommand(player);
-                yield setKitSlotIdentity(
-                        player,
-                        stringArg(args, 0),
-                        integerArg(args, 1),
-                        integerArg(args, 2),
-                        stringArg(args, 3),
-                        stringArg(args, 4),
-                        stringArg(args, 5));
-            }
+            case SET_KIT_SLOT_IDENTITY -> setKitSlotIdentity(
+                    player,
+                    stringArg(args, 0),
+                    integerArg(args, 1),
+                    integerArg(args, 2),
+                    stringArg(args, 3),
+                    stringArg(args, 4),
+                    stringArg(args, 5));
             case RENAME_KIT -> SlotWorkspaceCommandService.renameKit(
                     runtime,
                     stringArg(args, 0),
@@ -768,18 +854,12 @@ final class ForgeWorkspaceSession {
                         identityArg(args, 0),
                         integerArg(args, 3));
             }
-            case MOVE_IDENTITY_TO_MAIN_INVENTORY -> {
-                refreshViewBeforeCommand(player);
-                yield moveIdentityToMainInventory(
-                        player,
-                        identityArg(args, 0));
-            }
-            case MOVE_IDENTITY_TO_BACKPACK -> {
-                refreshViewBeforeCommand(player);
-                yield moveIdentityToBackpack(
-                        player,
-                        identityArg(args, 0));
-            }
+            case MOVE_IDENTITY_TO_MAIN_INVENTORY -> moveIdentityToMainInventory(
+                    player,
+                    identityArg(args, 0));
+            case MOVE_IDENTITY_TO_BACKPACK -> moveIdentityToBackpack(
+                    player,
+                    identityArg(args, 0));
             case UNDO -> SlotWorkspaceCommandService.performUndo(runtime);
             case REDO -> SlotWorkspaceCommandService.performRedo(runtime);
             default -> WorkspaceCommandOutcome.rejected("forge_action_not_enabled:" + packet.action().wireId());
@@ -801,22 +881,37 @@ final class ForgeWorkspaceSession {
                 "slot_workspace.forge");
     }
 
-    private WorkspaceCommandOutcome adjustCraftRunEntry(String entryId, int delta) {
-        if (runtime == null) {
-            return WorkspaceCommandOutcome.rejected("runtime_unavailable");
+    private WorkspaceInvalidation searchQueryInvalidation(String previousQuery, String nextQuery) {
+        RemoteStorageDetailIntent previousIntent =
+                RemoteStorageDetailIntent.effective(remoteStorageDetailIntent, previousQuery);
+        RemoteStorageDetailIntent nextIntent =
+                RemoteStorageDetailIntent.effective(remoteStorageDetailIntent, nextQuery);
+        if (previousIntent == RemoteStorageDetailIntent.SEARCH || nextIntent == RemoteStorageDetailIntent.SEARCH) {
+            return new WorkspaceInvalidation(
+                    WorkspaceInvalidation.Reason.SEARCH_QUERY_CHANGED,
+                    java.util.Set.of(),
+                    java.util.Set.of(),
+                    java.util.Set.of(),
+                    java.util.EnumSet.of(
+                            WorkspaceProjectionSlice.CARD,
+                            WorkspaceProjectionSlice.SECTION,
+                            WorkspaceProjectionSlice.FRAME),
+                    false,
+                    WorkspaceSearchQuery.normalized(nextQuery).isBlank()
+                            ? "remote_search_query_cleared"
+                            : "remote_search_query_changed");
         }
-        return runtime.craftRunWorkflow().adjustRemainingOutput(entryId, delta)
-                ? WorkspaceCommandOutcome.accepted("craft_run_adjusted", "")
-                : WorkspaceCommandOutcome.rejected("craft_run_entry_not_found");
+        return WorkspaceInvalidation.frame(
+                WorkspaceInvalidation.Reason.SEARCH_QUERY_CHANGED,
+                "local_search_query_changed");
+    }
+
+    private WorkspaceCommandOutcome adjustCraftRunEntry(String entryId, int delta) {
+        return WorkspaceCraftRunCommandService.adjustEntry(runtime, entryId, delta);
     }
 
     private WorkspaceCommandOutcome selectCraftRunIngredient(String entryId, String groupId, ItemIdentity identity) {
-        if (runtime == null) {
-            return WorkspaceCommandOutcome.rejected("runtime_unavailable");
-        }
-        return runtime.craftRunWorkflow().selectIngredientAlternative(entryId, groupId, identity)
-                ? WorkspaceCommandOutcome.accepted("craft_run_ingredient_selected", "")
-                : WorkspaceCommandOutcome.rejected("craft_run_ingredient_not_found");
+        return WorkspaceCraftRunCommandService.selectIngredientAlternative(runtime, entryId, groupId, identity);
     }
 
     private ProjectionRequestBuild projectionRequest(
@@ -864,6 +959,7 @@ final class ForgeWorkspaceSession {
                 lootChestSource,
                 searchQuery,
                 remoteStorageDetailIntent,
+                remoteRecipeIngredientIdentities,
                 gameTime,
                 activeChestPanel,
                 displaySources,
@@ -881,24 +977,26 @@ final class ForgeWorkspaceSession {
                 System.nanoTime() - setupStart,
                 storageIndex.entries().size(),
                 trackedDisplayEntries.size(),
-                liveDepositStorageIds.size());
+                liveDepositStorageIds.size(),
+                storageContext.indexDiagnostics());
     }
 
-    private boolean storageProximityChanged(ServerPlayer player) {
+    private WorkspaceInvalidation storageProximityInvalidation(ServerPlayer player) {
         if (player == null || runtime == null) {
-            return false;
+            return null;
         }
         WorkflowDomainSnapshot snapshot = runtime.snapshot();
         ClaimedChestMap claimedChestMap = snapshot == null ? ClaimedChestMap.empty() : snapshot.claimedChestMap();
         Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
-        if (!proximate.equals(lastObservedProximateStorageIds)) {
-            return true;
-        }
         Set<String> contextual = WorkspaceChestProjectionSupport.proximateStorageIds(
                 player,
                 claimedChestMap,
                 WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
-        return !contextual.equals(lastObservedContextualStorageIds);
+        return WorkspaceProximityInvalidations.storageProximityChange(
+                lastObservedProximateStorageIds,
+                proximate,
+                lastObservedContextualStorageIds,
+                contextual);
     }
 
     private static Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> carriedContainerInfoResolver(
@@ -954,7 +1052,10 @@ final class ForgeWorkspaceSession {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
         if (delta == 0) {
-            return WorkspaceCommandOutcome.accepted("wanted unchanged", identity.itemId());
+            return WorkspaceCommandOutcome.accepted("wanted unchanged", identity.itemId())
+                    .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                            WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                            "wanted_count_delta_noop")));
         }
         InventoryHostDescriptor host = resolveHost(player);
         if (host == null) {
@@ -1037,7 +1138,9 @@ final class ForgeWorkspaceSession {
             return WorkspaceCommandOutcome.rejected("claim_failed");
         }
         seedClaimedChestContents(player, storageId);
-        return WorkspaceCommandOutcome.accepted("chest_claimed", storageId.toString());
+        return WorkspaceCommandOutcome.accepted("chest_claimed", storageId.toString())
+                .withInvalidations(List.of(SlotWorkspaceCommandService.localizedChestClaimInvalidation(
+                        storageId.toString())));
     }
 
     private WorkspaceCommandOutcome setChestRoleAtPos(
@@ -1072,7 +1175,10 @@ final class ForgeWorkspaceSession {
                         runtime.chestClaimWorkflow(), level, pos, anchor)
                 : existing.storageId();
         if (storageId == null) {
-            return WorkspaceCommandOutcome.accepted("chest_role_set", ChestRole.IGNORE.name());
+            return WorkspaceCommandOutcome.accepted("chest_role_set", ChestRole.IGNORE.name())
+                    .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                            WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                            "unclaimed_chest_ignore_noop")));
         }
         WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setChestRole(runtime, storageId, role);
         if (outcome.success() && role == ChestRole.STORAGE) {
@@ -1641,9 +1747,77 @@ final class ForgeWorkspaceSession {
         WorkspaceCommandOutcome resolved = outcome == null
                 ? WorkspaceCommandOutcome.rejected("null_command_outcome")
                 : outcome;
+        queueOutcomeInvalidations(resolved);
         status = resolved.status();
         diagnostics = resolved.diagnostics();
         return resolved;
+    }
+
+    WorkspaceCommandOutcome applyExternalOutcome(WorkspaceCommandOutcome outcome) {
+        return applyOutcome(outcome);
+    }
+
+    private void queueOutcomeInvalidations(WorkspaceCommandOutcome outcome) {
+        WorkspaceCommandOutcome resolved = outcome == null
+                ? WorkspaceCommandOutcome.rejected("null_command_outcome")
+                : outcome;
+        if (!resolved.invalidations().isEmpty()) {
+            pendingInvalidations.addAll(resolved.invalidations());
+            return;
+        }
+        if (!resolved.success()) {
+            queueInvalidation(WorkspaceInvalidation.frame(
+                    WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                    resolved.diagnostics()));
+            return;
+        }
+        queueInvalidation(WorkspaceInvalidation.full(
+                WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                resolved.status().isBlank() ? "command_outcome_not_localized" : resolved.status()));
+    }
+
+    private void queueInvalidation(WorkspaceInvalidation invalidation) {
+        if (invalidation != null) {
+            pendingInvalidations.add(invalidation);
+        }
+    }
+
+    private List<WorkspaceInvalidation> drainInvalidations() {
+        if (pendingInvalidations.isEmpty()) {
+            return List.of();
+        }
+        List<WorkspaceInvalidation> copy = List.copyOf(pendingInvalidations);
+        pendingInvalidations.clear();
+        return copy;
+    }
+
+    private List<WorkspaceInvalidation> prepareProjectionInvalidations(
+            List<WorkspaceInvalidation> invalidations,
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow
+    ) {
+        List<WorkspaceInvalidation> resolved = WorkspaceAuthorityInvalidations.localizeCarriedRevisionInvalidations(
+                lastProjectedAuthority,
+                authority,
+                invalidations);
+        return WorkspaceWorkflowInvalidations.localizeSequenceOnlyInvalidations(
+                lastProjectedWorkflowSnapshot,
+                workflow,
+                resolved);
+    }
+
+    private static WorkspaceInvalidation menuSlotInvalidation(ItemStack stack) {
+        ItemIdentity identity = stack == null || stack.isEmpty() ? null : ItemIdentityMatcher.create(stack);
+        return WorkspaceInvalidation.localizedIdentity(
+                WorkspaceInvalidation.Reason.MENU_SLOT_CHANGED,
+                identity,
+                java.util.EnumSet.of(
+                        WorkspaceProjectionSlice.CARD,
+                        WorkspaceProjectionSlice.SECTION,
+                        WorkspaceProjectionSlice.HOTBAR,
+                        WorkspaceProjectionSlice.WORKFLOW,
+                        WorkspaceProjectionSlice.FRAME),
+                "menu_slot_changed");
     }
 
     private static InventoryHostDescriptor resolveHost(ServerPlayer player) {
@@ -1731,7 +1905,8 @@ final class ForgeWorkspaceSession {
             long requestSetupNanos,
             int storageEntryCount,
             int trackedDisplayEntryCount,
-            int liveDepositStorageCount
+            int liveDepositStorageCount,
+            WorkspaceStorageIndexCache.Diagnostics storageIndexDiagnostics
     ) {
         ProjectionRequestBuild {
             request = request == null
@@ -1745,6 +1920,9 @@ final class ForgeWorkspaceSession {
             storageEntryCount = Math.max(0, storageEntryCount);
             trackedDisplayEntryCount = Math.max(0, trackedDisplayEntryCount);
             liveDepositStorageCount = Math.max(0, liveDepositStorageCount);
+            storageIndexDiagnostics = storageIndexDiagnostics == null
+                    ? WorkspaceStorageIndexCache.Diagnostics.empty()
+                    : storageIndexDiagnostics;
         }
     }
 
@@ -1762,6 +1940,10 @@ final class ForgeWorkspaceSession {
             int storageEntryCount,
             int trackedDisplayEntryCount,
             int liveDepositStorageCount,
+            int trackedPollCandidates,
+            int trackedPollChecked,
+            int trackedPollChanged,
+            int trackedPollFailed,
             boolean structuralCacheHit,
             long structuralHits,
             long structuralMisses,
@@ -1773,7 +1955,15 @@ final class ForgeWorkspaceSession {
             int memoNormalizeCacheSize,
             long memoCreateEvictions,
             long memoNormalizeEvictions,
-            WorkspaceProjectionTiming projectionTiming
+            WorkspaceProjectionTiming projectionTiming,
+            WorkspaceInvalidationSummary invalidations,
+            String fullProjectionReason,
+            long projectionFactsUpdated,
+            long projectionFactsReused,
+            WorkspaceCardProjectionStats cardProjectionStats,
+            WorkspaceStorageProjectionStats storageProjectionStats,
+            WorkspaceEdgeProjectionStats edgeProjectionStats,
+            WorkspaceProjectionSliceStats projectionSliceStats
     ) {
         RefreshTiming {
             authorityReadNanos = Math.max(0L, authorityReadNanos);
@@ -1787,16 +1977,45 @@ final class ForgeWorkspaceSession {
             storageEntryCount = Math.max(0, storageEntryCount);
             trackedDisplayEntryCount = Math.max(0, trackedDisplayEntryCount);
             liveDepositStorageCount = Math.max(0, liveDepositStorageCount);
+            trackedPollCandidates = Math.max(0, trackedPollCandidates);
+            trackedPollChecked = Math.max(0, trackedPollChecked);
+            trackedPollChanged = Math.max(0, trackedPollChanged);
+            trackedPollFailed = Math.max(0, trackedPollFailed);
             projectionTiming = projectionTiming == null ? WorkspaceProjectionTiming.empty() : projectionTiming;
+            invalidations = invalidations == null ? WorkspaceInvalidationSummary.empty() : invalidations;
+            fullProjectionReason = fullProjectionReason == null ? "" : fullProjectionReason;
+            projectionFactsUpdated = Math.max(0L, projectionFactsUpdated);
+            projectionFactsReused = Math.max(0L, projectionFactsReused);
+            cardProjectionStats = cardProjectionStats == null
+                    ? WorkspaceCardProjectionStats.empty()
+                    : cardProjectionStats;
+            storageProjectionStats = storageProjectionStats == null
+                    ? WorkspaceStorageProjectionStats.empty()
+                    : storageProjectionStats;
+            edgeProjectionStats = edgeProjectionStats == null
+                    ? WorkspaceEdgeProjectionStats.empty()
+                    : edgeProjectionStats;
+            projectionSliceStats = projectionSliceStats == null
+                    ? WorkspaceProjectionSliceStats.empty()
+                    : projectionSliceStats;
         }
 
         static RefreshTiming empty() {
             return new RefreshTiming(
                     0L, 0L, 0L, 0L, 0L, 0L,
                     false, false, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0,
                     false, 0L, 0L, 0L, 0L, 0L, 0L,
                     0, 0, 0L, 0L,
-                    WorkspaceProjectionTiming.empty());
+                    WorkspaceProjectionTiming.empty(),
+                    WorkspaceInvalidationSummary.empty(),
+                    "",
+                    0L,
+                    0L,
+                    WorkspaceCardProjectionStats.empty(),
+                    WorkspaceStorageProjectionStats.empty(),
+                    WorkspaceEdgeProjectionStats.empty(),
+                    WorkspaceProjectionSliceStats.empty());
         }
 
         static RefreshTiming from(
@@ -1816,6 +2035,9 @@ final class ForgeWorkspaceSession {
             ItemIdentityMatcher.MemoStats memo = diagnostics == null
                     ? ItemIdentityMatcher.MemoStats.empty()
                     : diagnostics.identityMemoStats();
+            WorkspaceStorageIndexCache.PollDiagnostics poll = requestBuild == null
+                    ? WorkspaceStorageIndexCache.PollDiagnostics.empty()
+                    : requestBuild.storageIndexDiagnostics().trackedStoragePoll();
             return new RefreshTiming(
                     authorityReadNanos,
                     requestSetupNanos,
@@ -1830,6 +2052,10 @@ final class ForgeWorkspaceSession {
                     requestBuild == null ? 0 : requestBuild.storageEntryCount(),
                     requestBuild == null ? 0 : requestBuild.trackedDisplayEntryCount(),
                     requestBuild == null ? 0 : requestBuild.liveDepositStorageCount(),
+                    poll.candidates(),
+                    poll.checked(),
+                    poll.changed(),
+                    poll.failed(),
                     diagnostics != null && diagnostics.structuralCacheHit(),
                     diagnostics == null ? 0L : diagnostics.structuralHits(),
                     diagnostics == null ? 0L : diagnostics.structuralMisses(),
@@ -1841,7 +2067,15 @@ final class ForgeWorkspaceSession {
                     memo.normalizeCacheSize(),
                     memo.createEvictions(),
                     memo.normalizeEvictions(),
-                    diagnostics == null ? WorkspaceProjectionTiming.empty() : diagnostics.timing());
+                    diagnostics == null ? WorkspaceProjectionTiming.empty() : diagnostics.timing(),
+                    diagnostics == null ? WorkspaceInvalidationSummary.empty() : diagnostics.invalidations(),
+                    diagnostics == null ? "" : diagnostics.fullProjectionReason(),
+                    diagnostics == null ? 0L : diagnostics.projectionFactsUpdated(),
+                    diagnostics == null ? 0L : diagnostics.projectionFactsReused(),
+                    diagnostics == null ? WorkspaceCardProjectionStats.empty() : diagnostics.cardProjectionStats(),
+                    diagnostics == null ? WorkspaceStorageProjectionStats.empty() : diagnostics.storageProjectionStats(),
+                    diagnostics == null ? WorkspaceEdgeProjectionStats.empty() : diagnostics.edgeProjectionStats(),
+                    diagnostics == null ? WorkspaceProjectionSliceStats.empty() : diagnostics.projectionSliceStats());
         }
 
         private static int carriedEntryCount(InventoryAuthoritySnapshot authority) {

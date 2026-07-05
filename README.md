@@ -40,13 +40,14 @@ In no particular order
 10. Auto-deposit -- press one button to deposit everything you're carrying into nearby chests but _only if it already lives there_ as a remembered home.
 11. Desired vs Wanted counts -- set a count of an item to always keep on hand, or a temporary count to show the chest finder for the item until you go pick it up
 12. Shortcuts
-    1.  Shift+rightclick to take/put a stack in a nearby storage (if item lives there)
-    2.  Shift+scroll to take/put one at a time nearby storage
-    3.  Leftclick - pickup to cursor, drop on a different section of the list to move it there
-    4.  ` (grave/tilde) - move hovered item from backpack to main inventory
-    5.  tab - move hovered item to hotbar, evicting least recently used item back to inventory
-    6.  ctrl+scroll - set desired (always carry) count on hovered item
-    7.  alt+scroll - set wanted count on hovered item (show as ghost in inventory with guidance to chest until you pick up that amount)
+    1.  Hovered card storage keybinds: `a`/`d` take/put a stack, `q`/`e` take/put one, `shift+a`/`shift+d` take/put all, `ctrl+a`/`ctrl+d` take/put five stacks. These are configurable in Controls.
+    2.  Shift+rightclick still does the older smart take/put against nearby storage (if item lives there)
+    3.  Shift+scroll to take/put one at a time nearby storage
+    4.  Leftclick - pickup to cursor, drop on a different section of the list to move it there
+    5.  ` (grave/tilde) - move hovered item from backpack to main inventory
+    6.  tab - move hovered item to hotbar, evicting least recently used item back to inventory
+    7.  ctrl+scroll - set desired (always carry) count on hovered item
+    8.  alt+scroll - set wanted count on hovered item (show as ghost in inventory with guidance to chest until you pick up that amount)
 13. Workflows and loadouts (rough/wip) -- define different sets of items so you can easily swap between different tasks that require different tools and equipment
 14. Recents list -- shows the last 24 item types you picked up or put down
 15. Trash items -- instantly delete all of a particular item type you're carrying (good for junk)
@@ -148,12 +149,8 @@ Plans:
   — late-game storage-heavy performance implementation plan and pending
   TerraFirmaGreg profile checklist for projection timing, identity reuse,
   wayfinding/storage indexing, remote ghost gating, and sliced view-model sends.
-- [docs/plans/workspace-incremental-projection.md](docs/plans/workspace-incremental-projection.md)
-  — follow-up plan for replacing whole-model workspace refreshes with typed
-  invalidations, projection slices, local identity/storage facts, and delta
-  view sends.
 - [docs/plans/done/](docs/plans/done/) — shipped plans preserved as
-  design refs. Currently: `atlas-prototype`, `atlas-navigation`,
+  design refs. Currently: `workspace-incremental-projection`, `atlas-prototype`, `atlas-navigation`,
   `atlas-nudge-layout`, `core-workflow-ux`, `cursor-pickup`,
   `facet-driven-suggestions`, `list-view`, `list-view-phase-3a`,
   `storage-panel`, `wayfinding`. Add new entries here when a plan

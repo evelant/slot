@@ -242,12 +242,31 @@ public final class WorkspaceStorageMemoryStore {
             long tick,
             String source
     ) {
-        if (store == null || server == null || worldStorage == null || ref == null || target == null) {
+        return observeLiveTarget(store, server, worldStorage, ref, target, tick, source, true);
+    }
+
+    static boolean observeLiveTarget(
+            WorkspaceStorageMemoryStore store,
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            StorageTargetRef ref,
+            WorldStorageAccess.Target target,
+            long tick,
+            String source,
+            boolean persist
+    ) {
+        if (store == null || worldStorage == null || ref == null || target == null) {
             return false;
         }
         int slots = Math.max(0, worldStorage.slotCount(server, target));
         List<WorldStorageAccess.SlotContent> contents = worldStorage.enumerate(server, target);
-        return store.observe(ref, slots, contents, tick, source);
+        RememberedStorageContents remembered = RememberedStorageContents.fromContents(
+                ref,
+                slots,
+                contents,
+                tick,
+                source);
+        return store.observe(remembered, persist);
     }
 
     private void ensureLoaded() {

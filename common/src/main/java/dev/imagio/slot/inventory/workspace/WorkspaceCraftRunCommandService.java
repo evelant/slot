@@ -20,17 +20,100 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.workflow.domain.CraftRunAlternative;
 import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
+import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import dev.imagio.slot.workflow.domain.CraftRunRecipeEntry;
+import dev.imagio.slot.workflow.domain.CraftRunState;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.EnumSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
 
 public final class WorkspaceCraftRunCommandService {
     private WorkspaceCraftRunCommandService() {
+    }
+
+    public static WorkspaceCommandOutcome addRecipe(
+            WorkflowDomainRuntime runtime,
+            CraftRunRecipeCapture capture
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("runtime_unavailable");
+        }
+        CraftRunState before = runtime.snapshot().craftRun();
+        boolean changed = runtime.craftRunWorkflow().add(capture);
+        if (!changed) {
+            return WorkspaceCommandOutcome.rejected("craft_run_recipe_not_found");
+        }
+        return withCraftRunInvalidation(
+                WorkspaceCommandOutcome.accepted("craft_run_added", ""),
+                before,
+                runtime.snapshot().craftRun(),
+                "craft_run_recipe_add");
+    }
+
+    public static WorkspaceCommandOutcome adjustEntry(
+            WorkflowDomainRuntime runtime,
+            String entryId,
+            int delta
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("runtime_unavailable");
+        }
+        CraftRunState before = runtime.snapshot().craftRun();
+        boolean changed = runtime.craftRunWorkflow().adjustRemainingOutput(entryId, delta);
+        if (!changed) {
+            return WorkspaceCommandOutcome.rejected("craft_run_entry_not_found");
+        }
+        return withCraftRunInvalidation(
+                WorkspaceCommandOutcome.accepted("craft_run_adjusted", ""),
+                before,
+                runtime.snapshot().craftRun(),
+                "craft_run_entry_adjust");
+    }
+
+    public static WorkspaceCommandOutcome selectIngredientAlternative(
+            WorkflowDomainRuntime runtime,
+            String entryId,
+            String groupId,
+            ItemIdentity identity
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("runtime_unavailable");
+        }
+        CraftRunState before = runtime.snapshot().craftRun();
+        boolean changed = runtime.craftRunWorkflow().selectIngredientAlternative(entryId, groupId, identity);
+        if (!changed) {
+            return WorkspaceCommandOutcome.rejected("craft_run_ingredient_not_found");
+        }
+        return withCraftRunInvalidation(
+                WorkspaceCommandOutcome.accepted("craft_run_ingredient_selected", ""),
+                before,
+                runtime.snapshot().craftRun(),
+                "craft_run_ingredient_select");
+    }
+
+    public static WorkspaceCommandOutcome removeEntry(
+            WorkflowDomainRuntime runtime,
+            String entryId
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("runtime_unavailable");
+        }
+        CraftRunState before = runtime.snapshot().craftRun();
+        boolean changed = runtime.craftRunWorkflow().remove(entryId);
+        if (!changed) {
+            return WorkspaceCommandOutcome.rejected("craft_run_entry_not_found");
+        }
+        return withCraftRunInvalidation(
+                WorkspaceCommandOutcome.accepted("craft_run_removed", ""),
+                before,
+                runtime.snapshot().craftRun(),
+                "craft_run_entry_remove");
     }
 
     public static WorkspaceCommandOutcome stageEntry(
@@ -219,6 +302,71 @@ public final class WorkspaceCraftRunCommandService {
 
     private static String origin(String prefix, String suffix) {
         return (prefix == null || prefix.isBlank() ? "slot_workspace.common" : prefix) + "." + suffix;
+    }
+
+    private static WorkspaceCommandOutcome withCraftRunInvalidation(
+            WorkspaceCommandOutcome outcome,
+            CraftRunState before,
+            CraftRunState after,
+            String diagnostics
+    ) {
+        WorkspaceCommandOutcome resolved = outcome == null
+                ? WorkspaceCommandOutcome.rejected("null_craft_run_outcome")
+                : outcome;
+        if (!resolved.success()) {
+            return resolved;
+        }
+        Set<ItemIdentity> identities = craftRunIdentities(before, after);
+        if (identities.isEmpty()) {
+            return resolved.withInvalidations(List.of(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                    "craft_run_changed_without_affected_identities")));
+        }
+        return resolved.withInvalidations(List.of(new WorkspaceInvalidation(
+                WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                identities,
+                Set.of(),
+                Set.of(),
+                EnumSet.of(
+                        WorkspaceProjectionSlice.CARD,
+                        WorkspaceProjectionSlice.SECTION,
+                        WorkspaceProjectionSlice.WORKFLOW,
+                        WorkspaceProjectionSlice.CONTEXTUAL,
+                        WorkspaceProjectionSlice.WAYFINDING,
+                        WorkspaceProjectionSlice.FRAME),
+                false,
+                diagnostics)));
+    }
+
+    private static Set<ItemIdentity> craftRunIdentities(CraftRunState before, CraftRunState after) {
+        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        addCraftRunIdentities(identities, before);
+        addCraftRunIdentities(identities, after);
+        return identities.isEmpty() ? Set.of() : Set.copyOf(identities);
+    }
+
+    private static void addCraftRunIdentities(Set<ItemIdentity> identities, CraftRunState state) {
+        if (identities == null || state == null || state.entries().isEmpty()) {
+            return;
+        }
+        for (CraftRunRecipeEntry entry : state.entries()) {
+            if (entry == null) {
+                continue;
+            }
+            if (entry.outputIdentity() != null) {
+                identities.add(entry.outputIdentity());
+            }
+            for (CraftRunIngredientGroup group : entry.inputs()) {
+                if (group == null) {
+                    continue;
+                }
+                for (CraftRunAlternative alternative : group.alternatives()) {
+                    if (alternative != null && alternative.identity() != null) {
+                        identities.add(alternative.identity());
+                    }
+                }
+            }
+        }
     }
 
     private record StageNeed(Set<ItemIdentity> identities, int deficit) {

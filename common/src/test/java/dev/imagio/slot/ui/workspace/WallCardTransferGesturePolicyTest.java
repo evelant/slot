@@ -11,13 +11,23 @@ import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.CURSOR_CANCEL_THEN_PICKUP_TO_CURSOR;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.ADJUST_PLAYER_DESIRED_COUNT;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.CROSS_SURFACE_QUICK_MOVE;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.DEPOSIT_ONE_HOME_TO_LINKED_CHEST;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.DEPOSIT_HOME_TO_LINKED_CHEST;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.PICKUP_TO_CURSOR;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.STATUS;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_ONE_BY_IDENTITY;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_ITEMS_BY_IDENTITY;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_STACK_BY_IDENTITY;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.KeyboardShortcut.PUT_ALL;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.KeyboardShortcut.PUT_FIVE_STACKS;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.KeyboardShortcut.PUT_ONE;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.KeyboardShortcut.PUT_STACK;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.KeyboardShortcut.TAKE_ALL;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.KeyboardShortcut.TAKE_FIVE_STACKS;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.KeyboardShortcut.TAKE_ONE;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.KeyboardShortcut.TAKE_STACK;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WallCardTransferGesturePolicyTest {
@@ -288,6 +298,103 @@ class WallCardTransferGesturePolicyTest {
 
         assertEquals(ADJUST_PLAYER_DESIRED_COUNT, decision.action());
         assertEquals(-4, decision.count());
+    }
+
+    @Test
+    void takeOneShortcutTakesOneFromNearbyStorage() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(ghostItem(), 0, false, false, null, false),
+                TAKE_ONE);
+
+        assertEquals(TAKE_ONE_BY_IDENTITY, decision.action());
+    }
+
+    @Test
+    void takeStackShortcutTakesOneSourceStackFromNearbyStorage() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(ghostItem(), 0, false, false, null, false),
+                TAKE_STACK);
+
+        assertEquals(TAKE_STACK_BY_IDENTITY, decision.action());
+    }
+
+    @Test
+    void takeAllShortcutRequestsAllMatchingNearbyStorage() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(ghostItem(), 0, false, false, null, false),
+                TAKE_ALL);
+
+        assertEquals(TAKE_ITEMS_BY_IDENTITY, decision.action());
+        assertEquals(WallCardTransferGesturePolicy.TRANSFER_ALL_REQUEST_COUNT, decision.count());
+    }
+
+    @Test
+    void takeFiveStacksShortcutRequestsFiveMaxStacks() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(ghostItem(), 0, false, false, null, false),
+                TAKE_FIVE_STACKS);
+
+        assertEquals(TAKE_ITEMS_BY_IDENTITY, decision.action());
+        assertEquals(320, decision.count());
+    }
+
+    @Test
+    void putOneShortcutDepositsOneCarriedItem() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(carriedItem(), 0, false, false, null, false),
+                PUT_ONE);
+
+        assertEquals(DEPOSIT_ONE_HOME_TO_LINKED_CHEST, decision.action());
+    }
+
+    @Test
+    void putStackShortcutDepositsOneMaxStackCount() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(carriedItem(), 0, false, false, null, false),
+                PUT_STACK);
+
+        assertEquals(DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, decision.action());
+        assertEquals(64, decision.count());
+    }
+
+    @Test
+    void putAllShortcutRequestsAllCarriedMatchingItems() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(carriedItem(), 0, false, false, null, false),
+                PUT_ALL);
+
+        assertEquals(DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, decision.action());
+        assertEquals(WallCardTransferGesturePolicy.TRANSFER_ALL_REQUEST_COUNT, decision.count());
+    }
+
+    @Test
+    void putFiveStacksShortcutRequestsFiveMaxStacks() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(carriedItem(), 0, false, false, null, false),
+                PUT_FIVE_STACKS);
+
+        assertEquals(DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST, decision.action());
+        assertEquals(320, decision.count());
+    }
+
+    @Test
+    void putShortcutRequiresCarriedItem() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(ghostItem(), 0, false, false, null, false),
+                PUT_STACK);
+
+        assertEquals(STATUS, decision.action());
+        assertEquals("Stone not carried", decision.status());
+    }
+
+    @Test
+    void keyboardShortcutFailsClosedWhileCursorIsCarrying() {
+        var decision = WallCardTransferGesturePolicy.keyboardShortcut(
+                context(carriedItem(), 0, false, false, carriedItem().identity(), true),
+                TAKE_STACK);
+
+        assertEquals(STATUS, decision.action());
+        assertEquals("return cursor first", decision.status());
     }
 
     private static WallCardTransferGesturePolicy.Context context(

@@ -1,8 +1,106 @@
 # Incremental Workspace Projection Plan
 
-Last updated: 2026-07-01
+> Closed 2026-07-02. Shipped incremental projection infrastructure through the
+> Slice 9 common event matrix: typed invalidations, localized fact-store
+> updates, rendered local card/chip/edge/workflow/panel branches, full-oracle
+> parity coverage, and Forge/NeoForge dirty-check integration. Dropped from
+> this plan: complex put-away routing beyond the guarded simple
+> claimed/deposit-eligible/live-observed/display-storage cases, complex craft-run
+> pressure outside the guarded simple cases, richer wayfinding, and manual
+> TerraFirmaGreg profiling; spin fresh plans if playtest signal justifies them,
+> and do not reopen this one.
 
-Status: proposed follow-up to [workspace-performance.md](workspace-performance.md).
+Last updated: 2026-07-02
+
+Status: implemented 2026-07-02. Slices 0-8 are
+landed: common typed invalidations, invalidation/fallback diagnostics, a
+full-oracle parity harness, a common `WorkspaceProjectionStore` that
+materializes source-entry, carried-identity, storage-meta, storage-contents,
+storage-presence, and simple player target facts, and a projection-slice cache
+that composes the existing compatibility view model from reusable frame / wall /
+storage / hotbar / workflow / panel / contextual slices before encoding. Slice 4 adds
+an identity-keyed card projection cache with full-card fingerprints, reused /
+rebuilt / removed card diagnostics, and parity tests for one-identity card
+changes. Slice 5 adds storage-keyed chip reuse with full-chip fingerprints,
+storage chip reuse diagnostics, and tests for one-storage changes/removals.
+Slice 6 adds storage-id keyed wayfinding-target reuse plus depositability-set
+fingerprint reuse, edge diagnostics, and focused edge projector tests. Slice 7
+adds a revisioned full/delta view-transfer envelope on both loaders, client
+merge/gap handling, and focused transfer tests. Slice 8 adds budgeted common
+polling for non-proximate tracked storage, updates remembered contents before
+index composition, and reports poll candidates/checked/changed/failure counts
+in refresh diagnostics. Slice 9 has started with two hot-path reductions:
+normal remembered/typed search is client-local unless remote detail is
+explicitly in `SEARCH` mode, and authority-only workflow/hotbar commands no
+longer force a pre-command projection before their post-command broadcast.
+Cursor-only structural churn now applies a common hotbar/frame invalidation and
+matches a fresh full oracle without running the monolithic projector.
+Localized identity/storage store mutation now updates only affected source-entry,
+carried-identity, storage-meta, storage-contents, and storage-presence facts.
+The first rendered-slice branches handle carried identity count, acquire, and
+removal invalidations plus common visual-home drop invalidations in empty
+or visual-home-only workflows, simple storage-chip change/removal invalidations,
+simple player desired/wanted target changes for carried cards and target ghosts
+plus the Fetch contextual lane, and simple mixed
+identity+storage invalidations from those facts without running the monolithic
+projector. The storage-only branch can run with unchanged simple carried cards
+already on the wall; mixed identity+storage can update the affected card and
+chip together, and identity-only carried changes can update the affected card
+while preserving unchanged simple storage chips. Non-proximate tracked storage now updates desired/wanted target
+ghosts, elsewhere presence, and acquisition wayfinding from localized facts.
+Homed `TRACKED_XRAY` remote-only ghosts, identity-only xray card repaints, and
+unhomed xray no-card storage updates also localize against unchanged remote storage facts.
+Homed remote-search tracked-display ghosts now localize against the request's
+tracked detail list.
+Simple carried junk tag flips localize as card chrome when no junk ghost or
+active workflow pressure is involved.
+Simple craft-run wanted/no-pressure updates now localize for visual-home-only workflows,
+including common craft-run command invalidations for recipe add, adjust,
+ingredient selection, and remove; carried alternatives choose pressure, unresolved
+alternatives without carried evidence stay pressure-free, and when a simple proximate claimed storage
+already holds the ingredient, including a selected alternative, the same
+invalidations localize the storage ghost, Fetch lane, and KIT-scoped wayfinding
+from cached facts.
+Simple active-workflow activation/deactivation localizes metadata-only
+workflow/kit management, kit-needed target cards,
+scoped desired/wanted/member target pressure, exact accepted-input chrome
+including target pressure, accepted-tag substitute chrome from explicit carried
+or proximate storage stack-tag evidence, Fetch lane, kit-card active state,
+simple carried acquire/removal while the workflow stays active including
+proximate claimed-storage KIT wayfinding updates, and
+un-routed plus simple claimed-storage, affinity-backed deposit-eligible
+claimed-storage, live-observed claimed-storage, and remote tracked-display
+routed activation put-away cards/lanes/`PUT_AWAY` wayfinding
+when complex put-away routes beyond the simple claimed/deposit-eligible/live-observed/display-storage
+guards are not involved. If the active
+workflow target is already present in simple proximate claimed storage, the same
+path localizes the storage-backed ghost card, Fetch lane, and KIT-scoped
+acquisition wayfinding from cached facts.
+Proximate display and claimed-chest storage now update desired/wanted target
+ghosts, nearby presence, acquisition wayfinding, and simple claimed-chest
+depositability from localized facts. Simple proximate storage take has explicit
+oracle coverage for affected card, chip, and wayfinding updates. Simple carried-container count/free/capacity
+chrome localizes when the carried identity is invalidated. Explicit
+active-chest panel slice invalidations localize as panel-only updates. Forge and
+NeoForge carried-revision dirty checks now compare the previous and current
+authority snapshots before projection; bounded carried acquire/remove/count/swap
+diffs become common identity-local or frame-only invalidations, and Forge's menu
+slot listener now emits a localized companion hint instead of forcing full
+projection. Missing previous authority, missing source snapshots, source-shape
+drift, or identity resolution failure preserves the full invalidation. These paths fail closed if
+carried authority is underspecified or if complex put-away routing beyond the simple claimed/deposit-eligible/live-observed/display-storage guards, complex craft-run cases outside the simple wanted/no-pressure/proximate-claimed-storage guard, or wayfinding outside the simple acquisition/KIT cases are involved. The
+Forge and NeoForge storage-proximity dirty checks now emit non-full
+storage-local invalidations for the changed proximate/contextual storage ids,
+letting the existing simple storage-presence branch handle claimed-chest
+enter/leave when its guards pass while unsupported contextual or complex request
+shapes still fall back through the oracle. Workflow-sequence dirty checks also
+downgrade to frame-only when the previous/current workflow projection inputs are
+unchanged apart from sequence bookkeeping. Remote-detail changes now localize
+simple tracked-display search enter/clear/leave by removing old remote-only
+ghosts and adding only current `SEARCH` matches. Complex put-away routing beyond
+the simple claimed/deposit-eligible/live-observed/display-storage guards,
+broader complex craft-run pressure, richer wayfinding, and richer remote-detail
+request shapes intentionally remain fail-closed follow-up scope.
 The first performance pass added timing, per-refresh identity reuse, storage
 index caching, remote-detail gating, and encoded-slice reuse. This plan goes
 one layer deeper: make projection itself incremental so ordinary inventory
@@ -34,7 +132,7 @@ fallback, but normal refreshes become local invalidations plus small deltas.
 - Preserve the exact authority/mutation contract: cached projection facts never
   authorize mutation.
 - Preserve the identity correctness contract from
-  [workspace-performance.md](workspace-performance.md): exact stack data
+  [workspace-performance.md](../workspace-performance.md): exact stack data
   fingerprints for invalidation, movable identity for grouping, and special
   handling for charge/fluid/container semantics.
 - Keep Forge and NeoForge behavior equivalent by putting projection facts and
@@ -63,9 +161,10 @@ fallback, but normal refreshes become local invalidations plus small deltas.
 - `WorkspaceStorageIndexCache` is already layered by remembered storage, live
   display snapshots, proximate snapshots, and deposit overlays. The final view
   above it is still whole-model.
-- Forge currently has broad dirty signals (`markDirty`, carried revision,
-  workflow sequence, proximity change) instead of typed invalidations with
-  affected identities/storages.
+- Forge and NeoForge still have broad dirty signals (`markDirty`, workflow
+  sequence; carried revision and storage proximity now fall back full only when
+  diffing or localized projection is unbounded) instead of typed invalidations
+  for every ordinary refresh.
 - Some changes are known exactly from SLOT commands. Others, especially pipes
   or machines inserting into tracked storage, need storage fingerprint polling
   or adapter-specific event hooks.
@@ -479,6 +578,72 @@ refreshes.
 - Remove redundant pre-command projections that only exist to refresh a view
   before a mutation.
 
+Current blocker before landing: `WorkspaceProjectionStore` can now localize
+identity and storage fact updates, and the session cache retains that store
+across refreshes. Search typing no longer changes the structural key or sends a
+server RPC in normal collapsed/intent-only modes, and commands that read live
+authority without consuming the visual view no longer force a pre-command
+projection. NeoForge cursor-only refreshes now take the hotbar/frame localized
+branch, Forge and NeoForge carried-revision dirty checks now localize bounded
+authority diffs to affected identities, Forge menu-slot listener dirtiness no
+longer forces full projection by itself, storage-proximity dirty checks now
+emit storage-local changed-id invalidations, sequence-only workflow dirty checks
+become frame-only, simple remote-detail search enter/clear/leave localizes,
+carried identity count/acquire/removal invalidations and common visual-home
+drop invalidations in empty or visual-home-only workflows can
+project matching rendered cards from store facts, simple player desired/wanted
+target changes can update affected carried cards, target ghosts, and the Fetch
+contextual lane, simple storage-chip change/removal invalidations can project
+matching rendered chips from store facts even with unchanged simple carried
+cards present, and simple mixed identity+storage invalidations can update the
+affected card and chip together. Identity-only carried changes can also update
+the affected card while preserving unchanged simple storage chips. Non-proximate tracked storage can now update
+desired/wanted target ghosts, elsewhere presence, and acquisition wayfinding
+from localized facts; proximate display and claimed-chest storage can now update
+desired/wanted target ghosts, nearby presence, acquisition wayfinding, and simple
+claimed-chest depositability from localized facts;
+storage-only claimed-chest proximity enter/leave and simple proximate storage
+deposit/take/cursor command-record invalidations can now update affected presence cards,
+storage chips, and wayfinding from cached storage facts;
+homed `TRACKED_XRAY` remote-only ghosts, identity-only xray card repaints, and
+unhomed xray no-card storage updates also localize against unchanged remote storage facts;
+homed remote-search tracked-display ghosts localize against the request-scoped
+tracked detail list;
+common junk-tag/direct-trash/belt/cursor commands now emit identity-local invalidations,
+and simple carried junk/direct-trash/belt/cursor moves localize as card chrome;
+simple craft-run wanted/no-pressure updates in visual-home-only workflows localize from
+common craft-run command invalidations, including carried alternatives,
+pressure-free unresolved alternatives, and proximate claimed-storage
+craft-run ghosts/wayfinding when the ingredient, including a selected
+alternative, is already cached there;
+simple active-workflow activation/deactivation localizes metadata-only workflow/kit management and identity target cards,
+scoped desired/wanted/member target pressure, exact accepted-input chrome
+including target pressure, accepted-tag substitute chrome from explicit stack-tag
+evidence, the Fetch lane, kit-card active state, simple carried acquire/removal
+while the workflow stays active including proximate claimed-storage KIT wayfinding
+updates, un-routed plus simple
+claimed-storage, affinity-backed deposit-eligible claimed-storage,
+live-observed claimed-storage, and remote tracked-display routed activation put-away
+cards/lanes/`PUT_AWAY` wayfinding,
+active-workflow storage-only route changes, and proximate claimed-storage KIT wayfinding from common workflow invalidations;
+simple claimed-chest claim and `Ignore`/`Buffer` role changes localize storage
+addition/removal or quick-store eligibility cleanup from storage-keyed invalidations;
+chest relabel commands emit storage-local chip invalidations, cluster relabel
+commands refresh storage cluster descriptors from localized projection,
+affinity-forget clears storage chip affinity/depositability chrome, and island
+create/delete/label/color/icon/position/reorder commands refresh section descriptors
+from localized projection; chest move commands are frame-only because current wall
+chips do not render persisted atlas coordinates;
+simple carried-container count/free/capacity chrome localizes when the carried
+identity is invalidated;
+explicit active-chest panel slice invalidations localize as panel-only updates. Those
+paths are authority-guarded and do not localize complex put-away routing beyond the simple claimed/deposit-eligible/live-observed/display-storage guards, complex craft-run cases outside the simple wanted/no-pressure/proximate-claimed-storage guard, or wayfinding outside the simple acquisition/KIT cases. Do not bypass
+`SlotWorkspaceViewModel.project(...)` for workflow structural misses or richer
+identity/storage/home changes until rendered card, storage, home, and workflow
+slices are projected from localized facts and parity-check against the oracle;
+several commands still need a fresh server-side view as input and then a
+post-mutation broadcast.
+
 Exit criteria:
 
 - Normal gameplay profile no longer shows `SlotWorkspaceViewModel.project(...)`
@@ -495,16 +660,18 @@ coverage.
 | Pick up new carried item | identity card, section, recents, targets |
 | Consume/drop carried item | identity card, section, targets, possible ghost |
 | Move stack from carried to proximate storage | identity card, storage chip, presence edge, section count |
-| Take stack from proximate storage | identity card, storage chip, presence edge, wayfinding |
+| Take stack from proximate storage | identity card, storage chip, presence edge, wayfinding (simple claimed-chest path localized) |
 | Pipe inserts into tracked storage | storage chip, changed identities, remote/search index |
-| Assign/reorder home | changed identity and old/new sections |
-| Change chest role to `Ignore` | storage removed, affected identity presence/cards updated |
-| Change chest role to `Buffer` | storage visible/searchable, no quick-store eligibility |
-| Activate workflow | target facts for active workflow identities, workflow slice |
-| Add/remove craft-run recipe | craft-run slice, target facts for recipe ingredients |
+| Assign/reorder home | changed identity and old/new sections from common home-drop invalidation; island create/delete/label/color/position/reorder updates section descriptors |
+| Claim chest / change role to `Ignore` | storage added/removed, affected identity presence/cards updated (simple claimed-chest path localized) |
+| Change chest role to `Buffer` | storage visible/searchable, no quick-store eligibility (simple claimed-chest path localized) |
+| Rename/move chest metadata | chest relabel updates the storage chip; cluster relabel updates cluster descriptors; affinity-forget clears chip/depositability chrome; move is frame-only until rendered coordinates return |
+| Activate workflow | target facts for active workflow identities, metadata-only workflow/kit management, scoped desired/wanted/member/accepted input pressure with explicit stack-tag evidence, workflow slice, simple Put Away cards/lanes, and proximate claimed-storage KIT/`PUT_AWAY` wayfinding including affinity-backed deposit-eligible claimed storage |
+| Mark/unmark junk or direct-trash carried junk | identity card, section, and workflow chrome from common command invalidation |
+| Add/remove craft-run recipe | craft-run slice, target facts for recipe ingredients (simple visual-home wanted pressure localized; richer cases full) |
 | Search local carried item | client filter only; no server full projection |
-| Search remote tracked item | remote detail slice plus matching cards |
-| Proximity enter/leave storage | that storage plus identities present there |
+| Search remote tracked item | request-scoped remote detail slice plus homed matching cards |
+| Proximity enter/leave storage | that storage plus identities present there (simple claimed-chest storage-only path localized) |
 | Water flask / fluid container identity | filled contents remain distinct where semantic |
 | GregTech battery charge churn | charge-only changes do not create new movable card identity |
 | Provider-backed backpack source | source ids match live mutation authority |
@@ -534,6 +701,9 @@ Focused tests:
 
 ```bash
 ./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.WorkspaceProjectionSessionCacheTest
+./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.WorkspaceAuthorityInvalidationsTest
+./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.WorkspaceProximityInvalidationsTest
+./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.WorkspaceWorkflowInvalidationsTest
 ./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.WorkspaceStorageIndexTest
 ./gradlew :common:test --tests dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModelDepositTest
 ./gradlew :common:test --tests dev.imagio.slot.inventory.core.ItemIdentityTest

@@ -10,10 +10,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RecipeIngredientSidebarSpecTest {
@@ -78,6 +80,39 @@ class RecipeIngredientSidebarSpecTest {
         assertNotNull(projection.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(OAK)));
         assertNull(projection.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(SPRUCE)));
         assertEquals(1, projection.atlasItems().size());
+    }
+
+    @Test
+    void storedOnlyIngredientCountsAsPresentWhenProjectionIncludesElsewhereCard() {
+        RecipeIngredientSidebarSpec.Projection projection = spec(List.of(ingredient(
+                "brick",
+                "Brick",
+                4,
+                alternative(BRICK, "Brick", 4)))).project(storedOnlySourceView());
+
+        SlotWorkspaceViewModel.AtlasItem brick = projection.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(BRICK));
+        assertNotNull(brick);
+        assertEquals(BUILDING, brick.islandId());
+        assertEquals(4, brick.totalCount());
+        assertEquals(4, brick.desiredCount());
+        assertTrue(brick.ghost());
+        assertFalse(brick.carried());
+        assertEquals(1, brick.elsewhere().size());
+        assertEquals(4, projection.ingredient(brick).requiredCount());
+    }
+
+    @Test
+    void remoteDetailIdentitiesListsVisibleRecipeAlternatives() {
+        RecipeIngredientSidebarSpec spec = spec(List.of(ingredient(
+                "planks",
+                "Planks",
+                1,
+                alternative(SPRUCE, "Spruce Planks", 1),
+                alternative(OAK, "Oak Planks", 1))));
+
+        assertEquals(Set.of(OAK, SPRUCE), spec.remoteDetailIdentities());
+        assertFalse(spec.remoteDetailIdentityPayload().isBlank());
+        assertEquals(Set.of(), RecipeIngredientSidebarSpec.empty().remoteDetailIdentities());
     }
 
     @Test
@@ -167,6 +202,35 @@ class RecipeIngredientSidebarSpecTest {
                 true,
                 true,
                 List.of())));
+    }
+
+    private static SlotWorkspaceViewModel storedOnlySourceView() {
+        return sourceView(List.of(new SlotWorkspaceViewModel.AtlasItem(
+                SlotWorkspaceViewModel.IdentityRef.from(BRICK),
+                new ItemStack("minecraft:brick", 4, 64),
+                "Brick",
+                4,
+                0,
+                BUILDING,
+                false,
+                false,
+                false,
+                true,
+                0,
+                List.of(),
+                List.of(),
+                List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("remote-a", "Remote Storage", 4)),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                0,
+                false,
+                "",
+                -1,
+                0)));
     }
 
     private static SlotWorkspaceViewModel sourceView(List<SlotWorkspaceViewModel.AtlasItem> items) {

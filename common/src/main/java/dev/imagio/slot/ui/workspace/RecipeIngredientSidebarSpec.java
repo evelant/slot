@@ -1,6 +1,8 @@
 package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityCollections;
+import dev.imagio.slot.inventory.workspace.RemoteDetailIdentityPayload;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
@@ -9,9 +11,11 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Transient recipe-ingredient view for sidebar mode. It is deliberately not a
@@ -46,6 +50,28 @@ public record RecipeIngredientSidebarSpec(
         }
         ProjectionBuilder builder = new ProjectionBuilder(source, this);
         return builder.build();
+    }
+
+    public Set<ItemIdentity> remoteDetailIdentities() {
+        if (!active()) {
+            return Set.of();
+        }
+        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        for (Ingredient ingredient : ingredients) {
+            if (ingredient == null) {
+                continue;
+            }
+            for (Alternative alternative : ingredient.alternatives()) {
+                if (alternative != null) {
+                    ItemIdentityCollections.add(identities, alternative.identity());
+                }
+            }
+        }
+        return identities.isEmpty() ? Set.of() : Collections.unmodifiableSet(identities);
+    }
+
+    public String remoteDetailIdentityPayload() {
+        return RemoteDetailIdentityPayload.encode(remoteDetailIdentities());
     }
 
     public record Ingredient(

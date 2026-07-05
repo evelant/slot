@@ -33,6 +33,7 @@ import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
+import dev.imagio.slot.inventory.workspace.RemoteDetailIdentityPayload;
 import dev.imagio.slot.inventory.workspace.RemoteStorageDetailIntent;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
@@ -45,16 +46,21 @@ import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import dev.imagio.slot.inventory.workspace.WorkspaceCraftRunCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceCursorCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceHotbarSlotReverser;
+import dev.imagio.slot.inventory.workspace.WorkspaceAuthorityInvalidations;
+import dev.imagio.slot.inventory.workspace.WorkspaceInvalidation;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionRequest;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionResult;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionSessionCache;
 import dev.imagio.slot.inventory.workspace.WorkspaceProjectionTiming;
+import dev.imagio.slot.inventory.workspace.WorkspaceProximityInvalidations;
+import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndex;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageIndexCache;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageRoutingContext;
 import dev.imagio.slot.inventory.workspace.WorkspaceStorageMemoryStore;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
+import dev.imagio.slot.inventory.workspace.WorkspaceWorkflowInvalidations;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.neoforge.storage.ChestDepositObserver;
 import dev.imagio.slot.neoforge.storage.ChestStorageAnchors;
@@ -108,11 +114,14 @@ final class SlotWorkspaceUiSession {
     private final WorkspaceStorageIndexCache storageIndexCache = new WorkspaceStorageIndexCache();
     private final SlotWorkspaceViewModelCodec.EncodedSliceCache encodedSliceCache =
             new SlotWorkspaceViewModelCodec.EncodedSliceCache();
+    private final java.util.List<WorkspaceInvalidation> pendingInvalidations = new java.util.ArrayList<>();
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private String lastContentFingerprint = "";
     private CompoundTag lastViewTag;
     private long lastObservedWorkflowSequence = Long.MIN_VALUE;
     private long lastObservedCarriedRevision = Long.MIN_VALUE;
+    private InventoryAuthoritySnapshot lastProjectedAuthority;
+    private WorkflowDomainSnapshot lastProjectedWorkflowSnapshot;
     private Set<String> lastObservedProximateStorageIds = Set.of();
     private Set<String> lastObservedContextualStorageIds = Set.of();
     private int lastStructuralMenuId = Integer.MIN_VALUE;
@@ -143,6 +152,7 @@ final class SlotWorkspaceUiSession {
      */
     private String searchQuery = "";
     private RemoteStorageDetailIntent remoteStorageDetailIntent = RemoteStorageDetailIntent.INTENT_ONLY;
+    private Set<ItemIdentity> remoteRecipeIngredientIdentities = Set.of();
 
     /**
      * Origin stamp for the current cursor stack. Set whenever a SLOT-
@@ -179,7 +189,19 @@ final class SlotWorkspaceUiSession {
     }
 
     void acceptRemoteView(Tag tag) {
-        viewModel = SlotWorkspaceViewModelCodec.decode(player.registryAccess(), tag);
+        SlotWorkspaceViewModelCodec.TransferApplyResult applied =
+                SlotWorkspaceViewModelCodec.applyTransfer(player.registryAccess(), lastViewTag, tag);
+        if (!applied.applied()) {
+            dev.imagio.slot.SlotCommon.LOGGER.warn(
+                    "Rejected NeoForge workspace view transfer: diagnostics={}",
+                    applied.diagnostics());
+            if (applied.requiresFullSnapshot()) {
+                lastViewTag = null;
+            }
+            return;
+        }
+        lastViewTag = applied.fullTag();
+        viewModel = applied.viewModel();
     }
 
     void pickupToCursor(
@@ -476,14 +498,41 @@ final class SlotWorkspaceUiSession {
      * synthesize the ghosts.
      */
     void setSearchQuery(String query) {
-        String normalized = query == null ? "" : query;
+        String normalized = WorkspaceSearchQuery.cleanInput(query);
         if (normalized.equals(searchQuery)) {
             return;
         }
+        String previous = searchQuery;
         searchQuery = normalized;
         if (player instanceof ServerPlayer serverPlayer) {
+            queueInvalidation(searchQueryInvalidation(previous, searchQuery));
             broadcast(serverPlayer);
         }
+    }
+
+    private WorkspaceInvalidation searchQueryInvalidation(String previousQuery, String nextQuery) {
+        RemoteStorageDetailIntent previousIntent =
+                RemoteStorageDetailIntent.effective(remoteStorageDetailIntent, previousQuery);
+        RemoteStorageDetailIntent nextIntent =
+                RemoteStorageDetailIntent.effective(remoteStorageDetailIntent, nextQuery);
+        if (previousIntent == RemoteStorageDetailIntent.SEARCH || nextIntent == RemoteStorageDetailIntent.SEARCH) {
+            return new WorkspaceInvalidation(
+                    WorkspaceInvalidation.Reason.SEARCH_QUERY_CHANGED,
+                    java.util.Set.of(),
+                    java.util.Set.of(),
+                    java.util.Set.of(),
+                    java.util.EnumSet.of(
+                            dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice.CARD,
+                            dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice.SECTION,
+                            dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice.FRAME),
+                    false,
+                    WorkspaceSearchQuery.normalized(nextQuery).isBlank()
+                            ? "remote_search_query_cleared"
+                            : "remote_search_query_changed");
+        }
+        return WorkspaceInvalidation.frame(
+                WorkspaceInvalidation.Reason.SEARCH_QUERY_CHANGED,
+                "local_search_query_changed");
     }
 
     void setRemoteStorageDetailIntent(String value) {
@@ -493,6 +542,41 @@ final class SlotWorkspaceUiSession {
         }
         remoteStorageDetailIntent = intent;
         if (player instanceof ServerPlayer serverPlayer) {
+            queueInvalidation(new WorkspaceInvalidation(
+                    WorkspaceInvalidation.Reason.REMOTE_STORAGE_DETAIL_CHANGED,
+                    java.util.Set.of(),
+                    java.util.Set.of(),
+                    java.util.Set.of(),
+                    java.util.EnumSet.of(
+                            dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice.CARD,
+                            dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice.SECTION,
+                            dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice.FRAME),
+                    false,
+                    "remote_detail_changed"));
+            broadcast(serverPlayer);
+        }
+    }
+
+    void setRecipeIngredientFilter(String payload) {
+        Set<ItemIdentity> identities = RemoteDetailIdentityPayload.decode(payload);
+        if (identities.equals(remoteRecipeIngredientIdentities)) {
+            return;
+        }
+        remoteRecipeIngredientIdentities = identities;
+        if (player instanceof ServerPlayer serverPlayer) {
+            queueInvalidation(new WorkspaceInvalidation(
+                    WorkspaceInvalidation.Reason.REMOTE_STORAGE_DETAIL_CHANGED,
+                    identities,
+                    java.util.Set.of(),
+                    java.util.Set.of(),
+                    java.util.EnumSet.of(
+                            dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice.CARD,
+                            dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice.SECTION,
+                            dev.imagio.slot.inventory.workspace.WorkspaceProjectionSlice.FRAME),
+                    true,
+                    identities.isEmpty()
+                            ? "recipe_ingredient_detail_cleared"
+                            : "recipe_ingredient_detail_changed"));
             broadcast(serverPlayer);
         }
     }
@@ -527,12 +611,10 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        boolean changed = workflowRuntime(serverPlayer)
-                .craftRunWorkflow()
-                .adjustRemainingOutput(entryId, delta == null ? 0 : delta);
-        applyOutcome(serverPlayer, changed
-                ? WorkspaceCommandOutcome.accepted("craft_run_adjusted", "")
-                : WorkspaceCommandOutcome.rejected("craft_run_entry_not_found"));
+        applyOutcome(serverPlayer, WorkspaceCraftRunCommandService.adjustEntry(
+                workflowRuntime(serverPlayer),
+                entryId,
+                delta == null ? 0 : delta));
     }
 
     void selectCraftRunIngredient(
@@ -545,22 +627,20 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        boolean changed = workflowRuntime(serverPlayer)
-                .craftRunWorkflow()
-                .selectIngredientAlternative(entryId, groupId, identity(itemId, comparisonMode, componentFingerprint));
-        applyOutcome(serverPlayer, changed
-                ? WorkspaceCommandOutcome.accepted("craft_run_ingredient_selected", "")
-                : WorkspaceCommandOutcome.rejected("craft_run_ingredient_not_found"));
+        applyOutcome(serverPlayer, WorkspaceCraftRunCommandService.selectIngredientAlternative(
+                workflowRuntime(serverPlayer),
+                entryId,
+                groupId,
+                identity(itemId, comparisonMode, componentFingerprint)));
     }
 
     void removeCraftRunEntry(String entryId) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        boolean changed = workflowRuntime(serverPlayer).craftRunWorkflow().remove(entryId);
-        applyOutcome(serverPlayer, changed
-                ? WorkspaceCommandOutcome.accepted("craft_run_removed", "")
-                : WorkspaceCommandOutcome.rejected("craft_run_entry_not_found"));
+        applyOutcome(serverPlayer, WorkspaceCraftRunCommandService.removeEntry(
+                workflowRuntime(serverPlayer),
+                entryId));
     }
 
     /**
@@ -601,6 +681,7 @@ final class SlotWorkspaceUiSession {
             return;
         }
         seedClaimedChestContents(serverPlayer, storageId);
+        queueInvalidation(SlotWorkspaceCommandService.localizedChestClaimInvalidation(storageId.toString()));
         status = "chest_claimed";
         diagnostics = "";
         broadcast(serverPlayer);
@@ -636,6 +717,9 @@ final class SlotWorkspaceUiSession {
                         runtime.chestClaimWorkflow(), level, pos, anchor)
                 : existing.storageId();
         if (storageId == null) {
+            queueInvalidation(WorkspaceInvalidation.frame(
+                    WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                    "unclaimed_chest_ignore_noop"));
             status = "chest_role_set";
             diagnostics = ChestRole.IGNORE.name();
             broadcast(serverPlayer);
@@ -792,7 +876,7 @@ final class SlotWorkspaceUiSession {
             // Claim still stands — the player has now made this chest
             // a storage chest even if they had nothing in carry to deposit.
             // Surface the partial success so the panel refreshes.
-            refreshServerView(serverPlayer);
+            queueInvalidation(SlotWorkspaceCommandService.localizedChestClaimInvalidation(storageId.toString()));
             status = "claimed";
             diagnostics = "claimed_no_deposit_source";
             broadcast(serverPlayer);
@@ -1054,7 +1138,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         InventoryHostDescriptor host = resolveHost(serverPlayer);
         InventoryAuthoritySnapshot authority = host == null
                 ? InventoryAuthoritySnapshot.empty()
@@ -1071,7 +1154,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.createWorkflowTab(
                 workflowRuntime(serverPlayer),
                 name
@@ -1082,7 +1164,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.createKitVariant(
                 workflowRuntime(serverPlayer),
                 parentKitId,
@@ -1094,7 +1175,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         InventoryHostDescriptor host = resolveHost(serverPlayer);
         if (host == null) {
             reject("host_resolution_failed");
@@ -1160,7 +1240,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.deactivateKit(
                 workflowRuntime(serverPlayer)
         ));
@@ -1170,7 +1249,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.performUndo(
                 workflowRuntime(serverPlayer)
         ));
@@ -1180,7 +1258,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.performRedo(
                 workflowRuntime(serverPlayer)
         ));
@@ -1190,7 +1267,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.relabelCluster(
                 workflowRuntime(serverPlayer),
                 clusterId,
@@ -1202,7 +1278,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.renameKit(
                 workflowRuntime(serverPlayer),
                 kitId,
@@ -1214,7 +1289,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.duplicateKit(
                 workflowRuntime(serverPlayer),
                 kitId
@@ -1225,7 +1299,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.reorderKit(
                 workflowRuntime(serverPlayer),
                 kitId,
@@ -1237,7 +1310,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.deleteKit(
                 workflowRuntime(serverPlayer),
                 kitId
@@ -1248,7 +1320,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         InventoryHostDescriptor host = resolveHost(serverPlayer);
         if (host == null) {
             reject("host_resolution_failed");
@@ -1279,7 +1350,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.addKitPage(
                 workflowRuntime(serverPlayer),
                 kitId
@@ -1290,7 +1360,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.removeKitPage(
                 workflowRuntime(serverPlayer),
                 kitId,
@@ -1372,7 +1441,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.swapKitSlots(
                 workflowRuntime(serverPlayer),
                 kitId,
@@ -1393,7 +1461,6 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
         // Belt sync only fires when the edit lands on the active kit's active page, and
         // only when we can resolve an inventory host to execute live mutations through.
         // On host-resolution failure the command falls back to definition-only update.
@@ -1519,9 +1586,13 @@ final class SlotWorkspaceUiSession {
                         hotbarAfter,
                         "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
                 recordHotbarPlacementOnSuccess(serverPlayer, hotbarIndex, WorkspaceCommandOutcome.accepted("assigned", ""));
-                return WorkspaceCommandOutcome.accepted(
-                        "assigned_to_hotbar_" + (hotbarIndex + 1),
-                        "moved to hotbar " + (hotbarIndex + 1));
+                return WorkspaceBeltCommandService.withCarriedIdentityInvalidation(
+                        WorkspaceCommandOutcome.accepted(
+                                "assigned_to_hotbar_" + (hotbarIndex + 1),
+                                "moved to hotbar " + (hotbarIndex + 1)),
+                        "assigned_to_hotbar",
+                        identity,
+                        hotbarBefore.isEmpty() ? null : ItemIdentityMatcher.create(hotbarBefore));
             } else if ("assign_requires_player_bound_targets".equals(execution.feedback().diagnostics())) {
                 WorkspaceCommandOutcome outcome = assignIdentityToHotbarByTransfer(serverPlayer, hotbarIndex, identity);
                 if (outcome.success()) {
@@ -1582,7 +1653,6 @@ final class SlotWorkspaceUiSession {
             return;
         }
 
-        refreshServerView(serverPlayer);
         // If the source is a player slot (main or hotbar) the factory builds a single ASSIGN
         // request and the in-place swap path handles displacement. If it lives in a backpack
         // or any other non-player carried source, assignIdentityToHotbarIndex routes through
@@ -1648,7 +1718,6 @@ final class SlotWorkspaceUiSession {
             reject("host_resolution_failed");
             return;
         }
-        refreshServerView(serverPlayer);
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
         Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor = request -> {
             InventoryActionOutcome outcome = InventoryActionExecutor.execute(
@@ -1688,7 +1757,6 @@ final class SlotWorkspaceUiSession {
             reject("host_resolution_failed");
             return;
         }
-        refreshServerView(serverPlayer);
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
         Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor = request -> {
             InventoryActionOutcome outcome = InventoryActionExecutor.execute(
@@ -2081,9 +2149,17 @@ final class SlotWorkspaceUiSession {
     }
 
     private void applyOutcome(ServerPlayer serverPlayer, WorkspaceCommandOutcome outcome) {
-        status = outcome.status();
-        diagnostics = outcome.diagnostics();
+        WorkspaceCommandOutcome resolved = outcome == null
+                ? WorkspaceCommandOutcome.rejected("null_command_outcome")
+                : outcome;
+        queueOutcomeInvalidations(resolved);
+        status = resolved.status();
+        diagnostics = resolved.diagnostics();
         broadcast(serverPlayer);
+    }
+
+    void applyExternalOutcome(ServerPlayer serverPlayer, WorkspaceCommandOutcome outcome) {
+        applyOutcome(serverPlayer, outcome);
     }
 
     private void applyTakeOutcome(ServerPlayer serverPlayer, WorkspaceCommandOutcome outcome) {
@@ -2132,6 +2208,9 @@ final class SlotWorkspaceUiSession {
         status = "rejected";
         diagnostics = reason == null || reason.isBlank() ? "rejected" : reason;
         if (player instanceof ServerPlayer serverPlayer) {
+            queueInvalidation(WorkspaceInvalidation.frame(
+                    WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                    diagnostics));
             broadcast(serverPlayer);
         }
     }
@@ -2198,6 +2277,7 @@ final class SlotWorkspaceUiSession {
                 lootChestSource,
                 searchQuery,
                 remoteStorageDetailIntent,
+                remoteRecipeIngredientIdentities,
                 gameTime,
                 activeChestPanel,
                 displaySources,
@@ -2209,9 +2289,18 @@ final class SlotWorkspaceUiSession {
                 storageContext.liveChestContentPresence(),
                 storageContext.liveStorageAffinityEligibility()
         );
+        List<WorkspaceInvalidation> projectionInvalidations = prepareProjectionInvalidations(
+                drainInvalidations(),
+                authority,
+                request.workflow());
+        if (lastViewTag == null && projectionInvalidations.isEmpty()) {
+            projectionInvalidations = List.of(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.SESSION_OPEN,
+                    "neoforge_session_open"));
+        }
         long requestSetupNanos = System.nanoTime() - setupStart;
         long projectionStart = System.nanoTime();
-        WorkspaceProjectionResult projection = projectionCache.project(request);
+        WorkspaceProjectionResult projection = projectionCache.project(request, projectionInvalidations);
         long projectionCallNanos = System.nanoTime() - projectionStart;
         SlotWorkspaceViewModel projected = projection.viewModel();
         // Pickup-time auto-home: at most one carried-but-unassigned
@@ -2247,6 +2336,7 @@ final class SlotWorkspaceUiSession {
                     lootChestSource,
                     searchQuery,
                     remoteStorageDetailIntent,
+                    remoteRecipeIngredientIdentities,
                     gameTime,
                     activeChestPanel,
                     displaySources,
@@ -2260,7 +2350,11 @@ final class SlotWorkspaceUiSession {
             );
             requestSetupNanos += System.nanoTime() - reprojectSetupStart;
             projectionStart = System.nanoTime();
-            projection = projectionCache.project(reprojectRequest);
+            projection = projectionCache.project(
+                    reprojectRequest,
+                    WorkspaceInvalidation.full(
+                            WorkspaceInvalidation.Reason.AUTO_HOME_REPROJECTED,
+                            "auto_home_mutated_workflow"));
             projectionCallNanos += System.nanoTime() - projectionStart;
             projected = projection.viewModel();
         }
@@ -2271,6 +2365,8 @@ final class SlotWorkspaceUiSession {
         long observedCarriedRevision = CarriedInventoryRevisions.revision(serverPlayer);
         lastObservedWorkflowSequence = observedWorkflowSequence;
         lastObservedCarriedRevision = observedCarriedRevision;
+        lastProjectedAuthority = authority;
+        lastProjectedWorkflowSnapshot = snapshot;
         long encodeNanos = 0L;
         int payloadBytes = lastViewTag == null ? 0 : lastViewTag.sizeInBytes();
         SlotWorkspaceViewModelCodec.SliceStats sliceStats = encodedSliceCache.lastStats();
@@ -2279,10 +2375,11 @@ final class SlotWorkspaceUiSession {
             lastContentFingerprint = projection.contentFingerprint();
             viewModel = projected.withRevision(nextRevision++);
             long encodeStart = System.nanoTime();
-            lastViewTag = SlotWorkspaceViewModelCodec.encode(
+            lastViewTag = SlotWorkspaceViewModelCodec.encodeTransfer(
                     viewModel,
                     serverPlayer.registryAccess(),
-                    encodedSliceCache);
+                    encodedSliceCache,
+                    false);
             encodeNanos = System.nanoTime() - encodeStart;
             sliceStats = encodedSliceCache.lastStats();
             payloadBytes = lastViewTag.sizeInBytes();
@@ -2305,6 +2402,7 @@ final class SlotWorkspaceUiSession {
                     storageIndex.entries().size(),
                     trackedDisplayEntries.size(),
                     liveDepositStorageIds.size(),
+                    storageContext.indexDiagnostics(),
                     payloadBytes,
                     sliceStats);
         }
@@ -2327,6 +2425,7 @@ final class SlotWorkspaceUiSession {
             int storageEntryCount,
             int trackedDisplayEntryCount,
             int liveDepositStorageCount,
+            WorkspaceStorageIndexCache.Diagnostics storageIndexDiagnostics,
             int payloadBytes,
             SlotWorkspaceViewModelCodec.SliceStats sliceStats
     ) {
@@ -2340,11 +2439,16 @@ final class SlotWorkspaceUiSession {
                 : diagnostics.identityMemoStats();
         SlotWorkspaceViewModelCodec.SliceStats resolvedSliceStats =
                 sliceStats == null ? SlotWorkspaceViewModelCodec.SliceStats.empty() : sliceStats;
+        WorkspaceStorageIndexCache.PollDiagnostics poll = storageIndexDiagnostics == null
+                ? WorkspaceStorageIndexCache.PollDiagnostics.empty()
+                : storageIndexDiagnostics.trackedStoragePoll();
         dev.imagio.slot.SlotCommon.LOGGER.info(
                 "[SLOT] NeoForge workspace refresh player={} rev={} changed={} autoHome={} "
                         + "ms[authority={},request={},storageIndex={},inputKey={},projectMiss={},contentKey={},encode={},send={},total={}] "
                         + "counts[carriedEntries={},atlasItems={},triageItems={},storageEntries={},trackedDisplay={},liveDeposit={},wayfinding={},chestChips={},contentSummaries={},payloadBytes={}] "
-                        + "cache[hit={},hits={},misses={},memoCreate={}/{}/size={},memoNormalize={}/{}/size={},memoEvictions={}/{},slices={}/{}]",
+                        + "cache[hit={},hits={},misses={},memoCreate={}/{}/size={},memoNormalize={}/{}/size={},memoEvictions={}/{},slices={}/{},projectionSlices={}/{},cards={}/{}/removed={},storageChips={}/{}/removed={},edges={}/{}/removed={},depositability={}/{}] "
+                        + "poll[trackedCandidates={},checked={},changed={},failed={}] "
+                        + "invalidation[{},fallback={},facts={}/{}]",
                 serverPlayer == null ? "<unknown>" : serverPlayer.getGameProfile().getName(),
                 viewModel.revision(),
                 contentChanged,
@@ -2380,7 +2484,28 @@ final class SlotWorkspaceUiSession {
                 memo.createEvictions(),
                 memo.normalizeEvictions(),
                 resolvedSliceStats.encodedSlices(),
-                resolvedSliceStats.reusedSlices());
+                resolvedSliceStats.reusedSlices(),
+                diagnostics == null ? 0 : diagnostics.projectionSliceStats().rebuiltSlices(),
+                diagnostics == null ? 0 : diagnostics.projectionSliceStats().reusedSlices(),
+                diagnostics == null ? 0 : diagnostics.cardProjectionStats().rebuiltCards(),
+                diagnostics == null ? 0 : diagnostics.cardProjectionStats().reusedCards(),
+                diagnostics == null ? 0 : diagnostics.cardProjectionStats().removedCards(),
+                diagnostics == null ? 0 : diagnostics.storageProjectionStats().rebuiltStorageChips(),
+                diagnostics == null ? 0 : diagnostics.storageProjectionStats().reusedStorageChips(),
+                diagnostics == null ? 0 : diagnostics.storageProjectionStats().removedStorageChips(),
+                diagnostics == null ? 0 : diagnostics.edgeProjectionStats().rebuiltWayfindingTargets(),
+                diagnostics == null ? 0 : diagnostics.edgeProjectionStats().reusedWayfindingTargets(),
+                diagnostics == null ? 0 : diagnostics.edgeProjectionStats().removedWayfindingTargets(),
+                diagnostics == null ? 0 : diagnostics.edgeProjectionStats().rebuiltDepositabilitySets(),
+                diagnostics == null ? 0 : diagnostics.edgeProjectionStats().reusedDepositabilitySets(),
+                poll.candidates(),
+                poll.checked(),
+                poll.changed(),
+                poll.failed(),
+                diagnostics == null ? "none" : diagnostics.invalidations().compactSummary(),
+                diagnostics == null ? "" : diagnostics.fullProjectionReason(),
+                diagnostics == null ? 0L : diagnostics.projectionFactsUpdated(),
+                diagnostics == null ? 0L : diagnostics.projectionFactsReused());
     }
 
     private static double ms(long nanos) {
@@ -2429,12 +2554,37 @@ final class SlotWorkspaceUiSession {
                 ? ItemStackStructuralKey.EMPTY
                 : ItemStackStructuralKey.from(menu.getCarried());
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        return currentWorkflowSequence(runtime) != lastObservedWorkflowSequence
-                || CarriedInventoryRevisions.revision(serverPlayer) != lastObservedCarriedRevision
-                || menuId != lastStructuralMenuId
-                || !menuKeys.equals(lastStructuralMenuKeys)
-                || !cursorKey.equals(lastStructuralCursorKey)
-                || storageProximityChanged(serverPlayer, runtime);
+        boolean refresh = false;
+        if (currentWorkflowSequence(runtime) != lastObservedWorkflowSequence) {
+            queueInvalidation(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                    "workflow_sequence_changed_not_localized"));
+            refresh = true;
+        }
+        if (CarriedInventoryRevisions.revision(serverPlayer) != lastObservedCarriedRevision) {
+            queueInvalidation(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.CARRIED_REVISION_CHANGED,
+                    "carried_revision_changed_not_localized"));
+            refresh = true;
+        }
+        if (menuId != lastStructuralMenuId || !menuKeys.equals(lastStructuralMenuKeys)) {
+            queueInvalidation(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.MENU_SLOT_CHANGED,
+                    "menu_structure_changed_not_localized"));
+            refresh = true;
+        }
+        if (!cursorKey.equals(lastStructuralCursorKey)) {
+            queueInvalidation(WorkspaceInvalidation.hotbarFrame(
+                    WorkspaceInvalidation.Reason.MENU_SLOT_CHANGED,
+                    "cursor_stack_changed"));
+            refresh = true;
+        }
+        WorkspaceInvalidation proximityInvalidation = storageProximityInvalidation(serverPlayer, runtime);
+        if (proximityInvalidation != null) {
+            queueInvalidation(proximityInvalidation);
+            refresh = true;
+        }
+        return refresh;
     }
 
     private static long currentWorkflowSequence(WorkflowDomainRuntime runtime) {
@@ -2445,21 +2595,22 @@ final class SlotWorkspaceUiSession {
         return snapshot == null ? 0L : snapshot.nextGlobalSequence() * 31L + snapshot.craftRun().revision();
     }
 
-    private boolean storageProximityChanged(ServerPlayer serverPlayer, WorkflowDomainRuntime runtime) {
+    private WorkspaceInvalidation storageProximityInvalidation(ServerPlayer serverPlayer, WorkflowDomainRuntime runtime) {
         if (serverPlayer == null || runtime == null) {
-            return false;
+            return null;
         }
         WorkflowDomainSnapshot snapshot = runtime.snapshot();
         ClaimedChestMap claimedChestMap = snapshot == null ? ClaimedChestMap.empty() : snapshot.claimedChestMap();
         Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(serverPlayer, claimedChestMap);
-        if (!proximate.equals(lastObservedProximateStorageIds)) {
-            return true;
-        }
         Set<String> contextual = WorkspaceChestProjectionSupport.proximateStorageIds(
                 serverPlayer,
                 claimedChestMap,
                 WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
-        return !contextual.equals(lastObservedContextualStorageIds);
+        return WorkspaceProximityInvalidations.storageProximityChange(
+                lastObservedProximateStorageIds,
+                proximate,
+                lastObservedContextualStorageIds,
+                contextual);
     }
 
     private void rememberStructuralState(ServerPlayer serverPlayer) {
@@ -2666,10 +2817,64 @@ final class SlotWorkspaceUiSession {
     }
 
     private void broadcast(ServerPlayer serverPlayer) {
+        if (pendingInvalidations.isEmpty()) {
+            queueInvalidation(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                    "direct_broadcast_not_localized"));
+        }
         refreshServerView(serverPlayer);
         if (serverPlayer.containerMenu != null) {
             serverPlayer.containerMenu.broadcastChanges();
         }
+    }
+
+    private void queueOutcomeInvalidations(WorkspaceCommandOutcome outcome) {
+        WorkspaceCommandOutcome resolved = outcome == null
+                ? WorkspaceCommandOutcome.rejected("null_command_outcome")
+                : outcome;
+        if (!resolved.invalidations().isEmpty()) {
+            pendingInvalidations.addAll(resolved.invalidations());
+            return;
+        }
+        if (!resolved.success()) {
+            queueInvalidation(WorkspaceInvalidation.frame(
+                    WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                    resolved.diagnostics()));
+            return;
+        }
+        queueInvalidation(WorkspaceInvalidation.full(
+                WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                resolved.status().isBlank() ? "command_outcome_not_localized" : resolved.status()));
+    }
+
+    private void queueInvalidation(WorkspaceInvalidation invalidation) {
+        if (invalidation != null) {
+            pendingInvalidations.add(invalidation);
+        }
+    }
+
+    private List<WorkspaceInvalidation> drainInvalidations() {
+        if (pendingInvalidations.isEmpty()) {
+            return List.of();
+        }
+        List<WorkspaceInvalidation> copy = List.copyOf(pendingInvalidations);
+        pendingInvalidations.clear();
+        return copy;
+    }
+
+    private List<WorkspaceInvalidation> prepareProjectionInvalidations(
+            List<WorkspaceInvalidation> invalidations,
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow
+    ) {
+        List<WorkspaceInvalidation> resolved = WorkspaceAuthorityInvalidations.localizeCarriedRevisionInvalidations(
+                lastProjectedAuthority,
+                authority,
+                invalidations);
+        return WorkspaceWorkflowInvalidations.localizeSequenceOnlyInvalidations(
+                lastProjectedWorkflowSnapshot,
+                workflow,
+                resolved);
     }
 
     private static String combineDiagnostics(String first, String second) {

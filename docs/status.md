@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-07-01. Operational handoff. Read after [../README.md](../README.md).
+Last updated: 2026-07-02. Operational handoff. Read after [../README.md](../README.md).
 For active work + queue see [plans/current.md](plans/current.md); for architecture see [architecture/overview.md](architecture/overview.md).
 
 ## Active
@@ -15,36 +15,38 @@ Forge 1.20.1 / Java 17 with real platform adapters.
 
 Phase 1 has shared action transport, Forge runtime, session-backed projection,
 and common-service routing for metadata, transfer, hotbar, workflows, chests,
-deposit/take, cursor, gather, and cross-surface actions.
+deposit/take, cursor, gather, and cross-surface actions. Phase 2 has the
+production wall shell on both loaders: shared card chrome, Recents, Belt,
+active chest controls, workflow controls, accepted-input menus, compact nearby
+headers, remembered search/scroll, margins, Fetch/Put Away guidance, Forge key
+parity, and junk/trash pressure relief. Useful Now scoring is hidden while live
+contextual observation remains available.
 
-Phase 2 has the production wall shell on both loaders: shared 24px item-card
-chrome, three-row floating Recents, vanilla-shaped Belt, active chest role controls,
-workflow controls, accepted-input menus, compact nearby headers, remembered
-search/scroll, configurable sidebar and task panel margins, right-side Fetch/Put
-Away guidance, Forge key parity, and junk/trash pressure relief. Useful Now
-scoring is hidden while live contextual observation remains available. Carried
-storage pressure and card chrome use common signals so counts, storage pips,
-route notches, right strips, and status rings follow one grammar on both loaders.
-
-Workspace projection now has a shared common session cache, slow-refresh phase
-timings, a per-refresh identity context, indexed wayfinding matching, layered
-storage-index caching, remote-storage detail intents, sliced view-model encoding,
-and bounded identity-memo eviction diagnostics. Claimed-chest proximity
-participates in passive refresh invalidation; TerraFirmaGreg profile validation
-remains in [plans/workspace-performance.md](plans/workspace-performance.md).
+Workspace projection has timing, storage-index caching, remote-detail intents,
+typed invalidations/fallbacks, full-oracle parity tests, projection-slice reuse,
+revisioned full/delta transfer, budgeted tracked-storage polling, and source /
+carried / storage / player-target facts. Slice 9 is retiring the monolithic hot
+path: search is client-local, authority-only commands skip redundant
+pre-command projection, cursor-only churn localizes hotbar/frame, bounded
+carried-revision diffs localize affected identities, Forge menu-slot dirtiness
+does not force full projection, storage-proximity/chest-claim dirtiness emits
+storage-local invalidations, sequence-only workflow dirtiness becomes frame-only, and
+remote-detail toggles, junk/direct-trash/belt/cursor changes, chest/cluster relabels, affinity-forget,
+section create/delete/metadata, workflow/kit metadata, and affected identity/storage facts
+including active-workflow storage-only put-away route changes localize. Rendered localized branches cover the simple cases in [plans/done/workspace-incremental-projection.md](plans/done/workspace-incremental-projection.md)
+and still fail closed for complex put-away routing, complex craft-run pressure,
+and wayfinding outside the simple acquisition/KIT cases. TerraFirmaGreg
+validation remains in [plans/workspace-performance.md](plans/workspace-performance.md).
 
 Learned storage gates each claimed chest through `Storage`, `Buffer`, or
 `Ignore`; see ADR [0008](decisions/0008-chest-roles-and-affinity-correction.md).
 Only `Storage` learns affinity and accepts quick/bulk deposit; `Buffer` stays visible/pullable, and `Ignore` is hidden from SLOT storage projection.
 
-Classification has a pack-authoring path for large modpacks: installed
-`mods/` scanning, jar/static enrichment, runtime export, rich facet-evidence
-collection, LLM vocabulary loops, vocabulary-grounded item classification,
-datapack output, and runtime inspect/rehome diagnostics. Pre-LLM code gathers
-and formats evidence; the LLM owns vocabulary and item-facet decisions, with
-review/watchlist flags kept advisory. `organization_group` can materialize
-direct wall-home sections; `mod_subsystem` stays semantic/query evidence. Keep
-rich semantic text intact instead of reducing prompts to item ids.
+Classification has a pack-authoring path for large modpacks: installed `mods/`
+scanning, jar/static enrichment, runtime export, rich facet evidence, LLM
+vocabulary loops, classification, datapack output, and inspect/rehome commands.
+Pre-LLM code gathers evidence; the LLM owns vocabulary and item-facet decisions.
+Keep rich semantic text intact instead of reducing prompts to item ids.
 
 EMI recipe context now uses the normal SLOT sidebar as a transient recipe
 ingredient filter plus one persisted current craft run on both loaders. Visible

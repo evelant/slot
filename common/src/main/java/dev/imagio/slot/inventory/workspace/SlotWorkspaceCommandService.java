@@ -21,6 +21,7 @@ import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.triage.WithinIslandOrdering;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.workflow.domain.ChestClusterMap;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.DesiredCountWorkflowDomainService;
@@ -50,6 +51,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.EnumSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -311,7 +313,12 @@ public final class SlotWorkspaceCommandService {
                         restoreHomeAssignment(ctx.runtime(), targetIdentity, after);
                     }
             );
-            return WorkspaceCommandOutcome.accepted("island created", created.label());
+            return WorkspaceCommandOutcome.accepted("island created", created.label())
+                    .withInvalidations(List.of(visualHomeDropInvalidation(
+                            identity,
+                            before,
+                            after,
+                            "island_created")));
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -360,7 +367,10 @@ public final class SlotWorkspaceCommandService {
                     )
             );
         }
-        return WorkspaceCommandOutcome.accepted("island moved", moved.label());
+        return WorkspaceCommandOutcome.accepted("island moved", moved.label())
+                .withInvalidations(List.of(localizedSectionMetadataInvalidation(
+                        islandId,
+                        "island_position_changed")));
     }
 
     public static WorkspaceCommandOutcome reorderIsland(
@@ -406,7 +416,10 @@ public final class SlotWorkspaceCommandService {
                     )
             );
         }
-        return WorkspaceCommandOutcome.accepted("section reordered", reordered.label());
+        return WorkspaceCommandOutcome.accepted("section reordered", reordered.label())
+                .withInvalidations(List.of(localizedSectionMetadataInvalidation(
+                        islandId,
+                        "island_reordered")));
     }
 
     public static WorkspaceCommandOutcome moveChest(
@@ -435,7 +448,10 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("chest_move_rejected");
         }
         SlotDebugLog.log("LDLib atlas chest moved {} -> {},{}", storageId, atlasX, atlasY);
-        return WorkspaceCommandOutcome.accepted("chest moved", storageId);
+        return WorkspaceCommandOutcome.accepted("chest moved", storageId)
+                .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                        WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                        "chest_position_changed")));
     }
 
     public static WorkspaceCommandOutcome relabelCluster(
@@ -452,7 +468,42 @@ public final class SlotWorkspaceCommandService {
         }
         String normalized = label == null ? "" : label.trim();
         SlotDebugLog.log("LDLib cluster relabeled {} -> '{}'", clusterId, normalized);
-        return WorkspaceCommandOutcome.accepted("cluster renamed", normalized.isBlank() ? clusterId : normalized);
+        Set<String> storageIds = clusterStorageIds(runtime, clusterId);
+        WorkspaceInvalidation invalidation = storageIds.isEmpty()
+                ? WorkspaceInvalidation.frame(
+                        WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                        "cluster_label_changed_no_live_cluster")
+                : new WorkspaceInvalidation(
+                        WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                        Set.of(),
+                        storageIds,
+                        Set.of(),
+                        EnumSet.of(WorkspaceProjectionSlice.STORAGE, WorkspaceProjectionSlice.FRAME),
+                        false,
+                        "cluster_label_changed");
+        return WorkspaceCommandOutcome.accepted("cluster renamed", normalized.isBlank() ? clusterId : normalized)
+                .withInvalidations(List.of(invalidation));
+    }
+
+    private static Set<String> clusterStorageIds(
+            WorkflowDomainRuntime runtime,
+            String clusterId
+    ) {
+        if (runtime == null || clusterId == null || clusterId.isBlank()) {
+            return Set.of();
+        }
+        ChestClusterMap.Cluster cluster =
+                ChestClusterMap.derive(runtime.chestClaimWorkflow().claimedChestMap()).cluster(clusterId);
+        if (cluster == null || cluster.storageIds().isEmpty()) {
+            return Set.of();
+        }
+        LinkedHashSet<String> storageIds = new LinkedHashSet<>();
+        for (UUID storageId : cluster.storageIds()) {
+            if (storageId != null) {
+                storageIds.add(storageId.toString());
+            }
+        }
+        return storageIds.isEmpty() ? Set.of() : Set.copyOf(storageIds);
     }
 
     public static WorkspaceCommandOutcome relabelChest(
@@ -484,7 +535,92 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("chest_relabel_rejected");
         }
         SlotDebugLog.log("LDLib chest relabeled {} -> '{}'", storageId, normalized);
-        return WorkspaceCommandOutcome.accepted("chest renamed", normalized.isBlank() ? storageId : normalized);
+        return WorkspaceCommandOutcome.accepted("chest renamed", normalized.isBlank() ? storageId : normalized)
+                .withInvalidations(List.of(localizedStorageMetadataInvalidation(
+                        storageId,
+                        "chest_label_changed")));
+    }
+
+    private static WorkspaceInvalidation localizedStorageMetadataInvalidation(
+            String storageId,
+            String diagnostics
+    ) {
+        return WorkspaceInvalidation.localizedStorage(
+                WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                storageId,
+                EnumSet.of(WorkspaceProjectionSlice.STORAGE, WorkspaceProjectionSlice.FRAME),
+                diagnostics);
+    }
+
+    public static WorkspaceInvalidation localizedChestClaimInvalidation(String storageId) {
+        return WorkspaceInvalidation.localizedStorage(
+                WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                storageId,
+                EnumSet.of(
+                        WorkspaceProjectionSlice.CARD,
+                        WorkspaceProjectionSlice.SECTION,
+                        WorkspaceProjectionSlice.STORAGE,
+                        WorkspaceProjectionSlice.WAYFINDING,
+                        WorkspaceProjectionSlice.DEPOSITABILITY,
+                        WorkspaceProjectionSlice.WORKFLOW,
+                        WorkspaceProjectionSlice.FRAME),
+                "chest_claimed");
+    }
+
+    private static WorkspaceCommandOutcome frameOnlyAccepted(
+            String status,
+            String diagnostics,
+            String invalidationDiagnostics
+    ) {
+        return WorkspaceCommandOutcome.accepted(status, diagnostics)
+                .withInvalidations(List.of(WorkspaceInvalidation.frame(
+                        WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                        invalidationDiagnostics)));
+    }
+
+    private static WorkspaceInvalidation localizedSectionMetadataInvalidation(
+            String sectionId,
+            String diagnostics
+    ) {
+        String resolvedSectionId = sectionId == null || sectionId.isBlank()
+                ? SlotWorkspaceAtlasLayout.ISLAND_TRIAGE
+                : sectionId;
+        return new WorkspaceInvalidation(
+                WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                Set.of(),
+                Set.of(),
+                Set.of(resolvedSectionId),
+                EnumSet.of(WorkspaceProjectionSlice.SECTION, WorkspaceProjectionSlice.FRAME),
+                false,
+                diagnostics == null || diagnostics.isBlank() ? "section_metadata_changed" : diagnostics);
+    }
+
+    private static WorkspaceInvalidation localizedSectionRemovedInvalidation(
+            Collection<ItemIdentity> identities,
+            String sectionId,
+            String diagnostics
+    ) {
+        if (identities == null || identities.isEmpty()) {
+            return localizedSectionMetadataInvalidation(sectionId, diagnostics);
+        }
+        LinkedHashSet<ItemIdentity> affected = new LinkedHashSet<>();
+        for (ItemIdentity identity : identities) {
+            ItemIdentityCollections.add(affected, identity);
+        }
+        if (affected.isEmpty()) {
+            return localizedSectionMetadataInvalidation(sectionId, diagnostics);
+        }
+        String resolvedSectionId = sectionId == null || sectionId.isBlank()
+                ? SlotWorkspaceAtlasLayout.ISLAND_TRIAGE
+                : sectionId;
+        return new WorkspaceInvalidation(
+                WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                Set.copyOf(affected),
+                Set.of(),
+                Set.of(resolvedSectionId, SlotWorkspaceAtlasLayout.ISLAND_TRIAGE),
+                EnumSet.of(WorkspaceProjectionSlice.CARD, WorkspaceProjectionSlice.SECTION, WorkspaceProjectionSlice.FRAME),
+                false,
+                diagnostics == null || diagnostics.isBlank() ? "section_removed" : diagnostics);
     }
 
     public static WorkspaceCommandOutcome setChestRole(
@@ -500,7 +636,23 @@ public final class SlotWorkspaceCommandService {
         if (!changed) {
             return WorkspaceCommandOutcome.rejected("chest_role_rejected");
         }
-        return WorkspaceCommandOutcome.accepted("chest_role_set", next.name());
+        return WorkspaceCommandOutcome.accepted("chest_role_set", next.name())
+                .withInvalidations(List.of(new WorkspaceInvalidation(
+                        WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                        Set.of(),
+                        Set.of(storageId.toString()),
+                        Set.of(),
+                        EnumSet.of(
+                                WorkspaceProjectionSlice.CARD,
+                                WorkspaceProjectionSlice.SECTION,
+                                WorkspaceProjectionSlice.STORAGE,
+                                WorkspaceProjectionSlice.WAYFINDING,
+                                WorkspaceProjectionSlice.DEPOSITABILITY,
+                                WorkspaceProjectionSlice.WORKFLOW,
+                                WorkspaceProjectionSlice.REMOTE_SEARCH,
+                                WorkspaceProjectionSlice.FRAME),
+                        false,
+                        "chest_role_set")));
     }
 
     /** Forget affinity[storageId, identity]. Targeted "this chest doesn't hold X anymore". */
@@ -524,11 +676,27 @@ public final class SlotWorkspaceCommandService {
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
-        boolean forgotten = runtime.chestClaimWorkflow().forgetIdentity(uuid, identity);
+        ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(identity);
+        boolean forgotten = runtime.chestClaimWorkflow().forgetIdentity(uuid, normalized);
         if (!forgotten) {
             return WorkspaceCommandOutcome.rejected("item_forget_rejected");
         }
-        return WorkspaceCommandOutcome.accepted("affinity forgotten", identity.itemId());
+        return WorkspaceCommandOutcome.accepted("affinity forgotten", normalized.itemId())
+                .withInvalidations(List.of(new WorkspaceInvalidation(
+                        WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                        Set.of(normalized),
+                        Set.of(storageId),
+                        Set.of(),
+                        EnumSet.of(
+                                WorkspaceProjectionSlice.CARD,
+                                WorkspaceProjectionSlice.SECTION,
+                                WorkspaceProjectionSlice.STORAGE,
+                                WorkspaceProjectionSlice.WAYFINDING,
+                                WorkspaceProjectionSlice.DEPOSITABILITY,
+                                WorkspaceProjectionSlice.WORKFLOW,
+                                WorkspaceProjectionSlice.FRAME),
+                        false,
+                        "affinity_forgotten")));
     }
 
     public static WorkspaceCommandOutcome renameIsland(
@@ -566,7 +734,10 @@ public final class SlotWorkspaceCommandService {
                         )
                 );
             }
-            return WorkspaceCommandOutcome.accepted("island renamed", renamed.label());
+            return WorkspaceCommandOutcome.accepted("island renamed", renamed.label())
+                    .withInvalidations(List.of(localizedSectionMetadataInvalidation(
+                            islandId,
+                            "island_label_changed")));
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -607,7 +778,10 @@ public final class SlotWorkspaceCommandService {
                     )
             );
         }
-        return WorkspaceCommandOutcome.accepted("island recolored", hex);
+        return WorkspaceCommandOutcome.accepted("island recolored", hex)
+                .withInvalidations(List.of(localizedSectionMetadataInvalidation(
+                        islandId,
+                        "island_color_changed")));
     }
 
     public static WorkspaceCommandOutcome setIslandIcon(
@@ -655,7 +829,9 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted(
                 iconIdentity == null ? "island icon cleared" : "island icon set",
                 iconIdentity == null ? "" : iconIdentity.itemId()
-        );
+        ).withInvalidations(List.of(localizedSectionMetadataInvalidation(
+                islandId,
+                "island_icon_changed")));
     }
 
     public static WorkspaceCommandOutcome saveBeltAsKit(
@@ -669,6 +845,7 @@ public final class SlotWorkspaceCommandService {
         }
         InventoryAuthoritySnapshot resolvedAuthority = authority == null
                 ? InventoryAuthoritySnapshot.empty() : authority;
+        WorkflowDomainSnapshot before = runtime.snapshot();
         // If a kit is active, treat "Save Current Belt" as "update the active workflow's current page"
         // so the button stays in-place instead of silently forking a new workflow.
         var activation = runtime.kitWorkflow().activation();
@@ -686,12 +863,19 @@ public final class SlotWorkspaceCommandService {
                             .withOffhand(offhand);
                     if (!runtime.kitWorkflow().update(next,
                             DomainEventMetadata.origin("slot_workspace.ldlib.kit_page_update"))) {
-                        return WorkspaceCommandOutcome.accepted("workflow page unchanged", activeKit.name());
+                        return frameOnlyAccepted(
+                                "workflow page unchanged",
+                                activeKit.name(),
+                                "workflow_page_unchanged");
                     }
                     SlotDebugLog.log("LDLib kit page updated {} page={}", activeKit.id(), pageIndex);
-                    return WorkspaceCommandOutcome.accepted(
-                            "workflow page updated",
-                            activeKit.name() + " (page " + (pageIndex + 1) + ")");
+                    return withWorkflowTargetInvalidation(
+                            WorkspaceCommandOutcome.accepted(
+                                    "workflow page updated",
+                                    activeKit.name() + " (page " + (pageIndex + 1) + ")"),
+                            before,
+                            runtime.snapshot(),
+                            "workflow_page_updated");
                 } catch (IllegalArgumentException exception) {
                     return WorkspaceCommandOutcome.rejected(exception.getMessage());
                 }
@@ -713,7 +897,11 @@ public final class SlotWorkspaceCommandService {
             }
             SlotDebugLog.log("LDLib kit snapshot created {} ({} slots filled)",
                     created.id(), created.pages().get(0).filledSlotCount());
-            return WorkspaceCommandOutcome.accepted("workflow saved", created.name());
+            return withWorkflowTargetInvalidation(
+                    WorkspaceCommandOutcome.accepted("workflow saved", created.name()),
+                    before,
+                    runtime.snapshot(),
+                    "workflow_saved");
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -737,6 +925,7 @@ public final class SlotWorkspaceCommandService {
         if (kit == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         Set<ItemIdentity> activationPutAway = activationPutAwayIdentities(
                 runtime,
@@ -770,7 +959,11 @@ public final class SlotWorkspaceCommandService {
             diagnostics.append(" reasons=").append(planReasons);
         }
         String status = missing == 0 ? "workflow activated" : "workflow activated (missing " + missing + ")";
-        return WorkspaceCommandOutcome.accepted(status, diagnostics.toString());
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted(status, diagnostics.toString()),
+                before,
+                runtime.snapshot(),
+                "workflow_activated");
     }
 
     private static Set<ItemIdentity> activationPutAwayIdentities(
@@ -818,6 +1011,129 @@ public final class SlotWorkspaceCommandService {
             }
         }
         return putAway.isEmpty() ? Set.of() : Set.copyOf(putAway);
+    }
+
+    private static WorkspaceCommandOutcome withWorkflowTargetInvalidation(
+            WorkspaceCommandOutcome outcome,
+            WorkflowDomainSnapshot before,
+            WorkflowDomainSnapshot after,
+            String diagnostics
+    ) {
+        WorkspaceCommandOutcome resolved = outcome == null
+                ? WorkspaceCommandOutcome.rejected("null_workflow_outcome")
+                : outcome;
+        if (!resolved.success()) {
+            return resolved;
+        }
+        Set<ItemIdentity> identities = workflowTargetIdentities(before, after);
+        if (identities.isEmpty()) {
+            if (activeAcceptedInputTagsChanged(before, after)) {
+                return resolved.withInvalidations(List.of(localizedAcceptedInputTagInvalidation(
+                        "workflow_accepted_input_tag_scope_changed")));
+            }
+            return resolved.withInvalidations(List.of(localizedWorkflowMetadataInvalidation(diagnostics)));
+        }
+        return resolved.withInvalidations(List.of(new WorkspaceInvalidation(
+                WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                identities,
+                Set.of(),
+                Set.of(),
+                EnumSet.of(
+                        WorkspaceProjectionSlice.CARD,
+                        WorkspaceProjectionSlice.SECTION,
+                        WorkspaceProjectionSlice.WORKFLOW,
+                        WorkspaceProjectionSlice.CONTEXTUAL,
+                        WorkspaceProjectionSlice.WAYFINDING,
+                        WorkspaceProjectionSlice.FRAME),
+                false,
+                diagnostics)));
+    }
+
+    private static WorkspaceInvalidation localizedWorkflowMetadataInvalidation(String diagnostics) {
+        return new WorkspaceInvalidation(
+                WorkspaceInvalidation.Reason.WORKFLOW_METADATA_CHANGED,
+                Set.of(),
+                Set.of(),
+                Set.of(),
+                EnumSet.of(
+                        WorkspaceProjectionSlice.WORKFLOW,
+                        WorkspaceProjectionSlice.FRAME),
+                false,
+                diagnostics == null || diagnostics.isBlank() ? "workflow_metadata_changed" : diagnostics);
+    }
+
+    private static WorkspaceInvalidation localizedAcceptedInputTagInvalidation(String diagnostics) {
+        return new WorkspaceInvalidation(
+                WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                Set.of(),
+                Set.of(),
+                Set.of(),
+                EnumSet.of(
+                        WorkspaceProjectionSlice.CARD,
+                        WorkspaceProjectionSlice.SECTION,
+                        WorkspaceProjectionSlice.WORKFLOW,
+                        WorkspaceProjectionSlice.CONTEXTUAL,
+                        WorkspaceProjectionSlice.WAYFINDING,
+                        WorkspaceProjectionSlice.FRAME),
+                false,
+                diagnostics);
+    }
+
+    private static boolean activeAcceptedInputTagsChanged(
+            WorkflowDomainSnapshot before,
+            WorkflowDomainSnapshot after
+    ) {
+        return !activeAcceptedInputTags(before).equals(activeAcceptedInputTags(after));
+    }
+
+    private static Set<String> activeAcceptedInputTags(WorkflowDomainSnapshot snapshot) {
+        WorkflowTabTargets.Resolution targets = WorkflowTabTargets.resolve(
+                CarriedIdentityCounts.empty(),
+                snapshot == null ? WorkflowDomainSnapshot.empty() : snapshot);
+        LinkedHashSet<String> tags = new LinkedHashSet<>();
+        for (WorkflowAcceptedInputRule rule : targets.acceptedInputs()) {
+            if (rule != null && rule.itemTag() && !rule.tagId().isBlank()) {
+                tags.add(rule.tagId());
+            }
+        }
+        return tags.isEmpty() ? Set.of() : Set.copyOf(tags);
+    }
+
+    private static Set<ItemIdentity> workflowTargetIdentities(
+            WorkflowDomainSnapshot before,
+            WorkflowDomainSnapshot after
+    ) {
+        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        addWorkflowTargetIdentities(identities, before);
+        addWorkflowTargetIdentities(identities, after);
+        return identities.isEmpty() ? Set.of() : Set.copyOf(identities);
+    }
+
+    private static void addWorkflowTargetIdentities(Set<ItemIdentity> identities, WorkflowDomainSnapshot snapshot) {
+        if (identities == null || snapshot == null) {
+            return;
+        }
+        WorkflowTabTargets.Resolution targets = WorkflowTabTargets.resolve(CarriedIdentityCounts.empty(), snapshot);
+        for (ItemIdentity identity : targets.desiredCounts().keySet()) {
+            ItemIdentityCollections.add(identities, identity);
+        }
+        for (ItemIdentity identity : targets.wantedCounts().keySet()) {
+            ItemIdentityCollections.add(identities, identity);
+        }
+        for (ItemIdentity identity : targets.missingWorkflowIdentities()) {
+            ItemIdentityCollections.add(identities, identity);
+        }
+        for (WorkflowAcceptedInputRule rule : targets.acceptedInputs()) {
+            if (rule != null && rule.exactItem()) {
+                ItemIdentityCollections.add(identities, rule.identity());
+            }
+        }
+        KitMap kitMap = snapshot.kitMap();
+        if (kitMap != null && kitMap.activation().isActive()) {
+            for (ItemIdentity identity : kitMap.activation().putAwayIdentities()) {
+                ItemIdentityCollections.add(identities, identity);
+            }
+        }
     }
 
     private static boolean protectedPutAwaySource(String sourceId) {
@@ -900,6 +1216,7 @@ public final class SlotWorkspaceCommandService {
         }
         int pageCount = kit.pageCount();
         int nextPage = Math.floorMod(activation.pageIndex() + step, pageCount);
+        WorkflowDomainSnapshot before = runtime.snapshot();
         LoadoutApplyService.LoadoutApplyPlan plan = runtime.kitWorkflow().planActivate(
                 kit.id(),
                 nextPage,
@@ -924,7 +1241,11 @@ public final class SlotWorkspaceCommandService {
         if (!planReasons.isBlank()) {
             diagnostics.append(" reasons=").append(planReasons);
         }
-        return WorkspaceCommandOutcome.accepted(status, diagnostics.toString());
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted(status, diagnostics.toString()),
+                before,
+                runtime.snapshot(),
+                "workflow_page_switched");
     }
 
     public static WorkspaceCommandOutcome addKitPage(WorkflowDomainRuntime runtime, String kitId) {
@@ -938,6 +1259,7 @@ public final class SlotWorkspaceCommandService {
         if (existing == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         try {
             runtime.kitWorkflow().addPage(
                     kitId,
@@ -948,7 +1270,11 @@ public final class SlotWorkspaceCommandService {
         }
         KitDefinition updated = runtime.kitWorkflow().kit(kitId);
         SlotDebugLog.log("LDLib kit page added {} pages={}", kitId, updated.pageCount());
-        return WorkspaceCommandOutcome.accepted("workflow page added", existing.name());
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted("workflow page added", existing.name()),
+                before,
+                runtime.snapshot(),
+                "workflow_page_added");
     }
 
     public static WorkspaceCommandOutcome createKitVariant(
@@ -974,6 +1300,7 @@ public final class SlotWorkspaceCommandService {
             int existingVariants = runtime.kitWorkflow().kitMap().variantsOf(parentKitId).size();
             normalizedName = parent.name() + " " + (existingVariants + 1);
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         try {
             KitDefinition variant = runtime.kitWorkflow().createVariant(
                     parentKitId,
@@ -986,7 +1313,11 @@ public final class SlotWorkspaceCommandService {
                 return WorkspaceCommandOutcome.rejected("variant_create_rejected");
             }
             SlotDebugLog.log("LDLib workflow variant created {} parent={}", variant.id(), parentKitId);
-            return WorkspaceCommandOutcome.accepted("workflow variant created", variant.name());
+            return withWorkflowTargetInvalidation(
+                    WorkspaceCommandOutcome.accepted("workflow variant created", variant.name()),
+                    before,
+                    runtime.snapshot(),
+                    "workflow_variant_created");
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -1003,6 +1334,7 @@ public final class SlotWorkspaceCommandService {
         if (normalizedName.isBlank()) {
             normalizedName = defaultKitName(runtime);
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         try {
             KitDefinition created = runtime.kitWorkflow().create(
                     normalizedName,
@@ -1019,7 +1351,11 @@ public final class SlotWorkspaceCommandService {
                     DomainEventMetadata.origin("slot_workspace.ldlib.workflow_tab_create_activate")
             );
             SlotDebugLog.log("LDLib workflow created {}", created.id());
-            return WorkspaceCommandOutcome.accepted("workflow created", created.name());
+            return withWorkflowTargetInvalidation(
+                    WorkspaceCommandOutcome.accepted("workflow created", created.name()),
+                    before,
+                    runtime.snapshot(),
+                    "workflow_created");
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -1051,6 +1387,7 @@ public final class SlotWorkspaceCommandService {
         ItemIdentity identity = (itemId == null || itemId.isBlank())
                 ? null
                 : resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        WorkflowDomainSnapshot before = runtime.snapshot();
         boolean changed = runtime.kitWorkflow().setSlotIdentity(
                 kitId, pageIndex, slotIndex, identity,
                 DomainEventMetadata.origin("slot_workspace.ldlib.kit_set_slot")
@@ -1096,7 +1433,11 @@ public final class SlotWorkspaceCommandService {
             status = "workflow slot updated";
         }
         String detail = (identity == null ? "cleared" : identity.itemId());
-        return WorkspaceCommandOutcome.accepted(status, detail);
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted(status, detail),
+                before,
+                runtime.snapshot(),
+                "workflow_slot_updated");
     }
 
     public static WorkspaceCommandOutcome setKitMember(
@@ -1121,6 +1462,7 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
         boolean add = member > 0;
+        WorkflowDomainSnapshot before = runtime.snapshot();
         boolean changed = runtime.kitWorkflow().setMember(
                 kitId,
                 identity,
@@ -1130,11 +1472,15 @@ public final class SlotWorkspaceCommandService {
                         : "slot_workspace.ldlib.workflow_member_remove")
         );
         if (!changed) {
-            return WorkspaceCommandOutcome.accepted("noop", "");
+            return frameOnlyAccepted("noop", "", "workflow_member_noop");
         }
-        return WorkspaceCommandOutcome.accepted(
-                add ? "workflow member added" : "workflow member removed",
-                identity.itemId());
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted(
+                        add ? "workflow member added" : "workflow member removed",
+                        identity.itemId()),
+                before,
+                runtime.snapshot(),
+                "workflow_member_changed");
     }
 
     public static WorkspaceCommandOutcome setKitAcceptedInput(
@@ -1168,6 +1514,7 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("invalid_accepted_input");
         }
         boolean add = accepted > 0;
+        WorkflowDomainSnapshot before = runtime.snapshot();
         boolean changed = runtime.kitWorkflow().setAcceptedInput(
                 kitId,
                 rule,
@@ -1177,11 +1524,20 @@ public final class SlotWorkspaceCommandService {
                         : "slot_workspace.ldlib.workflow_accept_input_remove")
         );
         if (!changed) {
-            return WorkspaceCommandOutcome.accepted("noop", "");
+            return frameOnlyAccepted("noop", "", "workflow_accepted_input_noop");
         }
-        return WorkspaceCommandOutcome.accepted(
+        WorkspaceCommandOutcome outcome = WorkspaceCommandOutcome.accepted(
                 add ? "workflow input accepted" : "workflow input removed",
                 rule.displayLabel());
+        if (rule.itemTag()) {
+            return outcome.withInvalidations(List.of(localizedAcceptedInputTagInvalidation(
+                    "workflow_accepted_input_tag_changed")));
+        }
+        return withWorkflowTargetInvalidation(
+                outcome,
+                before,
+                runtime.snapshot(),
+                "workflow_accepted_input_changed");
     }
 
     public static WorkspaceCommandOutcome setKitScopedDesiredCount(
@@ -1205,13 +1561,18 @@ public final class SlotWorkspaceCommandService {
         if (runtime.kitWorkflow().kit(kitId) == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         boolean changed = runtime.desiredCountWorkflow().setForKit(kitId, identity, count);
         if (!changed) {
-            return WorkspaceCommandOutcome.accepted("noop", "");
+            return frameOnlyAccepted("noop", "", "kit_desired_count_noop");
         }
-        return WorkspaceCommandOutcome.accepted(
-                count > 0 ? "tab_desired_set_" + count : "tab_desired_cleared",
-                "");
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted(
+                        count > 0 ? "tab_desired_set_" + count : "tab_desired_cleared",
+                        ""),
+                before,
+                runtime.snapshot(),
+                "kit_desired_count_changed");
     }
 
     /**
@@ -1237,16 +1598,21 @@ public final class SlotWorkspaceCommandService {
         DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
         String activeKit = desired.activeScope(runtime.snapshot().kitMap());
         String writeKit = activeKit;
+        WorkflowDomainSnapshot before = runtime.snapshot();
         boolean changed = writeKit != null
                 ? desired.setForKit(writeKit, identity, count)
                 : desired.setPlayer(identity, count);
         if (!changed) {
-            return WorkspaceCommandOutcome.accepted("noop", "");
+            return frameOnlyAccepted("noop", "", "desired_count_noop");
         }
         String scopeTag = writeKit != null ? "kit" : "global";
-        return WorkspaceCommandOutcome.accepted(
-                count > 0 ? "desired_count_" + scopeTag + "_" + count : "desired_count_cleared",
-                "");
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted(
+                        count > 0 ? "desired_count_" + scopeTag + "_" + count : "desired_count_cleared",
+                        ""),
+                before,
+                runtime.snapshot(),
+                "desired_count_changed");
     }
 
     /**
@@ -1269,7 +1635,7 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
         if (delta == 0) {
-            return WorkspaceCommandOutcome.accepted("noop", "");
+            return frameOnlyAccepted("noop", "", "desired_count_delta_noop");
         }
         DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
         String activeKit = desired.activeScope(runtime.snapshot().kitMap());
@@ -1281,18 +1647,27 @@ public final class SlotWorkspaceCommandService {
         if (activeKit != null && next < inheritedFloor) {
             next = 0;
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         boolean changed = activeKit != null
                 ? desired.setForKit(activeKit, identity, next)
                 : desired.setPlayer(identity, next);
         if (!changed) {
-            return WorkspaceCommandOutcome.accepted("noop", "");
+            return frameOnlyAccepted("noop", "", "desired_count_noop");
         }
         int now = activeKit != null ? desired.getForKit(activeKit, identity) : desired.getPlayer(identity);
         if (now <= 0) {
-            return WorkspaceCommandOutcome.accepted("desired_count_cleared", "");
+            return withWorkflowTargetInvalidation(
+                    WorkspaceCommandOutcome.accepted("desired_count_cleared", ""),
+                    before,
+                    runtime.snapshot(),
+                    "desired_count_changed");
         }
         String scopeTag = activeKit != null ? "kit" : "global";
-        return WorkspaceCommandOutcome.accepted("desired_count_" + scopeTag + "_" + now, "");
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted("desired_count_" + scopeTag + "_" + now, ""),
+                before,
+                runtime.snapshot(),
+                "desired_count_changed");
     }
 
     /**
@@ -1319,6 +1694,7 @@ public final class SlotWorkspaceCommandService {
         int before = activeKit == null
                 ? runtime.wantedCountWorkflow().getPlayer(identity)
                 : runtime.wantedCountWorkflow().getForKit(activeKit, identity);
+        WorkflowDomainSnapshot beforeSnapshot = runtime.snapshot();
         if (before > 0) {
             if (activeKit == null) {
                 runtime.wantedCountWorkflow().clearPlayer(identity);
@@ -1326,7 +1702,11 @@ public final class SlotWorkspaceCommandService {
                 runtime.wantedCountWorkflow().clearForKit(activeKit, identity);
             }
             recordWantedCountUndo(runtime, activeKit, identity, before, 0);
-            return WorkspaceCommandOutcome.accepted("wanted cleared", identity.itemId());
+            return withWorkflowTargetInvalidation(
+                    WorkspaceCommandOutcome.accepted("wanted cleared", identity.itemId()),
+                    beforeSnapshot,
+                    runtime.snapshot(),
+                    "wanted_count_changed");
         }
         int target = SlotWorkspaceViewModel.carriedMovableCount(authority, identity) + 1;
         if (activeKit == null) {
@@ -1335,7 +1715,11 @@ public final class SlotWorkspaceCommandService {
             runtime.wantedCountWorkflow().setForKit(activeKit, identity, target);
         }
         recordWantedCountUndo(runtime, activeKit, identity, before, target);
-        return WorkspaceCommandOutcome.accepted("wanted", identity.itemId() + " target=" + target);
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted("wanted", identity.itemId() + " target=" + target),
+                beforeSnapshot,
+                runtime.snapshot(),
+                "wanted_count_changed");
     }
 
     public static WorkspaceCommandOutcome setJunk(
@@ -1395,6 +1779,7 @@ public final class SlotWorkspaceCommandService {
         int before = activeKit == null
                 ? runtime.wantedCountWorkflow().getPlayer(identity)
                 : runtime.wantedCountWorkflow().getForKit(activeKit, identity);
+        WorkflowDomainSnapshot beforeSnapshot = runtime.snapshot();
         if (target <= 0) {
             boolean changed = activeKit == null
                     ? runtime.wantedCountWorkflow().clearPlayer(identity)
@@ -1402,18 +1787,24 @@ public final class SlotWorkspaceCommandService {
             if (changed) {
                 recordWantedCountUndo(runtime, activeKit, identity, before, 0);
             }
-            return WorkspaceCommandOutcome.accepted(
-                    changed ? "wanted cleared" : "wanted unchanged",
-                    identity.itemId());
+            WorkspaceCommandOutcome outcome = WorkspaceCommandOutcome.accepted(
+                            changed ? "wanted cleared" : "wanted unchanged",
+                            identity.itemId());
+            return changed
+                    ? withWorkflowTargetInvalidation(outcome, beforeSnapshot, runtime.snapshot(), "wanted_count_changed")
+                    : outcome;
         }
         if (target <= carried && activeKit == null) {
             boolean changed = runtime.wantedCountWorkflow().clearPlayer(identity);
             if (changed) {
                 recordWantedCountUndo(runtime, null, identity, before, 0);
             }
-            return WorkspaceCommandOutcome.accepted(
-                    changed ? "wanted cleared" : "wanted unchanged",
-                    identity.itemId());
+            WorkspaceCommandOutcome outcome = WorkspaceCommandOutcome.accepted(
+                            changed ? "wanted cleared" : "wanted unchanged",
+                            identity.itemId());
+            return changed
+                    ? withWorkflowTargetInvalidation(outcome, beforeSnapshot, runtime.snapshot(), "wanted_count_changed")
+                    : outcome;
         }
         boolean changed = activeKit == null
                 ? runtime.wantedCountWorkflow().setPlayer(identity, target)
@@ -1421,7 +1812,12 @@ public final class SlotWorkspaceCommandService {
         if (changed) {
             recordWantedCountUndo(runtime, activeKit, identity, before, target);
         }
-        return WorkspaceCommandOutcome.accepted("wanted count updated", identity.itemId() + " target=" + target);
+        WorkspaceCommandOutcome outcome = WorkspaceCommandOutcome.accepted(
+                "wanted count updated",
+                identity.itemId() + " target=" + target);
+        return changed
+                ? withWorkflowTargetInvalidation(outcome, beforeSnapshot, runtime.snapshot(), "wanted_count_changed")
+                : outcome;
     }
 
     /**
@@ -1445,7 +1841,7 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
         if (delta == 0) {
-            return WorkspaceCommandOutcome.accepted("wanted unchanged", identity.itemId());
+            return frameOnlyAccepted("wanted unchanged", identity.itemId(), "wanted_count_delta_noop");
         }
         String activeKit = runtime.wantedCountWorkflow().activeScope(runtime.snapshot().kitMap());
         int carried = SlotWorkspaceViewModel.carriedMovableCount(authority, identity);
@@ -1455,6 +1851,7 @@ public final class SlotWorkspaceCommandService {
         int target = current > carried
                 ? current + delta
                 : carried + Math.max(0, delta);
+        WorkflowDomainSnapshot beforeSnapshot = runtime.snapshot();
         if (target <= 0) {
             boolean changed = activeKit == null
                     ? runtime.wantedCountWorkflow().clearPlayer(identity)
@@ -1462,18 +1859,24 @@ public final class SlotWorkspaceCommandService {
             if (changed) {
                 recordWantedCountUndo(runtime, activeKit, identity, current, 0);
             }
-            return WorkspaceCommandOutcome.accepted(
-                    changed ? "wanted cleared" : "wanted unchanged",
-                    identity.itemId());
+            WorkspaceCommandOutcome outcome = WorkspaceCommandOutcome.accepted(
+                            changed ? "wanted cleared" : "wanted unchanged",
+                            identity.itemId());
+            return changed
+                    ? withWorkflowTargetInvalidation(outcome, beforeSnapshot, runtime.snapshot(), "wanted_count_changed")
+                    : outcome;
         }
         if (target <= carried && activeKit == null) {
             boolean changed = runtime.wantedCountWorkflow().clearPlayer(identity);
             if (changed) {
                 recordWantedCountUndo(runtime, null, identity, current, 0);
             }
-            return WorkspaceCommandOutcome.accepted(
-                    changed ? "wanted cleared" : "wanted unchanged",
-                    identity.itemId());
+            WorkspaceCommandOutcome outcome = WorkspaceCommandOutcome.accepted(
+                            changed ? "wanted cleared" : "wanted unchanged",
+                            identity.itemId());
+            return changed
+                    ? withWorkflowTargetInvalidation(outcome, beforeSnapshot, runtime.snapshot(), "wanted_count_changed")
+                    : outcome;
         }
         boolean changed = activeKit == null
                 ? runtime.wantedCountWorkflow().setPlayer(identity, target)
@@ -1481,7 +1884,12 @@ public final class SlotWorkspaceCommandService {
         if (changed) {
             recordWantedCountUndo(runtime, activeKit, identity, current, target);
         }
-        return WorkspaceCommandOutcome.accepted("wanted count updated", identity.itemId() + " target=" + target);
+        WorkspaceCommandOutcome outcome = WorkspaceCommandOutcome.accepted(
+                "wanted count updated",
+                identity.itemId() + " target=" + target);
+        return changed
+                ? withWorkflowTargetInvalidation(outcome, beforeSnapshot, runtime.snapshot(), "wanted_count_changed")
+                : outcome;
     }
 
     public static void clearSatisfiedWantedCounts(
@@ -1522,6 +1930,7 @@ public final class SlotWorkspaceCommandService {
         if (runtime.kitWorkflow().kit(kitId) == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         boolean swapped = runtime.kitWorkflow().swapSlots(
                 kitId, pageIndex, fromIndex, toIndex,
                 DomainEventMetadata.origin("slot_workspace.ldlib.kit_swap_slots")
@@ -1531,7 +1940,11 @@ public final class SlotWorkspaceCommandService {
         }
         SlotDebugLog.log("LDLib kit slots swapped {} page={} from={} to={}",
                 kitId, pageIndex, fromIndex, toIndex);
-        return WorkspaceCommandOutcome.accepted("workflow slots swapped", kitId);
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted("workflow slots swapped", kitId),
+                before,
+                runtime.snapshot(),
+                "workflow_slots_swapped");
     }
 
     public static WorkspaceCommandOutcome removeKitPage(WorkflowDomainRuntime runtime, String kitId, int pageIndex) {
@@ -1548,6 +1961,7 @@ public final class SlotWorkspaceCommandService {
         if (existing.pageCount() <= 1) {
             return WorkspaceCommandOutcome.rejected("kit_last_page");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         boolean removed = runtime.kitWorkflow().removePage(
                 kitId,
                 pageIndex,
@@ -1557,7 +1971,11 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("invalid_page_index");
         }
         SlotDebugLog.log("LDLib kit page removed {} page={}", kitId, pageIndex);
-        return WorkspaceCommandOutcome.accepted("workflow page removed", existing.name());
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted("workflow page removed", existing.name()),
+                before,
+                runtime.snapshot(),
+                "workflow_page_removed");
     }
 
     public static WorkspaceCommandOutcome deactivateKit(WorkflowDomainRuntime runtime) {
@@ -1567,11 +1985,16 @@ public final class SlotWorkspaceCommandService {
         if (!runtime.kitWorkflow().activation().isActive()) {
             return WorkspaceCommandOutcome.rejected("no_active_kit");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         runtime.kitWorkflow().deactivate(
                 DomainEventMetadata.origin("slot_workspace.ldlib.kit_deactivate")
         );
         SlotDebugLog.log("LDLib kit deactivated");
-        return WorkspaceCommandOutcome.accepted("workflow deactivated", "");
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted("workflow deactivated", ""),
+                before,
+                runtime.snapshot(),
+                "workflow_deactivated");
     }
 
     public static WorkspaceCommandOutcome renameKit(WorkflowDomainRuntime runtime, String kitId, String newName) {
@@ -1589,6 +2012,7 @@ public final class SlotWorkspaceCommandService {
         if (trimmed.isBlank()) {
             return WorkspaceCommandOutcome.rejected("kit_name_blank");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         try {
             boolean renamed = runtime.kitWorkflow().rename(
                     kitId,
@@ -1596,13 +2020,20 @@ public final class SlotWorkspaceCommandService {
                     DomainEventMetadata.origin("slot_workspace.ldlib.kit_rename")
             );
             if (!renamed) {
-                return WorkspaceCommandOutcome.accepted("workflow name unchanged", existing.name());
+                return frameOnlyAccepted(
+                        "workflow name unchanged",
+                        existing.name(),
+                        "workflow_name_unchanged");
             }
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
         SlotDebugLog.log("LDLib kit renamed {} -> {}", kitId, trimmed);
-        return WorkspaceCommandOutcome.accepted("workflow renamed", trimmed);
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted("workflow renamed", trimmed),
+                before,
+                runtime.snapshot(),
+                "workflow_renamed");
     }
 
     public static WorkspaceCommandOutcome duplicateKit(WorkflowDomainRuntime runtime, String kitId) {
@@ -1616,6 +2047,7 @@ public final class SlotWorkspaceCommandService {
         if (existing == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         try {
             KitDefinition copy = runtime.kitWorkflow().duplicate(
                     kitId,
@@ -1625,7 +2057,11 @@ public final class SlotWorkspaceCommandService {
                 return WorkspaceCommandOutcome.rejected("tab_duplicate_rejected");
             }
             SlotDebugLog.log("LDLib kit duplicated {} -> {}", kitId, copy.id());
-            return WorkspaceCommandOutcome.accepted("workflow duplicated", copy.name());
+            return withWorkflowTargetInvalidation(
+                    WorkspaceCommandOutcome.accepted("workflow duplicated", copy.name()),
+                    before,
+                    runtime.snapshot(),
+                    "workflow_duplicated");
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
@@ -1642,6 +2078,7 @@ public final class SlotWorkspaceCommandService {
         if (existing == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         try {
             boolean moved = runtime.kitWorkflow().reorder(
                     kitId,
@@ -1649,13 +2086,20 @@ public final class SlotWorkspaceCommandService {
                     DomainEventMetadata.origin("slot_workspace.ldlib.kit_reorder")
             );
             if (!moved) {
-                return WorkspaceCommandOutcome.accepted("workflow order unchanged", existing.name());
+                return frameOnlyAccepted(
+                        "workflow order unchanged",
+                        existing.name(),
+                        "workflow_order_unchanged");
             }
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
         }
         SlotDebugLog.log("LDLib kit reordered {} -> {}", kitId, targetIndex);
-        return WorkspaceCommandOutcome.accepted("workflow moved", existing.name());
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted("workflow moved", existing.name()),
+                before,
+                runtime.snapshot(),
+                "workflow_moved");
     }
 
     public static WorkspaceCommandOutcome deleteKit(WorkflowDomainRuntime runtime, String kitId) {
@@ -1669,12 +2113,17 @@ public final class SlotWorkspaceCommandService {
         if (existing == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        WorkflowDomainSnapshot before = runtime.snapshot();
         runtime.kitWorkflow().delete(
                 kitId,
                 DomainEventMetadata.origin("slot_workspace.ldlib.kit_delete")
         );
         SlotDebugLog.log("LDLib kit deleted {}", kitId);
-        return WorkspaceCommandOutcome.accepted("workflow deleted", existing.name());
+        return withWorkflowTargetInvalidation(
+                WorkspaceCommandOutcome.accepted("workflow deleted", existing.name()),
+                before,
+                runtime.snapshot(),
+                "workflow_deleted");
     }
 
     private static String defaultKitName(WorkflowDomainRuntime runtime) {
@@ -1758,8 +2207,12 @@ public final class SlotWorkspaceCommandService {
                 }
         );
         return WorkspaceCommandOutcome.accepted(
-                identitiesToClear.isEmpty() ? "island deleted" : "island deleted, items will re-home",
-                existing.label());
+                        identitiesToClear.isEmpty() ? "island deleted" : "island deleted, items will re-home",
+                        existing.label())
+                .withInvalidations(List.of(localizedSectionRemovedInvalidation(
+                        identitiesToClear,
+                        islandId,
+                        "island_deleted")));
     }
 
     /**
@@ -2054,13 +2507,24 @@ public final class SlotWorkspaceCommandService {
         if (identity == null || islandId == null || islandId.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_home_assignment");
         }
+        VisualHomeAssignment before = runtime.visualAtlasWorkflow().visualHomeMap().assignment(identity);
         if (SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(islandId)) {
-            runtime.visualAtlasWorkflow().clearHome(
+            boolean cleared = runtime.visualAtlasWorkflow().clearHome(
                     identity,
                     DomainEventMetadata.origin(origin + ".clear")
             );
             SlotDebugLog.log("LDLib atlas home cleared {} -> {}", identity.itemId(), islandId);
-            return WorkspaceCommandOutcome.accepted("returned to inbox", "Triage");
+            WorkspaceCommandOutcome accepted = WorkspaceCommandOutcome.accepted("returned to inbox", "Triage");
+            if (!cleared) {
+                return accepted.withInvalidations(List.of(WorkspaceInvalidation.frame(
+                        WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                        "visual_home_unchanged")));
+            }
+            return accepted.withInvalidations(List.of(visualHomeDropInvalidation(
+                    identity,
+                    before,
+                    null,
+                    "visual_home_clear")));
         }
         SlotWorkspaceViewModel.AtlasIsland island = viewModel == null ? null : viewModel.island(islandId);
         if (island == null) {
@@ -2084,7 +2548,46 @@ public final class SlotWorkspaceCommandService {
                 islandId,
                 resolvedOrdinal
         );
-        return WorkspaceCommandOutcome.accepted("home assigned", island.label());
+        VisualHomeAssignment after = runtime.visualAtlasWorkflow().visualHomeMap().assignment(identity);
+        return WorkspaceCommandOutcome.accepted("home assigned", island.label())
+                .withInvalidations(List.of(visualHomeDropInvalidation(
+                        identity,
+                        before,
+                        after,
+                        "visual_home_assignment")));
+    }
+
+    private static WorkspaceInvalidation visualHomeDropInvalidation(
+            ItemIdentity identity,
+            VisualHomeAssignment before,
+            VisualHomeAssignment after,
+            String diagnostics
+    ) {
+        return new WorkspaceInvalidation(
+                WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                identity == null ? Set.of() : Set.of(identity),
+                Set.of(),
+                visualHomeDropSections(before, after),
+                EnumSet.of(WorkspaceProjectionSlice.CARD, WorkspaceProjectionSlice.SECTION),
+                false,
+                diagnostics);
+    }
+
+    private static Set<String> visualHomeDropSections(
+            VisualHomeAssignment before,
+            VisualHomeAssignment after
+    ) {
+        LinkedHashSet<String> sections = new LinkedHashSet<>();
+        sections.add(homeSectionId(before));
+        sections.add(homeSectionId(after));
+        return Set.copyOf(sections);
+    }
+
+    private static String homeSectionId(VisualHomeAssignment assignment) {
+        if (assignment == null || assignment.islandId() == null || assignment.islandId().isBlank()) {
+            return SlotWorkspaceAtlasLayout.ISLAND_TRIAGE;
+        }
+        return assignment.islandId();
     }
 
     /**

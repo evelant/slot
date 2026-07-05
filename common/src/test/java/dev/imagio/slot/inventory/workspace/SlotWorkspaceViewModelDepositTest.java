@@ -356,7 +356,8 @@ class SlotWorkspaceViewModelDepositTest {
                     index.liveTrackedDisplayEntries(),
                     index.liveDepositStorageIds(),
                     index.liveChestContentPresence(),
-                    index.liveStorageAffinityEligibility());
+                    index.liveStorageAffinityEligibility(),
+                    RemoteStorageDetailIntent.SEARCH);
 
             SlotWorkspaceViewModel.AtlasItem redstone = viewModel.atlasItems().stream()
                     .filter(candidate -> REDSTONE.equals(candidate.identity().toIdentity()))

@@ -63,6 +63,7 @@ class SlotWorkspaceKitCommandServiceTest {
         List<KitDefinition> kits = runtime.kitWorkflow().kits();
         assertEquals(1, kits.size());
         assertEquals("Mining", kits.get(0).name());
+        assertWorkflowMetadataInvalidation(outcome, "workflow_saved");
     }
 
     @Test
@@ -94,12 +95,34 @@ class SlotWorkspaceKitCommandServiceTest {
         assertTrue(runtime.kitWorkflow().activation().isActive());
         assertEquals(kits.get(0).id(), runtime.kitWorkflow().activation().kitId());
         assertEquals(0, kits.get(0).pages().get(0).filledSlotCount());
+        assertWorkflowMetadataInvalidation(outcome, "workflow_created");
+    }
+
+    @Test
+    void activateEmptyKitReturnsWorkflowMetadataInvalidation() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Empty");
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.activateKit(
+                runtime,
+                InventoryAuthoritySnapshot.empty(),
+                ProtectionPolicy.allowAll(),
+                IDENTITY_RESOLVER,
+                new RecordingActionExecutor(),
+                kit.id()
+        );
+
+        assertTrue(outcome.success());
+        assertEquals(kit.id(), runtime.kitWorkflow().activation().kitId());
+        assertWorkflowMetadataInvalidation(outcome, "workflow_activated");
     }
 
     @Test
     void activateKitFlipsActivationAndReturnsAcceptedOutcome() {
         WorkflowDomainRuntime runtime = runtime();
         KitDefinition kit = runtime.kitWorkflow().create("Mining");
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        runtime.kitWorkflow().setSlotIdentity(kit.id(), 0, 0, hammer);
         RecordingActionExecutor executor = new RecordingActionExecutor();
 
         WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.activateKit(
@@ -113,6 +136,11 @@ class SlotWorkspaceKitCommandServiceTest {
 
         assertTrue(outcome.success());
         assertEquals(kit.id(), runtime.kitWorkflow().activation().kitId());
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().contains(hammer));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.WORKFLOW));
     }
 
     @Test
@@ -144,6 +172,7 @@ class SlotWorkspaceKitCommandServiceTest {
         assertEquals(
                 Set.of(ItemIdentity.of("minecraft:dirt")),
                 runtime.kitWorkflow().activation().putAwayIdentities());
+        assertTargetInvalidation(outcome, ItemIdentity.of("minecraft:dirt"));
     }
 
     @Test
@@ -199,12 +228,34 @@ class SlotWorkspaceKitCommandServiceTest {
     void deactivateKitClearsActivation() {
         WorkflowDomainRuntime runtime = runtime();
         KitDefinition kit = runtime.kitWorkflow().create("Mining");
+        ItemIdentity hammer = ItemIdentity.of("gtceu:steel_mining_hammer");
+        ItemIdentity dirt = ItemIdentity.of("minecraft:dirt");
+        runtime.kitWorkflow().setSlotIdentity(kit.id(), 0, 0, hammer);
+        runtime.kitWorkflow().activate(kit.id(), 0, Set.of(dirt));
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.deactivateKit(runtime);
+
+        assertTrue(outcome.success());
+        assertFalse(runtime.kitWorkflow().activation().isActive());
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().contains(hammer));
+        assertTrue(invalidation.identities().contains(dirt));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.WORKFLOW));
+    }
+
+    @Test
+    void deactivateEmptyKitReturnsWorkflowMetadataInvalidation() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Empty");
         runtime.kitWorkflow().activate(kit.id());
 
         WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.deactivateKit(runtime);
 
         assertTrue(outcome.success());
         assertFalse(runtime.kitWorkflow().activation().isActive());
+        assertWorkflowMetadataInvalidation(outcome, "workflow_deactivated");
     }
 
     @Test
@@ -226,6 +277,7 @@ class SlotWorkspaceKitCommandServiceTest {
 
         assertTrue(outcome.success());
         assertNull(runtime.kitWorkflow().kit(kit.id()));
+        assertWorkflowMetadataInvalidation(outcome, "workflow_deleted");
     }
 
     @Test
@@ -249,6 +301,7 @@ class SlotWorkspaceKitCommandServiceTest {
         assertTrue(outcome.success());
         assertEquals("workflow moved", outcome.status());
         assertEquals(List.of(combat.id(), mining.id()), kitIds(runtime.kitWorkflow().kits()));
+        assertWorkflowMetadataInvalidation(outcome, "workflow_moved");
     }
 
     @Test
@@ -303,6 +356,100 @@ class SlotWorkspaceKitCommandServiceTest {
     }
 
     @Test
+    void activeExactAcceptedInputReturnsTargetInvalidation() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Smelting");
+        runtime.kitWorkflow().activate(kit.id());
+        ItemIdentity ore = ItemIdentity.of("minecraft:iron_ore");
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setKitAcceptedInput(
+                runtime,
+                kit.id(),
+                "EXACT_ITEM",
+                "minecraft:iron_ore",
+                "",
+                "",
+                "",
+                1);
+
+        assertTrue(outcome.success());
+        assertEquals("workflow input accepted", outcome.status());
+        assertEquals(0, runtime.desiredCountWorkflow().getForKit(kit.id(), ore));
+        assertTargetInvalidation(outcome, ore);
+    }
+
+    @Test
+    void tagAcceptedInputReturnsLocalizedTagInvalidation() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Smelting");
+        runtime.kitWorkflow().activate(kit.id());
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setKitAcceptedInput(
+                runtime,
+                kit.id(),
+                "ITEM_TAG",
+                "",
+                "",
+                "",
+                "forge:ores/iron",
+                1);
+
+        assertTrue(outcome.success());
+        assertEquals("workflow input accepted", outcome.status());
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertFalse(invalidation.requiresFullProjection());
+        assertEquals(WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED, invalidation.reason());
+        assertTrue(invalidation.identities().isEmpty());
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.CARD));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.WORKFLOW));
+        assertEquals("workflow_accepted_input_tag_changed", invalidation.diagnostics());
+    }
+
+    @Test
+    void activeWorkflowMemberChangeReturnsTargetInvalidation() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().activate(kit.id());
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setKitMember(
+                runtime,
+                kit.id(),
+                "minecraft:torch",
+                "",
+                "",
+                1);
+
+        assertTrue(outcome.success());
+        assertEquals("workflow member added", outcome.status());
+        assertTargetInvalidation(outcome, ItemIdentity.of("minecraft:torch"));
+    }
+
+    @Test
+    void activeWorkflowSlotChangeReturnsTargetInvalidation() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().activate(kit.id());
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setKitSlotIdentity(
+                runtime,
+                InventoryAuthoritySnapshot.empty(),
+                ProtectionPolicy.allowAll(),
+                IDENTITY_RESOLVER,
+                null,
+                kit.id(),
+                0,
+                0,
+                "minecraft:torch",
+                "",
+                "");
+
+        assertTrue(outcome.success());
+        assertEquals("workflow slot updated", outcome.status());
+        assertTargetInvalidation(outcome, ItemIdentity.of("minecraft:torch"));
+    }
+
+    @Test
     void playerDesiredCountUsesActiveKitScopeWhenKitActive() {
         WorkflowDomainRuntime runtime = runtime();
         KitDefinition kit = runtime.kitWorkflow().create("Mining");
@@ -320,6 +467,7 @@ class SlotWorkspaceKitCommandServiceTest {
         assertEquals("desired_count_kit_16", outcome.status());
         assertEquals(16, runtime.desiredCountWorkflow().getForKit(kit.id(), ItemIdentity.of("minecraft:coal")));
         assertEquals(0, runtime.desiredCountWorkflow().getPlayer(ItemIdentity.of("minecraft:coal")));
+        assertTargetInvalidation(outcome, ItemIdentity.of("minecraft:coal"));
     }
 
     @Test
@@ -457,6 +605,7 @@ class SlotWorkspaceKitCommandServiceTest {
         ItemIdentity identity = ItemIdentity.of("minecraft:torch");
         assertEquals(0, runtime.wantedCountWorkflow().getPlayer(identity));
         assertEquals(1, runtime.wantedCountWorkflow().getForKit(kit.id(), identity));
+        assertTargetInvalidation(outcome, identity);
     }
 
     @Test
@@ -612,6 +761,30 @@ class SlotWorkspaceKitCommandServiceTest {
         return kits.stream()
                 .map(KitDefinition::id)
                 .toList();
+    }
+
+    private static void assertTargetInvalidation(WorkspaceCommandOutcome outcome, ItemIdentity identity) {
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().contains(identity));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.CARD));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.WAYFINDING));
+    }
+
+    private static void assertWorkflowMetadataInvalidation(
+            WorkspaceCommandOutcome outcome,
+            String diagnostics
+    ) {
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.WORKFLOW_METADATA_CHANGED, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().isEmpty());
+        assertTrue(invalidation.storageIds().isEmpty());
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.WORKFLOW));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.FRAME));
+        assertEquals(diagnostics, invalidation.diagnostics());
     }
 
     private static InventoryAuthoritySnapshot carriedAuthority(String itemId, int count) {

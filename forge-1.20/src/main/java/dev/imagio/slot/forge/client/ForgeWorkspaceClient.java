@@ -5,6 +5,7 @@ import dev.imagio.slot.forge.SlotForge;
 import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
+import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -144,6 +145,70 @@ public final class ForgeWorkspaceClient {
             CATEGORY
     );
 
+    public static final KeyMapping TAKE_HOVERED_STACK = new KeyMapping(
+            "key.slot.take_hovered_stack",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_A,
+            CATEGORY
+    );
+
+    public static final KeyMapping PUT_HOVERED_STACK = new KeyMapping(
+            "key.slot.put_hovered_stack",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_D,
+            CATEGORY
+    );
+
+    public static final KeyMapping TAKE_HOVERED_ONE = new KeyMapping(
+            "key.slot.take_hovered_one",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_Q,
+            CATEGORY
+    );
+
+    public static final KeyMapping PUT_HOVERED_ONE = new KeyMapping(
+            "key.slot.put_hovered_one",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_E,
+            CATEGORY
+    );
+
+    public static final KeyMapping TAKE_HOVERED_ALL = new KeyMapping(
+            "key.slot.take_hovered_all",
+            KeyConflictContext.GUI,
+            KeyModifier.SHIFT,
+            InputConstants.Type.KEYSYM.getOrCreate(GLFW.GLFW_KEY_A),
+            CATEGORY
+    );
+
+    public static final KeyMapping PUT_HOVERED_ALL = new KeyMapping(
+            "key.slot.put_hovered_all",
+            KeyConflictContext.GUI,
+            KeyModifier.SHIFT,
+            InputConstants.Type.KEYSYM.getOrCreate(GLFW.GLFW_KEY_D),
+            CATEGORY
+    );
+
+    public static final KeyMapping TAKE_HOVERED_FIVE_STACKS = new KeyMapping(
+            "key.slot.take_hovered_five_stacks",
+            KeyConflictContext.GUI,
+            KeyModifier.CONTROL,
+            InputConstants.Type.KEYSYM.getOrCreate(GLFW.GLFW_KEY_A),
+            CATEGORY
+    );
+
+    public static final KeyMapping PUT_HOVERED_FIVE_STACKS = new KeyMapping(
+            "key.slot.put_hovered_five_stacks",
+            KeyConflictContext.GUI,
+            KeyModifier.CONTROL,
+            InputConstants.Type.KEYSYM.getOrCreate(GLFW.GLFW_KEY_D),
+            CATEGORY
+    );
+
     private static boolean wayfindingHudEnabled = true;
     private static boolean quickHotbarTabDown;
 
@@ -213,6 +278,38 @@ public final class ForgeWorkspaceClient {
     public static boolean matchesMoveToBackpack(int keyCode, int scanCode) {
         return MOVE_TO_BACKPACK.matches(keyCode, scanCode)
                 && MOVE_TO_BACKPACK.getKeyModifier().isActive(MOVE_TO_BACKPACK.getKeyConflictContext());
+    }
+
+    public static WallCardTransferGesturePolicy.KeyboardShortcut hoveredCardShortcut(int keyCode, int scanCode) {
+        if (shortcutMatches(TAKE_HOVERED_FIVE_STACKS, keyCode, scanCode)) {
+            return WallCardTransferGesturePolicy.KeyboardShortcut.TAKE_FIVE_STACKS;
+        }
+        if (shortcutMatches(PUT_HOVERED_FIVE_STACKS, keyCode, scanCode)) {
+            return WallCardTransferGesturePolicy.KeyboardShortcut.PUT_FIVE_STACKS;
+        }
+        if (shortcutMatches(TAKE_HOVERED_ALL, keyCode, scanCode)) {
+            return WallCardTransferGesturePolicy.KeyboardShortcut.TAKE_ALL;
+        }
+        if (shortcutMatches(PUT_HOVERED_ALL, keyCode, scanCode)) {
+            return WallCardTransferGesturePolicy.KeyboardShortcut.PUT_ALL;
+        }
+        if (shortcutMatches(TAKE_HOVERED_STACK, keyCode, scanCode)) {
+            return WallCardTransferGesturePolicy.KeyboardShortcut.TAKE_STACK;
+        }
+        if (shortcutMatches(PUT_HOVERED_STACK, keyCode, scanCode)) {
+            return WallCardTransferGesturePolicy.KeyboardShortcut.PUT_STACK;
+        }
+        if (shortcutMatches(TAKE_HOVERED_ONE, keyCode, scanCode)) {
+            return WallCardTransferGesturePolicy.KeyboardShortcut.TAKE_ONE;
+        }
+        if (shortcutMatches(PUT_HOVERED_ONE, keyCode, scanCode)) {
+            return WallCardTransferGesturePolicy.KeyboardShortcut.PUT_ONE;
+        }
+        return null;
+    }
+
+    private static boolean shortcutMatches(KeyMapping mapping, int keyCode, int scanCode) {
+        return mapping.isActiveAndMatches(InputConstants.getKey(keyCode, scanCode));
     }
 
     public static boolean markWantedDown() {
@@ -301,6 +398,14 @@ public final class ForgeWorkspaceClient {
             event.register(STORAGE_XRAY);
             event.register(MOVE_TO_MAIN_INVENTORY);
             event.register(MOVE_TO_BACKPACK);
+            event.register(TAKE_HOVERED_STACK);
+            event.register(PUT_HOVERED_STACK);
+            event.register(TAKE_HOVERED_ONE);
+            event.register(PUT_HOVERED_ONE);
+            event.register(TAKE_HOVERED_ALL);
+            event.register(PUT_HOVERED_ALL);
+            event.register(TAKE_HOVERED_FIVE_STACKS);
+            event.register(PUT_HOVERED_FIVE_STACKS);
         }
     }
 

@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.workspace;
 
+import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import net.minecraft.server.level.ServerPlayer;
@@ -108,7 +109,12 @@ public final class QuickHotbarSwapHistory {
             WorkspaceHotbarSlotReverser.restoreSlot(player, entry.hotbarIndex(), entry.before());
             redoStack.addLast(new Entry(entry.hotbarIndex(), entry.before(), currentAfter, entry.label()));
             markChanged(player, "quick_hotbar_swap_undo");
-            return WorkspaceCommandOutcome.accepted("quick_hotbar_swap_undone", entry.label());
+            return acceptedSwapOutcome(
+                    "quick_hotbar_swap_undone",
+                    entry.label(),
+                    "quick_hotbar_swap_undo",
+                    entry.before(),
+                    currentAfter);
         }
 
         synchronized WorkspaceCommandOutcome redo(ServerPlayer player) {
@@ -124,7 +130,12 @@ public final class QuickHotbarSwapHistory {
             WorkspaceHotbarSlotReverser.restoreSlot(player, entry.hotbarIndex(), entry.after());
             undoStack.addLast(new Entry(entry.hotbarIndex(), currentBefore, entry.after(), entry.label()));
             markChanged(player, "quick_hotbar_swap_redo");
-            return WorkspaceCommandOutcome.accepted("quick_hotbar_swap_redone", entry.label());
+            return acceptedSwapOutcome(
+                    "quick_hotbar_swap_redone",
+                    entry.label(),
+                    "quick_hotbar_swap_redo",
+                    currentBefore,
+                    entry.after());
         }
 
         private boolean slotStillRepresents(ItemStack current, ItemStack expected) {
@@ -154,5 +165,25 @@ public final class QuickHotbarSwapHistory {
             after = after == null ? ItemStack.EMPTY : after.copy();
             label = label == null ? "" : label;
         }
+    }
+
+    static WorkspaceCommandOutcome acceptedSwapOutcome(
+            String status,
+            String label,
+            String diagnostics,
+            ItemStack before,
+            ItemStack after
+    ) {
+        return WorkspaceBeltCommandService.withCarriedIdentityInvalidation(
+                WorkspaceCommandOutcome.accepted(status, label),
+                diagnostics,
+                stackIdentity(before),
+                stackIdentity(after));
+    }
+
+    private static ItemIdentity stackIdentity(ItemStack stack) {
+        return stack == null || stack.isEmpty()
+                ? null
+                : ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
     }
 }

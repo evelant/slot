@@ -45,6 +45,22 @@ final class WorkspaceProjectionFingerprint {
                 sliceKey("contextual", out -> appendContextual(out, resolved)));
     }
 
+    static String cardKey(SlotWorkspaceViewModel.AtlasItem item) {
+        return sliceKey("card", out -> out.appendObject(item));
+    }
+
+    static String storageChipKey(SlotWorkspaceViewModel.ChestChip chip) {
+        return sliceKey("storage-chip", out -> out.appendObject(chip));
+    }
+
+    static String wayfindingTargetKey(WayfindingTarget target) {
+        return sliceKey("wayfinding-target", out -> out.appendObject(target));
+    }
+
+    static String depositableIdentitiesKey(Set<SlotWorkspaceViewModel.IdentityRef> identities) {
+        return sliceKey("depositability", out -> out.appendObject(identities == null ? Set.of() : identities));
+    }
+
     static String inputKey(WorkspaceProjectionRequest request, ItemIdentityMatcher.Memo memo) {
         WorkspaceProjectionRequest resolved = request == null
                 ? new WorkspaceProjectionRequest(
@@ -56,8 +72,16 @@ final class WorkspaceProjectionFingerprint {
             HashSink out = new HashSink();
             appendAuthority(out, resolved.authority());
             appendWorkflow(out, resolved.workflow());
-            out.appendText(resolved.searchQuery());
             out.appendObject(resolved.remoteStorageDetailIntent());
+            List<ItemIdentity> remoteDetailIdentities = new ArrayList<>(resolved.remoteDetailIdentities());
+            remoteDetailIdentities.sort(Comparator
+                    .comparing(ItemIdentity::itemId)
+                    .thenComparing(identity -> identity.comparisonMode().name())
+                    .thenComparing(ItemIdentity::componentFingerprint));
+            out.appendObject(remoteDetailIdentities);
+            if (resolved.remoteStorageDetailIntent() == RemoteStorageDetailIntent.SEARCH) {
+                out.appendText(resolved.searchQuery());
+            }
             out.appendLong(resolved.currentTick() / 20L);
             out.appendObject(resolved.activeChestPanel());
             out.appendObject(resolved.lootChestSource());
@@ -68,6 +92,12 @@ final class WorkspaceProjectionFingerprint {
             out.appendObject(resolved.learnedRules() == null ? List.of() : resolved.learnedRules().allRules());
             return out.toString();
         });
+    }
+
+    static String authorityKey(InventoryAuthoritySnapshot authority) {
+        HashSink out = new HashSink();
+        appendAuthority(out, authority);
+        return out.toString();
     }
 
     private static void appendAuthority(HashSink out, InventoryAuthoritySnapshot authority) {

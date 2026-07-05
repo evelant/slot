@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -86,9 +87,82 @@ class SlotWorkspaceCommandServiceRehomeTest {
                 null);
 
         assertTrue(outcome.success());
+        assertHomeDropInvalidation(outcome, apple, Set.of("food", "building"), "visual_home_assignment");
         VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().visualHomeMap().assignment(apple);
         assertNotNull(assignment);
         assertEquals("building", assignment.islandId());
+    }
+
+    @Test
+    void assignHomeToTriageEmitsLocalizedInvalidationWhenHomeIsCleared() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null
+        );
+        ItemIdentity apple = ItemIdentity.of("minecraft:apple");
+        runtime.visualAtlasWorkflow().createIslandWithId(
+                "food",
+                "Food",
+                0,
+                0,
+                0xAA8844,
+                apple,
+                DomainEventMetadata.origin("test.food"));
+        runtime.visualAtlasWorkflow().assignHome(
+                apple,
+                "food",
+                0,
+                VisualHomeOrigin.PLAYER_PLACED,
+                true,
+                DomainEventMetadata.origin("test.old_home"));
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.assignHome(
+                runtime,
+                null,
+                new LearnedIslandRuleStore(),
+                stack -> null,
+                apple.itemId(),
+                ItemComparisonMode.ITEM_ID.name(),
+                "",
+                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                null);
+
+        assertTrue(outcome.success(), outcome.diagnostics());
+        assertNull(runtime.visualAtlasWorkflow().visualHomeMap().assignment(apple));
+        assertHomeDropInvalidation(
+                outcome,
+                apple,
+                Set.of("food", SlotWorkspaceAtlasLayout.ISLAND_TRIAGE),
+                "visual_home_clear");
+    }
+
+    @Test
+    void assignHomeToTriageEmitsFrameInvalidationWhenHomeIsAlreadyClear() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null
+        );
+        ItemIdentity apple = ItemIdentity.of("minecraft:apple");
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.assignHome(
+                runtime,
+                null,
+                new LearnedIslandRuleStore(),
+                stack -> null,
+                apple.itemId(),
+                ItemComparisonMode.ITEM_ID.name(),
+                "",
+                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                null);
+
+        assertTrue(outcome.success(), outcome.diagnostics());
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.COMMAND_OUTCOME, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().isEmpty());
+        assertEquals(Set.of(WorkspaceProjectionSlice.FRAME), invalidation.slices());
+        assertEquals("visual_home_unchanged", invalidation.diagnostics());
     }
 
     @Test
@@ -286,6 +360,23 @@ class SlotWorkspaceCommandServiceRehomeTest {
         } finally {
             FacetIndexHolder.reset();
         }
+    }
+
+    private static void assertHomeDropInvalidation(
+            WorkspaceCommandOutcome outcome,
+            ItemIdentity identity,
+            Set<String> sectionIds,
+            String diagnostics
+    ) {
+        assertEquals(1, outcome.invalidations().size());
+        WorkspaceInvalidation invalidation = outcome.invalidations().get(0);
+        assertEquals(WorkspaceInvalidation.Reason.COMMAND_OUTCOME, invalidation.reason());
+        assertFalse(invalidation.requiresFullProjection());
+        assertTrue(invalidation.identities().contains(identity));
+        assertEquals(sectionIds, invalidation.sectionIds());
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.CARD));
+        assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.SECTION));
+        assertEquals(diagnostics, invalidation.diagnostics());
     }
 
     private static IslandSignalDescriptor castingDescriptor(ItemIdentity identity) {

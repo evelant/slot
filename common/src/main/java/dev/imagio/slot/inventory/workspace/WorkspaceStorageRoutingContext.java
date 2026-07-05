@@ -29,7 +29,8 @@ public record WorkspaceStorageRoutingContext(
         List<WorldDisplayStorageSource> displaySources,
         WorkspaceStorageIndex storageIndex,
         ChestAffinityMap affinityMap,
-        long tick
+        long tick,
+        WorkspaceStorageIndexCache.Diagnostics indexDiagnostics
 ) {
     public WorkspaceStorageRoutingContext {
         claimedChestMap = claimedChestMap == null ? ClaimedChestMap.empty() : claimedChestMap;
@@ -41,6 +42,9 @@ public record WorkspaceStorageRoutingContext(
         storageIndex = storageIndex == null ? WorkspaceStorageIndex.empty() : storageIndex;
         affinityMap = affinityMap == null ? ChestAffinityMap.empty() : affinityMap;
         tick = Math.max(0L, tick);
+        indexDiagnostics = indexDiagnostics == null
+                ? WorkspaceStorageIndexCache.Diagnostics.empty()
+                : indexDiagnostics;
     }
 
     public static WorkspaceStorageRoutingContext build(
@@ -100,7 +104,10 @@ public record WorkspaceStorageRoutingContext(
                 storageIndex.displaySources(),
                 storageIndex,
                 snapshot.chestAffinityMap().decayed(tick),
-                tick);
+                tick,
+                storageIndexCache == null
+                        ? WorkspaceStorageIndexCache.Diagnostics.empty()
+                        : storageIndexCache.diagnostics());
     }
 
     public boolean hasNearbyClaimedOrDisplayStorage() {

@@ -94,7 +94,8 @@ public final class WorkspaceCursorCommandService {
         return accepted(
                 "picked_up",
                 "moved=" + extraction.stack().getCount() + " from=" + extraction.sourceLabel(),
-                extraction.origin());
+                extraction.origin(),
+                pickupInvalidations(identity, extraction.origin(), extraction.stack().getCount()));
     }
 
     public static CursorCommandOutcome cursorCancel(
@@ -111,7 +112,7 @@ public final class WorkspaceCursorCommandService {
         }
         ItemStack carried = menu.getCarried();
         if (carried.isEmpty()) {
-            return accepted("ready", "", null);
+            return acceptedFrame("ready", "", null, "cursor_cancel_empty");
         }
         ItemStack remaining = carried.copy();
         if (origin != null) {
@@ -148,16 +149,22 @@ public final class WorkspaceCursorCommandService {
         }
         ItemStack carried = menu.getCarried();
         if (carried.isEmpty()) {
-            return accepted("ready", "", null);
+            return acceptedFrame("ready", "", null, "cursor_smart_deposit_empty");
         }
         if (origin != null && origin.kind() == CursorSourceKind.CHEST) {
+            ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(carried));
+            int beforeCount = carried.getCount();
             ItemStack remaining = insertIntoCarry(player, carried.copy());
             menu.setCarried(remaining);
             SlotDebugLog.log("[cursor][take-from-chest] remaining={}", remaining.getCount());
+            int moved = beforeCount - (remaining.isEmpty() ? 0 : remaining.getCount());
             return accepted(
                     remaining.isEmpty() ? "cursor_carried" : "cursor_partial_carry",
                     "remaining=" + remaining.getCount(),
-                    remaining.isEmpty() ? null : origin);
+                    remaining.isEmpty() ? null : origin,
+                    moved > 0
+                            ? WorkspaceBeltCommandService.carriedIdentityInvalidations("cursor_carried", identity)
+                            : frameInvalidations("cursor_carry_noop"));
         }
         ItemStack remaining = smartDepositLeftover(player, runtime, carried.copy());
         menu.setCarried(remaining);
@@ -215,7 +222,12 @@ public final class WorkspaceCursorCommandService {
                     carriedAfter.isEmpty()
                             ? ""
                             : "moved=" + carriedAfter.getCount() + " from=hotbar:" + (idx + 1),
-                    nextOrigin);
+                    nextOrigin,
+                    carriedAfter.isEmpty()
+                            ? frameInvalidations("cursor_hotbar_noop")
+                            : WorkspaceBeltCommandService.carriedIdentityInvalidations(
+                                    "cursor_hotbar_pickup",
+                                    stackIdentity(carriedAfter)));
         }
         boolean swapped = !carriedAfter.isEmpty() && !sameStackIdentity(carriedBefore, carriedAfter);
         return accepted(
@@ -223,7 +235,11 @@ public final class WorkspaceCursorCommandService {
                         ? "cursor_deposited"
                         : swapped ? "cursor_swapped" : "cursor_partial_deposit",
                 "remaining=" + carriedAfter.getCount(),
-                nextOrigin);
+                nextOrigin,
+                WorkspaceBeltCommandService.carriedIdentityInvalidations(
+                        "cursor_hotbar_drop",
+                        stackIdentity(carriedBefore),
+                        swapped ? stackIdentity(slotBefore) : null));
     }
 
     public static CursorCommandOutcome dropCursorIntoChest(
@@ -241,7 +257,7 @@ public final class WorkspaceCursorCommandService {
         }
         ItemStack carried = menu.getCarried();
         if (carried.isEmpty()) {
-            return accepted("ready", "", null);
+            return acceptedFrame("ready", "", null, "cursor_drop_chest_empty");
         }
         WorkspaceChestCommandService.ChestProximityResult resolved =
                 WorkspaceChestCommandService.resolveProximateChest(player, runtime, storageIdRaw);
@@ -276,7 +292,15 @@ public final class WorkspaceCursorCommandService {
         return accepted(
                 remaining.isEmpty() ? "cursor_deposited" : "cursor_partial_deposit",
                 "deposited=" + deposited + " remaining=" + remaining.getCount(),
-                remaining.isEmpty() ? null : origin);
+                remaining.isEmpty() ? null : origin,
+                deposited > 0
+                        ? WorkspaceChestCommandService.depositRecordInvalidations(
+                                List.of(new DepositExecutor.DepositRecord(
+                                        resolved.chest().storageId(),
+                                        identity,
+                                        deposited)),
+                                "cursor_drop_chest")
+                        : frameInvalidations("cursor_drop_chest_noop"));
     }
 
     public static WorkspaceCommandOutcome crossSurfaceDropOnHostSlot(
@@ -322,7 +346,10 @@ public final class WorkspaceCursorCommandService {
                 describeStack(extracted), describeStack(targetSlot.getItem()),
                 describeStack(leftover), describeStack(putBack));
         return moved > 0
-                ? WorkspaceCommandOutcome.accepted("cross_surface_dropped", "moved=" + moved)
+                ? WorkspaceBeltCommandService.withCarriedIdentityInvalidation(
+                        WorkspaceCommandOutcome.accepted("cross_surface_dropped", "moved=" + moved),
+                        "cross_surface_drop",
+                        identity)
                 : WorkspaceCommandOutcome.rejected("host_rejected_stack");
     }
 
@@ -381,7 +408,10 @@ public final class WorkspaceCursorCommandService {
             remaining--;
         }
         return moved > 0
-                ? WorkspaceCommandOutcome.accepted("cross_surface_quick_moved", "moved=" + moved)
+                ? WorkspaceBeltCommandService.withCarriedIdentityInvalidation(
+                        WorkspaceCommandOutcome.accepted("cross_surface_quick_moved", "moved=" + moved),
+                        "cross_surface_quick_move_atlas",
+                        identity)
                 : WorkspaceCommandOutcome.rejected("host_rejected_stack");
     }
 
@@ -425,7 +455,10 @@ public final class WorkspaceCursorCommandService {
         }
         SlotDebugLog.log("[xsurface][server] hotbar quick-move idx={} moved={} remaining={}",
                 index, placed, remainingStack.isEmpty() ? 0 : remainingStack.getCount());
-        return WorkspaceCommandOutcome.accepted("cross_surface_quick_moved", "moved=" + placed);
+        return WorkspaceBeltCommandService.withCarriedIdentityInvalidation(
+                WorkspaceCommandOutcome.accepted("cross_surface_quick_moved", "moved=" + placed),
+                "cross_surface_quick_move_hotbar",
+                ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(source)));
     }
 
     private static Extraction extractFromCarry(ServerPlayer player, ItemIdentity identity, int amount) {
@@ -623,6 +656,67 @@ public final class WorkspaceCursorCommandService {
 
     private static CursorCommandOutcome accepted(String status, String diagnostics, CursorOrigin origin) {
         return new CursorCommandOutcome(WorkspaceCommandOutcome.accepted(status, diagnostics), origin);
+    }
+
+    private static CursorCommandOutcome accepted(
+            String status,
+            String diagnostics,
+            CursorOrigin origin,
+            List<WorkspaceInvalidation> invalidations
+    ) {
+        return new CursorCommandOutcome(
+                WorkspaceCommandOutcome.accepted(status, diagnostics).withInvalidations(invalidations),
+                origin);
+    }
+
+    private static CursorCommandOutcome acceptedFrame(
+            String status,
+            String diagnostics,
+            CursorOrigin origin,
+            String invalidationDiagnostics
+    ) {
+        return accepted(status, diagnostics, origin, frameInvalidations(invalidationDiagnostics));
+    }
+
+    static List<WorkspaceInvalidation> pickupInvalidations(
+            ItemIdentity identity,
+            CursorOrigin origin,
+            int count
+    ) {
+        if (count <= 0 || origin == null) {
+            return List.of(WorkspaceInvalidation.full(
+                    WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                    "cursor_pickup_missing_origin"));
+        }
+        ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(identity);
+        if (origin.kind() == CursorSourceKind.CHEST) {
+            return WorkspaceChestCommandService.takeRecordInvalidations(
+                    List.of(new TakeAllExecutor.TakeRecord(
+                            origin.sourceId(),
+                            normalized,
+                            count)),
+                    "cursor_pickup_chest");
+        }
+        if (origin.kind() == CursorSourceKind.CARRY) {
+            return WorkspaceBeltCommandService.carriedIdentityInvalidations(
+                    "cursor_pickup_carry",
+                    normalized);
+        }
+        return List.of(WorkspaceInvalidation.full(
+                WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                "cursor_pickup_unsupported_origin"));
+    }
+
+    private static List<WorkspaceInvalidation> frameInvalidations(String diagnostics) {
+        return List.of(WorkspaceInvalidation.frame(
+                WorkspaceInvalidation.Reason.COMMAND_OUTCOME,
+                diagnostics));
+    }
+
+    private static ItemIdentity stackIdentity(ItemStack stack) {
+        return stack == null || stack.isEmpty()
+                ? null
+                : ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
     }
 
     private static CursorCommandOutcome rejected(String diagnostics, CursorOrigin origin) {
