@@ -62,5 +62,12 @@ subprojects {
                 includeGroup 'maven.modrinth'
             }
         }
+        maven {
+            name = 'Modmaven'
+            url = uri('https://modmaven.dev/')
+            content {
+                includeGroup 'appeng'
+            }
+        }
     }
 }

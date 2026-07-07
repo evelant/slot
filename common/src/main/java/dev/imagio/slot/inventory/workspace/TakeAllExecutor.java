@@ -44,8 +44,8 @@ public final class TakeAllExecutor {
             int slot = entry.slotIndex();
             ItemStack stack = entry.stack();
             ItemIdentity identity = ItemIdentityMatcher.create(stack);
-            int desired = stack.getCount();
-            ItemStack extracted = worldStorage.extract(server, target, slot, desired, false);
+            int desired = entry.count();
+            ItemStack extracted = worldStorage.extract(player, server, target, slot, desired, false);
             if (extracted == null || extracted.isEmpty()) {
                 continue;
             }
@@ -62,7 +62,7 @@ public final class TakeAllExecutor {
                 leftoverSlots++;
                 // Put what didn't fit back into the same chest slot; fall back to
                 // dropping only if the chest can't re-accept (e.g., slot filters).
-                ItemStack putBack = worldStorage.insert(server, target, remaining, false);
+                ItemStack putBack = worldStorage.insert(player, server, target, remaining, false);
                 if (putBack != null && !putBack.isEmpty()) {
                     player.drop(putBack, false);
                 }
@@ -207,11 +207,11 @@ public final class TakeAllExecutor {
         // delegate caps at its own stack-size. For "take one" it's literally
         // 1. Simulate first to read what we'd actually get; commit at the
         // end so we know how many to ask back for on leftover.
-        ItemStack preview = worldStorage.extract(server, target, slotIndex, amount, true);
+        ItemStack preview = worldStorage.extract(player, server, target, slotIndex, amount, true);
         if (preview == null || preview.isEmpty()) {
             return TakeSingleOutcome.empty();
         }
-        ItemStack extracted = worldStorage.extract(server, target, slotIndex, preview.getCount(), false);
+        ItemStack extracted = worldStorage.extract(player, server, target, slotIndex, preview.getCount(), false);
         if (extracted == null || extracted.isEmpty()) {
             return TakeSingleOutcome.empty();
         }
@@ -220,7 +220,7 @@ public final class TakeAllExecutor {
         int remainingCount = remaining == null || remaining.isEmpty() ? 0 : remaining.getCount();
         int moved = beforeInsert - remainingCount;
         if (remainingCount > 0) {
-            ItemStack putBack = worldStorage.insert(server, target, remaining, false);
+            ItemStack putBack = worldStorage.insert(player, server, target, remaining, false);
             if (putBack != null && !putBack.isEmpty()) {
                 player.drop(putBack, false);
             }

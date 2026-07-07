@@ -64,7 +64,7 @@ public record RememberedStorageContents(
                 ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(
                         ItemIdentityMatcher.create(content.stack()));
                 if (identity != null) {
-                    counts.merge(identity, content.stack().getCount(), Integer::sum);
+                    counts.merge(identity, content.count(), Integer::sum);
                 }
             }
         }
@@ -82,13 +82,23 @@ public record RememberedStorageContents(
         }
         LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
         if (snapshot != null) {
-            for (ItemStack stack : snapshot.contents()) {
-                if (stack == null || stack.isEmpty()) {
-                    continue;
+            if (!snapshot.countsByIdentity().isEmpty()) {
+                for (Map.Entry<ItemIdentity, Integer> entry : snapshot.countsByIdentity().entrySet()) {
+                    ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(entry.getKey());
+                    int count = entry.getValue() == null ? 0 : entry.getValue();
+                    if (identity != null && count > 0) {
+                        counts.merge(identity, count, Integer::sum);
+                    }
                 }
-                ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
-                if (identity != null) {
-                    counts.merge(identity, stack.getCount(), Integer::sum);
+            } else {
+                for (ItemStack stack : snapshot.contents()) {
+                    if (stack == null || stack.isEmpty()) {
+                        continue;
+                    }
+                    ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
+                    if (identity != null) {
+                        counts.merge(identity, stack.getCount(), Integer::sum);
+                    }
                 }
             }
         }

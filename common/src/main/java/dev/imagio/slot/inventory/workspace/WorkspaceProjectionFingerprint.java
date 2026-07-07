@@ -634,11 +634,13 @@ final class WorkspaceProjectionFingerprint {
             appendInt(source.z());
             appendInt(source.slotCount());
             appendObject(source.contents());
+            appendObject(source.aliasedBlocks());
         }
 
         private void appendSlotContent(WorldStorageAccess.SlotContent content) {
             appendInt(content.slotIndex());
             appendStack(content.stack());
+            appendInt(content.count());
         }
 
         private void appendStorageTarget(StorageTargetRef target) {

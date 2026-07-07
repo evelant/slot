@@ -246,10 +246,14 @@ public final class WorkspaceStorageIndexCache {
         combined.putAll(rememberedLayer.entries());
         combined.putAll(depositOverlayLayer.entries());
         combined.putAll(displayLayer.entries());
-        lastIndex = new WorkspaceStorageIndex(
+        WorkspaceStorageIndex.AliasCorrection aliasCorrection = WorkspaceStorageIndex.correctDisplayAliases(
                 combined,
+                resolvedMap,
+                displayLayer.displaySources());
+        lastIndex = new WorkspaceStorageIndex(
+                aliasCorrection.entries(),
                 WorkspaceStorageIndex.carriedCounts(resolvedAuthority),
-                displayLayer.displaySources(),
+                aliasCorrection.displaySources(),
                 memoryRevision);
         lastIndexKey = indexKey;
         diagnostics = new Diagnostics(
@@ -558,10 +562,18 @@ public final class WorkspaceStorageIndexCache {
                 if (content == null || content.stack() == null || content.stack().isEmpty()) {
                     continue;
                 }
-                contents.add(content.slotIndex() + ":" + stackKey(content.stack()));
+                contents.add(content.slotIndex() + ":" + stackKey(content.stack()) + ':' + content.count());
             }
             contents.sort(String::compareTo);
             out.append('|').append(contents);
+            ArrayList<String> aliases = new ArrayList<>();
+            for (WorldDisplayStorageSource.AliasedBlock alias : source.aliasedBlocks()) {
+                if (alias != null) {
+                    aliases.add(alias.dimensionId() + '@' + alias.x() + ',' + alias.y() + ',' + alias.z());
+                }
+            }
+            aliases.sort(String::compareTo);
+            out.append('|').append(aliases);
             keys.add(out.toString());
         }
         keys.sort(String::compareTo);

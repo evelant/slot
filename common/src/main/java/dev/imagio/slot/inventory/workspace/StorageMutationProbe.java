@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
 final class StorageMutationProbe {
@@ -9,6 +10,17 @@ final class StorageMutationProbe {
     }
 
     static boolean canInsertAny(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            WorldStorageAccess.Target target,
+            ItemStack stack,
+            int requestedCount
+    ) {
+        return canInsertAny(null, server, worldStorage, target, stack, requestedCount);
+    }
+
+    static boolean canInsertAny(
+            ServerPlayer actor,
             MinecraftServer server,
             WorldStorageAccess worldStorage,
             WorldStorageAccess.Target target,
@@ -24,7 +36,7 @@ final class StorageMutationProbe {
         ItemStack probe = stack.copy();
         probe.setCount(probeCount);
         try {
-            ItemStack leftover = worldStorage.insert(server, target, probe, true);
+            ItemStack leftover = worldStorage.insert(actor, server, target, probe, true);
             int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
             return leftoverCount < probeCount;
         } catch (RuntimeException | LinkageError exception) {
@@ -33,6 +45,16 @@ final class StorageMutationProbe {
     }
 
     static boolean canExtractAny(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            WorldStorageAccess.Target target,
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot
+    ) {
+        return canExtractAny(null, server, worldStorage, target, snapshot);
+    }
+
+    static boolean canExtractAny(
+            ServerPlayer actor,
             MinecraftServer server,
             WorldStorageAccess worldStorage,
             WorldStorageAccess.Target target,
@@ -48,7 +70,7 @@ final class StorageMutationProbe {
             }
             int slotIndex = i < snapshot.slotIndices().size() ? snapshot.slotIndices().get(i) : i;
             try {
-                ItemStack extracted = worldStorage.extract(server, target, slotIndex, 1, true);
+                ItemStack extracted = worldStorage.extract(actor, server, target, slotIndex, 1, true);
                 if (extracted != null && !extracted.isEmpty()) {
                     return true;
                 }

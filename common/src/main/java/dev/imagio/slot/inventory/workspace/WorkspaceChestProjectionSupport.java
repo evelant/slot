@@ -131,14 +131,19 @@ public final class WorkspaceChestProjectionSupport {
         int slots = Math.max(0, worldStorage.slotCount(server, target));
         ArrayList<ItemStack> stacks = new ArrayList<>();
         ArrayList<Integer> slotIndices = new ArrayList<>();
+        java.util.LinkedHashMap<dev.imagio.slot.inventory.core.ItemIdentity, Integer> counts =
+                new java.util.LinkedHashMap<>();
         for (WorldStorageAccess.SlotContent content : worldStorage.enumerate(server, target)) {
             if (content == null || content.stack() == null || content.stack().isEmpty()) {
                 continue;
             }
             stacks.add(content.stack().copy());
             slotIndices.add(content.slotIndex());
+            dev.imagio.slot.inventory.core.ItemIdentity identity =
+                    dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(content.stack());
+            dev.imagio.slot.inventory.core.ItemIdentityCollections.mergeCount(counts, identity, content.count());
         }
-        return new SlotWorkspaceViewModel.ChestContentsSnapshot(slots, stacks, slotIndices);
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(slots, stacks, slotIndices, counts);
     }
 
     private static boolean isWithin(

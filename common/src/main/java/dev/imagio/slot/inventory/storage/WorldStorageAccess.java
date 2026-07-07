@@ -52,10 +52,15 @@ public interface WorldStorageAccess {
         }
     }
 
-    /** Represents a filled slot in a world storage, used by {@link #enumerate}. */
-    record SlotContent(int slotIndex, ItemStack stack) {
+    /** Represents a filled slot or logical entry in a world storage, used by {@link #enumerate}. */
+    record SlotContent(int slotIndex, ItemStack stack, int count) {
+        public SlotContent(int slotIndex, ItemStack stack) {
+            this(slotIndex, stack, stack == null ? 0 : stack.getCount());
+        }
+
         public SlotContent {
             stack = stack == null ? ItemStack.EMPTY : stack;
+            count = stack.isEmpty() ? 0 : Math.max(1, count);
         }
     }
 
@@ -68,10 +73,39 @@ public interface WorldStorageAccess {
     ItemStack insert(MinecraftServer server, Target target, ItemStack stack, boolean simulate);
 
     /**
+     * Actor-aware form for storages whose mutation rules need the player
+     * context (for example AE2 power/security/action-source checks).
+     */
+    default ItemStack insert(
+            ServerPlayer actor,
+            MinecraftServer server,
+            Target target,
+            ItemStack stack,
+            boolean simulate
+    ) {
+        return insert(server, target, stack, simulate);
+    }
+
+    /**
      * Extract up to {@code amount} items from the given slot of the target.
      * Returns what was actually extracted.
      */
     ItemStack extract(MinecraftServer server, Target target, int slotIndex, int amount, boolean simulate);
+
+    /**
+     * Actor-aware form for storages whose extraction rules need the player
+     * context (for example AE2 power/security/action-source checks).
+     */
+    default ItemStack extract(
+            ServerPlayer actor,
+            MinecraftServer server,
+            Target target,
+            int slotIndex,
+            int amount,
+            boolean simulate
+    ) {
+        return extract(server, target, slotIndex, amount, simulate);
+    }
 
     /**
      * Enumerate every filled slot of the target. Used by Take All and by
@@ -101,10 +135,49 @@ public interface WorldStorageAccess {
      */
     interface Delegate {
         boolean matches(Target target);
-        Optional<ItemStack> insert(MinecraftServer server, Target target, ItemStack stack, boolean simulate);
-        Optional<ItemStack> extract(MinecraftServer server, Target target, int slotIndex, int amount, boolean simulate);
-        Optional<List<SlotContent>> enumerate(MinecraftServer server, Target target);
-        Optional<Integer> slotCount(MinecraftServer server, Target target);
+
+        default Optional<ItemStack> insert(MinecraftServer server, Target target, ItemStack stack, boolean simulate) {
+            return Optional.empty();
+        }
+
+        default Optional<ItemStack> insert(
+                ServerPlayer actor,
+                MinecraftServer server,
+                Target target,
+                ItemStack stack,
+                boolean simulate
+        ) {
+            return insert(server, target, stack, simulate);
+        }
+
+        default Optional<ItemStack> extract(
+                MinecraftServer server,
+                Target target,
+                int slotIndex,
+                int amount,
+                boolean simulate
+        ) {
+            return Optional.empty();
+        }
+
+        default Optional<ItemStack> extract(
+                ServerPlayer actor,
+                MinecraftServer server,
+                Target target,
+                int slotIndex,
+                int amount,
+                boolean simulate
+        ) {
+            return extract(server, target, slotIndex, amount, simulate);
+        }
+
+        default Optional<List<SlotContent>> enumerate(MinecraftServer server, Target target) {
+            return Optional.empty();
+        }
+
+        default Optional<Integer> slotCount(MinecraftServer server, Target target) {
+            return Optional.empty();
+        }
 
         default List<WorldDisplayStorageSource> proximateDisplaySources(ServerPlayer player, int radiusBlocks) {
             return List.of();

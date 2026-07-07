@@ -531,6 +531,157 @@ class WorkspaceStorageIndexTest {
     }
 
     @Test
+    void ae2DisplayTargetKeepsLogicalCountsAndDoesNotBecomeRememberedStorage() {
+        WorldDisplayStorageSource terminal = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.AE2_TERMINAL,
+                "ME network @ 0,64,0",
+                "minecraft:overworld",
+                0,
+                64,
+                0,
+                1,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        stack("minecraft:redstone", 64),
+                        10_000)));
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                ClaimedChestMap.empty(),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(terminal),
+                Map.of());
+
+        SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = index.contents(terminal.storageId());
+
+        assertEquals(64, snapshot.contents().get(0).getCount());
+        assertEquals(10_000, snapshot.countsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(10_000, index.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+        assertTrue(index.target(terminal.storageId()).depositTarget());
+        assertTrue(index.target(terminal.storageId()).takeTarget());
+        assertTrue(index.trackedDisplayEntries().stream()
+                .noneMatch(entry -> terminal.storageId().equals(entry.target().storageId())));
+        assertTrue(index.liveTrackedDisplayEntries().isEmpty());
+    }
+
+    @Test
+    void ae2StorageBusAliasDoesNotDoubleCountClaimedChestContents() {
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 27, List.of(content(0, stack("minecraft:redstone", 32))));
+        WorldDisplayStorageSource terminal = ae2Terminal(
+                32,
+                List.of(claimedChestAlias()));
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(terminal),
+                Map.of());
+
+        assertEquals(32, index.contents(CHEST_A.toString())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(32, index.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+        assertTrue(index.contents(terminal.storageId()).contents().isEmpty());
+        assertTrue(index.displaySources().get(0).contents().isEmpty());
+    }
+
+    @Test
+    void ae2StorageBusAliasLeavesNetworkOnlyRemainder() {
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 27, List.of(content(0, stack("minecraft:redstone", 32))));
+        WorldDisplayStorageSource terminal = ae2Terminal(
+                132,
+                List.of(claimedChestAlias()));
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(terminal),
+                Map.of());
+
+        SlotWorkspaceViewModel.ChestContentsSnapshot terminalSnapshot = index.contents(terminal.storageId());
+
+        assertEquals(100, terminalSnapshot.countsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(64, terminalSnapshot.contents().get(0).getCount());
+        assertEquals(100, index.displaySources().get(0).contents().get(0).count());
+        assertEquals(132, index.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+    }
+
+    @Test
+    void ae2TerminalWithoutStorageBusAliasStacksWithClaimedChest() {
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 27, List.of(content(0, stack("minecraft:redstone", 32))));
+        WorldDisplayStorageSource terminal = ae2Terminal(32, List.of());
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(terminal),
+                Map.of());
+
+        assertEquals(32, index.contents(terminal.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(64, index.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+    }
+
+    @Test
+    void cachedStorageIndexAppliesAe2StorageBusAliasCorrection() {
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 27, List.of(content(0, stack("minecraft:redstone", 32))));
+        WorldDisplayStorageSource terminal = ae2Terminal(
+                132,
+                List.of(claimedChestAlias()));
+        WorkspaceStorageIndexCache cache = new WorkspaceStorageIndexCache();
+
+        WorkspaceStorageIndex index = cache.buildForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(terminal),
+                Map.of(),
+                0L,
+                0L);
+
+        assertEquals(100, index.contents(terminal.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(132, index.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+
+        WorkspaceStorageIndex updated = cache.buildForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A),
+                world,
+                Set.of(CHEST_A.toString()),
+                List.of(ae2Terminal(500, List.of(claimedChestAlias()))),
+                Map.of(),
+                0L,
+                0L);
+
+        assertFalse(cache.diagnostics().indexHit());
+        assertEquals(468, updated.contents(terminal.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(500, updated.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+    }
+
+    @Test
     void rememberedDisplayStorageIsIndexedWithoutClaimedChest() {
         WorldStorageAccess.Target.Display target = new WorldStorageAccess.Target.Display(
                 WorldDisplayStorageKind.PLACED_ITEM,
@@ -596,6 +747,30 @@ class WorkspaceStorageIndexTest {
                 List.of(content(0, stack("minecraft:redstone", 1))));
     }
 
+    private static WorldDisplayStorageSource ae2Terminal(
+            int redstoneCount,
+            List<WorldDisplayStorageSource.AliasedBlock> aliases
+    ) {
+        return new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.AE2_TERMINAL,
+                "ME network @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                1,
+                List.of(content(
+                        0,
+                        stack("minecraft:redstone", Math.min(redstoneCount, 64)),
+                        redstoneCount)),
+                aliases);
+    }
+
+    private static WorldDisplayStorageSource.AliasedBlock claimedChestAlias() {
+        return new WorldDisplayStorageSource.AliasedBlock("minecraft:overworld", 0, 64, 0);
+    }
+
     private static ClaimedChestMap claimedMap(UUID... ids) {
         ArrayList<ClaimedChest> chests = new ArrayList<>();
         for (UUID id : ids) {
@@ -615,6 +790,10 @@ class WorkspaceStorageIndexTest {
 
     private static WorldStorageAccess.SlotContent content(int slot, ItemStack stack) {
         return new WorldStorageAccess.SlotContent(slot, stack);
+    }
+
+    private static WorldStorageAccess.SlotContent content(int slot, ItemStack stack, int count) {
+        return new WorldStorageAccess.SlotContent(slot, stack, count);
     }
 
     private static ItemStack stack(String itemId, int count) {

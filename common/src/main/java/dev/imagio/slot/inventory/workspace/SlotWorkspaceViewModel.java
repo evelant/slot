@@ -6378,8 +6378,21 @@ public record SlotWorkspaceViewModel(
                     if (snapshot == null) {
                         continue;
                     }
-                    for (ItemStack stack : snapshot.contents()) {
-                        addPresenceStack(totals, perStorage, displayByIdentity, storageId, stack);
+                    if (!snapshot.countsByIdentity().isEmpty()) {
+                        for (Map.Entry<ItemIdentity, Integer> entry : snapshot.countsByIdentity().entrySet()) {
+                            addPresenceIdentity(
+                                    totals,
+                                    perStorage,
+                                    displayByIdentity,
+                                    storageId,
+                                    entry.getKey(),
+                                    entry.getValue(),
+                                    snapshot.contents());
+                        }
+                    } else {
+                        for (ItemStack stack : snapshot.contents()) {
+                            addPresenceStack(totals, perStorage, displayByIdentity, storageId, stack);
+                        }
                     }
                 }
             }
@@ -6398,7 +6411,8 @@ public record SlotWorkspaceViewModel(
                                 perStorage,
                                 displayByIdentity,
                                 source.storageId(),
-                                content.stack());
+                                content.stack(),
+                                content.count());
                     }
                 }
             }
@@ -6432,15 +6446,57 @@ public record SlotWorkspaceViewModel(
                 String storageId,
                 ItemStack stack
         ) {
+            addPresenceStack(totals, perStorage, displayByIdentity, storageId, stack, stack == null ? 0 : stack.getCount());
+        }
+
+        private static void addPresenceStack(
+                LinkedHashMap<ItemIdentity, Integer> totals,
+                LinkedHashMap<ItemIdentity, LinkedHashMap<String, int[]>> perStorage,
+                LinkedHashMap<ItemIdentity, ItemStack> displayByIdentity,
+                String storageId,
+                ItemStack stack,
+                int count
+        ) {
             if (storageId == null || storageId.isBlank() || stack == null || stack.isEmpty()) {
                 return;
             }
             ItemIdentity identity = ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack));
-            totals.merge(identity, stack.getCount(), Integer::sum);
+            int resolvedCount = Math.max(1, count);
+            totals.merge(identity, resolvedCount, Integer::sum);
             perStorage
                     .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
-                    .computeIfAbsent(storageId, ignored -> new int[]{0})[0] += stack.getCount();
+                    .computeIfAbsent(storageId, ignored -> new int[]{0})[0] += resolvedCount;
             displayByIdentity.putIfAbsent(identity, stack.copy());
+        }
+
+        private static void addPresenceIdentity(
+                LinkedHashMap<ItemIdentity, Integer> totals,
+                LinkedHashMap<ItemIdentity, LinkedHashMap<String, int[]>> perStorage,
+                LinkedHashMap<ItemIdentity, ItemStack> displayByIdentity,
+                String storageId,
+                ItemIdentity identity,
+                int count,
+                List<ItemStack> displayStacks
+        ) {
+            if (storageId == null || storageId.isBlank() || identity == null || count <= 0) {
+                return;
+            }
+            totals.merge(identity, count, Integer::sum);
+            perStorage
+                    .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
+                    .computeIfAbsent(storageId, ignored -> new int[]{0})[0] += count;
+            if (!displayByIdentity.containsKey(identity) && displayStacks != null) {
+                for (ItemStack stack : displayStacks) {
+                    if (stack != null
+                            && !stack.isEmpty()
+                            && ItemIdentityMatcher.matchesMovable(
+                            identity,
+                            ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack)))) {
+                        displayByIdentity.put(identity, stack.copy());
+                        break;
+                    }
+                }
+            }
         }
 
         private static String autoLabelFor(ClaimedChest chest) {

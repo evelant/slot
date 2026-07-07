@@ -69,8 +69,8 @@ public final class WorkspaceChestTransferReverser {
             if (stack == null || stack.isEmpty() || !ItemIdentityMatcher.matchesMovable(stack, identity)) {
                 continue;
             }
-            int pullCount = Math.min(stack.getCount(), remaining);
-            ItemStack taken = world.extract(server, target, entry.slotIndex(), pullCount, false);
+            int pullCount = Math.min(entry.count(), remaining);
+            ItemStack taken = world.extract(player, server, target, entry.slotIndex(), pullCount, false);
             if (taken == null || taken.isEmpty()) {
                 continue;
             }
@@ -86,7 +86,7 @@ public final class WorkspaceChestTransferReverser {
             if (leftoverCount <= 0) {
                 continue;
             }
-            ItemStack reinsertLeftover = world.insert(server, target, leftover, false);
+            ItemStack reinsertLeftover = world.insert(player, server, target, leftover, false);
             if (reinsertLeftover != null && !reinsertLeftover.isEmpty()) {
                 SlotCommon.LOGGER.warn(
                         "[SLOT] chest-transfer-undo: lost {} of {} (storage={} carry rejected, storage reinsert rejected)",
@@ -149,7 +149,7 @@ public final class WorkspaceChestTransferReverser {
             if (taken == null || taken.isEmpty()) {
                 continue;
             }
-            ItemStack chestLeftover = world.insert(server, target, taken, false);
+            ItemStack chestLeftover = world.insert(player, server, target, taken, false);
             int leftoverCount = chestLeftover == null || chestLeftover.isEmpty() ? 0 : chestLeftover.getCount();
             int inserted = taken.getCount() - leftoverCount;
             delivered += inserted;

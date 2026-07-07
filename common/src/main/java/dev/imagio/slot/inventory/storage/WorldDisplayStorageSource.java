@@ -20,10 +20,25 @@ public record WorldDisplayStorageSource(
         int y,
         int z,
         int slotCount,
-        List<WorldStorageAccess.SlotContent> contents
+        List<WorldStorageAccess.SlotContent> contents,
+        List<AliasedBlock> aliasedBlocks
 ) {
     private static final String PREFIX = "world-display";
     private static final String SEP = "|";
+
+    public WorldDisplayStorageSource(
+            String storageId,
+            WorldDisplayStorageKind kind,
+            String label,
+            String dimensionId,
+            int x,
+            int y,
+            int z,
+            int slotCount,
+            List<WorldStorageAccess.SlotContent> contents
+    ) {
+        this(storageId, kind, label, dimensionId, x, y, z, slotCount, contents, List.of());
+    }
 
     public WorldDisplayStorageSource {
         if (kind == null) {
@@ -36,6 +51,7 @@ public record WorldDisplayStorageSource(
         label = label == null || label.isBlank() ? defaultLabel(kind, x, y, z) : label;
         slotCount = Math.max(0, slotCount);
         contents = copyContents(contents);
+        aliasedBlocks = copyAliasedBlocks(aliasedBlocks);
     }
 
     public WorldStorageAccess.Target.Display target() {
@@ -94,16 +110,37 @@ public record WorldDisplayStorageSource(
                 continue;
             }
             ItemStack stack = content.stack().copy();
-            copied.add(new WorldStorageAccess.SlotContent(content.slotIndex(), stack));
+            copied.add(new WorldStorageAccess.SlotContent(content.slotIndex(), stack, content.count()));
         }
         return List.copyOf(copied);
+    }
+
+    private static List<AliasedBlock> copyAliasedBlocks(List<AliasedBlock> input) {
+        if (input == null || input.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<AliasedBlock> copied = new ArrayList<>(input.size());
+        for (AliasedBlock alias : input) {
+            if (alias == null || alias.dimensionId().isBlank()) {
+                continue;
+            }
+            copied.add(alias);
+        }
+        return copied.isEmpty() ? List.of() : List.copyOf(copied);
     }
 
     private static String defaultLabel(WorldDisplayStorageKind kind, int x, int y, int z) {
         String base = switch (kind) {
             case TOOL_RACK -> "Tool rack";
             case PLACED_ITEM -> "Placed item";
+            case AE2_TERMINAL -> "ME network";
         };
         return base + " @ " + x + "," + y + "," + z;
+    }
+
+    public record AliasedBlock(String dimensionId, int x, int y, int z) {
+        public AliasedBlock {
+            dimensionId = dimensionId == null ? "" : dimensionId;
+        }
     }
 }

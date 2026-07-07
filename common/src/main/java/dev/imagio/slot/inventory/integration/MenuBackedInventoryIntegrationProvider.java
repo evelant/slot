@@ -33,6 +33,13 @@ public final class MenuBackedInventoryIntegrationProvider implements InventoryIn
         if (context == null || context.menu() == null || context.playerInventory() == null) {
             return ProviderResult.unsupported(providerId(), "missing_context", "Menu-backed host context was missing");
         }
+        if (requiresDedicatedProvider(context)) {
+            return ProviderResult.unsupported(
+                    providerId(),
+                    "terminal_requires_dedicated_provider",
+                    "Terminal/provider-backed menus must be claimed by a dedicated integration"
+            );
+        }
 
         int containerSlotCount = MenuBackedHostSupport.inferSupportedStorageSlots(
                 context.menu(),
@@ -107,5 +114,25 @@ public final class MenuBackedInventoryIntegrationProvider implements InventoryIn
                 return MenuBackedHostSupport.mutateMenuSlots(host, request, mode, primaryMenuSlots);
             }
         });
+    }
+
+    private static boolean requiresDedicatedProvider(InventoryHostContext context) {
+        if (context == null || context.menu() == null) {
+            return false;
+        }
+        InventoryHostObservationHints hints = context.observationHints();
+        if (hints != null
+                && (hints.hostFamilyHint().terminalLike()
+                || hints.slotOwnershipPosture() == InventorySlotOwnershipPosture.PROVIDER_BACKED)) {
+            return true;
+        }
+        String menuClass = context.menu().getClass().getName().toLowerCase(java.util.Locale.ROOT);
+        String screenClass = context.screenClassName() == null
+                ? ""
+                : context.screenClassName().toLowerCase(java.util.Locale.ROOT);
+        return menuClass.startsWith("appeng.")
+                || menuClass.contains("terminal")
+                || screenClass.startsWith("appeng.")
+                || screenClass.contains("terminal");
     }
 }

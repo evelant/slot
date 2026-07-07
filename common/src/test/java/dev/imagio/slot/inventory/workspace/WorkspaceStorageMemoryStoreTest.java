@@ -69,6 +69,24 @@ class WorkspaceStorageMemoryStoreTest {
                 .get(ItemIdentity.of("minecraft:redstone")));
     }
 
+    @Test
+    void snapshotObservationUsesLogicalCountsWhenPresent(@TempDir Path tempDir) {
+        Path statePath = tempDir.resolve("storage-memory.json");
+        WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);
+        StorageTargetRef target = StorageTargetRef.claimed(claimed(CHEST_A), true, false, true);
+        SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                1,
+                List.of(new ItemStack("minecraft:redstone", 64, 64)),
+                List.of(0),
+                Map.of(ItemIdentity.of("minecraft:redstone"), 10_000));
+
+        assertTrue(store.observeSnapshot(target, snapshot, 10L, "workspace_index_live_read", false));
+
+        assertEquals(10_000, store.remembered(CHEST_A.toString())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+    }
+
     private static ClaimedChest claimed(UUID id) {
         return new ClaimedChest(
                 id,

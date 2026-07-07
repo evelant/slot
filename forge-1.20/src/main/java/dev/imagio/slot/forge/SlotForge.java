@@ -4,6 +4,7 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.compat.sophisticated.SophisticatedBackpacksCarriedProvider;
 import dev.imagio.slot.forge.client.SlotForgeConfigScreens;
+import dev.imagio.slot.forge.compat.ae2.Ae2ForgeCompat;
 import dev.imagio.slot.forge.compat.sacks.SacksNSuchCarriedProvider;
 import dev.imagio.slot.forge.compat.sacks.SacksNSuchInventoryIntegrationProvider;
 import dev.imagio.slot.forge.compat.toolbelt.ToolBeltCarriedProvider;
@@ -38,6 +39,7 @@ public final class SlotForge {
         SlotForgeNetworking.register();
         SlotCommon.init();
         ForgePortableContainerClassifiers.register();
+        Ae2ForgeCompat.registerInventoryIntegration();
         InventoryIntegrationRegistry.register(new SacksNSuchInventoryIntegrationProvider());
         InventoryIntegrationRegistry.register(new ToolBeltInventoryIntegrationProvider());
         Forge120ClassificationLayerReloadListener.init();

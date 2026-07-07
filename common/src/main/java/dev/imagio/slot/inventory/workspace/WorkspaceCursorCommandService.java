@@ -2,8 +2,21 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.InventoryCapability;
+import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
+import dev.imagio.slot.inventory.core.InventorySourceDomain;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.integration.InventoryHostContext;
+import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
+import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
+import dev.imagio.slot.inventory.integration.InventoryHostResolver;
+import dev.imagio.slot.inventory.integration.InventoryMutationMode;
+import dev.imagio.slot.inventory.integration.InventoryMutationRequest;
+import dev.imagio.slot.inventory.integration.InventoryMutationRouter;
+import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
+import dev.imagio.slot.inventory.integration.MutationResult;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
@@ -15,6 +28,7 @@ import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -273,7 +287,7 @@ public final class WorkspaceCursorCommandService {
         int beforeCount = remaining.getCount();
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
         WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(resolved.chest());
-        ItemStack leftover = world.insert(server, target, remaining, false);
+        ItemStack leftover = world.insert(player, server, target, remaining, false);
         remaining = leftover == null ? ItemStack.EMPTY : leftover;
         int deposited = beforeCount - remaining.getCount();
         if (deposited > 0) {
@@ -388,14 +402,19 @@ public final class WorkspaceCursorCommandService {
             }
             int extractedCount = extracted.getCount();
             ItemStack remainingStack = extracted;
-            for (Slot hostSlot : menu.slots) {
-                if (remainingStack.isEmpty()) {
-                    break;
+            HostStorageInsert hostInsert = insertIntoResolvedHostStorage(player, remainingStack);
+            if (hostInsert != null) {
+                remainingStack = hostInsert.remainder();
+            } else {
+                for (Slot hostSlot : menu.slots) {
+                    if (remainingStack.isEmpty()) {
+                        break;
+                    }
+                    if (hostSlot.container == player.getInventory() || !hostSlot.mayPlace(remainingStack)) {
+                        continue;
+                    }
+                    remainingStack = hostSlot.safeInsert(remainingStack);
                 }
-                if (hostSlot.container == player.getInventory() || !hostSlot.mayPlace(remainingStack)) {
-                    continue;
-                }
-                remainingStack = hostSlot.safeInsert(remainingStack);
             }
             int placed = extractedCount - (remainingStack.isEmpty() ? 0 : remainingStack.getCount());
             if (!remainingStack.isEmpty()) {
@@ -436,14 +455,19 @@ public final class WorkspaceCursorCommandService {
         int extractedCount = extracted.getCount();
         player.getInventory().setItem(index, ItemStack.EMPTY);
         ItemStack remainingStack = extracted;
-        for (Slot hostSlot : menu.slots) {
-            if (remainingStack.isEmpty()) {
-                break;
+        HostStorageInsert hostInsert = insertIntoResolvedHostStorage(player, remainingStack);
+        if (hostInsert != null) {
+            remainingStack = hostInsert.remainder();
+        } else {
+            for (Slot hostSlot : menu.slots) {
+                if (remainingStack.isEmpty()) {
+                    break;
+                }
+                if (hostSlot.container == player.getInventory() || !hostSlot.mayPlace(remainingStack)) {
+                    continue;
+                }
+                remainingStack = hostSlot.safeInsert(remainingStack);
             }
-            if (hostSlot.container == player.getInventory() || !hostSlot.mayPlace(remainingStack)) {
-                continue;
-            }
-            remainingStack = hostSlot.safeInsert(remainingStack);
         }
         int placed = extractedCount - (remainingStack.isEmpty() ? 0 : remainingStack.getCount());
         if (!remainingStack.isEmpty()) {
@@ -510,8 +534,8 @@ public final class WorkspaceCursorCommandService {
                 if (stackInChest.isEmpty() || !ItemIdentityMatcher.matchesMovable(stackInChest, identity)) {
                     continue;
                 }
-                int extractAmount = Math.min(amount, stackInChest.getCount());
-                ItemStack pulled = worldStorage.extract(server, target, entry.slotIndex(), extractAmount, false);
+                int extractAmount = Math.min(amount, entry.count());
+                ItemStack pulled = worldStorage.extract(player, server, target, entry.slotIndex(), extractAmount, false);
                 if (pulled == null || pulled.isEmpty()) {
                     continue;
                 }
@@ -581,7 +605,7 @@ public final class WorkspaceCursorCommandService {
                     }
                     int beforeCount = remaining.getCount();
                     WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-                    ItemStack leftover = world.insert(server, target, remaining, false);
+                    ItemStack leftover = world.insert(player, server, target, remaining, false);
                     remaining = leftover == null ? ItemStack.EMPTY : leftover;
                     int depositedHere = beforeCount - remaining.getCount();
                     if (depositedHere > 0) {
@@ -599,6 +623,53 @@ public final class WorkspaceCursorCommandService {
             }
         }
         return insertIntoCarry(player, remaining);
+    }
+
+    private static HostStorageInsert insertIntoResolvedHostStorage(ServerPlayer player, ItemStack stack) {
+        if (player == null || stack == null || stack.isEmpty() || player.containerMenu == null) {
+            return null;
+        }
+        InventoryHostDescriptor host = InventoryHostResolver.resolve(new InventoryHostContext(
+                player.containerMenu,
+                player.getInventory(),
+                Component.literal("SLOT Host Quick Move"),
+                WorkspaceCursorCommandService.class.getName(),
+                new InventoryHostObservationHints(
+                        InventoryHostFamilyHint.TERMINAL_HYBRID,
+                        InventorySlotOwnershipPosture.PROVIDER_BACKED,
+                        false,
+                        true,
+                        java.util.Map.of("crossSurfaceQuickMove", "true")
+                )
+        ));
+        InventorySourceDescriptor target = primaryHostStorageSource(host);
+        if (target == null) {
+            return null;
+        }
+        MutationResult result = InventoryMutationRouter.mutate(
+                host,
+                InventoryMutationRequest.insert(host, player, target.id(), stack.copy()),
+                InventoryMutationMode.EXECUTE);
+        if (result != null && result.successful()) {
+            return new HostStorageInsert(result.stackRemainder());
+        }
+        return new HostStorageInsert(stack);
+    }
+
+    private static InventorySourceDescriptor primaryHostStorageSource(InventoryHostDescriptor host) {
+        if (host == null || host.sourceDescriptors() == null) {
+            return null;
+        }
+        return host.sourceDescriptors().stream()
+                .filter(source -> source != null
+                        && source.domain() == InventorySourceDomain.HOST_STORAGE
+                        && source.supports(InventoryCapability.INSERT)
+                        && source.actionable())
+                .sorted(java.util.Comparator
+                        .comparingInt(InventorySourceDescriptor::stableOrder)
+                        .thenComparing(InventorySourceDescriptor::id))
+                .findFirst()
+                .orElse(null);
     }
 
     private static ItemStack insertIntoCarry(ServerPlayer player, ItemStack stack) {
@@ -620,7 +691,7 @@ public final class WorkspaceCursorCommandService {
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
         WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
         int beforeCount = stack == null ? 0 : stack.getCount();
-        ItemStack leftover = world.insert(server, target, stack, false);
+        ItemStack leftover = world.insert(player, server, target, stack, false);
         int afterCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
         if (beforeCount > afterCount) {
             WorkspaceChestCommandService.observeStorageIds(
@@ -758,6 +829,12 @@ public final class WorkspaceCursorCommandService {
     private record Extraction(ItemStack stack, CursorOrigin origin, String sourceLabel) {
         static Extraction empty() {
             return new Extraction(ItemStack.EMPTY, null, "");
+        }
+    }
+
+    private record HostStorageInsert(ItemStack remainder) {
+        private HostStorageInsert {
+            remainder = remainder == null ? ItemStack.EMPTY : remainder;
         }
     }
 

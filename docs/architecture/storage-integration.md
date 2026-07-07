@@ -1,6 +1,6 @@
 # Storage Integration
 
-Last updated: 2026-05-16
+Last updated: 2026-07-06
 
 How SLOT abstracts storage, and how to add new storage mods without touching
 executors, UI code, or the core kernel.
@@ -38,7 +38,7 @@ platform-neutral interfaces in `dev.imagio.slot.inventory.storage`:
 | Axis | Interface | Install via | Platform impl |
 | --- | --- | --- | --- |
 | Carried | `CarriedSourceAccess` | `StorageAccessRegistry.installCarriedSourceAccess` | `NeoForgeCarriedSourceAccess` |
-| World | `WorldStorageAccess` | `StorageAccessRegistry.installWorldStorageAccess` | `NeoForgeWorldStorageAccess` |
+| World | `WorldStorageAccess` | `StorageAccessRegistry.installWorldStorageAccess` | `NeoForgeWorldStorageAccess`, `ForgeWorldStorageAccess` |
 
 Both installed at platform init (`SlotNeoForge`). Callers retrieve via:
 
@@ -150,7 +150,10 @@ require `ServerPlayer` because they only run authoritatively.
 ### Extension points
 
 - **`WorldStorageAccess`** — interface for `insert` / `extract` /
-  `enumerate` / `slotCount` / `isAccessible` on `Target`.
+  `enumerate` / `slotCount` / `isAccessible` on `Target`. Insert/extract
+  have actor-aware overloads; use the `ServerPlayer` forms for providers
+  whose power, security, stats, or action-source semantics depend on a
+  player.
 - **`Target`** — sealed interface. `Chest(ClaimedChest)` covers claimed
   storage. `Display(WorldDisplayStorageKind, dimension, x, y, z)` covers
   small world item displays such as TFC/TFG tool racks and TFC placed-item
@@ -191,11 +194,46 @@ WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
 world.registerDelegate(new Ae2NetworkDelegate());
 ```
 
-The delegate is tried **before** the default capability path, so it can
-intercept `Target.Chest` targets that are attached to an ME network,
-route the operation through the network, and return `Optional.of(result)`.
-Non-matching targets return `Optional.empty()` to fall through to the
-default capability lookup.
+The delegate is tried **before** the default capability path. It may expose
+live `Target.Display` sources discovered near the player or intercept
+`Target.Chest` targets that belong to a virtual network. Matching targets
+return `Optional.of(result)`; non-matching targets return `Optional.empty()`
+to fall through to the default capability lookup.
+
+AE2 Forge 1.20.1 v1 is the reference virtual storage integration. Nearby
+physical item/crafting terminal parts become live-only
+`WorldDisplayStorageKind.AE2_TERMINAL` sources. They are searchable,
+takeable, gatherable, and depositable while proximate, but they are not
+persisted as remembered storage or claimable homes. If multiple physical
+terminals from the same active AE2 grid are nearby, SLOT keeps the closest
+terminal as the representative source so the same ME network is not counted
+once per terminal block. Enumeration emits one logical entry per `AEItemKey`:
+the render stack count is capped to the item's normal stack size, while
+`SlotContent.count()` carries the full ME network total. Insert/extract route
+through AE2 powered storage operations with
+`IActionSource.ofPlayer(player, actionHost)`; do not mutate AE2 menu slots or
+bypass AE2 power/security checks.
+
+Open AE2 item/crafting terminal screens, including wireless item/crafting
+terminal menus, are claimed by a dedicated host provider exposing primary
+storage as provider-backed `ae2:terminal`. The crafting grid is not inferred
+as primary storage. Shift-click / quick-move deposit semantics must use the
+provider-backed network source; explicit drop/click onto an actual
+crafting-grid slot may remain a grid-slot operation. A carried wireless
+terminal is not treated as proximate world storage merely because it is in the
+player inventory; the provider applies when the AE2 terminal screen is open.
+
+AE2 storage-bus aliasing is handled at live world-storage index time. A
+storage bus mounts the adjacent external inventory into AE2's grid storage
+service, so the same physical chest/crate may be visible to SLOT twice: once
+as a proximate/claimed world container and once through a nearby ME terminal's
+network contents. AE2 display sources report the active storage-bus target
+blocks they alias; when an alias matches a live claimed chest, SLOT subtracts
+that chest's live counts from the ME-network display source. If both the
+terminal and chest are nearby, the chest owns the bus-backed local count and
+the terminal owns only the ME-only remainder. If only the terminal is nearby,
+the terminal shows the full ME-network total. If only the chest is nearby, no
+AE2 display source is created.
 
 ### Known gap: claimed non-chest storage
 

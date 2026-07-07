@@ -8,6 +8,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
+import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
@@ -178,6 +179,10 @@ public final class WorkspaceStorageIndex {
             }
         }
 
+        AliasCorrection aliasCorrection = correctDisplayAliases(entries, resolvedMap, liveDisplays);
+        entries = new LinkedHashMap<>(aliasCorrection.entries());
+        liveDisplays = aliasCorrection.displaySources();
+
         for (RememberedStorageContents rememberedContents : rememberedById.values()) {
             if (rememberedContents == null
                     || entries.containsKey(rememberedContents.storageId())
@@ -188,6 +193,222 @@ public final class WorkspaceStorageIndex {
         }
 
         return new WorkspaceStorageIndex(entries, carriedCounts(authority), liveDisplays, memoryRevision);
+    }
+
+    static AliasCorrection correctDisplayAliases(
+            Map<String, StorageEntry> entries,
+            ClaimedChestMap claimedChestMap,
+            List<WorldDisplayStorageSource> displaySources
+    ) {
+        if (entries == null || entries.isEmpty() || displaySources == null || displaySources.isEmpty()) {
+            return new AliasCorrection(entries, displaySources);
+        }
+        Map<WorldDisplayStorageSource.AliasedBlock, List<String>> storageIdsByBlock =
+                storageIdsByAliasedBlock(claimedChestMap);
+        if (storageIdsByBlock.isEmpty()) {
+            return new AliasCorrection(entries, displaySources);
+        }
+        LinkedHashMap<String, StorageEntry> correctedEntries = new LinkedHashMap<>(entries);
+        ArrayList<WorldDisplayStorageSource> correctedSources = new ArrayList<>(displaySources.size());
+        boolean changed = false;
+        for (WorldDisplayStorageSource source : displaySources) {
+            if (source == null || source.aliasedBlocks().isEmpty()) {
+                correctedSources.add(source);
+                continue;
+            }
+            StorageEntry displayEntry = correctedEntries.get(source.storageId());
+            if (displayEntry == null || displayEntry.target() == null || !displayEntry.target().displayTarget()) {
+                correctedSources.add(source);
+                continue;
+            }
+            Map<ItemIdentity, Integer> aliasedCounts =
+                    aliasedCounts(source.aliasedBlocks(), storageIdsByBlock, correctedEntries);
+            if (aliasedCounts.isEmpty()) {
+                correctedSources.add(source);
+                continue;
+            }
+            StorageEntry corrected = subtractAliasedCounts(displayEntry, aliasedCounts);
+            if (corrected == displayEntry) {
+                correctedSources.add(source);
+                continue;
+            }
+            correctedEntries.put(source.storageId(), corrected);
+            correctedSources.add(sourceWithSnapshot(source, corrected.snapshot()));
+            changed = true;
+        }
+        if (!changed) {
+            return new AliasCorrection(entries, displaySources);
+        }
+        return new AliasCorrection(correctedEntries, correctedSources);
+    }
+
+    private static Map<WorldDisplayStorageSource.AliasedBlock, List<String>> storageIdsByAliasedBlock(
+            ClaimedChestMap claimedChestMap
+    ) {
+        if (claimedChestMap == null || claimedChestMap.chests().isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<WorldDisplayStorageSource.AliasedBlock, ArrayList<String>> ids = new LinkedHashMap<>();
+        for (ClaimedChest chest : claimedChestMap.chests()) {
+            if (chest == null || !chest.role().visibleToWorkspace()) {
+                continue;
+            }
+            String storageId = chest.storageId().toString();
+            for (ChestAnchor anchor : chest.anchors()) {
+                if (anchor == null || anchor.dimensionId().isBlank()) {
+                    continue;
+                }
+                WorldDisplayStorageSource.AliasedBlock block =
+                        new WorldDisplayStorageSource.AliasedBlock(
+                                anchor.dimensionId(), anchor.x(), anchor.y(), anchor.z());
+                ids.computeIfAbsent(block, ignored -> new ArrayList<>()).add(storageId);
+            }
+        }
+        if (ids.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<WorldDisplayStorageSource.AliasedBlock, List<String>> out = new LinkedHashMap<>();
+        for (Map.Entry<WorldDisplayStorageSource.AliasedBlock, ArrayList<String>> entry : ids.entrySet()) {
+            out.put(entry.getKey(), List.copyOf(entry.getValue()));
+        }
+        return Map.copyOf(out);
+    }
+
+    private static Map<ItemIdentity, Integer> aliasedCounts(
+            List<WorldDisplayStorageSource.AliasedBlock> aliases,
+            Map<WorldDisplayStorageSource.AliasedBlock, List<String>> storageIdsByBlock,
+            Map<String, StorageEntry> entries
+    ) {
+        if (aliases == null || aliases.isEmpty() || storageIdsByBlock.isEmpty() || entries == null) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
+        LinkedHashSet<String> seenStorageIds = new LinkedHashSet<>();
+        for (WorldDisplayStorageSource.AliasedBlock alias : aliases) {
+            if (alias == null) {
+                continue;
+            }
+            for (String storageId : storageIdsByBlock.getOrDefault(alias, List.of())) {
+                if (storageId == null || storageId.isBlank() || !seenStorageIds.add(storageId)) {
+                    continue;
+                }
+                StorageEntry entry = entries.get(storageId);
+                if (entry == null || !entry.live() || entry.target() == null || entry.target().displayTarget()) {
+                    continue;
+                }
+                mergeCounts(counts, entry.countsByIdentity());
+            }
+        }
+        return counts.isEmpty() ? Map.of() : Map.copyOf(counts);
+    }
+
+    private static StorageEntry subtractAliasedCounts(
+            StorageEntry displayEntry,
+            Map<ItemIdentity, Integer> aliasedCounts
+    ) {
+        if (displayEntry == null || displayEntry.snapshot() == null || aliasedCounts == null || aliasedCounts.isEmpty()) {
+            return displayEntry;
+        }
+        Map<ItemIdentity, Integer> sourceCounts = displayEntry.countsByIdentity();
+        if (sourceCounts.isEmpty()) {
+            return displayEntry;
+        }
+        LinkedHashMap<ItemIdentity, Integer> correctedCounts = new LinkedHashMap<>();
+        boolean changed = false;
+        for (Map.Entry<ItemIdentity, Integer> entry : sourceCounts.entrySet()) {
+            ItemIdentity identity = ItemIdentityCollections.key(entry.getKey());
+            int count = Math.max(0, entry.getValue() == null ? 0 : entry.getValue());
+            int aliased = ItemIdentityCollections.count(aliasedCounts, identity);
+            int corrected = Math.max(0, count - aliased);
+            if (corrected != count) {
+                changed = true;
+            }
+            if (corrected > 0) {
+                correctedCounts.put(identity, corrected);
+            }
+        }
+        if (!changed) {
+            return displayEntry;
+        }
+        SlotWorkspaceViewModel.ChestContentsSnapshot snapshot =
+                snapshotWithCounts(displayEntry.snapshot(), correctedCounts);
+        return new StorageEntry(displayEntry.target(), snapshot, correctedCounts, displayEntry.live(), displayEntry.remembered());
+    }
+
+    private static SlotWorkspaceViewModel.ChestContentsSnapshot snapshotWithCounts(
+            SlotWorkspaceViewModel.ChestContentsSnapshot source,
+            Map<ItemIdentity, Integer> correctedCounts
+    ) {
+        if (source == null || correctedCounts == null || correctedCounts.isEmpty()) {
+            return new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                    source == null ? 0 : source.slotCount(),
+                    List.of(),
+                    List.of(),
+                    Map.of());
+        }
+        LinkedHashMap<ItemIdentity, Integer> remaining = new LinkedHashMap<>(correctedCounts);
+        ArrayList<ItemStack> stacks = new ArrayList<>();
+        ArrayList<Integer> slotIndices = new ArrayList<>();
+        List<ItemStack> sourceStacks = source.contents();
+        List<Integer> sourceSlots = source.slotIndices();
+        for (int i = 0; i < sourceStacks.size(); i++) {
+            ItemStack stack = sourceStacks.get(i);
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            ItemIdentity identity = ItemIdentityCollections.key(ItemIdentityMatcher.create(stack));
+            int remainingCount = Math.max(0, remaining.getOrDefault(identity, 0));
+            if (remainingCount <= 0) {
+                continue;
+            }
+            ItemStack display = stack.copy();
+            display.setCount(Math.min(remainingCount, Math.max(1, display.getMaxStackSize())));
+            stacks.add(display);
+            slotIndices.add(i < sourceSlots.size() ? sourceSlots.get(i) : i);
+            remaining.put(identity, 0);
+        }
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                source.slotCount(),
+                stacks,
+                slotIndices,
+                correctedCounts);
+    }
+
+    private static WorldDisplayStorageSource sourceWithSnapshot(
+            WorldDisplayStorageSource source,
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot
+    ) {
+        ArrayList<WorldStorageAccess.SlotContent> contents = new ArrayList<>();
+        if (snapshot != null) {
+            List<ItemStack> stacks = snapshot.contents();
+            List<Integer> slots = snapshot.slotIndices();
+            for (int i = 0; i < stacks.size(); i++) {
+                ItemStack stack = stacks.get(i);
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                ItemIdentity identity = ItemIdentityCollections.key(ItemIdentityMatcher.create(stack));
+                int count = ItemIdentityCollections.count(snapshot.countsByIdentity(), identity);
+                if (count <= 0) {
+                    continue;
+                }
+                contents.add(new WorldStorageAccess.SlotContent(
+                        i < slots.size() ? slots.get(i) : i,
+                        stack,
+                        count));
+            }
+        }
+        return new WorldDisplayStorageSource(
+                source.storageId(),
+                source.kind(),
+                source.label(),
+                source.dimensionId(),
+                source.x(),
+                source.y(),
+                source.z(),
+                source.slotCount(),
+                contents,
+                source.aliasedBlocks());
     }
 
     private static StorageEntry liveClaimedEntry(
@@ -280,6 +501,7 @@ public final class WorkspaceStorageIndex {
         List<WorldStorageAccess.SlotContent> contents = worldStorage.enumerate(server, target);
         ArrayList<ItemStack> stacks = new ArrayList<>();
         ArrayList<Integer> slotIndices = new ArrayList<>();
+        java.util.LinkedHashMap<ItemIdentity, Integer> counts = new java.util.LinkedHashMap<>();
         if (contents != null) {
             for (WorldStorageAccess.SlotContent content : contents) {
                 if (content == null || content.stack() == null || content.stack().isEmpty()) {
@@ -287,9 +509,13 @@ public final class WorkspaceStorageIndex {
                 }
                 stacks.add(content.stack().copy());
                 slotIndices.add(content.slotIndex());
+                ItemIdentityCollections.mergeCount(
+                        counts,
+                        ItemIdentityMatcher.create(content.stack()),
+                        content.count());
             }
         }
-        return new SlotWorkspaceViewModel.ChestContentsSnapshot(slots, stacks, slotIndices);
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(slots, stacks, slotIndices, counts);
     }
 
     static StorageEntry rememberedEntry(RememberedStorageContents remembered, boolean proximate) {
@@ -305,14 +531,19 @@ public final class WorkspaceStorageIndex {
     static SlotWorkspaceViewModel.ChestContentsSnapshot snapshotFromDisplay(WorldDisplayStorageSource source) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         ArrayList<Integer> indices = new ArrayList<>();
+        java.util.LinkedHashMap<ItemIdentity, Integer> counts = new java.util.LinkedHashMap<>();
         for (WorldStorageAccess.SlotContent content : source.contents()) {
             if (content == null || content.stack() == null || content.stack().isEmpty()) {
                 continue;
             }
             stacks.add(content.stack().copy());
             indices.add(content.slotIndex());
+            ItemIdentityCollections.mergeCount(
+                    counts,
+                    ItemIdentityMatcher.create(content.stack()),
+                    content.count());
         }
-        return new SlotWorkspaceViewModel.ChestContentsSnapshot(source.slotCount(), stacks, indices);
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(source.slotCount(), stacks, indices, counts);
     }
 
     public Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver() {
@@ -539,6 +770,9 @@ public final class WorkspaceStorageIndex {
         if (snapshot == null || snapshot.contents().isEmpty()) {
             return Map.of();
         }
+        if (!snapshot.countsByIdentity().isEmpty()) {
+            return snapshot.countsByIdentity();
+        }
         LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
         for (ItemStack stack : snapshot.contents()) {
             if (stack == null || stack.isEmpty()) {
@@ -596,6 +830,16 @@ public final class WorkspaceStorageIndex {
                         snapshot.slotIndices(),
                         countsByIdentity);
             }
+        }
+    }
+
+    record AliasCorrection(
+            Map<String, StorageEntry> entries,
+            List<WorldDisplayStorageSource> displaySources
+    ) {
+        AliasCorrection {
+            entries = entries == null || entries.isEmpty() ? Map.of() : Map.copyOf(entries);
+            displaySources = displaySources == null ? List.of() : List.copyOf(displaySources);
         }
     }
 }

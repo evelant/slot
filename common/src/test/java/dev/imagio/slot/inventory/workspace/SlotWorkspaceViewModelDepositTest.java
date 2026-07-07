@@ -31,6 +31,7 @@ import dev.imagio.slot.workflow.domain.VisualHomeOrigin;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import dev.imagio.slot.workflow.domain.WorkflowProjection;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
@@ -183,6 +184,115 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     @Test
+    void proximateAe2DisplayStorageProjectsLogicalNetworkCount() {
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.AE2_TERMINAL,
+                "ME network @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                1,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        stack("minecraft:redstone", 64),
+                        10_000)));
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                workflow(homeMap(REDSTONE), ClaimedChestMap.empty(), ChestAffinityMap.empty()),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                storageId -> SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                List.of(source));
+
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItems().stream()
+                .filter(candidate -> REDSTONE.equals(candidate.identity().toIdentity()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(item.ghost());
+        assertEquals(10_000, item.proximateCount());
+        assertEquals(10_000, item.presence().get(0).count());
+        assertEquals(64, item.displayStack().getCount());
+    }
+
+    @Test
+    void proximateAe2StorageBusAliasProjectsDeduplicatedNetworkCount() {
+        WorldDisplayStorageSource terminal = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.AE2_TERMINAL,
+                "ME network @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                1,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        stack("minecraft:redstone", 64),
+                        132)),
+                List.of(new WorldDisplayStorageSource.AliasedBlock("minecraft:overworld", 0, 64, 0)));
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A),
+                new SingleChestWorldStorage(List.of(
+                        new WorldStorageAccess.SlotContent(0, stack("minecraft:redstone", 32)))),
+                Set.of(CHEST_A.toString()),
+                List.of(terminal),
+                Map.of());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                workflow(homeMap(REDSTONE), claimedMap(CHEST_A), ChestAffinityMap.empty()),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                index.contentsResolver(),
+                Set.of(CHEST_A.toString()),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                index.displaySources(),
+                Set.of(CHEST_A.toString()),
+                index.displaySources(),
+                index.liveTrackedDisplayEntries(),
+                index.liveDepositStorageIds(),
+                index.liveChestContentPresence(),
+                index.liveStorageAffinityEligibility(),
+                RemoteStorageDetailIntent.SEARCH);
+
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItems().stream()
+                .filter(candidate -> REDSTONE.equals(candidate.identity().toIdentity()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(item.ghost());
+        assertEquals(132, item.proximateCount());
+        assertEquals(2, item.presence().size());
+        assertEquals(100, item.presence().get(0).count());
+        assertEquals(32, item.presence().get(1).count());
+    }
+
+    @Test
     void proximateWorldDisplayToolRackNormalizesMovableToolIdentity() {
         ItemIdentity exactSaw = ItemIdentity.exact("tfc:metal/saw/steel", "damage=7");
         WorldDisplayStorageSource source = new WorldDisplayStorageSource(
@@ -252,9 +362,34 @@ class SlotWorkspaceViewModelDepositTest {
                 List.of(new WorldStorageAccess.SlotContent(
                         0,
                         new ItemStack("tfc:metal/saw/steel", "damage=7", 1, 1))));
+        WorldDisplayStorageSource emptyNetwork = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.AE2_TERMINAL,
+                "ME network @ 3,64,0",
+                "minecraft:overworld",
+                3,
+                64,
+                0,
+                1,
+                List.of());
+        WorldDisplayStorageSource redstoneNetwork = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.AE2_TERMINAL,
+                "ME network @ 4,64,0",
+                "minecraft:overworld",
+                4,
+                64,
+                0,
+                1,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        stack("minecraft:redstone", 64),
+                        10_000)));
 
         assertFalse(WorldDisplayDepositRouting.containsMatchingContent(emptyRack, STEEL_SAW));
         assertTrue(WorldDisplayDepositRouting.containsMatchingContent(sawRack, STEEL_SAW));
+        assertFalse(WorldDisplayDepositRouting.containsMatchingContent(emptyNetwork, REDSTONE));
+        assertTrue(WorldDisplayDepositRouting.containsMatchingContent(redstoneNetwork, REDSTONE));
     }
 
     @Test
@@ -787,6 +922,43 @@ class SlotWorkspaceViewModelDepositTest {
                 base.observationHints(),
                 base.diagnostics()
         );
+    }
+
+    private static final class SingleChestWorldStorage implements WorldStorageAccess {
+        private final List<SlotContent> contents;
+
+        private SingleChestWorldStorage(List<SlotContent> contents) {
+            this.contents = contents == null ? List.of() : List.copyOf(contents);
+        }
+
+        @Override
+        public ItemStack insert(MinecraftServer server, Target target, ItemStack stack, boolean simulate) {
+            return ItemStack.EMPTY;
+        }
+
+        @Override
+        public ItemStack extract(MinecraftServer server, Target target, int slotIndex, int amount, boolean simulate) {
+            return ItemStack.EMPTY;
+        }
+
+        @Override
+        public List<SlotContent> enumerate(MinecraftServer server, Target target) {
+            return target instanceof Target.Chest ? contents : List.of();
+        }
+
+        @Override
+        public int slotCount(MinecraftServer server, Target target) {
+            return target instanceof Target.Chest ? 27 : 0;
+        }
+
+        @Override
+        public boolean isAccessible(MinecraftServer server, Target target) {
+            return target instanceof Target.Chest;
+        }
+
+        @Override
+        public void registerDelegate(Delegate delegate) {
+        }
     }
 
     private static final class TestMenu extends AbstractContainerMenu {

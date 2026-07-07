@@ -128,6 +128,10 @@ Plans:
   plan/reference for the workflow-tab task surface: player-authored tabs
   that reuse desired/wanted counts, gather guidance, put-away guidance,
   and the existing hotbar page code.
+- [docs/plans/ae2-autocrafting.md](docs/plans/ae2-autocrafting.md) —
+  queued plan for exposing AE2 craftability on tracked recipe deficits and
+  adding explicit ME autocrafting requests without folding craftables into
+  storage counts.
 - [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit
   prototype slices; future user-facing task workflow work should follow
   `workflow-tabs.md`.

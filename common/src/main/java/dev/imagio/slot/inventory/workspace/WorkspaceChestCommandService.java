@@ -642,7 +642,7 @@ public final class WorkspaceChestCommandService {
             if (!world.isAccessible(server, target)) {
                 continue;
             }
-            ItemStack simulation = world.insert(server, target, sourceStack.copy(), true);
+            ItemStack simulation = world.insert(player, server, target, sourceStack.copy(), true);
             if (simulation == null || simulation.isEmpty()) {
                 return chest;
             }
@@ -692,7 +692,7 @@ public final class WorkspaceChestCommandService {
             }
             ItemStack probe = sourceStack.copy();
             probe.setCount(probeCount);
-            ItemStack leftover = world.insert(server, target, probe, true);
+            ItemStack leftover = world.insert(player, server, target, probe, true);
             int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
             if (leftoverCount < probeCount) {
                 candidates.add(storageId.toString());
@@ -704,7 +704,7 @@ public final class WorkspaceChestCommandService {
             }
             ItemStack probe = sourceStack.copy();
             probe.setCount(probeCount);
-            ItemStack leftover = world.insert(server, source.target(), probe, true);
+            ItemStack leftover = world.insert(player, server, source.target(), probe, true);
             int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
             if (leftoverCount < probeCount) {
                 candidates.add(source.storageId());
@@ -835,7 +835,7 @@ public final class WorkspaceChestCommandService {
             }
             ItemStack probe = sourceStack.copy();
             probe.setCount(probeCount);
-            ItemStack leftover = world.insert(player.getServer(), source.target(), probe, true);
+            ItemStack leftover = world.insert(player, player.getServer(), source.target(), probe, true);
             int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
             if (leftoverCount < probeCount) {
                 candidates.add(source.storageId());
@@ -943,7 +943,7 @@ public final class WorkspaceChestCommandService {
                 Math.min(requestedCount, sourceStack.getCount())));
         ItemStack probe = sourceStack.copy();
         probe.setCount(probeCount);
-        ItemStack leftover = world.insert(server, target, probe, true);
+        ItemStack leftover = world.insert(player, server, target, probe, true);
         int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
         return leftoverCount < probeCount ? List.of(fallbackChest.storageId().toString()) : List.of();
     }

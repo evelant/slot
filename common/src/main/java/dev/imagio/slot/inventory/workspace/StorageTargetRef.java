@@ -242,6 +242,7 @@ public record StorageTargetRef(
         String base = switch (kind) {
             case TOOL_RACK -> "Tool rack";
             case PLACED_ITEM -> "Placed item";
+            case AE2_TERMINAL -> "ME network";
         };
         return base + " @ " + x + "," + y + "," + z;
     }

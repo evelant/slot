@@ -47,6 +47,11 @@ public final class NeoForgeWorldStorageAccess implements WorldStorageAccess {
 
     @Override
     public ItemStack insert(MinecraftServer server, Target target, ItemStack stack, boolean simulate) {
+        return insert(null, server, target, stack, simulate);
+    }
+
+    @Override
+    public ItemStack insert(ServerPlayer actor, MinecraftServer server, Target target, ItemStack stack, boolean simulate) {
         if (server == null || target == null || stack == null || stack.isEmpty()) {
             return stack == null ? ItemStack.EMPTY : stack;
         }
@@ -54,7 +59,7 @@ public final class NeoForgeWorldStorageAccess implements WorldStorageAccess {
             if (!delegate.matches(target)) {
                 continue;
             }
-            Optional<ItemStack> handled = delegate.insert(server, target, stack, simulate);
+            Optional<ItemStack> handled = delegate.insert(actor, server, target, stack, simulate);
             if (handled.isPresent()) {
                 return handled.get();
             }
@@ -74,6 +79,18 @@ public final class NeoForgeWorldStorageAccess implements WorldStorageAccess {
 
     @Override
     public ItemStack extract(MinecraftServer server, Target target, int slotIndex, int amount, boolean simulate) {
+        return extract(null, server, target, slotIndex, amount, simulate);
+    }
+
+    @Override
+    public ItemStack extract(
+            ServerPlayer actor,
+            MinecraftServer server,
+            Target target,
+            int slotIndex,
+            int amount,
+            boolean simulate
+    ) {
         if (server == null || target == null || amount <= 0) {
             return ItemStack.EMPTY;
         }
@@ -81,7 +98,7 @@ public final class NeoForgeWorldStorageAccess implements WorldStorageAccess {
             if (!delegate.matches(target)) {
                 continue;
             }
-            Optional<ItemStack> handled = delegate.extract(server, target, slotIndex, amount, simulate);
+            Optional<ItemStack> handled = delegate.extract(actor, server, target, slotIndex, amount, simulate);
             if (handled.isPresent()) {
                 return handled.get();
             }

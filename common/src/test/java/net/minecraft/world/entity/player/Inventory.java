@@ -21,4 +21,14 @@ public class Inventory implements Container {
         }
         offhand.add(ItemStack.EMPTY);
     }
+
+    public ItemStack getItem(int index) {
+        return index < 0 || index >= items.size() ? ItemStack.EMPTY : items.get(index);
+    }
+
+    public void setItem(int index, ItemStack stack) {
+        if (index >= 0 && index < items.size()) {
+            items.set(index, stack == null ? ItemStack.EMPTY : stack);
+        }
+    }
 }

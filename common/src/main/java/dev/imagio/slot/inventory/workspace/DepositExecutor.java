@@ -63,6 +63,7 @@ public final class DepositExecutor {
             }
             ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
             List<DepositTargetCandidate> candidates = depositTargetsThatAccept(
+                    player,
                     server,
                     worldStorage,
                     assignment.candidateStorageIds(),
@@ -99,7 +100,7 @@ public final class DepositExecutor {
                 String candidateId = candidate.storageId();
                 WorldStorageAccess.Target target = candidate.target();
                 int beforeCount = remaining.getCount();
-                ItemStack leftover = worldStorage.insert(server, target, remaining, false);
+                ItemStack leftover = worldStorage.insert(player, server, target, remaining, false);
                 int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
                 int insertedHere = beforeCount - leftoverCount;
                 if (insertedHere <= 0) {
@@ -138,6 +139,7 @@ public final class DepositExecutor {
     }
 
     private static List<DepositTargetCandidate> depositTargetsThatAccept(
+            ServerPlayer player,
             MinecraftServer server,
             WorldStorageAccess worldStorage,
             List<String> candidateStorageIds,
@@ -155,7 +157,7 @@ public final class DepositExecutor {
             if (target == null) {
                 continue;
             }
-            if (StorageMutationProbe.canInsertAny(server, worldStorage, target, sourceStack, budget)) {
+            if (StorageMutationProbe.canInsertAny(player, server, worldStorage, target, sourceStack, budget)) {
                 out.add(new DepositTargetCandidate(candidateId, target));
             }
         }
@@ -206,11 +208,11 @@ public final class DepositExecutor {
         WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
         ItemStack single = sourceStack.copy();
         single.setCount(1);
-        ItemStack remaining = worldStorage.insert(server, target, single.copy(), true);
+        ItemStack remaining = worldStorage.insert(player, server, target, single.copy(), true);
         if (!remaining.isEmpty()) {
             return SingleStackOutcome.failed("destination_full");
         }
-        ItemStack committed = worldStorage.insert(server, target, single.copy(), false);
+        ItemStack committed = worldStorage.insert(player, server, target, single.copy(), false);
         if (!committed.isEmpty()) {
             return SingleStackOutcome.failed("commit_partial");
         }
@@ -246,11 +248,11 @@ public final class DepositExecutor {
             return SingleStackOutcome.failed("source_empty");
         }
         WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-        ItemStack remaining = worldStorage.insert(server, target, sourceStack.copy(), true);
+        ItemStack remaining = worldStorage.insert(player, server, target, sourceStack.copy(), true);
         if (!remaining.isEmpty()) {
             return SingleStackOutcome.failed("destination_full");
         }
-        ItemStack committed = worldStorage.insert(server, target, sourceStack.copy(), false);
+        ItemStack committed = worldStorage.insert(player, server, target, sourceStack.copy(), false);
         if (!committed.isEmpty()) {
             return SingleStackOutcome.failed("commit_partial");
         }

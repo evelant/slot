@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-07-02
+Last updated: 2026-07-06
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -82,6 +82,11 @@ hold the rest.
   parity tests; complex put-away/craft-run/wayfinding cases still fail closed,
   and TerraFirmaGreg profile validation remains in
   [`workspace-performance.md`](workspace-performance.md).
+- **2026-07-05** — Forge AE2 item/crafting terminal integration landed:
+  nearby physical terminals project live ME item contents as non-remembered
+  display storage, open terminals expose provider-backed `ae2:terminal`
+  storage, and cross-surface quick-move routes through host storage instead
+  of terminal crafting-grid slots.
 
 ## Known issues
 
@@ -104,7 +109,15 @@ Roughly ordered by playtest signal. Pull from the top when the active track land
    deficits into player main inventory; and decide from playtest whether the
    deferred hovered `Use this` concretization/hotkey is actually needed.
 
-2. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
+2. **AE2 autocrafting route for craft-run deficits**
+   ([ae2-autocrafting.md](ae2-autocrafting.md)). Keep AE2 craftables distinct
+   from stored ME item counts, and audit AE2 storage-bus aliasing before using
+   ME aggregate counts for recipe satisfaction. First slice should expose
+   "craftable in ME" on tracked recipe outputs/ingredients and add an explicit
+   request action that plans/submits through AE2 from the active nearby/open
+   terminal context; do not auto-submit jobs from `Add Recipe`.
+
+3. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
    Active-scope desired counts, player wanted counts, unified gap chrome,
    gather for wanted/desired gaps, and the basic right-click desired-count
    editor are live. Remaining work: dedupe nearby chest identities that are
@@ -115,14 +128,14 @@ Roughly ordered by playtest signal. Pull from the top when the active track land
    shift-click-take auto-deposit of excess, and eventually throttle stable
    deposit logs.
 
-3. **Learned-storage residual polish**
+4. **Learned-storage residual polish**
    ([learned-storage.md](learned-storage.md)). Sticky cluster
    ordinals across split / merge (today, single-chest churn keeps
    chips stable but multi-chest topology changes can renumber
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; role UX validation against real feeder / machine-buffer
    builds.
-4. **Classification LLM-authoring validation**
+5. **Classification LLM-authoring validation**
    ([classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
    The current contract is: gather/format evidence, let the LLM decide
    vocabulary, feed that vocabulary back into later vocabulary rounds, let the
@@ -142,7 +155,7 @@ Roughly ordered by playtest signal. Pull from the top when the active track land
    obvious latest location instead of scattered stale directories. Then
    regenerate vanilla/pack vocabulary and run `classify-runtime-pack` with the
    usable vocabulary.
-5. **Workflow follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
+6. **Workflow follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
    Core workflows, accepted inputs, compact nearby headers, hidden Useful Now scoring,
    right-side activation-scoped Put Away guidance, search/keybind polish, and the shared display-storage/tool fix pass are
    live. Put-away destination wayfinding and workflow/variant reorder plus
@@ -150,14 +163,14 @@ Roughly ordered by playtest signal. Pull from the top when the active track land
    have landed; remaining workflow follow-ups are the deferred hovered `Use this`
    concretization/hotkey if playtesting asks for it, and later Kit-name cleanup
    without changing the current Kit-backed implementation substrate.
-6. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
+7. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
    The landed Kit code remains the implementation substrate, but future
    user-facing workflow work should follow `workflow-tabs.md`.
-7. **Single-column workspace width pass**
+8. **Single-column workspace width pass**
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
-8. **Workspace performance validation**
+9. **Workspace performance validation**
    ([workspace-performance.md](workspace-performance.md)). The implementation
    has landed in common plus both adapters: timing instrumentation, shared
    per-refresh identity indexing, indexed wayfinding, layered storage-index
@@ -180,7 +193,7 @@ when picked up; do not extend the closed parents.
   aren't on screen; sorting / hotkey-move mods that bind to vanilla
   slot positions will need either a transparent shuffle through
   vanilla or explicit fail-closed behavior; hard-custom screens
-  (AE2 / RS terminals not extending `AbstractContainerScreen`) need
+  (RS terminals and other screens not extending `AbstractContainerScreen`) need
   a graceful fallback that leaves their layout alone. Two
   techniques the parent plan considered are still the obvious
   starting points: (1) move slot positions off-screen on screen
