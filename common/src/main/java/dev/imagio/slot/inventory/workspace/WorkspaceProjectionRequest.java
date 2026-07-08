@@ -2,6 +2,8 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
@@ -45,6 +47,7 @@ public record WorkspaceProjectionRequest(
         Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries,
         Set<String> depositEligibleStorageIds,
         WorkspaceStorageIndex storageIndex,
+        java.util.Map<SlotResourceIdentity, Long> carriedFluidCounts,
         DepositPlanner.ChestContentPresence liveChestContentPresence,
         DepositPlanner.ChestEligibility liveStorageAffinityEligibility
 ) {
@@ -70,10 +73,127 @@ public record WorkspaceProjectionRequest(
                 : List.copyOf(trackedDisplayStorageEntries);
         depositEligibleStorageIds = depositEligibleStorageIds == null ? Set.of() : Set.copyOf(depositEligibleStorageIds);
         storageIndex = storageIndex == null ? WorkspaceStorageIndex.empty() : storageIndex;
+        carriedFluidCounts = SlotResourceCollections.normalizeAmounts(carriedFluidCounts);
         remoteStorageDetailIntent = RemoteStorageDetailIntent.effective(remoteStorageDetailIntent, searchQuery);
         remoteDetailIdentities = remoteDetailIdentities == null
                 ? Set.of()
                 : ItemIdentityCollections.normalizedSet(remoteDetailIdentities);
+    }
+
+    public WorkspaceProjectionRequest(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> carriedContainerInfoResolver,
+            SlotWorkspaceViewModel.LootChestSource lootChestSource,
+            String searchQuery,
+            RemoteStorageDetailIntent remoteStorageDetailIntent,
+            long currentTick,
+            SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel,
+            List<WorldDisplayStorageSource> worldDisplaySources,
+            Set<String> contextualSuggestionStorageIds,
+            List<WorldDisplayStorageSource> contextualSuggestionDisplaySources,
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries,
+            Set<String> depositEligibleStorageIds,
+            WorkspaceStorageIndex storageIndex,
+            java.util.Map<SlotResourceIdentity, Long> carriedFluidCounts,
+            DepositPlanner.ChestContentPresence liveChestContentPresence,
+            DepositPlanner.ChestEligibility liveStorageAffinityEligibility
+    ) {
+        this(
+                authority,
+                workflow,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                revision,
+                learnedRules,
+                signalExtractor,
+                chestContentsResolver,
+                proximateStorageIds,
+                carriedContainerInfoResolver,
+                lootChestSource,
+                searchQuery,
+                remoteStorageDetailIntent,
+                Set.of(),
+                currentTick,
+                activeChestPanel,
+                worldDisplaySources,
+                contextualSuggestionStorageIds,
+                contextualSuggestionDisplaySources,
+                trackedDisplayStorageEntries,
+                depositEligibleStorageIds,
+                storageIndex,
+                carriedFluidCounts,
+                liveChestContentPresence,
+                liveStorageAffinityEligibility);
+    }
+
+    public WorkspaceProjectionRequest(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> carriedContainerInfoResolver,
+            SlotWorkspaceViewModel.LootChestSource lootChestSource,
+            String searchQuery,
+            RemoteStorageDetailIntent remoteStorageDetailIntent,
+            Set<ItemIdentity> remoteDetailIdentities,
+            long currentTick,
+            SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel,
+            List<WorldDisplayStorageSource> worldDisplaySources,
+            Set<String> contextualSuggestionStorageIds,
+            List<WorldDisplayStorageSource> contextualSuggestionDisplaySources,
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayStorageEntries,
+            Set<String> depositEligibleStorageIds,
+            WorkspaceStorageIndex storageIndex,
+            DepositPlanner.ChestContentPresence liveChestContentPresence,
+            DepositPlanner.ChestEligibility liveStorageAffinityEligibility
+    ) {
+        this(
+                authority,
+                workflow,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                revision,
+                learnedRules,
+                signalExtractor,
+                chestContentsResolver,
+                proximateStorageIds,
+                carriedContainerInfoResolver,
+                lootChestSource,
+                searchQuery,
+                remoteStorageDetailIntent,
+                remoteDetailIdentities,
+                currentTick,
+                activeChestPanel,
+                worldDisplaySources,
+                contextualSuggestionStorageIds,
+                contextualSuggestionDisplaySources,
+                trackedDisplayStorageEntries,
+                depositEligibleStorageIds,
+                storageIndex,
+                java.util.Map.of(),
+                liveChestContentPresence,
+                liveStorageAffinityEligibility);
     }
 
     public WorkspaceProjectionRequest(
@@ -119,7 +239,6 @@ public record WorkspaceProjectionRequest(
                 lootChestSource,
                 searchQuery,
                 remoteStorageDetailIntent,
-                Set.of(),
                 currentTick,
                 activeChestPanel,
                 worldDisplaySources,
@@ -128,6 +247,7 @@ public record WorkspaceProjectionRequest(
                 trackedDisplayStorageEntries,
                 depositEligibleStorageIds,
                 storageIndex,
+                java.util.Map.of(),
                 liveChestContentPresence,
                 liveStorageAffinityEligibility);
     }
@@ -163,6 +283,7 @@ public record WorkspaceProjectionRequest(
                 trackedDisplayStorageEntries,
                 depositEligibleStorageIds,
                 storageIndex,
+                carriedFluidCounts,
                 liveChestContentPresence,
                 liveStorageAffinityEligibility);
     }

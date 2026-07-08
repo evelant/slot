@@ -2,6 +2,8 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import net.minecraft.world.item.ItemStack;
@@ -29,6 +31,7 @@ public record RememberedStorageContents(
         int z,
         int slotCapacity,
         Map<ItemIdentity, Integer> countsByIdentity,
+        Map<SlotResourceIdentity, Long> fluidCountsByIdentity,
         String providerId,
         List<String> mediaIds,
         List<WorldDisplayStorageSource.AliasedBlock> aliasedBlocks,
@@ -47,6 +50,7 @@ public record RememberedStorageContents(
         dimensionId = dimensionId == null ? "" : dimensionId;
         slotCapacity = Math.max(0, slotCapacity);
         countsByIdentity = normalizeCounts(countsByIdentity);
+        fluidCountsByIdentity = SlotResourceCollections.normalizeAmounts(fluidCountsByIdentity);
         providerId = providerId == null ? "" : providerId;
         mediaIds = normalizeMediaIds(mediaIds);
         aliasedBlocks = normalizeAliasedBlocks(aliasedBlocks);
@@ -59,6 +63,17 @@ public record RememberedStorageContents(
             StorageTargetRef target,
             int slotCapacity,
             List<WorldStorageAccess.SlotContent> contents,
+            long observedTick,
+            String source
+    ) {
+        return fromContents(target, slotCapacity, contents, List.of(), observedTick, source);
+    }
+
+    public static RememberedStorageContents fromContents(
+            StorageTargetRef target,
+            int slotCapacity,
+            List<WorldStorageAccess.SlotContent> contents,
+            List<WorldStorageAccess.FluidContent> fluidContents,
             long observedTick,
             String source
     ) {
@@ -78,7 +93,15 @@ public record RememberedStorageContents(
                 }
             }
         }
-        return fromCounts(target, slotCapacity, counts, observedTick, source);
+        LinkedHashMap<SlotResourceIdentity, Long> fluidCounts = new LinkedHashMap<>();
+        if (fluidContents != null) {
+            for (WorldStorageAccess.FluidContent content : fluidContents) {
+                if (content != null && content.present()) {
+                    SlotResourceCollections.mergeAmount(fluidCounts, content.identity(), content.amount());
+                }
+            }
+        }
+        return fromCounts(target, slotCapacity, counts, fluidCounts, observedTick, source);
     }
 
     public static RememberedStorageContents fromSourceSnapshot(
@@ -130,13 +153,30 @@ public record RememberedStorageContents(
             }
         }
         int slots = snapshot == null ? 0 : snapshot.slotCount();
-        return fromCounts(target, slots, counts, observedTick, source);
+        return fromCounts(
+                target,
+                slots,
+                counts,
+                snapshot == null ? Map.of() : snapshot.fluidCountsByIdentity(),
+                observedTick,
+                source);
     }
 
     public static RememberedStorageContents fromCounts(
             StorageTargetRef target,
             int slotCapacity,
             Map<ItemIdentity, Integer> counts,
+            long observedTick,
+            String source
+    ) {
+        return fromCounts(target, slotCapacity, counts, Map.of(), observedTick, source);
+    }
+
+    public static RememberedStorageContents fromCounts(
+            StorageTargetRef target,
+            int slotCapacity,
+            Map<ItemIdentity, Integer> counts,
+            Map<SlotResourceIdentity, Long> fluidCounts,
             long observedTick,
             String source
     ) {
@@ -153,6 +193,7 @@ public record RememberedStorageContents(
                 target.z(),
                 slotCapacity,
                 counts,
+                fluidCounts,
                 "",
                 List.of(),
                 List.of(),
@@ -176,6 +217,7 @@ public record RememberedStorageContents(
                 z,
                 slotCapacity,
                 countsByIdentity,
+                fluidCountsByIdentity,
                 providerId,
                 mediaIds,
                 aliasedBlocks,
@@ -195,6 +237,7 @@ public record RememberedStorageContents(
                 z,
                 slotCapacity,
                 countsByIdentity,
+                fluidCountsByIdentity,
                 providerId,
                 mediaIds,
                 aliasedBlocks,
@@ -214,6 +257,7 @@ public record RememberedStorageContents(
                 && z == other.z
                 && slotCapacity == other.slotCapacity
                 && countsByIdentity.equals(other.countsByIdentity)
+                && fluidCountsByIdentity.equals(other.fluidCountsByIdentity)
                 && providerId.equals(other.providerId)
                 && mediaIds.equals(other.mediaIds)
                 && aliasedBlocks.equals(other.aliasedBlocks)
@@ -239,7 +283,12 @@ public record RememberedStorageContents(
 
     public SlotWorkspaceViewModel.ChestContentsSnapshot toSnapshot() {
         if (countsByIdentity.isEmpty()) {
-            return new SlotWorkspaceViewModel.ChestContentsSnapshot(slotCapacity, List.of(), List.of());
+            return new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                    slotCapacity,
+                    List.of(),
+                    List.of(),
+                    Map.of(),
+                    fluidCountsByIdentity);
         }
         ArrayList<ItemStack> stacks = new ArrayList<>(countsByIdentity.size());
         ArrayList<Integer> slotIndices = new ArrayList<>(countsByIdentity.size());
@@ -263,7 +312,8 @@ public record RememberedStorageContents(
                 slotCapacity,
                 stacks,
                 slotIndices,
-                countsByIdentity);
+                countsByIdentity,
+                fluidCountsByIdentity);
     }
 
     private boolean depositCapability() {

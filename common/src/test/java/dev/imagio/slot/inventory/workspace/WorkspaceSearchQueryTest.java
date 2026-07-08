@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -54,6 +55,48 @@ class WorkspaceSearchQueryTest {
 
         assertTrue(WorkspaceSearchQuery.matchesItem("anth", item, null));
         assertTrue(WorkspaceSearchQuery.matchesItem("coal", item, null));
+    }
+
+    @Test
+    void itemMatchUsesFluidResourceFields() {
+        SlotResourceIdentity sulfuricAcid = SlotResourceIdentity.fluid(
+                "gtceu:sulfuric_acid",
+                "tag:forge:acid");
+        SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
+                SlotWorkspaceViewModel.IdentityRef.from(ItemIdentity.of(sulfuricAcid.syntheticItemId())),
+                new ItemStack("minecraft:water_bucket", 1, 1),
+                "Sulfuric Acid",
+                0,
+                0,
+                "chemistry",
+                false,
+                false,
+                false,
+                true,
+                0,
+                List.of(),
+                List.of(),
+                List.of(),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                0,
+                false,
+                false,
+                "",
+                -1,
+                0,
+                SlotWorkspaceViewModel.PutAwayState.NONE,
+                SlotWorkspaceViewModel.ResourceRef.from(sulfuricAcid),
+                24000L);
+
+        assertTrue(WorkspaceSearchQuery.matchesItem("fluid", item, null));
+        assertTrue(WorkspaceSearchQuery.matchesItem("sulfuric", item, null));
+        assertTrue(WorkspaceSearchQuery.matchesItem("forge:acid", item, null));
+        assertFalse(WorkspaceSearchQuery.matchesItem("hydrogen", item, null));
     }
 
     @Test

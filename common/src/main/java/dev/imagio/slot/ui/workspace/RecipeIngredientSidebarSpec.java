@@ -2,6 +2,9 @@ package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceDisplay;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.workspace.RemoteDetailIdentityPayload;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
@@ -62,7 +65,7 @@ public record RecipeIngredientSidebarSpec(
                 continue;
             }
             for (Alternative alternative : ingredient.alternatives()) {
-                if (alternative != null) {
+                if (alternative != null && alternative.identity() != null) {
                     ItemIdentityCollections.add(identities, alternative.identity());
                 }
             }
@@ -78,12 +81,18 @@ public record RecipeIngredientSidebarSpec(
             String ingredientId,
             String label,
             int requiredCount,
+            long requiredAmount,
             List<Alternative> alternatives
     ) {
+        public Ingredient(String ingredientId, String label, int requiredCount, List<Alternative> alternatives) {
+            this(ingredientId, label, requiredCount, requiredCount, alternatives);
+        }
+
         public Ingredient {
             ingredientId = ingredientId == null || ingredientId.isBlank() ? "ingredient" : ingredientId;
             label = label == null || label.isBlank() ? ingredientId : label;
             requiredCount = Math.max(1, requiredCount);
+            requiredAmount = Math.max(1L, requiredAmount <= 0L ? requiredCount : requiredAmount);
             alternatives = alternatives == null ? List.of() : List.copyOf(alternatives);
         }
     }
@@ -92,13 +101,29 @@ public record RecipeIngredientSidebarSpec(
             ItemIdentity identity,
             String label,
             int requiredCount,
-            ItemStack displayStack
+            ItemStack displayStack,
+            SlotResourceIdentity resourceIdentity,
+            long requiredAmount
     ) {
+        public Alternative(ItemIdentity identity, String label, int requiredCount, ItemStack displayStack) {
+            this(identity, label, requiredCount, displayStack, SlotResourceIdentity.item(identity), requiredCount);
+        }
+
         public Alternative {
+            resourceIdentity = SlotResourceCollections.key(resourceIdentity != null
+                    ? resourceIdentity
+                    : SlotResourceIdentity.item(identity));
+            identity = resourceIdentity != null && resourceIdentity.item()
+                    ? resourceIdentity.toItemIdentity()
+                    : identity;
+            if (resourceIdentity != null && resourceIdentity.fluid()) {
+                identity = null;
+            }
             label = label == null || label.isBlank()
-                    ? identity == null ? "Ingredient" : identity.itemId()
+                    ? resourceIdentity == null ? "Ingredient" : resourceIdentity.id()
                     : label;
             requiredCount = Math.max(1, requiredCount);
+            requiredAmount = Math.max(1L, requiredAmount <= 0L ? requiredCount : requiredAmount);
             displayStack = displayStack == null ? ItemStack.EMPTY : displayStack.copy();
         }
     }
@@ -155,7 +180,10 @@ public record RecipeIngredientSidebarSpec(
             lines.addAll(WorkspaceItemTooltipBuilder.slotLines(item));
             lines.add(Component.empty());
             lines.add(Component.literal("EMI recipe ingredient"));
-            lines.add(Component.literal("Required: " + ingredient.requiredCount()));
+            Alternative firstAlternative = ingredient.alternatives().isEmpty() ? null : ingredient.alternatives().get(0);
+            SlotResourceIdentity requiredResource = firstAlternative == null ? null : firstAlternative.resourceIdentity();
+            lines.add(Component.literal("Required: "
+                    + SlotResourceDisplay.formatAmount(requiredResource, ingredient.requiredAmount())));
             if (ingredient.alternatives().size() > 1) {
                 lines.add(Component.literal("Alternatives: " + ingredient.alternatives().size()));
             }
@@ -198,10 +226,10 @@ public record RecipeIngredientSidebarSpec(
             }
             ArrayList<ResolvedAlternative> present = new ArrayList<>();
             for (Alternative alternative : ingredient.alternatives()) {
-                if (alternative == null || alternative.identity() == null) {
+                if (alternative == null || alternative.resourceIdentity() == null) {
                     continue;
                 }
-                SlotWorkspaceViewModel.AtlasItem existing = existingItem(alternative.identity());
+                SlotWorkspaceViewModel.AtlasItem existing = existingItem(alternative);
                 if (existing != null && visibleCount(existing) > 0) {
                     present.add(new ResolvedAlternative(alternative, existing));
                 }
@@ -237,10 +265,8 @@ public record RecipeIngredientSidebarSpec(
         private void addMissingCard(Ingredient ingredient) {
             ensureFallbackSection();
             Alternative alternative = missingAlternative(ingredient);
-            ItemIdentity identity = alternative == null || alternative.identity() == null
-                    ? ItemIdentity.of("slot:recipe_ingredient/" + sanitize(ingredient.ingredientId()))
-                    : alternative.identity();
-            SlotWorkspaceViewModel.AtlasItem existing = existingItem(identity);
+            ItemIdentity identity = identityForAlternative(ingredient, alternative);
+            SlotWorkspaceViewModel.AtlasItem existing = existingItem(alternative);
             if (existing != null && !existing.displayStack().isEmpty()) {
                 addOrMerge(withRecipeTarget(existing, ingredient.requiredCount(), fallbackSectionId()), ingredient);
                 return;
@@ -273,9 +299,10 @@ public record RecipeIngredientSidebarSpec(
                 ItemStack displayStack,
                 String islandId
         ) {
-            ItemIdentity identity = alternative == null || alternative.identity() == null
-                    ? ItemIdentity.of("slot:recipe_ingredient/" + sanitize(ingredient.ingredientId()))
-                    : alternative.identity();
+            ItemIdentity identity = identityForAlternative(ingredient, alternative);
+            SlotResourceIdentity resource = alternative == null || alternative.resourceIdentity() == null
+                    ? SlotResourceIdentity.item(identity)
+                    : alternative.resourceIdentity();
             return new SlotWorkspaceViewModel.AtlasItem(
                     SlotWorkspaceViewModel.IdentityRef.from(identity),
                     displayStack,
@@ -303,7 +330,9 @@ public record RecipeIngredientSidebarSpec(
                     "",
                     -1,
                     0,
-                    SlotWorkspaceViewModel.PutAwayState.NONE
+                    SlotWorkspaceViewModel.PutAwayState.NONE,
+                    SlotWorkspaceViewModel.ResourceRef.from(resource),
+                    ingredient.requiredAmount()
             );
         }
 
@@ -333,13 +362,15 @@ public record RecipeIngredientSidebarSpec(
                     existing.kitNeeded(),
                     Math.max(1, requiredCount),
                     false,
-                    existing.wantedCount(),
+                    0,
                     existing.junk(),
                     existing.acceptedWorkflowInput(),
                     existing.largestCarriedSourceId(),
                     existing.largestCarriedSlotIndex(),
                     existing.largestCarriedSlotCount(),
-                    existing.putAwayState()
+                    existing.putAwayState(),
+                    existing.resource(),
+                    existing.resourceAmount()
             );
         }
 
@@ -365,26 +396,30 @@ public record RecipeIngredientSidebarSpec(
                         second.ingredientId(),
                         second.label(),
                         requiredCount,
+                        second.requiredAmount(),
                         second.alternatives());
             }
+            long requiredAmount = first.requiredAmount() + Math.max(0L, second == null ? 0L : second.requiredAmount());
             return new Ingredient(
                     first.ingredientId(),
                     first.label(),
                     requiredCount,
+                    requiredAmount,
                     first.alternatives());
         }
 
-        private SlotWorkspaceViewModel.AtlasItem existingItem(ItemIdentity identity) {
-            if (identity == null) {
+        private SlotWorkspaceViewModel.AtlasItem existingItem(Alternative alternative) {
+            if (alternative == null || alternative.resourceIdentity() == null) {
                 return null;
             }
-            SlotWorkspaceViewModel.IdentityRef ref = SlotWorkspaceViewModel.IdentityRef.from(identity);
-            SlotWorkspaceViewModel.AtlasItem item = source.atlasItem(ref);
-            if (item != null) {
-                return item;
+            SlotWorkspaceViewModel.ResourceRef ref = SlotWorkspaceViewModel.ResourceRef.from(alternative.resourceIdentity());
+            for (SlotWorkspaceViewModel.AtlasItem item : source.atlasItems()) {
+                if (item != null && ref.equals(item.resource())) {
+                    return item;
+                }
             }
             for (SlotWorkspaceViewModel.AtlasItem triage : source.triageItems()) {
-                if (triage != null && ref.equals(triage.identity())) {
+                if (triage != null && ref.equals(triage.resource())) {
                     return triage;
                 }
             }
@@ -394,6 +429,10 @@ public record RecipeIngredientSidebarSpec(
         private int visibleCount(SlotWorkspaceViewModel.AtlasItem item) {
             if (item == null) {
                 return 0;
+            }
+            if (item.fluidResource()) {
+                long amount = Math.max(0L, item.resourceAmount());
+                return amount >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) amount;
             }
             int carried = item.carried() ? Math.max(0, item.totalCount()) : 0;
             return carried + presenceCount(item.presence()) + presenceCount(item.elsewhere()) + Math.max(0, item.proximateCount());
@@ -438,10 +477,10 @@ public record RecipeIngredientSidebarSpec(
                 return null;
             }
             for (Alternative alternative : ingredient.alternatives()) {
-                if (alternative == null || alternative.identity() == null) {
+                if (alternative == null || alternative.resourceIdentity() == null) {
                     continue;
                 }
-                SlotWorkspaceViewModel.AtlasItem existing = existingItem(alternative.identity());
+                SlotWorkspaceViewModel.AtlasItem existing = existingItem(alternative);
                 if (existing != null
                         && (existing.wantedCount() > 0 || existing.desiredCount() > 0 || existing.kitNeeded())) {
                     return alternative;
@@ -461,7 +500,17 @@ public record RecipeIngredientSidebarSpec(
             if (alternative.displayStack() != null && !alternative.displayStack().isEmpty()) {
                 return alternative.displayStack().copy();
             }
-            return displayStack(alternative.identity());
+            return displayStack(identityForAlternative(null, alternative));
+        }
+
+        private static ItemIdentity identityForAlternative(Ingredient ingredient, Alternative alternative) {
+            if (alternative != null && alternative.identity() != null) {
+                return alternative.identity();
+            }
+            if (alternative != null && alternative.resourceIdentity() != null && alternative.resourceIdentity().fluid()) {
+                return ItemIdentity.of(alternative.resourceIdentity().syntheticItemId());
+            }
+            return ItemIdentity.of("slot:recipe_ingredient/" + sanitize(ingredient == null ? "" : ingredient.ingredientId()));
         }
 
         private static ItemStack displayStack(ItemIdentity identity) {

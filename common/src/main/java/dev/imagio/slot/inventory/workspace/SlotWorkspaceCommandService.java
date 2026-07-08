@@ -11,6 +11,7 @@ import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemStackTags;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.query.CarriedIdentityCounts;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
@@ -72,6 +73,14 @@ public final class SlotWorkspaceCommandService {
     private SlotWorkspaceCommandService() {
     }
 
+    private static WorkspaceCommandOutcome fluidResourceReadOnly(String action) {
+        return WorkspaceCommandOutcome.rejected("fluid_resource_read_only:" + (action == null ? "item_command" : action));
+    }
+
+    private static boolean fluidResourceItemId(String itemId) {
+        return SlotResourceIdentity.syntheticFluidItemId(itemId);
+    }
+
     public static WorkspaceCommandOutcome assignHome(
             WorkflowDomainRuntime runtime,
             SlotWorkspaceViewModel viewModel,
@@ -108,6 +117,9 @@ public final class SlotWorkspaceCommandService {
             String islandId,
             Integer ordinal
     ) {
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("assign_home");
+        }
         ItemIdentity requestedIdentity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (requestedIdentity == null || islandId == null || islandId.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_home_assignment");
@@ -148,6 +160,9 @@ public final class SlotWorkspaceCommandService {
             String chipIslandId,
             String templateName
     ) {
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("accept_chip");
+        }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null || chipIslandId == null || chipIslandId.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_chip_accept");
@@ -261,6 +276,9 @@ public final class SlotWorkspaceCommandService {
             Integer worldX,
             Integer worldY
     ) {
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("create_island");
+        }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_island_seed");
@@ -671,6 +689,9 @@ public final class SlotWorkspaceCommandService {
             uuid = UUID.fromString(storageId);
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected("invalid_chest_storage_id");
+        }
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("forget_item_affinity");
         }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null) {
@@ -1383,6 +1404,9 @@ public final class SlotWorkspaceCommandService {
         if (runtime.kitWorkflow().kit(kitId) == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("set_kit_slot");
+        }
         // identity may be null to clear the slot
         ItemIdentity identity = (itemId == null || itemId.isBlank())
                 ? null
@@ -1457,6 +1481,9 @@ public final class SlotWorkspaceCommandService {
         if (runtime.kitWorkflow().kit(kitId) == null) {
             return WorkspaceCommandOutcome.rejected("unknown_kit");
         }
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("set_kit_member");
+        }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
@@ -1507,6 +1534,9 @@ public final class SlotWorkspaceCommandService {
         if (parsedKind == WorkflowAcceptedInputRule.Kind.ITEM_TAG) {
             rule = WorkflowAcceptedInputRule.itemTag(tagId);
         } else {
+            if (fluidResourceItemId(itemId)) {
+                return fluidResourceReadOnly("set_accepted_input");
+            }
             ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
             rule = WorkflowAcceptedInputRule.exact(identity);
         }
@@ -1554,6 +1584,9 @@ public final class SlotWorkspaceCommandService {
         if (kitId == null || kitId.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_kit_id");
         }
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("set_kit_desired_count");
+        }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
@@ -1590,6 +1623,9 @@ public final class SlotWorkspaceCommandService {
     ) {
         if (runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_desired_count_runtime");
+        }
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("set_desired_count");
         }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null) {
@@ -1629,6 +1665,9 @@ public final class SlotWorkspaceCommandService {
     ) {
         if (runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_desired_count_runtime");
+        }
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("adjust_desired_count");
         }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null) {
@@ -1686,6 +1725,9 @@ public final class SlotWorkspaceCommandService {
         if (runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_wanted_runtime");
         }
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("toggle_wanted_count");
+        }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
@@ -1729,6 +1771,9 @@ public final class SlotWorkspaceCommandService {
             String componentFingerprint,
             boolean marked
     ) {
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("set_junk");
+        }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         return WorkspaceTrashCommandService.setJunk(runtime, identity, marked);
     }
@@ -1740,6 +1785,9 @@ public final class SlotWorkspaceCommandService {
             String comparisonMode,
             String componentFingerprint
     ) {
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("trash_identity");
+        }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         return WorkspaceTrashCommandService.trashCarriedIdentity(player, runtime, identity);
     }
@@ -1768,6 +1816,9 @@ public final class SlotWorkspaceCommandService {
     ) {
         if (runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_wanted_runtime");
+        }
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("set_wanted_count");
         }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null) {
@@ -1835,6 +1886,9 @@ public final class SlotWorkspaceCommandService {
     ) {
         if (runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_wanted_runtime");
+        }
+        if (fluidResourceItemId(itemId)) {
+            return fluidResourceReadOnly("adjust_wanted_count");
         }
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null) {
@@ -2686,7 +2740,7 @@ public final class SlotWorkspaceCommandService {
     }
 
     static ItemIdentity resolveIdentity(String itemId, String comparisonMode, String componentFingerprint) {
-        if (itemId == null || itemId.isBlank()) {
+        if (itemId == null || itemId.isBlank() || fluidResourceItemId(itemId)) {
             return null;
         }
         ItemComparisonMode mode = ItemComparisonMode.ITEM_ID;

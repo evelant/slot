@@ -501,8 +501,13 @@ public final class ForgeWorkspaceSurface {
         }
         markWantedKeyConsumed = true;
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
-        if (identity == null || !byIdentity.containsKey(identity)) {
+        SlotWorkspaceViewModel.AtlasItem item = identity == null ? null : byIdentity.get(identity);
+        if (identity == null || item == null) {
             setStatus("hover an item to mark wanted");
+            return true;
+        }
+        if (item.fluidResource()) {
+            setStatus("fluid resources are read-only");
             return true;
         }
         sendIdentityRefAction(WorkspaceActionId.TOGGLE_WANTED_ITEM, identity, "wanted item updated");
@@ -526,6 +531,10 @@ public final class ForgeWorkspaceSurface {
             setStatus("hover an item to mark wanted");
             return true;
         }
+        if (item.fluidResource()) {
+            setStatus("fluid resources are read-only");
+            return true;
+        }
         sendIdentityRefAction(
                 WorkspaceActionId.SET_WANTED_COUNT,
                 identity,
@@ -546,8 +555,13 @@ public final class ForgeWorkspaceSurface {
         }
         trashHoverKeyConsumed = true;
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
-        if (identity == null || !byIdentity.containsKey(identity)) {
+        SlotWorkspaceViewModel.AtlasItem item = identity == null ? null : byIdentity.get(identity);
+        if (identity == null || item == null) {
             setStatus("hover an item to trash");
+            return true;
+        }
+        if (item.fluidResource()) {
+            setStatus("fluid resources are read-only");
             return true;
         }
         sendIdentityRefAction(WorkspaceActionId.TRASH_IDENTITY, identity, "trashing carried item");
@@ -576,8 +590,13 @@ public final class ForgeWorkspaceSurface {
             return false;
         }
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
-        if (identity == null || !byIdentity.containsKey(identity)) {
+        SlotWorkspaceViewModel.AtlasItem item = identity == null ? null : byIdentity.get(identity);
+        if (identity == null || item == null) {
             return false;
+        }
+        if (item.fluidResource()) {
+            setStatus("fluid resources are read-only");
+            return true;
         }
         applySearchDecision(WorkspaceSearchInputPolicy.confirmForHotbar(searchActive, searchQuery));
         sendIdentityToAutoHotbar(identity);
@@ -594,8 +613,13 @@ public final class ForgeWorkspaceSurface {
             return false;
         }
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
-        if (identity == null || !byIdentity.containsKey(identity)) {
+        SlotWorkspaceViewModel.AtlasItem item = identity == null ? null : byIdentity.get(identity);
+        if (identity == null || item == null) {
             setStatus(toBackpack ? "hover an item to move to backpack" : "hover an item to move to main inventory");
+            return true;
+        }
+        if (item.fluidResource()) {
+            setStatus("fluid resources are read-only");
             return true;
         }
         sendIdentityRefAction(
@@ -618,6 +642,10 @@ public final class ForgeWorkspaceSurface {
         SlotWorkspaceViewModel.AtlasItem item = identity == null ? null : byIdentity.get(identity);
         if (item == null) {
             return false;
+        }
+        if (item.fluidResource()) {
+            setStatus("fluid resources are read-only");
+            return true;
         }
         WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.keyboardShortcut(
                 cardGestureContext(item, 0, Screen.hasShiftDown(), Screen.hasControlDown()),
@@ -2846,6 +2874,10 @@ public final class ForgeWorkspaceSurface {
             event.stopPropagation();
             SlotWorkspaceViewModel.AtlasItem target =
                     wheelTarget(item, delta, event.shiftDown(), controlDown, wantedAdjustDown);
+            if (target != null && target.fluidResource()) {
+                setStatus("fluid resources are read-only");
+                return;
+            }
             int steps = wheelSteps(target == null ? null : target.identity(), delta, controlDown || wantedAdjustDown);
             if (steps == 0) {
                 return;
@@ -3708,6 +3740,10 @@ public final class ForgeWorkspaceSurface {
     ) {
         if (decision == null || !decision.handled()) {
             return false;
+        }
+        if (item != null && item.fluidResource() && decision.action() != WallCardTransferGesturePolicy.Action.STATUS) {
+            setStatus("fluid resources are read-only");
+            return true;
         }
         int count = decision.count();
         switch (decision.action()) {

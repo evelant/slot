@@ -43,6 +43,11 @@ public final class WorkspaceSearchQuery {
         searchable.append(lower(item.name())).append(' ')
                 .append(lower(displayName(item.displayStack()))).append(' ')
                 .append(item.identity() == null ? "" : lower(item.identity().itemId())).append(' ');
+        if (item.resource() != null) {
+            searchable.append(lower(item.resource().kind())).append(' ')
+                    .append(lower(item.resource().id())).append(' ')
+                    .append(lower(item.resource().fingerprint())).append(' ');
+        }
         if (island != null) {
             searchable.append(lower(island.label())).append(' ');
             if (island.kind() != null) {

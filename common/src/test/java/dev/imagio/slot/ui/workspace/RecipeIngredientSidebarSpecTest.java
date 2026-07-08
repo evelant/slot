@@ -1,6 +1,7 @@
 package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
@@ -116,7 +117,62 @@ class RecipeIngredientSidebarSpecTest {
     }
 
     @Test
-    void missingIngredientPreservesExistingWantedTarget() {
+    void missingFluidIngredientUsesSyntheticReadOnlyResourceCard() {
+        SlotResourceIdentity hydrogen = SlotResourceIdentity.fluid("gtceu:hydrogen");
+        RecipeIngredientSidebarSpec.Projection projection = spec(List.of(new RecipeIngredientSidebarSpec.Ingredient(
+                "hydrogen",
+                "Hydrogen",
+                1000,
+                1000L,
+                List.of(fluidAlternative(hydrogen, "Hydrogen", 1000L))))).project(SlotWorkspaceViewModel.empty());
+
+        SlotWorkspaceViewModel.IdentityRef ref = SlotWorkspaceViewModel.IdentityRef.from(
+                ItemIdentity.of(hydrogen.syntheticItemId()));
+        SlotWorkspaceViewModel.AtlasItem hydrogenCard = projection.atlasItem(ref);
+
+        assertNotNull(hydrogenCard);
+        assertTrue(hydrogenCard.fluidResource());
+        assertEquals(SlotWorkspaceAtlasLayout.ISLAND_MISC, hydrogenCard.islandId());
+        assertEquals(1000L, hydrogenCard.resourceAmount());
+        assertEquals(1000, hydrogenCard.desiredCount());
+        assertTrue(hydrogenCard.ghost());
+        assertTrue(projection.tooltipLines(hydrogenCard).stream()
+                .anyMatch(line -> line.getString().equals("Required: 1 B")));
+        assertEquals(Set.of(), spec(List.of(new RecipeIngredientSidebarSpec.Ingredient(
+                "hydrogen",
+                "Hydrogen",
+                1000,
+                1000L,
+                List.of(fluidAlternative(hydrogen, "Hydrogen", 1000L)))))
+                .remoteDetailIdentities());
+    }
+
+    @Test
+    void presentFluidIngredientMatchesExistingResourceCard() {
+        SlotResourceIdentity oxygen = SlotResourceIdentity.fluid("gtceu:oxygen");
+        RecipeIngredientSidebarSpec.Projection projection = spec(List.of(new RecipeIngredientSidebarSpec.Ingredient(
+                "oxygen",
+                "Oxygen",
+                2000,
+                2000L,
+                List.of(fluidAlternative(oxygen, "Oxygen", 2000L)))))
+                .project(sourceView(List.of(fluidCard(oxygen, "Oxygen", 8000L))));
+
+        SlotWorkspaceViewModel.AtlasItem oxygenCard = projection.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(
+                ItemIdentity.of(oxygen.syntheticItemId())));
+
+        assertNotNull(oxygenCard);
+        assertTrue(oxygenCard.fluidResource());
+        assertEquals(BUILDING, oxygenCard.islandId());
+        assertEquals(8000L, oxygenCard.resourceAmount());
+        assertEquals(2000, oxygenCard.desiredCount());
+        assertFalse(oxygenCard.ghost());
+        assertTrue(projection.tooltipLines(oxygenCard).stream()
+                .anyMatch(line -> line.getString().equals("Desired target: 8 B/2 B")));
+    }
+
+    @Test
+    void ingredientCardUsesRecipeTargetInsteadOfExistingWantedTarget() {
         RecipeIngredientSidebarSpec.Projection projection = spec(List.of(ingredient(
                 "brick",
                 "Brick",
@@ -151,8 +207,10 @@ class RecipeIngredientSidebarSpecTest {
         SlotWorkspaceViewModel.AtlasItem brick = projection.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(BRICK));
         assertNotNull(brick);
         assertEquals(4, brick.desiredCount());
-        assertEquals(6, brick.wantedCount());
+        assertEquals(0, brick.wantedCount());
         assertTrue(brick.ghost());
+        assertTrue(projection.tooltipLines(brick).stream()
+                .anyMatch(line -> line.getString().equals("Required: 4")));
     }
 
     private static RecipeIngredientSidebarSpec spec(List<RecipeIngredientSidebarSpec.Ingredient> ingredients) {
@@ -174,6 +232,58 @@ class RecipeIngredientSidebarSpecTest {
                 label,
                 count,
                 new ItemStack(identity.itemId(), count, 64));
+    }
+
+    private static RecipeIngredientSidebarSpec.Alternative fluidAlternative(
+            SlotResourceIdentity identity,
+            String label,
+            long amount
+    ) {
+        return new RecipeIngredientSidebarSpec.Alternative(
+                null,
+                label,
+                amount >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) amount,
+                ItemStack.EMPTY,
+                identity,
+                amount);
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem fluidCard(
+            SlotResourceIdentity identity,
+            String label,
+            long amount
+    ) {
+        ItemIdentity synthetic = ItemIdentity.of(identity.syntheticItemId());
+        return new SlotWorkspaceViewModel.AtlasItem(
+                SlotWorkspaceViewModel.IdentityRef.from(synthetic),
+                new ItemStack("minecraft:water_bucket", 1, 1),
+                label,
+                0,
+                0,
+                BUILDING,
+                false,
+                false,
+                true,
+                false,
+                0,
+                List.of(),
+                List.of(),
+                List.of(),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                0,
+                false,
+                false,
+                "",
+                -1,
+                0,
+                SlotWorkspaceViewModel.PutAwayState.NONE,
+                SlotWorkspaceViewModel.ResourceRef.from(identity),
+                amount);
     }
 
     private static SlotWorkspaceViewModel sourceView() {

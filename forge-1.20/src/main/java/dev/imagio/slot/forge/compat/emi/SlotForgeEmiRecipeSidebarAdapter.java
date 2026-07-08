@@ -8,6 +8,7 @@ import dev.imagio.slot.forge.client.ForgeContainerSidebar;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.ItemStackTags;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.ui.workspace.RecipeIngredientSidebarSpec;
 import dev.imagio.slot.workflow.domain.CraftRunAlternative;
 import dev.imagio.slot.workflow.domain.CraftRunIngredientGroup;
@@ -15,9 +16,14 @@ import dev.imagio.slot.workflow.domain.CraftRunRecipeCapture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -159,11 +165,15 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         if (recipe == null) {
             return CraftRunRecipeCapture.empty();
         }
+        String recipeId = recipeId(recipe);
+        GtFluidRecipe gtFluidRecipe = gtFluidRecipe(recipe, recipeId);
         Output output = firstOutput(recipe);
-        if (output == null || output.identity() == null) {
+        if ((output == null || output.resourceIdentity() == null) && gtFluidRecipe != null) {
+            output = gtFluidRecipe.output();
+        }
+        if (output == null || output.resourceIdentity() == null) {
             return CraftRunRecipeCapture.empty();
         }
-        String recipeId = recipeId(recipe);
         ArrayList<CraftRunIngredientGroup> groups = new ArrayList<>();
         ArrayList<String> diagnostics = new ArrayList<>();
         List<EmiIngredient> inputs = recipe.getInputs();
@@ -178,6 +188,9 @@ final class SlotForgeEmiRecipeSidebarAdapter {
                 diagnostics.add("input_limit:" + inputs.size());
             }
         }
+        if (gtFluidRecipe != null && !groupsContainFluid(groups)) {
+            groups.addAll(gtFluidRecipe.inputs());
+        }
         if (groups.isEmpty()) {
             return CraftRunRecipeCapture.empty();
         }
@@ -190,6 +203,9 @@ final class SlotForgeEmiRecipeSidebarAdapter {
                 output.count(),
                 output.count(),
                 groups,
+                output.resourceIdentity(),
+                output.amount(),
+                output.amount(),
                 diagnostics);
     }
 
@@ -202,7 +218,8 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         if (input == null || input.isEmpty()) {
             return null;
         }
-        int requiredCount = safeCount(input.getAmount());
+        long requiredAmount = safeAmount(input.getAmount());
+        int requiredCount = safeCount(requiredAmount);
         ConsumptionClassification consumption = classifyInputConsumption(input, recipe);
         LinkedHashMap<String, CraftRunAlternative> alternatives = new LinkedHashMap<>();
         ArrayList<String> diagnostics = new ArrayList<>();
@@ -216,6 +233,13 @@ final class SlotForgeEmiRecipeSidebarAdapter {
             }
             ItemStack stack = itemStack(emiStack);
             if (stack == null || stack.isEmpty()) {
+                SlotResourceIdentity fluidIdentity = fluidIdentity(emiStack);
+                if (fluidIdentity != null) {
+                    alternatives.putIfAbsent(
+                            resourceKey(fluidIdentity),
+                            new CraftRunAlternative(null, labelFor(emiStack, ItemStack.EMPTY), fluidIdentity));
+                    continue;
+                }
                 if (firstNonItemLabel.isBlank()) {
                     firstNonItemLabel = nonItemAlternativeLabel(emiStack);
                 }
@@ -223,7 +247,10 @@ final class SlotForgeEmiRecipeSidebarAdapter {
                 continue;
             }
             ItemIdentity identity = ItemIdentityMatcher.create(stack);
-            alternatives.putIfAbsent(identityKey(identity), new CraftRunAlternative(identity, labelFor(emiStack, stack)));
+            SlotResourceIdentity resourceIdentity = SlotResourceIdentity.item(identity);
+            alternatives.putIfAbsent(
+                    resourceKey(resourceIdentity),
+                    new CraftRunAlternative(identity, labelFor(emiStack, stack), resourceIdentity));
         }
         String label = alternatives.isEmpty()
                 ? firstNonItemLabel.isBlank() ? "Ingredient " + (inputIndex + 1) : firstNonItemLabel
@@ -231,8 +258,9 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         return new CraftRunIngredientGroup(
                 sanitize(recipeId) + "/input_" + inputIndex,
                 label,
-                requiredCount,
+                requiredAmount,
                 consumption.consumed(),
+                null,
                 List.copyOf(alternatives.values()),
                 diagnostics);
     }
@@ -248,14 +276,279 @@ final class SlotForgeEmiRecipeSidebarAdapter {
             }
             ItemStack stack = itemStack(output);
             if (stack == null || stack.isEmpty()) {
-                continue;
+                SlotResourceIdentity fluidIdentity = fluidIdentity(output);
+                if (fluidIdentity == null) {
+                    continue;
+                }
+                long amount = safeAmount(output.getAmount());
+                return new Output(null, labelFor(output, ItemStack.EMPTY), safeCount(amount), fluidIdentity, amount);
             }
             ItemIdentity identity = ItemIdentityMatcher.create(stack);
-            int count = safeCount(output.getAmount());
+            long amount = safeAmount(output.getAmount());
+            int count = safeCount(amount);
             if (count <= 0) {
                 count = Math.max(1, stack.getCount());
             }
-            return new Output(identity, labelFor(output, stack), count);
+            return new Output(identity, labelFor(output, stack), count, SlotResourceIdentity.item(identity), amount);
+        }
+        return null;
+    }
+
+    private static boolean groupsContainFluid(List<CraftRunIngredientGroup> groups) {
+        if (groups == null || groups.isEmpty()) {
+            return false;
+        }
+        for (CraftRunIngredientGroup group : groups) {
+            if (group == null || group.alternatives().isEmpty()) {
+                continue;
+            }
+            for (CraftRunAlternative alternative : group.alternatives()) {
+                if (alternative != null
+                        && alternative.resourceIdentity() != null
+                        && alternative.resourceIdentity().fluid()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static GtFluidRecipe gtFluidRecipe(EmiRecipe recipe, String recipeId) {
+        Object gtRecipe = gtRecipe(recipe);
+        if (gtRecipe == null) {
+            return null;
+        }
+        List<CraftRunIngredientGroup> inputs = gtFluidInputs(gtRecipe, recipeId);
+        Output output = gtFluidOutput(gtRecipe);
+        return inputs.isEmpty() && output == null ? null : new GtFluidRecipe(inputs, output);
+    }
+
+    private static Object gtRecipe(EmiRecipe recipe) {
+        if (recipe == null || !recipe.getClass().getName().equals("com.gregtechceu.gtceu.integration.emi.recipe.GTEmiRecipe")) {
+            return null;
+        }
+        try {
+            Field field = recipe.getClass().getDeclaredField("recipe");
+            field.setAccessible(true);
+            return field.get(recipe);
+        } catch (ReflectiveOperationException | RuntimeException ignored) {
+            return null;
+        }
+    }
+
+    private static List<CraftRunIngredientGroup> gtFluidInputs(Object gtRecipe, String recipeId) {
+        List<Object> contents = gtFluidContents(gtRecipe, true);
+        if (contents.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<CraftRunIngredientGroup> groups = new ArrayList<>();
+        for (int index = 0; index < contents.size(); index++) {
+            List<ObservedFluidStack> stacks = gtFluidStacks(contents.get(index));
+            if (stacks.isEmpty()) {
+                continue;
+            }
+            LinkedHashMap<String, CraftRunAlternative> alternatives = new LinkedHashMap<>();
+            for (ObservedFluidStack stack : stacks) {
+                alternatives.putIfAbsent(
+                        resourceKey(stack.identity()),
+                        new CraftRunAlternative(null, stack.label(), stack.identity()));
+            }
+            if (alternatives.isEmpty()) {
+                continue;
+            }
+            ObservedFluidStack first = stacks.get(0);
+            groups.add(new CraftRunIngredientGroup(
+                    sanitize(recipeId) + "/gt_fluid_input_" + index,
+                    first.label(),
+                    first.amount(),
+                    true,
+                    null,
+                    List.copyOf(alternatives.values()),
+                    List.of("gregtech_fluid_recipe")));
+        }
+        return groups.isEmpty() ? List.of() : List.copyOf(groups);
+    }
+
+    private static Output gtFluidOutput(Object gtRecipe) {
+        for (Object content : gtFluidContents(gtRecipe, false)) {
+            List<ObservedFluidStack> stacks = gtFluidStacks(content);
+            if (stacks.isEmpty()) {
+                continue;
+            }
+            ObservedFluidStack first = stacks.get(0);
+            return new Output(null, first.label(), safeCount(first.amount()), first.identity(), first.amount());
+        }
+        return null;
+    }
+
+    private static List<Object> gtFluidContents(Object gtRecipe, boolean input) {
+        if (gtRecipe == null) {
+            return List.of();
+        }
+        try {
+            Class<?> capabilityClass = Class.forName("com.gregtechceu.gtceu.api.capability.recipe.FluidRecipeCapability");
+            Object capability = capabilityClass.getField("CAP").get(null);
+            Method method = methodByName(gtRecipe.getClass(), input ? "getInputContents" : "getOutputContents", 1);
+            if (method == null) {
+                return List.of();
+            }
+            Object value = method.invoke(gtRecipe, capability);
+            if (!(value instanceof List<?> list) || list.isEmpty()) {
+                return List.of();
+            }
+            return List.copyOf(list);
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+            return List.of();
+        }
+    }
+
+    private static List<ObservedFluidStack> gtFluidStacks(Object content) {
+        Object ingredient = gtFluidIngredient(content);
+        if (ingredient == null) {
+            return List.of();
+        }
+        try {
+            Method method = methodByName(ingredient.getClass(), "getStacks", 0);
+            if (method == null) {
+                return List.of();
+            }
+            Object value = method.invoke(ingredient);
+            if (!(value instanceof Object[] stacks) || stacks.length == 0) {
+                return List.of();
+            }
+            ArrayList<ObservedFluidStack> result = new ArrayList<>();
+            for (Object stack : stacks) {
+                ObservedFluidStack observed = observedFluidStack(stack);
+                if (observed != null) {
+                    result.add(observed);
+                }
+            }
+            return result.isEmpty() ? List.of() : List.copyOf(result);
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+            return List.of();
+        }
+    }
+
+    private static Object gtFluidIngredient(Object content) {
+        Object value = contentValue(content);
+        if (value == null) {
+            return null;
+        }
+        try {
+            Class<?> capabilityClass = Class.forName("com.gregtechceu.gtceu.api.capability.recipe.FluidRecipeCapability");
+            Object capability = capabilityClass.getField("CAP").get(null);
+            Method method = methodByName(capability.getClass(), "of", 1);
+            return method == null ? value : method.invoke(capability, value);
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+            return value;
+        }
+    }
+
+    private static Object contentValue(Object content) {
+        if (content == null) {
+            return null;
+        }
+        try {
+            Method getter = methodByName(content.getClass(), "getContent", 0);
+            if (getter != null) {
+                return getter.invoke(content);
+            }
+            Field field = content.getClass().getDeclaredField("content");
+            field.setAccessible(true);
+            return field.get(content);
+        } catch (ReflectiveOperationException | RuntimeException ignored) {
+            return null;
+        }
+    }
+
+    private static ObservedFluidStack observedFluidStack(Object stack) {
+        if (stack == null) {
+            return null;
+        }
+        try {
+            Method getFluid = methodByName(stack.getClass(), "getFluid", 0);
+            Method getAmount = methodByName(stack.getClass(), "getAmount", 0);
+            if (getFluid == null || getAmount == null) {
+                return null;
+            }
+            Object fluidObject = getFluid.invoke(stack);
+            Object amountObject = getAmount.invoke(stack);
+            if (!(fluidObject instanceof Fluid fluid) || fluid == Fluids.EMPTY || !(amountObject instanceof Number amount)) {
+                return null;
+            }
+            ResourceLocation id = BuiltInRegistries.FLUID.getKey(fluid);
+            if (id == null) {
+                return null;
+            }
+            SlotResourceIdentity identity = SlotResourceIdentity.fluid(id.toString(), reflectiveFingerprint(stack));
+            return new ObservedFluidStack(identity, safeAmount(amount.longValue()), reflectiveFluidLabel(stack, id));
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+            return null;
+        }
+    }
+
+    private static String reflectiveFingerprint(Object stack) {
+        Object tag = invokeNoArg(stack, "getTag");
+        if (emptyFingerprintObject(tag)) {
+            tag = invokeNoArg(stack, "getComponentsPatch");
+        }
+        return emptyFingerprintObject(tag) ? "" : tag.toString();
+    }
+
+    private static boolean emptyFingerprintObject(Object value) {
+        if (value == null) {
+            return true;
+        }
+        try {
+            Method method = value.getClass().getMethod("isEmpty");
+            Object result = method.invoke(value);
+            if (result instanceof Boolean empty) {
+                return empty;
+            }
+        } catch (ReflectiveOperationException | RuntimeException ignored) {
+        }
+        String text = value.toString();
+        return text == null || text.isBlank() || "[]".equals(text) || "{}".equals(text);
+    }
+
+    private static String reflectiveFluidLabel(Object stack, ResourceLocation id) {
+        Object name = invokeNoArg(stack, "getHoverName");
+        if (name == null) {
+            name = invokeNoArg(stack, "getDisplayName");
+        }
+        if (name instanceof Component component && !component.getString().isBlank()) {
+            return component.getString();
+        }
+        return id == null ? "Fluid" : id.toString();
+    }
+
+    private static Object invokeNoArg(Object target, String methodName) {
+        if (target == null || methodName == null || methodName.isBlank()) {
+            return null;
+        }
+        try {
+            Method method = methodByName(target.getClass(), methodName, 0);
+            return method == null ? null : method.invoke(target);
+        } catch (ReflectiveOperationException | RuntimeException ignored) {
+            return null;
+        }
+    }
+
+    private static Method methodByName(Class<?> type, String name, int parameterCount) {
+        if (type == null || name == null || name.isBlank()) {
+            return null;
+        }
+        for (Method method : type.getMethods()) {
+            if (method.getName().equals(name) && method.getParameterCount() == parameterCount) {
+                method.setAccessible(true);
+                return method;
+            }
+        }
+        for (Method method : type.getDeclaredMethods()) {
+            if (method.getName().equals(name) && method.getParameterCount() == parameterCount) {
+                method.setAccessible(true);
+                return method;
+            }
         }
         return null;
     }
@@ -266,7 +559,8 @@ final class SlotForgeEmiRecipeSidebarAdapter {
             int recipeIndex,
             int inputIndex
     ) {
-        int requiredCount = safeCount(input.getAmount());
+        long requiredAmount = safeAmount(input.getAmount());
+        int requiredCount = safeCount(requiredAmount);
         LinkedHashMap<String, RecipeIngredientSidebarSpec.Alternative> alternatives = new LinkedHashMap<>();
         String firstNonItemLabel = "";
         int inspected = 0;
@@ -279,6 +573,19 @@ final class SlotForgeEmiRecipeSidebarAdapter {
             }
             ItemStack stack = itemStack(emiStack);
             if (stack == null || stack.isEmpty()) {
+                SlotResourceIdentity fluidIdentity = fluidIdentity(emiStack);
+                if (fluidIdentity != null) {
+                    alternatives.putIfAbsent(
+                            resourceKey(fluidIdentity),
+                            new RecipeIngredientSidebarSpec.Alternative(
+                                    null,
+                                    labelFor(emiStack, ItemStack.EMPTY),
+                                    requiredCount,
+                                    fluidDisplayStack(),
+                                    fluidIdentity,
+                                    requiredAmount));
+                    continue;
+                }
                 if (firstNonItemLabel.isBlank()) {
                     firstNonItemLabel = nonItemAlternativeLabel(emiStack);
                 }
@@ -288,9 +595,16 @@ final class SlotForgeEmiRecipeSidebarAdapter {
             String label = labelFor(emiStack, stack);
             ItemStack displayStack = stack.copy();
             displayStack.setCount(Math.min(displayStack.getMaxStackSize(), requiredCount));
+            SlotResourceIdentity resourceIdentity = SlotResourceIdentity.item(identity);
             alternatives.putIfAbsent(
-                    identity.itemId(),
-                    new RecipeIngredientSidebarSpec.Alternative(identity, label, requiredCount, displayStack));
+                    resourceKey(resourceIdentity),
+                    new RecipeIngredientSidebarSpec.Alternative(
+                            identity,
+                            label,
+                            requiredCount,
+                            displayStack,
+                            resourceIdentity,
+                            requiredAmount));
         }
         String label = alternatives.isEmpty()
                 ? firstNonItemLabel.isBlank() ? "Ingredient " + (inputIndex + 1) : firstNonItemLabel
@@ -299,6 +613,7 @@ final class SlotForgeEmiRecipeSidebarAdapter {
                 sanitize(recipeId) + "/input_" + recipeIndex + "_" + inputIndex,
                 label,
                 requiredCount,
+                requiredAmount,
                 List.copyOf(alternatives.values()));
     }
 
@@ -462,7 +777,7 @@ final class SlotForgeEmiRecipeSidebarAdapter {
                 .append("|visible:")
                 .append(recipeIndex)
                 .append("|out:")
-                .append(output == null ? "" : identityKey(output.identity()))
+                .append(output == null ? "" : resourceKey(output.resourceIdentity()))
                 .append("|inputs:")
                 .append(groups == null ? 0 : groups.size());
         if (groups != null) {
@@ -480,11 +795,11 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         sourceKey.append("|g:")
                 .append(group.groupId())
                 .append("x")
-                .append(group.requiredCountPerBatch())
+                .append(group.requiredAmountPerBatch())
                 .append(group.consumed() ? "c" : "r");
         for (CraftRunAlternative alternative : group.alternatives()) {
             sourceKey.append(":")
-                    .append(alternative == null ? "opaque" : identityKey(alternative.identity()));
+                    .append(alternative == null ? "opaque" : resourceKey(alternative.resourceIdentity()));
         }
     }
 
@@ -492,10 +807,10 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         sourceKey.append("|i:")
                 .append(ingredient.ingredientId())
                 .append("x")
-                .append(ingredient.requiredCount());
+                .append(ingredient.requiredAmount());
         for (RecipeIngredientSidebarSpec.Alternative alternative : ingredient.alternatives()) {
             sourceKey.append(":")
-                    .append(alternative.identity() == null ? "opaque" : alternative.identity().itemId());
+                    .append(alternative.resourceIdentity() == null ? "opaque" : resourceKey(alternative.resourceIdentity()));
         }
     }
 
@@ -712,6 +1027,44 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         return amount > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) amount;
     }
 
+    private static long safeAmount(long amount) {
+        return amount <= 0L ? 1L : amount;
+    }
+
+    private static SlotResourceIdentity fluidIdentity(EmiStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            return null;
+        }
+        Object key;
+        try {
+            key = stack.getKey();
+        } catch (RuntimeException | LinkageError ignored) {
+            return null;
+        }
+        if (!(key instanceof Fluid fluid) || fluid == Fluids.EMPTY) {
+            return null;
+        }
+        ResourceLocation id = BuiltInRegistries.FLUID.getKey(fluid);
+        if (id == null) {
+            return null;
+        }
+        return SlotResourceIdentity.fluid(id.toString(), nbtFingerprint(stack));
+    }
+
+    private static String nbtFingerprint(EmiStack stack) {
+        try {
+            CompoundTag tag = stack.getNbt();
+            return tag == null || tag.isEmpty() ? "" : tag.toString();
+        } catch (RuntimeException | LinkageError ignored) {
+            return "";
+        }
+    }
+
+    private static ItemStack fluidDisplayStack() {
+        ItemStack stack = new ItemStack(Items.WATER_BUCKET);
+        return stack.isEmpty() ? new ItemStack(Items.BUCKET) : stack;
+    }
+
     private static String sanitize(String value) {
         String input = value == null || value.isBlank() ? "ingredient" : value;
         StringBuilder builder = new StringBuilder(input.length());
@@ -734,6 +1087,10 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         return identity.itemId() + "|" + identity.comparisonMode().name() + "|" + identity.componentFingerprint();
     }
 
+    private static String resourceKey(SlotResourceIdentity identity) {
+        return identity == null ? "" : identity.stableKey();
+    }
+
     private record ConsumptionClassification(boolean consumed, String diagnostic) {
         private static final ConsumptionClassification CONSUMED = new ConsumptionClassification(true, "");
         private static final ConsumptionClassification REMAINDER = new ConsumptionClassification(false, "reusable_remainder");
@@ -745,6 +1102,27 @@ final class SlotForgeEmiRecipeSidebarAdapter {
     private record VisibleRecipe(EmiRecipe recipe, Object group, int index) {
     }
 
-    private record Output(ItemIdentity identity, String label, int count) {
+    private record GtFluidRecipe(List<CraftRunIngredientGroup> inputs, Output output) {
+        private GtFluidRecipe {
+            inputs = inputs == null ? List.of() : List.copyOf(inputs);
+        }
+    }
+
+    private record ObservedFluidStack(SlotResourceIdentity identity, long amount, String label) {
+        private ObservedFluidStack {
+            amount = safeAmount(amount);
+            label = label == null || label.isBlank()
+                    ? identity == null ? "Fluid" : identity.id()
+                    : label.trim();
+        }
+    }
+
+    private record Output(
+            ItemIdentity identity,
+            String label,
+            int count,
+            SlotResourceIdentity resourceIdentity,
+            long amount
+    ) {
     }
 }

@@ -45,7 +45,7 @@ public final class ContextualSuggestionDomainService {
     }
 
     public boolean observeActivityRecord(InventoryActivityRecord record) {
-        if (record == null || record.event() == null || !record.event().present()) {
+        if (record == null || record.event() == null || !record.event().itemPresent()) {
             return false;
         }
         InventoryActivityEvent activity = record.event();

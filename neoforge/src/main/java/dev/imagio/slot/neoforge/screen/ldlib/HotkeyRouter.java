@@ -113,6 +113,11 @@ final class HotkeyRouter {
             host.rebuild();
             return;
         }
+        if (target.fluidResource()) {
+            host.localStatus.set("fluid resources are read-only");
+            host.rebuild();
+            return;
+        }
         host.searchController.confirmForHotbar();
         host.rpc.sendAssignToHotbarSlot(target, digit - 1);
     }
@@ -124,6 +129,11 @@ final class HotkeyRouter {
         }
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
+            return;
+        }
+        if (target.fluidResource()) {
+            host.localStatus.set("fluid resources are read-only");
+            host.rebuild();
             return;
         }
         event.stopPropagation();
@@ -149,6 +159,11 @@ final class HotkeyRouter {
             host.rebuild();
             return;
         }
+        if (target.fluidResource()) {
+            host.localStatus.set("fluid resources are read-only");
+            host.rebuild();
+            return;
+        }
         host.rpc.send(
                 toBackpack ? WorkspaceActionId.MOVE_IDENTITY_TO_BACKPACK : WorkspaceActionId.MOVE_IDENTITY_TO_MAIN_INVENTORY,
                 target.identity().itemId(),
@@ -170,6 +185,12 @@ final class HotkeyRouter {
         }
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
+            return;
+        }
+        if (target.fluidResource()) {
+            host.localStatus.set("fluid resources are read-only");
+            host.rebuild();
+            event.stopPropagation();
             return;
         }
         WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.keyboardShortcut(
@@ -308,6 +329,11 @@ final class HotkeyRouter {
             host.rebuild();
             return;
         }
+        if (target.fluidResource()) {
+            host.localStatus.set("fluid resources are read-only");
+            host.rebuild();
+            return;
+        }
         host.rpc.sendToggleWantedItem(target.identity());
     }
 
@@ -330,6 +356,11 @@ final class HotkeyRouter {
             host.rebuild();
             return;
         }
+        if (target.fluidResource()) {
+            host.localStatus.set("fluid resources are read-only");
+            host.rebuild();
+            return;
+        }
         host.rpc.sendSetWantedCount(target.identity(), wantedHoverTargetCount(target));
     }
 
@@ -349,6 +380,11 @@ final class HotkeyRouter {
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
             host.localStatus.set("hover an item to trash");
+            host.rebuild();
+            return;
+        }
+        if (target.fluidResource()) {
+            host.localStatus.set("fluid resources are read-only");
             host.rebuild();
             return;
         }

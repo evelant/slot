@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceKind;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
@@ -35,7 +37,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class WorkspaceStorageMemoryStore {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 1;
+    private static final int SCHEMA_VERSION = 2;
     private static final ConcurrentHashMap<Path, WorkspaceStorageMemoryStore> STORES = new ConcurrentHashMap<>();
 
     private final Path statePath;
@@ -311,10 +313,12 @@ public final class WorkspaceStorageMemoryStore {
                 StorageTargetRef ref = remembered.withRouteReachable(true).targetRef(true, false);
                 int slots = Math.max(0, worldStorage.slotCount(server, target));
                 List<WorldStorageAccess.SlotContent> contents = worldStorage.enumerate(server, target);
+                List<WorldStorageAccess.FluidContent> fluids = worldStorage.enumerateFluids(server, target);
                 RememberedStorageContents updated = RememberedStorageContents.fromContents(
                                 ref,
                                 slots,
                                 contents,
+                                fluids,
                                 tick,
                                 source)
                         .withVirtualMetadata(
@@ -367,10 +371,12 @@ public final class WorkspaceStorageMemoryStore {
         }
         int slots = Math.max(0, worldStorage.slotCount(server, target));
         List<WorldStorageAccess.SlotContent> contents = worldStorage.enumerate(server, target);
+        List<WorldStorageAccess.FluidContent> fluids = worldStorage.enumerateFluids(server, target);
         RememberedStorageContents remembered = RememberedStorageContents.fromContents(
                 ref,
                 slots,
                 contents,
+                fluids,
                 tick,
                 source);
         return store.observe(remembered, persist);
@@ -443,6 +449,12 @@ public final class WorkspaceStorageMemoryStore {
             record.countsByIdentity().entrySet().stream()
                     .sorted(Comparator.comparing(entry -> entry.getKey().itemId()))
                     .forEach(entry -> counts.add(new CountData(identity(entry.getKey()), entry.getValue())));
+            ArrayList<ResourceCountData> fluidCounts = new ArrayList<>();
+            record.fluidCountsByIdentity().entrySet().stream()
+                    .sorted(Comparator.comparing(entry -> entry.getKey().stableKey()))
+                    .forEach(entry -> fluidCounts.add(new ResourceCountData(
+                            resourceIdentity(entry.getKey()),
+                            entry.getValue())));
             out.add(new RememberedStorageData(
                     record.storageId(),
                     record.targetKind(),
@@ -453,6 +465,7 @@ public final class WorkspaceStorageMemoryStore {
                     record.z(),
                     record.slotCapacity(),
                     counts,
+                    fluidCounts,
                     record.providerId(),
                     record.mediaIds(),
                     aliases(record.aliasedBlocks()),
@@ -484,6 +497,15 @@ public final class WorkspaceStorageMemoryStore {
                     }
                 }
             }
+            LinkedHashMap<SlotResourceIdentity, Long> fluidCounts = new LinkedHashMap<>();
+            if (raw.fluidCounts != null) {
+                for (ResourceCountData count : raw.fluidCounts) {
+                    SlotResourceIdentity identity = decodeResourceIdentity(count == null ? null : count.identity);
+                    if (identity != null && identity.fluid() && count.count > 0L) {
+                        fluidCounts.merge(identity, count.count, WorkspaceStorageMemoryStore::saturatedAdd);
+                    }
+                }
+            }
             RememberedStorageContents remembered = new RememberedStorageContents(
                     raw.storageId,
                     raw.targetKind,
@@ -494,6 +516,7 @@ public final class WorkspaceStorageMemoryStore {
                     raw.z,
                     raw.slotCapacity,
                     counts,
+                    fluidCounts,
                     raw.providerId,
                     raw.mediaIds,
                     decodeAliases(raw.aliasedBlocks),
@@ -661,6 +684,12 @@ public final class WorkspaceStorageMemoryStore {
                 : new IdentityData(identity.itemId(), identity.comparisonMode().name(), identity.componentFingerprint());
     }
 
+    private static ResourceIdentityData resourceIdentity(SlotResourceIdentity identity) {
+        return identity == null
+                ? null
+                : new ResourceIdentityData(identity.kind().name(), identity.id(), identity.fingerprint());
+    }
+
     private static List<AliasData> aliases(List<WorldDisplayStorageSource.AliasedBlock> aliases) {
         if (aliases == null || aliases.isEmpty()) {
             return List.of();
@@ -702,6 +731,28 @@ public final class WorkspaceStorageMemoryStore {
         return new ItemIdentity(data.itemId, mode, data.componentFingerprint == null ? "" : data.componentFingerprint);
     }
 
+    private static SlotResourceIdentity decodeResourceIdentity(ResourceIdentityData data) {
+        if (data == null || data.id == null || data.id.isBlank()) {
+            return null;
+        }
+        SlotResourceKind kind = SlotResourceKind.ITEM;
+        if (data.kind != null && !data.kind.isBlank()) {
+            try {
+                kind = SlotResourceKind.valueOf(data.kind);
+            } catch (IllegalArgumentException ignored) {
+                kind = SlotResourceKind.ITEM;
+            }
+        }
+        return new SlotResourceIdentity(kind, data.id, data.fingerprint == null ? "" : data.fingerprint);
+    }
+
+    private static long saturatedAdd(long left, long right) {
+        if (left >= Long.MAX_VALUE - right) {
+            return Long.MAX_VALUE;
+        }
+        return left + right;
+    }
+
     private static final class StateData {
         int version;
         long revision;
@@ -719,6 +770,7 @@ public final class WorkspaceStorageMemoryStore {
             int z,
             int slotCapacity,
             List<CountData> counts,
+            List<ResourceCountData> fluidCounts,
             String providerId,
             List<String> mediaIds,
             List<AliasData> aliasedBlocks,
@@ -841,9 +893,15 @@ public final class WorkspaceStorageMemoryStore {
     private record CountData(IdentityData identity, int count) {
     }
 
+    private record ResourceCountData(ResourceIdentityData identity, long count) {
+    }
+
     private record AliasData(String dimensionId, int x, int y, int z) {
     }
 
     private record IdentityData(String itemId, String comparisonMode, String componentFingerprint) {
+    }
+
+    private record ResourceIdentityData(String kind, String id, String fingerprint) {
     }
 }

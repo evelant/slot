@@ -1,6 +1,8 @@
 package dev.imagio.slot.inventory.storage;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public record WorldDisplayStorageSource(
         int z,
         int slotCount,
         List<WorldStorageAccess.SlotContent> contents,
+        List<WorldStorageAccess.FluidContent> fluidContents,
         List<AliasedBlock> aliasedBlocks,
         List<String> mediaIds,
         List<MediaObservation> mediaObservations,
@@ -43,7 +46,7 @@ public record WorldDisplayStorageSource(
             int slotCount,
             List<WorldStorageAccess.SlotContent> contents
     ) {
-        this(storageId, kind, label, dimensionId, x, y, z, slotCount, contents, List.of());
+        this(storageId, kind, label, dimensionId, x, y, z, slotCount, contents, List.of(), List.of());
     }
 
     public WorldDisplayStorageSource(
@@ -58,7 +61,7 @@ public record WorldDisplayStorageSource(
             List<WorldStorageAccess.SlotContent> contents,
             List<AliasedBlock> aliasedBlocks
     ) {
-        this(storageId, kind, label, dimensionId, x, y, z, slotCount, contents, aliasedBlocks, List.of(), null);
+        this(storageId, kind, label, dimensionId, x, y, z, slotCount, contents, List.of(), aliasedBlocks, List.of(), null);
     }
 
     public WorldDisplayStorageSource(
@@ -75,6 +78,40 @@ public record WorldDisplayStorageSource(
             List<String> mediaIds,
             WorldStorageAccess.Target target
     ) {
+        this(storageId, kind, label, dimensionId, x, y, z, slotCount, contents, List.of(), aliasedBlocks, mediaIds, target);
+    }
+
+    public WorldDisplayStorageSource(
+            String storageId,
+            WorldDisplayStorageKind kind,
+            String label,
+            String dimensionId,
+            int x,
+            int y,
+            int z,
+            int slotCount,
+            List<WorldStorageAccess.SlotContent> contents,
+            List<WorldStorageAccess.FluidContent> fluidContents,
+            List<AliasedBlock> aliasedBlocks
+    ) {
+        this(storageId, kind, label, dimensionId, x, y, z, slotCount, contents, fluidContents, aliasedBlocks, List.of(), null);
+    }
+
+    public WorldDisplayStorageSource(
+            String storageId,
+            WorldDisplayStorageKind kind,
+            String label,
+            String dimensionId,
+            int x,
+            int y,
+            int z,
+            int slotCount,
+            List<WorldStorageAccess.SlotContent> contents,
+            List<WorldStorageAccess.FluidContent> fluidContents,
+            List<AliasedBlock> aliasedBlocks,
+            List<String> mediaIds,
+            WorldStorageAccess.Target target
+    ) {
         this(
                 storageId,
                 kind,
@@ -85,6 +122,7 @@ public record WorldDisplayStorageSource(
                 z,
                 slotCount,
                 contents,
+                fluidContents,
                 aliasedBlocks,
                 mediaIds,
                 List.of(),
@@ -102,6 +140,7 @@ public record WorldDisplayStorageSource(
         label = label == null || label.isBlank() ? defaultLabel(kind, x, y, z) : label;
         slotCount = Math.max(0, slotCount);
         contents = copyContents(contents);
+        fluidContents = copyFluidContents(fluidContents);
         aliasedBlocks = copyAliasedBlocks(aliasedBlocks);
         mediaIds = copyMediaIds(mediaIds);
         mediaObservations = copyMediaObservations(mediaObservations);
@@ -169,6 +208,27 @@ public record WorldDisplayStorageSource(
         return List.copyOf(copied);
     }
 
+    private static List<WorldStorageAccess.FluidContent> copyFluidContents(
+            List<WorldStorageAccess.FluidContent> input
+    ) {
+        if (input == null || input.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<WorldStorageAccess.FluidContent> copied = new ArrayList<>(input.size());
+        for (WorldStorageAccess.FluidContent content : input) {
+            if (content == null || !content.present()) {
+                continue;
+            }
+            copied.add(new WorldStorageAccess.FluidContent(
+                    content.tankIndex(),
+                    content.containingSlotIndex(),
+                    content.identity(),
+                    content.amount(),
+                    content.label()));
+        }
+        return copied.isEmpty() ? List.of() : List.copyOf(copied);
+    }
+
     private static List<AliasedBlock> copyAliasedBlocks(List<AliasedBlock> input) {
         if (input == null || input.isEmpty()) {
             return List.of();
@@ -233,7 +293,8 @@ public record WorldDisplayStorageSource(
             int x,
             int y,
             int z,
-            Map<ItemIdentity, Integer> countsByIdentity
+            Map<ItemIdentity, Integer> countsByIdentity,
+            Map<SlotResourceIdentity, Long> fluidCountsByIdentity
     ) {
         public static final String STATUS_ACTIVE = "active";
         public static final String STATUS_EMPTY = "empty";
@@ -246,6 +307,20 @@ public record WorldDisplayStorageSource(
             holderKind = holderKind == null ? "" : holderKind;
             dimensionId = dimensionId == null ? "" : dimensionId;
             countsByIdentity = normalizeCounts(countsByIdentity);
+            fluidCountsByIdentity = SlotResourceCollections.normalizeAmounts(fluidCountsByIdentity);
+        }
+
+        public MediaObservation(
+                String mediaId,
+                String status,
+                String holderKind,
+                String dimensionId,
+                int x,
+                int y,
+                int z,
+                Map<ItemIdentity, Integer> countsByIdentity
+        ) {
+            this(mediaId, status, holderKind, dimensionId, x, y, z, countsByIdentity, Map.of());
         }
 
         public boolean removesItemCounts() {

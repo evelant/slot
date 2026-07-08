@@ -21,6 +21,8 @@ import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceKind;
 import dev.imagio.slot.workflow.domain.ActivityProjection;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestAffinity;
@@ -88,7 +90,7 @@ import java.util.UUID;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 13;
+    private static final int SCHEMA_VERSION = 14;
 
     private final Path statePath;
 
@@ -874,6 +876,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 entry.outputCountPerBatch(),
                 entry.remainingOutputCount(),
                 inputs,
+                resourceIdentity(entry.outputResourceIdentity()),
+                entry.outputAmountPerBatch(),
+                entry.remainingOutputAmount(),
                 copyStringList(entry.diagnostics())
         );
     }
@@ -887,6 +892,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             if (alternative != null && alternative.present()) {
                 alternatives.add(new CraftRunAlternativeData(
                         identity(alternative.identity()),
+                        resourceIdentity(alternative.resourceIdentity()),
                         alternative.label()
                 ));
             }
@@ -897,7 +903,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 group.requiredCountPerBatch(),
                 group.consumed(),
                 identity(group.selectedAlternativeIdentity()),
+                resourceIdentity(group.selectedAlternativeResource()),
                 alternatives,
+                group.requiredAmountPerBatch(),
                 copyStringList(group.diagnostics())
         );
     }
@@ -923,7 +931,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             return null;
         }
         ItemIdentity output = decodeIdentity(data.outputIdentity);
-        if (output == null) {
+        SlotResourceIdentity outputResource = decodeResourceIdentity(data.outputResourceIdentity);
+        if (outputResource == null) {
+            outputResource = SlotResourceIdentity.item(output);
+        }
+        if (outputResource == null) {
             return null;
         }
         ArrayList<CraftRunIngredientGroup> inputs = new ArrayList<>();
@@ -946,6 +958,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.outputCountPerBatch,
                 data.remainingOutputCount,
                 inputs,
+                outputResource,
+                data.outputAmountPerBatch,
+                data.remainingOutputAmount,
                 copyStringList(data.diagnostics)
         );
     }
@@ -958,10 +973,19 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         if (data.alternatives != null) {
             for (CraftRunAlternativeData alternativeData : data.alternatives) {
                 ItemIdentity identity = decodeIdentity(alternativeData == null ? null : alternativeData.identity);
-                if (identity != null) {
-                    alternatives.add(new CraftRunAlternative(identity, alternativeData.label));
+                SlotResourceIdentity resourceIdentity = decodeResourceIdentity(
+                        alternativeData == null ? null : alternativeData.resourceIdentity);
+                if (resourceIdentity == null) {
+                    resourceIdentity = SlotResourceIdentity.item(identity);
+                }
+                if (resourceIdentity != null) {
+                    alternatives.add(new CraftRunAlternative(identity, alternativeData.label, resourceIdentity));
                 }
             }
+        }
+        SlotResourceIdentity selectedResource = decodeResourceIdentity(data.selectedAlternativeResource);
+        if (selectedResource == null) {
+            selectedResource = SlotResourceIdentity.item(decodeIdentity(data.selectedAlternativeIdentity));
         }
         return new CraftRunIngredientGroup(
                 data.groupId,
@@ -969,7 +993,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.requiredCountPerBatch,
                 data.consumed == null || data.consumed,
                 decodeIdentity(data.selectedAlternativeIdentity),
+                selectedResource,
                 alternatives,
+                data.requiredAmountPerBatch,
                 copyStringList(data.diagnostics)
         );
     }
@@ -1507,6 +1533,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         data.confidence = record.event().confidence().name();
         data.identity = identity(record.event().identity());
         data.count = record.event().count();
+        data.resourceIdentity = resourceIdentity(record.event().resourceIdentity());
+        data.amount = record.event().amount();
         data.fromTarget = target(record.event().fromTarget());
         data.toTarget = target(record.event().toTarget());
         data.requestId = record.event().requestId();
@@ -1520,13 +1548,18 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         if (data == null || blank(data.kind)) {
             return null;
         }
+        ItemIdentity identity = decodeIdentity(data.identity);
+        SlotResourceIdentity resourceIdentity = decodeResourceIdentity(data.resourceIdentity);
+        if (resourceIdentity == null) {
+            resourceIdentity = SlotResourceIdentity.item(identity);
+        }
         return new InventoryActivityRecord(
                 decodeEnvelope(data.envelope, DomainEventStreamKind.ACTIVITY),
                 new InventoryActivityEvent(
                         decodeEnum(InventoryActivityKind.class, data.kind, InventoryActivityKind.ACQUIRED),
                         decodeEnum(InventoryActivityProducer.class, data.producer, InventoryActivityProducer.UNKNOWN_EXTERNAL),
                         decodeEnum(InventoryActivityConfidence.class, data.confidence, InventoryActivityConfidence.OBSERVED),
-                        decodeIdentity(data.identity),
+                        identity,
                         data.count,
                         decodeInventoryTarget(data.fromTarget),
                         decodeInventoryTarget(data.toTarget),
@@ -1535,7 +1568,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         data.reasonCodes == null ? List.of() : data.reasonCodes.stream()
                                 .map(raw -> decodeEnum(InventoryCommandReasonCode.class, raw, InventoryCommandReasonCode.UNKNOWN))
                                 .toList(),
-                        nonNull(data.diagnostics)
+                        nonNull(data.diagnostics),
+                        resourceIdentity,
+                        data.amount <= 0L ? data.count : data.amount
                 )
         );
     }
@@ -1945,6 +1980,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         return identity == null ? null : new IdentityData(identity.itemId(), identity.comparisonMode().name(), identity.componentFingerprint());
     }
 
+    private static ResourceIdentityData resourceIdentity(SlotResourceIdentity identity) {
+        return identity == null ? null : new ResourceIdentityData(identity.kind().name(), identity.id(), identity.fingerprint());
+    }
+
     private static List<IdentityData> identities(Set<ItemIdentity> identities) {
         if (identities == null || identities.isEmpty()) {
             return List.of();
@@ -2230,6 +2269,14 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         return new ItemIdentity(data.itemId, comparisonMode, nonNull(data.componentFingerprint));
     }
 
+    private static SlotResourceIdentity decodeResourceIdentity(ResourceIdentityData data) {
+        if (data == null || blank(data.id)) {
+            return null;
+        }
+        SlotResourceKind kind = decodeEnum(SlotResourceKind.class, data.kind, SlotResourceKind.ITEM);
+        return new SlotResourceIdentity(kind, data.id, nonNull(data.fingerprint));
+    }
+
     private static Set<ItemIdentity> decodeIdentities(List<IdentityData> identities) {
         if (identities == null || identities.isEmpty()) {
             return Set.of();
@@ -2355,6 +2402,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             int outputCountPerBatch,
             int remainingOutputCount,
             List<CraftRunIngredientData> inputs,
+            ResourceIdentityData outputResourceIdentity,
+            long outputAmountPerBatch,
+            long remainingOutputAmount,
             List<String> diagnostics
     ) {
     }
@@ -2365,15 +2415,21 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             int requiredCountPerBatch,
             Boolean consumed,
             IdentityData selectedAlternativeIdentity,
+            ResourceIdentityData selectedAlternativeResource,
             List<CraftRunAlternativeData> alternatives,
+            long requiredAmountPerBatch,
             List<String> diagnostics
     ) {
     }
 
     private record CraftRunAlternativeData(
             IdentityData identity,
+            ResourceIdentityData resourceIdentity,
             String label
     ) {
+    }
+
+    private record ResourceIdentityData(String kind, String id, String fingerprint) {
     }
 
     private record WorkflowCheckpointData(
@@ -2610,6 +2666,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private String confidence;
         private IdentityData identity;
         private int count;
+        private ResourceIdentityData resourceIdentity;
+        private long amount;
         private TargetData fromTarget;
         private TargetData toTarget;
         private String requestId;

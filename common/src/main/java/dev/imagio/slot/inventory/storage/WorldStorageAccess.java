@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.storage;
 
 import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -81,6 +82,34 @@ public interface WorldStorageAccess {
         }
     }
 
+    /** Represents a filled tank or a fluid contained inside an item stored in this target. */
+    record FluidContent(
+            int tankIndex,
+            int containingSlotIndex,
+            SlotResourceIdentity identity,
+            long amount,
+            String label
+    ) {
+        public static final int DIRECT_TANK_SLOT = -1;
+
+        public FluidContent {
+            tankIndex = Math.max(0, tankIndex);
+            containingSlotIndex = Math.max(DIRECT_TANK_SLOT, containingSlotIndex);
+            amount = Math.max(0L, amount);
+            label = label == null || label.isBlank()
+                    ? identity == null ? "Fluid" : identity.id()
+                    : label.trim();
+        }
+
+        public boolean directTank() {
+            return containingSlotIndex < 0;
+        }
+
+        public boolean present() {
+            return identity != null && identity.fluid() && amount > 0L;
+        }
+    }
+
     /**
      * Simulate: returns the stack portion that would NOT fit. Commit: performs
      * the insertion and returns the remaining portion that could not be
@@ -129,6 +158,15 @@ public interface WorldStorageAccess {
      * planners that need to inspect a storage's contents.
      */
     List<SlotContent> enumerate(MinecraftServer server, Target target);
+
+    /**
+     * Enumerate read-only fluid contents for the target. This includes direct
+     * block/machine tanks and fluids contained inside item stacks held by the
+     * storage. Mutations stay out of this interface for v1 fluid support.
+     */
+    default List<FluidContent> enumerateFluids(MinecraftServer server, Target target) {
+        return List.of();
+    }
 
     /** Returns the slot capacity of the target, or 0 if unknown / unloaded. */
     int slotCount(MinecraftServer server, Target target);
@@ -189,6 +227,10 @@ public interface WorldStorageAccess {
         }
 
         default Optional<List<SlotContent>> enumerate(MinecraftServer server, Target target) {
+            return Optional.empty();
+        }
+
+        default Optional<List<FluidContent>> enumerateFluids(MinecraftServer server, Target target) {
             return Optional.empty();
         }
 

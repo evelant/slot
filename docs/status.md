@@ -52,13 +52,14 @@ EMI recipe context now uses the normal SLOT sidebar as a transient recipe
 ingredient filter plus one persisted current craft run on both loaders. Visible
 ingredients render in the wall; the tracked recipe list lives in the right-side
 task panel; recipe inputs project as transient wanted-count pressure for
-gather/storage/wayfinding; EMI recipe screens avoid floating Recents; selected
+gather/storage/wayfinding; fluid ingredients and outputs are preserved as
+read-only resources per ADR [0010](decisions/0010-first-class-fluid-resources.md)
+and [plans/fluid-resources.md](plans/fluid-resources.md); selected item
 deficits stage through the shared transfer executor; and the run survives
 logout/rejoin through workflow persistence. ADR
-[0007](decisions/0007-emi-recipe-sidebar.md) records the pivot; the old
-recipe-goal plan lives in
-[plans/retired/emi-goal-projections.md](plans/retired/emi-goal-projections.md),
-and the legacy code/UI/RPC/persistence model has been removed.
+[0007](decisions/0007-emi-recipe-sidebar.md) records the recipe-context pivot;
+the old recipe-goal plan lives in
+[plans/retired/emi-goal-projections.md](plans/retired/emi-goal-projections.md).
 
 ### Production wall shape (post-list-view)
 
@@ -95,9 +96,6 @@ integration claims the screen, and `Slot.safeInsert` only as the generic fallbac
 Tracked from [plans/current.md § Queue](plans/current.md). If you start this,
 write a fresh plan in `docs/plans/`; don't reopen the closed list-view plan.
 
-**Discovered LDLib2 bug** (worked around, **user filing upstream**):
-`ModularUI.calculateStyleAndLayout` checks width twice; keep root at `widthPercent(100)`.
-
 ## Project structure
 
 Top-level docs: see [../README.md](../README.md) for the full map,
@@ -106,8 +104,8 @@ for product direction, [architecture/overview.md](architecture/overview.md) for 
 
 Common module:
 
-- `inventory/core`: descriptors, capabilities, host topology, policy, builtin
-  ids, crafting surface descriptors
+- `inventory/core`: descriptors, resource identities, host topology, policy,
+  builtin ids, crafting surface descriptors
 - `inventory/query`: authority snapshots and read services
 - `inventory/browse`: UI-independent browse documents
 - `inventory/action`: targets, action requests/outcomes, taxonomy dimensions,
@@ -156,8 +154,8 @@ Forge 1.20 module:
   `SimpleChannel` action transport, workflow persistence, session-backed
   projection, carried/world storage accessors, guarded
   transfer/hotbar/workflow/desired/wanted/chest/cursor/gather/wayfinding
-  actions, Forge-only AE2 media-set network storage with per-cell media
-  observations, chest
+  actions, read-only fluid enumeration, Forge-only AE2 media-set network
+  storage with per-cell media observations, chest
   `storage_id` break cleanup, measured shared-card badges,
   sidebar/task-panel margin config/depth fixes,
   `/slot test` and
@@ -220,8 +218,7 @@ truth about slot contents (kernel owns it; UI never invents).
 ## Verification commands
 
 ```bash
-./gradlew :common:compileJava :neoforge:compileJava :forge-1.20:compileSharedProbeJava
-./gradlew :common:test :neoforge:test
+./gradlew :common:test :neoforge:test :forge-1.20:test :common:compileJava :neoforge:compileJava :forge-1.20:compileJava
 ```
 
 Classification tool checks:

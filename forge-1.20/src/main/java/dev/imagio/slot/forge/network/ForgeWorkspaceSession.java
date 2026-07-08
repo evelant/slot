@@ -16,6 +16,7 @@ import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemStackStructuralKey;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.integration.InventoryActionExecutor;
 import dev.imagio.slot.inventory.integration.InventoryHostContext;
 import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
@@ -27,6 +28,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
+import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
@@ -43,6 +45,7 @@ import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.QuickHotbarSwapHistory;
 import dev.imagio.slot.inventory.workspace.RemoteDetailIdentityPayload;
 import dev.imagio.slot.inventory.workspace.RemoteStorageDetailIntent;
+import dev.imagio.slot.inventory.workspace.FluidResourceObservationService;
 import dev.imagio.slot.inventory.workspace.WorkspaceBeltCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
@@ -932,7 +935,6 @@ final class ForgeWorkspaceSession {
         if (runtime != null) {
             runtime.collectionWorkflow().expireJunkTags();
         }
-        WorkflowDomainSnapshot snapshot = runtime == null ? null : runtime.snapshot();
         long storageStart = System.nanoTime();
         WorkspaceStorageRoutingContext storageContext =
                 WorkspaceStorageRoutingContext.build(player, runtime, authority, storageIndexCache, host);
@@ -950,6 +952,13 @@ final class ForgeWorkspaceSession {
         clearSatisfiedWantedCounts(authority);
         List<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries = storageIndex.liveDisplayEntries();
         Set<String> liveDepositStorageIds = storageIndex.liveDepositStorageIds();
+        Map<SlotResourceIdentity, Long> carriedFluidCounts = carriedFluidCounts(player);
+        FluidResourceObservationService.observe(
+                runtime,
+                storageIndex,
+                carriedFluidCounts,
+                "workspace_projection_fluid_observation");
+        WorkflowDomainSnapshot snapshot = runtime == null ? null : runtime.snapshot();
         WorkspaceProjectionRequest request = new WorkspaceProjectionRequest(
                 authority,
                 snapshot,
@@ -975,6 +984,7 @@ final class ForgeWorkspaceSession {
                 liveDisplayEntries,
                 liveDepositStorageIds,
                 storageIndex,
+                carriedFluidCounts,
                 storageContext.liveChestContentPresence(),
                 storageContext.liveStorageAffinityEligibility()
         );
@@ -986,6 +996,17 @@ final class ForgeWorkspaceSession {
                 liveDisplayEntries.size(),
                 liveDepositStorageIds.size(),
                 storageContext.indexDiagnostics());
+    }
+
+    private static Map<SlotResourceIdentity, Long> carriedFluidCounts(ServerPlayer player) {
+        if (player == null || !StorageAccessRegistry.isInstalled()) {
+            return Map.of();
+        }
+        try {
+            return CarriedSourceAccess.fluidCounts(StorageAccessRegistry.carriedSourceAccess().enumerateFluids(player));
+        } catch (RuntimeException | LinkageError ignored) {
+            return Map.of();
+        }
     }
 
     private WorkspaceInvalidation storageProximityInvalidation(ServerPlayer player) {

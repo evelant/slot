@@ -10,6 +10,10 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.ItemStackTags;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceDisplay;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceKind;
 import dev.imagio.slot.inventory.query.CarriedIdentityCounts;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
@@ -766,6 +770,7 @@ public record SlotWorkspaceViewModel(
                 liveStorageAffinityEligibility,
                 null,
                 Set.of(),
+                Map.of(),
                 null);
     }
 
@@ -806,6 +811,7 @@ public record SlotWorkspaceViewModel(
                 resolved.liveStorageAffinityEligibility(),
                 resolved.remoteStorageDetailIntent(),
                 resolved.remoteDetailIdentities(),
+                resolved.carriedFluidCounts(),
                 resolvedStore.identityContext());
     }
 
@@ -861,6 +867,7 @@ public record SlotWorkspaceViewModel(
                 liveStorageAffinityEligibility,
                 remoteStorageDetailIntent,
                 Set.of(),
+                Map.of(),
                 null);
     }
 
@@ -890,6 +897,7 @@ public record SlotWorkspaceViewModel(
             DepositPlanner.ChestEligibility liveStorageAffinityEligibility,
             RemoteStorageDetailIntent remoteStorageDetailIntent,
             Set<ItemIdentity> remoteDetailIdentities,
+            Map<SlotResourceIdentity, Long> carriedFluidCounts,
             ProjectionIdentityContext suppliedIdentityContext
         ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
@@ -900,6 +908,8 @@ public record SlotWorkspaceViewModel(
         ProjectionIdentityContext identityContext = suppliedIdentityContext == null
                 ? ProjectionIdentityContext.from(resolvedAuthority)
                 : suppliedIdentityContext;
+        Map<SlotResourceIdentity, Long> carriedFluidCountsByIdentity =
+                SlotResourceCollections.normalizeAmounts(carriedFluidCounts);
         CarriedIdentityCounts carriedIdentityCounts = identityContext.carriedCounts();
         WorkflowTabTargets.Resolution targetResolution = WorkflowTabTargets.resolve(carriedIdentityCounts, resolvedWorkflow);
         Map<ItemIdentity, Integer> wantedCounts = targetResolution.wantedCounts();
@@ -1487,6 +1497,15 @@ public record SlotWorkspaceViewModel(
                     serverProjectionSearchQuery,
                     islandsById);
         }
+
+        addFluidResourceCards(
+                atlasItems,
+                layoutIslands,
+                carriedFluidCountsByIdentity,
+                claimedChestMap,
+                chestContentsResolver,
+                proximate,
+                trackedDisplayEntries);
 
         List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(layoutIslands, atlasItems);
 
@@ -3958,6 +3977,229 @@ public record SlotWorkspaceViewModel(
         return summaryByIdentity.isEmpty() ? List.of() : List.copyOf(summaryByIdentity.values());
     }
 
+    private static void addFluidResourceCards(
+            ArrayList<AtlasItem> atlasItems,
+            ArrayList<AtlasIsland> layoutIslands,
+            Map<SlotResourceIdentity, Long> carriedFluidCounts,
+            ClaimedChestMap claimedChestMap,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries
+    ) {
+        if (atlasItems == null || layoutIslands == null) {
+            return;
+        }
+        LinkedHashMap<SlotResourceIdentity, FluidCardAccumulator> byFluid = new LinkedHashMap<>();
+        Map<SlotResourceIdentity, Long> carried = SlotResourceCollections.normalizeAmounts(carriedFluidCounts);
+        for (Map.Entry<SlotResourceIdentity, Long> entry : carried.entrySet()) {
+            if (entry.getKey() != null && entry.getKey().fluid()) {
+                accumulator(byFluid, entry.getKey()).carriedAmount += Math.max(0L, entry.getValue());
+            }
+        }
+        Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
+        if (claimedChestMap != null && chestContentsResolver != null) {
+            for (ClaimedChest chest : claimedChestMap.chests()) {
+                if (chest == null || !chest.role().visibleToWorkspace()) {
+                    continue;
+                }
+                String storageId = chest.storageId().toString();
+                ChestContentsSnapshot snapshot = chestContentsResolver.apply(storageId);
+                addFluidPresence(
+                        byFluid,
+                        storageId,
+                        autoLabel(chest),
+                        proximate.contains(storageId),
+                        snapshot == null ? Map.of() : snapshot.fluidCountsByIdentity());
+            }
+        }
+        if (trackedDisplayEntries != null) {
+            for (WorkspaceStorageIndex.StorageEntry entry : trackedDisplayEntries) {
+                if (entry == null || entry.target() == null || entry.fluidCountsByIdentity().isEmpty()) {
+                    continue;
+                }
+                StorageTargetRef target = entry.target();
+                addFluidPresence(
+                        byFluid,
+                        target.storageId(),
+                        target.label(),
+                        target.proximate(),
+                        entry.fluidCountsByIdentity());
+            }
+        }
+        if (byFluid.isEmpty() || !ensureMiscIsland(layoutIslands)) {
+            return;
+        }
+        ArrayList<AtlasItem> fluidCards = new ArrayList<>();
+        for (FluidCardAccumulator accumulator : byFluid.values()) {
+            AtlasItem card = accumulator.toCard();
+            if (card != null) {
+                fluidCards.add(card);
+            }
+        }
+        fluidCards.sort(Comparator
+                .comparing((AtlasItem item) -> item.name().toLowerCase(Locale.ROOT))
+                .thenComparing(item -> item.resource().id())
+                .thenComparing(item -> item.resource().fingerprint()));
+        atlasItems.addAll(fluidCards);
+    }
+
+    private static FluidCardAccumulator accumulator(
+            LinkedHashMap<SlotResourceIdentity, FluidCardAccumulator> byFluid,
+            SlotResourceIdentity identity
+    ) {
+        SlotResourceIdentity key = SlotResourceCollections.key(identity);
+        return byFluid.computeIfAbsent(key, FluidCardAccumulator::new);
+    }
+
+    private static void addFluidPresence(
+            LinkedHashMap<SlotResourceIdentity, FluidCardAccumulator> byFluid,
+            String storageId,
+            String label,
+            boolean proximate,
+            Map<SlotResourceIdentity, Long> fluidCounts
+    ) {
+        if (byFluid == null || fluidCounts == null || fluidCounts.isEmpty()) {
+            return;
+        }
+        for (Map.Entry<SlotResourceIdentity, Long> entry : fluidCounts.entrySet()) {
+            if (entry.getKey() == null || !entry.getKey().fluid() || entry.getValue() == null || entry.getValue() <= 0L) {
+                continue;
+            }
+            accumulator(byFluid, entry.getKey()).addPresence(storageId, label, proximate, entry.getValue());
+        }
+    }
+
+    private static int saturatedResourceCount(long amount) {
+        return amount >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) Math.max(0L, amount);
+    }
+
+    private static String fluidLabel(SlotResourceIdentity identity) {
+        if (identity == null || identity.id().isBlank()) {
+            return "Fluid";
+        }
+        String raw = identity.id();
+        int separator = raw.indexOf(':');
+        String path = separator >= 0 ? raw.substring(separator + 1) : raw;
+        path = path.replace('_', ' ').replace('/', ' ');
+        if (path.isBlank()) {
+            return raw;
+        }
+        StringBuilder out = new StringBuilder(path.length());
+        boolean upper = true;
+        for (int i = 0; i < path.length(); i++) {
+            char ch = path.charAt(i);
+            if (Character.isWhitespace(ch)) {
+                upper = true;
+                out.append(ch);
+            } else if (upper) {
+                out.append(Character.toUpperCase(ch));
+                upper = false;
+            } else {
+                out.append(ch);
+            }
+        }
+        return out.toString();
+    }
+
+    private static ItemStack fluidDisplayStack() {
+        ItemStack stack = resolveGhostStack(ItemIdentity.of("minecraft:water_bucket"), 1);
+        if (stack == null || stack.isEmpty()) {
+            stack = resolveGhostStack(ItemIdentity.of("minecraft:bucket"), 1);
+        }
+        return stack == null ? ItemStack.EMPTY : stack;
+    }
+
+    private static final class FluidCardAccumulator {
+        private final SlotResourceIdentity identity;
+        private final LinkedHashMap<String, ChestPresenceEntry> proximate = new LinkedHashMap<>();
+        private final LinkedHashMap<String, ChestPresenceEntry> elsewhere = new LinkedHashMap<>();
+        private long carriedAmount;
+        private long proximateAmount;
+        private long elsewhereAmount;
+
+        private FluidCardAccumulator(SlotResourceIdentity identity) {
+            this.identity = identity;
+        }
+
+        private void addPresence(String storageId, String label, boolean proximateStorage, long amount) {
+            if (amount <= 0L) {
+                return;
+            }
+            long bounded = Math.max(0L, amount);
+            if (proximateStorage) {
+                proximateAmount += bounded;
+                mergePresence(proximate, storageId, label, bounded);
+            } else {
+                elsewhereAmount += bounded;
+                mergePresence(elsewhere, storageId, label, bounded);
+            }
+        }
+
+        private AtlasItem toCard() {
+            long total = carriedAmount + proximateAmount + elsewhereAmount;
+            if (identity == null || total <= 0L) {
+                return null;
+            }
+            ItemStack display = fluidDisplayStack();
+            if (display.isEmpty()) {
+                return null;
+            }
+            String name = fluidLabel(identity);
+            int displayCount = saturatedResourceCount(total);
+            return new AtlasItem(
+                    IdentityRef.from(ItemIdentity.of(identity.syntheticItemId())),
+                    display,
+                    name,
+                    displayCount,
+                    0,
+                    SlotWorkspaceAtlasLayout.ISLAND_MISC,
+                    false,
+                    false,
+                    carriedAmount > 0L,
+                    carriedAmount <= 0L,
+                    saturatedResourceCount(proximateAmount),
+                    List.of(),
+                    List.copyOf(proximate.values()),
+                    List.copyOf(elsewhere.values()),
+                    false,
+                    0,
+                    0,
+                    false,
+                    0,
+                    false,
+                    0,
+                    false,
+                    false,
+                    "",
+                    -1,
+                    0,
+                    PutAwayState.NONE,
+                    ResourceRef.from(identity),
+                    total);
+        }
+
+        private static void mergePresence(
+                LinkedHashMap<String, ChestPresenceEntry> target,
+                String storageId,
+                String label,
+                long amount
+        ) {
+            String key = storageId == null || storageId.isBlank()
+                    ? "fluid-storage:" + target.size()
+                    : storageId;
+            ChestPresenceEntry existing = target.get(key);
+            int count = saturatedResourceCount(amount);
+            if (existing == null) {
+                target.put(key, new ChestPresenceEntry(key, label == null ? "" : label, count));
+            } else {
+                target.put(key, new ChestPresenceEntry(
+                        existing.storageId(),
+                        existing.label(),
+                        saturatedResourceCount((long) existing.count() + count)));
+            }
+        }
+    }
+
     private static String autoLabel(ClaimedChest chest) {
         String hex = chest.storageId().toString();
         int dash = hex.indexOf('-');
@@ -5313,6 +5555,45 @@ public record SlotWorkspaceViewModel(
         }
     }
 
+    public record ResourceRef(
+            String kind,
+            String id,
+            String fingerprint
+    ) {
+        public ResourceRef {
+            kind = kind == null || kind.isBlank() ? SlotResourceKind.ITEM.name() : kind.trim();
+            id = id == null ? "" : id.trim();
+            fingerprint = fingerprint == null ? "" : fingerprint.trim();
+        }
+
+        public static ResourceRef from(SlotResourceIdentity identity) {
+            return identity == null
+                    ? new ResourceRef(SlotResourceKind.ITEM.name(), "", "")
+                    : new ResourceRef(identity.kind().name(), identity.id(), identity.fingerprint());
+        }
+
+        public static ResourceRef item(IdentityRef identity) {
+            return from(identity == null ? null : SlotResourceIdentity.item(identity.toIdentity()));
+        }
+
+        public SlotResourceIdentity toIdentity() {
+            if (id.isBlank()) {
+                return null;
+            }
+            SlotResourceKind parsed = SlotResourceKind.ITEM;
+            try {
+                parsed = SlotResourceKind.valueOf(kind);
+            } catch (IllegalArgumentException ignored) {
+            }
+            return new SlotResourceIdentity(parsed, id, fingerprint);
+        }
+
+        public boolean fluid() {
+            SlotResourceIdentity identity = toIdentity();
+            return identity != null && identity.fluid();
+        }
+    }
+
     /**
      * Per-identity atlas projection.
      *
@@ -5348,7 +5629,9 @@ public record SlotWorkspaceViewModel(
             String largestCarriedSourceId,
             int largestCarriedSlotIndex,
             int largestCarriedSlotCount,
-            PutAwayState putAwayState
+            PutAwayState putAwayState,
+            ResourceRef resource,
+            long resourceAmount
     ) {
         public AtlasItem {
             identity = identity == null ? new IdentityRef("", ItemComparisonMode.ITEM_ID.name(), "") : identity;
@@ -5382,6 +5665,49 @@ public record SlotWorkspaceViewModel(
             largestCarriedSlotIndex = Math.max(-1, largestCarriedSlotIndex);
             largestCarriedSlotCount = Math.max(0, largestCarriedSlotCount);
             putAwayState = putAwayState == null ? PutAwayState.NONE : putAwayState;
+            resource = resource == null ? ResourceRef.item(identity) : resource;
+            resourceAmount = resourceAmount <= 0L ? totalCount : resourceAmount;
+        }
+
+        public AtlasItem(
+                IdentityRef identity,
+                ItemStack displayStack,
+                String name,
+                int totalCount,
+                int firstSlotIndex,
+                String islandId,
+                boolean recent,
+                boolean playerPlaced,
+                boolean carried,
+                boolean ghost,
+                int proximateCount,
+                List<ChipSuggestion> chipSuggestions,
+                List<ChestPresenceEntry> presence,
+                List<ChestPresenceEntry> elsewhere,
+                boolean isCarriedContainer,
+                int containerFreeSlotCount,
+                int containerSlotCapacity,
+                boolean kitNeeded,
+                int desiredCount,
+                boolean desiredCountFromKit,
+                int wantedCount,
+                boolean junk,
+                boolean acceptedWorkflowInput,
+                String largestCarriedSourceId,
+                int largestCarriedSlotIndex,
+                int largestCarriedSlotCount,
+                PutAwayState putAwayState
+        ) {
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
+                    recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions, presence, elsewhere,
+                    isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, desiredCount,
+                    desiredCountFromKit, wantedCount, junk, acceptedWorkflowInput, largestCarriedSourceId,
+                    largestCarriedSlotIndex, largestCarriedSlotCount, putAwayState,
+                    ResourceRef.item(identity), Math.max(0, totalCount));
+        }
+
+        public boolean fluidResource() {
+            return resource != null && resource.fluid();
         }
 
         public boolean wanted() {
@@ -6053,7 +6379,8 @@ public record SlotWorkspaceViewModel(
             int slotCount,
             List<ItemStack> contents,
             List<Integer> slotIndices,
-            Map<ItemIdentity, Integer> countsByIdentity
+            Map<ItemIdentity, Integer> countsByIdentity,
+            Map<SlotResourceIdentity, Long> fluidCountsByIdentity
     ) {
         public ChestContentsSnapshot {
             slotCount = Math.max(0, slotCount);
@@ -6071,10 +6398,20 @@ public record SlotWorkspaceViewModel(
             }
             slotIndices = List.copyOf(indexCopy);
             countsByIdentity = countsByIdentity == null ? Map.of() : Map.copyOf(countsByIdentity);
+            fluidCountsByIdentity = SlotResourceCollections.normalizeAmounts(fluidCountsByIdentity);
+        }
+
+        public ChestContentsSnapshot(
+                int slotCount,
+                List<ItemStack> contents,
+                List<Integer> slotIndices,
+                Map<ItemIdentity, Integer> countsByIdentity
+        ) {
+            this(slotCount, contents, slotIndices, countsByIdentity, Map.of());
         }
 
         public ChestContentsSnapshot(int slotCount, List<ItemStack> contents, List<Integer> slotIndices) {
-            this(slotCount, contents, slotIndices, Map.of());
+            this(slotCount, contents, slotIndices, Map.of(), Map.of());
         }
 
         public ChestContentsSnapshot(int slotCount, List<ItemStack> contents) {

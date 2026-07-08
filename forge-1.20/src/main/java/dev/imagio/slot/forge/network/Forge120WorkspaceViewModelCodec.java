@@ -771,9 +771,14 @@ public final class Forge120WorkspaceViewModelCodec {
         if (resolved.outputIdentity() != null) {
             tag.put("outputIdentity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(resolved.outputIdentity())));
         }
+        if (resolved.outputResourceIdentity() != null) {
+            tag.put("outputResourceIdentity", encodeResource(SlotWorkspaceViewModel.ResourceRef.from(resolved.outputResourceIdentity())));
+        }
         tag.putString("outputLabel", resolved.outputLabel());
         tag.putInt("outputCountPerBatch", resolved.outputCountPerBatch());
         tag.putInt("remainingOutputCount", resolved.remainingOutputCount());
+        tag.putLong("outputAmountPerBatch", resolved.outputAmountPerBatch());
+        tag.putLong("remainingOutputAmount", resolved.remainingOutputAmount());
         tag.put("inputs", encodeCraftRunIngredientGroups(resolved.inputs()));
         tag.put("diagnostics", encodeStrings(resolved.diagnostics()));
         return tag;
@@ -795,6 +800,11 @@ public final class Forge120WorkspaceViewModelCodec {
                 tag.getInt("outputCountPerBatch"),
                 tag.getInt("remainingOutputCount"),
                 decodeCraftRunIngredientGroups(tag.getList("inputs", Tag.TAG_COMPOUND)),
+                tag.contains("outputResourceIdentity", Tag.TAG_COMPOUND)
+                        ? decodeResource(tag.getCompound("outputResourceIdentity")).toIdentity()
+                        : null,
+                tag.getLong("outputAmountPerBatch"),
+                tag.getLong("remainingOutputAmount"),
                 decodeStrings(tag.getList("diagnostics", Tag.TAG_STRING)));
     }
 
@@ -836,9 +846,14 @@ public final class Forge120WorkspaceViewModelCodec {
         if (entry.outputIdentity() != null) {
             tag.put("outputIdentity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(entry.outputIdentity())));
         }
+        if (entry.outputResourceIdentity() != null) {
+            tag.put("outputResourceIdentity", encodeResource(SlotWorkspaceViewModel.ResourceRef.from(entry.outputResourceIdentity())));
+        }
         tag.putString("outputLabel", entry.outputLabel());
         tag.putInt("outputCountPerBatch", entry.outputCountPerBatch());
         tag.putInt("remainingOutputCount", entry.remainingOutputCount());
+        tag.putLong("outputAmountPerBatch", entry.outputAmountPerBatch());
+        tag.putLong("remainingOutputAmount", entry.remainingOutputAmount());
         tag.put("inputs", encodeCraftRunIngredientGroups(entry.inputs()));
         tag.put("diagnostics", encodeStrings(entry.diagnostics()));
         return tag;
@@ -862,6 +877,11 @@ public final class Forge120WorkspaceViewModelCodec {
                 tag.getInt("outputCountPerBatch"),
                 tag.getInt("remainingOutputCount"),
                 decodeCraftRunIngredientGroups(tag.getList("inputs", Tag.TAG_COMPOUND)),
+                tag.contains("outputResourceIdentity", Tag.TAG_COMPOUND)
+                        ? decodeResource(tag.getCompound("outputResourceIdentity")).toIdentity()
+                        : null,
+                tag.getLong("outputAmountPerBatch"),
+                tag.getLong("remainingOutputAmount"),
                 decodeStrings(tag.getList("diagnostics", Tag.TAG_STRING)));
     }
 
@@ -894,19 +914,28 @@ public final class Forge120WorkspaceViewModelCodec {
         tag.putString("groupId", group.groupId());
         tag.putString("label", group.label());
         tag.putInt("requiredCountPerBatch", group.requiredCountPerBatch());
+        tag.putLong("requiredAmountPerBatch", group.requiredAmountPerBatch());
         tag.putBoolean("consumed", group.consumed());
         if (group.selectedAlternativeIdentity() != null) {
             tag.put(
                     "selectedAlternativeIdentity",
                     encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(group.selectedAlternativeIdentity())));
         }
+        if (group.selectedAlternativeResource() != null) {
+            tag.put("selectedAlternativeResource", encodeResource(SlotWorkspaceViewModel.ResourceRef.from(group.selectedAlternativeResource())));
+        }
         ListTag alternatives = new ListTag();
         for (CraftRunAlternative alternative : group.alternatives()) {
-            if (alternative == null || alternative.identity() == null) {
+            if (alternative == null || !alternative.present()) {
                 continue;
             }
             CompoundTag alternativeTag = new CompoundTag();
-            alternativeTag.put("identity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(alternative.identity())));
+            if (alternative.identity() != null) {
+                alternativeTag.put("identity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(alternative.identity())));
+            }
+            if (alternative.resourceIdentity() != null) {
+                alternativeTag.put("resourceIdentity", encodeResource(SlotWorkspaceViewModel.ResourceRef.from(alternative.resourceIdentity())));
+            }
             alternativeTag.putString("label", alternative.label());
             alternatives.add(alternativeTag);
         }
@@ -923,9 +952,17 @@ public final class Forge120WorkspaceViewModelCodec {
         ListTag alternativeTags = tag.getList("alternatives", Tag.TAG_COMPOUND);
         for (int index = 0; index < alternativeTags.size(); index++) {
             CompoundTag alternativeTag = alternativeTags.getCompound(index);
-            ItemIdentity identity = decodeIdentity(alternativeTag.getCompound("identity")).toIdentity();
-            if (identity != null) {
-                alternatives.add(new CraftRunAlternative(identity, alternativeTag.getString("label")));
+            ItemIdentity identity = alternativeTag.contains("identity", Tag.TAG_COMPOUND)
+                    ? decodeIdentity(alternativeTag.getCompound("identity")).toIdentity()
+                    : null;
+            SlotWorkspaceViewModel.ResourceRef resource = alternativeTag.contains("resourceIdentity", Tag.TAG_COMPOUND)
+                    ? decodeResource(alternativeTag.getCompound("resourceIdentity"))
+                    : null;
+            if (resource != null || identity != null) {
+                alternatives.add(new CraftRunAlternative(
+                        identity,
+                        alternativeTag.getString("label"),
+                        resource == null ? null : resource.toIdentity()));
             }
         }
         return new CraftRunIngredientGroup(
@@ -936,7 +973,11 @@ public final class Forge120WorkspaceViewModelCodec {
                 tag.contains("selectedAlternativeIdentity", Tag.TAG_COMPOUND)
                         ? decodeIdentity(tag.getCompound("selectedAlternativeIdentity")).toIdentity()
                         : null,
+                tag.contains("selectedAlternativeResource", Tag.TAG_COMPOUND)
+                        ? decodeResource(tag.getCompound("selectedAlternativeResource")).toIdentity()
+                        : null,
                 alternatives,
+                tag.getLong("requiredAmountPerBatch"),
                 decodeStrings(tag.getList("diagnostics", Tag.TAG_STRING)));
     }
 
@@ -1403,6 +1444,8 @@ public final class Forge120WorkspaceViewModelCodec {
         tag.putInt("largestCarriedSlotIndex", item.largestCarriedSlotIndex());
         tag.putInt("largestCarriedSlotCount", item.largestCarriedSlotCount());
         tag.putString("putAwayState", item.putAwayState().name());
+        tag.put("resource", encodeResource(item.resource()));
+        tag.putLong("resourceAmount", item.resourceAmount());
         return tag;
     }
 
@@ -1452,7 +1495,13 @@ public final class Forge120WorkspaceViewModelCodec {
                 tag.getString("largestCarriedSourceId"),
                 tag.getInt("largestCarriedSlotIndex"),
                 tag.getInt("largestCarriedSlotCount"),
-                SlotWorkspaceViewModel.PutAwayState.parse(tag.getString("putAwayState"))
+                SlotWorkspaceViewModel.PutAwayState.parse(tag.getString("putAwayState")),
+                tag.contains("resource", Tag.TAG_COMPOUND)
+                        ? decodeResource(tag.getCompound("resource"))
+                        : null,
+                tag.contains("resourceAmount", Tag.TAG_LONG)
+                        ? tag.getLong("resourceAmount")
+                        : 0L
         );
     }
 
@@ -1667,11 +1716,30 @@ public final class Forge120WorkspaceViewModelCodec {
         return tag;
     }
 
+    private static CompoundTag encodeResource(SlotWorkspaceViewModel.ResourceRef resource) {
+        SlotWorkspaceViewModel.ResourceRef resolved = resource == null
+                ? new SlotWorkspaceViewModel.ResourceRef("ITEM", "", "")
+                : resource;
+        CompoundTag tag = new CompoundTag();
+        tag.putString("kind", resolved.kind());
+        tag.putString("id", resolved.id());
+        tag.putString("fingerprint", resolved.fingerprint());
+        return tag;
+    }
+
     private static SlotWorkspaceViewModel.IdentityRef decodeIdentity(CompoundTag tag) {
         return new SlotWorkspaceViewModel.IdentityRef(
                 tag.getString("itemId"),
                 tag.getString("comparisonMode"),
                 tag.getString("componentFingerprint")
+        );
+    }
+
+    private static SlotWorkspaceViewModel.ResourceRef decodeResource(CompoundTag tag) {
+        return new SlotWorkspaceViewModel.ResourceRef(
+                tag.getString("kind"),
+                tag.getString("id"),
+                tag.getString("fingerprint")
         );
     }
 }

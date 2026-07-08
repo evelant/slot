@@ -10,6 +10,7 @@ import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.core.ItemStackStructuralKey;
 import dev.imagio.slot.inventory.integration.InventoryActionExecutor;
 import dev.imagio.slot.inventory.integration.InventoryHostContext;
@@ -39,6 +40,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceTransferRequestFactory;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.FluidResourceObservationService;
 import dev.imagio.slot.inventory.workspace.WorkspaceBeltCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
@@ -2258,9 +2260,15 @@ final class SlotWorkspaceUiSession {
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel = resolveActiveChestPanel(
                 serverPlayer, runtime, claimedChestMap);
         clearSatisfiedWantedCounts(authority);
-        WorkflowDomainSnapshot snapshot = runtime.snapshot();
         List<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries = storageIndex.liveDisplayEntries();
         Set<String> liveDepositStorageIds = storageIndex.liveDepositStorageIds();
+        Map<SlotResourceIdentity, Long> carriedFluidCounts = carriedFluidCounts(serverPlayer);
+        FluidResourceObservationService.observe(
+                runtime,
+                storageIndex,
+                carriedFluidCounts,
+                "workspace_projection_fluid_observation");
+        WorkflowDomainSnapshot snapshot = runtime.snapshot();
         WorkspaceProjectionRequest request = new WorkspaceProjectionRequest(
                 authority,
                 snapshot,
@@ -2286,6 +2294,7 @@ final class SlotWorkspaceUiSession {
                 liveDisplayEntries,
                 liveDepositStorageIds,
                 storageIndex,
+                carriedFluidCounts,
                 storageContext.liveChestContentPresence(),
                 storageContext.liveStorageAffinityEligibility()
         );
@@ -2345,6 +2354,7 @@ final class SlotWorkspaceUiSession {
                     liveDisplayEntries,
                     liveDepositStorageIds,
                     storageIndex,
+                    carriedFluidCounts,
                     storageContext.liveChestContentPresence(),
                     storageContext.liveStorageAffinityEligibility()
             );
@@ -2766,6 +2776,17 @@ final class SlotWorkspaceUiSession {
         workflowRuntime(serverPlayer).recordOutcome(outcome);
         if (outcome != null && outcome.successful()) {
             NeoForgeCarriedActivityTracker.suppressOutcome(serverPlayer, outcome);
+        }
+    }
+
+    private static Map<SlotResourceIdentity, Long> carriedFluidCounts(ServerPlayer player) {
+        if (player == null || !StorageAccessRegistry.isInstalled()) {
+            return Map.of();
+        }
+        try {
+            return CarriedSourceAccess.fluidCounts(StorageAccessRegistry.carriedSourceAccess().enumerateFluids(player));
+        } catch (RuntimeException | LinkageError ignored) {
+            return Map.of();
         }
     }
 

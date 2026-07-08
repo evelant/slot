@@ -2,11 +2,15 @@ package dev.imagio.slot.inventory.storage;
 
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -64,6 +68,30 @@ public interface CarriedSourceAccess {
         }
     }
 
+    /** Read-only fluid content held by an item stack in carried storage. */
+    record CarriedFluidContent(
+            String sourceId,
+            int slotIndex,
+            int tankIndex,
+            SlotResourceIdentity identity,
+            long amount,
+            String label
+    ) {
+        public CarriedFluidContent {
+            sourceId = sourceId == null ? "" : sourceId;
+            slotIndex = Math.max(0, slotIndex);
+            tankIndex = Math.max(0, tankIndex);
+            amount = Math.max(0L, amount);
+            label = label == null || label.isBlank()
+                    ? identity == null ? "Fluid" : identity.id()
+                    : label.trim();
+        }
+
+        public boolean present() {
+            return !sourceId.isBlank() && identity != null && identity.fluid() && amount > 0L;
+        }
+    }
+
     /**
      * Return a snapshot of the stack at the given carried slot, or
      * {@link ItemStack#EMPTY} if the slot is empty / the source is unknown.
@@ -115,6 +143,28 @@ public interface CarriedSourceAccess {
      * every slot without dispatching reads themselves.
      */
     InventoryAuthoritySnapshot currentAuthority(ServerPlayer player);
+
+    /**
+     * Enumerates fluids contained inside carried item stacks using the active
+     * platform's real fluid-container APIs. Read-only for v1; callers must not
+     * treat these as item mutation locations.
+     */
+    default java.util.List<CarriedFluidContent> enumerateFluids(ServerPlayer player) {
+        return java.util.List.of();
+    }
+
+    static Map<SlotResourceIdentity, Long> fluidCounts(java.util.List<CarriedFluidContent> contents) {
+        if (contents == null || contents.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<SlotResourceIdentity, Long> counts = new LinkedHashMap<>();
+        for (CarriedFluidContent content : contents) {
+            if (content != null && content.present()) {
+                SlotResourceCollections.mergeAmount(counts, content.identity(), content.amount());
+            }
+        }
+        return SlotResourceCollections.normalizeAmounts(counts);
+    }
 
     /**
      * Fast fullness summary over the same unified carried storage represented

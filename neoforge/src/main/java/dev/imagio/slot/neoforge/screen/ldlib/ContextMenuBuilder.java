@@ -210,11 +210,12 @@ final class ContextMenuBuilder {
                 : acceptedInputOptions(item);
         int menuWidth = itemContextMenuWidth(item, activeTab, acceptedInputRules);
         int freeHotbarIndex = host.firstFreeHotbarIndex();
-        boolean canSendToHotbar = item.carried() && freeHotbarIndex >= 0;
-        boolean canDeposit = item.carried() && host.atlasItemHasDepositTarget(item);
-        String activeAffinityStorageId = activeChestAffinityStorageId(item);
-        List<SlotWorkspaceViewModel.AtlasIsland> recent = host.recentRehomeTargets(item);
-        boolean editingDesiredCount = item.identity().equals(host.editingDesiredCountIdentity);
+        boolean readOnlyFluid = item.fluidResource();
+        boolean canSendToHotbar = !readOnlyFluid && item.carried() && freeHotbarIndex >= 0;
+        boolean canDeposit = !readOnlyFluid && item.carried() && host.atlasItemHasDepositTarget(item);
+        String activeAffinityStorageId = readOnlyFluid ? "" : activeChestAffinityStorageId(item);
+        List<SlotWorkspaceViewModel.AtlasIsland> recent = readOnlyFluid ? List.of() : host.recentRehomeTargets(item);
+        boolean editingDesiredCount = !readOnlyFluid && item.identity().equals(host.editingDesiredCountIdentity);
         UIElement catcher = contextMenuCatcher(this::closeContextMenu);
         UIElement menu = panel(GLASS).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -242,7 +243,10 @@ final class ContextMenuBuilder {
         menu.addChild(label(shorten(item.name(), Math.max(22, menuWidth / ITEM_CONTEXT_MENU_TEXT_PX_PER_CHAR)), ACCENT)
                 .layout(layout -> layout.widthPercent(100).height(12)));
 
-        if (activeTab != null) {
+        if (readOnlyFluid) {
+            menu.addChild(label("Fluid resources are read-only", MUTED)
+                    .layout(layout -> layout.widthPercent(100).height(12)));
+        } else if (activeTab != null) {
             boolean member = activeTab.hasMember(item.identity());
             menu.addChild(menuButton(
                     member
@@ -309,8 +313,8 @@ final class ContextMenuBuilder {
 
         menu.addChild(menuButton(
                 item.junk() ? "Unmark junk" : "Mark as junk",
-                true,
-                null,
+                !readOnlyFluid,
+                readOnlyFluid ? "fluid resources are read-only" : null,
                 () -> {
                     host.rpc.sendSetJunk(item.identity(), !item.junk());
                     closeContextMenu();
@@ -318,8 +322,8 @@ final class ContextMenuBuilder {
         ));
         menu.addChild(menuButton(
                 "Trash carried item",
-                item.carried(),
-                null,
+                !readOnlyFluid && item.carried(),
+                readOnlyFluid ? "fluid resources are read-only" : null,
                 () -> {
                     host.rpc.sendTrashIdentity(item.identity());
                     closeContextMenu();
@@ -341,7 +345,7 @@ final class ContextMenuBuilder {
 
         if (editingDesiredCount) {
             appendDesiredCountEditor(menu, item);
-        } else {
+        } else if (!readOnlyFluid) {
             String label = item.desiredCount() > 0
                     ? "Desired count: " + item.desiredCount() + "…"
                     : "Set desired count…";
@@ -490,18 +494,19 @@ final class ContextMenuBuilder {
         int choiceButtons = craftRunChoiceMenuButtons(choiceGroup);
         int choiceLabels = choiceGroup == null ? 0 : 1
                 + (choiceGroup.alternatives().size() > CRAFT_RUN_CHOICE_MENU_MAX_ALTERNATIVES ? 1 : 0);
+        boolean readOnlyFluid = item.fluidResource();
         int buttons = 3 + choiceButtons;
-        if (item.ghost()) {
+        if (!readOnlyFluid && item.ghost()) {
             buttons++;
         }
         int freeHotbarIndex = host.firstFreeHotbarIndex();
-        if (item.carried() && freeHotbarIndex >= 0) {
+        if (!readOnlyFluid && item.carried() && freeHotbarIndex >= 0) {
             buttons++;
         }
-        if (item.carried() && host.atlasItemHasDepositTarget(item)) {
+        if (!readOnlyFluid && item.carried() && host.atlasItemHasDepositTarget(item)) {
             buttons++;
         }
-        String activeAffinityStorageId = activeChestAffinityStorageId(item);
+        String activeAffinityStorageId = readOnlyFluid ? "" : activeChestAffinityStorageId(item);
         if (!activeAffinityStorageId.isBlank()) {
             buttons++;
         }
@@ -519,9 +524,13 @@ final class ContextMenuBuilder {
 
         menu.addChild(label(shorten(item.name(), 22), ACCENT)
                 .layout(layout -> layout.widthPercent(100).height(12)));
+        if (readOnlyFluid) {
+            menu.addChild(label("Fluid resources are read-only", MUTED)
+                    .layout(layout -> layout.widthPercent(100).height(12)));
+        }
         appendCraftRunChoiceMenu(menu, choiceRef, choiceGroup);
 
-        if (item.ghost()) {
+        if (!readOnlyFluid && item.ghost()) {
             menu.addChild(menuButton(
                     "Take stack",
                     item.proximateCount() > 0,
@@ -532,7 +541,7 @@ final class ContextMenuBuilder {
                     }));
         }
 
-        if (item.carried() && freeHotbarIndex >= 0) {
+        if (!readOnlyFluid && item.carried() && freeHotbarIndex >= 0) {
             menu.addChild(menuButton(
                     "Send to hotbar",
                     true,
@@ -544,7 +553,7 @@ final class ContextMenuBuilder {
             ));
         }
 
-        if (item.carried() && host.atlasItemHasDepositTarget(item)) {
+        if (!readOnlyFluid && item.carried() && host.atlasItemHasDepositTarget(item)) {
             menu.addChild(menuButton(
                     "Deposit to chest",
                     true,
@@ -569,6 +578,7 @@ final class ContextMenuBuilder {
         }
 
         boolean recipeViewerItem = item.identity() != null
+                && !item.fluidResource()
                 && !CraftRunIngredientChoiceRef.isPlaceholder(item.identity().toIdentity());
         menu.addChild(menuButton(
                 "Open recipe in EMI",

@@ -2,9 +2,11 @@ package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.storage.CarriedSourceAuthoritySnapshots;
 import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import dev.imagio.slot.inventory.storage.CarriedProvider;
@@ -187,6 +189,33 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
         return CarriedSourceAuthoritySnapshots.currentAuthority(
                 player,
                 NeoForgeCarriedSourceAccess.class.getName());
+    }
+
+    @Override
+    public List<CarriedSourceAccess.CarriedFluidContent> enumerateFluids(ServerPlayer player) {
+        if (player == null) {
+            return List.of();
+        }
+        InventoryAuthoritySnapshot authority = currentAuthority(player);
+        if (authority == null) {
+            return List.of();
+        }
+        ArrayList<CarriedSourceAccess.CarriedFluidContent> contents = new ArrayList<>();
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            if (source == null || source.id().isBlank()) {
+                continue;
+            }
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry == null || !entry.slotBacked() || !entry.present()) {
+                    continue;
+                }
+                contents.addAll(NeoForgeFluidContents.carriedItemContainerContents(
+                        entry.sourceId(),
+                        entry.slotIndex(),
+                        entry.stack()));
+            }
+        }
+        return contents.isEmpty() ? List.of() : List.copyOf(contents);
     }
 
     @Override

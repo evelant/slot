@@ -1,6 +1,7 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.query.CarriedIdentityCounts;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +10,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CraftRunDomainServiceTest {
@@ -58,6 +60,34 @@ class CraftRunDomainServiceTest {
         assertTrue(service.state().active());
         assertEquals(1, service.state().entries().size());
         assertEquals(0, service.state().selectedEntry().remainingOutputCount());
+        assertTrue(service.state().selectedEntry().complete());
+    }
+
+    @Test
+    void acquiredFluidOutputDecrementsRemainingMillibuckets() {
+        SlotResourceIdentity oxygen = SlotResourceIdentity.fluid("gtceu:oxygen");
+        CraftRunDomainService service = new CraftRunDomainService();
+        service.add(fluidCapture(
+                "slot:recipe/electrolyzer",
+                oxygen,
+                1000L,
+                3000L,
+                ingredient("slot:recipe/electrolyzer/dust", "gtceu:dust", 1)));
+
+        service.observeActivityRecord(new InventoryActivityRecord(
+                envelope(1),
+                fluidActivity(InventoryActivityKind.ACQUIRED, oxygen, 1500L)
+        ));
+
+        assertEquals(1500L, service.state().selectedEntry().remainingOutputAmount());
+        assertEquals(2, service.state().selectedEntry().remainingBatches());
+
+        service.observeActivityRecord(new InventoryActivityRecord(
+                envelope(2),
+                fluidActivity(InventoryActivityKind.ACQUIRED, oxygen, 2000L)
+        ));
+
+        assertEquals(0L, service.state().selectedEntry().remainingOutputAmount());
         assertTrue(service.state().selectedEntry().complete());
     }
 
@@ -312,6 +342,81 @@ class CraftRunDomainServiceTest {
     }
 
     @Test
+    void fluidInputsAggregateInMillibucketsWithinRecipeCapture() {
+        SlotResourceIdentity water = SlotResourceIdentity.fluid("minecraft:water");
+        CraftRunRecipeCapture capture = fluidCapture(
+                "slot:recipe/chemical_reactor",
+                SlotResourceIdentity.fluid("gtceu:diluted_sulfuric_acid"),
+                1000L,
+                1000L,
+                fluidIngredient("slot:recipe/chemical_reactor/water_0", "Water", water, 750L),
+                fluidIngredient("slot:recipe/chemical_reactor/water_1", "Water", water, 250L));
+
+        assertEquals(1, capture.inputs().size());
+        assertEquals(1000L, capture.inputs().get(0).requiredAmountPerBatch());
+        assertEquals(2000L, capture.inputs().get(0).requiredAmountForBatches(2));
+    }
+
+    @Test
+    void fluidOutputCanDriveProducerDependencyFloorWithoutItemIdentity() {
+        SlotResourceIdentity oxygen = SlotResourceIdentity.fluid("gtceu:oxygen");
+        CraftRunDomainService service = new CraftRunDomainService();
+
+        service.add(fluidCapture(
+                "slot:recipe/electrolyzer",
+                oxygen,
+                250L,
+                250L,
+                ingredient("slot:recipe/electrolyzer/dust", "gtceu:tiny_dust", 1)));
+        String producerEntryId = service.state().selectedEntryId();
+
+        service.add(capture(
+                "slot:recipe/chemical_reactor",
+                "gtceu:oxide_dust",
+                1,
+                1,
+                fluidIngredient("slot:recipe/chemical_reactor/oxygen", "Oxygen", oxygen, 1000L)));
+
+        CraftRunRecipeEntry producer = service.state().entry(producerEntryId);
+        assertNull(producer.outputIdentity());
+        assertEquals(oxygen, producer.outputResourceIdentity());
+        assertEquals(1000L, producer.remainingOutputAmount());
+        assertEquals(4, producer.remainingBatches());
+    }
+
+    @Test
+    void fluidAlternativesCanBeSelectedByResourceIdentity() {
+        SlotResourceIdentity water = SlotResourceIdentity.fluid("minecraft:water");
+        SlotResourceIdentity distilledWater = SlotResourceIdentity.fluid("gtceu:distilled_water");
+        CraftRunDomainService service = new CraftRunDomainService();
+        service.add(fluidCapture(
+                "slot:recipe/chemical_bath",
+                SlotResourceIdentity.fluid("gtceu:clean_slurry"),
+                1000L,
+                1000L,
+                new CraftRunIngredientGroup(
+                        "slot:recipe/chemical_bath/water",
+                        "Water",
+                        1000L,
+                        true,
+                        null,
+                        List.of(
+                                new CraftRunAlternative(null, "Water", water),
+                                new CraftRunAlternative(null, "Distilled Water", distilledWater)),
+                        List.of("gregtech_fluid_recipe"))));
+
+        String entryId = service.state().selectedEntryId();
+        assertTrue(service.selectIngredientAlternative(
+                entryId,
+                "slot:recipe/chemical_bath/water",
+                distilledWater));
+
+        CraftRunIngredientGroup group = service.state().entry(entryId).inputs().get(0);
+        assertEquals(distilledWater, group.selectedAlternativeResource());
+        assertNull(group.selectedAlternativeIdentity());
+    }
+
+    @Test
     void reusableInputsDoNotScaleWantedPressureAcrossRecipes() {
         ItemIdentity hammer = ItemIdentity.of("mod:hammer");
         CraftRunDomainService service = new CraftRunDomainService();
@@ -542,6 +647,44 @@ class CraftRunDomainServiceTest {
                 List.of());
     }
 
+    private static CraftRunRecipeCapture fluidCapture(
+            String recipeId,
+            SlotResourceIdentity output,
+            long outputAmountPerBatch,
+            long remainingOutputAmount,
+            CraftRunIngredientGroup... inputs
+    ) {
+        return new CraftRunRecipeCapture(
+                "emi:" + recipeId,
+                recipeId,
+                output.id(),
+                null,
+                output.id(),
+                outputAmountPerBatch >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) outputAmountPerBatch,
+                remainingOutputAmount >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) remainingOutputAmount,
+                List.of(inputs),
+                output,
+                outputAmountPerBatch,
+                remainingOutputAmount,
+                List.of("gregtech_fluid_recipe"));
+    }
+
+    private static CraftRunIngredientGroup fluidIngredient(
+            String groupId,
+            String label,
+            SlotResourceIdentity fluid,
+            long amount
+    ) {
+        return new CraftRunIngredientGroup(
+                groupId,
+                label,
+                amount,
+                true,
+                fluid,
+                List.of(new CraftRunAlternative(null, label, fluid)),
+                List.of("gregtech_fluid_recipe"));
+    }
+
     private static InventoryActivityEvent activity(
             InventoryActivityKind kind,
             String itemId,
@@ -559,6 +702,28 @@ class CraftRunDomainServiceTest {
                 "",
                 List.of(),
                 ""
+        );
+    }
+
+    private static InventoryActivityEvent fluidActivity(
+            InventoryActivityKind kind,
+            SlotResourceIdentity fluid,
+            long amount
+    ) {
+        return new InventoryActivityEvent(
+                kind,
+                InventoryActivityProducer.UNKNOWN_EXTERNAL,
+                InventoryActivityConfidence.OBSERVED,
+                null,
+                0,
+                null,
+                null,
+                "",
+                "",
+                List.of(),
+                "fluid_observation",
+                fluid,
+                amount
         );
     }
 

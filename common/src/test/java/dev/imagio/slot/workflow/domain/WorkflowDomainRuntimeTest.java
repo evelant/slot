@@ -11,7 +11,11 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSessionState;
 import dev.imagio.slot.inventory.browse.InventoryBrowseSortMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -72,6 +76,51 @@ class WorkflowDomainRuntimeTest {
         assertEquals("stone", port.saved.browseSessionState().filter().searchText());
         assertEquals(1, port.saved.collections().loadoutsByCollection().get(collection.id()).size());
         assertEquals(2, port.saved.recents().countsByIdentity().get(ItemIdentity.of("minecraft:diamond")));
+    }
+
+    @Test
+    void fluidObservationBaselinesAndIgnoresSameTotalTransfers() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null
+        );
+        SlotResourceIdentity oxygen = SlotResourceIdentity.fluid("gtceu:oxygen");
+        runtime.craftRunWorkflow().add(fluidCapture(oxygen, 1000L, 1000L));
+
+        assertTrue(runtime.craftRunWorkflow().state().active());
+        runtime.observeFluidResourceCounts(Map.of(oxygen, 1000L), "initial_tank_scan");
+        assertEquals(1000L, runtime.craftRunWorkflow().state().selectedEntry().remainingOutputAmount());
+
+        runtime.observeFluidResourceCounts(Map.of(oxygen, 1000L), "tank_to_tank_transfer_same_total");
+        assertEquals(1000L, runtime.craftRunWorkflow().state().selectedEntry().remainingOutputAmount());
+
+        runtime.observeFluidResourceCounts(Map.of(oxygen, 1500L), "reactor_output_increased_total");
+        assertEquals(500L, runtime.craftRunWorkflow().state().selectedEntry().remainingOutputAmount());
+    }
+
+    private static CraftRunRecipeCapture fluidCapture(
+            SlotResourceIdentity output,
+            long outputAmountPerBatch,
+            long remainingOutputAmount
+    ) {
+        return new CraftRunRecipeCapture(
+                "emi:test/fluid",
+                "gtceu:test/fluid",
+                "Oxygen",
+                null,
+                "Oxygen",
+                (int) outputAmountPerBatch,
+                (int) remainingOutputAmount,
+                List.of(new CraftRunIngredientGroup(
+                        "dust",
+                        "Dust",
+                        1,
+                        List.of(new CraftRunAlternative(ItemIdentity.of("gtceu:dust"), "Dust")),
+                        List.of())),
+                output,
+                outputAmountPerBatch,
+                remainingOutputAmount,
+                List.of("gregtech_fluid_recipe"));
     }
 
     private static final class RecordingPort implements WorkflowDomainPersistencePort {

@@ -3,6 +3,7 @@ package dev.imagio.slot.inventory.workspace;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
@@ -88,6 +89,7 @@ final class WorkspaceProjectionFingerprint {
             out.appendObject(resolved.proximateStorageIds());
             out.appendObject(resolved.contextualSuggestionStorageIds());
             out.appendObject(resolved.depositEligibleStorageIds());
+            out.appendObject(resolved.carriedFluidCounts());
             appendStorageIndex(out, resolved.storageIndex());
             out.appendObject(resolved.learnedRules() == null ? List.of() : resolved.learnedRules().allRules());
             return out.toString();
@@ -292,6 +294,8 @@ final class WorkspaceProjectionFingerprint {
                 appendStack(stack);
             } else if (value instanceof ItemIdentity identity) {
                 appendIdentity(identity);
+            } else if (value instanceof SlotResourceIdentity identity) {
+                appendResourceIdentity(identity);
             } else if (value instanceof Collection<?> collection) {
                 appendCollection(collection);
             } else if (value instanceof Set<?> set) {
@@ -300,6 +304,8 @@ final class WorkspaceProjectionFingerprint {
                 appendMap(map);
             } else if (value instanceof SlotWorkspaceViewModel.IdentityRef ref) {
                 appendIdentityRef(ref);
+            } else if (value instanceof SlotWorkspaceViewModel.ResourceRef ref) {
+                appendResourceRef(ref);
             } else if (value instanceof SlotWorkspaceViewModel.AtlasIsland island) {
                 appendAtlasIsland(island);
             } else if (value instanceof SlotWorkspaceViewModel.ContextualSuggestionLane lane) {
@@ -342,6 +348,8 @@ final class WorkspaceProjectionFingerprint {
                 appendDisplaySource(source);
             } else if (value instanceof WorldStorageAccess.SlotContent content) {
                 appendSlotContent(content);
+            } else if (value instanceof WorldStorageAccess.FluidContent content) {
+                appendFluidContent(content);
             } else if (value instanceof StorageTargetRef target) {
                 appendStorageTarget(target);
             } else if (value instanceof WorkspaceStorageIndex.StorageEntry entry) {
@@ -411,10 +419,22 @@ final class WorkspaceProjectionFingerprint {
             appendText(identity.componentFingerprint());
         }
 
+        private void appendResourceIdentity(SlotResourceIdentity identity) {
+            appendObject(identity.kind());
+            appendText(identity.id());
+            appendText(identity.fingerprint());
+        }
+
         private void appendIdentityRef(SlotWorkspaceViewModel.IdentityRef ref) {
             appendText(ref.itemId());
             appendText(ref.comparisonMode());
             appendText(ref.componentFingerprint());
+        }
+
+        private void appendResourceRef(SlotWorkspaceViewModel.ResourceRef ref) {
+            appendText(ref.kind());
+            appendText(ref.id());
+            appendText(ref.fingerprint());
         }
 
         private void appendAtlasIsland(SlotWorkspaceViewModel.AtlasIsland island) {
@@ -471,6 +491,8 @@ final class WorkspaceProjectionFingerprint {
             appendInt(item.largestCarriedSlotIndex());
             appendInt(item.largestCarriedSlotCount());
             appendObject(item.putAwayState());
+            appendObject(item.resource());
+            appendLong(item.resourceAmount());
         }
 
         private void appendChestPresence(SlotWorkspaceViewModel.ChestPresenceEntry presence) {
@@ -546,6 +568,7 @@ final class WorkspaceProjectionFingerprint {
             appendObject(snapshot.slotIndices());
             appendObject(snapshot.contents());
             appendObject(snapshot.countsByIdentity());
+            appendObject(snapshot.fluidCountsByIdentity());
         }
 
         private void appendHotbarSlot(SlotWorkspaceViewModel.HotbarSlot slot) {
@@ -634,6 +657,7 @@ final class WorkspaceProjectionFingerprint {
             appendInt(source.z());
             appendInt(source.slotCount());
             appendObject(source.contents());
+            appendObject(source.fluidContents());
             appendObject(source.aliasedBlocks());
             appendObject(source.mediaIds());
             appendObject(source.mediaObservations());
@@ -644,6 +668,14 @@ final class WorkspaceProjectionFingerprint {
             appendInt(content.slotIndex());
             appendStack(content.stack());
             appendInt(content.count());
+        }
+
+        private void appendFluidContent(WorldStorageAccess.FluidContent content) {
+            appendInt(content.tankIndex());
+            appendInt(content.containingSlotIndex());
+            appendObject(content.identity());
+            appendLong(content.amount());
+            appendText(content.label());
         }
 
         private void appendStorageTarget(StorageTargetRef target) {
@@ -666,6 +698,9 @@ final class WorkspaceProjectionFingerprint {
             appendObject(entry.snapshot());
             if (entry.snapshot().countsByIdentity().isEmpty()) {
                 appendObject(entry.countsByIdentity());
+            }
+            if (entry.snapshot().fluidCountsByIdentity().isEmpty()) {
+                appendObject(entry.fluidCountsByIdentity());
             }
             appendBoolean(entry.live());
             appendBoolean(entry.remembered());

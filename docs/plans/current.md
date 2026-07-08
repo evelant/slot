@@ -43,6 +43,14 @@ and the old recipe-goal code/UI/RPC/persistence surface has been removed; do not
 grow a recursive goal planner unless playtesting proves transient recipe context
 plus craft runs are insufficient.
 
+Sidecar product slice: first-class fluid resources are in the read-only
+Track + Plan phase per [`fluid-resources.md`](fluid-resources.md) and ADR
+[`0010`](../decisions/0010-first-class-fluid-resources.md). SLOT tracks fluids
+in carried containers, containers inside world storage, and block/machine
+tanks; projects fluid resource cards; includes fluid labels/ids in search; and
+captures EMI/GregTech fluid recipe inputs/outputs. Fill/drain/transfer and AE2
+fluid-key storage remain explicit later slices.
+
 Previously active
 [`single-column-workspace.md`](single-column-workspace.md) is paused
 behind the cross-loader work. Do not delete it; resume when the loader
@@ -93,12 +101,18 @@ hold the rest.
   routes refresh the same tracked network, per-cell media observations handle
   empty/IO-port/disjoint-transfer cases, and known storage-bus aliases are
   subtracted from remembered ME counts.
+- **2026-07-08** — First-class fluid resource v1 landed per
+  [`0010`](../decisions/0010-first-class-fluid-resources.md) and
+  [`fluid-resources.md`](fluid-resources.md): common item/fluid resource
+  identity, read-only carried/world/machine fluid enumeration, projected fluid
+  cards/search, Forge/NeoForge codecs, EMI/GregTech fluid recipe capture, and
+  item-only command rejection for fluid cards.
 
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the
 2026-05-01 cursor + desired/wanted-counts batch live under [Queue](#queue)
-item 2. No standalone operational bugs are currently tracked here.
+item 4. No standalone operational bugs are currently tracked here.
 
 ## Queue
 
@@ -123,7 +137,12 @@ Roughly ordered by playtest signal. Pull from the top when the active track land
    request action that plans/submits through AE2 from the active nearby/open
    terminal context; do not auto-submit jobs from `Add Recipe`.
 
-3. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
+3. **Fluid mutation and AE2 fluid-key follow-up**
+   ([fluid-resources.md](fluid-resources.md)). Design a real fluid authority
+   model before adding fill/drain/transfer, desired/wanted fluid targets, or
+   AE2 fluid network storage. The current behavior is observe/account only.
+
+4. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
    Active-scope desired counts, player wanted counts, unified gap chrome,
    gather for wanted/desired gaps, and the basic right-click desired-count
    editor are live. Remaining work: dedupe nearby chest identities that are
@@ -134,14 +153,14 @@ Roughly ordered by playtest signal. Pull from the top when the active track land
    shift-click-take auto-deposit of excess, and eventually throttle stable
    deposit logs.
 
-4. **Learned-storage residual polish**
+5. **Learned-storage residual polish**
    ([learned-storage.md](learned-storage.md)). Sticky cluster
    ordinals across split / merge (today, single-chest churn keeps
    chips stable but multi-chest topology changes can renumber
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; role UX validation against real feeder / machine-buffer
    builds.
-5. **Classification LLM-authoring validation**
+6. **Classification LLM-authoring validation**
    ([classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
    The current contract is: gather/format evidence, let the LLM decide
    vocabulary, feed that vocabulary back into later vocabulary rounds, let the
@@ -161,7 +180,7 @@ Roughly ordered by playtest signal. Pull from the top when the active track land
    obvious latest location instead of scattered stale directories. Then
    regenerate vanilla/pack vocabulary and run `classify-runtime-pack` with the
    usable vocabulary.
-6. **Workflow follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
+7. **Workflow follow-ups** ([workflow-tabs.md](workflow-tabs.md)).
    Core workflows, accepted inputs, compact nearby headers, hidden Useful Now scoring,
    right-side activation-scoped Put Away guidance, search/keybind polish, and the shared display-storage/tool fix pass are
    live. Put-away destination wayfinding and workflow/variant reorder plus
@@ -169,14 +188,14 @@ Roughly ordered by playtest signal. Pull from the top when the active track land
    have landed; remaining workflow follow-ups are the deferred hovered `Use this`
    concretization/hotkey if playtesting asks for it, and later Kit-name cleanup
    without changing the current Kit-backed implementation substrate.
-7. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
+8. **Kit prototype historical cleanup** ([kit-prototype.md](kit-prototype.md)).
    The landed Kit code remains the implementation substrate, but future
    user-facing workflow work should follow `workflow-tabs.md`.
-8. **Single-column workspace width pass**
+9. **Single-column workspace width pass**
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
-9. **Workspace performance validation**
+10. **Workspace performance validation**
    ([workspace-performance.md](workspace-performance.md)). The implementation
    has landed in common plus both adapters: timing instrumentation, shared
    per-refresh identity indexing, indexed wayfinding, layered storage-index

@@ -2,6 +2,8 @@ package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,11 +79,11 @@ public final class CraftRunDomainService {
                 entries.add(entry);
                 continue;
             }
-            int next = Math.max(entry.outputCountPerBatch(), entry.remainingOutputCount() + delta);
-            if (next != entry.remainingOutputCount()) {
+            long next = Math.max(entry.outputAmountPerBatch(), entry.remainingOutputAmount() + delta);
+            if (next != entry.remainingOutputAmount()) {
                 changed = true;
             }
-            entries.add(entry.withRemainingOutputCount(next));
+            entries.add(entry.withRemainingOutputAmount(next));
         }
         if (!changed) {
             return false;
@@ -95,6 +97,10 @@ public final class CraftRunDomainService {
     }
 
     public boolean selectIngredientAlternative(String entryId, String groupId, ItemIdentity identity) {
+        return selectIngredientAlternative(entryId, groupId, SlotResourceIdentity.item(identity));
+    }
+
+    public boolean selectIngredientAlternative(String entryId, String groupId, SlotResourceIdentity identity) {
         if (entryId == null || entryId.isBlank() || groupId == null || groupId.isBlank() || !state.active()) {
             return false;
         }
@@ -121,21 +127,22 @@ public final class CraftRunDomainService {
         if (event == null || !event.present() || !decrementsCraftRun(event.kind()) || !state.active()) {
             return false;
         }
-        int remainingEventCount = event.count();
+        SlotResourceIdentity eventResource = SlotResourceCollections.key(event.resourceIdentity());
+        long remainingEventAmount = Math.max(0L, event.amount());
         ArrayList<CraftRunRecipeEntry> entries = new ArrayList<>(state.entries().size());
         boolean changed = false;
         for (CraftRunRecipeEntry entry : state.entries()) {
-            if (remainingEventCount <= 0
-                    || entry.outputIdentity() == null
-                    || !ItemIdentityMatcher.matchesMovable(event.identity(), entry.outputIdentity())) {
+            if (remainingEventAmount <= 0L
+                    || entry.outputResourceIdentity() == null
+                    || !resourcesMatch(eventResource, entry.outputResourceIdentity())) {
                 entries.add(entry);
                 continue;
             }
-            int decrement = Math.min(remainingEventCount, entry.remainingOutputCount());
-            remainingEventCount -= decrement;
-            int nextRemaining = entry.remainingOutputCount() - decrement;
-            changed = changed || decrement > 0;
-            entries.add(entry.withRemainingOutputCount(nextRemaining));
+            long decrement = Math.min(remainingEventAmount, entry.remainingOutputAmount());
+            remainingEventAmount -= decrement;
+            long nextRemaining = entry.remainingOutputAmount() - decrement;
+            changed = changed || decrement > 0L;
+            entries.add(entry.withRemainingOutputAmount(nextRemaining));
         }
         if (!changed) {
             return false;
@@ -186,7 +193,7 @@ public final class CraftRunDomainService {
     }
 
     private static boolean firstProducerForOutput(CraftRunRecipeEntry candidate, List<CraftRunRecipeEntry> entries) {
-        if (candidate == null || candidate.outputIdentity() == null || entries == null) {
+        if (candidate == null || candidate.outputResourceIdentity() == null || entries == null) {
             return false;
         }
         for (CraftRunRecipeEntry entry : entries) {
@@ -195,7 +202,7 @@ public final class CraftRunDomainService {
             }
             if (entry != null
                     && entry.active()
-                    && ItemIdentityMatcher.matchesMovable(entry.outputIdentity(), candidate.outputIdentity())) {
+                    && resourcesMatch(entry.outputResourceIdentity(), candidate.outputResourceIdentity())) {
                 return false;
             }
         }
@@ -203,7 +210,7 @@ public final class CraftRunDomainService {
     }
 
     private static int dependencyFloor(CraftRunRecipeEntry producer, List<CraftRunRecipeEntry> entries) {
-        if (producer == null || producer.outputIdentity() == null || entries == null || entries.isEmpty()) {
+        if (producer == null || producer.outputResourceIdentity() == null || entries == null || entries.isEmpty()) {
             return 0;
         }
         long consumedRequired = 0L;
@@ -217,12 +224,12 @@ public final class CraftRunDomainService {
             }
             int batches = consumer.remainingBatches();
             for (CraftRunIngredientGroup group : consumer.inputs()) {
-                if (groupRequires(group, producer.outputIdentity())) {
-                    int requiredForGroup = group.requiredForBatches(batches);
+                if (groupRequires(group, producer.outputResourceIdentity())) {
+                    long requiredForGroup = group.requiredAmountForBatches(batches);
                     if (group.consumed()) {
                         consumedRequired += requiredForGroup;
                     } else {
-                        reusableRequired = Math.max(reusableRequired, requiredForGroup);
+                        reusableRequired = (int) Math.max(reusableRequired, Math.min(Integer.MAX_VALUE, requiredForGroup));
                     }
                     if (consumedRequired + reusableRequired >= Integer.MAX_VALUE) {
                         return Integer.MAX_VALUE;
@@ -234,15 +241,31 @@ public final class CraftRunDomainService {
     }
 
     private static boolean groupRequires(CraftRunIngredientGroup group, ItemIdentity identity) {
+        return groupRequires(group, SlotResourceIdentity.item(identity));
+    }
+
+    private static boolean groupRequires(CraftRunIngredientGroup group, SlotResourceIdentity identity) {
         if (group == null || identity == null || group.alternatives().isEmpty()) {
             return false;
         }
         for (CraftRunAlternative alternative : group.selectedOrAllAlternatives()) {
-            if (alternative != null && ItemIdentityMatcher.matchesMovable(alternative.identity(), identity)) {
+            if (alternative != null && resourcesMatch(alternative.resourceIdentity(), identity)) {
                 return true;
             }
         }
         return false;
+    }
+
+    private static boolean resourcesMatch(SlotResourceIdentity left, SlotResourceIdentity right) {
+        SlotResourceIdentity leftKey = SlotResourceCollections.key(left);
+        SlotResourceIdentity rightKey = SlotResourceCollections.key(right);
+        if (leftKey == null || rightKey == null || leftKey.kind() != rightKey.kind()) {
+            return false;
+        }
+        if (leftKey.item()) {
+            return ItemIdentityMatcher.matchesMovable(leftKey.toItemIdentity(), rightKey.toItemIdentity());
+        }
+        return leftKey.equals(rightKey);
     }
 
     private static boolean decrementsCraftRun(InventoryActivityKind kind) {

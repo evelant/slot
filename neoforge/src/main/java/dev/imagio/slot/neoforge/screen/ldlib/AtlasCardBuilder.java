@@ -250,6 +250,11 @@ final class AtlasCardBuilder {
             }
             accumulator[0] -= steps;
             SlotWorkspaceViewModel.AtlasItem target = wheelTarget(item, delta, shiftDown, controlDown, wantedAdjustDown);
+            if (target != null && target.fluidResource()) {
+                host.localStatus.set("fluid resources are read-only");
+                host.rebuild();
+                return;
+            }
             if (host.recipeSidebarActive() && wantedAdjustDown) {
                 host.rpc.sendSetWantedCount(target.identity(), recipeWantedTargetCount(target, steps));
                 return;
@@ -339,6 +344,11 @@ final class AtlasCardBuilder {
     ) {
         if (decision == null || !decision.handled()) {
             return false;
+        }
+        if (item != null && item.fluidResource() && decision.action() != WallCardTransferGesturePolicy.Action.STATUS) {
+            host.localStatus.set("fluid resources are read-only");
+            host.rebuild();
+            return true;
         }
         int count = decision.count();
         switch (decision.action()) {

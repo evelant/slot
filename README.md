@@ -132,6 +132,9 @@ Plans:
   queued plan for exposing AE2 craftability on tracked recipe deficits and
   adding explicit ME autocrafting requests without folding craftables into
   storage counts.
+- [docs/plans/fluid-resources.md](docs/plans/fluid-resources.md) —
+  active read-only fluid discovery and recipe-accounting plan for carried
+  containers, world containers, machine tanks, and GregTech chemical recipes.
 - [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit
   prototype slices; future user-facing task workflow work should follow
   `workflow-tabs.md`.
@@ -193,6 +196,9 @@ Decisions (ADR-style):
 - [docs/decisions/0009-ae2-persistent-network-storage.md](docs/decisions/0009-ae2-persistent-network-storage.md)
   — AE2 networks are tracked by mounted storage media; terminals are access
   routes.
+- [docs/decisions/0010-first-class-fluid-resources.md](docs/decisions/0010-first-class-fluid-resources.md)
+  — fluids are first-class resources alongside items, with read-only v1
+  discovery and recipe accounting.
 
 Research and assessments:
 

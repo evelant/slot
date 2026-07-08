@@ -1,8 +1,10 @@
 package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
-import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceDisplay;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.spi.SlotUiElement;
@@ -58,7 +60,8 @@ public final class CraftRunUiBuilder {
                             .alignItems(SlotUiLayout.AlignItems.CENTER)
                             .flexDirection(SlotUiLayout.FlexDirection.ROW));
             row.addChild(SlotUiElement.label(captureText(visible, includeIngredients), WorkspaceUiPalette.TEXT)
-                    .allowHitTest(false)
+                    .allowHitTest(true)
+                    .tooltipLines(captureTooltip(visible))
                     .layout(layout -> layout.flex(1).height(12))
                     .textStyle(style -> style
                             .color(WorkspaceUiPalette.TEXT)
@@ -145,11 +148,12 @@ public final class CraftRunUiBuilder {
                     .allowHitTest(true)
                     .renderVanillaCount(true)
                     .tooltipStack(output)
+                    .tooltipLines(entryTooltip(entry))
                     .on(SlotUiEventKind.CLICK, event -> openRecipe(entry, event)));
         }
         header.addChild(SlotUiElement.label(entryText(entry), WorkspaceUiPalette.TEXT)
                 .allowHitTest(true)
-                .tooltip(Component.literal("Open recipe in EMI"))
+                .tooltipLines(entryTooltip(entry))
                 .layout(layout -> layout.flex(1).heightPercent(100))
                 .textStyle(style -> style
                         .color(entry != null && entry.complete() ? WorkspaceUiPalette.ACCENT : WorkspaceUiPalette.TEXT)
@@ -166,9 +170,9 @@ public final class CraftRunUiBuilder {
                 },
                 31,
                 WorkspaceUiPalette.ROW_DIM));
-        header.addChild(button("-", "Reduce remaining output count", () ->
+        header.addChild(button("-", "Reduce recipe runs by one", () ->
                 context.adjustEntry(entryId, -entry.outputCountPerBatch()), 12, WorkspaceUiPalette.ROW_DIM));
-        header.addChild(button("+", "Add another output batch", () ->
+        header.addChild(button("+", "Add one recipe run", () ->
                 context.adjustEntry(entryId, entry.outputCountPerBatch()), 12, WorkspaceUiPalette.ROW_DIM));
         header.addChild(button("Done", "Remove this recipe from the list", () ->
                 context.removeEntry(entryId), 27, WorkspaceUiPalette.ROW_DIM));
@@ -214,14 +218,14 @@ public final class CraftRunUiBuilder {
             return List.of();
         }
         List<SlotWorkspaceViewModel.AtlasItem> available = availableItems == null ? List.of() : availableItems;
-        Set<ItemIdentity> carried = carriedIdentities(available);
-        LinkedHashSet<ItemIdentity> emitted = new LinkedHashSet<>();
+        Set<SlotResourceIdentity> carried = carriedResources(available);
+        LinkedHashSet<SlotResourceIdentity> emitted = new LinkedHashSet<>();
         ArrayList<SlotWorkspaceViewModel.AtlasItem> cards = new ArrayList<>();
         for (CraftRunIngredientGroup group : entry.inputs()) {
             int before = cards.size();
-            ItemIdentity selected = craftRunPressureIdentity(group, carried);
+            SlotResourceIdentity selected = craftRunPressureResource(group, carried);
             if (selected != null) {
-                addCard(cards, emitted, selected, available);
+                addCard(cards, emitted, selected, available, entry, group);
                 if (cards.size() == before) {
                     addMissingCard(cards, emitted, entry, group, selected);
                 }
@@ -230,7 +234,7 @@ public final class CraftRunUiBuilder {
             if (group != null) {
                 for (CraftRunAlternative alternative : group.alternatives()) {
                     if (alternative != null) {
-                        addCard(cards, emitted, alternative.identity(), available);
+                        addCard(cards, emitted, alternative.resourceIdentity(), available, entry, group);
                     }
                 }
                 if (cards.size() == before) {
@@ -241,35 +245,35 @@ public final class CraftRunUiBuilder {
         return cards.isEmpty() ? List.of() : List.copyOf(cards);
     }
 
-    private static Set<ItemIdentity> carriedIdentities(List<SlotWorkspaceViewModel.AtlasItem> items) {
-        LinkedHashSet<ItemIdentity> carried = new LinkedHashSet<>();
+    private static Set<SlotResourceIdentity> carriedResources(List<SlotWorkspaceViewModel.AtlasItem> items) {
+        LinkedHashSet<SlotResourceIdentity> carried = new LinkedHashSet<>();
         for (SlotWorkspaceViewModel.AtlasItem item : items) {
-            if (item == null || !item.carried() || item.totalCount() <= 0 || item.identity() == null) {
+            if (item == null || !item.carried() || item.totalCount() <= 0 || item.resource() == null) {
                 continue;
             }
-            ItemIdentityCollections.add(carried, item.identity().toIdentity());
+            addResource(carried, item.resource().toIdentity());
         }
         return carried.isEmpty() ? Set.of() : Set.copyOf(carried);
     }
 
-    private static ItemIdentity craftRunPressureIdentity(
+    private static SlotResourceIdentity craftRunPressureResource(
             CraftRunIngredientGroup group,
-            Set<ItemIdentity> carriedIdentities
+            Set<SlotResourceIdentity> carriedResources
     ) {
         if (group == null || group.alternatives().isEmpty()) {
             return null;
         }
-        if (group.selectedAlternativeIdentity() != null) {
-            return group.selectedAlternativeIdentity();
+        if (group.selectedAlternativeResource() != null) {
+            return group.selectedAlternativeResource();
         }
         if (group.alternatives().size() == 1) {
             CraftRunAlternative alternative = group.alternatives().get(0);
-            return alternative == null ? null : alternative.identity();
+            return alternative == null ? null : alternative.resourceIdentity();
         }
-        Set<ItemIdentity> carried = carriedIdentities == null ? Set.of() : carriedIdentities;
+        Set<SlotResourceIdentity> carried = carriedResources == null ? Set.of() : carriedResources;
         for (CraftRunAlternative alternative : group.alternatives()) {
-            if (alternative != null && ItemIdentityCollections.contains(carried, alternative.identity())) {
-                return alternative.identity();
+            if (alternative != null && containsResource(carried, alternative.resourceIdentity())) {
+                return alternative.resourceIdentity();
             }
         }
         return null;
@@ -277,22 +281,24 @@ public final class CraftRunUiBuilder {
 
     private static void addCard(
             List<SlotWorkspaceViewModel.AtlasItem> cards,
-            Set<ItemIdentity> emitted,
-            ItemIdentity identity,
-            List<SlotWorkspaceViewModel.AtlasItem> availableItems
+            Set<SlotResourceIdentity> emitted,
+            SlotResourceIdentity resource,
+            List<SlotWorkspaceViewModel.AtlasItem> availableItems,
+            CraftRunRecipeEntry entry,
+            CraftRunIngredientGroup group
     ) {
-        if (cards == null || emitted == null || identity == null || availableItems == null) {
+        if (cards == null || emitted == null || resource == null || availableItems == null) {
             return;
         }
-        ItemIdentity key = ItemIdentityCollections.key(identity);
-        if (emitted.contains(key)) {
+        SlotResourceIdentity key = SlotResourceCollections.key(resource);
+        if (containsResource(emitted, key)) {
             return;
         }
         for (SlotWorkspaceViewModel.AtlasItem item : availableItems) {
-            ItemIdentity candidate = item == null || item.identity() == null ? null : item.identity().toIdentity();
-            if (candidate != null && ItemIdentityMatcher.matchesMovable(candidate, key)) {
-                emitted.add(key);
-                cards.add(item);
+            SlotResourceIdentity candidate = item == null || item.resource() == null ? null : item.resource().toIdentity();
+            if (resourcesMatch(candidate, key)) {
+                addResource(emitted, key);
+                cards.add(withRecipeTarget(item, entry, group));
                 return;
             }
         }
@@ -300,28 +306,29 @@ public final class CraftRunUiBuilder {
 
     private static void addMissingCard(
             List<SlotWorkspaceViewModel.AtlasItem> cards,
-            Set<ItemIdentity> emitted,
+            Set<SlotResourceIdentity> emitted,
             CraftRunRecipeEntry entry,
             CraftRunIngredientGroup group,
-            ItemIdentity identity
+            SlotResourceIdentity resource
     ) {
-        if (cards == null || emitted == null || entry == null || group == null || identity == null) {
+        if (cards == null || emitted == null || entry == null || group == null || resource == null) {
             return;
         }
-        ItemIdentity key = ItemIdentityCollections.key(identity);
-        if (key == null || emitted.contains(key)) {
+        SlotResourceIdentity key = SlotResourceCollections.key(resource);
+        if (key == null || containsResource(emitted, key)) {
             return;
         }
-        ItemStack displayStack = SlotWorkspaceViewModel.displayStackForIdentity(key);
+        ItemIdentity displayIdentity = displayIdentity(key);
+        ItemStack displayStack = SlotWorkspaceViewModel.displayStackForIdentity(displayIdentity);
         if (displayStack == null || displayStack.isEmpty()) {
             displayStack = SlotWorkspaceViewModel.displayStackForIdentity(PLACEHOLDER_ID);
         }
         if (displayStack == null || displayStack.isEmpty()) {
             return;
         }
-        emitted.add(key);
+        addResource(emitted, key);
         cards.add(new SlotWorkspaceViewModel.AtlasItem(
-                SlotWorkspaceViewModel.IdentityRef.from(key),
+                SlotWorkspaceViewModel.IdentityRef.from(displayIdentity),
                 displayStack.copy(),
                 ingredientCardName(group, key),
                 0,
@@ -339,21 +346,23 @@ public final class CraftRunUiBuilder {
                 0,
                 0,
                 false,
-                0,
-                false,
                 group.requiredForBatches(entry.remainingBatches()),
+                false,
+                0,
                 false,
                 false,
                 "",
                 -1,
                 0,
-                SlotWorkspaceViewModel.PutAwayState.NONE
+                SlotWorkspaceViewModel.PutAwayState.NONE,
+                SlotWorkspaceViewModel.ResourceRef.from(key),
+                group.requiredAmountForBatches(entry.remainingBatches())
         ));
     }
 
     private static void addChoiceCard(
             List<SlotWorkspaceViewModel.AtlasItem> cards,
-            Set<ItemIdentity> emitted,
+            Set<SlotResourceIdentity> emitted,
             CraftRunRecipeEntry entry,
             CraftRunIngredientGroup group
     ) {
@@ -361,14 +370,15 @@ public final class CraftRunUiBuilder {
             return;
         }
         ItemIdentity choiceIdentity = CraftRunIngredientChoiceRef.placeholderIdentity(entry.entryId(), group.groupId());
-        if (choiceIdentity == null || emitted.contains(choiceIdentity)) {
+        SlotResourceIdentity choiceResource = SlotResourceIdentity.item(choiceIdentity);
+        if (choiceIdentity == null || containsResource(emitted, choiceResource)) {
             return;
         }
         ItemStack displayStack = SlotWorkspaceViewModel.displayStackForIdentity(PLACEHOLDER_ID);
         if (displayStack == null || displayStack.isEmpty()) {
             return;
         }
-        emitted.add(choiceIdentity);
+        addResource(emitted, choiceResource);
         cards.add(new SlotWorkspaceViewModel.AtlasItem(
                 SlotWorkspaceViewModel.IdentityRef.from(choiceIdentity),
                 displayStack.copy(),
@@ -388,32 +398,116 @@ public final class CraftRunUiBuilder {
                 0,
                 0,
                 false,
-                0,
-                false,
                 group.requiredForBatches(entry.remainingBatches()),
+                false,
+                0,
                 false,
                 false,
                 "",
                 -1,
                 0,
-                SlotWorkspaceViewModel.PutAwayState.NONE
+                SlotWorkspaceViewModel.PutAwayState.NONE,
+                SlotWorkspaceViewModel.ResourceRef.from(choiceResource),
+                group.requiredAmountForBatches(entry.remainingBatches())
         ));
     }
 
-    private static String ingredientCardName(CraftRunIngredientGroup group, ItemIdentity identity) {
+    private static String ingredientCardName(CraftRunIngredientGroup group, SlotResourceIdentity resource) {
         if (group == null || group.label() == null || group.label().isBlank()) {
             return "Recipe ingredient";
         }
-        if (identity != null && !CraftRunIngredientChoiceRef.isPlaceholder(identity)) {
+        if (resource != null && !CraftRunIngredientChoiceRef.isPlaceholder(displayIdentity(resource))) {
             for (CraftRunAlternative alternative : group.alternatives()) {
                 if (alternative != null
-                        && alternative.identity() != null
-                        && ItemIdentityMatcher.matchesMovable(alternative.identity(), identity)) {
+                        && alternative.resourceIdentity() != null
+                        && resourcesMatch(alternative.resourceIdentity(), resource)) {
                     return alternative.label();
                 }
             }
         }
         return group.alternatives().size() > 1 ? "Any " + group.label() : group.label();
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem withRecipeTarget(
+            SlotWorkspaceViewModel.AtlasItem existing,
+            CraftRunRecipeEntry entry,
+            CraftRunIngredientGroup group
+    ) {
+        if (existing == null || entry == null || group == null) {
+            return existing;
+        }
+        return new SlotWorkspaceViewModel.AtlasItem(
+                existing.identity(),
+                existing.displayStack(),
+                existing.name(),
+                existing.totalCount(),
+                existing.firstSlotIndex(),
+                existing.islandId(),
+                existing.recent(),
+                existing.playerPlaced(),
+                existing.carried(),
+                existing.ghost(),
+                existing.proximateCount(),
+                existing.chipSuggestions(),
+                existing.presence(),
+                existing.elsewhere(),
+                existing.isCarriedContainer(),
+                existing.containerFreeSlotCount(),
+                existing.containerSlotCapacity(),
+                existing.kitNeeded(),
+                group.requiredForBatches(entry.remainingBatches()),
+                false,
+                0,
+                existing.junk(),
+                existing.acceptedWorkflowInput(),
+                existing.largestCarriedSourceId(),
+                existing.largestCarriedSlotIndex(),
+                existing.largestCarriedSlotCount(),
+                existing.putAwayState(),
+                existing.resource(),
+                existing.resourceAmount());
+    }
+
+    private static ItemIdentity displayIdentity(SlotResourceIdentity resource) {
+        SlotResourceIdentity key = SlotResourceCollections.key(resource);
+        if (key == null) {
+            return PLACEHOLDER_ID;
+        }
+        if (key.fluid()) {
+            return ItemIdentity.of(key.syntheticItemId());
+        }
+        ItemIdentity identity = key.toItemIdentity();
+        return identity == null ? PLACEHOLDER_ID : identity;
+    }
+
+    private static boolean containsResource(Set<SlotResourceIdentity> resources, SlotResourceIdentity resource) {
+        if (resources == null || resource == null) {
+            return false;
+        }
+        for (SlotResourceIdentity candidate : resources) {
+            if (resourcesMatch(candidate, resource)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void addResource(Set<SlotResourceIdentity> resources, SlotResourceIdentity resource) {
+        if (resources != null && resource != null && !containsResource(resources, resource)) {
+            resources.add(SlotResourceCollections.key(resource));
+        }
+    }
+
+    private static boolean resourcesMatch(SlotResourceIdentity left, SlotResourceIdentity right) {
+        SlotResourceIdentity leftKey = SlotResourceCollections.key(left);
+        SlotResourceIdentity rightKey = SlotResourceCollections.key(right);
+        if (leftKey == null || rightKey == null || leftKey.kind() != rightKey.kind()) {
+            return false;
+        }
+        if (leftKey.item()) {
+            return ItemIdentityMatcher.matchesMovable(leftKey.toItemIdentity(), rightKey.toItemIdentity());
+        }
+        return leftKey.equals(rightKey);
     }
 
     private static ItemStack outputStack(CraftRunRecipeEntry entry) {
@@ -440,7 +534,29 @@ public final class CraftRunUiBuilder {
         if (entry != null && entry.complete()) {
             return label + " done";
         }
-        return outputCountPrefix(entry == null ? 1 : entry.remainingOutputCount()) + label;
+        return runCountPrefix(entry == null ? 1 : entry.remainingBatches()) + label;
+    }
+
+    private static List<Component> entryTooltip(CraftRunRecipeEntry entry) {
+        if (entry == null) {
+            return List.of(Component.literal("Open recipe in EMI"));
+        }
+        ArrayList<Component> lines = new ArrayList<>();
+        lines.add(Component.literal("Open recipe in EMI"));
+        lines.add(Component.empty());
+        lines.add(Component.literal("Runs: " + entry.remainingBatches()));
+        lines.add(Component.literal("Each run: " + formatResourceAmount(
+                entry.outputResourceIdentity(),
+                entry.outputAmountPerBatch())));
+        lines.add(Component.literal("Total output: " + formatResourceAmount(
+                entry.outputResourceIdentity(),
+                outputForRuns(entry.outputAmountPerBatch(), entry.remainingBatches()))));
+        if (entry.remainingOutputAmount() != outputForRuns(entry.outputAmountPerBatch(), entry.remainingBatches())) {
+            lines.add(Component.literal("Remaining tracked output: " + formatResourceAmount(
+                    entry.outputResourceIdentity(),
+                    entry.remainingOutputAmount())));
+        }
+        return List.copyOf(lines);
     }
 
     private static int activeRecipeCount(List<CraftRunRecipeCapture> captures) {
@@ -458,7 +574,7 @@ public final class CraftRunUiBuilder {
         if (label == null || label.isBlank()) {
             label = "Recipe";
         }
-        String text = outputCountPrefix(capture == null ? 1 : capture.remainingOutputCount()) + label;
+        String text = runCountPrefix(capture == null ? 1 : remainingBatches(capture)) + label;
         if (includeIngredients) {
             String ingredients = ingredientSummary(capture);
             if (!ingredients.isBlank()) {
@@ -471,8 +587,54 @@ public final class CraftRunUiBuilder {
         return text;
     }
 
-    private static String outputCountPrefix(int count) {
+    private static List<Component> captureTooltip(CraftRunRecipeCapture capture) {
+        if (capture == null) {
+            return List.of();
+        }
+        int runs = remainingBatches(capture);
+        ArrayList<Component> lines = new ArrayList<>();
+        lines.add(Component.literal(capture.label()));
+        lines.add(Component.empty());
+        lines.add(Component.literal("Runs: " + runs));
+        lines.add(Component.literal("Each run: " + formatResourceAmount(
+                capture.outputResourceIdentity(),
+                capture.outputAmountPerBatch())));
+        lines.add(Component.literal("Total output: " + formatResourceAmount(
+                capture.outputResourceIdentity(),
+                outputForRuns(capture.outputAmountPerBatch(), runs))));
+        if (capture.remainingOutputAmount() != outputForRuns(capture.outputAmountPerBatch(), runs)) {
+            lines.add(Component.literal("Remaining tracked output: " + formatResourceAmount(
+                    capture.outputResourceIdentity(),
+                    capture.remainingOutputAmount())));
+        }
+        return List.copyOf(lines);
+    }
+
+    private static String runCountPrefix(int count) {
         return "x" + Math.max(1, count) + " ";
+    }
+
+    private static int remainingBatches(CraftRunRecipeCapture capture) {
+        if (capture == null || capture.remainingOutputAmount() <= 0L) {
+            return 0;
+        }
+        long perBatch = Math.max(1L, capture.outputAmountPerBatch());
+        long batches = (capture.remainingOutputAmount() + perBatch - 1L) / perBatch;
+        return batches >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) Math.max(1L, batches);
+    }
+
+    private static long outputForRuns(long outputAmountPerBatch, int runs) {
+        if (outputAmountPerBatch <= 0L || runs <= 0) {
+            return 0L;
+        }
+        if (outputAmountPerBatch >= Long.MAX_VALUE / runs) {
+            return Long.MAX_VALUE;
+        }
+        return outputAmountPerBatch * runs;
+    }
+
+    private static String formatResourceAmount(SlotResourceIdentity resource, long amount) {
+        return SlotResourceDisplay.formatAmount(resource, amount);
     }
 
     private static String ingredientSummary(CraftRunRecipeCapture capture) {

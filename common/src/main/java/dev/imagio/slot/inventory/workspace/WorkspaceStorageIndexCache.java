@@ -263,6 +263,7 @@ public final class WorkspaceStorageIndexCache {
         lastIndex = new WorkspaceStorageIndex(
                 aliasCorrection.entries(),
                 WorkspaceStorageIndex.carriedCounts(resolvedAuthority),
+                Map.of(),
                 aliasCorrection.displaySources(),
                 memoryRevision);
         lastIndexKey = indexKey;
@@ -371,6 +372,7 @@ public final class WorkspaceStorageIndexCache {
                         StorageTargetRef.claimed(chest, false, false, false),
                         SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
                         Map.of(),
+                        Map.of(),
                         false,
                         false));
             }
@@ -407,6 +409,7 @@ public final class WorkspaceStorageIndexCache {
                     ref,
                     snapshot,
                     WorkspaceStorageIndex.countsFromSnapshot(snapshot),
+                    WorkspaceStorageIndex.fluidCountsFromSnapshot(snapshot),
                     true,
                     false));
         }

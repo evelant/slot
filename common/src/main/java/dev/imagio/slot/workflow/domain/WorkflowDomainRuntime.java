@@ -6,9 +6,13 @@ import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.workflow.domain.undo.UndoStack;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public final class WorkflowDomainRuntime {
@@ -25,6 +29,8 @@ public final class WorkflowDomainRuntime {
     private final InventoryBrowsePreferencesStore browsePreferences;
     private final InventoryBrowseSessionStateStore browseSessionState;
     private final UndoStack undoStack;
+    private Map<SlotResourceIdentity, Long> lastObservedFluidCounts = Map.of();
+    private boolean fluidCountsObserved;
     private boolean savePending;
 
     public WorkflowDomainRuntime(
@@ -210,6 +216,48 @@ public final class WorkflowDomainRuntime {
         return true;
     }
 
+    public boolean observeFluidResourceCounts(
+            Map<SlotResourceIdentity, Long> counts,
+            String diagnostics
+    ) {
+        Map<SlotResourceIdentity, Long> current = fluidCounts(counts);
+        if (!fluidCountsObserved) {
+            lastObservedFluidCounts = current;
+            fluidCountsObserved = true;
+            return false;
+        }
+        Map<SlotResourceIdentity, Long> previous = lastObservedFluidCounts;
+        lastObservedFluidCounts = current;
+        boolean recorded = false;
+        for (Map.Entry<SlotResourceIdentity, Long> entry : current.entrySet()) {
+            SlotResourceIdentity identity = entry.getKey();
+            long currentAmount = Math.max(0L, entry.getValue() == null ? 0L : entry.getValue());
+            long previousAmount = previous.getOrDefault(identity, 0L);
+            if (identity == null || currentAmount <= previousAmount) {
+                continue;
+            }
+            long delta = currentAmount - previousAmount;
+            recorded = recordActivityEvent(
+                    new InventoryActivityEvent(
+                            InventoryActivityKind.ACQUIRED,
+                            InventoryActivityProducer.UNKNOWN_EXTERNAL,
+                            InventoryActivityConfidence.OBSERVED,
+                            null,
+                            0,
+                            null,
+                            null,
+                            "",
+                            "",
+                            List.of(),
+                            diagnostics == null ? "fluid_observation" : diagnostics,
+                            identity,
+                            delta),
+                    DomainEventMetadata.origin("activity.fluid_observation"))
+                    || recorded;
+        }
+        return recorded;
+    }
+
     public boolean dismissRecent(ItemIdentity identity) {
         return dismissRecent(identity, DomainEventMetadata.origin("workflow.recent.dismiss"));
     }
@@ -288,6 +336,21 @@ public final class WorkflowDomainRuntime {
             requestSave();
         }
         return recorded;
+    }
+
+    private static Map<SlotResourceIdentity, Long> fluidCounts(Map<SlotResourceIdentity, Long> source) {
+        Map<SlotResourceIdentity, Long> normalized = SlotResourceCollections.normalizeAmounts(source);
+        if (normalized.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<SlotResourceIdentity, Long> fluids = new LinkedHashMap<>();
+        for (Map.Entry<SlotResourceIdentity, Long> entry : normalized.entrySet()) {
+            SlotResourceIdentity identity = SlotResourceCollections.key(entry.getKey());
+            if (identity != null && identity.fluid() && entry.getValue() != null && entry.getValue() > 0L) {
+                fluids.put(identity, entry.getValue());
+            }
+        }
+        return fluids.isEmpty() ? Map.of() : Map.copyOf(fluids);
     }
 
     private record ObservedInventoryBrowsePreferencesStore(

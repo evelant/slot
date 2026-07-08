@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
@@ -128,6 +129,26 @@ class SlotWorkspaceCommandServiceStorageTest {
         assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.STORAGE));
         assertTrue(invalidation.slices().contains(WorkspaceProjectionSlice.DEPOSITABILITY));
         assertEquals("affinity_forgotten", invalidation.diagnostics());
+    }
+
+    @Test
+    void itemOnlyStorageCommandsRejectSyntheticFluidResourceIds() {
+        WorkflowDomainRuntime runtime = runtime();
+        String fluidItemId = SlotResourceIdentity.fluid("minecraft:water").syntheticItemId();
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.forgetItemAffinity(
+                runtime,
+                UUID.randomUUID().toString(),
+                fluidItemId,
+                ItemComparisonMode.ITEM_ID.name(),
+                "");
+
+        assertFalse(outcome.success());
+        assertEquals("fluid_resource_read_only:forget_item_affinity", outcome.diagnostics());
+        assertEquals(null, SlotWorkspaceCommandService.resolveIdentity(
+                fluidItemId,
+                ItemComparisonMode.ITEM_ID.name(),
+                ""));
     }
 
     private static WorkflowDomainRuntime runtime() {

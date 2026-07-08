@@ -2,6 +2,8 @@ package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,22 +19,70 @@ public record CraftRunRecipeEntry(
         int outputCountPerBatch,
         int remainingOutputCount,
         List<CraftRunIngredientGroup> inputs,
+        SlotResourceIdentity outputResourceIdentity,
+        long outputAmountPerBatch,
+        long remainingOutputAmount,
         List<String> diagnostics
 ) {
+    public CraftRunRecipeEntry(
+            String entryId,
+            long sequence,
+            String sourceKey,
+            String recipeId,
+            String label,
+            ItemIdentity outputIdentity,
+            String outputLabel,
+            int outputCountPerBatch,
+            int remainingOutputCount,
+            List<CraftRunIngredientGroup> inputs,
+            List<String> diagnostics
+    ) {
+        this(
+                entryId,
+                sequence,
+                sourceKey,
+                recipeId,
+                label,
+                outputIdentity,
+                outputLabel,
+                outputCountPerBatch,
+                remainingOutputCount,
+                inputs,
+                SlotResourceIdentity.item(outputIdentity),
+                outputCountPerBatch,
+                remainingOutputCount,
+                diagnostics);
+    }
+
     public CraftRunRecipeEntry {
         entryId = entryId == null || entryId.isBlank() ? "craft-run" : entryId.trim();
         sequence = Math.max(1L, sequence);
         sourceKey = sourceKey == null ? "" : sourceKey.trim();
         recipeId = recipeId == null ? "" : recipeId.trim();
+        outputIdentity = ItemIdentityCollections.key(outputIdentity);
+        outputResourceIdentity = SlotResourceCollections.key(outputResourceIdentity != null
+                ? outputResourceIdentity
+                : SlotResourceIdentity.item(outputIdentity));
+        if (outputResourceIdentity != null && outputResourceIdentity.item()) {
+            outputIdentity = outputResourceIdentity.toItemIdentity();
+        }
+        if (outputResourceIdentity != null && outputResourceIdentity.fluid()) {
+            outputIdentity = null;
+        }
         label = label == null || label.isBlank()
                 ? outputLabel == null || outputLabel.isBlank() ? "Craft run" : outputLabel.trim()
                 : label.trim();
-        outputIdentity = ItemIdentityCollections.key(outputIdentity);
         outputLabel = outputLabel == null || outputLabel.isBlank()
-                ? outputIdentity == null ? "Output" : outputIdentity.itemId()
+                ? outputResourceIdentity == null ? "Output" : outputResourceIdentity.id()
                 : outputLabel.trim();
         outputCountPerBatch = Math.max(1, outputCountPerBatch);
         remainingOutputCount = Math.max(0, remainingOutputCount);
+        outputAmountPerBatch = Math.max(1L, outputAmountPerBatch <= 0L
+                ? outputCountPerBatch
+                : outputAmountPerBatch);
+        remainingOutputAmount = Math.max(0L, remainingOutputAmount < 0L
+                ? remainingOutputCount
+                : remainingOutputAmount);
         inputs = CraftRunIngredientGroup.normalize(inputs);
         diagnostics = diagnostics == null
                 ? List.of()
@@ -56,29 +106,44 @@ public record CraftRunRecipeEntry(
                 resolved.outputCountPerBatch(),
                 resolved.remainingOutputCount(),
                 resolved.inputs(),
+                resolved.outputResourceIdentity(),
+                resolved.outputAmountPerBatch(),
+                resolved.remainingOutputAmount(),
                 resolved.diagnostics());
     }
 
     public boolean active() {
-        return outputIdentity != null && !inputs.isEmpty();
+        return outputResourceIdentity != null && !inputs.isEmpty();
     }
 
     public boolean pending() {
-        return active() && remainingOutputCount > 0;
+        return active() && remainingOutputAmount > 0L;
     }
 
     public boolean complete() {
-        return active() && remainingOutputCount <= 0;
+        return active() && remainingOutputAmount <= 0L;
     }
 
     public int remainingBatches() {
-        if (remainingOutputCount <= 0) {
+        if (remainingOutputAmount <= 0L) {
             return 0;
         }
-        return Math.max(1, (remainingOutputCount + outputCountPerBatch - 1) / outputCountPerBatch);
+        long batches = (remainingOutputAmount + outputAmountPerBatch - 1L) / outputAmountPerBatch;
+        return batches >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) Math.max(1L, batches);
     }
 
     public CraftRunRecipeEntry withRemainingOutputCount(int count) {
+        long nextAmount = outputResourceIdentity != null && outputResourceIdentity.fluid()
+                ? Math.max(0L, count)
+                : Math.max(0L, count);
+        return withRemainingOutput(count, nextAmount);
+    }
+
+    public CraftRunRecipeEntry withRemainingOutputAmount(long amount) {
+        return withRemainingOutput(saturatedInt(amount), amount);
+    }
+
+    private CraftRunRecipeEntry withRemainingOutput(int count, long amount) {
         return new CraftRunRecipeEntry(
                 entryId,
                 sequence,
@@ -90,10 +155,17 @@ public record CraftRunRecipeEntry(
                 outputCountPerBatch,
                 count,
                 inputs,
+                outputResourceIdentity,
+                outputAmountPerBatch,
+                amount,
                 diagnostics);
     }
 
     public CraftRunRecipeEntry withSelectedAlternative(String groupId, ItemIdentity identity) {
+        return withSelectedAlternative(groupId, SlotResourceIdentity.item(identity));
+    }
+
+    public CraftRunRecipeEntry withSelectedAlternative(String groupId, SlotResourceIdentity identity) {
         if (groupId == null || groupId.isBlank() || inputs.isEmpty()) {
             return this;
         }
@@ -122,6 +194,16 @@ public record CraftRunRecipeEntry(
                 outputCountPerBatch,
                 remainingOutputCount,
                 nextInputs,
+                outputResourceIdentity,
+                outputAmountPerBatch,
+                remainingOutputAmount,
                 diagnostics);
+    }
+
+    private static int saturatedInt(long value) {
+        if (value <= 0L) {
+            return 0;
+        }
+        return value >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) value;
     }
 }

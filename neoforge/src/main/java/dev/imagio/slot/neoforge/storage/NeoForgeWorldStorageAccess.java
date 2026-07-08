@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 
@@ -150,6 +151,35 @@ public final class NeoForgeWorldStorageAccess implements WorldStorageAccess {
     }
 
     @Override
+    public List<FluidContent> enumerateFluids(MinecraftServer server, Target target) {
+        if (server == null || target == null) {
+            return List.of();
+        }
+        for (Delegate delegate : delegates) {
+            if (!delegate.matches(target)) {
+                continue;
+            }
+            Optional<List<FluidContent>> handled = delegate.enumerateFluids(server, target);
+            if (handled.isPresent()) {
+                return handled.get();
+            }
+        }
+
+        ArrayList<FluidContent> contents = new ArrayList<>();
+        IFluidHandler directTank = resolveFluidHandler(server, target);
+        if (directTank != null) {
+            contents.addAll(NeoForgeFluidContents.directTankContents(directTank));
+        }
+        for (SlotContent content : enumerate(server, target)) {
+            if (content == null || content.stack().isEmpty()) {
+                continue;
+            }
+            contents.addAll(NeoForgeFluidContents.itemContainerContents(content.slotIndex(), content.stack()));
+        }
+        return contents.isEmpty() ? List.of() : List.copyOf(contents);
+    }
+
+    @Override
     public int slotCount(MinecraftServer server, Target target) {
         if (server == null || target == null) {
             return 0;
@@ -203,6 +233,13 @@ public final class NeoForgeWorldStorageAccess implements WorldStorageAccess {
         return null;
     }
 
+    private static IFluidHandler resolveFluidHandler(MinecraftServer server, Target target) {
+        if (target instanceof Target.Chest chestTarget) {
+            return resolveChestFluidHandler(server, chestTarget.chest());
+        }
+        return null;
+    }
+
     private static IItemHandler resolveChestHandler(MinecraftServer server, ClaimedChest chest) {
         if (chest == null || chest.anchors().isEmpty()) {
             return null;
@@ -228,6 +265,41 @@ public final class NeoForgeWorldStorageAccess implements WorldStorageAccess {
             IItemHandler handler;
             try {
                 handler = level.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
+            } catch (RuntimeException | LinkageError ignored) {
+                continue;
+            }
+            if (handler != null) {
+                return handler;
+            }
+        }
+        return null;
+    }
+
+    private static IFluidHandler resolveChestFluidHandler(MinecraftServer server, ClaimedChest chest) {
+        if (chest == null || chest.anchors().isEmpty()) {
+            return null;
+        }
+        for (ChestAnchor anchor : chest.anchors()) {
+            if (anchor == null || anchor.dimensionId() == null || anchor.dimensionId().isBlank()) {
+                continue;
+            }
+            ServerLevel level = null;
+            for (ServerLevel candidate : server.getAllLevels()) {
+                if (candidate.dimension().location().toString().equals(anchor.dimensionId())) {
+                    level = candidate;
+                    break;
+                }
+            }
+            if (level == null) {
+                continue;
+            }
+            BlockPos pos = new BlockPos(anchor.x(), anchor.y(), anchor.z());
+            if (!level.isLoaded(pos)) {
+                continue;
+            }
+            IFluidHandler handler;
+            try {
+                handler = level.getCapability(Capabilities.FluidHandler.BLOCK, pos, null);
             } catch (RuntimeException | LinkageError ignored) {
                 continue;
             }

@@ -1,5 +1,7 @@
 package dev.imagio.slot.ui.workspace;
 
+import dev.imagio.slot.inventory.core.SlotResourceDisplay;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import net.minecraft.network.chat.Component;
 
@@ -64,16 +66,24 @@ public final class WorkspaceItemTooltipBuilder {
 
     private static void addDesiredLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
         int desired = item.desiredCount();
-        int carried = item.carried() ? item.totalCount() : 0;
+        SlotResourceIdentity resource = resourceIdentity(item);
+        long carried = availableAmountForTarget(item, resource);
         if (desired > 0) {
             String source = item.desiredCountFromKit() ? " tab" : "";
-            lines.add(Component.literal("Desired target: " + carried + "/" + desired + source));
+            lines.add(Component.literal("Desired target: "
+                    + formatAmount(resource, carried)
+                    + "/"
+                    + formatAmount(resource, desired)
+                    + source));
             if (item.wantedCount() <= 0) {
                 return;
             }
         }
         if (item.wantedCount() > 0) {
-            lines.add(Component.literal("Wanted target: " + carried + "/" + item.wantedCount()));
+            lines.add(Component.literal("Wanted target: "
+                    + formatAmount(resource, carried)
+                    + "/"
+                    + formatAmount(resource, item.wantedCount())));
             return;
         }
         if (item.kitNeeded()) {
@@ -125,14 +135,15 @@ public final class WorkspaceItemTooltipBuilder {
     }
 
     private static void addMissingTargetLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
-        int carried = item.carried() ? item.totalCount() : 0;
-        int stored = sum(item.presence()) + sum(item.elsewhere());
+        SlotResourceIdentity resource = resourceIdentity(item);
+        long carried = availableAmountForTarget(item, resource);
+        long stored = sum(item.presence()) + sum(item.elsewhere());
         int target = WallCardChromeSpec.targetChoice(item).count();
-        int missing = target - carried - stored;
+        long missing = (long) target - carried - stored;
         if (missing <= 0) {
             return;
         }
-        lines.add(Component.literal("Need to craft/find: " + missing));
+        lines.add(Component.literal("Need to craft/find: " + formatAmount(resource, missing)));
     }
 
     private static void addContainerLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
@@ -198,4 +209,24 @@ public final class WorkspaceItemTooltipBuilder {
         return total;
     }
 
+    private static SlotResourceIdentity resourceIdentity(SlotWorkspaceViewModel.AtlasItem item) {
+        return item == null || item.resource() == null ? null : item.resource().toIdentity();
+    }
+
+    private static long availableAmountForTarget(
+            SlotWorkspaceViewModel.AtlasItem item,
+            SlotResourceIdentity resource
+    ) {
+        if (item == null) {
+            return 0L;
+        }
+        if (resource != null && resource.fluid()) {
+            return item.ghost() ? 0L : Math.max(0L, item.resourceAmount());
+        }
+        return item.carried() ? Math.max(0, item.totalCount()) : 0L;
+    }
+
+    private static String formatAmount(SlotResourceIdentity resource, long amount) {
+        return SlotResourceDisplay.formatAmount(resource, amount);
+    }
 }

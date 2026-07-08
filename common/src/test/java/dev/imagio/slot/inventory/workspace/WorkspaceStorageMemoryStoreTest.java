@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
@@ -9,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
@@ -88,6 +90,81 @@ class WorkspaceStorageMemoryStoreTest {
         assertEquals(10_000, store.remembered(CHEST_A.toString())
                 .countsByIdentity()
                 .get(ItemIdentity.of("minecraft:redstone")));
+    }
+
+    @Test
+    void fluidCountsRoundTripAndInvalidateOnAmountChange(@TempDir Path tempDir) {
+        Path statePath = tempDir.resolve("storage-memory.json");
+        WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);
+        StorageTargetRef target = StorageTargetRef.claimed(claimed(CHEST_A), true, false, true);
+        SlotResourceIdentity water = SlotResourceIdentity.fluid("minecraft:water");
+
+        RememberedStorageContents first = RememberedStorageContents.fromContents(
+                target,
+                27,
+                List.of(),
+                List.of(
+                        new WorldStorageAccess.FluidContent(
+                                0,
+                                WorldStorageAccess.FluidContent.DIRECT_TANK_SLOT,
+                                water,
+                                1000L,
+                                "Water"),
+                        new WorldStorageAccess.FluidContent(1, 4, water, 250L, "Water")),
+                10L,
+                "test");
+
+        assertTrue(store.observe(first));
+        assertEquals(1L, store.revision());
+        assertEquals(1250L, store.remembered(CHEST_A.toString()).fluidCountsByIdentity().get(water));
+        assertFalse(store.observe(first));
+        assertEquals(1L, store.revision());
+
+        RememberedStorageContents changed = RememberedStorageContents.fromContents(
+                target,
+                27,
+                List.of(),
+                List.of(new WorldStorageAccess.FluidContent(
+                        0,
+                        WorldStorageAccess.FluidContent.DIRECT_TANK_SLOT,
+                        water,
+                        2000L,
+                        "Water")),
+                11L,
+                "test");
+
+        assertTrue(store.observe(changed));
+        assertEquals(2L, store.revision());
+
+        WorkspaceStorageMemoryStore reloaded = new WorkspaceStorageMemoryStore(statePath);
+        assertEquals(2000L, reloaded.remembered(CHEST_A.toString()).fluidCountsByIdentity().get(water));
+    }
+
+    @Test
+    void legacyStorageMemoryWithoutFluidCountsLoadsEmpty(@TempDir Path tempDir) throws Exception {
+        Path statePath = tempDir.resolve("storage-memory.json");
+        Files.writeString(statePath, """
+                {
+                  "version": 1,
+                  "revision": 7,
+                  "contents": [
+                    {
+                      "storageId": "00000000-0000-0000-0000-000000000701",
+                      "targetKind": "claimed_chest",
+                      "label": "Old Chest",
+                      "dimensionId": "minecraft:overworld",
+                      "slotCapacity": 27,
+                      "counts": []
+                    }
+                  ],
+                  "ae2Media": []
+                }
+                """);
+
+        WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);
+
+        assertEquals(7L, store.revision());
+        assertTrue(store.remembered(CHEST_A.toString()).fluidCountsByIdentity().isEmpty());
     }
 
     @Test

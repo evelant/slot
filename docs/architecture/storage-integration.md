@@ -47,6 +47,12 @@ CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
 WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
 ```
 
+Item mutation remains item-only. Read-only fluid discovery is layered beside
+the same axes: carried and world accessors enumerate `FluidContent` records,
+and loader code adapts Forge/NeoForge `FluidStack` state through
+`FluidStackAccess`. Common code sees only `SlotResourceIdentity.FLUID` plus a
+long millibucket amount.
+
 ## Carried storage integration
 
 ### Extension points
@@ -145,6 +151,18 @@ serves both client (for UI host-descriptor construction) and server (for
 authority reads). Mutation methods (`extract`, `insert`, `insertBestFit`)
 require `ServerPlayer` because they only run authoritatively.
 
+### Read-only fluids in carried storage
+
+`CarriedSourceAccess.enumerateFluids` walks carried item stacks and inspects
+their item fluid capabilities. This covers buckets, drums, super tanks, cells,
+flasks, and provider-backed carried containers whose visible item slots contain
+fluid holders. Higher-level code must not call item fluid capabilities
+directly; add or fix the platform accessor/provider instead.
+
+Fluid enumeration does not authorize fluid mutation. Commands that operate on
+item identities reject fluid resource cards until a fluid planner/executor
+exists.
+
 ## World-bound storage integration
 
 ### Extension points
@@ -186,6 +204,22 @@ item slots for recipes, but they are liquid/recipe stations rather than
 bulk-storage targets; their slot count keeps them out of claim/affinity
 eligibility unless an explicit allow tag is added deliberately.
 
+### Read-only fluids in world storage and machines
+
+`WorldStorageAccess.enumerateFluids` reads two surfaces:
+
+- Fluid capabilities on item stacks stored inside the target inventory.
+- Direct block/machine tank capabilities exposed by the target block.
+
+This means a chest containing a filled drum contributes both an item count for
+the drum and a fluid resource count for the contained fluid. A machine or hatch
+with exposed tanks contributes fluid resources even when it has no item slots.
+GregTech multiblocks are treated through the exposed fluid handlers on hatches
+or tank-bearing blocks; SLOT does not infer hidden controller inventory.
+
+Empty tanks are ignored. Inaccessible or unsupported handlers fail closed with
+diagnostics at the platform edge instead of producing guessed resources.
+
 ### Path 2: Virtual / aggregated storage (AE2, Create networks)
 
 Implement `WorldStorageAccess.Delegate` and register it.
@@ -217,9 +251,11 @@ churn the network identity. Networks with no discoverable/stampable item media f
 AE2 enumeration emits one logical entry per stored `AEItemKey`: the render
 stack count is capped to the item's normal stack size, while
 `SlotContent.count()` carries the full ME total. Craftables, autocrafting,
-fluids, and other key types are not stored counts. Insert/extract route through
-AE2 powered storage operations with `IActionSource.ofPlayer(player, actionHost)`;
-do not mutate AE2 menu slots or bypass AE2 power/security checks.
+fluids, and other key types are not stored counts. AE2 fluid keys require a
+future delegate and must not be folded into item counts or v1 fluid counts.
+Insert/extract route through AE2 powered storage operations with
+`IActionSource.ofPlayer(player, actionHost)`; do not mutate AE2 menu slots or
+bypass AE2 power/security checks.
 
 SLOT also keeps an AE2 media ledger keyed by the stamped media UUID. Drive and
 ME-chest cells update the ledger while defining active storage identity; IO
@@ -283,6 +319,8 @@ abstraction instead.
    outside `NeoForgeWorldStorageAccess`.
    `stack.getCapability(Capabilities.ItemHandler.ITEM)` is banned
    outside `CarriedProvider` implementations.
+   Fluid handler capabilities follow the same rule: platform accessors own
+   enumeration, common code consumes fluid-content records.
 3. **Never name a specific provider in routing code.**
    `SophisticatedBackpackTransferSupport` and friends must not be
    imported by executors, UI sessions, or the router. The provider set

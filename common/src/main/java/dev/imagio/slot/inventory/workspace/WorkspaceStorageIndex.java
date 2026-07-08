@@ -4,6 +4,8 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.SlotResourceCollections;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
@@ -40,12 +42,14 @@ import java.util.function.Function;
 public final class WorkspaceStorageIndex {
     private final Map<String, StorageEntry> entriesByStorageId;
     private final Map<ItemIdentity, Integer> carriedCountsByIdentity;
+    private final Map<SlotResourceIdentity, Long> carriedFluidCountsByIdentity;
     private final List<WorldDisplayStorageSource> displaySources;
     private final long memoryRevision;
 
     WorkspaceStorageIndex(
             Map<String, StorageEntry> entriesByStorageId,
             Map<ItemIdentity, Integer> carriedCountsByIdentity,
+            Map<SlotResourceIdentity, Long> carriedFluidCountsByIdentity,
             List<WorldDisplayStorageSource> displaySources,
             long memoryRevision
     ) {
@@ -53,12 +57,22 @@ public final class WorkspaceStorageIndex {
         this.carriedCountsByIdentity = carriedCountsByIdentity == null
                 ? Map.of()
                 : Map.copyOf(carriedCountsByIdentity);
+        this.carriedFluidCountsByIdentity = SlotResourceCollections.normalizeAmounts(carriedFluidCountsByIdentity);
         this.displaySources = displaySources == null ? List.of() : List.copyOf(displaySources);
         this.memoryRevision = Math.max(0L, memoryRevision);
     }
 
+    WorkspaceStorageIndex(
+            Map<String, StorageEntry> entriesByStorageId,
+            Map<ItemIdentity, Integer> carriedCountsByIdentity,
+            List<WorldDisplayStorageSource> displaySources,
+            long memoryRevision
+    ) {
+        this(entriesByStorageId, carriedCountsByIdentity, Map.of(), displaySources, memoryRevision);
+    }
+
     public static WorkspaceStorageIndex empty() {
-        return new WorkspaceStorageIndex(Map.of(), Map.of(), List.of(), 0L);
+        return new WorkspaceStorageIndex(Map.of(), Map.of(), Map.of(), List.of(), 0L);
     }
 
     public static WorkspaceStorageIndex build(
@@ -156,6 +170,7 @@ public final class WorkspaceStorageIndex {
                         ref,
                         SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
                         Map.of(),
+                        Map.of(),
                         false,
                         false));
             }
@@ -172,6 +187,7 @@ public final class WorkspaceStorageIndex {
                     ref,
                     snapshot,
                     countsFromSnapshot(snapshot),
+                    fluidCountsFromSnapshot(snapshot),
                     true,
                     false));
         }
@@ -197,7 +213,7 @@ public final class WorkspaceStorageIndex {
             entries.put(rememberedContents.storageId(), rememberedEntry(rememberedContents, false));
         }
 
-        return new WorkspaceStorageIndex(entries, carriedCounts(authority), liveDisplays, memoryRevision);
+        return new WorkspaceStorageIndex(entries, carriedCounts(authority), Map.of(), liveDisplays, memoryRevision);
     }
 
     static AliasCorrection correctDisplayAliases(
@@ -409,7 +425,7 @@ public final class WorkspaceStorageIndex {
             if (memory != null) {
                 memory.observeSnapshot(ref, snapshot, tick, "workspace_index_ae2_alias_read", false);
             }
-            return new StorageEntry(ref, snapshot, countsFromSnapshot(snapshot), false, true);
+            return new StorageEntry(ref, snapshot, countsFromSnapshot(snapshot), fluidCountsFromSnapshot(snapshot), false, true);
         } catch (RuntimeException exception) {
             SlotCommon.LOGGER.warn(
                     "[SLOT] AE2 alias storage read failed for {}: {}",
@@ -460,7 +476,13 @@ public final class WorkspaceStorageIndex {
         }
         SlotWorkspaceViewModel.ChestContentsSnapshot snapshot =
                 snapshotWithCounts(displayEntry.snapshot(), correctedCounts);
-        return new StorageEntry(displayEntry.target(), snapshot, correctedCounts, displayEntry.live(), displayEntry.remembered());
+        return new StorageEntry(
+                displayEntry.target(),
+                snapshot,
+                correctedCounts,
+                displayEntry.fluidCountsByIdentity(),
+                displayEntry.live(),
+                displayEntry.remembered());
     }
 
     private static SlotWorkspaceViewModel.ChestContentsSnapshot snapshotWithCounts(
@@ -472,7 +494,8 @@ public final class WorkspaceStorageIndex {
                     source == null ? 0 : source.slotCount(),
                     List.of(),
                     List.of(),
-                    Map.of());
+                    Map.of(),
+                    source == null ? Map.of() : source.fluidCountsByIdentity());
         }
         LinkedHashMap<ItemIdentity, Integer> remaining = new LinkedHashMap<>(correctedCounts);
         ArrayList<ItemStack> stacks = new ArrayList<>();
@@ -499,7 +522,8 @@ public final class WorkspaceStorageIndex {
                 source.slotCount(),
                 stacks,
                 slotIndices,
-                correctedCounts);
+                correctedCounts,
+                source.fluidCountsByIdentity());
     }
 
     private static WorldDisplayStorageSource sourceWithSnapshot(
@@ -536,6 +560,7 @@ public final class WorkspaceStorageIndex {
                 source.z(),
                 source.slotCount(),
                 contents,
+                snapshot == null ? List.of() : fluidContentsFromSnapshot(snapshot),
                 source.aliasedBlocks(),
                 source.mediaIds(),
                 source.mediaObservations(),
@@ -635,7 +660,7 @@ public final class WorkspaceStorageIndex {
         if (memory != null) {
             memory.observeSnapshot(ref, snapshot, tick, "workspace_index_live_read", false);
         }
-        return new StorageEntry(ref, snapshot, countsFromSnapshot(snapshot), true, false);
+        return new StorageEntry(ref, snapshot, countsFromSnapshot(snapshot), fluidCountsFromSnapshot(snapshot), true, false);
     }
 
     static StorageEntry applyDepositOverlay(
@@ -655,6 +680,7 @@ public final class WorkspaceStorageIndex {
                 base.target().withDepositTarget(depositTarget),
                 base.snapshot(),
                 base.countsByIdentity(),
+                base.fluidCountsByIdentity(),
                 base.live(),
                 base.remembered());
     }
@@ -666,6 +692,7 @@ public final class WorkspaceStorageIndex {
     ) {
         int slots = Math.max(0, worldStorage.slotCount(server, target));
         List<WorldStorageAccess.SlotContent> contents = worldStorage.enumerate(server, target);
+        List<WorldStorageAccess.FluidContent> fluids = worldStorage.enumerateFluids(server, target);
         ArrayList<ItemStack> stacks = new ArrayList<>();
         ArrayList<Integer> slotIndices = new ArrayList<>();
         java.util.LinkedHashMap<ItemIdentity, Integer> counts = new java.util.LinkedHashMap<>();
@@ -682,7 +709,15 @@ public final class WorkspaceStorageIndex {
                         content.count());
             }
         }
-        return new SlotWorkspaceViewModel.ChestContentsSnapshot(slots, stacks, slotIndices, counts);
+        java.util.LinkedHashMap<SlotResourceIdentity, Long> fluidCounts = new java.util.LinkedHashMap<>();
+        if (fluids != null) {
+            for (WorldStorageAccess.FluidContent fluid : fluids) {
+                if (fluid != null && fluid.present()) {
+                    SlotResourceCollections.mergeAmount(fluidCounts, fluid.identity(), fluid.amount());
+                }
+            }
+        }
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(slots, stacks, slotIndices, counts, fluidCounts);
     }
 
     static StorageEntry rememberedEntry(RememberedStorageContents remembered, boolean proximate) {
@@ -691,6 +726,7 @@ public final class WorkspaceStorageIndex {
                 remembered.targetRef(false, proximate),
                 snapshot,
                 remembered.countsByIdentity(),
+                remembered.fluidCountsByIdentity(),
                 false,
                 true);
     }
@@ -741,7 +777,13 @@ public final class WorkspaceStorageIndex {
                     ItemIdentityMatcher.create(content.stack()),
                     content.count());
         }
-        return new SlotWorkspaceViewModel.ChestContentsSnapshot(source.slotCount(), stacks, indices, counts);
+        java.util.LinkedHashMap<SlotResourceIdentity, Long> fluidCounts = new java.util.LinkedHashMap<>();
+        for (WorldStorageAccess.FluidContent fluid : source.fluidContents()) {
+            if (fluid != null && fluid.present()) {
+                SlotResourceCollections.mergeAmount(fluidCounts, fluid.identity(), fluid.amount());
+            }
+        }
+        return new SlotWorkspaceViewModel.ChestContentsSnapshot(source.slotCount(), stacks, indices, counts, fluidCounts);
     }
 
     public Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver() {
@@ -840,6 +882,10 @@ public final class WorkspaceStorageIndex {
         return carriedCountsByIdentity;
     }
 
+    public Map<SlotResourceIdentity, Long> carriedFluidCountsByIdentity() {
+        return carriedFluidCountsByIdentity;
+    }
+
     public long memoryRevision() {
         return memoryRevision;
     }
@@ -849,6 +895,26 @@ public final class WorkspaceStorageIndex {
         for (StorageEntry entry : entriesByStorageId.values()) {
             if (entry.live()) {
                 mergeCounts(counts, entry.countsByIdentity());
+            }
+        }
+        return Map.copyOf(counts);
+    }
+
+    public Map<SlotResourceIdentity, Long> liveWorldFluidCountsByIdentity() {
+        LinkedHashMap<SlotResourceIdentity, Long> counts = new LinkedHashMap<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry.live()) {
+                mergeFluidCounts(counts, entry.fluidCountsByIdentity());
+            }
+        }
+        return Map.copyOf(counts);
+    }
+
+    public Map<SlotResourceIdentity, Long> rememberedWorldFluidCountsByIdentity() {
+        LinkedHashMap<SlotResourceIdentity, Long> counts = new LinkedHashMap<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry.remembered()) {
+                mergeFluidCounts(counts, entry.fluidCountsByIdentity());
             }
         }
         return Map.copyOf(counts);
@@ -994,6 +1060,15 @@ public final class WorkspaceStorageIndex {
         return Map.copyOf(counts);
     }
 
+    static Map<SlotResourceIdentity, Long> fluidCountsFromSnapshot(
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot
+    ) {
+        if (snapshot == null || snapshot.fluidCountsByIdentity().isEmpty()) {
+            return Map.of();
+        }
+        return snapshot.fluidCountsByIdentity();
+    }
+
     static boolean isTrackedDisplayMemory(RememberedStorageContents remembered) {
         if (remembered == null) {
             return false;
@@ -1027,6 +1102,41 @@ public final class WorkspaceStorageIndex {
         }
     }
 
+    private static void mergeFluidCounts(
+            Map<SlotResourceIdentity, Long> target,
+            Map<SlotResourceIdentity, Long> source
+    ) {
+        if (target == null || source == null || source.isEmpty()) {
+            return;
+        }
+        for (Map.Entry<SlotResourceIdentity, Long> entry : source.entrySet()) {
+            if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0L) {
+                SlotResourceCollections.mergeAmount(target, entry.getKey(), entry.getValue());
+            }
+        }
+    }
+
+    private static List<WorldStorageAccess.FluidContent> fluidContentsFromSnapshot(
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot
+    ) {
+        if (snapshot == null || snapshot.fluidCountsByIdentity().isEmpty()) {
+            return List.of();
+        }
+        ArrayList<WorldStorageAccess.FluidContent> fluids = new ArrayList<>();
+        int tank = 0;
+        for (Map.Entry<SlotResourceIdentity, Long> entry : snapshot.fluidCountsByIdentity().entrySet()) {
+            if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0L) {
+                fluids.add(new WorldStorageAccess.FluidContent(
+                        tank++,
+                        WorldStorageAccess.FluidContent.DIRECT_TANK_SLOT,
+                        entry.getKey(),
+                        entry.getValue(),
+                        entry.getKey().id()));
+            }
+        }
+        return fluids.isEmpty() ? List.of() : List.copyOf(fluids);
+    }
+
     static String safeMessage(RuntimeException exception) {
         if (exception == null || exception.getMessage() == null || exception.getMessage().isBlank()) {
             return "runtime_exception";
@@ -1038,18 +1148,39 @@ public final class WorkspaceStorageIndex {
             StorageTargetRef target,
             SlotWorkspaceViewModel.ChestContentsSnapshot snapshot,
             Map<ItemIdentity, Integer> countsByIdentity,
+            Map<SlotResourceIdentity, Long> fluidCountsByIdentity,
             boolean live,
             boolean remembered
     ) {
+        public StorageEntry(
+                StorageTargetRef target,
+                SlotWorkspaceViewModel.ChestContentsSnapshot snapshot,
+                Map<ItemIdentity, Integer> countsByIdentity,
+                boolean live,
+                boolean remembered
+        ) {
+            this(target, snapshot, countsByIdentity, Map.of(), live, remembered);
+        }
+
         public StorageEntry {
             snapshot = snapshot == null ? SlotWorkspaceViewModel.ChestContentsSnapshot.empty() : snapshot;
             countsByIdentity = countsByIdentity == null ? Map.of() : Map.copyOf(countsByIdentity);
+            fluidCountsByIdentity = SlotResourceCollections.normalizeAmounts(fluidCountsByIdentity);
             if (snapshot.countsByIdentity().isEmpty() && !countsByIdentity.isEmpty()) {
                 snapshot = new SlotWorkspaceViewModel.ChestContentsSnapshot(
                         snapshot.slotCount(),
                         snapshot.contents(),
                         snapshot.slotIndices(),
-                        countsByIdentity);
+                        countsByIdentity,
+                        snapshot.fluidCountsByIdentity());
+            }
+            if (snapshot.fluidCountsByIdentity().isEmpty() && !fluidCountsByIdentity.isEmpty()) {
+                snapshot = new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                        snapshot.slotCount(),
+                        snapshot.contents(),
+                        snapshot.slotIndices(),
+                        snapshot.countsByIdentity(),
+                        fluidCountsByIdentity);
             }
         }
     }
