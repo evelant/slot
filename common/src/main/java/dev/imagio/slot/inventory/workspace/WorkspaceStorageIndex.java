@@ -167,26 +167,31 @@ public final class WorkspaceStorageIndex {
                 continue;
             }
             SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = snapshotFromDisplay(source);
-            StorageTargetRef ref = StorageTargetRef.display(source, false, true);
+            StorageTargetRef ref = displaySourceRef(source, rememberedById, false, true);
             entries.put(source.storageId(), new StorageEntry(
                     ref,
                     snapshot,
                     countsFromSnapshot(snapshot),
                     true,
                     false));
-            if (memory != null && source.kind().trackedStorage()) {
-                memory.observeSnapshot(ref, snapshot, tick, "workspace_index_display_live_read", false);
-            }
         }
 
-        AliasCorrection aliasCorrection = correctDisplayAliases(entries, resolvedMap, liveDisplays);
+        AliasCorrection aliasCorrection = correctDisplayAliases(
+                server,
+                worldStorage,
+                memory,
+                tick,
+                entries,
+                resolvedMap,
+                liveDisplays);
         entries = new LinkedHashMap<>(aliasCorrection.entries());
         liveDisplays = aliasCorrection.displaySources();
+        rememberDisplaySources(memory, tick, entries, liveDisplays, "workspace_index_display_live_read");
 
         for (RememberedStorageContents rememberedContents : rememberedById.values()) {
             if (rememberedContents == null
                     || entries.containsKey(rememberedContents.storageId())
-                    || !isTrackedDisplayMemory(rememberedContents)) {
+                    || !isTrackedStorageMemory(rememberedContents)) {
                 continue;
             }
             entries.put(rememberedContents.storageId(), rememberedEntry(rememberedContents, false));
@@ -196,6 +201,10 @@ public final class WorkspaceStorageIndex {
     }
 
     static AliasCorrection correctDisplayAliases(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            WorkspaceStorageMemoryStore memory,
+            long tick,
             Map<String, StorageEntry> entries,
             ClaimedChestMap claimedChestMap,
             List<WorldDisplayStorageSource> displaySources
@@ -204,7 +213,7 @@ public final class WorkspaceStorageIndex {
             return new AliasCorrection(entries, displaySources);
         }
         Map<WorldDisplayStorageSource.AliasedBlock, List<String>> storageIdsByBlock =
-                storageIdsByAliasedBlock(claimedChestMap);
+                storageIdsByAliasedBlock(claimedChestMap, displaySources);
         if (storageIdsByBlock.isEmpty()) {
             return new AliasCorrection(entries, displaySources);
         }
@@ -222,7 +231,16 @@ public final class WorkspaceStorageIndex {
                 continue;
             }
             Map<ItemIdentity, Integer> aliasedCounts =
-                    aliasedCounts(source.aliasedBlocks(), storageIdsByBlock, correctedEntries);
+                    aliasedCounts(
+                            server,
+                            worldStorage,
+                            memory,
+                            tick,
+                            source.storageId(),
+                            source.aliasedBlocks(),
+                            storageIdsByBlock,
+                            correctedEntries,
+                            claimedChestMap);
             if (aliasedCounts.isEmpty()) {
                 correctedSources.add(source);
                 continue;
@@ -236,6 +254,9 @@ public final class WorkspaceStorageIndex {
             correctedSources.add(sourceWithSnapshot(source, corrected.snapshot()));
             changed = true;
         }
+        if (!correctedEntries.equals(entries)) {
+            changed = true;
+        }
         if (!changed) {
             return new AliasCorrection(entries, displaySources);
         }
@@ -243,25 +264,39 @@ public final class WorkspaceStorageIndex {
     }
 
     private static Map<WorldDisplayStorageSource.AliasedBlock, List<String>> storageIdsByAliasedBlock(
-            ClaimedChestMap claimedChestMap
+            ClaimedChestMap claimedChestMap,
+            List<WorldDisplayStorageSource> displaySources
     ) {
-        if (claimedChestMap == null || claimedChestMap.chests().isEmpty()) {
-            return Map.of();
-        }
         LinkedHashMap<WorldDisplayStorageSource.AliasedBlock, ArrayList<String>> ids = new LinkedHashMap<>();
-        for (ClaimedChest chest : claimedChestMap.chests()) {
-            if (chest == null || !chest.role().visibleToWorkspace()) {
-                continue;
+        if (claimedChestMap != null && !claimedChestMap.chests().isEmpty()) {
+            for (ClaimedChest chest : claimedChestMap.chests()) {
+                if (chest == null || !chest.role().visibleToWorkspace()) {
+                    continue;
+                }
+                String storageId = chest.storageId().toString();
+                for (ChestAnchor anchor : chest.anchors()) {
+                    if (anchor == null || anchor.dimensionId().isBlank()) {
+                        continue;
+                    }
+                    WorldDisplayStorageSource.AliasedBlock block =
+                            new WorldDisplayStorageSource.AliasedBlock(
+                                    anchor.dimensionId(), anchor.x(), anchor.y(), anchor.z());
+                    ids.computeIfAbsent(block, ignored -> new ArrayList<>()).add(storageId);
+                }
             }
-            String storageId = chest.storageId().toString();
-            for (ChestAnchor anchor : chest.anchors()) {
-                if (anchor == null || anchor.dimensionId().isBlank()) {
+        }
+        if (displaySources != null) {
+            for (WorldDisplayStorageSource source : displaySources) {
+                if (source == null
+                        || source.kind() != dev.imagio.slot.inventory.storage.WorldDisplayStorageKind.AE2_NETWORK
+                        || source.dimensionId().isBlank()
+                        || source.storageId().isBlank()) {
                     continue;
                 }
                 WorldDisplayStorageSource.AliasedBlock block =
                         new WorldDisplayStorageSource.AliasedBlock(
-                                anchor.dimensionId(), anchor.x(), anchor.y(), anchor.z());
-                ids.computeIfAbsent(block, ignored -> new ArrayList<>()).add(storageId);
+                                source.dimensionId(), source.x(), source.y(), source.z());
+                ids.computeIfAbsent(block, ignored -> new ArrayList<>()).add(source.storageId());
             }
         }
         if (ids.isEmpty()) {
@@ -275,9 +310,15 @@ public final class WorkspaceStorageIndex {
     }
 
     private static Map<ItemIdentity, Integer> aliasedCounts(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            WorkspaceStorageMemoryStore memory,
+            long tick,
+            String sourceStorageId,
             List<WorldDisplayStorageSource.AliasedBlock> aliases,
             Map<WorldDisplayStorageSource.AliasedBlock, List<String>> storageIdsByBlock,
-            Map<String, StorageEntry> entries
+            Map<String, StorageEntry> entries,
+            ClaimedChestMap claimedChestMap
     ) {
         if (aliases == null || aliases.isEmpty() || storageIdsByBlock.isEmpty() || entries == null) {
             return Map.of();
@@ -288,18 +329,105 @@ public final class WorkspaceStorageIndex {
             if (alias == null) {
                 continue;
             }
-            for (String storageId : storageIdsByBlock.getOrDefault(alias, List.of())) {
-                if (storageId == null || storageId.isBlank() || !seenStorageIds.add(storageId)) {
+            List<String> mappedStorageIds = storageIdsByBlock.getOrDefault(alias, List.of());
+            List<String> displayStorageIds = mappedStorageIds.stream()
+                    .filter(id -> id != null
+                            && !id.equals(sourceStorageId)
+                            && entries.get(id) != null
+                            && entries.get(id).target() != null
+                            && entries.get(id).target().displayTarget())
+                    .toList();
+            if (displayStorageIds.size() > 1) {
+                SlotCommon.LOGGER.warn(
+                        "[SLOT] AE2 alias {} maps to multiple display storages {}; skipping display alias correction",
+                        alias,
+                        displayStorageIds);
+            }
+            for (String storageId : mappedStorageIds) {
+                if (storageId == null
+                        || storageId.isBlank()
+                        || storageId.equals(sourceStorageId)
+                        || !seenStorageIds.add(storageId)) {
                     continue;
                 }
                 StorageEntry entry = entries.get(storageId);
-                if (entry == null || !entry.live() || entry.target() == null || entry.target().displayTarget()) {
+                if (entry != null
+                        && entry.target() != null
+                        && entry.target().displayTarget()
+                        && displayStorageIds.size() != 1) {
                     continue;
                 }
-                mergeCounts(counts, entry.countsByIdentity());
+                StorageEntry readableEntry = aliasReadableEntry(
+                        server,
+                        worldStorage,
+                        memory,
+                        tick,
+                        claimedChestMap,
+                        storageId,
+                        entry);
+                if (readableEntry == null || readableEntry.target() == null) {
+                    continue;
+                }
+                if (readableEntry != entry) {
+                    entries.put(storageId, readableEntry);
+                }
+                if (readableEntry != entry && readableEntry.countsByIdentity().isEmpty()) {
+                    continue;
+                }
+                mergeCounts(counts, readableEntry.countsByIdentity());
             }
         }
         return counts.isEmpty() ? Map.of() : Map.copyOf(counts);
+    }
+
+    private static StorageEntry aliasReadableEntry(
+            MinecraftServer server,
+            WorldStorageAccess worldStorage,
+            WorkspaceStorageMemoryStore memory,
+            long tick,
+            ClaimedChestMap claimedChestMap,
+            String storageId,
+            StorageEntry current
+    ) {
+        if (current != null
+                && current.target() != null
+                && !current.target().displayTarget()
+                && !current.countsByIdentity().isEmpty()) {
+            return current;
+        }
+        ClaimedChest chest = claimedChest(claimedChestMap, storageId);
+        if (chest == null || worldStorage == null) {
+            return current;
+        }
+        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+        try {
+            if (!worldStorage.isAccessible(server, target)) {
+                return current;
+            }
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = readSnapshot(server, worldStorage, target);
+            StorageTargetRef ref = StorageTargetRef.claimed(chest, true, current != null && current.remembered(), false);
+            if (memory != null) {
+                memory.observeSnapshot(ref, snapshot, tick, "workspace_index_ae2_alias_read", false);
+            }
+            return new StorageEntry(ref, snapshot, countsFromSnapshot(snapshot), false, true);
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn(
+                    "[SLOT] AE2 alias storage read failed for {}: {}",
+                    storageId,
+                    safeMessage(exception));
+            return current;
+        }
+    }
+
+    private static ClaimedChest claimedChest(ClaimedChestMap map, String storageId) {
+        if (map == null || storageId == null || storageId.isBlank()) {
+            return null;
+        }
+        try {
+            return map.chest(UUID.fromString(storageId));
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
     }
 
     private static StorageEntry subtractAliasedCounts(
@@ -408,7 +536,46 @@ public final class WorkspaceStorageIndex {
                 source.z(),
                 source.slotCount(),
                 contents,
-                source.aliasedBlocks());
+                source.aliasedBlocks(),
+                source.mediaIds(),
+                source.mediaObservations(),
+                source.target());
+    }
+
+    static void rememberDisplaySources(
+            WorkspaceStorageMemoryStore memory,
+            long tick,
+            Map<String, StorageEntry> entries,
+            List<WorldDisplayStorageSource> displaySources,
+            String sourceName
+    ) {
+        if (memory == null || displaySources == null || displaySources.isEmpty()) {
+            return;
+        }
+        for (WorldDisplayStorageSource source : displaySources) {
+            if (source == null || source.storageId().isBlank()) {
+                continue;
+            }
+            if (!source.mediaObservations().isEmpty()) {
+                memory.observeMediaObservations(source.mediaObservations(), tick, sourceName, false);
+            }
+            if (!source.trackedStorage()) {
+                continue;
+            }
+            StorageEntry entry = entries == null ? null : entries.get(source.storageId());
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot = entry == null
+                    ? snapshotFromDisplay(source)
+                    : entry.snapshot();
+            StorageTargetRef ref = entry == null
+                    ? StorageTargetRef.display(source, false, true)
+                    : entry.target();
+            memory.observe(RememberedStorageContents.fromSourceSnapshot(
+                    ref,
+                    snapshot,
+                    source,
+                    tick,
+                    sourceName), false);
+        }
     }
 
     private static StorageEntry liveClaimedEntry(
@@ -528,6 +695,37 @@ public final class WorkspaceStorageIndex {
                 true);
     }
 
+    static StorageTargetRef displaySourceRef(
+            WorldDisplayStorageSource source,
+            Map<String, RememberedStorageContents> rememberedById,
+            boolean remembered,
+            boolean proximate
+    ) {
+        StorageTargetRef ref = StorageTargetRef.display(source, remembered, proximate);
+        if (ref == null || source == null || !ref.ae2Network()
+                || !(source.target() instanceof WorldStorageAccess.Target.Virtual virtual)
+                || !"open_terminal".equals(virtual.routeKind())) {
+            return ref;
+        }
+        RememberedStorageContents previous = rememberedById == null ? null : rememberedById.get(source.storageId());
+        if (previous == null || previous.dimensionId().isBlank()) {
+            return ref;
+        }
+        return new StorageTargetRef(
+                ref.storageId(),
+                ref.targetKind(),
+                ref.label(),
+                previous.dimensionId(),
+                previous.x(),
+                previous.y(),
+                previous.z(),
+                ref.liveReadable(),
+                ref.depositTarget(),
+                ref.takeTarget(),
+                ref.remembered(),
+                ref.proximate());
+    }
+
     static SlotWorkspaceViewModel.ChestContentsSnapshot snapshotFromDisplay(WorldDisplayStorageSource source) {
         ArrayList<ItemStack> stacks = new ArrayList<>();
         ArrayList<Integer> indices = new ArrayList<>();
@@ -591,7 +789,20 @@ public final class WorkspaceStorageIndex {
             if (entry == null || entry.target() == null || !entry.target().displayTarget()) {
                 continue;
             }
-            if (entry.target().displayKind() != null && entry.target().displayKind().trackedStorage()) {
+            if (entry.target().trackedWorldStorage()) {
+                out.add(entry);
+            }
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    public List<StorageEntry> liveDisplayEntries() {
+        ArrayList<StorageEntry> out = new ArrayList<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry == null || !entry.live() || entry.target() == null || !entry.target().displayTarget()) {
+                continue;
+            }
+            if (entry.target().displayKind() != null) {
                 out.add(entry);
             }
         }
@@ -786,6 +997,16 @@ public final class WorkspaceStorageIndex {
     static boolean isTrackedDisplayMemory(RememberedStorageContents remembered) {
         if (remembered == null) {
             return false;
+        }
+        return isTrackedStorageMemory(remembered);
+    }
+
+    static boolean isTrackedStorageMemory(RememberedStorageContents remembered) {
+        if (remembered == null) {
+            return false;
+        }
+        if (StorageTargetRef.KIND_AE2_NETWORK.equals(remembered.targetKind())) {
+            return true;
         }
         if (!remembered.targetKind().startsWith(StorageTargetRef.KIND_DISPLAY_PREFIX)) {
             return false;

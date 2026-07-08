@@ -2,11 +2,13 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +29,10 @@ public record RememberedStorageContents(
         int z,
         int slotCapacity,
         Map<ItemIdentity, Integer> countsByIdentity,
+        String providerId,
+        List<String> mediaIds,
+        List<WorldDisplayStorageSource.AliasedBlock> aliasedBlocks,
+        boolean routeReachable,
         long lastObservedTick,
         String source
 ) {
@@ -41,6 +47,10 @@ public record RememberedStorageContents(
         dimensionId = dimensionId == null ? "" : dimensionId;
         slotCapacity = Math.max(0, slotCapacity);
         countsByIdentity = normalizeCounts(countsByIdentity);
+        providerId = providerId == null ? "" : providerId;
+        mediaIds = normalizeMediaIds(mediaIds);
+        aliasedBlocks = normalizeAliasedBlocks(aliasedBlocks);
+        routeReachable = !StorageTargetRef.KIND_AE2_NETWORK.equals(targetKind) || routeReachable;
         lastObservedTick = Math.max(0L, lastObservedTick);
         source = source == null ? "" : source;
     }
@@ -69,6 +79,23 @@ public record RememberedStorageContents(
             }
         }
         return fromCounts(target, slotCapacity, counts, observedTick, source);
+    }
+
+    public static RememberedStorageContents fromSourceSnapshot(
+            StorageTargetRef target,
+            SlotWorkspaceViewModel.ChestContentsSnapshot snapshot,
+            WorldDisplayStorageSource source,
+            long observedTick,
+            String eventSource
+    ) {
+        RememberedStorageContents remembered = fromSnapshot(target, snapshot, observedTick, eventSource);
+        if (remembered == null || source == null) {
+            return remembered;
+        }
+        String providerId = source.target() instanceof WorldStorageAccess.Target.Virtual virtual
+                ? virtual.providerId()
+                : "";
+        return remembered.withVirtualMetadata(providerId, source.mediaIds(), source.aliasedBlocks());
     }
 
     public static RememberedStorageContents fromSnapshot(
@@ -126,7 +153,53 @@ public record RememberedStorageContents(
                 target.z(),
                 slotCapacity,
                 counts,
+                "",
+                List.of(),
+                List.of(),
+                routeReachableFor(target),
                 observedTick,
+                source);
+    }
+
+    public RememberedStorageContents withVirtualMetadata(
+            String providerId,
+            List<String> mediaIds,
+            List<WorldDisplayStorageSource.AliasedBlock> aliasedBlocks
+    ) {
+        return new RememberedStorageContents(
+                storageId,
+                targetKind,
+                label,
+                dimensionId,
+                x,
+                y,
+                z,
+                slotCapacity,
+                countsByIdentity,
+                providerId,
+                mediaIds,
+                aliasedBlocks,
+                routeReachable,
+                lastObservedTick,
+                source);
+    }
+
+    public RememberedStorageContents withRouteReachable(boolean routeReachable) {
+        return new RememberedStorageContents(
+                storageId,
+                targetKind,
+                label,
+                dimensionId,
+                x,
+                y,
+                z,
+                slotCapacity,
+                countsByIdentity,
+                providerId,
+                mediaIds,
+                aliasedBlocks,
+                routeReachable,
+                lastObservedTick,
                 source);
     }
 
@@ -140,21 +213,26 @@ public record RememberedStorageContents(
                 && y == other.y
                 && z == other.z
                 && slotCapacity == other.slotCapacity
-                && countsByIdentity.equals(other.countsByIdentity);
+                && countsByIdentity.equals(other.countsByIdentity)
+                && providerId.equals(other.providerId)
+                && mediaIds.equals(other.mediaIds)
+                && aliasedBlocks.equals(other.aliasedBlocks)
+                && routeReachable == other.routeReachable;
     }
 
     public StorageTargetRef targetRef(boolean liveReadable, boolean proximate) {
+        boolean reachable = !StorageTargetRef.KIND_AE2_NETWORK.equals(targetKind) || routeReachable;
         return new StorageTargetRef(
                 storageId,
                 targetKind,
                 label,
-                dimensionId,
-                x,
-                y,
-                z,
+                reachable ? dimensionId : "",
+                reachable ? x : 0,
+                reachable ? y : 0,
+                reachable ? z : 0,
                 liveReadable,
-                depositCapability(),
-                true,
+                reachable && depositCapability(),
+                reachable,
                 true,
                 proximate);
     }
@@ -192,6 +270,9 @@ public record RememberedStorageContents(
         if (StorageTargetRef.KIND_CLAIMED_CHEST.equals(targetKind)) {
             return true;
         }
+        if (StorageTargetRef.KIND_AE2_NETWORK.equals(targetKind)) {
+            return true;
+        }
         if (!targetKind.startsWith(StorageTargetRef.KIND_DISPLAY_PREFIX)) {
             return false;
         }
@@ -216,5 +297,40 @@ public record RememberedStorageContents(
             }
         }
         return Map.copyOf(normalized);
+    }
+
+    private static List<String> normalizeMediaIds(List<String> source) {
+        if (source == null || source.isEmpty()) {
+            return List.of();
+        }
+        LinkedHashSet<String> ids = new LinkedHashSet<>();
+        for (String mediaId : source) {
+            if (mediaId != null && !mediaId.isBlank()) {
+                ids.add(mediaId);
+            }
+        }
+        return ids.isEmpty() ? List.of() : List.copyOf(ids);
+    }
+
+    private static List<WorldDisplayStorageSource.AliasedBlock> normalizeAliasedBlocks(
+            List<WorldDisplayStorageSource.AliasedBlock> source
+    ) {
+        if (source == null || source.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<WorldDisplayStorageSource.AliasedBlock> aliases = new ArrayList<>();
+        for (WorldDisplayStorageSource.AliasedBlock alias : source) {
+            if (alias != null && !alias.dimensionId().isBlank()) {
+                aliases.add(alias);
+            }
+        }
+        return aliases.isEmpty() ? List.of() : List.copyOf(aliases);
+    }
+
+    private static boolean routeReachableFor(StorageTargetRef target) {
+        if (target == null || !target.ae2Network()) {
+            return true;
+        }
+        return !target.dimensionId().isBlank();
     }
 }

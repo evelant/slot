@@ -21,8 +21,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -41,6 +43,7 @@ public final class WorkspaceStorageMemoryStore {
     private boolean dirty;
     private long revision;
     private LinkedHashMap<String, RememberedStorageContents> contentsByStorageId = new LinkedHashMap<>();
+    private LinkedHashMap<String, Ae2MediaRecord> ae2MediaById = new LinkedHashMap<>();
 
     public WorkspaceStorageMemoryStore(Path statePath) {
         this.statePath = statePath;
@@ -90,6 +93,11 @@ public final class WorkspaceStorageMemoryStore {
         return Map.copyOf(contentsByStorageId);
     }
 
+    public synchronized Map<String, Ae2MediaRecord> ae2MediaLedger() {
+        ensureLoaded();
+        return Map.copyOf(ae2MediaById);
+    }
+
     public synchronized boolean observe(
             StorageTargetRef target,
             int slotCapacity,
@@ -135,14 +143,67 @@ public final class WorkspaceStorageMemoryStore {
         if (remembered == null) {
             return false;
         }
+        int retired = retireOverlappingVirtualRecords(remembered);
+        int demoted = demoteRouteConflicts(remembered);
         RememberedStorageContents previous = contentsByStorageId.get(remembered.storageId());
-        if (remembered.sameObservation(previous)) {
+        if (retired == 0 && demoted == 0 && remembered.sameObservation(previous)) {
             if (persist) {
                 flush();
             }
             return false;
         }
         contentsByStorageId.put(remembered.storageId(), remembered);
+        revision++;
+        if (persist) {
+            save();
+            dirty = false;
+        } else {
+            dirty = true;
+        }
+        return true;
+    }
+
+    public synchronized boolean observeMediaObservations(
+            List<WorldDisplayStorageSource.MediaObservation> observations,
+            long tick,
+            String source
+    ) {
+        return observeMediaObservations(observations, tick, source, true);
+    }
+
+    synchronized boolean observeMediaObservations(
+            List<WorldDisplayStorageSource.MediaObservation> observations,
+            long tick,
+            String source,
+            boolean persist
+    ) {
+        ensureLoaded();
+        if (observations == null || observations.isEmpty()) {
+            return false;
+        }
+        boolean changed = false;
+        LinkedHashSet<String> itemCountRemovals = new LinkedHashSet<>();
+        for (WorldDisplayStorageSource.MediaObservation observation : observations) {
+            if (observation == null || observation.mediaId().isBlank()) {
+                continue;
+            }
+            Ae2MediaRecord record = Ae2MediaRecord.fromObservation(observation, tick, source);
+            Ae2MediaRecord previous = ae2MediaById.get(record.mediaId());
+            if (!record.sameState(previous)) {
+                ae2MediaById.put(record.mediaId(), record);
+                changed = true;
+            }
+            if (observation.removesItemCounts()) {
+                itemCountRemovals.add(observation.mediaId());
+            }
+        }
+        int retired = retireRecordsContainingMedia(itemCountRemovals);
+        if (!changed && retired == 0) {
+            if (persist) {
+                flush();
+            }
+            return false;
+        }
         revision++;
         if (persist) {
             save();
@@ -161,6 +222,24 @@ public final class WorkspaceStorageMemoryStore {
         if (contentsByStorageId.remove(storageId) == null) {
             return false;
         }
+        revision++;
+        save();
+        dirty = false;
+        return true;
+    }
+
+    synchronized boolean demoteRoute(String storageId) {
+        ensureLoaded();
+        if (storageId == null || storageId.isBlank()) {
+            return false;
+        }
+        RememberedStorageContents remembered = contentsByStorageId.get(storageId);
+        if (remembered == null
+                || !StorageTargetRef.KIND_AE2_NETWORK.equals(remembered.targetKind())
+                || !remembered.routeReachable()) {
+            return false;
+        }
+        contentsByStorageId.put(storageId, remembered.withRouteReachable(false));
         revision++;
         save();
         dirty = false;
@@ -216,6 +295,34 @@ public final class WorkspaceStorageMemoryStore {
             StorageTargetRef ref = StorageTargetRef.claimed(chest, true, false, true);
             return observeLiveTarget(store, server, worldStorage, ref, target, tick, source);
         } catch (IllegalArgumentException ignored) {
+            RememberedStorageContents remembered = store.remembered(storageId);
+            if (remembered != null && StorageTargetRef.KIND_AE2_NETWORK.equals(remembered.targetKind())) {
+                WorldStorageAccess.Target target = new WorldStorageAccess.Target.Virtual(
+                        remembered.providerId(),
+                        remembered.storageId(),
+                        "terminal",
+                        remembered.dimensionId(),
+                        remembered.x(),
+                        remembered.y(),
+                        remembered.z());
+                if (!worldStorage.isAccessible(server, target)) {
+                    return store.demoteRoute(storageId);
+                }
+                StorageTargetRef ref = remembered.withRouteReachable(true).targetRef(true, false);
+                int slots = Math.max(0, worldStorage.slotCount(server, target));
+                List<WorldStorageAccess.SlotContent> contents = worldStorage.enumerate(server, target);
+                RememberedStorageContents updated = RememberedStorageContents.fromContents(
+                                ref,
+                                slots,
+                                contents,
+                                tick,
+                                source)
+                        .withVirtualMetadata(
+                                remembered.providerId(),
+                                remembered.mediaIds(),
+                                remembered.aliasedBlocks());
+                return store.observe(updated);
+            }
             return WorldDisplayStorageSource.targetFromStorageId(storageId)
                     .map(target -> {
                         if (!worldStorage.isAccessible(server, target)) {
@@ -284,10 +391,12 @@ public final class WorkspaceStorageMemoryStore {
             }
             revision = Math.max(0L, state.revision);
             contentsByStorageId = decodeContents(state.contents);
+            ae2MediaById = decodeAe2Media(state.ae2Media);
         } catch (IOException | RuntimeException exception) {
             SlotCommon.LOGGER.warn("Failed to load SLOT storage memory from {}", statePath, exception);
             revision = 0L;
             contentsByStorageId = new LinkedHashMap<>();
+            ae2MediaById = new LinkedHashMap<>();
         }
     }
 
@@ -308,6 +417,7 @@ public final class WorkspaceStorageMemoryStore {
         state.version = SCHEMA_VERSION;
         state.revision = revision;
         state.contents = encodeContents(contentsByStorageId.values());
+        state.ae2Media = encodeAe2Media(ae2MediaById.values());
         try {
             if (statePath.getParent() != null) {
                 Files.createDirectories(statePath.getParent());
@@ -343,6 +453,10 @@ public final class WorkspaceStorageMemoryStore {
                     record.z(),
                     record.slotCapacity(),
                     counts,
+                    record.providerId(),
+                    record.mediaIds(),
+                    aliases(record.aliasedBlocks()),
+                    record.routeReachable(),
                     record.lastObservedTick(),
                     record.source()));
         }
@@ -380,6 +494,10 @@ public final class WorkspaceStorageMemoryStore {
                     raw.z,
                     raw.slotCapacity,
                     counts,
+                    raw.providerId,
+                    raw.mediaIds,
+                    decodeAliases(raw.aliasedBlocks),
+                    raw.routeReachable == null || raw.routeReachable,
                     raw.lastObservedTick,
                     raw.source);
             out.put(remembered.storageId(), remembered);
@@ -387,10 +505,186 @@ public final class WorkspaceStorageMemoryStore {
         return out;
     }
 
+    private static List<MediaData> encodeAe2Media(Collection<Ae2MediaRecord> records) {
+        if (records == null || records.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<MediaData> out = new ArrayList<>();
+        for (Ae2MediaRecord record : records) {
+            if (record == null || record.mediaId().isBlank()) {
+                continue;
+            }
+            ArrayList<CountData> counts = new ArrayList<>();
+            record.countsByIdentity().entrySet().stream()
+                    .sorted(Comparator.comparing(entry -> entry.getKey().itemId()))
+                    .forEach(entry -> counts.add(new CountData(identity(entry.getKey()), entry.getValue())));
+            out.add(new MediaData(
+                    record.mediaId(),
+                    record.status(),
+                    record.holderKind(),
+                    record.dimensionId(),
+                    record.x(),
+                    record.y(),
+                    record.z(),
+                    counts,
+                    record.fingerprint(),
+                    record.lastObservedTick(),
+                    record.source()));
+        }
+        out.sort(Comparator.comparing(MediaData::mediaId));
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    private static LinkedHashMap<String, Ae2MediaRecord> decodeAe2Media(List<MediaData> data) {
+        LinkedHashMap<String, Ae2MediaRecord> out = new LinkedHashMap<>();
+        if (data == null || data.isEmpty()) {
+            return out;
+        }
+        for (MediaData raw : data) {
+            if (raw == null || raw.mediaId == null || raw.mediaId.isBlank()) {
+                continue;
+            }
+            LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>();
+            if (raw.counts != null) {
+                for (CountData count : raw.counts) {
+                    ItemIdentity identity = decodeIdentity(count == null ? null : count.identity);
+                    if (identity != null && count.count > 0) {
+                        counts.merge(identity, count.count, Integer::sum);
+                    }
+                }
+            }
+            Ae2MediaRecord record = new Ae2MediaRecord(
+                    raw.mediaId,
+                    raw.status,
+                    raw.holderKind,
+                    raw.dimensionId,
+                    raw.x,
+                    raw.y,
+                    raw.z,
+                    counts,
+                    raw.fingerprint,
+                    raw.lastObservedTick,
+                    raw.source);
+            out.put(record.mediaId(), record);
+        }
+        return out;
+    }
+
+    private int retireOverlappingVirtualRecords(RememberedStorageContents remembered) {
+        if (remembered == null
+                || remembered.providerId().isBlank()
+                || remembered.mediaIds().isEmpty()) {
+            return 0;
+        }
+        Set<String> mediaIds = new LinkedHashSet<>(remembered.mediaIds());
+        ArrayList<String> retire = new ArrayList<>();
+        for (RememberedStorageContents existing : contentsByStorageId.values()) {
+            if (existing == null
+                    || remembered.storageId().equals(existing.storageId())
+                    || !remembered.providerId().equals(existing.providerId())
+                    || existing.mediaIds().isEmpty()) {
+                continue;
+            }
+            for (String mediaId : existing.mediaIds()) {
+                if (mediaIds.contains(mediaId)) {
+                    retire.add(existing.storageId());
+                    break;
+                }
+            }
+        }
+        for (String storageId : retire) {
+            contentsByStorageId.remove(storageId);
+        }
+        return retire.size();
+    }
+
+    private int retireRecordsContainingMedia(Set<String> mediaIds) {
+        if (mediaIds == null || mediaIds.isEmpty()) {
+            return 0;
+        }
+        ArrayList<String> retire = new ArrayList<>();
+        for (RememberedStorageContents existing : contentsByStorageId.values()) {
+            if (existing == null
+                    || !StorageTargetRef.KIND_AE2_NETWORK.equals(existing.targetKind())
+                    || existing.mediaIds().isEmpty()) {
+                continue;
+            }
+            for (String mediaId : existing.mediaIds()) {
+                if (mediaIds.contains(mediaId)) {
+                    retire.add(existing.storageId());
+                    break;
+                }
+            }
+        }
+        for (String storageId : retire) {
+            contentsByStorageId.remove(storageId);
+        }
+        return retire.size();
+    }
+
+    private int demoteRouteConflicts(RememberedStorageContents remembered) {
+        if (remembered == null
+                || !StorageTargetRef.KIND_AE2_NETWORK.equals(remembered.targetKind())
+                || remembered.providerId().isBlank()
+                || remembered.dimensionId().isBlank()) {
+            return 0;
+        }
+        int demoted = 0;
+        for (Map.Entry<String, RememberedStorageContents> entry : contentsByStorageId.entrySet()) {
+            RememberedStorageContents existing = entry.getValue();
+            if (existing == null
+                    || remembered.storageId().equals(existing.storageId())
+                    || !StorageTargetRef.KIND_AE2_NETWORK.equals(existing.targetKind())
+                    || !remembered.providerId().equals(existing.providerId())
+                    || !existing.routeReachable()
+                    || !sameRoute(remembered, existing)) {
+                continue;
+            }
+            entry.setValue(existing.withRouteReachable(false));
+            demoted++;
+        }
+        return demoted;
+    }
+
+    private static boolean sameRoute(RememberedStorageContents left, RememberedStorageContents right) {
+        return left != null
+                && right != null
+                && left.dimensionId().equals(right.dimensionId())
+                && left.x() == right.x()
+                && left.y() == right.y()
+                && left.z() == right.z();
+    }
+
     private static IdentityData identity(ItemIdentity identity) {
         return identity == null
                 ? null
                 : new IdentityData(identity.itemId(), identity.comparisonMode().name(), identity.componentFingerprint());
+    }
+
+    private static List<AliasData> aliases(List<WorldDisplayStorageSource.AliasedBlock> aliases) {
+        if (aliases == null || aliases.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<AliasData> out = new ArrayList<>();
+        for (WorldDisplayStorageSource.AliasedBlock alias : aliases) {
+            if (alias != null && !alias.dimensionId().isBlank()) {
+                out.add(new AliasData(alias.dimensionId(), alias.x(), alias.y(), alias.z()));
+            }
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    private static List<WorldDisplayStorageSource.AliasedBlock> decodeAliases(List<AliasData> aliases) {
+        if (aliases == null || aliases.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<WorldDisplayStorageSource.AliasedBlock> out = new ArrayList<>();
+        for (AliasData alias : aliases) {
+            if (alias != null && alias.dimensionId != null && !alias.dimensionId.isBlank()) {
+                out.add(new WorldDisplayStorageSource.AliasedBlock(alias.dimensionId, alias.x, alias.y, alias.z));
+            }
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
     }
 
     private static ItemIdentity decodeIdentity(IdentityData data) {
@@ -412,6 +706,7 @@ public final class WorkspaceStorageMemoryStore {
         int version;
         long revision;
         List<RememberedStorageData> contents = List.of();
+        List<MediaData> ae2Media = List.of();
     }
 
     private record RememberedStorageData(
@@ -424,12 +719,129 @@ public final class WorkspaceStorageMemoryStore {
             int z,
             int slotCapacity,
             List<CountData> counts,
+            String providerId,
+            List<String> mediaIds,
+            List<AliasData> aliasedBlocks,
+            Boolean routeReachable,
+            long lastObservedTick,
+            String source
+    ) {
+    }
+
+    public record Ae2MediaRecord(
+            String mediaId,
+            String status,
+            String holderKind,
+            String dimensionId,
+            int x,
+            int y,
+            int z,
+            Map<ItemIdentity, Integer> countsByIdentity,
+            String fingerprint,
+            long lastObservedTick,
+            String source
+    ) {
+        public Ae2MediaRecord {
+            mediaId = mediaId == null ? "" : mediaId;
+            status = status == null || status.isBlank()
+                    ? WorldDisplayStorageSource.MediaObservation.STATUS_UNREADABLE
+                    : status;
+            holderKind = holderKind == null ? "" : holderKind;
+            dimensionId = dimensionId == null ? "" : dimensionId;
+            countsByIdentity = normalizeMediaCounts(countsByIdentity);
+            fingerprint = fingerprint == null || fingerprint.isBlank()
+                    ? fingerprint(countsByIdentity)
+                    : fingerprint;
+            lastObservedTick = Math.max(0L, lastObservedTick);
+            source = source == null ? "" : source;
+        }
+
+        static Ae2MediaRecord fromObservation(
+                WorldDisplayStorageSource.MediaObservation observation,
+                long tick,
+                String source
+        ) {
+            return new Ae2MediaRecord(
+                    observation.mediaId(),
+                    observation.status(),
+                    observation.holderKind(),
+                    observation.dimensionId(),
+                    observation.x(),
+                    observation.y(),
+                    observation.z(),
+                    observation.countsByIdentity(),
+                    fingerprint(observation.countsByIdentity()),
+                    tick,
+                    source);
+        }
+
+        boolean sameState(Ae2MediaRecord other) {
+            return other != null
+                    && mediaId.equals(other.mediaId)
+                    && status.equals(other.status)
+                    && holderKind.equals(other.holderKind)
+                    && dimensionId.equals(other.dimensionId)
+                    && x == other.x
+                    && y == other.y
+                    && z == other.z
+                    && countsByIdentity.equals(other.countsByIdentity)
+                    && fingerprint.equals(other.fingerprint);
+        }
+
+        private static Map<ItemIdentity, Integer> normalizeMediaCounts(Map<ItemIdentity, Integer> source) {
+            if (source == null || source.isEmpty()) {
+                return Map.of();
+            }
+            LinkedHashMap<ItemIdentity, Integer> normalized = new LinkedHashMap<>();
+            for (Map.Entry<ItemIdentity, Integer> entry : source.entrySet()) {
+                if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0) {
+                    normalized.merge(entry.getKey(), entry.getValue(), Integer::sum);
+                }
+            }
+            return normalized.isEmpty() ? Map.of() : Map.copyOf(normalized);
+        }
+
+        private static String fingerprint(Map<ItemIdentity, Integer> counts) {
+            if (counts == null || counts.isEmpty()) {
+                return "";
+            }
+            ArrayList<String> parts = new ArrayList<>();
+            for (Map.Entry<ItemIdentity, Integer> entry : counts.entrySet()) {
+                if (entry.getKey() == null || entry.getValue() == null || entry.getValue() <= 0) {
+                    continue;
+                }
+                parts.add(entry.getKey().comparisonMode().name()
+                        + ':'
+                        + entry.getKey().itemId()
+                        + ':'
+                        + entry.getKey().componentFingerprint()
+                        + '='
+                        + entry.getValue());
+            }
+            parts.sort(String::compareTo);
+            return String.join("|", parts);
+        }
+    }
+
+    private record MediaData(
+            String mediaId,
+            String status,
+            String holderKind,
+            String dimensionId,
+            int x,
+            int y,
+            int z,
+            List<CountData> counts,
+            String fingerprint,
             long lastObservedTick,
             String source
     ) {
     }
 
     private record CountData(IdentityData identity, int count) {
+    }
+
+    private record AliasData(String dimensionId, int x, int y, int z) {
     }
 
     private record IdentityData(String itemId, String comparisonMode, String componentFingerprint) {

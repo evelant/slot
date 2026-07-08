@@ -10,7 +10,8 @@ import java.util.Locale;
 public enum WorldDisplayStorageKind {
     TOOL_RACK("tool_rack", true, true),
     PLACED_ITEM("placed_item", false, true),
-    AE2_TERMINAL("ae2_terminal", true, false);
+    AE2_TERMINAL("ae2_terminal", true, false),
+    AE2_NETWORK("ae2_network", true, true);
 
     private final String key;
     private final boolean depositTarget;

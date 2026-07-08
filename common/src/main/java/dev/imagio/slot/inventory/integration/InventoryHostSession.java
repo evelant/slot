@@ -11,6 +11,8 @@ import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
 import dev.imagio.slot.inventory.query.InventoryEntryKey;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
+import net.minecraft.server.level.ServerPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +108,13 @@ public interface InventoryHostSession {
 
     default String diagnostics() {
         return "";
+    }
+
+    default List<WorldDisplayStorageSource> observedWorldStorageSources(
+            ServerPlayer player,
+            InventoryHostDescriptor host
+    ) {
+        return List.of();
     }
 
     static InventoryHostSession empty() {

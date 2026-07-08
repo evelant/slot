@@ -348,6 +348,73 @@ class WayfindingTargetTest {
     }
 
     @Test
+    void wantedItemInLiveAe2NetworkCreatesTerminalWayfindingTarget() {
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.AE2_TERMINAL,
+                "ME network @ 6,64,0",
+                "minecraft:overworld",
+                6,
+                64,
+                0,
+                1,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        stack("minecraft:redstone", 64),
+                        10_000)));
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                ClaimedChestMap.empty(),
+                null,
+                Set.of(source.storageId()),
+                List.of(source),
+                Map.of());
+        WorkflowDomainSnapshot snapshot = workflow(
+                Map.of(),
+                Map.of(REDSTONE, 16),
+                noKit(),
+                Map.of(),
+                ClaimedChestMap.empty());
+
+        SlotWorkspaceViewModel projected = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                snapshot,
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                index.contentsResolver(),
+                Set.of(source.storageId()),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                index.displaySources(),
+                Set.of(source.storageId()),
+                index.displaySources(),
+                index.liveDisplayEntries());
+
+        assertEquals(1, projected.wayfindingTargets().size());
+        WayfindingTarget target = projected.wayfindingTargets().get(0);
+        assertEquals(source.storageId(), target.storageId());
+        assertEquals("minecraft:overworld", target.dimensionId());
+        assertEquals(6, target.worldX());
+        assertEquals(64, target.worldY());
+        assertEquals(0, target.worldZ());
+        assertEquals(WayfindingTarget.Scope.WANTED, target.scope());
+        assertTrue(target.wantedMissingIdentities().contains(REDSTONE));
+        SlotWorkspaceViewModel.ChestChip chip = projected.chestChip(source.storageId());
+        assertNotNull(chip);
+        assertEquals("ME network @ 6,64,0", chip.label());
+        assertTrue(chip.proximate());
+    }
+
+    @Test
     void carriedAlreadyCoversDesiredWhenCountMet() {
         // playerDesiredCounts asks for 16 redstone; player carries 16 — no
         // target should fire (not missing).

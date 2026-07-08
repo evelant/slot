@@ -156,7 +156,7 @@ public final class WayfindingDisplay {
         return switch (kind) {
             case TOOL_RACK -> "Tool rack";
             case PLACED_ITEM -> "Placed item";
-            case AE2_TERMINAL -> "ME network";
+            case AE2_TERMINAL, AE2_NETWORK -> "ME network";
         };
     }
 

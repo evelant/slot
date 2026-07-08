@@ -190,6 +190,9 @@ Decisions (ADR-style):
   instead of growing SLOT-side recipe goals.
 - [docs/decisions/0008-chest-roles-and-affinity-correction.md](docs/decisions/0008-chest-roles-and-affinity-correction.md)
   — chest roles gate learned storage affinity and quick-deposit participation.
+- [docs/decisions/0009-ae2-persistent-network-storage.md](docs/decisions/0009-ae2-persistent-network-storage.md)
+  — AE2 networks are tracked by mounted storage media; terminals are access
+  routes.
 
 Research and assessments:
 

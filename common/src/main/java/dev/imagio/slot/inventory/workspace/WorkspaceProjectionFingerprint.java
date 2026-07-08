@@ -635,6 +635,9 @@ final class WorkspaceProjectionFingerprint {
             appendInt(source.slotCount());
             appendObject(source.contents());
             appendObject(source.aliasedBlocks());
+            appendObject(source.mediaIds());
+            appendObject(source.mediaObservations());
+            appendObject(source.target());
         }
 
         private void appendSlotContent(WorldStorageAccess.SlotContent content) {

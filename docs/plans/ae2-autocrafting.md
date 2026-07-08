@@ -1,15 +1,15 @@
 # AE2 Autocrafting Plan
 
-Last updated: 2026-07-06
+Last updated: 2026-07-08
 
 Status: queued planning. Do not implement as part of the AE2 storage bridge
 unless this plan is explicitly activated.
 
 ## Summary
 
-SLOT's AE2 integration currently treats a nearby active physical ME terminal,
-or an open item/crafting terminal, as item storage only. That is correct:
-stored stacks and craftable patterns are different promises.
+SLOT's AE2 integration currently treats stored ME items as persistent
+media-set storage and open/physical terminals as live access routes. That is
+correct: stored stacks and craftable patterns are different promises.
 
 This plan adds a separate AE2 autocrafting route for craft-run deficits. A
 tracked recipe may show that a missing output or ingredient is craftable by the
@@ -36,20 +36,24 @@ Near-term behavior:
 Deferred behavior:
 
 - Auto-requesting craftable deficits when a recipe is added.
-- Wireless terminals, remembered AE2 networks, pattern terminals, fluids, and
-  cross-network request routing.
+- Pattern terminals, fluids, cross-network request routing, and automatic
+  requests from remembered-but-not-live AE2 networks.
 - SLOT-owned progress/cancel UI for AE2 jobs.
 
 ## Current Baseline
 
 The landed Forge 1.20.1 AE2 bridge is item-only:
 
-- Nearby physical item/crafting terminal parts project live ME item contents as
-  `WorldDisplayStorageKind.AE2_TERMINAL`.
-- Open item/crafting terminal menus expose provider-backed `ae2:terminal`
-  storage.
+- Mounted storage-cell media defines persistent `ae2:network:<hash>` records.
+- Nearby physical item/crafting terminal parts and open item/crafting terminal
+  menus refresh the same media-set storage record when mounted media is
+  discoverable.
+- Open item/crafting terminal menus also expose provider-backed `ae2:terminal`
+  storage for terminal-screen mutations.
 - Counts come from `MEStorage.getAvailableStacks()` and only `AEItemKey`
   entries are exposed.
+- Known AE2 storage-bus aliases are subtracted from ME counts before SLOT uses
+  storage availability math.
 - Mutations use `StorageHelper.poweredInsert(...)` and
   `StorageHelper.poweredExtraction(...)` with
   `IActionSource.ofPlayer(player, actionHost)`.
@@ -168,45 +172,14 @@ Availability math must count each physical item authority at most once.
 Routes may be alternatives; they are not always independent additive stock.
 ```
 
-Near-term mitigation before autocrafting:
-
-- Add an AE2 storage-bus alias audit before using ME counts to satisfy craft-run
-  deficits or autocrafting decisions.
-- Treat AE2 terminal network counts as lower-confidence aggregate availability
-  when direct proximate storage could overlap.
-- For craft-run deficit math, prefer actual carried inventory plus direct
-  non-aliased storage. Only add ME terminal counts when either alias detection
-  says the ME network is disjoint from directly counted storage, or when no
-  direct proximate storage for that identity is being counted.
-- Keep mutation routes independent at execution time: every extract/insert must
-  still simulate against the live route immediately before mutation and tolerate
-  a smaller result if another alias already moved the item.
-
-Possible alias-detection approaches:
-
-- Detect storage buses in the nearby AE2 grid and record their target block
-  positions/dimensions, then suppress or mark matching direct world containers
-  when projecting additive availability.
-- Ask AE2 whether an item came from a specific mount/provider. AE2's public
-  storage-count API does not obviously expose per-storage-bus provenance, so
-  this may require source inspection or staying conservative.
-- Product-safe fallback: when any nearby ME network and any proximate claimed
-  chest/crate coexist, never add their counts together for deficit satisfaction;
-  show route options separately and let live mutation simulation be the arbiter.
-
-This hazard applies to normal search/gather/storage projection too, not only
-autocrafting. The autocrafting slice must not deepen the bug by treating
-storage-bussed ME counts as new stock for recipe satisfaction.
+The storage bridge now records storage-bus alias target blocks and subtracts
+loaded or remembered claimed-chest counts from ME counts. Autocrafting must use
+those corrected stored-count facts and must not re-add raw ME aggregate counts
+as independent stock. Every extract/insert still simulates against the live
+route immediately before mutation and must tolerate a smaller result if another
+alias already moved the item.
 
 ## First Slice
-
-0. **Storage-bus alias audit**
-   - Reproduce the direct chest plus ME terminal double-visibility case with an
-     AE2 storage bus attached to a chest/crate.
-   - Add a common projection test proving aliased routes do not satisfy a
-     craft-run deficit twice.
-   - Decide whether v1 implements explicit alias detection or the conservative
-     non-additive fallback.
 
 1. **Craftability discovery**
    - Extend the AE2 bridge with a read-only craftability query.

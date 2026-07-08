@@ -50,6 +50,23 @@ public interface WorldStorageAccess {
                 return WorldDisplayStorageSource.storageId(kind, dimensionId, x, y, z);
             }
         }
+
+        record Virtual(
+                String providerId,
+                String storageId,
+                String routeKind,
+                String dimensionId,
+                int x,
+                int y,
+                int z
+        ) implements Target {
+            public Virtual {
+                providerId = providerId == null ? "" : providerId;
+                storageId = storageId == null ? "" : storageId;
+                routeKind = routeKind == null ? "" : routeKind;
+                dimensionId = dimensionId == null ? "" : dimensionId;
+            }
+        }
     }
 
     /** Represents a filled slot or logical entry in a world storage, used by {@link #enumerate}. */

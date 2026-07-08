@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-07-05. Operational handoff. Read after [../README.md](../README.md).
+Last updated: 2026-07-08. Operational handoff. Read after [../README.md](../README.md).
 For active work + queue see [plans/current.md](plans/current.md); for architecture see [architecture/overview.md](architecture/overview.md).
 
 ## Active
@@ -14,9 +14,9 @@ deleted; production Forge renders direct Taffy on vanilla `Screen`, and
 Forge 1.20.1 / Java 17 with real platform adapters.
 
 Phase 1 has shared action transport, Forge runtime, session-backed projection,
-and common-service routing for metadata, transfer, hotbar, workflows, chests,
-deposit/take, cursor, gather, cross-surface actions, and Forge AE2 physical
-terminal storage. Phase 2 has the production wall shell on both loaders: shared card chrome, Recents, Belt,
+common-service routing for metadata/transfer/workflows/storage actions, and
+Forge AE2 persistent ME network storage per ADR
+[0009](decisions/0009-ae2-persistent-network-storage.md). Phase 2 has the production wall shell on both loaders: shared card chrome, Recents, Belt,
 active chest controls, workflow controls, accepted-input menus, compact nearby
 headers, remembered search/scroll, margins, Fetch/Put Away guidance, Forge key
 parity, and junk/trash pressure relief. Useful Now scoring is hidden while live
@@ -156,7 +156,8 @@ Forge 1.20 module:
   `SimpleChannel` action transport, workflow persistence, session-backed
   projection, carried/world storage accessors, guarded
   transfer/hotbar/workflow/desired/wanted/chest/cursor/gather/wayfinding
-  actions, Forge-only AE2 item/crafting terminal network storage, chest
+  actions, Forge-only AE2 media-set network storage with per-cell media
+  observations, chest
   `storage_id` break cleanup, measured shared-card badges,
   sidebar/task-panel margin config/depth fixes,
   `/slot test` and

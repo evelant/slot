@@ -1,9 +1,12 @@
 package dev.imagio.slot.inventory.storage;
 
+import dev.imagio.slot.inventory.core.ItemIdentity;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -21,7 +24,10 @@ public record WorldDisplayStorageSource(
         int z,
         int slotCount,
         List<WorldStorageAccess.SlotContent> contents,
-        List<AliasedBlock> aliasedBlocks
+        List<AliasedBlock> aliasedBlocks,
+        List<String> mediaIds,
+        List<MediaObservation> mediaObservations,
+        WorldStorageAccess.Target target
 ) {
     private static final String PREFIX = "world-display";
     private static final String SEP = "|";
@@ -40,6 +46,51 @@ public record WorldDisplayStorageSource(
         this(storageId, kind, label, dimensionId, x, y, z, slotCount, contents, List.of());
     }
 
+    public WorldDisplayStorageSource(
+            String storageId,
+            WorldDisplayStorageKind kind,
+            String label,
+            String dimensionId,
+            int x,
+            int y,
+            int z,
+            int slotCount,
+            List<WorldStorageAccess.SlotContent> contents,
+            List<AliasedBlock> aliasedBlocks
+    ) {
+        this(storageId, kind, label, dimensionId, x, y, z, slotCount, contents, aliasedBlocks, List.of(), null);
+    }
+
+    public WorldDisplayStorageSource(
+            String storageId,
+            WorldDisplayStorageKind kind,
+            String label,
+            String dimensionId,
+            int x,
+            int y,
+            int z,
+            int slotCount,
+            List<WorldStorageAccess.SlotContent> contents,
+            List<AliasedBlock> aliasedBlocks,
+            List<String> mediaIds,
+            WorldStorageAccess.Target target
+    ) {
+        this(
+                storageId,
+                kind,
+                label,
+                dimensionId,
+                x,
+                y,
+                z,
+                slotCount,
+                contents,
+                aliasedBlocks,
+                mediaIds,
+                List.of(),
+                target);
+    }
+
     public WorldDisplayStorageSource {
         if (kind == null) {
             throw new IllegalArgumentException("kind must not be null");
@@ -52,10 +103,13 @@ public record WorldDisplayStorageSource(
         slotCount = Math.max(0, slotCount);
         contents = copyContents(contents);
         aliasedBlocks = copyAliasedBlocks(aliasedBlocks);
+        mediaIds = copyMediaIds(mediaIds);
+        mediaObservations = copyMediaObservations(mediaObservations);
+        target = target == null ? new WorldStorageAccess.Target.Display(kind, dimensionId, x, y, z) : target;
     }
 
-    public WorldStorageAccess.Target.Display target() {
-        return new WorldStorageAccess.Target.Display(kind, dimensionId, x, y, z);
+    public boolean trackedStorage() {
+        return kind.trackedStorage() || target instanceof WorldStorageAccess.Target.Virtual;
     }
 
     public boolean depositTarget() {
@@ -133,14 +187,82 @@ public record WorldDisplayStorageSource(
         String base = switch (kind) {
             case TOOL_RACK -> "Tool rack";
             case PLACED_ITEM -> "Placed item";
-            case AE2_TERMINAL -> "ME network";
+            case AE2_TERMINAL, AE2_NETWORK -> "ME network";
         };
         return base + " @ " + x + "," + y + "," + z;
+    }
+
+    private static List<String> copyMediaIds(List<String> input) {
+        if (input == null || input.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<String> copied = new ArrayList<>(input.size());
+        for (String mediaId : input) {
+            if (mediaId == null || mediaId.isBlank()) {
+                continue;
+            }
+            copied.add(mediaId);
+        }
+        return copied.isEmpty() ? List.of() : List.copyOf(copied);
+    }
+
+    private static List<MediaObservation> copyMediaObservations(List<MediaObservation> input) {
+        if (input == null || input.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<MediaObservation> copied = new ArrayList<>(input.size());
+        for (MediaObservation observation : input) {
+            if (observation != null && !observation.mediaId().isBlank()) {
+                copied.add(observation);
+            }
+        }
+        return copied.isEmpty() ? List.of() : List.copyOf(copied);
     }
 
     public record AliasedBlock(String dimensionId, int x, int y, int z) {
         public AliasedBlock {
             dimensionId = dimensionId == null ? "" : dimensionId;
+        }
+    }
+
+    public record MediaObservation(
+            String mediaId,
+            String status,
+            String holderKind,
+            String dimensionId,
+            int x,
+            int y,
+            int z,
+            Map<ItemIdentity, Integer> countsByIdentity
+    ) {
+        public static final String STATUS_ACTIVE = "active";
+        public static final String STATUS_EMPTY = "empty";
+        public static final String STATUS_NON_ITEM = "non_item";
+        public static final String STATUS_UNREADABLE = "unreadable";
+
+        public MediaObservation {
+            mediaId = mediaId == null ? "" : mediaId;
+            status = status == null || status.isBlank() ? STATUS_UNREADABLE : status;
+            holderKind = holderKind == null ? "" : holderKind;
+            dimensionId = dimensionId == null ? "" : dimensionId;
+            countsByIdentity = normalizeCounts(countsByIdentity);
+        }
+
+        public boolean removesItemCounts() {
+            return !STATUS_ACTIVE.equals(status);
+        }
+
+        private static Map<ItemIdentity, Integer> normalizeCounts(Map<ItemIdentity, Integer> source) {
+            if (source == null || source.isEmpty()) {
+                return Map.of();
+            }
+            LinkedHashMap<ItemIdentity, Integer> normalized = new LinkedHashMap<>();
+            for (Map.Entry<ItemIdentity, Integer> entry : source.entrySet()) {
+                if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0) {
+                    normalized.merge(entry.getKey(), entry.getValue(), Integer::sum);
+                }
+            }
+            return normalized.isEmpty() ? Map.of() : Map.copyOf(normalized);
         }
     }
 }

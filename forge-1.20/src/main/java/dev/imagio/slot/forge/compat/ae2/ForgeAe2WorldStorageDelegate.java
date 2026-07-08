@@ -15,15 +15,18 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.IdentityHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 
 public final class ForgeAe2WorldStorageDelegate implements WorldStorageAccess.Delegate {
     @Override
     public boolean matches(WorldStorageAccess.Target target) {
+        if (target instanceof WorldStorageAccess.Target.Virtual virtual) {
+            return Ae2StorageBridge.NETWORK_PROVIDER_ID.equals(virtual.providerId());
+        }
         return target instanceof WorldStorageAccess.Target.Display display
-                && display.kind() == WorldDisplayStorageKind.AE2_TERMINAL;
+                && (display.kind() == WorldDisplayStorageKind.AE2_TERMINAL
+                || display.kind() == WorldDisplayStorageKind.AE2_NETWORK);
     }
 
     @Override
@@ -34,7 +37,7 @@ public final class ForgeAe2WorldStorageDelegate implements WorldStorageAccess.De
             ItemStack stack,
             boolean simulate
     ) {
-        Optional<Ae2StorageBridge.Endpoint> endpoint = resolve(server, target);
+        Optional<Ae2StorageBridge.Endpoint> endpoint = resolve(actor, server, target);
         if (endpoint.isEmpty()) {
             return Optional.of(stack == null ? ItemStack.EMPTY : stack);
         }
@@ -55,7 +58,7 @@ public final class ForgeAe2WorldStorageDelegate implements WorldStorageAccess.De
             int amount,
             boolean simulate
     ) {
-        Optional<Ae2StorageBridge.Endpoint> endpoint = resolve(server, target);
+        Optional<Ae2StorageBridge.Endpoint> endpoint = resolve(actor, server, target);
         if (endpoint.isEmpty()) {
             return Optional.of(ItemStack.EMPTY);
         }
@@ -86,7 +89,6 @@ public final class ForgeAe2WorldStorageDelegate implements WorldStorageAccess.De
         BlockPos center = player.blockPosition();
         long radiusSquared = (long) radius * radius;
         ArrayList<NetworkDisplayCandidate> candidates = new ArrayList<>();
-        LinkedHashSet<String> seen = new LinkedHashSet<>();
         for (BlockPos cursor : BlockPos.betweenClosed(
                 center.offset(-radius, -radius, -radius),
                 center.offset(radius, radius, radius))) {
@@ -100,36 +102,21 @@ public final class ForgeAe2WorldStorageDelegate implements WorldStorageAccess.De
             if (endpoint.isEmpty()) {
                 continue;
             }
-            String storageId = WorldDisplayStorageSource.storageId(
-                    WorldDisplayStorageKind.AE2_TERMINAL,
-                    dimension,
-                    cursor.getX(),
-                    cursor.getY(),
-                    cursor.getZ());
-            if (!seen.add(storageId)) {
-                continue;
-            }
             Ae2StorageBridge.Endpoint resolvedEndpoint = endpoint.get();
             if (resolvedEndpoint.grid() == null) {
                 continue;
             }
-            List<WorldStorageAccess.SlotContent> contents = Ae2StorageBridge.slotContents(resolvedEndpoint);
-            List<WorldDisplayStorageSource.AliasedBlock> aliasedBlocks =
-                    Ae2StorageBridge.storageBusTargetBlocks(resolvedEndpoint);
+            WorldDisplayStorageSource source = sourceForEndpoint(
+                    resolvedEndpoint,
+                    dimension,
+                    cursor);
+            if (source == null) {
+                continue;
+            }
             candidates.add(new NetworkDisplayCandidate(
                     resolvedEndpoint.grid(),
                     dx * dx + dy * dy + dz * dz,
-                    new WorldDisplayStorageSource(
-                            storageId,
-                            WorldDisplayStorageKind.AE2_TERMINAL,
-                            "ME network @ " + cursor.getX() + "," + cursor.getY() + "," + cursor.getZ(),
-                            dimension,
-                            cursor.getX(),
-                            cursor.getY(),
-                            cursor.getZ(),
-                            contents.size(),
-                            contents,
-                            aliasedBlocks)));
+                    source));
         }
         ArrayList<WorldDisplayStorageSource> sources = new ArrayList<>(nearestSourcesByNetwork(candidates));
         sources.sort(Comparator
@@ -163,23 +150,69 @@ public final class ForgeAe2WorldStorageDelegate implements WorldStorageAccess.De
     }
 
     private static Optional<Ae2StorageBridge.Endpoint> resolve(
+            ServerPlayer actor,
             MinecraftServer server,
             WorldStorageAccess.Target target
     ) {
-        if (!(target instanceof WorldStorageAccess.Target.Display display)
-                || display.kind() != WorldDisplayStorageKind.AE2_TERMINAL
-                || server == null) {
+        if (target instanceof WorldStorageAccess.Target.Virtual virtual
+                && Ae2StorageBridge.NETWORK_PROVIDER_ID.equals(virtual.providerId())
+                && Ae2StorageBridge.ROUTE_OPEN_TERMINAL.equals(virtual.routeKind())) {
+            return Ae2StorageBridge.openMenuEndpoint(actor, virtual.storageId());
+        }
+        return resolve(server, target);
+    }
+
+    private static Optional<Ae2StorageBridge.Endpoint> resolve(
+            MinecraftServer server,
+            WorldStorageAccess.Target target
+    ) {
+        if (server == null) {
             return Optional.empty();
         }
-        ServerLevel level = level(server, display.dimensionId());
+        String dimensionId;
+        int x;
+        int y;
+        int z;
+        String expectedStorageId = "";
+        if (target instanceof WorldStorageAccess.Target.Virtual virtual
+                && Ae2StorageBridge.NETWORK_PROVIDER_ID.equals(virtual.providerId())) {
+            dimensionId = virtual.dimensionId();
+            x = virtual.x();
+            y = virtual.y();
+            z = virtual.z();
+            expectedStorageId = virtual.storageId();
+        } else if (target instanceof WorldStorageAccess.Target.Display display
+                && (display.kind() == WorldDisplayStorageKind.AE2_TERMINAL
+                || display.kind() == WorldDisplayStorageKind.AE2_NETWORK)) {
+            dimensionId = display.dimensionId();
+            x = display.x();
+            y = display.y();
+            z = display.z();
+        } else {
+            return Optional.empty();
+        }
+        ServerLevel level = level(server, dimensionId);
         if (level == null) {
             return Optional.empty();
         }
-        BlockPos pos = new BlockPos(display.x(), display.y(), display.z());
+        BlockPos pos = new BlockPos(x, y, z);
         if (!level.isLoaded(pos)) {
             return Optional.empty();
         }
-        return resolvePartEndpoint(level, pos);
+        Optional<Ae2StorageBridge.Endpoint> endpoint = resolvePartEndpoint(level, pos);
+        if (endpoint.isEmpty()
+                || !Ae2StorageBridge.endpointMatchesStorageId(endpoint.get(), expectedStorageId)) {
+            return Optional.empty();
+        }
+        return endpoint;
+    }
+
+    private static WorldDisplayStorageSource sourceForEndpoint(
+            Ae2StorageBridge.Endpoint endpoint,
+            String dimension,
+            BlockPos routePos
+    ) {
+        return Ae2StorageBridge.routedNetworkSource(endpoint, dimension, routePos, true);
     }
 
     private static Optional<Ae2StorageBridge.Endpoint> resolvePartEndpoint(ServerLevel level, BlockPos pos) {

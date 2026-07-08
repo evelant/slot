@@ -17,12 +17,13 @@ import dev.imagio.slot.inventory.integration.InventoryMutationRequest;
 import dev.imagio.slot.inventory.integration.InventoryMutationKind;
 import dev.imagio.slot.inventory.integration.MutationResult;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.registry.ProviderResult;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -48,7 +49,7 @@ public final class Ae2TerminalInventoryIntegrationProvider implements InventoryI
         if (context == null || context.menu() == null || !isSupportedMenu(context.menu())) {
             return ProviderResult.unsupported(providerId(), "unsupported_menu", "Menu is not a supported AE2 terminal");
         }
-        Object terminalHost = terminalHost(context.menu());
+        Object terminalHost = Ae2StorageBridge.terminalHost(context.menu());
         if (!Ae2StorageBridge.isSupportedOpenTerminalHost(terminalHost)) {
             return ProviderResult.unsupported(
                     providerId(),
@@ -104,7 +105,31 @@ public final class Ae2TerminalInventoryIntegrationProvider implements InventoryI
                 }
                 return Ae2StorageBridge.sourceSnapshot(
                         sourceId,
-                        Ae2StorageBridge.endpoint(terminalHost(host == null ? null : host.menu())).orElse(null));
+                        Ae2StorageBridge.endpoint(Ae2StorageBridge.terminalHost(
+                                host == null ? null : host.menu())).orElse(null));
+            }
+
+            @Override
+            public List<WorldDisplayStorageSource> observedWorldStorageSources(
+                    ServerPlayer player,
+                    InventoryHostDescriptor host
+            ) {
+                Object currentHost = Ae2StorageBridge.terminalHost(host == null ? null : host.menu());
+                Ae2StorageBridge.Endpoint endpoint = Ae2StorageBridge.endpoint(currentHost).orElse(null);
+                if (endpoint == null) {
+                    return List.of();
+                }
+                Ae2StorageBridge.PhysicalRoute route = Ae2StorageBridge.physicalRoute(currentHost).orElse(null);
+                if (route != null) {
+                    WorldDisplayStorageSource source = Ae2StorageBridge.routedNetworkSource(
+                            endpoint,
+                            route.dimensionId(),
+                            route.pos(),
+                            false);
+                    return source == null ? List.of() : List.of(source);
+                }
+                WorldDisplayStorageSource source = Ae2StorageBridge.openNetworkSource(endpoint);
+                return source == null ? List.of() : List.of(source);
             }
 
             @Override
@@ -117,7 +142,8 @@ public final class Ae2TerminalInventoryIntegrationProvider implements InventoryI
                     return MutationResult.blocked("unsupported_source", request == null ? ItemStack.EMPTY : request.stack());
                 }
                 Ae2StorageBridge.Endpoint endpoint =
-                        Ae2StorageBridge.endpoint(terminalHost(host == null ? null : host.menu())).orElse(null);
+                        Ae2StorageBridge.endpoint(Ae2StorageBridge.terminalHost(
+                                host == null ? null : host.menu())).orElse(null);
                 if (endpoint == null) {
                     return MutationResult.blocked("ae2_terminal_unavailable", request.stack());
                 }
@@ -152,18 +178,6 @@ public final class Ae2TerminalInventoryIntegrationProvider implements InventoryI
         return ITEM_TERMINAL_MENU.equals(name)
                 || CRAFTING_TERMINAL_MENU.equals(name)
                 || WIRELESS_CRAFTING_TERMINAL_MENU.equals(name);
-    }
-
-    private static Object terminalHost(AbstractContainerMenu menu) {
-        if (menu == null) {
-            return null;
-        }
-        try {
-            Method method = menu.getClass().getMethod("getHost");
-            return method.invoke(menu);
-        } catch (ReflectiveOperationException | RuntimeException ignored) {
-            return null;
-        }
     }
 
     private static Component label(InventoryHostContext context) {

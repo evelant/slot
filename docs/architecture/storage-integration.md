@@ -1,6 +1,6 @@
 # Storage Integration
 
-Last updated: 2026-07-06
+Last updated: 2026-07-08
 
 How SLOT abstracts storage, and how to add new storage mods without touching
 executors, UI code, or the core kernel.
@@ -157,7 +157,8 @@ require `ServerPlayer` because they only run authoritatively.
 - **`Target`** — sealed interface. `Chest(ClaimedChest)` covers claimed
   storage. `Display(WorldDisplayStorageKind, dimension, x, y, z)` covers
   small world item displays such as TFC/TFG tool racks and TFC placed-item
-  blocks.
+  blocks. `Virtual(providerId, storageId, routeKind, dimension, x, y, z)`
+  covers routed aggregate storage such as AE2 networks.
 - **`WorldStorageAccess.Delegate`** — SPI for virtual / aggregated
   storage that can't be reached via the default block-capability path.
 
@@ -195,45 +196,66 @@ world.registerDelegate(new Ae2NetworkDelegate());
 ```
 
 The delegate is tried **before** the default capability path. It may expose
-live `Target.Display` sources discovered near the player or intercept
-`Target.Chest` targets that belong to a virtual network. Matching targets
-return `Optional.of(result)`; non-matching targets return `Optional.empty()`
-to fall through to the default capability lookup.
+live `WorldDisplayStorageSource` records discovered near the player, intercept
+`Target.Display` routes for small display blocks, or intercept
+`Target.Virtual` routes for aggregated storage. Matching targets return
+`Optional.of(result)`; non-matching targets return `Optional.empty()` to fall
+through to the default capability lookup.
 
-AE2 Forge 1.20.1 v1 is the reference virtual storage integration. Nearby
-physical item/crafting terminal parts become live-only
-`WorldDisplayStorageKind.AE2_TERMINAL` sources. They are searchable,
-takeable, gatherable, and depositable while proximate, but they are not
-persisted as remembered storage or claimable homes. If multiple physical
-terminals from the same active AE2 grid are nearby, SLOT keeps the closest
-terminal as the representative source so the same ME network is not counted
-once per terminal block. Enumeration emits one logical entry per `AEItemKey`:
-the render stack count is capped to the item's normal stack size, while
-`SlotContent.count()` carries the full ME network total. Insert/extract route
-through AE2 powered storage operations with
-`IActionSource.ofPlayer(player, actionHost)`; do not mutate AE2 menu slots or
-bypass AE2 power/security checks.
+AE2 Forge 1.20.1 v1 is the reference virtual storage integration; ADR
+[0009](../decisions/0009-ae2-persistent-network-storage.md) records the
+identity decision. Nearby physical item/crafting terminal parts observe the
+active ME network as `WorldDisplayStorageKind.AE2_NETWORK` when mounted
+storage-cell media can be discovered. The storage id is
+`ae2:network:<hash(sorted(mediaIds))>`, where each mounted cell receives a
+SLOT-owned media UUID if AE2 does not expose a stable public serial. Only
+mounted drive/ME-chest cells with positive stored `AEItemKey` contents enter
+that media set; empty cells and non-item-only cells are observed but do not
+churn the network identity. Networks with no discoverable/stampable item media fall back to live-only
+`AE2_TERMINAL` display storage.
 
-Open AE2 item/crafting terminal screens, including wireless item/crafting
-terminal menus, are claimed by a dedicated host provider exposing primary
-storage as provider-backed `ae2:terminal`. The crafting grid is not inferred
-as primary storage. Shift-click / quick-move deposit semantics must use the
-provider-backed network source; explicit drop/click onto an actual
-crafting-grid slot may remain a grid-slot operation. A carried wireless
-terminal is not treated as proximate world storage merely because it is in the
-player inventory; the provider applies when the AE2 terminal screen is open.
+AE2 enumeration emits one logical entry per stored `AEItemKey`: the render
+stack count is capped to the item's normal stack size, while
+`SlotContent.count()` carries the full ME total. Craftables, autocrafting,
+fluids, and other key types are not stored counts. Insert/extract route through
+AE2 powered storage operations with `IActionSource.ofPlayer(player, actionHost)`;
+do not mutate AE2 menu slots or bypass AE2 power/security checks.
 
-AE2 storage-bus aliasing is handled at live world-storage index time. A
-storage bus mounts the adjacent external inventory into AE2's grid storage
-service, so the same physical chest/crate may be visible to SLOT twice: once
-as a proximate/claimed world container and once through a nearby ME terminal's
-network contents. AE2 display sources report the active storage-bus target
-blocks they alias; when an alias matches a live claimed chest, SLOT subtracts
-that chest's live counts from the ME-network display source. If both the
-terminal and chest are nearby, the chest owns the bus-backed local count and
-the terminal owns only the ME-only remainder. If only the terminal is nearby,
-the terminal shows the full ME-network total. If only the chest is nearby, no
-AE2 display source is created.
+SLOT also keeps an AE2 media ledger keyed by the stamped media UUID. Drive and
+ME-chest cells update the ledger while defining active storage identity; IO
+ports update the ledger only as observers. If a cell is observed empty or
+non-item-only, any remembered AE2 record that still claims that media is
+retired so cell-emptying machines and cell-to-cell transfers do not leave stale
+item counts behind.
+
+Physical terminals provide a route for mutation and wayfinding. Open
+item/crafting terminal screens, including wireless item/crafting terminal
+menus, are claimed by a dedicated host provider exposing primary storage as
+provider-backed `ae2:terminal`; the crafting grid is not primary storage.
+Those open screens also refresh the same media-set storage record. If the open
+route is wireless/open-only, SLOT may mutate through the current menu while it
+is open, but remembered wayfinding keeps the last known physical terminal route
+and does not invent a player-position route.
+
+When a live AE2 observation has media overlap with an older remembered AE2
+record under a different storage id, the old record is retired. This handles
+cell moves, network splits, and network merges by preferring a temporary
+undercount over double-counted storage. If the same physical route is later
+proven to point at a different media set with no overlap, the older remembered
+record is demoted to unreachable: its counts remain searchable, but it no
+longer offers mutation or wayfinding until a live route refreshes it.
+
+AE2 storage-bus aliasing is handled in the world-storage index. A storage bus
+mounts the adjacent external inventory into AE2's grid storage service, so the
+same chest/crate may be visible once as direct world storage and once through
+ME contents. AE2 sources report storage-bus target blocks as aliases. If an
+alias matches a loaded/readable claimed chest, SLOT reads that chest even when
+it is outside normal proximity and subtracts exact counts from the ME source.
+If the alias target is unreadable but remembered, SLOT subtracts remembered
+counts. If the alias target is a known child AE2 network, SLOT subtracts that
+child network once. Ambiguous display aliases fail diagnostic-first instead of
+guessing. If the alias is unknown, SLOT leaves those counts in ME because
+there is no separate storage record to subtract.
 
 ### Known gap: claimed non-chest storage
 

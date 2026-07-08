@@ -229,6 +229,58 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     @Test
+    void proximateAe2DisplayStorageMakesMatchingCarriedIdentityDepositable() {
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.AE2_TERMINAL,
+                "ME network @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                1,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        stack("minecraft:redstone", 64),
+                        10_000)));
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                carried("minecraft:redstone", 16),
+                ClaimedChestMap.empty(),
+                null,
+                Set.of(),
+                List.of(source),
+                Map.of());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                carried("minecraft:redstone", 16),
+                workflow(homeMap(REDSTONE), ClaimedChestMap.empty(), ChestAffinityMap.empty()),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                index.contentsResolver(),
+                Set.of(),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                index.displaySources(),
+                Set.of(),
+                index.displaySources(),
+                index.liveDisplayEntries(),
+                index.liveDepositStorageIds(),
+                index.liveChestContentPresence(),
+                index.liveStorageAffinityEligibility());
+
+        assertTrue(viewModel.depositableIdentities().contains(SlotWorkspaceViewModel.IdentityRef.from(REDSTONE)));
+    }
+
+    @Test
     void proximateAe2StorageBusAliasProjectsDeduplicatedNetworkCount() {
         WorldDisplayStorageSource terminal = new WorldDisplayStorageSource(
                 null,

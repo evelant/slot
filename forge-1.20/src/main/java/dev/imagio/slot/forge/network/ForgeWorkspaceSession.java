@@ -287,7 +287,13 @@ final class ForgeWorkspaceSession {
                     DomainEventMetadata.origin("contextual.forge.station_context"));
         }
 
-        ProjectionRequestBuild requestBuild = projectionRequest(authority, selected, combinedDiagnostics, gameTime, player);
+        ProjectionRequestBuild requestBuild = projectionRequest(
+                authority,
+                selected,
+                combinedDiagnostics,
+                gameTime,
+                player,
+                host);
         List<WorkspaceInvalidation> projectionInvalidations = prepareProjectionInvalidations(
                 drainInvalidations(),
                 authority,
@@ -308,7 +314,7 @@ final class ForgeWorkspaceSession {
             autoHomeReprojected = true;
             projectionCache.clear();
             ProjectionRequestBuild reprojectRequest =
-                    projectionRequest(authority, selected, combinedDiagnostics, gameTime, player);
+                    projectionRequest(authority, selected, combinedDiagnostics, gameTime, player, host);
             requestSetupNanos += reprojectRequest.requestSetupNanos();
             storageIndexNanos += reprojectRequest.storageIndexNanos();
             projectionStart = System.nanoTime();
@@ -919,7 +925,8 @@ final class ForgeWorkspaceSession {
             int selected,
             String combinedDiagnostics,
             long gameTime,
-            ServerPlayer player
+            ServerPlayer player,
+            InventoryHostDescriptor host
     ) {
         long setupStart = System.nanoTime();
         if (runtime != null) {
@@ -928,7 +935,7 @@ final class ForgeWorkspaceSession {
         WorkflowDomainSnapshot snapshot = runtime == null ? null : runtime.snapshot();
         long storageStart = System.nanoTime();
         WorkspaceStorageRoutingContext storageContext =
-                WorkspaceStorageRoutingContext.build(player, runtime, authority, storageIndexCache);
+                WorkspaceStorageRoutingContext.build(player, runtime, authority, storageIndexCache, host);
         long storageNanos = System.nanoTime() - storageStart;
         ClaimedChestMap claimedChestMap = storageContext.claimedChestMap();
         SlotWorkspaceViewModel.LootChestSource lootChestSource = resolveLootChestSource(player, claimedChestMap);
@@ -941,7 +948,7 @@ final class ForgeWorkspaceSession {
         lastObservedContextualStorageIds = Set.copyOf(contextualSuggestionStorageIds);
         WorkspaceStorageIndex storageIndex = storageContext.storageIndex();
         clearSatisfiedWantedCounts(authority);
-        List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries = storageIndex.liveTrackedDisplayEntries();
+        List<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries = storageIndex.liveDisplayEntries();
         Set<String> liveDepositStorageIds = storageIndex.liveDepositStorageIds();
         WorkspaceProjectionRequest request = new WorkspaceProjectionRequest(
                 authority,
@@ -965,7 +972,7 @@ final class ForgeWorkspaceSession {
                 displaySources,
                 contextualSuggestionStorageIds,
                 displaySources,
-                trackedDisplayEntries,
+                liveDisplayEntries,
                 liveDepositStorageIds,
                 storageIndex,
                 storageContext.liveChestContentPresence(),
@@ -976,7 +983,7 @@ final class ForgeWorkspaceSession {
                 storageNanos,
                 System.nanoTime() - setupStart,
                 storageIndex.entries().size(),
-                trackedDisplayEntries.size(),
+                liveDisplayEntries.size(),
                 liveDepositStorageIds.size(),
                 storageContext.indexDiagnostics());
     }

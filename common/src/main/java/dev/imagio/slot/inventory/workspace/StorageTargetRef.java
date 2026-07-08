@@ -30,6 +30,7 @@ public record StorageTargetRef(
 ) {
     public static final String KIND_CLAIMED_CHEST = "claimed_chest";
     public static final String KIND_DISPLAY_PREFIX = "display:";
+    public static final String KIND_AE2_NETWORK = "ae2_network";
 
     public StorageTargetRef {
         if (storageId == null || storageId.isBlank()) {
@@ -177,11 +178,14 @@ public record StorageTargetRef(
             boolean proximate
     ) {
         WorldDisplayStorageKind resolvedKind = kind == null ? WorldDisplayStorageKind.PLACED_ITEM : kind;
+        String targetKind = resolvedKind == WorldDisplayStorageKind.AE2_NETWORK
+                ? KIND_AE2_NETWORK
+                : KIND_DISPLAY_PREFIX + resolvedKind.key();
         return new StorageTargetRef(
                 storageId == null || storageId.isBlank()
                         ? WorldDisplayStorageSource.storageId(resolvedKind, dimensionId, x, y, z)
                         : storageId,
-                KIND_DISPLAY_PREFIX + resolvedKind.key(),
+                targetKind,
                 label == null || label.isBlank() ? defaultDisplayLabel(resolvedKind, x, y, z) : label,
                 dimensionId,
                 x,
@@ -195,7 +199,19 @@ public record StorageTargetRef(
     }
 
     public boolean displayTarget() {
-        return targetKind.startsWith(KIND_DISPLAY_PREFIX);
+        return targetKind.startsWith(KIND_DISPLAY_PREFIX) || KIND_AE2_NETWORK.equals(targetKind);
+    }
+
+    public boolean trackedWorldStorage() {
+        if (KIND_CLAIMED_CHEST.equals(targetKind) || KIND_AE2_NETWORK.equals(targetKind)) {
+            return true;
+        }
+        WorldDisplayStorageKind kind = displayKind();
+        return kind != null && kind.trackedStorage();
+    }
+
+    public boolean ae2Network() {
+        return KIND_AE2_NETWORK.equals(targetKind);
     }
 
     public StorageTargetRef withDepositTarget(boolean depositTarget) {
@@ -215,7 +231,10 @@ public record StorageTargetRef(
     }
 
     public WorldDisplayStorageKind displayKind() {
-        if (!displayTarget()) {
+        if (KIND_AE2_NETWORK.equals(targetKind)) {
+            return WorldDisplayStorageKind.AE2_NETWORK;
+        }
+        if (!targetKind.startsWith(KIND_DISPLAY_PREFIX)) {
             return null;
         }
         return WorldDisplayStorageKind.fromKey(targetKind.substring(KIND_DISPLAY_PREFIX.length()));
@@ -242,7 +261,7 @@ public record StorageTargetRef(
         String base = switch (kind) {
             case TOOL_RACK -> "Tool rack";
             case PLACED_ITEM -> "Placed item";
-            case AE2_TERMINAL -> "ME network";
+            case AE2_TERMINAL, AE2_NETWORK -> "ME network";
         };
         return base + " @ " + x + "," + y + "," + z;
     }

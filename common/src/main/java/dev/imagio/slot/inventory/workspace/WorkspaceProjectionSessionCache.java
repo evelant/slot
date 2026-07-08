@@ -1259,12 +1259,14 @@ public final class WorkspaceProjectionSessionCache {
         if (store == null
                 || request == null
                 || atlasItems == null
-                || atlasItems.isEmpty()
-                || request.depositEligibleStorageIds().isEmpty()) {
+                || atlasItems.isEmpty()) {
             return Set.of();
         }
         ClaimedChestMap claimedChests = request.workflow().claimedChestMap();
-        if (claimedChests.chests().isEmpty()) {
+        boolean hasClaimedDepositTargets = !claimedChests.chests().isEmpty()
+                && !request.depositEligibleStorageIds().isEmpty();
+        boolean hasDisplayDepositTargets = simpleDisplayDepositTargetsExist(store);
+        if (!hasClaimedDepositTargets && !hasDisplayDepositTargets) {
             return Set.of();
         }
         LinkedHashSet<SlotWorkspaceViewModel.IdentityRef> depositable = new LinkedHashSet<>();
@@ -1276,11 +1278,55 @@ public final class WorkspaceProjectionSessionCache {
             if (identity == null || item.totalCount() <= simpleReservedCarryCount(store, identity)) {
                 continue;
             }
-            if (simpleDepositTargetExists(store, request, claimedChests, identity)) {
+            if ((hasClaimedDepositTargets && simpleDepositTargetExists(store, request, claimedChests, identity))
+                    || (hasDisplayDepositTargets && simpleDisplayDepositTargetExists(store, identity))) {
                 depositable.add(item.identity());
             }
         }
         return depositable.isEmpty() ? Set.of() : Set.copyOf(depositable);
+    }
+
+    private static boolean simpleDisplayDepositTargetsExist(WorkspaceProjectionStore store) {
+        if (store == null || store.storageMeta().isEmpty()) {
+            return false;
+        }
+        for (WorkspaceProjectionStore.StorageMetaFact meta : store.storageMeta().values()) {
+            if (simpleDisplayDepositTarget(meta)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean simpleDisplayDepositTargetExists(
+            WorkspaceProjectionStore store,
+            ItemIdentity identity
+    ) {
+        if (store == null || identity == null || store.storagePresence().isEmpty()) {
+            return false;
+        }
+        for (WorkspaceProjectionStore.StoragePresenceFact presence : store.storagePresence().values()) {
+            if (presence == null
+                    || presence.key() == null
+                    || presence.key().identity() == null
+                    || presence.count() <= 0
+                    || !ItemIdentityMatcher.matchesMovable(presence.key().identity(), identity)) {
+                continue;
+            }
+            WorkspaceProjectionStore.StorageMetaFact meta = store.storageMeta().get(presence.key().storageId());
+            if (simpleDisplayDepositTarget(meta)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean simpleDisplayDepositTarget(WorkspaceProjectionStore.StorageMetaFact meta) {
+        return meta != null
+                && meta.depositTarget()
+                && meta.proximate()
+                && (meta.targetKind().startsWith(StorageTargetRef.KIND_DISPLAY_PREFIX)
+                || StorageTargetRef.KIND_AE2_NETWORK.equals(meta.targetKind()));
     }
 
     private static int simpleReservedCarryCount(WorkspaceProjectionStore store, ItemIdentity identity) {
@@ -1938,8 +1984,7 @@ public final class WorkspaceProjectionSessionCache {
         return target.displayTarget()
                 && !target.proximate()
                 && target.depositTarget()
-                && target.displayKind() != null
-                && target.displayKind().trackedStorage();
+                && target.trackedWorldStorage();
     }
 
     private static boolean simpleStorageEntryContainsMatchingContent(
@@ -2478,8 +2523,7 @@ public final class WorkspaceProjectionSessionCache {
             StorageTargetRef target = entry.target();
             if (!target.displayTarget()
                     || target.proximate()
-                    || target.displayKind() == null
-                    || !target.displayKind().trackedStorage()) {
+                    || !target.trackedWorldStorage()) {
                 return false;
             }
         }

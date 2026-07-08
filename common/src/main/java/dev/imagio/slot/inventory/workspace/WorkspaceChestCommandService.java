@@ -96,7 +96,8 @@ public final class WorkspaceChestCommandService {
         SlotCommon.LOGGER.info(
                 "[SLOT] deposit plan: assignments={} (one per stack with eligible learned affinity or matching contents)",
                 plan.assignments().size());
-        DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(player, plan, claimedChestMap);
+        DepositExecutor.DepositOutcome outcome =
+                DepositExecutor.execute(player, plan, claimedChestMap, displaySources);
         observeStorageIds(player, claimedChestMap, outcome.destinations(), "slot.deposit");
         for (DepositExecutor.DepositRecord record : outcome.records()) {
             UUID storageUuid = record.storageUuid();
@@ -331,12 +332,13 @@ public final class WorkspaceChestCommandService {
         }
 
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        List<String> candidates = explicitDepositCandidates(
+        ExplicitDepositCandidates candidateResult = explicitDepositCandidates(
                 player,
                 runtime,
                 identity,
                 representativeStack,
                 requested);
+        List<String> candidates = candidateResult.storageIds();
         if (candidates.isEmpty()) {
             ClaimedChest fallbackChest = activeChestFallback == null ? null : activeChestFallback.get();
             candidates = activeChestFallbackDepositCandidate(
@@ -380,7 +382,8 @@ public final class WorkspaceChestCommandService {
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(
                 player,
                 new DepositPlan(assignments),
-                claimedChestMap);
+                claimedChestMap,
+                candidateResult.displaySources());
         observeStorageIds(player, claimedChestMap, outcome.destinations(), "slot.deposit.identity");
         long tick = player.serverLevel().getGameTime();
         int depositedCount = 0;
@@ -650,7 +653,7 @@ public final class WorkspaceChestCommandService {
         return null;
     }
 
-    private static List<String> explicitDepositCandidates(
+    private static ExplicitDepositCandidates explicitDepositCandidates(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
             ItemIdentity identity,
@@ -659,11 +662,11 @@ public final class WorkspaceChestCommandService {
     ) {
         if (player == null || runtime == null || identity == null
                 || sourceStack == null || sourceStack.isEmpty() || requestedCount <= 0) {
-            return List.of();
+            return ExplicitDepositCandidates.empty();
         }
         MinecraftServer server = player.getServer();
         if (server == null || !StorageAccessRegistry.isInstalled()) {
-            return List.of();
+            return ExplicitDepositCandidates.empty();
         }
         WorkspaceStorageRoutingContext routing =
                 WorkspaceStorageRoutingContext.build(player, runtime, InventoryAuthoritySnapshot.empty());
@@ -710,7 +713,21 @@ public final class WorkspaceChestCommandService {
                 candidates.add(source.storageId());
             }
         }
-        return List.copyOf(candidates);
+        return new ExplicitDepositCandidates(List.copyOf(candidates), routing.displaySources());
+    }
+
+    private record ExplicitDepositCandidates(
+            List<String> storageIds,
+            List<WorldDisplayStorageSource> displaySources
+    ) {
+        private ExplicitDepositCandidates {
+            storageIds = storageIds == null ? List.of() : List.copyOf(storageIds);
+            displaySources = displaySources == null ? List.of() : List.copyOf(displaySources);
+        }
+
+        private static ExplicitDepositCandidates empty() {
+            return new ExplicitDepositCandidates(List.of(), List.of());
+        }
     }
 
     private static DepositPlan withDisplayDepositAssignments(

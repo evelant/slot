@@ -199,7 +199,7 @@ public final class WorkspaceStorageIndexCache {
         if (!displayHit) {
             displayLayer = new DisplayLayer(
                     displayKey,
-                    buildDisplayEntries(resolvedDisplays, memory, tick),
+                    buildDisplayEntries(resolvedDisplays, rememberedById, memory, tick),
                     resolvedDisplays);
         }
 
@@ -247,9 +247,19 @@ public final class WorkspaceStorageIndexCache {
         combined.putAll(depositOverlayLayer.entries());
         combined.putAll(displayLayer.entries());
         WorkspaceStorageIndex.AliasCorrection aliasCorrection = WorkspaceStorageIndex.correctDisplayAliases(
+                server,
+                worldStorage,
+                memory,
+                tick,
                 combined,
                 resolvedMap,
                 displayLayer.displaySources());
+        WorkspaceStorageIndex.rememberDisplaySources(
+                memory,
+                tick,
+                aliasCorrection.entries(),
+                aliasCorrection.displaySources(),
+                "workspace_index_display_live_read");
         lastIndex = new WorkspaceStorageIndex(
                 aliasCorrection.entries(),
                 WorkspaceStorageIndex.carriedCounts(resolvedAuthority),
@@ -368,7 +378,7 @@ public final class WorkspaceStorageIndexCache {
         for (RememberedStorageContents remembered : rememberedById.values()) {
             if (remembered == null
                     || entries.containsKey(remembered.storageId())
-                    || !WorkspaceStorageIndex.isTrackedDisplayMemory(remembered)) {
+                    || !WorkspaceStorageIndex.isTrackedStorageMemory(remembered)) {
                 continue;
             }
             entries.put(remembered.storageId(), WorkspaceStorageIndex.rememberedEntry(remembered, false));
@@ -378,6 +388,7 @@ public final class WorkspaceStorageIndexCache {
 
     private static Map<String, WorkspaceStorageIndex.StorageEntry> buildDisplayEntries(
             List<WorldDisplayStorageSource> displaySources,
+            Map<String, RememberedStorageContents> rememberedById,
             WorkspaceStorageMemoryStore memory,
             long tick
     ) {
@@ -391,16 +402,13 @@ public final class WorkspaceStorageIndexCache {
             }
             SlotWorkspaceViewModel.ChestContentsSnapshot snapshot =
                     WorkspaceStorageIndex.snapshotFromDisplay(source);
-            StorageTargetRef ref = StorageTargetRef.display(source, false, true);
+            StorageTargetRef ref = WorkspaceStorageIndex.displaySourceRef(source, rememberedById, false, true);
             entries.put(source.storageId(), new WorkspaceStorageIndex.StorageEntry(
                     ref,
                     snapshot,
                     WorkspaceStorageIndex.countsFromSnapshot(snapshot),
                     true,
                     false));
-            if (memory != null && source.kind().trackedStorage()) {
-                memory.observeSnapshot(ref, snapshot, tick, "workspace_index_display_live_read", false);
-            }
         }
         return entries.isEmpty() ? Map.of() : Map.copyOf(entries);
     }
@@ -528,7 +536,7 @@ public final class WorkspaceStorageIndexCache {
         }
         ArrayList<String> keys = new ArrayList<>();
         for (RememberedStorageContents remembered : rememberedById.values()) {
-            if (WorkspaceStorageIndex.isTrackedDisplayMemory(remembered)) {
+            if (WorkspaceStorageIndex.isTrackedStorageMemory(remembered)) {
                 keys.add(remembered.storageId());
             }
         }
@@ -556,7 +564,9 @@ public final class WorkspaceStorageIndexCache {
                     .append('@')
                     .append(source.x()).append(',').append(source.y()).append(',').append(source.z())
                     .append('|')
-                    .append(source.slotCount());
+                    .append(source.slotCount())
+                    .append('|')
+                    .append(source.target());
             ArrayList<String> contents = new ArrayList<>();
             for (WorldStorageAccess.SlotContent content : source.contents()) {
                 if (content == null || content.stack() == null || content.stack().isEmpty()) {
@@ -574,6 +584,32 @@ public final class WorkspaceStorageIndexCache {
             }
             aliases.sort(String::compareTo);
             out.append('|').append(aliases);
+            ArrayList<String> mediaIds = new ArrayList<>(source.mediaIds());
+            mediaIds.sort(String::compareTo);
+            out.append('|').append(mediaIds);
+            ArrayList<String> mediaObservations = new ArrayList<>();
+            for (WorldDisplayStorageSource.MediaObservation observation : source.mediaObservations()) {
+                if (observation == null || observation.mediaId().isBlank()) {
+                    continue;
+                }
+                mediaObservations.add(observation.mediaId()
+                        + ':'
+                        + observation.status()
+                        + ':'
+                        + observation.holderKind()
+                        + ':'
+                        + observation.dimensionId()
+                        + '@'
+                        + observation.x()
+                        + ','
+                        + observation.y()
+                        + ','
+                        + observation.z()
+                        + ':'
+                        + observation.countsByIdentity());
+            }
+            mediaObservations.sort(String::compareTo);
+            out.append('|').append(mediaObservations);
             keys.add(out.toString());
         }
         keys.sort(String::compareTo);

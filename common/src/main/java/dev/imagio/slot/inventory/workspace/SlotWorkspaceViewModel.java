@@ -13,6 +13,7 @@ import dev.imagio.slot.inventory.core.ItemStackTags;
 import dev.imagio.slot.inventory.query.CarriedIdentityCounts;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
@@ -919,14 +920,21 @@ public record SlotWorkspaceViewModel(
         List<WorldDisplayStorageSource> displaySources = worldDisplaySources == null
                 ? List.of()
                 : List.copyOf(worldDisplaySources);
-        List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries = trackedDisplayStorageEntries == null
+        List<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries = trackedDisplayStorageEntries == null
                 ? List.of()
                 : trackedDisplayStorageEntries.stream()
                         .filter(entry -> entry != null
                                 && entry.target() != null
                                 && entry.target().displayTarget()
-                                && entry.target().displayKind() != null
-                                && entry.target().displayKind().trackedStorage())
+                                && entry.target().displayKind() != null)
+                        .toList();
+        List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries = liveDisplayEntries.isEmpty()
+                ? List.of()
+                : liveDisplayEntries.stream()
+                        .filter(entry -> entry != null
+                                && entry.target() != null
+                                && entry.target().displayTarget()
+                                && entry.target().trackedWorldStorage())
                         .toList();
         int carriedFreeSlotCount = identityContext.carriedFreeSlotCount();
         int carriedSlotCapacity = identityContext.carriedSlotCapacity();
@@ -1440,6 +1448,7 @@ public record SlotWorkspaceViewModel(
                     chestContentsResolver,
                     reservedCountResolver,
                     depositEligible,
+                    liveDisplayEntries,
                     liveChestContentPresence,
                     liveStorageAffinityEligibility);
             putAwayRoutes = putAwayRouteProjection(
@@ -1450,7 +1459,7 @@ public record SlotWorkspaceViewModel(
                     claimedChestMap,
                     affinityMap,
                     chestContentsResolver,
-                    trackedDisplayEntries,
+                    liveDisplayEntries,
                     proximate,
                     liveChestContentPresence,
                     liveStorageAffinityEligibility);
@@ -1488,7 +1497,7 @@ public record SlotWorkspaceViewModel(
                 chestContentsResolver,
                 proximate,
                 clusterMap,
-                trackedDisplayEntries);
+                liveDisplayEntries);
         List<ChestClusterDescriptor> chestClusters = chestClusterDescriptors(clusterMap, resolvedWorkflow.clusterLabels());
 
         List<KitCard> kitCards = kitCards(
@@ -1500,7 +1509,7 @@ public record SlotWorkspaceViewModel(
                 carriedIdentityCounts,
                 claimedChestMap,
                 chestContentsResolver,
-                trackedDisplayEntries,
+                liveDisplayEntries,
                 kitNeededIdentities,
                 wantedCounts,
                 targetResolution.desiredCounts(),
@@ -1514,6 +1523,7 @@ public record SlotWorkspaceViewModel(
                 chestContentsResolver,
                 reservedCountResolver,
                 depositEligible,
+                liveDisplayEntries,
                 liveChestContentPresence,
                 liveStorageAffinityEligibility);
         ArrayList<AtlasItem> contextualSuggestionCandidates = new ArrayList<>(atlasItems.size() + triageItems.size());
@@ -1871,19 +1881,19 @@ public record SlotWorkspaceViewModel(
     }
 
     private static List<WorkspaceStorageIndex.StorageEntry> displayPutAwayRouteEntries(
-            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries,
+            Collection<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries,
             ItemIdentity identity
     ) {
-        if (trackedDisplayEntries == null || trackedDisplayEntries.isEmpty() || identity == null) {
+        if (liveDisplayEntries == null || liveDisplayEntries.isEmpty() || identity == null) {
             return List.of();
         }
         ArrayList<WorkspaceStorageIndex.StorageEntry> entries = new ArrayList<>();
-        for (WorkspaceStorageIndex.StorageEntry entry : trackedDisplayEntries) {
+        for (WorkspaceStorageIndex.StorageEntry entry : liveDisplayEntries) {
             if (entry == null || entry.target() == null
                     || !entry.target().displayTarget()
                     || !entry.target().depositTarget()
                     || entry.target().displayKind() == null
-                    || !entry.target().displayKind().trackedStorage()) {
+                    || !liveOrTrackedDisplayEntry(entry)) {
                 continue;
             }
             if (displayEntryContainsMatchingContent(entry, identity)) {
@@ -1891,6 +1901,14 @@ public record SlotWorkspaceViewModel(
             }
         }
         return entries.isEmpty() ? List.of() : List.copyOf(entries);
+    }
+
+    private static boolean liveOrTrackedDisplayEntry(WorkspaceStorageIndex.StorageEntry entry) {
+        if (entry == null || entry.target() == null || !entry.target().displayTarget()) {
+            return false;
+        }
+        return entry.target().displayKind() != null
+                && (entry.target().proximate() || entry.target().trackedWorldStorage());
     }
 
     private static boolean displayEntryContainsMatchingContent(
@@ -2292,18 +2310,28 @@ public record SlotWorkspaceViewModel(
             Function<String, ChestContentsSnapshot> chestContentsResolver,
             java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver,
             Set<String> depositEligibleStorageIds,
+            Collection<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries,
             DepositPlanner.ChestContentPresence liveChestContentPresence,
             DepositPlanner.ChestEligibility liveStorageAffinityEligibility
     ) {
-        if (atlasItems == null || atlasItems.isEmpty()
-                || claimedChestMap == null || claimedChestMap.chests().isEmpty()
-                || proximateStorageIds == null || proximateStorageIds.isEmpty()) {
+        if (atlasItems == null || atlasItems.isEmpty()) {
+            return Set.of();
+        }
+        boolean hasClaimedDepositTargets = claimedChestMap != null
+                && !claimedChestMap.chests().isEmpty()
+                && proximateStorageIds != null
+                && !proximateStorageIds.isEmpty();
+        boolean hasDisplayDepositTargets = liveDisplayEntries != null && !liveDisplayEntries.isEmpty();
+        if (!hasClaimedDepositTargets && !hasDisplayDepositTargets) {
             return Set.of();
         }
         Set<String> depositEligible = intersectStorageIds(
                 proximateStorageIds,
                 depositEligibleStorageIds == null ? proximateStorageIds : depositEligibleStorageIds);
-        if (depositEligible.isEmpty()) {
+        if (hasClaimedDepositTargets && depositEligible.isEmpty()) {
+            hasClaimedDepositTargets = false;
+        }
+        if (!hasClaimedDepositTargets && !hasDisplayDepositTargets) {
             return Set.of();
         }
         DepositPlanner.ChestContentPresence contentPresence = liveChestContentPresence == null
@@ -2332,7 +2360,7 @@ public record SlotWorkspaceViewModel(
                     continue;
                 }
             }
-            if (!DepositPlanner.rankChestsForIdentity(
+            if (hasClaimedDepositTargets && !DepositPlanner.rankChestsForIdentity(
                     identity,
                     claimedChestMap,
                     affinityMap,
@@ -2340,9 +2368,35 @@ public record SlotWorkspaceViewModel(
                     contentPresence,
                     chestEligibility).isEmpty()) {
                 result.add(item.identity());
+                continue;
+            }
+            if (liveDisplayDepositTargetContainsMatchingContent(liveDisplayEntries, identity)) {
+                result.add(item.identity());
             }
         }
         return Set.copyOf(result);
+    }
+
+    private static boolean liveDisplayDepositTargetContainsMatchingContent(
+            Collection<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries,
+            ItemIdentity identity
+    ) {
+        if (liveDisplayEntries == null || liveDisplayEntries.isEmpty() || identity == null) {
+            return false;
+        }
+        for (WorkspaceStorageIndex.StorageEntry entry : liveDisplayEntries) {
+            if (entry == null || entry.target() == null
+                    || !entry.target().displayTarget()
+                    || !entry.target().proximate()
+                    || !entry.target().depositTarget()
+                    || entry.target().displayKind() == null) {
+                continue;
+            }
+            if (displayEntryContainsMatchingContent(entry, identity)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static Set<String> intersectStorageIds(Set<String> left, Set<String> right) {
@@ -2710,14 +2764,14 @@ public record SlotWorkspaceViewModel(
             CarriedIdentityCounts carriedCounts,
             ClaimedChestMap claimedChestMap,
             Function<String, ChestContentsSnapshot> chestContentsResolver,
-            Collection<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries,
+            Collection<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries,
             Set<ItemIdentity> kitNeededIdentities,
             Map<ItemIdentity, Integer> wantedCounts,
             Map<ItemIdentity, Integer> desiredCounts,
             Set<ItemIdentity> desiredFromWorkflowTab
     ) {
         boolean hasClaimedChests = claimedChestMap != null && !claimedChestMap.chests().isEmpty();
-        boolean hasDisplayEntries = trackedDisplayEntries != null && !trackedDisplayEntries.isEmpty();
+        boolean hasDisplayEntries = liveDisplayEntries != null && !liveDisplayEntries.isEmpty();
         if ((!hasClaimedChests && !hasDisplayEntries) || chestContentsResolver == null) {
             return List.of();
         }
@@ -2786,12 +2840,15 @@ public record SlotWorkspaceViewModel(
             }
         }
         if (hasDisplayEntries) {
-            for (WorkspaceStorageIndex.StorageEntry entry : trackedDisplayEntries) {
+            for (WorkspaceStorageIndex.StorageEntry entry : liveDisplayEntries) {
                 if (entry == null || entry.target() == null || !entry.target().displayTarget()) {
                     continue;
                 }
                 StorageTargetRef targetRef = entry.target();
-                if (targetRef.displayKind() == null || !targetRef.displayKind().trackedStorage()) {
+                if (targetRef.displayKind() == null || !liveOrTrackedDisplayEntry(entry)) {
+                    continue;
+                }
+                if (targetRef.ae2Network() && targetRef.dimensionId().isBlank()) {
                     continue;
                 }
                 ChestContentsSnapshot snapshot = entry.snapshot();
@@ -3725,16 +3782,16 @@ public record SlotWorkspaceViewModel(
             Function<String, ChestContentsSnapshot> chestContentsResolver,
             Set<String> proximate,
             ChestClusterMap clusterMap,
-            List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries
+            List<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries
     ) {
         boolean hasChests = map != null && !map.chests().isEmpty();
-        boolean hasDisplays = trackedDisplayEntries != null && !trackedDisplayEntries.isEmpty();
+        boolean hasDisplays = liveDisplayEntries != null && !liveDisplayEntries.isEmpty();
         if (!hasChests && !hasDisplays) {
             return List.of();
         }
         ArrayList<ChestChip> chips = new ArrayList<>(
                 (hasChests ? map.chests().size() : 0)
-                        + (hasDisplays ? trackedDisplayEntries.size() : 0));
+                        + (hasDisplays ? liveDisplayEntries.size() : 0));
         if (hasChests) {
             for (ClaimedChest chest : map.chests()) {
                 if (chest == null) {
@@ -3779,7 +3836,7 @@ public record SlotWorkspaceViewModel(
             }
         }
         if (hasDisplays) {
-            for (WorkspaceStorageIndex.StorageEntry entry : trackedDisplayEntries) {
+            for (WorkspaceStorageIndex.StorageEntry entry : liveDisplayEntries) {
                 if (entry == null || entry.target() == null || !entry.target().displayTarget()) {
                     continue;
                 }
@@ -3790,7 +3847,7 @@ public record SlotWorkspaceViewModel(
                         : target.label();
                 String clusterId = "";
                 int affinityCount = 0;
-                if (target.displayKind() == null || !target.displayKind().trackedStorage()) {
+                if (target.displayKind() == null || !liveOrTrackedDisplayEntry(entry)) {
                     continue;
                 }
                 if (snapshot == null) {
@@ -6600,7 +6657,7 @@ public record SlotWorkspaceViewModel(
                         continue;
                     }
                     StorageTargetRef target = entry.target();
-                    if (target.displayKind() == null || !target.displayKind().trackedStorage()) {
+                    if (!target.trackedWorldStorage()) {
                         continue;
                     }
                     ChestContentsSnapshot snapshot = entry.snapshot();

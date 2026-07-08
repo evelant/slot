@@ -2239,7 +2239,7 @@ final class SlotWorkspaceUiSession {
         long setupStart = System.nanoTime();
         long storageStart = System.nanoTime();
         WorkspaceStorageRoutingContext storageContext =
-                WorkspaceStorageRoutingContext.build(serverPlayer, runtime, authority, storageIndexCache);
+                WorkspaceStorageRoutingContext.build(serverPlayer, runtime, authority, storageIndexCache, host);
         long storageIndexNanos = System.nanoTime() - storageStart;
         ClaimedChestMap claimedChestMap = storageContext.claimedChestMap();
         Set<String> proximateIds = storageContext.proximateStorageIds();
@@ -2259,7 +2259,7 @@ final class SlotWorkspaceUiSession {
                 serverPlayer, runtime, claimedChestMap);
         clearSatisfiedWantedCounts(authority);
         WorkflowDomainSnapshot snapshot = runtime.snapshot();
-        List<WorkspaceStorageIndex.StorageEntry> trackedDisplayEntries = storageIndex.liveTrackedDisplayEntries();
+        List<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries = storageIndex.liveDisplayEntries();
         Set<String> liveDepositStorageIds = storageIndex.liveDepositStorageIds();
         WorkspaceProjectionRequest request = new WorkspaceProjectionRequest(
                 authority,
@@ -2283,7 +2283,7 @@ final class SlotWorkspaceUiSession {
                 displaySources,
                 contextualSuggestionStorageIds,
                 displaySources,
-                trackedDisplayEntries,
+                liveDisplayEntries,
                 liveDepositStorageIds,
                 storageIndex,
                 storageContext.liveChestContentPresence(),
@@ -2342,7 +2342,7 @@ final class SlotWorkspaceUiSession {
                     displaySources,
                     contextualSuggestionStorageIds,
                     displaySources,
-                    trackedDisplayEntries,
+                    liveDisplayEntries,
                     liveDepositStorageIds,
                     storageIndex,
                     storageContext.liveChestContentPresence(),
@@ -2400,7 +2400,7 @@ final class SlotWorkspaceUiSession {
                     autoHomeReprojected,
                     authority,
                     storageIndex.entries().size(),
-                    trackedDisplayEntries.size(),
+                    liveDisplayEntries.size(),
                     liveDepositStorageIds.size(),
                     storageContext.indexDiagnostics(),
                     payloadBytes,

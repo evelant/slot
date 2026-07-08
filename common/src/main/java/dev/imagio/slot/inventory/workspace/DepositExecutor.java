@@ -28,6 +28,15 @@ public final class DepositExecutor {
             DepositPlan plan,
             ClaimedChestMap claimedChestMap
     ) {
+        return execute(player, plan, claimedChestMap, List.of());
+    }
+
+    public static DepositOutcome execute(
+            ServerPlayer player,
+            DepositPlan plan,
+            ClaimedChestMap claimedChestMap,
+            List<WorldDisplayStorageSource> displaySources
+    ) {
         if (player == null || plan == null || claimedChestMap == null) {
             SlotCommon.LOGGER.warn(
                     "[SLOT] deposit execute aborted: player={} plan={} claimedChestMap={}",
@@ -68,6 +77,7 @@ public final class DepositExecutor {
                     worldStorage,
                     assignment.candidateStorageIds(),
                     claimedChestMap,
+                    displaySources,
                     sourceStack,
                     budget);
             if (candidates.isEmpty()) {
@@ -144,6 +154,7 @@ public final class DepositExecutor {
             WorldStorageAccess worldStorage,
             List<String> candidateStorageIds,
             ClaimedChestMap claimedChestMap,
+            List<WorldDisplayStorageSource> displaySources,
             ItemStack sourceStack,
             int budget
     ) {
@@ -153,7 +164,7 @@ public final class DepositExecutor {
         }
         ArrayList<DepositTargetCandidate> out = new ArrayList<>();
         for (String candidateId : candidateStorageIds) {
-            WorldStorageAccess.Target target = depositTarget(candidateId, claimedChestMap);
+            WorldStorageAccess.Target target = depositTarget(candidateId, claimedChestMap, displaySources);
             if (target == null) {
                 continue;
             }
@@ -164,9 +175,17 @@ public final class DepositExecutor {
         return out.isEmpty() ? List.of() : List.copyOf(out);
     }
 
-    private static WorldStorageAccess.Target depositTarget(String storageId, ClaimedChestMap claimedChestMap) {
+    private static WorldStorageAccess.Target depositTarget(
+            String storageId,
+            ClaimedChestMap claimedChestMap,
+            List<WorldDisplayStorageSource> displaySources
+    ) {
         if (storageId == null || storageId.isBlank()) {
             return null;
+        }
+        WorldDisplayStorageSource displaySource = displaySource(storageId, displaySources);
+        if (displaySource != null) {
+            return displaySource.target();
         }
         try {
             UUID candidateUuid = UUID.fromString(storageId);
@@ -178,6 +197,21 @@ public final class DepositExecutor {
                     .map(target -> (WorldStorageAccess.Target) target)
                     .orElse(null);
         }
+    }
+
+    private static WorldDisplayStorageSource displaySource(
+            String storageId,
+            List<WorldDisplayStorageSource> displaySources
+    ) {
+        if (storageId == null || storageId.isBlank() || displaySources == null || displaySources.isEmpty()) {
+            return null;
+        }
+        for (WorldDisplayStorageSource source : displaySources) {
+            if (source != null && storageId.equals(source.storageId())) {
+                return source;
+            }
+        }
+        return null;
     }
 
     private record DepositTargetCandidate(String storageId, WorldStorageAccess.Target target) {

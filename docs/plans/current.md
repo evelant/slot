@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-07-06
+Last updated: 2026-07-08
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -87,6 +87,12 @@ hold the rest.
   display storage, open terminals expose provider-backed `ae2:terminal`
   storage, and cross-surface quick-move routes through host storage instead
   of terminal crafting-grid slots.
+- **2026-07-08** — AE2 persistent media-set storage landed per
+  [`0009`](../decisions/0009-ae2-persistent-network-storage.md): mounted
+  storage cells define `ae2:network:<hash>` records, open/physical terminal
+  routes refresh the same tracked network, per-cell media observations handle
+  empty/IO-port/disjoint-transfer cases, and known storage-bus aliases are
+  subtracted from remembered ME counts.
 
 ## Known issues
 
@@ -111,8 +117,8 @@ Roughly ordered by playtest signal. Pull from the top when the active track land
 
 2. **AE2 autocrafting route for craft-run deficits**
    ([ae2-autocrafting.md](ae2-autocrafting.md)). Keep AE2 craftables distinct
-   from stored ME item counts, and audit AE2 storage-bus aliasing before using
-   ME aggregate counts for recipe satisfaction. First slice should expose
+   from stored ME item counts now that stored ME networks are persistent.
+   First slice should expose
    "craftable in ME" on tracked recipe outputs/ingredients and add an explicit
    request action that plans/submits through AE2 from the active nearby/open
    terminal context; do not auto-submit jobs from `Add Recipe`.

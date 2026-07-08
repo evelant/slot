@@ -562,9 +562,107 @@ class WorkspaceStorageIndexTest {
         assertEquals(10_000, index.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
         assertTrue(index.target(terminal.storageId()).depositTarget());
         assertTrue(index.target(terminal.storageId()).takeTarget());
+        assertEquals(1, index.liveDisplayEntries().size());
+        assertEquals(terminal.storageId(), index.liveDisplayEntries().get(0).target().storageId());
         assertTrue(index.trackedDisplayEntries().stream()
                 .noneMatch(entry -> terminal.storageId().equals(entry.target().storageId())));
         assertTrue(index.liveTrackedDisplayEntries().isEmpty());
+    }
+
+    @Test
+    void ae2NetworkTargetBecomesRememberedStorageWithVirtualMetadata() {
+        WorldDisplayStorageSource network = ae2Network(
+                "ae2:network:test",
+                10_000,
+                List.of(claimedChestAlias()),
+                List.of("cell-b", "cell-a"));
+        StorageTargetRef ref = StorageTargetRef.display(network, false, true);
+        RememberedStorageContents remembered = RememberedStorageContents.fromSourceSnapshot(
+                ref,
+                WorkspaceStorageIndex.snapshotFromDisplay(network),
+                network,
+                10L,
+                "test");
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                ClaimedChestMap.empty(),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(),
+                Map.of(network.storageId(), remembered));
+
+        assertEquals(StorageTargetRef.KIND_AE2_NETWORK, remembered.targetKind());
+        assertEquals("ae2", remembered.providerId());
+        assertEquals(List.of("cell-b", "cell-a"), remembered.mediaIds());
+        assertEquals(List.of(claimedChestAlias()), remembered.aliasedBlocks());
+        assertEquals(10_000, index.contents(network.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertTrue(index.target(network.storageId()).depositTarget());
+        assertTrue(index.trackedDisplayEntries().stream()
+                .anyMatch(entry -> network.storageId().equals(entry.target().storageId())));
+        assertTrue(index.liveTrackedDisplayEntries().isEmpty());
+    }
+
+    @Test
+    void ae2NetworkMemoryRoundTripsMetadataAndRetiresOverlappingMediaSets() {
+        Path statePath = tempDir.resolve("ae2-storage-memory.json");
+        WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);
+        RememberedStorageContents original = rememberedAe2Network(
+                "ae2:network:old",
+                32,
+                List.of("cell-a", "cell-b"));
+        RememberedStorageContents moved = rememberedAe2Network(
+                "ae2:network:new",
+                64,
+                List.of("cell-b", "cell-c"));
+
+        assertTrue(store.observe(original));
+        assertTrue(store.observe(moved));
+        assertNull(store.remembered(original.storageId()));
+        assertEquals(2L, store.revision());
+
+        WorkspaceStorageMemoryStore reloaded = new WorkspaceStorageMemoryStore(statePath);
+        RememberedStorageContents remembered = reloaded.remembered(moved.storageId());
+
+        assertNull(reloaded.remembered(original.storageId()));
+        assertEquals("ae2", remembered.providerId());
+        assertEquals(List.of("cell-b", "cell-c"), remembered.mediaIds());
+        assertEquals(List.of(claimedChestAlias()), remembered.aliasedBlocks());
+        assertEquals(64, remembered.countsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+    }
+
+    @Test
+    void openAe2NetworkObservationPreservesRememberedPhysicalRoute() {
+        RememberedStorageContents remembered = rememberedAe2Network(
+                "ae2:network:open",
+                32,
+                List.of("cell-a"));
+        WorldDisplayStorageSource openRoute = ae2OpenNetwork(
+                "ae2:network:open",
+                64,
+                List.of("cell-a"));
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                ClaimedChestMap.empty(),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(openRoute),
+                Map.of(remembered.storageId(), remembered));
+
+        StorageTargetRef target = index.target(openRoute.storageId());
+
+        assertEquals("minecraft:overworld", target.dimensionId());
+        assertEquals(1, target.x());
+        assertEquals(64, target.y());
+        assertEquals(0, target.z());
+        assertEquals(64, index.contents(openRoute.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
     }
 
     @Test
@@ -615,6 +713,149 @@ class WorkspaceStorageIndexTest {
         assertEquals(64, terminalSnapshot.contents().get(0).getCount());
         assertEquals(100, index.displaySources().get(0).contents().get(0).count());
         assertEquals(132, index.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+    }
+
+    @Test
+    void ae2StorageBusAliasReadsLoadedClaimedChestOutsideNormalRange() {
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 27, List.of(content(0, stack("minecraft:redstone", 32))));
+        WorldDisplayStorageSource network = ae2Network(
+                "ae2:network:with-bus",
+                132,
+                List.of(claimedChestAlias()),
+                List.of("cell-a"));
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                world,
+                Set.of(),
+                List.of(network),
+                Map.of());
+
+        assertEquals(1, world.enumerateCalls(CHEST_A));
+        assertEquals(32, index.contents(CHEST_A.toString())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(100, index.contents(network.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(100, index.displaySources().get(0).contents().get(0).count());
+    }
+
+    @Test
+    void ae2StorageBusAliasSubtractsRememberedClaimedChestWhenUnreadable() {
+        WorldDisplayStorageSource network = ae2Network(
+                "ae2:network:remembered-bus",
+                132,
+                List.of(claimedChestAlias()),
+                List.of("cell-a"));
+        RememberedStorageContents rememberedChest = RememberedStorageContents.fromCounts(
+                StorageTargetRef.claimed(claimed(CHEST_A), false, true, false),
+                27,
+                Map.of(ItemIdentity.of("minecraft:redstone"), 32),
+                10L,
+                "test");
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(network),
+                Map.of(CHEST_A.toString(), rememberedChest));
+
+        assertEquals(32, index.contents(CHEST_A.toString())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(100, index.contents(network.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+    }
+
+    @Test
+    void ae2StorageBusAliasPersistsCorrectedNetworkCounts() {
+        Path statePath = tempDir.resolve("ae2-alias-corrected-memory.json");
+        WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);
+        FakeWorldStorage world = new FakeWorldStorage()
+                .put(CHEST_A, 27, List.of(content(0, stack("minecraft:redstone", 32))));
+        WorldDisplayStorageSource network = ae2Network(
+                "ae2:network:persisted-bus",
+                132,
+                List.of(claimedChestAlias()),
+                List.of("cell-a"));
+        WorkspaceStorageIndexCache cache = new WorkspaceStorageIndexCache();
+
+        cache.buildWithMemoryForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                claimedMap(CHEST_A),
+                world,
+                Set.of(),
+                List.of(network),
+                store,
+                10L);
+
+        RememberedStorageContents remembered = store.remembered(network.storageId());
+        assertEquals(100, remembered.countsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(List.of("cell-a"), remembered.mediaIds());
+    }
+
+    @Test
+    void ae2StorageBusAliasCanSubtractKnownChildNetworkOnce() {
+        WorldDisplayStorageSource child = ae2NetworkAt(
+                "ae2:network:child",
+                32,
+                List.of(),
+                List.of("cell-child"),
+                4);
+        WorldDisplayStorageSource parent = ae2NetworkAt(
+                "ae2:network:parent",
+                132,
+                List.of(new WorldDisplayStorageSource.AliasedBlock("minecraft:overworld", 4, 64, 0)),
+                List.of("cell-parent"),
+                8);
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                ClaimedChestMap.empty(),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(child, parent),
+                Map.of());
+
+        assertEquals(32, index.contents(child.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(100, index.contents(parent.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(132, index.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+    }
+
+    @Test
+    void ae2StorageBusAliasLeavesUnknownAliasInNetworkCounts() {
+        WorldDisplayStorageSource network = ae2Network(
+                "ae2:network:unknown-bus",
+                132,
+                List.of(new WorldDisplayStorageSource.AliasedBlock("minecraft:overworld", 99, 64, 0)),
+                List.of("cell-a"));
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                claimedMap(CHEST_A),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(network),
+                Map.of());
+
+        assertEquals(132, index.contents(network.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
     }
 
     @Test
@@ -765,6 +1006,95 @@ class WorkspaceStorageIndexTest {
                         stack("minecraft:redstone", Math.min(redstoneCount, 64)),
                         redstoneCount)),
                 aliases);
+    }
+
+    private static WorldDisplayStorageSource ae2Network(
+            String storageId,
+            int redstoneCount,
+            List<WorldDisplayStorageSource.AliasedBlock> aliases,
+            List<String> mediaIds
+    ) {
+        return ae2NetworkAt(storageId, redstoneCount, aliases, mediaIds, 1);
+    }
+
+    private static WorldDisplayStorageSource ae2NetworkAt(
+            String storageId,
+            int redstoneCount,
+            List<WorldDisplayStorageSource.AliasedBlock> aliases,
+            List<String> mediaIds,
+            int x
+    ) {
+        return new WorldDisplayStorageSource(
+                storageId,
+                WorldDisplayStorageKind.AE2_NETWORK,
+                "ME network @ " + x + ",64,0",
+                "minecraft:overworld",
+                x,
+                64,
+                0,
+                1,
+                List.of(content(
+                        0,
+                        stack("minecraft:redstone", Math.min(redstoneCount, 64)),
+                        redstoneCount)),
+                aliases,
+                mediaIds,
+                new WorldStorageAccess.Target.Virtual(
+                        "ae2",
+                        storageId,
+                        "terminal",
+                        "minecraft:overworld",
+                        x,
+                        64,
+                        0));
+    }
+
+    private static WorldDisplayStorageSource ae2OpenNetwork(
+            String storageId,
+            int redstoneCount,
+            List<String> mediaIds
+    ) {
+        return new WorldDisplayStorageSource(
+                storageId,
+                WorldDisplayStorageKind.AE2_NETWORK,
+                "ME network",
+                "",
+                0,
+                0,
+                0,
+                1,
+                List.of(content(
+                        0,
+                        stack("minecraft:redstone", Math.min(redstoneCount, 64)),
+                        redstoneCount)),
+                List.of(),
+                mediaIds,
+                new WorldStorageAccess.Target.Virtual(
+                        "ae2",
+                        storageId,
+                        "open_terminal",
+                        "",
+                        0,
+                        0,
+                        0));
+    }
+
+    private static RememberedStorageContents rememberedAe2Network(
+            String storageId,
+            int redstoneCount,
+            List<String> mediaIds
+    ) {
+        WorldDisplayStorageSource source = ae2Network(
+                storageId,
+                redstoneCount,
+                List.of(claimedChestAlias()),
+                mediaIds);
+        return RememberedStorageContents.fromSourceSnapshot(
+                StorageTargetRef.display(source, false, true),
+                WorkspaceStorageIndex.snapshotFromDisplay(source),
+                source,
+                10L,
+                "test");
     }
 
     private static WorldDisplayStorageSource.AliasedBlock claimedChestAlias() {

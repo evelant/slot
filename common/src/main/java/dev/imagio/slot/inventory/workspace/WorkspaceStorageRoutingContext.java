@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.workspace;
 
+import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
@@ -11,6 +12,7 @@ import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -61,6 +63,16 @@ public record WorkspaceStorageRoutingContext(
             InventoryAuthoritySnapshot authority,
             WorkspaceStorageIndexCache storageIndexCache
     ) {
+        return build(player, runtime, authority, storageIndexCache, null);
+    }
+
+    public static WorkspaceStorageRoutingContext build(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            WorkspaceStorageIndexCache storageIndexCache,
+            InventoryHostDescriptor host
+    ) {
         WorkflowDomainSnapshot snapshot = runtime == null ? WorkflowDomainSnapshot.empty() : runtime.snapshot();
         ClaimedChestMap claimedChestMap = runtime == null
                 ? snapshot.claimedChestMap()
@@ -77,6 +89,9 @@ public record WorkspaceStorageRoutingContext(
                 WorkspaceChestProjectionSupport.CONTEXTUAL_SUGGESTION_RADIUS_BLOCKS);
         List<WorldDisplayStorageSource> displaySources =
                 WorkspaceChestProjectionSupport.proximateDisplaySources(player, worldStorage);
+        List<WorldDisplayStorageSource> observedSources = mergeDisplaySources(
+                displaySources,
+                host == null ? List.of() : host.hostSession().observedWorldStorageSources(player, host));
         InventoryAuthoritySnapshot resolvedAuthority = authority == null
                 ? InventoryAuthoritySnapshot.empty()
                 : authority;
@@ -87,7 +102,7 @@ public record WorkspaceStorageRoutingContext(
                         snapshot,
                         worldStorage,
                         proximate,
-                        displaySources,
+                        observedSources,
                         tick)
                 : storageIndexCache.build(
                         server,
@@ -95,7 +110,7 @@ public record WorkspaceStorageRoutingContext(
                         snapshot,
                         worldStorage,
                         proximate,
-                        displaySources,
+                        observedSources,
                         tick);
         return new WorkspaceStorageRoutingContext(
                 claimedChestMap,
@@ -108,6 +123,28 @@ public record WorkspaceStorageRoutingContext(
                 storageIndexCache == null
                         ? WorkspaceStorageIndexCache.Diagnostics.empty()
                         : storageIndexCache.diagnostics());
+    }
+
+    private static List<WorldDisplayStorageSource> mergeDisplaySources(
+            List<WorldDisplayStorageSource> primary,
+            List<WorldDisplayStorageSource> secondary
+    ) {
+        LinkedHashMap<String, WorldDisplayStorageSource> byId = new LinkedHashMap<>();
+        if (primary != null) {
+            for (WorldDisplayStorageSource source : primary) {
+                if (source != null && !source.storageId().isBlank()) {
+                    byId.put(source.storageId(), source);
+                }
+            }
+        }
+        if (secondary != null) {
+            for (WorldDisplayStorageSource source : secondary) {
+                if (source != null && !source.storageId().isBlank()) {
+                    byId.putIfAbsent(source.storageId(), source);
+                }
+            }
+        }
+        return byId.isEmpty() ? List.of() : List.copyOf(byId.values());
     }
 
     public boolean hasNearbyClaimedOrDisplayStorage() {
