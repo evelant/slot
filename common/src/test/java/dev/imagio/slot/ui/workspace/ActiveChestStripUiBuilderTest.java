@@ -69,7 +69,7 @@ class ActiveChestStripUiBuilderTest {
     }
 
     @Test
-    void claimedPanelCyclesStorageToBuffer() {
+    void claimedPanelCyclesStorageToInput() {
         RecordingContext context = new RecordingContext();
         SlotWorkspaceViewModel.ActiveChestPanel panel = new SlotWorkspaceViewModel.ActiveChestPanel(
                 "storage-1",
@@ -87,7 +87,7 @@ class ActiveChestStripUiBuilderTest {
         strip.children().get(1).dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
 
         assertSame(panel, context.rolePanel);
-        assertEquals(ChestRole.BUFFER, context.role);
+        assertEquals(ChestRole.INPUT, context.role);
     }
 
     private static final class RecordingContext implements ActiveChestStripUiBuilder.Context {

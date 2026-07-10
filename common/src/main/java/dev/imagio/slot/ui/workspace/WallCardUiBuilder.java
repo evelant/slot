@@ -1,5 +1,6 @@
 package dev.imagio.slot.ui.workspace;
 
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
@@ -56,7 +57,7 @@ public final class WallCardUiBuilder {
                         cardChromeColor(selected, searchMatch, item.recent(), item.carried(), filtering))
                 .noText()
                 .zIndex(2)
-                .tooltipStack(context.suppressVanillaTooltip(item) ? null : item.displayStack())
+                .tooltipStack(shouldSuppressVanillaTooltip(item) ? null : item.displayStack())
                 .tooltipLines(context.tooltipLines(item))
                 .attach(WorkspaceUiAttachments.WALL_CARD, Boolean.TRUE)
                 .attach(WorkspaceUiAttachments.ATLAS_ITEM, item)
@@ -103,6 +104,10 @@ public final class WallCardUiBuilder {
         return button;
     }
 
+    private boolean shouldSuppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
+        return item != null && (item.fluidResource() || context.suppressVanillaTooltip(item));
+    }
+
     private void buildFallbackBody(
             SlotUiElement body,
             SlotWorkspaceViewModel.AtlasItem item,
@@ -132,7 +137,7 @@ public final class WallCardUiBuilder {
                         .height(CARD_CELL_PX)
                         .paddingAll(0));
         addCardShell(iconCell, item);
-        iconCell.addChild(SlotUiElement.itemIcon(item.displayStack(), 18, item.carried())
+        iconCell.addChild(cardResourceIcon(item)
                 .renderVanillaCount(false)
                 .zIndex(100)
                 .layout(layout -> layout
@@ -293,6 +298,19 @@ public final class WallCardUiBuilder {
             badge.textStyle(style -> style.adaptiveWidth(true));
         }
         body.addChild(badge);
+    }
+
+    private static SlotUiElement cardResourceIcon(SlotWorkspaceViewModel.AtlasItem item) {
+        SlotResourceIdentity resource = item == null || item.resource() == null
+                ? null
+                : item.resource().toIdentity();
+        if (resource != null && resource.fluid()) {
+            return SlotUiElement.fluidIcon(resource.id(), 18, item.carried());
+        }
+        return SlotUiElement.itemIcon(
+                item == null ? null : item.displayStack(),
+                18,
+                item == null || item.carried());
     }
 
     private static void addProximatePip(
@@ -545,21 +563,20 @@ public final class WallCardUiBuilder {
                         .paddingHorizontal(2)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
-        strip.addChild(SlotUiElement.label("need", 0xFFFFD166)
-                .layout(layout -> layout.flex(1).heightPercent(100))
+        String text = missingTargetText(missing.count());
+        strip.addChild(SlotUiElement.label(text, 0xFFFFD166)
+                .layout(layout -> layout.widthPercent(100).heightPercent(100))
                 .textStyle(style -> style
-                        .fontSize(5.5f)
+                        .fontSize(text.length() > 7 ? 5.0f : 5.5f)
                         .color(0xFFFFD166)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
-        strip.addChild(SlotUiElement.label(WorkspaceCountFormat.compact(missing.count()), 0xFFE6EDF3)
-                .layout(layout -> layout.width(9).heightPercent(100))
-                .textStyle(style -> style
-                        .fontSize(6)
-                        .color(0xFFE6EDF3)
-                        .horizontal(SlotUiTextStyle.Horizontal.RIGHT)
-                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
         body.addChild(strip);
+    }
+
+    private static String missingTargetText(int count) {
+        String compact = WorkspaceCountFormat.compact(count);
+        return compact.isBlank() ? "need" : "need " + compact;
     }
 
     private WayfindingDisplay.CardText wayfindingText(SlotWorkspaceViewModel.ChestPresenceEntry entry) {

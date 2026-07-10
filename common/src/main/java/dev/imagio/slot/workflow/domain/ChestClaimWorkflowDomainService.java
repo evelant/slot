@@ -338,6 +338,41 @@ public final class ChestClaimWorkflowDomainService {
         mutationObserver.run();
     }
 
+    public int recordInitialContents(
+            UUID storageId,
+            Map<ItemIdentity, Integer> countsByIdentity,
+            long tick,
+            DomainEventMetadata metadata
+    ) {
+        if (storageId == null || countsByIdentity == null || countsByIdentity.isEmpty()) {
+            return 0;
+        }
+        ClaimedChest destination = claimedChestMap().chest(storageId);
+        if (destination == null || !destination.role().learnsAffinity()) {
+            return 0;
+        }
+        LinkedHashMap<ItemIdentity, Integer> seeded = new LinkedHashMap<>();
+        for (Map.Entry<ItemIdentity, Integer> entry : countsByIdentity.entrySet()) {
+            if (entry == null || entry.getKey() == null || entry.getValue() == null || entry.getValue() <= 0) {
+                continue;
+            }
+            ItemIdentity normalized = ItemIdentityMatcher.normalizeMovable(entry.getKey());
+            if (chestAffinityMap().score(storageId, normalized) > 0) {
+                continue;
+            }
+            seeded.merge(normalized, entry.getValue(), Integer::sum);
+        }
+        if (seeded.isEmpty()) {
+            return 0;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.ChestInitialContentsSeeded(storageId, seeded, tick),
+                resolveMetadata(metadata, "workflow.storage.chest.initial_contents")
+        );
+        mutationObserver.run();
+        return seeded.size();
+    }
+
     public void recordPossibleRehomeTake(
             UUID storageId,
             Map<ItemIdentity, Integer> takes,

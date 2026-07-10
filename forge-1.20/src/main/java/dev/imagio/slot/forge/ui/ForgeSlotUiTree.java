@@ -25,14 +25,22 @@ import dev.vfyjxf.taffy.style.TaffyStyle;
 import dev.vfyjxf.taffy.tree.Layout;
 import dev.vfyjxf.taffy.tree.NodeId;
 import dev.vfyjxf.taffy.tree.TaffyTree;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -458,6 +466,7 @@ public final class ForgeSlotUiTree {
 
         renderText(graphics, node, x, y, width, height);
         renderIcon(graphics, node, x, y, width, height);
+        renderFluid(graphics, node, x, y, width, height);
         renderItem(graphics, node, x, y, width, height);
         fill(graphics, x, y, width, height, node.model.overlayColor());
 
@@ -554,6 +563,52 @@ public final class ForgeSlotUiTree {
         if (!node.model.itemCarried()) {
             renderGhostItemOverlay(graphics, drawX, drawY, size);
         }
+    }
+
+    private void renderFluid(GuiGraphics graphics, Node node, float x, float y, float width, float height) {
+        if (node.model.kind() != SlotUiElement.Kind.FLUID_ICON) {
+            return;
+        }
+        Fluid fluid = resolveFluid(node.model.fluidId());
+        if (fluid == null || fluid == Fluids.EMPTY) {
+            return;
+        }
+        FluidStack stack = new FluidStack(fluid, 1000);
+        TextureAtlasSprite sprite = fluidStillSprite(stack);
+        int size = Math.max(1, Math.round(Math.min(width, height)));
+        int drawX = Math.round(x + (width - size) / 2f);
+        int drawY = Math.round(y + (height - size) / 2f);
+        int tint = fluidTint(stack);
+        float alpha = ((tint >>> 24) & 0xFF) / 255f;
+        float red = ((tint >>> 16) & 0xFF) / 255f;
+        float green = ((tint >>> 8) & 0xFF) / 255f;
+        float blue = (tint & 0xFF) / 255f;
+        graphics.blit(drawX, drawY, 0, size, size, sprite, red, green, blue, alpha);
+    }
+
+    private Fluid resolveFluid(String fluidId) {
+        if (fluidId == null || fluidId.isBlank()) {
+            return Fluids.EMPTY;
+        }
+        ResourceLocation location = ResourceLocation.tryParse(fluidId);
+        return location == null ? Fluids.EMPTY : BuiltInRegistries.FLUID.get(location);
+    }
+
+    private TextureAtlasSprite fluidStillSprite(FluidStack stack) {
+        IClientFluidTypeExtensions extensions = IClientFluidTypeExtensions.of(stack.getFluid());
+        ResourceLocation texture = extensions.getStillTexture(stack);
+        if (texture == null) {
+            texture = extensions.getStillTexture();
+        }
+        if (texture == null) {
+            texture = MissingTextureAtlasSprite.getLocation();
+        }
+        return minecraft.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(texture);
+    }
+
+    private static int fluidTint(FluidStack stack) {
+        int tint = IClientFluidTypeExtensions.of(stack.getFluid()).getTintColor(stack);
+        return (tint >>> 24) == 0 ? tint | 0xFF000000 : tint;
     }
 
     private void renderGhostItemOverlay(GuiGraphics graphics, int x, int y, int size) {

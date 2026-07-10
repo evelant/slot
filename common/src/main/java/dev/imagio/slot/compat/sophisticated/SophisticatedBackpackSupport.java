@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
@@ -89,6 +90,58 @@ public final class SophisticatedBackpackSupport {
             return false;
         });
         return List.copyOf(backpacks);
+    }
+
+    public static List<BackpackCraftingGridSnapshot> readPlayerBackpackCraftingGrids(Player player, BackpackCarrierRef excludedCarrier) {
+        if (player == null || !REFLECTION.available()) {
+            return List.of();
+        }
+
+        List<BackpackCraftingGridSnapshot> grids = new ArrayList<>();
+        REFLECTION.runOnBackpacks(player, (carrierStack, handlerName, identifier, backpackSlotIndex) -> {
+            BackpackCarrierRef carrier = new BackpackCarrierRef(handlerName, identifier, backpackSlotIndex);
+            if (excludedCarrier != null && excludedCarrier.matches(carrier)) {
+                return false;
+            }
+
+            grids.addAll(craftingGridSnapshots(carrierStack, carrier));
+            return false;
+        });
+        return List.copyOf(grids);
+    }
+
+    public static ItemStack extractBackpackCraftingGridSlot(
+            Player player,
+            BackpackCarrierRef carrier,
+            int upgradeSlotIndex,
+            int logicalSlotIndex,
+            int amount,
+            boolean simulate
+    ) {
+        if (player == null || carrier == null || upgradeSlotIndex < 0 || logicalSlotIndex < 0
+                || amount <= 0 || !REFLECTION.available()) {
+            return ItemStack.EMPTY;
+        }
+        ItemStack[] extracted = {ItemStack.EMPTY};
+        REFLECTION.runOnBackpacks(player, (carrierStack, handlerName, identifier, backpackSlotIndex) -> {
+            BackpackCarrierRef candidate = new BackpackCarrierRef(handlerName, identifier, backpackSlotIndex);
+            if (!candidate.matches(carrier)) {
+                return false;
+            }
+            Object wrapper = REFLECTION.fromStack(carrierStack);
+            extracted[0] = REFLECTION.extractCraftingGridSlot(
+                    wrapper,
+                    upgradeSlotIndex,
+                    logicalSlotIndex,
+                    amount,
+                    simulate
+            );
+            if (!simulate && extracted[0] != null && !extracted[0].isEmpty()) {
+                REFLECTION.notifyContentsUpdated(wrapper);
+            }
+            return true;
+        });
+        return extracted[0] == null ? ItemStack.EMPTY : extracted[0];
     }
 
     public static BackpackCarrierRef openedBackpackCarrier(AbstractContainerMenu menu) {
@@ -175,15 +228,31 @@ public final class SophisticatedBackpackSupport {
             entries.add(new BackpackEntry(slot, stack.copy()));
         }
 
-        String stableContainerId = REFLECTION.contentsUuid(wrapper)
-                .map(UUID::toString)
-                .orElseGet(carrier::stableFallbackId);
+        String stableContainerId = stableContainerId(wrapper, carrier);
         return new BackpackInventorySnapshot(
                 carrier,
                 stableContainerId,
                 slotCount,
                 List.copyOf(entries)
         );
+    }
+
+    private static List<BackpackCraftingGridSnapshot> craftingGridSnapshots(ItemStack carrierStack, BackpackCarrierRef carrier) {
+        if (carrierStack == null || carrier == null || carrierStack.isEmpty() || !REFLECTION.isBackpackItem(carrierStack)) {
+            return List.of();
+        }
+        Object wrapper = REFLECTION.fromStack(carrierStack);
+        if (wrapper == null) {
+            return List.of();
+        }
+        String stableContainerId = stableContainerId(wrapper, carrier);
+        return REFLECTION.craftingGridSnapshots(wrapper, carrier, stableContainerId);
+    }
+
+    private static String stableContainerId(Object wrapper, BackpackCarrierRef carrier) {
+        return REFLECTION.contentsUuid(wrapper)
+                .map(UUID::toString)
+                .orElseGet(carrier::stableFallbackId);
     }
 
     private static void addBackpackStacks(ItemStack carrierStack, BackpackCarrierRef carrier, List<BackpackSlotStack> stacks) {
@@ -235,6 +304,9 @@ public final class SophisticatedBackpackSupport {
     public record BackpackEntry(int slotIndex, ItemStack stack) {
     }
 
+    public record BackpackCraftingEntry(int slotIndex, int gridSlotIndex, ItemStack stack) {
+    }
+
     public record BackpackInventorySnapshot(
             BackpackCarrierRef carrier,
             String stableContainerId,
@@ -243,6 +315,21 @@ public final class SophisticatedBackpackSupport {
     ) {
         public BackpackInventorySnapshot {
             stableContainerId = stableContainerId == null ? "" : stableContainerId;
+            slotCount = Math.max(0, slotCount);
+            entries = entries == null ? List.of() : List.copyOf(entries);
+        }
+    }
+
+    public record BackpackCraftingGridSnapshot(
+            BackpackCarrierRef carrier,
+            String stableContainerId,
+            int upgradeSlotIndex,
+            int slotCount,
+            List<BackpackCraftingEntry> entries
+    ) {
+        public BackpackCraftingGridSnapshot {
+            stableContainerId = stableContainerId == null ? "" : stableContainerId;
+            upgradeSlotIndex = Math.max(0, upgradeSlotIndex);
             slotCount = Math.max(0, slotCount);
             entries = entries == null ? List.of() : List.copyOf(entries);
         }
@@ -262,6 +349,11 @@ public final class SophisticatedBackpackSupport {
             Method getInventoryHandlerMethod,
             Method getSlotsMethod,
             Method getStackInSlotMethod,
+            Class<?> craftingUpgradeWrapperClass,
+            Method getUpgradeHandlerMethod,
+            Method getSlotWrappersMethod,
+            Method getCraftingInventoryMethod,
+            Method extractItemMethod,
             Method getBackpackContextMethod,
             Method getBackpackSlotIndexMethod,
             Method getContentsUuidMethod,
@@ -299,8 +391,24 @@ public final class SophisticatedBackpackSupport {
                 Method getInventoryHandlerMethod = storageWrapperClass.getMethod("getInventoryHandler");
                 Method getSlotsMethod = itemStackHandlerClass.getMethod("getSlots");
                 Method getStackInSlotMethod = itemStackHandlerClass.getMethod("getStackInSlot", int.class);
+                Method extractItemMethod = itemStackHandlerClass.getMethod("extractItem", int.class, int.class, boolean.class);
                 Method getContentsUuidMethod = backpackWrapperClass.getMethod("getContentsUuid");
                 Method onContentsNbtUpdatedMethod = backpackWrapperClass.getMethod("onContentsNbtUpdated");
+
+                Class<?> craftingUpgradeWrapperClass = null;
+                Method getUpgradeHandlerMethod = null;
+                Method getSlotWrappersMethod = null;
+                Method getCraftingInventoryMethod = null;
+                try {
+                    Class<?> upgradeHandlerClass = Class.forName("net.p3pp3rf1y.sophisticatedcore.upgrades.UpgradeHandler", false, loader);
+                    craftingUpgradeWrapperClass = Class.forName("net.p3pp3rf1y.sophisticatedcore.upgrades.crafting.CraftingUpgradeWrapper", false, loader);
+                    getUpgradeHandlerMethod = storageWrapperClass.getMethod("getUpgradeHandler");
+                    getSlotWrappersMethod = upgradeHandlerClass.getMethod("getSlotWrappers");
+                    getCraftingInventoryMethod = craftingUpgradeWrapperClass.getMethod("getInventory");
+                } catch (ReflectiveOperationException | LinkageError ignored) {
+                    // Crafting upgrade support is optional. Keep normal
+                    // backpack inventory readable if SB changes this surface.
+                }
 
                 Class<?> backpackContainerClass = null;
                 Method getBackpackContextMethod = null;
@@ -335,6 +443,11 @@ public final class SophisticatedBackpackSupport {
                         getInventoryHandlerMethod,
                         getSlotsMethod,
                         getStackInSlotMethod,
+                        craftingUpgradeWrapperClass,
+                        getUpgradeHandlerMethod,
+                        getSlotWrappersMethod,
+                        getCraftingInventoryMethod,
+                        extractItemMethod,
                         getBackpackContextMethod,
                         getBackpackSlotIndexMethod,
                         getContentsUuidMethod,
@@ -343,7 +456,7 @@ public final class SophisticatedBackpackSupport {
                         identifierField
                 );
             } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
-                return new ReflectionState(false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+                return new ReflectionState(false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
             }
         }
 
@@ -427,6 +540,151 @@ public final class SophisticatedBackpackSupport {
                 return stack instanceof ItemStack itemStack ? itemStack : ItemStack.EMPTY;
             } catch (ReflectiveOperationException ignored) {
                 return ItemStack.EMPTY;
+            }
+        }
+
+        private List<BackpackCraftingGridSnapshot> craftingGridSnapshots(
+                Object wrapper,
+                BackpackCarrierRef carrier,
+                String stableContainerId
+        ) {
+            if (!available || wrapper == null || carrier == null
+                    || craftingUpgradeWrapperClass == null
+                    || getUpgradeHandlerMethod == null
+                    || getSlotWrappersMethod == null
+                    || getCraftingInventoryMethod == null) {
+                return List.of();
+            }
+            Map<?, ?> wrappers = slotWrappers(upgradeHandler(wrapper));
+            if (wrappers.isEmpty()) {
+                return List.of();
+            }
+
+            ArrayList<BackpackCraftingGridSnapshot> grids = new ArrayList<>();
+            for (Map.Entry<?, ?> entry : wrappers.entrySet()) {
+                if (!(entry.getKey() instanceof Integer upgradeSlotIndex)) {
+                    continue;
+                }
+                Object craftingInventory = craftingInventory(entry.getValue());
+                if (craftingInventory == null) {
+                    continue;
+                }
+                ArrayList<BackpackCraftingEntry> entries = new ArrayList<>();
+                int logicalSlot = 0;
+                int gridSlots = slotCount(craftingInventory);
+                for (int gridSlot = 0; gridSlot < gridSlots; gridSlot++) {
+                    ItemStack stack = stackInSlot(craftingInventory, gridSlot);
+                    if (stack == null || stack.isEmpty()) {
+                        continue;
+                    }
+                    entries.add(new BackpackCraftingEntry(logicalSlot, gridSlot, stack.copy()));
+                    logicalSlot++;
+                }
+                if (entries.isEmpty()) {
+                    continue;
+                }
+                grids.add(new BackpackCraftingGridSnapshot(
+                        carrier,
+                        stableContainerId,
+                        upgradeSlotIndex,
+                        entries.size(),
+                        List.copyOf(entries)
+                ));
+            }
+            return List.copyOf(grids);
+        }
+
+        private ItemStack extractCraftingGridSlot(
+                Object wrapper,
+                int upgradeSlotIndex,
+                int logicalSlotIndex,
+                int amount,
+                boolean simulate
+        ) {
+            if (!available || wrapper == null || upgradeSlotIndex < 0 || logicalSlotIndex < 0 || amount <= 0) {
+                return ItemStack.EMPTY;
+            }
+            Object craftingInventory = craftingInventory(wrapper, upgradeSlotIndex);
+            if (craftingInventory == null) {
+                return ItemStack.EMPTY;
+            }
+            int logicalSlot = 0;
+            int gridSlots = slotCount(craftingInventory);
+            for (int gridSlot = 0; gridSlot < gridSlots; gridSlot++) {
+                ItemStack stack = stackInSlot(craftingInventory, gridSlot);
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                if (logicalSlot == logicalSlotIndex) {
+                    return extractItem(craftingInventory, gridSlot, Math.min(amount, stack.getCount()), simulate);
+                }
+                logicalSlot++;
+            }
+            return ItemStack.EMPTY;
+        }
+
+        private Object upgradeHandler(Object wrapper) {
+            if (!available || wrapper == null || getUpgradeHandlerMethod == null) {
+                return null;
+            }
+            try {
+                return getUpgradeHandlerMethod.invoke(wrapper);
+            } catch (ReflectiveOperationException ignored) {
+                return null;
+            }
+        }
+
+        private Map<?, ?> slotWrappers(Object upgradeHandler) {
+            if (!available || upgradeHandler == null || getSlotWrappersMethod == null) {
+                return Map.of();
+            }
+            try {
+                Object wrappers = getSlotWrappersMethod.invoke(upgradeHandler);
+                return wrappers instanceof Map<?, ?> map ? map : Map.of();
+            } catch (ReflectiveOperationException ignored) {
+                return Map.of();
+            }
+        }
+
+        private Object craftingInventory(Object wrapper, int upgradeSlotIndex) {
+            Map<?, ?> wrappers = slotWrappers(upgradeHandler(wrapper));
+            Object upgradeWrapper = wrappers.get(upgradeSlotIndex);
+            return craftingInventory(upgradeWrapper);
+        }
+
+        private Object craftingInventory(Object upgradeWrapper) {
+            if (!available || upgradeWrapper == null
+                    || craftingUpgradeWrapperClass == null
+                    || getCraftingInventoryMethod == null
+                    || !craftingUpgradeWrapperClass.isInstance(upgradeWrapper)) {
+                return null;
+            }
+            try {
+                return getCraftingInventoryMethod.invoke(upgradeWrapper);
+            } catch (ReflectiveOperationException ignored) {
+                return null;
+            }
+        }
+
+        private ItemStack extractItem(Object inventoryHandler, int slot, int amount, boolean simulate) {
+            if (!available || inventoryHandler == null || slot < 0 || amount <= 0 || extractItemMethod == null) {
+                return ItemStack.EMPTY;
+            }
+            try {
+                Object extracted = extractItemMethod.invoke(inventoryHandler, slot, amount, simulate);
+                return extracted instanceof ItemStack itemStack ? itemStack : ItemStack.EMPTY;
+            } catch (ReflectiveOperationException ignored) {
+                return ItemStack.EMPTY;
+            }
+        }
+
+        private void notifyContentsUpdated(Object wrapper) {
+            if (!available || wrapper == null || onContentsNbtUpdatedMethod == null) {
+                return;
+            }
+            try {
+                onContentsNbtUpdatedMethod.invoke(wrapper);
+            } catch (ReflectiveOperationException ignored) {
             }
         }
 

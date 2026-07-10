@@ -303,11 +303,19 @@ final class WorkspaceFormat {
         return List.copyOf(lines);
     }
 
+    static ItemStack atlasTooltipStack(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || item.fluidResource() || item.displayStack().isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        return item.displayStack();
+    }
+
     private static List<Component> vanillaAtlasTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
-        if (item == null || item.displayStack().isEmpty()) {
+        ItemStack tooltipStack = atlasTooltipStack(item);
+        if (tooltipStack.isEmpty()) {
             return List.of();
         }
-        return List.copyOf(DrawerHelper.getItemToolTip(item.displayStack()));
+        return List.copyOf(DrawerHelper.getItemToolTip(tooltipStack));
     }
 
     private static List<Component> styledSlotTooltipLines(List<Component> lines) {

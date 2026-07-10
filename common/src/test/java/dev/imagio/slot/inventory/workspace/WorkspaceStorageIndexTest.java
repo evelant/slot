@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.query.CursorStateSnapshot;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntryKey;
@@ -513,6 +514,7 @@ class WorkspaceStorageIndexTest {
     void displayTargetsPreserveDepositCapabilityByKind() {
         WorldDisplayStorageSource rack = display(WorldDisplayStorageKind.TOOL_RACK, 1);
         WorldDisplayStorageSource placed = display(WorldDisplayStorageKind.PLACED_ITEM, 2);
+        WorldDisplayStorageSource tank = display(WorldDisplayStorageKind.FLUID_TANK, 3);
 
         WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
                 null,
@@ -520,14 +522,53 @@ class WorkspaceStorageIndexTest {
                 ClaimedChestMap.empty(),
                 new FakeWorldStorage(),
                 Set.of(),
-                List.of(rack, placed),
+                List.of(rack, placed, tank),
                 Map.of());
 
         assertTrue(index.target(rack.storageId()).depositTarget());
         assertTrue(index.target(rack.storageId()).takeTarget());
         assertFalse(index.target(placed.storageId()).depositTarget());
         assertTrue(index.target(placed.storageId()).takeTarget());
-        assertEquals(2, index.trackedDisplayEntries().size());
+        assertFalse(index.target(tank.storageId()).depositTarget());
+        assertFalse(index.target(tank.storageId()).takeTarget());
+        assertEquals(3, index.trackedDisplayEntries().size());
+    }
+
+    @Test
+    void fluidTankDisplayIndexesContainerItemAndFluidContents() {
+        SlotResourceIdentity oxygen = SlotResourceIdentity.fluid("gtceu:oxygen");
+        WorldDisplayStorageSource tank = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.FLUID_TANK,
+                "Stainless Steel Drum",
+                "minecraft:overworld",
+                7,
+                64,
+                0,
+                1,
+                List.of(content(0, stack("gtceu:stainless_steel_drum", 1))),
+                List.of(new WorldStorageAccess.FluidContent(
+                        0,
+                        WorldStorageAccess.FluidContent.DIRECT_TANK_SLOT,
+                        oxygen,
+                        16000L,
+                        "Oxygen")),
+                List.of());
+
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                null,
+                ClaimedChestMap.empty(),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(tank),
+                Map.of());
+
+        assertEquals(1, index.liveWorldCountsByIdentity().get(ItemIdentity.of("gtceu:stainless_steel_drum")));
+        assertEquals(16000L, index.liveWorldFluidCountsByIdentity().get(oxygen));
+        assertEquals(16000L, index.contents(tank.storageId()).fluidCountsByIdentity().get(oxygen));
+        assertFalse(index.target(tank.storageId()).depositTarget());
+        assertFalse(index.target(tank.storageId()).takeTarget());
     }
 
     @Test
@@ -567,6 +608,54 @@ class WorkspaceStorageIndexTest {
         assertTrue(index.trackedDisplayEntries().stream()
                 .noneMatch(entry -> terminal.storageId().equals(entry.target().storageId())));
         assertTrue(index.liveTrackedDisplayEntries().isEmpty());
+        assertEquals(1, index.projectableTrackedDisplayEntries().size());
+        assertEquals(terminal.storageId(), index.projectableTrackedDisplayEntries().get(0).target().storageId());
+    }
+
+    @Test
+    void virtualAe2TerminalFallbackDoesNotPersistAsTrackedStorage() {
+        Path statePath = tempDir.resolve("ae2-terminal-live-only-memory.json");
+        WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);
+        WorkspaceStorageIndexCache cache = new WorkspaceStorageIndexCache();
+        String storageId = "world-display|ae2_terminal|minecraft:overworld|1|64|0";
+        WorldDisplayStorageSource terminal = new WorldDisplayStorageSource(
+                storageId,
+                WorldDisplayStorageKind.AE2_TERMINAL,
+                "ME network @ 1,64,0",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                1,
+                List.of(content(
+                        0,
+                        stack("minecraft:redstone", 64),
+                        10_000)),
+                List.of(),
+                List.of(),
+                new WorldStorageAccess.Target.Virtual(
+                        "ae2",
+                        storageId,
+                        "terminal",
+                        "minecraft:overworld",
+                        1,
+                        64,
+                        0));
+
+        assertFalse(terminal.trackedStorage());
+
+        WorkspaceStorageIndex index = cache.buildWithMemoryForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                ClaimedChestMap.empty(),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(terminal),
+                store,
+                10L);
+
+        assertEquals(10_000, index.liveWorldCountsByIdentity().get(ItemIdentity.of("minecraft:redstone")));
+        assertNull(store.remembered(storageId));
     }
 
     @Test
@@ -604,6 +693,60 @@ class WorkspaceStorageIndexTest {
         assertTrue(index.trackedDisplayEntries().stream()
                 .anyMatch(entry -> network.storageId().equals(entry.target().storageId())));
         assertTrue(index.liveTrackedDisplayEntries().isEmpty());
+        assertEquals(1, index.projectableTrackedDisplayEntries().size());
+        assertEquals(network.storageId(), index.projectableTrackedDisplayEntries().get(0).target().storageId());
+    }
+
+    @Test
+    void cachedAe2NetworkObservationRemainsProjectableAfterTerminalLeavesRange() {
+        Path statePath = tempDir.resolve("ae2-network-leaves-range-memory.json");
+        WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);
+        WorkspaceStorageIndexCache cache = new WorkspaceStorageIndexCache();
+        WorldDisplayStorageSource network = ae2Network(
+                "ae2:network:tracked-away",
+                10_000,
+                List.of(),
+                List.of("cell-a"));
+
+        WorkspaceStorageIndex live = cache.buildWithMemoryForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                ClaimedChestMap.empty(),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(network),
+                store,
+                10L);
+
+        assertEquals(1, live.projectableTrackedDisplayEntries().size());
+        assertEquals(network.storageId(), live.projectableTrackedDisplayEntries().get(0).target().storageId());
+        assertEquals(10_000, live.contents(network.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(10_000, store.remembered(network.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+
+        WorkspaceStorageIndex rememberedOnly = cache.buildWithMemoryForTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                ClaimedChestMap.empty(),
+                new FakeWorldStorage(),
+                Set.of(),
+                List.of(),
+                store,
+                11L);
+
+        assertEquals(10_000, rememberedOnly.contents(network.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(1, rememberedOnly.projectableTrackedDisplayEntries().size());
+        WorkspaceStorageIndex.StorageEntry entry = rememberedOnly.projectableTrackedDisplayEntries().get(0);
+        assertEquals(network.storageId(), entry.target().storageId());
+        assertFalse(entry.live());
+        assertTrue(entry.remembered());
+        assertFalse(entry.target().proximate());
+        assertEquals("ME network @ 1,64,0", entry.target().label());
     }
 
     @Test
@@ -952,6 +1095,7 @@ class WorkspaceStorageIndexTest {
         assertFalse(index.trackedDisplayEntries().get(0).target().depositTarget());
         assertTrue(index.trackedDisplayEntries().get(0).target().takeTarget());
         assertTrue(index.liveTrackedDisplayEntries().isEmpty());
+        assertTrue(index.projectableTrackedDisplayEntries().isEmpty());
     }
 
     @Test

@@ -382,9 +382,10 @@ public final class DepositPlanner {
             }
             ranked.add(chest);
         }
-        ranked.sort((a, b) -> Integer.compare(
-                affinityMap.score(b.storageId(), identity),
-                affinityMap.score(a.storageId(), identity)));
+        ranked.sort(Comparator
+                .comparingInt((ClaimedChest chest) -> -chest.role().takePriority())
+                .thenComparingInt(chest -> -affinityMap.score(chest.storageId(), identity))
+                .thenComparing(chest -> chest.storageId().toString()));
         return List.copyOf(ranked);
     }
 

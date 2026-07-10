@@ -68,18 +68,35 @@ public record ChestAffinityMap(Map<UUID, Map<ItemIdentity, ChestAffinity>> entri
         if (storageId == null || identity == null) {
             return this;
         }
-        ItemIdentity key = key(identity);
+        return recordDeposits(storageId, Map.of(identity, 1), tick);
+    }
+
+    public ChestAffinityMap recordDeposits(UUID storageId, Map<ItemIdentity, Integer> countsByIdentity, long tick) {
+        if (storageId == null || countsByIdentity == null || countsByIdentity.isEmpty()) {
+            return this;
+        }
         LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> next = new LinkedHashMap<>(entries);
         LinkedHashMap<ItemIdentity, ChestAffinity> bonds = new LinkedHashMap<>(
                 next.getOrDefault(storageId, Map.of()));
-        ChestAffinity existing = affinity(storageId, key);
-        if (existing != null) {
-            bonds.keySet().removeIf(candidate -> ItemIdentityMatcher.matchesMovable(candidate, key));
+        boolean changed = false;
+        for (ItemIdentity identity : countsByIdentity.keySet()) {
+            if (identity == null) {
+                continue;
+            }
+            ItemIdentity key = key(identity);
+            ChestAffinity existing = affinity(bonds, key);
+            if (existing != null) {
+                bonds.keySet().removeIf(candidate -> ItemIdentityMatcher.matchesMovable(candidate, key));
+            }
+            ChestAffinity bumped = existing == null
+                    ? new ChestAffinity(key, 1, tick)
+                    : existing.bump(1, tick);
+            bonds.put(key, bumped);
+            changed = true;
         }
-        ChestAffinity bumped = existing == null
-                ? new ChestAffinity(key, 1, tick)
-                : existing.bump(1, tick);
-        bonds.put(key, bumped);
+        if (!changed) {
+            return this;
+        }
         next.put(storageId, Map.copyOf(bonds));
         return new ChestAffinityMap(next);
     }
@@ -174,6 +191,23 @@ public record ChestAffinityMap(Map<UUID, Map<ItemIdentity, ChestAffinity>> entri
 
     private static ItemIdentity key(ItemIdentity identity) {
         return ItemIdentityMatcher.normalizeMovable(identity);
+    }
+
+    private static ChestAffinity affinity(Map<ItemIdentity, ChestAffinity> bonds, ItemIdentity identity) {
+        if (bonds == null || bonds.isEmpty() || identity == null) {
+            return null;
+        }
+        ItemIdentity key = key(identity);
+        ChestAffinity direct = bonds.get(key);
+        if (direct != null) {
+            return direct;
+        }
+        for (Map.Entry<ItemIdentity, ChestAffinity> entry : bonds.entrySet()) {
+            if (ItemIdentityMatcher.matchesMovable(entry.getKey(), key)) {
+                return entry.getValue();
+            }
+        }
+        return null;
     }
 
     private static ChestAffinity merge(ChestAffinity left, ChestAffinity right) {

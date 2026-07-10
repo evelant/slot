@@ -4278,11 +4278,11 @@ class WorkspaceProjectionSessionCacheTest {
     }
 
     @Test
-    void simpleClaimedChestBufferRoleInvalidationKeepsStorageButClearsDepositabilitySkipsFullProjectionAndMatchesOracle() {
+    void simpleClaimedChestInputRoleInvalidationKeepsStorageButClearsDepositabilitySkipsFullProjectionAndMatchesOracle() {
         ItemIdentity redstone = new ItemIdentity("minecraft:redstone", ItemComparisonMode.ITEM_ID, "");
         UUID storageId = UUID.fromString("00000000-0000-0000-0000-000000000082");
         ClaimedChest storageChest = claimedChest(storageId);
-        ClaimedChest bufferChest = storageChest.withRole(ChestRole.BUFFER);
+        ClaimedChest inputChest = storageChest.withRole(ChestRole.INPUT);
         WorkflowDomainSnapshot seedWorkflow = workflowWithHomesTargetsChestsAndAffinity(
                 homeMap(redstone),
                 Map.of(),
@@ -4293,7 +4293,7 @@ class WorkspaceProjectionSessionCacheTest {
                 homeMap(redstone),
                 Map.of(),
                 Map.of(),
-                new ClaimedChestMap(List.of(bufferChest)),
+                new ClaimedChestMap(List.of(inputChest)),
                 ChestAffinityMap.empty());
         WorkspaceProjectionRequest seed = storageRequestWithResolverProximateAndDepositIds(
                 authority("minecraft:redstone", 16),
@@ -6185,7 +6185,7 @@ class WorkspaceProjectionSessionCacheTest {
                 includeDisplaySources ? resolved.displaySources() : List.of(),
                 Set.of(),
                 List.of(),
-                resolved.liveTrackedDisplayEntries(),
+                resolved.projectableTrackedDisplayEntries(),
                 depositEligibleStorageIds == null ? Set.of() : depositEligibleStorageIds,
                 resolved,
                 liveChestContentPresence,

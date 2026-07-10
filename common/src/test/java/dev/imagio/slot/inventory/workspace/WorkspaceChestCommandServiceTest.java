@@ -1,11 +1,16 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
+import dev.imagio.slot.workflow.domain.InventoryActivityEvent;
+import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
 
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -90,6 +95,63 @@ class WorkspaceChestCommandServiceTest {
         assertEquals(WorkspaceProjectionSlice.all(), invalidation.slices());
         assertEquals("take_records_missing_chest_transfer_records", invalidation.diagnostics());
         assertTrue(invalidation.requiresFullProjection());
+    }
+
+    @Test
+    void takeRecordActivityAggregatesByIdentityBeforeRecording() {
+        WorkflowDomainRuntime runtime =
+                new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity stone = ItemIdentity.of("minecraft:stone");
+        ItemIdentity dirt = ItemIdentity.of("minecraft:dirt");
+
+        List<InventoryActivityEvent> events = WorkspaceChestCommandService.recordTakeRecords(
+                null,
+                runtime,
+                List.of(
+                        new TakeAllExecutor.TakeRecord(UUID.randomUUID(), stone, 8),
+                        new TakeAllExecutor.TakeRecord(UUID.randomUUID(), stone, 4),
+                        new TakeAllExecutor.TakeRecord(UUID.randomUUID(), dirt, 2)),
+                "take_records");
+
+        assertEquals(2, events.size());
+        assertEquals(12, countFor(events, stone));
+        assertEquals(2, countFor(events, dirt));
+    }
+
+    @Test
+    void countedTakeCapsSingleSlotRequestToEnumeratedStackLimit() {
+        assertEquals(
+                64,
+                TakeAllExecutor.slotRequestAmount(
+                        84,
+                        new ItemStack("minecraft:cobblestone", 64, 64)));
+        assertEquals(
+                12,
+                TakeAllExecutor.slotRequestAmount(
+                        84,
+                        new ItemStack("minecraft:cobblestone", 12, 64)));
+        assertEquals(
+                16,
+                TakeAllExecutor.slotRequestAmount(
+                        84,
+                        new ItemStack("minecraft:ender_pearl", 16, 16)));
+    }
+
+    @Test
+    void stackTakeUsesEnumeratedSlotLimit() {
+        assertEquals(
+                37,
+                TakeAllExecutor.slotRequestAmount(
+                        Integer.MAX_VALUE,
+                        new ItemStack("minecraft:cobblestone", 37, 64)));
+    }
+
+    private static int countFor(List<InventoryActivityEvent> events, ItemIdentity identity) {
+        return events.stream()
+                .filter(event -> identity.equals(event.identity()))
+                .mapToInt(InventoryActivityEvent::count)
+                .findFirst()
+                .orElse(0);
     }
 
     private static EnumSet<WorkspaceProjectionSlice> expectedChestTransferSlices() {

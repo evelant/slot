@@ -266,6 +266,7 @@ class WorkspaceBeltCommandServiceTest {
                 viewModel,
                 ItemIdentity.of("minecraft:stone"),
                 true,
+                null,
                 hotbarIndex -> {
                     assigned.set(hotbarIndex);
                     return WorkspaceCommandOutcome.accepted("assigned", "");
@@ -288,6 +289,7 @@ class WorkspaceBeltCommandServiceTest {
                 viewModel(slots),
                 ItemIdentity.of("minecraft:stone"),
                 true,
+                null,
                 hotbarIndex -> WorkspaceCommandOutcome.accepted("assigned", ""));
 
         assertFalse(outcome.success());

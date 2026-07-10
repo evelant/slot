@@ -249,11 +249,12 @@ public record RecipeIngredientSidebarSpec(
                 islandId = fallbackSectionId();
             }
             ensureIsland(islandId);
+            boolean fluid = fluidAlternative(alternative);
             ItemStack displayStack = existing == null ? displayStack(alternative) : existing.displayStack();
-            if (displayStack == null || displayStack.isEmpty()) {
+            if ((displayStack == null || displayStack.isEmpty()) && !fluid) {
                 displayStack = placeholderDisplayStack(ingredient.label());
             }
-            if (displayStack.isEmpty()) {
+            if ((displayStack == null || displayStack.isEmpty()) && !fluid) {
                 return;
             }
             SlotWorkspaceViewModel.AtlasItem item = existing == null
@@ -267,20 +268,21 @@ public record RecipeIngredientSidebarSpec(
             Alternative alternative = missingAlternative(ingredient);
             ItemIdentity identity = identityForAlternative(ingredient, alternative);
             SlotWorkspaceViewModel.AtlasItem existing = existingItem(alternative);
-            if (existing != null && !existing.displayStack().isEmpty()) {
+            boolean fluid = fluidAlternative(alternative);
+            if (existing != null && (!existing.displayStack().isEmpty() || existing.fluidResource())) {
                 addOrMerge(withRecipeTarget(existing, ingredient.requiredCount(), fallbackSectionId()), ingredient);
                 return;
             }
             ItemStack displayStack = alternative == null ? ItemStack.EMPTY : displayStack(alternative);
-            if (displayStack == null || displayStack.isEmpty()) {
+            if ((displayStack == null || displayStack.isEmpty()) && !fluid) {
                 displayStack = displayStack(identity);
             }
-            if (displayStack.isEmpty()) {
+            if ((displayStack == null || displayStack.isEmpty()) && !fluid) {
                 displayStack = placeholderDisplayStack("Missing: " + ingredient.label());
             } else if (identity.itemId().startsWith("slot:recipe_ingredient/")) {
                 displayStack = namedStack(displayStack, ingredient.label());
             }
-            if (displayStack.isEmpty()) {
+            if ((displayStack == null || displayStack.isEmpty()) && !fluid) {
                 return;
             }
             SlotWorkspaceViewModel.AtlasItem item = missingItem(
@@ -438,6 +440,12 @@ public record RecipeIngredientSidebarSpec(
             return carried + presenceCount(item.presence()) + presenceCount(item.elsewhere()) + Math.max(0, item.proximateCount());
         }
 
+        private static boolean fluidAlternative(Alternative alternative) {
+            return alternative != null
+                    && alternative.resourceIdentity() != null
+                    && alternative.resourceIdentity().fluid();
+        }
+
         private void ensureIsland(String islandId) {
             if (islandId == null || islandId.isBlank()) {
                 ensureFallbackSection();
@@ -499,6 +507,15 @@ public record RecipeIngredientSidebarSpec(
             }
             if (alternative.displayStack() != null && !alternative.displayStack().isEmpty()) {
                 return alternative.displayStack().copy();
+            }
+            if (alternative.resourceIdentity() != null) {
+                if (alternative.resourceIdentity().fluid()) {
+                    return ItemStack.EMPTY;
+                }
+                ItemStack stack = SlotWorkspaceViewModel.displayStackForResource(alternative.resourceIdentity());
+                if (stack != null && !stack.isEmpty()) {
+                    return stack;
+                }
             }
             return displayStack(identityForAlternative(null, alternative));
         }

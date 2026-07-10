@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.storage;
 
+import dev.imagio.slot.inventory.core.InventoryCapability;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -7,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * SPI for a single family of carried storage (Sophisticated Backpacks,
@@ -153,6 +155,15 @@ public interface CarriedProvider {
      * Used by default {@link #findIdentity} / {@link #findAllMatching}.
      */
     int slotCount(Player player, String sourceId);
+
+    /**
+     * Capabilities advertised for a source descriptor. Most carried storage
+     * supports both insert and extract; provider-owned views like an upgrade's
+     * occupied crafting grid can narrow this per source.
+     */
+    default Set<InventoryCapability> capabilities(Player player, String sourceId) {
+        return Set.of(InventoryCapability.INSERT, InventoryCapability.EXTRACT);
+    }
 
     /**
      * Fast occupied-slot summary for this provider's carried sources. The

@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.storage;
 
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.InventoryCapability;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -13,9 +14,12 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CarriedSourceAuthoritySnapshotsTest {
     @BeforeEach
@@ -77,6 +81,34 @@ class CarriedSourceAuthoritySnapshotsTest {
                 authority.slotEntry("sophisticatedbackpacks:carried/test-stable-id", 0).count());
     }
 
+    @Test
+    void currentAuthorityPreservesProviderSourceCapabilities() {
+        ServerPlayer player = new ServerPlayer();
+        player.containerMenu = new TestMenu(11);
+
+        String sourceId = "sophisticatedbackpacks:carried/test-stable-id#crafting/0";
+        FakeProvider backpack = new FakeProvider(
+                "sophisticatedbackpacks:carried",
+                List.of(sourceId),
+                1,
+                false) {
+            @Override
+            public Set<InventoryCapability> capabilities(Player player, String sourceId) {
+                return Set.of(InventoryCapability.EXTRACT);
+            }
+        };
+        backpack.put(sourceId, 0, stack("minecraft:stick", 2));
+        CarriedProviderRegistry.register(backpack);
+
+        InventoryAuthoritySnapshot authority =
+                CarriedSourceAuthoritySnapshots.currentAuthority(player, "test");
+
+        assertNotNull(authority.source(sourceId));
+        assertTrue(authority.source(sourceId).supports(InventoryCapability.EXTRACT));
+        assertFalse(authority.source(sourceId).supports(InventoryCapability.INSERT));
+        assertEquals("minecraft:stick", authority.slotEntry(sourceId, 0).stack().itemId());
+    }
+
     private static ItemStack stack(String itemId, int count) {
         return new ItemStack(itemId, count, 64);
     }
@@ -92,7 +124,7 @@ class CarriedSourceAuthoritySnapshotsTest {
         }
     }
 
-    private static final class FakeProvider implements CarriedProvider {
+    private static class FakeProvider implements CarriedProvider {
         private final String prefix;
         private final List<String> sourceIds;
         private final int slotCount;

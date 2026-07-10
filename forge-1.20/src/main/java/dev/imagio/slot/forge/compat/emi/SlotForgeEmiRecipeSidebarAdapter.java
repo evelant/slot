@@ -20,7 +20,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
@@ -581,7 +580,7 @@ final class SlotForgeEmiRecipeSidebarAdapter {
                                     null,
                                     labelFor(emiStack, ItemStack.EMPTY),
                                     requiredCount,
-                                    fluidDisplayStack(),
+                                    ItemStack.EMPTY,
                                     fluidIdentity,
                                     requiredAmount));
                     continue;
@@ -1058,11 +1057,6 @@ final class SlotForgeEmiRecipeSidebarAdapter {
         } catch (RuntimeException | LinkageError ignored) {
             return "";
         }
-    }
-
-    private static ItemStack fluidDisplayStack() {
-        ItemStack stack = new ItemStack(Items.WATER_BUCKET);
-        return stack.isEmpty() ? new ItemStack(Items.BUCKET) : stack;
     }
 
     private static String sanitize(String value) {

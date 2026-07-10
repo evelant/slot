@@ -143,11 +143,12 @@ public final class CraftRunUiBuilder {
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
         ItemStack output = outputStack(entry);
-        if (!output.isEmpty()) {
-            header.addChild(SlotUiElement.itemIcon(output, 12, true)
+        boolean fluidOutput = fluidOutput(entry);
+        if (fluidOutput || !output.isEmpty()) {
+            header.addChild(outputIcon(entry, output)
                     .allowHitTest(true)
                     .renderVanillaCount(true)
-                    .tooltipStack(output)
+                    .tooltipStack(fluidOutput ? null : output)
                     .tooltipLines(entryTooltip(entry))
                     .on(SlotUiEventKind.CLICK, event -> openRecipe(entry, event)));
         }
@@ -319,17 +320,17 @@ public final class CraftRunUiBuilder {
             return;
         }
         ItemIdentity displayIdentity = displayIdentity(key);
-        ItemStack displayStack = SlotWorkspaceViewModel.displayStackForIdentity(displayIdentity);
-        if (displayStack == null || displayStack.isEmpty()) {
+        ItemStack displayStack = SlotWorkspaceViewModel.displayStackForResource(key);
+        if ((displayStack == null || displayStack.isEmpty()) && !key.fluid()) {
             displayStack = SlotWorkspaceViewModel.displayStackForIdentity(PLACEHOLDER_ID);
         }
-        if (displayStack == null || displayStack.isEmpty()) {
+        if ((displayStack == null || displayStack.isEmpty()) && !key.fluid()) {
             return;
         }
         addResource(emitted, key);
         cards.add(new SlotWorkspaceViewModel.AtlasItem(
                 SlotWorkspaceViewModel.IdentityRef.from(displayIdentity),
-                displayStack.copy(),
+                displayStack == null ? ItemStack.EMPTY : displayStack.copy(),
                 ingredientCardName(group, key),
                 0,
                 0,
@@ -511,16 +512,35 @@ public final class CraftRunUiBuilder {
     }
 
     private static ItemStack outputStack(CraftRunRecipeEntry entry) {
-        if (entry == null || entry.outputIdentity() == null) {
+        if (entry == null) {
             return ItemStack.EMPTY;
         }
-        ItemStack stack = SlotWorkspaceViewModel.displayStackForIdentity(entry.outputIdentity());
+        ItemStack stack = entry.outputResourceIdentity() != null && entry.outputResourceIdentity().fluid()
+                ? SlotWorkspaceViewModel.displayStackForResource(entry.outputResourceIdentity())
+                : SlotWorkspaceViewModel.displayStackForIdentity(entry.outputIdentity());
         if (stack == null || stack.isEmpty()) {
             return ItemStack.EMPTY;
         }
         ItemStack copy = stack.copy();
         copy.setCount(Math.min(copy.getMaxStackSize(), Math.max(1, entry.outputCountPerBatch())));
         return copy;
+    }
+
+    private static SlotUiElement outputIcon(CraftRunRecipeEntry entry, ItemStack outputStack) {
+        SlotResourceIdentity outputResource = entry == null
+                ? null
+                : SlotResourceCollections.key(entry.outputResourceIdentity());
+        if (outputResource != null && outputResource.fluid()) {
+            return SlotUiElement.fluidIcon(outputResource.id(), 12, true);
+        }
+        return SlotUiElement.itemIcon(outputStack, 12, true);
+    }
+
+    private static boolean fluidOutput(CraftRunRecipeEntry entry) {
+        SlotResourceIdentity outputResource = entry == null
+                ? null
+                : SlotResourceCollections.key(entry.outputResourceIdentity());
+        return outputResource != null && outputResource.fluid();
     }
 
     private static String entryText(CraftRunRecipeEntry entry) {
@@ -542,6 +562,11 @@ public final class CraftRunUiBuilder {
             return List.of(Component.literal("Open recipe in EMI"));
         }
         ArrayList<Component> lines = new ArrayList<>();
+        if (fluidOutput(entry)) {
+            lines.add(Component.literal(entry.label() == null || entry.label().isBlank()
+                    ? "Fluid output"
+                    : entry.label()));
+        }
         lines.add(Component.literal("Open recipe in EMI"));
         lines.add(Component.empty());
         lines.add(Component.literal("Runs: " + entry.remainingBatches()));

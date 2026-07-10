@@ -229,37 +229,21 @@ public final class DepositExecutor {
         if (player == null || chest == null) {
             return SingleStackOutcome.failed("invalid_args");
         }
-        MinecraftServer server = player.getServer();
-        if (server == null) {
-            return SingleStackOutcome.failed("server_unavailable");
-        }
-        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
-        WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
-        ItemStack sourceStack = carried.peek(player, laneId, slotIndex);
-        if (sourceStack == null || sourceStack.isEmpty()) {
-            return SingleStackOutcome.failed("source_empty");
-        }
-        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-        ItemStack single = sourceStack.copy();
-        single.setCount(1);
-        ItemStack remaining = worldStorage.insert(player, server, target, single.copy(), true);
-        if (!remaining.isEmpty()) {
-            return SingleStackOutcome.failed("destination_full");
-        }
-        ItemStack committed = worldStorage.insert(player, server, target, single.copy(), false);
-        if (!committed.isEmpty()) {
-            return SingleStackOutcome.failed("commit_partial");
-        }
-        ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
-        ItemStack removed = carried.extract(player, laneId, slotIndex, 1, false);
-        if (removed == null || removed.isEmpty()) {
-            return SingleStackOutcome.failed("extract_failed");
+        SingleStackOutcome outcome = depositSingleStack(
+                player,
+                laneId,
+                slotIndex,
+                chest.storageId().toString(),
+                new WorldStorageAccess.Target.Chest(chest),
+                1);
+        if (!outcome.success()) {
+            return outcome;
         }
         SlotCommon.LOGGER.info(
                 "[SLOT] deposit-one lane={} slot={} chest={}",
                 laneId, slotIndex, chest.storageId()
         );
-        return SingleStackOutcome.deposited(new DepositRecord(chest.storageId(), identity, 1));
+        return outcome;
     }
 
     public static SingleStackOutcome depositSingleStack(
@@ -269,6 +253,43 @@ public final class DepositExecutor {
             ClaimedChest chest
     ) {
         if (player == null || chest == null) {
+            return SingleStackOutcome.failed("invalid_args");
+        }
+        SingleStackOutcome outcome = depositSingleStack(
+                player,
+                laneId,
+                slotIndex,
+                chest.storageId().toString(),
+                new WorldStorageAccess.Target.Chest(chest));
+        if (!outcome.success()) {
+            return outcome;
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] deposit-single lane={} slot={} chest={}",
+                laneId, slotIndex, chest.storageId()
+        );
+        return outcome;
+    }
+
+    public static SingleStackOutcome depositSingleStack(
+            ServerPlayer player,
+            String laneId,
+            int slotIndex,
+            String storageId,
+            WorldStorageAccess.Target target
+    ) {
+        return depositSingleStack(player, laneId, slotIndex, storageId, target, Integer.MAX_VALUE);
+    }
+
+    private static SingleStackOutcome depositSingleStack(
+            ServerPlayer player,
+            String laneId,
+            int slotIndex,
+            String storageId,
+            WorldStorageAccess.Target target,
+            int maxCount
+    ) {
+        if (player == null || target == null || storageId == null || storageId.isBlank()) {
             return SingleStackOutcome.failed("invalid_args");
         }
         MinecraftServer server = player.getServer();
@@ -281,26 +302,39 @@ public final class DepositExecutor {
         if (sourceStack == null || sourceStack.isEmpty()) {
             return SingleStackOutcome.failed("source_empty");
         }
-        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-        ItemStack remaining = worldStorage.insert(player, server, target, sourceStack.copy(), true);
+        int depositCount = Math.min(sourceStack.getCount(), Math.max(1, maxCount));
+        ItemStack probe = sourceStack.copy();
+        probe.setCount(depositCount);
+        ItemStack remaining = worldStorage.insert(player, server, target, probe.copy(), true);
         if (!remaining.isEmpty()) {
             return SingleStackOutcome.failed("destination_full");
         }
-        ItemStack committed = worldStorage.insert(player, server, target, sourceStack.copy(), false);
-        if (!committed.isEmpty()) {
-            return SingleStackOutcome.failed("commit_partial");
-        }
-        int depositedCount = sourceStack.getCount();
         ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
-        ItemStack removed = carried.extract(player, laneId, slotIndex, depositedCount, false);
-        if (removed == null || removed.isEmpty()) {
+        ItemStack extracted = carried.extract(player, laneId, slotIndex, depositCount, false);
+        if (extracted == null || extracted.isEmpty()) {
             return SingleStackOutcome.failed("extract_failed");
         }
+        int beforeInsert = extracted.getCount();
+        ItemStack committed = worldStorage.insert(player, server, target, extracted, false);
+        int leftoverCount = committed == null || committed.isEmpty() ? 0 : committed.getCount();
+        int inserted = beforeInsert - leftoverCount;
+        if (leftoverCount > 0) {
+            ItemStack carryLeftover = carried.insertBestFit(player, committed, false);
+            if (carryLeftover != null && !carryLeftover.isEmpty()) {
+                SlotCommon.LOGGER.warn(
+                        "[SLOT] deposit-single: dropping {} of {} (couldn't reinsert leftover into carry)",
+                        carryLeftover.getCount(), identity.itemId());
+                player.drop(carryLeftover, false);
+            }
+        }
+        if (inserted <= 0) {
+            return SingleStackOutcome.failed("commit_partial");
+        }
         SlotCommon.LOGGER.info(
-                "[SLOT] deposit-single lane={} slot={} chest={}",
-                laneId, slotIndex, chest.storageId()
+                "[SLOT] deposit-single lane={} slot={} storage={} inserted={} leftover={}",
+                laneId, slotIndex, storageId, inserted, leftoverCount
         );
-        return SingleStackOutcome.deposited(new DepositRecord(chest.storageId(), identity, depositedCount));
+        return SingleStackOutcome.deposited(new DepositRecord(storageId, identity, inserted));
     }
 
     /** One observed deposit: identity, count, target chest. Drives affinity bumps. */

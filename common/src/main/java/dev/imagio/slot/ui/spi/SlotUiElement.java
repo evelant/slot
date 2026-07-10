@@ -16,7 +16,8 @@ public final class SlotUiElement {
         ELEMENT,
         BUTTON,
         LABEL,
-        ITEM_ICON
+        ITEM_ICON,
+        FLUID_ICON
     }
 
     private final Kind kind;
@@ -38,6 +39,7 @@ public final class SlotUiElement {
     private float itemIconSize = 16;
     private boolean itemCarried = true;
     private boolean renderVanillaCount = true;
+    private String fluidId = "";
     private Integer zIndex;
     private ItemStack tooltipStack = ItemStack.EMPTY;
     private List<Component> tooltipLines = List.of();
@@ -78,6 +80,16 @@ public final class SlotUiElement {
     public static SlotUiElement itemIcon(ItemStack stack, float size, boolean carried) {
         SlotUiElement element = new SlotUiElement(Kind.ITEM_ICON);
         element.itemStack(stack);
+        element.itemIconSize(size);
+        element.itemCarried(carried);
+        element.layout(layout -> layout.width(size).height(size));
+        element.allowHitTest(false);
+        return element;
+    }
+
+    public static SlotUiElement fluidIcon(String fluidId, float size, boolean carried) {
+        SlotUiElement element = new SlotUiElement(Kind.FLUID_ICON);
+        element.fluidId(fluidId);
         element.itemIconSize(size);
         element.itemCarried(carried);
         element.layout(layout -> layout.width(size).height(size));
@@ -287,6 +299,15 @@ public final class SlotUiElement {
 
     public boolean renderVanillaCount() {
         return renderVanillaCount;
+    }
+
+    public SlotUiElement fluidId(String value) {
+        fluidId = value == null ? "" : value;
+        return this;
+    }
+
+    public String fluidId() {
+        return fluidId == null ? "" : fluidId;
     }
 
     public SlotUiElement tooltipStack(ItemStack value) {

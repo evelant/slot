@@ -23,7 +23,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -72,7 +74,7 @@ public final class KitGatherService {
         WorkspaceStorageRoutingContext routing = WorkspaceStorageRoutingContext.build(player, runtime, authority);
         ClaimedChestMap claimedChestMap = routing.claimedChestMap();
         Set<String> proximate = routing.proximateStorageIds();
-        java.util.List<WorldDisplayStorageSource> displaySources = routing.displaySources();
+        List<WorldDisplayStorageSource> displaySources = routing.displaySources();
         if (!routing.hasNearbyClaimedOrDisplayStorage()) {
             return Outcome.empty("no_proximate_chest");
         }
@@ -100,6 +102,7 @@ public final class KitGatherService {
                     proximate);
             int remaining = gap;
             int pulledForIdentity = 0;
+            ArrayList<TakeAllExecutor.TakeRecord> recordsForIdentity = new ArrayList<>();
             for (ClaimedChest chest : ranked) {
                 if (remaining <= 0) {
                     break;
@@ -111,8 +114,9 @@ public final class KitGatherService {
                         remaining,
                         "gather");
                 if (outcome.tookAnything()) {
-                    WorkspaceChestCommandService.recordTakeRecord(
-                            player, runtime, outcome.record(), "gather");
+                    if (outcome.record() != null) {
+                        recordsForIdentity.add(outcome.record());
+                    }
                     remaining -= outcome.moved();
                     pulledForIdentity += outcome.moved();
                 }
@@ -132,11 +136,16 @@ public final class KitGatherService {
                         remaining,
                         "gather-display");
                 if (outcome.tookAnything()) {
-                    WorkspaceChestCommandService.recordTakeRecord(
-                            player, runtime, outcome.record(), "gather");
+                    if (outcome.record() != null) {
+                        recordsForIdentity.add(outcome.record());
+                    }
                     remaining -= outcome.moved();
                     pulledForIdentity += outcome.moved();
                 }
+            }
+            if (!recordsForIdentity.isEmpty()) {
+                WorkspaceChestCommandService.recordTakeRecords(
+                        player, runtime, recordsForIdentity, "gather");
             }
             if (pulledForIdentity > 0) {
                 identitiesPulled++;

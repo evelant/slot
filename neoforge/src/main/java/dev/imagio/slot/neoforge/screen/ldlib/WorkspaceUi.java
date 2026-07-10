@@ -13,6 +13,7 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.SELECTED;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.TEXT;
 
 import com.lowdragmc.lowdraglib2.gui.texture.ColorRectTexture;
+import com.lowdragmc.lowdraglib2.gui.texture.FluidStackTexture;
 import com.lowdragmc.lowdraglib2.gui.texture.ItemStackTexture;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
@@ -24,8 +25,13 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
 import dev.vfyjxf.taffy.style.TaffyPosition;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -175,6 +181,28 @@ final class WorkspaceUi {
                 .style(style -> style.backgroundTexture(texture));
         icon.setAllowHitTest(false);
         return icon;
+    }
+
+    static UIElement fluidIcon(String fluidId, float size, boolean carried) {
+        Fluid fluid = resolveFluid(fluidId);
+        UIElement icon = new UIElement().layout(layout -> layout.width(size).height(size));
+        if (fluid != null && fluid != Fluids.EMPTY) {
+            FluidStackTexture texture = new FluidStackTexture(new FluidStack(fluid, 1000));
+            if (!carried) {
+                texture.setColor(GHOST_ICON_ALPHA_TINT);
+            }
+            icon.style(style -> style.backgroundTexture(texture));
+        }
+        icon.setAllowHitTest(false);
+        return icon;
+    }
+
+    private static Fluid resolveFluid(String fluidId) {
+        if (fluidId == null || fluidId.isBlank()) {
+            return Fluids.EMPTY;
+        }
+        ResourceLocation location = ResourceLocation.tryParse(fluidId);
+        return location == null ? Fluids.EMPTY : BuiltInRegistries.FLUID.get(location);
     }
 
     static UIElement emptyIcon() {

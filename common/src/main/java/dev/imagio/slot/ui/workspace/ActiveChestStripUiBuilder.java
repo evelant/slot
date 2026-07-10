@@ -94,15 +94,17 @@ public final class ActiveChestStripUiBuilder {
     private static int roleColor(ChestRole role) {
         return switch (role == null ? ChestRole.IGNORE : role) {
             case STORAGE -> ACCENT;
-            case BUFFER -> 0xC8758B6B;
+            case INPUT -> 0xC8758B6B;
+            case OUTPUT -> 0xC86BA875;
             case IGNORE -> 0xC83B4A56;
         };
     }
 
     private static String roleTooltip(ChestRole role) {
         return switch (role == null ? ChestRole.IGNORE : role) {
-            case STORAGE -> "Storage: visible, searchable, learns homes, and accepts quick store. Click for Buffer.";
-            case BUFFER -> "Buffer: visible and searchable, but never learns homes or accepts quick store. Click for Ignore.";
+            case STORAGE -> "Storage: visible, searchable, learns homes, and accepts quick store. Click for Input.";
+            case INPUT -> "Input: visible and searchable; lowest take priority and accepts put only while open. Click for Output.";
+            case OUTPUT -> "Output: visible and searchable; highest take priority and accepts put only while open. Click for Ignore.";
             case IGNORE -> "Ignore: hidden from SLOT storage and routing. Click for Storage.";
         };
     }

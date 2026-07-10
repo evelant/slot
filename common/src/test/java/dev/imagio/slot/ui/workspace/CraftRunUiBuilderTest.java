@@ -67,12 +67,49 @@ class CraftRunUiBuilderTest {
         SlotWorkspaceViewModel.setGhostStackResolver(itemId -> new ItemStack(itemId, 1, 64));
         try {
             SlotUiElement section = new CraftRunUiBuilder(context).entrySections(List.of()).get(0);
-            SlotUiElement title = section.children().get(0).children().get(0);
+            SlotUiElement icon = section.children().get(0).children().get(0);
+            SlotUiElement title = section.children().get(0).children().get(1);
 
+            assertEquals(SlotUiElement.Kind.FLUID_ICON, icon.kind());
+            assertEquals("gtceu:oxygen", icon.fluidId());
+            assertTrue(icon.tooltipStack().isEmpty());
             assertEquals("x4 Oxygen", title.text());
+            assertTrue(tooltipText(icon).contains("Oxygen"));
             assertTrue(tooltipText(title).contains("Runs: 4"));
             assertTrue(tooltipText(title).contains("Each run: 1 B"));
             assertTrue(tooltipText(title).contains("Total output: 4 B"));
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
+    void fluidResourceDisplayStackIsEmptyBecauseFluidsAreNotItems() {
+        SlotWorkspaceViewModel.setGhostStackResolver(itemId -> new ItemStack(itemId, 1, 64));
+        try {
+            ItemStack stack = SlotWorkspaceViewModel.displayStackForResource(SlotResourceIdentity.fluid("minecraft:water"));
+
+            assertTrue(stack.isEmpty());
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
+    void fluidIngredientCardDoesNotNeedItemDisplayStack() {
+        TestContext context = new TestContext(state(fluidInputEntry()));
+        SlotWorkspaceViewModel.setGhostStackResolver(itemId -> new ItemStack(itemId, 1, 64));
+        try {
+            SlotUiElement section = new CraftRunUiBuilder(context).entrySections(List.of()).get(0);
+            SlotUiElement grid = section.children().get(1);
+            @SuppressWarnings("unchecked")
+            List<SlotWorkspaceViewModel.AtlasItem> cards = (List<SlotWorkspaceViewModel.AtlasItem>) grid.attachment(
+                    WorkspaceUiAttachments.ATLAS_ITEMS,
+                    List.class);
+
+            assertEquals(1, cards.size());
+            assertTrue(cards.get(0).fluidResource());
+            assertTrue(cards.get(0).displayStack().isEmpty());
         } finally {
             SlotWorkspaceViewModel.setGhostStackResolver(null);
         }
@@ -161,6 +198,29 @@ class CraftRunUiBuilderTest {
                 oxygen,
                 1000L,
                 remainingOutputAmount,
+                List.of());
+    }
+
+    private static CraftRunRecipeEntry fluidInputEntry() {
+        SlotResourceIdentity oxygen = SlotResourceIdentity.fluid("gtceu:oxygen");
+        return new CraftRunRecipeEntry(
+                "craft-run-fluid-input-test",
+                1,
+                "emi:slot/chemical",
+                "slot:chemical",
+                "Chemical",
+                ItemIdentity.of("gtceu:chemical_dust"),
+                "Chemical",
+                1,
+                1,
+                List.of(new CraftRunIngredientGroup(
+                        "oxygen",
+                        "Oxygen",
+                        1000L,
+                        true,
+                        oxygen,
+                        List.of(new CraftRunAlternative(null, "Oxygen", oxygen)),
+                        List.of())),
                 List.of());
     }
 

@@ -16,15 +16,43 @@ class ChestClaimWorkflowDomainServiceTest {
     private static final ItemIdentity REDSTONE = ItemIdentity.of("minecraft:redstone");
 
     @Test
+    void roleCycleSplitsProcessStorageIntoInputAndOutput() {
+        assertEquals(ChestRole.INPUT, ChestRole.STORAGE.next());
+        assertEquals(ChestRole.OUTPUT, ChestRole.INPUT.next());
+        assertEquals(ChestRole.IGNORE, ChestRole.OUTPUT.next());
+        assertEquals(ChestRole.STORAGE, ChestRole.IGNORE.next());
+    }
+
+    @Test
+    void legacyBufferRoleTextMapsToInput() {
+        assertEquals(ChestRole.INPUT, ChestRole.parse("Buffer"));
+        assertEquals(ChestRole.INPUT, ChestRole.parse("BUFFER"));
+    }
+
+    @Test
+    void unknownRoleTextFailsClosedToIgnore() {
+        assertEquals(ChestRole.IGNORE, ChestRole.parse("wat"));
+        assertEquals(ChestRole.IGNORE, ChestRole.parse(""));
+    }
+
+    @Test
+    void nullExplicitRoleFailsClosedToIgnore() {
+        ClaimedChest chest = new ClaimedChest(CHEST_A, Set.of(anchor(0)), 0, 0, "", null);
+
+        assertEquals(ChestRole.IGNORE, chest.role());
+        assertEquals(ChestRole.IGNORE, chest.withRole(null).role());
+    }
+
+    @Test
     void nonStorageRoleClearsAndStopsLearningAffinity() {
         ChestClaimWorkflowDomainService service = service();
         service.claimWithId(CHEST_A, Set.of(anchor(0)), 0, 0, "");
         service.recordDeposit(CHEST_A, REDSTONE, 16, 100L);
 
-        service.setRole(CHEST_A, ChestRole.BUFFER);
+        service.setRole(CHEST_A, ChestRole.INPUT);
         service.recordDeposit(CHEST_A, REDSTONE, 16, 200L);
 
-        assertEquals(ChestRole.BUFFER, service.chest(CHEST_A).role());
+        assertEquals(ChestRole.INPUT, service.chest(CHEST_A).role());
         assertEquals(0, service.chestAffinityMap().score(CHEST_A, REDSTONE));
     }
 

@@ -321,9 +321,9 @@ Invalidate:
 - all cards whose only or visible presence came from `S`
 - search/remote indexes for `S`
 
-`Ignore` removes the storage from projection/routing; `Buffer` remains
-visible/searchable but does not learn homes or quick-store; `Storage` stays
-visible/searchable and participates in affinity/quick-store.
+`Ignore` removes the storage from projection/routing; `Input` and `Output`
+remain visible/searchable but do not learn homes or ambient quick-store;
+`Storage` stays visible/searchable and participates in affinity/quick-store.
 
 **Search query changed**
 
@@ -513,7 +513,7 @@ Exit criteria:
   identities only.
 - Search-as-find still finds remote identities without materializing every
   remote card during normal refresh.
-- `Ignore`/`Buffer`/`Storage` role behavior remains unchanged.
+- `Ignore`/`Input`/`Output`/`Storage` role behavior remains unchanged.
 
 ### Slice 6 - Wayfinding And Depositability Edges
 
@@ -626,7 +626,7 @@ claimed-storage, affinity-backed deposit-eligible claimed-storage,
 live-observed claimed-storage, and remote tracked-display routed activation put-away
 cards/lanes/`PUT_AWAY` wayfinding,
 active-workflow storage-only route changes, and proximate claimed-storage KIT wayfinding from common workflow invalidations;
-simple claimed-chest claim and `Ignore`/`Buffer` role changes localize storage
+simple claimed-chest claim and `Ignore`/`Input`/`Output` role changes localize storage
 addition/removal or quick-store eligibility cleanup from storage-keyed invalidations;
 chest relabel commands emit storage-local chip invalidations, cluster relabel
 commands refresh storage cluster descriptors from localized projection,
@@ -664,7 +664,7 @@ coverage.
 | Pipe inserts into tracked storage | storage chip, changed identities, remote/search index |
 | Assign/reorder home | changed identity and old/new sections from common home-drop invalidation; island create/delete/label/color/position/reorder updates section descriptors |
 | Claim chest / change role to `Ignore` | storage added/removed, affected identity presence/cards updated (simple claimed-chest path localized) |
-| Change chest role to `Buffer` | storage visible/searchable, no quick-store eligibility (simple claimed-chest path localized) |
+| Change chest role to `Input`/`Output` | storage visible/searchable, no ambient quick-store eligibility (simple claimed-chest path localized) |
 | Rename/move chest metadata | chest relabel updates the storage chip; cluster relabel updates cluster descriptors; affinity-forget clears chip/depositability chrome; move is frame-only until rendered coordinates return |
 | Activate workflow | target facts for active workflow identities, metadata-only workflow/kit management, scoped desired/wanted/member/accepted input pressure with explicit stack-tag evidence, workflow slice, simple Put Away cards/lanes, and proximate claimed-storage KIT/`PUT_AWAY` wayfinding including affinity-backed deposit-eligible claimed storage |
 | Mark/unmark junk or direct-trash carried junk | identity card, section, and workflow chrome from common command invalidation |

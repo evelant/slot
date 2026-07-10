@@ -49,7 +49,7 @@ public final class WorkspaceChestTransferReverser {
             return 0;
         }
         MinecraftServer server = player.getServer();
-        WorldStorageAccess.Target target = lookupTarget(runtime, storageId);
+        WorldStorageAccess.Target target = lookupTarget(server, runtime, storageId);
         if (server == null || target == null) {
             return 0;
         }
@@ -124,7 +124,7 @@ public final class WorkspaceChestTransferReverser {
             return 0;
         }
         MinecraftServer server = player.getServer();
-        WorldStorageAccess.Target target = lookupTarget(runtime, storageId);
+        WorldStorageAccess.Target target = lookupTarget(server, runtime, storageId);
         if (server == null || target == null) {
             return 0;
         }
@@ -171,7 +171,11 @@ public final class WorkspaceChestTransferReverser {
         return delivered;
     }
 
-    private static WorldStorageAccess.Target lookupTarget(WorkflowDomainRuntime runtime, String storageId) {
+    private static WorldStorageAccess.Target lookupTarget(
+            MinecraftServer server,
+            WorkflowDomainRuntime runtime,
+            String storageId
+    ) {
         if (runtime == null || storageId == null || storageId.isBlank()) {
             return null;
         }
@@ -180,6 +184,18 @@ public final class WorkspaceChestTransferReverser {
             ClaimedChest chest = lookupChest(runtime, uuid);
             return chest == null ? null : new WorldStorageAccess.Target.Chest(chest);
         } catch (IllegalArgumentException ignored) {
+            WorkspaceStorageMemoryStore store = server == null ? null : WorkspaceStorageMemoryStore.forServer(server);
+            RememberedStorageContents remembered = store == null ? null : store.remembered(storageId);
+            if (remembered != null && StorageTargetRef.KIND_AE2_NETWORK.equals(remembered.targetKind())) {
+                return new WorldStorageAccess.Target.Virtual(
+                        remembered.providerId(),
+                        remembered.storageId(),
+                        "terminal",
+                        remembered.dimensionId(),
+                        remembered.x(),
+                        remembered.y(),
+                        remembered.z());
+            }
             return WorldDisplayStorageSource.targetFromStorageId(storageId)
                     .map(target -> (WorldStorageAccess.Target) target)
                     .orElse(null);

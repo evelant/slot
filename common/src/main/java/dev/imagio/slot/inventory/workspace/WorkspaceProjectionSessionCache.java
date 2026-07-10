@@ -2513,7 +2513,7 @@ public final class WorkspaceProjectionSessionCache {
             return false;
         }
         WorkspaceStorageIndex index = request.storageIndex();
-        if (!request.trackedDisplayStorageEntries().equals(index.liveTrackedDisplayEntries())) {
+        if (!request.trackedDisplayStorageEntries().equals(index.projectableTrackedDisplayEntries())) {
             return false;
         }
         for (WorkspaceStorageIndex.StorageEntry entry : index.entries()) {

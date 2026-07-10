@@ -38,9 +38,12 @@ and still fail closed for complex put-away routing, complex craft-run pressure,
 and wayfinding outside the simple acquisition/KIT cases. TerraFirmaGreg
 validation remains in [plans/workspace-performance.md](plans/workspace-performance.md).
 
-Learned storage gates each claimed chest through `Storage`, `Buffer`, or
-`Ignore`; see ADR [0008](decisions/0008-chest-roles-and-affinity-correction.md).
-Only `Storage` learns affinity and accepts quick/bulk deposit; `Buffer` stays visible/pullable, and `Ignore` is hidden from SLOT storage projection.
+Learned storage gates each claimed chest through `Storage`, `Input`, `Output`,
+or `Ignore`; see ADR [0008](decisions/0008-chest-roles-and-affinity-correction.md).
+Only `Storage` learns affinity and accepts ambient quick/bulk deposit. `Input`
+and `Output` stay visible/searchable/pullable, with `Output` preferred before
+storage for take shortcuts and `Input` tried last; both accept put shortcuts only
+while their interface is open. `Ignore` is hidden from SLOT storage projection.
 
 Classification has a pack-authoring path for large modpacks: installed `mods/`
 scanning, jar/static enrichment, runtime export, rich facet evidence, LLM

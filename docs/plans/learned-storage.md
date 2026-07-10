@@ -1,15 +1,17 @@
 # Learned Storage — Design Sketch
 
-Last updated: 2026-05-21
+Last updated: 2026-07-08
 
 > **Affinity-role follow-up LANDED 2026-05-21.** ADR
 > [0008](../decisions/0008-chest-roles-and-affinity-correction.md)
 > replaces the old claim/forget control with one active-chest role
-> button: `Storage -> Buffer -> Ignore -> Storage`. Freshly opened
+> button: `Storage -> Input -> Output -> Ignore -> Storage`. Freshly opened
 > unclaimed chests display as `Ignore`; first player deposit still
 > auto-claims as `Storage`. Only `Storage` learns affinity or accepts
-> quick/bulk deposit. `Buffer` remains visible/searchable/pullable but
-> is not a deposit target. `Ignore` is hidden from SLOT storage
+> ambient quick/bulk deposit. `Input` and `Output` remain
+> visible/searchable/pullable but are not ambient deposit targets;
+> `Output` is preferred first for take shortcuts and `Input` is tried last.
+> Both accept put shortcuts only while their interface is open. `Ignore` is hidden from SLOT storage
 > projection. Machine/vessel deny tags cover station-like hosts, item
 > context menus can clear one active-chest affinity bond, and moving the
 > last known stack from one storage chest to another clears the old
@@ -175,8 +177,10 @@ gestures.
   deliberate storage block.
 - Chest role gates participation:
   `Storage` is visible, learns affinity, and accepts quick/bulk deposit;
-  `Buffer` is visible/searchable/pullable but never learns or accepts
-  quick deposit; `Ignore` is hidden from SLOT storage projection.
+  `Input` is visible/searchable/pullable, takes last, and never learns or
+  accepts ambient quick deposit; `Output` is visible/searchable/pullable,
+  takes first, and never learns or accepts ambient quick deposit; `Ignore` is
+  hidden from SLOT storage projection.
 - Affinity decay exists in code but is disabled for current playtests;
   re-enable only after the decay rate is tunable and validated.
 - Reorganization is treated as intent: if the player empties an identity
@@ -184,8 +188,8 @@ gestures.
   different `Storage` chest, the old origin affinity is cleared.
 - Current contents of a `Storage` chest also count as routing evidence:
   if a chest has 12 iron in it right now, deposit may route iron there
-  regardless of history. `Buffer` contents remain visible/pullable but
-  are never deposit-routing evidence.
+  regardless of history. `Input` and `Output` contents remain
+  visible/pullable but are never ambient deposit-routing evidence.
 
 Routing reads from `affinity[C, X]`. Discoverability reads from it
 too (ghost-slot "wants").
@@ -196,8 +200,9 @@ A storage-affinity-eligible chest becomes part of the workspace as
 `Storage` the first time the player **deposits** into it (not on open,
 not on take). A newly opened chest that has not been deposited into is
 shown as `Ignore` in the active strip so the player can explicitly opt
-it into storage if needed. Feeder crates, hoppers, and machine buffers
-should usually be set to `Buffer`; stations and vessels should be
+it into storage if needed. Machine input buffers should usually be set to
+`Input`, machine output buffers should usually be set to `Output`, and
+stations and vessels should be
 denied by storage-affinity tags and can still be forced to `Ignore` if
 they slip through.
 
@@ -316,7 +321,7 @@ per proximate chest. Each chip:
 
 - Chest name (default `Chest #abcd`, renamable)
 - Slot fullness summary (e.g., `16/27`)
-- Role-visible participation (`Storage` and `Buffer`; `Ignore` is hidden)
+- Role-visible participation (`Storage`, `Input`, and `Output`; `Ignore` is hidden)
 - Drag target only when the chip is `Storage`
 
 Chips do **not** render the chest grid. Contents surface as ghosts on
@@ -351,8 +356,8 @@ details" is unnecessary because spacebar zoom is the existing gesture.
 ### Correction gestures
 
 - **Chest role button** in the active chest strip → cycles
-  `Storage -> Buffer -> Ignore -> Storage`. Setting a chest to
-  `Buffer` or `Ignore` clears its learned affinity.
+  `Storage -> Input -> Output -> Ignore -> Storage`. Setting a chest to
+  `Input`, `Output`, or `Ignore` clears its learned affinity.
 - **Don't auto-deposit here** on an item while an active chest has
   affinity for it → clears only `affinity[C, X]`. Use case: one item
   was temporarily staged in the wrong storage chest.
@@ -392,8 +397,10 @@ deposits into it (consistent with the auto-claim trigger above).
 Two distinct mental models:
 - *Storage chests* — your organised storage, surfaced as ghosts on
   islands.
-- *Buffer chests* — visible process/staging storage, searchable and
-  pullable but not quick-deposit homes.
+- *Input chests* — process ingredients/staging storage, searchable and
+  pullable only after outputs and storage, and never ambient quick-deposit homes.
+- *Output chests* — process result storage, searchable and pullable before
+  storage, and never ambient quick-deposit homes.
 - *Loot chests* — random world chests you encounter, surfaced as a
   Triage-style overlay only while open.
 
@@ -520,8 +527,8 @@ workspace surface.
   player loots a dungeon chest, then deposits something into it
   intending to use it. Auto-claim on first deposit handles this:
   one deposit moves the chest from loot to `Storage`. The player can
-  then cycle it to `Buffer` or `Ignore` if it was actually a process
-  chest.
+  then cycle it to `Input`, `Output`, or `Ignore` if it was actually a
+  process chest.
 - **Loot chest opened from a remote source** (e.g., Refined Storage
   remote-access mods). The loot panel should fire on the chest
   GUI open event regardless of how it was opened, since the player

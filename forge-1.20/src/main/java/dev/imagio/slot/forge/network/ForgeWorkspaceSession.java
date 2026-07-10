@@ -1,5 +1,6 @@
 package dev.imagio.slot.forge.network;
 
+import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.forge.storage.ForgeChestDepositObserver;
 import dev.imagio.slot.forge.storage.ForgeChestStorageAnchors;
 import dev.imagio.slot.forge.storage.ForgeChestStorageIds;
@@ -7,6 +8,7 @@ import dev.imagio.slot.forge.compat.sacks.SacksNSuchCarriedProvider;
 import dev.imagio.slot.forge.compat.toolbelt.ToolBeltCarriedProvider;
 import dev.imagio.slot.forge.triage.Forge120IslandSignalExtractor;
 import dev.imagio.slot.forge.storage.ForgeCarriedActivityTracker;
+import dev.imagio.slot.debug.BoundedDiagnosticThrottle;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
@@ -30,6 +32,7 @@ import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.storage.CarriedInventoryRevisions;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.inventory.workspace.ChestContentAffinitySeeder;
@@ -111,6 +114,10 @@ final class ForgeWorkspaceSession {
     private static final int TARGET_MAIN_SOURCE = 1;
     private static final int TARGET_MAIN_SLOT = 2;
     private static final int TARGET_HOTBAR_SLOT = 3;
+    private static final long AE2_PROJECTION_LOG_INTERVAL_NANOS = 5_000_000_000L;
+    private static final int AE2_PROJECTION_LOG_KEY_LIMIT = 256;
+    private static final BoundedDiagnosticThrottle AE2_PROJECTION_LOG_THROTTLE =
+            new BoundedDiagnosticThrottle(AE2_PROJECTION_LOG_INTERVAL_NANOS, AE2_PROJECTION_LOG_KEY_LIMIT);
     private static final Function<InventoryEntrySnapshot, ItemIdentity> KIT_IDENTITY_RESOLVER =
             entry -> entry == null ? null : ItemIdentityMatcher.create(entry.stack());
 
@@ -212,9 +219,11 @@ final class ForgeWorkspaceSession {
     boolean shouldRefresh(ServerPlayer player) {
         boolean refresh = dirty;
         if (currentWorkflowSequence() != lastObservedWorkflowSequence) {
-            queueInvalidation(WorkspaceInvalidation.full(
-                    WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
-                    "workflow_sequence_changed_not_localized"));
+            if (!hasPendingLocalizedWorkflowInvalidation()) {
+                queueInvalidation(WorkspaceInvalidation.full(
+                        WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                        "workflow_sequence_changed_not_localized"));
+            }
             refresh = true;
         }
         if (CarriedInventoryRevisions.revision(player) != lastObservedCarriedRevision) {
@@ -233,6 +242,17 @@ final class ForgeWorkspaceSession {
 
     void clearDirty() {
         dirty = false;
+    }
+
+    private boolean hasPendingLocalizedWorkflowInvalidation() {
+        for (WorkspaceInvalidation invalidation : pendingInvalidations) {
+            if (invalidation != null
+                    && invalidation.reason() == WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED
+                    && !invalidation.requiresFullProjection()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public SlotWorkspaceViewModel currentViewModel() {
@@ -511,7 +531,9 @@ final class ForgeWorkspaceSession {
                         player,
                         runtime,
                         identityArg(args, 0),
-                        1);
+                        1,
+                        true,
+                        resolveHost(player));
                 reapplyActiveKitAfterCarryAcquisition(player, chestOutcome);
                 yield chestOutcome;
             }
@@ -520,7 +542,9 @@ final class ForgeWorkspaceSession {
                         player,
                         runtime,
                         identityArg(args, 0),
-                        integerArg(args, 3) == null ? 0 : integerArg(args, 3));
+                        integerArg(args, 3) == null ? 0 : integerArg(args, 3),
+                        true,
+                        resolveHost(player));
                 reapplyActiveKitAfterCarryAcquisition(player, chestOutcome);
                 yield chestOutcome;
             }
@@ -528,7 +552,8 @@ final class ForgeWorkspaceSession {
                 WorkspaceCommandOutcome chestOutcome = WorkspaceChestCommandService.takeDesiredGapOrStackByIdentity(
                         player,
                         runtime,
-                        identityArg(args, 0));
+                        identityArg(args, 0),
+                        resolveHost(player));
                 reapplyActiveKitAfterCarryAcquisition(player, chestOutcome);
                 yield chestOutcome;
             }
@@ -537,7 +562,9 @@ final class ForgeWorkspaceSession {
                         player,
                         runtime,
                         identityArg(args, 0),
-                        Integer.MAX_VALUE);
+                        Integer.MAX_VALUE,
+                        true,
+                        resolveHost(player));
                 reapplyActiveKitAfterCarryAcquisition(player, chestOutcome);
                 yield chestOutcome;
             }
@@ -572,21 +599,24 @@ final class ForgeWorkspaceSession {
                     identityArg(args, 0),
                     WorkspaceChestCommandService.DepositQuantity.STACK,
                     WorkspaceChestCommandService.DesiredCountPolicy.RESPECT,
-                    () -> activeDepositFallbackChest(player));
+                    () -> activeDepositFallbackChest(player),
+                    resolveHost(player));
             case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> WorkspaceChestCommandService.depositIdentityToLinkedChest(
                     player,
                     runtime,
                     identityArg(args, 0),
                     WorkspaceChestCommandService.DepositQuantity.ITEM,
                     WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
-                    () -> activeDepositFallbackChest(player));
+                    () -> activeDepositFallbackChest(player),
+                    resolveHost(player));
             case DEPOSIT_ITEMS_HOME_TO_LINKED_CHEST -> WorkspaceChestCommandService.depositIdentityCountToLinkedChest(
                     player,
                     runtime,
                     identityArg(args, 0),
                     integerArg(args, 3) == null ? 0 : integerArg(args, 3),
                     WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
-                    () -> activeDepositFallbackChest(player));
+                    () -> activeDepositFallbackChest(player),
+                    resolveHost(player));
             case PICKUP_TO_CURSOR -> applyCursorOutcome(player, WorkspaceCursorCommandService.pickupToCursor(
                     player,
                     runtime,
@@ -950,7 +980,14 @@ final class ForgeWorkspaceSession {
         lastObservedContextualStorageIds = Set.copyOf(contextualSuggestionStorageIds);
         WorkspaceStorageIndex storageIndex = storageContext.storageIndex();
         clearSatisfiedWantedCounts(authority);
-        List<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries = storageIndex.liveDisplayEntries();
+        List<WorkspaceStorageIndex.StorageEntry> projectableDisplayEntries =
+                storageIndex.projectableTrackedDisplayEntries();
+        logAe2ProjectionSummary(
+                player,
+                storageIndex,
+                displaySources,
+                projectableDisplayEntries,
+                remoteStorageDetailIntent);
         Set<String> liveDepositStorageIds = storageIndex.liveDepositStorageIds();
         Map<SlotResourceIdentity, Long> carriedFluidCounts = carriedFluidCounts(player);
         FluidResourceObservationService.observe(
@@ -981,7 +1018,7 @@ final class ForgeWorkspaceSession {
                 displaySources,
                 contextualSuggestionStorageIds,
                 displaySources,
-                liveDisplayEntries,
+                projectableDisplayEntries,
                 liveDepositStorageIds,
                 storageIndex,
                 carriedFluidCounts,
@@ -993,7 +1030,7 @@ final class ForgeWorkspaceSession {
                 storageNanos,
                 System.nanoTime() - setupStart,
                 storageIndex.entries().size(),
-                liveDisplayEntries.size(),
+                projectableDisplayEntries.size(),
                 liveDepositStorageIds.size(),
                 storageContext.indexDiagnostics());
     }
@@ -1007,6 +1044,94 @@ final class ForgeWorkspaceSession {
         } catch (RuntimeException | LinkageError ignored) {
             return Map.of();
         }
+    }
+
+    private static void logAe2ProjectionSummary(
+            ServerPlayer player,
+            WorkspaceStorageIndex storageIndex,
+            List<WorldDisplayStorageSource> displaySources,
+            List<WorkspaceStorageIndex.StorageEntry> projectableDisplayEntries,
+            RemoteStorageDetailIntent intent
+    ) {
+        int liveTerminalSources = 0;
+        int liveNetworkSources = 0;
+        if (displaySources != null) {
+            for (WorldDisplayStorageSource source : displaySources) {
+                if (source == null) {
+                    continue;
+                }
+                if (source.kind() == WorldDisplayStorageKind.AE2_TERMINAL) {
+                    liveTerminalSources++;
+                } else if (source.kind() == WorldDisplayStorageKind.AE2_NETWORK) {
+                    liveNetworkSources++;
+                }
+            }
+        }
+        int projectedAe2 = 0;
+        int projectedLive = 0;
+        int projectedRemembered = 0;
+        int projectedProximate = 0;
+        long projectedItemTotal = 0L;
+        if (projectableDisplayEntries != null) {
+            for (WorkspaceStorageIndex.StorageEntry entry : projectableDisplayEntries) {
+                if (entry == null || entry.target() == null || !entry.target().ae2Network()) {
+                    continue;
+                }
+                projectedAe2++;
+                if (entry.live()) {
+                    projectedLive++;
+                }
+                if (entry.remembered()) {
+                    projectedRemembered++;
+                }
+                if (entry.target().proximate()) {
+                    projectedProximate++;
+                }
+                for (Integer count : entry.countsByIdentity().values()) {
+                    if (count != null && count > 0) {
+                        projectedItemTotal += count;
+                    }
+                }
+            }
+        }
+        if (liveTerminalSources == 0 && liveNetworkSources == 0 && projectedAe2 == 0) {
+            return;
+        }
+        int storageEntries = storageIndex == null ? 0 : storageIndex.entries().size();
+        String playerName = player == null ? "<unknown>" : player.getGameProfile().getName();
+        String key = playerName
+                + '|'
+                + intent
+                + '|'
+                + liveTerminalSources
+                + '|'
+                + liveNetworkSources
+                + '|'
+                + projectedAe2
+                + '|'
+                + projectedLive
+                + '|'
+                + projectedRemembered
+                + '|'
+                + projectedProximate
+                + '|'
+                + projectedItemTotal;
+        if (!AE2_PROJECTION_LOG_THROTTLE.shouldEmit(key, System.nanoTime())) {
+            return;
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT][ae2] projection player={} intent={} displaySources[terminal={},network={}] "
+                        + "projectable[ae2={},live={},remembered={},proximate={},items={}] storageEntries={}",
+                playerName,
+                intent,
+                liveTerminalSources,
+                liveNetworkSources,
+                projectedAe2,
+                projectedLive,
+                projectedRemembered,
+                projectedProximate,
+                projectedItemTotal,
+                storageEntries);
     }
 
     private WorkspaceInvalidation storageProximityInvalidation(ServerPlayer player) {
@@ -1362,6 +1487,7 @@ final class ForgeWorkspaceSession {
                 viewModel,
                 identity,
                 suppressChestPreference,
+                resolveHost(player),
                 targetHotbarIndex -> assignIdentityToHotbarIndex(player, identity, targetHotbarIndex));
     }
 
@@ -1427,7 +1553,8 @@ final class ForgeWorkspaceSession {
                     runtime,
                     identity,
                     Integer.MAX_VALUE,
-                    false);
+                    false,
+                    resolveHost(player));
             if (tookStackForHotbar(takeOutcome)) {
                 outcome = assignIdentityToHotbarFromCarry(player, identity, hotbarIndex);
             } else {

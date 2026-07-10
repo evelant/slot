@@ -117,7 +117,7 @@ public final class CarriedSourceAuthoritySnapshots {
                         .role(InventorySourceRole.PROVIDER_DEFINED)
                         .logicalSlotCount(safeSlotCount(provider, player, sourceId))
                         .bindingRoute(InventoryBindingRoute.PROVIDER)
-                        .capabilities(Set.of(InventoryCapability.INSERT, InventoryCapability.EXTRACT))
+                        .capabilities(safeCapabilities(provider, player, sourceId))
                         .actionRoute(InventoryActionRoute.PROVIDER_MUTATION)
                         .paneMembership(InventoryPaneMembership.CARRIED)
                         .diagnostics("carried-provider/" + provider.prefix())
@@ -172,6 +172,18 @@ public final class CarriedSourceAuthoritySnapshots {
             return Math.max(0, provider.slotCount(player, sourceId));
         } catch (RuntimeException | LinkageError ignored) {
             return 0;
+        }
+    }
+
+    private static Set<InventoryCapability> safeCapabilities(CarriedProvider provider, ServerPlayer player, String sourceId) {
+        if (provider == null || sourceId == null || sourceId.isBlank()) {
+            return Set.of();
+        }
+        try {
+            Set<InventoryCapability> capabilities = provider.capabilities(player, sourceId);
+            return capabilities == null ? Set.of() : Set.copyOf(capabilities);
+        } catch (RuntimeException | LinkageError ignored) {
+            return Set.of();
         }
     }
 

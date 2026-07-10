@@ -137,7 +137,7 @@ public final class DefaultCarriedProviderIntegration implements InventoryIntegra
                         .role(InventorySourceRole.PROVIDER_DEFINED)
                         .logicalSlotCount(logicalSlotCount)
                         .bindingRoute(InventoryBindingRoute.PROVIDER)
-                        .capabilities(Set.of(InventoryCapability.INSERT, InventoryCapability.EXTRACT))
+                        .capabilities(safeCapabilities(sourceId))
                         .actionRoute(InventoryActionRoute.PROVIDER_MUTATION)
                         .paneMembership(InventoryPaneMembership.CARRIED)
                         .diagnostics("auto/" + provider.prefix())
@@ -346,6 +346,15 @@ public final class DefaultCarriedProviderIntegration implements InventoryIntegra
                 return Math.max(0, provider.slotCount(capturedPlayer, sourceId));
             } catch (RuntimeException | LinkageError ignored) {
                 return 0;
+            }
+        }
+
+        private Set<InventoryCapability> safeCapabilities(String sourceId) {
+            try {
+                Set<InventoryCapability> capabilities = provider.capabilities(capturedPlayer, sourceId);
+                return capabilities == null ? Set.of() : Set.copyOf(capabilities);
+            } catch (RuntimeException | LinkageError ignored) {
+                return Set.of();
             }
         }
 

@@ -3243,6 +3243,17 @@ public record SlotWorkspaceViewModel(
         return resolveGhostStack(identity);
     }
 
+    public static ItemStack displayStackForResource(SlotResourceIdentity identity) {
+        SlotResourceIdentity key = SlotResourceCollections.key(identity);
+        if (key == null) {
+            return ItemStack.EMPTY;
+        }
+        if (key.fluid()) {
+            return ItemStack.EMPTY;
+        }
+        return displayStackForIdentity(key.toItemIdentity());
+    }
+
     private static boolean ensureMiscIsland(ArrayList<AtlasIsland> islands) {
         if (islands == null) {
             return false;
@@ -4101,14 +4112,6 @@ public record SlotWorkspaceViewModel(
         return out.toString();
     }
 
-    private static ItemStack fluidDisplayStack() {
-        ItemStack stack = resolveGhostStack(ItemIdentity.of("minecraft:water_bucket"), 1);
-        if (stack == null || stack.isEmpty()) {
-            stack = resolveGhostStack(ItemIdentity.of("minecraft:bucket"), 1);
-        }
-        return stack == null ? ItemStack.EMPTY : stack;
-    }
-
     private static final class FluidCardAccumulator {
         private final SlotResourceIdentity identity;
         private final LinkedHashMap<String, ChestPresenceEntry> proximate = new LinkedHashMap<>();
@@ -4140,15 +4143,11 @@ public record SlotWorkspaceViewModel(
             if (identity == null || total <= 0L) {
                 return null;
             }
-            ItemStack display = fluidDisplayStack();
-            if (display.isEmpty()) {
-                return null;
-            }
             String name = fluidLabel(identity);
             int displayCount = saturatedResourceCount(total);
             return new AtlasItem(
                     IdentityRef.from(ItemIdentity.of(identity.syntheticItemId())),
-                    display,
+                    ItemStack.EMPTY,
                     name,
                     displayCount,
                     0,

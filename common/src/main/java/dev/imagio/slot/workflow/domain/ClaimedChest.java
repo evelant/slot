@@ -21,7 +21,7 @@ public record ClaimedChest(
             throw new IllegalArgumentException("anchors must not be empty");
         }
         label = label == null ? "" : label.trim();
-        role = role == null ? ChestRole.STORAGE : role;
+        role = role == null ? ChestRole.IGNORE : role;
     }
 
     public ClaimedChest(
@@ -58,7 +58,7 @@ public record ClaimedChest(
     }
 
     public ClaimedChest withRole(ChestRole nextRole) {
-        ChestRole normalized = nextRole == null ? ChestRole.STORAGE : nextRole;
+        ChestRole normalized = nextRole == null ? ChestRole.IGNORE : nextRole;
         if (normalized == role) {
             return this;
         }

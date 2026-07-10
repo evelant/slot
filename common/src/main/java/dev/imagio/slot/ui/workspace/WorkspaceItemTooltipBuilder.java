@@ -46,9 +46,10 @@ public final class WorkspaceItemTooltipBuilder {
         addDesiredLine(lines, item);
         addPutAwayLine(lines, item);
         addCarriedLine(lines, item);
-        addStorageLine(lines, "Nearby stored", sum(item.presence()), item.presence());
+        SlotResourceIdentity resource = resourceIdentity(item);
+        addStorageLine(lines, resource, "Nearby stored", sum(item.presence()), item.presence());
         addProximateRouteLine(lines, item, hasProximateDepositRoute);
-        addStorageLine(lines, "Stored elsewhere", sum(item.elsewhere()), item.elsewhere());
+        addStorageLine(lines, resource, "Stored elsewhere", sum(item.elsewhere()), item.elsewhere());
         addMissingTargetLine(lines, item);
         addContainerLine(lines, item);
         if (includeContextualDebug) {
@@ -58,6 +59,9 @@ public final class WorkspaceItemTooltipBuilder {
             return List.of();
         }
         ArrayList<Component> result = new ArrayList<>(lines.size() + 2);
+        if (item.fluidResource()) {
+            result.add(Component.literal(displayName(item)));
+        }
         result.add(Component.empty());
         result.add(Component.literal("SLOT"));
         result.addAll(lines);
@@ -92,7 +96,19 @@ public final class WorkspaceItemTooltipBuilder {
     }
 
     private static void addCarriedLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
-        if (!item.carried() || item.desiredCount() > 0 || item.wantedCount() > 0 || item.totalCount() <= 1) {
+        if (!item.carried() || item.desiredCount() > 0 || item.wantedCount() > 0) {
+            return;
+        }
+        SlotResourceIdentity resource = resourceIdentity(item);
+        if (resource != null && resource.fluid()) {
+            long carried = availableAmountForTarget(item, resource);
+            if (carried <= 0L) {
+                return;
+            }
+            lines.add(Component.literal("Carried amount: " + formatAmount(resource, carried)));
+            return;
+        }
+        if (item.totalCount() <= 1) {
             return;
         }
         lines.add(Component.literal("Carried count: " + item.totalCount()));
@@ -108,6 +124,7 @@ public final class WorkspaceItemTooltipBuilder {
 
     private static void addStorageLine(
             ArrayList<Component> lines,
+            SlotResourceIdentity resource,
             String label,
             int count,
             List<SlotWorkspaceViewModel.ChestPresenceEntry> entries
@@ -115,8 +132,8 @@ public final class WorkspaceItemTooltipBuilder {
         if (count <= 0) {
             return;
         }
-        StringBuilder text = new StringBuilder(label).append(": ").append(count);
-        String breakdown = chestBreakdown(entries);
+        StringBuilder text = new StringBuilder(label).append(": ").append(formatAmount(resource, count));
+        String breakdown = chestBreakdown(entries, resource);
         if (!breakdown.isBlank()) {
             text.append(" in ").append(breakdown);
         }
@@ -173,7 +190,10 @@ public final class WorkspaceItemTooltipBuilder {
         }
     }
 
-    private static String chestBreakdown(List<SlotWorkspaceViewModel.ChestPresenceEntry> entries) {
+    private static String chestBreakdown(
+            List<SlotWorkspaceViewModel.ChestPresenceEntry> entries,
+            SlotResourceIdentity resource
+    ) {
         if (entries == null || entries.isEmpty()) {
             return "";
         }
@@ -188,7 +208,7 @@ public final class WorkspaceItemTooltipBuilder {
                 continue;
             }
             String label = entry.label().isBlank() ? "chest" : entry.label();
-            parts.add(label + ": " + entry.count());
+            parts.add(label + ": " + formatAmount(resource, entry.count()));
         }
         if (positiveEntries > MAX_CHEST_LABELS) {
             parts.add("+" + (positiveEntries - MAX_CHEST_LABELS) + " more");
@@ -211,6 +231,14 @@ public final class WorkspaceItemTooltipBuilder {
 
     private static SlotResourceIdentity resourceIdentity(SlotWorkspaceViewModel.AtlasItem item) {
         return item == null || item.resource() == null ? null : item.resource().toIdentity();
+    }
+
+    private static String displayName(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || item.name() == null || item.name().isBlank()) {
+            SlotResourceIdentity resource = resourceIdentity(item);
+            return resource == null ? "Fluid" : resource.id();
+        }
+        return item.name();
     }
 
     private static long availableAmountForTarget(

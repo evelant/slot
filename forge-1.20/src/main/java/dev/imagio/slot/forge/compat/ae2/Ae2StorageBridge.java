@@ -17,6 +17,7 @@ import appeng.api.storage.MEStorage;
 import appeng.api.storage.StorageCells;
 import appeng.api.storage.StorageHelper;
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.debug.BoundedDiagnosticThrottle;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
@@ -64,10 +65,15 @@ final class Ae2StorageBridge {
     private static final String CRAFTING_TERMINAL_PART = "appeng.parts.reporting.CraftingTerminalPart";
     private static final String WIRELESS_TERMINAL_HOST = "appeng.helpers.WirelessTerminalMenuHost";
     private static final String WIRELESS_CRAFTING_TERMINAL_HOST = "appeng.helpers.WirelessCraftingTerminalMenuHost";
+    private static final long AE2_SOURCE_LOG_INTERVAL_NANOS = 5_000_000_000L;
+    private static final int AE2_SOURCE_LOG_KEY_LIMIT = 512;
     private static final StorageBusReflection STORAGE_BUS_REFLECTION = StorageBusReflection.load();
     private static final IoPortReflection IO_PORT_REFLECTION = IoPortReflection.load();
+    private static final BoundedDiagnosticThrottle SOURCE_LOG_THROTTLE =
+            new BoundedDiagnosticThrottle(AE2_SOURCE_LOG_INTERVAL_NANOS, AE2_SOURCE_LOG_KEY_LIMIT);
     private static boolean storageBusReflectionWarned;
     private static boolean ioPortReflectionWarned;
+    private static boolean unreadableMediaIdentityFallbackWarned;
 
     private Ae2StorageBridge() {
     }
@@ -194,7 +200,7 @@ final class Ae2StorageBridge {
                     observation.contents(),
                     observation.aliasedBlocks(),
                     observation.mediaObservations());
-            return new WorldDisplayStorageSource(
+            WorldDisplayStorageSource source = new WorldDisplayStorageSource(
                     snapshot.storageId(),
                     dev.imagio.slot.inventory.storage.WorldDisplayStorageKind.AE2_NETWORK,
                     "ME network @ " + routePos.getX() + "," + routePos.getY() + "," + routePos.getZ(),
@@ -216,17 +222,20 @@ final class Ae2StorageBridge {
                             routePos.getX(),
                             routePos.getY(),
                             routePos.getZ()));
+            logSource("persistent", routeKind, dimension, routePos, source, observation);
+            return source;
         }
         if (!includeLiveOnlyFallback) {
             return null;
         }
-        return new WorldDisplayStorageSource(
-                WorldDisplayStorageSource.storageId(
-                        dev.imagio.slot.inventory.storage.WorldDisplayStorageKind.AE2_TERMINAL,
-                        dimension,
-                        routePos.getX(),
-                        routePos.getY(),
-                        routePos.getZ()),
+        String fallbackStorageId = WorldDisplayStorageSource.storageId(
+                dev.imagio.slot.inventory.storage.WorldDisplayStorageKind.AE2_TERMINAL,
+                dimension,
+                routePos.getX(),
+                routePos.getY(),
+                routePos.getZ());
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                fallbackStorageId,
                 dev.imagio.slot.inventory.storage.WorldDisplayStorageKind.AE2_TERMINAL,
                 "ME network @ " + routePos.getX() + "," + routePos.getY() + "," + routePos.getZ(),
                 dimension,
@@ -239,7 +248,16 @@ final class Ae2StorageBridge {
                 observation.aliasedBlocks(),
                 List.of(),
                 observation.mediaObservations(),
-                null);
+                new WorldStorageAccess.Target.Virtual(
+                        NETWORK_PROVIDER_ID,
+                        fallbackStorageId,
+                        routeKind,
+                        dimension,
+                        routePos.getX(),
+                        routePos.getY(),
+                        routePos.getZ()));
+        logSource("live_only", routeKind, dimension, routePos, source, observation);
+        return source;
     }
 
     static Optional<Endpoint> openMenuEndpoint(ServerPlayer player, String expectedStorageId) {
@@ -315,9 +333,7 @@ final class Ae2StorageBridge {
         }
         ArrayList<WorldDisplayStorageSource.AliasedBlock> aliases = new ArrayList<>();
         try {
-            @SuppressWarnings({"rawtypes", "unchecked"})
-            Set<?> storageBuses = endpoint.grid().getActiveMachines((Class) STORAGE_BUS_REFLECTION.storageBusClass());
-            for (Object bus : storageBuses) {
+            for (Object bus : activeMachinesAssignable(endpoint.grid(), STORAGE_BUS_REFLECTION.storageBusClass())) {
                 WorldDisplayStorageSource.AliasedBlock alias = STORAGE_BUS_REFLECTION.targetBlock(bus);
                 if (alias != null) {
                     aliases.add(alias);
@@ -472,30 +488,30 @@ final class Ae2StorageBridge {
             return new NetworkObservation(List.of(), contents, aliases, List.of());
         }
         LinkedHashSet<String> activeMediaIds = new LinkedHashSet<>();
+        LinkedHashSet<String> unreadableMediaIds = new LinkedHashSet<>();
         ArrayList<WorldDisplayStorageSource.MediaObservation> observations = new ArrayList<>();
         LinkedHashSet<String> seenMediaIds = new LinkedHashSet<>();
         try {
-            Set<IChestOrDrive> cellHosts = endpoint.grid().getActiveMachines(IChestOrDrive.class);
-            for (IChestOrDrive host : cellHosts) {
-                if (host == null || !host.isPowered()) {
+            for (Object candidate : activeMachinesAssignable(endpoint.grid(), IChestOrDrive.class)) {
+                if (!(candidate instanceof IChestOrDrive host) || !host.isPowered()) {
                     continue;
                 }
                 InternalInventory inventory = internalInventory(host);
                 if (inventory == null) {
                     continue;
                 }
-                int slots = Math.min(Math.max(0, host.getCellCount()), inventory.size());
                 HolderRoute route = holderRoute(host);
-                for (int slot = 0; slot < slots; slot++) {
-                    ItemStack stack = inventory.getStackInSlot(slot);
-                    if (stack == null || stack.isEmpty() || !StorageCells.isCellHandled(stack)) {
-                        continue;
-                    }
-                    String mediaId = mediaId(inventory, slot, stack, seenMediaIds);
+                List<Ae2CellSlotMapping.CellSlot> cellSlots = Ae2CellSlotMapping.cellSlots(
+                        host.getCellCount(),
+                        inventory.size(),
+                        slot -> storageCellStack(inventory, slot));
+                for (Ae2CellSlotMapping.CellSlot cellSlot : cellSlots) {
+                    ItemStack stack = inventory.getStackInSlot(cellSlot.inventorySlot());
+                    String mediaId = mediaId(inventory, cellSlot.inventorySlot(), stack, seenMediaIds);
                     if (mediaId.isBlank()) {
                         continue;
                     }
-                    MEStorage cellStorage = host.getCellInventory(slot);
+                    MEStorage cellStorage = host.getCellInventory(cellSlot.cellIndex());
                     CellObservation observation = cellObservation(
                             mediaId,
                             "drive",
@@ -504,6 +520,8 @@ final class Ae2StorageBridge {
                     observations.add(observation.toMediaObservation());
                     if (observation.activeItemStorage()) {
                         activeMediaIds.add(mediaId);
+                    } else if (observation.unreadableStorageProbe()) {
+                        unreadableMediaIds.add(mediaId);
                     }
                 }
             }
@@ -514,16 +532,32 @@ final class Ae2StorageBridge {
                     exception.getMessage() == null ? "runtime_exception" : exception.getMessage());
             return new NetworkObservation(List.of(), contents, aliases, observations);
         }
-        if (activeMediaIds.isEmpty()) {
+        List<String> mediaIds = Ae2NetworkIdentitySupport.mediaIdsForNetworkIdentity(
+                activeMediaIds,
+                unreadableMediaIds,
+                !contents.isEmpty());
+        if (mediaIds.isEmpty()) {
             return new NetworkObservation(List.of(), contents, aliases, observations);
         }
-        ArrayList<String> sorted = new ArrayList<>(activeMediaIds);
-        sorted.sort(String::compareTo);
+        if (activeMediaIds.isEmpty() && !unreadableMediaIdentityFallbackWarned) {
+            unreadableMediaIdentityFallbackWarned = true;
+            SlotCommon.LOGGER.warn(
+                    "[SLOT] AE2 network had item contents but no readable active storage-cell observations; "
+                            + "using unreadable stamped media ids for persistent network identity");
+        }
         return new NetworkObservation(
-                List.copyOf(sorted),
+                mediaIds,
                 contents,
                 aliases,
                 observations.isEmpty() ? List.of() : List.copyOf(observations));
+    }
+
+    private static boolean storageCellStack(InternalInventory inventory, int slot) {
+        if (inventory == null || slot < 0 || slot >= inventory.size()) {
+            return false;
+        }
+        ItemStack stack = inventory.getStackInSlot(slot);
+        return stack != null && !stack.isEmpty() && StorageCells.isCellHandled(stack);
     }
 
     private static InternalInventory internalInventory(IChestOrDrive host) {
@@ -548,9 +582,7 @@ final class Ae2StorageBridge {
         }
         ArrayList<WorldDisplayStorageSource.MediaObservation> observations = new ArrayList<>();
         try {
-            @SuppressWarnings({"rawtypes", "unchecked"})
-            Set<?> ports = endpoint.grid().getActiveMachines((Class) IO_PORT_REFLECTION.ioPortClass());
-            for (Object port : ports) {
+            for (Object port : activeMachinesAssignable(endpoint.grid(), IO_PORT_REFLECTION.ioPortClass())) {
                 InternalInventory inventory = IO_PORT_REFLECTION.internalInventory(port);
                 if (inventory == null) {
                     continue;
@@ -578,6 +610,27 @@ final class Ae2StorageBridge {
             return List.of();
         }
         return observations.isEmpty() ? List.of() : List.copyOf(observations);
+    }
+
+    private static List<Object> activeMachinesAssignable(IGrid grid, Class<?> requestedType) {
+        if (grid == null || requestedType == null) {
+            return List.of();
+        }
+        LinkedHashSet<Object> machines = new LinkedHashSet<>();
+        for (Class<?> machineClass : Ae2GridMachineScan.assignableMachineClasses(
+                grid.getMachineClasses(),
+                requestedType)) {
+            for (IGridNode node : grid.getMachineNodes(machineClass)) {
+                if (node == null || !node.isActive()) {
+                    continue;
+                }
+                Object owner = node.getOwner();
+                if (requestedType.isInstance(owner)) {
+                    machines.add(owner);
+                }
+            }
+        }
+        return machines.isEmpty() ? List.of() : List.copyOf(machines);
     }
 
     private static CellObservation cellObservation(
@@ -632,6 +685,90 @@ final class Ae2StorageBridge {
             }
         }
         return new CellContents(counts.isEmpty() ? Map.of() : Map.copyOf(counts), hasNonItemKeys);
+    }
+
+    private static void logSource(
+            String sourceKind,
+            String routeKind,
+            String dimension,
+            BlockPos routePos,
+            WorldDisplayStorageSource source,
+            NetworkObservation observation
+    ) {
+        if (source == null || observation == null) {
+            return;
+        }
+        if (source.contents().isEmpty()
+                && source.mediaIds().isEmpty()
+                && observation.mediaObservations().isEmpty()) {
+            return;
+        }
+        String key = sourceKind
+                + '|'
+                + routeKind
+                + '|'
+                + dimension
+                + '@'
+                + routePos.getX()
+                + ','
+                + routePos.getY()
+                + ','
+                + routePos.getZ()
+                + '|'
+                + source.storageId();
+        if (!SOURCE_LOG_THROTTLE.shouldEmit(key, System.nanoTime())) {
+            return;
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT][ae2] source kind={} route={} storageId={} pos={}@{},{},{} entries={} totalItems={} "
+                        + "mediaIds={} observations={} activeMedia={} unreadableMedia={} aliases={}",
+                sourceKind,
+                routeKind,
+                source.storageId(),
+                dimension,
+                routePos.getX(),
+                routePos.getY(),
+                routePos.getZ(),
+                source.contents().size(),
+                totalItemCount(source.contents()),
+                source.mediaIds().size(),
+                observation.mediaObservations().size(),
+                mediaObservationCount(
+                        observation.mediaObservations(),
+                        WorldDisplayStorageSource.MediaObservation.STATUS_ACTIVE),
+                mediaObservationCount(
+                        observation.mediaObservations(),
+                        WorldDisplayStorageSource.MediaObservation.STATUS_UNREADABLE),
+                source.aliasedBlocks().size());
+    }
+
+    private static long totalItemCount(List<WorldStorageAccess.SlotContent> contents) {
+        if (contents == null || contents.isEmpty()) {
+            return 0L;
+        }
+        long total = 0L;
+        for (WorldStorageAccess.SlotContent content : contents) {
+            if (content != null && content.count() > 0) {
+                total += content.count();
+            }
+        }
+        return total;
+    }
+
+    private static int mediaObservationCount(
+            List<WorldDisplayStorageSource.MediaObservation> observations,
+            String status
+    ) {
+        if (observations == null || observations.isEmpty() || status == null || status.isBlank()) {
+            return 0;
+        }
+        int count = 0;
+        for (WorldDisplayStorageSource.MediaObservation observation : observations) {
+            if (observation != null && status.equals(observation.status())) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private static HolderRoute holderRoute(Object holder) {
@@ -820,6 +957,10 @@ final class Ae2StorageBridge {
         boolean activeItemStorage() {
             return WorldDisplayStorageSource.MediaObservation.STATUS_ACTIVE.equals(status)
                     && !countsByIdentity.isEmpty();
+        }
+
+        boolean unreadableStorageProbe() {
+            return WorldDisplayStorageSource.MediaObservation.STATUS_UNREADABLE.equals(status);
         }
 
         WorldDisplayStorageSource.MediaObservation toMediaObservation() {

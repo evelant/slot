@@ -148,7 +148,7 @@ public record WorldDisplayStorageSource(
     }
 
     public boolean trackedStorage() {
-        return kind.trackedStorage() || target instanceof WorldStorageAccess.Target.Virtual;
+        return kind.trackedStorage();
     }
 
     public boolean depositTarget() {
@@ -247,6 +247,7 @@ public record WorldDisplayStorageSource(
         String base = switch (kind) {
             case TOOL_RACK -> "Tool rack";
             case PLACED_ITEM -> "Placed item";
+            case FLUID_TANK -> "Fluid tank";
             case AE2_TERMINAL, AE2_NETWORK -> "ME network";
         };
         return base + " @ " + x + "," + y + "," + z;
@@ -324,7 +325,7 @@ public record WorldDisplayStorageSource(
         }
 
         public boolean removesItemCounts() {
-            return !STATUS_ACTIVE.equals(status);
+            return STATUS_EMPTY.equals(status) || STATUS_NON_ITEM.equals(status);
         }
 
         private static Map<ItemIdentity, Integer> normalizeCounts(Map<ItemIdentity, Integer> source) {

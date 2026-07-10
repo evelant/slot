@@ -20,7 +20,9 @@ import org.junit.jupiter.api.io.TempDir;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -174,6 +176,36 @@ class WorkflowDomainPersistenceServiceTest {
                 2
         )));
         assertEquals("craft-run-2", restoredRuntime.snapshot().craftRun().entries().get(1).entryId());
+    }
+
+    @Test
+    void filePersistenceRoundTripsBulkInitialContentSeed(@TempDir Path tempDir) throws Exception {
+        Path statePath = tempDir.resolve("workflow-seeded-affinity.json");
+        WorkflowDomainFileStore store = new WorkflowDomainFileStore(statePath);
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(repository, null);
+        UUID storageId = UUID.fromString("00000000-0000-0000-0000-000000000123");
+        ItemIdentity coal = ItemIdentity.of("minecraft:coal");
+        ItemIdentity stone = ItemIdentity.of("minecraft:stone");
+        runtime.chestClaimWorkflow().claimWithId(
+                storageId,
+                Set.of(new ChestAnchor("minecraft:overworld", 1, 64, 1)),
+                0,
+                0,
+                "");
+
+        int seeded = runtime.chestClaimWorkflow().recordInitialContents(
+                storageId,
+                Map.of(coal, 8, stone, 2),
+                200L,
+                DomainEventMetadata.origin("test.initial_contents"));
+        assertEquals(2, seeded);
+        store.save(repository.snapshot());
+
+        InMemoryWorkflowDomainStateRepository restored = new InMemoryWorkflowDomainStateRepository();
+        restored.replaceWith(store.load());
+        assertEquals(1, restored.workflowProjection().chestAffinityMap().score(storageId, coal));
+        assertEquals(1, restored.workflowProjection().chestAffinityMap().score(storageId, stone));
     }
 
     @Test

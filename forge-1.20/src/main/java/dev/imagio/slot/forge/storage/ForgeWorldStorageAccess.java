@@ -1,6 +1,7 @@
 package dev.imagio.slot.forge.storage;
 
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.inventory.storage.WorldDisplayStorageKind;
 import dev.imagio.slot.inventory.storage.WorldDisplayStorageSource;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
@@ -9,8 +10,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -116,6 +120,9 @@ public final class ForgeWorldStorageAccess implements WorldStorageAccess {
                 return handled.get();
             }
         }
+        if (target instanceof Target.Display display && display.kind() == WorldDisplayStorageKind.FLUID_TANK) {
+            return displayBlockContents(server, display);
+        }
         IItemHandler handler = resolveHandler(server, target);
         if (handler == null) {
             return List.of();
@@ -180,7 +187,13 @@ public final class ForgeWorldStorageAccess implements WorldStorageAccess {
             }
         }
         IItemHandler handler = resolveHandler(server, target);
-        return handler == null ? 0 : handler.getSlots();
+        if (handler != null) {
+            return handler.getSlots();
+        }
+        if (target instanceof Target.Display display && display.kind() == WorldDisplayStorageKind.FLUID_TANK) {
+            return displayBlockStack(server, display).isEmpty() ? 0 : 1;
+        }
+        return 0;
     }
 
     @Override
@@ -194,15 +207,19 @@ public final class ForgeWorldStorageAccess implements WorldStorageAccess {
                         || delegate.slotCount(server, target).isPresent();
             }
         }
-        return resolveHandler(server, target) != null;
+        if (target instanceof Target.Display display && display.kind() == WorldDisplayStorageKind.FLUID_TANK) {
+            return resolveDisplayFluidHandler(server, display) != null;
+        }
+        return resolveHandler(server, target) != null || resolveFluidHandler(server, target) != null;
     }
 
     @Override
     public List<WorldDisplayStorageSource> proximateDisplaySources(ServerPlayer player, int radiusBlocks) {
-        if (player == null || delegates.isEmpty()) {
+        if (player == null) {
             return List.of();
         }
         ArrayList<WorldDisplayStorageSource> sources = new ArrayList<>();
+        sources.addAll(proximateFluidTankSources(player, radiusBlocks));
         for (Delegate delegate : delegates) {
             List<WorldDisplayStorageSource> delegated = delegate.proximateDisplaySources(player, radiusBlocks);
             if (delegated != null && !delegated.isEmpty()) {
@@ -223,7 +240,134 @@ public final class ForgeWorldStorageAccess implements WorldStorageAccess {
         if (target instanceof Target.Chest chestTarget) {
             return resolveChestFluidHandler(server, chestTarget.chest());
         }
+        if (target instanceof Target.Display display && display.kind() == WorldDisplayStorageKind.FLUID_TANK) {
+            return resolveDisplayFluidHandler(server, display);
+        }
         return null;
+    }
+
+    private static List<WorldDisplayStorageSource> proximateFluidTankSources(ServerPlayer player, int radiusBlocks) {
+        if (player == null || player.getServer() == null) {
+            return List.of();
+        }
+        int radius = Math.max(0, radiusBlocks);
+        ServerLevel level = player.serverLevel();
+        String dimension = level.dimension().location().toString();
+        BlockPos center = player.blockPosition();
+        long radiusSquared = (long) radius * radius;
+        ArrayList<WorldDisplayStorageSource> sources = new ArrayList<>();
+        for (BlockPos cursor : BlockPos.betweenClosed(
+                center.offset(-radius, -radius, -radius),
+                center.offset(radius, radius, radius))) {
+            long dx = (long) cursor.getX() - center.getX();
+            long dy = (long) cursor.getY() - center.getY();
+            long dz = (long) cursor.getZ() - center.getZ();
+            if (dx * dx + dy * dy + dz * dz > radiusSquared || !level.isLoaded(cursor)) {
+                continue;
+            }
+            IFluidHandler handler = fluidHandlerAt(level, cursor);
+            if (handler == null) {
+                continue;
+            }
+            List<FluidContent> fluids = ForgeFluidContents.directTankContents(handler);
+            ItemStack blockStack = blockItemStack(level.getBlockState(cursor));
+            if (fluids.isEmpty() && blockStack.isEmpty()) {
+                continue;
+            }
+            List<SlotContent> contents = blockStack.isEmpty()
+                    ? List.of()
+                    : List.of(new SlotContent(0, blockStack, 1));
+            sources.add(new WorldDisplayStorageSource(
+                    WorldDisplayStorageSource.storageId(
+                            WorldDisplayStorageKind.FLUID_TANK,
+                            dimension,
+                            cursor.getX(),
+                            cursor.getY(),
+                            cursor.getZ()),
+                    WorldDisplayStorageKind.FLUID_TANK,
+                    fluidTankLabel(blockStack, cursor),
+                    dimension,
+                    cursor.getX(),
+                    cursor.getY(),
+                    cursor.getZ(),
+                    contents.isEmpty() ? 0 : 1,
+                    contents,
+                    fluids,
+                    List.of()));
+        }
+        return sources.isEmpty() ? List.of() : List.copyOf(sources);
+    }
+
+    private static List<SlotContent> displayBlockContents(MinecraftServer server, Target.Display display) {
+        ItemStack stack = displayBlockStack(server, display);
+        return stack.isEmpty() ? List.of() : List.of(new SlotContent(0, stack, 1));
+    }
+
+    private static ItemStack displayBlockStack(MinecraftServer server, Target.Display display) {
+        if (server == null || display == null || display.kind() != WorldDisplayStorageKind.FLUID_TANK) {
+            return ItemStack.EMPTY;
+        }
+        ServerLevel level = level(server, display.dimensionId());
+        if (level == null) {
+            return ItemStack.EMPTY;
+        }
+        BlockPos pos = new BlockPos(display.x(), display.y(), display.z());
+        if (!level.isLoaded(pos)) {
+            return ItemStack.EMPTY;
+        }
+        return blockItemStack(level.getBlockState(pos));
+    }
+
+    private static ItemStack blockItemStack(BlockState state) {
+        if (state == null || state.isAir()) {
+            return ItemStack.EMPTY;
+        }
+        Item item = state.getBlock().asItem();
+        if (item == null || item == Items.AIR) {
+            return ItemStack.EMPTY;
+        }
+        return new ItemStack(item);
+    }
+
+    private static String fluidTankLabel(ItemStack stack, BlockPos pos) {
+        if (stack != null && !stack.isEmpty()) {
+            String name = stack.getHoverName().getString();
+            if (name != null && !name.isBlank()) {
+                return name;
+            }
+        }
+        return "Fluid tank at " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
+    }
+
+    private static IFluidHandler resolveDisplayFluidHandler(MinecraftServer server, Target.Display display) {
+        if (server == null || display == null || display.kind() != WorldDisplayStorageKind.FLUID_TANK) {
+            return null;
+        }
+        ServerLevel level = level(server, display.dimensionId());
+        if (level == null) {
+            return null;
+        }
+        BlockPos pos = new BlockPos(display.x(), display.y(), display.z());
+        if (!level.isLoaded(pos)) {
+            return null;
+        }
+        return fluidHandlerAt(level, pos);
+    }
+
+    private static IFluidHandler fluidHandlerAt(ServerLevel level, BlockPos pos) {
+        if (level == null || pos == null) {
+            return null;
+        }
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity == null) {
+            return null;
+        }
+        try {
+            LazyOptional<IFluidHandler> optional = blockEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, null);
+            return optional.orElse(null);
+        } catch (RuntimeException | LinkageError ignored) {
+            return null;
+        }
     }
 
     private static IItemHandler resolveChestHandler(MinecraftServer server, ClaimedChest chest) {

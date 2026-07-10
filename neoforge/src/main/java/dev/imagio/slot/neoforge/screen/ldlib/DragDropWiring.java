@@ -120,11 +120,11 @@ final class DragDropWiring {
             SlotWorkspaceViewModel.ContextualSuggestionLane suggestionLane
     ) {
         button.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
-            if (item == null || item.displayStack().isEmpty()) {
+            if (item == null) {
                 return;
             }
             boolean proximateDepositRoute = hasProximateDepositRoute(item);
-            ItemStack tooltipStack = item.displayStack();
+            ItemStack tooltipStack = WorkspaceFormat.atlasTooltipStack(item);
             List<Component> tooltipLines = suggestionLane != null
                     && SlotClientConfig.CLIENT.contextualSuggestionDebugTooltips.get()
                     ? WorkspaceFormat.atlasTooltipLines(
@@ -137,11 +137,14 @@ final class DragDropWiring {
                     : WorkspaceFormat.atlasTooltipLines(
                             item,
                             WorkspaceItemTooltipBuilder.slotLines(item, proximateDepositRoute));
+            if (tooltipStack.isEmpty() && tooltipLines.isEmpty()) {
+                return;
+            }
             event.hoverTooltips = new HoverTooltips(
                     tooltipLines,
                     tooltipStack.isEmpty() ? null : tooltipStack.getTooltipImage().orElse(null),
                     null,
-                    tooltipStack
+                    tooltipStack.isEmpty() ? null : tooltipStack
             );
         });
     }

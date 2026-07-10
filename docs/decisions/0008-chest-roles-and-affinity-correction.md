@@ -10,16 +10,24 @@ role.
 
 ## Decision
 
-- Every claimed chest has exactly one role: `Storage`, `Buffer`, or `Ignore`.
+- Every claimed chest has exactly one role: `Storage`, `Input`, `Output`, or
+  `Ignore`.
 - The active-chest strip exposes one role button. Each click cycles
-  `Storage -> Buffer -> Ignore -> Storage`; there is no automatic mode.
+  `Storage -> Input -> Output -> Ignore -> Storage`; there is no automatic
+  mode.
 - A newly opened/unseen chest appears as `Ignore`. The existing first-deposit
   auto-claim path creates it as `Storage`, because depositing is the signal
   that the player wants that chest to be durable storage.
 - `Storage` chests are visible, searchable, learn affinity, and accept quick
   or bulk deposit.
-- `Buffer` chests are visible/searchable and can be pulled from, but never
-  learn affinity and are never quick-deposit targets.
+- `Input` chests are visible/searchable and can be pulled from after `Output`
+  and `Storage`, but never learn affinity and are never ambient quick-deposit
+  targets.
+- `Output` chests are visible/searchable and are preferred before `Storage` for
+  take shortcuts, but never learn affinity and are never ambient quick-deposit
+  targets.
+- Put shortcuts may target `Input` or `Output` only while that storage is the
+  open host/interface.
 - `Ignore` chests are hidden from SLOT storage projection, affinity learning,
   and routing.
 - Machines, vessels, and other non-storage hosts are excluded from affinity
@@ -58,10 +66,11 @@ The role model keeps player control close to the thing being controlled. It is
 manual enough to avoid false positives, but small enough that players do not
 have to manage per-item rules in normal play.
 
-`Buffer` is deliberately not a weaker form of `Storage`: it is a readable
-source, not a destination. That matches feeder crates and staging chests, where
-SLOT may help the player see or take contents without treating the block as a
-home during quick deposit.
+`Input` and `Output` are deliberately not weaker forms of `Storage`: they are
+process-bound sources, not ambient destinations. `Output` is emptied first so
+machine results do not sit behind bulk storage, while `Input` is taken last so
+ingredients awaiting processing are not grabbed accidentally. Both can still be
+used as put destinations when the player has opened that exact interface.
 
 Targeted item forget handles the rare cases where only one item/chest bond is
 wrong. The command lives on the item context menu while the chest is open, so

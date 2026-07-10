@@ -193,7 +193,7 @@ public record StorageTargetRef(
                 z,
                 liveReadable,
                 resolvedKind.depositTarget(),
-                true,
+                resolvedKind != WorldDisplayStorageKind.FLUID_TANK,
                 remembered,
                 proximate);
     }
@@ -261,6 +261,7 @@ public record StorageTargetRef(
         String base = switch (kind) {
             case TOOL_RACK -> "Tool rack";
             case PLACED_ITEM -> "Placed item";
+            case FLUID_TANK -> "Fluid tank";
             case AE2_TERMINAL, AE2_NETWORK -> "ME network";
         };
         return base + " @ " + x + "," + y + "," + z;

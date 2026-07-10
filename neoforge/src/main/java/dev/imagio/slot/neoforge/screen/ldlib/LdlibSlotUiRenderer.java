@@ -73,6 +73,12 @@ final class LdlibSlotUiRenderer {
                         model.itemCarried(),
                         model.renderVanillaCount()
                 );
+            case FLUID_ICON:
+                return WorkspaceUi.fluidIcon(
+                        model.fluidId(),
+                        model.itemIconSize(),
+                        model.itemCarried()
+                );
             case ELEMENT:
             default:
                 return new UIElement();

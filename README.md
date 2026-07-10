@@ -2,18 +2,21 @@
 
 SLOT means `Significantly Less Organizational Tedium`.
 
-An experimental minecraft inventory overhaul. It reduces tedious tasks without cheating. 
+An experimental minecraft inventory overhaul. It reduces tedious tasks without cheating.  It doesn't do anything that the player couldn't already do with vanilla minecraft inventory, it just reduces the amount of searching/clicking/shuffling/remembering.
+
 The goal is to let the player spend more time playing the game and less time shuffling things
 around in various inventories, especially in big complex modpacks.
+
+SLOT unifies all carried inventories into one list, tracks where you put things in external storage, and helps you grab what you need when you need it quickly as well as unload when you don't need into the right place fast. That's only the start however, see features list below.
 
 Current targets: 1.20.1 forge. Also contains code for 1.21.1 neoforge but that has not been tested recently since I've been playing TerraFirmaGreg on 1.20.1.
 
 # Disclaimer
 
-I made this for my own personal use/enjoyment. It is rough. It is unfinished. I designed and architected everything, codex wrote the code, so if you don't want to read it or dislike AI you don't have to use this. Likely unsuitable for anything but personal or tiny servers. Use at your own risk.
+I made this for my own personal use/enjoyment. It is a bit rough around the edges. It is unfinished. I designed and architected everything, codex wrote the code, so if you don't want to read the code or dislike AI you don't have to use this. Likely unsuitable for anything but personal or tiny servers at the moment until tested and optimized for larger scenarios. Use at your own risk.
 
 
-That being said, I am daily driving this on my own TerraFirmaGreg server and it works great for me.
+That being said, I am daily driving this on my own TerraFirmaGreg server and it works great for me. It hugely reduces the tedium of managing inventory in a super complex modpack.
 
 # Screenshot
 
@@ -24,22 +27,29 @@ That being said, I am daily driving this on my own TerraFirmaGreg server and it 
 
 In no particular order
 
-1. Track inventory in all your chests, search them, see how many you have
-2. Show all of your carried inventories (incl sophisticated backpacks) and treat them as one seamless container
-3. Automatically categorizes all carried items in a list, customizable cateogories, and helpful indicator borders/corners/counts to see at a glance what you have or don't have and how much
-4. Can show items in the list as "ghosts" if you're not carrying them but have them stored somewhere, along with guidance to where they're stored
-5. Remembers where you put items even if removed so they later get put back in the same place
-6. EMI integration
+1. Track inventory in all your chests, search them, see how much you have in total across all storage
+2. Unify all of your carried inventories (incl sophisticated backpacks) and treat them as one seamless container
+3. Automatically categorizes all carried items in a list, customizable cateogories
+4. Custom item cards packed with useful information using corners, colors, pips, counters
+   1.  Amount carried vs amount needed (for recipes or "always carry" amounts)
+   2.  Amount in nearby reachable storage
+   3.  Distance and direction arrow pointing to nearest storage for needed items
+   4.  Colored border indicating when not enough stored anywhere and an item needs to be crafted
+5. Can show items in the list as "ghosts" if you're not carrying them but have them stored somewhere, along with guidance to where they're stored
+6. Remembers where you put items in storage, even if removed, so they later get put back in the same place
+7. Remembers location of items placed in-world, for example tools on a tool rack
+8. EMI integration
    1. Add recipes to the sidebar
    2. Slot counts the total amounts needed and helps you find them in chests. 
    3. Counts against ALL stored and carried inventory to figure out how many you need to craft or collect
    4. Press r or u while hovering an item to bring up EMI for it, great for adding more recipes for sub-ingredients to your crafting plan
-7. Sophisticated backpacks integration - automatically puts picked up items in backpack before main inventory for convenience
-8. Chest finder -- when you need an item a hud arrow points to where the chest is and the chest is outlined in world
-9.  Auto-take -- when you need items press one button to fetch any of the items from nearby chests. No long distance teleportation, just removes the need to spend time manually picking through chests.
-10. Auto-deposit -- press one button to deposit everything you're carrying into nearby chests but _only if it already lives there_ as a remembered home.
-11. Desired vs Wanted counts -- set a count of an item to always keep on hand, or a temporary count to show the chest finder for the item until you go pick it up
-12. Shortcuts
+9.  Sophisticated backpacks integration - automatically puts picked up items in backpack before main inventory for convenience
+10. AE2 integration - items stored in AE2 networks are tracked and terminals can be tranferred to/from like any other storage. Handles deduplication with storage bus, network splits, multiple networks, moving storage cards, etc.
+11. Chest finder -- when you need an item a hud arrow points to where the chest is and the chest is outlined in world
+12. Auto-take -- when you need items press one button to fetch any of the items from nearby chests. No long distance teleportation, just removes the need to spend time manually picking through chests.
+13. Auto-deposit -- press one button to deposit everything you're carrying (not marked as needed/wanted) into nearby chests but _only if it already lives there_ as a remembered home.
+14. Desired vs Wanted counts -- set a count of an item to always keep on hand, or a temporary count to show the chest finder for the item until you go pick it up
+15. Shortcuts
     1.  Hovered card storage keybinds: `a`/`d` take/put a stack, `q`/`e` take/put one, `shift+a`/`shift+d` take/put all, `ctrl+a`/`ctrl+d` take/put five stacks. These are configurable in Controls.
     2.  Shift+rightclick still does the older smart take/put against nearby storage (if item lives there)
     3.  Shift+scroll to take/put one at a time nearby storage
@@ -48,13 +58,24 @@ In no particular order
     6.  tab - move hovered item to hotbar, evicting least recently used item back to inventory
     7.  ctrl+scroll - set desired (always carry) count on hovered item
     8.  alt+scroll - set wanted count on hovered item (show as ghost in inventory with guidance to chest until you pick up that amount)
-13. Workflows and loadouts (rough/wip) -- define different sets of items so you can easily swap between different tasks that require different tools and equipment
-14. Recents list -- shows the last 24 item types you picked up or put down
-15. Trash items -- instantly delete all of a particular item type you're carrying (good for junk)
-16. Mark as junk -- If inventory is above 75% full, items marked as junk will be voided when picked up
-17. Undo/Redo (buggy/rough) -- z to undo last action (incl trash), y to redo. Currently buggy, but at least works to undo accidental trashing.
-18. Mod settings page for configuring some UI offsets so that it doesn't get in the way of other mods (particularly EMI)
-19. Other stuff I probably forgot, it does a lot!
+    9.  `del` - void/trash all carried of the hovered item
+16. Workflows and loadouts (rough/wip) -- define different sets of items so you can easily swap between different tasks that require different tools and equipment
+17. Recents list -- shows the last 24 item types you picked up or put down
+18. Trash items -- instantly delete all of a particular item type you're carrying (good for junk)
+19. Mark as junk -- If inventory is above 75% full, items marked as junk will be voided when picked up
+20. Undo/Redo (buggy/rough) -- z to undo last action (incl trash), y to redo. Currently buggy, but at least works to undo accidental trashing.
+21. Mod settings page for configuring some UI offsets so that it doesn't get in the way of other mods (particularly EMI)
+22. Other stuff I probably forgot, it does a lot!
+
+## Supported Mods
+
+SLOT supports a bunch of popular storage mods, allowing you to work with them seamlessly through a unified interface.
+
+- TerraFirmaCraft: Tracks TFC storage containers and tool racks
+- GregTech: Tracks item in GT machine inventories, buses/hatches, and GT storage items. Handles tools/equipment that have attributes like energy.
+- Sophisticated Backpacks: Backpack is unified with carried storage. Items are automatically picked up to backpack to avoid hassle of shuffling from main inventory to backpack all the time. Shortcut for moving item from backpack to main or hotbar.
+- Applied Energistics 2: AE2 terminals work like any other external storage. Accounts for deduplication of storage bus contents, network splits, moving disks, and so on.
+- EMI: See features list above, deep EMI integration.
 
 # Compiling and using
 

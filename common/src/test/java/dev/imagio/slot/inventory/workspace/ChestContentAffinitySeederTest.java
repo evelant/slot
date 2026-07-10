@@ -5,6 +5,7 @@ import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
+import dev.imagio.slot.workflow.domain.WorkflowEvent;
 import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
 
@@ -38,6 +39,33 @@ class ChestContentAffinitySeederTest {
         assertEquals(2, seeded);
         assertEquals(1, chestService.chestAffinityMap().score(storageId, coal));
         assertEquals(1, chestService.chestAffinityMap().score(storageId, stone));
+    }
+
+    @Test
+    void seedsMultipleIdentitiesWithOneWorkflowEvent() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        ChestClaimWorkflowDomainService chestService = new ChestClaimWorkflowDomainService(repository);
+        UUID storageId = UUID.randomUUID();
+        chestService.claimWithId(storageId, Set.of(anchor()), 0, 0, "");
+
+        int seeded = ChestContentAffinitySeeder.seedInitialContents(
+                chestService,
+                storageId,
+                new ItemStack[]{
+                        new ItemStack("minecraft:coal", 8, 64),
+                        new ItemStack("minecraft:stone", 2, 64),
+                        new ItemStack("minecraft:dirt", 3, 64),
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY,
+                        ItemStack.EMPTY
+                },
+                200L);
+
+        long seedEvents = repository.workflowEvents().records().stream()
+                .filter(record -> record.event() instanceof WorkflowEvent.ChestInitialContentsSeeded)
+                .count();
+        assertEquals(3, seeded);
+        assertEquals(1, seedEvents);
     }
 
     @Test

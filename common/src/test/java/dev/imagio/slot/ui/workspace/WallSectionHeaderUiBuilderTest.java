@@ -1,11 +1,13 @@
 package dev.imagio.slot.ui.workspace;
 
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEvent;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
 import dev.imagio.slot.ui.spi.SlotUiLayout;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
 
@@ -397,8 +399,7 @@ class WallSectionHeaderUiBuilderTest {
         assertNotNull(missing);
         assertEquals(37, missing.count());
         assertTrue(descendantText(card).contains("27/64"));
-        assertTrue(descendantText(card).contains("need"));
-        assertTrue(descendantText(card).contains("37"));
+        assertTrue(descendantText(card).contains("need 37"));
     }
 
     @Test
@@ -419,8 +420,32 @@ class WallSectionHeaderUiBuilderTest {
 
         assertEquals(WallCardUiBuilder.CARD_CELL_PX + WallCardUiBuilder.WAYFINDING_STRIP_WIDTH_PX,
                 card.layout().width());
-        assertTrue(descendantText(card).contains("need"));
-        assertTrue(descendantText(card).contains("27"));
+        assertTrue(descendantText(card).contains("need 27"));
+    }
+
+    @Test
+    void fluidCardsRenderFluidIconWithoutTextTag() {
+        SlotWorkspaceViewModel.AtlasItem item = fluidAtlasItem(
+                SlotResourceIdentity.fluid("gtceu:cryogenized_fluix"),
+                "Cryogenized Fluix");
+
+        SlotUiElement card = new WallCardUiBuilder(new RecordingCardContext()).card(item);
+        SlotUiElement icon = descendants(card).stream()
+                .filter(element -> element.kind() == SlotUiElement.Kind.FLUID_ICON)
+                .findFirst()
+                .orElse(null);
+
+        assertTrue(item.displayStack().isEmpty());
+        assertNotNull(icon);
+        assertEquals("gtceu:cryogenized_fluix", icon.fluidId());
+        assertTrue(descendantText(card).stream().noneMatch("CRYO"::equals));
+        assertTrue(card.tooltipStack().isEmpty());
+        java.util.List<String> tooltipText = card.tooltipLines().stream()
+                .map(Component::getString)
+                .toList();
+        assertTrue(tooltipText.contains("Cryogenized Fluix"));
+        assertTrue(tooltipText.contains("Carried amount: 1 B"));
+        assertFalse(tooltipText.contains("Water Bucket"));
     }
 
     @Test
@@ -821,6 +846,46 @@ class WallSectionHeaderUiBuilderTest {
                 -1,
                 0
         );
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem fluidAtlasItem(
+            SlotResourceIdentity resource,
+            String name
+    ) {
+        SlotWorkspaceViewModel.IdentityRef identity = new SlotWorkspaceViewModel.IdentityRef(
+                resource.syntheticItemId(),
+                dev.imagio.slot.inventory.core.ItemComparisonMode.ITEM_ID.name(),
+                "");
+        return new SlotWorkspaceViewModel.AtlasItem(
+                identity,
+                ItemStack.EMPTY,
+                name,
+                1000,
+                0,
+                "tools",
+                false,
+                false,
+                true,
+                false,
+                0,
+                java.util.List.of(),
+                java.util.List.of(),
+                java.util.List.of(),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                0,
+                false,
+                false,
+                "",
+                -1,
+                0,
+                SlotWorkspaceViewModel.PutAwayState.NONE,
+                SlotWorkspaceViewModel.ResourceRef.from(resource),
+                1000L);
     }
 
     private static java.util.List<String> descendantText(SlotUiElement root) {

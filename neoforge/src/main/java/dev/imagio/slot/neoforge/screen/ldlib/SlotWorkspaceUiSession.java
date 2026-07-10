@@ -1535,6 +1535,7 @@ final class SlotWorkspaceUiSession {
                 viewModel,
                 identity,
                 suppressChestPreference,
+                resolveHost(serverPlayer),
                 targetHotbarIndex -> assignIdentityToHotbarIndex(serverPlayer, identity, targetHotbarIndex)));
     }
 
@@ -1548,7 +1549,8 @@ final class SlotWorkspaceUiSession {
                     workflowRuntime(serverPlayer),
                     identity,
                     Integer.MAX_VALUE,
-                    false);
+                    false,
+                    resolveHost(serverPlayer));
             if (!tookStackForHotbar(takeOutcome)) {
                 return takeOutcome.success()
                         ? WorkspaceCommandOutcome.rejected(WorkspaceBeltCommandService.CARRIED_IDENTITY_NOT_FOUND)
@@ -1840,7 +1842,8 @@ final class SlotWorkspaceUiSession {
                 identity,
                 WorkspaceChestCommandService.DepositQuantity.STACK,
                 WorkspaceChestCommandService.DesiredCountPolicy.RESPECT,
-                () -> activeDepositFallbackChest(serverPlayer)));
+                () -> activeDepositFallbackChest(serverPlayer),
+                resolveHost(serverPlayer)));
     }
 
     void depositCarriedToChest(String itemId, String comparisonMode, String componentFingerprint, String storageIdRaw) {
@@ -1898,7 +1901,8 @@ final class SlotWorkspaceUiSession {
                 identity,
                 WorkspaceChestCommandService.DepositQuantity.ITEM,
                 WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
-                () -> activeDepositFallbackChest(serverPlayer)));
+                () -> activeDepositFallbackChest(serverPlayer),
+                resolveHost(serverPlayer)));
     }
 
     void depositItemsHomeToLinkedChest(
@@ -1922,7 +1926,8 @@ final class SlotWorkspaceUiSession {
                 identity,
                 count == null ? 0 : count,
                 WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
-                () -> activeDepositFallbackChest(serverPlayer)));
+                () -> activeDepositFallbackChest(serverPlayer),
+                resolveHost(serverPlayer)));
     }
 
     /**
@@ -2075,7 +2080,8 @@ final class SlotWorkspaceUiSession {
         applyTakeOutcome(serverPlayer, WorkspaceChestCommandService.takeDesiredGapOrStackByIdentity(
                 serverPlayer,
                 workflowRuntime(serverPlayer),
-                identity));
+                identity,
+                resolveHost(serverPlayer)));
     }
 
     void takeStackByIdentity(String itemId, String comparisonMode, String componentFingerprint) {
@@ -2095,7 +2101,9 @@ final class SlotWorkspaceUiSession {
                 serverPlayer,
                 workflowRuntime(serverPlayer),
                 identity,
-                maxCount));
+                maxCount,
+                true,
+                resolveHost(serverPlayer)));
     }
 
     void takeFromChest(String storageIdRaw, Integer chestSlotIndex) {
@@ -2260,7 +2268,8 @@ final class SlotWorkspaceUiSession {
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel = resolveActiveChestPanel(
                 serverPlayer, runtime, claimedChestMap);
         clearSatisfiedWantedCounts(authority);
-        List<WorkspaceStorageIndex.StorageEntry> liveDisplayEntries = storageIndex.liveDisplayEntries();
+        List<WorkspaceStorageIndex.StorageEntry> projectableDisplayEntries =
+                storageIndex.projectableTrackedDisplayEntries();
         Set<String> liveDepositStorageIds = storageIndex.liveDepositStorageIds();
         Map<SlotResourceIdentity, Long> carriedFluidCounts = carriedFluidCounts(serverPlayer);
         FluidResourceObservationService.observe(
@@ -2291,7 +2300,7 @@ final class SlotWorkspaceUiSession {
                 displaySources,
                 contextualSuggestionStorageIds,
                 displaySources,
-                liveDisplayEntries,
+                projectableDisplayEntries,
                 liveDepositStorageIds,
                 storageIndex,
                 carriedFluidCounts,
@@ -2351,7 +2360,7 @@ final class SlotWorkspaceUiSession {
                     displaySources,
                     contextualSuggestionStorageIds,
                     displaySources,
-                    liveDisplayEntries,
+                    projectableDisplayEntries,
                     liveDepositStorageIds,
                     storageIndex,
                     carriedFluidCounts,
@@ -2410,7 +2419,7 @@ final class SlotWorkspaceUiSession {
                     autoHomeReprojected,
                     authority,
                     storageIndex.entries().size(),
-                    liveDisplayEntries.size(),
+                    projectableDisplayEntries.size(),
                     liveDepositStorageIds.size(),
                     storageContext.indexDiagnostics(),
                     payloadBytes,
@@ -2566,9 +2575,11 @@ final class SlotWorkspaceUiSession {
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
         boolean refresh = false;
         if (currentWorkflowSequence(runtime) != lastObservedWorkflowSequence) {
-            queueInvalidation(WorkspaceInvalidation.full(
-                    WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
-                    "workflow_sequence_changed_not_localized"));
+            if (!hasPendingLocalizedWorkflowInvalidation()) {
+                queueInvalidation(WorkspaceInvalidation.full(
+                        WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED,
+                        "workflow_sequence_changed_not_localized"));
+            }
             refresh = true;
         }
         if (CarriedInventoryRevisions.revision(serverPlayer) != lastObservedCarriedRevision) {
@@ -2603,6 +2614,17 @@ final class SlotWorkspaceUiSession {
         }
         WorkflowDomainSnapshot snapshot = runtime.snapshot();
         return snapshot == null ? 0L : snapshot.nextGlobalSequence() * 31L + snapshot.craftRun().revision();
+    }
+
+    private boolean hasPendingLocalizedWorkflowInvalidation() {
+        for (WorkspaceInvalidation invalidation : pendingInvalidations) {
+            if (invalidation != null
+                    && invalidation.reason() == WorkspaceInvalidation.Reason.WORKFLOW_SEQUENCE_CHANGED
+                    && !invalidation.requiresFullProjection()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private WorkspaceInvalidation storageProximityInvalidation(ServerPlayer serverPlayer, WorkflowDomainRuntime runtime) {

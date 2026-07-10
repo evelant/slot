@@ -861,6 +861,25 @@ public final class WorkspaceStorageIndex {
         return out.isEmpty() ? List.of() : List.copyOf(out);
     }
 
+    /**
+     * Entries that should participate in projection/search as storage-like
+     * display targets. Live display sources keep their immediate UI/mutation
+     * surface; remembered AE2 networks stay searchable after the player walks
+     * away from the terminal route.
+     */
+    public List<StorageEntry> projectableTrackedDisplayEntries() {
+        ArrayList<StorageEntry> out = new ArrayList<>();
+        for (StorageEntry entry : entriesByStorageId.values()) {
+            if (entry == null || entry.target() == null || !entry.target().displayTarget()) {
+                continue;
+            }
+            if (entry.live() || (!entry.target().proximate() && entry.target().ae2Network())) {
+                out.add(entry);
+            }
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
     public Set<String> liveDepositStorageIds() {
         LinkedHashSet<String> out = new LinkedHashSet<>();
         for (StorageEntry entry : entriesByStorageId.values()) {

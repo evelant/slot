@@ -9,6 +9,7 @@ import dev.imagio.slot.inventory.core.InventoryStackSnapshot;
 import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.PlayerRuntimeStateDescriptor;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
 import dev.imagio.slot.inventory.integration.InventoryHostSession;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
@@ -181,6 +182,73 @@ class SlotWorkspaceViewModelDepositTest {
         assertEquals(1, item.proximateCount());
         assertEquals(source.storageId(), item.presence().get(0).storageId());
         assertEquals("Tool rack @ 1,64,0", item.presence().get(0).label());
+    }
+
+    @Test
+    void proximateFluidDisplayStorageCreatesFluidCardWithoutItemDisplayStack() {
+        SlotResourceIdentity oxygen = SlotResourceIdentity.fluid("gtceu:oxygen");
+        WorldDisplayStorageSource source = new WorldDisplayStorageSource(
+                null,
+                WorldDisplayStorageKind.FLUID_TANK,
+                "Stainless Steel Drum",
+                "minecraft:overworld",
+                1,
+                64,
+                0,
+                1,
+                List.of(new WorldStorageAccess.SlotContent(0, stack("gtceu:stainless_steel_drum", 1))),
+                List.of(new WorldStorageAccess.FluidContent(
+                        0,
+                        WorldStorageAccess.FluidContent.DIRECT_TANK_SLOT,
+                        oxygen,
+                        16_000L,
+                        "Oxygen")),
+                List.of());
+        WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                null,
+                InventoryAuthoritySnapshot.empty(),
+                ClaimedChestMap.empty(),
+                null,
+                Set.of(source.storageId()),
+                List.of(source),
+                Map.of());
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                workflow(homeMap(REDSTONE), ClaimedChestMap.empty(), ChestAffinityMap.empty()),
+                "ready",
+                "",
+                0,
+                0,
+                1L,
+                null,
+                null,
+                index.contentsResolver(),
+                Set.of(),
+                null,
+                null,
+                "",
+                0L,
+                SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                index.displaySources(),
+                Set.of(source.storageId()),
+                index.displaySources(),
+                index.projectableTrackedDisplayEntries(),
+                index.liveDepositStorageIds(),
+                index.liveChestContentPresence(),
+                index.liveStorageAffinityEligibility(),
+                RemoteStorageDetailIntent.INTENT_ONLY);
+
+        SlotWorkspaceViewModel.AtlasItem fluid = viewModel.atlasItems().stream()
+                .filter(candidate -> candidate.resource() != null && oxygen.equals(candidate.resource().toIdentity()))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(fluid.fluidResource());
+        assertTrue(fluid.displayStack().isEmpty());
+        assertEquals("Oxygen", fluid.name());
+        assertEquals(16_000L, fluid.resourceAmount());
+        assertEquals(16_000, fluid.proximateCount());
+        assertEquals(source.storageId(), fluid.presence().get(0).storageId());
     }
 
     @Test
@@ -714,6 +782,78 @@ class SlotWorkspaceViewModelDepositTest {
     }
 
     @Test
+    void rememberedAe2NetworkProjectsAsTrackedRemoteStorageWithoutLiveTerminalSource() {
+        SlotWorkspaceViewModel.setGhostStackResolver(id -> new ItemStack(id, 1, 64));
+        try {
+            WorldDisplayStorageSource observedNetwork = ae2Network("ae2:network:test", 10_000);
+            RememberedStorageContents remembered = RememberedStorageContents.fromSourceSnapshot(
+                    StorageTargetRef.display(observedNetwork, false, true),
+                    WorkspaceStorageIndex.snapshotFromDisplay(observedNetwork),
+                    observedNetwork,
+                    10L,
+                    "test");
+            WorkspaceStorageIndex index = WorkspaceStorageIndex.forTesting(
+                    null,
+                    InventoryAuthoritySnapshot.empty(),
+                    ClaimedChestMap.empty(),
+                    null,
+                    Set.of(),
+                    List.of(),
+                    Map.of(observedNetwork.storageId(), remembered));
+
+            SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                    InventoryAuthoritySnapshot.empty(),
+                    workflow(
+                            homeMap(REDSTONE),
+                            ClaimedChestMap.empty(),
+                            ChestAffinityMap.empty(),
+                            Map.of(),
+                            Map.of(REDSTONE, 1)),
+                    "ready",
+                    "",
+                    0,
+                    0,
+                    1L,
+                    null,
+                    null,
+                    index.contentsResolver(),
+                    Set.of(),
+                    null,
+                    null,
+                    "",
+                    0L,
+                    SlotWorkspaceViewModel.ActiveChestPanel.empty(),
+                    index.displaySources(),
+                    Set.of(),
+                    index.displaySources(),
+                    index.projectableTrackedDisplayEntries(),
+                    index.liveDepositStorageIds(),
+                    index.liveChestContentPresence(),
+                    index.liveStorageAffinityEligibility(),
+                    RemoteStorageDetailIntent.INTENT_ONLY);
+
+            SlotWorkspaceViewModel.AtlasItem redstone = viewModel.atlasItems().stream()
+                    .filter(candidate -> REDSTONE.equals(candidate.identity().toIdentity()))
+                    .findFirst()
+                    .orElseThrow();
+
+            assertTrue(redstone.ghost());
+            assertEquals(0, redstone.proximateCount());
+            assertEquals(1, redstone.elsewhere().size());
+            assertEquals(observedNetwork.storageId(), redstone.elsewhere().get(0).storageId());
+            assertEquals(10_000, redstone.elsewhere().get(0).count());
+            assertTrue(redstone.elsewhere().get(0).label().contains("ME network"));
+            assertTrue(viewModel.wayfindingTargets().stream()
+                    .anyMatch(target -> target.storageId().equals(observedNetwork.storageId())
+                            && target.worldX() == 8
+                            && target.worldY() == 64
+                            && target.worldZ() == 0));
+        } finally {
+            SlotWorkspaceViewModel.setGhostStackResolver(null);
+        }
+    }
+
+    @Test
     void chestContentSummariesNormalizeMovableContainers() {
         SlotWorkspaceViewModel viewModel = project(
                 InventoryAuthoritySnapshot.empty(),
@@ -918,6 +1058,32 @@ class SlotWorkspaceViewModelDepositTest {
                 1,
                 1)
                 .setHoverName(Component.literal("Water Iron Flask"));
+    }
+
+    private static WorldDisplayStorageSource ae2Network(String storageId, int redstoneCount) {
+        return new WorldDisplayStorageSource(
+                storageId,
+                WorldDisplayStorageKind.AE2_NETWORK,
+                "ME network @ 8,64,0",
+                "minecraft:overworld",
+                8,
+                64,
+                0,
+                1,
+                List.of(new WorldStorageAccess.SlotContent(
+                        0,
+                        stack("minecraft:redstone", 64),
+                        redstoneCount)),
+                List.of(),
+                List.of("cell-a"),
+                new WorldStorageAccess.Target.Virtual(
+                        "ae2",
+                        storageId,
+                        "terminal",
+                        "minecraft:overworld",
+                        8,
+                        64,
+                        0));
     }
 
     private static InventoryHostDescriptor host() {

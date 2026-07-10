@@ -4,7 +4,9 @@ import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityCollections;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -45,6 +47,7 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.ClaimedChestRoleChanged,
         WorkflowEvent.ClaimedChestDeleted,
         WorkflowEvent.ChestDepositObserved,
+        WorkflowEvent.ChestInitialContentsSeeded,
         WorkflowEvent.ChestAffinityForgotten,
         WorkflowEvent.ChestClusterRelabeled,
         WorkflowEvent.KitCreated,
@@ -351,6 +354,22 @@ public sealed interface WorkflowEvent permits
         }
     }
 
+    /**
+     * Existing contents of a newly storage-participating chest were converted
+     * into initial affinity in one batch. Counts are retained for diagnostics
+     * and future weighting; today each identity receives one affinity bump.
+     */
+    record ChestInitialContentsSeeded(
+            UUID storageId,
+            Map<ItemIdentity, Integer> countsByIdentity,
+            long tick
+    ) implements WorkflowEvent {
+        public ChestInitialContentsSeeded {
+            countsByIdentity = copyCounts(countsByIdentity);
+            tick = Math.max(0L, tick);
+        }
+    }
+
     /** Forget affinity[storageId, identity]. Targeted "this isn't iron's chest anymore" reset. */
     record ChestAffinityForgotten(
             UUID storageId,
@@ -414,6 +433,20 @@ public sealed interface WorkflowEvent permits
         public KitPageSwitched {
             pageIndex = Math.max(0, pageIndex);
         }
+    }
+
+    private static Map<ItemIdentity, Integer> copyCounts(Map<ItemIdentity, Integer> source) {
+        if (source == null || source.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, Integer> normalized = new LinkedHashMap<>();
+        for (Map.Entry<ItemIdentity, Integer> entry : source.entrySet()) {
+            if (entry == null || entry.getKey() == null || entry.getValue() == null || entry.getValue() <= 0) {
+                continue;
+            }
+            ItemIdentityCollections.mergeCount(normalized, entry.getKey(), entry.getValue());
+        }
+        return normalized.isEmpty() ? Map.of() : Map.copyOf(normalized);
     }
 
     /**

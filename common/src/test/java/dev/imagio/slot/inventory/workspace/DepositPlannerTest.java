@@ -144,18 +144,20 @@ class DepositPlannerTest {
     }
 
     @Test
-    void bufferChestsDoNotRouteDepositsByAffinityOrContents() {
-        DepositPlan plan = DepositPlanner.plan(
-                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:redstone", 16),
-                affinity(CHEST_A, "minecraft:redstone", 5),
-                claimedMapWithRole(ChestRole.BUFFER, CHEST_A),
-                Set.of(CHEST_A.toString()),
-                null,
-                (chest, identity) -> chest.storageId().equals(CHEST_A)
-                        && identity.equals(ItemIdentity.of("minecraft:redstone"))
-        );
+    void inputAndOutputChestsDoNotRouteAmbientDepositsByAffinityOrContents() {
+        for (ChestRole role : List.of(ChestRole.INPUT, ChestRole.OUTPUT)) {
+            DepositPlan plan = DepositPlanner.plan(
+                    authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:redstone", 16),
+                    affinity(CHEST_A, "minecraft:redstone", 5),
+                    claimedMapWithRole(role, CHEST_A),
+                    Set.of(CHEST_A.toString()),
+                    null,
+                    (chest, identity) -> chest.storageId().equals(CHEST_A)
+                            && identity.equals(ItemIdentity.of("minecraft:redstone"))
+            );
 
-        assertTrue(plan.isEmpty());
+            assertTrue(plan.isEmpty(), role.displayLabel());
+        }
     }
 
     @Test
@@ -366,15 +368,18 @@ class DepositPlannerTest {
     }
 
     @Test
-    void bufferChestsRemainVisibleForTakeRanking() {
+    void takeRankingPrefersOutputThenStorageThenInput() {
         List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
                 ItemIdentity.of("minecraft:redstone"),
-                claimedMapWithRole(ChestRole.BUFFER, CHEST_A),
-                affinity(CHEST_A, "minecraft:redstone", 5),
-                Set.of(CHEST_A.toString())
+                claimedMapWithRoles(Map.of(
+                        CHEST_A, ChestRole.INPUT,
+                        CHEST_B, ChestRole.STORAGE,
+                        CHEST_C, ChestRole.OUTPUT)),
+                ChestAffinityMap.empty(),
+                Set.of(CHEST_A.toString(), CHEST_B.toString(), CHEST_C.toString())
         );
 
-        assertEquals(List.of(CHEST_A), ranked.stream().map(ClaimedChest::storageId).toList());
+        assertEquals(List.of(CHEST_C, CHEST_B, CHEST_A), ranked.stream().map(ClaimedChest::storageId).toList());
     }
 
     private static ChestAffinityMap affinity(UUID storageId, String itemId, int score) {
@@ -388,13 +393,21 @@ class DepositPlannerTest {
     }
 
     private static ClaimedChestMap claimedMapWithRole(ChestRole role, UUID... storageIds) {
-        java.util.ArrayList<ClaimedChest> chests = new java.util.ArrayList<>();
+        LinkedHashMap<UUID, ChestRole> roles = new LinkedHashMap<>();
         for (UUID id : storageIds) {
+            roles.put(id, role);
+        }
+        return claimedMapWithRoles(roles);
+    }
+
+    private static ClaimedChestMap claimedMapWithRoles(Map<UUID, ChestRole> rolesByStorageId) {
+        java.util.ArrayList<ClaimedChest> chests = new java.util.ArrayList<>();
+        for (Map.Entry<UUID, ChestRole> entry : rolesByStorageId.entrySet()) {
             chests.add(new ClaimedChest(
-                    id,
+                    entry.getKey(),
                     Set.of(new ChestAnchor("minecraft:overworld", 0, 64, 0)),
                     0, 0, "",
-                    role));
+                    entry.getValue()));
         }
         return new ClaimedChestMap(chests);
     }

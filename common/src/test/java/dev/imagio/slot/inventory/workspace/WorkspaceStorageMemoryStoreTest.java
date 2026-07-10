@@ -207,6 +207,28 @@ class WorkspaceStorageMemoryStoreTest {
     }
 
     @Test
+    void unreadableAe2MediaObservationDoesNotRetireRememberedNetworkCounts(@TempDir Path tempDir) {
+        Path statePath = tempDir.resolve("storage-memory.json");
+        WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);
+        RememberedStorageContents remembered = rememberedAe2Network(
+                "ae2:network:old",
+                32,
+                List.of("cell-a"));
+
+        assertTrue(store.observe(remembered));
+        assertTrue(store.observeMediaObservations(List.of(media(
+                "cell-a",
+                WorldDisplayStorageSource.MediaObservation.STATUS_UNREADABLE,
+                Map.of())), 20L, "drive_scan"));
+
+        assertEquals(32, store.remembered(remembered.storageId())
+                .countsByIdentity()
+                .get(ItemIdentity.of("minecraft:redstone")));
+        assertEquals(WorldDisplayStorageSource.MediaObservation.STATUS_UNREADABLE,
+                store.ae2MediaLedger().get("cell-a").status());
+    }
+
+    @Test
     void disjointAe2CellTransferRetiresOldMediaAndKeepsNewNetwork(@TempDir Path tempDir) {
         Path statePath = tempDir.resolve("storage-memory.json");
         WorkspaceStorageMemoryStore store = new WorkspaceStorageMemoryStore(statePath);

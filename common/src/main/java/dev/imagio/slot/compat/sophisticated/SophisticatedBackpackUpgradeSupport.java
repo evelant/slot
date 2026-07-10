@@ -112,7 +112,11 @@ public final class SophisticatedBackpackUpgradeSupport {
                 Class<?> storageContainerMenuBaseClass = Class.forName("net.p3pp3rf1y.sophisticatedcore.common.gui.StorageContainerMenuBase", false, loader);
                 Class<?> upgradeContainerBaseClass = Class.forName("net.p3pp3rf1y.sophisticatedcore.common.gui.UpgradeContainerBase", false, loader);
                 Class<?> craftingUpgradeContainerClass = Class.forName("net.p3pp3rf1y.sophisticatedcore.upgrades.crafting.CraftingUpgradeContainer", false, loader);
-                Class<?> slotItemHandlerClass = Class.forName("net.neoforged.neoforge.items.SlotItemHandler", false, loader);
+                Class<?> slotItemHandlerClass = firstClass(
+                        loader,
+                        "net.neoforged.neoforge.items.SlotItemHandler",
+                        "net.minecraftforge.items.SlotItemHandler"
+                );
                 Method refreshAllSlotsMethod = storageContainerMenuBaseClass.getDeclaredMethod("refreshAllSlots");
                 refreshAllSlotsMethod.setAccessible(true);
 
@@ -141,6 +145,18 @@ public final class SophisticatedBackpackUpgradeSupport {
         private CraftingUpgradePanelRef findCraftingUpgrade(AbstractContainerMenu menu) {
             List<CraftingUpgradePanelRef> upgrades = findCraftingUpgrades(menu);
             return upgrades.isEmpty() ? null : upgrades.get(0);
+        }
+
+        private static Class<?> firstClass(ClassLoader loader, String... classNames) throws ClassNotFoundException {
+            ClassNotFoundException last = null;
+            for (String className : classNames) {
+                try {
+                    return Class.forName(className, false, loader);
+                } catch (ClassNotFoundException exception) {
+                    last = exception;
+                }
+            }
+            throw last == null ? new ClassNotFoundException("missing class candidates") : last;
         }
 
         private List<CraftingUpgradePanelRef> findCraftingUpgrades(AbstractContainerMenu menu) {

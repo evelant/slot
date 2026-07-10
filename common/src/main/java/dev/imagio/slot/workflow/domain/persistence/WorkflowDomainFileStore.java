@@ -90,7 +90,7 @@ import java.util.UUID;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 14;
+    private static final int SCHEMA_VERSION = 15;
 
     private final Path statePath;
 
@@ -1333,6 +1333,12 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.count = event.count();
                 data.sequence = event.tick();
             }
+        else if (workflowEvent instanceof WorkflowEvent.ChestInitialContentsSeeded event) {
+                data.kind = "ChestInitialContentsSeeded";
+                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
+                data.identityCounts = identityCounts(event.countsByIdentity());
+                data.sequence = event.tick();
+            }
         else if (workflowEvent instanceof WorkflowEvent.ChestAffinityForgotten event) {
                 data.kind = "ChestAffinityForgotten";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
@@ -1479,6 +1485,12 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 ItemIdentity identity = decodeIdentity(data.identity);
                 yield storageId == null || identity == null ? null
                         : new WorkflowEvent.ChestDepositObserved(storageId, identity, data.count, data.sequence);
+            }
+            case "ChestInitialContentsSeeded" -> {
+                UUID storageId = parseUuid(data.storageId);
+                Map<ItemIdentity, Integer> counts = decodeIdentityCounts(data.identityCounts);
+                yield storageId == null || counts.isEmpty() ? null
+                        : new WorkflowEvent.ChestInitialContentsSeeded(storageId, counts, data.sequence);
             }
             case "ChestAffinityForgotten" -> {
                 UUID storageId = parseUuid(data.storageId);
@@ -1995,6 +2007,37 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
         }
         return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    private static List<IdentityCountData> identityCounts(Map<ItemIdentity, Integer> countsByIdentity) {
+        if (countsByIdentity == null || countsByIdentity.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<IdentityCountData> out = new ArrayList<>();
+        for (Map.Entry<ItemIdentity, Integer> entry : countsByIdentity.entrySet()) {
+            if (entry == null || entry.getKey() == null || entry.getValue() == null || entry.getValue() <= 0) {
+                continue;
+            }
+            out.add(new IdentityCountData(identity(entry.getKey()), entry.getValue()));
+        }
+        return out.isEmpty() ? List.of() : List.copyOf(out);
+    }
+
+    private static Map<ItemIdentity, Integer> decodeIdentityCounts(List<IdentityCountData> counts) {
+        if (counts == null || counts.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, Integer> out = new LinkedHashMap<>();
+        for (IdentityCountData data : counts) {
+            if (data == null || data.count() <= 0) {
+                continue;
+            }
+            ItemIdentity identity = decodeIdentity(data.identity());
+            if (identity != null) {
+                ItemIdentityCollections.mergeCount(out, identity, data.count());
+            }
+        }
+        return out.isEmpty() ? Map.of() : Map.copyOf(out);
     }
 
     private static List<String> copyStringList(List<String> source) {
@@ -2657,6 +2700,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private int targetIndex;
         private KitDefinitionData kit;
         private List<IdentityData> putAwayIdentities;
+        private List<IdentityCountData> identityCounts;
     }
 
     private static final class ActivityEventData {
@@ -2784,6 +2828,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
     }
 
     private record IdentityData(String itemId, String comparisonMode, String componentFingerprint) {
+    }
+
+    private record IdentityCountData(IdentityData identity, int count) {
     }
 
     private record TargetData(String kind, String primaryId, String secondaryId, int slotIndex) {

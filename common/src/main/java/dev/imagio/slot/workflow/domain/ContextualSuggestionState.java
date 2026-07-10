@@ -53,12 +53,12 @@ public record ContextualSuggestionState(
 
         ItemIdentity identity = ItemIdentityCollections.key(event.identity());
         if (identity != null) {
-            ContextualItemAggregate aggregate = ItemIdentityCollections.findOrDefault(
-                            nextItems,
-                            identity,
-                            ContextualItemAggregate.empty(identity))
+            ContextualItemAggregate current = ItemIdentityCollections.findCanonical(nextItems, identity);
+            ContextualItemAggregate aggregate = (current == null
+                    ? ContextualItemAggregate.empty(identity)
+                    : current)
                     .record(event.kind(), sequence);
-            ItemIdentityCollections.removeMatching(nextItems, identity);
+            nextItems.remove(identity);
             nextItems.put(identity, aggregate);
         }
 
@@ -202,7 +202,12 @@ public record ContextualSuggestionState(
                         .reversed())
                 .limit(MAX_ITEM_AGGREGATES)
                 .collect(LinkedHashMap::new,
-                        (map, entry) -> ItemIdentityCollections.putIfAbsent(map, entry.getKey(), entry.getValue()),
+                        (map, entry) -> {
+                            ItemIdentity identity = ItemIdentityCollections.key(entry.getKey());
+                            if (identity != null) {
+                                map.putIfAbsent(identity, entry.getValue());
+                            }
+                        },
                         LinkedHashMap::putAll);
         return copy.isEmpty() ? Map.of() : Map.copyOf(copy);
     }

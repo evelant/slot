@@ -5,7 +5,8 @@ package dev.imagio.slot.workflow.domain;
  */
 public enum ChestRole {
     STORAGE,
-    BUFFER,
+    INPUT,
+    OUTPUT,
     IGNORE;
 
     public boolean visibleToWorkspace() {
@@ -20,10 +21,20 @@ public enum ChestRole {
         return this == STORAGE;
     }
 
+    public int takePriority() {
+        return switch (this) {
+            case OUTPUT -> 300;
+            case STORAGE -> 200;
+            case INPUT -> 100;
+            case IGNORE -> 0;
+        };
+    }
+
     public ChestRole next() {
         return switch (this) {
-            case STORAGE -> BUFFER;
-            case BUFFER -> IGNORE;
+            case STORAGE -> INPUT;
+            case INPUT -> OUTPUT;
+            case OUTPUT -> IGNORE;
             case IGNORE -> STORAGE;
         };
     }
@@ -31,20 +42,25 @@ public enum ChestRole {
     public String displayLabel() {
         return switch (this) {
             case STORAGE -> "Storage";
-            case BUFFER -> "Buffer";
+            case INPUT -> "Input";
+            case OUTPUT -> "Output";
             case IGNORE -> "Ignore";
         };
     }
 
     public static ChestRole parse(String raw) {
         if (raw == null || raw.isBlank()) {
-            return STORAGE;
+            return IGNORE;
+        }
+        String normalized = raw.trim();
+        if ("BUFFER".equalsIgnoreCase(normalized)) {
+            return INPUT;
         }
         for (ChestRole role : values()) {
-            if (role.name().equalsIgnoreCase(raw) || role.displayLabel().equalsIgnoreCase(raw)) {
+            if (role.name().equalsIgnoreCase(normalized) || role.displayLabel().equalsIgnoreCase(normalized)) {
                 return role;
             }
         }
-        return STORAGE;
+        return IGNORE;
     }
 }

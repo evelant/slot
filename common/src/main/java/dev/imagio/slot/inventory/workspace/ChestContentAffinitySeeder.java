@@ -77,25 +77,11 @@ public final class ChestContentAffinitySeeder {
         if (!StorageAffinityPolicy.isEligibleSlotCount(slotCount)) {
             return 0;
         }
-        Map<ItemIdentity, Integer> counts = countsByIdentity(contents);
-        int seeded = 0;
-        for (Map.Entry<ItemIdentity, Integer> entry : counts.entrySet()) {
-            ItemIdentity identity = entry.getKey();
-            if (identity == null || entry.getValue() == null || entry.getValue() <= 0) {
-                continue;
-            }
-            if (chestService.chestAffinityMap().score(storageId, identity) > 0) {
-                continue;
-            }
-            chestService.recordDeposit(
-                    storageId,
-                    identity,
-                    entry.getValue(),
-                    tick,
-                    INITIAL_CONTENTS_ORIGIN);
-            seeded++;
-        }
-        return seeded;
+        return chestService.recordInitialContents(
+                storageId,
+                countsByIdentity(contents),
+                tick,
+                INITIAL_CONTENTS_ORIGIN);
     }
 
     private static Map<ItemIdentity, Integer> countsByIdentity(List<ItemStack> contents) {

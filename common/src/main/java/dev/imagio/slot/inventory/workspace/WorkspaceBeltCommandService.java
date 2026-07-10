@@ -139,6 +139,7 @@ public final class WorkspaceBeltCommandService {
             SlotWorkspaceViewModel viewModel,
             ItemIdentity identity,
             boolean suppressChestPreference,
+            InventoryHostDescriptor openHost,
             IntFunction<WorkspaceCommandOutcome> hotbarAssigner
     ) {
         if (identity == null) {
@@ -153,7 +154,9 @@ public final class WorkspaceBeltCommandService {
                     runtime,
                     identity,
                     WorkspaceChestCommandService.DepositQuantity.STACK,
-                    WorkspaceChestCommandService.DesiredCountPolicy.RESPECT);
+                    WorkspaceChestCommandService.DesiredCountPolicy.RESPECT,
+                    null,
+                    openHost);
             if (depositOutcome.success() && "deposited_stack".equals(depositOutcome.status())) {
                 return depositOutcome;
             }

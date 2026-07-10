@@ -50,6 +50,7 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
     private static final String OPEN_PROVIDER_ID = "sophisticatedbackpacks";
     private static final String CARRIED_PROVIDER_ID = "sophisticatedbackpacks:carried";
     private static final String PRIMARY_SOURCE_ID = "sophisticatedbackpacks:open_backpack";
+    private static final String CRAFTING_SOURCE_MARKER = "#crafting/";
 
     static {
         PortableContainerClassifiers.register(SophisticatedBackpackSupport::isBackpackItem);
@@ -297,6 +298,8 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
         String excludedCarrier = encodeCarrier(SophisticatedBackpackSupport.openedBackpackCarrier(context.activeMenu()));
         Map<String, SophisticatedBackpackSupport.BackpackInventorySnapshot> initialBackpacksBySourceId =
                 carriedBackpacksBySourceId(context.playerInventory().player, excludedCarrier);
+        Map<String, SophisticatedBackpackSupport.BackpackCraftingGridSnapshot> initialCraftingGridsBySourceId =
+                carriedCraftingGridsBySourceId(context.playerInventory().player);
         return List.of(new PlayerInventoryExtension() {
             @Override
             public String providerId() {
@@ -305,7 +308,8 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
 
             @Override
             public List<InventorySourceDescriptor> additionalSources() {
-                return initialBackpacksBySourceId.values().stream()
+                ArrayList<InventorySourceDescriptor> sources = new ArrayList<>();
+                initialBackpacksBySourceId.values().stream()
                         .map(snapshot -> InventorySourceDescriptor.builder(carriedSourceId(snapshot.stableContainerId()))
                                 .label(Component.translatable("slot.source.backpack"))
                                 .domain(InventorySourceDomain.PLAYER_EXTENSION)
@@ -318,7 +322,22 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
                                 .diagnostics(encodeCarrier(snapshot.carrier()))
                                 .stableOrder(15 + Math.max(0, snapshot.carrier().carrierSlotIndex()))
                                 .build())
-                        .toList();
+                        .forEach(sources::add);
+                initialCraftingGridsBySourceId.values().stream()
+                        .map(snapshot -> InventorySourceDescriptor.builder(craftingSourceId(snapshot.stableContainerId(), snapshot.upgradeSlotIndex()))
+                                .label(Component.literal("Backpack Crafting Grid"))
+                                .domain(InventorySourceDomain.PLAYER_EXTENSION)
+                                .role(InventorySourceRole.PROVIDER_DEFINED)
+                                .logicalSlotCount(snapshot.slotCount())
+                                .bindingRoute(InventoryBindingRoute.PROVIDER)
+                                .capabilities(Set.of(InventoryCapability.EXTRACT))
+                                .actionRoute(InventoryActionRoute.PROVIDER_MUTATION)
+                                .paneMembership(InventoryPaneMembership.CARRIED)
+                                .diagnostics(encodeCarrier(snapshot.carrier()))
+                                .stableOrder(16 + Math.max(0, snapshot.carrier().carrierSlotIndex()))
+                                .build())
+                        .forEach(sources::add);
+                return List.copyOf(sources);
             }
 
             @Override
@@ -327,6 +346,9 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
                     InventoryHostDescriptor host,
                     String sourceId
             ) {
+                if (isCraftingSource(sourceId)) {
+                    return carriedCraftingGridSourceSnapshot(player, sourceId);
+                }
                 return carriedBackpackSourceSnapshot(player, sourceId, excludedCarrier);
             }
 
@@ -336,6 +358,9 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
                     InventoryHostDescriptor host,
                     String sourceId
             ) {
+                if (isCraftingSource(sourceId)) {
+                    return carriedCraftingGridSourceSnapshot(player, sourceId);
+                }
                 return carriedBackpackSourceSnapshot(player, sourceId, excludedCarrier);
             }
 
@@ -345,12 +370,20 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
                     InventoryHostDescriptor host,
                     String sourceId
             ) {
+                if (isCraftingSource(sourceId)) {
+                    SophisticatedBackpackSupport.BackpackCraftingGridSnapshot snapshot = carriedCraftingGrid(player, sourceId);
+                    return snapshot == null ? 0 : snapshot.slotCount();
+                }
                 SophisticatedBackpackSupport.BackpackInventorySnapshot snapshot = findCarriedBackpack(player, sourceId, excludedCarrier);
                 return snapshot == null ? 0 : snapshot.slotCount();
             }
 
             @Override
             public int serverSlotCapacity(ServerPlayer player, InventoryHostDescriptor host, String sourceId) {
+                if (isCraftingSource(sourceId)) {
+                    SophisticatedBackpackSupport.BackpackCraftingGridSnapshot snapshot = carriedCraftingGrid(player, sourceId);
+                    return snapshot == null ? 0 : snapshot.slotCount();
+                }
                 SophisticatedBackpackSupport.BackpackInventorySnapshot snapshot = findCarriedBackpack(player, sourceId, excludedCarrier);
                 return snapshot == null ? 0 : snapshot.slotCount();
             }
@@ -363,6 +396,9 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
             ) {
                 if (request == null || request.player() == null) {
                     return MutationResult.blocked("unsupported_source", request == null ? ItemStack.EMPTY : request.stack());
+                }
+                if (isCraftingSource(request.sourceId())) {
+                    return mutateCraftingGrid(request, mode);
                 }
                 InventorySourceDescriptor source = host == null ? null : host.source(request.sourceId());
                 SophisticatedBackpackSupport.BackpackCarrierRef carrier = decodeCarrier(source == null ? "" : source.diagnostics());
@@ -466,6 +502,53 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
                         new LinkedHashMap<java.util.UUID, CompoundTag>()
                 );
                 return moved ? MutationResult.success(capture.result()) : MutationResult.blocked("no_matching_stack", ItemStack.EMPTY);
+            }
+
+            private MutationResult mutateCraftingGrid(
+                    InventoryMutationRequest request,
+                    InventoryMutationMode mode
+            ) {
+                if (request.kind() != InventoryMutationKind.EXTRACT) {
+                    return MutationResult.blocked("unsupported_mutation", request.stack());
+                }
+                SophisticatedBackpackSupport.BackpackCraftingGridSnapshot snapshot =
+                        carriedCraftingGrid(request.player(), request.sourceId());
+                if (snapshot == null) {
+                    return MutationResult.blocked("no_matching_stack", ItemStack.EMPTY);
+                }
+                int slotIndex = request.slotIndex();
+                ItemStack preview = ItemStack.EMPTY;
+                for (SophisticatedBackpackSupport.BackpackCraftingEntry entry : snapshot.entries()) {
+                    boolean matchesSlot = slotIndex >= 0 && entry.slotIndex() == slotIndex;
+                    boolean matchesIdentity = slotIndex < 0
+                            && request.identity() != null
+                            && ItemIdentityMatcher.matchesMovable(entry.stack(), request.identity());
+                    if (matchesSlot || matchesIdentity) {
+                        slotIndex = entry.slotIndex();
+                        preview = entry.stack().copy();
+                        break;
+                    }
+                }
+                if (preview.isEmpty()
+                        || (request.identity() != null && !ItemIdentityMatcher.matchesMovable(preview, request.identity()))) {
+                    return MutationResult.blocked("no_matching_stack", ItemStack.EMPTY);
+                }
+                int amount = request.requestedAmount(preview.getCount());
+                if (mode == InventoryMutationMode.SIMULATE) {
+                    preview.setCount(Math.min(amount, preview.getCount()));
+                    return MutationResult.success(preview);
+                }
+                ItemStack extracted = SophisticatedBackpackSupport.extractBackpackCraftingGridSlot(
+                        request.player(),
+                        snapshot.carrier(),
+                        snapshot.upgradeSlotIndex(),
+                        slotIndex,
+                        amount,
+                        false
+                );
+                return extracted.isEmpty()
+                        ? MutationResult.blocked("no_matching_stack", ItemStack.EMPTY)
+                        : MutationResult.success(extracted);
             }
         });
     }
@@ -638,6 +721,20 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
         return Map.copyOf(backpacksBySourceId);
     }
 
+    private static Map<String, SophisticatedBackpackSupport.BackpackCraftingGridSnapshot> carriedCraftingGridsBySourceId(
+            Player player
+    ) {
+        LinkedHashMap<String, SophisticatedBackpackSupport.BackpackCraftingGridSnapshot> gridsBySourceId = new LinkedHashMap<>();
+        for (SophisticatedBackpackSupport.BackpackCraftingGridSnapshot snapshot :
+                SophisticatedBackpackSupport.readPlayerBackpackCraftingGrids(player, null)) {
+            if (snapshot == null || snapshot.stableContainerId().isBlank() || snapshot.entries().isEmpty()) {
+                continue;
+            }
+            gridsBySourceId.put(craftingSourceId(snapshot.stableContainerId(), snapshot.upgradeSlotIndex()), snapshot);
+        }
+        return Map.copyOf(gridsBySourceId);
+    }
+
     private static SophisticatedBackpackSupport.BackpackInventorySnapshot findCarriedBackpack(
             Player player,
             String sourceId,
@@ -669,8 +766,85 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
         return new InventorySourceSnapshot(sourceId, snapshot.slotCount(), entries, "");
     }
 
+    private static SophisticatedBackpackSupport.BackpackCraftingGridSnapshot carriedCraftingGrid(
+            Player player,
+            String sourceId
+    ) {
+        if (player == null || sourceId == null || sourceId.isBlank()) {
+            return null;
+        }
+        String stableId = stableIdSuffix(sourceId);
+        int upgradeSlotIndex = craftingUpgradeSlotIndex(sourceId);
+        if (stableId.isBlank() || upgradeSlotIndex < 0) {
+            return null;
+        }
+        for (SophisticatedBackpackSupport.BackpackCraftingGridSnapshot snapshot :
+                SophisticatedBackpackSupport.readPlayerBackpackCraftingGrids(player, null)) {
+            if (snapshot != null
+                    && stableId.equals(snapshot.stableContainerId())
+                    && upgradeSlotIndex == snapshot.upgradeSlotIndex()) {
+                return snapshot;
+            }
+        }
+        return null;
+    }
+
+    private static InventorySourceSnapshot carriedCraftingGridSourceSnapshot(
+            Player player,
+            String sourceId
+    ) {
+        SophisticatedBackpackSupport.BackpackCraftingGridSnapshot snapshot = carriedCraftingGrid(player, sourceId);
+        if (snapshot == null) {
+            return InventorySourceSnapshot.empty(sourceId == null || sourceId.isBlank() ? "__missing__" : sourceId);
+        }
+        List<InventoryEntrySnapshot> entries = snapshot.entries().stream()
+                .map(entry -> new InventoryEntrySnapshot(
+                        InventoryEntryKey.slot(sourceId, entry.slotIndex()),
+                        entry.stack(),
+                        entry.stack().getCount(),
+                        ""
+                ))
+                .toList();
+        return new InventorySourceSnapshot(sourceId, snapshot.slotCount(), entries, "");
+    }
+
     private static String carriedSourceId(String stableContainerId) {
         return CARRIED_PROVIDER_ID + "/" + (stableContainerId == null ? "" : stableContainerId);
+    }
+
+    private static String craftingSourceId(String stableContainerId, int upgradeSlotIndex) {
+        return CARRIED_PROVIDER_ID + "/" + (stableContainerId == null ? "" : stableContainerId)
+                + CRAFTING_SOURCE_MARKER
+                + Math.max(0, upgradeSlotIndex);
+    }
+
+    private static boolean isCraftingSource(String sourceId) {
+        return sourceId != null && sourceId.startsWith(CARRIED_PROVIDER_ID + "/") && sourceId.contains(CRAFTING_SOURCE_MARKER);
+    }
+
+    private static String stableIdSuffix(String sourceId) {
+        int slash = sourceId == null ? -1 : sourceId.indexOf('/', CARRIED_PROVIDER_ID.length());
+        if (slash < 0 || slash + 1 >= sourceId.length()) {
+            return "";
+        }
+        String suffix = sourceId.substring(slash + 1);
+        int craftingMarker = suffix.indexOf(CRAFTING_SOURCE_MARKER);
+        return craftingMarker < 0 ? suffix : suffix.substring(0, craftingMarker);
+    }
+
+    private static int craftingUpgradeSlotIndex(String sourceId) {
+        if (!isCraftingSource(sourceId)) {
+            return -1;
+        }
+        int marker = sourceId.lastIndexOf(CRAFTING_SOURCE_MARKER);
+        if (marker < 0 || marker + CRAFTING_SOURCE_MARKER.length() >= sourceId.length()) {
+            return -1;
+        }
+        try {
+            return Integer.parseInt(sourceId.substring(marker + CRAFTING_SOURCE_MARKER.length()));
+        } catch (NumberFormatException ignored) {
+            return -1;
+        }
     }
 
     private static InventoryToolKind inferToolKind(String containerClassName) {

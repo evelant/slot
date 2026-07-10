@@ -382,6 +382,15 @@ public final class WorkflowProjection {
                             .entries());
                 }
             }
+        else if (workflowEvent instanceof WorkflowEvent.ChestInitialContentsSeeded event) {
+                if (event.storageId() != null && !event.countsByIdentity().isEmpty()
+                        && claimedChests.containsKey(event.storageId())
+                        && claimedChests.get(event.storageId()).role().learnsAffinity()) {
+                    affinity = copyAffinity(new ChestAffinityMap(affinity)
+                            .recordDeposits(event.storageId(), event.countsByIdentity(), event.tick())
+                            .entries());
+                }
+            }
         else if (workflowEvent instanceof WorkflowEvent.ChestAffinityForgotten event) {
                 if (event.storageId() != null && event.identity() != null) {
                     affinity = copyAffinity(new ChestAffinityMap(affinity)

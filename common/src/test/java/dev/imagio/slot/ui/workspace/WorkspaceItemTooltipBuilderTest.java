@@ -1,6 +1,7 @@
 package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
+import dev.imagio.slot.inventory.core.SlotResourceIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -238,6 +239,52 @@ class WorkspaceItemTooltipBuilderTest {
         assertTrue(text.contains("  candidate: carried=true, source=player.main"));
         assertTrue(text.contains("  context relevance 0.80 = active 0.80 + passive 0.00"));
         assertTrue(text.contains("  score terms: relevance 0.80, carried +0.45"));
+    }
+
+    @Test
+    void fluidTooltipUsesFluidTitleAndFormatsMillibuckets() {
+        SlotResourceIdentity oxygen = SlotResourceIdentity.fluid("gtceu:oxygen");
+        SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
+                identity(oxygen.syntheticItemId()),
+                ItemStack.EMPTY,
+                "Oxygen",
+                1000,
+                0,
+                "fluids",
+                false,
+                false,
+                true,
+                false,
+                0,
+                List.of(),
+                List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("tank", "Machine Tank", 2000)),
+                List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("drum", "Remote Drum", 3000)),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                0,
+                false,
+                false,
+                "",
+                -1,
+                0,
+                SlotWorkspaceViewModel.PutAwayState.NONE,
+                SlotWorkspaceViewModel.ResourceRef.from(oxygen),
+                1000L);
+
+        List<String> text = WorkspaceItemTooltipBuilder.slotLines(item).stream()
+                .map(Component::getString)
+                .toList();
+
+        assertEquals("Oxygen", text.get(0));
+        assertEquals("", text.get(1));
+        assertEquals("SLOT", text.get(2));
+        assertTrue(text.contains("Carried amount: 1 B"));
+        assertTrue(text.contains("Nearby stored: 2 B in Machine Tank: 2 B"));
+        assertTrue(text.contains("Stored elsewhere: 3 B in Remote Drum: 3 B"));
     }
 
     @Test

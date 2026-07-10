@@ -64,7 +64,7 @@ class WorkspaceSearchQueryTest {
                 "tag:forge:acid");
         SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
                 SlotWorkspaceViewModel.IdentityRef.from(ItemIdentity.of(sulfuricAcid.syntheticItemId())),
-                new ItemStack("minecraft:water_bucket", 1, 1),
+                ItemStack.EMPTY,
                 "Sulfuric Acid",
                 0,
                 0,

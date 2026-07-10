@@ -132,6 +132,7 @@ class RecipeIngredientSidebarSpecTest {
 
         assertNotNull(hydrogenCard);
         assertTrue(hydrogenCard.fluidResource());
+        assertTrue(hydrogenCard.displayStack().isEmpty());
         assertEquals(SlotWorkspaceAtlasLayout.ISLAND_MISC, hydrogenCard.islandId());
         assertEquals(1000L, hydrogenCard.resourceAmount());
         assertEquals(1000, hydrogenCard.desiredCount());
@@ -256,7 +257,7 @@ class RecipeIngredientSidebarSpecTest {
         ItemIdentity synthetic = ItemIdentity.of(identity.syntheticItemId());
         return new SlotWorkspaceViewModel.AtlasItem(
                 SlotWorkspaceViewModel.IdentityRef.from(synthetic),
-                new ItemStack("minecraft:water_bucket", 1, 1),
+                ItemStack.EMPTY,
                 label,
                 0,
                 0,
